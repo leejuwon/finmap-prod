@@ -1,5 +1,5 @@
+# 카페24에서 빌드 안 할 거라 .next는 커밋해야 함
 node_modules
-.next
 .env
 npm-debug.log*
 yarn-error.log
