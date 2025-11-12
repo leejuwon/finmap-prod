@@ -2,14 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/en": "pages/en.html",
-  "/en/tools/calculator": "pages/en/tools/calculator.html",
-  "/": "pages/index.html",
-  "/ko": "pages/ko.html",
-  "/ko/tools/calculator": "pages/ko/tools/calculator.html",
-  "/en/blog": "pages/en/blog.js",
-  "/ko/blog/[slug]": "pages/ko/blog/[slug].js",
-  "/ko/blog": "pages/ko/blog.js",
-  "/en/blog/[slug]": "pages/en/blog/[slug].js",
-  "/404": "pages/404.html"
+  "/ko": "pages/ko.js",
+  "/posts/[slug]": "pages/posts/[slug].js",
+  "/tools/compound-interest": "pages/tools/compound-interest.js",
+  "/": "pages/index.js",
+  "/category/[slug]": "pages/category/[slug].js"
 }
