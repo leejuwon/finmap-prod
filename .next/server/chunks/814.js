@@ -13,17 +13,17 @@ exports.modules = {
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(968);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
+// _components/SeoHead.js
 
 
-const SITE = "https://www.finmaphub.com";
-function SeoHead({ title , desc , url , image  }) {
-    const pageTitle = title ? `${title} | FinMap` : "FinMap";
-    const canonical = `${SITE}${url || ""}`;
-    const ogImage = image || `${SITE}/og/default.jpg`;
+function SeoHead({ title , desc , url ="/" , image  }) {
+    const site = "https://www.finmaphub.com";
+    const canonical = url.startsWith("http") ? url : `${site}${url}`;
+    const ogImg = image || "/og-default.png"; // public/og-default.png 준비 권장
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((next_head__WEBPACK_IMPORTED_MODULE_1___default()), {
         children: [
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("title", {
-                children: pageTitle
+                children: title ? `${title} | FinMap` : "FinMap"
             }),
             desc && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
                 name: "description",
@@ -46,12 +46,32 @@ function SeoHead({ title , desc , url , image  }) {
                 content: canonical
             }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
-                property: "og:image",
-                content: ogImage
+                property: "og:site_name",
+                content: "FinMap"
             }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
-                name: "viewport",
-                content: "width=device-width,initial-scale=1"
+                property: "og:type",
+                content: "article"
+            }),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                property: "og:image",
+                content: ogImg
+            }),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                name: "twitter:card",
+                content: "summary_large_image"
+            }),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                name: "twitter:title",
+                content: title || "FinMap"
+            }),
+            desc && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                name: "twitter:description",
+                content: desc
+            }),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                name: "twitter:image",
+                content: ogImg
             })
         ]
     });

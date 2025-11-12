@@ -2,17 +2,15 @@ import Link from 'next/link';
 
 export default function Footer(){
   return (
-    <footer style={{borderTop:'1px solid #eee', marginTop:40, padding:'16px'}}>
-      <div style={{display:'flex', gap:16, flexWrap:'wrap'}}>
+    <footer className="border-t mt-10 bg-white">
+      <div className="container flex flex-wrap gap-4 items-center py-4 text-slate-600">
         <Link href="/about">About</Link>
         <Link href="/contact">Contact</Link>
         <Link href="/privacy">Privacy</Link>
         <Link href="/terms">TOS</Link>
         <Link href="/disclaimer">면책</Link>
+        <span className="ml-auto text-sm">© {new Date().getFullYear()} FinMap</span>
       </div>
-      <small style={{opacity:.6, display:'block', marginTop:8}}>
-        © {new Date().getFullYear()} FinMap. 정보 제공 목적이며 투자 판단은 본인 책임입니다.
-      </small>
     </footer>
   );
 }

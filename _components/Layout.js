@@ -5,7 +5,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Header />
-      <main style={{maxWidth:960, margin:'0 auto', padding:'16px'}}>
+      <main className="container py-6">
         {children}
       </main>
       <Footer />

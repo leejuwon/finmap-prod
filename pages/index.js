@@ -6,17 +6,21 @@ export default function Home({ posts }) {
   return (
     <>
       <SeoHead title="홈" desc="FinMap 블로그 · 금융 기초 · 투자개념 · 세금 · 복리 계산기" url="/" />
-      <h1>FinMap 블로그</h1>
-      <section>
-        <h2>최신 글</h2>
-        <ul>
+      <h1 className="text-3xl font-bold mt-4 mb-3">FinMap 블로그</h1>
+
+      <section className="mt-6">
+        <h2 className="text-xl font-semibold mb-3">최신 글</h2>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {posts.slice(0,6).map(p=>(
-            <li key={p.slug}>
-              <Link href={`/posts/${p.slug}`}>{p.title}</Link>
-              <small style={{marginLeft:8, opacity:.6}}>{p.category} · {p.datePublished}</small>
-            </li>
+            <article key={p.slug} className="card">
+              <span className="badge">{p.category}</span>
+              <h3 className="mt-2 text-lg font-semibold">
+                <Link href={`/posts/${p.slug}`}>{p.title}</Link>
+              </h3>
+              <p className="text-sm text-slate-500 mt-1">{p.datePublished}</p>
+            </article>
           ))}
-        </ul>
+        </div>
       </section>
     </>
   );

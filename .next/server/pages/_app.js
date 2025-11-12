@@ -26,42 +26,37 @@ var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
 
 function Header() {
     return /*#__PURE__*/ jsx_runtime_.jsx("header", {
-        style: {
-            borderBottom: "1px solid #eee"
-        },
+        className: "sticky top-0 z-50 backdrop-blur bg-white/80 border-b",
         children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("nav", {
-            style: {
-                display: "flex",
-                gap: 16,
-                padding: "12px 16px"
-            },
+            className: "container flex gap-4 items-center py-3",
             children: [
                 /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                     href: "/",
+                    className: "font-extrabold tracking-tight",
                     children: "FinMap"
                 }),
                 /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                     href: "/category/economics",
+                    className: "px-2 py-1 rounded-lg hover:bg-indigo-50",
                     children: "경제기초"
                 }),
                 /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                     href: "/category/investing",
+                    className: "px-2 py-1 rounded-lg hover:bg-indigo-50",
                     children: "투자개념"
                 }),
                 /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                     href: "/category/tax",
+                    className: "px-2 py-1 rounded-lg hover:bg-indigo-50",
                     children: "세금"
                 }),
                 /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                     href: "/tools/compound-interest",
+                    className: "px-2 py-1 rounded-lg hover:bg-indigo-50",
                     children: "복리 계산기"
                 }),
                 /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                    style: {
-                        marginLeft: "auto",
-                        opacity: .7,
-                        fontSize: 13
-                    },
+                    className: "ml-auto text-sm text-slate-500",
                     children: "finmaphub.com"
                 })
             ]
@@ -73,55 +68,41 @@ function Header() {
 
 
 function Footer() {
-    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("footer", {
-        style: {
-            borderTop: "1px solid #eee",
-            marginTop: 40,
-            padding: "16px"
-        },
-        children: [
-            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                style: {
-                    display: "flex",
-                    gap: 16,
-                    flexWrap: "wrap"
-                },
-                children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                        href: "/about",
-                        children: "About"
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                        href: "/contact",
-                        children: "Contact"
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                        href: "/privacy",
-                        children: "Privacy"
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                        href: "/terms",
-                        children: "TOS"
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                        href: "/disclaimer",
-                        children: "면책"
-                    })
-                ]
-            }),
-            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("small", {
-                style: {
-                    opacity: .6,
-                    display: "block",
-                    marginTop: 8
-                },
-                children: [
-                    "\xa9 ",
-                    new Date().getFullYear(),
-                    " FinMap. 정보 제공 목적이며 투자 판단은 본인 책임입니다."
-                ]
-            })
-        ]
+    return /*#__PURE__*/ jsx_runtime_.jsx("footer", {
+        className: "border-t mt-10 bg-white",
+        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+            className: "container flex flex-wrap gap-4 items-center py-4 text-slate-600",
+            children: [
+                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                    href: "/about",
+                    children: "About"
+                }),
+                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                    href: "/contact",
+                    children: "Contact"
+                }),
+                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                    href: "/privacy",
+                    children: "Privacy"
+                }),
+                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                    href: "/terms",
+                    children: "TOS"
+                }),
+                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                    href: "/disclaimer",
+                    children: "면책"
+                }),
+                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
+                    className: "ml-auto text-sm",
+                    children: [
+                        "\xa9 ",
+                        new Date().getFullYear(),
+                        " FinMap"
+                    ]
+                })
+            ]
+        })
     });
 }
 
@@ -134,11 +115,7 @@ function Layout({ children  }) {
         children: [
             /*#__PURE__*/ jsx_runtime_.jsx(Header, {}),
             /*#__PURE__*/ jsx_runtime_.jsx("main", {
-                style: {
-                    maxWidth: 960,
-                    margin: "0 auto",
-                    padding: "16px"
-                },
+                className: "container py-6",
                 children: children
             }),
             /*#__PURE__*/ jsx_runtime_.jsx(Footer, {})
