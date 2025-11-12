@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
+import Layout from '../_components/Layout';   // ✅ Layout 추가
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
@@ -12,10 +13,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     if (!GA_ID) return;
     const handleRouteChange = (url) => {
-      // gtag.js 로드 후 전송
-      window.gtag && window.gtag('config', GA_ID, {
-        page_path: url,
-      });
+      window.gtag && window.gtag('config', GA_ID, { page_path: url });
     };
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => router.events.off('routeChangeComplete', handleRouteChange);
@@ -23,7 +21,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      {/* gtag.js 로딩 - 인터랙션 이후 로드 */}
+      {/* GA4 */}
       {GA_ID && (
         <>
           <Script
@@ -40,7 +38,11 @@ function MyApp({ Component, pageProps }) {
           </Script>
         </>
       )}
-      <Component {...pageProps} />
+
+      {/* ✅ Layout으로 전체 페이지 감싸기 */}
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 }

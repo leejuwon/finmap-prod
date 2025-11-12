@@ -19,40 +19,53 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1664);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _lib_posts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8904);
-/* harmony import */ var _components_SeoHead__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8814);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_lib_posts__WEBPACK_IMPORTED_MODULE_2__]);
-_lib_posts__WEBPACK_IMPORTED_MODULE_2__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+/* harmony import */ var _components_SeoHead__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8814);
+/* harmony import */ var _lib_posts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8904);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_lib_posts__WEBPACK_IMPORTED_MODULE_3__]);
+_lib_posts__WEBPACK_IMPORTED_MODULE_3__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 
 
 
 
+const CATEGORY_LABELS = {
+    economics: "경제기초",
+    investing: "투자개념",
+    tax: "세금"
+};
 function CategoryPage({ slug , posts  }) {
+    const title = CATEGORY_LABELS[slug] || slug;
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         children: [
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_SeoHead__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
-                title: `카테고리: ${slug}`,
-                desc: `${slug} 카테고리 글 목록`,
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_SeoHead__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+                title: `${title} 카테고리`,
+                desc: `${title} 글 모음`,
                 url: `/category/${slug}`
             }),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
-                children: [
-                    "카테고리: ",
-                    slug
-                ]
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
+                className: "text-2xl font-bold mb-4",
+                children: title
             }),
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("ul", {
+            posts.length === 0 ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                className: "text-slate-500",
+                children: "아직 이 카테고리의 글이 없습니다."
+            }) : /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("ul", {
+                className: "grid gap-4 sm:grid-cols-2 lg:grid-cols-3",
                 children: posts.map((p)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                        className: "card",
                         children: [
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                href: `/posts/${p.slug}`,
-                                children: p.title
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
+                                className: "badge",
+                                children: p.category
                             }),
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("small", {
-                                style: {
-                                    marginLeft: 8,
-                                    opacity: .6
-                                },
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h3", {
+                                className: "mt-2 text-lg font-semibold",
+                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
+                                    href: `/posts/${p.slug}`,
+                                    children: p.title
+                                })
+                            }),
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                className: "text-sm text-slate-500 mt-1",
                                 children: p.datePublished
                             })
                         ]
@@ -62,26 +75,37 @@ function CategoryPage({ slug , posts  }) {
     });
 }
 async function getStaticPaths() {
-    // 카테고리 유도: 현재 글들의 category를 수집
-    const all = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_2__/* .getAllPosts */ .Bd)();
-    const cats = Array.from(new Set(all.map((p)=>(p.category || "").toLowerCase()).filter(Boolean)));
-    const paths = cats.map((c)=>({
-            params: {
-                slug: c
-            }
-        }));
+    // 카테고리 슬러그 고정
+    const slugs = [
+        "economics",
+        "investing",
+        "tax"
+    ];
     return {
-        paths,
+        paths: slugs.map((s)=>({
+                params: {
+                    slug: s
+                }
+            })),
         fallback: false
     };
 }
 async function getStaticProps({ params  }) {
-    const { slug  } = params;
-    const all = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_2__/* .getAllPosts */ .Bd)();
-    const posts = all.filter((p)=>(p.category || "").toLowerCase() === slug.toLowerCase());
+    const all = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_3__/* .getAllPosts */ .Bd)(); // [{ category, slug, ... }]
+    const posts = all.filter((p)=>{
+        var ref;
+        // p.category가 "경제기초/투자개념/세금"처럼 한글이면 슬러그 매핑
+        const map = {
+            "경제기초": "economics",
+            "투자개념": "investing",
+            "세금": "tax"
+        };
+        const pSlug = map[p.category] || ((ref = p.category) === null || ref === void 0 ? void 0 : ref.toLowerCase());
+        return pSlug === params.slug;
+    });
     return {
         props: {
-            slug,
+            slug: params.slug,
             posts
         }
     };
@@ -316,7 +340,7 @@ module.exports = require("path");
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [699,676,664,814,904], () => (__webpack_exec__(8785)));
+var __webpack_exports__ = __webpack_require__.X(0, [676,664,814,904], () => (__webpack_exec__(8785)));
 module.exports = __webpack_exports__;
 
 })();
