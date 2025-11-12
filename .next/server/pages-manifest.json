@@ -2,9 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/ko": "pages/ko.js",
-  "/posts/[slug]": "pages/posts/[slug].js",
-  "/tools/compound-interest": "pages/tools/compound-interest.js",
-  "/": "pages/index.js",
-  "/category/[slug]": "pages/category/[slug].js"
+  "/": "pages/index.js"
 }
