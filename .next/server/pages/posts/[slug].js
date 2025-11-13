@@ -76,7 +76,7 @@ function PostPage({ post  }) {
                     post.cover && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
                         src: post.cover,
                         alt: post.title,
-                        className: "w-full max-h-80 object-cover rounded-lg my-4"
+                        className: "w-full h-auto rounded-xl mt-4 mb-6"
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                         dangerouslySetInnerHTML: {

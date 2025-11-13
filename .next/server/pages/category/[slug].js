@@ -56,7 +56,7 @@ function CategoryPage({ slug , posts  }) {
                             p.cover && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
                                 src: p.cover,
                                 alt: p.title,
-                                className: "w-full h-40 object-cover rounded-md mb-3"
+                                className: "card-thumb"
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
                                 className: "badge",

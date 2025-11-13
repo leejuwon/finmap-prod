@@ -31,7 +31,7 @@ export default function PostPage({ post }) {
           <img
             src={post.cover}
             alt={post.title}
-            className="w-full max-h-80 object-cover rounded-lg my-4"
+            className="w-full h-auto rounded-xl mt-4 mb-6"
           />
         )}
         <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />

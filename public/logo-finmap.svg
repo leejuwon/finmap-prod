@@ -1,0 +1,13 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="finmap-grad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#22C55E"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="36" height="36" rx="12" fill="url(#finmap-grad)"/>
+  <!-- F -->
+  <path d="M13 12H21V14H15V18H20.5V20H15V28H13V12Z" fill="white"/>
+  <!-- M -->
+  <path d="M23 28V12H25.2L28 18.2L30.8 12H33V28H31V15.8L28.4 21.2H27.6L25 15.8V28H23Z" fill="white"/>
+</svg>

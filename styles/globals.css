@@ -2,19 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 커스텀 유틸(선택) */
-.container { @apply max-w-[1080px] mx-auto px-4; }
-.card { @apply bg-white rounded-2xl shadow-card border border-slate-100 p-5; }
-.badge { @apply inline-block px-3 py-1 text-sm rounded-full bg-indigo-50 text-indigo-700; }
-
 @layer components {
-  .container { @apply mx-auto px-4 max-w-6xl; }
-  .card { @apply bg-white border rounded-2xl shadow p-5; }
-  .input { @apply w-full rounded-lg border px-3 py-2; }
-  .select { @apply rounded-lg border px-3 py-2; }
-  .btn-primary { @apply rounded-lg px-4 py-2 text-white bg-blue-600 hover:bg-blue-700; }
-  .btn-secondary { @apply rounded-lg px-3 py-2 border hover:bg-slate-50; }
-  .stat { @apply card text-center; }
-  .stat-title { @apply text-sm text-slate-500; }
-  .stat-value { @apply text-xl font-bold mt-1; }
+  /* 공통 레이아웃 컨테이너 */
+  .container {
+    @apply mx-auto px-4 max-w-5xl lg:max-w-6xl;
+  }
+
+  /* 카드 공통 스타일 (리스트/박스 등) */
+  .card {
+    @apply bg-white border border-slate-100 rounded-2xl shadow p-5;
+  }
+
+  /* 카테고리 / 태그 뱃지 */
+  .badge {
+    @apply inline-block px-3 py-1 text-xs md:text-sm rounded-full bg-indigo-50 text-indigo-700;
+  }
+
+  /* 입력 폼 공통 */
+  .input {
+    @apply w-full rounded-lg border border-slate-300 px-3 py-2 text-sm md:text-base
+      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+  }
+
+  .select {
+    @apply rounded-lg border border-slate-300 px-3 py-2 text-sm md:text-base
+      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+  }
+
+  /* 버튼 공통 */
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium
+      text-white bg-blue-600 hover:bg-blue-700
+      disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg px-3 py-2 border border-slate-300
+      text-sm font-medium text-slate-700 hover:bg-slate-50;
+  }
+
+  /* 통계 카드 */
+  .stat {
+    @apply card text-center;
+  }
+  .stat-title {
+    @apply text-sm text-slate-500;
+  }
+  .stat-value {
+    @apply text-xl font-bold mt-1;
+  }
+
+  /* ✅ 리스트 썸네일 전용 이미지 (상세페이지는 사용 X) */
+  .card-thumb {
+    @apply w-full h-40 object-cover rounded-xl mb-3;
+    /* h-40 = 160px, 필요하면 h-48(192px)로 늘려도 됨 */
+  }
 }
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900;
+  }
+
+  a {
+    @apply text-slate-800;
+  }
+
+  a:hover {
+    @apply text-blue-600;
+  }
+}
+

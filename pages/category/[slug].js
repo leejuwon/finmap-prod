@@ -25,7 +25,7 @@ export default function CategoryPage({ slug, posts }) {
                   <img
                     src={p.cover}
                     alt={p.title}
-                    className="w-full h-40 object-cover rounded-md mb-3"
+                    className="card-thumb"
                   />
                 )}
               <span className="badge">{p.category}</span>

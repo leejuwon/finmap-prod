@@ -29,41 +29,82 @@ var script_default = /*#__PURE__*/__webpack_require__.n(script);
 var next_link = __webpack_require__(1664);
 var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
 ;// CONCATENATED MODULE: ./_components/Header.js
+// _components/Header.js
 
 
+
+const navItems = [
+    {
+        href: "/",
+        label: "홈"
+    },
+    {
+        href: "/category/economics",
+        label: "경제기초"
+    },
+    {
+        href: "/category/investing",
+        label: "투자개념"
+    },
+    {
+        href: "/category/tax",
+        label: "세금"
+    },
+    {
+        href: "/tools/compound-interest",
+        label: "복리 계산기"
+    }, 
+];
 function Header() {
+    const router = (0,router_namespaceObject.useRouter)();
     return /*#__PURE__*/ jsx_runtime_.jsx("header", {
-        className: "sticky top-0 z-50 backdrop-blur bg-white/80 border-b",
+        className: "sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-slate-100",
         children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("nav", {
-            className: "container flex gap-4 items-center py-3",
+            className: "container flex items-center gap-4 py-3",
             children: [
                 /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                     href: "/",
-                    className: "font-extrabold tracking-tight",
-                    children: "FinMap"
+                    passHref: true,
+                    children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("a", {
+                        className: "flex items-center gap-2",
+                        children: [
+                            /*#__PURE__*/ jsx_runtime_.jsx("img", {
+                                src: "/logo-finmap.svg",
+                                alt: "FinMap 로고",
+                                className: "h-8 w-auto"
+                            }),
+                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                className: "leading-tight",
+                                children: [
+                                    /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                        className: "block text-base font-semibold text-slate-900",
+                                        children: "FinMap"
+                                    }),
+                                    /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                        className: "block text-[11px] text-slate-500",
+                                        children: "금융 기초 \xb7 투자계획 지도"
+                                    })
+                                ]
+                            })
+                        ]
+                    })
                 }),
-                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                    href: "/category/economics",
-                    className: "px-2 py-1 rounded-lg hover:bg-indigo-50",
-                    children: "경제기초"
-                }),
-                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                    href: "/category/investing",
-                    className: "px-2 py-1 rounded-lg hover:bg-indigo-50",
-                    children: "투자개념"
-                }),
-                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                    href: "/category/tax",
-                    className: "px-2 py-1 rounded-lg hover:bg-indigo-50",
-                    children: "세금"
-                }),
-                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                    href: "/tools/compound-interest",
-                    className: "px-2 py-1 rounded-lg hover:bg-indigo-50",
-                    children: "복리 계산기"
+                /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                    className: "flex items-center gap-2 ml-6 text-sm",
+                    children: navItems.map((item)=>{
+                        const active = item.href === "/" ? router.pathname === "/" : router.pathname.startsWith(item.href);
+                        return /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                            href: item.href,
+                            passHref: true,
+                            children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
+                                className: "px-3 py-1 rounded-full transition-colors " + (active ? "bg-blue-50 text-blue-700 font-medium" : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"),
+                                children: item.label
+                            })
+                        }, item.href);
+                    })
                 }),
                 /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                    className: "ml-auto text-sm text-slate-500",
+                    className: "ml-auto text-xs md:text-sm text-slate-500",
                     children: "finmaphub.com"
                 })
             ]
