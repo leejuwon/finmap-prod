@@ -22,11 +22,17 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1__["default"] {
         return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(next_document__WEBPACK_IMPORTED_MODULE_1__.Html, {
             lang: "ko",
             children: [
-                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(next_document__WEBPACK_IMPORTED_MODULE_1__.Head, {
-                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
-                        name: "google-site-verification",
-                        content: "8FhqQNDjbZ-QpdePXdPiCR_VJwQstaK-tbuYIlXxs_A"
-                    })
+                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(next_document__WEBPACK_IMPORTED_MODULE_1__.Head, {
+                    children: [
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                            name: "google-adsense-account",
+                            content: "ca-pub-1869932115288976" // ← AdSense에서 보여준 값 그대로
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                            name: "google-site-verification",
+                            content: "8FhqQNDjbZ-QpdePXdPiCR_VJwQstaK-tbuYIlXxs_A"
+                        })
+                    ]
                 }),
                 /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("body", {
                     children: [
