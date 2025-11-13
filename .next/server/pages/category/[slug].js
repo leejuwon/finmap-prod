@@ -53,6 +53,11 @@ function CategoryPage({ slug , posts  }) {
                 children: posts.map((p)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
                         className: "card",
                         children: [
+                            p.cover && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
+                                src: p.cover,
+                                alt: p.title,
+                                className: "w-full h-40 object-cover rounded-md mb-3"
+                            }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
                                 className: "badge",
                                 children: p.category

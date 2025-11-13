@@ -141,6 +141,7 @@ function Layout({ children  }) {
 function MyApp({ Component , pageProps  }) {
     const router = (0,router_namespaceObject.useRouter)();
     const GA_ID = "G-HYS82YP0CH";
+    const ADS_CLIENT = "ca-pub-1869932115288976"; // 새 계정의 클라이언트 ID
     // 라우팅될 때마다 page_view 전송
     (0,external_react_.useEffect)(()=>{
         if (!GA_ID) return;
@@ -174,6 +175,17 @@ function MyApp({ Component , pageProps  }) {
             `
                     })
                 ]
+            }),
+            /*#__PURE__*/ jsx_runtime_.jsx((script_default()), {
+                id: "adsbygoogle-loader",
+                strategy: "afterInteractive",
+                src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS_CLIENT}`,
+                crossOrigin: "anonymous"
+            }),
+            /*#__PURE__*/ jsx_runtime_.jsx((script_default()), {
+                id: "adsbygoogle-auto",
+                strategy: "afterInteractive",
+                children: `(adsbygoogle = window.adsbygoogle || []).push({});`
             }),
             /*#__PURE__*/ jsx_runtime_.jsx(Layout, {
                 children: /*#__PURE__*/ jsx_runtime_.jsx(Component, {

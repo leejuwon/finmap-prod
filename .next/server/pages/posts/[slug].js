@@ -73,6 +73,11 @@ function PostPage({ post  }) {
                             post.dateModified && post.dateModified !== post.datePublished ? ` · 수정: ${post.dateModified}` : ""
                         ]
                     }),
+                    post.cover && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
+                        src: post.cover,
+                        alt: post.title,
+                        className: "w-full max-h-80 object-cover rounded-lg my-4"
+                    }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                         dangerouslySetInnerHTML: {
                             __html: post.contentHtml

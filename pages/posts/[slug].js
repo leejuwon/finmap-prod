@@ -26,6 +26,14 @@ export default function PostPage({ post }) {
           {post.category} · {post.datePublished}
           {post.dateModified && post.dateModified !== post.datePublished ? ` · 수정: ${post.dateModified}` : ''}
         </p>
+        {/*  히어로 커버 이미지 */}
+        {post.cover && (
+          <img
+            src={post.cover}
+            alt={post.title}
+            className="w-full max-h-80 object-cover rounded-lg my-4"
+          />
+        )}
         <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
       </article>
     </>

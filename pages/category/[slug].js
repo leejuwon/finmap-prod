@@ -20,6 +20,14 @@ export default function CategoryPage({ slug, posts }) {
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map(p=>(
             <li key={p.slug} className="card">
+               {/* 썸네일 추가 */}
+                {p.cover && (
+                  <img
+                    src={p.cover}
+                    alt={p.title}
+                    className="w-full h-40 object-cover rounded-md mb-3"
+                  />
+                )}
               <span className="badge">{p.category}</span>
               <h3 className="mt-2 text-lg font-semibold">
                 <Link href={`/posts/${p.slug}`}>{p.title}</Link>

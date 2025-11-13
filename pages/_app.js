@@ -8,6 +8,7 @@ import '../styles/globals.css';
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+  const ADS_CLIENT = 'ca-pub-1869932115288976'; // 새 계정의 클라이언트 ID
 
   // 라우팅될 때마다 page_view 전송
   useEffect(() => {
@@ -38,6 +39,19 @@ function MyApp({ Component, pageProps }) {
           </Script>
         </>
       )}
+
+      {/* 1) AdSense 공통 스크립트: 모든 페이지에서 1회 로드 */}
+      <Script
+        id="adsbygoogle-loader"
+        strategy="afterInteractive"
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS_CLIENT}`}
+        crossOrigin="anonymous"
+      />
+
+      {/* 2) (선택) Auto Ads: 페이지 로드 후 자동 광고 활성화 */}
+      <Script id="adsbygoogle-auto" strategy="afterInteractive">
+        {`(adsbygoogle = window.adsbygoogle || []).push({});`}
+      </Script>
 
       {/* ✅ Layout으로 전체 페이지 감싸기 */}
       <Layout>

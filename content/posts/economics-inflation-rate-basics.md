@@ -5,7 +5,6 @@ category: "경제기초"
 tags: ["물가","금리"]
 datePublished: "2025-11-12"
 dateModified: "2025-11-12"
-cover: "/og/inflation-rate.jpg"
 ---
 
 **요약:** 이 글은 물가와 금리의 기본 개념, 서로의 관계, 자산시장에 미치는 일반적 영향을 초심자 관점에서 정리합니다.
