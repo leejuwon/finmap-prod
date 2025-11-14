@@ -2,55 +2,80 @@
 import dynamic from 'next/dynamic';
 import { useMemo } from 'react';
 
-// ✅ dynamic은 "그 자체로 컴포넌트"를 반환합니다 (구조분해 ❌)
-const Line = dynamic(
-  () => import('react-chartjs-2').then(mod => mod.Line),
+// Chart.js dynamic import
+const Bar = dynamic(
+  () => import('react-chartjs-2').then(mod => mod.Bar),
   { ssr: false }
 );
 
-// ✅ chart.js 레지스트리 등록 (클라이언트에서만)
 if (typeof window !== 'undefined') {
-  // eslint-disable-next-line global-require
   require('chart.js/auto');
 }
 
-export default function CompoundChart({ data, locale = 'ko-KR' }) {
-  const chartData = useMemo(() => {
-    if (!data?.series?.length) return null;
+export default function CompoundChart({ data, locale = 'ko-KR', unit }) {
+  if (!data?.series || !unit) return null;
 
-    const labels = data.series.map(r => `${Math.ceil(r.month / 12)}y`);
-    const everyN = Math.ceil(labels.length / 12);
-    const displayLabels = labels.map((l, idx) => (idx % everyN === 0 ? l : ''));
+  // ---- 1) Label 생성 (년도 단위) ----
+  const labels = data.series
+    .filter(r => r.month % 12 === 0)
+    .map(r => `${r.yearLabel || `${Math.ceil(r.month / 12)}년`}`);
+
+  const chartData = useMemo(() => {
+    if (!data.yearSummary) return null;
 
     return {
-      labels: displayLabels,
+      labels,
       datasets: [
         {
-          label: locale.startsWith('ko') ? '총 자산' : 'Total Value',
-          data: data.series.map(r => r.balance),
-          borderWidth: 2,
-          tension: 0.25,
+          label: locale.startsWith('ko') ? '초기투자금' : 'Initial Principal',
+          data: data.yearSummary.map((r) => r.openingBalanceNet / unit.divisor),
+          backgroundColor: '#4F6EF7',
+          stack: 'total',
+        },
+        {
+          label: locale.startsWith('ko') ? '추가투자금' : 'Additional Deposit',
+          data: data.yearSummary.map((r) => r.contributionYear / unit.divisor),
+          backgroundColor: '#6AD590',
+          stack: 'total',
+        },
+        {
+          label: locale.startsWith('ko') ? '세후 총자산' : 'Net Balance',
+          data: data.yearSummary.map((r) => r.closingBalanceNet / unit.divisor),
+          backgroundColor: '#9BB5FF',
+          stack: 'total',
         },
       ],
     };
-  }, [data, locale]);
+  }, [data, locale, unit]);
 
-  const options = useMemo(() => ({
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: { legend: { display: true } },
-    scales: {
-      y: {
-        ticks: { callback: (v) => Intl.NumberFormat(locale).format(v) },
+  const options = useMemo(
+    () => ({
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'top'
+        },
       },
-    },
-  }), [locale]);
+      scales: {
+        x: { stacked: true },
+        y: {
+          stacked: true,
+          ticks: {
+            callback: (value) =>
+              new Intl.NumberFormat(locale).format(value),
+          },
+        },
+      },
+    }),
+    [locale]
+  );
 
   if (!chartData) return null;
 
   return (
-    <div className="h-64 sm:h-80 lg:h-96">
-      <Line data={chartData} options={options} />
+    <div className="h-72 sm:h-96 w-full">
+      <Bar data={chartData} options={options} />
     </div>
   );
 }
