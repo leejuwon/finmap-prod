@@ -1,100 +1,119 @@
 // _components/CompoundForm.js
 import { useState, useMemo } from 'react';
 
-const ko = {
-  principal: '초기 투자금(원)',
-  monthly: '월 적립금(원)',
-  rate: '연 수익률(%)',
-  years: '투자 기간(년)',
-  calc: '계산하기',
-  currency: '통화',
-  compounding: '복리 주기',
-  compoundingMonthly: '월복리',
-  compoundingYearly: '연복리',
-  tax: '세금(이자소득세 15.4%)',
-  taxOn: '세금 적용',
-  taxOff: '세금 미적용',
-  fee: '수수료(매입·환매 각 0.25%)',
-  feeOn: '수수료 적용',
-  feeOff: '수수료 없음',
-};
-const en = {
-  principal: 'Initial principal',
-  monthly: 'Monthly contribution',
-  rate: 'Annual rate (%)',
-  years: 'Years',
-  calc: 'Calculate',
-  currency: 'Currency',
-  compounding: 'Compounding',
-  compoundingMonthly: 'Monthly',
-  compoundingYearly: 'Yearly',
-  tax: 'Tax (15.4% interest tax)',
-  taxOn: 'Apply tax',
-  taxOff: 'No tax',
-  fee: 'Fees (0.25% buy/sell)',
-  feeOn: 'Apply fee',
-  feeOff: 'No fee',
+const dict = {
+  ko: {
+    title: '복리 계산기',
+    principalWon: '초기 투자금(만원)',
+    principalUsd: '초기 투자금(USD)',
+    monthlyWon: '월 적립금(만원)',
+    monthlyUsd: '월 적립금(USD)',
+    rate: '연 수익률(%)',
+    years: '투자 기간(년)',
+    calc: '계산하기',
+    currency: '통화',
+    compounding: '복리 주기',
+    tax: '세금(이자소득세 15.4%)',
+    fee: '수수료(매입·환매 각 0.25%)',
+    compoundingMonthly: '월복리',
+    compoundingYearly: '연복리',
+    taxApply: '세금 적용',
+    taxNone: '세금 미적용',
+    feeApply: '수수료 적용',
+    feeNone: '수수료 없음',
+  },
+  en: {
+    title: 'Compound Interest Calculator',
+    principalWon: 'Initial Principal (×10k KRW)',
+    principalUsd: 'Initial Principal (USD)',
+    monthlyWon: 'Monthly Contribution (×10k KRW)',
+    monthlyUsd: 'Monthly Contribution (USD)',
+    rate: 'Annual Rate (%)',
+    years: 'Years',
+    calc: 'Calculate',
+    currency: 'Currency',
+    compounding: 'Compounding',
+    tax: 'Tax (15.4% interest tax)',
+    fee: 'Fee (0.25% buy/sell)',
+    compoundingMonthly: 'Monthly',
+    compoundingYearly: 'Yearly',
+    taxApply: 'Apply tax',
+    taxNone: 'No tax',
+    feeApply: 'Apply fee',
+    feeNone: 'No fee',
+  },
 };
 
 export default function CompoundForm({ onSubmit, locale = 'ko' }) {
-  const t = locale === 'ko' ? ko : en;
-
   const [form, setForm] = useState({
-    principal: 10000000,
-    monthly: 300000,
+    principal: 1000, // 만원 또는 USD
+    monthly: 30,     // 만원 또는 USD
     annualRate: 7,
     years: 10,
     compounding: 'monthly',
-    taxMode: 'on',
-    feeMode: 'on',
-    currency: locale === 'ko' ? 'KRW' : 'USD',
+    taxMode: 'apply',
+    feeMode: 'apply',
   });
+  const [currency, setCurrency] = useState('KRW'); // 'KRW' | 'USD'
 
-  const disabled = useMemo(() => form.years <= 0, [form.years]);
+  const t = useMemo(() => dict[locale] || dict.ko, [locale]);
+  const numberLocale = locale === 'ko' ? 'ko-KR' : 'en-US';
 
-  const onChangeNumber = (e) => {
+  const handleMoneyChange = (e) => {
     const { name, value } = e.target;
-    const num = Number(String(value).replace(/[^0-9.]/g, ''));
-    setForm((prev) => ({ ...prev, [name]: isNaN(num) ? 0 : num }));
+    const raw = String(value).replace(/[^\d]/g, '');
+    const num = raw ? Number(raw) : 0;
+    setForm((prev) => ({ ...prev, [name]: num }));
   };
 
-  const onChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  const disabled = useMemo(() => form.years <= 0, [form.years]);
+
   const handleSubmit = () => {
-    onSubmit({ ...form });
+    onSubmit({
+      ...form,
+      currency,
+    });
+  };
+
+  const principalLabel =
+    currency === 'KRW' ? t.principalWon : t.principalUsd;
+  const monthlyLabel =
+    currency === 'KRW' ? t.monthlyWon : t.monthlyUsd;
+
+  const fmt = (n) => {
+    const v = Number(n) || 0;
+    return v.toLocaleString(numberLocale);
   };
 
   return (
     <div className="grid gap-4">
-      {/* 1줄: 숫자 입력 4개 */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      {/* 1행: 금액 입력 4개 */}
+      <div className="grid gap-3 md:grid-cols-4">
         <label className="grid gap-1">
-          <span className="text-sm">{t.principal}</span>
+          <span className="text-sm">{principalLabel}</span>
           <input
             name="principal"
-            type="number"
+            type="text"
             inputMode="numeric"
             className="input"
-            value={form.principal}
-            onChange={onChangeNumber}
-            min="0"
-            step="10000"
+            value={fmt(form.principal)}
+            onChange={handleMoneyChange}
           />
         </label>
         <label className="grid gap-1">
-          <span className="text-sm">{t.monthly}</span>
+          <span className="text-sm">{monthlyLabel}</span>
           <input
             name="monthly"
-            type="number"
+            type="text"
             inputMode="numeric"
             className="input"
-            value={form.monthly}
-            onChange={onChangeNumber}
-            min="0"
-            step="10000"
+            value={fmt(form.monthly)}
+            onChange={handleMoneyChange}
           />
         </label>
         <label className="grid gap-1">
@@ -105,7 +124,7 @@ export default function CompoundForm({ onSubmit, locale = 'ko' }) {
             inputMode="decimal"
             className="input"
             value={form.annualRate}
-            onChange={onChangeNumber}
+            onChange={handleChange}
             min="0"
             step="0.1"
           />
@@ -118,22 +137,22 @@ export default function CompoundForm({ onSubmit, locale = 'ko' }) {
             inputMode="numeric"
             className="input"
             value={form.years}
-            onChange={onChangeNumber}
+            onChange={handleChange}
             min="1"
             step="1"
           />
         </label>
       </div>
 
-      {/* 2줄: 옵션 + 통화 + 버튼 (모바일에서는 2열, 데스크탑에서는 5열) */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-3 items-end">
+      {/* 2행: 복리/세금/수수료/통화 */}
+      <div className="grid gap-3 md:grid-cols-4">
         <label className="grid gap-1">
           <span className="text-sm">{t.compounding}</span>
           <select
             name="compounding"
             className="select"
             value={form.compounding}
-            onChange={onChange}
+            onChange={handleChange}
           >
             <option value="monthly">{t.compoundingMonthly}</option>
             <option value="yearly">{t.compoundingYearly}</option>
@@ -146,10 +165,10 @@ export default function CompoundForm({ onSubmit, locale = 'ko' }) {
             name="taxMode"
             className="select"
             value={form.taxMode}
-            onChange={onChange}
+            onChange={handleChange}
           >
-            <option value="on">{t.taxOn}</option>
-            <option value="off">{t.taxOff}</option>
+            <option value="apply">{t.taxApply}</option>
+            <option value="none">{t.taxNone}</option>
           </select>
         </label>
 
@@ -159,36 +178,36 @@ export default function CompoundForm({ onSubmit, locale = 'ko' }) {
             name="feeMode"
             className="select"
             value={form.feeMode}
-            onChange={onChange}
+            onChange={handleChange}
           >
-            <option value="on">{t.feeOn}</option>
-            <option value="off">{t.feeOff}</option>
+            <option value="apply">{t.feeApply}</option>
+            <option value="none">{t.feeNone}</option>
           </select>
         </label>
 
         <label className="grid gap-1">
           <span className="text-sm">{t.currency}</span>
           <select
-            name="currency"
             className="select"
-            value={form.currency}
-            onChange={onChange}
+            value={currency}
+            onChange={(e) => setCurrency(e.target.value)}
           >
             <option value="KRW">KRW ₩</option>
             <option value="USD">USD $</option>
           </select>
         </label>
+      </div>
 
-        <div className="flex justify-end md:justify-start">
-          <button
-            type="button"
-            className="btn-primary w-full md:w-auto"
-            onClick={handleSubmit}
-            disabled={disabled}
-          >
-            {t.calc}
-          </button>
-        </div>
+      {/* 버튼 */}
+      <div className="flex justify-end">
+        <button
+          type="button"
+          className="btn-primary"
+          onClick={handleSubmit}
+          disabled={disabled}
+        >
+          {t.calc}
+        </button>
       </div>
     </div>
   );

@@ -1,81 +1,175 @@
 // _components/CompoundYearTable.js
 import { useMemo } from 'react';
-import { formatScaledAmount } from '../lib/compound';
+
+function formatMoneyAuto(value, currency = 'KRW', locale = 'ko-KR') {
+  const v = Number(value) || 0;
+  const isKo = locale.toLowerCase().startsWith('ko');
+  const cur = currency || 'KRW';
+
+  if (cur === 'KRW') {
+    const abs = Math.abs(v);
+    let divisor = 1;
+    let suffix = isKo ? '원' : 'KRW';
+
+    if (abs >= 100_000_000) {
+      divisor = 100_000_000;
+      suffix = isKo ? '억원' : '×100M KRW';
+    } else if (abs >= 10_000) {
+      divisor = 10_000;
+      suffix = isKo ? '만원' : '×10k KRW';
+    }
+
+    const scaled = v / divisor;
+    const scaledAbs = Math.abs(scaled);
+    const hasFraction = Math.round(scaledAbs * 10) % 10 !== 0;
+    const fractionDigits = hasFraction ? 1 : 0;
+
+    const numStr = scaled.toLocaleString(locale, {
+      minimumFractionDigits: fractionDigits,
+      maximumFractionDigits: fractionDigits,
+    });
+
+    return `${numStr}${suffix}`;
+  }
+
+  const isValidCurrency =
+    typeof cur === 'string' && /^[A-Z]{3}$/.test(cur);
+
+  if (!isValidCurrency) {
+    return new Intl.NumberFormat(locale).format(v);
+  }
+
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: cur,
+    maximumFractionDigits: 2,
+  }).format(v);
+}
 
 export default function CompoundYearTable({
   result,
   locale = 'ko-KR',
   currency = 'KRW',
-  unit,
+  principal = 0,
+  monthly = 0,
+  title,
 }) {
   const rows = result?.yearSummary || [];
-  const baseYear = new Date().getFullYear();
-  const isKo = locale.toLowerCase().startsWith('ko');
 
-  const unitText =
-    unit?.unitText || (currency === 'KRW' ? '원' : 'USD');
+  const tableTitle = useMemo(() => {
+    if (title) return title;
+    return locale.startsWith('ko') ? '연간 요약 테이블' : 'Yearly Summary';
+  }, [title, locale]);
 
-  const labels = useMemo(
-    () =>
-      isKo
-        ? {
-            title: '연간 요약 테이블',
-            year: '연도',
-            opening: '기초잔액(세후)',
-            contrib: '연간 납입',
-            closing: '기말잔액(세후)',
-            interest: '이자(세후)',
-            tax: '세금',
-            csv: 'CSV 다운로드',
-            empty: '데이터가 없습니다.',
-            unitCap: '단위',
-          }
-        : {
-            title: 'Yearly Summary',
-            year: 'Year',
-            opening: 'Opening (Net)',
-            contrib: 'Contribution',
-            closing: 'Closing (Net)',
-            interest: 'Interest (Net)',
-            tax: 'Tax',
-            csv: 'Download CSV',
-            empty: 'No data.',
-            unitCap: 'Unit',
-          },
-    [isKo]
-  );
+  const unitText = locale.startsWith('ko')
+    ? '단위: 원 / 만원 / 억원 자동'
+    : 'Unit: auto (KRW / 10k / 100M)';
 
-  const fmt = (v) => formatScaledAmount(v, unit, locale);
+  const buildYearStats = (rows) =>
+    rows.map((r, idx) => {
+      const year = r.year;
+      const opening = Number(r.openingBalanceNet) || 0;
+      const contrib = Number(r.contributionYear) || 0;
+      const closing = Number(r.closingBalanceNet) || 0;
+
+      const interestNet =
+        r.interestYearNet != null
+          ? Number(r.interestYearNet) || 0
+          : closing - opening - contrib;
+
+      const prev = idx > 0 ? rows[idx - 1] : null;
+
+      // 1) 우선 taxYear, feeYear 사용
+      let taxYear = Number(r.taxYear) || 0;
+      let feeYear = Number(r.feeYear) || 0;
+
+      // 2) 없으면 누적 값의 차이로 계산
+      if (!taxYear && r.cumulativeTax != null) {
+        const prevCum =
+          prev && prev.cumulativeTax != null
+            ? Number(prev.cumulativeTax) || 0
+            : 0;
+        const curCum = Number(r.cumulativeTax) || 0;
+        taxYear = curCum - prevCum;
+      }
+
+      if (!feeYear && r.cumulativeFee != null) {
+        const prevCum =
+          prev && prev.cumulativeFee != null
+            ? Number(prev.cumulativeFee) || 0
+            : 0;
+        const curCum = Number(r.cumulativeFee) || 0;
+        feeYear = curCum - prevCum;
+      }
+
+      // 3) 그래도 0이면, 이자 총액 차이로 추정
+      if (
+        !taxYear &&
+        !feeYear &&
+        r.interestYearGross != null &&
+        r.interestYearNet != null
+      ) {
+        const diff =
+          Number(r.interestYearGross) - Number(r.interestYearNet);
+        taxYear = diff;
+        feeYear = 0;
+      }
+
+      const taxFee = taxYear + feeYear;
+
+      const investedTotal =
+        Number(principal) + Number(monthly) * 12 * year;
+      const returnRate =
+        investedTotal > 0 ? (closing / investedTotal) * 100 : 0;
+
+      return {
+        year,
+        opening,
+        contrib,
+        closing,
+        interestNet,
+        taxFee,
+        investedTotal,
+        returnRate,
+      };
+    });
+
+  const stats = buildYearStats(rows);
 
   const downloadCsv = () => {
-    if (!rows.length) return;
+    if (!stats.length) return;
 
-    const header = isKo
-      ? ['연도', '기초잔액(세후)', '연간 납입', '기말잔액(세후)', '이자(세후)', '세금']
-      : ['Year', 'Opening (Net)', 'Contribution', 'Closing (Net)', 'Interest (Net)', 'Tax'];
-
+    const header = [
+      'year',
+      'openingNet',
+      'contributionYear',
+      'closingNet',
+      'interestNet',
+      'taxFeeYear',
+      'investedTotal',
+      'returnRateTotal',
+    ];
     const lines = [header.join(',')];
 
-    rows.forEach((r) => {
+    stats.forEach((s) => {
       lines.push(
         [
-          baseYear + (r.year - 1),
-          r.openingBalanceNet,
-          r.contributionYear,
-          r.closingBalanceNet,
-          r.interestYearNet,
-          r.taxYear,
+          s.year,
+          s.opening,
+          s.contrib,
+          s.closing,
+          s.interestNet,
+          s.taxFee,
+          s.investedTotal,
+          s.returnRate,
         ].join(',')
       );
     });
 
-    // ✅ UTF-8 BOM 추가 + CRLF 사용 (윈도우 엑셀 호환)
-    const csvContent = '\uFEFF' + lines.join('\r\n');
-
-    const blob = new Blob([csvContent], {
-      type: 'text/csv;charset=utf-8;',
-    });
-
+    const blob = new Blob(
+      ['\uFEFF' + lines.join('\n')],
+      { type: 'text/csv;charset=utf-8;' }
+    );
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -84,73 +178,99 @@ export default function CompoundYearTable({
     URL.revokeObjectURL(url);
   };
 
+  if (!stats.length) {
+    return (
+      <div className="card">
+        <div className="flex items-center gap-3 mb-2">
+          <h2 className="text-xl font-semibold">{tableTitle}</h2>
+        </div>
+        <p className="text-sm text-slate-500">
+          {locale.startsWith('ko') ? '데이터가 없습니다.' : 'No data.'}
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="card">
-      <div className="flex items-center gap-3 mb-1">
-        <h2 className="text-xl font-semibold">{labels.title}</h2>
+      <div className="flex items-center gap-3 mb-2">
+        <h2 className="text-xl font-semibold">{tableTitle}</h2>
+        <span className="text-xs text-slate-500">{unitText}</span>
         <button
           type="button"
           className="btn-secondary ml-auto text-sm"
           onClick={downloadCsv}
         >
-          {labels.csv}
+          {locale.startsWith('ko') ? 'CSV 다운로드' : 'Download CSV'}
         </button>
       </div>
-      <p className="text-xs text-slate-500 mb-2">
-        {labels.unitCap}: {unitText}
-      </p>
 
-      {!rows.length ? (
-        <p className="text-sm text-slate-500">{labels.empty}</p>
-      ) : (
-        <div className="overflow-x-auto">
-          <table className="min-w-full text-sm">
-            <thead className="bg-slate-50">
-              <tr>
-                <th className="px-2 py-1 text-left">{labels.year}</th>
-                <th className="px-2 py-1 text-right">
-                  {labels.opening}
-                </th>
-                <th className="px-2 py-1 text-right">
-                  {labels.contrib}
-                </th>
-                <th className="px-2 py-1 text-right">
-                  {labels.closing}
-                </th>
-                <th className="px-2 py-1 text-right">
-                  {labels.interest}
-                </th>
-                <th className="px-2 py-1 text-right">{labels.tax}</th>
+      <div className="overflow-x-auto">
+        <table className="min-w-full text-sm">
+          <thead className="bg-slate-50">
+            <tr>
+              <th className="px-2 py-1 text-left">
+                {locale.startsWith('ko') ? '연도' : 'Year'}
+              </th>
+              <th className="px-2 py-1 text-right">
+                {locale.startsWith('ko') ? '기초잔액(세후)' : 'Opening (Net)'}
+              </th>
+              <th className="px-2 py-1 text-right">
+                {locale.startsWith('ko') ? '연간 납입' : 'Contribution'}
+              </th>
+              <th className="px-2 py-1 text-right">
+                {locale.startsWith('ko') ? '기말잔액(세후)' : 'Closing (Net)'}
+              </th>
+              <th className="px-2 py-1 text-right">
+                {locale.startsWith('ko') ? '이자(세후)' : 'Interest (Net)'}
+              </th>
+              <th className="px-2 py-1 text-right">
+                {locale.startsWith('ko')
+                  ? '세금+수수료'
+                  : 'Tax + fee'}
+              </th>
+              <th className="px-2 py-1 text-right">
+                {locale.startsWith('ko')
+                  ? '총 투자금(누적)'
+                  : 'Invested total'}
+              </th>
+              <th className="px-2 py-1 text-right">
+                {locale.startsWith('ko')
+                  ? '누적 수익률(세후)'
+                  : 'Cum. return (net)'}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {stats.map((s) => (
+              <tr key={s.year} className="border-t">
+                <td className="px-2 py-1 text-left">{s.year}</td>
+                <td className="px-2 py-1 text-right">
+                  {formatMoneyAuto(s.opening, currency, locale)}
+                </td>
+                <td className="px-2 py-1 text-right">
+                  {formatMoneyAuto(s.contrib, currency, locale)}
+                </td>
+                <td className="px-2 py-1 text-right">
+                  {formatMoneyAuto(s.closing, currency, locale)}
+                </td>
+                <td className="px-2 py-1 text-right">
+                  {formatMoneyAuto(s.interestNet, currency, locale)}
+                </td>
+                <td className="px-2 py-1 text-right">
+                  {formatMoneyAuto(s.taxFee, currency, locale)}
+                </td>
+                <td className="px-2 py-1 text-right">
+                  {formatMoneyAuto(s.investedTotal, currency, locale)}
+                </td>
+                <td className="px-2 py-1 text-right">
+                  {s.returnRate.toFixed(2)}%
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {rows.map((r) => {
-                const displayYear = baseYear + (r.year - 1);
-                return (
-                  <tr key={r.year} className="border-t">
-                    <td className="px-2 py-1">{displayYear}</td>
-                    <td className="px-2 py-1 text-right">
-                      {fmt(r.openingBalanceNet)}
-                    </td>
-                    <td className="px-2 py-1 text-right">
-                      {fmt(r.contributionYear)}
-                    </td>
-                    <td className="px-2 py-1 text-right">
-                      {fmt(r.closingBalanceNet)}
-                    </td>
-                    <td className="px-2 py-1 text-right">
-                      {fmt(r.interestYearNet)}
-                    </td>
-                    <td className="px-2 py-1 text-right">
-                      {fmt(r.taxYear)}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      )}
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

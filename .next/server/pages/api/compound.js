@@ -19,124 +19,146 @@ __webpack_require__.d(__webpack_exports__, {
 ;// CONCATENATED MODULE: ./lib/compound.js
 // lib/compound.js
 // =========================
-// 핵심 복리 계산 엔진
-// - 월 단위 계산
-// - 세금(이자소득세 15.4%), 수수료(매입/환매 각 0.25%) 옵션
-// - 연간 요약(yearSummary)까지 생성
+// 복리 월적립 계산 (세금/수수료 포함)
 // =========================
-function calcCompound({ principal =0 , monthly =0 , annualRate =0 , years =1 , compounding ="monthly" , taxMode ="on" , feeMode ="on"  }) {
-    const months = Math.max(0, Math.floor(years * 12));
-    const apr = annualRate > 0 ? annualRate / 100 : 0;
-    // 복리 주기 → 월 이율
-    const monthlyRate = compounding === "yearly" ? Math.pow(1 + apr, 1 / 12) - 1 // 연복리를 월로 환산
-     : apr / 12; // 기본: 월복리
-    const taxRate = taxMode === "on" ? 0.154 : 0;
-    const feeRate = feeMode === "on" ? 0.0025 : 0;
-    const series = [];
-    const yearSummary = [];
-    let balanceGross = principal; // 세전 잔고
-    let balanceNet = principal; // 세후 잔고
-    let totalContribution = principal;
-    let totalInterestGross = 0;
-    let totalInterestNet = 0;
-    let taxTotal = 0;
-    let feeTotal = 0;
-    // 연간 집계용 변수
-    let year = 1;
-    let yearOpeningGross = principal;
-    let yearOpeningNet = principal;
-    let yearContrib = 0;
-    let yearInterestGross = 0;
-    let yearInterestNet = 0;
-    let yearTax = 0;
-    let yearFee = 0;
+function calcCompound({ principal =0 , monthly =0 , annualRate =0 , years =1 , months , compounding ="monthly" , taxMode ="apply" , feeMode ="apply" , baseYear =new Date().getFullYear() ,  }) {
+    const totalMonths = months != null ? Math.max(1, Math.floor(Number(months) || 1)) : Math.max(1, Math.floor((Number(years) || 0) * 12));
+    const mRate = (Number(annualRate) || 0) / 100 / 12;
+    const applyTax = taxMode !== "none";
+    const applyFee = feeMode !== "none";
+    const TAX_RATE = 0.154;
+    const FEE_RATE = 0.0025; // 0.25%
+    let balanceGross = Number(principal) || 0;
+    let balanceNet = Number(principal) || 0;
+    // 매입 수수료: 초기 투자금에 대해 한 번
+    const initialBuyFee = applyFee ? balanceNet * FEE_RATE : 0;
+    balanceNet -= initialBuyFee;
+    let totalContribution = balanceNet; // 수수료 차감 후 순투입
+    let totalContributionRaw = Number(principal) || 0;
     let cumulativeInterestGross = 0;
     let cumulativeInterestNet = 0;
     let cumulativeTax = 0;
-    let cumulativeFee = 0;
-    for(let month = 1; month <= months; month++){
-        // 1) 월 적립금 납입 + 매입 수수료
-        if (monthly > 0) {
-            const buyFee = monthly * feeRate;
-            balanceGross += monthly;
-            balanceNet += monthly - buyFee;
-            totalContribution += monthly;
-            yearContrib += monthly;
-            feeTotal += buyFee;
-            yearFee += buyFee;
-            cumulativeFee += buyFee;
+    let cumulativeFee = initialBuyFee;
+    const series = [];
+    // 연간 집계를 위한 변수
+    let yearSummary = [];
+    let currentYear = 1;
+    let openingGrossYear = balanceGross;
+    let openingNetYear = balanceNet;
+    let contributionYear = 0;
+    let interestYearGross = 0;
+    let interestYearNet = 0;
+    let taxYear = 0;
+    let feeYear = initialBuyFee; // 첫해에 매입 수수료 포함
+    for(let month = 1; month <= totalMonths; month++){
+        const isFirstMonth = month === 1;
+        // 1) 월 적립금 투입 + 매입 수수료
+        const contrib = Number(monthly) || 0;
+        if (contrib > 0) {
+            balanceGross += contrib;
+            balanceNet += contrib;
+            totalContributionRaw += contrib;
+            let buyFeeMonth = 0;
+            if (applyFee) {
+                buyFeeMonth = contrib * FEE_RATE;
+                balanceNet -= buyFeeMonth;
+                cumulativeFee += buyFeeMonth;
+            }
+            totalContribution += contrib - buyFeeMonth;
+            contributionYear += contrib - buyFeeMonth;
+            feeYear += buyFeeMonth;
         }
-        // 2) 이자 계산 (세전)
-        const interestGross = balanceGross * monthlyRate;
-        const tax = interestGross * taxRate;
-        const interestNet = interestGross - tax;
+        // 2) 이자 계산 (복리, 월 이율)
+        const interestGross = balanceGross * mRate;
+        const taxMonth = applyTax ? interestGross * TAX_RATE : 0;
+        const interestNet = interestGross - taxMonth;
         balanceGross += interestGross;
         balanceNet += interestNet;
-        totalInterestGross += interestGross;
-        totalInterestNet += interestNet;
-        taxTotal += tax;
-        yearInterestGross += interestGross;
-        yearInterestNet += interestNet;
-        yearTax += tax;
         cumulativeInterestGross += interestGross;
         cumulativeInterestNet += interestNet;
-        cumulativeTax += tax;
-        // 3) 마지막 달: 환매 수수료
-        if (month === months && feeRate > 0) {
-            const sellFee = balanceNet * feeRate;
-            balanceNet -= sellFee;
-            feeTotal += sellFee;
-            yearFee += sellFee;
-            cumulativeFee += sellFee;
-        }
-        // 월별 시계열 저장
+        cumulativeTax += taxMonth;
+        interestYearGross += interestGross;
+        interestYearNet += interestNet;
+        taxYear += taxMonth;
+        // 3) 월별 시계열 저장 (차트용)
         series.push({
             month,
             balanceGross,
             balanceNet,
-            interestGross,
-            interestNet,
-            tax
+            contributionMonth: contrib,
+            totalContribution: totalContribution,
+            totalContributionRaw,
+            cumulativeInterestGross,
+            cumulativeInterestNet,
+            cumulativeTax,
+            cumulativeFee
         });
-        // 4) 연말(12,24,... or 마지막 달)마다 연간 요약 행 생성
-        const isYearEnd = month % 12 === 0 || month === months;
+        // 4) 연말 or 마지막 달이면 연간 요약 저장
+        const isYearEnd = month % 12 === 0 || month === totalMonths;
         if (isYearEnd) {
+            const closingGrossYear = balanceGross;
+            const closingNetYear = balanceNet;
             yearSummary.push({
-                year,
-                openingBalanceGross: yearOpeningGross,
-                openingBalanceNet: yearOpeningNet,
-                contributionYear: yearContrib,
-                closingBalanceGross: balanceGross,
-                closingBalanceNet: balanceNet,
-                interestYearGross: yearInterestGross,
-                interestYearNet: yearInterestNet,
-                taxYear: yearTax,
-                feeYear: yearFee,
+                year: currentYear,
+                openingBalanceGross: openingGrossYear,
+                openingBalanceNet: openingNetYear,
+                contributionYear,
+                closingBalanceGross: closingGrossYear,
+                closingBalanceNet: closingNetYear,
+                interestYearGross,
+                interestYearNet,
+                taxYear,
+                feeYear,
                 cumulativeInterestGross,
                 cumulativeInterestNet,
                 cumulativeTax,
-                cumulativeFee
+                cumulativeFee,
+                calendarYear: baseYear + (currentYear - 1)
             });
-            year += 1;
-            yearOpeningGross = balanceGross;
-            yearOpeningNet = balanceNet;
-            yearContrib = 0;
-            yearInterestGross = 0;
-            yearInterestNet = 0;
-            yearTax = 0;
-            yearFee = 0;
+            // 다음 해를 위해 초기화
+            currentYear += 1;
+            openingGrossYear = closingGrossYear;
+            openingNetYear = closingNetYear;
+            contributionYear = 0;
+            interestYearGross = 0;
+            interestYearNet = 0;
+            taxYear = 0;
+            feeYear = 0;
         }
     }
+    // 5) 환매 수수료 (마지막에 한 번)
+    if (applyFee) {
+        const lastIndex = yearSummary.length - 1;
+        if (lastIndex >= 0) {
+            const sellFee = balanceNet * FEE_RATE;
+            balanceNet -= sellFee;
+            cumulativeFee += sellFee;
+            const lastYear = yearSummary[lastIndex];
+            lastYear.closingBalanceNet = balanceNet;
+            lastYear.feeYear += sellFee;
+            lastYear.cumulativeFee = cumulativeFee;
+        }
+    }
+    const yearsTotal = Math.ceil(totalMonths / 12);
     return {
-        months,
-        monthlyRate,
+        principal: Number(principal) || 0,
+        monthly: Number(monthly) || 0,
+        annualRate: Number(annualRate) || 0,
+        yearsTotal,
+        monthsTotal: totalMonths,
+        compounding,
+        taxMode,
+        feeMode,
+        baseYear,
+        totalContribution: totalContributionRaw,
+        totalContributionNet: totalContribution,
         futureValueGross: balanceGross,
         futureValueNet: balanceNet,
-        totalContribution,
-        totalInterestGross,
-        totalInterestNet,
-        taxTotal,
-        feeTotal,
+        totalInterestGross: cumulativeInterestGross,
+        totalInterestNet: cumulativeInterestNet,
+        totalTax: cumulativeTax,
+        totalFee: cumulativeFee,
+        totalTaxFee: cumulativeTax + cumulativeFee,
         series,
         yearSummary
     };
@@ -145,14 +167,19 @@ function calcCompound({ principal =0 , monthly =0 , annualRate =0 , years =1 , c
 // 단순 통화 포맷 (상단 요약 카드용)
 // =========================
 function numberFmt(locale, currency, n) {
-    if (!currency) {
-        return new Intl.NumberFormat(locale).format(n);
+    const num = Number(n) || 0;
+    // 통화 코드가 3자리 영문(A-Z)인지 검사 (예: KRW, USD)
+    const isValidCurrency = typeof currency === "string" && /^[A-Z]{3}$/.test(currency);
+    // 통화 코드가 없거나 잘못된 경우 → 그냥 숫자 포맷만
+    if (!isValidCurrency) {
+        return new Intl.NumberFormat(locale || "ko-KR").format(num);
     }
-    return new Intl.NumberFormat(locale, {
+    // 정상적인 통화 코드일 때만 currency 스타일 사용
+    return new Intl.NumberFormat(locale || "ko-KR", {
         style: "currency",
         currency,
         maximumFractionDigits: 0
-    }).format(n);
+    }).format(num);
 }
 // =========================
 // 금액 단위 옵션 (표시용)
@@ -247,6 +274,93 @@ function formatScaledAmount(value, unit, locale = "ko-KR") {
         minimumFractionDigits: isBaseUnit ? 0 : 2,
         maximumFractionDigits: isBaseUnit ? 0 : 2
     }).format(v);
+}
+// =========================
+// 단리 거치식 계산 (일시불, Simple Interest)
+// =========================
+/**
+ * 단리 거치식:
+ * - principal: 총 투자금 (일시불)
+ * - annualRate: 연 이율 (%)
+ * - years: 투자 기간(년)
+ * - taxMode: 'apply' | 'none'
+ *   - apply: 이자에 15.4% 세금
+ * - feeMode: 'apply' | 'none'
+ *   - apply: 매입 0.25% + 환매 0.25% (총 0.5%)
+ */ function calcSimpleLump({ principal =0 , annualRate =0 , years =1 , taxMode ="apply" , feeMode ="apply" , baseYear =new Date().getFullYear() ,  }) {
+    const P = Number(principal) || 0; // 최초 일시불 원금
+    const r = (Number(annualRate) || 0) / 100; // 연 이율
+    const Y = Math.max(1, Math.floor(Number(years) || 1));
+    const applyTax = taxMode !== "none";
+    const applyFee = feeMode !== "none";
+    const TAX_RATE = 0.154;
+    const FEE_RATE = 0.0025; // 0.25%
+    let cumulativeInterestGross = 0;
+    let cumulativeInterestNet = 0;
+    let cumulativeTax = 0;
+    let cumulativeFee = 0;
+    const rows = [];
+    // 매입 수수료: 처음 한 번
+    const buyFee = applyFee ? P * FEE_RATE : 0;
+    let openingGross = P; // 단리라서 gross 기준 원금은 항상 P
+    let openingNet = P - buyFee; // 수수료 차감된 순자산
+    cumulativeFee += buyFee;
+    for(let y = 1; y <= Y; y++){
+        // 🔹 단리 핵심: 매년 이자는 "항상 P * r"
+        const interestYearGross = P * r;
+        const taxYear = applyTax ? interestYearGross * TAX_RATE : 0;
+        const interestYearNet = interestYearGross - taxYear;
+        // 올해 말 잔액 (세전/세후) – 단리라 매년 일정 금액만큼 직선으로 증가
+        const closingGross = openingGross + interestYearGross;
+        let closingNet = openingNet + interestYearNet;
+        // 마지막 해에만 환매 수수료
+        let feeYear = 0;
+        if (applyFee && y === Y) {
+            feeYear = closingNet * FEE_RATE;
+            closingNet -= feeYear;
+        }
+        cumulativeInterestGross += interestYearGross;
+        cumulativeInterestNet += interestYearNet;
+        cumulativeTax += taxYear;
+        cumulativeFee += feeYear;
+        rows.push({
+            year: y,
+            openingBalanceGross: openingGross,
+            openingBalanceNet: openingNet,
+            contributionYear: 0,
+            closingBalanceGross: closingGross,
+            closingBalanceNet: closingNet,
+            interestYearGross,
+            interestYearNet,
+            taxYear,
+            feeYear,
+            cumulativeInterestGross,
+            cumulativeInterestNet,
+            cumulativeTax,
+            cumulativeFee,
+            calendarYear: baseYear + (y - 1)
+        });
+        // 다음 해의 "기초잔액" 세전/세후
+        openingGross = closingGross;
+        openingNet = closingNet;
+    }
+    const last = rows[rows.length - 1];
+    return {
+        principal: P,
+        monthly: 0,
+        annualRate,
+        yearsTotal: Y,
+        monthsTotal: Y * 12,
+        compounding: "simple_lump",
+        totalContribution: P,
+        futureValueGross: last.closingBalanceGross,
+        futureValueNet: last.closingBalanceNet,
+        totalInterestGross: cumulativeInterestGross,
+        totalInterestNet: cumulativeInterestNet,
+        totalTax: cumulativeTax,
+        totalFee: cumulativeFee,
+        yearSummary: rows
+    };
 }
 
 ;// CONCATENATED MODULE: ./pages/api/compound.js
