@@ -13,75 +13,58 @@ const navItems = [
 export default function Header() {
   const router = useRouter();
 
-  const isActive = (itemHref) => {
-    if (itemHref === '/') {
-      return router.pathname === '/' || router.pathname === '/ko';
-    }
-    return (
-      router.pathname.startsWith(itemHref) ||
-      router.pathname.startsWith(`/ko${itemHref}`) ||
-      router.pathname.startsWith(`/en${itemHref}`)
-    );
-  };
-
   return (
-    <header className="sticky top-0 z-50 backdrop-blur bg-white/90 border-b border-slate-100">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* 상단 로고 라인 */}
-        <div className="flex items-center justify-between py-2 sm:py-3">
-          <Link href="/" passHref>
-            <a className="flex items-center gap-2 shrink-0">
-              <img
-                src="/logo-finmap.svg"
-                alt="FinMap 로고"
-                className="h-8 w-auto"
-              />
-              <div className="leading-tight">
-                <span className="block text-sm sm:text-base font-semibold text-slate-900">
-                  FinMap
-                </span>
-                <span className="hidden sm:block text-[11px] text-slate-500">
-                  금융 기초 · 투자계획 지도
-                </span>
-              </div>
-            </a>
-          </Link>
+    <header className="sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-slate-100">
+      <nav className="container flex items-center gap-4 py-3">
+        {/* 로고 영역 – 예전 사이즈 유지 */}
+        <Link href="/" passHref legacyBehavior>
+          <a className="flex items-center gap-2">
+            <img
+              src="/logo-finmap.svg"
+              alt="FinMap 로고"
+              className="h-8 w-auto"
+            />
+            <div className="leading-tight">
+              <span className="block text-base font-semibold text-slate-900">
+                FinMap
+              </span>
+              <span className="block text-[11px] text-slate-500 whitespace-nowrap">
+                금융 기초 · 투자계획 지도
+              </span>
+            </div>
+          </a>
+        </Link>
 
-          {/* 데스크톱에서만 보이는 도메인 */}
-          <span className="hidden sm:inline text-xs sm:text-sm text-slate-500">
-            finmaphub.com
-          </span>
+        {/* 네비게이션 – text-sm 고정, 줄바꿈 방지만 추가 */}
+        <div className="flex items-center gap-2 ml-6 text-sm">
+          {navItems.map((item) => {
+            const active =
+              item.href === '/'
+                ? router.pathname === '/'
+                : router.pathname.startsWith(item.href);
+
+            return (
+              <Link key={item.href} href={item.href} passHref legacyBehavior>
+                <a
+                  className={
+                    'px-3 py-1 rounded-full transition-colors whitespace-nowrap ' +
+                    (active
+                      ? 'bg-blue-50 text-blue-700 font-medium'
+                      : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900')
+                  }
+                >
+                  {item.label}
+                </a>
+              </Link>
+            );
+          })}
         </div>
 
-        {/* 내비게이션 바 (모바일 가로 스크롤) */}
-        <nav className="-mx-4 border-t border-slate-100 sm:border-none">
-          <div className="px-4 overflow-x-auto">
-            <ul className="flex items-center gap-3 sm:gap-5 py-2 sm:py-3 whitespace-nowrap text-sm sm:text-base">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} passHref>
-                    <a
-                      className={[
-                        'inline-flex items-center px-3 py-1 rounded-full transition-colors',
-                        isActive(item.href)
-                          ? 'bg-blue-50 text-blue-700 font-medium'
-                          : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900',
-                      ].join(' ')}
-                    >
-                      {item.label}
-                    </a>
-                  </Link>
-                </li>
-              ))}
-
-              {/* 모바일에서만 우측에 도메인 텍스트 */}
-              <li className="ml-auto sm:hidden text-[11px] text-slate-400">
-                finmaphub.com
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+        {/* 우측 도메인 텍스트 – 예전 크기, 줄바꿈 방지만 추가 */}
+        <span className="ml-auto text-xs md:text-sm text-slate-500 whitespace-nowrap">
+          finmaphub.com
+        </span>
+      </nav>
     </header>
   );
 }

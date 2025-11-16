@@ -57,80 +57,57 @@ const navItems = [
 ];
 function Header() {
     const router = (0,router_namespaceObject.useRouter)();
-    const isActive = (itemHref)=>{
-        if (itemHref === "/") {
-            return router.pathname === "/" || router.pathname === "/ko";
-        }
-        return router.pathname.startsWith(itemHref) || router.pathname.startsWith(`/ko${itemHref}`) || router.pathname.startsWith(`/en${itemHref}`);
-    };
     return /*#__PURE__*/ jsx_runtime_.jsx("header", {
-        className: "sticky top-0 z-50 backdrop-blur bg-white/90 border-b border-slate-100",
-        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-            className: "max-w-6xl mx-auto px-4 sm:px-6",
+        className: "sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-slate-100",
+        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("nav", {
+            className: "container flex items-center gap-4 py-3",
             children: [
-                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                    className: "flex items-center justify-between py-2 sm:py-3",
-                    children: [
-                        /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                            href: "/",
-                            passHref: true,
-                            children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("a", {
-                                className: "flex items-center gap-2 shrink-0",
+                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                    href: "/",
+                    passHref: true,
+                    legacyBehavior: true,
+                    children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("a", {
+                        className: "flex items-center gap-2",
+                        children: [
+                            /*#__PURE__*/ jsx_runtime_.jsx("img", {
+                                src: "/logo-finmap.svg",
+                                alt: "FinMap 로고",
+                                className: "h-8 w-auto"
+                            }),
+                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                className: "leading-tight",
                                 children: [
-                                    /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                                        src: "/logo-finmap.svg",
-                                        alt: "FinMap 로고",
-                                        className: "h-8 w-auto"
+                                    /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                        className: "block text-base font-semibold text-slate-900",
+                                        children: "FinMap"
                                     }),
-                                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                        className: "leading-tight",
-                                        children: [
-                                            /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                                                className: "block text-sm sm:text-base font-semibold text-slate-900",
-                                                children: "FinMap"
-                                            }),
-                                            /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                                                className: "hidden sm:block text-[11px] text-slate-500",
-                                                children: "금융 기초 \xb7 투자계획 지도"
-                                            })
-                                        ]
+                                    /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                        className: "block text-[11px] text-slate-500 whitespace-nowrap",
+                                        children: "금융 기초 \xb7 투자계획 지도"
                                     })
                                 ]
                             })
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                            className: "hidden sm:inline text-xs sm:text-sm text-slate-500",
-                            children: "finmaphub.com"
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ jsx_runtime_.jsx("nav", {
-                    className: "-mx-4 border-t border-slate-100 sm:border-none",
-                    children: /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                        className: "px-4 overflow-x-auto",
-                        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("ul", {
-                            className: "flex items-center gap-3 sm:gap-5 py-2 sm:py-3 whitespace-nowrap text-sm sm:text-base",
-                            children: [
-                                navItems.map((item)=>/*#__PURE__*/ jsx_runtime_.jsx("li", {
-                                        children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                            href: item.href,
-                                            passHref: true,
-                                            children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
-                                                className: [
-                                                    "inline-flex items-center px-3 py-1 rounded-full transition-colors",
-                                                    isActive(item.href) ? "bg-blue-50 text-blue-700 font-medium" : "text-slate-600 hover:bg-slate-100 hover:text-slate-900", 
-                                                ].join(" "),
-                                                children: item.label
-                                            })
-                                        })
-                                    }, item.href)),
-                                /*#__PURE__*/ jsx_runtime_.jsx("li", {
-                                    className: "ml-auto sm:hidden text-[11px] text-slate-400",
-                                    children: "finmaphub.com"
-                                })
-                            ]
-                        })
+                        ]
                     })
+                }),
+                /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                    className: "flex items-center gap-2 ml-6 text-sm",
+                    children: navItems.map((item)=>{
+                        const active = item.href === "/" ? router.pathname === "/" : router.pathname.startsWith(item.href);
+                        return /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                            href: item.href,
+                            passHref: true,
+                            legacyBehavior: true,
+                            children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
+                                className: "px-3 py-1 rounded-full transition-colors whitespace-nowrap " + (active ? "bg-blue-50 text-blue-700 font-medium" : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"),
+                                children: item.label
+                            })
+                        }, item.href);
+                    })
+                }),
+                /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                    className: "ml-auto text-xs md:text-sm text-slate-500 whitespace-nowrap",
+                    children: "finmaphub.com"
                 })
             ]
         })
