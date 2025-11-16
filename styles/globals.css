@@ -73,15 +73,24 @@
   }
 }
 
-/* 플립 같은 좁은 화면에서 복리 계산기 카드가 반폭만 차지하는 문제 해결용 */
-@media (max-width: 480px) {
-  .fm-mobile-full,
-  .fm-mobile-full .card,
-  .fm-mobile-full form {
-    width: 100% !important;
+/* 복리 계산기 페이지 전용: 모바일에서 항상 풀폭 */
+.fm-mobile-full {
+  width: 100%;
+}
+
+/* 폴드/플립 앞 화면 같이 가로가 좁은 경우 강제 전체 폭 사용 */
+@media (max-width: 768px) {
+  .fm-mobile-full {
     max-width: 100% !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
+  }
+
+  .fm-mobile-full .card,
+  .fm-mobile-full .stat,
+  .fm-mobile-full > .grid,
+  .fm-mobile-full > div {
+    max-width: 100% !important;
   }
 }
 

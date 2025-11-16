@@ -123,10 +123,11 @@ export default function CompoundPage() {
         url="/tools/compound-interest"
         image="/og/compound.jpg"
       />
-      
+
+      {/* fm-mobile-full: 모바일에서 강제로 가로 100% 쓰도록 CSS에서 제어 */}
       <div className="container py-6 grid gap-6 fm-mobile-full">
         {/* 헤더 + 언어 전환 */}
-        <div className="flex items-center gap-3">          
+        <div className="flex items-center gap-3">
           <h1 className="text-xl sm:text-2xl font-bold">{t.title}</h1>
           <button
             type="button"
@@ -138,7 +139,7 @@ export default function CompoundPage() {
         </div>
 
         {/* 입력 폼 */}
-        <div className="card">
+        <div className="card w-full">
           <CompoundForm onSubmit={onSubmit} locale={locale} />
         </div>
 
@@ -166,7 +167,7 @@ export default function CompoundPage() {
             </div>
 
             {/* 차트: 복리식(막대) + 단리식(라인) */}
-            <div className="card">
+            <div className="card w-full">
               <div className="flex items-center gap-3 mb-2">
                 <h2 className="text-lg font-semibold">{t.chartTitle}</h2>
                 <span className="text-xs text-slate-500">
@@ -217,7 +218,7 @@ export default function CompoundPage() {
 
             {/* 최종 비교 Summary */}
             {simpleResult && (
-              <div className="card">
+              <div className="card w-full">
                 <h2 className="text-lg font-semibold mb-3">
                   {t.compareTitle}
                 </h2>

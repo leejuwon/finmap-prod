@@ -45,6 +45,9 @@ const dict = {
 };
 
 export default function CompoundForm({ onSubmit, locale = 'ko' }) {
+  // locale 값이 ko/en 이 아니면 무조건 ko 로 강제
+  const safeLocale = locale === 'en' ? 'en' : 'ko';
+
   const [form, setForm] = useState({
     principal: 1000, // 만원 또는 USD
     monthly: 30,     // 만원 또는 USD
@@ -56,8 +59,8 @@ export default function CompoundForm({ onSubmit, locale = 'ko' }) {
   });
   const [currency, setCurrency] = useState('KRW'); // 'KRW' | 'USD'
 
-  const t = useMemo(() => dict[locale] || dict.ko, [locale]);
-  const numberLocale = locale === 'ko' ? 'ko-KR' : 'en-US';
+  const t = useMemo(() => dict[safeLocale] || dict.ko, [safeLocale]);
+  const numberLocale = safeLocale === 'ko' ? 'ko-KR' : 'en-US';
 
   const handleMoneyChange = (e) => {
     const { name, value } = e.target;
@@ -91,7 +94,7 @@ export default function CompoundForm({ onSubmit, locale = 'ko' }) {
   };
 
   return (
-    <div className="grid gap-4">
+    <div className="w-full grid gap-4">
       {/* 1행: 금액 입력 4개 */}
       <div className="grid gap-3 md:grid-cols-4">
         <label className="grid gap-1">
