@@ -126,8 +126,8 @@ export default function CompoundPage() {
 
       <div className="container py-6 grid gap-6">
         {/* 헤더 + 언어 전환 */}
-        <div className="flex items-center gap-3">
-          <h1 className="text-2xl font-bold">{t.title}</h1>
+        <div className="flex items-center gap-3">          
+          <h1 className="text-xl sm:text-2xl font-bold">{t.title}</h1>
           <button
             type="button"
             className="btn-secondary ml-auto"

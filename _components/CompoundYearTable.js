@@ -6,6 +6,7 @@ function formatMoneyAuto(value, currency = 'KRW', locale = 'ko-KR') {
   const isKo = locale.toLowerCase().startsWith('ko');
   const cur = currency || 'KRW';
 
+  // KRW 전용 단위 자동 변환 (원 / 만원 / 억원)
   if (cur === 'KRW') {
     const abs = Math.abs(v);
     let divisor = 1;
@@ -21,7 +22,7 @@ function formatMoneyAuto(value, currency = 'KRW', locale = 'ko-KR') {
 
     const scaled = v / divisor;
     const scaledAbs = Math.abs(scaled);
-    const hasFraction = Math.round(scaledAbs * 10) % 10 !== 0;
+    const hasFraction = Math.round(scaledAbs * 10) % 10 !== 0; // x.0 이면 소수 안 보이게
     const fractionDigits = hasFraction ? 1 : 0;
 
     const numStr = scaled.toLocaleString(locale, {
@@ -32,9 +33,8 @@ function formatMoneyAuto(value, currency = 'KRW', locale = 'ko-KR') {
     return `${numStr}${suffix}`;
   }
 
-  const isValidCurrency =
-    typeof cur === 'string' && /^[A-Z]{3}$/.test(cur);
-
+  // 통화코드가 유효하지 않으면 그냥 숫자 포맷
+  const isValidCurrency = typeof cur === 'string' && /^[A-Z]{3}$/.test(cur);
   if (!isValidCurrency) {
     return new Intl.NumberFormat(locale).format(v);
   }
@@ -62,20 +62,22 @@ export default function CompoundYearTable({
   }, [title, locale]);
 
   const unitText = locale.startsWith('ko')
-    ? '단위: 원 / 만원 / 억원 자동'
-    : 'Unit: auto (KRW / 10k / 100M)';
+    ? '단위: 원 / 만원 / 억원 자동 (1년차 연간 납입에 초기 투자금 포함)'
+    : 'Unit: auto (KRW / 10k / 100M, year 1 includes initial principal)';
 
+  // 연도별 통계 계산
   const buildYearStats = (rows) =>
     rows.map((r, idx) => {
       const year = r.year;
       const opening = Number(r.openingBalanceNet) || 0;
-      const contrib = Number(r.contributionYear) || 0;
+      const contribYearRaw = Number(r.contributionYear) || 0; // 실제 연간 월납입 (원금 제외)
       const closing = Number(r.closingBalanceNet) || 0;
 
+      // 이자(세후) – 원래 로직 유지 (원금 포함)
       const interestNet =
         r.interestYearNet != null
           ? Number(r.interestYearNet) || 0
-          : closing - opening - contrib;
+          : closing - opening - contribYearRaw;
 
       const prev = idx > 0 ? rows[idx - 1] : null;
 
@@ -117,15 +119,24 @@ export default function CompoundYearTable({
 
       const taxFee = taxYear + feeYear;
 
+      // ✅ 1년차 연간 납입 = 초기투자금 + 1년치 월 납입
+      //    2년차부터는 월 납입만 표시
+      const contribDisplay =
+        year === 1
+          ? Number(principal) + contribYearRaw
+          : contribYearRaw;
+
+      // 누적 실제 투자금 (초기 + 월 납입)
       const investedTotal =
         Number(principal) + Number(monthly) * 12 * year;
+
+      // 누적 수익률 (세후) = 기말잔액 / 누적 투자금
       const returnRate =
         investedTotal > 0 ? (closing / investedTotal) * 100 : 0;
 
       return {
         year,
-        opening,
-        contrib,
+        contrib: contribDisplay,
         closing,
         interestNet,
         taxFee,
@@ -141,8 +152,7 @@ export default function CompoundYearTable({
 
     const header = [
       'year',
-      'openingNet',
-      'contributionYear',
+      'contributionYearDisplay',
       'closingNet',
       'interestNet',
       'taxFeeYear',
@@ -155,7 +165,6 @@ export default function CompoundYearTable({
       lines.push(
         [
           s.year,
-          s.opening,
           s.contrib,
           s.closing,
           s.interestNet,
@@ -166,10 +175,9 @@ export default function CompoundYearTable({
       );
     });
 
-    const blob = new Blob(
-      ['\uFEFF' + lines.join('\n')],
-      { type: 'text/csv;charset=utf-8;' }
-    );
+    const blob = new Blob(['\uFEFF' + lines.join('\n')], {
+      type: 'text/csv;charset=utf-8;',
+    });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -195,10 +203,12 @@ export default function CompoundYearTable({
     <div className="card">
       <div className="flex items-center gap-3 mb-2">
         <h2 className="text-xl font-semibold">{tableTitle}</h2>
-        <span className="text-xs text-slate-500">{unitText}</span>
+        <span className="text-[11px] sm:text-xs text-slate-500">
+          {unitText}
+        </span>
         <button
           type="button"
-          className="btn-secondary ml-auto text-sm"
+          className="btn-secondary ml-auto text-xs sm:text-sm"
           onClick={downloadCsv}
         >
           {locale.startsWith('ko') ? 'CSV 다운로드' : 'Download CSV'}
@@ -206,35 +216,31 @@ export default function CompoundYearTable({
       </div>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full text-sm">
+        {/* ✅ 플립같이 좁은 화면에서도 깨지지 않도록 최소 너비 + 작은 폰트 */}
+        <table className="min-w-[760px] text-xs sm:text-sm">
           <thead className="bg-slate-50">
             <tr>
-              <th className="px-2 py-1 text-left">
+              <th className="px-2 py-1 text-left whitespace-nowrap">
                 {locale.startsWith('ko') ? '연도' : 'Year'}
               </th>
-              <th className="px-2 py-1 text-right">
-                {locale.startsWith('ko') ? '기초잔액(세후)' : 'Opening (Net)'}
+              <th className="px-2 py-1 text-right whitespace-nowrap">
+                {locale.startsWith('ko') ? '연간 납입' : 'Contribution / year'}
               </th>
-              <th className="px-2 py-1 text-right">
-                {locale.startsWith('ko') ? '연간 납입' : 'Contribution'}
-              </th>
-              <th className="px-2 py-1 text-right">
+              <th className="px-2 py-1 text-right whitespace-nowrap">
                 {locale.startsWith('ko') ? '기말잔액(세후)' : 'Closing (Net)'}
               </th>
-              <th className="px-2 py-1 text-right">
+              <th className="px-2 py-1 text-right whitespace-nowrap">
                 {locale.startsWith('ko') ? '이자(세후)' : 'Interest (Net)'}
               </th>
-              <th className="px-2 py-1 text-right">
-                {locale.startsWith('ko')
-                  ? '세금+수수료'
-                  : 'Tax + fee'}
+              <th className="px-2 py-1 text-right whitespace-nowrap">
+                {locale.startsWith('ko') ? '세금+수수료' : 'Tax + fee'}
               </th>
-              <th className="px-2 py-1 text-right">
+              <th className="px-2 py-1 text-right whitespace-nowrap">
                 {locale.startsWith('ko')
                   ? '총 투자금(누적)'
                   : 'Invested total'}
               </th>
-              <th className="px-2 py-1 text-right">
+              <th className="px-2 py-1 text-right whitespace-nowrap">
                 {locale.startsWith('ko')
                   ? '누적 수익률(세후)'
                   : 'Cum. return (net)'}
@@ -244,26 +250,25 @@ export default function CompoundYearTable({
           <tbody>
             {stats.map((s) => (
               <tr key={s.year} className="border-t">
-                <td className="px-2 py-1 text-left">{s.year}</td>
-                <td className="px-2 py-1 text-right">
-                  {formatMoneyAuto(s.opening, currency, locale)}
+                <td className="px-2 py-1 text-left whitespace-nowrap">
+                  {s.year}
                 </td>
-                <td className="px-2 py-1 text-right">
+                <td className="px-2 py-1 text-right whitespace-nowrap">
                   {formatMoneyAuto(s.contrib, currency, locale)}
                 </td>
-                <td className="px-2 py-1 text-right">
+                <td className="px-2 py-1 text-right whitespace-nowrap">
                   {formatMoneyAuto(s.closing, currency, locale)}
                 </td>
-                <td className="px-2 py-1 text-right">
+                <td className="px-2 py-1 text-right whitespace-nowrap">
                   {formatMoneyAuto(s.interestNet, currency, locale)}
                 </td>
-                <td className="px-2 py-1 text-right">
+                <td className="px-2 py-1 text-right whitespace-nowrap">
                   {formatMoneyAuto(s.taxFee, currency, locale)}
                 </td>
-                <td className="px-2 py-1 text-right">
+                <td className="px-2 py-1 text-right whitespace-nowrap">
                   {formatMoneyAuto(s.investedTotal, currency, locale)}
                 </td>
-                <td className="px-2 py-1 text-right">
+                <td className="px-2 py-1 text-right whitespace-nowrap">
                   {s.returnRate.toFixed(2)}%
                 </td>
               </tr>
