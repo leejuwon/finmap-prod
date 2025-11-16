@@ -123,8 +123,8 @@ export default function CompoundPage() {
         url="/tools/compound-interest"
         image="/og/compound.jpg"
       />
-
-      <div className="container py-6 grid gap-6">
+      
+      <div className="container py-6 grid gap-6 fm-mobile-full">
         {/* 헤더 + 언어 전환 */}
         <div className="flex items-center gap-3">          
           <h1 className="text-xl sm:text-2xl font-bold">{t.title}</h1>
