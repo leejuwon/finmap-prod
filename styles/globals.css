@@ -106,13 +106,24 @@
   }
 }
 
-
-/* 1) 폴드/플립 같은 중간 폭 기기에서 .container 가 가운데만 차지하는 문제 해결용 */
-@media (max-width: 1024px) {
+/* 1) 폴드/플립 같은 중간 폭 기기에서 .container 가 가운데만 차지하는 문제 해결용
+   - 1300px 이하(노트북·태블릿·폴드 커버 포함)는 항상 화면 전체 폭 사용
+   - 그 이상(데스크톱 큰 모니터)은 max-w-5xl / 6xl 제한 유지 */
+@media (max-width: 1300px) {
   .container {
     max-width: 100% !important;
     width: 100% !important;
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+}
+
+/* 2) 블로그 본문(prose)도 좁은 화면에서는 전체 폭 사용 */
+@media (max-width: 900px) {
+  article.prose {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 }

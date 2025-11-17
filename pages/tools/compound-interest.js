@@ -124,8 +124,8 @@ export default function CompoundPage() {
         image="/og/compound.jpg"
       />
 
-      {/* fm-mobile-full: 모바일에서 강제로 가로 100% 쓰도록 CSS에서 제어 */}
-      <div className="grid gap-6">
+       {/* Layout 쪽에서 이미 container 로 한 번 감싸므로 여기서는 grid 만 사용 */}
+      <div className="py-6 grid gap-6">
         {/* 헤더 + 언어 전환 */}
         <div className="flex items-center gap-3">
           <h1 className="text-xl sm:text-2xl font-bold">{t.title}</h1>
