@@ -72,3 +72,20 @@
 .fm-mobile-full {
   width: 100%;
 }
+
+/* 폴드/플립 같은 아주 좁은 화면에서 헤더 메뉴 줄바꿈 방지용 */
+@media (max-width: 400px) {
+  .header-nav {
+    font-size: 10px;
+    gap: 0.15rem;
+  }
+
+  .header-nav a {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .header-domain {
+    font-size: 9px;
+  }
+}

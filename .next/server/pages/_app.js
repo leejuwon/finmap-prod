@@ -60,9 +60,9 @@ function Header() {
     return /*#__PURE__*/ jsx_runtime_.jsx("header", {
         className: "sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-slate-100",
         children: /*#__PURE__*/ jsx_runtime_.jsx("nav", {
-            className: "w-full px-4",
+            className: "w-full px-3 sm:px-4",
             children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                className: "w-full max-w-5xl lg:max-w-6xl mx-auto flex items-center gap-4 py-3",
+                className: "w-full max-w-5xl lg:max-w-6xl mx-auto flex items-center gap-3 py-2 sm:py-3",
                 children: [
                     /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                         href: "/",
@@ -79,11 +79,11 @@ function Header() {
                                     className: "leading-tight",
                                     children: [
                                         /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                                            className: "block text-base font-semibold text-slate-900",
+                                            className: "block text-sm sm:text-base font-semibold text-slate-900",
                                             children: "FinMap"
                                         }),
                                         /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                                            className: "block text-[11px] text-slate-500",
+                                            className: "block text-[10px] sm:text-[11px] text-slate-500",
                                             children: "금융 기초 \xb7 투자계획 지도"
                                         })
                                     ]
@@ -92,21 +92,21 @@ function Header() {
                         })
                     }),
                     /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                        className: "flex items-center gap-2 ml-6 text-sm",
+                        className: "header-nav flex items-center gap-1 sm:gap-2 ml-2 sm:ml-6 text-[11px] sm:text-sm",
                         children: navItems.map((item)=>{
                             const active = item.href === "/" ? router.pathname === "/" : router.pathname.startsWith(item.href);
                             return /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                                 href: item.href,
                                 passHref: true,
                                 children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
-                                    className: "px-3 py-1 rounded-full transition-colors " + (active ? "bg-blue-50 text-blue-700 font-medium" : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"),
+                                    className: "px-2 sm:px-3 py-1 rounded-full transition-colors " + (active ? "bg-blue-50 text-blue-700 font-medium" : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"),
                                     children: item.label
                                 })
                             }, item.href);
                         })
                     }),
                     /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                        className: "ml-auto text-xs md:text-sm text-slate-500",
+                        className: "header-domain ml-auto text-[10px] sm:text-xs md:text-sm text-slate-500",
                         children: "finmaphub.com"
                     })
                 ]
