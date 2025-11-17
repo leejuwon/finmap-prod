@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer components {
-  /* 공통 레이아웃 컨테이너 */
+  /* 공통 레이아웃 컨테이너: 항상 화면 전체 폭 사용 */
   .container {
-    @apply mx-auto px-4 max-w-5xl lg:max-w-6xl;
+    @apply w-full mx-auto px-4;   /* max-w-5xl / lg:max-w-6xl 제거 */
   }
 
   /* 카드 공통 스타일 (리스트/박스 등) */
@@ -55,7 +55,6 @@
   /* ✅ 리스트 썸네일 전용 이미지 (상세페이지는 사용 X) */
   .card-thumb {
     @apply w-full h-40 object-cover rounded-xl mb-3;
-    /* h-40 = 160px, 필요하면 h-48(192px)로 늘려도 됨 */
   }
 }
 
@@ -73,57 +72,13 @@
   }
 }
 
-/* 복리 계산기 페이지 전용: 모바일에서 항상 풀폭 */
-.fm-mobile-full {
-  width: 100%;
-}
+/* ✅ 복리 계산기/전체 페이지에서 모바일도 항상 풀폭 사용하고 싶다면
+   별도 클래스 없이 .container 와 .prose 에서 바로 제어해버리는 게 가장 확실함 */
 
-/* 폴드/플립 앞 화면 같이 가로가 좁은 경우 강제 전체 폭 사용 */
-@media (max-width: 768px) {
-  .fm-mobile-full {
-    max-width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  .fm-mobile-full .card,
-  .fm-mobile-full .stat,
-  .fm-mobile-full > .grid,
-  .fm-mobile-full > div {
-    max-width: 100% !important;
-  }
-}
-
-/* 모바일 전체 폭 강제 – 커버/플립같이 아주 좁은 화면용 */
-@media (max-width: 480px) {
-  .fm-mobile-full {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-}
-
-/* 1) 폴드/플립 같은 중간 폭 기기에서 .container 가 가운데만 차지하는 문제 해결용
-   - 1300px 이하(노트북·태블릿·폴드 커버 포함)는 항상 화면 전체 폭 사용
-   - 그 이상(데스크톱 큰 모니터)은 max-w-5xl / 6xl 제한 유지 */
-@media (max-width: 1300px) {
-  .container {
-    max-width: 100% !important;
-    width: 100% !important;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
-
-/* 2) 블로그 본문(prose)도 좁은 화면에서는 전체 폭 사용 */
-@media (max-width: 900px) {
-  article.prose {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
+/* 블로그 본문(prose)도 항상 전체 폭 사용 */
+.prose {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
