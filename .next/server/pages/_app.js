@@ -187,7 +187,7 @@ function Layout({ children  }) {
         children: [
             /*#__PURE__*/ jsx_runtime_.jsx(Header, {}),
             /*#__PURE__*/ jsx_runtime_.jsx("main", {
-                className: "container py-6",
+                className: "container max-w-5xl w-full px-4 py-6 mx-auto fm-mobile-full",
                 children: children
             }),
             /*#__PURE__*/ jsx_runtime_.jsx(Footer, {})

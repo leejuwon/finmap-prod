@@ -94,4 +94,16 @@
   }
 }
 
+/* 모바일 전체 폭 강제 – 커버/플립같이 아주 좁은 화면용 */
+@media (max-width: 480px) {
+  .fm-mobile-full {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
 
