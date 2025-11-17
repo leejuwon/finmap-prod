@@ -83,7 +83,7 @@ function Header() {
                                             children: "FinMap"
                                         }),
                                         /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                                            className: "block text-[10px] sm:text-[11px] text-slate-500",
+                                            className: "hidden sm:block text-[11px] text-slate-500",
                                             children: "금융 기초 \xb7 투자계획 지도"
                                         })
                                     ]
@@ -92,7 +92,7 @@ function Header() {
                         })
                     }),
                     /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                        className: "header-nav flex items-center gap-1 sm:gap-2 ml-2 sm:ml-6 text-[11px] sm:text-sm",
+                        className: "header-nav flex items-center gap-1 sm:gap-2 ml-2 sm:ml-6 text-[10px] sm:text-sm",
                         children: navItems.map((item)=>{
                             const active = item.href === "/" ? router.pathname === "/" : router.pathname.startsWith(item.href);
                             return /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {

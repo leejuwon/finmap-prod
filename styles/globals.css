@@ -73,7 +73,41 @@
   width: 100%;
 }
 
-/* 폴드/플립 같은 아주 좁은 화면에서 헤더 메뉴 줄바꿈 방지용 */
+/* ===== 헤더 내비 전용 튜닝 ===== */
+
+/* 기본: 메뉴는 한 줄 유지 + 필요하면 가로 스크롤 */
+.header-nav {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* 각 메뉴 텍스트 자체도 줄바꿈 금지 */
+.header-nav a {
+  white-space: nowrap;
+}
+
+/* 모바일에서 스크롤바 안 보이게 처리 */
+.header-nav::-webkit-scrollbar {
+  display: none;
+}
+.header-nav {
+  -ms-overflow-style: none;  /* IE, Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* 폴드/플립 같은 좁은 화면(가로 520px 이하)에서 도메인 텍스트 숨기고 메뉴 공간 확보 */
+@media (max-width: 520px) {
+  .header-domain {
+    display: none;
+  }
+
+  .header-nav {
+    font-size: 11px;   /* 기본보다 살짝 줄이기 */
+    gap: 0.25rem;
+  }
+}
+
+/* 아주 좁은 화면(가로 400px 이하)에서 추가 축소 */
 @media (max-width: 400px) {
   .header-nav {
     font-size: 10px;
@@ -83,9 +117,5 @@
   .header-nav a {
     padding-left: 0.25rem;
     padding-right: 0.25rem;
-  }
-
-  .header-domain {
-    font-size: 9px;
   }
 }

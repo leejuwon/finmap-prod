@@ -29,7 +29,8 @@ export default function Header() {
                 <span className="block text-sm sm:text-base font-semibold text-slate-900">
                   FinMap
                 </span>
-                <span className="block text-[10px] sm:text-[11px] text-slate-500">
+                {/* 👉 아주 좁은 화면에서는 숨기고, sm 이상에서만 보이게 */}
+                <span className="hidden sm:block text-[11px] text-slate-500">
                   금융 기초 · 투자계획 지도
                 </span>
               </div>
@@ -37,7 +38,7 @@ export default function Header() {
           </Link>
 
           {/* 네비게이션 */}
-          <div className="header-nav flex items-center gap-1 sm:gap-2 ml-2 sm:ml-6 text-[11px] sm:text-sm">
+          <div className="header-nav flex items-center gap-1 sm:gap-2 ml-2 sm:ml-6 text-[10px] sm:text-sm">
             {navItems.map((item) => {
               const active =
                 item.href === '/'
