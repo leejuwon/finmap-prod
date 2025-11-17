@@ -49,8 +49,9 @@
 
   /* ✅ 리스트 썸네일 전용 이미지 (상세페이지는 사용 X) */
   .card-thumb {
-    @apply w-full h-40 object-cover rounded-xl mb-3;
+    /*@apply w-full h-40 object-cover rounded-xl mb-3;*/
     /* h-40 = 160px, 필요하면 h-48(192px)로 늘려도 됨 */
+     @apply w-full rounded-xl mb-3 object-contain bg-slate-50;
   }
 }
 

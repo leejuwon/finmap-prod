@@ -20,7 +20,7 @@ export default function PostPage({ post }) {
     <>
       <SeoHead title={post.title} desc={post.description} url={`/posts/${post.slug}`} image={post.cover} />
       <JsonLd data={jsonld} />
-      <article className="prose prose-slate lg:prose-lg bg-white border rounded-2xl shadow-card p-6">
+      <article className="prose prose-slate lg:prose-lg max-w-none bg-white border rounded-2xl shadow-card p-6">
         <h1>{post.title}</h1>
         <p className="text-sm text-slate-500">
           {post.category} · {post.datePublished}

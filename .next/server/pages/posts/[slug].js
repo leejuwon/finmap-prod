@@ -59,7 +59,7 @@ function PostPage({ post  }) {
                 data: jsonld
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("article", {
-                className: "prose prose-slate lg:prose-lg bg-white border rounded-2xl shadow-card p-6",
+                className: "prose prose-slate lg:prose-lg max-w-none bg-white border rounded-2xl shadow-card p-6",
                 children: [
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
                         children: post.title

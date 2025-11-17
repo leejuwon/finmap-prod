@@ -75,8 +75,4 @@ const PORT = Number(process.env.PORT || 8002);
     console.error('💥 server error:', e);
   });
 
-  // 가드 로그(프록시 타임아웃 추적용)
-  setInterval(() => {
-    console.log(`[beat] alive @ ${new Date().toISOString()}`);
-  }, 30000);
 })();
