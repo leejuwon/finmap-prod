@@ -55,6 +55,12 @@
 }
 
 @layer base {
+  /* ✅ 브라우저 자동 글자 확대(autosizing) 끄기 */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   body {
     @apply bg-slate-50 text-slate-900;
   }
@@ -117,5 +123,9 @@
   .header-nav a {
     padding-left: 0.25rem;
     padding-right: 0.25rem;
+  }
+
+  .header-domain {
+    font-size: 9px;
   }
 }
