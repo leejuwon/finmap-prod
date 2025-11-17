@@ -59,57 +59,58 @@ function Header() {
     const router = (0,router_namespaceObject.useRouter)();
     return /*#__PURE__*/ jsx_runtime_.jsx("header", {
         className: "sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-slate-100",
-        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("nav", {
-            className: "container flex items-center gap-4 py-3",
-            children: [
-                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                    href: "/",
-                    passHref: true,
-                    legacyBehavior: true,
-                    children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("a", {
-                        className: "flex items-center gap-2",
-                        children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                                src: "/logo-finmap.svg",
-                                alt: "FinMap 로고",
-                                className: "h-8 w-auto"
-                            }),
-                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                className: "leading-tight",
-                                children: [
-                                    /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                                        className: "block text-base font-semibold text-slate-900",
-                                        children: "FinMap"
-                                    }),
-                                    /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                                        className: "block text-[11px] text-slate-500 whitespace-nowrap",
-                                        children: "금융 기초 \xb7 투자계획 지도"
-                                    })
-                                ]
-                            })
-                        ]
+        children: /*#__PURE__*/ jsx_runtime_.jsx("nav", {
+            className: "w-full px-4",
+            children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                className: "w-full max-w-5xl lg:max-w-6xl mx-auto flex items-center gap-4 py-3",
+                children: [
+                    /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                        href: "/",
+                        passHref: true,
+                        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("a", {
+                            className: "flex items-center gap-2",
+                            children: [
+                                /*#__PURE__*/ jsx_runtime_.jsx("img", {
+                                    src: "/logo-finmap.svg",
+                                    alt: "FinMap 로고",
+                                    className: "h-8 w-auto"
+                                }),
+                                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                    className: "leading-tight",
+                                    children: [
+                                        /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                            className: "block text-base font-semibold text-slate-900",
+                                            children: "FinMap"
+                                        }),
+                                        /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                            className: "block text-[11px] text-slate-500",
+                                            children: "금융 기초 \xb7 투자계획 지도"
+                                        })
+                                    ]
+                                })
+                            ]
+                        })
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                        className: "flex items-center gap-2 ml-6 text-sm",
+                        children: navItems.map((item)=>{
+                            const active = item.href === "/" ? router.pathname === "/" : router.pathname.startsWith(item.href);
+                            return /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                                href: item.href,
+                                passHref: true,
+                                children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
+                                    className: "px-3 py-1 rounded-full transition-colors " + (active ? "bg-blue-50 text-blue-700 font-medium" : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"),
+                                    children: item.label
+                                })
+                            }, item.href);
+                        })
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                        className: "ml-auto text-xs md:text-sm text-slate-500",
+                        children: "finmaphub.com"
                     })
-                }),
-                /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                    className: "flex items-center gap-2 ml-6 text-sm",
-                    children: navItems.map((item)=>{
-                        const active = item.href === "/" ? router.pathname === "/" : router.pathname.startsWith(item.href);
-                        return /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                            href: item.href,
-                            passHref: true,
-                            legacyBehavior: true,
-                            children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
-                                className: "px-3 py-1 rounded-full transition-colors whitespace-nowrap " + (active ? "bg-blue-50 text-blue-700 font-medium" : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"),
-                                children: item.label
-                            })
-                        }, item.href);
-                    })
-                }),
-                /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                    className: "ml-auto text-xs md:text-sm text-slate-500 whitespace-nowrap",
-                    children: "finmaphub.com"
-                })
-            ]
+                ]
+            })
         })
     });
 }
@@ -121,58 +122,41 @@ function Header() {
 function Footer() {
     return /*#__PURE__*/ jsx_runtime_.jsx("footer", {
         className: "border-t mt-10 bg-white",
-        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-            className: "max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center gap-3 text-xs sm:text-sm text-slate-600",
-            children: [
-                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                    href: "/about",
-                    passHref: true,
-                    children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
-                        className: "hover:text-slate-800",
+        children: /*#__PURE__*/ jsx_runtime_.jsx("div", {
+            className: "w-full px-4",
+            children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                className: "w-full max-w-5xl lg:max-w-6xl mx-auto flex flex-wrap gap-4 items-center py-4 text-slate-600",
+                children: [
+                    /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                        href: "/about",
                         children: "About"
-                    })
-                }),
-                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                    href: "/contact",
-                    passHref: true,
-                    children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
-                        className: "hover:text-slate-800",
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                        href: "/contact",
                         children: "Contact"
-                    })
-                }),
-                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                    href: "/privacy",
-                    passHref: true,
-                    children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
-                        className: "hover:text-slate-800",
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                        href: "/privacy",
                         children: "Privacy"
-                    })
-                }),
-                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                    href: "/terms",
-                    passHref: true,
-                    children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
-                        className: "hover:text-slate-800",
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                        href: "/terms",
                         children: "TOS"
-                    })
-                }),
-                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                    href: "/disclaimer",
-                    passHref: true,
-                    children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
-                        className: "hover:text-slate-800",
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                        href: "/disclaimer",
                         children: "면책"
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
+                        className: "ml-auto text-sm",
+                        children: [
+                            "\xa9 ",
+                            new Date().getFullYear(),
+                            " FinMap"
+                        ]
                     })
-                }),
-                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
-                    className: "ml-auto text-[11px] sm:text-sm text-slate-500",
-                    children: [
-                        "\xa9 ",
-                        new Date().getFullYear(),
-                        " FinMap"
-                    ]
-                })
-            ]
+                ]
+            })
         })
     });
 }
@@ -187,8 +171,11 @@ function Layout({ children  }) {
         children: [
             /*#__PURE__*/ jsx_runtime_.jsx(Header, {}),
             /*#__PURE__*/ jsx_runtime_.jsx("main", {
-                className: "container py-6",
-                children: children
+                className: "w-full px-4 py-6",
+                children: /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                    className: "w-full max-w-5xl lg:max-w-6xl mx-auto",
+                    children: children
+                })
             }),
             /*#__PURE__*/ jsx_runtime_.jsx(Footer, {})
         ]

@@ -6,10 +6,14 @@ export default function Layout({ children }) {
   return (
     <>
       <Header />
-      {/* ✅ 전체 페이지 공통 레이아웃: 폭 제한 없이 예전처럼 container 만 사용 */}
-      <main className="container py-6">
-        {children}
+
+      {/* ✅ 모든 페이지 공통 래퍼: 어떤 기기든 똑같이 동작 */}
+      <main className="w-full px-4 py-6">
+        <div className="w-full max-w-5xl lg:max-w-6xl mx-auto">
+          {children}
+        </div>
       </main>
+
       <Footer />
     </>
   );

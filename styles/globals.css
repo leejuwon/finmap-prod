@@ -3,11 +3,6 @@
 @tailwind utilities;
 
 @layer components {
-  /* 공통 레이아웃 컨테이너: 항상 화면 전체 폭 사용 */
-  .container {
-    @apply w-full mx-auto px-4;   /* max-w-5xl / lg:max-w-6xl 제거 */
-  }
-
   /* 카드 공통 스타일 (리스트/박스 등) */
   .card {
     @apply bg-white border border-slate-100 rounded-2xl shadow p-5;
@@ -55,6 +50,7 @@
   /* ✅ 리스트 썸네일 전용 이미지 (상세페이지는 사용 X) */
   .card-thumb {
     @apply w-full h-40 object-cover rounded-xl mb-3;
+    /* h-40 = 160px, 필요하면 h-48(192px)로 늘려도 됨 */
   }
 }
 
@@ -72,13 +68,7 @@
   }
 }
 
-/* ✅ 복리 계산기/전체 페이지에서 모바일도 항상 풀폭 사용하고 싶다면
-   별도 클래스 없이 .container 와 .prose 에서 바로 제어해버리는 게 가장 확실함 */
-
-/* 블로그 본문(prose)도 항상 전체 폭 사용 */
-.prose {
-  max-width: 100% !important;
-  width: 100% !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+/* 복리 계산기 페이지 등이 사용할 수 있는 전체 폭 유틸(원하면 사용) */
+.fm-mobile-full {
+  width: 100%;
 }

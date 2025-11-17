@@ -15,55 +15,57 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-slate-100">
-      <nav className="container flex items-center gap-4 py-3">
-        {/* 로고 영역 – 예전 사이즈 유지 */}
-        <Link href="/" passHref legacyBehavior>
-          <a className="flex items-center gap-2">
-            <img
-              src="/logo-finmap.svg"
-              alt="FinMap 로고"
-              className="h-8 w-auto"
-            />
-            <div className="leading-tight">
-              <span className="block text-base font-semibold text-slate-900">
-                FinMap
-              </span>
-              <span className="block text-[11px] text-slate-500 whitespace-nowrap">
-                금융 기초 · 투자계획 지도
-              </span>
-            </div>
-          </a>
-        </Link>
+      <nav className="w-full px-4">
+        <div className="w-full max-w-5xl lg:max-w-6xl mx-auto flex items-center gap-4 py-3">
+          {/* 로고 */}
+          <Link href="/" passHref>
+            <a className="flex items-center gap-2">
+              <img
+                src="/logo-finmap.svg"
+                alt="FinMap 로고"
+                className="h-8 w-auto"
+              />
+              <div className="leading-tight">
+                <span className="block text-base font-semibold text-slate-900">
+                  FinMap
+                </span>
+                <span className="block text-[11px] text-slate-500">
+                  금융 기초 · 투자계획 지도
+                </span>
+              </div>
+            </a>
+          </Link>
 
-        {/* 네비게이션 – text-sm 고정, 줄바꿈 방지만 추가 */}
-        <div className="flex items-center gap-2 ml-6 text-sm">
-          {navItems.map((item) => {
-            const active =
-              item.href === '/'
-                ? router.pathname === '/'
-                : router.pathname.startsWith(item.href);
+          {/* 네비게이션 */}
+          <div className="flex items-center gap-2 ml-6 text-sm">
+            {navItems.map((item) => {
+              const active =
+                item.href === '/'
+                  ? router.pathname === '/'
+                  : router.pathname.startsWith(item.href);
 
-            return (
-              <Link key={item.href} href={item.href} passHref legacyBehavior>
-                <a
-                  className={
-                    'px-3 py-1 rounded-full transition-colors whitespace-nowrap ' +
-                    (active
-                      ? 'bg-blue-50 text-blue-700 font-medium'
-                      : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900')
-                  }
-                >
-                  {item.label}
-                </a>
-              </Link>
-            );
-          })}
+              return (
+                <Link key={item.href} href={item.href} passHref>
+                  <a
+                    className={
+                      'px-3 py-1 rounded-full transition-colors ' +
+                      (active
+                        ? 'bg-blue-50 text-blue-700 font-medium'
+                        : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900')
+                    }
+                  >
+                    {item.label}
+                  </a>
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* 우측 도메인/브랜드 */}
+          <span className="ml-auto text-xs md:text-sm text-slate-500">
+            finmaphub.com
+          </span>
         </div>
-
-        {/* 우측 도메인 텍스트 – 예전 크기, 줄바꿈 방지만 추가 */}
-        <span className="ml-auto text-xs md:text-sm text-slate-500 whitespace-nowrap">
-          finmaphub.com
-        </span>
       </nav>
     </header>
   );
