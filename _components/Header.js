@@ -6,8 +6,8 @@ const navItems = [
   { href: '/', label: '홈' },
   { href: '/category/economics', label: '경제기초' },
   { href: '/category/investing', label: '투자개념' },
-  { href: '/category/tax', label: '세금' },
-  { href: '/tools/compound-interest', label: '복리 계산기' },
+  { href: '/category/tax', label: '세금' },  
+  { href: '/tools', label: '계산기' },
 ];
 
 export default function Header() {

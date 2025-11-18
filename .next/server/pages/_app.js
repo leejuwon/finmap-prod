@@ -51,8 +51,8 @@ const navItems = [
         label: "세금"
     },
     {
-        href: "/tools/compound-interest",
-        label: "복리 계산기"
+        href: "/tools",
+        label: "계산기"
     }, 
 ];
 function Header() {
