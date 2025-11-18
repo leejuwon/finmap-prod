@@ -188,7 +188,7 @@ export default function CompoundYearTable({
 
   if (!stats.length) {
     return (
-      <div className="card">
+      <div className="card fm-year-table">
         <div className="flex items-center gap-3 mb-2">
           <h2 className="text-xl font-semibold">{tableTitle}</h2>
         </div>
@@ -200,7 +200,7 @@ export default function CompoundYearTable({
   }
 
   return (
-    <div className="card">
+    <div className="card fm-year-table">
       <div className="flex items-center gap-3 mb-2">
         <h2 className="text-xl font-semibold">{tableTitle}</h2>
         <span className="text-[11px] sm:text-xs text-slate-500">
@@ -216,8 +216,8 @@ export default function CompoundYearTable({
       </div>
 
       <div className="overflow-x-auto">
-        {/* ✅ 플립같이 좁은 화면에서도 깨지지 않도록 최소 너비 + 작은 폰트 */}
-        <table className="min-w-[760px] text-xs sm:text-sm">
+        {/* ✅ 플립같이 좁은 화면에서도 깨지지 않도록 최소 너비 유지 */}
+        <table className="min-w-[760px] border-t">
           <thead className="bg-slate-50">
             <tr>
               <th className="px-2 py-1 text-left whitespace-nowrap">

@@ -51,7 +51,7 @@
   .card-thumb {
     /*@apply w-full h-40 object-cover rounded-xl mb-3;*/
     /* h-40 = 160px, 필요하면 h-48(192px)로 늘려도 됨 */
-     @apply w-full rounded-xl mb-3 object-contain bg-slate-50;
+    @apply w-full rounded-xl mb-3 object-contain bg-slate-50;
   }
 }
 
@@ -131,14 +131,19 @@
   }
 }
 
-/* 목표 자산 연간 테이블 - 작은 모바일에서 더 컴팩트하게 */
-@media (max-width: 480px) {
-  .goal-year-table {
-    font-size: 11px;
+/* ✅ 연간 요약 테이블 공통(복리/목표자산 둘 다) */
+.fm-year-table table {
+  font-size: 0.875rem; /* 기본 14px 정도 */
+}
+
+/* 모바일에서 더 컴팩트하게 */
+@media (max-width: 640px) {
+  .fm-year-table table {
+    font-size: 0.7rem; /* 약 11px */
   }
 
-  .goal-year-table th,
-  .goal-year-table td {
+  .fm-year-table th,
+  .fm-year-table td {
     padding-left: 0.25rem;
     padding-right: 0.25rem;
   }

@@ -68,7 +68,7 @@ export default function GoalYearTable({
 
   if (!rows.length) {
     return (
-      <div className="card">
+      <div className="card fm-year-table">
         <div className="flex items-center gap-3 mb-2">
           <h2 className="text-xl font-semibold">{tableTitle}</h2>
         </div>
@@ -107,14 +107,14 @@ export default function GoalYearTable({
       : null;
 
   return (
-    <div className="card">
+    <div className="card fm-year-table">
       <div className="flex items-center gap-3 mb-2">
         <h2 className="text-xl font-semibold">{tableTitle}</h2>
         <span className="text-xs text-slate-500">{unitText}</span>
       </div>
 
-      <div className="card overflow-x-auto mt-4 goal-year-table">
-        <table className="w-full text-xs sm:text-sm md:text-base border-t">
+      <div className="overflow-x-auto mt-4">
+        <table className="min-w-full border-t">
           <thead className="bg-slate-50">
             <tr>
               <th className="px-2 py-1 text-left">
