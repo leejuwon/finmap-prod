@@ -16,6 +16,7 @@
     "compression": "1.7.4",
     "express": "4.18.2",
     "gray-matter": "4.0.3",
+    "html-react-parser": "^5.2.10",
     "marked": "4.3.0",
     "next": "12.3.4",
     "next-sitemap": "^4.2.3",
