@@ -113,8 +113,8 @@ export default function GoalYearTable({
         <span className="text-xs text-slate-500">{unitText}</span>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full text-xs sm:text-sm">
+      <div className="card overflow-x-auto mt-4 goal-year-table">
+        <table className="w-full text-xs sm:text-sm md:text-base border-t">
           <thead className="bg-slate-50">
             <tr>
               <th className="px-2 py-1 text-left">

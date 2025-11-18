@@ -130,3 +130,34 @@
     font-size: 9px;
   }
 }
+
+/* 목표 자산 연간 테이블 - 작은 모바일에서 더 컴팩트하게 */
+@media (max-width: 480px) {
+  .goal-year-table {
+    font-size: 11px;
+  }
+
+  .goal-year-table th,
+  .goal-year-table td {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+}
+
+/* --------------------------------------------------
+   복리 계산기 등 도구 페이지에서 글자를 줄여도
+   헤더 영역은 항상 동일한 크기를 유지하도록 고정
+-----------------------------------------------------*/
+@media (max-width: 640px) {
+  header .header-nav {
+    font-size: 10px !important;   /* 메뉴 글자 */
+  }
+
+  header .header-nav a {
+    font-size: 10px !important;
+  }
+
+  header .header-domain {
+    font-size: 10px !important;   /* 우측 finmaphub.com */
+  }
+}
