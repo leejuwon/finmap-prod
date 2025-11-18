@@ -47,16 +47,14 @@
     @apply text-xl font-bold mt-1;
   }
 
-  /* ✅ 리스트 썸네일 전용 이미지 (상세페이지는 사용 X) */
+  /* 리스트 썸네일 전용 */
   .card-thumb {
-    /*@apply w-full h-40 object-cover rounded-xl mb-3;*/
-    /* h-40 = 160px, 필요하면 h-48(192px)로 늘려도 됨 */
     @apply w-full rounded-xl mb-3 object-contain bg-slate-50;
   }
 }
 
 @layer base {
-  /* ✅ 브라우저 자동 글자 확대(autosizing) 끄기 */
+  /* 모바일 자동 글자 확대 방지 */
   html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
@@ -69,77 +67,107 @@
   a {
     @apply text-slate-800;
   }
-
   a:hover {
     @apply text-blue-600;
   }
 }
 
-/* 복리 계산기 페이지 등이 사용할 수 있는 전체 폭 유틸(원하면 사용) */
-.fm-mobile-full {
-  width: 100%;
-}
-
-/* ===== 헤더 내비 전용 튜닝 ===== */
-
-/* 기본: 메뉴는 한 줄 유지 + 필요하면 가로 스크롤 */
+/* =========================================================
+   Header Navigation Scroll / Responsive
+========================================================= */
 .header-nav {
   overflow-x: auto;
   white-space: nowrap;
 }
 
-/* 각 메뉴 텍스트 자체도 줄바꿈 금지 */
+/* 메뉴 자체는 줄바꿈 금지 */
 .header-nav a {
   white-space: nowrap;
 }
 
-/* 모바일에서 스크롤바 안 보이게 처리 */
+/* 모바일에서 scrollbar 숨기기 */
 .header-nav::-webkit-scrollbar {
   display: none;
 }
 .header-nav {
-  -ms-overflow-style: none;  /* IE, Edge */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* 폴드/플립 같은 좁은 화면(가로 520px 이하)에서 도메인 텍스트 숨기고 메뉴 공간 확보 */
+/* 폴드·좁은 화면에서 메뉴 크기 조절 */
 @media (max-width: 520px) {
   .header-domain {
     display: none;
   }
-
   .header-nav {
-    font-size: 11px;   /* 기본보다 살짝 줄이기 */
+    font-size: 11px;
     gap: 0.25rem;
   }
 }
 
-/* 아주 좁은 화면(가로 400px 이하)에서 추가 축소 */
 @media (max-width: 400px) {
   .header-nav {
     font-size: 10px;
     gap: 0.15rem;
   }
-
   .header-nav a {
     padding-left: 0.25rem;
     padding-right: 0.25rem;
   }
-
   .header-domain {
     font-size: 9px;
   }
 }
 
-/* ✅ 연간 요약 테이블 공통(복리/목표자산 둘 다) */
-.fm-year-table table {
-  font-size: 0.875rem; /* 기본 14px 정도 */
+/* =========================================================
+   헤더는 항상 같은 크기 유지
+========================================================= */
+@media (max-width: 640px) {
+  header .header-nav {
+    font-size: 10px !important;
+  }
+  header .header-nav a {
+    font-size: 10px !important;
+  }
+  header .header-domain {
+    font-size: 10px !important;
+  }
 }
 
-/* 모바일에서 더 컴팩트하게 */
-@media (max-width: 640px) {
+/* =========================================================
+   🟦 연간 요약 테이블 공통 (복리 / 목표자산)
+   — “가로화면 좁으면 글자 자동 축소 + 줄바꿈 방지”
+========================================================= */
+
+/* 최상위 wrapper */
+.fm-year-table {
+  width: 100%;
+}
+
+/* 기본 PC·태블릿 – 조금 작은 폰트 + 넓은 min-width */
+.fm-year-table table {
+  font-size: 0.875rem;      /* 14px 정도 */
+  line-height: 1.2;
+  min-width: 720px;         /* 부족하면 가로스크롤 */
+}
+
+/* 줄바꿈 방지: **모든 모바일 문제 해결 핵심** */
+.fm-year-table th,
+.fm-year-table td {
+  white-space: nowrap;
+}
+
+/* 테이블이 너무 넓을 때 자동 스크롤 */
+.fm-year-table {
+  overflow-x: auto;
+}
+
+/* ---------------------------------------------------------
+   (1) 900px 이하 = 대부분 스마트폰(폴드/플립 포함)
+--------------------------------------------------------- */
+@media (max-width: 900px) {
   .fm-year-table table {
-    font-size: 0.7rem; /* 약 11px */
+    font-size: 0.75rem;   /* 12px */
   }
 
   .fm-year-table th,
@@ -149,20 +177,18 @@
   }
 }
 
-/* --------------------------------------------------
-   복리 계산기 등 도구 페이지에서 글자를 줄여도
-   헤더 영역은 항상 동일한 크기를 유지하도록 고정
------------------------------------------------------*/
-@media (max-width: 640px) {
-  header .header-nav {
-    font-size: 10px !important;   /* 메뉴 글자 */
+/* ---------------------------------------------------------
+   (2) 520px 이하 = 폴드 커버화면 / 플립 작은 화면
+      — 가장 강하게 압축
+--------------------------------------------------------- */
+@media (max-width: 520px) {
+  .fm-year-table table {
+    font-size: 0.625rem !important; /* 10px 정도 */
   }
 
-  header .header-nav a {
-    font-size: 10px !important;
-  }
-
-  header .header-domain {
-    font-size: 10px !important;   /* 우측 finmaphub.com */
+  .fm-year-table th,
+  .fm-year-table td {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
   }
 }
