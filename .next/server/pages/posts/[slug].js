@@ -123,15 +123,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_SeoHead__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8814);
-/* harmony import */ var _components_AdResponsive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1137);
-/* harmony import */ var _components_AdInArticle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3248);
-/* harmony import */ var _config_adSlots__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(280);
-/* harmony import */ var _lib_posts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(8904);
-/* harmony import */ var html_react_parser__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(2905);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_lib_posts__WEBPACK_IMPORTED_MODULE_5__, html_react_parser__WEBPACK_IMPORTED_MODULE_6__]);
-([_lib_posts__WEBPACK_IMPORTED_MODULE_5__, html_react_parser__WEBPACK_IMPORTED_MODULE_6__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_SeoHead__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8814);
+/* harmony import */ var _components_AdResponsive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(1137);
+/* harmony import */ var _components_AdInArticle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3248);
+/* harmony import */ var _config_adSlots__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(280);
+/* harmony import */ var _lib_posts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8904);
+/* harmony import */ var html_react_parser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(2905);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_lib_posts__WEBPACK_IMPORTED_MODULE_6__, html_react_parser__WEBPACK_IMPORTED_MODULE_7__]);
+([_lib_posts__WEBPACK_IMPORTED_MODULE_6__, html_react_parser__WEBPACK_IMPORTED_MODULE_7__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
 // pages/posts/[slug].js
+
 
 
 
@@ -148,6 +151,7 @@ function JsonLd({ data  }) {
     });
 }
 function PostPage({ post  }) {
+    const slug = post.slug;
     const jsonld = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
@@ -159,14 +163,99 @@ function PostPage({ post  }) {
             name: "FinMap"
         }
     };
+    // ============================
+    // 👍 좋아요 / 💬 댓글 / 🔗 공유 상태
+    // ============================
+    const { 0: likes , 1: setLikes  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+    const { 0: comments , 1: setComments  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
+    const { 0: commentForm , 1: setCommentForm  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
+        nickname: "",
+        password: "",
+        content: ""
+    });
+    const { 0: shareUrl , 1: setShareUrl  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(`https://www.finmaphub.com/posts/${slug}`);
+    // 최초 마운트 시 현재 URL 세팅 + 좋아요/댓글 로딩
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        if (false) {}
+        // 좋아요
+        fetch(`/api/like?slug=${slug}`).then((res)=>res.json()).then((data)=>setLikes(data.likes || 0)).catch(()=>{});
+        // 댓글
+        fetch(`/api/comments?slug=${slug}`).then((res)=>res.json()).then((data)=>setComments(data.comments || [])).catch(()=>{});
+    }, [
+        slug
+    ]);
+    const handleLike = async ()=>{
+        try {
+            const res = await fetch(`/api/like?slug=${slug}`, {
+                method: "POST"
+            });
+            const data = await res.json();
+            if (data.likes != null) setLikes(data.likes);
+        } catch (e) {
+            console.error(e);
+        }
+    };
+    const handleCommentChange = (e)=>{
+        const { name , value  } = e.target;
+        setCommentForm((prev)=>({
+                ...prev,
+                [name]: value
+            }));
+    };
+    const handleCommentSubmit = async ()=>{
+        if (!commentForm.nickname || !commentForm.password || !commentForm.content) {
+            alert("닉네임, 비밀번호, 내용을 모두 입력해주세요.");
+            return;
+        }
+        try {
+            const res = await fetch(`/api/comments?slug=${slug}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(commentForm)
+            });
+            if (!res.ok) throw new Error("failed");
+            // 새 목록 다시 로딩
+            const listRes = await fetch(`/api/comments?slug=${slug}`);
+            const data = await listRes.json();
+            setComments(data.comments || []);
+            setCommentForm({
+                nickname: "",
+                password: "",
+                content: ""
+            });
+        } catch (e) {
+            console.error(e);
+            alert("댓글 등록에 실패했습니다.");
+        }
+    };
+    const handleShare = async ()=>{
+        try {
+            if (navigator.share) {
+                await navigator.share({
+                    title: post.title,
+                    text: post.description || post.title,
+                    url: shareUrl
+                });
+            } else if (navigator.clipboard) {
+                await navigator.clipboard.writeText(shareUrl);
+                alert("링크가 클립보드에 복사되었습니다.");
+            } else {
+                alert("링크를 직접 복사해주세요:\n" + shareUrl);
+            }
+        } catch (e) {
+            console.error(e);
+        }
+    };
     // 🔥 인-아티클 광고를 H2 기준으로 2번 삽입하는 로직
     let h2Index = 0;
-    const contentWithInArticleAds = (0,html_react_parser__WEBPACK_IMPORTED_MODULE_6__["default"])(post.contentHtml, {
+    const contentWithInArticleAds = (0,html_react_parser__WEBPACK_IMPORTED_MODULE_7__["default"])(post.contentHtml, {
         replace (domNode) {
             // 태그 타입(h2)만 처리
             if (domNode.type === "tag" && domNode.name === "h2") {
                 h2Index += 1;
-                const children = (0,html_react_parser__WEBPACK_IMPORTED_MODULE_6__.domToReact)(domNode.children);
+                const children = (0,html_react_parser__WEBPACK_IMPORTED_MODULE_7__.domToReact)(domNode.children);
                 // 2번째 h2 뒤에 인-아티클 광고 1 삽입
                 if (h2Index === 2) {
                     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
@@ -176,9 +265,9 @@ function PostPage({ post  }) {
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                                 className: "my-6",
-                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AdInArticle__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
-                                    client: _config_adSlots__WEBPACK_IMPORTED_MODULE_4__/* .AD_CLIENT */ .g,
-                                    slot: _config_adSlots__WEBPACK_IMPORTED_MODULE_4__/* .AD_SLOTS.inArticle1 */ .x.inArticle1
+                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AdInArticle__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+                                    client: _config_adSlots__WEBPACK_IMPORTED_MODULE_5__/* .AD_CLIENT */ .g,
+                                    slot: _config_adSlots__WEBPACK_IMPORTED_MODULE_5__/* .AD_SLOTS.inArticle1 */ .x.inArticle1
                                 })
                             })
                         ]
@@ -193,9 +282,9 @@ function PostPage({ post  }) {
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                                 className: "my-6",
-                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AdInArticle__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
-                                    client: _config_adSlots__WEBPACK_IMPORTED_MODULE_4__/* .AD_CLIENT */ .g,
-                                    slot: _config_adSlots__WEBPACK_IMPORTED_MODULE_4__/* .AD_SLOTS.inArticle2 */ .x.inArticle2
+                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AdInArticle__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+                                    client: _config_adSlots__WEBPACK_IMPORTED_MODULE_5__/* .AD_CLIENT */ .g,
+                                    slot: _config_adSlots__WEBPACK_IMPORTED_MODULE_5__/* .AD_SLOTS.inArticle2 */ .x.inArticle2
                                 })
                             })
                         ]
@@ -212,7 +301,7 @@ function PostPage({ post  }) {
     });
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         children: [
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_SeoHead__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_SeoHead__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
                 title: post.title,
                 desc: post.description,
                 url: `/posts/${post.slug}`,
@@ -238,9 +327,9 @@ function PostPage({ post  }) {
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                         className: "my-4",
-                        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AdResponsive__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
-                            client: _config_adSlots__WEBPACK_IMPORTED_MODULE_4__/* .AD_CLIENT */ .g,
-                            slot: _config_adSlots__WEBPACK_IMPORTED_MODULE_4__/* .AD_SLOTS.responsiveTop */ .x.responsiveTop,
+                        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AdResponsive__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+                            client: _config_adSlots__WEBPACK_IMPORTED_MODULE_5__/* .AD_CLIENT */ .g,
+                            slot: _config_adSlots__WEBPACK_IMPORTED_MODULE_5__/* .AD_SLOTS.responsiveTop */ .x.responsiveTop,
                             align: "center"
                         })
                     }),
@@ -254,12 +343,124 @@ function PostPage({ post  }) {
                         children: contentWithInArticleAds
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                        className: "mt-8",
-                        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AdResponsive__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
-                            client: _config_adSlots__WEBPACK_IMPORTED_MODULE_4__/* .AD_CLIENT */ .g,
-                            slot: _config_adSlots__WEBPACK_IMPORTED_MODULE_4__/* .AD_SLOTS.responsiveBottom */ .x.responsiveBottom,
+                        className: "mt-8 mb-4",
+                        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AdResponsive__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+                            client: _config_adSlots__WEBPACK_IMPORTED_MODULE_5__/* .AD_CLIENT */ .g,
+                            slot: _config_adSlots__WEBPACK_IMPORTED_MODULE_5__/* .AD_SLOTS.responsiveBottom */ .x.responsiveBottom,
                             align: "center"
                         })
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                        className: "mt-4 flex flex-wrap items-center gap-3 border-t pt-4",
+                        children: [
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("button", {
+                                type: "button",
+                                onClick: handleLike,
+                                className: "btn-secondary",
+                                children: [
+                                    "\uD83D\uDC4D 좋아요 ",
+                                    likes > 0 ? `(${likes})` : ""
+                                ]
+                            }),
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                type: "button",
+                                onClick: handleShare,
+                                className: "btn-secondary",
+                                children: "\uD83D\uDD17 공유하기"
+                            }),
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
+                                href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(post.title)}`,
+                                target: "_blank",
+                                rel: "noopener noreferrer",
+                                className: "text-xs text-sky-500 underline",
+                                children: "X(Twitter)에 공유"
+                            }),
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
+                                href: `https://www.facebook.com/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+                                target: "_blank",
+                                rel: "noopener noreferrer",
+                                className: "text-xs text-blue-600 underline",
+                                children: "Facebook에 공유"
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", {
+                        className: "mt-6 border-t pt-4",
+                        children: [
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h2", {
+                                className: "text-base md:text-lg font-semibold mb-3",
+                                children: "댓글"
+                            }),
+                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                className: "grid gap-2 mb-4",
+                                children: [
+                                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                        className: "grid grid-cols-2 gap-2",
+                                        children: [
+                                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("input", {
+                                                name: "nickname",
+                                                placeholder: "닉네임",
+                                                className: "input",
+                                                value: commentForm.nickname,
+                                                onChange: handleCommentChange
+                                            }),
+                                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("input", {
+                                                name: "password",
+                                                type: "password",
+                                                placeholder: "비밀번호 (수정/삭제용)",
+                                                className: "input",
+                                                value: commentForm.password,
+                                                onChange: handleCommentChange
+                                            })
+                                        ]
+                                    }),
+                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("textarea", {
+                                        name: "content",
+                                        placeholder: "댓글을 입력하세요",
+                                        className: "input min-h-[80px]",
+                                        value: commentForm.content,
+                                        onChange: handleCommentChange
+                                    }),
+                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                                        className: "flex justify-end",
+                                        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                            type: "button",
+                                            className: "btn-primary",
+                                            onClick: handleCommentSubmit,
+                                            children: "댓글 등록"
+                                        })
+                                    })
+                                ]
+                            }),
+                            comments.length === 0 ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                className: "text-sm text-slate-500",
+                                children: "아직 댓글이 없습니다."
+                            }) : /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("ul", {
+                                className: "space-y-3",
+                                children: comments.map((c)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                                        className: "border rounded-lg px-3 py-2 bg-slate-50",
+                                        children: [
+                                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                                className: "flex items-center justify-between mb-1",
+                                                children: [
+                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
+                                                        className: "text-sm font-semibold",
+                                                        children: c.nickname
+                                                    }),
+                                                    c.created_at && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
+                                                        className: "text-[11px] text-slate-400",
+                                                        children: new Date(c.created_at).toLocaleString("ko-KR")
+                                                    })
+                                                ]
+                                            }),
+                                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                                className: "text-sm whitespace-pre-wrap",
+                                                children: c.content
+                                            })
+                                        ]
+                                    }, c.id))
+                            })
+                        ]
                     })
                 ]
             })
@@ -267,7 +468,7 @@ function PostPage({ post  }) {
     });
 }
 async function getStaticPaths() {
-    const posts = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_5__/* .getAllPosts */ .Bd)(); // [{slug: '...'}]
+    const posts = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_6__/* .getAllPosts */ .Bd)(); // [{slug: '...'}]
     return {
         paths: posts.map((p)=>({
                 params: {
@@ -278,7 +479,7 @@ async function getStaticPaths() {
     };
 }
 async function getStaticProps({ params  }) {
-    const post = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_5__/* .getPostBySlug */ .zQ)(params.slug);
+    const post = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_6__/* .getPostBySlug */ .zQ)(params.slug);
     return {
         props: {
             post
