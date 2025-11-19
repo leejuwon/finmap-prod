@@ -11,7 +11,7 @@ export default function Home({ posts }) {
     <>
       <SeoHead
         title="홈"
-        desc="FinMap 블로그 · 금융 기초 · 투자개념 · 세금 · 복리 계산기"
+        desc="FinMap 블로그 · 금융 기초 · 재테크 · 세금 · 복리 계산기"
         url="/"
       />
 
@@ -89,7 +89,7 @@ export default function Home({ posts }) {
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-lg font-semibold">더 알아보기</h2>
             <span className="text-xs text-slate-500">
-              경제기초 · 투자개념 · 세금 카테고리별로 정리되어 있습니다.
+              경제기초 · 재테크 · 세금 카테고리별로 정리되어 있습니다.
             </span>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

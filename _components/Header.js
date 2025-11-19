@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 const navItems = [
   { href: '/', label: '홈' },
   { href: '/category/economics', label: '경제기초' },
-  { href: '/category/investing', label: '투자개념' },
+  { href: '/category/investing', label: '재테크' },
   { href: '/category/tax', label: '세금' },  
   { href: '/tools', label: '계산기' },
 ];

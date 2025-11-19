@@ -34,7 +34,7 @@ function Home({ posts  }) {
         children: [
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_SeoHead__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
                 title: "홈",
-                desc: "FinMap 블로그 \xb7 금융 기초 \xb7 투자개념 \xb7 세금 \xb7 복리 계산기",
+                desc: "FinMap 블로그 \xb7 금융 기초 \xb7 재테크 \xb7 세금 \xb7 복리 계산기",
                 url: "/"
             }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("section", {
@@ -196,7 +196,7 @@ function Home({ posts  }) {
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
                                 className: "text-xs text-slate-500",
-                                children: "경제기초 \xb7 투자개념 \xb7 세금 카테고리별로 정리되어 있습니다."
+                                children: "경제기초 \xb7 재테크 \xb7 세금 카테고리별로 정리되어 있습니다."
                             })
                         ]
                     }),

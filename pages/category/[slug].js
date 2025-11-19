@@ -4,7 +4,7 @@ import { getAllPosts } from '../../lib/posts';
 
 const CATEGORY_LABELS = {
   economics: '경제기초',
-  investing: '투자개념',
+  investing: '재테크',
   tax: '세금',
 };
 
@@ -50,8 +50,8 @@ export async function getStaticPaths(){
 export async function getStaticProps({ params }){
   const all = getAllPosts(); // [{ category, slug, ... }]
   const posts = all.filter(p => {
-    // p.category가 "경제기초/투자개념/세금"처럼 한글이면 슬러그 매핑
-    const map = { '경제기초':'economics', '투자개념':'investing', '세금':'tax' };
+    // p.category가 "경제기초/재테크/세금"처럼 한글이면 슬러그 매핑
+    const map = { '경제기초':'economics', '재테크':'investing', '세금':'tax' };
     const pSlug = map[p.category] || p.category?.toLowerCase();
     return pSlug === params.slug;
   });

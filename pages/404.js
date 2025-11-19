@@ -11,7 +11,7 @@ export default function NotFound(){
         <div className="flex gap-3 justify-center">
           <Link href="/" className="px-4 py-2 rounded-lg bg-indigo-600 text-white">홈으로</Link>
           <Link href="/category/economics" className="px-4 py-2 rounded-lg border">경제기초</Link>
-          <Link href="/category/investing" className="px-4 py-2 rounded-lg border">투자개념</Link>
+          <Link href="/category/investing" className="px-4 py-2 rounded-lg border">재테크</Link>
           <Link href="/category/tax" className="px-4 py-2 rounded-lg border">세금</Link>
         </div>
       </div>

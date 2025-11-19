@@ -14,11 +14,16 @@ SEO·가독성·Adsense 적합성·모바일 친화성을 기준으로 작성하
 
 \`\`\`yaml
 ---
+slug: "{화면ID}"
 title: "{글 제목}"
 description: "{150자 이내 요약문}"
 date: "{YYYY-MM-DD}"
-category: "{경제·투자·재테크 등}"
-tags: ["키워드1", "키워드2", "키워드3"]
+datePublished: "{YYYY-MM-DD}"
+dateModified: "{YYYY-MM-DD}"
+category: "{경제기초·재테크·세금 등}"
+tags: ["키워드1", "키워드2", "키워드3"..최대10개]
+cover: "{이미지경로}"
+lang: "{ko·en 기본은 ko}"
 ---
 \`\`\`
 
@@ -31,7 +36,11 @@ Front Matter 뒤에는 아래와 같은 H1 → 서론 → H2/H3 구조로 이어
 \`\`\`md
 # {글 제목}
 
+> **요약 (10문장 정리)**
+
 > 한 문단 요약 (Meta description과 유사)
+
+![상단이미지 내용](이미지 경로)
 
 ## 1. 서론
 - 문제 제시

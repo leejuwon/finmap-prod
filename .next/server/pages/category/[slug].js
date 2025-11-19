@@ -29,7 +29,7 @@ _lib_posts__WEBPACK_IMPORTED_MODULE_3__ = (__webpack_async_dependencies__.then ?
 
 const CATEGORY_LABELS = {
     economics: "경제기초",
-    investing: "투자개념",
+    investing: "재테크",
     tax: "세금"
 };
 function CategoryPage({ slug , posts  }) {
@@ -99,10 +99,10 @@ async function getStaticProps({ params  }) {
     const all = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_3__/* .getAllPosts */ .Bd)(); // [{ category, slug, ... }]
     const posts = all.filter((p)=>{
         var ref;
-        // p.category가 "경제기초/투자개념/세금"처럼 한글이면 슬러그 매핑
+        // p.category가 "경제기초/재테크/세금"처럼 한글이면 슬러그 매핑
         const map = {
             "경제기초": "economics",
-            "투자개념": "investing",
+            "재테크": "investing",
             "세금": "tax"
         };
         const pSlug = map[p.category] || ((ref = p.category) === null || ref === void 0 ? void 0 : ref.toLowerCase());

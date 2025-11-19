@@ -4,7 +4,7 @@ title: "사회초년생을 위한 월급 관리 5단계 가이드"
 description: "사회초년생이 가장 고민하는 월급 관리. 어디서부터 시작해야 할지 막막하다면 이 글에서 소개하는 월급 관리 5단계 가이드로 재테크의 기초를 다져보세요."
 datePublished: "2025-11-17"
 dateModified: "2025-11-17"
-category: "투자개념"
+category: "재테크"
 cover: "/images/economics/step5_thum.png"
 tags: ["월급관리", "사회초년생", "예산관리", "재테크기초"]
 lang: "ko"

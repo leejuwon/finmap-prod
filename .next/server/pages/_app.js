@@ -44,7 +44,7 @@ const navItems = [
     },
     {
         href: "/category/investing",
-        label: "투자개념"
+        label: "재테크"
     },
     {
         href: "/category/tax",
