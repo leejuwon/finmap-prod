@@ -1,11 +1,12 @@
 {
   "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/404": "pages/404.html",
+  "/_error": "pages/_error.js",
   "/about": "pages/about.html",
   "/api/compound": "pages/api/compound.js",
-  "/disclaimer": "pages/disclaimer.html",
   "/contact": "pages/contact.html",
+  "/disclaimer": "pages/disclaimer.html",
   "/en": "pages/en.html",
   "/en/tools/calculator": "pages/en/tools/calculator.html",
   "/ko": "pages/ko.html",
@@ -15,12 +16,11 @@
   "/tools/compound-interest": "pages/tools/compound-interest.html",
   "/tools/goal-simulator": "pages/tools/goal-simulator.html",
   "/tools": "pages/tools.html",
+  "/ko/blog/[slug]": "pages/ko/blog/[slug].js",
+  "/category/[slug]": "pages/category/[slug].js",
   "/en/blog/[slug]": "pages/en/blog/[slug].js",
   "/en/blog": "pages/en/blog.js",
-  "/ko/blog/[slug]": "pages/ko/blog/[slug].js",
-  "/ko/blog": "pages/ko/blog.js",
-  "/posts/[slug]": "pages/posts/[slug].js",
-  "/404": "pages/404.html",
   "/": "pages/index.js",
-  "/category/[slug]": "pages/category/[slug].js"
+  "/ko/blog": "pages/ko/blog.js",
+  "/posts/[slug]": "pages/posts/[slug].js"
 }
