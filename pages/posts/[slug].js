@@ -28,9 +28,7 @@ export default function PostPage({ post }) {
     author: { '@type': 'Organization', name: 'FinMap' },
   };
 
-  // ============================
   // 👍 좋아요 / 💬 댓글 / 🔗 공유 상태
-  // ============================
   const [likes, setLikes] = useState(0);
   const [comments, setComments] = useState([]);
   const [commentForm, setCommentForm] = useState({
@@ -42,23 +40,35 @@ export default function PostPage({ post }) {
     `https://www.finmaphub.com/posts/${slug}`
   );
 
+  // 댓글/좋아요 재로딩 함수
+  const reloadComments = async () => {
+    try {
+      const res = await fetch(`/api/comments?slug=${slug}`);
+      const data = await res.json();
+      setComments(data.comments || []);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const reloadLikes = async () => {
+    try {
+      const res = await fetch(`/api/like?slug=${slug}`);
+      const data = await res.json();
+      setLikes(data.likes || 0);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   // 최초 마운트 시 현재 URL 세팅 + 좋아요/댓글 로딩
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setShareUrl(window.location.href);
     }
 
-    // 좋아요
-    fetch(`/api/like?slug=${slug}`)
-      .then((res) => res.json())
-      .then((data) => setLikes(data.likes || 0))
-      .catch(() => {});
-
-    // 댓글
-    fetch(`/api/comments?slug=${slug}`)
-      .then((res) => res.json())
-      .then((data) => setComments(data.comments || []))
-      .catch(() => {});
+    reloadLikes();
+    reloadComments();
   }, [slug]);
 
   const handleLike = async () => {
@@ -92,15 +102,85 @@ export default function PostPage({ post }) {
       });
       if (!res.ok) throw new Error('failed');
 
-      // 새 목록 다시 로딩
-      const listRes = await fetch(`/api/comments?slug=${slug}`);
-      const data = await listRes.json();
-      setComments(data.comments || []);
-
+      await reloadComments();
       setCommentForm({ nickname: '', password: '', content: '' });
     } catch (e) {
       console.error(e);
       alert('댓글 등록에 실패했습니다.');
+    }
+  };
+
+  // 🔧 댓글 수정
+  const handleCommentEdit = async (comment) => {
+    const newContent = prompt(
+      '수정할 내용을 입력하세요.',
+      comment.content || ''
+    );
+    if (!newContent) return;
+
+    const password = prompt('댓글 작성 시 입력한 비밀번호를 입력하세요.');
+    if (!password) return;
+
+    try {
+      const res = await fetch(`/api/comments?slug=${slug}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: comment.id,
+          password,
+          content: newContent,
+        }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        if (err.error === 'invalid password') {
+          alert('비밀번호가 일치하지 않습니다.');
+        } else {
+          alert('댓글 수정에 실패했습니다.');
+        }
+        return;
+      }
+
+      await reloadComments();
+    } catch (e) {
+      console.error(e);
+      alert('댓글 수정 중 오류가 발생했습니다.');
+    }
+  };
+
+  // 🗑 댓글 삭제
+  const handleCommentDelete = async (comment) => {
+    const ok = confirm('정말 이 댓글을 삭제하시겠습니까?');
+    if (!ok) return;
+
+    const password = prompt('댓글 작성 시 입력한 비밀번호를 입력하세요.');
+    if (!password) return;
+
+    try {
+      const res = await fetch(`/api/comments?slug=${slug}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: comment.id,
+          password,
+        }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        if (err.error === 'invalid password') {
+          alert('비밀번호가 일치하지 않습니다.');
+        } else {
+          alert('댓글 삭제에 실패했습니다.');
+        }
+        return;
+      }
+
+      await reloadComments();
+    } catch (e) {
+      console.error(e);
+      alert('댓글 삭제 중 오류가 발생했습니다.');
     }
   };
 
@@ -128,12 +208,10 @@ export default function PostPage({ post }) {
 
   const contentWithInArticleAds = parse(post.contentHtml, {
     replace(domNode) {
-      // 태그 타입(h2)만 처리
       if (domNode.type === 'tag' && domNode.name === 'h2') {
         h2Index += 1;
         const children = domToReact(domNode.children);
 
-        // 2번째 h2 뒤에 인-아티클 광고 1 삽입
         if (h2Index === 2) {
           return (
             <>
@@ -148,7 +226,6 @@ export default function PostPage({ post }) {
           );
         }
 
-        // 4번째 h2 뒤에 인-아티클 광고 2 삽입
         if (h2Index === 4) {
           return (
             <>
@@ -163,11 +240,9 @@ export default function PostPage({ post }) {
           );
         }
 
-        // 나머지 h2는 그대로 렌더링
         return <h2>{children}</h2>;
       }
 
-      // 나머지는 기본 동작 (그대로 렌더)
       return undefined;
     },
   });
@@ -324,15 +399,36 @@ export default function PostPage({ post }) {
                     <span className="text-sm font-semibold">
                       {c.nickname}
                     </span>
-                    {c.created_at && (
-                      <span className="text-[11px] text-slate-400">
-                        {new Date(c.created_at).toLocaleString('ko-KR')}
-                      </span>
-                    )}
+                    <span className="flex items-center gap-2">
+                      {c.created_at && (
+                        <span className="text-[11px] text-slate-400">
+                          {new Date(c.created_at).toLocaleString('ko-KR')}
+                        </span>
+                      )}
+                    </span>
                   </div>
-                  <p className="text-sm whitespace-pre-wrap">
+
+                  <p className="text-sm whitespace-pre-wrap mb-2">
                     {c.content}
                   </p>
+
+                  {/* 수정 / 삭제 버튼 */}
+                  <div className="flex gap-2 justify-end">
+                    <button
+                      type="button"
+                      className="text-xs text-slate-500 hover:text-blue-600"
+                      onClick={() => handleCommentEdit(c)}
+                    >
+                      수정
+                    </button>
+                    <button
+                      type="button"
+                      className="text-xs text-slate-500 hover:text-red-600"
+                      onClick={() => handleCommentDelete(c)}
+                    >
+                      삭제
+                    </button>
+                  </div>
                 </li>
               ))}
             </ul>

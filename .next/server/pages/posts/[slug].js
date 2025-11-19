@@ -163,9 +163,7 @@ function PostPage({ post  }) {
             name: "FinMap"
         }
     };
-    // ============================
     // 👍 좋아요 / 💬 댓글 / 🔗 공유 상태
-    // ============================
     const { 0: likes , 1: setLikes  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
     const { 0: comments , 1: setComments  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
     const { 0: commentForm , 1: setCommentForm  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
@@ -174,13 +172,30 @@ function PostPage({ post  }) {
         content: ""
     });
     const { 0: shareUrl , 1: setShareUrl  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(`https://www.finmaphub.com/posts/${slug}`);
+    // 댓글/좋아요 재로딩 함수
+    const reloadComments = async ()=>{
+        try {
+            const res = await fetch(`/api/comments?slug=${slug}`);
+            const data = await res.json();
+            setComments(data.comments || []);
+        } catch (e) {
+            console.error(e);
+        }
+    };
+    const reloadLikes = async ()=>{
+        try {
+            const res = await fetch(`/api/like?slug=${slug}`);
+            const data = await res.json();
+            setLikes(data.likes || 0);
+        } catch (e) {
+            console.error(e);
+        }
+    };
     // 최초 마운트 시 현재 URL 세팅 + 좋아요/댓글 로딩
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
         if (false) {}
-        // 좋아요
-        fetch(`/api/like?slug=${slug}`).then((res)=>res.json()).then((data)=>setLikes(data.likes || 0)).catch(()=>{});
-        // 댓글
-        fetch(`/api/comments?slug=${slug}`).then((res)=>res.json()).then((data)=>setComments(data.comments || [])).catch(()=>{});
+        reloadLikes();
+        reloadComments();
     }, [
         slug
     ]);
@@ -216,10 +231,7 @@ function PostPage({ post  }) {
                 body: JSON.stringify(commentForm)
             });
             if (!res.ok) throw new Error("failed");
-            // 새 목록 다시 로딩
-            const listRes = await fetch(`/api/comments?slug=${slug}`);
-            const data = await listRes.json();
-            setComments(data.comments || []);
+            await reloadComments();
             setCommentForm({
                 nickname: "",
                 password: "",
@@ -228,6 +240,71 @@ function PostPage({ post  }) {
         } catch (e) {
             console.error(e);
             alert("댓글 등록에 실패했습니다.");
+        }
+    };
+    // 🔧 댓글 수정
+    const handleCommentEdit = async (comment)=>{
+        const newContent = prompt("수정할 내용을 입력하세요.", comment.content || "");
+        if (!newContent) return;
+        const password = prompt("댓글 작성 시 입력한 비밀번호를 입력하세요.");
+        if (!password) return;
+        try {
+            const res = await fetch(`/api/comments?slug=${slug}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    id: comment.id,
+                    password,
+                    content: newContent
+                })
+            });
+            if (!res.ok) {
+                const err = await res.json().catch(()=>({}));
+                if (err.error === "invalid password") {
+                    alert("비밀번호가 일치하지 않습니다.");
+                } else {
+                    alert("댓글 수정에 실패했습니다.");
+                }
+                return;
+            }
+            await reloadComments();
+        } catch (e) {
+            console.error(e);
+            alert("댓글 수정 중 오류가 발생했습니다.");
+        }
+    };
+    // 🗑 댓글 삭제
+    const handleCommentDelete = async (comment)=>{
+        const ok = confirm("정말 이 댓글을 삭제하시겠습니까?");
+        if (!ok) return;
+        const password = prompt("댓글 작성 시 입력한 비밀번호를 입력하세요.");
+        if (!password) return;
+        try {
+            const res = await fetch(`/api/comments?slug=${slug}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    id: comment.id,
+                    password
+                })
+            });
+            if (!res.ok) {
+                const err = await res.json().catch(()=>({}));
+                if (err.error === "invalid password") {
+                    alert("비밀번호가 일치하지 않습니다.");
+                } else {
+                    alert("댓글 삭제에 실패했습니다.");
+                }
+                return;
+            }
+            await reloadComments();
+        } catch (e) {
+            console.error(e);
+            alert("댓글 삭제 중 오류가 발생했습니다.");
         }
     };
     const handleShare = async ()=>{
@@ -252,11 +329,9 @@ function PostPage({ post  }) {
     let h2Index = 0;
     const contentWithInArticleAds = (0,html_react_parser__WEBPACK_IMPORTED_MODULE_7__["default"])(post.contentHtml, {
         replace (domNode) {
-            // 태그 타입(h2)만 처리
             if (domNode.type === "tag" && domNode.name === "h2") {
                 h2Index += 1;
                 const children = (0,html_react_parser__WEBPACK_IMPORTED_MODULE_7__.domToReact)(domNode.children);
-                // 2번째 h2 뒤에 인-아티클 광고 1 삽입
                 if (h2Index === 2) {
                     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
                         children: [
@@ -273,7 +348,6 @@ function PostPage({ post  }) {
                         ]
                     });
                 }
-                // 4번째 h2 뒤에 인-아티클 광고 2 삽입
                 if (h2Index === 4) {
                     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
                         children: [
@@ -290,12 +364,10 @@ function PostPage({ post  }) {
                         ]
                     });
                 }
-                // 나머지 h2는 그대로 렌더링
                 return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h2", {
                     children: children
                 });
             }
-            // 나머지는 기본 동작 (그대로 렌더)
             return undefined;
         }
     });
@@ -447,15 +519,35 @@ function PostPage({ post  }) {
                                                         className: "text-sm font-semibold",
                                                         children: c.nickname
                                                     }),
-                                                    c.created_at && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                                                        className: "text-[11px] text-slate-400",
-                                                        children: new Date(c.created_at).toLocaleString("ko-KR")
+                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
+                                                        className: "flex items-center gap-2",
+                                                        children: c.created_at && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
+                                                            className: "text-[11px] text-slate-400",
+                                                            children: new Date(c.created_at).toLocaleString("ko-KR")
+                                                        })
                                                     })
                                                 ]
                                             }),
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                                                className: "text-sm whitespace-pre-wrap",
+                                                className: "text-sm whitespace-pre-wrap mb-2",
                                                 children: c.content
+                                            }),
+                                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                                className: "flex gap-2 justify-end",
+                                                children: [
+                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                                        type: "button",
+                                                        className: "text-xs text-slate-500 hover:text-blue-600",
+                                                        onClick: ()=>handleCommentEdit(c),
+                                                        children: "수정"
+                                                    }),
+                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                                                        type: "button",
+                                                        className: "text-xs text-slate-500 hover:text-red-600",
+                                                        onClick: ()=>handleCommentDelete(c),
+                                                        children: "삭제"
+                                                    })
+                                                ]
                                             })
                                         ]
                                     }, c.id))

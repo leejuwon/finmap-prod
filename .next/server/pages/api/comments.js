@@ -106,8 +106,92 @@ async function handler(req, res) {
                 ok: true
             });
         }
-        // 삭제/수정 API는 나중에 확장
-        return res.status(405).end();
+        // 🔧 댓글 수정 (PUT)
+        if (method === "PUT") {
+            const { id , password: password1 , content: content1  } = req.body || {};
+            if (!id || !password1 || !content1) {
+                return res.status(400).json({
+                    error: "id, password, content required"
+                });
+            }
+            // 저장된 비밀번호 조회
+            const [rows1] = await db.query(`
+        SELECT password
+        FROM blog_post_comments
+        WHERE id = ? AND slug = ?
+        `, [
+                id,
+                slug
+            ]);
+            if (rows1.length === 0) {
+                return res.status(404).json({
+                    error: "comment not found"
+                });
+            }
+            const savedPw = rows1[0].password;
+            if (savedPw !== password1) {
+                return res.status(403).json({
+                    error: "invalid password"
+                });
+            }
+            // 내용만 업데이트 (updated_at 컬럼이 있다면 SET updated_at = NOW() 추가해도 됨)
+            await db.query(`
+        UPDATE blog_post_comments
+        SET content = ?
+        WHERE id = ?
+        `, [
+                content1,
+                id
+            ]);
+            return res.status(200).json({
+                ok: true
+            });
+        }
+        // 🗑 댓글 삭제 (DELETE)
+        if (method === "DELETE") {
+            const { id: id1 , password: password2  } = req.body || {};
+            if (!id1 || !password2) {
+                return res.status(400).json({
+                    error: "id, password required"
+                });
+            }
+            const [rows2] = await db.query(`
+        SELECT password
+        FROM blog_post_comments
+        WHERE id = ? AND slug = ?
+        `, [
+                id1,
+                slug
+            ]);
+            if (rows2.length === 0) {
+                return res.status(404).json({
+                    error: "comment not found"
+                });
+            }
+            const savedPw1 = rows2[0].password;
+            if (savedPw1 !== password2) {
+                return res.status(403).json({
+                    error: "invalid password"
+                });
+            }
+            await db.query(`
+        DELETE FROM blog_post_comments
+        WHERE id = ?
+        `, [
+                id1
+            ]);
+            return res.status(200).json({
+                ok: true
+            });
+        }
+        // 그 외 메서드는 허용 안 함
+        res.setHeader("Allow", [
+            "GET",
+            "POST",
+            "PUT",
+            "DELETE"
+        ]);
+        return res.status(405).end(`Method ${method} Not Allowed`);
     } catch (err) {
         console.error(err);
         return res.status(500).json({
