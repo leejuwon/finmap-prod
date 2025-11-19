@@ -192,3 +192,34 @@
     padding-right: 0.2rem;
   }
 }
+
+/* ===========================================
+   블로그 본문 표 반응형 처리
+   =========================================== */
+.fm-post-body table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* 모바일에서 표 가로 스크롤 허용 */
+@media (max-width: 768px) {
+  .fm-post-body table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 */
+  }
+
+  /* 표 내부 글자 줄바꿈 방지 → 1줄 유지 */
+  .fm-post-body th,
+  .fm-post-body td {
+    white-space: nowrap;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+  }
+
+  /* 모바일 스크롤바 슬림화 */
+  .fm-post-body table::-webkit-scrollbar {
+    height: 6px;
+  }
+}
+

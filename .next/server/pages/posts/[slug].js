@@ -250,7 +250,7 @@ function PostPage({ post  }) {
                         className: "w-full h-auto rounded-xl mt-4 mb-6"
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                        className: "post-body",
+                        className: "fm-post-body",
                         children: contentWithInArticleAds
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {

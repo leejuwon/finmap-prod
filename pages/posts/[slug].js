@@ -113,7 +113,7 @@ export default function PostPage({ post }) {
         )}
 
         {/* 🔥 인-아티클 광고가 섞여 들어간 본문 */}
-        <div className="post-body">
+        <div className="fm-post-body">
           {contentWithInArticleAds}
         </div>
 
