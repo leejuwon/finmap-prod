@@ -100,11 +100,11 @@ function AdResponsive({ client ="ca-pub-1869932115288976" , slot , align ="cente
 // 승인 전이면 slot ID는 빈 문자열("")로 두고, 승인 후 실제 ID만 넣으면 됨.
 const AD_CLIENT = "ca-pub-1869932115288976"; // 너 계정 ID
 const AD_SLOTS = {
-    inArticle1: "",
-    inArticle2: "",
-    responsiveTop: "",
-    responsiveBottom: "",
-    sidebar: ""
+    inArticle1: "1924002516",
+    inArticle2: "3101352817",
+    responsiveTop: "9858332854",
+    responsiveBottom: "4881338348",
+    sidebar: "6085898367"
 };
 
 
