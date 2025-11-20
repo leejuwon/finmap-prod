@@ -75,7 +75,7 @@ export default function Home({ posts }) {
               )}
               <span className="badge">{p.category}</span>
               <h3 className="mt-2 text-lg font-semibold">
-                <Link href={`/posts/${p.slug}`}>{p.title}</Link>
+                <Link href={`/posts/ko/${p.slug}`}>{p.title}</Link>
               </h3>
               <p className="text-xs text-slate-500 mt-1">{p.datePublished}</p>
             </article>
@@ -100,7 +100,7 @@ export default function Home({ posts }) {
                 )}
                 <span className="badge">{p.category}</span>
                 <h3 className="mt-2 text-base font-semibold">
-                  <Link href={`/posts/${p.slug}`}>{p.title}</Link>
+                  <Link href={`/posts/ko/${p.slug}`}>{p.title}</Link>
                 </h3>
                 <p className="text-xs text-slate-500 mt-1">{p.datePublished}</p>
               </article>

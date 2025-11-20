@@ -23,23 +23,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_posts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8904);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_lib_posts__WEBPACK_IMPORTED_MODULE_3__]);
 _lib_posts__WEBPACK_IMPORTED_MODULE_3__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+// pages/category/[lang]/[slug].js
 
 
 
 
-const CATEGORY_LABELS = {
+const CATEGORY_LABELS_KO = {
     economics: "경제기초",
     investing: "재테크",
     tax: "세금"
 };
-function CategoryPage({ slug , posts  }) {
-    const title = CATEGORY_LABELS[slug] || slug;
+const CATEGORY_LABELS_EN = {
+    economics: "Economics",
+    investing: "Investing",
+    tax: "Tax"
+};
+function CategoryPage({ lang , slug , posts  }) {
+    const isKo = lang === "ko";
+    const LABELS = isKo ? CATEGORY_LABELS_KO : CATEGORY_LABELS_EN;
+    const title = LABELS[slug] || slug;
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         children: [
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_SeoHead__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
-                title: `${title} 카테고리`,
-                desc: `${title} 글 모음`,
-                url: `/category/${slug}`
+                title: isKo ? `${title} 카테고리` : `${title} category`,
+                desc: isKo ? `${title} 글 모음` : `Posts about ${title}`,
+                url: `/category/${lang}/${slug}`
             }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
                 className: "text-2xl font-bold mb-4",
@@ -47,7 +55,7 @@ function CategoryPage({ slug , posts  }) {
             }),
             posts.length === 0 ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                 className: "text-slate-500",
-                children: "아직 이 카테고리의 글이 없습니다."
+                children: isKo ? "아직 이 카테고리의 글이 없습니다." : "No posts in this category yet."
             }) : /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("ul", {
                 className: "grid gap-4 sm:grid-cols-2 lg:grid-cols-3",
                 children: posts.map((p)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
@@ -65,7 +73,7 @@ function CategoryPage({ slug , posts  }) {
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h3", {
                                 className: "mt-2 text-lg font-semibold",
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                    href: `/posts/${p.slug}`,
+                                    href: `/posts/${lang}/${p.slug}`,
                                     children: p.title
                                 })
                             }),
@@ -80,37 +88,41 @@ function CategoryPage({ slug , posts  }) {
     });
 }
 async function getStaticPaths() {
-    // 카테고리 슬러그 고정
+    // 🔹 현재는 ko만 사용, 언어별 카테고리 슬러그 고정
     const slugs = [
         "economics",
         "investing",
         "tax"
     ];
+    const paths = slugs.map((slug)=>({
+            params: {
+                lang: "ko",
+                slug
+            }
+        }));
     return {
-        paths: slugs.map((s)=>({
-                params: {
-                    slug: s
-                }
-            })),
+        paths,
         fallback: false
     };
 }
 async function getStaticProps({ params  }) {
-    const all = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_3__/* .getAllPosts */ .Bd)(); // [{ category, slug, ... }]
+    const { lang , slug  } = params;
+    // 일단은 getAllPosts() 모두에서 카테고리 필터만 (한글/영문 분리는 나중 단계)
+    const all = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_3__/* .getAllPosts */ .Bd)();
+    const map = {
+        "경제기초": "economics",
+        "재테크": "investing",
+        "세금": "tax"
+    };
     const posts = all.filter((p)=>{
         var ref;
-        // p.category가 "경제기초/재테크/세금"처럼 한글이면 슬러그 매핑
-        const map = {
-            "경제기초": "economics",
-            "재테크": "investing",
-            "세금": "tax"
-        };
         const pSlug = map[p.category] || ((ref = p.category) === null || ref === void 0 ? void 0 : ref.toLowerCase());
-        return pSlug === params.slug;
+        return pSlug === slug;
     });
     return {
         props: {
-            slug: params.slug,
+            lang: lang || "ko",
+            slug,
             posts
         }
     };

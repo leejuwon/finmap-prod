@@ -12,6 +12,13 @@ module.exports = require("mysql2/promise");
 
 /***/ }),
 
+/***/ 7618:
+/***/ ((module) => {
+
+module.exports = import("bcryptjs");;
+
+/***/ }),
+
 /***/ 4808:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -53,15 +60,20 @@ module.exports = {
 /***/ }),
 
 /***/ 7246:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ handler)
 /* harmony export */ });
 /* harmony import */ var _lib_db__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4808);
 /* harmony import */ var _lib_db__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_lib_db__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var bcryptjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7618);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([bcryptjs__WEBPACK_IMPORTED_MODULE_1__]);
+bcryptjs__WEBPACK_IMPORTED_MODULE_1__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 // pages/api/comments.js
+
 
 async function handler(req, res) {
     const { method  } = req;
@@ -73,6 +85,7 @@ async function handler(req, res) {
     }
     const db = await (0,_lib_db__WEBPACK_IMPORTED_MODULE_0__.getDB)();
     try {
+        // 📌 댓글 목록 조회
         if (method === "GET") {
             const [rows] = await db.query(`
         SELECT id, nickname, content, created_at
@@ -86,6 +99,7 @@ async function handler(req, res) {
                 comments: rows
             });
         }
+        // 📌 댓글 등록 (비밀번호 해시 저장)
         if (method === "POST") {
             const { nickname , password , content  } = req.body || {};
             if (!nickname || !password || !content) {
@@ -93,20 +107,22 @@ async function handler(req, res) {
                     error: "invalid body"
                 });
             }
+            // 🔐 비밀번호 해시
+            const hash = await bcryptjs__WEBPACK_IMPORTED_MODULE_1__["default"].hash(password, 10);
             await db.query(`
         INSERT INTO blog_post_comments (slug, nickname, password, content)
         VALUES (?, ?, ?, ?)
         `, [
                 slug,
                 nickname,
-                password,
+                hash,
                 content
             ]);
             return res.status(201).json({
                 ok: true
             });
         }
-        // 🔧 댓글 수정 (PUT)
+        // 📌 댓글 수정 (PUT) – 비밀번호 검증 후 내용 수정
         if (method === "PUT") {
             const { id , password: password1 , content: content1  } = req.body || {};
             if (!id || !password1 || !content1) {
@@ -114,7 +130,7 @@ async function handler(req, res) {
                     error: "id, password, content required"
                 });
             }
-            // 저장된 비밀번호 조회
+            // 저장된 해시 비밀번호 조회
             const [rows1] = await db.query(`
         SELECT password
         FROM blog_post_comments
@@ -128,13 +144,15 @@ async function handler(req, res) {
                     error: "comment not found"
                 });
             }
-            const savedPw = rows1[0].password;
-            if (savedPw !== password1) {
+            const savedHash = rows1[0].password;
+            // 🔐 비밀번호 비교 (입력값 vs 해시)
+            const match = await bcryptjs__WEBPACK_IMPORTED_MODULE_1__["default"].compare(password1, savedHash);
+            if (!match) {
                 return res.status(403).json({
                     error: "invalid password"
                 });
             }
-            // 내용만 업데이트 (updated_at 컬럼이 있다면 SET updated_at = NOW() 추가해도 됨)
+            // 내용만 업데이트 (updated_at 컬럼 있으면 여기서 같이 업데이트 가능)
             await db.query(`
         UPDATE blog_post_comments
         SET content = ?
@@ -147,7 +165,7 @@ async function handler(req, res) {
                 ok: true
             });
         }
-        // 🗑 댓글 삭제 (DELETE)
+        // 📌 댓글 삭제 (DELETE) – 비밀번호 검증 후 삭제
         if (method === "DELETE") {
             const { id: id1 , password: password2  } = req.body || {};
             if (!id1 || !password2) {
@@ -168,8 +186,10 @@ async function handler(req, res) {
                     error: "comment not found"
                 });
             }
-            const savedPw1 = rows2[0].password;
-            if (savedPw1 !== password2) {
+            const savedHash1 = rows2[0].password;
+            // 🔐 비밀번호 비교
+            const match1 = await bcryptjs__WEBPACK_IMPORTED_MODULE_1__["default"].compare(password2, savedHash1);
+            if (!match1) {
                 return res.status(403).json({
                     error: "invalid password"
                 });
@@ -200,6 +220,8 @@ async function handler(req, res) {
     }
 }
 
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
 
 /***/ })
 

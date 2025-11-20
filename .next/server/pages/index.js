@@ -171,7 +171,7 @@ function Home({ posts  }) {
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h3", {
                                         className: "mt-2 text-lg font-semibold",
                                         children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                            href: `/posts/${p.slug}`,
+                                            href: `/posts/ko/${p.slug}`,
                                             children: p.title
                                         })
                                     }),
@@ -217,7 +217,7 @@ function Home({ posts  }) {
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h3", {
                                         className: "mt-2 text-base font-semibold",
                                         children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                            href: `/posts/${p.slug}`,
+                                            href: `/posts/ko/${p.slug}`,
                                             children: p.title
                                         })
                                     }),

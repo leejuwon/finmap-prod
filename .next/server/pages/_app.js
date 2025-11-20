@@ -4,7 +4,7 @@ exports.id = 888;
 exports.ids = [888];
 exports.modules = {
 
-/***/ 1412:
+/***/ 2253:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20,8 +20,8 @@ __webpack_require__.d(__webpack_exports__, {
 var jsx_runtime_ = __webpack_require__(997);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(6689);
-;// CONCATENATED MODULE: external "next/router"
-const router_namespaceObject = require("next/router");
+// EXTERNAL MODULE: external "next/router"
+var router_ = __webpack_require__(1853);
 // EXTERNAL MODULE: ./node_modules/next/script.js
 var script = __webpack_require__(4298);
 var script_default = /*#__PURE__*/__webpack_require__.n(script);
@@ -33,30 +33,62 @@ var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
 
 
 
+
 const navItems = [
     {
+        key: "home",
         href: "/",
-        label: "홈"
+        labelKo: "홈",
+        labelEn: "Home"
     },
     {
+        key: "economics",
         href: "/category/economics",
-        label: "경제기초"
+        labelKo: "경제기초",
+        labelEn: "Economics"
     },
     {
+        key: "investing",
         href: "/category/investing",
-        label: "재테크"
+        labelKo: "재테크",
+        labelEn: "Investing"
     },
     {
+        key: "tax",
         href: "/category/tax",
-        label: "세금"
+        labelKo: "세금",
+        labelEn: "Tax"
     },
     {
-        href: "/tools",
-        label: "계산기"
+        key: "compound",
+        href: "/tools/compound-interest",
+        labelKo: "복리 계산기",
+        labelEn: "Compound Calculator"
+    },
+    {
+        key: "goal",
+        href: "/tools/goal-simulator",
+        labelKo: "목표자산 시뮬레이터",
+        labelEn: "Goal Simulator"
     }, 
 ];
 function Header() {
-    const router = (0,router_namespaceObject.useRouter)();
+    const router = (0,router_.useRouter)();
+    const { 0: lang , 1: setLang  } = (0,external_react_.useState)("ko"); // 'ko' | 'en'
+    // 브라우저에서 저장된 언어 불러오기
+    (0,external_react_.useEffect)(()=>{
+        if (true) return;
+        const saved = window.localStorage.getItem("fm_lang");
+        if (saved === "ko" || saved === "en") {
+            setLang(saved);
+        }
+    }, []);
+    const toggleLang = ()=>{
+        const next = lang === "ko" ? "en" : "ko";
+        setLang(next);
+        if (false) {}
+    };
+    const isKo = lang === "ko";
     return /*#__PURE__*/ jsx_runtime_.jsx("header", {
         className: "sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-slate-100",
         children: /*#__PURE__*/ jsx_runtime_.jsx("nav", {
@@ -84,7 +116,7 @@ function Header() {
                                         }),
                                         /*#__PURE__*/ jsx_runtime_.jsx("span", {
                                             className: "hidden sm:block text-[11px] text-slate-500",
-                                            children: "금융 기초 \xb7 투자계획 지도"
+                                            children: isKo ? "금융 기초 \xb7 투자계획 지도" : "Personal finance & investing map"
                                         })
                                     ]
                                 })
@@ -95,19 +127,31 @@ function Header() {
                         className: "header-nav flex items-center gap-1 sm:gap-2 ml-2 sm:ml-6 text-[10px] sm:text-sm",
                         children: navItems.map((item)=>{
                             const active = item.href === "/" ? router.pathname === "/" : router.pathname.startsWith(item.href);
+                            const label = isKo ? item.labelKo : item.labelEn;
                             return /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                                 href: item.href,
                                 passHref: true,
                                 children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
                                     className: "px-2 sm:px-3 py-1 rounded-full transition-colors " + (active ? "bg-blue-50 text-blue-700 font-medium" : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"),
-                                    children: item.label
+                                    children: label
                                 })
-                            }, item.href);
+                            }, item.key);
                         })
                     }),
-                    /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                        className: "header-domain ml-auto text-[10px] sm:text-xs md:text-sm text-slate-500",
-                        children: "finmaphub.com"
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                        className: "ml-auto flex items-center gap-2",
+                        children: [
+                            /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                className: "header-domain text-[10px] sm:text-xs md:text-sm text-slate-500",
+                                children: "finmaphub.com"
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx("button", {
+                                type: "button",
+                                onClick: toggleLang,
+                                className: "btn-secondary !px-2 !py-1 text-[10px] sm:text-xs",
+                                children: isKo ? "EN" : "KO"
+                            })
+                        ]
                     })
                 ]
             })
@@ -191,7 +235,7 @@ function Layout({ children  }) {
  // ✅ Layout 추가
 
 function MyApp({ Component , pageProps  }) {
-    const router = (0,router_namespaceObject.useRouter)();
+    const router = (0,router_.useRouter)();
     const GA_ID = "G-HYS82YP0CH";
     const ADS_CLIENT = "ca-pub-1869932115288976"; // 새 계정의 클라이언트 ID
     // 라우팅될 때마다 page_view 전송
@@ -452,6 +496,14 @@ module.exports = require("next/dist/shared/lib/utils.js");
 
 /***/ }),
 
+/***/ 1853:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/router");
+
+/***/ }),
+
 /***/ 6689:
 /***/ ((module) => {
 
@@ -475,7 +527,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [676,664], () => (__webpack_exec__(1412)));
+var __webpack_exports__ = __webpack_require__.X(0, [676,664], () => (__webpack_exec__(2253)));
 module.exports = __webpack_exports__;
 
 })();
