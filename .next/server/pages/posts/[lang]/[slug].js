@@ -143,7 +143,6 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_lib
 
 
 
-//import { getAllPosts, getPostBySlug } from '../../../lib/posts';
 
 
 function JsonLd({ data  }) {
@@ -154,10 +153,13 @@ function JsonLd({ data  }) {
         }
     });
 }
-function PostPage({ post , lang  }) {
+function PostPage({ post , lang: initialLang  }) {
     const router = (0,next_router__WEBPACK_IMPORTED_MODULE_2__.useRouter)();
-    const slug = post.slug;
+    // ✅ URL ?lang= 가 있으면 그 값을 우선 사용, 없으면 SSG 시점 lang 사용
+    const currentLang = router.query.lang === "ko" || router.query.lang === "en" ? router.query.lang : initialLang || "ko";
+    const lang = currentLang;
     const isKo = lang === "ko";
+    const slug = post.slug;
     const jsonld = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
@@ -575,7 +577,7 @@ async function getStaticPaths() {
     const langs = [
         "ko",
         "en"
-    ]; // en 있으면 ['ko','en'] 로 확장
+    ];
     const paths = langs.flatMap((lang)=>{
         const slugs = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_7__/* .getAllSlugs */ .m)(lang);
         return slugs.map((slug)=>({

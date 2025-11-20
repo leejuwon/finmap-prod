@@ -18,24 +18,79 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1664);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_SeoHead__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8814);
-/* harmony import */ var _lib_posts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8904);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_lib_posts__WEBPACK_IMPORTED_MODULE_3__]);
-_lib_posts__WEBPACK_IMPORTED_MODULE_3__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1853);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_SeoHead__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8814);
+/* harmony import */ var _lib_posts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8904);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_lib_posts__WEBPACK_IMPORTED_MODULE_4__]);
+_lib_posts__WEBPACK_IMPORTED_MODULE_4__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 // pages/index.js
 
 
 
 
+
+const TEXT = {
+    ko: {
+        seoTitle: "홈",
+        seoDesc: "FinMap 블로그 \xb7 금융 기초 \xb7 재테크 \xb7 세금 \xb7 계산기",
+        heroTitleLine1: "당신의 돈 흐름을",
+        heroTitleLine2: "지도처럼 한 눈에",
+        heroSub: "경제 기초 개념부터 투자 아이디어, 세금 이슈, 복리 계산기까지. 초중급 투자자가 헷갈려 하는 포인트만 골라 정리합니다.",
+        btnTool: "복리 계산기 바로가기",
+        btnEconomics: "경제 기초부터 차근차근",
+        stat1Title: "경제 기초",
+        stat1Value: "입문자용",
+        stat2Title: "투자 개념",
+        stat2Value: "실전 연결",
+        stat3Title: "세금",
+        stat3Value: "헷갈림 정리",
+        stat4Title: "복리 계산",
+        stat4Value: "숫자로 확인",
+        latestHeading: "최신 글",
+        moreHeading: "더 알아보기",
+        moreSub: "경제기초 \xb7 재테크 \xb7 세금 카테고리별로 정리되어 있습니다."
+    },
+    en: {
+        seoTitle: "Home",
+        seoDesc: "FinMap blog \xb7 personal finance \xb7 investing \xb7 taxes \xb7 compound interest calculators",
+        heroTitleLine1: "See your money flows",
+        heroTitleLine2: "like a map at a glance",
+        heroSub: "From basic economic concepts to investment ideas, tax topics, and compound interest tools. We focus on the exact points beginner and intermediate investors find confusing.",
+        btnTool: "Open compound interest calculator",
+        btnEconomics: "Start from economic basics",
+        stat1Title: "Economic basics",
+        stat1Value: "For beginners",
+        stat2Title: "Investment concepts",
+        stat2Value: "Linked to practice",
+        stat3Title: "Taxes",
+        stat3Value: "Clearing confusion",
+        stat4Title: "Compound interest",
+        stat4Value: "See it in numbers",
+        latestHeading: "Latest posts",
+        moreHeading: "More to explore",
+        moreSub: "Articles are organized by categories such as economic basics, personal finance, and taxes."
+    }
+};
 function Home({ posts  }) {
-    const latest = posts.slice(0, 3); // 최신 3개
-    const more = posts.slice(3, 9); // 그 다음 6개
+    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_2__.useRouter)();
+    // /?lang=en 또는 /?lang=ko 기준, 기본값은 ko
+    const lang = router.query.lang === "en" || router.query.lang === "ko" ? router.query.lang : "ko";
+    const t = TEXT[lang];
+    // 언어별 포스트 필터링 (lang 필드가 없으면 ko로 간주)
+    const filtered = posts.filter((p)=>{
+        if (!p.lang) return lang === "ko";
+        return p.lang === lang;
+    });
+    const latest = filtered.slice(0, 3);
+    const more = filtered.slice(3, 9);
+    const seoUrl = lang === "en" ? "/?lang=en" : "/";
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         children: [
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_SeoHead__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
-                title: "홈",
-                desc: "FinMap 블로그 \xb7 금융 기초 \xb7 재테크 \xb7 세금 \xb7 복리 계산기",
-                url: "/"
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_SeoHead__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+                title: t.seoTitle,
+                desc: t.seoDesc,
+                url: seoUrl
             }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("section", {
                 className: "mt-6 mb-8",
@@ -52,33 +107,33 @@ function Home({ posts  }) {
                                 /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
                                     className: "text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight mb-3",
                                     children: [
-                                        "당신의 돈 흐름을",
+                                        t.heroTitleLine1,
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {
                                             className: "hidden sm:block"
                                         }),
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
                                             className: "text-blue-300",
-                                            children: "지도처럼 한 눈에"
+                                            children: t.heroTitleLine2
                                         }),
-                                        " 보는 곳, FinMap"
+                                        ", FinMap"
                                     ]
                                 }),
                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                                     className: "text-sm md:text-base text-slate-200 mb-4",
-                                    children: "경제 기초 개념부터 투자 아이디어, 세금 이슈, 복리 계산기까지. 초중급 투자자가 헷갈려 하는 포인트만 골라 정리합니다."
+                                    children: t.heroSub
                                 }),
                                 /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
                                     className: "flex flex-wrap gap-3",
                                     children: [
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                            href: "/tools/compound-interest",
+                                            href: `/tools/compound-interest${lang === "en" ? "?lang=en" : ""}`,
                                             className: "btn-primary bg-blue-500 hover:bg-blue-600",
-                                            children: "복리 계산기 바로가기"
+                                            children: t.btnTool
                                         }),
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                            href: "/category/economics",
+                                            href: `/category/${lang}/economics`,
                                             className: "btn-secondary border-slate-500 text-slate-100 hover:bg-slate-800",
-                                            children: "경제 기초부터 차근차근"
+                                            children: t.btnEconomics
                                         })
                                     ]
                                 })
@@ -94,11 +149,11 @@ function Home({ posts  }) {
                                         children: [
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                                                 className: "stat-title text-slate-300",
-                                                children: "경제 기초"
+                                                children: t.stat1Title
                                             }),
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                                                 className: "stat-value text-blue-300",
-                                                children: "입문자용"
+                                                children: t.stat1Value
                                             })
                                         ]
                                     }),
@@ -107,11 +162,11 @@ function Home({ posts  }) {
                                         children: [
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                                                 className: "stat-title text-slate-300",
-                                                children: "투자 개념"
+                                                children: t.stat2Title
                                             }),
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                                                 className: "stat-value text-emerald-300",
-                                                children: "실전 연결"
+                                                children: t.stat2Value
                                             })
                                         ]
                                     }),
@@ -120,11 +175,11 @@ function Home({ posts  }) {
                                         children: [
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                                                 className: "stat-title text-slate-300",
-                                                children: "세금"
+                                                children: t.stat3Title
                                             }),
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                                                 className: "stat-value text-amber-300",
-                                                children: "헷갈림 정리"
+                                                children: t.stat3Value
                                             })
                                         ]
                                     }),
@@ -133,11 +188,11 @@ function Home({ posts  }) {
                                         children: [
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                                                 className: "stat-title text-slate-300",
-                                                children: "복리 계산"
+                                                children: t.stat4Title
                                             }),
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                                                 className: "stat-value text-fuchsia-300",
-                                                children: "숫자로 확인"
+                                                children: t.stat4Value
                                             })
                                         ]
                                     })
@@ -152,7 +207,7 @@ function Home({ posts  }) {
                 children: [
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h2", {
                         className: "text-xl font-semibold mb-3",
-                        children: "최신 글"
+                        children: t.latestHeading
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                         className: "grid gap-4 sm:grid-cols-2 lg:grid-cols-3",
@@ -171,7 +226,7 @@ function Home({ posts  }) {
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h3", {
                                         className: "mt-2 text-lg font-semibold",
                                         children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                            href: `/posts/ko/${p.slug}`,
+                                            href: `/posts/${p.lang || "ko"}/${p.slug}`,
                                             children: p.title
                                         })
                                     }),
@@ -180,7 +235,7 @@ function Home({ posts  }) {
                                         children: p.datePublished
                                     })
                                 ]
-                            }, p.slug))
+                            }, `${p.lang || "ko"}-${p.slug}`))
                     })
                 ]
             }),
@@ -192,11 +247,11 @@ function Home({ posts  }) {
                         children: [
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h2", {
                                 className: "text-lg font-semibold",
-                                children: "더 알아보기"
+                                children: t.moreHeading
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
                                 className: "text-xs text-slate-500",
-                                children: "경제기초 \xb7 재테크 \xb7 세금 카테고리별로 정리되어 있습니다."
+                                children: t.moreSub
                             })
                         ]
                     }),
@@ -217,7 +272,7 @@ function Home({ posts  }) {
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h3", {
                                         className: "mt-2 text-base font-semibold",
                                         children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                            href: `/posts/ko/${p.slug}`,
+                                            href: `/posts/${p.lang || "ko"}/${p.slug}`,
                                             children: p.title
                                         })
                                     }),
@@ -226,7 +281,7 @@ function Home({ posts  }) {
                                         children: p.datePublished
                                     })
                                 ]
-                            }, p.slug))
+                            }, `${p.lang || "ko"}-${p.slug}`))
                     })
                 ]
             })
@@ -234,7 +289,7 @@ function Home({ posts  }) {
     });
 }
 async function getStaticProps() {
-    const posts = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_3__/* .getAllPosts */ .Bd)();
+    const posts = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_4__/* .getAllPostsAllLangs */ .zC)(); // ✅ ko + en 전부
     return {
         props: {
             posts
@@ -426,6 +481,13 @@ module.exports = require("next/dist/shared/lib/utils.js");
 /***/ ((module) => {
 
 module.exports = require("next/head");
+
+/***/ }),
+
+/***/ 1853:
+/***/ ((module) => {
+
+module.exports = require("next/router");
 
 /***/ }),
 

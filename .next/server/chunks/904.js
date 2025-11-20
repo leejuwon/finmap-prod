@@ -10,9 +10,10 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Bd": () => (/* binding */ getAllPosts),
 /* harmony export */   "m": () => (/* binding */ getAllSlugs),
+/* harmony export */   "zC": () => (/* binding */ getAllPostsAllLangs),
 /* harmony export */   "zQ": () => (/* binding */ getPostBySlug)
 /* harmony export */ });
-/* unused harmony export getPostsByCategory */
+/* unused harmony exports getPostsByCategory, getAllPostsStrict */
 /* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7147);
 /* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(fs__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1017);
@@ -96,10 +97,39 @@ function getAllPosts(lang = "ko") {
         return new Date(b.datePublished || 0) - new Date(a.datePublished || 0);
     });
 }
+// ✅ KO + EN 전부 한 번에 가져오는 헬퍼 (홈 화면용)
+// - 빌드 타임에 모든 언어 글을 읽어두고
+// - 런타임에서 router.query.lang 으로 필터링하는 용도
+function getAllPostsAllLangs() {
+    const langs = [
+        "ko",
+        "en"
+    ];
+    const combined = [];
+    langs.forEach((lang)=>{
+        const slugs = getAllSlugs(lang);
+        slugs.forEach((slug)=>{
+            // 여기서는 fallback 필요 없음(슬러그는 해당 lang 디렉토리에서 온 것이라 존재 보장)
+            const post = getPostBySlug(lang, slug);
+            combined.push(post);
+        });
+    });
+    return combined.sort((a, b)=>{
+        return new Date(b.datePublished || 0) - new Date(a.datePublished || 0);
+    });
+}
 // 카테고리별 필터 (언어 포함)
 // 👉 여기서도 getAllPosts가 이미 fallback을 처리하므로 그대로 사용
 function getPostsByCategory(lang = "ko", category) {
     return getAllPosts(lang).filter((p)=>(p.category || "").toLowerCase() === category.toLowerCase());
+}
+// 🔹 언어별 디렉토리에서만 글을 읽어오는 버전 (fallback 없음)
+function getAllPostsStrict(lang = "ko") {
+    const slugs = getAllSlugs(lang);
+    if (!slugs.length) return [];
+    // 여기서는 getPostBySlug의 fallback이 절대 발동하지 않음
+    // (slugs가 해당 lang 디렉토리에서 가져온 값이기 때문)
+    return slugs.map((slug)=>getPostBySlug(lang, slug));
 }
 
 __webpack_async_result__();

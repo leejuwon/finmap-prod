@@ -5,7 +5,6 @@ import SeoHead from '../../../_components/SeoHead';
 import AdResponsive from '../../../_components/AdResponsive';
 import AdInArticle from '../../../_components/AdInArticle';
 import { AD_CLIENT, AD_SLOTS } from '../../../config/adSlots';
-//import { getAllPosts, getPostBySlug } from '../../../lib/posts';
 import { getAllSlugs, getPostBySlug } from '../../../lib/posts';
 import parse, { domToReact } from 'html-react-parser';
 
@@ -18,10 +17,18 @@ export function JsonLd({ data }) {
   );
 }
 
-export default function PostPage({ post, lang }) {
+export default function PostPage({ post, lang: initialLang }) {
   const router = useRouter();
-  const slug = post.slug;
+
+  // ✅ URL ?lang= 가 있으면 그 값을 우선 사용, 없으면 SSG 시점 lang 사용
+  const currentLang =
+    router.query.lang === 'ko' || router.query.lang === 'en'
+      ? router.query.lang
+      : initialLang || 'ko';
+
+  const lang = currentLang;
   const isKo = lang === 'ko';
+  const slug = post.slug;
 
   const jsonld = {
     '@context': 'https://schema.org',
@@ -70,7 +77,6 @@ export default function PostPage({ post, lang }) {
     if (typeof window !== 'undefined') {
       setShareUrl(window.location.href);
     }
-
     reloadLikes();
     reloadComments();
   }, [slug, lang]);
@@ -94,9 +100,11 @@ export default function PostPage({ post, lang }) {
 
   const handleCommentSubmit = async () => {
     if (!commentForm.nickname || !commentForm.password || !commentForm.content) {
-      alert(isKo
-        ? '닉네임, 비밀번호, 내용을 모두 입력해주세요.'
-        : 'Please fill nickname, password and content.');
+      alert(
+        isKo
+          ? '닉네임, 비밀번호, 내용을 모두 입력해주세요.'
+          : 'Please fill nickname, password and content.'
+      );
       return;
     }
 
@@ -112,9 +120,11 @@ export default function PostPage({ post, lang }) {
       setCommentForm({ nickname: '', password: '', content: '' });
     } catch (e) {
       console.error(e);
-      alert(isKo
-        ? '댓글 등록에 실패했습니다.'
-        : 'Failed to submit comment.');
+      alert(
+        isKo
+          ? '댓글 등록에 실패했습니다.'
+          : 'Failed to submit comment.'
+      );
     }
   };
 
@@ -149,7 +159,11 @@ export default function PostPage({ post, lang }) {
         if (err.error === 'invalid password') {
           alert(isKo ? '비밀번호가 일치하지 않습니다.' : 'Invalid password.');
         } else {
-          alert(isKo ? '댓글 수정에 실패했습니다.' : 'Failed to edit comment.');
+          alert(
+            isKo
+              ? '댓글 수정에 실패했습니다.'
+              : 'Failed to edit comment.'
+          );
         }
         return;
       }
@@ -157,9 +171,11 @@ export default function PostPage({ post, lang }) {
       await reloadComments();
     } catch (e) {
       console.error(e);
-      alert(isKo
-        ? '댓글 수정 중 오류가 발생했습니다.'
-        : 'Error while editing comment.');
+      alert(
+        isKo
+          ? '댓글 수정 중 오류가 발생했습니다.'
+          : 'Error while editing comment.'
+      );
     }
   };
 
@@ -194,7 +210,11 @@ export default function PostPage({ post, lang }) {
         if (err.error === 'invalid password') {
           alert(isKo ? '비밀번호가 일치하지 않습니다.' : 'Invalid password.');
         } else {
-          alert(isKo ? '댓글 삭제에 실패했습니다.' : 'Failed to delete comment.');
+          alert(
+            isKo
+              ? '댓글 삭제에 실패했습니다.'
+              : 'Failed to delete comment.'
+          );
         }
         return;
       }
@@ -202,9 +222,11 @@ export default function PostPage({ post, lang }) {
       await reloadComments();
     } catch (e) {
       console.error(e);
-      alert(isKo
-        ? '댓글 삭제 중 오류가 발생했습니다.'
-        : 'Error while deleting comment.');
+      alert(
+        isKo
+          ? '댓글 삭제 중 오류가 발생했습니다.'
+          : 'Error while deleting comment.'
+      );
     }
   };
 
@@ -225,8 +247,9 @@ export default function PostPage({ post, lang }) {
         );
       } else {
         alert(
-          (isKo ? '링크를 직접 복사해주세요:\n' : 'Please copy the link manually:\n') +
-            shareUrl
+          (isKo
+            ? '링크를 직접 복사해주세요:\n'
+            : 'Please copy the link manually:\n') + shareUrl
         );
       }
     } catch (e) {
@@ -247,10 +270,7 @@ export default function PostPage({ post, lang }) {
             <>
               <h2>{children}</h2>
               <div className="my-6">
-                <AdInArticle
-                  client={AD_CLIENT}
-                  slot={AD_SLOTS.inArticle1}
-                />
+                <AdInArticle client={AD_CLIENT} slot={AD_SLOTS.inArticle1} />
               </div>
             </>
           );
@@ -261,10 +281,7 @@ export default function PostPage({ post, lang }) {
             <>
               <h2>{children}</h2>
               <div className="my-6">
-                <AdInArticle
-                  client={AD_CLIENT}
-                  slot={AD_SLOTS.inArticle2}
-                />
+                <AdInArticle client={AD_CLIENT} slot={AD_SLOTS.inArticle2} />
               </div>
             </>
           );
@@ -316,9 +333,7 @@ export default function PostPage({ post, lang }) {
         )}
 
         {/* 본문 + 인-아티클 광고 */}
-        <div className="fm-post-body">
-          {contentWithInArticleAds}
-        </div>
+        <div className="fm-post-body">{contentWithInArticleAds}</div>
 
         {/* 본문 하단 반응형 광고 */}
         <div className="mt-8 mb-4">
@@ -474,7 +489,7 @@ export default function PostPage({ post, lang }) {
 }
 
 export async function getStaticPaths() {
-  const langs = ['ko','en']; // en 있으면 ['ko','en'] 로 확장
+  const langs = ['ko', 'en'];
 
   const paths = langs.flatMap((lang) => {
     const slugs = getAllSlugs(lang);
@@ -489,7 +504,6 @@ export async function getStaticPaths() {
   };
 }
 
-
 export async function getStaticProps({ params }) {
   const { lang, slug } = params;
   const post = getPostBySlug(lang, slug);
@@ -501,4 +515,3 @@ export async function getStaticProps({ params }) {
     },
   };
 }
-

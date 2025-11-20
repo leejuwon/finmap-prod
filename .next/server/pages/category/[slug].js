@@ -19,11 +19,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1664);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_SeoHead__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8814);
-/* harmony import */ var _lib_posts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8904);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_lib_posts__WEBPACK_IMPORTED_MODULE_3__]);
-_lib_posts__WEBPACK_IMPORTED_MODULE_3__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
-// pages/category/[lang]/[slug].js
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1853);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_SeoHead__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8814);
+/* harmony import */ var _lib_posts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8904);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_lib_posts__WEBPACK_IMPORTED_MODULE_4__]);
+_lib_posts__WEBPACK_IMPORTED_MODULE_4__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+// pages/category/[slug].js
+
 
 
 
@@ -38,16 +41,22 @@ const CATEGORY_LABELS_EN = {
     investing: "Investing",
     tax: "Tax"
 };
-function CategoryPage({ lang , slug , posts  }) {
-    const isKo = lang === "ko";
+function CategoryPage({ slug , postsKo , postsEn  }) {
+    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_2__.useRouter)();
+    // ?lang= 기준으로 UI 언어 결정 (기본 ko)
+    const currentLang = router.query.lang === "en" || router.query.lang === "ko" ? router.query.lang : "ko";
+    const isKo = currentLang === "ko";
     const LABELS = isKo ? CATEGORY_LABELS_KO : CATEGORY_LABELS_EN;
     const title = LABELS[slug] || slug;
+    // ✅ 언어에 따라 실제 사용할 포스트 배열 선택
+    const posts = isKo ? postsKo : postsEn;
+    const urlPath = `/category/${slug}${isKo ? "" : "?lang=en"}`;
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         children: [
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_SeoHead__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_SeoHead__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
                 title: isKo ? `${title} 카테고리` : `${title} category`,
-                desc: isKo ? `${title} 글 모음` : `Posts about ${title}`,
-                url: `/category/${lang}/${slug}`
+                desc: isKo ? `${title} 글 모음` : `Posts related to ${title}`,
+                url: urlPath
             }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
                 className: "text-2xl font-bold mb-4",
@@ -73,7 +82,12 @@ function CategoryPage({ lang , slug , posts  }) {
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h3", {
                                 className: "mt-2 text-lg font-semibold",
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                    href: `/posts/${lang}/${p.slug}`,
+                                    href: {
+                                        pathname: `/posts/${currentLang}/${p.slug}`,
+                                        query: isKo ? {} : {
+                                            lang: "en"
+                                        }
+                                    },
                                     children: p.title
                                 })
                             }),
@@ -87,8 +101,8 @@ function CategoryPage({ lang , slug , posts  }) {
         ]
     });
 }
+// 🔹 카테고리 슬러그 3개만 정적으로 생성
 async function getStaticPaths() {
-    // 🔹 현재는 ko만 사용, 언어별 카테고리 슬러그 고정
     const slugs = [
         "economics",
         "investing",
@@ -96,7 +110,6 @@ async function getStaticPaths() {
     ];
     const paths = slugs.map((slug)=>({
             params: {
-                lang: "ko",
                 slug
             }
         }));
@@ -105,25 +118,40 @@ async function getStaticPaths() {
         fallback: false
     };
 }
+// 🔹 빌드 시 KO/EN 둘 다 읽어서 props로 넘겨줌
 async function getStaticProps({ params  }) {
-    const { lang , slug  } = params;
-    // 일단은 getAllPosts() 모두에서 카테고리 필터만 (한글/영문 분리는 나중 단계)
-    const all = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_3__/* .getAllPosts */ .Bd)();
-    const map = {
+    const { slug  } = params;
+    // 언어별 전체 글 리스트
+    const allKo = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_4__/* .getAllPosts */ .Bd)("ko");
+    const allEn = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_4__/* .getAllPosts */ .Bd)("en");
+    // 카테고리 매핑 (KO)
+    const mapKo = {
         "경제기초": "economics",
         "재테크": "investing",
         "세금": "tax"
     };
-    const posts = all.filter((p)=>{
-        var ref;
-        const pSlug = map[p.category] || ((ref = p.category) === null || ref === void 0 ? void 0 : ref.toLowerCase());
+    // 카테고리 매핑 (EN - 소문자 기준)
+    const mapEn = {
+        "economics basics": "economics",
+        "economics basic": "economics",
+        "personal finance": "investing",
+        "investing": "investing",
+        "tax": "tax"
+    };
+    const postsKo = allKo.filter((p)=>{
+        const pSlug = mapKo[p.category] || (p.category || "").toLowerCase();
         return pSlug === slug;
+    });
+    const postsEn = allEn.filter((p)=>{
+        const key = (p.category || "").toLowerCase();
+        const mapped = mapEn[key] || key;
+        return mapped === slug;
     });
     return {
         props: {
-            lang: lang || "ko",
             slug,
-            posts
+            postsKo,
+            postsEn
         }
     };
 }
@@ -312,6 +340,13 @@ module.exports = require("next/dist/shared/lib/utils.js");
 /***/ ((module) => {
 
 module.exports = require("next/head");
+
+/***/ }),
+
+/***/ 1853:
+/***/ ((module) => {
+
+module.exports = require("next/router");
 
 /***/ }),
 

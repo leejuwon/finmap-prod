@@ -12,7 +12,7 @@ const navItems = [
   },
   {
     key: 'economics',
-    href: '/category/economics',   // 🔹 URL은 그대로 유지
+    href: '/category/economics',
     labelKo: '경제기초',
     labelEn: 'Economics',
   },
@@ -29,37 +29,45 @@ const navItems = [
     labelEn: 'Tax',
   },
   {
-    key: 'compound',
-    href: '/tools/compound-interest',
-    labelKo: '복리 계산기',
-    labelEn: 'Compound Calculator',
-  },
-  {
-    key: 'goal',
-    href: '/tools/goal-simulator',
-    labelKo: '목표자산 시뮬레이터',
-    labelEn: 'Goal Simulator',
+    key: 'tool',
+    href: '/tools',
+    labelKo: '계산기',
+    labelEn: 'Calculator',
   },
 ];
 
 export default function Header() {
   const router = useRouter();
-  const [lang, setLang] = useState('ko'); // 'ko' | 'en'
+  const [lang, setLang] = useState('ko');
 
-  // 브라우저에서 저장된 언어 불러오기
+  // URL ?lang= 가 있으면 최우선, 없으면 localStorage
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const saved = window.localStorage.getItem('fm_lang');
-    if (saved === 'ko' || saved === 'en') {
-      setLang(saved);
+    if (router.query.lang === 'ko' || router.query.lang === 'en') {
+      setLang(router.query.lang);
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem('fm_lang', router.query.lang);
+      }
+      return;
     }
-  }, []);
+
+    if (typeof window !== 'undefined') {
+      const saved = window.localStorage.getItem('fm_lang');
+      if (saved === 'ko' || saved === 'en') {
+        setLang(saved);
+      }
+    }
+  }, [router.query.lang]);
 
   const toggleLang = () => {
     const next = lang === 'ko' ? 'en' : 'ko';
     setLang(next);
+
     if (typeof window !== 'undefined') {
       window.localStorage.setItem('fm_lang', next);
+      const { pathname, query } = router;
+      const newQuery = { ...query, lang: next };
+
+      router.push({ pathname, query: newQuery });
     }
   };
 
@@ -70,7 +78,7 @@ export default function Header() {
       <nav className="w-full px-3 sm:px-4">
         <div className="w-full max-w-5xl lg:max-w-6xl mx-auto flex items-center gap-3 py-2 sm:py-3">
           {/* 로고 */}
-          <Link href="/" passHref>
+          <Link href={{ pathname: '/', query: { lang } }} passHref>
             <a className="flex items-center gap-2">
               <img
                 src="/logo-finmap.svg"
@@ -81,7 +89,6 @@ export default function Header() {
                 <span className="block text-sm sm:text-base font-semibold text-slate-900">
                   FinMap
                 </span>
-                {/* 슬로건도 언어에 따라 변경 */}
                 <span className="hidden sm:block text-[11px] text-slate-500">
                   {isKo
                     ? '금융 기초 · 투자계획 지도'
@@ -94,15 +101,33 @@ export default function Header() {
           {/* 네비게이션 */}
           <div className="header-nav flex items-center gap-1 sm:gap-2 ml-2 sm:ml-6 text-[10px] sm:text-sm">
             {navItems.map((item) => {
-              const active =
-                item.href === '/'
-                  ? router.pathname === '/'
-                  : router.pathname.startsWith(item.href);
+              const { pathname, query } = router;
+
+              let active = false;
+              if (item.key === 'home') {
+                active = pathname === '/';
+              } else if (item.key === 'tool') {
+                active = pathname.startsWith('/tools');
+              } else if (
+                item.key === 'economics' ||
+                item.key === 'investing' ||
+                item.key === 'tax'
+              ) {
+                // /category/[slug] 에서 slug와 key 매칭
+                active = pathname.startsWith('/category') && query.slug === item.key;
+              }
 
               const label = isKo ? item.labelKo : item.labelEn;
 
               return (
-                <Link key={item.key} href={item.href} passHref>
+                <Link
+                  key={item.key}
+                  href={{
+                    pathname: item.href,
+                    query: { lang },
+                  }}
+                  passHref
+                >
                   <a
                     className={
                       'px-2 sm:px-3 py-1 rounded-full transition-colors ' +

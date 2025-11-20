@@ -60,29 +60,26 @@ const navItems = [
         labelEn: "Tax"
     },
     {
-        key: "compound",
-        href: "/tools/compound-interest",
-        labelKo: "복리 계산기",
-        labelEn: "Compound Calculator"
-    },
-    {
-        key: "goal",
-        href: "/tools/goal-simulator",
-        labelKo: "목표자산 시뮬레이터",
-        labelEn: "Goal Simulator"
+        key: "tool",
+        href: "/tools",
+        labelKo: "계산기",
+        labelEn: "Calculator"
     }, 
 ];
 function Header() {
     const router = (0,router_.useRouter)();
-    const { 0: lang , 1: setLang  } = (0,external_react_.useState)("ko"); // 'ko' | 'en'
-    // 브라우저에서 저장된 언어 불러오기
+    const { 0: lang , 1: setLang  } = (0,external_react_.useState)("ko");
+    // URL ?lang= 가 있으면 최우선, 없으면 localStorage
     (0,external_react_.useEffect)(()=>{
-        if (true) return;
-        const saved = window.localStorage.getItem("fm_lang");
-        if (saved === "ko" || saved === "en") {
-            setLang(saved);
+        if (router.query.lang === "ko" || router.query.lang === "en") {
+            setLang(router.query.lang);
+            if (false) {}
+            return;
         }
-    }, []);
+        if (false) {}
+    }, [
+        router.query.lang
+    ]);
     const toggleLang = ()=>{
         const next = lang === "ko" ? "en" : "ko";
         setLang(next);
@@ -97,7 +94,12 @@ function Header() {
                 className: "w-full max-w-5xl lg:max-w-6xl mx-auto flex items-center gap-3 py-2 sm:py-3",
                 children: [
                     /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                        href: "/",
+                        href: {
+                            pathname: "/",
+                            query: {
+                                lang
+                            }
+                        },
                         passHref: true,
                         children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("a", {
                             className: "flex items-center gap-2",
@@ -126,10 +128,24 @@ function Header() {
                     /*#__PURE__*/ jsx_runtime_.jsx("div", {
                         className: "header-nav flex items-center gap-1 sm:gap-2 ml-2 sm:ml-6 text-[10px] sm:text-sm",
                         children: navItems.map((item)=>{
-                            const active = item.href === "/" ? router.pathname === "/" : router.pathname.startsWith(item.href);
+                            const { pathname , query  } = router;
+                            let active = false;
+                            if (item.key === "home") {
+                                active = pathname === "/";
+                            } else if (item.key === "tool") {
+                                active = pathname.startsWith("/tools");
+                            } else if (item.key === "economics" || item.key === "investing" || item.key === "tax") {
+                                // /category/[slug] 에서 slug와 key 매칭
+                                active = pathname.startsWith("/category") && query.slug === item.key;
+                            }
                             const label = isKo ? item.labelKo : item.labelEn;
                             return /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                href: item.href,
+                                href: {
+                                    pathname: item.href,
+                                    query: {
+                                        lang
+                                    }
+                                },
                                 passHref: true,
                                 children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
                                     className: "px-2 sm:px-3 py-1 rounded-full transition-colors " + (active ? "bg-blue-50 text-blue-700 font-medium" : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"),
