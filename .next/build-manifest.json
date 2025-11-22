@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/n5f8Y3ezIOHeR04ezSky-/_buildManifest.js",
-    "static/n5f8Y3ezIOHeR04ezSky-/_ssgManifest.js"
+    "static/U6KbSi3i_Fwm_mmBQ4twK/_buildManifest.js",
+    "static/U6KbSi3i_Fwm_mmBQ4twK/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -96,7 +96,7 @@
       "static/chunks/webpack-9cb0f22dbaaa24a5.js",
       "static/chunks/framework-5f4595e5518b5600.js",
       "static/chunks/main-d1eb1cbf1c7ea08b.js",
-      "static/chunks/pages/tools/goal-simulator-003322df03d07e39.js"
+      "static/chunks/pages/tools/goal-simulator-c5b483c3648272de.js"
     ]
   },
   "ampFirstPages": []

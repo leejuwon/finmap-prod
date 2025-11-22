@@ -48,7 +48,15 @@ const dict = {
   },
 };
 
-export default function GoalForm({ onSubmit, locale = 'ko' }) {
+export default function GoalForm({
+  onSubmit,
+  locale = 'ko',
+  currency = 'KRW',           // 부모(페이지)에서 내려주는 통화
+  onCurrencyChange,           // 부모에서 통화 변경 처리
+}) {
+  // locale 안전 정규화 (ko / en만 사용)
+  const safeLocale = String(locale).startsWith('en') ? 'en' : 'ko';
+
   const [form, setForm] = useState({
     current: 2000,   // 만원 또는 USD
     monthly: 50,     // 만원 또는 USD
@@ -59,10 +67,9 @@ export default function GoalForm({ onSubmit, locale = 'ko' }) {
     taxMode: 'apply',
     feeMode: 'apply',
   });
-  const [currency, setCurrency] = useState('KRW'); // 'KRW' | 'USD'
 
-  const t = useMemo(() => dict[locale] || dict.ko, [locale]);
-  const numberLocale = locale === 'ko' ? 'ko-KR' : 'en-US';
+  const t = useMemo(() => dict[safeLocale] || dict.ko, [safeLocale]);
+  const numberLocale = safeLocale === 'ko' ? 'ko-KR' : 'en-US';
 
   const handleMoneyChange = (e) => {
     const { name, value } = e.target;
@@ -81,7 +88,7 @@ export default function GoalForm({ onSubmit, locale = 'ko' }) {
   const handleSubmit = () => {
     onSubmit({
       ...form,
-      currency,
+      currency, // 참고용으로 함께 전달 (실제 스케일링은 부모에서 currency 사용)
     });
   };
 
@@ -151,7 +158,7 @@ export default function GoalForm({ onSubmit, locale = 'ko' }) {
         </label>
       </div>
 
-      {/* 2행: 목표 금액 + 복리/세금/수수료/통화 */}
+      {/* 2행: 목표 금액 + 복리/세금/수수료 */}
       <div className="grid gap-3 md:grid-cols-4">
         <label className="grid gap-1">
           <span className="text-sm">{targetLabel}</span>
@@ -212,7 +219,10 @@ export default function GoalForm({ onSubmit, locale = 'ko' }) {
           <select
             className="select"
             value={currency}
-            onChange={(e) => setCurrency(e.target.value)}
+            onChange={(e) => {
+              const next = e.target.value;
+              if (onCurrencyChange) onCurrencyChange(next);
+            }}
           >
             <option value="KRW">KRW ₩</option>
             <option value="USD">USD $</option>
