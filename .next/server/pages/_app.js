@@ -4,6 +4,39 @@ exports.id = 888;
 exports.ids = [888];
 exports.modules = {
 
+/***/ 6915:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "W": () => (/* binding */ setLang),
+/* harmony export */   "X": () => (/* binding */ getInitialLang)
+/* harmony export */ });
+// lib/lang.js
+// 초깃값: 쿠키(fm_lang) → 브라우저 언어 → ko
+function getInitialLang() {
+    if (true) return "ko";
+    const match = document.cookie.match(/(?:^|;\s*)fm_lang=(ko|en)/);
+    if (match && match[1]) return match[1];
+    const nav = (navigator.language || "ko").toLowerCase();
+    if (nav.startsWith("en")) return "en";
+    return "ko";
+}
+// 언어 설정 + 이벤트 브로드캐스트
+function setLang(lang) {
+    if (true) return;
+    const safe = lang === "en" ? "en" : "ko";
+    // 1년짜리 쿠키
+    document.cookie = `fm_lang=${safe}; path=/; max-age=31536000`;
+    // 전역 커스텀 이벤트 (계산기 등에서 듣기)
+    window.dispatchEvent(new CustomEvent("fm_lang_change", {
+        detail: safe
+    }));
+}
+
+
+/***/ }),
+
 /***/ 2253:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -28,64 +61,56 @@ var script_default = /*#__PURE__*/__webpack_require__.n(script);
 // EXTERNAL MODULE: ./node_modules/next/link.js
 var next_link = __webpack_require__(1664);
 var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
+// EXTERNAL MODULE: ./lib/lang.js
+var lib_lang = __webpack_require__(6915);
 ;// CONCATENATED MODULE: ./_components/Header.js
 // _components/Header.js
 
 
 
 
+
 const navItems = [
     {
-        key: "home",
         href: "/",
         labelKo: "홈",
         labelEn: "Home"
     },
     {
-        key: "economics",
         href: "/category/economics",
         labelKo: "경제기초",
         labelEn: "Economics"
     },
     {
-        key: "investing",
         href: "/category/investing",
-        labelKo: "재테크",
+        labelKo: "투자개념",
         labelEn: "Investing"
     },
+    //{ href: '/category/tax',       labelKo: '세금',       labelEn: 'Tax' },
     {
-        key: "tax",
-        href: "/category/tax",
-        labelKo: "세금",
-        labelEn: "Tax"
-    },
-    {
-        key: "tool",
         href: "/tools",
         labelKo: "계산기",
-        labelEn: "Calculator"
+        labelEn: "Tools"
     }, 
 ];
 function Header() {
     const router = (0,router_.useRouter)();
-    const { 0: lang , 1: setLang  } = (0,external_react_.useState)("ko");
-    // URL ?lang= 가 있으면 최우선, 없으면 localStorage
+    const { 0: lang , 1: setLangState  } = (0,external_react_.useState)("ko");
+    // 클라이언트에서 초기 언어 동기화
     (0,external_react_.useEffect)(()=>{
-        if (router.query.lang === "ko" || router.query.lang === "en") {
-            setLang(router.query.lang);
-            if (false) {}
-            return;
-        }
-        if (false) {}
-    }, [
-        router.query.lang
-    ]);
-    const toggleLang = ()=>{
-        const next = lang === "ko" ? "en" : "ko";
-        setLang(next);
-        if (false) {}
+        if (true) return;
+        const initial = (0,lib_lang/* getInitialLang */.X)();
+        setLangState(initial);
+        const handler = (e)=>{
+            setLangState(e.detail || "ko");
+        };
+        window.addEventListener("fm_lang_change", handler);
+        return ()=>window.removeEventListener("fm_lang_change", handler);
+    }, []);
+    const handleLangChange = (next)=>{
+        (0,lib_lang/* setLang */.W)(next); // 쿠키 + 이벤트
+        setLangState(next); // 헤더 내부 상태
     };
-    const isKo = lang === "ko";
     return /*#__PURE__*/ jsx_runtime_.jsx("header", {
         className: "sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-slate-100",
         children: /*#__PURE__*/ jsx_runtime_.jsx("nav", {
@@ -94,12 +119,7 @@ function Header() {
                 className: "w-full max-w-5xl lg:max-w-6xl mx-auto flex items-center gap-3 py-2 sm:py-3",
                 children: [
                     /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                        href: {
-                            pathname: "/",
-                            query: {
-                                lang
-                            }
-                        },
+                        href: "/",
                         passHref: true,
                         children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("a", {
                             className: "flex items-center gap-2",
@@ -118,7 +138,7 @@ function Header() {
                                         }),
                                         /*#__PURE__*/ jsx_runtime_.jsx("span", {
                                             className: "hidden sm:block text-[11px] text-slate-500",
-                                            children: isKo ? "금융 기초 \xb7 투자계획 지도" : "Personal finance & investing map"
+                                            children: lang === "ko" ? "금융 기초 \xb7 투자계획 지도" : "Personal Finance \xb7 Investing Map"
                                         })
                                     ]
                                 })
@@ -128,44 +148,41 @@ function Header() {
                     /*#__PURE__*/ jsx_runtime_.jsx("div", {
                         className: "header-nav flex items-center gap-1 sm:gap-2 ml-2 sm:ml-6 text-[10px] sm:text-sm",
                         children: navItems.map((item)=>{
-                            const { pathname , query  } = router;
-                            let active = false;
-                            if (item.key === "home") {
-                                active = pathname === "/";
-                            } else if (item.key === "tool") {
-                                active = pathname.startsWith("/tools");
-                            } else if (item.key === "economics" || item.key === "investing" || item.key === "tax") {
-                                // /category/[slug] 에서 slug와 key 매칭
-                                active = pathname.startsWith("/category") && query.slug === item.key;
-                            }
-                            const label = isKo ? item.labelKo : item.labelEn;
+                            const active = item.href === "/" ? router.pathname === "/" : router.pathname.startsWith(item.href);
+                            const label = lang === "ko" ? item.labelKo : item.labelEn;
                             return /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                href: {
-                                    pathname: item.href,
-                                    query: {
-                                        lang
-                                    }
-                                },
+                                href: item.href,
                                 passHref: true,
                                 children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
                                     className: "px-2 sm:px-3 py-1 rounded-full transition-colors " + (active ? "bg-blue-50 text-blue-700 font-medium" : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"),
                                     children: label
                                 })
-                            }, item.key);
+                            }, item.href);
                         })
                     }),
                     /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                         className: "ml-auto flex items-center gap-2",
                         children: [
+                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                className: "flex border border-slate-200 rounded-full text-[10px] sm:text-xs overflow-hidden",
+                                children: [
+                                    /*#__PURE__*/ jsx_runtime_.jsx("button", {
+                                        type: "button",
+                                        onClick: ()=>handleLangChange("ko"),
+                                        className: "px-2 py-1 " + (lang === "ko" ? "bg-slate-900 text-white" : "bg-white text-slate-600"),
+                                        children: "한국어"
+                                    }),
+                                    /*#__PURE__*/ jsx_runtime_.jsx("button", {
+                                        type: "button",
+                                        onClick: ()=>handleLangChange("en"),
+                                        className: "px-2 py-1 " + (lang === "en" ? "bg-slate-900 text-white" : "bg-white text-slate-600"),
+                                        children: "EN"
+                                    })
+                                ]
+                            }),
                             /*#__PURE__*/ jsx_runtime_.jsx("span", {
                                 className: "header-domain text-[10px] sm:text-xs md:text-sm text-slate-500",
                                 children: "finmaphub.com"
-                            }),
-                            /*#__PURE__*/ jsx_runtime_.jsx("button", {
-                                type: "button",
-                                onClick: toggleLang,
-                                className: "btn-secondary !px-2 !py-1 text-[10px] sm:text-xs",
-                                children: isKo ? "EN" : "KO"
                             })
                         ]
                     })

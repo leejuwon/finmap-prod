@@ -1,5 +1,5 @@
 // pages/tools/compound-interest.js
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import SeoHead from '../../_components/SeoHead';
 import CompoundForm from '../../_components/CompoundForm';
 import CompoundChart from '../../_components/CompoundChart';
@@ -9,10 +9,18 @@ import {
   numberFmt,
   calcSimpleLump,
 } from '../../lib/compound';
+import { getInitialLang } from '../../lib/lang';
 
 export default function CompoundPage() {
-  const [locale, setLocale] = useState('ko');      // 'ko' | 'en'
-  const [currency, setCurrency] = useState('KRW'); // 'KRW' | 'USD'
+  
+  const [lang, setLang] = useState('ko');
+
+  const locale = lang === 'ko' ? 'ko' : 'en';
+  const numberLocale = locale === 'ko' ? 'ko-KR' : 'en-US';
+
+  const [currency, setCurrency] = useState(
+    locale === 'ko' ? 'KRW' : 'USD'
+  );
 
   // 복리식(월 적립) 결과
   const [result, setResult] = useState(null);
@@ -29,7 +37,23 @@ export default function CompoundPage() {
     years: 0,
   });
 
-  const loc = locale === 'ko' ? 'ko-KR' : 'en-US';
+  // ✅ 마운트 시 전역 언어 동기화 + 변경 이벤트 수신
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const initial = getInitialLang();
+    setLang(initial);
+    setCurrency(initial === 'ko' ? 'KRW' : 'USD');
+
+    const handler = (e) => {
+      const next = e.detail || 'ko';
+      setLang(next);
+      setCurrency(next === 'ko' ? 'KRW' : 'USD');
+    };
+
+    window.addEventListener('fm_lang_change', handler);
+    return () => window.removeEventListener('fm_lang_change', handler);
+  }, []);  
 
   const t = useMemo(
     () => ({
@@ -41,7 +65,6 @@ export default function CompoundPage() {
       fv: locale === 'ko' ? '세후 총자산' : 'Net Future Value',
       contrib: locale === 'ko' ? '총 납입액' : 'Total Contribution',
       interest: locale === 'ko' ? '세후 이자 합계' : 'Net Interest',
-      switch: locale === 'ko' ? 'EN으로' : '한국어로',
       chartTitle: locale === 'ko' ? '자산 성장 차트' : 'Asset Growth Chart',
       yearlyTableTitleKo: '연간 요약 테이블 (복리식, 월 적립)',
       yearlyTableTitleEn: 'Yearly Summary (compound, monthly)',
@@ -60,11 +83,14 @@ export default function CompoundPage() {
     [locale]
   );
 
-  const summaryFmt = (v) => numberFmt(loc, currency, v || 0);
+  const summaryFmt = (v) => numberFmt(numberLocale, currency, v || 0);
   const safe = (obj, key) => (obj && Number(obj[key])) || 0;
 
+   // 🔥 통화는 여기 있는 currency만 사용
   const onSubmit = (form) => {
-    const scale = form.currency === 'KRW' ? 10_000 : 1;
+    const cur = currency; // 현재 선택된 통화
+    const scale = cur === 'KRW' ? 10_000 : 1;
+
     const p = (Number(form.principal) || 0) * scale;
     const m = (Number(form.monthly) || 0) * scale;
     const r = Number(form.annualRate) || 0;
@@ -72,7 +98,6 @@ export default function CompoundPage() {
 
     const baseYear = new Date().getFullYear();
 
-    // 1) 복리식 (월 적립)
     const compoundResult = calcCompound({
       principal: p,
       monthly: m,
@@ -84,7 +109,6 @@ export default function CompoundPage() {
       baseYear,
     });
 
-    // 2) 단리식 (일시불 거치) - 총투자금액을 한 번에 넣는 단리
     const totalInvested = p + m * 12 * y;
     const simple = calcSimpleLump({
       principal: totalInvested,
@@ -94,8 +118,6 @@ export default function CompoundPage() {
       feeMode: form.feeMode,
       baseYear,
     });
-
-    setCurrency(form.currency || 'KRW');
 
     setInvest({ principal: p, monthly: m, years: y });
     setResult(compoundResult);
@@ -124,23 +146,19 @@ export default function CompoundPage() {
         image="/og/compound.jpg"
       />
 
-       {/* Layout 쪽에서 이미 container 로 한 번 감싸므로 여기서는 grid 만 사용 */}      
       <div className="py-6 grid gap-6 fm-mobile-full">
-        {/* 헤더 + 언어 전환 */}
         <div className="flex items-center gap-3">
           <h1 className="text-xl sm:text-2xl font-bold">{t.title}</h1>
-          <button
-            type="button"
-            className="btn-secondary ml-auto"
-            onClick={() => setLocale((prev) => (prev === 'ko' ? 'en' : 'ko'))}
-          >
-            {t.switch}
-          </button>
         </div>
 
-        {/* 입력 폼 */}
+        {/* 🔗 통화 상태를 부모가 가지고, 폼에 내려줌 */}
         <div className="card w-full">
-          <CompoundForm onSubmit={onSubmit} locale={locale} />
+          <CompoundForm
+            onSubmit={onSubmit}
+            locale={locale}
+            currency={currency}
+            onCurrencyChange={setCurrency}
+          />
         </div>
 
         {/* 결과 영역 */}
@@ -179,7 +197,7 @@ export default function CompoundPage() {
               <CompoundChart
                 data={result}
                 lumpData={simpleResult}
-                locale={loc}
+                locale={numberLocale}
                 currency={currency}
                 principal={invest.principal}
                 monthly={invest.monthly}
@@ -189,7 +207,7 @@ export default function CompoundPage() {
             {/* 연간 요약 테이블 - 복리식(월 적립) */}
             <CompoundYearTable
               result={result}
-              locale={loc}
+              locale={numberLocale}
               currency={currency}
               principal={invest.principal}
               monthly={invest.monthly}
@@ -204,7 +222,7 @@ export default function CompoundPage() {
             {simpleResult && (
               <CompoundYearTable
                 result={simpleResult}
-                locale={loc}
+                locale={numberLocale}
                 currency={currency}
                 principal={simpleInvest.principal}
                 monthly={0}

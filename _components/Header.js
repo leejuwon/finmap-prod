@@ -2,83 +2,44 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { getInitialLang, setLang } from '../lib/lang';
 
 const navItems = [
-  {
-    key: 'home',
-    href: '/',
-    labelKo: '홈',
-    labelEn: 'Home',
-  },
-  {
-    key: 'economics',
-    href: '/category/economics',
-    labelKo: '경제기초',
-    labelEn: 'Economics',
-  },
-  {
-    key: 'investing',
-    href: '/category/investing',
-    labelKo: '재테크',
-    labelEn: 'Investing',
-  },
-  {
-    key: 'tax',
-    href: '/category/tax',
-    labelKo: '세금',
-    labelEn: 'Tax',
-  },
-  {
-    key: 'tool',
-    href: '/tools',
-    labelKo: '계산기',
-    labelEn: 'Calculator',
-  },
+  { href: '/', labelKo: '홈',         labelEn: 'Home' },
+  { href: '/category/economics', labelKo: '경제기초',   labelEn: 'Economics' },
+  { href: '/category/investing', labelKo: '투자개념',   labelEn: 'Investing' },
+  //{ href: '/category/tax',       labelKo: '세금',       labelEn: 'Tax' },
+  { href: '/tools',              labelKo: '계산기',     labelEn: 'Tools' },
 ];
 
 export default function Header() {
   const router = useRouter();
-  const [lang, setLang] = useState('ko');
+  const [lang, setLangState] = useState('ko');
 
-  // URL ?lang= 가 있으면 최우선, 없으면 localStorage
+  // 클라이언트에서 초기 언어 동기화
   useEffect(() => {
-    if (router.query.lang === 'ko' || router.query.lang === 'en') {
-      setLang(router.query.lang);
-      if (typeof window !== 'undefined') {
-        window.localStorage.setItem('fm_lang', router.query.lang);
-      }
-      return;
-    }
+    if (typeof window === 'undefined') return;
+    const initial = getInitialLang();
+    setLangState(initial);
 
-    if (typeof window !== 'undefined') {
-      const saved = window.localStorage.getItem('fm_lang');
-      if (saved === 'ko' || saved === 'en') {
-        setLang(saved);
-      }
-    }
-  }, [router.query.lang]);
+    const handler = (e) => {
+      setLangState(e.detail || 'ko');
+    };
+    window.addEventListener('fm_lang_change', handler);
+    return () => window.removeEventListener('fm_lang_change', handler);
+  }, []);
 
-  const toggleLang = () => {
-    const next = lang === 'ko' ? 'en' : 'ko';
-    setLang(next);
-
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem('fm_lang', next);
-      const { pathname, query } = router;
-      const newQuery = { ...query, lang: next };
-
-      router.push({ pathname, query: newQuery });
-    }
+  const handleLangChange = (next) => {
+    setLang(next);        // 쿠키 + 이벤트
+    setLangState(next);   // 헤더 내부 상태
   };
-
-  const isKo = lang === 'ko';
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-slate-100">
       <nav className="w-full px-3 sm:px-4">
         <div className="w-full max-w-5xl lg:max-w-6xl mx-auto flex items-center gap-3 py-2 sm:py-3">
           {/* 로고 */}
-          <Link href={{ pathname: '/', query: { lang } }} passHref>
+          <Link href="/" passHref>
             <a className="flex items-center gap-2">
               <img
                 src="/logo-finmap.svg"
@@ -90,9 +51,7 @@ export default function Header() {
                   FinMap
                 </span>
                 <span className="hidden sm:block text-[11px] text-slate-500">
-                  {isKo
-                    ? '금융 기초 · 투자계획 지도'
-                    : 'Personal finance & investing map'}
+                  {lang === 'ko' ? '금융 기초 · 투자계획 지도' : 'Personal Finance · Investing Map'}
                 </span>
               </div>
             </a>
@@ -101,33 +60,15 @@ export default function Header() {
           {/* 네비게이션 */}
           <div className="header-nav flex items-center gap-1 sm:gap-2 ml-2 sm:ml-6 text-[10px] sm:text-sm">
             {navItems.map((item) => {
-              const { pathname, query } = router;
+              const active =
+                item.href === '/'
+                  ? router.pathname === '/'
+                  : router.pathname.startsWith(item.href);
 
-              let active = false;
-              if (item.key === 'home') {
-                active = pathname === '/';
-              } else if (item.key === 'tool') {
-                active = pathname.startsWith('/tools');
-              } else if (
-                item.key === 'economics' ||
-                item.key === 'investing' ||
-                item.key === 'tax'
-              ) {
-                // /category/[slug] 에서 slug와 key 매칭
-                active = pathname.startsWith('/category') && query.slug === item.key;
-              }
-
-              const label = isKo ? item.labelKo : item.labelEn;
+              const label = lang === 'ko' ? item.labelKo : item.labelEn;
 
               return (
-                <Link
-                  key={item.key}
-                  href={{
-                    pathname: item.href,
-                    query: { lang },
-                  }}
-                  passHref
-                >
+                <Link key={item.href} href={item.href} passHref>
                   <a
                     className={
                       'px-2 sm:px-3 py-1 rounded-full transition-colors ' +
@@ -143,18 +84,38 @@ export default function Header() {
             })}
           </div>
 
-          {/* 우측: 도메인 + 언어 스위처 */}
+          {/* 우측: 언어 토글 + 도메인 */}
           <div className="ml-auto flex items-center gap-2">
+            <div className="flex border border-slate-200 rounded-full text-[10px] sm:text-xs overflow-hidden">
+              <button
+                type="button"
+                onClick={() => handleLangChange('ko')}
+                className={
+                  'px-2 py-1 ' +
+                  (lang === 'ko'
+                    ? 'bg-slate-900 text-white'
+                    : 'bg-white text-slate-600')
+                }
+              >
+                한국어
+              </button>
+              <button
+                type="button"
+                onClick={() => handleLangChange('en')}
+                className={
+                  'px-2 py-1 ' +
+                  (lang === 'en'
+                    ? 'bg-slate-900 text-white'
+                    : 'bg-white text-slate-600')
+                }
+              >
+                EN
+              </button>
+            </div>
+
             <span className="header-domain text-[10px] sm:text-xs md:text-sm text-slate-500">
               finmaphub.com
             </span>
-            <button
-              type="button"
-              onClick={toggleLang}
-              className="btn-secondary !px-2 !py-1 text-[10px] sm:text-xs"
-            >
-              {isKo ? 'EN' : 'KO'}
-            </button>
           </div>
         </div>
       </nav>

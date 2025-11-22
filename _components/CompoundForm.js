@@ -44,20 +44,23 @@ const dict = {
   },
 };
 
-export default function CompoundForm({ onSubmit, locale = 'ko' }) {
-  // locale 값이 ko/en 이 아니면 무조건 ko 로 강제
+export default function CompoundForm({
+  onSubmit,
+  locale = 'ko',
+  currency = 'KRW',          // 🔥 부모에서 내려주는 현재 통화
+  onCurrencyChange,          // 🔥 부모에게 변경을 알려줄 콜백
+}) {
   const safeLocale = locale === 'en' ? 'en' : 'ko';
 
   const [form, setForm] = useState({
-    principal: 1000, // 만원 또는 USD
-    monthly: 30,     // 만원 또는 USD
+    principal: 1000,
+    monthly: 30,
     annualRate: 7,
     years: 10,
     compounding: 'monthly',
     taxMode: 'apply',
     feeMode: 'apply',
   });
-  const [currency, setCurrency] = useState('KRW'); // 'KRW' | 'USD'
 
   const t = useMemo(() => dict[safeLocale] || dict.ko, [safeLocale]);
   const numberLocale = safeLocale === 'ko' ? 'ko-KR' : 'en-US';
@@ -74,9 +77,18 @@ export default function CompoundForm({ onSubmit, locale = 'ko' }) {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleCurrencyChange = (e) => {
+    const val = e.target.value;
+    if (onCurrencyChange) {
+      onCurrencyChange(val);
+    }
+  };
+
   const disabled = useMemo(() => form.years <= 0, [form.years]);
 
   const handleSubmit = () => {
+    // 통화는 부모가 들고 있으므로 여기서는 form + currency를 넘겨줘도 되고,
+    // 부모 쪽에서 currency를 무시하고 자기 state를 사용하는 구조라 안전함.
     onSubmit({
       ...form,
       currency,
@@ -193,7 +205,7 @@ export default function CompoundForm({ onSubmit, locale = 'ko' }) {
           <select
             className="select"
             value={currency}
-            onChange={(e) => setCurrency(e.target.value)}
+            onChange={handleCurrencyChange}
           >
             <option value="KRW">KRW ₩</option>
             <option value="USD">USD $</option>

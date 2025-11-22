@@ -10,11 +10,11 @@
   "/contact": "pages/contact.html",
   "/disclaimer": "pages/disclaimer.html",
   "/privacy": "pages/privacy.html",
-  "/tools/compound-interest": "pages/tools/compound-interest.html",
   "/terms": "pages/terms.html",
+  "/tools/compound-interest": "pages/tools/compound-interest.html",
   "/tools/goal-simulator": "pages/tools/goal-simulator.html",
   "/tools": "pages/tools.html",
-  "/": "pages/index.js",
+  "/category/[slug]": "pages/category/[slug].js",
   "/posts/[lang]/[slug]": "pages/posts/[lang]/[slug].js",
-  "/category/[slug]": "pages/category/[slug].js"
+  "/": "pages/index.js"
 }
