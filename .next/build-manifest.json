@@ -5,87 +5,87 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/zJCrHwLL-9FjzH6-vCOyM/_buildManifest.js",
-    "static/zJCrHwLL-9FjzH6-vCOyM/_ssgManifest.js"
+    "static/MUi35FWLgrn4NwvSr9TZv/_buildManifest.js",
+    "static/MUi35FWLgrn4NwvSr9TZv/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
     "/": [
-      "static/chunks/webpack-9cb0f22dbaaa24a5.js",
+      "static/chunks/webpack-cafc653582395f07.js",
       "static/chunks/framework-5f4595e5518b5600.js",
       "static/chunks/main-d1eb1cbf1c7ea08b.js",
       "static/chunks/pages/index-b7e6988743205490.js"
     ],
     "/404": [
-      "static/chunks/webpack-9cb0f22dbaaa24a5.js",
+      "static/chunks/webpack-cafc653582395f07.js",
       "static/chunks/framework-5f4595e5518b5600.js",
       "static/chunks/main-d1eb1cbf1c7ea08b.js",
       "static/chunks/pages/404-064893ac8cd9594a.js"
     ],
     "/_app": [
-      "static/chunks/webpack-9cb0f22dbaaa24a5.js",
+      "static/chunks/webpack-cafc653582395f07.js",
       "static/chunks/framework-5f4595e5518b5600.js",
       "static/chunks/main-d1eb1cbf1c7ea08b.js",
-      "static/css/e446123598d6f173.css",
+      "static/css/d688b07600cc1121.css",
       "static/chunks/pages/_app-cda474627ea83f92.js"
     ],
     "/_error": [
-      "static/chunks/webpack-9cb0f22dbaaa24a5.js",
+      "static/chunks/webpack-cafc653582395f07.js",
       "static/chunks/framework-5f4595e5518b5600.js",
       "static/chunks/main-d1eb1cbf1c7ea08b.js",
       "static/chunks/pages/_error-a4ba2246ff8fb532.js"
     ],
     "/about": [
-      "static/chunks/webpack-9cb0f22dbaaa24a5.js",
+      "static/chunks/webpack-cafc653582395f07.js",
       "static/chunks/framework-5f4595e5518b5600.js",
       "static/chunks/main-d1eb1cbf1c7ea08b.js",
       "static/chunks/pages/about-38bb4ad263357fb2.js"
     ],
     "/category/[slug]": [
-      "static/chunks/webpack-9cb0f22dbaaa24a5.js",
+      "static/chunks/webpack-cafc653582395f07.js",
       "static/chunks/framework-5f4595e5518b5600.js",
       "static/chunks/main-d1eb1cbf1c7ea08b.js",
       "static/chunks/pages/category/[slug]-4a636d27a512b138.js"
     ],
     "/contact": [
-      "static/chunks/webpack-9cb0f22dbaaa24a5.js",
+      "static/chunks/webpack-cafc653582395f07.js",
       "static/chunks/framework-5f4595e5518b5600.js",
       "static/chunks/main-d1eb1cbf1c7ea08b.js",
       "static/chunks/pages/contact-229c2b157ab22559.js"
     ],
     "/disclaimer": [
-      "static/chunks/webpack-9cb0f22dbaaa24a5.js",
+      "static/chunks/webpack-cafc653582395f07.js",
       "static/chunks/framework-5f4595e5518b5600.js",
       "static/chunks/main-d1eb1cbf1c7ea08b.js",
       "static/chunks/pages/disclaimer-c8e2e56e529828d3.js"
     ],
     "/posts/[lang]/[slug]": [
-      "static/chunks/webpack-9cb0f22dbaaa24a5.js",
+      "static/chunks/webpack-cafc653582395f07.js",
       "static/chunks/framework-5f4595e5518b5600.js",
       "static/chunks/main-d1eb1cbf1c7ea08b.js",
       "static/chunks/45-0c50a60817eecd40.js",
-      "static/chunks/pages/posts/[lang]/[slug]-3e25359ffdd9491b.js"
+      "static/chunks/pages/posts/[lang]/[slug]-1cbe8f7842965155.js"
     ],
     "/privacy": [
-      "static/chunks/webpack-9cb0f22dbaaa24a5.js",
+      "static/chunks/webpack-cafc653582395f07.js",
       "static/chunks/framework-5f4595e5518b5600.js",
       "static/chunks/main-d1eb1cbf1c7ea08b.js",
       "static/chunks/pages/privacy-d5f0bc569c4f9fda.js"
     ],
     "/terms": [
-      "static/chunks/webpack-9cb0f22dbaaa24a5.js",
+      "static/chunks/webpack-cafc653582395f07.js",
       "static/chunks/framework-5f4595e5518b5600.js",
       "static/chunks/main-d1eb1cbf1c7ea08b.js",
       "static/chunks/pages/terms-ebfeba248e1a824f.js"
     ],
     "/tools": [
-      "static/chunks/webpack-9cb0f22dbaaa24a5.js",
+      "static/chunks/webpack-cafc653582395f07.js",
       "static/chunks/framework-5f4595e5518b5600.js",
       "static/chunks/main-d1eb1cbf1c7ea08b.js",
       "static/chunks/pages/tools-678e21876832d251.js"
     ],
     "/tools/compound-interest": [
-      "static/chunks/webpack-9cb0f22dbaaa24a5.js",
+      "static/chunks/webpack-cafc653582395f07.js",
       "static/chunks/framework-5f4595e5518b5600.js",
       "static/chunks/main-d1eb1cbf1c7ea08b.js",
       "static/chunks/3fff1979-c483c07147c2bd43.js",
@@ -93,7 +93,7 @@
       "static/chunks/pages/tools/compound-interest-180d3ad804eda7d4.js"
     ],
     "/tools/goal-simulator": [
-      "static/chunks/webpack-9cb0f22dbaaa24a5.js",
+      "static/chunks/webpack-cafc653582395f07.js",
       "static/chunks/framework-5f4595e5518b5600.js",
       "static/chunks/main-d1eb1cbf1c7ea08b.js",
       "static/chunks/pages/tools/goal-simulator-c5b483c3648272de.js"

@@ -156,6 +156,7 @@ function JsonLd({ data  }) {
     });
 }
 function PostPage({ post , lang , otherLangAvailable  }) {
+    var ref;
     const slug = post.slug;
     const router = (0,next_router__WEBPACK_IMPORTED_MODULE_8__.useRouter)();
     // ✅ UI 언어: 헤더 기준(ko/en)
@@ -588,6 +589,16 @@ function PostPage({ post , lang , otherLangAvailable  }) {
                                     }, c.id))
                             })
                         ]
+                    }),
+                    ((ref = post.tags) === null || ref === void 0 ? void 0 : ref.length) > 0 && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                        className: "flex flex-wrap gap-2 mt-4",
+                        children: post.tags.map((tag)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+                                className: "px-2 py-1 text-xs bg-slate-100 rounded-full",
+                                children: [
+                                    "#",
+                                    tag
+                                ]
+                            }, tag))
                     })
                 ]
             })

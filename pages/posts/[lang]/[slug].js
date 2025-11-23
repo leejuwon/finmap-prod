@@ -483,6 +483,16 @@ export default function PostPage({ post, lang, otherLangAvailable  }) {
             </ul>
           )}
         </section>
+        {/* 태그 표시 */}
+        {post.tags?.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-4">
+            {post.tags.map((tag) => (
+              <span key={tag} className="px-2 py-1 text-xs bg-slate-100 rounded-full">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
       </article>
     </>
   );
