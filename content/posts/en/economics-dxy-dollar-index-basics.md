@@ -2,8 +2,8 @@
 slug: "economics-dxy-dollar-index-basics-en"
 title: "What Is DXY (Dollar Index)? A Beginner-Friendly Explanation for Investors"
 description: "A clear explanation of the Dollar Index (DXY), how it is calculated, why it moves, and how it affects stock markets, commodities, and currencies."
-datePublished: "2025-11-22"
-dateModified: "2025-11-22"
+datePublished: "2025-11-23"
+dateModified: "2025-11-23"
 category: "Economics"
 tags: ["DXY", "dollar index", "macro indicators", "forex", "USD strength"]
 cover: "/images/economics/dxy-thum.png"
@@ -135,7 +135,7 @@ Not directly, but it strongly correlates with market liquidity and risk appetite
   "@type": "Article",
   "headline": "What Is DXY (Dollar Index)? A Beginner-Friendly Explanation for Investors",
   "description": "A clear explanation of the Dollar Index, how it works, and how it affects markets.",
-  "datePublished": "2025-11-22",
+  "datePublished": "2025-11-23",
   "author": {
     "@type": "Person",
     "name": "FinMap"

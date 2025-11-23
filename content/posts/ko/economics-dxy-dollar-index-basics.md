@@ -2,8 +2,8 @@
 slug: "economics-dxy-dollar-index-basics"
 title: "DXY(달러인덱스)란 무엇인가? 투자자가 꼭 알아야 할 의미 정리"
 description: "달러인덱스(DXY)의 구성, 계산 방식, 시장 영향, 해석 방법을 초중급 투자자 관점에서 쉽게 정리합니다."
-datePublished: "2025-11-22"
-dateModified: "2025-11-22"
+datePublished: "2025-11-23"
+dateModified: "2025-11-23"
 category: "경제기초"
 tags: ["DXY", "달러인덱스", "거시경제", "환율", "미국달러"]
 cover: "/images/economics/dxy-thum.png"
@@ -141,7 +141,7 @@ DXY가 상승하면 원·달러 환율이 오르는 경우가 많습니다.
   "@type": "Article",
   "headline": "DXY(달러인덱스)란 무엇인가? 투자자가 꼭 알아야 할 의미 정리",
   "description": "달러인덱스의 구성, 계산 방식, 시장 영향, 해석 방법을 초중급 투자자 관점에서 쉽게 정리했습니다.",
-  "datePublished": "2025-11-22",
+  "datePublished": "2025-11-23",
   "author": {
     "@type": "Person",
     "name": "FinMap"
