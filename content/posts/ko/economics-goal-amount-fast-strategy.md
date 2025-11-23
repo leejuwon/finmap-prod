@@ -26,7 +26,7 @@ lang: "ko"
 
 > 목표 자산을 빠르게 달성하기 위해서는 원금·수익률·기간의 조합을 현실적으로 설계해야 합니다. 각각의 변수는 장단점이 다르기 때문에 무리하지 않는 범위에서 균형 있게 조정하는 것이 중요합니다.
 
-![목표 금액을 빠르게 모으는 전략 인포그래픽](/images/economics/goal-amount-fast-strategy-top.png)
+![목표 금액을 빠르게 모으는 전략 인포그래픽](/images/economics/goal-amount-how-top_ko.png)
 
 ## 1. 서론
 
@@ -86,7 +86,7 @@ lang: "ko"
 한 요소에만 의존하는 전략은 지속 가능성이 낮습니다.  
 현실적인 범위 안에서 조정한다면 목표 달성 가능성을 크게 높일 수 있습니다.
 
-![목표 금액을 빠르게 모으는 일러스트](/images/economics/goal-amount-fast-strategy-botom.png)
+![목표 금액을 빠르게 모으는 일러스트](/images/economics/goal-amount-how-botom_ko.png)
 
 ## FAQ
 

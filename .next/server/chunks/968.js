@@ -1,7 +1,39 @@
 "use strict";
-exports.id = 904;
-exports.ids = [904];
+exports.id = 968;
+exports.ids = [968];
 exports.modules = {
+
+/***/ 6915:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "W": () => (/* binding */ setLang),
+/* harmony export */   "X": () => (/* binding */ getInitialLang)
+/* harmony export */ });
+// lib/lang.js
+// 초깃값: 쿠키(fm_lang) → 브라우저 언어 → ko
+function getInitialLang() {
+    if (true) return "ko";
+    const match = document.cookie.match(/(?:^|;\s*)fm_lang=(ko|en)/);
+    if (match && match[1]) return match[1];
+    const nav = (navigator.language || "ko").toLowerCase();
+    if (nav.startsWith("en")) return "en";
+    return "ko";
+}
+// 언어 설정 + 이벤트 브로드캐스트
+function setLang(lang) {
+    if (true) return;
+    const safe = lang === "en" ? "en" : "ko";
+    // 1년짜리 쿠키
+    document.cookie = `fm_lang=${safe}; path=/; max-age=31536000`;
+    // 전역 커스텀 이벤트 (계산기 등에서 듣기)
+    window.dispatchEvent(new CustomEvent("fm_lang_change", {
+        detail: safe
+    }));
+}
+
+
+/***/ }),
 
 /***/ 8904:
 /***/ ((module, __webpack_exports__, __webpack_require__) => {

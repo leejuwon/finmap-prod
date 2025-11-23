@@ -125,16 +125,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1853);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_SeoHead__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8814);
-/* harmony import */ var _components_AdResponsive__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(1137);
-/* harmony import */ var _components_AdInArticle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(3248);
-/* harmony import */ var _config_adSlots__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(280);
-/* harmony import */ var _lib_posts__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(8904);
-/* harmony import */ var html_react_parser__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(2905);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_lib_posts__WEBPACK_IMPORTED_MODULE_7__, html_react_parser__WEBPACK_IMPORTED_MODULE_8__]);
-([_lib_posts__WEBPACK_IMPORTED_MODULE_7__, html_react_parser__WEBPACK_IMPORTED_MODULE_8__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+/* harmony import */ var _components_SeoHead__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8814);
+/* harmony import */ var _components_AdResponsive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(1137);
+/* harmony import */ var _components_AdInArticle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3248);
+/* harmony import */ var _config_adSlots__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(280);
+/* harmony import */ var _lib_posts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8904);
+/* harmony import */ var html_react_parser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(2905);
+/* harmony import */ var _lib_lang__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(6915);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(1853);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_8__);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_lib_posts__WEBPACK_IMPORTED_MODULE_6__, html_react_parser__WEBPACK_IMPORTED_MODULE_7__]);
+([_lib_posts__WEBPACK_IMPORTED_MODULE_6__, html_react_parser__WEBPACK_IMPORTED_MODULE_7__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
 // pages/posts/[lang]/[slug].js
 
 
@@ -144,7 +145,8 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_lib
 
 
 
-
+ // ✅ 추가
+ // ✅ 추가
 function JsonLd({ data  }) {
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("script", {
         type: "application/ld+json",
@@ -153,13 +155,38 @@ function JsonLd({ data  }) {
         }
     });
 }
-function PostPage({ post , lang: initialLang  }) {
-    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_2__.useRouter)();
-    // ✅ URL ?lang= 가 있으면 그 값을 우선 사용, 없으면 SSG 시점 lang 사용
-    const currentLang = router.query.lang === "ko" || router.query.lang === "en" ? router.query.lang : initialLang || "ko";
-    const lang = currentLang;
-    const isKo = lang === "ko";
+function PostPage({ post , lang , otherLangAvailable  }) {
     const slug = post.slug;
+    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_8__.useRouter)();
+    // ✅ UI 언어: 헤더 기준(ko/en)
+    const { 0: uiLang , 1: setUiLang  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("ko");
+    const isKo = uiLang === "ko";
+    // 🔁 계산기와 동일한 언어 동기화 로직
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        if (true) return;
+        const initial = (0,_lib_lang__WEBPACK_IMPORTED_MODULE_9__/* .getInitialLang */ .X)();
+        setUiLang(initial === "en" ? "en" : "ko");
+        const handler = (e)=>{
+            const next = e.detail === "en" ? "en" : "ko"; // fm_lang_change detail = 'ko' | 'en'
+            setUiLang(next);
+        };
+        window.addEventListener("fm_lang_change", handler);
+        return ()=>window.removeEventListener("fm_lang_change", handler);
+    }, []);
+    // ✅ UI 언어(uiLang)와 URL의 lang이 다르고,
+    //    다른 언어 버전이 있을 때만 해당 언어 URL로 이동
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        if (!otherLangAvailable) return; // 번역본 없는 글은 그대로 둠
+        if (uiLang !== lang) {
+            router.replace(`/posts/${uiLang}/${slug}`);
+        }
+    }, [
+        uiLang,
+        lang,
+        slug,
+        otherLangAvailable,
+        router
+    ]);
     const jsonld = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
@@ -171,7 +198,6 @@ function PostPage({ post , lang: initialLang  }) {
             name: "FinMap"
         }
     };
-    // 👍 좋아요 / 💬 댓글 / 🔗 공유 상태
     const { 0: likes , 1: setLikes  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
     const { 0: comments , 1: setComments  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
     const { 0: commentForm , 1: setCommentForm  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
@@ -180,7 +206,6 @@ function PostPage({ post , lang: initialLang  }) {
         content: ""
     });
     const { 0: shareUrl , 1: setShareUrl  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(`https://www.finmaphub.com/posts/${lang}/${slug}`);
-    // 댓글/좋아요 재로딩 함수
     const reloadComments = async ()=>{
         try {
             const res = await fetch(`/api/comments?slug=${slug}`);
@@ -199,7 +224,6 @@ function PostPage({ post , lang: initialLang  }) {
             console.error(e);
         }
     };
-    // 최초 마운트 시 현재 URL 세팅 + 좋아요/댓글 로딩
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
         if (false) {}
         reloadLikes();
@@ -251,7 +275,6 @@ function PostPage({ post , lang: initialLang  }) {
             alert(isKo ? "댓글 등록에 실패했습니다." : "Failed to submit comment.");
         }
     };
-    // 🔧 댓글 수정
     const handleCommentEdit = async (comment)=>{
         const newContent = prompt(isKo ? "수정할 내용을 입력하세요." : "Enter new content.", comment.content || "");
         if (!newContent) return;
@@ -284,7 +307,6 @@ function PostPage({ post , lang: initialLang  }) {
             alert(isKo ? "댓글 수정 중 오류가 발생했습니다." : "Error while editing comment.");
         }
     };
-    // 🗑 댓글 삭제
     const handleCommentDelete = async (comment)=>{
         const ok = confirm(isKo ? "정말 이 댓글을 삭제하시겠습니까?" : "Are you sure you want to delete this comment?");
         if (!ok) return;
@@ -334,13 +356,12 @@ function PostPage({ post , lang: initialLang  }) {
             console.error(e);
         }
     };
-    // 🔥 인-아티클 광고를 H2 기준으로 2번 삽입
     let h2Index = 0;
-    const contentWithInArticleAds = (0,html_react_parser__WEBPACK_IMPORTED_MODULE_8__["default"])(post.contentHtml, {
+    const contentWithInArticleAds = (0,html_react_parser__WEBPACK_IMPORTED_MODULE_7__["default"])(post.contentHtml, {
         replace (domNode) {
             if (domNode.type === "tag" && domNode.name === "h2") {
                 h2Index += 1;
-                const children = (0,html_react_parser__WEBPACK_IMPORTED_MODULE_8__.domToReact)(domNode.children);
+                const children = (0,html_react_parser__WEBPACK_IMPORTED_MODULE_7__.domToReact)(domNode.children);
                 if (h2Index === 2) {
                     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
                         children: [
@@ -349,9 +370,9 @@ function PostPage({ post , lang: initialLang  }) {
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                                 className: "my-6",
-                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AdInArticle__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
-                                    client: _config_adSlots__WEBPACK_IMPORTED_MODULE_6__/* .AD_CLIENT */ .g,
-                                    slot: _config_adSlots__WEBPACK_IMPORTED_MODULE_6__/* .AD_SLOTS.inArticle1 */ .x.inArticle1
+                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AdInArticle__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+                                    client: _config_adSlots__WEBPACK_IMPORTED_MODULE_5__/* .AD_CLIENT */ .g,
+                                    slot: _config_adSlots__WEBPACK_IMPORTED_MODULE_5__/* .AD_SLOTS.inArticle1 */ .x.inArticle1
                                 })
                             })
                         ]
@@ -365,9 +386,9 @@ function PostPage({ post , lang: initialLang  }) {
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                                 className: "my-6",
-                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AdInArticle__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
-                                    client: _config_adSlots__WEBPACK_IMPORTED_MODULE_6__/* .AD_CLIENT */ .g,
-                                    slot: _config_adSlots__WEBPACK_IMPORTED_MODULE_6__/* .AD_SLOTS.inArticle2 */ .x.inArticle2
+                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AdInArticle__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+                                    client: _config_adSlots__WEBPACK_IMPORTED_MODULE_5__/* .AD_CLIENT */ .g,
+                                    slot: _config_adSlots__WEBPACK_IMPORTED_MODULE_5__/* .AD_SLOTS.inArticle2 */ .x.inArticle2
                                 })
                             })
                         ]
@@ -382,7 +403,7 @@ function PostPage({ post , lang: initialLang  }) {
     });
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         children: [
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_SeoHead__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_SeoHead__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
                 title: post.title,
                 desc: post.description,
                 url: `/posts/${lang}/${post.slug}`,
@@ -408,9 +429,9 @@ function PostPage({ post , lang: initialLang  }) {
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                         className: "my-4",
-                        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AdResponsive__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
-                            client: _config_adSlots__WEBPACK_IMPORTED_MODULE_6__/* .AD_CLIENT */ .g,
-                            slot: _config_adSlots__WEBPACK_IMPORTED_MODULE_6__/* .AD_SLOTS.responsiveTop */ .x.responsiveTop,
+                        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AdResponsive__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+                            client: _config_adSlots__WEBPACK_IMPORTED_MODULE_5__/* .AD_CLIENT */ .g,
+                            slot: _config_adSlots__WEBPACK_IMPORTED_MODULE_5__/* .AD_SLOTS.responsiveTop */ .x.responsiveTop,
                             align: "center"
                         })
                     }),
@@ -425,9 +446,9 @@ function PostPage({ post , lang: initialLang  }) {
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                         className: "mt-8 mb-4",
-                        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AdResponsive__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
-                            client: _config_adSlots__WEBPACK_IMPORTED_MODULE_6__/* .AD_CLIENT */ .g,
-                            slot: _config_adSlots__WEBPACK_IMPORTED_MODULE_6__/* .AD_SLOTS.responsiveBottom */ .x.responsiveBottom,
+                        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AdResponsive__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+                            client: _config_adSlots__WEBPACK_IMPORTED_MODULE_5__/* .AD_CLIENT */ .g,
+                            slot: _config_adSlots__WEBPACK_IMPORTED_MODULE_5__/* .AD_SLOTS.responsiveBottom */ .x.responsiveBottom,
                             align: "center"
                         })
                     }),
@@ -574,19 +595,22 @@ function PostPage({ post , lang: initialLang  }) {
     });
 }
 async function getStaticPaths() {
-    const langs = [
-        "ko",
-        "en"
-    ];
-    const paths = langs.flatMap((lang)=>{
-        const slugs = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_7__/* .getAllSlugs */ .m)(lang);
-        return slugs.map((slug)=>({
+    const slugsKo = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_6__/* .getAllSlugs */ .m)("ko");
+    const slugsEn = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_6__/* .getAllSlugs */ .m)("en"); // ✅ 영어 슬러그도 읽기
+    const paths = [
+        ...slugsKo.map((slug)=>({
                 params: {
-                    lang,
+                    lang: "ko",
                     slug
                 }
-            }));
-    });
+            })),
+        ...slugsEn.map((slug)=>({
+                params: {
+                    lang: "en",
+                    slug
+                }
+            })), 
+    ];
     return {
         paths,
         fallback: false
@@ -594,11 +618,24 @@ async function getStaticPaths() {
 }
 async function getStaticProps({ params  }) {
     const { lang , slug  } = params;
-    const post = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_7__/* .getPostBySlug */ .zQ)(lang, slug);
+    const post = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_6__/* .getPostBySlug */ .zQ)(lang, slug);
+    // ✅ 반대 언어가 존재하는지 미리 체크
+    const otherLang = lang === "ko" ? "en" : "ko";
+    let otherLangAvailable = false;
+    try {
+        const otherPost = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_6__/* .getPostBySlug */ .zQ)(otherLang, slug);
+        if (otherPost) {
+            otherLangAvailable = true;
+        }
+    } catch (e) {
+        // 반대 언어 글이 없으면 그냥 false
+        otherLangAvailable = false;
+    }
     return {
         props: {
             post,
-            lang
+            lang,
+            otherLangAvailable
         }
     };
 }
@@ -678,7 +715,7 @@ module.exports = require("path");
 var __webpack_require__ = require("../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [814,904], () => (__webpack_exec__(2812)));
+var __webpack_exports__ = __webpack_require__.X(0, [814,968], () => (__webpack_exec__(2812)));
 module.exports = __webpack_exports__;
 
 })();

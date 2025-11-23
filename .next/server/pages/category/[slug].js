@@ -19,13 +19,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1664);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1853);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_SeoHead__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8814);
 /* harmony import */ var _lib_posts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8904);
+/* harmony import */ var _lib_lang__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6915);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_lib_posts__WEBPACK_IMPORTED_MODULE_4__]);
 _lib_posts__WEBPACK_IMPORTED_MODULE_4__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 // pages/category/[slug].js
+
 
 
 
@@ -42,15 +44,25 @@ const CATEGORY_LABELS_EN = {
     tax: "Tax"
 };
 function CategoryPage({ slug , postsKo , postsEn  }) {
-    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_2__.useRouter)();
-    // ?lang= 기준으로 UI 언어 결정 (기본 ko)
-    const currentLang = router.query.lang === "en" || router.query.lang === "ko" ? router.query.lang : "ko";
-    const isKo = currentLang === "ko";
+    const { 0: lang , 1: setLang  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)("ko");
+    const isKo = lang === "ko";
+    // ✅ 헤더와 동일하게 fm_lang 기준으로 언어 동기화
+    (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(()=>{
+        if (true) return;
+        const initial = (0,_lib_lang__WEBPACK_IMPORTED_MODULE_5__/* .getInitialLang */ .X)();
+        setLang(initial);
+        const handler = (e)=>{
+            const next = (e === null || e === void 0 ? void 0 : e.detail) === "en" ? "en" : "ko";
+            setLang(next);
+        };
+        window.addEventListener("fm_lang_change", handler);
+        return ()=>window.removeEventListener("fm_lang_change", handler);
+    }, []);
     const LABELS = isKo ? CATEGORY_LABELS_KO : CATEGORY_LABELS_EN;
     const title = LABELS[slug] || slug;
-    // ✅ 언어에 따라 실제 사용할 포스트 배열 선택
-    const posts = isKo ? postsKo : postsEn;
-    const urlPath = `/category/${slug}${isKo ? "" : "?lang=en"}`;
+    // ✅ en에 글이 있으면 en, 없으면 ko로 폴백
+    const posts = !isKo && postsEn && postsEn.length > 0 ? postsEn : postsKo;
+    const urlPath = `/category/${slug}`;
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         children: [
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_SeoHead__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
@@ -82,12 +94,7 @@ function CategoryPage({ slug , postsKo , postsEn  }) {
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h3", {
                                 className: "mt-2 text-lg font-semibold",
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                    href: {
-                                        pathname: `/posts/${currentLang}/${p.slug}`,
-                                        query: isKo ? {} : {
-                                            lang: "en"
-                                        }
-                                    },
+                                    href: `/posts/${isKo ? "ko" : "en"}/${p.slug}`,
                                     children: p.title
                                 })
                             }),
@@ -343,13 +350,6 @@ module.exports = require("next/head");
 
 /***/ }),
 
-/***/ 1853:
-/***/ ((module) => {
-
-module.exports = require("next/router");
-
-/***/ }),
-
 /***/ 6689:
 /***/ ((module) => {
 
@@ -392,7 +392,7 @@ module.exports = require("path");
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [676,664,814,904], () => (__webpack_exec__(8785)));
+var __webpack_exports__ = __webpack_require__.X(0, [676,664,814,968], () => (__webpack_exec__(8785)));
 module.exports = __webpack_exports__;
 
 })();

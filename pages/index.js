@@ -1,8 +1,9 @@
 // pages/index.js
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import SeoHead from '../_components/SeoHead';
-import { getAllPostsAllLangs  } from '../lib/posts';
+import { getAllPostsAllLangs } from '../lib/posts';
+import { getInitialLang } from '../lib/lang';
 
 const TEXT = {
   ko: {
@@ -52,14 +53,27 @@ const TEXT = {
 };
 
 export default function Home({ posts }) {
-  const router = useRouter();
-  // /?lang=en 또는 /?lang=ko 기준, 기본값은 ko
-  const lang =
-    router.query.lang === 'en' || router.query.lang === 'ko'
-      ? router.query.lang
-      : 'ko';
+  // 🔥 전역 언어 시스템과 동기화되는 상태
+  const [lang, setLang] = useState('ko');
 
-  const t = TEXT[lang];
+  // ✅ 헤더와 동일하게: fm_lang 쿠키 + fm_lang_change 이벤트 수신
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    // 최초 진입 시 쿠키 기준 언어
+    const initial = getInitialLang();
+    setLang(initial);
+
+    // 헤더에서 setLang() 호출 시 발생하는 이벤트 구독
+    const handler = (e) => {
+      setLang(e.detail || 'ko');
+    };
+
+    window.addEventListener('fm_lang_change', handler);
+    return () => window.removeEventListener('fm_lang_change', handler);
+  }, []);
+
+  const t = TEXT[lang] || TEXT.ko;
 
   // 언어별 포스트 필터링 (lang 필드가 없으면 ko로 간주)
   const filtered = posts.filter((p) => {
@@ -92,16 +106,18 @@ export default function Home({ posts }) {
               {t.heroSub}
             </p>
             <div className="flex flex-wrap gap-3">
+              {/* 계산기 링크: 언어에 따라 텍스트만 바뀌고, 기능은 쿠키 기반 */}
               <Link
-                href={`/tools/compound-interest${
-                  lang === 'en' ? '?lang=en' : ''
-                }`}
+                href="/tools/compound-interest"
                 className="btn-primary bg-blue-500 hover:bg-blue-600"
               >
                 {t.btnTool}
               </Link>
+
+              {/* 경제기초 카테고리: 라우트는 공용(/category/economics) 이고,
+                  텍스트만 언어별 */}
               <Link
-                href={`/category/${lang}/economics`}
+                href="/category/economics"
                 className="btn-secondary border-slate-500 text-slate-100 hover:bg-slate-800"
               >
                 {t.btnEconomics}
@@ -146,7 +162,7 @@ export default function Home({ posts }) {
                 <img src={p.cover} alt={p.title} className="card-thumb" />
               )}
               <span className="badge">{p.category}</span>
-              <h3 className="mt-2 text-lg font-semibold">
+              <h3 className="mt-2 text-lg font-semibold">                
                 <Link href={`/posts/${p.lang || 'ko'}/${p.slug}`}>
                   {p.title}
                 </Link>
@@ -193,7 +209,7 @@ export default function Home({ posts }) {
   );
 }
 
-export async function getStaticProps() {  
+export async function getStaticProps() {
   const posts = getAllPostsAllLangs();   // ✅ ko + en 전부
   return { props: { posts } };
 }

@@ -1,12 +1,13 @@
 // pages/posts/[lang]/[slug].js
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import SeoHead from '../../../_components/SeoHead';
 import AdResponsive from '../../../_components/AdResponsive';
 import AdInArticle from '../../../_components/AdInArticle';
 import { AD_CLIENT, AD_SLOTS } from '../../../config/adSlots';
 import { getAllSlugs, getPostBySlug } from '../../../lib/posts';
 import parse, { domToReact } from 'html-react-parser';
+import { getInitialLang } from '../../../lib/lang'; // ✅ 추가
+import { useRouter } from 'next/router';          // ✅ 추가
 
 export function JsonLd({ data }) {
   return (
@@ -17,18 +18,40 @@ export function JsonLd({ data }) {
   );
 }
 
-export default function PostPage({ post, lang: initialLang }) {
+export default function PostPage({ post, lang, otherLangAvailable  }) {
+  const slug = post.slug;
+
   const router = useRouter();
 
-  // ✅ URL ?lang= 가 있으면 그 값을 우선 사용, 없으면 SSG 시점 lang 사용
-  const currentLang =
-    router.query.lang === 'ko' || router.query.lang === 'en'
-      ? router.query.lang
-      : initialLang || 'ko';
+  // ✅ UI 언어: 헤더 기준(ko/en)
+  const [uiLang, setUiLang] = useState('ko');
+  const isKo = uiLang === 'ko';
 
-  const lang = currentLang;
-  const isKo = lang === 'ko';
-  const slug = post.slug;
+   // 🔁 계산기와 동일한 언어 동기화 로직
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const initial = getInitialLang();
+    setUiLang(initial === 'en' ? 'en' : 'ko');
+
+    const handler = (e) => {
+      const next = e.detail === 'en' ? 'en' : 'ko';  // fm_lang_change detail = 'ko' | 'en'
+      setUiLang(next);
+    };
+
+    window.addEventListener('fm_lang_change', handler);
+    return () => window.removeEventListener('fm_lang_change', handler);
+  }, []);
+
+   // ✅ UI 언어(uiLang)와 URL의 lang이 다르고,
+  //    다른 언어 버전이 있을 때만 해당 언어 URL로 이동
+  useEffect(() => {
+    if (!otherLangAvailable) return;           // 번역본 없는 글은 그대로 둠
+
+    if (uiLang !== lang) {
+      router.replace(`/posts/${uiLang}/${slug}`);
+    }
+  }, [uiLang, lang, slug, otherLangAvailable, router]);
 
   const jsonld = {
     '@context': 'https://schema.org',
@@ -39,7 +62,6 @@ export default function PostPage({ post, lang: initialLang }) {
     author: { '@type': 'Organization', name: 'FinMap' },
   };
 
-  // 👍 좋아요 / 💬 댓글 / 🔗 공유 상태
   const [likes, setLikes] = useState(0);
   const [comments, setComments] = useState([]);
   const [commentForm, setCommentForm] = useState({
@@ -51,7 +73,6 @@ export default function PostPage({ post, lang: initialLang }) {
     `https://www.finmaphub.com/posts/${lang}/${slug}`
   );
 
-  // 댓글/좋아요 재로딩 함수
   const reloadComments = async () => {
     try {
       const res = await fetch(`/api/comments?slug=${slug}`);
@@ -72,11 +93,11 @@ export default function PostPage({ post, lang: initialLang }) {
     }
   };
 
-  // 최초 마운트 시 현재 URL 세팅 + 좋아요/댓글 로딩
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setShareUrl(window.location.href);
     }
+
     reloadLikes();
     reloadComments();
   }, [slug, lang]);
@@ -121,14 +142,11 @@ export default function PostPage({ post, lang: initialLang }) {
     } catch (e) {
       console.error(e);
       alert(
-        isKo
-          ? '댓글 등록에 실패했습니다.'
-          : 'Failed to submit comment.'
+        isKo ? '댓글 등록에 실패했습니다.' : 'Failed to submit comment.'
       );
     }
   };
 
-  // 🔧 댓글 수정
   const handleCommentEdit = async (comment) => {
     const newContent = prompt(
       isKo ? '수정할 내용을 입력하세요.' : 'Enter new content.',
@@ -160,9 +178,7 @@ export default function PostPage({ post, lang: initialLang }) {
           alert(isKo ? '비밀번호가 일치하지 않습니다.' : 'Invalid password.');
         } else {
           alert(
-            isKo
-              ? '댓글 수정에 실패했습니다.'
-              : 'Failed to edit comment.'
+            isKo ? '댓글 수정에 실패했습니다.' : 'Failed to edit comment.'
           );
         }
         return;
@@ -179,7 +195,6 @@ export default function PostPage({ post, lang: initialLang }) {
     }
   };
 
-  // 🗑 댓글 삭제
   const handleCommentDelete = async (comment) => {
     const ok = confirm(
       isKo
@@ -211,9 +226,7 @@ export default function PostPage({ post, lang: initialLang }) {
           alert(isKo ? '비밀번호가 일치하지 않습니다.' : 'Invalid password.');
         } else {
           alert(
-            isKo
-              ? '댓글 삭제에 실패했습니다.'
-              : 'Failed to delete comment.'
+            isKo ? '댓글 삭제에 실패했습니다.' : 'Failed to delete comment.'
           );
         }
         return;
@@ -257,7 +270,6 @@ export default function PostPage({ post, lang: initialLang }) {
     }
   };
 
-  // 🔥 인-아티클 광고를 H2 기준으로 2번 삽입
   let h2Index = 0;
   const contentWithInArticleAds = parse(post.contentHtml, {
     replace(domNode) {
@@ -289,7 +301,6 @@ export default function PostPage({ post, lang: initialLang }) {
 
         return <h2>{children}</h2>;
       }
-
       return undefined;
     },
   });
@@ -305,7 +316,6 @@ export default function PostPage({ post, lang: initialLang }) {
       <JsonLd data={jsonld} />
 
       <article className="prose prose-slate lg:prose-lg max-w-none bg-white border rounded-2xl shadow-card p-6">
-        {/* 제목 + 메타 */}
         <h1>{post.title}</h1>
         <p className="text-sm text-slate-500">
           {post.category} · {post.datePublished}
@@ -314,7 +324,6 @@ export default function PostPage({ post, lang: initialLang }) {
             : ''}
         </p>
 
-        {/* 본문 상단 반응형 광고 */}
         <div className="my-4">
           <AdResponsive
             client={AD_CLIENT}
@@ -323,7 +332,6 @@ export default function PostPage({ post, lang: initialLang }) {
           />
         </div>
 
-        {/* 커버 이미지 */}
         {post.cover && (
           <img
             src={post.cover}
@@ -332,10 +340,8 @@ export default function PostPage({ post, lang: initialLang }) {
           />
         )}
 
-        {/* 본문 + 인-아티클 광고 */}
         <div className="fm-post-body">{contentWithInArticleAds}</div>
 
-        {/* 본문 하단 반응형 광고 */}
         <div className="mt-8 mb-4">
           <AdResponsive
             client={AD_CLIENT}
@@ -344,7 +350,6 @@ export default function PostPage({ post, lang: initialLang }) {
           />
         </div>
 
-        {/* 좋아요 + 공유하기 */}
         <div className="mt-4 flex flex-wrap items-center gap-3 border-t pt-4">
           <button
             type="button"
@@ -372,7 +377,6 @@ export default function PostPage({ post, lang: initialLang }) {
           >
             X(Twitter)
           </a>
-
           <a
             href={`https://www.facebook.com/sharer.php?u=${encodeURIComponent(
               shareUrl
@@ -385,13 +389,11 @@ export default function PostPage({ post, lang: initialLang }) {
           </a>
         </div>
 
-        {/* 댓글 영역 */}
         <section className="mt-6 border-t pt-4">
           <h2 className="text-base md:text-lg font-semibold mb-3">
             {isKo ? '댓글' : 'Comments'}
           </h2>
 
-          {/* 댓글 작성 폼 */}
           <div className="grid gap-2 mb-4">
             <div className="grid grid-cols-2 gap-2">
               <input
@@ -432,7 +434,6 @@ export default function PostPage({ post, lang: initialLang }) {
             </div>
           </div>
 
-          {/* 댓글 리스트 */}
           {comments.length === 0 ? (
             <p className="text-sm text-slate-500">
               {isKo ? '아직 댓글이 없습니다.' : 'No comments yet.'}
@@ -461,7 +462,6 @@ export default function PostPage({ post, lang: initialLang }) {
                     {c.content}
                   </p>
 
-                  {/* 수정 / 삭제 버튼 */}
                   <div className="flex gap-2 justify-end">
                     <button
                       type="button"
@@ -489,14 +489,17 @@ export default function PostPage({ post, lang: initialLang }) {
 }
 
 export async function getStaticPaths() {
-  const langs = ['ko', 'en'];
+  const slugsKo = getAllSlugs('ko');
+  const slugsEn = getAllSlugs('en');   // ✅ 영어 슬러그도 읽기
 
-  const paths = langs.flatMap((lang) => {
-    const slugs = getAllSlugs(lang);
-    return slugs.map((slug) => ({
-      params: { lang, slug },
-    }));
-  });
+  const paths = [
+    ...slugsKo.map((slug) => ({
+      params: { lang: 'ko', slug },
+    })),
+    ...slugsEn.map((slug) => ({
+      params: { lang: 'en', slug },
+    })),
+  ];
 
   return {
     paths,
@@ -504,14 +507,30 @@ export async function getStaticPaths() {
   };
 }
 
+
 export async function getStaticProps({ params }) {
   const { lang, slug } = params;
   const post = getPostBySlug(lang, slug);
+
+  // ✅ 반대 언어가 존재하는지 미리 체크
+  const otherLang = lang === 'ko' ? 'en' : 'ko';
+  let otherLangAvailable = false;
+
+  try {
+    const otherPost = getPostBySlug(otherLang, slug);
+    if (otherPost) {
+      otherLangAvailable = true;
+    }
+  } catch (e) {
+    // 반대 언어 글이 없으면 그냥 false
+    otherLangAvailable = false;
+  }
 
   return {
     props: {
       post,
       lang,
+      otherLangAvailable,  // 👈 새로 추가
     },
   };
 }

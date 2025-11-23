@@ -18,13 +18,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1664);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1853);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_SeoHead__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8814);
 /* harmony import */ var _lib_posts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8904);
+/* harmony import */ var _lib_lang__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6915);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_lib_posts__WEBPACK_IMPORTED_MODULE_4__]);
 _lib_posts__WEBPACK_IMPORTED_MODULE_4__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 // pages/index.js
+
 
 
 
@@ -73,10 +75,22 @@ const TEXT = {
     }
 };
 function Home({ posts  }) {
-    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_2__.useRouter)();
-    // /?lang=en 또는 /?lang=ko 기준, 기본값은 ko
-    const lang = router.query.lang === "en" || router.query.lang === "ko" ? router.query.lang : "ko";
-    const t = TEXT[lang];
+    // 🔥 전역 언어 시스템과 동기화되는 상태
+    const { 0: lang , 1: setLang  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)("ko");
+    // ✅ 헤더와 동일하게: fm_lang 쿠키 + fm_lang_change 이벤트 수신
+    (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(()=>{
+        if (true) return;
+        // 최초 진입 시 쿠키 기준 언어
+        const initial = (0,_lib_lang__WEBPACK_IMPORTED_MODULE_5__/* .getInitialLang */ .X)();
+        setLang(initial);
+        // 헤더에서 setLang() 호출 시 발생하는 이벤트 구독
+        const handler = (e)=>{
+            setLang(e.detail || "ko");
+        };
+        window.addEventListener("fm_lang_change", handler);
+        return ()=>window.removeEventListener("fm_lang_change", handler);
+    }, []);
+    const t = TEXT[lang] || TEXT.ko;
     // 언어별 포스트 필터링 (lang 필드가 없으면 ko로 간주)
     const filtered = posts.filter((p)=>{
         if (!p.lang) return lang === "ko";
@@ -126,12 +140,12 @@ function Home({ posts  }) {
                                     className: "flex flex-wrap gap-3",
                                     children: [
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                            href: `/tools/compound-interest${lang === "en" ? "?lang=en" : ""}`,
+                                            href: "/tools/compound-interest",
                                             className: "btn-primary bg-blue-500 hover:bg-blue-600",
                                             children: t.btnTool
                                         }),
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                            href: `/category/${lang}/economics`,
+                                            href: "/category/economics",
                                             className: "btn-secondary border-slate-500 text-slate-100 hover:bg-slate-800",
                                             children: t.btnEconomics
                                         })
@@ -484,13 +498,6 @@ module.exports = require("next/head");
 
 /***/ }),
 
-/***/ 1853:
-/***/ ((module) => {
-
-module.exports = require("next/router");
-
-/***/ }),
-
 /***/ 6689:
 /***/ ((module) => {
 
@@ -533,7 +540,7 @@ module.exports = require("path");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [676,664,814,904], () => (__webpack_exec__(3678)));
+var __webpack_exports__ = __webpack_require__.X(0, [676,664,814,968], () => (__webpack_exec__(3678)));
 module.exports = __webpack_exports__;
 
 })();

@@ -1,8 +1,9 @@
 // pages/category/[slug].js
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import SeoHead from '../../_components/SeoHead';
 import { getAllPosts } from '../../lib/posts';
+import { getInitialLang } from '../../lib/lang';
 
 const CATEGORY_LABELS_KO = {
   economics: '경제기초',
@@ -17,22 +18,33 @@ const CATEGORY_LABELS_EN = {
 };
 
 export default function CategoryPage({ slug, postsKo, postsEn }) {
-  const router = useRouter();
+  const [lang, setLang] = useState('ko');
+  const isKo = lang === 'ko';
 
-  // ?lang= 기준으로 UI 언어 결정 (기본 ko)
-  const currentLang =
-    router.query.lang === 'en' || router.query.lang === 'ko'
-      ? router.query.lang
-      : 'ko';
+  // ✅ 헤더와 동일하게 fm_lang 기준으로 언어 동기화
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
 
-  const isKo = currentLang === 'ko';
+    const initial = getInitialLang();
+    setLang(initial);
+
+    const handler = (e) => {
+      const next = e?.detail === 'en' ? 'en' : 'ko';
+      setLang(next);
+    };
+
+    window.addEventListener('fm_lang_change', handler);
+    return () => window.removeEventListener('fm_lang_change', handler);
+  }, []);
+
   const LABELS = isKo ? CATEGORY_LABELS_KO : CATEGORY_LABELS_EN;
   const title = LABELS[slug] || slug;
 
-  // ✅ 언어에 따라 실제 사용할 포스트 배열 선택
-  const posts = isKo ? postsKo : postsEn;
+  // ✅ en에 글이 있으면 en, 없으면 ko로 폴백
+  const posts =
+    !isKo && postsEn && postsEn.length > 0 ? postsEn : postsKo;
 
-  const urlPath = `/category/${slug}${isKo ? '' : '?lang=en'}`;
+  const urlPath = `/category/${slug}`;
 
   return (
     <>
@@ -63,13 +75,7 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
               )}
               <span className="badge">{p.category}</span>
               <h3 className="mt-2 text-lg font-semibold">
-                {/* 상세 페이지도 lang 유지해서 이동 */}
-                <Link
-                  href={{
-                    pathname: `/posts/${currentLang}/${p.slug}`,
-                    query: isKo ? {} : { lang: 'en' },
-                  }}
-                >
+                <Link href={`/posts/${isKo ? 'ko' : 'en'}/${p.slug}`}>
                   {p.title}
                 </Link>
               </h3>

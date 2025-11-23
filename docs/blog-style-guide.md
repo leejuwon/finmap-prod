@@ -17,7 +17,6 @@ SEO·가독성·Adsense 적합성·모바일 친화성을 기준으로 작성하
 slug: "{화면ID}"
 title: "{글 제목}"
 description: "{150자 이내 요약문}"
-date: "{YYYY-MM-DD}"
 datePublished: "{YYYY-MM-DD}"
 dateModified: "{YYYY-MM-DD}"
 category: "{경제기초·재테크·세금 등}"
@@ -67,6 +66,8 @@ Front Matter 뒤에는 아래와 같은 H1 → 서론 → H2/H3 구조로 이어
 ## 5. 결론
 - 3줄 요약
 - 관련 글 내부링크
+
+![하단이미지 내용](이미지 경로)
 
 ## FAQ (선택)
 - Q1 / A1 형식 2~4개
