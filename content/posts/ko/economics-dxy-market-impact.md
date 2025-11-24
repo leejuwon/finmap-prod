@@ -6,7 +6,7 @@ datePublished: "2025-11-24"
 dateModified: "2025-11-24"
 category: "경제기초"
 tags: ["DXY", "달러인덱스", "미국금리", "환율", "유동성"]
-cover: "/img/economics/dxy-market-impact-thum.png"
+cover: "/images/economics/dxy-market-impact-thum.png"
 lang: "ko"
 ---
 
@@ -27,7 +27,7 @@ lang: "ko"
 > **한 문단 요약**  
 DXY(달러인덱스)는 달러의 강세·약세뿐 아니라 미국 금리, 글로벌 유동성, 위험자산 선호도까지 반영하는 핵심 지표입니다. DXY가 상승하면 미국 증시·원화·코스피에 부정적인 압력이 나타나는 경우가 많으며, 하락하면 위험자산에 유리한 환경이 조성됩니다.
 
-![상단 이미지](/img/dxy-market-impact-top.png "DXY 영향 요약")
+![상단 이미지](/images/economics/dxy-market-impact-top.png "DXY 영향 요약")
 
 ---
 

@@ -6,7 +6,7 @@ datePublished: "2025-11-24"
 dateModified: "2025-11-24"
 category: "Economics"
 tags: ["DXY", "dollar index", "US interest rates", "liquidity", "forex"]
-cover: "/img/dxy-market-impact-thum.png"
+cover: "/images/economics/dxy-market-impact-thum.png"
 lang: "en"
 ---
 
@@ -27,7 +27,7 @@ lang: "en"
 > **One-paragraph summary**  
 DXY is a key macro indicator that influences global risk sentiment, liquidity, U.S. stock performance, USD/KRW, and Korea’s KOSPI. A rising DXY is usually negative for risk assets, while a falling DXY supports market recovery.
 
-![Top image](/img/dxy-market-impact-top.png "DXY market impact")
+![Top image](/images/economics/dxy-market-impact-top.png "DXY market impact")
 
 ---
 
