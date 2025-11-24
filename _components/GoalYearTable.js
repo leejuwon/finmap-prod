@@ -6,32 +6,52 @@ function formatMoneyAuto(value, currency = 'KRW', locale = 'ko-KR') {
   const isKo = locale.toLowerCase().startsWith('ko');
   const cur = currency || 'KRW';
 
+  // ---- KRW 처리 ----
   if (cur === 'KRW') {
     const abs = Math.abs(v);
     let divisor = 1;
     let suffix = isKo ? '원' : 'KRW';
 
+    // ① 억 단위 (>= 100,000,000)
     if (abs >= 100_000_000) {
       divisor = 100_000_000;
       suffix = isKo ? '억원' : '×100M KRW';
-    } else if (abs >= 10_000) {
+    }
+    // ② 만원 단위 (>= 10,000)
+    else if (abs >= 10_000) {
       divisor = 10_000;
       suffix = isKo ? '만원' : '×10k KRW';
     }
 
     const scaled = v / divisor;
-    const scaledAbs = Math.abs(scaled);
-    const hasFraction = Math.round(scaledAbs * 10) % 10 !== 0;
-    const fractionDigits = hasFraction ? 1 : 0;
 
-    const numStr = scaled.toLocaleString(locale, {
-      minimumFractionDigits: fractionDigits,
-      maximumFractionDigits: fractionDigits,
-    });
+    // 👉 억 단위는 무조건 소수점 2자리
+    if (abs >= 100_000_000) {
+      const numStr = scaled.toLocaleString(locale, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
+      return `${numStr}${suffix}`;
+    }
 
-    return `${numStr}${suffix}`;
+    // 👉 만원 단위는 기존 규칙(필요할 때만 소수점 1자리)
+    if (abs >= 10_000) {
+      const scaledAbs = Math.abs(scaled);
+      const hasFraction = Math.round(scaledAbs * 10) % 10 !== 0;
+      const fractionDigits = hasFraction ? 1 : 0;
+
+      const numStr = scaled.toLocaleString(locale, {
+        minimumFractionDigits: fractionDigits,
+        maximumFractionDigits: fractionDigits,
+      });
+      return `${numStr}${suffix}`;
+    }
+
+    // 👉 원 단위
+    return `${scaled.toLocaleString(locale)}${suffix}`;
   }
 
+  // ---- 외화 처리 ----
   const isValidCurrency =
     typeof cur === 'string' && /^[A-Z]{3}$/.test(cur);
 
@@ -42,7 +62,7 @@ function formatMoneyAuto(value, currency = 'KRW', locale = 'ko-KR') {
   return new Intl.NumberFormat(locale, {
     style: 'currency',
     currency: cur,
-    maximumFractionDigits: 2,
+    maximumFractionDigits: 2,   // USD 등은 항상 2자리
   }).format(v);
 }
 

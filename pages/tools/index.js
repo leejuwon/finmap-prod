@@ -45,6 +45,16 @@ export default function ToolsHome() {
           ? '초기·최종 자산과 기간으로 연평균 복리 수익률(CAGR)을 계산하고 세금·수수료 효과를 확인합니다.'
           :'Calculate compound annual growth rate (CAGR) from initial and final value and see the impact of tax and fees.',
       },
+       {
+        href: '/tools/dca-calculator',
+        title: isKo
+        ? 'ETF·주식 자동 적립식 시뮬레이터 (DCA)'
+        : 'ETF/Stock DCA Simulator',
+        badge: isKo ? '적립식 투자' : 'Dollar-Cost Averaging',
+        desc: isKo
+        ? '매월 일정 금액을 ETF·주식에 투자했을 때 세전·세후 자산 성장을 계산합니다.'
+        : 'Calculate pre/post-tax asset growth when investing a fixed amount monthly in ETFs or stocks.',
+      },
     ],
     [isKo]
   );

@@ -13,23 +13,40 @@ function formatMoneyAuto(value, currency = 'KRW', locale = 'ko-KR') {
     let suffix = isKo ? '원' : 'KRW';
 
     if (abs >= 100_000_000) {
+      // 👉 억 단위: 항상 소수점 2자리
       divisor = 100_000_000;
       suffix = isKo ? '억원' : '×100M KRW';
+
+      const scaled = v / divisor;
+
+      const numStr = scaled.toLocaleString(locale, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
+
+      return `${numStr}${suffix}`;
     } else if (abs >= 10_000) {
+      // 👉 만원 단위: 필요할 때만 소수점 1자리
       divisor = 10_000;
       suffix = isKo ? '만원' : '×10k KRW';
+
+      const scaled = v / divisor;
+      const scaledAbs = Math.abs(scaled);
+      const hasFraction = Math.round(scaledAbs * 10) % 10 !== 0; // x.0 이면 소수 안 보이게
+      const fractionDigits = hasFraction ? 1 : 0;
+
+      const numStr = scaled.toLocaleString(locale, {
+        minimumFractionDigits: fractionDigits,
+        maximumFractionDigits: fractionDigits,
+      });
+
+      return `${numStr}${suffix}`;
     }
 
-    const scaled = v / divisor;
-    const scaledAbs = Math.abs(scaled);
-    const hasFraction = Math.round(scaledAbs * 10) % 10 !== 0; // x.0 이면 소수 안 보이게
-    const fractionDigits = hasFraction ? 1 : 0;
-
-    const numStr = scaled.toLocaleString(locale, {
-      minimumFractionDigits: fractionDigits,
-      maximumFractionDigits: fractionDigits,
+    // 👉 1만원 미만: 그냥 원 단위 정수
+    const numStr = v.toLocaleString(locale, {
+      maximumFractionDigits: 0,
     });
-
     return `${numStr}${suffix}`;
   }
 
@@ -39,12 +56,14 @@ function formatMoneyAuto(value, currency = 'KRW', locale = 'ko-KR') {
     return new Intl.NumberFormat(locale).format(v);
   }
 
+  // 그 외 통화(USD 등)
   return new Intl.NumberFormat(locale, {
     style: 'currency',
     currency: cur,
     maximumFractionDigits: 2,
   }).format(v);
 }
+
 
 export default function CompoundYearTable({
   result,

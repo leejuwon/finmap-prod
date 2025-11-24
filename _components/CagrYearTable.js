@@ -9,29 +9,52 @@ function formatMoneyAuto(value, currency = 'KRW', locale = 'ko-KR') {
     let divisor = 1;
     let suffix = isKo ? '원' : 'KRW';
 
+    // 억 단위
     if (abs >= 100_000_000) {
       divisor = 100_000_000;
       suffix = isKo ? '억원' : '×100M KRW';
-    } else if (abs >= 10_000) {
+    }
+    // 만원 단위
+    else if (abs >= 10_000) {
       divisor = 10_000;
       suffix = isKo ? '만원' : '×10k KRW';
     }
 
     const scaled = v / divisor;
     const scaledAbs = Math.abs(scaled);
-    const hasFraction = Math.round(scaledAbs * 10) % 10 !== 0;
-    const fractionDigits = hasFraction ? 1 : 0;
+
+    let minimumFractionDigits = 0;
+    let maximumFractionDigits = 0;
+
+    if (divisor === 100_000_000) {
+      // 🔥 억 단위: 소수점 최대 2자리
+      // 12.00 → 12
+      // 12.10 → 12.1
+      // 12.12 → 12.12
+      maximumFractionDigits = 2;
+      minimumFractionDigits = scaled % 1 === 0 ? 0 : 1;
+    } else if (divisor === 10_000) {
+      // 🔥 만원 단위: 소수점 최대 1자리
+      maximumFractionDigits = 1;
+      minimumFractionDigits = scaled % 1 === 0 ? 0 : 1;
+    } else {
+      // 원 단위
+      maximumFractionDigits = 0;
+      minimumFractionDigits = 0;
+    }
 
     const numStr = scaled.toLocaleString(locale, {
-      minimumFractionDigits: fractionDigits,
-      maximumFractionDigits: fractionDigits,
+      minimumFractionDigits,
+      maximumFractionDigits,
     });
 
     return `${numStr}${suffix}`;
   }
 
+  // 기타 통화 (USD 등)
   const isValidCurrency =
     typeof cur === 'string' && /^[A-Z]{3}$/.test(cur);
+
   if (!isValidCurrency) {
     return new Intl.NumberFormat(locale).format(v);
   }
