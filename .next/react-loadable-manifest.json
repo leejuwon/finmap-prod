@@ -1,4 +1,10 @@
 {
+  "..\\_components\\CagrChart.js -> react-chartjs-2": {
+    "id": 8598,
+    "files": [
+      "static/chunks/598.415702ff43339cc8.js"
+    ]
+  },
   "..\\_components\\CompoundChart.js -> react-chartjs-2": {
     "id": 8598,
     "files": [

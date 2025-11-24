@@ -37,6 +37,14 @@ export default function ToolsHome() {
           ? '목표 금액까지 몇 년이 걸릴지, 매월 얼마나 모아야 할지 자산 성장 경로를 시뮬레이션합니다.'
           : 'Simulate how long and how much per month you need to reach a target amount.',
       },
+      {
+        href: '/tools/cagr-calculator',
+        title: isKo ? '투자 수익률(CAGR) 계산기' : 'CAGR (Investment Return) Calculator', 
+        badge: isKo ? '성과 분석': 'Investment Return Analisys',
+        desc:  isKo 
+          ? '초기·최종 자산과 기간으로 연평균 복리 수익률(CAGR)을 계산하고 세금·수수료 효과를 확인합니다.'
+          :'Calculate compound annual growth rate (CAGR) from initial and final value and see the impact of tax and fees.',
+      },
     ],
     [isKo]
   );
