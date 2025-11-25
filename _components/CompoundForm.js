@@ -13,10 +13,12 @@ const dict = {
     calc: '계산하기',
     currency: '통화',
     compounding: '복리 주기',
-    tax: '세금(이자소득세 15.4%)',
-    fee: '수수료(매입·환매 각 0.25%)',
+    // 🔥 레이블을 "입력형" 기준으로 약간 수정
+    tax: '세금(이자/배당 세율, %)',
+    fee: '수수료(연간 총 수수료, %)',
     compoundingMonthly: '월복리',
     compoundingYearly: '연복리',
+    // 아래는 UI에서 직접 쓰진 않지만 남겨둠 (다른 곳에서 쓸 수도 있으니)
     taxApply: '세금 적용',
     taxNone: '세금 미적용',
     feeApply: '수수료 적용',
@@ -33,8 +35,8 @@ const dict = {
     calc: 'Calculate',
     currency: 'Currency',
     compounding: 'Compounding',
-    tax: 'Tax (15.4% interest tax)',
-    fee: 'Fee (0.25% buy/sell)',
+    tax: 'Tax rate on interest/dividends (%)',
+    fee: 'Yearly total fee (%)',
     compoundingMonthly: 'Monthly',
     compoundingYearly: 'Yearly',
     taxApply: 'Apply tax',
@@ -58,8 +60,9 @@ export default function CompoundForm({
     annualRate: 7,
     years: 10,
     compounding: 'monthly',
-    taxMode: 'apply',
-    feeMode: 'apply',
+    // 🔥 세율·수수료율 직접 입력 (기본값: 한국 기준)
+    taxRate: 15.4,   // (%)
+    feeRate: 0.5,    // (%)
   });
 
   const t = useMemo(() => dict[safeLocale] || dict.ko, [safeLocale]);
@@ -87,11 +90,15 @@ export default function CompoundForm({
   const disabled = useMemo(() => form.years <= 0, [form.years]);
 
   const handleSubmit = () => {
-    // 통화는 부모가 들고 있으므로 여기서는 form + currency를 넘겨줘도 되고,
-    // 부모 쪽에서 currency를 무시하고 자기 state를 사용하는 구조라 안전함.
+    const taxRatePercent = Number(form.taxRate) || 0;
+    const feeRatePercent = Number(form.feeRate) || 0;
+
     onSubmit({
       ...form,
       currency,
+      // 🔥 lib/compound.js 에서 사용할 필드명
+      taxRatePercent,
+      feeRatePercent,
     });
   };
 
@@ -174,30 +181,36 @@ export default function CompoundForm({
           </select>
         </label>
 
+        {/* 🔥 세율 입력 (%, 0 이면 실질적으로 "세금 미적용") */}
         <label className="grid gap-1">
           <span className="text-sm">{t.tax}</span>
-          <select
-            name="taxMode"
-            className="select"
-            value={form.taxMode}
+          <input
+            name="taxRate"
+            type="number"
+            inputMode="decimal"
+            className="input"
+            value={form.taxRate}
             onChange={handleChange}
-          >
-            <option value="apply">{t.taxApply}</option>
-            <option value="none">{t.taxNone}</option>
-          </select>
+            min="0"
+            step="0.1"
+            placeholder="예: 15.4"
+          />
         </label>
 
+        {/* 🔥 수수료율 입력 (%, 0 이면 수수료 없음) */}
         <label className="grid gap-1">
           <span className="text-sm">{t.fee}</span>
-          <select
-            name="feeMode"
-            className="select"
-            value={form.feeMode}
+          <input
+            name="feeRate"
+            type="number"
+            inputMode="decimal"
+            className="input"
+            value={form.feeRate}
             onChange={handleChange}
-          >
-            <option value="apply">{t.feeApply}</option>
-            <option value="none">{t.feeNone}</option>
-          </select>
+            min="0"
+            step="0.1"
+            placeholder="예: 0.5"
+          />
         </label>
 
         <label className="grid gap-1">

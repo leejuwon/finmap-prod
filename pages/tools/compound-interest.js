@@ -205,6 +205,18 @@ export default function CompoundPage() {
     const r = Number(form.annualRate) || 0;
     const y = Number(form.years) || 0;
 
+    // 🔥 새로 추가된 세율/수수료율 (퍼센트값, 예: 15.4, 0.5)
+    // CompoundForm에서 taxRatePercent / feeRatePercent를 넘긴다는 전제
+    const taxRatePercent =
+      form.taxRatePercent !== undefined && form.taxRatePercent !== null
+        ? Number(form.taxRatePercent)       // 사용자가 입력한 값
+        : 15.4;                             // 폼에서 안 넘어오면 디폴트
+
+    const feeRatePercent =
+      form.feeRatePercent !== undefined && form.feeRatePercent !== null
+        ? Number(form.feeRatePercent)
+        : 0.5;
+
     const baseYear = new Date().getFullYear();
 
     const compoundResult = calcCompound({
@@ -216,9 +228,14 @@ export default function CompoundPage() {
       taxMode: form.taxMode,
       feeMode: form.feeMode,
       baseYear,
+
+      // 🔥 여기서 세율/수수료율을 실제로 넘겨준다
+      taxRatePercent,
+      feeRatePercent,
     });
 
     const totalInvested = p + m * 12 * y;
+
     const simple = calcSimpleLump({
       principal: totalInvested,
       annualRate: r,
@@ -226,6 +243,10 @@ export default function CompoundPage() {
       taxMode: form.taxMode,
       feeMode: form.feeMode,
       baseYear,
+
+      // 🔥 단리 계산도 같은 세율/수수료율 사용
+      taxRatePercent,
+      feeRatePercent,
     });
 
     setInvest({ principal: p, monthly: m, years: y });

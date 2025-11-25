@@ -21,20 +21,16 @@ function formatMoneyAuto(value, currency = 'KRW', locale = 'ko-KR') {
     }
 
     const scaled = v / divisor;
-    const scaledAbs = Math.abs(scaled);
 
     let minimumFractionDigits = 0;
     let maximumFractionDigits = 0;
 
     if (divisor === 100_000_000) {
-      // 🔥 억 단위: 소수점 최대 2자리
-      // 12.00 → 12
-      // 12.10 → 12.1
-      // 12.12 → 12.12
+      // 억 단위: 소수점 최대 2자리
       maximumFractionDigits = 2;
       minimumFractionDigits = scaled % 1 === 0 ? 0 : 1;
     } else if (divisor === 10_000) {
-      // 🔥 만원 단위: 소수점 최대 1자리
+      // 만원 단위: 소수점 최대 1자리
       maximumFractionDigits = 1;
       minimumFractionDigits = scaled % 1 === 0 ? 0 : 1;
     } else {
@@ -92,24 +88,45 @@ export default function CagrYearTable({
     ? '단위: 원 / 만원 / 억원 자동'
     : 'Unit: auto (KRW / 10k / 100M)';
 
+  const safeInitial = Number(initial) || 0;
   let cumulativeTaxFee = 0;
 
-  const stats = rows.map((r) => {
+  // 옵션 B: 진짜 "연간" 효과 + 누적 효과
+  // year N:
+  //   grossGainYear = gross_N - gross_{N-1}
+  //   netGainYear   = net_N   - net_{N-1}
+  //   impactYear    = grossGainYear - netGainYear
+  //
+  // 1년 차의 "이전 값"은 초기투자금(세전/세후 동일)으로 간주
+  const stats = rows.map((r, idx) => {
     const year = r.year;
     const gross = Number(r.grossValue) || 0;
     const net = Number(r.netValue) || 0;
-    const diff = gross - net;
-    cumulativeTaxFee += diff;
-    const invested = initial * Math.pow(
-      1 + (rows[rows.length - 1].netCagr || 0),
-      year
-    ); // optional, not strictly used
+
+    let prevGross;
+    let prevNet;
+
+    if (idx === 0) {
+      // 1년차: 전년도 자산 = 초기투자금
+      prevGross = safeInitial;
+      prevNet = safeInitial;
+    } else {
+      const prevRow = rows[idx - 1];
+      prevGross = Number(prevRow.grossValue) || 0;
+      prevNet = Number(prevRow.netValue) || 0;
+    }
+
+    const grossGainYear = gross - prevGross;
+    const netGainYear = net - prevNet;
+    const impactYear = grossGainYear - netGainYear; // 연간 세금+수수료 효과
+
+    cumulativeTaxFee += impactYear;
 
     return {
       year,
       gross,
       net,
-      diff,
+      impactYear,
       cumulativeTaxFee,
     };
   });
@@ -139,10 +156,14 @@ export default function CagrYearTable({
                 {isKo ? '세후 자산' : 'Net after tax/fee'}
               </th>
               <th className="px-2 py-1 text-right whitespace-nowrap">
-                {isKo ? '연간 세금+수수료 효과' : 'Tax+fee impact (year)'}
+                {isKo
+                  ? '연간 세금+수수료 효과'
+                  : 'Tax+fee impact (year)'}
               </th>
               <th className="px-2 py-1 text-right whitespace-nowrap">
-                {isKo ? '누적 세금+수수료' : 'Tax+fee (cumulative)'}
+                {isKo
+                  ? '누적 세금+수수료'
+                  : 'Tax+fee (cumulative)'}
               </th>
             </tr>
           </thead>
@@ -159,10 +180,14 @@ export default function CagrYearTable({
                   {formatMoneyAuto(s.net, currency, locale)}
                 </td>
                 <td className="px-2 py-1 text-right whitespace-nowrap">
-                  {formatMoneyAuto(s.diff, currency, locale)}
+                  {formatMoneyAuto(s.impactYear, currency, locale)}
                 </td>
                 <td className="px-2 py-1 text-right whitespace-nowrap">
-                  {formatMoneyAuto(s.cumulativeTaxFee, currency, locale)}
+                  {formatMoneyAuto(
+                    s.cumulativeTaxFee,
+                    currency,
+                    locale
+                  )}
                 </td>
               </tr>
             ))}
