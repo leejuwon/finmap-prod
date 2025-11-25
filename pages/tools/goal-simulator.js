@@ -24,15 +24,22 @@ function simulateGoalPath({
   annualRate,
   years,
   compounding = 'monthly',
-  taxMode = 'apply',
-  feeMode = 'apply',
+  // 🔥 복리 계산기와 동일하게 세율/수수료율 퍼센트로 받기
+  taxRatePercent = 15.4, // 이자소득세 기본 15.4%
+  feeRatePercent = 0.5,  // 연 수수료 기본 0.5%
 }) {
   const months = Math.max(1, Math.floor(years * 12));
   const rYear = (Number(annualRate) || 0) / 100;
 
+  // 🔥 퍼센트 → 소수로 변환 + 0 미만 방지
+  const taxRate = Math.max(0, (Number(taxRatePercent) || 0) / 100);
+  const feeRate = Math.max(0, (Number(feeRatePercent) || 0) / 100);
+
+  // 세금/수수료 감안한 "순 연수익률" 근사
   let netYear = rYear;
-  if (taxMode === 'apply') netYear *= 1 - 0.154;
-  if (feeMode === 'apply') netYear -= 0.005;
+  netYear *= 1 - taxRate;  
+  netYear -= feeRate;
+  
   if (netYear < -0.99) netYear = -0.99;
 
   const grossMonth =
@@ -171,11 +178,11 @@ export default function GoalSimulatorPage() {
             },
             {
               q: '목표 자산 금액은 세전 기준인가요, 세후 기준인가요?',
-              a: '이 시뮬레이터에서 목표 자산은 “세후 자산 기준”으로 보는 것을 추천합니다. 세금과 수수료 옵션을 켜면 세후 기준 자산 경로가 계산되므로, 목표 금액도 세후로 잡는 것이 직관적입니다.',
+              a: '이 시뮬레이터에서 목표 자산은 “세후 자산 기준”으로 보는 것을 추천합니다. 세금과 수수료 옵션을 켜고, 필요하다면 세율·수수료율(%)을 조정한 뒤 세후 기준 자산 경로를 보는 것이 직관적입니다.',
             },
             {
               q: '세금·수수료 옵션은 어떻게 적용되나요?',
-              a: '세금 적용을 켜면 이자소득세 15.4%를, 수수료 적용을 켜면 연 0.5% 수준의 보수/수수료를 반영해 순수익률을 줄여서 계산합니다. 실제 금융상품의 세율·수수료와는 다를 수 있으니 참고용으로만 사용하세요.',
+              a: '세금 적용을 켜면 기본값으로 이자소득세 15.4%를, 수수료 적용을 켜면 기본값으로 연 0.5% 수준의 보수/수수료를 사용합니다. 세율·수수료율 입력창에서 0%~원하는 값으로 직접 조정할 수 있습니다. 실제 금융상품의 세율·수수료와는 다를 수 있으니 참고용으로만 사용하세요.',
             },
             {
               q: '목표 자산이 너무 크거나 기간이 너무 짧으면 어떻게 보나요?',
@@ -193,11 +200,11 @@ export default function GoalSimulatorPage() {
             },
             {
               q: 'Is the target amount before or after tax?',
-              a: 'We recommend thinking of your target as an “after-tax” number. When tax and fee options are enabled, the simulator computes net values, so it is more intuitive to set your goal based on net assets.',
+              a: 'We recommend thinking of your target as an “after-tax” number. When tax and fee options are enabled (and tax/fee rates are set), the simulator computes net values, so it is more intuitive to set your goal based on net assets.',
             },
             {
               q: 'How are tax and fees applied in the simulation?',
-              a: 'With tax enabled, a 15.4% interest tax is applied. With fees enabled, we assume about 0.5% annual cost. These are simplified assumptions and may not match real products exactly, so treat them as a rough guideline only.',
+              a: 'With tax enabled, we use a default 15.4% interest tax; with fees enabled, we use a default 0.5% annual cost. You can override both percentages in the form. These are simplified assumptions and may not match real products exactly.',
             },
             {
               q: 'What if my target is very high or too aggressive?',
@@ -239,14 +246,29 @@ export default function GoalSimulatorPage() {
     const y = Number(form.years) || 0;
     const targetValue = (Number(form.target) || 0) * scale;
 
+    // 🔥 사용자가 입력한 세율/수수료율 (%)
+    const taxRatePercent =
+      form.taxRatePercent !== undefined &&
+      form.taxRatePercent !== null &&
+      form.taxRatePercent !== ''
+        ? Number(form.taxRatePercent)
+        : 0;//15.4;
+
+    const feeRatePercent =
+      form.feeRatePercent !== undefined &&
+      form.feeRatePercent !== null &&
+      form.feeRatePercent !== ''
+        ? Number(form.feeRatePercent)
+        : 0;//0.5;
+
     const rows = simulateGoalPath({
       current,
       monthly,
       annualRate: r,
       years: y,
       compounding: form.compounding,
-      taxMode: form.taxMode,
-      feeMode: form.feeMode,
+      taxRatePercent,
+      feeRatePercent,
     });
 
     setTarget(targetValue);

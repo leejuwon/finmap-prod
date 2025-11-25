@@ -16,13 +16,10 @@ const dict = {
     currency: '통화',
     compounding: '복리 주기',
     compoundingMonthly: '월복리',
-    compoundingYearly: '연복리',
-    tax: '세금(이자소득세 15.4%)',
-    fee: '수수료(매입·환매 각 0.25%)',
-    taxApply: '세금 적용',
-    taxNone: '세금 미적용',
-    feeApply: '수수료 적용',
-    feeNone: '수수료 없음',
+    compoundingYearly: '연복리',    
+    // 🔥 추가 라벨
+    taxRateLabel: '세율(이자소득세, %)',
+    feeRateLabel: '연 수수료율(연 %, 보수/수수료)',
   },
   en: {
     title: 'Goal Asset Simulator',
@@ -38,13 +35,10 @@ const dict = {
     currency: 'Currency',
     compounding: 'Compounding',
     compoundingMonthly: 'Monthly',
-    compoundingYearly: 'Yearly',
-    tax: 'Tax (15.4% interest tax)',
-    fee: 'Fee (0.25% buy/sell)',
-    taxApply: 'Apply tax',
-    taxNone: 'No tax',
-    feeApply: 'Apply fee',
-    feeNone: 'No fee',
+    compoundingYearly: 'Yearly',    
+    // 🔥 추가 라벨
+    taxRateLabel: 'Tax rate on interest (%)',
+    feeRateLabel: 'Annual fee rate (%)',
   },
 };
 
@@ -64,8 +58,9 @@ export default function GoalForm({
     years: 15,
     target: 10000,   // 만원 또는 USD
     compounding: 'monthly',
-    taxMode: 'apply',
-    feeMode: 'apply',
+    // 🔥 세율/수수료율 기본값
+    taxRatePercent: 15.4,
+    feeRatePercent: 0.5,
   });
 
   const t = useMemo(() => dict[safeLocale] || dict.ko, [safeLocale]);
@@ -158,7 +153,7 @@ export default function GoalForm({
         </label>
       </div>
 
-      {/* 2행: 목표 금액 + 복리/세금/수수료 */}
+      {/* 2행: 목표 금액 + 복리/세금/수수료 모드 */}
       <div className="grid gap-3 md:grid-cols-4">
         <label className="grid gap-1">
           <span className="text-sm">{targetLabel}</span>
@@ -184,34 +179,39 @@ export default function GoalForm({
             <option value="yearly">{t.compoundingYearly}</option>
           </select>
         </label>
-
         <label className="grid gap-1">
-          <span className="text-sm">{t.tax}</span>
-          <select
-            name="taxMode"
-            className="select"
-            value={form.taxMode}
+          <span className="text-sm">
+            {t.taxRateLabel}            
+          </span>
+          <input
+            name="taxRatePercent"
+            type="number"
+            inputMode="decimal"
+            className="input"
+            value={form.taxRatePercent}
             onChange={handleChange}
-          >
-            <option value="apply">{t.taxApply}</option>
-            <option value="none">{t.taxNone}</option>
-          </select>
+            min="0"
+            step="0.1"
+          />
         </label>
 
         <label className="grid gap-1">
-          <span className="text-sm">{t.fee}</span>
-          <select
-            name="feeMode"
-            className="select"
-            value={form.feeMode}
+          <span className="text-sm">
+            {t.feeRateLabel}            
+          </span>
+          <input
+            name="feeRatePercent"
+            type="number"
+            inputMode="decimal"
+            className="input"
+            value={form.feeRatePercent}
             onChange={handleChange}
-          >
-            <option value="apply">{t.feeApply}</option>
-            <option value="none">{t.feeNone}</option>
-          </select>
+            min="0"
+            step="0.1"
+          />
         </label>
-      </div>
-
+                
+      </div>      
       {/* 3행: 통화 + 버튼 */}
       <div className="flex flex-wrap gap-3 justify-between items-center">
         <label className="grid gap-1">
