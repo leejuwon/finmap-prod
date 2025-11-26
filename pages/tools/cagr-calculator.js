@@ -93,8 +93,8 @@ export default function CagrCalculatorPage() {
           : 'Enter initial value, final (or current) value, and the number of years to calculate CAGR.',
       introBullet2:
         locale === 'ko'
-          ? '세금·수수료를 “연 수익률을 깎는 방식”으로 반영해, 세전·세후 CAGR을 비교해 볼 수 있습니다.'
-          : 'Tax and fee are applied by reducing the effective annual rate so you can compare gross vs net CAGR.',
+          ? '세율과 수수료율(기본값: 이자소득세 15.4%, 연 0.5%)을 직접 입력해, 세전·세후 CAGR 차이와 비용 효과를 비교해 볼 수 있습니다. 0으로 입력하면 해당 비용은 미적용으로 계산됩니다.'
+          : 'You can enter your own tax and fee rates (defaults: 15.4% tax, 0.5% annual fee) to compare gross vs net CAGR and visualize the cost impact. Setting them to 0 turns off that cost.',
       introBullet3:
         locale === 'ko'
           ? '연도별 자산 경로를 그래프와 표로 함께 보면서, 숫자가 실제 자산 성장과 어떻게 연결되는지 확인할 수 있습니다.'
@@ -146,11 +146,11 @@ export default function CagrCalculatorPage() {
             },
             {
               q: '세금·수수료를 어떻게 반영하나요?',
-              a: '이 계산기는 단순화를 위해 이자소득세 15.4%와 연 0.5% 수수료를 가정하고, 세전 CAGR에서 일정 비율을 깎는 방식으로 세후 CAGR을 계산합니다. 실제 상품별 세금·보수 구조와는 차이가 있을 수 있습니다.',
+              a: '이 계산기는 사용자가 입력한 세율(%)과 연 수수료율(%)을 활용해, “세전 CAGR이 얼마였다면 이런 세후 CAGR이 나왔을까?”를 단순 모델로 역산합니다. 기본값은 이자소득세 15.4%, 연 0.5% 수수료이며, 0으로 입력하면 해당 비용은 미적용으로 계산됩니다. 실제 상품별 세금·보수 구조와는 차이가 있을 수 있습니다.',
             },
             {
               q: '초기/최종 자산은 세전 기준인가요, 세후 기준인가요?',
-              a: '입력값 자체는 사용자가 인지하는 “실제 자산 규모”를 기준으로 넣어 주시면 됩니다. 세전/세후 모델링은 CAGR 계산 과정과 연도별 경로에서만 사용됩니다.',
+              a: '입력값 자체는 사용자가 인지하는 “실제 자산 규모(세후 기준)”를 기준으로 넣어 주시면 됩니다. 계산된 CAGR을 “실제 세후 수익률”로 보고, 입력한 세율·수수료율을 바탕으로 세전 CAGR을 추정한다고 이해하시면 편합니다.',
             },
             {
               q: '실제 투자 성과와 계산기 결과가 다르게 나올 수 있나요?',
@@ -158,7 +158,11 @@ export default function CagrCalculatorPage() {
             },
             {
               q: '세금+수수료 금액이 너무 크게 보입니다. 1,000만→2억2,000만(10년) 예시는 잘못된 건 아닌가요?',
-              a: `예를 들어 초기 1,000만원이 10년 뒤 2억 2,000만원이 되도록 맞추면, 세전 CAGR은 약 43.4%, 세후 CAGR은 약 36.2%로 계산됩니다. 이때 연도별 테이블의 “세전 자산(추정)”과 “세후 자산”은 각각 세전 수익률/세후 수익률로 굴렸을 때의 자산 경로이고, “세금+수수료 효과”는 두 자산 경로의 차이(격차)를 의미합니다. 10년차에 1억 원 이상으로 크게 보이는 이유는, 43.4%와 36.2%라는 작은 차이라도 10년간 복리로 누적되면 자산 규모가 크게 벌어지기 때문입니다. 이 값은 실제로 납부한 세금이 아니라, “세전 CAGR을 그대로 유지했다면 이만큼 더 커졌을 텐데”라는 잠재 성장 차이로 이해하시면 됩니다.`,
+              a: `예를 들어 초기 1,000만원이 10년 뒤 2억 2,000만원이 되도록 맞추면, 세후 CAGR은 약 36.2%로 계산되고, 입력한 세율·수수료율(기본값: 15.4%, 0.5%)을 기준으로 역산한 세전 CAGR은 약 43.4% 수준이 됩니다. 연도별 테이블의 “세전 자산(추정)”과 “세후 자산”은 각각 세전 수익률/세후 수익률로 굴렸을 때의 자산 경로이고, “세금+수수료 효과”는 두 자산 경로의 차이(격차)를 의미합니다. 10년차에 1억 원 이상으로 크게 보이는 이유는, 43.4%와 36.2%라는 작은 차이라도 10년간 복리로 누적되면 자산 규모가 크게 벌어지기 때문입니다. 이 값은 실제로 납부한 세금이 아니라, “세전 CAGR을 그대로 유지했다면 이만큼 더 커졌을 텐데”라는 잠재 성장 차이로 이해하시면 됩니다.`,
+            },
+            {
+              q: '세율이나 수수료율을 0으로 두면 어떻게 되나요?',
+              a: '세율과 수수료율을 0으로 입력하면 해당 비용을 완전히 제외한 상태로 CAGR을 계산합니다. 예를 들어 세율 0%, 수수료율 0%로 두면 세전 CAGR과 세후 CAGR이 동일해지고, 연도별 테이블의 “세금+수수료 효과”도 0으로 표시됩니다.',
             },
           ]
         : [
@@ -172,11 +176,11 @@ export default function CagrCalculatorPage() {
             },
             {
               q: 'How are tax and fees applied in this calculator?',
-              a: 'For simplicity, we assume a 15.4% interest tax and a 0.5% annual fee, and reduce the gross CAGR accordingly to estimate net CAGR. Real products may have more complex and different structures.',
+              a: 'You enter the tax rate (%) and annual fee rate (%) yourself. The calculator treats your CAGR from initial to final as an after-cost rate, then approximately backs out a gross CAGR that would have resulted in that net rate given the tax and fee inputs. The defaults are 15.4% tax and 0.5% per year, but you can change them freely. Setting them to 0 removes that cost from the model. Real-world products may have more complex structures.',
             },
             {
               q: 'Should I use pre-tax or after-tax values for initial and final inputs?',
-              a: 'You can use whichever is more intuitive for you, as long as you are consistent. The gross/net modeling is approximate and is mainly meant to show how costs can affect long-term growth.',
+              a: 'Use the values that reflect your actual wealth after tax (what you see in your account). The calculator treats the resulting CAGR as your net, and then estimates a gross CAGR consistent with your chosen tax and fee rates.',
             },
             {
               q: 'Why might my actual performance differ from this calculator?',
@@ -184,7 +188,11 @@ export default function CagrCalculatorPage() {
             },
             {
               q: 'The tax + fee impact in the table looks extremely large (e.g. 10M → 220M over 10 years). Is that a bug?',
-              a: `In the 10M → 220M over 10 years example, the gross CAGR is about 43.4% and the net CAGR after tax/fee is about 36.2%. The yearly table shows two parallel scenarios: one where your money grows at 43.4%, and another at 36.2%. “Tax + fee impact” is the difference between these two paths at each year, not the actual tax you paid in that year. Because the gap in CAGR is compounded over 10 years, the asset gap can exceed 100M KRW by year 10. This is normal in compound growth and represents lost potential growth due to costs, not a literal tax bill.`,
+              a: `In the 10M → 220M over 10 years example, the net CAGR is about 36.2%. Given the default 15.4% tax and 0.5% annual fee, the model estimates a gross CAGR of around 43.4%. The yearly table then shows two paths: one at 43.4% and another at 36.2%. “Tax + fee impact” is the gap between these two paths at each year, not the literal tax bill in that year. Because the gap in CAGR is compounded over 10 years, the asset difference can exceed 100M KRW by year 10. This is normal in compound growth and represents lost potential due to costs.`,
+            },
+            {
+              q: 'What happens if I set tax or fee to 0?',
+              a: 'If you set both tax and fee to 0, the calculator effectively removes those costs: the gross and net CAGR become identical, and the “tax + fee impact” column in the yearly table becomes 0. This is useful as a benchmark for comparing “with costs” vs “no costs” scenarios.',
             },
           ],
     [locale]
@@ -216,8 +224,8 @@ export default function CagrCalculatorPage() {
       initial: init,
       final: fin,
       years: y,
-      taxMode: form.taxMode,
-      feeMode: form.feeMode,
+      taxRate: form.taxRate,
+      feeRate: form.feeRate,
     });
 
     setInitial(init);

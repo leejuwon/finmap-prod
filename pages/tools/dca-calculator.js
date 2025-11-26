@@ -25,20 +25,18 @@ function simulateDCA({
   years,
   annualIncrease = 0, // 연간 적립금 증가율 (%)
   compounding = 'monthly',
-  taxMode = 'apply',
-  feeMode = 'apply',
+  taxRate = 15.4,     // 세율(%)
+  feeRate = 0.5,      // 수수료율(연 %)
 }) {
   const months = Math.max(1, Math.floor((Number(years) || 0) * 12));
   const rYear = (Number(annualRate) || 0) / 100;
 
   // 세금/수수료 감안한 순수익률 근사
-  let netYear = rYear;
-  if (taxMode === 'apply') {
-    netYear *= 1 - 0.154; // 이자소득세 15.4%
-  }
-  if (feeMode === 'apply') {
-    netYear -= 0.005; // 연 0.5% 수수료 가정
-  }
+  const tax = (Number(taxRate) || 0) / 100;
+  const fee = (Number(feeRate) || 0) / 100;
+
+  //   netYear ≈ rYear * (1 - tax) - fee
+  let netYear = rYear * (1 - tax) - fee;
   if (netYear < -0.99) netYear = -0.99;
 
   const grossMonth =
@@ -102,10 +100,10 @@ const TEXT = {
   ko: {
     seoTitle: 'ETF·주식 자동 적립식 시뮬레이터 (DCA)',
     seoDesc:
-      '매월 일정 금액을 ETF·주식에 적립 투자했을 때 자산 성장 경로를 시뮬레이션합니다. 세금, 수수료, 연간 적립금 증가율까지 반영해 보세요.',
+      '매월 일정 금액을 ETF·주식에 적립 투자했을 때 자산 성장 경로를 시뮬레이션합니다. 세율, 수수료율, 연간 적립금 증가율까지 반영해 보세요.',
     title: 'ETF·주식 자동 적립식 시뮬레이터 (DCA)',
     descShort:
-      '초기 자산, 월 적립금, 연 수익률, 연간 적립금 증가율로 DCA(자동 적립식) 투자 결과를 시뮬레이션합니다. 세금·수수료 옵션과 통화(KRW/USD)도 설정할 수 있습니다.',
+      '초기 자산, 월 적립금, 연 수익률, 연간 적립금 증가율로 DCA(자동 적립식) 투자 결과를 시뮬레이션합니다. 세율·수수료율과 통화(KRW/USD)도 직접 설정할 수 있습니다.',
     fv: '마지막 해 세후 자산',
     contrib: '누적 투자금',
     gain: '세후 수익(누적)',
@@ -117,10 +115,10 @@ const TEXT = {
   en: {
     seoTitle: 'ETF/Stock DCA Simulator',
     seoDesc:
-      'Simulate how your assets grow when you invest a fixed amount into ETFs/stocks every month (DCA), considering tax, fees and annual contribution increase.',
+      'Simulate how your assets grow when you invest a fixed amount into ETFs/stocks every month (DCA), considering tax rate, fee rate and annual contribution increase.',
     title: 'ETF/Stock DCA Simulator (DCA)',
     descShort:
-      'Simulate your DCA (dollar-cost averaging) plan with initial value, monthly contribution, annual return and yearly contribution increase. Tax, fee and currency (KRW/USD) settings are supported.',
+      'Simulate your DCA (dollar-cost averaging) plan with initial value, monthly contribution, annual return and yearly contribution increase. Tax/fee rates and currency (KRW/USD) are configurable.',
     fv: 'Final net assets',
     contrib: 'Total invested',
     gain: 'Net gain (cumulative)',
@@ -144,16 +142,16 @@ function getFaqItems(locale) {
         a: '연 수익률은 장기적인 자산 성장률 가정입니다. 예를 들어 7%를 입력하면 자산이 연 7%씩 성장하는 단순 모델로 시뮬레이션합니다. 연간 적립금 증가율은 연봉 인상이나 저축 여력 증가를 반영해, 해마다 월 적립금을 몇 %씩 늘릴지의 값입니다.',
       },
       {
-        q: '세금·수수료 옵션은 실제와 얼마나 비슷한가요?',
-        a: '계산 편의를 위해 이자소득세 15.4%, 연 0.5% 수준의 수수료를 가정해 “실질 수익률”을 깎는 방식으로 반영합니다. 실제 상품별 세금·보수 구조와는 다를 수 있으므로, 참고용으로만 활용하는 것이 좋습니다.',
-      },
-      {
-        q: 'DCA 계산기가 실전 매매 타이밍까지 알려주나요?',
-        a: '아닙니다. 이 도구는 “매달 같은 규칙으로 투자한다”는 전제를 깔고 자산 경로를 보여주는 시뮬레이터입니다. 언제 사고팔지에 대한 타이밍과 리스크 관리는 별도의 투자 전략이 필요합니다.',
+        q: '세금·수수료는 어떻게 반영되나요?',
+        a: '사용자가 입력한 세율(%)과 연 수수료율(%)을 기준으로, “세전 연 수익률에서 세후 실질 수익률이 얼마로 줄어드는지”를 단순 모델로 계산해서 월 수익률에 반영합니다. 기본값은 이자소득세 15.4%, 연 0.5% 수수료이며, 실제 상품별 세금·보수 구조와는 다를 수 있습니다.',
       },
       {
         q: '실제 수익률과 시뮬레이션 결과가 다를 수 있나요?',
         a: '실제 시장은 매일 변동하고, 환율·세법·상품 구조도 바뀝니다. 이 계산기는 일정한 연 수익률과 단순한 세금·수수료 모델을 전제로 하므로, “계획을 세우는 참고 도구”로 사용하시고 실제 투자는 반드시 추가적인 리스크 검토가 필요합니다.',
+      },
+      {
+        q: '세율이나 수수료율을 0으로 두면 어떻게 되나요?',
+        a: '세율과 수수료율을 0으로 입력하면 해당 비용을 완전히 제외한 상태로 적립식 결과를 계산합니다. 예를 들어 세율 0%, 수수료율 0%로 두면 세전·세후 수익률이 동일해지고, 장기적으로 세금·수수료로 인한 자산 격차가 어떻게 달라지는지 비교해 볼 수 있습니다.',
       },
     ];
   }
@@ -168,16 +166,16 @@ function getFaqItems(locale) {
       a: 'The annual return is a long-term growth assumption. For example, 7% means your assets are assumed to grow at 7% per year in a simplified model. The yearly contribution increase reflects salary growth or higher saving capacity, and controls how much your monthly contribution rises each year in % terms.',
     },
     {
-      q: 'How realistic are the tax and fee settings?',
-      a: 'For simplicity, we apply a 15.4% interest tax and about 0.5% annual fees by reducing the effective annual return. Real-world products may have different tax and fee structures, so treat these settings as approximations only.',
-    },
-    {
-      q: 'Does this DCA calculator tell me when to buy or sell?',
-      a: 'No. This tool assumes you invest according to a fixed rule every month and focuses on the resulting asset path. Entry/exit timing and risk management require a separate strategy.',
+      q: 'How are tax and fees applied in this calculator?',
+      a: 'You specify the tax rate (%) and the annual fee rate (%). The model approximates how your gross annual return is reduced to a net return after these costs, and then applies that net rate at the monthly level. The default values are 15.4% tax and 0.5% annual fee, but real-world products may differ.',
     },
     {
       q: 'Why might real results differ from this simulation?',
-      a: 'Markets fluctuate daily, and exchange rates, tax rules, and product structures can change over time. This calculator assumes a constant return and a simplified tax/fee model, so it should be used as a planning aid, not a prediction.',
+      a: 'Markets fluctuate daily, and exchange rates, tax rules, and product structures can change over time. This calculator assumes a constant annual return and a simplified tax/fee model, so please treat it as a planning aid rather than a prediction engine.',
+    },
+    {
+      q: 'What happens if I set tax or fee to 0?',
+      a: 'If you set both the tax rate and fee rate to 0, the calculator removes those costs entirely. Gross and net performance become identical, which makes it easy to compare “with costs” vs “no costs” scenarios and see how much long-term drag taxes and fees can create.',
     },
   ];
 }
@@ -259,8 +257,8 @@ export default function DCACalculatorPage() {
       years: y,
       annualIncrease,
       compounding: form.compounding,
-      taxMode: form.taxMode,
-      feeMode: form.feeMode,
+      taxRate: form.taxRate,
+      feeRate: form.feeRate,
     });
 
     setResult(rows);

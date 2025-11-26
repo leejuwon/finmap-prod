@@ -22,16 +22,21 @@ export default function DCAYearTable({
   const stats = rows.map((r) => {
     const invested = Number(r.invested) || 0;
     const net = Number(r.valueNet) || 0;
+    const gross = Number(r.valueGross) || 0; // 세전 자산 (가정)
     const contrib = Number(r.contributionYear) || 0;
-    const gain = net - invested;
+
+    const gain = net - invested;             // 세후 수익(누적)
+    const taxFeeImpact = gross - net;        // 세금+수수료로 인해 줄어든 자산(가정)
     const returnRate = invested > 0 ? (net / invested) * 100 : 0;
 
     return {
       year: r.year,
       invested,
       net,
+      gross,
       contrib,
       gain,
+      taxFeeImpact,
       returnRate,
     };
   });
@@ -45,6 +50,7 @@ export default function DCAYearTable({
       'investedTotal',
       'netAssets',
       'netGain',
+      'taxFeeImpact',
       'returnRate',
     ];
     const lines = [header.join(',')];
@@ -57,6 +63,7 @@ export default function DCAYearTable({
           s.invested,
           s.net,
           s.gain,
+          s.taxFeeImpact,
           s.returnRate,
         ].join(',')
       );
@@ -103,7 +110,7 @@ export default function DCAYearTable({
       </div>
 
       <div className="overflow-x-auto">
-        <table className="min-w-[760px] border-t">
+        <table className="min-w-[880px] border-t">
           <thead className="bg-slate-50">
             <tr>
               <th className="px-2 py-1 text-left whitespace-nowrap">
@@ -120,6 +127,9 @@ export default function DCAYearTable({
               </th>
               <th className="px-2 py-1 text-right whitespace-nowrap">
                 {isKo ? '세후 수익' : 'Net gain'}
+              </th>
+              <th className="px-2 py-1 text-right whitespace-nowrap">
+                {isKo ? '세금+수수료 효과' : 'Tax + fee impact'}
               </th>
               <th className="px-2 py-1 text-right whitespace-nowrap">
                 {isKo
@@ -145,6 +155,9 @@ export default function DCAYearTable({
                 </td>
                 <td className="px-2 py-1 text-right whitespace-nowrap">
                   {formatMoneyAuto(s.gain, currency, locale)}
+                </td>
+                <td className="px-2 py-1 text-right whitespace-nowrap">
+                  {formatMoneyAuto(s.taxFeeImpact, currency, locale)}
                 </td>
                 <td className="px-2 py-1 text-right whitespace-nowrap">
                   {s.returnRate.toFixed(2)}%

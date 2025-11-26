@@ -11,12 +11,8 @@ const dict = {
     years: '투자 기간(년)',
     calc: '수익률 계산하기',
     currency: '통화',
-    tax: '세금(이자소득세 15.4%)',
-    fee: '수수료(연 0.5% 가정)',
-    taxApply: '세금 적용',
-    taxNone: '세금 미적용',
-    feeApply: '수수료 적용',
-    feeNone: '수수료 없음',
+    tax: '세금(이자소득세 %, 0이면 없음)',
+    fee: '수수료(연 %, 0이면 없음)',
   },
   en: {
     title: 'CAGR (Investment Return) Calculator',
@@ -27,12 +23,8 @@ const dict = {
     years: 'Years',
     calc: 'Calculate CAGR',
     currency: 'Currency',
-    tax: 'Tax (15.4% interest tax)',
-    fee: 'Fee (0.5% per year)',
-    taxApply: 'Apply tax',
-    taxNone: 'No tax',
-    feeApply: 'Apply fee',
-    feeNone: 'No fee',
+    tax: 'Tax rate (%; 0 = none)',
+    fee: 'Fee per year (%; 0 = none)',
   },
 };
 
@@ -48,8 +40,8 @@ export default function CagrForm({
     initial: 1000,  // 만원 or USD
     final: 2000,    // 만원 or USD
     years: 10,
-    taxMode: 'apply',
-    feeMode: 'apply',
+    taxRate: 15.4,  // 기본 세율(%)
+    feeRate: 0.5,   // 기본 수수료율(%)
   });
 
   const t = useMemo(() => dict[safeLocale] || dict.ko, [safeLocale]);
@@ -65,6 +57,12 @@ export default function CagrForm({
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleNumberChange = (e) => {
+    const { name, value } = e.target;
+    const num = value === '' ? '' : Number(value);
+    setForm((prev) => ({ ...prev, [name]: num }));
   };
 
   const disabled = useMemo(
@@ -124,8 +122,8 @@ export default function CagrForm({
             className="input"
             value={form.years}
             onChange={handleChange}
-            min="1"
-            step="1"
+            min="0.1"
+            step="0.1"
           />
         </label>
       </div>
@@ -134,28 +132,32 @@ export default function CagrForm({
       <div className="grid gap-3 md:grid-cols-3">
         <label className="grid gap-1">
           <span className="text-sm">{t.tax}</span>
-          <select
-            name="taxMode"
-            className="select"
-            value={form.taxMode}
-            onChange={handleChange}
-          >
-            <option value="apply">{t.taxApply}</option>
-            <option value="none">{t.taxNone}</option>
-          </select>
+          <input
+            name="taxRate"
+            type="number"
+            inputMode="decimal"
+            className="input"
+            value={form.taxRate}
+            onChange={handleNumberChange}
+            min="0"
+            step="0.1"
+            placeholder="15.4"
+          />
         </label>
 
         <label className="grid gap-1">
           <span className="text-sm">{t.fee}</span>
-          <select
-            name="feeMode"
-            className="select"
-            value={form.feeMode}
-            onChange={handleChange}
-          >
-            <option value="apply">{t.feeApply}</option>
-            <option value="none">{t.feeNone}</option>
-          </select>
+          <input
+            name="feeRate"
+            type="number"
+            inputMode="decimal"
+            className="input"
+            value={form.feeRate}
+            onChange={handleNumberChange}
+            min="0"
+            step="0.1"
+            placeholder="0.5"
+          />
         </label>
 
         <label className="grid gap-1">
