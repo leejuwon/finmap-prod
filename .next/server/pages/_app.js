@@ -77,20 +77,24 @@ const navItems = [
         labelEn: "Home"
     },
     {
-        href: "/category/economics",
-        labelKo: "경제기초",
-        labelEn: "Economics"
+        href: "/category/economicInfo",
+        labelKo: "경제정보",
+        labelEn: "Economic Info"
     },
     {
-        href: "/category/investing",
-        labelKo: "투자개념",
-        labelEn: "Investing"
+        href: "/category/personalFinance",
+        labelKo: "재테크",
+        labelEn: "Personal Finance"
     },
-    //{ href: '/category/tax',       labelKo: '세금',       labelEn: 'Tax' },
+    {
+        href: "/category/investingInfo",
+        labelKo: "투자정보",
+        labelEn: "Investing Info"
+    },
     {
         href: "/tools",
-        labelKo: "계산기",
-        labelEn: "Tools"
+        labelKo: "재테크 도구",
+        labelEn: "Personal Finance Tools"
     }, 
 ];
 function Header() {

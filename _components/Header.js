@@ -6,10 +6,10 @@ import { getInitialLang, setLang } from '../lib/lang';
 
 const navItems = [
   { href: '/', labelKo: '홈',         labelEn: 'Home' },
-  { href: '/category/economics', labelKo: '경제기초',   labelEn: 'Economics' },
-  { href: '/category/investing', labelKo: '투자개념',   labelEn: 'Investing' },
-  //{ href: '/category/tax',       labelKo: '세금',       labelEn: 'Tax' },
-  { href: '/tools',              labelKo: '계산기',     labelEn: 'Tools' },
+  { href: '/category/economicInfo', labelKo: '경제정보',   labelEn: 'Economic Info' },
+  { href: '/category/personalFinance', labelKo: '재테크',   labelEn: 'Personal Finance' },
+  { href: '/category/investingInfo', labelKo: '투자정보',   labelEn: 'Investing Info' },
+  { href: '/tools',              labelKo: '재테크 도구',     labelEn: 'Personal Finance Tools' },
 ];
 
 export default function Header() {

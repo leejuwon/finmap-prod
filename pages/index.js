@@ -5,10 +5,36 @@ import SeoHead from '../_components/SeoHead';
 import { getAllPostsAllLangs } from '../lib/posts';
 import { getInitialLang } from '../lib/lang';
 
+/* ✅ 카테고리 이름 → slug 매핑 (frontmatter 기준) */
+const CATEGORY_SLUG_KO = {
+  '경제정보': 'economicInfo',
+  '재테크': 'personalFinance',
+  '투자정보': 'investingInfo',
+};
+
+const CATEGORY_SLUG_EN = {
+  'economic info': 'economicInfo',
+  'personal finance': 'personalFinance',
+  'investing info': 'investingInfo',
+};
+
+/* ✅ 포스트에서 categorySlug 계산 */
+function getCategorySlugFromPost(p) {
+  const lang = p.lang || 'ko';
+  const category = p.category || '';
+
+  if (lang === 'ko') {
+    return CATEGORY_SLUG_KO[category] || 'economicInfo';
+  }
+
+  const key = category.toLowerCase();
+  return CATEGORY_SLUG_EN[key] || key || 'economicInfo';
+}
+
 const TEXT = {
   ko: {
     seoTitle: '홈',
-    seoDesc: 'FinMap 블로그 · 금융 기초 · 재테크 · 세금 · 계산기',
+    seoDesc: 'FinMap 블로그 · 금융 기초 · 재테크 · 투자 · 계산기',
     heroTitleLine1: '당신의 돈 흐름을',
     heroTitleLine2: '지도처럼 한 눈에',
     heroSub:
@@ -25,12 +51,12 @@ const TEXT = {
     stat4Value: '숫자로 확인',
     latestHeading: '최신 글',
     moreHeading: '더 알아보기',
-    moreSub: '경제기초 · 재테크 · 세금 카테고리별로 정리되어 있습니다.',
+    moreSub: '경제정보 · 재테크 · 투자정보 카테고리별로 정리되어 있습니다.',
   },
   en: {
     seoTitle: 'Home',
     seoDesc:
-      'FinMap blog · personal finance · investing · taxes · compound interest calculators',
+      'FinMap blog · economics basic · investing info · personal finance · compound interest calculators',
     heroTitleLine1: 'See your money flows',
     heroTitleLine2: 'like a map at a glance',
     heroSub:
@@ -48,7 +74,7 @@ const TEXT = {
     latestHeading: 'Latest posts',
     moreHeading: 'More to explore',
     moreSub:
-      'Articles are organized by categories such as economic basics, personal finance, and taxes.',
+      'Articles are organized by categories such as economic info, personal finance, and investing.',
   },
 };
 
@@ -114,10 +140,10 @@ export default function Home({ posts }) {
                 {t.btnTool}
               </Link>
 
-              {/* 경제기초 카테고리: 라우트는 공용(/category/economics) 이고,
+              {/* 경제기초 카테고리: 라우트는 공용(/category/economicInfo) 이고,
                   텍스트만 언어별 */}
               <Link
-                href="/category/economics"
+                href="/category/economicInfo"
                 className="btn-secondary border-slate-500 text-slate-100 hover:bg-slate-800"
               >
                 {t.btnEconomics}
@@ -153,25 +179,30 @@ export default function Home({ posts }) {
       <section className="mt-4">
         <h2 className="text-xl font-semibold mb-3">{t.latestHeading}</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {latest.map((p) => (
-            <article
-              key={`${p.lang || 'ko'}-${p.slug}`}
-              className="card hover:shadow-md transition-shadow"
-            >
-              {p.cover && (
-                <img src={p.cover} alt={p.title} className="card-thumb" />
-              )}
-              <span className="badge">{p.category}</span>
-              <h3 className="mt-2 text-lg font-semibold">                
-                <Link href={`/posts/${p.lang || 'ko'}/${p.slug}`}>
-                  {p.title}
-                </Link>
-              </h3>
-              <p className="text-xs text-slate-500 mt-1">
-                {p.datePublished}
-              </p>
-            </article>
-          ))}
+          {latest.map((p) => {
+            const categorySlug = getCategorySlugFromPost(p);
+            const postLang = p.lang || 'ko';
+
+            return (
+              <article
+                key={`${postLang}-${p.slug}`}
+                className="card hover:shadow-md transition-shadow"
+              >
+                {p.cover && (
+                  <img src={p.cover} alt={p.title} className="card-thumb" />
+                )}
+                <span className="badge">{p.category}</span>
+                <h3 className="mt-2 text-lg font-semibold">
+                  <Link href={`/posts/${categorySlug}/${postLang}/${p.slug}`}>
+                    {p.title}
+                  </Link>
+                </h3>
+                <p className="text-xs text-slate-500 mt-1">
+                  {p.datePublished}
+                </p>
+              </article>
+            );
+          })}
         </div>
       </section>
 
@@ -183,25 +214,30 @@ export default function Home({ posts }) {
             <span className="text-xs text-slate-500">{t.moreSub}</span>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {more.map((p) => (
-              <article
-                key={`${p.lang || 'ko'}-${p.slug}`}
-                className="card hover:shadow-md transition-shadow"
-              >
-                {p.cover && (
-                  <img src={p.cover} alt={p.title} className="card-thumb" />
-                )}
-                <span className="badge">{p.category}</span>
-                <h3 className="mt-2 text-base font-semibold">
-                  <Link href={`/posts/${p.lang || 'ko'}/${p.slug}`}>
-                    {p.title}
-                  </Link>
-                </h3>
-                <p className="text-xs text-slate-500 mt-1">
-                  {p.datePublished}
-                </p>
-              </article>
-            ))}
+            {more.map((p) => {
+              const categorySlug = getCategorySlugFromPost(p);
+              const postLang = p.lang || 'ko';
+
+              return (
+                <article
+                  key={`${postLang}-${p.slug}`}
+                  className="card hover:shadow-md transition-shadow"
+                >
+                  {p.cover && (
+                    <img src={p.cover} alt={p.title} className="card-thumb" />
+                  )}
+                  <span className="badge">{p.category}</span>
+                  <h3 className="mt-2 text-base font-semibold">
+                    <Link href={`/posts/${categorySlug}/${postLang}/${p.slug}`}>
+                      {p.title}
+                    </Link>
+                  </h3>
+                  <p className="text-xs text-slate-500 mt-1">
+                    {p.datePublished}
+                  </p>
+                </article>
+              );
+            })}
           </div>
         </section>
       )}
@@ -210,6 +246,6 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
-  const posts = getAllPostsAllLangs();   // ✅ ko + en 전부
+  const posts = getAllPostsAllLangs(); // ✅ ko + en 전부
   return { props: { posts } };
 }

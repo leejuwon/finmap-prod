@@ -34,14 +34,14 @@ _lib_posts__WEBPACK_IMPORTED_MODULE_4__ = (__webpack_async_dependencies__.then ?
 
 
 const CATEGORY_LABELS_KO = {
-    economics: "경제기초",
-    investing: "재테크",
-    tax: "세금"
+    economicInfo: "경제",
+    personalFinance: "재테크",
+    investingInfo: "투자정보"
 };
 const CATEGORY_LABELS_EN = {
-    economics: "Economics",
-    investing: "Investing",
-    tax: "Tax"
+    economicInfo: "Economic Info",
+    personalFinance: "Personal Finance",
+    investingInfo: "Investing Info"
 };
 function CategoryPage({ slug , postsKo , postsEn  }) {
     const { 0: lang , 1: setLang  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)("ko");
@@ -94,7 +94,7 @@ function CategoryPage({ slug , postsKo , postsEn  }) {
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h3", {
                                 className: "mt-2 text-lg font-semibold",
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                    href: `/posts/${isKo ? "ko" : "en"}/${p.slug}`,
+                                    href: `/posts/${slug}/${isKo ? "ko" : "en"}/${p.slug}`,
                                     children: p.title
                                 })
                             }),
@@ -111,9 +111,9 @@ function CategoryPage({ slug , postsKo , postsEn  }) {
 // 🔹 카테고리 슬러그 3개만 정적으로 생성
 async function getStaticPaths() {
     const slugs = [
-        "economics",
-        "investing",
-        "tax"
+        "economicInfo",
+        "personalFinance",
+        "investingInfo"
     ];
     const paths = slugs.map((slug)=>({
             params: {
@@ -133,17 +133,15 @@ async function getStaticProps({ params  }) {
     const allEn = (0,_lib_posts__WEBPACK_IMPORTED_MODULE_4__/* .getAllPosts */ .Bd)("en");
     // 카테고리 매핑 (KO)
     const mapKo = {
-        "경제기초": "economics",
-        "재테크": "investing",
-        "세금": "tax"
+        "경제정보": "economicInfo",
+        "재테크": "personalFinance",
+        "투자정보": "investingInfo"
     };
     // 카테고리 매핑 (EN - 소문자 기준)
     const mapEn = {
-        "economics basics": "economics",
-        "economics basic": "economics",
-        "personal finance": "investing",
-        "investing": "investing",
-        "tax": "tax"
+        "economic info": "economicInfo",
+        "personal finance": "personalFinance",
+        "investing info": "investingInfo"
     };
     const postsKo = allKo.filter((p)=>{
         const pSlug = mapKo[p.category] || (p.category || "").toLowerCase();
@@ -392,7 +390,7 @@ module.exports = require("path");
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [676,664,814,968], () => (__webpack_exec__(8785)));
+var __webpack_exports__ = __webpack_require__.X(0, [676,664,814,630], () => (__webpack_exec__(8785)));
 module.exports = __webpack_exports__;
 
 })();

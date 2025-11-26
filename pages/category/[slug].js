@@ -6,15 +6,15 @@ import { getAllPosts } from '../../lib/posts';
 import { getInitialLang } from '../../lib/lang';
 
 const CATEGORY_LABELS_KO = {
-  economics: '경제기초',
-  investing: '재테크',
-  tax: '세금',
+  economicInfo: '경제',
+  personalFinance: '재테크',
+  investingInfo: '투자정보',
 };
 
 const CATEGORY_LABELS_EN = {
-  economics: 'Economics',
-  investing: 'Investing',
-  tax: 'Tax',
+  economicInfo: 'Economic Info',
+  personalFinance: 'Personal Finance',
+  investingInfo: 'Investing Info',
 };
 
 export default function CategoryPage({ slug, postsKo, postsEn }) {
@@ -75,7 +75,8 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
               )}
               <span className="badge">{p.category}</span>
               <h3 className="mt-2 text-lg font-semibold">
-                <Link href={`/posts/${isKo ? 'ko' : 'en'}/${p.slug}`}>
+                {/* ✅ 카테고리 slug 를 URL 첫 세그먼트로 사용 */}
+                <Link href={`/posts/${slug}/${isKo ? 'ko' : 'en'}/${p.slug}`}>
                   {p.title}
                 </Link>
               </h3>
@@ -92,7 +93,7 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
 
 // 🔹 카테고리 슬러그 3개만 정적으로 생성
 export async function getStaticPaths() {
-  const slugs = ['economics', 'investing', 'tax'];
+  const slugs = ['economicInfo', 'personalFinance', 'investingInfo'];
 
   const paths = slugs.map((slug) => ({
     params: { slug },
@@ -111,18 +112,16 @@ export async function getStaticProps({ params }) {
 
   // 카테고리 매핑 (KO)
   const mapKo = {
-    '경제기초': 'economics',
-    '재테크': 'investing',
-    '세금': 'tax',
+    '경제정보': 'economicInfo',
+    '재테크': 'personalFinance',
+    '투자정보': 'investingInfo',
   };
 
   // 카테고리 매핑 (EN - 소문자 기준)
   const mapEn = {
-    'economics basics': 'economics',
-    'economics basic': 'economics',
-    'personal finance': 'investing',
-    'investing': 'investing',
-    'tax': 'tax',
+    'economic info': 'economicInfo',
+    'personal finance': 'personalFinance',
+    'investing info': 'investingInfo',    
   };
 
   const postsKo = allKo.filter((p) => {

@@ -6,12 +6,10 @@ module.exports = {
 
   async redirects() {
     return [
-      { source: '/investing', destination: '/category/investing', permanent: true },
-      { source: '/economics', destination: '/category/economics', permanent: true },
-      { source: '/tax', destination: '/category/tax', permanent: true },
-
-      // ✅ 옛날 /posts/slug -> 새 경로 /posts/ko/slug
-      { source: '/posts/:slug', destination: '/posts/ko/:slug', permanent: true },
+      { source: '/personalFinance', destination: '/category/personalFinance', permanent: true },
+      { source: '/economicInfo', destination: '/category/economicInfo', permanent: true },
+      { source: '/investingInfo', destination: '/category/investingInfo', permanent: true },
+      
     ];
   },
 

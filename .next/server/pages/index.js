@@ -32,10 +32,29 @@ _lib_posts__WEBPACK_IMPORTED_MODULE_4__ = (__webpack_async_dependencies__.then ?
 
 
 
+/* ✅ 카테고리 이름 → slug 매핑 (frontmatter 기준) */ const CATEGORY_SLUG_KO = {
+    "경제정보": "economicInfo",
+    "재테크": "personalFinance",
+    "투자정보": "investingInfo"
+};
+const CATEGORY_SLUG_EN = {
+    "economic info": "economicInfo",
+    "personal finance": "personalFinance",
+    "investing info": "investingInfo"
+};
+/* ✅ 포스트에서 categorySlug 계산 */ function getCategorySlugFromPost(p) {
+    const lang = p.lang || "ko";
+    const category = p.category || "";
+    if (lang === "ko") {
+        return CATEGORY_SLUG_KO[category] || "economicInfo";
+    }
+    const key = category.toLowerCase();
+    return CATEGORY_SLUG_EN[key] || key || "economicInfo";
+}
 const TEXT = {
     ko: {
         seoTitle: "홈",
-        seoDesc: "FinMap 블로그 \xb7 금융 기초 \xb7 재테크 \xb7 세금 \xb7 계산기",
+        seoDesc: "FinMap 블로그 \xb7 금융 기초 \xb7 재테크 \xb7 투자 \xb7 계산기",
         heroTitleLine1: "당신의 돈 흐름을",
         heroTitleLine2: "지도처럼 한 눈에",
         heroSub: "경제 기초 개념부터 투자 아이디어, 세금 이슈, 복리 계산기까지. 초중급 투자자가 헷갈려 하는 포인트만 골라 정리합니다.",
@@ -51,11 +70,11 @@ const TEXT = {
         stat4Value: "숫자로 확인",
         latestHeading: "최신 글",
         moreHeading: "더 알아보기",
-        moreSub: "경제기초 \xb7 재테크 \xb7 세금 카테고리별로 정리되어 있습니다."
+        moreSub: "경제정보 \xb7 재테크 \xb7 투자정보 카테고리별로 정리되어 있습니다."
     },
     en: {
         seoTitle: "Home",
-        seoDesc: "FinMap blog \xb7 personal finance \xb7 investing \xb7 taxes \xb7 compound interest calculators",
+        seoDesc: "FinMap blog \xb7 economics basic \xb7 investing info \xb7 personal finance \xb7 compound interest calculators",
         heroTitleLine1: "See your money flows",
         heroTitleLine2: "like a map at a glance",
         heroSub: "From basic economic concepts to investment ideas, tax topics, and compound interest tools. We focus on the exact points beginner and intermediate investors find confusing.",
@@ -71,7 +90,7 @@ const TEXT = {
         stat4Value: "See it in numbers",
         latestHeading: "Latest posts",
         moreHeading: "More to explore",
-        moreSub: "Articles are organized by categories such as economic basics, personal finance, and taxes."
+        moreSub: "Articles are organized by categories such as economic info, personal finance, and investing."
     }
 };
 function Home({ posts  }) {
@@ -145,7 +164,7 @@ function Home({ posts  }) {
                                             children: t.btnTool
                                         }),
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                            href: "/category/economics",
+                                            href: "/category/economicInfo",
                                             className: "btn-secondary border-slate-500 text-slate-100 hover:bg-slate-800",
                                             children: t.btnEconomics
                                         })
@@ -225,7 +244,10 @@ function Home({ posts  }) {
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                         className: "grid gap-4 sm:grid-cols-2 lg:grid-cols-3",
-                        children: latest.map((p)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("article", {
+                        children: latest.map((p)=>{
+                            const categorySlug = getCategorySlugFromPost(p);
+                            const postLang = p.lang || "ko";
+                            return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("article", {
                                 className: "card hover:shadow-md transition-shadow",
                                 children: [
                                     p.cover && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
@@ -240,7 +262,7 @@ function Home({ posts  }) {
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h3", {
                                         className: "mt-2 text-lg font-semibold",
                                         children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                            href: `/posts/${p.lang || "ko"}/${p.slug}`,
+                                            href: `/posts/${categorySlug}/${postLang}/${p.slug}`,
                                             children: p.title
                                         })
                                     }),
@@ -249,7 +271,8 @@ function Home({ posts  }) {
                                         children: p.datePublished
                                     })
                                 ]
-                            }, `${p.lang || "ko"}-${p.slug}`))
+                            }, `${postLang}-${p.slug}`);
+                        })
                     })
                 ]
             }),
@@ -271,7 +294,10 @@ function Home({ posts  }) {
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                         className: "grid gap-4 sm:grid-cols-2 lg:grid-cols-3",
-                        children: more.map((p)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("article", {
+                        children: more.map((p)=>{
+                            const categorySlug = getCategorySlugFromPost(p);
+                            const postLang = p.lang || "ko";
+                            return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("article", {
                                 className: "card hover:shadow-md transition-shadow",
                                 children: [
                                     p.cover && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
@@ -286,7 +312,7 @@ function Home({ posts  }) {
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h3", {
                                         className: "mt-2 text-base font-semibold",
                                         children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                            href: `/posts/${p.lang || "ko"}/${p.slug}`,
+                                            href: `/posts/${categorySlug}/${postLang}/${p.slug}`,
                                             children: p.title
                                         })
                                     }),
@@ -295,7 +321,8 @@ function Home({ posts  }) {
                                         children: p.datePublished
                                     })
                                 ]
-                            }, `${p.lang || "ko"}-${p.slug}`))
+                            }, `${postLang}-${p.slug}`);
+                        })
                     })
                 ]
             })
@@ -540,7 +567,7 @@ module.exports = require("path");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [676,664,814,968], () => (__webpack_exec__(3678)));
+var __webpack_exports__ = __webpack_require__.X(0, [676,664,814,630], () => (__webpack_exec__(3678)));
 module.exports = __webpack_exports__;
 
 })();
