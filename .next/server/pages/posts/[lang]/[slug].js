@@ -500,6 +500,7 @@ function PostPage({ post , lang , otherLangAvailable  }) {
                 className: "prose prose-slate lg:prose-lg max-w-none bg-white border rounded-2xl shadow-card p-6",
                 children: [
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
+                        className: "fm-post-title fm-post-title--clamp3",
                         children: post.title
                     }),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {

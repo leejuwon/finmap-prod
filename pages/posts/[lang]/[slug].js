@@ -19,7 +19,7 @@ export function JsonLd({ data }) {
   );
 }
 
-export default function PostPage({ post, lang, otherLangAvailable  }) {
+export default function PostPage({ post, lang, otherLangAvailable }) {
   const slug = post.slug;
 
   const router = useRouter();
@@ -28,7 +28,7 @@ export default function PostPage({ post, lang, otherLangAvailable  }) {
   const [uiLang, setUiLang] = useState('ko');
   const isKo = uiLang === 'ko';
 
-   // 🔁 계산기와 동일한 언어 동기화 로직
+  // 🔁 계산기와 동일한 언어 동기화 로직
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
@@ -36,7 +36,7 @@ export default function PostPage({ post, lang, otherLangAvailable  }) {
     setUiLang(initial === 'en' ? 'en' : 'ko');
 
     const handler = (e) => {
-      const next = e.detail === 'en' ? 'en' : 'ko';  // fm_lang_change detail = 'ko' | 'en'
+      const next = e.detail === 'en' ? 'en' : 'ko'; // fm_lang_change detail = 'ko' | 'en'
       setUiLang(next);
     };
 
@@ -44,10 +44,10 @@ export default function PostPage({ post, lang, otherLangAvailable  }) {
     return () => window.removeEventListener('fm_lang_change', handler);
   }, []);
 
-   // ✅ UI 언어(uiLang)와 URL의 lang이 다르고,
+  // ✅ UI 언어(uiLang)와 URL의 lang이 다르고,
   //    다른 언어 버전이 있을 때만 해당 언어 URL로 이동
   useEffect(() => {
-    if (!otherLangAvailable) return;           // 번역본 없는 글은 그대로 둠
+    if (!otherLangAvailable) return; // 번역본 없는 글은 그대로 둠
 
     if (uiLang !== lang) {
       router.replace(`/posts/${uiLang}/${slug}`);
@@ -317,7 +317,11 @@ export default function PostPage({ post, lang, otherLangAvailable  }) {
       <JsonLd data={jsonld} />
 
       <article className="prose prose-slate lg:prose-lg max-w-none bg-white border rounded-2xl shadow-card p-6">
-        <h1>{post.title}</h1>
+        {/* ✅ 제목에 모바일 최적화 클래스 적용 */}
+        <h1 className="fm-post-title fm-post-title--clamp3">
+          {post.title}
+        </h1>
+
         <p className="text-sm text-slate-500">
           {post.category} · {post.datePublished}
           {post.dateModified && post.dateModified !== post.datePublished
@@ -341,6 +345,7 @@ export default function PostPage({ post, lang, otherLangAvailable  }) {
           />
         )}
 
+        {/* ✅ 본문 래퍼: fm-post-body (폰트 크기/라인 간격 모바일에서 살짝 축소) */}
         <div className="fm-post-body">{contentWithInArticleAds}</div>
 
         {/* FinMap 도구 연동 CTA – 글과 자연스럽게 연결 */}
@@ -499,11 +504,15 @@ export default function PostPage({ post, lang, otherLangAvailable  }) {
             </ul>
           )}
         </section>
+
         {/* 태그 표시 */}
         {post.tags?.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-4">
             {post.tags.map((tag) => (
-              <span key={tag} className="px-2 py-1 text-xs bg-slate-100 rounded-full">
+              <span
+                key={tag}
+                className="px-2 py-1 text-xs bg-slate-100 rounded-full"
+              >
                 #{tag}
               </span>
             ))}
@@ -516,7 +525,7 @@ export default function PostPage({ post, lang, otherLangAvailable  }) {
 
 export async function getStaticPaths() {
   const slugsKo = getAllSlugs('ko');
-  const slugsEn = getAllSlugs('en');   // ✅ 영어 슬러그도 읽기
+  const slugsEn = getAllSlugs('en'); // ✅ 영어 슬러그도 읽기
 
   const paths = [
     ...slugsKo.map((slug) => ({
@@ -532,7 +541,6 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
-
 
 export async function getStaticProps({ params }) {
   const { lang, slug } = params;
@@ -556,7 +564,7 @@ export async function getStaticProps({ params }) {
     props: {
       post,
       lang,
-      otherLangAvailable,  // 👈 새로 추가
+      otherLangAvailable, // 👈 새로 추가
     },
   };
 }

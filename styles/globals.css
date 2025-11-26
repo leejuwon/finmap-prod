@@ -193,6 +193,75 @@
   }
 }
 
+/* =========================================================
+   블로그 포스트 제목 / 본문 반응형 타이포그래피
+   (갤럭시 폴드·플립 등 좁은 가로폭 대응)
+========================================================= */
+
+/* 공통 제목 스타일 (H1 용) */
+.fm-post-title {
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+}
+
+/* 데스크탑 / 큰 화면 기본 */
+@media (min-width: 1024px) {
+  .fm-post-title {
+    font-size: 2.25rem; /* 대략 text-4xl */
+  }
+}
+
+/* 태블릿 / 일반 모바일 */
+@media (max-width: 1023px) {
+  .fm-post-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* 좁은 모바일 (폴드 커버, 플립 등) */
+@media (max-width: 520px) {
+  .fm-post-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* 아주 좁은 화면 (가로 360 이하) – 최대로 압축 */
+@media (max-width: 360px) {
+  .fm-post-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* 제목을 최대 3줄까지만 보이게(넘어가면 잘라서 … 처리) */
+.fm-post-title--clamp3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 본문 텍스트 공통 (포스트 영역 전체) */
+.fm-post-body {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* 모바일에서 본문 글씨 살짝 축소 */
+@media (max-width: 520px) {
+  .fm-post-body {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 360px) {
+  .fm-post-body {
+    font-size: 0.9rem;
+  }
+}
+
+
 /* ===========================================
    블로그 본문 표 반응형 처리
    =========================================== */
