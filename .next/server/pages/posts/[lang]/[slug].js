@@ -88,6 +88,87 @@ function AdResponsive({ client ="ca-pub-1869932115288976" , slot , align ="cente
 
 /***/ }),
 
+/***/ 9559:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (/* binding */ ToolCta)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1664);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+// _components/ToolCta.js
+
+
+function ToolCta({ lang ="ko" , type ="compound"  }) {
+    const isKo = lang === "ko";
+    const config = type === "goal" ? {
+        // ✅ 목표 자산 도달 시뮬레이터용
+        titleKo: "목표 자산까지 매달 얼마가 필요한지 계산해보세요",
+        titleEn: "Find how much you need to invest per month to reach your goal",
+        descKo: "목표 금액, 기간, 예상 수익률을 입력하면 필요한 월 투자금을 역산해줍니다.",
+        descEn: "Enter your target amount, time horizon, and expected return to get the required monthly investment.",
+        href: "/tools/goal-simulator",
+        btnKo: "목표 자산 시뮬레이터 열기",
+        btnEn: "Open goal simulator",
+        badgeKo: "FinMap 도구 \xb7 목표 자산",
+        badgeEn: "FinMap tools \xb7 Goal amount"
+    } : {
+        // ✅ 복리 계산기용 (기본값)
+        titleKo: "복리 효과, 직접 숫자로 확인해보세요",
+        titleEn: "See the power of compound interest in numbers",
+        descKo: "원금, 기간, 수익률, 세금을 바꿔보면서 장기 투자 결과를 시뮬레이션할 수 있습니다.",
+        descEn: "Change principal, period, return and tax to simulate your long-term investment outcome.",
+        href: "/tools/compound-interest",
+        btnKo: "복리 계산기 열기",
+        btnEn: "Open compound calculator",
+        badgeKo: "FinMap 도구 \xb7 복리",
+        badgeEn: "FinMap tools \xb7 Compound"
+    };
+    const href = {
+        pathname: config.href,
+        query: {
+            lang
+        }
+    };
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", {
+        className: "rounded-2xl border border-slate-200 bg-slate-50 px-4 py-5 sm:px-6 sm:py-6 flex flex-col sm:flex-row gap-4 sm:items-center shadow-sm",
+        children: [
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                className: "flex-1",
+                children: [
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                        className: "text-[11px] font-semibold tracking-[0.16em] text-slate-500 uppercase mb-1",
+                        children: isKo ? config.badgeKo : config.badgeEn
+                    }),
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h2", {
+                        className: "text-base sm:text-lg font-semibold text-slate-900 mb-1",
+                        children: isKo ? config.titleKo : config.titleEn
+                    }),
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                        className: "text-xs sm:text-sm text-slate-600",
+                        children: isKo ? config.descKo : config.descEn
+                    })
+                ]
+            }),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                className: "flex-shrink-0",
+                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
+                    href: href,
+                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
+                        className: "inline-flex items-center px-4 py-2 rounded-full bg-blue-600 text-white text-xs sm:text-sm font-medium hover:bg-blue-700 transition-colors",
+                        children: isKo ? config.btnKo : config.btnEn
+                    })
+                })
+            })
+        ]
+    });
+}
+
+
+/***/ }),
+
 /***/ 280:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -131,9 +212,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _config_adSlots__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(280);
 /* harmony import */ var _lib_posts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8904);
 /* harmony import */ var html_react_parser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(2905);
-/* harmony import */ var _lib_lang__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(6915);
+/* harmony import */ var _lib_lang__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(6915);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(1853);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _components_ToolCta__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(9559);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_lib_posts__WEBPACK_IMPORTED_MODULE_6__, html_react_parser__WEBPACK_IMPORTED_MODULE_7__]);
 ([_lib_posts__WEBPACK_IMPORTED_MODULE_6__, html_react_parser__WEBPACK_IMPORTED_MODULE_7__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
 // pages/posts/[lang]/[slug].js
@@ -147,6 +229,7 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_lib
 
  // ✅ 추가
  // ✅ 추가
+
 function JsonLd({ data  }) {
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("script", {
         type: "application/ld+json",
@@ -165,7 +248,7 @@ function PostPage({ post , lang , otherLangAvailable  }) {
     // 🔁 계산기와 동일한 언어 동기화 로직
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
         if (true) return;
-        const initial = (0,_lib_lang__WEBPACK_IMPORTED_MODULE_9__/* .getInitialLang */ .X)();
+        const initial = (0,_lib_lang__WEBPACK_IMPORTED_MODULE_10__/* .getInitialLang */ .X)();
         setUiLang(initial === "en" ? "en" : "ko");
         const handler = (e)=>{
             const next = e.detail === "en" ? "en" : "ko"; // fm_lang_change detail = 'ko' | 'en'
@@ -445,6 +528,19 @@ function PostPage({ post , lang , otherLangAvailable  }) {
                         className: "fm-post-body",
                         children: contentWithInArticleAds
                     }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                        className: "mt-8 space-y-4",
+                        children: [
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_ToolCta__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
+                                lang: lang,
+                                type: "compound"
+                            }),
+                            (post.category === "재테크" || post.category === "Personal Finance" || post.slug.includes("goal") || post.slug.includes("monthly") || post.slug.includes("how-much-per-month")) && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_ToolCta__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
+                                lang: lang,
+                                type: "goal"
+                            })
+                        ]
+                    }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                         className: "mt-8 mb-4",
                         children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AdResponsive__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
@@ -663,6 +759,174 @@ module.exports = require("gray-matter");
 
 /***/ }),
 
+/***/ 3280:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/app-router-context.js");
+
+/***/ }),
+
+/***/ 2796:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/head-manager-context.js");
+
+/***/ }),
+
+/***/ 4014:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/i18n/normalize-locale-path.js");
+
+/***/ }),
+
+/***/ 8524:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/is-plain-object.js");
+
+/***/ }),
+
+/***/ 8020:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/mitt.js");
+
+/***/ }),
+
+/***/ 4406:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/page-path/denormalize-page-path.js");
+
+/***/ }),
+
+/***/ 4964:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/router-context.js");
+
+/***/ }),
+
+/***/ 1751:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/router/utils/add-path-prefix.js");
+
+/***/ }),
+
+/***/ 6220:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/router/utils/compare-states.js");
+
+/***/ }),
+
+/***/ 299:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/router/utils/format-next-pathname-info.js");
+
+/***/ }),
+
+/***/ 3938:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/router/utils/format-url.js");
+
+/***/ }),
+
+/***/ 9565:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/router/utils/get-asset-path-from-route.js");
+
+/***/ }),
+
+/***/ 5789:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/router/utils/get-next-pathname-info.js");
+
+/***/ }),
+
+/***/ 1897:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/router/utils/is-bot.js");
+
+/***/ }),
+
+/***/ 1428:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/router/utils/is-dynamic.js");
+
+/***/ }),
+
+/***/ 8854:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/router/utils/parse-path.js");
+
+/***/ }),
+
+/***/ 1292:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/router/utils/parse-relative-url.js");
+
+/***/ }),
+
+/***/ 4567:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/router/utils/path-has-prefix.js");
+
+/***/ }),
+
+/***/ 979:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/router/utils/querystring.js");
+
+/***/ }),
+
+/***/ 3297:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/router/utils/remove-trailing-slash.js");
+
+/***/ }),
+
+/***/ 6052:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/router/utils/resolve-rewrites.js");
+
+/***/ }),
+
+/***/ 4226:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/router/utils/route-matcher.js");
+
+/***/ }),
+
+/***/ 5052:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/router/utils/route-regex.js");
+
+/***/ }),
+
+/***/ 9232:
+/***/ ((module) => {
+
+module.exports = require("next/dist/shared/lib/utils.js");
+
+/***/ }),
+
 /***/ 968:
 /***/ ((module) => {
 
@@ -726,7 +990,7 @@ module.exports = require("path");
 var __webpack_require__ = require("../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [814,968], () => (__webpack_exec__(2812)));
+var __webpack_exports__ = __webpack_require__.X(0, [676,664,814,968], () => (__webpack_exec__(2812)));
 module.exports = __webpack_exports__;
 
 })();

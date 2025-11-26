@@ -8,6 +8,7 @@ import { getAllSlugs, getPostBySlug } from '../../../lib/posts';
 import parse, { domToReact } from 'html-react-parser';
 import { getInitialLang } from '../../../lib/lang'; // ✅ 추가
 import { useRouter } from 'next/router';          // ✅ 추가
+import ToolCta from '../../../_components/ToolCta';
 
 export function JsonLd({ data }) {
   return (
@@ -341,6 +342,21 @@ export default function PostPage({ post, lang, otherLangAvailable  }) {
         )}
 
         <div className="fm-post-body">{contentWithInArticleAds}</div>
+
+        {/* FinMap 도구 연동 CTA – 글과 자연스럽게 연결 */}
+        <div className="mt-8 space-y-4">
+          {/* 1) 복리 계산기: 거의 모든 경제/투자 글에 공통으로 노출 */}
+          <ToolCta lang={lang} type="compound" />
+
+          {/* 2) 목표 자산 시뮬레이터: 재테크/목표 금액 관련 글에 우선 노출 */}
+          {(post.category === '재테크' ||
+            post.category === 'Personal Finance' ||
+            post.slug.includes('goal') ||
+            post.slug.includes('monthly') ||
+            post.slug.includes('how-much-per-month')) && (
+            <ToolCta lang={lang} type="goal" />
+          )}
+        </div>
 
         <div className="mt-8 mb-4">
           <AdResponsive
