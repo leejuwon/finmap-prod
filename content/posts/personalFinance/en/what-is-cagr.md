@@ -7,6 +7,7 @@ dateModified: "2025-11-26"
 category: "Personal Finance"
 tags: ["CAGR", "investment return", "finance basics", "compound interest", "simple return"]
 cover: "/images/personalFinance/what-is-cagr-cover-en.png"
+tool: ["cagr","comp"]
 lang: "en"
 ---
 

@@ -138,6 +138,17 @@ function getPostFilesByLang(lang = "ko") {
     const { data , content  } = gray_matter__WEBPACK_IMPORTED_MODULE_2___default()(file);
     const html = marked__WEBPACK_IMPORTED_MODULE_3__.marked.parse(content || "");
     const cover = normalizeCover(data.cover);
+    // 🔥 tools 필드 정규화
+    let tools = [];
+    if (Array.isArray(data.tools)) {
+        tools = data.tools.map((t)=>String(t).trim()).filter(Boolean);
+    } else if (Array.isArray(data.tool)) {
+        // 혹시 tool: ["goal","compound"] 이렇게 썼을 경우도 지원
+        tools = data.tool.map((t)=>String(t).trim()).filter(Boolean);
+    } else if (typeof data.tools === "string") {
+        // "goal,compound" 처럼 문자열로 쓴 경우 대비
+        tools = data.tools.split(",").map((t)=>t.trim()).filter(Boolean);
+    }
     return {
         lang: effectiveLang,
         slug,
@@ -148,7 +159,8 @@ function getPostFilesByLang(lang = "ko") {
         datePublished: data.datePublished || "",
         dateModified: data.dateModified || data.datePublished || "",
         cover,
-        contentHtml: html
+        contentHtml: html,
+        tools
     };
 }
 /* =========================================================

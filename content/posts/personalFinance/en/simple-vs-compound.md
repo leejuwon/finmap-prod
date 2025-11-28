@@ -7,6 +7,7 @@ tags: ["simple interest", "compound interest", "finance 101", "beginner investin
 datePublished: "2025-11-15"
 dateModified: "2025-11-15"
 cover: "/images/personalFinance/simple-vs-compound-cover.png"
+tool: ["comp"]
 lang: "en"
 ---
 

@@ -7,6 +7,7 @@ dateModified: "2025-11-19"
 category: "Personal Finance"
 tags: ["target amount", "investment planning", "compound interest", "personal finance", "return", "investment period", "wealth building"]
 cover: "/images/personalFinance/goal-amount-fast-strategy-cover.png"
+tool: ["goal","comp"]
 lang: "en"
 ---
 

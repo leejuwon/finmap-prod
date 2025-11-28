@@ -179,3 +179,116 @@ KRW 관련된 것도 다 Dollar로.
 ₩300,000,000(1억) → $300,000 
 
 환산은 1 USD ≈ 1,250 KRW 기준으로 반올림 처리
+
+# 10. 고급 레이아웃 컴포넌트 가이드
+
+FinMap 블로그 포스트는 아래의 고급 레이아웃 컴포넌트를 선택적으로 사용할 수 있다.  
+모든 컴포넌트는 `globals.css` 또는 Tailwind 확장 컴포넌트로 정의되어 있어야 한다.
+
+## 10-1. 상단 Hero 레이아웃
+
+**용도:** 글의 핵심 요약 + 주요 포인트를 카드 형태로 강조  
+**클래스:** `.hero-grid`, `.hero-main`, `.hero-card`
+
+\`\`\`html
+<div class="hero-grid">
+  <div class="hero-main">
+    <p class="hero-kicker">장기 투자 성과, 무엇으로 봐야 할까?</p>
+    <p class="hero-summary">
+      많은 투자자가 ETF·펀드를 고를 때 최근 수익률만 보고 판단하지만,
+      장기 성과를 정확하게 평가하려면 CAGR(연평균 복리 수익률)을 함께
+      확인해야 합니다.
+    </p>
+  </div>
+
+  <div class="hero-card">
+    <h3>CAGR 체크 핵심 요약</h3>
+    <ul>
+      <li>총 수익률보다 <strong>장기 성장률</strong>이 더 중요</li>
+      <li>변동성이 클수록 <strong>총 수익률 vs CAGR 차이↑</strong></li>
+      <li>ETF 비교 시 <strong>3·5년 CAGR</strong> 확인</li>
+    </ul>
+  </div>
+</div>
+\`\`\`
+
+## 10-2. 비교 카드 레이아웃
+
+**용도:** “총 수익률 vs CAGR”처럼 두 가지 개념을 나란히 비교
+**클래스:** `.compare-grid`, `.compare-card`, `.compare-bad`, `.compare-good`
+
+\`\`\`html
+<div class="compare-grid">
+  <div class="compare-card compare-bad">
+    <h3>총 수익률만 볼 때</h3>
+    <ul>
+      <li>중간 손실과 변동성이 숨겨짐</li>
+      <li>레버리지 ETF는 왜곡이 더 큼</li>
+    </ul>
+  </div>
+
+  <div class="compare-card compare-good">
+    <h3>CAGR까지 함께 볼 때</h3>
+    <ul>
+      <li>연평균 성장 속도 파악 가능</li>
+      <li>장기 성과의 질을 비교 가능</li>
+    </ul>
+  </div>
+</div>
+\`\`\`
+
+## 10-3. 콜아웃 박스 (핵심 인사이트)
+
+**용도:**  강조하고 싶은 한두 문장을 눈에 띄게 표시
+**클래스:** `.callout-tip`
+
+\`\`\`html
+<div class="callout-tip">
+  <strong>핵심 인사이트:</strong>
+  레버리지 ETF의 화려한 단기 수익률보다 3·5년 CAGR이
+  얼마나 나오는지 확인하는 습관이 장기 성과를 좌우합니다.
+</div>
+\`\`\`
+
+## 10-4. 가로 스크롤 이미지 행
+
+**용도:**  3~4개의 관련 이미지를 좌우 스크롤로 배치
+**클래스:** `.img-row`
+
+\`\`\`html
+<div class="img-row">
+  <figure>
+    <img src="/images/posts/what-is-cagr/example1.png" alt="손실 회복 곡선" />
+    <figcaption>손실 후 회복 과정</figcaption>
+  </figure>
+
+  <figure>
+    <img src="/images/posts/what-is-cagr/example2.png" alt="CAGR 계산표" />
+    <figcaption>연도별 수익률과 CAGR 계산</figcaption>
+  </figure>
+
+  <figure>
+    <img src="/images/posts/what-is-cagr/example3.png" alt="장기 시장 성장" />
+    <figcaption>장기 시장 성장률 비교</figcaption>
+  </figure>
+</div>
+\`\`\`
+
+## 10-5. FinMap 계산기 CTA 섹션
+
+**용도:**  글 맨 하단에서 관련 계산기·도구로 자연스럽게 연결
+**클래스:** `.tool-cta`, `.tool-cta-btn`
+
+\`\`\`html
+<div class="tool-cta">
+  <h3>직접 CAGR을 계산해보고 싶다면?</h3>
+  <p>
+    투자 중인 ETF·펀드의 과거 수익률을 입력해서
+    연평균 복리 수익률을 바로 확인해 보세요.
+  </p>
+
+  <a class="tool-cta-btn" href="/tools/cagr-calculator">
+    FinMap CAGR 계산기 열기
+  </a>
+</div>
+\`\`\`

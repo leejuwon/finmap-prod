@@ -292,3 +292,173 @@
   }
 }
 
+/* =========================================================
+   ✅ 고급 블로그 레이아웃 컴포넌트
+   (Hero, 비교 카드, 콜아웃, 이미지 가로 스크롤, 도구 CTA)
+========================================================= */
+
+/* 상단 Hero 레이아웃 (제목 아래 요약 + 포인트 카드) */
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-main {
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.hero-kicker {
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 0.25rem;
+}
+
+.hero-summary {
+  margin: 0;
+}
+
+.hero-card {
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  background: #0f172a;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+}
+
+.hero-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.hero-card ul {
+  padding-left: 1.05rem;
+  margin: 0;
+}
+
+.hero-card li + li {
+  margin-top: 0.25rem;
+}
+
+/* 모바일에서는 1컬럼 */
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* 총 수익률 vs CAGR 비교 2열 카드 */
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.compare-card {
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+  border: 1px solid #e5e7eb;
+}
+
+.compare-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.compare-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.compare-card li + li {
+  margin-top: 0.25rem;
+}
+
+.compare-bad {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.compare-good {
+  background: #ecfdf5;
+  border-color: #bbf7d0;
+}
+
+@media (max-width: 768px) {
+  .compare-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* 콜아웃 박스 (핵심 인사이트 강조) */
+.callout-tip {
+  border-radius: 10px;
+  border-left: 4px solid #2563eb;
+  background: #eff6ff;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  margin: 1.25rem 0;
+}
+
+/* 가로 스크롤 이미지 + 캡션 묶음 */
+.img-row {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.img-row figure {
+  margin: 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.img-row img {
+  height: 180px;
+  border-radius: 8px;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+/* 투자 도구 CTA 블록 */
+.tool-cta {
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  background: #0f172a;
+  color: #e5e7eb;
+  margin: 2rem 0 1rem;
+}
+
+.tool-cta h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.tool-cta p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.tool-cta-btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 9999px;
+  background: #22c55e;
+  color: #022c22;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.tool-cta-btn:hover {
+  background: #16a34a;
+}

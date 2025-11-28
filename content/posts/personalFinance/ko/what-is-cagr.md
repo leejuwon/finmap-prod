@@ -7,6 +7,7 @@ dateModified: "2025-11-26"
 category: "재테크"
 tags: ["CAGR", "수익률", "투자기초", "복리수익률", "연평균수익률", "단순수익률"]
 cover: "/images/personalFinance/what-is-cagr-cover-ko.png"
+tool: ["cagr","comp"]
 lang: "ko"
 ---
 

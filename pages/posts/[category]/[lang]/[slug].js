@@ -333,6 +333,21 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug 
     },
   });
 
+  const toolList = Array.isArray(post.tools) ? post.tools : [];
+
+  // 필요하면 간단한 매핑도 가능 (예: 'comp' → 'compound')
+  const TOOL_TYPE_MAP = {
+    comp: 'compound',
+    goal: 'goal',
+    compound: 'compound',
+    cagr: 'cagr',
+    dca: 'dca',
+  };
+
+  const normalizedTools = toolList
+  .map((t) => TOOL_TYPE_MAP[t] || t) // alias → 정규화
+  .filter(Boolean);
+
   return (
     <>
       <SeoHead
@@ -374,19 +389,20 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug 
 
         {/* ✅ 본문 래퍼 */}
         <div className="fm-post-body">{contentWithInArticleAds}</div>
+        
 
         {/* FinMap 도구 연동 CTA */}
-        <div className="mt-8 space-y-4">
-          <ToolCta lang={lang} type="compound" />
-
-          {(post.category === '재테크' ||
-            post.category === 'Personal Finance' ||
-            post.slug.includes('goal') ||
-            post.slug.includes('monthly') ||
-            post.slug.includes('how-much-per-month')) && (
-            <ToolCta lang={lang} type="goal" />
-          )}
-        </div>
+        {normalizedTools.length > 0 && (
+          <div className="mt-8 space-y-4">
+            {normalizedTools.map((toolType) => (
+              <ToolCta
+                key={toolType}
+                lang={lang}
+                type={toolType}
+              />
+            ))}
+          </div>
+        )}
 
         <div className="mt-8 mb-4">
           <AdResponsive
