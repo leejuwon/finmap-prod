@@ -202,34 +202,34 @@
 .fm-post-title {
   font-weight: 800;
   line-height: 1.25;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.4rem;
 }
 
 /* 데스크탑 / 큰 화면 기본 */
 @media (min-width: 1024px) {
   .fm-post-title {
-    font-size: 2.25rem; /* 대략 text-4xl */
+    font-size: 1.85rem; /* 대략 text-4xl */
   }
 }
 
 /* 태블릿 / 일반 모바일 */
 @media (max-width: 1023px) {
   .fm-post-title {
-    font-size: 1.8rem;
+    font-size: 1.55rem;
   }
 }
 
 /* 좁은 모바일 (폴드 커버, 플립 등) */
 @media (max-width: 520px) {
   .fm-post-title {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 }
 
 /* 아주 좁은 화면 (가로 360 이하) – 최대로 압축 */
 @media (max-width: 360px) {
   .fm-post-title {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -247,17 +247,61 @@
   line-height: 1.7;
 }
 
+/* 본문 소제목 (H2/H3) 공통 스타일 */
+.fm-post-body h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 1.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.fm-post-body h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 1.2rem;
+  margin-bottom: 0.45rem;
+}
+
+/* 🟡 태블릿 (1023px 이하) */
+@media (max-width: 1023px) {
+  .fm-post-body h2 {
+    font-size: 1.15rem;  /* 더 작게 */
+  }
+  .fm-post-body h3 {
+    font-size: 1.0rem;
+  }
+}
+
+/* 모바일에서 소제목 한 단계 축소 */
+@media (max-width: 520px) {
+  .fm-post-body h2 {
+    font-size: 1.0rem;   /* 기존 1.3~1.5 수준 → 크게 축소 */
+  }
+  .fm-post-body h3 {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .fm-post-body h2 {
+    font-size: 0.95rem;     /* 거의 본문 크기 수준으로 조정 */
+  }
+  .fm-post-body h3 {
+    font-size: 0.85rem;
+  }
+}
+
 /* 모바일에서 본문 글씨 살짝 축소 */
 @media (max-width: 520px) {
   .fm-post-body {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.6;
   }
 }
 
 @media (max-width: 360px) {
   .fm-post-body {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 }
 

@@ -89,12 +89,7 @@ CAGR(Compound Annual Growth Rate)은 말 그대로 **연평균 복리 수익률*
 
 CAGR 공식은 다음과 같습니다.
 
-CAGR =
-<span style="display:inline-block; text-align:center;">
-  <span style="display:block; border-bottom:1px solid #000;">최종가격</span>
-  <span style="display:block;">초기가격</span>
-</span>
-<sup>1 / 투자기간</sup> − 1
+CAGR = (최종가격/초기가격)<sup>1 / 투자기간</sup> − 1
 
 예시) 100만 원 → 3년 뒤 160만 원
 
