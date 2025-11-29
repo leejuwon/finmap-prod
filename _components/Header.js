@@ -9,7 +9,7 @@ const navItems = [
   { href: '/category/economicInfo', labelKo: '경제정보',   labelEn: 'Economic Info' },
   { href: '/category/personalFinance', labelKo: '재테크',   labelEn: 'Personal Finance' },
   { href: '/category/investingInfo', labelKo: '투자정보',   labelEn: 'Investing Info' },
-  { href: '/tools',              labelKo: '재테크 도구',     labelEn: 'Personal Finance Tools' },
+  { href: '/tools',              labelKo: '금융도구',     labelEn: 'Personal Finance Tools' },
 ];
 
 export default function Header() {
