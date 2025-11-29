@@ -273,15 +273,6 @@ CAGR 중심 실전 체크리스트를 정리해 보겠습니다.
 
 ---
 
-# 9. 함께 읽으면 좋은 글 (내부링크)
-
-- [복리 계산의 힘, 숫자로 직접 확인하는 법](/posts/compound-interest-basics)  
-- [단리 vs 복리: 왜 장기투자는 복리 구조를 선택해야 할까](/posts/simple-vs-compound-interest)  
-- [장기 투자 전략: 변동성 속에서도 포기하지 않는 원칙](/posts/long-term-investing-strategy)  
-- [ETF 고르는 법: 지수·보수·CAGR까지 한 번에 체크하기](/posts/how-to-choose-etf)  
-
----
-
 ## FAQ
 
 **Q1. CAGR이 항상 높은 ETF가 좋은 ETF인가요?**  

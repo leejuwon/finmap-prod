@@ -278,15 +278,6 @@ ETF selection becomes far clearer when anchored in CAGR.
 
 ---
 
-# 9. Recommended Internal Links
-
-- [Understanding Compound Interest: The Foundation of CAGR](/posts/compound-interest-basics-en)  
-- [Simple vs Compound Return: Why Long-Term Investing Favors Compounding](/posts/simple-vs-compound-interest-en)  
-- [Long-Term Investing Strategy: Surviving Volatility](/posts/long-term-investing-strategy-en)  
-- [How to Choose ETFs: Beyond the 1-Year Return](/posts/how-to-choose-etf-en)  
-
----
-
 ## FAQ
 
 **Q1. Is a higher CAGR always better?**  

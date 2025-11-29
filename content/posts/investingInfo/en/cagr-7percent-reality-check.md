@@ -240,16 +240,7 @@ it’s a **long-term risk-adjusted performance target**.
 
 ---
 
-# 13. Internal Links (Recommended)
-
-- [Why Long-Term Compounding Dominates Wealth Building](../longterm-compounding)  
-- [Simple Interest vs Compound Interest Explained](../simple-vs-compound)  
-- [Beginner’s Guide to ETF Selection](../etf-basics)  
-- [How to Calculate Retirement Goals Using CAGR](../goal-simulator-guide)
-
----
-
-# 14. FAQ
+# 13. FAQ
 
 **Q1. Is the 7% assumption before or after tax?**  
 A: Typically before tax. After tax, net CAGR is usually 1–2% lower.
