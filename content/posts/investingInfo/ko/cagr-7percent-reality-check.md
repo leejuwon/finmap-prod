@@ -6,7 +6,7 @@ datePublished: "2025-11-29"
 dateModified: "2025-11-29"
 category: "투자정보"
 tags: ["CAGR", "복리", "S&P500", "연7%", "투자기초", "재테크전략"]
-cover: "/images/investingInfo/cagr-7percent-reality-check-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428393/blog/investingInfo/cagr-7percent-reality-check-cover.png"
 lang: "ko"
 ---
 
@@ -28,7 +28,7 @@ lang: "ko"
 > **한 문단 요약**  
 많은 투자자가 ‘연 7% 복리면 충분하다’고 말하지만, 이 수치는 단순한 기대치가 아니라 실제 장기 CAGR로 해석해야만 현실에 가깝습니다. S&P500 장기 CAGR은 평균 9~10% 수준이지만 변동성·세금·물가를 고려하면 체감 수익률은 달라집니다. 이 글은 투자자들이 가장 자주 착각하는 기대수익률의 현실을 데이터 기반으로 분석하고, 목표자산·복리 계산기로 실제 효과를 확인할 수 있도록 구성한 고급 해설입니다.
 
-![상단 대표 이미지](/images/investingInfo/cagr-7percent-reality-check-cover.png)
+![상단 대표 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428393/blog/investingInfo/cagr-7percent-reality-check-cover.png)
 
 ---
 
@@ -138,15 +138,15 @@ CAGR이 단숨에 **6%대**로 떨어진다
 
 <div class="img-row">
   <figure>
-    <img src="/images/investingInfo/cagr-7percent-reality-check-img1.png" alt="연 7% 복리 성장곡선" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428396/blog/investingInfo/cagr-7percent-reality-check-img1.png" alt="연 7% 복리 성장곡선" />
     <figcaption>연 7% 복리 누적 성장 그래프</figcaption>
   </figure>
   <figure>
-    <img src="/images/investingInfo/cagr-7percent-reality-check-img2.png" alt="CAGR과 변동성 관계" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428399/blog/investingInfo/cagr-7percent-reality-check-img2.png" alt="CAGR과 변동성 관계" />
     <figcaption>변동성에 따라 실제 CAGR은 크게 달라진다</figcaption>
   </figure>
   <figure>
-    <img src="/images/investingInfo/cagr-7percent-reality-check-img3.png" alt="S&P500 역사 CAGR 차트" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428402/blog/investingInfo/cagr-7percent-reality-check-img3.png" alt="S&P500 역사 CAGR 차트" />
     <figcaption>S&P500 장기 CAGR 흐름</figcaption>
   </figure>
 </div>

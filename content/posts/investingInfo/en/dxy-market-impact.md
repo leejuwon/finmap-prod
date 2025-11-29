@@ -6,7 +6,7 @@ datePublished: "2025-11-24"
 dateModified: "2025-11-24"
 category: "Investing Info"
 tags: ["DXY", "dollar index", "US interest rates", "liquidity", "forex"]
-cover: "/images/investingInfo/dxy-market-impact-thum.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428430/blog/investingInfo/dxy-market-impact-thum.png"
 lang: "en"
 ---
 
@@ -27,7 +27,7 @@ lang: "en"
 > **One-paragraph summary**  
 DXY is a key macro indicator that influences global risk sentiment, liquidity, U.S. stock performance, USD/KRW, and Korea’s KOSPI. A rising DXY is usually negative for risk assets, while a falling DXY supports market recovery.
 
-![Top image](/images/investingInfo/dxy-market-impact-top.png "DXY market impact")
+![Top image](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428434/blog/investingInfo/dxy-market-impact-top.png "DXY market impact")
 
 ---
 
@@ -53,7 +53,7 @@ Foreign outflows increase during periods of KRW weakness.
 
 ---
 
-![DXY Content Image](/images/investingInfo/dxy-market-impact-content.png "DXY Image")
+![DXY Content Image](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428427/blog/investingInfo/dxy-market-impact-content.png "DXY Image")
 
 ## 3. DXY vs Interest Rates vs Liquidity
 
@@ -86,7 +86,7 @@ Both U.S. tech stocks and KOSPI become more volatile.
 
 ---
 
-![DXY Bottom Image](/images/investingInfo/dxy-market-impact-bottom.png "DXY Image")
+![DXY Bottom Image](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428425/blog/investingInfo/dxy-market-impact-bottom.png "DXY Image")
 
 ## FAQ
 

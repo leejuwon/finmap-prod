@@ -6,7 +6,7 @@ datePublished: "2025-11-24"
 dateModified: "2025-11-24"
 category: "투자정보"
 tags: ["DXY", "달러인덱스", "미국금리", "환율", "유동성"]
-cover: "/images/investingInfo/dxy-market-impact-thum.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428430/blog/investingInfo/dxy-market-impact-thum.png"
 lang: "ko"
 ---
 
@@ -27,7 +27,7 @@ lang: "ko"
 > **한 문단 요약**  
 DXY(달러인덱스)는 달러의 강세·약세뿐 아니라 미국 금리, 글로벌 유동성, 위험자산 선호도까지 반영하는 핵심 지표입니다. DXY가 상승하면 미국 증시·원화·코스피에 부정적인 압력이 나타나는 경우가 많으며, 하락하면 위험자산에 유리한 환경이 조성됩니다.
 
-![상단 이미지](/images/investingInfo/dxy-market-impact-top.png "DXY 영향 요약")
+![상단 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428434/blog/investingInfo/dxy-market-impact-top.png "DXY 영향 요약")
 
 ---
 
@@ -92,7 +92,7 @@ DXY가 오르면 시장은 보통 “안전자산 선호 모드”에 들어갑�
 
 ---
 
-![DXY 본문 이미지](/images/investingInfo/dxy-market-impact-content.png "DXY 이미지")
+![DXY 본문 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428427/blog/investingInfo/dxy-market-impact-content.png "DXY 이미지")
 
 ## 3. DXY vs 금리 vs 유동성 — 3중 관계 완전 정리
 
@@ -148,7 +148,7 @@ DXY는 미국 금리, 글로벌 유동성과 아주 밀접한 3중 관계를 이
 
 ---
 
-![DXY 하단 이미지](/images/investingInfo/dxy-market-impact-bottom.png "DXY 이미지")
+![DXY 하단 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428425/blog/investingInfo/dxy-market-impact-bottom.png "DXY 이미지")
 
 ## FAQ
 

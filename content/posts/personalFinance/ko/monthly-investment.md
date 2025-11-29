@@ -6,7 +6,7 @@ datePublished: "2025-11-20"
 dateModified: "2025-11-20"
 category: "재테크"
 tags: ["1억만들기", "5천만들기", "3억만들기", "월투자금", "투자계획", "목표금액", "복리", "자산계획", "목표자산"]
-cover: "/images/personalFinance/monthly-investment-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429425/blog/personalFinance/monthly-investment-cover.png"
 lang: "ko"
 ---
 
@@ -26,7 +26,7 @@ lang: "ko"
 
 > 목표 금액을 빠르게 달성하려면 “얼마를 투자해야 하는가”를 역산하는 방식이 가장 효율적입니다. 이 글은 5천만 원, 1억, 3억 목표를 기준으로 각각 요구되는 월 투자금을 현실적인 기준으로 계산합니다.
 
-![monthly investment infographic top](/images/personalFinance/monthly-investment-top.png)
+![monthly investment infographic top](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429431/blog/personalFinance/monthly-investment-top.png)
 
 ---
 
@@ -129,7 +129,7 @@ lang: "ko"
 • 기간을 늘릴수록 부담이 줄고 복리 효과가 강화됩니다.  
 • 목표 자산 도달 시뮬레이터를 활용하면 현실적인 계획을 쉽게 세울 수 있습니다.
 
-![monthly investment illustration bottom](/images/personalFinance/monthly-investment-bottom.png)
+![monthly investment illustration bottom](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429423/blog/personalFinance/monthly-investment-bottom.png)
 
 ---
 

@@ -5,7 +5,7 @@ description: "A practical five-step guide to help young professionals build a so
 datePublished: "2025-11-17"
 dateModified: "2025-11-17"
 category: "Personal Finance"
-cover: "/images/personalFinance/step5_thum.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429439/blog/personalFinance/step5_thum.png"
 tags: ["salary management", "young professionals", "budgeting", "finance basics"]
 lang: "en"
 ---
@@ -27,7 +27,7 @@ lang: "en"
 > Managing your first salary can feel overwhelming.  
 > This guide summarizes the **five essential steps** every young professional should follow to build a stable financial foundation.
 
-![Salary management top image](/images/personalFinance/economics-personal-start-5steps-top.png)
+![Salary management top image](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429396/blog/personalFinance/economics-personal-start-5steps-top.png)
 
 ---
 
@@ -46,7 +46,7 @@ This guide breaks salary management into **five simple steps** anyone can follow
 
 ## 2. Step 1 — Identify Your Fixed Expenses
 
-![Fixed expense illustration](/images/personalFinance/economics-personal-start-5steps-mid1-expenses.png)
+![Fixed expense illustration](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429387/blog/personalFinance/economics-personal-start-5steps-mid1-expenses.png)
 
 ### 2-1. Why list your expenses first?
 
@@ -88,7 +88,7 @@ Three key review questions:
 
 ## 3. Step 2 — Set a Monthly Spending Limit
 
-![Budget pie chart](/images/personalFinance/economics-personal-start-5steps-mid2-budget.png)
+![Budget pie chart](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429390/blog/personalFinance/economics-personal-start-5steps-mid2-budget.png)
 
 ### 3-1. The biggest mistake beginners make
 
@@ -120,7 +120,7 @@ the key is **setting a limit in advance**.
 
 ## 4. Step 3 — Build an Emergency Fund (6 Months of Living Costs)
 
-![Emergency fund illustration](/images/personalFinance/economics-personal-start-5steps-mid3-emergencyfund.png)
+![Emergency fund illustration](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429393/blog/personalFinance/economics-personal-start-5steps-mid3-emergencyfund.png)
 
 ### 4-1. Why emergency funds come before investing
 

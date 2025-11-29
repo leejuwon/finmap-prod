@@ -5,7 +5,7 @@ description: "사회초년생이 가장 고민하는 월급 관리. 어디서부
 datePublished: "2025-11-17"
 dateModified: "2025-11-17"
 category: "재테크"
-cover: "/images/personalFinance/step5_thum.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429439/blog/personalFinance/step5_thum.png"
 tags: ["월급관리", "사회초년생", "예산관리", "재테크기초"]
 lang: "ko"
 ---
@@ -26,7 +26,7 @@ lang: "ko"
 
 > 이제 막 사회생활을 시작한 사람들에게 가장 어려운 과제는 바로 ‘월급 관리’입니다. 첫 월급의 설렘도 잠시, 어디에 얼마나 써야 할지, 매달 어떻게 남겨야 할지 막막해지기 쉽죠. 이 글에서는 **사회초년생이 반드시 알아야 할 월급 관리 5단계**를 체계적으로 정리해 드립니다.
 
-![사회초년생 월급 관리 상단 이미지](/images/personalFinance/economics-personal-start-5steps-top.png)
+![사회초년생 월급 관리 상단 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429396/blog/personalFinance/economics-personal-start-5steps-top.png)
 
 ---
 
@@ -47,7 +47,7 @@ lang: "ko"
 
 ## 2. 월급 관리 1단계 – 고정 지출부터 파악하기
 
-![고정 지출 정리 일러스트](/images/personalFinance/economics-personal-start-5steps-mid1-expenses.png)
+![고정 지출 정리 일러스트](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429387/blog/personalFinance/economics-personal-start-5steps-mid1-expenses.png)
 
 ### 2-1. 지출 항목을 먼저 적어보는 이유  
 월급 관리는 사실 “돈을 어디에 쓰고 있는지 아는 것”에서 시작됩니다.  
@@ -83,7 +83,7 @@ lang: "ko"
 
 ## 3. 월급 관리 2단계 – 생활비 한도를 정하기
 
-![50-30-20 예산 배분 파이차트](/images/personalFinance/economics-personal-start-5steps-mid2-budget.png)
+![50-30-20 예산 배분 파이차트](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429390/blog/personalFinance/economics-personal-start-5steps-mid2-budget.png)
 
 ### 3-1. 사회초년생이 가장 많이 하는 실수  
 “남는 돈을 저축하자”는 방식은 대부분 실패합니다.  
@@ -111,7 +111,7 @@ lang: "ko"
 
 ## 4. 월급 관리 3단계 – 비상금(6개월 분) 먼저 만들기
 
-![비상금 저금통 그래프 일러스트](/images/personalFinance/economics-personal-start-5steps-mid3-emergencyfund.png)
+![비상금 저금통 그래프 일러스트](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429393/blog/personalFinance/economics-personal-start-5steps-mid3-emergencyfund.png)
 
 ### 4-1. 왜 투자보다 비상금이 먼저인가?  
 투자보다 더 중요한 건 **안전망 구축**입니다.  

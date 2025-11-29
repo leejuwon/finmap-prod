@@ -6,7 +6,7 @@ datePublished: "2025-11-29"
 dateModified: "2025-11-29"
 category: "투자정보"
 tags: ["CAGR", "MDD", "샤프비율", "변동성", "투자평가", "포트폴리오"]
-cover: "/images/investingInfo/diagnose-investing-skill-with-cagr-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428405/blog/investingInfo/diagnose-investing-skill-with-cagr-cover.png"
 lang: "ko"
 ---
 
@@ -28,7 +28,7 @@ lang: "ko"
 > **한 문단 요약**  
 CAGR은 투자 성과를 판단하는 핵심 지표지만, 변동성과 손실 폭을 반영하지 않는다는 분명한 한계가 있습니다. 실제 투자 실력은 CAGR, MDD, 변동성, 그리고 샤프비율을 함께 평가해야 비로소 정확하게 판단할 수 있습니다. 본문에서는 이 네 가지 지표의 관계를 초보자도 이해할 수 있도록 설명하고, 실제 두 가지 포트폴리오 시나리오를 비교해 어떤 성과가 더 안정적이고 현실적인 투자 실력인지 보여줍니다.
 
-![cover](/images/investingInfo/diagnose-investing-skill-with-cagr-cover.png)
+![cover](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428405/blog/investingInfo/diagnose-investing-skill-with-cagr-cover.png)
 
 ---
 
@@ -190,15 +190,15 @@ MDD는 투자 성향, 리스크 허용 범위, 멘탈 강도를 모두 보여주
 
 <div class="img-row">
   <figure>
-    <img src="/images/investingInfo/diagnose-investing-skill-with-cagr-img1.png" alt="CAGR vs VOL chart" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428407/blog/investingInfo/diagnose-investing-skill-with-cagr-img1.png" alt="CAGR vs VOL chart" />
     <figcaption>CAGR과 변동성의 관계</figcaption>
   </figure>
   <figure>
-    <img src="/images/investingInfo/diagnose-investing-skill-with-cagr-img2.png" alt="MDD drawdown curve" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428411/blog/investingInfo/diagnose-investing-skill-with-cagr-img2.png" alt="MDD drawdown curve" />
     <figcaption>MDD가 계좌에 미치는 심리적 충격</figcaption>
   </figure>
   <figure>
-    <img src="/images/investingInfo/diagnose-investing-skill-with-cagr-img3.png" alt="Sharpe ratio interpretation" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428413/blog/investingInfo/diagnose-investing-skill-with-cagr-img3.png" alt="Sharpe ratio interpretation" />
     <figcaption>샤프비율의 직관적 이해</figcaption>
   </figure>
 </div>

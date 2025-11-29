@@ -6,7 +6,7 @@ datePublished: "2025-11-29"
 dateModified: "2025-11-29"
 category: "Investing Info"
 tags: ["CAGR", "MDD", "Sharpe Ratio", "Volatility", "Portfolio Analysis"]
-cover: "/images/investingInfo/diagnose-investing-skill-with-cagr-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428405/blog/investingInfo/diagnose-investing-skill-with-cagr-cover.png"
 lang: "en"
 ---
 
@@ -28,7 +28,7 @@ lang: "en"
 > **One-paragraph summary**  
 CAGR is one of the most important return metrics, but it hides all information about volatility and risk. To understand your true investing performance, you must evaluate CAGR together with MDD, volatility, and the Sharpe ratio. These metrics show how stable your returns were, how deep your losses got, and whether the risks you took were justified. In this article, we explain each metric in simple terms and compare two sample portfolios to illustrate why a stable CAGR is more valuable than a high but unstable one.
 
-![cover](/images/investingInfo/diagnose-investing-skill-with-cagr-cover.png.png)
+![cover](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428405/blog/investingInfo/diagnose-investing-skill-with-cagr-cover.png)
 
 ---
 
@@ -205,15 +205,15 @@ Characteristics:
 
 <div class="img-row">
   <figure>
-    <img src="/images/investingInfo/diagnose-investing-skill-with-cagr-img1.png" alt="CAGR vs volatility graph" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428407/blog/investingInfo/diagnose-investing-skill-with-cagr-img1.png" alt="CAGR vs volatility graph" />
     <figcaption>CAGR and volatility relationship</figcaption>
   </figure>
   <figure>
-    <img src="/images/investingInfo/diagnose-investing-skill-with-cagr-img2.png" alt="MDD drawdown curve" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428411/blog/investingInfo/diagnose-investing-skill-with-cagr-img2.png" alt="MDD drawdown curve" />
     <figcaption>Psychological impact of drawdowns</figcaption>
   </figure>
   <figure>
-    <img src="/images/investingInfo/diagnose-investing-skill-with-cagr-img3.png" alt="Sharpe ratio visualization" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428413/blog/investingInfo/diagnose-investing-skill-with-cagr-img3.png" alt="Sharpe ratio visualization" />
     <figcaption>Understanding the Sharpe ratio</figcaption>
   </figure>
 </div>

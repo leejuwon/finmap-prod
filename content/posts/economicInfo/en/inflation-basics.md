@@ -6,7 +6,7 @@ category: "Economic Info"
 tags: ["inflation", "CPI", "real interest rate", "price levels"]
 datePublished: "2025-11-13"
 dateModified: "2025-11-13"
-cover: "/images/economicInfo/inflation-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427015/blog/economicInfo/inflation-cover.png"
 lang: "en"
 ---
 

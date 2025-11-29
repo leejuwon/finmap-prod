@@ -6,7 +6,7 @@ category: "경제정보"
 tags: ["환율","원달러","외환"]
 datePublished: "2025-11-13"
 dateModified: "2025-11-13"
-cover: "/images/economicInfo/fx-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427009/blog/economicInfo/fx-cover.png"
 lang: "ko"
 ---
 

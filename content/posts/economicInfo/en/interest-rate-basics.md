@@ -6,7 +6,7 @@ category: "Economic Info"
 tags: ["interest rate", "policy rate", "bond pricing", "market rates"]
 datePublished: "2025-11-13"
 dateModified: "2025-11-13"
-cover: "/images/economicInfo/rate-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427018/blog/economicInfo/rate-cover.png"
 lang: "en"
 ---
 

@@ -6,7 +6,7 @@ datePublished: "2025-11-23"
 dateModified: "2025-11-23"
 category: "Investing Info"
 tags: ["DXY", "dollar index", "macro indicators", "forex", "USD strength"]
-cover: "/images/investingInfo/dxy-thum.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428438/blog/investingInfo/dxy-thum.png"
 lang: "en"
 ---
 
@@ -27,7 +27,7 @@ lang: "en"
 > The Dollar Index (DXY) captures the “relative strength” of the U.S. dollar.  
 > It is a powerful indicator for understanding global market sentiment and currency trends.
 
-![DXY cover image](/images/investingInfo/dxy-top.png "DXY Illustration")
+![DXY cover image](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428441/blog/investingInfo/dxy-top.png "DXY Illustration")
 
 ---
 
@@ -58,7 +58,7 @@ EUR dominates the index, meaning European economic conditions strongly influence
 
 ---
 
-![DXY content image](/images/investingInfo/dxy-content_en.png "DXY Illustration")
+![DXY content image](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428419/blog/investingInfo/dxy-content_en.png "DXY Illustration")
 
 ## 3. What DXY Represents  
 
@@ -112,7 +112,7 @@ Rate-cut expectations → DXY down
 2. It influences stocks, bonds, commodities, and currencies.  
 3. Tracking DXY helps investors understand global sentiment quickly.
 
-![DXY bottom image](/images/investingInfo/dxy-bottom.png "DXY Illustration")
+![DXY bottom image](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428416/blog/investingInfo/dxy-bottom.png "DXY Illustration")
 
 ---
 

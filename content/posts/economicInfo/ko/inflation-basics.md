@@ -6,7 +6,7 @@ category: "경제정보"
 tags: ["물가","인플레이션","CPI","실질금리"]
 datePublished: "2025-11-13"
 dateModified: "2025-11-13"
-cover: "/images/economicInfo/inflation-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427015/blog/economicInfo/inflation-cover.png"
 lang: "ko"
 ---
 

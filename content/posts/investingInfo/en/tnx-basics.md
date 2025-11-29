@@ -6,7 +6,7 @@ datePublished: "2025-11-23"
 dateModified: "2025-11-23"
 category: "Investing Info"
 tags: ["TNX", "10-year treasury yield", "macro indicators", "US bonds", "interest rates"]
-cover: "/images/investingInfo/economics-tnx-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428464/blog/investingInfo/economics-tnx-cover.png"
 lang: "en"
 ---
 
@@ -26,7 +26,7 @@ lang: "en"
 
 > TNX—the U.S. 10-Year Treasury Yield—is a global benchmark for long-term interest rates and influences nearly every major asset class.
 
-![Top summary image](/images/investingInfo/economics-tnx-top.png "TNX top summary")
+![Top summary image](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428469/blog/investingInfo/economics-tnx-top.png "TNX top summary")
 
 ---
 
@@ -62,7 +62,7 @@ lang: "en"
 ### (2) Impact on the U.S. dollar
 - Lower yields reduce dollar demand and may support emerging markets.
 
-![Body infographic](/images/investingInfo/economics-tnx-contents-en.png "TNX structure infographic")
+![Body infographic](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428457/blog/investingInfo/economics-tnx-contents-en.png "TNX structure infographic")
 
 ---
 
@@ -78,7 +78,7 @@ lang: "en"
 - It influences stock valuations, currency movements, and risk appetite.  
 - Beginners can understand the market faster by tracking TNX daily.
 
-![Bottom infographic](/images/investingInfo/economics-tnx-bottom.png "Bottom infographic")
+![Bottom infographic](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428455/blog/investingInfo/economics-tnx-bottom.png "Bottom infographic")
 
 ---
 

@@ -5,7 +5,7 @@ description: "원·달러 환율, 유가(WTI), 미국 3대 지수, 달러인덱�
 datePublished: "2025-11-18"
 dateModified: "2025-11-18"
 category: "투자정보"
-cover: "/images/investingInfo/economics-marketinfo-thum.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428447/blog/investingInfo/economics-marketinfo-thum.png"
 tags: ["코스피", "원달러환율", "WTI", "미국증시", "DXY", "10년물국채", "Stoxx50"]
 lang: "ko"
 ---
@@ -26,7 +26,7 @@ lang: "ko"
 
 > 코스피는 국내 기업의 실적뿐 아니라 글로벌 환율·금리·유가·해외 증시의 흐름에 직접적인 영향을 받습니다. 투자 타이밍을 잡기 위해 반드시 알아야 할 주요 시장 환경 요인을 한 번에 정리했습니다.
 
-![코스피 영향 글로벌 시장 환경 상단 이미지](/images/investingInfo/economics-marketinfo-top.png)
+![코스피 영향 글로벌 시장 환경 상단 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428451/blog/investingInfo/economics-marketinfo-top.png)
 
 
 ---
@@ -53,7 +53,7 @@ lang: "ko"
 
 ## 2. 글로벌 환경이 코스피에 영향을 주는 핵심 메커니즘
 
-![글로벌 환경(미국경제) 코스피 영향 일러스트](/images/investingInfo/economics-marketinfo-mid.png)
+![글로벌 환경(미국경제) 코스피 영향 일러스트](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428444/blog/investingInfo/economics-marketinfo-mid.png)
 
 ### **① 원·달러 환율과 외국인 자금 흐름**
 환율은 코스피의 기초 체력이라고 할 수 있습니다.  

@@ -6,7 +6,7 @@ datePublished: "2025-11-23"
 dateModified: "2025-11-23"
 category: "재테크"
 tags: ["연복리", "월복리", "복리계산", "투자기초", "시간가치"]
-cover: "/images/personalFinance/compounding-period-diff-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429378/blog/personalFinance/compounding-period-diff-cover.png"
 lang: "ko"
 ---
 
@@ -27,7 +27,7 @@ lang: "ko"
 > 연복리와 월복리의 차이는 작아 보이지만, 장기 투자에서는 실제 목표 도달 기간을 분명하게 바꿉니다.  
 > 동일한 금액을 동일한 기간 동안 투자하더라도 **이자가 붙는 주기**만으로 결과가 달라지기 때문입니다.
 
-![복리 이미지](/images/personalFinance/compounding-period-diff-top_ko.png "연복리와 월복리 비교 이미지")
+![복리 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429384/blog/personalFinance/compounding-period-diff-top_ko.png "연복리와 월복리 비교 이미지")
 
 ---
 
@@ -96,7 +96,7 @@ ETF 적립식·연금저축·IRP 등 대부분 월 단위로 운용되므로 월
 2. 월복리는 장기 투자에서 조금 더 유리합니다.  
 3. 목표 금액 도달 기간은 **FinMap 시뮬레이터**로 직접 계산하는 것이 가장 정확합니다.
 
-![복리 비교 인포그래픽](/images/personalFinance/compounding-period-diff-bottom_ko.png "연복리 vs 월복리 하단 이미지")
+![복리 비교 인포그래픽](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429375/blog/personalFinance/compounding-period-diff-bottom_ko.png "연복리 vs 월복리 하단 이미지")
 
 ---
 

@@ -6,7 +6,7 @@ category: "Personal Finance"
 tags: ["personal finance", "budgeting", "emergency fund", "long-term investing"]
 datePublished: "2025-11-13"
 dateModified: "2025-11-13"
-cover: "/images/personalFinance/pf-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429434/blog/personalFinance/pf-cover.png"
 lang: "en"
 ---
 

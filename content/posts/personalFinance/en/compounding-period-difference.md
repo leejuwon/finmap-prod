@@ -6,7 +6,7 @@ datePublished: "2025-11-23"
 dateModified: "2025-11-23"
 category: "Personal Finance"
 tags: ["compound interest", "monthly compounding", "financial basics", "investing"]
-cover: "/images/personalFinance/compounding-period-diff-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429378/blog/personalFinance/compounding-period-diff-cover.png"
 lang: "en"
 ---
 
@@ -27,7 +27,7 @@ lang: "en"
 > Compounding frequency may seem like a small detail, but it can change how fast you reach your financial goals.  
 > When interest is applied more frequently, growth accelerates—especially in long-term investing.
 
-![compound comparison](/images/personalFinance/compounding-period-diff-top_en.png "Annual vs Monthly compounding illustration")
+![compound comparison](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429381/blog/personalFinance/compounding-period-diff-top_en.png "Annual vs Monthly compounding illustration")
 
 ---
 
@@ -94,7 +94,7 @@ Especially when combined with regular contributions.
 2. Monthly compounding is slightly more beneficial for long-term investors.  
 3. Use FinMap’s tools to compute exact timelines for your goals.
 
-![infographic bottom](/images/personalFinance/compounding-period-diff-bottom_en.png "compounding infographic bottom")
+![infographic bottom](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429373/blog/personalFinance/compounding-period-diff-bottom_en.png "compounding infographic bottom")
 
 ---
 

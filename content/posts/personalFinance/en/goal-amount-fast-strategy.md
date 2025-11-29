@@ -6,7 +6,7 @@ datePublished: "2025-11-19"
 dateModified: "2025-11-19"
 category: "Personal Finance"
 tags: ["target amount", "investment planning", "compound interest", "personal finance", "return", "investment period", "wealth building"]
-cover: "/images/personalFinance/goal-amount-fast-strategy-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429402/blog/personalFinance/goal-amount-fast-strategy-cover.png"
 tool: ["goal","comp"]
 lang: "en"
 ---
@@ -27,7 +27,7 @@ lang: "en"
 
 > To reach your financial goal faster, you need a balanced strategy involving principal, return, and investment duration. Each element has advantages and limitations, and combining them within realistic boundaries is essential.
 
-![Goal amount strategy infographic](/images/personalFinance/goal-amount-fast-strategy-top.png)
+![Goal amount strategy infographic](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429414/blog/personalFinance/goal-amount-how-top_en.png)
 
 ## 1. Introduction
 
@@ -88,7 +88,7 @@ Reaching a target amount faster requires a balanced adjustment of principal, ret
 Relying on only one variable is rarely effective.  
 By making realistic adjustments, you can significantly increase your probability of achieving your financial goals.
 
-![Goal amount strategy illustration](/images/personalFinance/goal-amount-fast-strategy-botom.png)
+![Goal amount strategy illustration](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429408/blog/personalFinance/goal-amount-how-botom_en.png)
 
 ## FAQ
 

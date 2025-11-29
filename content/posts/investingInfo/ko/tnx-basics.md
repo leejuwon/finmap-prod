@@ -6,7 +6,7 @@ datePublished: "2025-11-23"
 dateModified: "2025-11-23"
 category: "투자정보"
 tags: ["TNX", "미국채10년물", "미국금리", "국채수익률", "거시지표"]
-cover: "/images/investingInfo/economics-tnx-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428464/blog/investingInfo/economics-tnx-cover.png"
 lang: "ko"
 ---
 
@@ -26,7 +26,7 @@ lang: "ko"
 
 > TNX(미국 10년물 국채금리)는 글로벌 금융 시장에서 ‘장기 금리의 기준’으로 활용되며, 주식·부동산·채권·환율까지 대부분의 자산 가격에 영향을 주는 핵심 지표입니다.
 
-![미국 10년물 금리 상단 요약](/images/investingInfo/economics-tnx-top.png "10년물 금리 상단 요약 이미지")
+![미국 10년물 금리 상단 요약](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428469/blog/investingInfo/economics-tnx-top.png "10년물 금리 상단 요약 이미지")
 
 ---
 
@@ -65,7 +65,7 @@ lang: "ko"
 - 장기 금리가 내려가면 달러 강세 압력이 줄어듭니다.  
 - 그 결과 신흥국 환율과 위험자산이 강세를 보이기도 합니다.
 
-![본론 인포그래픽](/images/investingInfo/economics-tnx-contents-ko.png "TNX 구조 인포그래픽")
+![본론 인포그래픽](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428460/blog/investingInfo/economics-tnx-contents-ko.png "TNX 구조 인포그래픽")
 
 ---
 
@@ -82,7 +82,7 @@ lang: "ko"
 - 성장주·환율·부동산 등 광범위한 자산에 영향을 줍니다.  
 - 초보자일수록 TNX를 먼저 확인하면 시장 흐름을 이해하기 쉬워집니다.
 
-![하단 요약 인포그래픽](/images/investingInfo/economics-tnx-bottom.png "TNX 하단 인포그래픽")
+![하단 요약 인포그래픽](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428455/blog/investingInfo/economics-tnx-bottom.png "TNX 하단 인포그래픽")
 
 ---
 

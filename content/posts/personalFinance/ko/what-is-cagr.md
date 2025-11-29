@@ -6,7 +6,7 @@ datePublished: "2025-11-26"
 dateModified: "2025-11-26"
 category: "재테크"
 tags: ["CAGR", "수익률", "투자기초", "복리수익률", "연평균수익률", "단순수익률"]
-cover: "/images/personalFinance/what-is-cagr-cover-ko.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429444/blog/personalFinance/what-is-cagr-cover-ko.png"
 tool: ["cagr","comp"]
 lang: "ko"
 ---
@@ -28,17 +28,17 @@ lang: "ko"
 > **한 문단 요약**  
 CAGR(연평균 복리 수익률)은 특정 기간 동안 투자 가치가 매년 동일한 비율로 증가했다고 가정했을 때의 연간 성장 속도를 의미합니다. 단순 수익률보다 변동성의 영향을 최소화해 장기 투자 성과를 더 정확히 보여주기 때문에 주식·ETF·펀드·부동산 등 다양한 자산의 성과 비교에 널리 사용됩니다.
 
-![CAGR 개념 요약](/images/personalFinance/what-is-cagr-top.png "CAGR 개념 요약 이미지")
+![CAGR 개념 요약](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429447/blog/personalFinance/what-is-cagr-top.png "CAGR 개념 요약 이미지")
 
 ---
 
 <!-- 가로 스크롤 이미지 4개 블록 -->
 <!-- Horizontal scroll image block -->
 <div style="display: flex; gap: 16px; overflow-x: auto; padding: 10px 0;">
-  <img src="/images/personalFinance/cagr1.png"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr2.png"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr3.png"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr4.png"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429352/blog/personalFinance/cagr1.jpg"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429359/blog/personalFinance/cagr2.png"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429360/blog/personalFinance/cagr3.jpg"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429362/blog/personalFinance/cagr4.jpg"  style="height: 180px; border-radius: 8px;" />
 </div>
 
 ## 1. 서론  
@@ -82,10 +82,10 @@ CAGR = (1.6)<sup>1/3</sup> − 1 ≈ 16.99%
 <!-- 가로 스크롤 이미지 4개 블록 -->
 <!-- Horizontal scroll image block -->
 <div style="display: flex; gap: 16px; overflow-x: auto; padding: 10px 0;">
-  <img src="/images/personalFinance/cagr5.jpg"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr6.jpg"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr7.jpg"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr8.png"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429364/blog/personalFinance/cagr5.jpg"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429366/blog/personalFinance/cagr6.jpg"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429367/blog/personalFinance/cagr7.jpg"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429368/blog/personalFinance/cagr8.png"  style="height: 180px; border-radius: 8px;" />
 </div>
 
 위와 같이 손실 구간, 연도별 수익률 표, 장기 지수 그래프를 함께 보면  
@@ -186,10 +186,10 @@ CAGR로 계산해보면 변동성과 투자 기간에 따라 순위가 바뀔 �
 <!-- 가로 스크롤 이미지 4개 블록 -->
 <!-- Horizontal scroll image block -->
 <div style="display: flex; gap: 16px; overflow-x: auto; padding: 10px 0;">
-  <img src="/images/personalFinance/cagr9.jpg"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr10.png"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr11.jpg"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr12.jpg"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429370/blog/personalFinance/cagr9.jpg"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429354/blog/personalFinance/cagr10.png"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429356/blog/personalFinance/cagr11.jpg"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429358/blog/personalFinance/cagr12.jpg"  style="height: 180px; border-radius: 8px;" />
 </div>
 
 ---

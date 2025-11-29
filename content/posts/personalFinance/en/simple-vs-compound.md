@@ -6,7 +6,7 @@ category: "Personal Finance"
 tags: ["simple interest", "compound interest", "finance 101", "beginner investing", "wealth building"]
 datePublished: "2025-11-15"
 dateModified: "2025-11-15"
-cover: "/images/personalFinance/simple-vs-compound-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429436/blog/personalFinance/simple-vs-compound-cover.png"
 tool: ["comp"]
 lang: "en"
 ---

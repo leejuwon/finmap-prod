@@ -6,7 +6,7 @@ datePublished: "2025-11-26"
 dateModified: "2025-11-26"
 category: "Personal Finance"
 tags: ["CAGR", "investment return", "finance basics", "compound interest", "simple return"]
-cover: "/images/personalFinance/what-is-cagr-cover-en.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429442/blog/personalFinance/what-is-cagr-cover-en.png"
 tool: ["cagr","comp"]
 lang: "en"
 ---
@@ -28,17 +28,17 @@ lang: "en"
 > **One-paragraph summary**  
 CAGR (Compound Annual Growth Rate) measures how much an investment grew each year on average, assuming steady yearly growth. It provides a more accurate long-term performance measure than simple returns, which can be distorted by volatility. Investors use CAGR to compare assets, funds, and investment strategies over different periods.
 
-![CAGR concept overview](/images/personalFinance/what-is-cagr-top.png "CAGR concept overview")
+![CAGR concept overview](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429447/blog/personalFinance/what-is-cagr-top.png "CAGR concept overview")
 
 ---
 
 <!-- 가로 스크롤 이미지 4개 블록 -->
 <!-- Horizontal scroll image block -->
 <div style="display: flex; gap: 16px; overflow-x: auto; padding: 10px 0;">
-  <img src="/images/personalFinance/cagr1.png"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr2.png"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr3.png"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr4.png"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429352/blog/personalFinance/cagr1.jpg"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429359/blog/personalFinance/cagr2.png"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429360/blog/personalFinance/cagr3.jpg"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429362/blog/personalFinance/cagr4.jpg"  style="height: 180px; border-radius: 8px;" />
 </div>
 
 ## 1. Introduction  
@@ -80,10 +80,10 @@ In other words, this result is equivalent to earning about 17% per year, every y
 
 <!-- Horizontal scroll image block -->
 <div style="display: flex; gap: 16px; overflow-x: auto; padding: 10px 0;">
-  <img src="/images/personalFinance/cagr5.jpg"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr6.jpg"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr7.jpg"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr8.png"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429364/blog/personalFinance/cagr5.jpg"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429366/blog/personalFinance/cagr6.jpg"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429367/blog/personalFinance/cagr7.jpg"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429368/blog/personalFinance/cagr8.png"  style="height: 180px; border-radius: 8px;" />
 </div>
 
 By looking at a loss-and-recovery chart, a yearly return table, and a long-term index graph together,  
@@ -183,10 +183,10 @@ Related posts:
 <!-- 가로 스크롤 이미지 4개 블록 -->
 <!-- Horizontal scroll image block -->
 <div style="display: flex; gap: 16px; overflow-x: auto; padding: 10px 0;">
-  <img src="/images/personalFinance/cagr9.jpg"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr10.png"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr11.jpg"  style="height: 180px; border-radius: 8px;" />
-  <img src="/images/personalFinance/cagr12.jpg"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429370/blog/personalFinance/cagr9.jpg"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429354/blog/personalFinance/cagr10.png"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429356/blog/personalFinance/cagr11.jpg"  style="height: 180px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429358/blog/personalFinance/cagr12.jpg"  style="height: 180px; border-radius: 8px;" />
 </div>
 
 ---

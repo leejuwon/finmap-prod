@@ -6,7 +6,7 @@ datePublished: "2025-11-23"
 dateModified: "2025-11-23"
 category: "투자정보"
 tags: ["DXY", "달러인덱스", "거시경제", "환율", "미국달러"]
-cover: "/images/investingInfo/dxy-thum.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428438/blog/investingInfo/dxy-thum.png"
 lang: "ko"
 ---
 
@@ -27,7 +27,7 @@ lang: "ko"
 > 달러인덱스(DXY)는 미국 달러의 ‘상대적 힘’을 보여주는 핵심 지표입니다.  
 > 단순 환율 이상의 정보가 담겨 있어 **시장 분위기와 안전·위험 자산 선호 흐름을 파악하는 데 매우 유용**합니다.
 
-![달러인덱스 개념 이미지](/images/investingInfo/dxy-top.png "DXY 이미지")
+![달러인덱스 개념 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428441/blog/investingInfo/dxy-top.png "DXY 이미지")
 
 ---
 
@@ -58,7 +58,7 @@ lang: "ko"
 
 ---
 
-![달러인덱스 본문 이미지](/images/investingInfo/dxy-content_ko.png "DXY 이미지")
+![달러인덱스 본문 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428422/blog/investingInfo/dxy-content_ko.png "DXY 이미지")
 
 ## 3. DXY가 의미하는 것
 
@@ -118,7 +118,7 @@ DXY가 상승하면 원·달러 환율이 오르는 경우가 많습니다.
 2. 금리·환율·주식·원자재까지 다양한 시장과 연결되어 있습니다.  
 3. 투자자는 DXY 흐름만 봐도 시장 심리를 빠르게 파악할 수 있습니다.
 
-![달러인덱스 본문 이미지](/images/investingInfo/dxy-bottom.png "DXY 이미지")
+![달러인덱스 본문 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428416/blog/investingInfo/dxy-bottom.png "DXY 이미지")
 
 ---
 

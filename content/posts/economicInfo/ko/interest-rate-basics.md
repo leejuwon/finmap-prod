@@ -6,7 +6,7 @@ category: "경제정보"
 tags: ["금리","기준금리","채권"]
 datePublished: "2025-11-13"
 dateModified: "2025-11-13"
-cover: "/images/economicInfo/rate-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427018/blog/economicInfo/rate-cover.png"
 lang: "ko"
 ---
 

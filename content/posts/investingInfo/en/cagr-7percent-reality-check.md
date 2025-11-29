@@ -6,7 +6,7 @@ datePublished: "2025-11-29"
 dateModified: "2025-11-29"
 category: "Investing Info"
 tags: ["CAGR", "CompoundInterest", "S&P500", "7percent", "InvestingBasics"]
-cover: "/images/investingInfo/cagr-7percent-reality-check-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428393/blog/investingInfo/cagr-7percent-reality-check-cover.png"
 lang: "en"
 ---
 
@@ -28,7 +28,7 @@ lang: "en"
 > **One-paragraph summary**  
 Investors frequently assume that earning “7% per year” is both realistic and achievable, but the number only makes sense when interpreted as long-term CAGR—not as a simple average. The S&P 500’s historical CAGR ranges from 6% to 12% depending on the time period, and volatility, inflation, and taxes significantly reduce real returns. This article provides a detailed, data-based explanation of how a 7% assumption behaves in real markets and how investors should use compound interest and goal calculators to set realistic expectations.
 
-![cover](/images/investingInfo/cagr-7percent-reality-check-cover.png)
+![cover](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428393/blog/investingInfo/cagr-7percent-reality-check-cover.png)
 
 ---
 
@@ -137,15 +137,15 @@ But volatility determines whether you actually get 7% or 4% or 10%.
 
 <div class="img-row">
   <figure>
-    <img src="/images/investingInfo/cagr-7percent-reality-check-img1.png" alt="7% compound growth curve" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428396/blog/investingInfo/cagr-7percent-reality-check-img1.png" alt="7% compound growth curve" />
     <figcaption>Long-term compound growth at 7%</figcaption>
   </figure>
   <figure>
-    <img src="/images/investingInfo/cagr-7percent-reality-check-img2.png" alt="Volatility vs CAGR relationship" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428399/blog/investingInfo/cagr-7percent-reality-check-img2.png" alt="Volatility vs CAGR relationship" />
     <figcaption>Volatility significantly reduces CAGR</figcaption>
   </figure>
   <figure>
-    <img src="/images/investingInfo/cagr-7percent-reality-check-img3.png" alt="Historical S&P500 CAGR" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428402/blog/investingInfo/cagr-7percent-reality-check-img3.png" alt="Historical S&P500 CAGR" />
     <figcaption>Long-term S&P 500 CAGR trends</figcaption>
   </figure>
 </div>

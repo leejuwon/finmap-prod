@@ -6,7 +6,7 @@ datePublished: "2025-11-29"
 dateModified: "2025-11-29"
 category: "Investing Info"
 tags: ["CAGR", "ETF Selection", "Fund Comparison", "Long-term Investing", "Annualized Return"]
-cover: "/images/investingInfo/why-cagr-etf-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428473/blog/investingInfo/why-cagr-etf-cover.png"
 tool: ["cagr","comp"]
 lang: "en"
 ---
@@ -27,7 +27,7 @@ lang: "en"
 
 > In short: **CAGR reveals the quality of growth, not just the quantity.** It is one of the most important metrics for choosing ETFs wisely.
 
-![CAGR ETF Concept](/images/personalFinance/why-cagr-etf-cover.png "Why CAGR matters when choosing ETFs")
+![CAGR ETF Concept](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428473/blog/investingInfo/why-cagr-etf-cover.png "Why CAGR matters when choosing ETFs")
 
 ---
 
@@ -182,17 +182,17 @@ CAGR quickly reveals whether an ETF’s return pattern is sustainable.
 
 <div class="img-row">
   <figure>
-    <img src="/images/personalFinance/why-cagr-loss-chart.png" alt="Large drawdown example" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428478/blog/investingInfo/why-cagr-loss-chart.png" alt="Large drawdown example" />
     <figcaption>Even with similar total returns, the risk experience can be vastly different.</figcaption>
   </figure>
 
   <figure>
-    <img src="/images/personalFinance/why-cagr-table.png" alt="CAGR comparison table" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428482/blog/investingInfo/why-cagr-table.png" alt="CAGR comparison table" />
     <figcaption>CAGR makes multi-year data easier to compare.</figcaption>
   </figure>
 
   <figure>
-    <img src="/images/personalFinance/why-cagr-growth.png" alt="Long-term ETF growth comparison" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428475/blog/investingInfo/why-cagr-growth.png" alt="Long-term ETF growth comparison" />
     <figcaption>Consistent growth beats unstable high returns over time.</figcaption>
   </figure>
 </div>

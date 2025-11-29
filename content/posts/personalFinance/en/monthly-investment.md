@@ -6,7 +6,7 @@ datePublished: "2025-11-20"
 dateModified: "2025-11-20"
 category: "Personal Finance"
 tags: ["save 100k", "save 50k", "save 300k", "monthly investment", "investment planning", "target amount", "compound interest", "wealth planning"]
-cover: "/images/personalFinance/monthly-investment-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429425/blog/personalFinance/monthly-investment-cover.png"
 lang: "en"
 ---
 
@@ -27,7 +27,7 @@ Practical Plans for $50,000, $100,000, and $300,000 Goals
 
 > The most efficient way to reach a financial goal is to reverse-calculate how much you need to invest each month. This guide provides realistic monthly investment levels for $50,000, $100,000, and $300,000 targets.
 
-![Top infographic](/images/personalFinance/monthly-investment-top.png)
+![Top infographic](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429431/blog/personalFinance/monthly-investment-top.png)
 
 ---
 
@@ -137,7 +137,7 @@ the tool automatically calculates the required monthly investment.
 - Extending the investment horizon reduces monthly burden and increases compounding benefits.  
 - FinMap’s Goal Simulator helps you create a realistic, personalized plan in minutes.
 
-![Bottom illustration](/images/personalFinance/monthly-investment-bottom.png)
+![Bottom illustration](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429423/blog/personalFinance/monthly-investment-bottom.png)
 
 ---
 

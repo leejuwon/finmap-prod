@@ -6,7 +6,7 @@ datePublished: "2025-11-29"
 dateModified: "2025-11-29"
 category: "투자정보"
 tags: ["CAGR", "ETF선택", "펀드고르는법", "연평균복리수익률", "장기투자", "레버리지ETF"]
-cover: "/images/investingInfo/why-cagr-etf-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428473/blog/investingInfo/why-cagr-etf-cover.png"
 tool: ["cagr","comp"]
 lang: "ko"
 ---
@@ -27,7 +27,7 @@ lang: "ko"
 
 > 요약하면, ETF·펀드 선택 시 총 수익률은 출발점일 뿐이고, 진짜 승패를 가르는 기준은 **연평균 복리 수익률(CAGR)** 을 얼마나 꼼꼼하게 확인하느냐에 달려 있습니다.
 
-![ETF CAGR 개념 요약](/images/personalFinance/why-cagr-etf-cover.png "ETF·펀드와 CAGR의 관계를 요약한 개념 이미지")
+![ETF CAGR 개념 요약](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428473/blog/investingInfo/why-cagr-etf-cover.png "ETF·펀드와 CAGR의 관계를 요약한 개념 이미지")
 
 ---
 
@@ -162,17 +162,17 @@ CAGR = (최종가격/초기가격)<sup>1 / 투자기간</sup> − 1
 
 <div class="img-row">
   <figure>
-    <img src="/images/personalFinance/why-cagr-loss-chart.png" alt="큰 손실 후 회복 곡선" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428478/blog/investingInfo/why-cagr-loss-chart.png" alt="큰 손실 후 회복 곡선" />
     <figcaption>중간에 큰 손실이 있는 경우, 총 수익률은 비슷해도 체감 위험은 매우 다릅니다.</figcaption>
   </figure>
 
   <figure>
-    <img src="/images/personalFinance/why-cagr-table.png" alt="연도별 수익률과 CAGR 비교 표" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428482/blog/investingInfo/why-cagr-table.png" alt="연도별 수익률과 CAGR 비교 표" />
     <figcaption>연도별 수익률을 CAGR로 압축하면 비교가 훨씬 쉬워집니다.</figcaption>
   </figure>
 
   <figure>
-    <img src="/images/personalFinance/why-cagr-growth.png" alt="ETF 장기 성장 곡선 비교" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764428475/blog/investingInfo/why-cagr-growth.png" alt="ETF 장기 성장 곡선 비교" />
     <figcaption>변동성은 크지만 덜 오른 ETF vs 꾸준히 오른 ETF의 장기 차이.</figcaption>
   </figure>
 </div>

@@ -5,7 +5,7 @@ description: "An easy-to-understand summary of how USD/KRW, WTI crude prices, ma
 datePublished: "2025-11-18"
 dateModified: "2025-11-18"
 category: "Investing Info"
-cover: "/images/investingInfo/economics-marketinfo-thum.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428447/blog/investingInfo/economics-marketinfo-thum.png"
 tags: ["KOSPI", "USD/KRW", "WTI", "U.S. Indices", "DXY", "10Y Treasury", "Stoxx50"]
 lang: "en"
 ---
@@ -26,7 +26,7 @@ lang: "en"
 
 > The KOSPI moves not only by domestic earnings or news, but by global flows in currency, interest rates, energy prices, and overseas equity markets. This guide summarizes the essential global indicators every Korean equity investor should follow.
 
-![Global market environment influencing KOSPI](/images/investingInfo/economics-marketinfo-top.png)
+![Global market environment influencing KOSPI](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428451/blog/investingInfo/economics-marketinfo-top.png)
 
 ---
 
@@ -50,7 +50,7 @@ This article provides an overall picture of *why* these indicators affect the Ko
 
 ## 2. How Global Indicators Move the KOSPI
 
-![Global → KOSPI mid illustration](/images/investingInfo/economics-marketinfo-mid.png)
+![Global → KOSPI mid illustration](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428444/blog/investingInfo/economics-marketinfo-mid.png)
 
 ---
 

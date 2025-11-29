@@ -6,7 +6,7 @@ category: "Economic Info"
 tags: ["GDP", "unemployment rate", "PMI", "economic indicators"]
 datePublished: "2025-11-13"
 dateModified: "2025-11-13"
-cover: "/images/economicInfo/indicator-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427012/blog/economicInfo/indicator-cover.png"
 lang: "en"
 ---
 

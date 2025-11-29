@@ -6,7 +6,7 @@ category: "경제정보"
 tags: ["GDP","실업률","PMI","지표읽기"]
 datePublished: "2025-11-13"
 dateModified: "2025-11-13"
-cover: "/images/economicInfo/indicator-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427012/blog/economicInfo/indicator-cover.png"
 lang: "ko"
 ---
 
