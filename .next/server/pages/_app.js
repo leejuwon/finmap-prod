@@ -93,7 +93,7 @@ const navItems = [
     },
     {
         href: "/tools",
-        labelKo: "재테크 도구",
+        labelKo: "금융도구",
         labelEn: "Personal Finance Tools"
     }, 
 ];
@@ -168,24 +168,24 @@ function Header() {
                         className: "ml-auto flex items-center gap-2",
                         children: [
                             /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                className: "flex border border-slate-200 rounded-full text-[10px] sm:text-xs overflow-hidden",
+                                className: "flex border border-slate-200 rounded-full text-[9px] sm:text-[11px] md:text-xs overflow-hidden",
                                 children: [
                                     /*#__PURE__*/ jsx_runtime_.jsx("button", {
                                         type: "button",
                                         onClick: ()=>handleLangChange("ko"),
-                                        className: "px-2 py-1 " + (lang === "ko" ? "bg-slate-900 text-white" : "bg-white text-slate-600"),
+                                        className: "px-1.5 py-0.5 sm:px-2 sm:py-1 " + (lang === "ko" ? "bg-slate-900 text-white" : "bg-white text-slate-600"),
                                         children: "한국어"
                                     }),
                                     /*#__PURE__*/ jsx_runtime_.jsx("button", {
                                         type: "button",
                                         onClick: ()=>handleLangChange("en"),
-                                        className: "px-2 py-1 " + (lang === "en" ? "bg-slate-900 text-white" : "bg-white text-slate-600"),
+                                        className: "px-1.5 py-0.5 sm:px-2 sm:py-1 " + (lang === "en" ? "bg-slate-900 text-white" : "bg-white text-slate-600"),
                                         children: "EN"
                                     })
                                 ]
                             }),
                             /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                                className: "header-domain text-[10px] sm:text-xs md:text-sm text-slate-500",
+                                className: "header-domain text-[9px] sm:text-[11px] md:text-sm text-slate-500",
                                 children: "finmaphub.com"
                             })
                         ]

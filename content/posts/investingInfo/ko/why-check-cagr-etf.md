@@ -4,9 +4,9 @@ title: "ETF·펀드 선택 시 CAGR을 반드시 확인해야 하는 이유"
 description: "ETF·펀드 비교에서 총 수익률만 보면 위험해질 수 있습니다. 이 글에서는 연평균 복리 수익률(CAGR)의 개념부터 ETF 3·5년 CAGR 비교표, 초보자·전문가별 활용법까지 깊이 있게 정리합니다."
 datePublished: "2025-11-29"
 dateModified: "2025-11-29"
-category: "재테크"
+category: "투자정보"
 tags: ["CAGR", "ETF선택", "펀드고르는법", "연평균복리수익률", "장기투자", "레버리지ETF"]
-cover: "/images/personalFinance/why-cagr-etf-cover.png"
+cover: "/images/investingInfo/why-cagr-etf-cover.png"
 tool: ["cagr","comp"]
 lang: "ko"
 ---

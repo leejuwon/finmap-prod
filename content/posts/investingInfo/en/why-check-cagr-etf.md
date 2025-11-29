@@ -4,9 +4,9 @@ title: "Why You Must Check the CAGR When Choosing ETFs and Funds"
 description: "A complete guide to understanding why CAGR (Compound Annual Growth Rate) matters more than total return when evaluating ETFs and funds. Includes tables, long-term examples, and strategies for beginners and professionals."
 datePublished: "2025-11-29"
 dateModified: "2025-11-29"
-category: "Personal Finance"
+category: "Investing Info"
 tags: ["CAGR", "ETF Selection", "Fund Comparison", "Long-term Investing", "Annualized Return"]
-cover: "/images/personalFinance/why-cagr-etf-cover.png"
+cover: "/images/investingInfo/why-cagr-etf-cover.png"
 tool: ["cagr","comp"]
 lang: "en"
 ---

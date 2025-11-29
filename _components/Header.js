@@ -86,12 +86,15 @@ export default function Header() {
 
           {/* 우측: 언어 토글 + 도메인 */}
           <div className="ml-auto flex items-center gap-2">
-            <div className="flex border border-slate-200 rounded-full text-[10px] sm:text-xs overflow-hidden">
+            <div className="flex border border-slate-200 rounded-full 
+                            text-[9px] sm:text-[11px] md:text-xs 
+                            overflow-hidden">
+
               <button
                 type="button"
                 onClick={() => handleLangChange('ko')}
                 className={
-                  'px-2 py-1 ' +
+                  'px-1.5 py-0.5 sm:px-2 sm:py-1 ' +
                   (lang === 'ko'
                     ? 'bg-slate-900 text-white'
                     : 'bg-white text-slate-600')
@@ -99,11 +102,12 @@ export default function Header() {
               >
                 한국어
               </button>
+
               <button
                 type="button"
                 onClick={() => handleLangChange('en')}
                 className={
-                  'px-2 py-1 ' +
+                  'px-1.5 py-0.5 sm:px-2 sm:py-1 ' +
                   (lang === 'en'
                     ? 'bg-slate-900 text-white'
                     : 'bg-white text-slate-600')
@@ -113,7 +117,9 @@ export default function Header() {
               </button>
             </div>
 
-            <span className="header-domain text-[10px] sm:text-xs md:text-sm text-slate-500">
+            <span className="header-domain 
+                            text-[9px] sm:text-[11px] md:text-sm 
+                            text-slate-500">
               finmaphub.com
             </span>
           </div>
