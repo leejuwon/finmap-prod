@@ -342,6 +342,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug 
     compound: 'compound',
     cagr: 'cagr',
     dca: 'dca',
+    fire: 'fire',
   };
 
   const normalizedTools = toolList

@@ -65,6 +65,21 @@ export default function ToolCta({ lang = 'ko', type = 'compound' }) {
       badgeKo: 'FinMap 도구 · 적립식 투자',
       badgeEn: 'FinMap tools · DCA investing',
     },
+
+    fire: {
+        // ✅ FIRE(은퇴자금) 계산기
+        titleKo: 'FIRE로 언제 경제적 자유가 가능한지 점검해보세요',
+        titleEn: 'See when you can reach FIRE',
+        descKo:
+          '현재 자산, 연 지출, 예상 수익률, 적립 기간, 출금률(4% rule)로 FIRE 목표자산과 은퇴 후 자산 유지 기간, 파산 리스크를 시뮬레이션합니다.',
+        descEn:
+          'Simulate your FIRE target, retirement asset longevity, and risk of ruin based on your assets, annual spending, expected return, accumulation period, and withdrawal rate (4% rule).',
+        href: '/tools/fire-calculator',
+        btnKo: 'FIRE 계산기 열기',
+        btnEn: 'Open FIRE calculator',
+        badgeKo: 'FinMap 도구 · 은퇴·FIRE',
+        badgeEn: 'FinMap tools · FIRE & Retirement',
+      }
   };
 
   // 지원하지 않는 type이 들어오면 compound로 폴백

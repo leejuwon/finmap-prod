@@ -506,3 +506,110 @@
 .tool-cta-btn:hover {
   background: #16a34a;
 }
+
+/* =========================================================
+   🔵 금융 도구 공통 레이아웃 (복리 / 목표자산 / FIRE 공용)
+========================================================= */
+
+@layer components {
+  /* 툴 페이지 레이아웃 */
+  .tool-page {
+    @apply max-w-5xl mx-auto px-4 py-6 md:py-10;
+  }
+
+  .tool-header {
+    @apply mb-6 md:mb-8;
+  }
+
+  .tool-header h1 {
+    @apply text-2xl md:text-3xl font-bold mb-2;
+  }
+
+  .tool-header p {
+    @apply text-sm md:text-base text-slate-600;
+  }
+
+  /* FIRE/Goal/Compound 공용 폼 */
+  .tool-form {
+    @apply card mb-6;
+  }
+
+  .form-grid {
+    @apply grid gap-4 md:gap-5 md:grid-cols-2;
+  }
+
+  .form-field {
+    @apply flex flex-col gap-1 text-sm;
+  }
+
+  .form-field label {
+    @apply font-semibold text-slate-800;
+  }
+
+  .form-field small {
+    @apply text-xs text-slate-500;
+  }
+
+  /* 언어 토글 */
+  .lang-toggle {
+    @apply inline-flex mb-4 rounded-full border border-slate-200 overflow-hidden bg-slate-50;
+  }
+
+  .lang-toggle button {
+    @apply px-3 py-1 text-xs md:text-sm text-slate-600;
+  }
+
+  .lang-toggle button.active {
+    @apply bg-blue-600 text-white;
+  }
+
+  /* FIRE 차트/테이블/CTA 섹션 간격 */
+  .fire-chart {
+    @apply card mb-6;
+  }
+
+  .fire-year-table {
+    @apply card;
+  }
+
+  .fire-year-table .table-header {
+    @apply flex items-baseline gap-2 mb-2;
+  }
+
+  .fire-year-table .table-header h2 {
+    @apply text-base md:text-lg font-semibold;
+  }
+
+  .fire-year-table .table-header .unit {
+    @apply text-xs text-slate-500;
+  }
+
+  .fire-year-table table {
+    @apply w-full text-xs md:text-sm;
+  }
+
+  .fire-year-table th,
+  .fire-year-table td {
+    @apply border-b border-slate-100 px-2 py-1 text-left whitespace-nowrap;
+  }
+
+  .tool-summary {
+    @apply card mb-6;
+  }
+
+  .tool-summary h2 {
+    @apply text-base md:text-lg font-semibold mb-2;
+  }
+
+  .tool-summary ul {
+    @apply list-disc pl-5 mb-2 text-sm;
+  }
+
+  .tool-summary li {
+    @apply mb-0.5;
+  }
+
+  .tool-cta-section {
+    @apply mt-6;
+  }
+}
