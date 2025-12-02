@@ -9,9 +9,10 @@ module.exports = {
       { source: '/personalFinance', destination: '/category/personalFinance', permanent: true },
       { source: '/economicInfo', destination: '/category/economicInfo', permanent: true },
       { source: '/investingInfo', destination: '/category/investingInfo', permanent: true },
-      
+      { source: '/economics', destination: '/category/economicInfo', permanent: true },
+      { source: '/category/economics', destination: '/category/economicInfo', permanent: true },
     ];
-  },
+  },  
 
   // 🔥 여기 추가됨
   webpack: (config, { isServer }) => {
