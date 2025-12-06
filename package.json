@@ -13,6 +13,7 @@
     "upload:cloudinary:finmap": "node scripts/upload-cloudinary.js"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.6",
     "bcryptjs": "^3.0.3",
     "chart.js": "^3.9.1",
     "cloudinary": "^2.8.0",

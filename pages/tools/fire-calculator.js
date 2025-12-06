@@ -1,220 +1,214 @@
 // pages/tools/fire-calculator.js
-import { useState, useMemo } from 'react';
-import SeoHead from '../../_components/SeoHead';
-import { JsonLd } from './goal-simulator'; // 이미 쓰고 있던 JsonLd 컴포넌트 경로에 맞게
-import FireForm from '../../_components/FireForm';
-import FireChart from '../../_components/FireChart';
-import FireYearTable from '../../_components/FireYearTable';
-import ToolCta from '../../_components/ToolCta';
-import { runFireSimulation } from '../../lib/fire';
-import { getInitialLang } from '../../lib/lang';
+import { useEffect, useState, useMemo } from "react";
+import SeoHead from "../../_components/SeoHead";
+
+import FireHero from "../../_components/FireHero";
+import FireIntro from "../../_components/FireIntro";
+import FireForm from "../../_components/FireForm";
+import FireSummary from "../../_components/FireSummary";
+import FireChart from "../../_components/FireChart";
+import FireYearTable from "../../_components/FireYearTable";
+import FireFaq from "../../_components/FireFaq";
+
+import { runFireSimulation } from "../../lib/fire";
+import { getInitialLang } from "../../lib/lang";
+import ToolCta from "../../_components/ToolCta";
+import FireReport from "../../_components/FireReport";
+import FireMonteSummary from "../../_components/FireMonteSummary";
+import { runMonteCarlo } from "../../lib/fireMonteCarlo";
+
+// JSON-LD
+export function JsonLd({ data }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
 
 export default function FireCalculatorPage() {
-  const lang = getInitialLang();
-  const isKo = lang === 'ko';
+  const [lang, setLang] = useState("ko");
+  const isKo = lang === "ko";
 
-  const [form, setForm] = useState({
-    currentAsset: 100_000_000,
-    annualSpending: 30_000_000,
-    annualReturnPct: 5,
-    accumulationYears: 15,
-    withdrawRatePct: 4,
-    monthlyContribution: 0,
-    annualContribution: 0,
-    taxRatePct: 15.4,
-    feeRatePct: 0.5,
-    inflationPct: 2.0,
-  });
+  const locale = isKo ? "ko-KR" : "en-US";
+  const currency = isKo ? "KRW" : "USD";
 
-  const result = useMemo(() => runFireSimulation(form), [form]);
+  const [result, setResult] = useState(null);
+  const [params, setParams] = useState(null);
 
-  const locale = isKo ? 'ko-KR' : 'en-US';
-  const currency = 'KRW';
+  // 🔹 언어 동기화
+  useEffect(() => {
+    if (typeof window === "undefined") return;
 
-  const title = isKo
-    ? '은퇴자금 시뮬레이터 (FIRE Calculator)'
-    : 'FIRE Calculator – Financial Independence & Retirement';
+    const initial = getInitialLang();
+    setLang(initial === "en" ? "en" : "ko");
 
-  const desc = isKo
-    ? '현재 자산, 연 지출, 예상 수익률, 적립 기간, 출금률(4% rule)을 기반으로 언제 FIRE 가능한지와 은퇴 후 자산 유지 기간, 파산 리스크를 시뮬레이션합니다.'
-    : 'Simulate when you can FIRE based on your current assets, annual spending, expected return, accumulation period, and withdrawal rate (4% rule), including post-retirement asset longevity and risk of ruin.';
+    const handler = (e) => {
+      setLang(e.detail || "ko");
+    };
+    window.addEventListener("fm_lang_change", handler);
+    return () => window.removeEventListener("fm_lang_change", handler);
+  }, []);
 
-  const jsonld = {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: title,
-    description: desc,
-    applicationCategory: 'FinanceApplication',
-    operatingSystem: 'Web',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'KRW',
-    },
+  // 🔹 텍스트 리소스 (CAGR 구조 동일)
+  const t = useMemo(
+    () => ({
+      title: isKo
+        ? "은퇴자금(FIRE) 시뮬레이터"
+        : "FIRE (Retirement Fund) Calculator",
+
+      desc: isKo
+        ? "현재 자산·지출·수익률·출금률·적립 기간으로 FIRE 가능 시점과 은퇴 후 자산 유지 기간을 시뮬레이션합니다."
+        : "Simulate FIRE timing and how long your assets last after retirement based on assets, spending, return, withdrawal rate, and accumulation period.",
+
+      chartTitle: isKo ? "은퇴 전·후 자산 곡선" : "Asset curve (before & after FIRE)",
+
+      summaryTitle: isKo ? "핵심 요약" : "Summary",
+
+      faqTitle: isKo ? "FIRE 계산기 자주 묻는 질문" : "FIRE calculator FAQ",
+    }),
+    [isKo]
+  );
+
+  // 🔹 JSON-LD (FAQ)
+  const faqJsonLd = useMemo(
+    () => ({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: isKo
+            ? "FIRE 목표 자산은 어떻게 계산하나요?"
+            : "How is the FIRE target calculated?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: isKo
+              ? "FIRE 목표 자산은 연 지출 ÷ 출금률로 계산됩니다. 예: 연 3000만원 지출, 출금률 4% → 7.5억원."
+              : "FIRE target = Annual spending ÷ Withdrawal rate. Example: 30M KRW spending, 4% rule → 750M KRW.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: isKo
+            ? "세금·수수료·인플레이션은 어떻게 반영되나요?"
+            : "How are tax, fees, and inflation applied?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: isKo
+              ? "입력한 명목 수익률에서 수수료를 빼고, 인플레이션을 반영해 실질 수익률을 계산한 뒤 세금을 적용합니다."
+              : "We subtract the fee, adjust for inflation (real return), then apply tax to compute the after-tax real return.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: isKo
+            ? "은퇴 후 자산 고갈 시점은 무엇인가요?"
+            : "What does depletion year mean?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: isKo
+              ? "은퇴 구간에서 매년 지출을 빼고 남은 자산에 수익률을 적용했을 때 0원이 되는 시점을 의미합니다."
+              : "It means the year in retirement when your assets reach zero after annual withdrawals and returns.",
+          },
+        },
+      ],
+    }),
+    [isKo]
+  );
+
+  // 🔹 FireForm → onSubmit
+  const handleSubmit = (payload) => {
+    setParams(payload);
+    const r = runFireSimulation(payload);
+
+    // 몬테카를로 확률 계산 추가
+    const mc = runMonteCarlo({
+      initialParams: {
+        ...payload,
+        fireTarget: r.fireTarget,
+      },
+      netRealReturn: r.netRealReturn,
+      stdev: 0.12,
+      trials: 500,
+    });
+
+    setResult({ ...r, mc });
   };
-
-  const { fireTarget, accumulation, retirement, timeline, risk, canFireAtEnd } =
-    result;
-
-  const fireYearText = (() => {
-    if (!fireTarget || fireTarget <= 0)
-      return isKo ? 'FIRE 목표를 계산할 수 없습니다.' : 'Cannot compute FIRE target.';
-
-    if (!accumulation.fireYear) {
-      return isKo
-        ? '설정한 적립 기간 내에는 FIRE 목표자산에 도달하지 못합니다.'
-        : 'Within the given accumulation period, you do not reach the FIRE target.';
-    }
-    return isKo
-      ? `${accumulation.fireYear}년 후에 FIRE 목표자산에 도달합니다.`
-      : `You reach your FIRE target in ${accumulation.fireYear} years.`;
-  })();
-
-  const fireSummaryText = (() => {
-    if (!fireTarget || fireTarget <= 0) return null;
-
-    const fireOkText = canFireAtEnd
-      ? isKo
-        ? '설정한 적립 기간이 끝날 때, 현재 자산만으로도 FIRE 기준을 충족합니다.'
-        : 'At the end of your accumulation period, your assets meet the FIRE target.'
-      : isKo
-      ? '설정한 적립 기간이 끝나도 FIRE 기준에는 약간 못 미칩니다.'
-      : 'At the end of your accumulation period, you are slightly below the FIRE target.';
-
-    return fireOkText;
-  })();
 
   return (
     <>
       <SeoHead
-        title={title}
-        desc={desc}
-        url="https://www.finmaphub.com/tools/fire-calculator"
+        title={t.title}
+        desc={t.desc}
+        url="/tools/fire-calculator"
+        image="https://res.cloudinary.com/dwonflmnn/image/upload/v1765032746/blog/economicInfo/fireCover.jpg"
       />
-      <JsonLd data={jsonld} />
 
-      <main className="tool-page">
-        {/* 🔵 상단 Hero 영역 (CAGR 페이지 스타일 참고) */}
-        <section className="mb-6 md:mb-8">
-          <div className="rounded-2xl bg-slate-900 text-slate-50 px-5 py-6 md:px-8 md:py-7 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div className="max-w-xl">
-              <p className="text-xs md:text-sm text-slate-300 mb-1">
-                {isKo ? '은퇴자금 · FIRE 시뮬레이터' : 'Retirement fund · FIRE simulator'}
-              </p>
-              <h1 className="text-xl md:text-2xl font-bold mb-2">
-                {isKo
-                  ? 'FIRE(연간 지출·출금률)로\n언제 경제적 자유가 가능한지 확인해 보세요'
-                  : 'See when you can reach FIRE and retire safely'}
-              </h1>
-              <p className="text-sm md:text-base text-slate-300">
-                {isKo
-                  ? '현재 자산과 연 지출, 예상 수익률, 적립 기간, 출금률(4% rule)을 넣으면 FIRE 목표 자산과 도달 시점, 은퇴 후 자산 유지 기간을 한 번에 볼 수 있습니다.'
-                  : 'Input your current assets, annual spending, expected return, years to invest, and withdrawal rate to see your FIRE target, time to FIRE, and how long your assets can last.'}
-              </p>
+      <JsonLd data={faqJsonLd} />
+
+      <div className="tool-page">
+        <div className="tool-header">
+          <h1>{t.title}</h1>
+          <p>{t.desc}</p>
+        </div>
+
+        <FireHero lang={lang} />
+
+        <FireIntro lang={lang} />
+
+        <FireForm lang={lang} onSubmit={handleSubmit} />
+
+        {/* 결과 섹션 */}
+        {result && (
+          <>
+            <FireSummary
+              lang={lang}
+              result={result}
+              params={params}
+            />
+
+            <FireMonteSummary lang={lang} mc={result.mc} />
+
+            <div className="card mb-6">
+              <h2 className="text-base md:text-lg font-semibold mb-2">
+                {t.chartTitle}
+              </h2>
+              <FireChart
+                data={result.timeline}
+                locale={locale}
+                currency={currency}
+              />
             </div>
 
-            {/* 오른쪽 요약 카드 (CAGR 상단 탭 느낌) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full md:w-80 text-xs md:text-sm">
-              <div className="rounded-xl bg-slate-800 px-3 py-3">
-                <p className="text-slate-300 mb-1">
-                  {isKo ? '현재 자산 → FIRE 목표' : 'Current assets → FIRE target'}
-                </p>
-                <p className="font-semibold">
-                  {isKo
-                    ? '연 지출·출금률 기준 목표 자산 한눈에'
-                    : 'Target assets based on spending & withdrawal rate'}
-                </p>
-              </div>
-              <div className="rounded-xl bg-slate-800 px-3 py-3">
-                <p className="text-slate-300 mb-1">
-                  {isKo ? '적립 기간 동안' : 'During accumulation'}
-                </p>
-                <p className="font-semibold">
-                  {isKo
-                    ? '언제 FIRE 기준을 충족하는지 연도별 확인'
-                    : 'See in which year you hit FIRE'}
-                </p>
-              </div>
-              <div className="rounded-xl bg-slate-800 px-3 py-3">
-                <p className="text-slate-300 mb-1">
-                  {isKo ? '은퇴 후 시뮬레이션' : 'Post-FIRE simulation'}
-                </p>
-                <p className="font-semibold">
-                  {isKo
-                    ? '연 지출 인출 후 자산 유지 기간 그래프'
-                    : 'Graph of assets after yearly withdrawals'}
-                </p>
-              </div>
-              <div className="rounded-xl bg-slate-800 px-3 py-3">
-                <p className="text-slate-300 mb-1">
-                  {isKo ? '파산 리스크' : 'Risk of ruin'}
-                </p>
-                <p className="font-semibold">
-                  {isKo
-                    ? '30년·50년 기준으로 위험도 라벨 표시'
-                    : 'Risk label based on 30–50 year depletion'}
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 결과/폼 영역 */}
-        <section className="tool-summary">
-          <h2>{isKo ? '결과 요약' : 'Summary'}</h2>
-          <ul>
-            <li>
-              <strong>{isKo ? 'FIRE 목표 자산:' : 'FIRE target assets:'}</strong>{' '}
-              {fireTarget
-                ? `${fireTarget.toLocaleString(locale)} 원`
-                : isKo
-                ? '계산 불가'
-                : 'N/A'}
-            </li>
-            <li>
-              <strong>{isKo ? 'FIRE 도달 시점:' : 'Time to FIRE:'}</strong>{' '}
-              {fireYearText}
-            </li>
-            <li>
-              <strong>{isKo ? '파산 리스크:' : 'Risk of ruin:'}</strong>{' '}
-              {isKo ? risk.labelKo : risk.labelEn}
-            </li>
-            <li>
-                <strong>{isKo ? '실질 세후 수익률:' : 'After-tax real return:'}</strong>{' '}
-                {(result.netRealReturn * 100).toFixed(2)}%
-            </li>
-          </ul>
-          {fireSummaryText && <p>{fireSummaryText}</p>}
-          <p className="text-sm text-slate-600 mt-1">
-            {isKo
-              ? '보다 구체적인 목표 자산 설정과 월별 저축 계획은 아래 목표 자산 도달 시뮬레이터와 함께 사용하면 시너지가 큽니다.'
-              : 'For more detailed target setting and monthly saving plans, use this together with the goal amount simulator below.'}
-          </p>
-        </section>
-
-        <FireForm onChange={setForm} initial={form} lang={lang} />
-
-        <FireChart data={timeline} locale={locale} currency={currency} />
-
-        <FireYearTable
-            timeline={timeline}
-            locale={locale}
-            currency={currency}
-            meta={{
-                monthlyContribution: form.monthlyContribution,
-                annualContribution: form.annualContribution,
-                taxRatePct: form.taxRatePct,
-                feeRatePct: form.feeRatePct,
-                inflationPct: form.inflationPct,
+            <FireYearTable
+              timeline={result.timeline}
+              meta={{
+                monthlyContribution: params.monthlyContribution,
+                annualContribution: params.annualContribution,
+                taxRatePct: params.taxRatePct,
+                feeRatePct: params.feeRatePct,
+                inflationPct: params.inflationPct,
                 netRealReturn: result.netRealReturn,
-            }}
-        />
+              }}
+              locale={locale}
+              currency={currency}
+            />
 
-        {/* 목표 자산 시뮬레이터 CTA */}
-        <section className="tool-cta-section">
-          <ToolCta lang={isKo ? 'ko' : 'en'} type="goal" />
-        </section>
-      </main>
+            {/* 🔥 HERE: Add Report */}
+            <FireReport lang={lang} result={result} params={params} />
+
+            <FireFaq lang={lang} />
+
+            <div className="tool-cta-section">
+              <ToolCta lang={lang} type="compound" />
+              <ToolCta lang={lang} type="goal" />
+              <ToolCta lang={lang} type="cagr" />
+            </div>
+          </>
+        )}
+      </div>
     </>
   );
 }
