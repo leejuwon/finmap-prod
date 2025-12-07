@@ -5,89 +5,6 @@ exports.id = 685;
 exports.ids = [685];
 exports.modules = {
 
-/***/ 3248:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (/* binding */ AdInArticle)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-
-
-function AdInArticle({ client ="ca-pub-1869932115288976" , slot  }) {
-    const ref = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
-    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
-        try {
-            if (window.adsbygoogle && ref.current) {
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            }
-        } catch (e) {}
-    }, []);
-    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("ins", {
-        ref: ref,
-        className: "adsbygoogle",
-        style: {
-            display: "block",
-            textAlign: "center",
-            minHeight: "120px"
-        },
-        "data-ad-client": client,
-        "data-ad-slot": slot,
-        "data-ad-format": "fluid",
-        "data-ad-layout": "in-article",
-        "data-full-width-responsive": "true"
-    });
-}
-
-
-/***/ }),
-
-/***/ 1137:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (/* binding */ AdResponsive)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-// _components/AdResponsive.js
-
-
-function AdResponsive({ client ="ca-pub-1869932115288976" , slot , align ="center"  }) {
-    const ref = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
-    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
-        try {
-            if (window.adsbygoogle && ref.current) {
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            }
-        } catch (e) {}
-    }, []);
-    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-        style: {
-            textAlign: align
-        },
-        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("ins", {
-            ref: ref,
-            className: "adsbygoogle",
-            style: {
-                display: "block"
-            },
-            "data-ad-client": client,
-            "data-ad-slot": slot,
-            "data-ad-format": "auto",
-            "data-full-width-responsive": "true"
-        })
-    });
-}
-
-
-/***/ }),
-
 /***/ 280:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -939,7 +856,7 @@ module.exports = require("path");
 var __webpack_require__ = require("../../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [676,664,814,630,559], () => (__webpack_exec__(8705)));
+var __webpack_exports__ = __webpack_require__.X(0, [676,664,814,630,671], () => (__webpack_exec__(8705)));
 module.exports = __webpack_exports__;
 
 })();

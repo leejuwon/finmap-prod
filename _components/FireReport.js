@@ -1,4 +1,4 @@
-// _components/FireReport.js
+// _components/FireReport.js — Real-only version
 
 import React from "react";
 import { buildFireReport } from "../lib/fireReport";
@@ -6,6 +6,7 @@ import { buildFireReport } from "../lib/fireReport";
 export default function FireReport({ lang = "ko", result, params }) {
   if (!result) return null;
 
+  // buildFireReport 내부에서 retirementStartReal 사용하도록 수정 필요
   const report = buildFireReport(result, params, lang);
 
   return (

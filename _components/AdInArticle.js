@@ -1,21 +1,31 @@
-import { useEffect, useRef } from 'react';
+// _components/AdInArticle.js
+import { useEffect, useRef } from "react";
 
-export default function AdInArticle({ client="ca-pub-1869932115288976", slot }) {
-  const ref = useRef(null);
+export default function AdInArticle({
+  client = "ca-pub-1869932115288976",
+  slot,
+}) {
+  const adRef = useRef(null);
+  const loadedRef = useRef(false);
+
   useEffect(() => {
+    if (!adRef.current || loadedRef.current) return;
+
     try {
-      if (window.adsbygoogle && ref.current) {
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      }
-    } catch(e){}
+      loadedRef.current = true;
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {
+      console.error("AdSense error:", e);
+    }
   }, []);
+
   return (
     <ins
-      ref={ref}
+      ref={adRef}
       className="adsbygoogle"
-      style={{ display: 'block', textAlign:'center', minHeight:'120px' }}
+      style={{ display: "block", textAlign: "center", minHeight: "120px" }}
       data-ad-client={client}
-      data-ad-slot={slot}        // ★ 애드센스에서 발급되는 슬롯 ID
+      data-ad-slot={slot}
       data-ad-format="fluid"
       data-ad-layout="in-article"
       data-full-width-responsive="true"

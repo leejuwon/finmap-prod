@@ -2,15 +2,14 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
-import Layout from '../_components/Layout';   // ✅ Layout 추가
+import Layout from '../_components/Layout';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
-  const ADS_CLIENT = 'ca-pub-1869932115288976'; // 새 계정의 클라이언트 ID
+  const ADS_CLIENT = 'ca-pub-1869932115288976';
 
-  // 라우팅될 때마다 page_view 전송
   useEffect(() => {
     if (!GA_ID) return;
     const handleRouteChange = (url) => {
@@ -40,7 +39,7 @@ function MyApp({ Component, pageProps }) {
         </>
       )}
 
-      {/* 1) AdSense 공통 스크립트: 모든 페이지에서 1회 로드 */}
+      {/* ✔ AdSense Loader – ONLY THIS SCRIPT */}
       <Script
         id="adsbygoogle-loader"
         strategy="afterInteractive"
@@ -48,12 +47,13 @@ function MyApp({ Component, pageProps }) {
         crossOrigin="anonymous"
       />
 
-      {/* 2) (선택) Auto Ads: 페이지 로드 후 자동 광고 활성화 */}
+      {/* ❌ 삭제됨: Auto Ads push → 광고 오류 원인 */}
+      {/*
       <Script id="adsbygoogle-auto" strategy="afterInteractive">
-        {`(adsbygoogle = window.adsbygoogle || []).push({});`}
+        {(adsbygoogle = window.adsbygoogle || []).push({});}
       </Script>
+      */}
 
-      {/* ✅ Layout으로 전체 페이지 감싸기 */}
       <Layout>
         <Component {...pageProps} />
       </Layout>

@@ -269,13 +269,12 @@ function Layout({ children  }) {
 
 
 
- // ✅ Layout 추가
+
 
 function MyApp({ Component , pageProps  }) {
     const router = (0,router_.useRouter)();
     const GA_ID = "G-HYS82YP0CH";
-    const ADS_CLIENT = "ca-pub-1869932115288976"; // 새 계정의 클라이언트 ID
-    // 라우팅될 때마다 page_view 전송
+    const ADS_CLIENT = "ca-pub-1869932115288976";
     (0,external_react_.useEffect)(()=>{
         if (!GA_ID) return;
         const handleRouteChange = (url)=>{
@@ -314,11 +313,6 @@ function MyApp({ Component , pageProps  }) {
                 strategy: "afterInteractive",
                 src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS_CLIENT}`,
                 crossOrigin: "anonymous"
-            }),
-            /*#__PURE__*/ jsx_runtime_.jsx((script_default()), {
-                id: "adsbygoogle-auto",
-                strategy: "afterInteractive",
-                children: `(adsbygoogle = window.adsbygoogle || []).push({});`
             }),
             /*#__PURE__*/ jsx_runtime_.jsx(Layout, {
                 children: /*#__PURE__*/ jsx_runtime_.jsx(Component, {

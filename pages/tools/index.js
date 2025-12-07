@@ -62,6 +62,8 @@ export default function ToolsHome() {
         desc: isKo
           ? '현재 자산, 연 지출, 예상 수익률, 적립 기간, 출금률(4% rule)로 언제 FIRE 가능한지와 은퇴 후 자산 유지 기간, 파산 리스크를 시뮬레이션합니다.'
           : 'Simulate when you can reach FIRE and how long your assets can last in retirement based on your assets, spending, expected return, accumulation period, and withdrawal rate (4% rule).',
+        image:
+          'https://res.cloudinary.com/dwonflmnn/image/upload/v1765032746/blog/economicInfo/fireCover.jpg',
       },
     ],
     [isKo]
@@ -93,6 +95,15 @@ export default function ToolsHome() {
           {TOOLS.map((tool) => (
             <Link key={tool.href} href={tool.href}>
               <a className="card hover:shadow-md transition-shadow flex flex-col justify-between">
+              {/* 🔥 카드 썸네일 이미지 추가 */}
+                {tool.image && (
+                  <img
+                    src={tool.image}
+                    alt={tool.title}
+                    className="card-thumb mb-3"
+                  />
+                )}
+
                 <div>
                   <span className="badge mb-2 inline-block">{tool.badge}</span>
                   <h2 className="text-lg font-semibold mb-1">{tool.title}</h2>

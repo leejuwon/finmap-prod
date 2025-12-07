@@ -1,82 +1,93 @@
-// _components/FireHero.js — Improved Version
+// _components/FireHero.js — PREMIUM BRAND VERSION (FinMap FIRE Hero)
 
 export default function FireHero({ lang = "ko" }) {
   const isKo = lang === "ko";
 
   return (
-    <div className="card bg-slate-900 text-white mb-6 overflow-hidden">
+    <div className="relative card bg-[#0f172a] text-white mb-6 overflow-hidden rounded-2xl shadow-lg">
 
-      <div className="flex flex-col md:flex-row gap-6 items-stretch">
+      {/* 🔵 Background glow effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-blue-500/5 to-transparent pointer-events-none" />
 
-        {/* ---------- Left: Title + Lead ---------- */}
-        <div className="flex-1">
-          <h2 className="text-xl sm:text-2xl font-bold whitespace-pre-line leading-snug mb-3">
+      {/* Main layout */}
+      <div className="relative flex flex-col md:flex-row items-stretch gap-8 py-6 px-5">
+
+        {/* ---------------- LEFT PANEL ---------------- */}
+        <div className="flex-1 flex flex-col justify-center">
+
+          <h2 className="text-2xl md:text-3xl font-bold leading-snug mb-4 whitespace-pre-line drop-shadow">
             {isKo
-              ? "FIRE(조기 은퇴) 가능 시점과\n은퇴 후 자산 지속 기간을\n한눈에 확인하세요"
-              : "See when you can reach FIRE\nand how long your assets sustain"}
+              ? "FIRE(조기 은퇴)를 향한\n당신의 여정을 설계해보세요"
+              : "Design your journey\ntoward FIRE (Early Retirement)"}
           </h2>
 
-          <p className="text-sm text-slate-300 mb-4">
+          <p className="text-sm md:text-base text-slate-300 leading-relaxed mb-4">
             {isKo
-              ? "현재 자산·지출·수익률·출금률을 입력하면, 언제 FIRE 가능한지와 은퇴 후 몇 년간 자산이 유지되는지 시각적으로 보여줍니다."
-              : "Input your assets, spending, return, and withdrawal rate to visualize FIRE timing and retirement sustainability."}
+              ? "FinMap FIRE 시뮬레이터는 ‘실질 수익률’을 기준으로 은퇴 가능 시점과 은퇴 후 자산 지속 기간을 정교하게 분석합니다."
+              : "FinMap FIRE Simulator analyzes your FIRE timing and post-retirement sustainability using real after-tax returns."}
           </p>
 
-          <p className="text-[11px] text-slate-400 uppercase tracking-[0.16em]">
-            FIRE · FINANCIAL INDEPENDENCE · EARLY RETIREMENT
+          {/* Brand trust statement */}
+          <p className="text-[11px] tracking-widest text-slate-400 uppercase">
+            FINMAP · FIRE MODEL · REAL RETURN BASED
           </p>
         </div>
 
-        {/* ---------- Right: FIRE Mini Chart + Stats ---------- */}
-        <div className="flex-1 grid grid-cols-3 gap-2">
+        {/* ---------------- RIGHT PANEL ---------------- */}
+        <div className="flex-1 grid grid-cols-3 gap-3">
 
-          {/* Mini Chart Block */}
-          <div className="col-span-3 bg-slate-800/70 border border-slate-700 rounded-xl p-3 mb-2">
-            <p className="text-[11px] text-slate-400 mb-1">
-              {isKo ? "FIRE 자산 곡선 예시" : "Example FIRE asset curve"}
+          {/* 🔹 FinMap Mini Sparkline */}
+          <div className="col-span-3 bg-slate-800/60 border border-slate-700 rounded-xl p-4 backdrop-blur">
+            <p className="text-[11px] text-slate-400 mb-2">
+              {isKo ? "FIRE 자산 곡선 예시 (실질 기준)" : "Example FIRE curve (real return)"}
             </p>
 
-            {/* Mini Chart (SVG) */}
-            <svg viewBox="0 0 100 40" className="w-full h-12">
+            <svg viewBox="0 0 100 40" className="w-full h-14">
               {/* Accumulation curve */}
               <path
-                d="M5 35 Q 30 5, 55 10"
+                d="M5 35 Q 25 20, 55 10"
                 stroke="#34d399"
-                strokeWidth="2.5"
+                strokeWidth="3"
                 fill="none"
               />
               {/* Retirement decline */}
               <path
-                d="M55 10 Q 75 20, 95 35"
+                d="M55 10 Q 80 22, 95 35"
                 stroke="#38bdf8"
-                strokeWidth="2.5"
+                strokeWidth="3"
                 fill="none"
               />
             </svg>
           </div>
 
-          {/* Stat 1 */}
-          <div className="stat bg-slate-800/80 border border-slate-700">
-            <p className="stat-title text-slate-300">
-              {isKo ? "FIRE 목표" : "Target"}
+          {/* 🔹 Stat Box 1 */}
+          <div className="stat bg-slate-800/70 border border-slate-700 rounded-xl">
+            <p className="stat-title text-slate-400 text-xs">
+              {isKo ? "FIRE 공식" : "FIRE Rule"}
             </p>
-            <p className="stat-value text-emerald-300 text-base">Goal</p>
+            <p className="stat-value text-emerald-300 font-bold text-base">
+              Spend ÷ WR
+            </p>
           </div>
 
-          {/* Stat 2 */}
-          <div className="stat bg-slate-800/80 border border-slate-700">
-            <p className="stat-title text-slate-300">
-              {isKo ? "가능 시점" : "FIRE Year"}
+          {/* 🔹 Stat Box 2 */}
+          <div className="stat bg-slate-800/70 border border-slate-700 rounded-xl">
+            <p className="stat-title text-slate-400 text-xs">
+              {isKo ? "핵심 변수" : "Key Inputs"}
             </p>
-            <p className="stat-value text-sky-300 text-base">Year</p>
+            <p className="stat-value text-blue-300 font-bold text-base">
+              Return · WR · Infl
+            </p>
           </div>
 
-          {/* Stat 3 */}
-          <div className="stat bg-slate-800/80 border border-slate-700">
-            <p className="stat-title text-slate-300">
-              {isKo ? "지속 기간" : "Longevity"}
+          {/* 🔹 Stat Box 3 */}
+          <div className="stat bg-slate-800/70 border border-slate-700 rounded-xl">
+            <p className="stat-title text-slate-400 text-xs">
+              {isKo ? "모델 기반" : "Model Based"}
             </p>
-            <p className="stat-value text-amber-300 text-base">Years</p>
+            <p className="stat-value text-amber-300 font-bold text-base">
+              Real Return
+            </p>
           </div>
 
         </div>
