@@ -1,4 +1,4 @@
-// _components/FireChart.js — FINAL UPGRADED VERSION + MINI SUMMARY BAR
+// _components/FireChart.js — FIRE PRO EDITION (Hover 강화 + Gauge 지원)
 
 import {
   LineChart,
@@ -14,57 +14,105 @@ import {
   ReferenceDot,
 } from "recharts";
 import { useState } from "react";
+import { formatKrwUnit } from "../lib/fire";
 
-// 💰 한국어 금액 포맷
-function formatKrwHuman(value) {
-  const n = Number(value) || 0;
-  if (n >= 100_000_000) return (n / 100_000_000).toFixed(2) + "억";
-  if (n >= 10_000_000) return (n / 10_000_000).toFixed(1) + "천만";
-  if (n >= 10_000) return (n / 10_000).toFixed(0) + "만";
-  return n.toLocaleString("ko-KR");
-}
-
-// 💰 금액 포맷 (KRW vs USD)
+// ----------------------
+// 💰 금액 포맷
+// ----------------------
 function formatMoney(value, locale = "ko-KR") {
   const n = Number(value) || 0;
 
-  // -------- 한국어(원) --------
   if (locale === "ko-KR") {
-    if (n >= 100_000_000) return (n / 100_000_000).toFixed(2) + "억";
-    if (n >= 10_000_000) return (n / 10_000_000).toFixed(1) + "천만";
-    if (n >= 10_000) return (n / 10_000).toFixed(0) + "만";
-    return n.toLocaleString("ko-KR") + "원";
+    return formatKrwUnit(n);   // ← 한국식 단위 변환 통일
   }
 
-  // -------- 영어(USD) --------
-  if (n >= 1_000_000) return "$" + (n / 1_000_000).toFixed(2) + "M";
-  if (n >= 1_000) return "$" + (n / 1_000).toFixed(1) + "K";
-  return "$" + n.toLocaleString("en-US");
+  // 영어(USD) 포맷
+  const abs = Math.abs(n);
+  const sign = n < 0 ? "-" : "";
+
+  if (abs >= 1_000_000_000) return sign + "$" + (abs / 1_000_000_000).toFixed(2) + "B";
+  if (abs >= 1_000_000)     return sign + "$" + (abs / 1_000_000).toFixed(2) + "M";
+  if (abs >= 1_000)         return sign + "$" + (abs / 1_000).toFixed(1) + "K";
+  return sign + "$" + abs.toLocaleString();
 }
 
+// 🔥 Hover Tooltip → 프로 버전 커스텀 UI
+function CustomTooltip({ active, payload, label, locale }) {
+  if (!active || !payload || payload.length === 0) return null;
 
-// 🔥 Pulse 애니메이션 keyframes 삽입
-if (typeof document !== "undefined" && !document.getElementById("pulse-fire")) {
-  const style = document.createElement("style");
-  style.id = "pulse-fire";
-  style.innerHTML = `
-    @keyframes pulse-fire {
-      0% { transform: scale(1); opacity: 0.9; }
-      50% { transform: scale(1.5); opacity: 0.4; }
-      100% { transform: scale(1); opacity: 0.9; }
-    }
-  `;
-  document.head.appendChild(style);
+  const row = payload[0].payload;
+
+  return (
+    <div className="p-3 bg-white border shadow-md rounded-md text-xs">
+      <div className="font-semibold mb-1">{row.year}년</div>
+
+      <div>• 실질 자산: <b>{formatMoney(row.assetReal, locale)}</b></div>
+      <div>• 명목 자산: <b>{formatMoney(row.assetNominal, locale)}</b></div>
+
+      {row.nominalYield !== undefined && (
+        <div>• 명목 수익: {formatMoney(row.nominalYield, locale)}</div>
+      )}
+
+      {row.realYield !== undefined && (
+        <div>• 실질 수익: {formatMoney(row.realYield, locale)}</div>
+      )}
+
+      {row.cashflow !== undefined && row.cashflow !== 0 && (
+        <div>
+          • 현금흐름:{" "}
+          <span className={row.cashflow > 0 ? "text-blue-600" : "text-red-500"}>
+            {formatMoney(row.cashflow, locale)}
+          </span>
+        </div>
+      )}
+
+      {row.progressRate && (
+        <div>• FIRE 진행률: <b>{row.progressRate}%</b></div>
+      )}
+    </div>
+  );
 }
 
-export default function FireChart({
-  data = [],
-  samplePaths = null,
-  summary = null,   // ⬅ NEW: Fire target, retirementStart, fireYear 전달
-  locale = "ko-KR",
-}) {
+// ----------------------
+// ⭕ 반원 게이지 컴포넌트 (FIRE 진행률 Gauge)
+// ----------------------
+function FireGauge({ progress = 0, locale = "ko-KR" }) {
+  const pct = Math.min(100, Math.max(0, progress));
+
+  return (
+    <div className="flex flex-col items-center my-4">
+      <svg width="180" height="90">
+        <path
+          d="M10 80 A70 70 0 0 1 170 80"
+          fill="none"
+          stroke="#e5e7eb"
+          strokeWidth="14"
+        />
+
+        <path
+          d="M10 80 A70 70 0 0 1 170 80"
+          fill="none"
+          stroke="#10b981"
+          strokeWidth="14"
+          strokeDasharray={`${(pct / 100) * 220} 220`}
+          strokeLinecap="round"
+        />
+      </svg>
+
+      <p className="text-xs mt-1 text-slate-600">
+        {locale === "ko-KR"
+          ? `FIRE 목표 대비 ${pct}% 진행`
+          : `${pct}% progress toward FIRE`}
+      </p>
+    </div>
+  );
+}
+
+// ----------------------
+// 🔥 메인 차트 컴포넌트
+// ----------------------
+export default function FireChart({ data = [], summary = null, locale = "ko-KR" }) {
   const isKo = locale === "ko-KR";
-  const [showMC, setShowMC] = useState(false);
 
   if (!data || data.length === 0) return null;
 
@@ -76,118 +124,67 @@ export default function FireChart({
 
   const fireStartYear = data.find((d) => d.phase === "retirement")?.year;
 
-  // ===========================
-  // 🔷 MINI SUMMARY BAR (NEW)
-  // ===========================
-  const fireTarget = summary?.fireTarget;
-  const retirementStartReal = summary?.retirementStartReal;
-  const fireYear = summary?.fireYear;
-
-  const fireReachLabel = fireYear
-    ? isKo
-      ? `${fireYear}년 후`
-      : `In ${fireYear} years`
-    : isKo
-    ? "미달성"
-    : "Not reached";
+  // Gauge에서 사용할 진행률
+  const lastRow = data[data.length - 1];
+  const progressGauge = lastRow.progressRate ?? 0;
 
   return (
     <section className="fire-chart">
 
-      {/* 🌟 MINI SUMMARY BAR */}
+      {/* FIRE 진행률 게이지 추가 */}
       {summary && (
-        <div className="grid grid-cols-3 gap-3 mb-4">
+        <FireGauge progress={progressGauge} locale={locale} />
+      )}
 
-          <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-center">
-            <p className="text-xs text-slate-500">
-              {isKo ? "FIRE 목표 자산" : "FIRE Target"}
-            </p>
-            <p className="text-lg font-bold text-emerald-700">
-              {formatKrwHuman(fireTarget)}
-            </p>
-          </div>
+      {/* 설명 */}
+      <div className="text-xs text-slate-500 mb-2">
+        {isKo
+          ? "실질 자산=물가 반영 구매력 / 명목 자산=실제 계좌 금액"
+          : "Real asset = inflation-adjusted / Nominal = actual balance"}
+      </div>
 
-          <div className="p-3 rounded-lg bg-blue-50 border border-blue-200 text-center">
-            <p className="text-xs text-slate-500">
-              {isKo ? "은퇴 시작 실질 자산" : "Start Assets (Real)"}
-            </p>
-            <p className="text-lg font-bold text-blue-700">
-              {formatKrwHuman(retirementStartReal)}
-            </p>
-          </div>
-
-          <div className="p-3 rounded-lg bg-amber-50 border border-amber-200 text-center">
-            <p className="text-xs text-slate-500">
-              {isKo ? "FIRE 예상 시점" : "FIRE Year"}
-            </p>
-            <p className="text-lg font-bold text-amber-700">
-              {fireReachLabel}
-            </p>
-          </div>
-
-        </div>
-      )}      
-
-      {/* =====================
-          CHART AREA
-      ===================== */}
+      {/* CHART */}
       <div className="w-full h-80 md:h-96">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data}>
+            <CartesianGrid stroke="#e5e7eb" />
 
-            <CartesianGrid stroke="#e2e8f0" strokeDasharray="4 4" />
-
-            {/* 적립 구간 */}
             {fireStartYear && (
-              <ReferenceArea
-                x1={data[0].year}
-                x2={fireStartYear}
-                fill="#ecfdf5"
-                fillOpacity={0.45}
-              />
+              <ReferenceArea x1={1} x2={fireStartYear} fill="#ecfdf5" fillOpacity={0.5} />
             )}
 
-            {/* 은퇴 구간 */}
             {fireStartYear && (
               <ReferenceArea
                 x1={fireStartYear}
-                x2={data[data.length - 1].year}
+                x2={data.length}
                 fill="#eff6ff"
                 fillOpacity={0.45}
               />
             )}
 
-            {/* FIRE 목표선 */}
             <ReferenceLine
               y={data[0].fireTarget}
               stroke="#38bdf8"
-              strokeDasharray="6 4"
+              strokeDasharray="5 5"
               label={{
-                value: isKo ? "FIRE 목표" : "FIRE target",
-                position: "right",
+                value: isKo ? "FIRE 목표" : "FIRE Target",
                 fill: "#0ea5e9",
               }}
             />
 
-            <XAxis dataKey="year" tick={{ fontSize: 12 }} />
-            <YAxis
-              tickFormatter={(v) => formatMoney(v, locale)}
-              tick={{ fontSize: 12 }}
-            />
+            <XAxis dataKey="year" />
+            <YAxis tickFormatter={(v) => formatMoney(v, locale)} />
 
             <Tooltip
-              formatter={(value) => formatMoney(value, locale)}
-              contentStyle={{
-                borderRadius: "8px",
-                border: "1px solid #ddd",
-              }}
+              content={<CustomTooltip locale={locale} />}
             />
 
-            <Legend />
+            <Legend wrapperStyle={{ fontSize: "12px" }} />
 
             <Line
               type="monotone"
               dataKey="assetReal"
+              name={isKo ? "실질 자산" : "Real Assets"}
               stroke="#059669"
               strokeWidth={3}
               dot={false}
@@ -196,33 +193,22 @@ export default function FireChart({
             <Line
               type="monotone"
               dataKey="assetNominal"
+              name={isKo ? "명목 자산" : "Nominal Assets"}
               stroke="#60a5fa"
               strokeWidth={3}
               dot={false}
             />
 
-            {/* FIRE 도달 Pulse 표시 */}
             {firePoint && (
               <>
                 <ReferenceDot
                   x={firePoint.year}
                   y={firePoint.assetReal}
-                  r={6}
+                  r={7}
                   fill="#10b981"
-                  stroke="#065f46"
-                  strokeWidth={2}
-                />
-                <ReferenceDot
-                  x={firePoint.year}
-                  y={firePoint.assetReal}
-                  r={13}
-                  fill="#10b981"
-                  fillOpacity={0.45}
-                  style={{ animation: "pulse-fire 2s infinite" }}
                 />
               </>
             )}
-
           </LineChart>
         </ResponsiveContainer>
       </div>

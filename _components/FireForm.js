@@ -40,10 +40,8 @@ export default function FireForm({ onSubmit, initial, lang = "ko" }) {
 
   const [form, setForm] = useState(toDisplay(initial));
 
-  // 언어 변경 시 리셋
   useEffect(() => {
     setForm(toDisplay(initial));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang]);
 
   // RAW 입력 처리
@@ -62,17 +60,20 @@ export default function FireForm({ onSubmit, initial, lang = "ko" }) {
   };
 
   // ----------------------------
-  // 🔥 실질 수익률 계산 (실시간)
+  // 🔥 실질 수익률 계산 (옵션 A 공식)
   // ----------------------------
   const realReturn = useMemo(() => {
     const nominal = Number(form.annualReturnPct) || 0;
     const fee = Number(form.feeRatePct) || 0;
-    const infl = Number(form.inflationPct) || 0;
-    const tax = Number(form.taxRatePct) || 0;
+    const infl = Number(form.inflationPct) / 100; // ★ 물가율 %
+    const tax = Number(form.taxRatePct) / 100; // ★ 세율 %
 
-    // (명목 - 수수료 - 인플레이션) × (1 - 세금)
-    const afterCost = nominal - fee - infl;
-    return (afterCost * (1 - tax / 100)).toFixed(2);
+    // ★ 옵션 A: (1 + nominal_after_tax) / (1 + inflation) – 1
+    const nominalReturn = (nominal - fee) / 100;
+    const nominalAfterTax = nominalReturn * (1 - tax);
+    const real = (1 + nominalAfterTax) / (1 + infl) - 1;
+
+    return (real * 100).toFixed(2);
   }, [form]);
 
   // ----------------------------
@@ -86,7 +87,7 @@ export default function FireForm({ onSubmit, initial, lang = "ko" }) {
   }, [form, scale]);
 
   // ----------------------------
-  // 연간 총 저축액 계산
+  // 연간 총 저축액
   // ----------------------------
   const totalContribution = useMemo(() => {
     const m = parseNum(form.monthlyContribution) * scale;
@@ -193,7 +194,18 @@ export default function FireForm({ onSubmit, initial, lang = "ko" }) {
 
           {/* 수익률 */}
           <div className="form-field">
-            <label>{isKo ? "명목 연 수익률 (%)" : "Nominal annual return (%)"}</label>
+            <label>{isKo ? "명목 연 수익률 (%)" : "Nominal annual return (%)"}
+              <span
+                title={
+                  isKo
+                    ? "세금·수수료·물가 조정 전의 ‘표면 수익률’. 투자 자산이 1년 동안 얼마의 비율로 성장하는지를 의미합니다. 명목 수익률이 높을수록 FIRE 달성 시점이 빨라집니다."
+                    : "Return before tax, fee, inflation. Higher nominal return accelerates FIRE timeline."
+                }
+                className="ml-1 cursor-help text-blue-500"
+              >
+                ❔
+              </span>
+            </label>
             <input
               type="number"
               step="0.1"
@@ -235,7 +247,18 @@ export default function FireForm({ onSubmit, initial, lang = "ko" }) {
 
           {/* 출금률 */}
           <div className="form-field">
-            <label>{isKo ? "출금률 (%)" : "Withdrawal rate (%)"}</label>
+            <label>{isKo ? "출금률 (%)" : "Withdrawal rate (%)"}
+              <span
+                title={
+                  isKo
+                    ? "은퇴 후 매년 자산에서 꺼내 쓰는 비율입니다. 4% rule이 대표적이며, 출금률이 낮을수록 더 오래 버틸 수 있습니다."
+                    : "Percentage withdrawn yearly in retirement. Lower withdrawal rate means longer asset longevity."
+                }
+                className="ml-1 cursor-help text-blue-500"
+              >
+                ❔
+              </span>
+            </label>
             <input
               type="number"
               step="0.1"
@@ -272,7 +295,18 @@ export default function FireForm({ onSubmit, initial, lang = "ko" }) {
         <div className="form-grid">
           {/* 세금 */}
           <div className="form-field">
-            <label>{isKo ? "세금 (%)" : "Tax rate (%)"}</label>
+            <label>{isKo ? "세금 (%)" : "Tax rate (%)"}
+              <span
+                title={
+                  isKo
+                    ? "투자 수익에 부과되는 세율입니다. 배당세·양도세 등 모든 세금을 단순화하여 반영합니다. 세금이 높을수록 실질 수익률은 낮아집니다."
+                    : "Tax applied on investment gains. Higher tax reduces your real return."
+                }
+                className="ml-1 cursor-help text-blue-500"
+              >
+                ❔
+              </span>
+            </label>
             <input
               type="number"
               step="0.1"
@@ -284,7 +318,18 @@ export default function FireForm({ onSubmit, initial, lang = "ko" }) {
 
           {/* 수수료 */}
           <div className="form-field">
-            <label>{isKo ? "수수료 (%)" : "Fee (%)"}</label>
+            <label>{isKo ? "수수료 (%)" : "Fee (%)"}
+              <span
+                title={
+                  isKo
+                    ? "ETF·펀드·증권사 수수료 등 모든 비용을 단순화하여 반영합니다. 수수료가 높을수록 장기 자산 성장률은 감소합니다."
+                    : "All fund/brokerage fees. Higher fees reduce long-term returns."
+                }
+                className="ml-1 cursor-help text-blue-500"
+              >
+                ❔
+              </span>
+            </label>
             <input
               type="number"
               step="0.1"
@@ -296,7 +341,18 @@ export default function FireForm({ onSubmit, initial, lang = "ko" }) {
 
           {/* 인플레이션 */}
           <div className="form-field">
-            <label>{isKo ? "인플레이션 (%)" : "Inflation (%)"}</label>
+            <label>{isKo ? "인플레이션 (%)" : "Inflation (%)"}
+              <span
+                title={
+                  isKo
+                    ? "물가 상승률을 의미합니다. 물가가 오르면 자산의 구매력은 떨어지므로 실질 수익률 계산에 반드시 포함됩니다."
+                    : "Rate of rising prices. Inflation reduces real purchasing power."
+                }
+                className="ml-1 cursor-help text-blue-500"
+              >
+                ❔
+              </span>
+            </label>
             <input
               type="number"
               step="0.1"
@@ -308,13 +364,28 @@ export default function FireForm({ onSubmit, initial, lang = "ko" }) {
 
           {/* 실질 수익률 표시 */}
           <div className="form-field">
-            <label>{isKo ? "실질 수익률 (자동 계산)" : "Real return (auto)"}</label>
+            <label>{isKo ? "실질 수익률 (자동 계산)" : "Real return (auto)"}
+              <span
+                 title={
+                  isKo
+                    ? "실질 수익률 = (1 + (명목 수익률 – 수수료) × (1 – 세율)) ÷ (1 + 인플레이션) – 1\n\n즉, 물가·세금·수수료를 모두 반영한 ‘구매력 기준 진짜 투자 수익률’입니다."
+                    : "Real return = (1 + (nominal – fee) × (1 – tax)) ÷ (1 + inflation) – 1\nReflects true purchasing power."
+                }
+                className="ml-1 cursor-help text-blue-500"
+              >
+                ❔
+              </span>
+            </label>
             <input
               className="input bg-slate-100 text-emerald-700 font-semibold"
               disabled
               value={realReturn + "%"}
             />
-            <small>{isKo ? "명목–수수료–물가 × (1–세금)" : "Nominal–fees–infl × tax adj"}</small>
+            <small>
+              {isKo
+                ? "((1 + 명목-after-tax) ÷ (1 + 물가)) – 1"
+                : "((1 + nominal_after_tax) ÷ (1 + inflation)) – 1"}
+            </small>
           </div>
         </div>
       </form>

@@ -20,6 +20,7 @@ import FireReport from "../../_components/FireReport";
 
 // JSON-LD 코드 생략…
 
+
 export default function FireCalculatorPage() {
   const [lang, setLang] = useState("ko");
   const isKo = lang === "ko";
@@ -48,6 +49,7 @@ export default function FireCalculatorPage() {
     const r = runFireSimulation(payload);
     setResult({ ...r });
   };
+
 
   return (
     <>
