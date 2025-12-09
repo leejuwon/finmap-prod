@@ -28,7 +28,6 @@ export function JsonLd({ data }) {
 }
 
 export default function CompoundPage() {
-  
 
   // PDF 처리 함수
   //const handleDownloadPDF = () => downloadPDF("pdf-target", "compound-result.pdf");
@@ -333,6 +332,7 @@ export default function CompoundPage() {
               {/* Yearly Table — 복리식 */}
               <CompoundYearTable
                 result={result}
+
                 locale={numberLocale}
                 currency={currency}
                 principal={invest.principal}
