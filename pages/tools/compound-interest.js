@@ -28,7 +28,6 @@ export function JsonLd({ data }) {
 }
 
 export default function CompoundPage() {
-  
 
   // PDF 처리 함수
   //const handleDownloadPDF = () => downloadPDF("pdf-target", "compound-result.pdf");
@@ -96,8 +95,8 @@ export default function CompoundPage() {
       title: locale === "ko" ? "복리 계산기" : "Compound Interest Calculator",
       desc:
         locale === "ko"
-          ? "초기 투자금·월 적립금·수익률·기간으로 미래가치를 계산하세요."
-          : "Calculate future value using your principal, monthly contribution, return, and time horizon.",
+          ? "초기 투자금·월 적립금·수익률·기간으로 미래가치를 계산하세요!"
+          : "Calculate future value using your principal, monthly contribution, return, and time horizon!",
 
       // Summary 카드
       fv: locale === "ko" ? "세후 총자산" : "Net Future Value",
@@ -333,6 +332,7 @@ export default function CompoundPage() {
               {/* Yearly Table — 복리식 */}
               <CompoundYearTable
                 result={result}
+
                 locale={numberLocale}
                 currency={currency}
                 principal={invest.principal}
