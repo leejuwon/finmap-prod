@@ -1,67 +1,69 @@
-// _components/CompoundCTA.js
+import {
+  ShareIcon,
+  DownloadIcon,
+  BellIcon
+} from "@heroicons/react/outline";
 
-export default function CompoundCTA({ locale = 'ko', variant = 'A' }) {
-  const isKo = locale === 'ko';
+import { shareKakao, shareWeb, copyUrl, shareNaver } from "../utils/share";
 
-  const handleClick = (ctaId, location) => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'calc_cta_click', {
-        cta_id: ctaId,
-        location,
-        variant,
-        locale,
+export default function CompoundCTA({ locale = "ko", onDownloadPDF }) {
+  const isKo = locale === "ko";
+
+  const handleShare = async () => {
+    if (await shareWeb()) return;
+    if (window?.Kakao) {
+      shareKakao({
+        title: isKo ? "FinMap 복리 계산 결과" : "Compound result",
+        description: isKo
+          ? "세전/세후, 복리·단리 비교까지 자동 생성!"
+          : "Full breakdown of compound interest.",
+        url: window.location.href,
       });
+      return;
     }
-    // TODO: 뉴스레터 모달 열기 / 앱 딥링크 등 연결
+
+    shareNaver({
+      title: isKo ? "FinMap 복리 계산 결과" : "Compound Result",
+      url: window.location.href,
+    });
   };
 
-  if (variant === 'B') {
-    return (
-      <div className="card mt-4 bg-indigo-50 border border-indigo-200">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-          <div>
-            <h3 className="text-lg font-semibold">
-              {isKo ? '나만의 투자 플랜, 이메일로 받아보기' : 'Get your plan by email'}
-            </h3>
-            <p className="text-sm text-slate-600 mt-1">
-              {isKo
-                ? '계산 결과를 기반으로 한 투자 체크리스트를 보내드립니다.'
-                : 'We send a simple checklist based on your simulation.'}
-            </p>
-          </div>
-          <button
-            type="button"
-            className="btn-primary sm:ml-auto"
-            onClick={() => handleClick('cta_newsletter_B', 'compound_bottom')}
-          >
-            {isKo ? '뉴스레터 신청' : 'Subscribe'}
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  // 기본: Variant A
   return (
     <div className="card mt-4 bg-emerald-50 border border-emerald-200">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-        <div>
-          <h3 className="text-lg font-semibold">
-            {isKo ? '복리 계산 결과를 저장해두고 싶나요?' : 'Want to save this plan?'}
-          </h3>
-          <p className="text-sm text-slate-600 mt-1">
-            {isKo
-              ? '향후 FinMap 앱에서 계산 기록 연동 기능을 제공할 예정입니다.'
-              : 'We are preparing an app to sync your simulations.'}
-          </p>
-        </div>
+      <h3 className="text-lg font-semibold mb-2">
+        {isKo ? "결과 공유 및 저장" : "Share & Export"}
+      </h3>
+
+      <div className="grid sm:grid-cols-3 gap-3">
         <button
-          type="button"
-          className="btn-primary sm:ml-auto"
-          onClick={() => handleClick('cta_app_A', 'compound_bottom')}
+          className="btn-primary flex gap-2 items-center justify-center"
+          onClick={onDownloadPDF}
         >
-          {isKo ? '앱 출시 알림 받기' : 'Get app launch alert'}
+          <DownloadIcon className="w-5 h-5" />
+          {isKo ? "PDF 다운로드" : "Download PDF"}
         </button>
+
+        <button
+          className="btn-secondary flex gap-2 items-center justify-center"
+          onClick={handleShare}
+        >
+          <ShareIcon className="w-5 h-5" />
+          {isKo ? "공유하기" : "Share"}
+        </button>
+
+        <button
+          className="btn-outline flex gap-2 items-center justify-center"
+          onClick={copyUrl}
+        >
+          🔗 {isKo ? "URL 복사" : "Copy URL"}
+        </button>
+      </div>
+
+      <div className="mt-3 text-xs text-slate-600 flex gap-2 items-center">
+        <BellIcon className="w-4 h-4" />
+        {isKo
+          ? "FinMap 앱 출시 시 계산 기록 연동을 지원할 예정입니다."
+          : "FinMap app will support synced simulations at launch."}
       </div>
     </div>
   );

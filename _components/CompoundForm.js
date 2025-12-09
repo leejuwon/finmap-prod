@@ -4,6 +4,9 @@ import { useState, useMemo } from 'react';
 const dict = {
   ko: {
     title: '복리 계산기',
+    secBasic: '기본 입력',
+    secCost: '세금 · 수수료 옵션',
+    secAdvanced: '고급 옵션',
     principalWon: '초기 투자금(만원)',
     principalUsd: '초기 투자금(USD)',
     monthlyWon: '월 적립금(만원)',
@@ -13,19 +16,16 @@ const dict = {
     calc: '계산하기',
     currency: '통화',
     compounding: '복리 주기',
-    // 🔥 레이블을 "입력형" 기준으로 약간 수정
-    tax: '세금(이자/배당 세율, %)',
-    fee: '수수료(연간 총 수수료, %)',
+    tax: '세율(%, 이자/배당)',
+    fee: '연 수수료율(%)',
     compoundingMonthly: '월복리',
     compoundingYearly: '연복리',
-    // 아래는 UI에서 직접 쓰진 않지만 남겨둠 (다른 곳에서 쓸 수도 있으니)
-    taxApply: '세금 적용',
-    taxNone: '세금 미적용',
-    feeApply: '수수료 적용',
-    feeNone: '수수료 없음',
   },
   en: {
     title: 'Compound Interest Calculator',
+    secBasic: 'Basic Inputs',
+    secCost: 'Tax & Fee Options',
+    secAdvanced: 'Advanced',
     principalWon: 'Initial Principal (×10k KRW)',
     principalUsd: 'Initial Principal (USD)',
     monthlyWon: 'Monthly Contribution (×10k KRW)',
@@ -35,24 +35,27 @@ const dict = {
     calc: 'Calculate',
     currency: 'Currency',
     compounding: 'Compounding',
-    tax: 'Tax rate on interest/dividends (%)',
-    fee: 'Yearly total fee (%)',
+    tax: 'Tax rate (%)',
+    fee: 'Yearly fee (%)',
     compoundingMonthly: 'Monthly',
     compoundingYearly: 'Yearly',
-    taxApply: 'Apply tax',
-    taxNone: 'No tax',
-    feeApply: 'Apply fee',
-    feeNone: 'No fee',
   },
 };
 
 export default function CompoundForm({
   onSubmit,
   locale = 'ko',
-  currency = 'KRW',          // 🔥 부모에서 내려주는 현재 통화
-  onCurrencyChange,          // 🔥 부모에게 변경을 알려줄 콜백
+  currency = 'KRW',
+  onCurrencyChange,
 }) {
   const safeLocale = locale === 'en' ? 'en' : 'ko';
+  const t = useMemo(() => dict[safeLocale], [safeLocale]);
+
+  const numberLocale = safeLocale === 'ko' ? 'ko-KR' : 'en-US';
+
+  const [showBasic, setShowBasic] = useState(true);
+  const [showCost, setShowCost] = useState(true);
+  const [showAdv, setShowAdv] = useState(false);
 
   const [form, setForm] = useState({
     principal: 1000,
@@ -60,13 +63,14 @@ export default function CompoundForm({
     annualRate: 7,
     years: 10,
     compounding: 'monthly',
-    // 🔥 세율·수수료율 직접 입력 (기본값: 한국 기준)
-    taxRate: 15.4,   // (%)
-    feeRate: 0.5,    // (%)
+    taxRatePercent: 15.4,
+    feeRatePercent: 0.5,
   });
 
-  const t = useMemo(() => dict[safeLocale] || dict.ko, [safeLocale]);
-  const numberLocale = safeLocale === 'ko' ? 'ko-KR' : 'en-US';
+  const fmt = (v) => {
+    const n = Number(v) || 0;
+    return n.toLocaleString(numberLocale);
+  };
 
   const handleMoneyChange = (e) => {
     const { name, value } = e.target;
@@ -80,159 +84,186 @@ export default function CompoundForm({
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleCurrencyChange = (e) => {
-    const val = e.target.value;
-    if (onCurrencyChange) {
-      onCurrencyChange(val);
-    }
-  };
-
-  const disabled = useMemo(() => form.years <= 0, [form.years]);
+  const disabled = form.years <= 0;
 
   const handleSubmit = () => {
-    const taxRatePercent = Number(form.taxRate) || 0;
-    const feeRatePercent = Number(form.feeRate) || 0;
-
     onSubmit({
       ...form,
       currency,
-      // 🔥 lib/compound.js 에서 사용할 필드명
-      taxRatePercent,
-      feeRatePercent,
+      taxRatePercent: Number(form.taxRatePercent),
+      feeRatePercent: Number(form.feeRatePercent),
     });
   };
 
   const principalLabel =
     currency === 'KRW' ? t.principalWon : t.principalUsd;
+
   const monthlyLabel =
     currency === 'KRW' ? t.monthlyWon : t.monthlyUsd;
 
-  const fmt = (n) => {
-    const v = Number(n) || 0;
-    return v.toLocaleString(numberLocale);
-  };
-
   return (
-    <div className="w-full grid gap-4">
-      {/* 1행: 금액 입력 4개 */}
-      <div className="grid gap-3 md:grid-cols-4">
-        <label className="grid gap-1">
-          <span className="text-sm">{principalLabel}</span>
-          <input
-            name="principal"
-            type="text"
-            inputMode="numeric"
-            className="input"
-            value={fmt(form.principal)}
-            onChange={handleMoneyChange}
-          />
-        </label>
-        <label className="grid gap-1">
-          <span className="text-sm">{monthlyLabel}</span>
-          <input
-            name="monthly"
-            type="text"
-            inputMode="numeric"
-            className="input"
-            value={fmt(form.monthly)}
-            onChange={handleMoneyChange}
-          />
-        </label>
-        <label className="grid gap-1">
-          <span className="text-sm">{t.rate}</span>
-          <input
-            name="annualRate"
-            type="number"
-            inputMode="decimal"
-            className="input"
-            value={form.annualRate}
-            onChange={handleChange}
-            min="0"
-            step="0.1"
-          />
-        </label>
-        <label className="grid gap-1">
-          <span className="text-sm">{t.years}</span>
-          <input
-            name="years"
-            type="number"
-            inputMode="numeric"
-            className="input"
-            value={form.years}
-            onChange={handleChange}
-            min="1"
-            step="1"
-          />
-        </label>
+    <div className="w-full space-y-4">
+
+      {/* ==============================
+          섹션 1 — 기본 입력
+      =============================== */}
+      <div className="border rounded-xl p-4 bg-slate-50">
+        <button
+          type="button"
+          className="w-full text-left font-semibold mb-2"
+          onClick={() => setShowBasic((v) => !v)}
+        >
+          {t.secBasic}
+        </button>
+
+        {showBasic && (
+          <div className="grid gap-4 md:grid-cols-2">
+            <label className="grid gap-1">
+              <span className="text-sm">{principalLabel}</span>
+              <input
+                name="principal"
+                type="text"
+                inputMode="numeric"
+                className="input"
+                value={fmt(form.principal)}
+                onChange={handleMoneyChange}
+              />
+            </label>
+
+            <label className="grid gap-1">
+              <span className="text-sm">{monthlyLabel}</span>
+              <input
+                name="monthly"
+                type="text"
+                inputMode="numeric"
+                className="input"
+                value={fmt(form.monthly)}
+                onChange={handleMoneyChange}
+              />
+            </label>
+
+            <label className="grid gap-1">
+              <span className="text-sm">{t.rate}</span>
+              <input
+                name="annualRate"
+                type="number"
+                step="0.1"
+                className="input"
+                value={form.annualRate}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label className="grid gap-1">
+              <span className="text-sm">{t.years}</span>
+              <input
+                name="years"
+                type="number"
+                min="1"
+                step="1"
+                className="input"
+                value={form.years}
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+        )}
       </div>
 
-      {/* 2행: 복리/세금/수수료/통화 */}
-      <div className="grid gap-3 md:grid-cols-4">
-        <label className="grid gap-1">
-          <span className="text-sm">{t.compounding}</span>
-          <select
-            name="compounding"
-            className="select"
-            value={form.compounding}
-            onChange={handleChange}
-          >
-            <option value="monthly">{t.compoundingMonthly}</option>
-            <option value="yearly">{t.compoundingYearly}</option>
-          </select>
-        </label>
+      {/* ==============================
+          섹션 2 — 세금 · 수수료 옵션
+      =============================== */}
+      <div className="border rounded-xl p-4 bg-slate-50">
+        <button
+          type="button"
+          className="w-full text-left font-semibold mb-2"
+          onClick={() => setShowCost((v) => !v)}
+        >
+          {t.secCost}
+        </button>
 
-        {/* 🔥 세율 입력 (%, 0 이면 실질적으로 "세금 미적용") */}
-        <label className="grid gap-1">
-          <span className="text-sm">{t.tax}</span>
-          <input
-            name="taxRate"
-            type="number"
-            inputMode="decimal"
-            className="input"
-            value={form.taxRate}
-            onChange={handleChange}
-            min="0"
-            step="0.1"
-            placeholder="예: 15.4"
-          />
-        </label>
+        {showCost && (
+          <div className="grid gap-4 md:grid-cols-2">
+            <label className="grid gap-1">
+              <span className="text-sm">{t.tax}</span>
+              <input
+                name="taxRatePercent"
+                type="number"
+                step="0.1"
+                min="0"
+                className="input"
+                value={form.taxRatePercent}
+                onChange={handleChange}
+              />
+            </label>
 
-        {/* 🔥 수수료율 입력 (%, 0 이면 수수료 없음) */}
-        <label className="grid gap-1">
-          <span className="text-sm">{t.fee}</span>
-          <input
-            name="feeRate"
-            type="number"
-            inputMode="decimal"
-            className="input"
-            value={form.feeRate}
-            onChange={handleChange}
-            min="0"
-            step="0.1"
-            placeholder="예: 0.5"
-          />
-        </label>
-
-        <label className="grid gap-1">
-          <span className="text-sm">{t.currency}</span>
-          <select
-            className="select"
-            value={currency}
-            onChange={handleCurrencyChange}
-          >
-            <option value="KRW">KRW ₩</option>
-            <option value="USD">USD $</option>
-          </select>
-        </label>
+            <label className="grid gap-1">
+              <span className="text-sm">{t.fee}</span>
+              <input
+                name="feeRatePercent"
+                type="number"
+                step="0.1"
+                min="0"
+                className="input"
+                value={form.feeRatePercent}
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+        )}
       </div>
 
-      {/* 버튼 */}
+      {/* ==============================
+          섹션 3 — 고급 옵션
+      =============================== */}
+      <div className="border rounded-xl p-4 bg-slate-50">
+        <button
+          type="button"
+          className="w-full text-left font-semibold mb-2"
+          onClick={() => setShowAdv((v) => !v)}
+        >
+          {t.secAdvanced}
+        </button>
+
+        {showAdv && (
+          <div className="grid gap-4 md:grid-cols-2">
+            <label className="grid gap-1">
+              <span className="text-sm">{t.compounding}</span>
+              <select
+                name="compounding"
+                className="select"
+                value={form.compounding}
+                onChange={handleChange}
+              >
+                <option value="monthly">{t.compoundingMonthly}</option>
+                <option value="yearly">{t.compoundingYearly}</option>
+              </select>
+            </label>
+
+            <label className="grid gap-1">
+              <span className="text-sm">{t.currency}</span>
+              <select
+                className="select"
+                value={currency}
+                onChange={(e) => onCurrencyChange?.(e.target.value)}
+              >
+                <option value="KRW">KRW ₩</option>
+                <option value="USD">USD $</option>
+              </select>
+            </label>
+          </div>
+        )}
+      </div>
+
+      {/* ==============================
+          계산 버튼 (항상 맨 아래)
+      =============================== */}
       <div className="flex justify-end">
         <button
           type="button"
           className="btn-primary"
-          onClick={handleSubmit}
           disabled={disabled}
+          onClick={handleSubmit}
         >
           {t.calc}
         </button>
