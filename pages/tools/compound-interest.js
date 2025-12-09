@@ -270,8 +270,8 @@ export default function CompoundPage() {
         <div className="card w-full">
           <p className="text-sm text-slate-600">
             {locale === "ko"
-              ? "세전·세후, 복리 vs 단리, 세금·수수료 영향까지 한 번에 비교할 수 있는 고급 복리 계산기입니다."
-              : "A full-featured compound calculator comparing net vs ideal, compound vs simple, and tax impact."}
+              ? "세전·세후, 복리 vs 단리, 세금·수수료 영향까지 한 번에 비교할 수 있는 고급 복리 계산기입니다!"
+              : "A full-featured compound calculator comparing net vs ideal, compound vs simple, and tax impact!"}
           </p>
         </div>
 
