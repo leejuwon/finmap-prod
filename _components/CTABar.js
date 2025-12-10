@@ -12,7 +12,7 @@ export default function CTABar({ locale = "ko", onDownloadPDF, onShare }) {
       setVisible(scrolled > 0.45);
     };
 
-    window.addEventListener("scroll", handler);
+    window.addEventListener("scroll", handler); 
     return () => window.removeEventListener("scroll", handler);
   }, []);
 

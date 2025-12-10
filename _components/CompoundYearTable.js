@@ -204,7 +204,7 @@ export default function CompoundYearTable({
       <div className="flex items-center gap-3 mb-2">
         <h2 className="text-xl font-semibold">{tableTitle}</h2>
         <span className="text-[11px] sm:text-xs text-slate-500">
-          {unitText}
+          {unitText} 
         </span>
         <button
           type="button"

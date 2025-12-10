@@ -265,5 +265,5 @@ export default function CompoundChart({
     <div className="h-72 sm:h-80 lg:h-96">
       <Bar data={chartData} options={options} />
     </div>
-  );
+  ); 
 }

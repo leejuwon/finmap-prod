@@ -263,7 +263,7 @@ export default function CompoundForm({
           type="button"
           className="btn-primary"
           disabled={disabled}
-          onClick={handleSubmit}
+          onClick={handleSubmit} 
         >
           {t.calc}
         </button>

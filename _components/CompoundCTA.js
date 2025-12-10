@@ -66,5 +66,5 @@ export default function CompoundCTA({ locale = "ko", onDownloadPDF }) {
           : "FinMap app will support synced simulations at launch."}
       </div>
     </div>
-  );
+  ); 
 }

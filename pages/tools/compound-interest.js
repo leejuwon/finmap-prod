@@ -29,7 +29,7 @@ export function JsonLd({ data }) {
 
 export default function CompoundPage() {
 
-  // PDF 처리 함수
+  // PDF 처리 함수 
   //const handleDownloadPDF = () => downloadPDF("pdf-target", "compound-result.pdf");
 
   const handleDownloadPDF = async () => {
