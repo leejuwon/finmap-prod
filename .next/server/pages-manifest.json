@@ -1,0 +1,23 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/about": "pages/about.html",
+  "/404": "pages/404.html",
+  "/api/comments": "pages/api/comments.js",
+  "/api/compound": "pages/api/compound.js",
+  "/api/like": "pages/api/like.js",
+  "/contact": "pages/contact.html",
+  "/disclaimer": "pages/disclaimer.html",
+  "/privacy": "pages/privacy.html",
+  "/terms": "pages/terms.html",
+  "/tools/cagr-calculator": "pages/tools/cagr-calculator.html",
+  "/tools/fire-calculator": "pages/tools/fire-calculator.html",
+  "/tools/dca-calculator": "pages/tools/dca-calculator.html",
+  "/tools": "pages/tools.html",
+  "/tools/goal-simulator": "pages/tools/goal-simulator.html",
+  "/tools/compound-interest": "pages/tools/compound-interest.html",
+  "/category/[slug]": "pages/category/[slug].js",
+  "/": "pages/index.js",
+  "/posts/[category]/[lang]/[slug]": "pages/posts/[category]/[lang]/[slug].js"
+}

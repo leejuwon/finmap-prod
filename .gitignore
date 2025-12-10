@@ -1,6 +1,4 @@
 # Next.js build output
-.next
-.next/
 node_modules/
 .env
 npm-debug.log*
