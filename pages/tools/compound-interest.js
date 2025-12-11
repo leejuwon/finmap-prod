@@ -7,6 +7,8 @@ import CompoundForm from "../../_components/CompoundForm";
 import CompoundChart from "../../_components/CompoundChart";
 import CompoundYearTable from "../../_components/CompoundYearTable";
 import CompoundCTA from "../../_components/CompoundCTA";
+import DragBreakdownChart from "../../_components/DragBreakdownChart";
+import GoalEngineCard from "../../_components/GoalEngineCard";
 
 import {
   calcCompound,
@@ -55,6 +57,9 @@ export default function CompoundPage() {
   const [result, setResult] = useState(null);          // 세후 복리식
   const [idealResult, setIdealResult] = useState(null); // 세전 복리식
   const [simpleResult, setSimpleResult] = useState(null);
+
+  const [taxRatePercentState, setTaxRatePercentState] = useState(15.4);
+  const [feeRatePercentState, setFeeRatePercentState] = useState(0.5);
 
   const [invest, setInvest] = useState({
     principal: 0,
@@ -232,9 +237,46 @@ export default function CompoundPage() {
 
     setSimpleInvest({ principal: totalInvested, years: y });
     setSimpleResult(simple);
+
+    setTaxRatePercentState(taxRatePercent);
+    setFeeRatePercentState(feeRatePercent);
   };
 
   const hasResult = !!result && !!idealResult;
+
+  // ----------------------------
+  // Drag Breakdown 계산
+  // ----------------------------
+  const dragBreakdown = useMemo(() => {
+    if (!result || !idealResult) return null;
+
+    const rowsNet = result.yearSummary;
+    const rowsIdeal = idealResult.yearSummary;
+
+    if (!rowsNet.length || !rowsIdeal.length) return null;
+
+    const lastNet = rowsNet[rowsNet.length - 1];
+    const lastIdeal = rowsIdeal[rowsIdeal.length - 1];
+
+    const idealFV = lastIdeal.closingBalanceNet;
+    const netFV = lastNet.closingBalanceNet;
+
+    const taxDrag = lastNet.cumulativeTax;
+    const feeDrag = lastNet.cumulativeFee;
+
+    // Compound Loss = 나머지
+    const compoundDrag = (idealFV - netFV) - (taxDrag + feeDrag);
+
+    return {
+      idealFV,
+      netFV,
+      totalDrag: idealFV - netFV,
+      taxDrag,
+      feeDrag,
+      compoundDrag,
+    };
+  }, [result, idealResult]);
+
 
   // ----------------------------
   // Summary 값 계산
@@ -399,6 +441,48 @@ export default function CompoundPage() {
                 </div>
               </div>
 
+              {/* Drag Breakdown Card */}
+              <div className="card">
+                <h2 className="text-lg font-semibold mb-2">
+                  {locale === 'ko' ? '손실요인 분해(Drag Breakdown)' : 'Drag Decomposition'}
+                </h2>
+
+                <p className="text-sm text-slate-600 mb-3">
+                  {locale === 'ko'
+                    ? '세금, 수수료, 복리효과 상실이 미래가치에 끼친 영향을 분해해 보여줍니다.'
+                    : 'Breakdown of how taxes, fees, and lost compounding affected your final value.'}
+                </p>
+
+                <DragBreakdownChart
+                  data={dragBreakdown}
+                  locale={numberLocale}
+                  currency={currency}
+                />
+              </div> 
+
+              {/* Goal Engine (역산 목표 달성 엔진) */}
+              <div className="card">
+                <h2 className="text-lg font-semibold mb-2">
+                  {locale === "ko" ? "목표 달성 엔진" : "Future Goal Engine"}
+                </h2>
+
+                <p className="text-sm text-slate-600 mb-3">
+                  {locale === "ko"
+                    ? "목표 자산까지 필요한 월 투자금, 필요한 수익률, 필요한 초기 투자금을 역산해줍니다."
+                    : "Reverse-calculate the monthly investment, required return, or initial principal needed to reach your target."}
+                </p>
+                
+                <GoalEngineCard
+                  locale={locale}
+                  currency={currency}
+                  result={result}
+                  idealResult={idealResult}
+                  invest={invest}
+                  taxRatePercent={taxRatePercentState}
+                  feeRatePercent={feeRatePercentState}
+                />
+              </div>
+
               {/* FAQ */}
               <div className="card">
                 <h2 className="text-lg font-semibold mb-3">
@@ -428,7 +512,8 @@ export default function CompoundPage() {
                 locale={locale}
                 onDownloadPDF={handleDownloadPDF}
               />          
-            </div>  
+            </div> 
+            
              {/* 하단 고정 CTA Bar */}
             <CTABar
               locale={locale}
@@ -436,7 +521,7 @@ export default function CompoundPage() {
               onShare={() => {}}
             />
           </>
-        )}
+        )}        
       </div>    
     </>
   );

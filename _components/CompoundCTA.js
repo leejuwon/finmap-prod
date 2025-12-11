@@ -57,6 +57,12 @@ export default function CompoundCTA({ locale = "ko", onDownloadPDF }) {
         >
           🔗 {isKo ? "URL 복사" : "Copy URL"}
         </button>
+        <button
+          className="btn-outline flex gap-2 items-center justify-center"
+          onClick={() => (window.location.href = "/tools/goal-simulator")}
+        >
+          {isKo ? "목표 시뮬레이터" : "Goal Simulator"}
+        </button>
       </div>
 
       <div className="mt-3 text-xs text-slate-600 flex gap-2 items-center">

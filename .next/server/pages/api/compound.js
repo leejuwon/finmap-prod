@@ -392,6 +392,33 @@ taxRatePercent =15.4 , feeRatePercent =0.5 , baseYear =new Date().getFullYear() 
         yearSummary: rows
     };
 }
+function requiredMonthlyToReachGoal({ goalAmount , principal , years , annualRate ,  }) {
+    const r = annualRate / 100 / 12;
+    const n = years * 12;
+    if (r === 0) {
+        return Math.max(0, (goalAmount - principal) / n);
+    }
+    return Math.max(0, (goalAmount - principal * Math.pow(1 + r, n)) * (r / (Math.pow(1 + r, n) - 1)));
+}
+function requiredRateToReachGoal({ goalAmount , principal , monthly , years ,  }) {
+    const n = years * 12;
+    let low = 0;
+    let high = 0.5; // 50% 수익률 상한선
+    let mid;
+    for(let i = 0; i < 40; i++){
+        mid = (low + high) / 2;
+        const fv = principal * Math.pow(1 + mid / 12, n) + monthly * ((Math.pow(1 + mid / 12, n) - 1) / (mid / 12));
+        if (fv > goalAmount) high = mid;
+        else low = mid;
+    }
+    return mid * 100; // %
+}
+function requiredPrincipalToReachGoal({ goalAmount , monthly , years , annualRate ,  }) {
+    const r = annualRate / 100 / 12;
+    const n = years * 12;
+    const fvMonthly = monthly > 0 ? monthly * ((Math.pow(1 + r, n) - 1) / r) : 0;
+    return Math.max(0, goalAmount - fvMonthly) / Math.pow(1 + r, n);
+}
 
 ;// CONCATENATED MODULE: ./pages/api/compound.js
 // pages/api/compound.js

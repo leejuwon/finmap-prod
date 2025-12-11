@@ -17,6 +17,12 @@
       "static/chunks/598.52a4bcd6e72979c1.js"
     ]
   },
+  "..\\_components\\DragBreakdownChart.js -> react-chartjs-2": {
+    "id": 88598,
+    "files": [
+      "static/chunks/598.52a4bcd6e72979c1.js"
+    ]
+  },
   "..\\_components\\PDFGenerator.js -> html2canvas": {
     "id": 61120,
     "files": [
