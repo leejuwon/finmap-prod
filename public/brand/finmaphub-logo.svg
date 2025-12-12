@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  width="360"
+  height="120"
+  viewBox="0 0 360 120"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <!-- 핀 바디 그라데이션 -->
+    <linearGradient id="pinGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#74B9FF" />
+      <stop offset="100%" stop-color="#4B9EFF" />
+    </linearGradient>
+
+    <!-- 내부 그래프 영역 클리핑 -->
+    <clipPath id="innerClip">
+      <circle cx="60" cy="48" r="34" />
+    </clipPath>
+  </defs>
+
+  <!-- map pin 아이콘 그룹 -->
+  <g transform="translate(0,0)">
+    <!-- 지도 핀 -->
+    <path
+      d="M60 4
+         C 33 4 12 25 12 52
+         C 12 82 47 120 57 132
+         C 59 134 63 134 65 132
+         C 75 120 110 82 110 52
+         C 110 25 87 4 60 4 Z"
+      fill="url(#pinGrad)"
+      transform="scale(0.75) translate(20,18)"
+    />
+
+    <!-- 아이콘 내부 흰색 원 -->
+    <circle cx="60" cy="48" r="30" fill="white" />
+
+    <!-- 캔들 + 추세선 (clip 영역 적용) -->
+    <g clip-path="url(#innerClip)">
+      <!-- 캔들차트: 초록, 빨강, 초록 -->
+
+      <!-- 왼쪽 초록 -->
+      <line x1="44" y1="66" x2="44" y2="38"
+            stroke="#16A34A" stroke-width="3" stroke-linecap="round" />
+      <rect x="38" y="46" width="12" height="20" rx="3" fill="#22C55E" />
+
+      <!-- 가운데 빨강 -->
+      <line x1="60" y1="70" x2="60" y2="46"
+            stroke="#DC2626" stroke-width="3" stroke-linecap="round" />
+      <rect x="54" y="52" width="12" height="16" rx="3" fill="#F97373" />
+
+      <!-- 오른쪽 초록 -->
+      <line x1="76" y1="62" x2="76" y2="35"
+            stroke="#16A34A" stroke-width="3" stroke-linecap="round" />
+      <rect x="70" y="44" width="12" height="18" rx="3" fill="#22C55E" />
+
+      <!-- 우상향 추세선 -->
+      <path
+        d="M 36 72
+           L 50 58
+           L 62 60
+           L 72 50
+           L 82 44"
+        fill="none"
+        stroke="#2563EB"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </g>
+  </g>
+
+  <!-- 텍스트: FinMapHub -->
+  <text
+    x="140"
+    y="70"
+    font-family="Inter, Pretendard, sans-serif"
+    font-size="40"
+    font-weight="300"
+    fill="#0A2540"
+    letter-spacing="1"
+  >
+    FinMapHub
+  </text>
+</svg>

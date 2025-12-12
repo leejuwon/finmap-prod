@@ -419,6 +419,62 @@ function requiredPrincipalToReachGoal({ goalAmount , monthly , years , annualRat
     const fvMonthly = monthly > 0 ? monthly * ((Math.pow(1 + r, n) - 1) / r) : 0;
     return Math.max(0, goalAmount - fvMonthly) / Math.pow(1 + r, n);
 }
+// 1) 수익률 민감도 (±1% ~ ±10%)
+function sensitivityRate({ principal , monthly , annualRate , years , taxRatePercent , feeRatePercent , deltaRate  }) {
+    const newRate = annualRate + deltaRate;
+    const r = Math.max(-99, newRate); // 방어적 처리
+    const out = calcCompound({
+        principal,
+        monthly,
+        annualRate: r,
+        years,
+        taxRatePercent,
+        feeRatePercent
+    });
+    return {
+        delta: deltaRate,
+        annualRate: r,
+        fvNet: out.futureValueNet,
+        fvGross: out.futureValueGross,
+        cagr: (Math.pow(out.futureValueNet / (principal + monthly * 12 * years), 1 / years) - 1) * 100
+    };
+}
+// 2) 수수료 민감도 (±0.1% 단위)
+function sensitivityFee({ principal , monthly , annualRate , years , taxRatePercent , feeRatePercent , deltaFee  }) {
+    const newFee = Math.max(0, feeRatePercent + deltaFee);
+    const out = calcCompound({
+        principal,
+        monthly,
+        annualRate,
+        years,
+        taxRatePercent,
+        feeRatePercent: newFee
+    });
+    return {
+        delta: deltaFee,
+        feeRate: newFee,
+        fvNet: out.futureValueNet,
+        fvGross: out.futureValueGross
+    };
+}
+// 3) 세금 민감도 (14% ~ 25%)
+function sensitivityTax({ principal , monthly , annualRate , years , taxRatePercent , feeRatePercent , deltaTax  }) {
+    const newTax = Math.min(25, Math.max(0, taxRatePercent + deltaTax));
+    const out = calcCompound({
+        principal,
+        monthly,
+        annualRate,
+        years,
+        taxRatePercent: newTax,
+        feeRatePercent
+    });
+    return {
+        delta: deltaTax,
+        taxRate: newTax,
+        fvNet: out.futureValueNet,
+        fvGross: out.futureValueGross
+    };
+}
 
 ;// CONCATENATED MODULE: ./pages/api/compound.js
 // pages/api/compound.js

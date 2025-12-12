@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  width="256"
+  height="256"
+  viewBox="0 0 256 256"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <!-- 핀 바디 그라데이션 -->
+    <linearGradient id="pinGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#74B9FF" />
+      <stop offset="100%" stop-color="#4B9EFF" />
+    </linearGradient>
+
+    <!-- 내부 콘텐츠(그래프) 클리핑용 -->
+    <clipPath id="innerClip">
+      <circle cx="128" cy="96" r="60" />
+    </clipPath>
+  </defs>
+
+  <!-- 지도 핀 바디 -->
+  <path
+    d="M128 16
+       C 88 16 56 48 56 88
+       C 56 136 106 196 122 214
+       C 125 217 131 217 134 214
+       C 150 196 200 136 200 88
+       C 200 48 168 16 128 16 Z"
+    fill="url(#pinGrad)"
+  />
+
+  <!-- 안쪽 흰색 원 (그래프가 들어가는 영역) -->
+  <circle cx="128" cy="96" r="52" fill="white" />
+
+  <!-- 그래프 영역 클리핑 -->
+  <g clip-path="url(#innerClip)">
+    <!-- 캔들차트 (상승=초록 / 하락=빨강) -->
+    <!-- 왼쪽 초록 캔들 -->
+    <line x1="96" y1="120" x2="96" y2="80"
+          stroke="#16A34A" stroke-width="3" stroke-linecap="round" />
+    <rect x="88" y="92" width="16" height="24" rx="3" fill="#22C55E" />
+
+    <!-- 가운데 빨강 캔들 -->
+    <line x1="128" y1="128" x2="128" y2="92"
+          stroke="#DC2626" stroke-width="3" stroke-linecap="round" />
+    <rect x="120" y="104" width="16" height="20" rx="3" fill="#F97373" />
+
+    <!-- 오른쪽 초록 캔들 -->
+    <line x1="160" y1="116" x2="160" y2="78"
+          stroke="#16A34A" stroke-width="3" stroke-linecap="round" />
+    <rect x="152" y="88" width="16" height="24" rx="3" fill="#22C55E" />
+
+    <!-- 우상향 추세선 -->
+    <path
+      d="M 82 128
+         L 104 110
+         L 130 112
+         L 154 96
+         L 174 84"
+      fill="none"
+      stroke="#2563EB"
+      stroke-width="3.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+</svg>

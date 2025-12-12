@@ -129,9 +129,9 @@ function Header() {
                             className: "flex items-center gap-2",
                             children: [
                                 /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                                    src: "/logo-finmap.svg",
+                                    src: "/brand/finmaphub-icon.svg",
                                     alt: "FinMap 로고",
-                                    className: "h-8 w-auto"
+                                    className: "h-7 w-7 sm:h-8 sm:w-8"
                                 }),
                                 /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                     className: "leading-tight",
@@ -209,24 +209,41 @@ function Footer() {
                 className: "w-full max-w-5xl lg:max-w-6xl mx-auto flex flex-wrap gap-4 items-center py-4 text-slate-600",
                 children: [
                     /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                        href: "/about",
-                        children: "About"
+                        href: "/",
+                        passHref: true,
+                        children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
+                            className: "flex items-center gap-2",
+                            children: /*#__PURE__*/ jsx_runtime_.jsx("img", {
+                                src: "/brand/finmaphub-logo.svg",
+                                alt: "FinMap",
+                                className: "h-7 w-auto opacity-90"
+                            })
+                        })
                     }),
-                    /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                        href: "/contact",
-                        children: "Contact"
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                        href: "/privacy",
-                        children: "Privacy"
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                        href: "/terms",
-                        children: "TOS"
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                        href: "/disclaimer",
-                        children: "면책"
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                        className: "flex flex-wrap gap-4 text-sm",
+                        children: [
+                            /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                                href: "/about",
+                                children: "About"
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                                href: "/contact",
+                                children: "Contact"
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                                href: "/privacy",
+                                children: "Privacy"
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                                href: "/terms",
+                                children: "TOS"
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                                href: "/disclaimer",
+                                children: "면책"
+                            })
+                        ]
                     }),
                     /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
                         className: "ml-auto text-sm",

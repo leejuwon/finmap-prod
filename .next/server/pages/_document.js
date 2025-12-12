@@ -31,6 +31,32 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1__["default"] {
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
                             name: "google-site-verification",
                             content: "8FhqQNDjbZ-QpdePXdPiCR_VJwQstaK-tbuYIlXxs_A"
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
+                            rel: "icon",
+                            href: "/favicon.ico"
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
+                            rel: "icon",
+                            type: "image/png",
+                            sizes: "16x16",
+                            href: "/favicon-16.png"
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
+                            rel: "icon",
+                            type: "image/png",
+                            sizes: "32x32",
+                            href: "/favicon-32.png"
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
+                            rel: "icon",
+                            type: "image/png",
+                            sizes: "48x48",
+                            href: "/favicon-48.png"
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                            name: "theme-color",
+                            content: "#0f172a"
                         })
                     ]
                 }),

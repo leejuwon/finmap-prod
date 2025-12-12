@@ -9,6 +9,7 @@ import CompoundYearTable from "../../_components/CompoundYearTable";
 import CompoundCTA from "../../_components/CompoundCTA";
 import DragBreakdownChart from "../../_components/DragBreakdownChart";
 import GoalEngineCard from "../../_components/GoalEngineCard";
+import SensitivityPanel from "../../_components/SensitivityPanel";
 
 import {
   calcCompound,
@@ -135,38 +136,71 @@ export default function CompoundPage() {
   // FAQ 데이터 및 JSON-LD
   // ----------------------------
   const faqItems = useMemo(
-    () =>
-      locale === "ko"
-        ? [
-            {
-              q: "세전/세후 계산 차이는 무엇인가요?",
-              a: "세전 계산은 세금과 수수료가 없다고 가정한 이상적인 미래가치이며, 세후 계산은 실제 투자에서 발생하는 세금·수수료를 모두 반영한 현실적인 미래가치입니다.",
-            },
-            {
-              q: "계산 금액 단위는 어떻게 되나요?",
-              a: "KRW를 선택하면 만원 단위로 입력하며, USD는 실제 달러 금액으로 입력합니다.",
-            },
-            {
-              q: "세금과 수수료는 어떻게 반영되나요?",
-              a: "이자 소득세 15.4%, 연간 수수료 0.5%를 기본값으로 반영합니다. 사용자가 원하면 값을 수정할 수 있습니다.",
-            },
-            {
-              q: "월복리/연복리 차이는 무엇인가요?",
-              a: "월단위로 계산하면 더 자주 복리 효과를 누릴 수 있어 같은 연 수익률일 때 더 높은 미래가치가 나옵니다.",
-            },
-          ]
-        : [
-            {
-              q: "What is the difference between net and ideal results?",
-              a: "Ideal ignores tax and fees, while net reflects the actual result including those costs.",
-            },
-            {
-              q: "How do I input amounts?",
-              a: "KRW inputs use ×10k units (e.g., 1000 → 10,000,000 KRW). USD uses actual dollar values.",
-            },
-          ],
+  () =>
+    locale === "ko"
+      ? [
+          {
+            q: "세전/세후 계산 차이는 무엇인가요?",
+            a: "세전 계산은 세금과 수수료가 없다고 가정한 이상적인 미래가치이며, 세후 계산은 실제 투자에서 발생하는 세금·수수료를 모두 반영한 현실적인 미래가치입니다.",
+          },
+          {
+            q: "계산 금액 단위는 어떻게 되나요?",
+            a: "KRW를 선택하면 만원 단위로 입력하며, USD는 실제 달러 금액으로 입력합니다.",
+          },
+          {
+            q: "세금과 수수료는 어떻게 반영되나요?",
+            a: "이자 소득세 15.4%, 연간 수수료 0.5%를 기본값으로 반영합니다. 사용자가 원하면 값을 수정할 수 있습니다.",
+          },
+          {
+            q: "월복리와 연복리의 차이는 무엇인가요?",
+            a: "월단위로 계산하면 더 자주 복리 효과를 누릴 수 있어 같은 연 수익률이라도 월복리가 더 높은 미래가치를 만들게 됩니다.",
+          },
+          {
+            q: "목표 달성 엔진은 어떻게 계산되나요?",
+            a: "목표 금액을 기준으로 세 가지 값을 역산합니다.\n1) 필요 월 투자금: 초기 투자금·수익률·기간을 고정하고 월 적립금(PMT)을 역산합니다.\n2) 필요 수익률: 초기 투자금·월 적립금·기간을 유지하고 목표에 맞는 수익률을 수치해석 방식으로 계산합니다.\n3) 필요 초기 투자금: 월 적립금·수익률·기간을 유지한 채 초기 투자금(P)을 역산합니다.",
+          },
+          {
+            q: "자산 성장 민감도 분석의 그래프가 항상 비슷한 모양으로 보이는 이유는 무엇인가요?",
+            a: "수익률 변화는 미래가치에 큰 폭의 영향을 주지만 수수료·세금 변화는 상대적으로 작게 영향을 미칩니다. 따라서 y축 스케일이 크게 설정되면 수수료·세금 변화는 거의 평평하게 보일 수 있습니다. 이는 정상적인 계산 결과입니다.",
+          },
+          {
+            q: "자산 성장 민감도 분석의 y축은 어떻게 결정되나요?",
+            a: "수익률 변동으로 인한 최대 미래가치를 기준으로 자동 스케일링됩니다. 그 결과 세금·수수료 변화의 값이 상대적으로 작으면 평평하게 보일 수 있습니다.",
+          },
+        ]
+      : [
+          {
+            q: "What is the difference between net and ideal results?",
+            a: "Ideal results ignore taxes and fees, while net results reflect the actual performance after applying tax and fee deductions.",
+          },
+          {
+            q: "How should I input amounts?",
+            a: "KRW inputs use 10,000 KRW units (e.g., 1000 → 10,000,000 KRW). USD uses real dollar values.",
+          },
+          {
+            q: "How are taxes and fees applied?",
+            a: "The default settings include a 15.4% tax on interest income and a 0.5% annual fee rate. You may modify these values.",
+          },
+          {
+            q: "What is the difference between monthly compounding and annual compounding?",
+            a: "Monthly compounding applies interest more frequently, resulting in a higher future value compared to annual compounding with the same annual rate.",
+          },
+          {
+            q: "How does the Goal Engine calculate required monthly investment, rate, and initial capital?",
+            a: "The Goal Engine reverses one variable while keeping the others fixed:\n1) Required monthly investment: Solves PMT while principal, rate, and period are fixed.\n2) Required rate of return: Keeps principal and PMT fixed and finds the rate via numerical methods.\n3) Required initial capital: Solves for principal while keeping PMT and rate fixed.",
+          },
+          {
+            q: "Why does the sensitivity analysis graph look similar even when input values change?",
+            a: "Rate changes produce exponentially large differences, while fee and tax changes affect the outcome much less. This causes fee/tax lines to appear flat when scaled together with rate changes.",
+          },
+          {
+            q: "How is the Y-axis range determined in sensitivity analysis?",
+            a: "The Y-axis auto-scales based on the highest projected future value (typically from the positive rate-change scenario). Smaller changes like tax or fee variation may appear flat by comparison.",
+          },
+        ],
     [locale]
   );
+
 
   const faqJsonLd = useMemo(
     () => ({
@@ -480,6 +514,30 @@ export default function CompoundPage() {
                   invest={invest}
                   taxRatePercent={taxRatePercentState}
                   feeRatePercent={feeRatePercentState}
+                />
+              </div>
+
+              {/* ==== Sensitivity Analysis (자산 성장 민감도 분석) ==== */}
+              <div className="card">
+                <h2 className="text-lg font-semibold mb-2">
+                  {locale === "ko" ? "자산 성장 민감도 분석" : "Growth Sensitivity Analysis"}
+                </h2>
+
+                <p className="text-sm text-slate-600 mb-3">
+                  {locale === "ko"
+                    ? "수익률·세금·수수료 변동이 미래 자산에 어떤 영향을 주는지 즉시 확인해보세요."
+                    : "See how changes in rate, tax, and fees affect your future value instantly."}
+                </p>
+
+                <SensitivityPanel
+                  principal={invest.principal}
+                  monthly={invest.monthly}
+                  annualRate={result.annualRate}
+                  years={invest.years}
+                  taxRatePercent={result.taxRate * 100}
+                  feeRatePercent={result.feeRate * 100}
+                  locale={numberLocale}
+                  currency={currency}
                 />
               </div>
 

@@ -42,9 +42,9 @@ export default function Header() {
           <Link href="/" passHref>
             <a className="flex items-center gap-2">
               <img
-                src="/logo-finmap.svg"
+                src="/brand/finmaphub-icon.svg"
                 alt="FinMap 로고"
-                className="h-8 w-auto"
+                className="h-7 w-7 sm:h-8 sm:w-8"
               />
               <div className="leading-tight">
                 <span className="block text-sm sm:text-base font-semibold text-slate-900">
