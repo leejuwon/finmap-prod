@@ -37,6 +37,18 @@
       "static/chunks/650.dcbc7d85e333fe81.js"
     ]
   },
+  "..\\_components\\ScenarioChart.js -> react-chartjs-2": {
+    "id": 88598,
+    "files": [
+      "static/chunks/598.52a4bcd6e72979c1.js"
+    ]
+  },
+  "..\\_components\\ScenarioCompareChart.js -> react-chartjs-2": {
+    "id": 88598,
+    "files": [
+      "static/chunks/598.52a4bcd6e72979c1.js"
+    ]
+  },
   "..\\_components\\SensitivityChart.js -> react-chartjs-2": {
     "id": 88598,
     "files": [

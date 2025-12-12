@@ -11,6 +11,8 @@ import DragBreakdownChart from "../../_components/DragBreakdownChart";
 import GoalEngineCard from "../../_components/GoalEngineCard";
 import SensitivityPanel from "../../_components/SensitivityPanel";
 import ValueDisplay from "../../_components/ValueDisplay";
+import ScenarioPanel from "../../_components/ScenarioPanel";
+import TimelineComparePanel from "../../_components/TimelineComparePanel";
 
 import {
   calcCompound,
@@ -410,6 +412,52 @@ export default function CompoundPage() {
                 />
               </div>
 
+              {/* ==== 복리 시뮬레이션 (3가지 시나리오) ==== */}
+              <ScenarioPanel
+                principal={invest.principal}
+                monthly={invest.monthly}
+                years={invest.years}
+                annualRate={result.annualRate}
+                compounding={result.compounding}
+                taxRatePercent={taxRatePercentState}
+                feeRatePercent={feeRatePercentState}
+                baseYear={result.baseYear}
+                locale={numberLocale}
+                currency={currency}
+              />
+
+              {/* ==== 멀티 타임라인(저장/비교) ==== */}
+              <TimelineComparePanel
+                numberLocale={numberLocale}
+                currency={currency}
+                currentScenario={{
+                  currency,
+                  numberLocale,
+                  inputs: {
+                    currency,
+                    principal: invest.principal,
+                    monthly: invest.monthly,
+                    years: invest.years,
+                    annualRate: result.annualRate,
+                    compounding: result.compounding,
+                    taxRatePercent: taxRatePercentState,
+                    feeRatePercent: feeRatePercentState,
+                  },
+                  summary: {
+                    fvNet,
+                    fvIdeal,
+                    drag,
+                    ratio,
+                    totalContrib,
+                    totalInterestNet,
+                  },
+                  series: {
+                    years: (result.yearSummary || []).map((r) => r.year),
+                    net: (result.yearSummary || []).map((r) => r.closingBalanceNet),
+                  },
+                }}
+              />
+
               {/* Yearly Table — 복리식 */}
               <CompoundYearTable
                 result={result}
@@ -562,7 +610,7 @@ export default function CompoundPage() {
                   locale={numberLocale}
                   currency={currency}
                 />
-              </div>
+              </div>              
 
               {/* FAQ */}
               <div className="card">
