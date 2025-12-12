@@ -1,5 +1,16 @@
 // _components/GoalEngineCard.js
 import { useState, useMemo } from "react";
+import ValueDisplay from "./ValueDisplay";
+
+/* -------------------------------------------------------
+   공통: locale 정규화 (ko/en/ko-KR/en-US 모두 대응)
+------------------------------------------------------- */
+function normalizeLocale(locale) {
+  if (!locale) return "ko-KR";
+  if (locale === "ko") return "ko-KR";
+  if (locale === "en") return "en-US";
+  return locale;
+}
 
 /* -------------------------------------------------------
    1) 필요한 월 투자금 계산
@@ -10,12 +21,20 @@ function requiredMonthlyToReachGoal({ goalAmount, principal, years, annualRate }
   const r = annualRate / 100 / 12; // 월이율
   const n = years * 12;
 
-  // 미래가치 = P*(1+r)^n + PMT*((1+r)^n - 1)/r
-  const fvFromPrincipal = principal * Math.pow(1 + r, n);
+   // r=0 방어 (단순 합)
+  if (r === 0) {
+    const remaining = goalAmount - principal;
+    if (remaining <= 0) return 0;
+    return remaining / n;
+  }
+
+   // 미래가치 = P*(1+r)^n + PMT*((1+r)^n - 1)/r
+  const pow = Math.pow(1 + r, n);
+  const fvFromPrincipal = principal * pow;
   const remaining = goalAmount - fvFromPrincipal;
   if (remaining <= 0) return 0;
 
-  return (remaining * r) / (Math.pow(1 + r, n) - 1);
+  return (remaining * r) / (pow - 1);
 }
 
 /* -------------------------------------------------------
@@ -23,18 +42,29 @@ function requiredMonthlyToReachGoal({ goalAmount, principal, years, annualRate }
 ------------------------------------------------------- */
 function requiredRateToReachGoal({ goalAmount, principal, monthly, years }) {
   if (years <= 0) return 0;
-  if (goalAmount <= principal + monthly * 12 * years) return 0;
+
+  const n = years * 12;
+  // 목표가 이미 '원금+적립합' 이하라면 (수익률 0으로도 가능)
+  if (goalAmount <= principal + monthly * n) return 0;
+  
+  const fvAtRate = (ratePercent) => {
+    const r = (ratePercent / 100) / 12;
+    if (r === 0) return principal + monthly * n;
+
+    const pow = Math.pow(1 + r, n);
+    return principal * pow + monthly * ((pow - 1) / r);
+  };
 
   let low = 0, high = 100, mid = 0;
 
   for (let i = 0; i < 40; i++) {
     mid = (low + high) / 2;
-    const r = mid / 100 / 12;
-    const n = years * 12;
+    //const r = mid / 100 / 12;
+    //const n = years * 12;
 
-    const fv = 
-      principal * Math.pow(1 + r, n) +
-      monthly * ((Math.pow(1 + r, n) - 1) / r);
+    const fv = fvAtRate(mid);
+      //principal * Math.pow(1 + r, n) +
+      //monthly * ((Math.pow(1 + r, n) - 1) / r);
 
     if (fv >= goalAmount) high = mid;
     else low = mid;
@@ -47,15 +77,23 @@ function requiredRateToReachGoal({ goalAmount, principal, monthly, years }) {
    3) 필요한 초기 투자금 계산
 ------------------------------------------------------- */
 function requiredPrincipalToReachGoal({ goalAmount, monthly, years, annualRate }) {
+  if (years <= 0) return 0;
   const r = annualRate / 100 / 12;
   const n = years * 12;
 
-  const fvFromMonthly = monthly * ((Math.pow(1 + r, n) - 1) / r);
+   // r=0 방어
+  if (r === 0) {
+    const remaining = goalAmount - monthly * n;
+    return remaining <= 0 ? 0 : remaining;
+  }
+
+  const pow = Math.pow(1 + r, n);
+  const fvFromMonthly = monthly * ((pow - 1) / r);
   const remaining = goalAmount - fvFromMonthly;
 
   if (remaining <= 0) return 0;
 
-  return remaining / Math.pow(1 + r, n);
+  return remaining / pow;
 }
 
 /* -------------------------------------------------------
@@ -72,6 +110,9 @@ export default function GoalEngineCard({
 }) {
 
   const [goalInput, setGoalInput] = useState("");
+  
+  const isKo = String(locale).startsWith("ko");
+  const numberLocale = normalizeLocale(locale);
 
   const handleGoalChange = (e) => {
     const raw = e.target.value.replace(/[^\d]/g, "");
@@ -86,14 +127,14 @@ export default function GoalEngineCard({
 
   // 실제 역산 계산
   const monthlyNeed = useMemo(() => {
-    if (goalAmount <= 0) return 0;
+    if (!result || goalAmount <= 0) return 0;
     return Math.max(
       0,
       requiredMonthlyToReachGoal({
         goalAmount,
         principal: invest.principal,
         years: invest.years,
-        annualRate: result.annualRate, // 세전/세후 상관없음
+        annualRate: result.annualRate,
       })
     );
   }, [goalAmount, invest, result]);
@@ -109,7 +150,7 @@ export default function GoalEngineCard({
   }, [goalAmount, invest]);
 
   const principalNeed = useMemo(() => {
-    if (goalAmount <= 0) return 0;
+    if (!result || goalAmount <= 0) return 0;
     return Math.max(
       0,
       requiredPrincipalToReachGoal({
@@ -121,45 +162,58 @@ export default function GoalEngineCard({
     );
   }, [goalAmount, invest, result]);
 
-  const moneyFmt = (v) =>
-    new Intl.NumberFormat(locale === "ko" ? "ko-KR" : "en-US").format(
-      Math.round(v)
-    );
+  const goalLabel = isKo
+    ? currency === "KRW"
+      ? "목표 자산 (만원)"
+      : "목표 자산"
+    : currency === "KRW"
+      ? "Target Amount (×10k KRW)"
+      : "Target Amount";
+
+  const placeholder = isKo
+    ? currency === "KRW"
+      ? "예: 50,000"
+      : "예: 100,000"
+    : "ex: 50,000";
 
   return (
     <div className="space-y-4">
       {/* 목표 금액 입력 */}
       <div>
-        <label className="text-sm mb-1 block">
-          {locale === "ko" ? "목표 자산 (만원)" : "Target Amount"}
-        </label>
+        <label className="text-sm mb-1 block">{goalLabel}</label>
 
         <input
           type="text"
           className="input"
           value={formattedGoal}
           onChange={handleGoalChange}
-          placeholder={locale === "ko" ? "예: 50,000" : "ex: 50,000"}
+          placeholder={placeholder}
         />
       </div>
 
       {goalAmount > 0 && (
         <div className="grid gap-4 md:grid-cols-3">
-
           {/* 1) 필요한 월 투자금 */}
           <div className="border rounded-lg p-4 bg-white shadow-sm">
             <div className="text-xs text-slate-500 mb-1">
-              {locale === "ko" ? "필요 월 투자금" : "Required Monthly Investment"}
+              {isKo ? "필요 월 투자금" : "Required Monthly Investment"}
             </div>
-            <div className="font-semibold text-lg">
-              ₩{moneyFmt(monthlyNeed)}
+            <div className="font-semibold text-lg flex items-baseline gap-2">
+              <ValueDisplay
+                value={monthlyNeed}
+                locale={numberLocale}
+                currency={currency}
+              />
+              <span className="text-sm text-slate-500">
+                {isKo ? "/월" : "/mo"}
+              </span>
             </div>
           </div>
 
           {/* 2) 필요한 연 수익률 */}
           <div className="border rounded-lg p-4 bg-white shadow-sm">
             <div className="text-xs text-slate-500 mb-1">
-              {locale === "ko" ? "필요 수익률" : "Required Annual Return"}
+              {isKo ? "필요 수익률" : "Required Annual Return"}
             </div>
             <div className="font-semibold text-lg">{rateNeed.toFixed(2)}%</div>
           </div>
@@ -167,10 +221,14 @@ export default function GoalEngineCard({
           {/* 3) 필요한 초기 투자금 */}
           <div className="border rounded-lg p-4 bg-white shadow-sm">
             <div className="text-xs text-slate-500 mb-1">
-              {locale === "ko" ? "필요 초기 투자금" : "Required Initial Principal"}
+              {isKo ? "필요 초기 투자금" : "Required Initial Principal"}
             </div>
             <div className="font-semibold text-lg">
-              ₩{moneyFmt(principalNeed)}
+              <ValueDisplay
+                value={principalNeed}
+                locale={numberLocale}
+                currency={currency}
+              />
             </div>
           </div>
         </div>

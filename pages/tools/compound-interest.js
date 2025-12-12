@@ -10,12 +10,12 @@ import CompoundCTA from "../../_components/CompoundCTA";
 import DragBreakdownChart from "../../_components/DragBreakdownChart";
 import GoalEngineCard from "../../_components/GoalEngineCard";
 import SensitivityPanel from "../../_components/SensitivityPanel";
+import ValueDisplay from "../../_components/ValueDisplay";
 
 import {
   calcCompound,
   calcCompoundNoTaxFee,
-  calcSimpleLump,
-  numberFmt,
+  calcSimpleLump,  
 } from "../../lib/compound";
 
 import { getInitialLang } from "../../lib/lang";
@@ -128,8 +128,7 @@ export default function CompoundPage() {
     }),
     [locale]
   );
-
-  const summaryFmt = (v) => numberFmt(numberLocale, currency, v || 0);
+  
   const safe = (obj, key) => (obj && Number(obj[key])) || 0;
 
   // ----------------------------
@@ -368,18 +367,24 @@ export default function CompoundPage() {
               {/* Summary (확장 버전) */}
               <div className="grid gap-4 sm:grid-cols-4">
                 <div className="stat">
-                  <div className="stat-title">{t.fv}</div>
-                  <div className="stat-value">{summaryFmt(fvNet)}</div>
+                  <div className="stat-title">{t.fv}</div>                  
+                  <div className="stat-value">
+                    <ValueDisplay value={fvNet} locale={numberLocale} currency={currency} />
+                  </div>
                 </div>
 
                 <div className="stat">
-                  <div className="stat-title">{t.fvIdeal}</div>
-                  <div className="stat-value">{summaryFmt(fvIdeal)}</div>
+                  <div className="stat-title">{t.fvIdeal}</div>                  
+                  <div className="stat-value">
+                    <ValueDisplay value={fvIdeal} locale={numberLocale} currency={currency} />
+                  </div>
                 </div>
 
                 <div className="stat">
-                  <div className="stat-title">{t.drag}</div>
-                  <div className="stat-value">{summaryFmt(drag)}</div>
+                  <div className="stat-title">{t.drag}</div>                  
+                  <div className="stat-value">
+                    <ValueDisplay value={drag} locale={numberLocale} currency={currency} />
+                  </div>
                 </div>
 
                 <div className="stat">
@@ -444,15 +449,18 @@ export default function CompoundPage() {
                   {/* 복리식 */}
                   <div className="border rounded-xl p-4">
                     <h3 className="font-semibold mb-2">{t.planCompound}</h3>
-                    <ul className="text-sm space-y-1">
+                    <ul className="text-sm space-y-1">                      
                       <li>
-                        {t.contrib}: {summaryFmt(totalContrib)}
-                      </li>
+                        {t.contrib}:{" "}
+                        <ValueDisplay value={totalContrib} locale={numberLocale} currency={currency} />
+                      </li>                      
                       <li>
-                        {t.fv}: {summaryFmt(fvNet)}
-                      </li>
+                        {t.fv}:{" "}
+                        <ValueDisplay value={fvNet} locale={numberLocale} currency={currency} />
+                      </li>                      
                       <li>
-                        {t.interest}: {summaryFmt(totalInterestNet)}
+                        {t.interest}:{" "}
+                        <ValueDisplay value={totalInterestNet} locale={numberLocale} currency={currency} />
                       </li>
                     </ul>
                   </div>
@@ -462,13 +470,28 @@ export default function CompoundPage() {
                     <h3 className="font-semibold mb-2">{t.planSimple}</h3>
                     <ul className="text-sm space-y-1">
                       <li>
-                        {t.contrib}: {summaryFmt(safe(simpleResult, "totalContribution"))}
+                        {t.contrib}:{" "}
+                        <ValueDisplay
+                          value={safe(simpleResult, "totalContribution")}
+                          locale={numberLocale}
+                          currency={currency}
+                        />
                       </li>
                       <li>
-                        {t.fv}: {summaryFmt(safe(simpleResult, "futureValueNet"))}
+                        {t.fv}:{" "}
+                        <ValueDisplay
+                          value={safe(simpleResult, "futureValueNet")}
+                          locale={numberLocale}
+                          currency={currency}
+                        />
                       </li>
                       <li>
-                        {t.interest}: {summaryFmt(safe(simpleResult, "totalInterestNet"))}
+                        {t.interest}:{" "}
+                        <ValueDisplay
+                          value={safe(simpleResult, "totalInterestNet")}
+                          locale={numberLocale}
+                          currency={currency}
+                        />
                       </li>
                     </ul>
                   </div>
