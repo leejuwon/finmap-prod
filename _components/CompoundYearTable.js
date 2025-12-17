@@ -7,7 +7,7 @@ import { useMemo } from "react";
 function formatMoneyAuto(value, currency = "KRW", locale = "ko-KR") {
   const v = Number(value) || 0;
   const isKo = locale.toLowerCase().startsWith("ko");
-  const cur = currency || "KRW";
+  const cur = currency || "KRW";  
 
   if (cur === "KRW") {
     const abs = Math.abs(v);
@@ -74,6 +74,13 @@ export default function CompoundYearTable({
   const unitText = locale.startsWith("ko")
     ? "단위: 원 / 만원 / 억원 자동 변환"
     : "Unit: auto (KRW / 10k / 100M)";
+
+  const isKo = locale.startsWith("ko");
+
+  const miniBarHelp = isKo
+    ? "Mini bar는 ‘연환산 수익률’을 0~100% 범위로 잘라(캡) 막대 길이로 보여주는 간단한 게이지입니다. 연환산 수익률 = (해당 연도 세후 이자 ÷ 연초 잔액) × 100"
+    : "Mini bar is a simple gauge showing ‘annualized return’ as a bar, capped to 0–100%. Annualized return = (net interest of the year ÷ opening balance) × 100.";
+
 
   // =====================================================
   // 연도별 통계 계산 (강화 버전)
@@ -233,7 +240,18 @@ export default function CompoundYearTable({
               <th className="px-2 py-1 text-right">수수료 비중</th>
               <th className="px-2 py-1 text-right">총 비용 비중</th>
 
-              <th className="px-2 py-1 text-left">Mini bar</th>
+              <th className="px-2 py-1 text-left">
+                <span className="inline-flex items-center gap-1">
+                  Mini bar
+                  <span
+                    className="text-slate-400 cursor-help"
+                    title={miniBarHelp}
+                    aria-label={miniBarHelp}
+                  >
+                    ⓘ
+                  </span>
+                </span>
+              </th>
             </tr>
           </thead>
 
@@ -282,7 +300,7 @@ export default function CompoundYearTable({
                   {s.costPercent.toFixed(1)}%
                 </td>
 
-                <td className="px-2 py-1 w-28">
+                <td className="px-2 py-1 w-28" title={miniBarHelp} aria-label={miniBarHelp}>
                   <MiniBar rate={Math.max(0, Math.min(100, s.annualized))} />
                 </td>
               </tr>
