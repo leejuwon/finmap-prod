@@ -13,6 +13,8 @@ import SensitivityPanel from "../../_components/SensitivityPanel";
 import ValueDisplay from "../../_components/ValueDisplay";
 import ScenarioPanel from "../../_components/ScenarioPanel";
 import TimelineComparePanel from "../../_components/TimelineComparePanel";
+import CashFlowLayerChart from "../../_components/CashFlowLayerChart";
+
 
 import {
   calcCompound,
@@ -423,6 +425,13 @@ export default function CompoundPage() {
                 feeRatePercent={feeRatePercentState}
                 baseYear={result.baseYear}
                 locale={numberLocale}
+                currency={currency}
+              />
+
+              {/* ==== 연도별 현금흐름 차트 (Cash Flow Layer) ==== */}
+              <CashFlowLayerChart
+                yearSummary={result.yearSummary}
+                numberLocale={numberLocale}
                 currency={currency}
               />
 
