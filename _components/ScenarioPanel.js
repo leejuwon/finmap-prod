@@ -15,6 +15,9 @@ export default function ScenarioPanel({
   baseYear = new Date().getFullYear(),
   locale = "ko-KR",
   currency = "KRW",
+
+  // ✅ PRO 확장용(안 넘기면 기존과 동일)
+  sectionId, // ex) "sec-insight-scenarios"
 }) {
   const isKo = String(locale).toLowerCase().startsWith("ko");
 
@@ -69,7 +72,7 @@ export default function ScenarioPanel({
   const maxMonths = results?.[0]?.monthsTotal || 0;
 
   return (
-    <div className="card mt-6">
+    <section id={sectionId} className="card">
       <h2 className="text-lg font-bold mb-2">
         {isKo ? "복리 시뮬레이션 (3가지 시나리오)" : "Compound Simulation (3 Scenarios)"}
       </h2>
@@ -80,31 +83,43 @@ export default function ScenarioPanel({
           : "No randomness—compares conservative/base/aggressive by shifting annual return by ±2%."}
       </p>
 
-      {/* 요약 카드 3개 */}
-      <div className="grid gap-3 sm:grid-cols-3 mb-4">
-        {results.map((r) => (
-          <div key={r.key} className="border rounded-xl p-4 bg-white">
-            <div className="text-xs text-slate-500 mb-1">{r.title}</div>
-            <div className="text-sm text-slate-600 mb-2">
-              {isKo ? "연 수익률" : "Annual return"}:{" "}
-              <b>{r.annualRate.toFixed(2)}%</b>
-            </div>
+      {/* ✅ 모바일: 가로 스와이프(스냅) / 데스크톱: 3열 그리드 */}      
+      <div className="mb-4">
+        <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory sm:grid sm:overflow-visible sm:mx-0 sm:px-0 sm:pb-0 sm:snap-none sm:grid-cols-3">
+          {results.map((r) => (
+            <div
+              key={r.key}
+              className="border rounded-xl p-4 bg-white min-w-[240px] snap-start sm:min-w-0"
+            >
+              <div className="text-xs text-slate-500 mb-1">{r.title}</div>
+              <div className="text-sm text-slate-600 mb-2">
+                {isKo ? "연 수익률" : "Annual return"}:{" "}
+                <b>{r.annualRate.toFixed(2)}%</b>
+              </div>
 
-            <div className="text-xs text-slate-500">{isKo ? "세후 총자산" : "Net FV"}</div>
-            <div className="text-base font-semibold">
-              <ValueDisplay value={r.fvNet} locale={locale} currency={currency} />
-            </div>
+              <div className="text-xs text-slate-500">
+                {isKo ? "세후 총자산" : "Net FV"}
+              </div>
+              <div className="text-base font-semibold">
+                <ValueDisplay value={r.fvNet} locale={locale} currency={currency} />
+              </div>
 
-            <div className="mt-2 text-xs text-slate-500">
-              {isKo ? "총 납입액" : "Total contribution"}:{" "}
-              <ValueDisplay value={r.totalContrib} locale={locale} currency={currency} />
+              <div className="mt-2 text-xs text-slate-500">
+                {isKo ? "총 납입액" : "Total contribution"}:{" "}
+                <ValueDisplay value={r.totalContrib} locale={locale} currency={currency} />
+              </div>
+              <div className="text-xs text-slate-500">
+                {isKo ? "세후 이자" : "Net interest"}:{" "}
+                <ValueDisplay value={r.totalInterestNet} locale={locale} currency={currency} />
+              </div>
             </div>
-            <div className="text-xs text-slate-500">
-              {isKo ? "세후 이자" : "Net interest"}:{" "}
-              <ValueDisplay value={r.totalInterestNet} locale={locale} currency={currency} />
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
+
+        {/* 모바일 힌트(선택) */}
+        <div className="sm:hidden text-[11px] text-slate-500 mt-2">
+          {isKo ? "← 좌우로 스와이프하여 시나리오를 확인하세요" : "← Swipe to compare scenarios"}
+        </div>
       </div>
 
       {/* 차트 */}
@@ -114,6 +129,6 @@ export default function ScenarioPanel({
         locale={locale}
         currency={currency}
       />
-    </div>
+    </section>
   );
 }

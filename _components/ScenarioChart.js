@@ -1,4 +1,4 @@
-ScenarioChart.js// _components/ScenarioChart.js
+// _components/ScenarioChart.js
 import dynamic from "next/dynamic";
 import { useMemo } from "react";
 
@@ -43,50 +43,63 @@ function formatMoneyAuto(value, currency = "KRW", locale = "ko-KR") {
   }).format(v);
 }
 
-export default function ScenarioChart({ monthsTotal = 0, results = [], locale = "ko-KR", currency = "KRW" }) {
+function toNum(v) {
+  const n = Number(v);
+  return Number.isFinite(n) ? n : 0;
+}
+
+export default function ScenarioChart({
+  monthsTotal = 0,
+  results = [],
+  locale = "ko-KR",
+  currency = "KRW",
+}) {
+  const isKo = String(locale).toLowerCase().startsWith("ko");
+
   const labels = useMemo(() => {
     if (!monthsTotal) return [];
-    // 1..N (x축은 12개월마다만 표시)
+    // 1..N
     return Array.from({ length: monthsTotal }, (_, i) => String(i + 1));
   }, [monthsTotal]);
 
-    const chartData = useMemo(() => {
-
-        const styleByKey = {
-        conservative: {
-        borderColor: "rgba(100,116,139,0.95)",   // slate
+  const chartData = useMemo(() => {
+    const styleByKey = {
+      conservative: {
+        borderColor: "rgba(100,116,139,0.95)", // slate
         backgroundColor: "rgba(100,116,139,0.15)",
-        borderDash: [6, 6],                      // 점선
-        },
-        base: {
-        borderColor: "rgba(59,130,246,0.95)",    // blue
+        borderDash: [6, 6],
+      },
+      base: {
+        borderColor: "rgba(59,130,246,0.95)", // blue
         backgroundColor: "rgba(59,130,246,0.12)",
-        borderDash: [],                          // 실선
-        },
-        aggressive: {
-        borderColor: "rgba(16,185,129,0.95)",    // green
+        borderDash: [],
+      },
+      aggressive: {
+        borderColor: "rgba(16,185,129,0.95)", // green
         backgroundColor: "rgba(16,185,129,0.12)",
-        borderDash: [2, 0],                      // 실선(그대로)
-        },
+        borderDash: [],
+      },
     };
 
-    const ds = results.map((r) => {
-        const s = styleByKey[r.key] || {};
-        return {
-        label: `${r.title} (${r.annualRate.toFixed(1)}%)`,
-        data: r.seriesNet,
+    const ds = (results || []).map((r) => {
+      const s = styleByKey[r.key] || {};
+      const series = Array.isArray(r.seriesNet) ? r.seriesNet : [];
 
-        // ✅ 구분 포인트
+      // ✅ 길이 불일치 방어: labels 길이에 맞춰 null padding
+      const fixed = labels.map((_, i) => (i < series.length ? toNum(series[i]) : null));
+
+      return {
+        label: `${r.title} (${toNum(r.annualRate).toFixed(1)}%)`,
+        data: fixed,
         borderColor: s.borderColor,
         backgroundColor: s.backgroundColor,
         borderDash: s.borderDash,
-
         fill: false,
         tension: 0.25,
         borderWidth: 2,
         pointRadius: 0,
         pointHoverRadius: 3,
-        };
+      };
     });
 
     return { labels, datasets: ds };
@@ -97,16 +110,25 @@ export default function ScenarioChart({ monthsTotal = 0, results = [], locale = 
       responsive: true,
       maintainAspectRatio: false,
       animation: false,
+      interaction: {
+        mode: "index",
+        intersect: false,
+      },
       scales: {
         x: {
           ticks: {
             maxRotation: 0,
-            autoSkip: false,
+            autoSkip: true, // ✅ months 많을 때 성능/가독성
             callback: (value) => {
-              // value는 label (문자열 month)
-              const m = Number(value);
-              if (!m) return "";
-              return m % 12 === 0 ? `${m / 12}y` : "";
+              // ✅ Chart.js에선 value가 "index"로 들어오는 경우가 많음
+              const idx = Number(value);
+              if (!Number.isFinite(idx)) return "";
+
+              const month = idx + 1; // 1..N
+              if (month % 12 !== 0) return "";
+
+              const y = month / 12;
+              return isKo ? `${y}년` : `${y}y`;
             },
           },
           grid: { display: false },
@@ -121,16 +143,21 @@ export default function ScenarioChart({ monthsTotal = 0, results = [], locale = 
         legend: { position: "top" },
         tooltip: {
           callbacks: {
-            label: (ctx) => formatMoneyAuto(ctx.raw, currency, locale),
+            label: (ctx) => {
+              const name = ctx.dataset?.label || "";
+              return `${name}: ${formatMoneyAuto(ctx.raw, currency, locale)}`;
+            },
           },
         },
       },
     }),
-    [currency, locale]
+    [currency, locale, isKo]
   );
 
+  if (!chartData?.datasets?.length) return null;
+
   return (
-    <div className="w-full h-96">
+    <div className="w-full h-72 sm:h-80 lg:h-96">
       <Line data={chartData} options={options} />
     </div>
   );

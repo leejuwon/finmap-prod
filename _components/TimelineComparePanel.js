@@ -22,9 +22,12 @@ function suggestName(current, numberLocale) {
 }
 
 export default function TimelineComparePanel({
-  currentScenario, // ✅ 현재 결과 스냅샷
+  currentScenario,
   numberLocale = "ko-KR",
   currency = "KRW",
+
+  // ✅ PRO 확장용(안 넘기면 기존과 동일)
+  sectionId, // ex) "sec-insight-compare"
 }) {
   const isKo = numberLocale.startsWith("ko");
 
@@ -115,8 +118,8 @@ export default function TimelineComparePanel({
   }, [selected]);
 
   return (
-    <div className="card mt-6">
-      <div className="flex items-start justify-between gap-3">
+    <section id={sectionId} className="card">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
         <div>
           <h2 className="text-lg font-bold">
             {isKo ? "시나리오 저장 · 비교" : "Save & Compare Scenarios"}
@@ -128,11 +131,20 @@ export default function TimelineComparePanel({
           </p>
         </div>
 
-        <div className="flex gap-2 shrink-0">
-          <button type="button" className="btn-primary" onClick={onSaveCurrent}>
+        {/* ✅ 모바일: 버튼 줄바꿈/풀폭 */}
+        <div className="flex gap-2 sm:shrink-0">
+          <button
+            type="button"
+            className="btn-primary w-full sm:w-auto"
+            onClick={onSaveCurrent}
+          >
             {isKo ? "현재 결과 저장" : "Save current"}
           </button>
-          <button type="button" className="btn" onClick={onClearAll}>
+          <button
+            type="button"
+            className="btn-secondary w-full sm:w-auto"
+            onClick={onClearAll}
+          >
             {isKo ? "전체 삭제" : "Clear"}
           </button>
         </div>
@@ -178,7 +190,7 @@ export default function TimelineComparePanel({
                             }
                           }}
                         />
-                        <button className="btn" onClick={onRenameCommit}>
+                        <button className="btn-secondary" onClick={onRenameCommit}>
                           {isKo ? "저장" : "Save"}
                         </button>
                       </div>
@@ -187,7 +199,8 @@ export default function TimelineComparePanel({
                         <div className="font-semibold truncate">{item.name}</div>
                         <div className="text-xs text-slate-500 mt-0.5">
                           {inp.annualRate}% · {inp.years}y ·{" "}
-                          {inp.compounding === "yearly" ? "연복리" : "월복리"} ·
+                          {inp.compounding === "yearly" ? (isKo ? "연복리" : "Yearly") : (isKo ? "월복리" : "Monthly")}
+                          {" · "}
                           fee {inp.feeRatePercent}% · tax {inp.taxRatePercent}%
                           {item.currency ? ` · ${item.currency}` : ""}
                         </div>
@@ -198,11 +211,14 @@ export default function TimelineComparePanel({
 
                 <div className="flex gap-2 shrink-0">
                   {editingId !== item.id && (
-                    <button className="btn" onClick={() => onRenameStart(item)}>
+                    <button
+                      className="btn-secondary"
+                      onClick={() => onRenameStart(item)}
+                    >
                       {isKo ? "이름" : "Rename"}
                     </button>
                   )}
-                  <button className="btn" onClick={() => onRemove(item.id)}>
+                  <button className="btn-secondary" onClick={() => onRemove(item.id)}>
                     {isKo ? "삭제" : "Delete"}
                   </button>
                 </div>
@@ -234,6 +250,6 @@ export default function TimelineComparePanel({
           />
         )}
       </div>
-    </div>
+    </section>
   );
 }

@@ -1,10 +1,6 @@
 // _components/SensitivityPanel.js
-import { useState, useEffect } from "react";
-import {
-  sensitivityRate,
-  sensitivityFee,
-  sensitivityTax,
-} from "../lib/compound";
+import { useMemo } from "react";
+import { sensitivityRate, sensitivityFee, sensitivityTax } from "../lib/compound";
 import SensitivityChart from "./SensitivityChart";
 
 export default function SensitivityPanel({
@@ -17,82 +13,77 @@ export default function SensitivityPanel({
   locale = "ko-KR",
   currency = "KRW",
 }) {
-  const [rateData, setRateData] = useState([]);
-  const [feeData, setFeeData] = useState([]);
-  const [taxData, setTaxData] = useState([]);
+  const y = Number(years) || 0;
 
-  useEffect(() => {
-    if (!years || years <= 0) return;
-
-    // ① 수익률 민감도 ±1 ~ ±10%
-    const rateList = [];
+  const rateData = useMemo(() => {
+    if (!y || y <= 0) return [];
+    const list = [];
     for (let d = -10; d <= 10; d++) {
       if (d === 0) continue;
-      rateList.push(
+      list.push(
         sensitivityRate({
           principal,
           monthly,
           annualRate,
-          years,
+          years: y,
           taxRatePercent,
           feeRatePercent,
           deltaRate: d,
         })
       );
     }
-    setRateData(rateList);
+    return list;
+  }, [principal, monthly, annualRate, y, taxRatePercent, feeRatePercent]);
 
-    // ② 수수료 민감도 ±0.1% ~ ±1%
-    const feeList = [];
-    for (let d = -1; d <= 1; d += 0.1) {
-      if (d === 0) continue;
-      const v = parseFloat(d.toFixed(1));
-      feeList.push(
+  const feeData = useMemo(() => {
+    if (!y || y <= 0) return [];
+    const list = [];
+    // -1.0 ~ +1.0 (0.1 step) 를 정수 루프로 처리(부동소수 오차 최소화)
+    for (let i = -10; i <= 10; i++) {
+      if (i === 0) continue;
+      const d = i / 10; // -1 ~ +1
+      list.push(
         sensitivityFee({
           principal,
           monthly,
           annualRate,
-          years,
+          years: y,
           taxRatePercent,
           feeRatePercent,
-          deltaFee: v,
+          deltaFee: d,
         })
       );
     }
-    setFeeData(feeList);
+    return list;
+  }, [principal, monthly, annualRate, y, taxRatePercent, feeRatePercent]);
 
-    // ③ 세금 민감도 (최대 14~25%)
-    const taxList = [];
+  const taxData = useMemo(() => {
+    if (!y || y <= 0) return [];
+    const list = [];
     for (let d = -5; d <= 5; d++) {
       if (d === 0) continue;
-      taxList.push(
+      list.push(
         sensitivityTax({
           principal,
           monthly,
           annualRate,
-          years,
+          years: y,
           taxRatePercent,
           feeRatePercent,
           deltaTax: d,
         })
       );
     }
-    setTaxData(taxList);
-  }, [principal, monthly, annualRate, years, taxRatePercent, feeRatePercent]);
+    return list;
+  }, [principal, monthly, annualRate, y, taxRatePercent, feeRatePercent]);
 
-  console.log("rateData", rateData);
-    console.log("feeData", feeData);
-    console.log("taxData", taxData);
   return (
-    <div className="card mt-6">      
-
-      <SensitivityChart
-        rateData={rateData}
-        feeData={feeData}
-        taxData={taxData}
-        currency={currency}
-        locale={locale}
-      />
-    </div>
+    <SensitivityChart
+      rateData={rateData}
+      feeData={feeData}
+      taxData={taxData}
+      currency={currency}
+      locale={locale}
+    />
   );
 }

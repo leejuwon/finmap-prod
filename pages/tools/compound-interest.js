@@ -1,5 +1,5 @@
 // pages/tools/compound-interest.js
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import SeoHead from "../../_components/SeoHead";
 import CTABar from "../../_components/CTABar";
 //import { downloadPDF } from "../../_components/PDFGenerator";
@@ -10,7 +10,7 @@ import CompoundCTA from "../../_components/CompoundCTA";
 import DragBreakdownChart from "../../_components/DragBreakdownChart";
 import GoalEngineCard from "../../_components/GoalEngineCard";
 import SensitivityPanel from "../../_components/SensitivityPanel";
-import ValueDisplay from "../../_components/ValueDisplay";
+import ValueDisplay, { formatMoneyShort } from "../../_components/ValueDisplay";
 import ScenarioPanel from "../../_components/ScenarioPanel";
 import TimelineComparePanel from "../../_components/TimelineComparePanel";
 import CashFlowLayerChart from "../../_components/CashFlowLayerChart";
@@ -39,10 +39,30 @@ export default function CompoundPage() {
   // PDF 처리 함수 
   //const handleDownloadPDF = () => downloadPDF("pdf-target", "compound-result.pdf");
 
+  const [isExporting, setIsExporting] = useState(false);
+
   const handleDownloadPDF = async () => {
+    setIsExporting(true);
+    document.body.classList.add("fm-exporting");
+
+    // details(접힌 영역) 있으면 전부 펼쳐서 캡처
+    const target = document.getElementById("pdf-target");
+    const details = target ? Array.from(target.querySelectorAll("details")) : [];
+    const prevOpen = details.map((d) => d.open);
+    details.forEach((d) => (d.open = true));
+
+    // 렌더 안정화 대기(차트/레이아웃)
+    await new Promise((r) => setTimeout(r, 400));
+
     const { downloadPDF } = await import("../../_components/PDFGenerator");
-    downloadPDF("pdf-target", "compound-result.pdf");
+    await downloadPDF("pdf-target", "compound-result.pdf");
+
+    // 원복
+    details.forEach((d, i) => (d.open = prevOpen[i]));
+    document.body.classList.remove("fm-exporting");
+    setIsExporting(false);
   };
+
   // ----------------------------
   // 언어 상태
   // ----------------------------
@@ -55,6 +75,52 @@ export default function CompoundPage() {
   // 통화 단위 선택
   // ----------------------------
   const [currency, setCurrency] = useState("KRW");
+
+  // ----------------------------
+  // PRO 모드 (반응형 UX flow)
+  // ----------------------------
+  const [uiMode, setUiMode] = useState("basic"); // "basic" | "pro"
+  const [isMobile, setIsMobile] = useState(false);
+
+  // 섹션 스크롤 네비게이션용 ref
+  const sectionEls = useRef({});
+
+  const scrollTo = (id) => {
+    const el = sectionEls.current?.[id];
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  // 최초 uiMode: 저장값 우선, 없으면 모바일에서 pro 기본
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const mobile = window.matchMedia("(max-width: 640px)").matches;
+    setIsMobile(mobile);
+
+    const saved = window.localStorage.getItem("fm_ui_mode_compound");
+    if (saved === "basic" || saved === "pro") {
+      setUiMode(saved);
+    } else {
+      setUiMode(mobile ? "pro" : "basic");
+    }
+
+    const onResize = () => {
+      setIsMobile(window.matchMedia("(max-width: 640px)").matches);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  const setMode = (next) => {
+    setUiMode(next);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("fm_ui_mode_compound", next);
+    }
+  };
+
+  const isProMobile = uiMode === "pro" && isMobile;
+
 
   // ----------------------------
   // 계산 결과 상태
@@ -70,6 +136,8 @@ export default function CompoundPage() {
     principal: 0,
     monthly: 0,
     years: 0,
+    annualRate: 0,
+    compounding: "monthly",
   });
 
   const [simpleInvest, setSimpleInvest] = useState({
@@ -95,7 +163,7 @@ export default function CompoundPage() {
 
     window.addEventListener("fm_lang_change", handler);
     return () => window.removeEventListener("fm_lang_change", handler);
-  }, []);
+  }, []);  
 
   // ----------------------------
   // 텍스트 리소스
@@ -133,7 +201,21 @@ export default function CompoundPage() {
     [locale]
   );
   
-  const safe = (obj, key) => (obj && Number(obj[key])) || 0;
+  function safe(obj, key) {
+    return (obj && Number(obj[key])) || 0;
+  }
+
+  const summary = useMemo(() => {
+    const fvNet = safe(result, "futureValueNet");
+    const fvIdeal = safe(idealResult, "futureValueNet");
+    const totalContrib = safe(result, "totalContribution");
+    const totalInterestNet = safe(result, "totalInterestNet");
+
+    const drag = fvIdeal - fvNet;
+    const ratio = fvIdeal > 0 ? (fvNet / fvIdeal) * 100 : 100;
+
+    return { fvNet, fvIdeal, drag, ratio, totalContrib, totalInterestNet };
+  }, [result, idealResult]);
 
   // ----------------------------
   // FAQ 데이터 및 JSON-LD
@@ -268,7 +350,13 @@ export default function CompoundPage() {
       baseYear,
     });
 
-    setInvest({ principal: p, monthly: m, years: y });
+    setInvest({
+      principal: p,
+      monthly: m,
+      years: y,
+      annualRate: r,
+      compounding: form.compounding,
+    });
     setResult(compound);
     setIdealResult(ideal);
 
@@ -280,6 +368,31 @@ export default function CompoundPage() {
   };
 
   const hasResult = !!result && !!idealResult;
+
+  const fmtShort = (v) => formatMoneyShort(Number(v) || 0, numberLocale);
+
+  const insights = useMemo(() => {
+    if (!hasResult) return [];
+
+    const fmt = (v) => formatMoneyShort(Number(v) || 0, numberLocale);
+    const dragPct = summary.fvIdeal > 0 ? (summary.drag / summary.fvIdeal) * 100 : 0;
+
+    if (locale === "ko") {
+      return [
+        `세후 결과는 세전(이상치) 대비 약 ${summary.ratio.toFixed(1)}% 수준입니다.`,
+        `세금·수수료/복리손실 영향으로 최종 자산이 ${fmt(summary.drag)} 정도 감소했습니다. (${dragPct.toFixed(1)}%)`,
+        `총 납입액은 ${fmt(summary.totalContrib)}이고, 세후 이자는 ${fmt(summary.totalInterestNet)}입니다.`,
+      ];
+    }
+
+    return [
+      `Your net result is about ${summary.ratio.toFixed(1)}% of the ideal (no tax/fee) case.`,
+      `Taxes/fees (and compounding drag) reduced the final value by ~${fmt(summary.drag)} (${dragPct.toFixed(1)}%).`,
+      `Total contribution is ${fmt(summary.totalContrib)}, and net interest is ${fmt(summary.totalInterestNet)}.`,
+    ];
+  }, [hasResult, locale, numberLocale, summary]);
+
+
 
   // ----------------------------
   // Drag Breakdown 계산
@@ -318,6 +431,7 @@ export default function CompoundPage() {
   // ----------------------------
   // Summary 값 계산
   // ----------------------------
+  /*
   const fvNet = safe(result, "futureValueNet");
   const fvIdeal = safe(idealResult, "futureValueNet");
 
@@ -326,6 +440,7 @@ export default function CompoundPage() {
 
   const drag = fvIdeal - fvNet;
   const ratio = fvIdeal > 0 ? (fvNet / fvIdeal) * 100 : 100;
+  */
 
   // ----------------------------
   // 렌더링
@@ -340,10 +455,47 @@ export default function CompoundPage() {
       />
 
       <JsonLd data={faqJsonLd} />
-
+      
       <div className="py-6 grid gap-6 fm-mobile-full">
-        {/* 타이틀 */}
-        <h1 className="text-xl sm:text-2xl font-bold">{t.title}</h1>
+        {/* 타이틀 + 모드 토글 */}
+        <div className="flex items-start justify-between gap-3">
+          <h1 className="text-xl sm:text-2xl font-bold">{t.title}</h1>
+
+          <div className="fm-pro-toggle shrink-0">
+            <button
+              type="button"
+              className={uiMode === "basic" ? "active" : ""}
+              onClick={() => setMode("basic")}
+            >
+              {locale === "ko" ? "기본" : "Basic"}
+            </button>
+            <button
+              type="button"
+              className={uiMode === "pro" ? "active" : ""}
+              onClick={() => setMode("pro")}
+            >
+              {locale === "ko" ? "PRO" : "PRO"}
+            </button>
+          </div>
+        </div>
+
+        {/* PRO 모바일일 때: 한 화면 흐름 네비(요약→차트→해석→CTA) */}
+        {isProMobile && hasResult && (
+          <div className="fm-pro-nav">
+            <button type="button" className="fm-pro-chip" onClick={() => scrollTo("sum")}>
+              {locale === "ko" ? "요약" : "Summary"}
+            </button>
+            <button type="button" className="fm-pro-chip" onClick={() => scrollTo("chart")}>
+              {locale === "ko" ? "차트" : "Chart"}
+            </button>
+            <button type="button" className="fm-pro-chip" onClick={() => scrollTo("insight")}>
+              {locale === "ko" ? "해석" : "Insights"}
+            </button>
+            <button type="button" className="fm-pro-chip" onClick={() => scrollTo("cta")}>
+              {locale === "ko" ? "CTA" : "CTA"}
+            </button>
+          </div>
+        )}
 
         {/* 설명 카드 */}
         <div className="card w-full">
@@ -367,299 +519,594 @@ export default function CompoundPage() {
         {/* 결과 영역 */}
         {hasResult && (
           <>
-            <div id="pdf-target" className="grid gap-6">
-              {/* Summary (확장 버전) */}
-              <div className="grid gap-4 sm:grid-cols-4">
-                <div className="stat">
-                  <div className="stat-title">{t.fv}</div>                  
-                  <div className="stat-value">
-                    <ValueDisplay value={fvNet} locale={numberLocale} currency={currency} />
-                  </div>
-                </div>
+            <div
+              id="pdf-target"
+              className={`grid gap-6 ${isProMobile ? "fm-safe-bottom" : ""}`}
+            >
+              {/* =========================
+                  ✅ PRO Mobile Flow
+                  요약 → 차트 → 주요 해석 → CTA
+              ========================= */}
+              {isProMobile ? (
+                <>
+                  {/* Summary */}
+                  <div ref={(el) => (sectionEls.current.sum = el)} className="scroll-mt-24">
+                    <div className="grid gap-4 grid-cols-2 sm:grid-cols-4">
+                      <div className="stat">
+                        <div className="stat-title">{t.fv}</div>
+                        <div className="stat-value">
+                          <ValueDisplay value={summary.fvNet} locale={numberLocale} currency={currency} />
+                        </div>
+                      </div>
 
-                <div className="stat">
-                  <div className="stat-title">{t.fvIdeal}</div>                  
-                  <div className="stat-value">
-                    <ValueDisplay value={fvIdeal} locale={numberLocale} currency={currency} />
-                  </div>
-                </div>
+                      <div className="stat">
+                        <div className="stat-title">{t.fvIdeal}</div>
+                        <div className="stat-value">
+                          <ValueDisplay value={summary.fvIdeal} locale={numberLocale} currency={currency} />
+                        </div>
+                      </div>
 
-                <div className="stat">
-                  <div className="stat-title">{t.drag}</div>                  
-                  <div className="stat-value">
-                    <ValueDisplay value={drag} locale={numberLocale} currency={currency} />
-                  </div>
-                </div>
+                      <div className="stat">
+                        <div className="stat-title">{t.drag}</div>
+                        <div className="stat-value">
+                          <ValueDisplay value={summary.drag} locale={numberLocale} currency={currency} />
+                        </div>
+                      </div>
 
-                <div className="stat">
-                  <div className="stat-title">{t.ratio}</div>
-                  <div className="stat-value">{ratio.toFixed(1)}%</div>
-                </div>
-              </div>
-
-              {/* Chart */}
-              <div className="card">
-                <div className="flex items-center gap-3 mb-2">
-                  <h2 className="text-lg font-semibold">{t.chartTitle}</h2>
-                </div>
-
-                <CompoundChart
-                  data={result}
-                  lumpData={simpleResult}
-                  idealData={idealResult}
-                  locale={numberLocale}
-                  currency={currency}
-                  principal={invest.principal}
-                  monthly={invest.monthly}
-                />
-              </div>
-
-              {/* ==== 복리 시뮬레이션 (3가지 시나리오) ==== */}
-              <ScenarioPanel
-                principal={invest.principal}
-                monthly={invest.monthly}
-                years={invest.years}
-                annualRate={result.annualRate}
-                compounding={result.compounding}
-                taxRatePercent={taxRatePercentState}
-                feeRatePercent={feeRatePercentState}
-                baseYear={result.baseYear}
-                locale={numberLocale}
-                currency={currency}
-              />
-
-              {/* ==== 연도별 현금흐름 차트 (Cash Flow Layer) ==== */}
-              <CashFlowLayerChart
-                yearSummary={result.yearSummary}
-                numberLocale={numberLocale}
-                currency={currency}
-              />
-
-              {/* ==== 멀티 타임라인(저장/비교) ==== */}
-              <TimelineComparePanel
-                numberLocale={numberLocale}
-                currency={currency}
-                currentScenario={{
-                  currency,
-                  numberLocale,
-                  inputs: {
-                    currency,
-                    principal: invest.principal,
-                    monthly: invest.monthly,
-                    years: invest.years,
-                    annualRate: result.annualRate,
-                    compounding: result.compounding,
-                    taxRatePercent: taxRatePercentState,
-                    feeRatePercent: feeRatePercentState,
-                  },
-                  summary: {
-                    fvNet,
-                    fvIdeal,
-                    drag,
-                    ratio,
-                    totalContrib,
-                    totalInterestNet,
-                  },
-                  series: {
-                    years: (result.yearSummary || []).map((r) => r.year),
-                    net: (result.yearSummary || []).map((r) => r.closingBalanceNet),
-                  },
-                }}
-              />
-
-              {/* Yearly Table — 복리식 */}
-              <CompoundYearTable
-                result={result}
-
-                locale={numberLocale}
-                currency={currency}
-                principal={invest.principal}
-                monthly={invest.monthly}
-                title={
-                  locale === "ko"
-                    ? t.yearlyCompoundKo
-                    : t.yearlyCompoundEn
-                }
-              />
-
-              {/* Yearly Table — 단리식 */}
-              <CompoundYearTable
-                result={simpleResult}
-                locale={numberLocale}
-                currency={currency}
-                principal={simpleInvest.principal}
-                monthly={0}
-                title={
-                  locale === "ko"
-                    ? t.yearlySimpleKo
-                    : t.yearlySimpleEn
-                }
-              />
-
-              {/* 비교 Summary */}
-              <div className="card">
-                <h2 className="text-lg font-semibold mb-3">
-                  {t.compareTitle}
-                </h2>
-
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {/* 복리식 */}
-                  <div className="border rounded-xl p-4">
-                    <h3 className="font-semibold mb-2">{t.planCompound}</h3>
-                    <ul className="text-sm space-y-1">                      
-                      <li>
-                        {t.contrib}:{" "}
-                        <ValueDisplay value={totalContrib} locale={numberLocale} currency={currency} />
-                      </li>                      
-                      <li>
-                        {t.fv}:{" "}
-                        <ValueDisplay value={fvNet} locale={numberLocale} currency={currency} />
-                      </li>                      
-                      <li>
-                        {t.interest}:{" "}
-                        <ValueDisplay value={totalInterestNet} locale={numberLocale} currency={currency} />
-                      </li>
-                    </ul>
+                      <div className="stat">
+                        <div className="stat-title">{t.ratio}</div>
+                        <div className="stat-value">{summary.ratio.toFixed(1)}%</div>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* 단리식 */}
-                  <div className="border rounded-xl p-4">
-                    <h3 className="font-semibold mb-2">{t.planSimple}</h3>
-                    <ul className="text-sm space-y-1">
-                      <li>
-                        {t.contrib}:{" "}
-                        <ValueDisplay
-                          value={safe(simpleResult, "totalContribution")}
+                  {/* Chart */}
+                  <div ref={(el) => (sectionEls.current.chart = el)} className="scroll-mt-24">
+                    <div className="card">
+                      <div className="flex items-center gap-3 mb-2">
+                        <h2 className="text-lg font-semibold">{t.chartTitle}</h2>
+                      </div>
+
+                      <CompoundChart
+                        data={result}
+                        lumpData={simpleResult}
+                        idealData={idealResult}
+                        locale={numberLocale}
+                        currency={currency}
+                        principal={invest.principal}
+                        monthly={invest.monthly}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Insights */}
+                  <div ref={(el) => (sectionEls.current.insight = el)} className="scroll-mt-24">
+                    <div className="card">
+                      <h2 className="text-lg font-semibold mb-2">
+                        {locale === "ko" ? "주요 해석" : "Key Insights"}
+                      </h2>
+
+                      <ul className="list-disc pl-5 text-sm text-slate-700 space-y-1">
+                        {(insights || []).map((x, i) => (
+                          <li key={i}>{x}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  <div ref={(el) => (sectionEls.current.cta = el)} className="scroll-mt-24">
+                    <CompoundCTA locale={locale} onDownloadPDF={handleDownloadPDF} />
+                  </div>
+
+                  {/* Advanced sections (collapsed) */}
+                  <details className="card">
+                    <summary className="cursor-pointer font-semibold">
+                      {locale === "ko" ? "고급 분석 펼치기" : "Show advanced sections"}
+                    </summary>
+
+                    <div className="grid gap-6 mt-4">
+                      {/* ==== 복리 시뮬레이션 (3가지 시나리오) ==== */}
+                      <ScenarioPanel
+                        principal={invest.principal}
+                        monthly={invest.monthly}
+                        years={invest.years}
+                        annualRate={result.annualRate}
+                        compounding={result.compounding}
+                        taxRatePercent={taxRatePercentState}
+                        feeRatePercent={feeRatePercentState}
+                        baseYear={result.baseYear}
+                        locale={numberLocale}
+                        currency={currency}
+                      />
+
+                      {/* ==== 연도별 현금흐름 차트 (Cash Flow Layer) ==== */}
+                      <CashFlowLayerChart
+                        yearSummary={result.yearSummary}
+                        numberLocale={numberLocale}
+                        currency={currency}
+                      />
+
+                      {/* ==== 멀티 타임라인(저장/비교) ==== */}
+                      <TimelineComparePanel
+                        numberLocale={numberLocale}
+                        currency={currency}
+                        currentScenario={{
+                          currency,
+                          numberLocale,
+                          inputs: {
+                            currency,
+                            principal: invest.principal,
+                            monthly: invest.monthly,
+                            years: invest.years,
+                            annualRate: result.annualRate,
+                            compounding: result.compounding,
+                            taxRatePercent: taxRatePercentState,
+                            feeRatePercent: feeRatePercentState,
+                          },
+                          summary: {
+                            fvNet: summary.fvNet,
+                            fvIdeal: summary.fvIdeal,
+                            drag: summary.drag,
+                            ratio: summary.ratio,
+                            totalContrib: summary.totalContrib,
+                            totalInterestNet: summary.totalInterestNet,
+                          },
+                          series: {
+                            years: (result.yearSummary || []).map((r) => r.year),
+                            net: (result.yearSummary || []).map((r) => r.closingBalanceNet),
+                          },
+                        }}
+                      />
+
+                      {/* Yearly Table — 복리식 */}
+                      <CompoundYearTable
+                        result={result}
+                        locale={numberLocale}
+                        currency={currency}
+                        principal={invest.principal}
+                        monthly={invest.monthly}
+                        title={locale === "ko" ? t.yearlyCompoundKo : t.yearlyCompoundEn}
+                      />
+
+                      {/* Yearly Table — 단리식 */}
+                      <CompoundYearTable
+                        result={simpleResult}
+                        locale={numberLocale}
+                        currency={currency}
+                        principal={simpleInvest.principal}
+                        monthly={0}
+                        title={locale === "ko" ? t.yearlySimpleKo : t.yearlySimpleEn}
+                      />
+
+                      {/* 비교 Summary */}
+                      <div className="card">
+                        <h2 className="text-lg font-semibold mb-3">{t.compareTitle}</h2>
+
+                        <div className="grid gap-4 sm:grid-cols-2">
+                          {/* 복리식 */}
+                          <div className="border rounded-xl p-4">
+                            <h3 className="font-semibold mb-2">{t.planCompound}</h3>
+                            <ul className="text-sm space-y-1">
+                              <li>
+                                {t.contrib}:{" "}
+                                <ValueDisplay value={summary.totalContrib} locale={numberLocale} currency={currency} />
+                              </li>
+                              <li>
+                                {t.fv}:{" "}
+                                <ValueDisplay value={summary.fvNet} locale={numberLocale} currency={currency} />
+                              </li>
+                              <li>
+                                {t.interest}:{" "}
+                                <ValueDisplay value={summary.totalInterestNet} locale={numberLocale} currency={currency} />
+                              </li>
+                            </ul>
+                          </div>
+
+                          {/* 단리식 */}
+                          <div className="border rounded-xl p-4">
+                            <h3 className="font-semibold mb-2">{t.planSimple}</h3>
+                            <ul className="text-sm space-y-1">
+                              <li>
+                                {t.contrib}:{" "}
+                                <ValueDisplay
+                                  value={safe(simpleResult, "totalContribution")}
+                                  locale={numberLocale}
+                                  currency={currency}
+                                />
+                              </li>
+                              <li>
+                                {t.fv}:{" "}
+                                <ValueDisplay
+                                  value={safe(simpleResult, "futureValueNet")}
+                                  locale={numberLocale}
+                                  currency={currency}
+                                />
+                              </li>
+                              <li>
+                                {t.interest}:{" "}
+                                <ValueDisplay
+                                  value={safe(simpleResult, "totalInterestNet")}
+                                  locale={numberLocale}
+                                  currency={currency}
+                                />
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Drag Breakdown Card */}
+                      <div className="card">
+                        <h2 className="text-lg font-semibold mb-2">
+                          {locale === "ko" ? "손실요인 분해(Drag Breakdown)" : "Drag Decomposition"}
+                        </h2>
+
+                        <p className="text-sm text-slate-600 mb-3">
+                          {locale === "ko"
+                            ? "세금, 수수료, 복리효과 상실이 미래가치에 끼친 영향을 분해해 보여줍니다."
+                            : "Breakdown of how taxes, fees, and lost compounding affected your final value."}
+                        </p>
+
+                        <DragBreakdownChart data={dragBreakdown} locale={numberLocale} currency={currency} />
+                      </div>
+
+                      {/* Goal Engine */}
+                      <div className="card">
+                        <h2 className="text-lg font-semibold mb-2">
+                          {locale === "ko" ? "목표 달성 엔진" : "Future Goal Engine"}
+                        </h2>
+
+                        <p className="text-sm text-slate-600 mb-3">
+                          {locale === "ko"
+                            ? "목표 자산까지 필요한 월 투자금, 필요한 수익률, 필요한 초기 투자금을 역산해줍니다."
+                            : "Reverse-calculate the monthly investment, required return, or initial principal needed to reach your target."}
+                        </p>
+
+                        <GoalEngineCard
+                          locale={locale}
+                          currency={currency}
+                          result={result}
+                          idealResult={idealResult}
+                          invest={invest}
+                          taxRatePercent={taxRatePercentState}
+                          feeRatePercent={feeRatePercentState}
+                        />
+                      </div>
+
+                      {/* Sensitivity */}
+                      <div className="card">
+                        <h2 className="text-lg font-semibold mb-2">
+                          {locale === "ko" ? "자산 성장 민감도 분석" : "Growth Sensitivity Analysis"}
+                        </h2>
+
+                        <p className="text-sm text-slate-600 mb-3">
+                          {locale === "ko"
+                            ? "수익률·세금·수수료 변동이 미래 자산에 어떤 영향을 주는지 즉시 확인해보세요."
+                            : "See how changes in rate, tax, and fees affect your future value instantly."}
+                        </p>
+
+                        <SensitivityPanel
+                          principal={invest.principal}
+                          monthly={invest.monthly}
+                          annualRate={result.annualRate}
+                          years={invest.years}
+                          taxRatePercent={result.taxRate * 100}
+                          feeRatePercent={result.feeRate * 100}
                           locale={numberLocale}
                           currency={currency}
                         />
-                      </li>
-                      <li>
-                        {t.fv}:{" "}
-                        <ValueDisplay
-                          value={safe(simpleResult, "futureValueNet")}
-                          locale={numberLocale}
-                          currency={currency}
-                        />
-                      </li>
-                      <li>
-                        {t.interest}:{" "}
-                        <ValueDisplay
-                          value={safe(simpleResult, "totalInterestNet")}
-                          locale={numberLocale}
-                          currency={currency}
-                        />
-                      </li>
-                    </ul>
+                      </div>
+
+                      {/* FAQ */}
+                      <div className="card">
+                        <h2 className="text-lg font-semibold mb-3">{t.faqTitle}</h2>
+
+                        <div className="space-y-3">
+                          {faqItems.map((item, idx) => (
+                            <details
+                              key={idx}
+                              className="border border-slate-200 rounded-lg p-3 bg-slate-50"
+                              open={idx === 0}
+                            >
+                              <summary className="cursor-pointer font-medium text-sm">
+                                {item.q}
+                              </summary>
+                              <p className="mt-2 text-sm text-slate-700 whitespace-pre-line">
+                                {item.a}
+                              </p>
+                            </details>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </details>
+                </>
+              ) : (
+                /* =========================
+                    ✅ BASIC / Desktop Layout
+                    (기존 그대로)
+                ========================= */
+                <>
+                  {/* Summary (확장 버전) */}
+                  <div className="grid gap-4 sm:grid-cols-4">
+                    <div className="stat">
+                      <div className="stat-title">{t.fv}</div>
+                      <div className="stat-value">
+                        <ValueDisplay value={summary.fvNet} locale={numberLocale} currency={currency} />
+                      </div>
+                    </div>
+
+                    <div className="stat">
+                      <div className="stat-title">{t.fvIdeal}</div>
+                      <div className="stat-value">
+                        <ValueDisplay value={summary.fvIdeal} locale={numberLocale} currency={currency} />
+                      </div>
+                    </div>
+
+                    <div className="stat">
+                      <div className="stat-title">{t.drag}</div>
+                      <div className="stat-value">
+                        <ValueDisplay value={summary.drag} locale={numberLocale} currency={currency} />
+                      </div>
+                    </div>
+
+                    <div className="stat">
+                      <div className="stat-title">{t.ratio}</div>
+                      <div className="stat-value">{summary.ratio.toFixed(1)}%</div>
+                    </div>
                   </div>
-                </div>
-              </div>
 
-              {/* Drag Breakdown Card */}
-              <div className="card">
-                <h2 className="text-lg font-semibold mb-2">
-                  {locale === 'ko' ? '손실요인 분해(Drag Breakdown)' : 'Drag Decomposition'}
-                </h2>
+                  {/* Chart */}
+                  <div className="card">
+                    <div className="flex items-center gap-3 mb-2">
+                      <h2 className="text-lg font-semibold">{t.chartTitle}</h2>
+                    </div>
 
-                <p className="text-sm text-slate-600 mb-3">
-                  {locale === 'ko'
-                    ? '세금, 수수료, 복리효과 상실이 미래가치에 끼친 영향을 분해해 보여줍니다.'
-                    : 'Breakdown of how taxes, fees, and lost compounding affected your final value.'}
-                </p>
+                    <CompoundChart
+                      data={result}
+                      lumpData={simpleResult}
+                      idealData={idealResult}
+                      locale={numberLocale}
+                      currency={currency}
+                      principal={invest.principal}
+                      monthly={invest.monthly}
+                    />
+                  </div>
 
-                <DragBreakdownChart
-                  data={dragBreakdown}
-                  locale={numberLocale}
-                  currency={currency}
-                />
-              </div> 
+                  {/* ==== 복리 시뮬레이션 (3가지 시나리오) ==== */}
+                  <ScenarioPanel
+                    principal={invest.principal}
+                    monthly={invest.monthly}
+                    years={invest.years}
+                    annualRate={result.annualRate}
+                    compounding={result.compounding}
+                    taxRatePercent={taxRatePercentState}
+                    feeRatePercent={feeRatePercentState}
+                    baseYear={result.baseYear}
+                    locale={numberLocale}
+                    currency={currency}
+                  />
 
-              {/* Goal Engine (역산 목표 달성 엔진) */}
-              <div className="card">
-                <h2 className="text-lg font-semibold mb-2">
-                  {locale === "ko" ? "목표 달성 엔진" : "Future Goal Engine"}
-                </h2>
+                  {/* ==== 연도별 현금흐름 차트 (Cash Flow Layer) ==== */}
+                  <CashFlowLayerChart
+                    yearSummary={result.yearSummary}
+                    numberLocale={numberLocale}
+                    currency={currency}
+                  />
 
-                <p className="text-sm text-slate-600 mb-3">
-                  {locale === "ko"
-                    ? "목표 자산까지 필요한 월 투자금, 필요한 수익률, 필요한 초기 투자금을 역산해줍니다."
-                    : "Reverse-calculate the monthly investment, required return, or initial principal needed to reach your target."}
-                </p>
-                
-                <GoalEngineCard
-                  locale={locale}
-                  currency={currency}
-                  result={result}
-                  idealResult={idealResult}
-                  invest={invest}
-                  taxRatePercent={taxRatePercentState}
-                  feeRatePercent={feeRatePercentState}
-                />
-              </div>
+                  {/* ==== 멀티 타임라인(저장/비교) ==== */}
+                  <TimelineComparePanel
+                    numberLocale={numberLocale}
+                    currency={currency}
+                    currentScenario={{
+                      currency,
+                      numberLocale,
+                      inputs: {
+                        currency,
+                        principal: invest.principal,
+                        monthly: invest.monthly,
+                        years: invest.years,
+                        annualRate: result.annualRate,
+                        compounding: result.compounding,
+                        taxRatePercent: taxRatePercentState,
+                        feeRatePercent: feeRatePercentState,
+                      },
+                      summary: {
+                        fvNet: summary.fvNet,
+                        fvIdeal: summary.fvIdeal,
+                        drag: summary.drag,
+                        ratio: summary.ratio,
+                        totalContrib: summary.totalContrib,
+                        totalInterestNet: summary.totalInterestNet,
+                      },
+                      series: {
+                        years: (result.yearSummary || []).map((r) => r.year),
+                        net: (result.yearSummary || []).map((r) => r.closingBalanceNet),
+                      },
+                    }}
+                  />
 
-              {/* ==== Sensitivity Analysis (자산 성장 민감도 분석) ==== */}
-              <div className="card">
-                <h2 className="text-lg font-semibold mb-2">
-                  {locale === "ko" ? "자산 성장 민감도 분석" : "Growth Sensitivity Analysis"}
-                </h2>
+                  {/* Yearly Table — 복리식 */}
+                  <CompoundYearTable
+                    result={result}
+                    locale={numberLocale}
+                    currency={currency}
+                    principal={invest.principal}
+                    monthly={invest.monthly}
+                    title={locale === "ko" ? t.yearlyCompoundKo : t.yearlyCompoundEn}
+                  />
 
-                <p className="text-sm text-slate-600 mb-3">
-                  {locale === "ko"
-                    ? "수익률·세금·수수료 변동이 미래 자산에 어떤 영향을 주는지 즉시 확인해보세요."
-                    : "See how changes in rate, tax, and fees affect your future value instantly."}
-                </p>
+                  {/* Yearly Table — 단리식 */}
+                  <CompoundYearTable
+                    result={simpleResult}
+                    locale={numberLocale}
+                    currency={currency}
+                    principal={simpleInvest.principal}
+                    monthly={0}
+                    title={locale === "ko" ? t.yearlySimpleKo : t.yearlySimpleEn}
+                  />
 
-                <SensitivityPanel
-                  principal={invest.principal}
-                  monthly={invest.monthly}
-                  annualRate={result.annualRate}
-                  years={invest.years}
-                  taxRatePercent={result.taxRate * 100}
-                  feeRatePercent={result.feeRate * 100}
-                  locale={numberLocale}
-                  currency={currency}
-                />
-              </div>              
+                  {/* 비교 Summary */}
+                  <div className="card">
+                    <h2 className="text-lg font-semibold mb-3">{t.compareTitle}</h2>
 
-              {/* FAQ */}
-              <div className="card">
-                <h2 className="text-lg font-semibold mb-3">
-                  {t.faqTitle}
-                </h2>
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      {/* 복리식 */}
+                      <div className="border rounded-xl p-4">
+                        <h3 className="font-semibold mb-2">{t.planCompound}</h3>
+                        <ul className="text-sm space-y-1">
+                          <li>
+                            {t.contrib}:{" "}
+                            <ValueDisplay value={summary.totalContrib} locale={numberLocale} currency={currency} />
+                          </li>
+                          <li>
+                            {t.fv}:{" "}
+                            <ValueDisplay value={summary.fvNet} locale={numberLocale} currency={currency} />
+                          </li>
+                          <li>
+                            {t.interest}:{" "}
+                            <ValueDisplay value={summary.totalInterestNet} locale={numberLocale} currency={currency} />
+                          </li>
+                        </ul>
+                      </div>
 
-                <div className="space-y-3">
-                  {faqItems.map((item, idx) => (
-                    <details
-                      key={idx}
-                      className="border border-slate-200 rounded-lg p-3 bg-slate-50"
-                      open={idx === 0}
-                    >
-                      <summary className="cursor-pointer font-medium text-sm">
-                        {item.q}
-                      </summary>
-                      <p className="mt-2 text-sm text-slate-700 whitespace-pre-line">
-                        {item.a}
-                      </p>
-                    </details>
-                  ))}
-                </div>
-              </div>
+                      {/* 단리식 */}
+                      <div className="border rounded-xl p-4">
+                        <h3 className="font-semibold mb-2">{t.planSimple}</h3>
+                        <ul className="text-sm space-y-1">
+                          <li>
+                            {t.contrib}:{" "}
+                            <ValueDisplay
+                              value={safe(simpleResult, "totalContribution")}
+                              locale={numberLocale}
+                              currency={currency}
+                            />
+                          </li>
+                          <li>
+                            {t.fv}:{" "}
+                            <ValueDisplay
+                              value={safe(simpleResult, "futureValueNet")}
+                              locale={numberLocale}
+                              currency={currency}
+                            />
+                          </li>
+                          <li>
+                            {t.interest}:{" "}
+                            <ValueDisplay
+                              value={safe(simpleResult, "totalInterestNet")}
+                              locale={numberLocale}
+                              currency={currency}
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
 
-              {/* CTA */}
-              <CompoundCTA
-                locale={locale}
-                onDownloadPDF={handleDownloadPDF}
-              />          
-            </div> 
-            
-             {/* 하단 고정 CTA Bar */}
+                  {/* Drag Breakdown Card */}
+                  <div className="card">
+                    <h2 className="text-lg font-semibold mb-2">
+                      {locale === "ko" ? "손실요인 분해(Drag Breakdown)" : "Drag Decomposition"}
+                    </h2>
+
+                    <p className="text-sm text-slate-600 mb-3">
+                      {locale === "ko"
+                        ? "세금, 수수료, 복리효과 상실이 미래가치에 끼친 영향을 분해해 보여줍니다."
+                        : "Breakdown of how taxes, fees, and lost compounding affected your final value."}
+                    </p>
+
+                    <DragBreakdownChart data={dragBreakdown} locale={numberLocale} currency={currency} />
+                  </div>
+
+                  {/* Goal Engine */}
+                  <div className="card">
+                    <h2 className="text-lg font-semibold mb-2">
+                      {locale === "ko" ? "목표 달성 엔진" : "Future Goal Engine"}
+                    </h2>
+
+                    <p className="text-sm text-slate-600 mb-3">
+                      {locale === "ko"
+                        ? "목표 자산까지 필요한 월 투자금, 필요한 수익률, 필요한 초기 투자금을 역산해줍니다."
+                        : "Reverse-calculate the monthly investment, required return, or initial principal needed to reach your target."}
+                    </p>
+
+                    <GoalEngineCard
+                      locale={locale}
+                      currency={currency}
+                      result={result}
+                      idealResult={idealResult}
+                      invest={invest}
+                      taxRatePercent={taxRatePercentState}
+                      feeRatePercent={feeRatePercentState}
+                    />
+                  </div>
+
+                  {/* Sensitivity */}
+                  <div className="card">
+                    <h2 className="text-lg font-semibold mb-2">
+                      {locale === "ko" ? "자산 성장 민감도 분석" : "Growth Sensitivity Analysis"}
+                    </h2>
+
+                    <p className="text-sm text-slate-600 mb-3">
+                      {locale === "ko"
+                        ? "수익률·세금·수수료 변동이 미래 자산에 어떤 영향을 주는지 즉시 확인해보세요."
+                        : "See how changes in rate, tax, and fees affect your future value instantly."}
+                    </p>
+
+                    <SensitivityPanel
+                      principal={invest.principal}
+                      monthly={invest.monthly}
+                      annualRate={result.annualRate}
+                      years={invest.years}
+                      taxRatePercent={result.taxRate * 100}
+                      feeRatePercent={result.feeRate * 100}
+                      locale={numberLocale}
+                      currency={currency}
+                    />
+                  </div>
+
+                  {/* FAQ */}
+                  <div className="card">
+                    <h2 className="text-lg font-semibold mb-3">{t.faqTitle}</h2>
+
+                    <div className="space-y-3">
+                      {faqItems.map((item, idx) => (
+                        <details
+                          key={idx}
+                          className="border border-slate-200 rounded-lg p-3 bg-slate-50"
+                          open={idx === 0}
+                        >
+                          <summary className="cursor-pointer font-medium text-sm">
+                            {item.q}
+                          </summary>
+                          <p className="mt-2 text-sm text-slate-700 whitespace-pre-line">
+                            {item.a}
+                          </p>
+                        </details>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  <CompoundCTA locale={locale} onDownloadPDF={handleDownloadPDF} />
+                </>
+              )}
+            </div>
+
+            {/* 하단 고정 CTA Bar */}
+            {!isExporting && (
             <CTABar
               locale={locale}
               onDownloadPDF={handleDownloadPDF}
               onShare={() => {}}
+              mode={isProMobile ? "pro" : "basic"}
+              alwaysVisible={isProMobile}
+              onNavigate={scrollTo}
             />
+            )}
           </>
-        )}        
+        )}       
       </div>    
     </>
   );

@@ -51,6 +51,39 @@
   .card-thumb {
     @apply w-full rounded-xl mb-3 object-contain bg-slate-50;
   }
+
+  /* ===========================
+     PRO mode (tool UX flow)
+  =========================== */
+  .fm-safe-bottom {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom)); /* CTABar 같은 하단 고정 UI 대비 */
+  }
+
+  .fm-pro-toggle {
+    @apply inline-flex rounded-full border border-slate-200 bg-slate-50 overflow-hidden;
+  }
+  .fm-pro-toggle button {
+    @apply px-3 py-1.5 text-xs sm:text-sm text-slate-600;
+  }
+  .fm-pro-toggle button.active {
+    @apply bg-blue-600 text-white;
+  }
+
+  .fm-pro-nav {
+    @apply flex gap-2 overflow-x-auto py-1 -mx-1 px-1;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .fm-pro-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .fm-pro-chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs text-slate-700;
+  }
+  .fm-pro-chip.active {
+    @apply border-blue-200 bg-blue-50 text-blue-700;
+  }
 }
 
 @layer base {
@@ -613,3 +646,8 @@
     @apply mt-6;
   }
 }
+
+body.fm-exporting .fixed { display: none !important; }           /* CTABar 같은 고정요소 제거 */
+body.fm-exporting .overflow-x-auto { overflow: visible !important; } /* 가로 스크롤로 인한 캡처 끊김 방지 */
+body.fm-exporting summary { display: none !important; }          /* details summary UI 제거(선택) */
+

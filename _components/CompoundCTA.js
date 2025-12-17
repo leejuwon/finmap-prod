@@ -1,17 +1,16 @@
-import {
-  ShareIcon,
-  DownloadIcon,
-  BellIcon
-} from "@heroicons/react/outline";
-
+// _components/CompoundCTA.js
+import { ShareIcon, DownloadIcon, BellIcon } from "@heroicons/react/outline";
 import { shareKakao, shareWeb, copyUrl, shareNaver } from "../utils/share";
 
 export default function CompoundCTA({ locale = "ko", onDownloadPDF }) {
   const isKo = locale === "ko";
 
   const handleShare = async () => {
+    // 1) Web Share API
     if (await shareWeb()) return;
-    if (window?.Kakao) {
+
+    // 2) Kakao SDK
+    if (typeof window !== "undefined" && window?.Kakao) {
       shareKakao({
         title: isKo ? "FinMap 복리 계산 결과" : "Compound result",
         description: isKo
@@ -22,10 +21,14 @@ export default function CompoundCTA({ locale = "ko", onDownloadPDF }) {
       return;
     }
 
-    shareNaver({
-      title: isKo ? "FinMap 복리 계산 결과" : "Compound Result",
-      url: window.location.href,
-    });
+    // 3) Naver share (fallback)
+    if (typeof window !== "undefined") {
+      shareNaver({
+        title: isKo ? "FinMap 복리 계산 결과" : "Compound Result",
+        url: window.location.href,
+      });
+      return;
+    }
   };
 
   return (
@@ -34,8 +37,10 @@ export default function CompoundCTA({ locale = "ko", onDownloadPDF }) {
         {isKo ? "결과 공유 및 저장" : "Share & Export"}
       </h3>
 
-      <div className="grid sm:grid-cols-3 gap-3">
+      {/* ✅ 버튼 4개에 맞게: 모바일 2열, sm 이상 4열 */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         <button
+          type="button"
           className="btn-primary flex gap-2 items-center justify-center"
           onClick={onDownloadPDF}
         >
@@ -44,6 +49,7 @@ export default function CompoundCTA({ locale = "ko", onDownloadPDF }) {
         </button>
 
         <button
+          type="button"
           className="btn-secondary flex gap-2 items-center justify-center"
           onClick={handleShare}
         >
@@ -52,14 +58,19 @@ export default function CompoundCTA({ locale = "ko", onDownloadPDF }) {
         </button>
 
         <button
+          type="button"
           className="btn-outline flex gap-2 items-center justify-center"
           onClick={copyUrl}
         >
           🔗 {isKo ? "URL 복사" : "Copy URL"}
         </button>
+
         <button
+          type="button"
           className="btn-outline flex gap-2 items-center justify-center"
-          onClick={() => (window.location.href = "/tools/goal-simulator")}
+          onClick={() => {
+            if (typeof window !== "undefined") window.location.href = "/tools/goal-simulator";
+          }}
         >
           {isKo ? "목표 시뮬레이터" : "Goal Simulator"}
         </button>
@@ -72,5 +83,5 @@ export default function CompoundCTA({ locale = "ko", onDownloadPDF }) {
           : "FinMap app will support synced simulations at launch."}
       </div>
     </div>
-  ); 
+  );
 }
