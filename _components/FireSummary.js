@@ -5,7 +5,7 @@ import {
   XCircleIcon,
   ClockIcon,
   InformationCircleIcon,
-} from "@heroicons/react/solid";
+} from "@heroicons/react/24/solid";
 import { formatKrwUnit } from "../lib/fire";
 
 function formatMoney(value, locale = "ko-KR") {

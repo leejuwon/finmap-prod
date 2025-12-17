@@ -7,14 +7,12 @@ export default function Footer() {
       <div className="w-full px-4">
         <div className="w-full max-w-5xl lg:max-w-6xl mx-auto flex flex-wrap gap-4 items-center py-4 text-slate-600">
           {/* 좌측: 로고 */}
-          <Link href="/" passHref>
-            <a className="flex items-center gap-2">
-              <img
-                src="/brand/finmaphub-logo.svg"
-                alt="FinMap"
-                className="h-7 w-auto opacity-90"
-              />
-            </a>
+          <Link href="/" className="flex items-center gap-2">            
+            <img
+              src="/brand/finmaphub-logo.svg"
+              alt="FinMap"
+              className="h-7 w-auto opacity-90"
+            />            
           </Link>
           {/* 중앙: 정책 링크 */}
           <div className="flex flex-wrap gap-4 text-sm">

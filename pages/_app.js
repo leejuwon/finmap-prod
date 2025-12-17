@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import Script from 'next/script';
 import Layout from '../_components/Layout';
 import '../styles/globals.css';
+import "../lib/charts.js";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();

@@ -1,5 +1,9 @@
 // _components/CompoundCTA.js
-import { ShareIcon, DownloadIcon, BellIcon } from "@heroicons/react/outline";
+import {
+  ShareIcon,
+  ArrowDownTrayIcon as DownloadIcon,
+  BellIcon,
+} from "@heroicons/react/24/outline";
 import { shareKakao, shareWeb, copyUrl, shareNaver } from "../utils/share";
 
 export default function CompoundCTA({ locale = "ko", onDownloadPDF }) {

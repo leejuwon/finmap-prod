@@ -93,26 +93,24 @@ export default function ToolsHome() {
 
         <div className="grid gap-4 sm:grid-cols-2">
           {TOOLS.map((tool) => (
-            <Link key={tool.href} href={tool.href}>
-              <a className="card hover:shadow-md transition-shadow flex flex-col justify-between">
+            <Link key={tool.href} href={tool.href} className="card hover:shadow-md transition-shadow flex flex-col justify-between">              
               {/* 🔥 카드 썸네일 이미지 추가 */}
-                {tool.image && (
-                  <img
-                    src={tool.image}
-                    alt={tool.title}
-                    className="card-thumb mb-3"
-                  />
-                )}
+              {tool.image && (
+                <img
+                  src={tool.image}
+                  alt={tool.title}
+                  className="card-thumb mb-3"
+                />
+              )}
 
-                <div>
-                  <span className="badge mb-2 inline-block">{tool.badge}</span>
-                  <h2 className="text-lg font-semibold mb-1">{tool.title}</h2>
-                  <p className="text-sm text-slate-600">{tool.desc}</p>
-                </div>
-                <span className="mt-4 text-xs text-blue-600 font-medium">
-                  {isKo ? '자세히 보기 →' : 'See details →'}
-                </span>
-              </a>
+              <div>
+                <span className="badge mb-2 inline-block">{tool.badge}</span>
+                <h2 className="text-lg font-semibold mb-1">{tool.title}</h2>
+                <p className="text-sm text-slate-600">{tool.desc}</p>
+              </div>
+              <span className="mt-4 text-xs text-blue-600 font-medium">
+                {isKo ? '자세히 보기 →' : 'See details →'}
+              </span>              
             </Link>
           ))}
         </div>

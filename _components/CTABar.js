@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { ShareIcon, DownloadIcon } from "@heroicons/react/outline";
+import {
+  ShareIcon,
+  ArrowDownTrayIcon as DownloadIcon,
+} from "@heroicons/react/24/outline";
 
 export default function CTABar({
   locale = "ko",

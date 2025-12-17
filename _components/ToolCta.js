@@ -102,10 +102,8 @@ export default function ToolCta({ lang = 'ko', type = 'compound' }) {
       </div>
 
       <div className="flex-shrink-0">
-        <Link href={href}>
-          <a className="inline-flex items-center px-4 py-2 rounded-full bg-blue-600 text-white text-xs sm:text-sm font-medium hover:bg-blue-700 transition-colors">
-            {isKo ? config.btnKo : config.btnEn}
-          </a>
+        <Link href={href} className="inline-flex items-center px-4 py-2 rounded-full bg-blue-600 text-white text-xs sm:text-sm font-medium hover:bg-blue-700 transition-colors">        
+          {isKo ? config.btnKo : config.btnEn}        
         </Link>
       </div>
     </section>
