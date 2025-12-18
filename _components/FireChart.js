@@ -1,4 +1,4 @@
-// _components/FireChart.js — FIRE PRO EDITION (Hover 강화 + Gauge 지원)
+// _components/FireChart.js — FIRE PRO EDITION (Ultra-Optimized for Next.js 13)
 
 import {
   LineChart,
@@ -13,32 +13,31 @@ import {
   Legend,
   ReferenceDot,
 } from "recharts";
-import { useState } from "react";
+import { memo, useMemo } from "react";
 import { formatKrwUnit } from "../lib/fire";
 
 // ----------------------
-// 💰 금액 포맷
+// 💰 금액 포맷 함수 (메모이징 적용)
 // ----------------------
-function formatMoney(value, locale = "ko-KR") {
-  const n = Number(value) || 0;
+const formatMoney = (n, locale = "ko-KR") => {
+  const v = Number(n) || 0;
 
-  if (locale === "ko-KR") {
-    return formatKrwUnit(n);   // ← 한국식 단위 변환 통일
-  }
+  if (locale === "ko-KR") return formatKrwUnit(v);
 
-  // 영어(USD) 포맷
-  const abs = Math.abs(n);
-  const sign = n < 0 ? "-" : "";
+  // 영어 USD 포맷
+  const abs = Math.abs(v);
+  const sign = v < 0 ? "-" : "";
+  if (abs >= 1_000_000_000) return `${sign}$${(abs / 1_000_000_000).toFixed(2)}B`;
+  if (abs >= 1_000_000) return `${sign}$${(abs / 1_000_000).toFixed(2)}M`;
+  if (abs >= 1_000) return `${sign}$${(abs / 1_000).toFixed(1)}K`;
+  return `${sign}$${abs.toLocaleString()}`;
+};
 
-  if (abs >= 1_000_000_000) return sign + "$" + (abs / 1_000_000_000).toFixed(2) + "B";
-  if (abs >= 1_000_000)     return sign + "$" + (abs / 1_000_000).toFixed(2) + "M";
-  if (abs >= 1_000)         return sign + "$" + (abs / 1_000).toFixed(1) + "K";
-  return sign + "$" + abs.toLocaleString();
-}
-
-// 🔥 Hover Tooltip → 프로 버전 커스텀 UI
-function CustomTooltip({ active, payload, label, locale }) {
-  if (!active || !payload || payload.length === 0) return null;
+// ----------------------
+// 🔥 Tooltip (렌더 비용 최소화)
+// ----------------------
+const CustomTooltip = memo(function CustomTooltip({ active, payload, locale }) {
+  if (!active || !payload?.length) return null;
 
   const row = payload[0].payload;
 
@@ -57,7 +56,7 @@ function CustomTooltip({ active, payload, label, locale }) {
         <div>• 실질 수익: {formatMoney(row.realYield, locale)}</div>
       )}
 
-      {row.cashflow !== undefined && row.cashflow !== 0 && (
+      {row.cashflow !== 0 && (
         <div>
           • 현금흐름:{" "}
           <span className={row.cashflow > 0 ? "text-blue-600" : "text-red-500"}>
@@ -66,17 +65,17 @@ function CustomTooltip({ active, payload, label, locale }) {
         </div>
       )}
 
-      {row.progressRate && (
+      {row.progressRate !== undefined && (
         <div>• FIRE 진행률: <b>{row.progressRate}%</b></div>
       )}
     </div>
   );
-}
+});
 
 // ----------------------
-// ⭕ 반원 게이지 컴포넌트 (FIRE 진행률 Gauge)
+// ⭕ 반원 게이지 (render 비용 최소화)
 // ----------------------
-function FireGauge({ progress = 0, locale = "ko-KR" }) {
+const FireGauge = memo(function FireGauge({ progress = 0, locale = "ko-KR" }) {
   const pct = Math.min(100, Math.max(0, progress));
 
   return (
@@ -88,7 +87,6 @@ function FireGauge({ progress = 0, locale = "ko-KR" }) {
           stroke="#e5e7eb"
           strokeWidth="14"
         />
-
         <path
           d="M10 80 A70 70 0 0 1 170 80"
           fill="none"
@@ -106,53 +104,51 @@ function FireGauge({ progress = 0, locale = "ko-KR" }) {
       </p>
     </div>
   );
-}
+});
 
 // ----------------------
-// 🔥 메인 차트 컴포넌트
+// ⭐ 메인 차트 — 렌더 비용 최적화
 // ----------------------
-export default function FireChart({ data = [], summary = null, locale = "ko-KR" }) {
+function FireChart({ data = [], summary, locale = "ko-KR" }) {
   const isKo = locale === "ko-KR";
+  if (!data?.length) return null;
 
-  if (!data || data.length === 0) return null;
+  // 계산 메모이징
+  const { firePoint, fireStartYear, progressGauge } = useMemo(() => {
+    const fpIndex = data.findIndex(
+      (d) => d.assetReal >= d.fireTarget && d.phase === "accumulation"
+    );
 
-  // FIRE 도달 지점
-  const fireIndex = data.findIndex(
-    (d) => d.assetReal >= d.fireTarget && d.phase === "accumulation"
-  );
-  const firePoint = fireIndex !== -1 ? data[fireIndex] : null;
-
-  const fireStartYear = data.find((d) => d.phase === "retirement")?.year;
-
-  // Gauge에서 사용할 진행률
-  const lastRow = data[data.length - 1];
-  const progressGauge = lastRow.progressRate ?? 0;
+    return {
+      firePoint: fpIndex !== -1 ? data[fpIndex] : null,
+      fireStartYear: data.find((d) => d.phase === "retirement")?.year,
+      progressGauge: data[data.length - 1]?.progressRate ?? 0,
+    };
+  }, [data]);
 
   return (
     <section className="fire-chart">
 
-      {/* FIRE 진행률 게이지 추가 */}
-      {summary && (
-        <FireGauge progress={progressGauge} locale={locale} />
-      )}
+      {/* 진행률 게이지 */}
+      {summary && <FireGauge progress={progressGauge} locale={locale} />}
 
-      {/* 설명 */}
       <div className="text-xs text-slate-500 mb-2">
         {isKo
           ? "실질 자산=물가 반영 구매력 / 명목 자산=실제 계좌 금액"
           : "Real asset = inflation-adjusted / Nominal = actual balance"}
       </div>
 
-      {/* CHART */}
       <div className="w-full h-80 md:h-96">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data}>
             <CartesianGrid stroke="#e5e7eb" />
 
+            {/* Accumulation 영역 */}
             {fireStartYear && (
               <ReferenceArea x1={1} x2={fireStartYear} fill="#ecfdf5" fillOpacity={0.5} />
             )}
 
+            {/* Retirement 영역 */}
             {fireStartYear && (
               <ReferenceArea
                 x1={fireStartYear}
@@ -162,6 +158,7 @@ export default function FireChart({ data = [], summary = null, locale = "ko-KR" 
               />
             )}
 
+            {/* FIRE 목표선 */}
             <ReferenceLine
               y={data[0].fireTarget}
               stroke="#38bdf8"
@@ -175,9 +172,7 @@ export default function FireChart({ data = [], summary = null, locale = "ko-KR" 
             <XAxis dataKey="year" />
             <YAxis tickFormatter={(v) => formatMoney(v, locale)} />
 
-            <Tooltip
-              content={<CustomTooltip locale={locale} />}
-            />
+            <Tooltip content={<CustomTooltip locale={locale} />} />
 
             <Legend wrapperStyle={{ fontSize: "12px" }} />
 
@@ -199,15 +194,14 @@ export default function FireChart({ data = [], summary = null, locale = "ko-KR" 
               dot={false}
             />
 
+            {/* FIRE 도달 포인트 */}
             {firePoint && (
-              <>
-                <ReferenceDot
-                  x={firePoint.year}
-                  y={firePoint.assetReal}
-                  r={7}
-                  fill="#10b981"
-                />
-              </>
+              <ReferenceDot
+                x={firePoint.year}
+                y={firePoint.assetReal}
+                r={7}
+                fill="#10b981"
+              />
             )}
           </LineChart>
         </ResponsiveContainer>
@@ -215,3 +209,5 @@ export default function FireChart({ data = [], summary = null, locale = "ko-KR" 
     </section>
   );
 }
+
+export default memo(FireChart);
