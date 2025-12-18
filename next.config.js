@@ -4,6 +4,13 @@ module.exports = {
   poweredByHeader: false,
   swcMinify: false,
 
+  // ✅ i18n 추가: /en/... URL 생성
+  i18n: {
+    locales: ["ko", "en"],
+    defaultLocale: "ko",
+    localeDetection: true,
+  },
+
   async redirects() {
     return [
       { source: '/personalFinance', destination: '/category/personalFinance', permanent: true },

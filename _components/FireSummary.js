@@ -1,13 +1,16 @@
-// _components/FireSummary.js — FIXED & FINAL
-
+// _components/FireSummary.js — CTR BOOST EDITION
 import {
   CheckCircleIcon,
   XCircleIcon,
   ClockIcon,
   InformationCircleIcon,
+  ArrowTrendingUpIcon,
 } from "@heroicons/react/24/solid";
 import { formatKrwUnit } from "../lib/fire";
 
+// -----------------------
+// 금액 포맷
+// -----------------------
 function formatMoney(value, locale = "ko-KR") {
   const n = Number(value) || 0;
   if (locale === "ko-KR") return formatKrwUnit(n);
@@ -21,6 +24,9 @@ function formatMoney(value, locale = "ko-KR") {
   return sign + "$" + abs.toLocaleString("en-US");
 }
 
+// -----------------------
+// Tooltip
+// -----------------------
 function Tooltip({ text }) {
   return (
     <span className="relative group cursor-help ml-1">
@@ -32,6 +38,9 @@ function Tooltip({ text }) {
   );
 }
 
+// -------------------------------------------------------------
+// 🔥 MAIN SUMMARY COMPONENT
+// -------------------------------------------------------------
 export default function FireSummary({ lang = "ko", result }) {
   if (!result) return null;
 
@@ -56,130 +65,138 @@ export default function FireSummary({ lang = "ko", result }) {
         : "No depletion (60+ years)"
       : `${retirement.depletionYear}${isKo ? "년" : "yrs"}`;
 
-  // 안전 처리
   const safeRealReturn =
     typeof netRealReturn === "number" && !isNaN(netRealReturn)
       ? netRealReturn
       : 0;
 
-  const statusColor = canFireAtEnd
-    ? "bg-emerald-50 border-emerald-200"
-    : "bg-red-50 border-red-200";
-
-  const statusIcon = canFireAtEnd ? (
-    <CheckCircleIcon className="w-8 h-8 text-emerald-600" />
-  ) : (
-    <XCircleIcon className="w-8 h-8 text-red-500" />
-  );
-
-  const statusText = canFireAtEnd
-    ? isKo
-      ? "현재 가정에서 FIRE 달성이 가능합니다."
-      : "FIRE is achievable under current assumptions."
-    : isKo
-    ? "현재 가정에서는 FIRE 목표 달성이 어려울 수 있습니다."
-    : "Reaching FIRE may be difficult under current assumptions.";
+  // 색상 + 메시지 세트
+  const statusConfig = canFireAtEnd
+    ? {
+        box: "bg-emerald-600 text-white shadow-lg",
+        icon: <CheckCircleIcon className="w-10 h-10 text-white" />,
+        title: isKo
+          ? "현재 가정에서 FIRE 달성이 가능합니다."
+          : "FIRE is achievable under the current plan.",
+        subtitle: fireYear
+          ? isKo
+            ? `예상 달성 시점: 약 ${fireYear}년 후`
+            : `Estimated FIRE timing: in ${fireYear} years`
+          : isKo
+          ? "목표 자산에 도달하지 못합니다."
+          : "Target assets are not reached.",
+      }
+    : {
+        box: "bg-red-600 text-white shadow-lg",
+        icon: <XCircleIcon className="w-10 h-10 text-white" />,
+        title: isKo
+          ? "현재 가정에서는 FIRE 달성이 어려울 수 있습니다."
+          : "Reaching FIRE may be difficult with current assumptions.",
+        subtitle: isKo
+          ? "입력값(수익률·저축액·출금률)을 조정해보세요."
+          : "Try adjusting returns, savings, or withdrawal rate.",
+      };
 
   return (
-    <section className="mb-8">
-      {/* SUMMARY BOX */}
-      <div className={`card p-5 mb-5 shadow-sm border ${statusColor}`}>
-        <div className="flex items-center gap-4">
-          {statusIcon}
-          <div>
-            <p className="text-base font-semibold">{statusText}</p>
+    <section className="mb-10">
 
-            {fireYear ? (
-              <p className="text-xs text-slate-600 mt-1">
-                {isKo
-                  ? `예상 달성 시점: 약 ${fireYear}년 후`
-                  : `Estimated FIRE timing: in ${fireYear} years`}
-              </p>
-            ) : (
-              <p className="text-xs text-slate-600 mt-1">
-                {isKo
-                  ? "현재 조건에서는 목표 자산에 도달하지 못합니다."
-                  : "FIRE target is not reached under current assumptions."}
-              </p>
-            )}
-          </div>
+      {/* ------------------------------------------- */}
+      {/* 🔥 1) Highlight Status Banner */}
+      {/* ------------------------------------------- */}
+      <div className={`w-full rounded-2xl p-6 flex items-center gap-4 ${statusConfig.box}`}>
+        {statusConfig.icon}
+        <div>
+          <p className="text-lg font-bold">{statusConfig.title}</p>
+          <p className="text-sm opacity-90 mt-1">{statusConfig.subtitle}</p>
         </div>
       </div>
 
-      {/* 3-CARD SECTION */}
-      <div className="grid sm:grid-cols-3 gap-4">
-        
-        {/* FIRE 목표 자산 */}
-        <div className="card p-4 bg-white text-center border border-slate-200">
+      {/* ------------------------------------------- */}
+      {/* 🔥 2) 3 Summary Cards — Strong CTR */}
+      {/* ------------------------------------------- */}
+      <div className="grid sm:grid-cols-3 gap-4 mt-6">
+
+        {/* FIRE Target */}
+        <div className="p-5 rounded-xl bg-white shadow-sm border border-slate-200 hover:shadow-md transition cursor-pointer">
           <p className="text-xs text-slate-500 mb-1">
             {isKo ? "FIRE 목표 자산" : "FIRE Target"}
-            <Tooltip text={isKo ? "연 지출 ÷ 출금률 (4% rule)" : "Spending ÷ withdrawal rate"} />
+            <Tooltip text={isKo ? "연 지출 ÷ 출금률 (4% rule)" : "Spending ÷ Withdrawal rate"} />
           </p>
-          <p className="text-2xl font-bold text-emerald-600">
+          <p className="text-3xl font-bold text-emerald-600 mt-1">
             {formatMoney(fireTarget, locale)}
           </p>
         </div>
 
-        {/* 은퇴 시작 실질 자산 */}
-        <div className="card p-4 bg-white text-center border border-slate-200">
+        {/* Retirement Start Real Asset */}
+        <div className="p-5 rounded-xl bg-white shadow-sm border border-slate-200 hover:shadow-md transition cursor-pointer">
           <p className="text-xs text-slate-500 mb-1">
             {isKo ? "은퇴 시작 자산 (실질)" : "Start Assets (Real)"}
             <Tooltip text={isKo ? "물가 반영 구매력 기준" : "Inflation-adjusted"} />
           </p>
-          <p className="text-2xl font-bold text-blue-600">
+          <p className="text-3xl font-bold text-blue-600 mt-1">
             {formatMoney(retirementStartReal, locale)}
           </p>
         </div>
 
-        {/* 자산 지속 기간 */}
-        <div className="card p-4 bg-white text-center border border-slate-200">
+        {/* Asset Longevity */}
+        <div className="p-5 rounded-xl bg-white shadow-sm border border-slate-200 hover:shadow-md transition cursor-pointer">
           <p className="text-xs text-slate-500 mb-1">
             {isKo ? "자산 지속 기간" : "Asset Longevity"}
           </p>
-          <p className="flex items-center justify-center gap-2 text-2xl font-bold text-amber-600">
-            <ClockIcon className="w-6 h-6 text-amber-500" />
+          <p className="flex items-center justify-center gap-2 text-3xl font-bold text-amber-600 mt-1">
+            <ClockIcon className="w-7 h-7 text-amber-500" />
             {depletion}
           </p>
         </div>
       </div>
-      
-      <div className="mt-6 p-4 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-600 leading-relaxed">
+
+      {/* ------------------------------------------- */}
+      {/* 🔥 3) Real Return Info Panel */}
+      {/* ------------------------------------------- */}
+      <div className="mt-6 p-5 bg-slate-50 border border-slate-200 rounded-xl text-sm leading-relaxed">
+
         {isKo ? (
           <>
-            <p className="font-semibold mb-1">💡 실질 수익률(Real Return)이란?</p>
+            <p className="font-bold text-slate-700 mb-2 flex items-center gap-1">
+              <ArrowTrendingUpIcon className="w-5 h-5 text-emerald-600" />
+              실질 수익률(Real Return)
+            </p>
 
             <p>
-              실질 수익률 = (1 + (명목 수익률 – 수수료) × (1 – 세율)) ÷ (1 + 인플레이션) – 1
-              <br />
-              → 물가·세금·수수료를 모두 반영한 <b>진짜 구매력 기준 수익률</b>입니다.
+              실질 수익률은 물가·세금·수수료까지 모두 반영된
+              <b> ‘실제 구매력 기준 자산 증가율’</b>입니다.
             </p>
 
             <p className="mt-2">
               현재 실질 수익률:{" "}
-              <b>{(safeRealReturn * 100).toFixed(2)}%</b>
+              <b className="text-emerald-700 text-lg">
+                {(safeRealReturn * 100).toFixed(2)}%
+              </b>
             </p>
 
-            <p className="mt-2">
-              🔸 1% 이하 → FIRE 매우 어려움
-              <br />
-              🔸 1~3% → 평균적이며 변수에 민감
-              <br />
-              🔸 3% 이상 → FIRE 가능성 크게 증가
-            </p>
+            <ul className="mt-3 text-slate-700 text-xs leading-5">
+              <li>🔻 1% 이하 → FIRE 매우 어려움</li>
+              <li>🟡 1~3% → 평균적이며 민감</li>
+              <li>🟢 3% 이상 → FIRE 가능성 증가</li>
+            </ul>
           </>
         ) : (
           <>
-            <p className="font-semibold mb-1">💡 What is Real Return?</p>
+            <p className="font-bold text-slate-700 mb-2 flex items-center gap-1">
+              <ArrowTrendingUpIcon className="w-5 h-5 text-emerald-600" />
+              Real Return
+            </p>
 
             <p>
-              Real return = (1 + (nominal – fee)*(1 – tax)) / (1 + inflation) – 1
-              <br />
-              → The <b>true purchasing-power growth rate</b> after inflation & tax.
+              Real return = actual purchasing-power growth after tax, fees,
+              and inflation.
             </p>
 
             <p className="mt-2">
               Current real return:{" "}
-              <b>{(safeRealReturn * 100).toFixed(2)}%</b>
+              <b className="text-emerald-700 text-lg">
+                {(safeRealReturn * 100).toFixed(2)}%
+              </b>
             </p>
           </>
         )}
