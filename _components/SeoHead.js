@@ -1,16 +1,21 @@
 // _components/SeoHead.js
 import Head from "next/head";
+import { useRouter } from "next/router";
 
-export default function SeoHead({ title, desc, url = "/", image, locale = "ko" }) {
+export default function SeoHead({ title, desc, url = "/", image, locale }) {
+  const router = useRouter();
   const site = "https://www.finmaphub.com";
 
+  const effectiveLocale = locale || (router.locale === "en" ? "en" : "ko");
+
   const path = url.startsWith("/") ? url : `/${url}`;
-  const prefix = locale === "en" ? "/en" : "";
+  const prefix = effectiveLocale === "en" ? "/en" : "";
   const canonical = `${site}${prefix}${path}`;
 
-  const ogImg = image || `${site}/og-default.png`;
+  const ogImg = image
+    ? (String(image).startsWith("http") ? image : `${site}${image.startsWith("/") ? image : `/${image}`}`)
+    : `${site}/og-default.png`;
 
-  // ✅ hreflang
   const hrefKo = `${site}${path}`;
   const hrefEn = `${site}/en${path}`;
 
@@ -20,12 +25,10 @@ export default function SeoHead({ title, desc, url = "/", image, locale = "ko" }
       {desc && <meta name="description" content={desc} />}
 
       <link rel="canonical" href={canonical} />
-
       <link rel="alternate" hrefLang="ko" href={hrefKo} />
       <link rel="alternate" hrefLang="en" href={hrefEn} />
       <link rel="alternate" hrefLang="x-default" href={hrefKo} />
 
-      {/* OG / Twitter */}
       <meta property="og:title" content={title || "FinMap"} />
       {desc && <meta property="og:description" content={desc} />}
       <meta property="og:url" content={canonical} />

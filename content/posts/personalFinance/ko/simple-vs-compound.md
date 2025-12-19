@@ -1,4 +1,5 @@
 ---
+slug: "simple-vs-compound"
 title: "단리 vs 복리 — 초보 투자자가 반드시 알아야 할 최고의 금융 공식"
 datePublished: "2025-11-15"
 category: "재테크"

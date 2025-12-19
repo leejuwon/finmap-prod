@@ -177,6 +177,7 @@ export default function FireCalculatorPage({ initialLang = "ko" }) {
               <ToolCta lang={lang} type="compound" />
               <ToolCta lang={lang} type="goal" />
               <ToolCta lang={lang} type="cagr" />
+              <ToolCta lang={lang} type="dca" />
             </div>
           </>
         )}

@@ -1,5 +1,5 @@
 ---
-slug: "how-much-per-month-for-100k"
+slug: "how-much-per-month-for-100m"
 title: "How Much Should You Invest Each Month to Reach $100,000? Practical Plans for $50,000, $100,000, and $300,000 Goals"
 description: "A practical reverse-calculation guide showing how much you need to invest monthly to reach $50,000, $100,000, or $300,000. Includes realistic assumptions using 5–7% annual returns and works best when paired with the FinMap Goal Simulator."
 datePublished: "2025-11-20"

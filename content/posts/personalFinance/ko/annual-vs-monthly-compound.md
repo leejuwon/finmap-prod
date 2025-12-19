@@ -1,5 +1,5 @@
 ---
-slug: "economics-annual-vs-monthly-compound"
+slug: "annual-vs-monthly-compound"
 title: "연복리 vs 월복리: 목표 도달 기간은 얼마나 달라질까?"
 description: "연복리와 월복리의 차이를 실제 수치와 예시로 설명하고, 목표 금액 도달 속도에 어떤 영향을 미치는지 쉽게 이해할 수 있도록 정리했습니다."
 datePublished: "2025-11-23"

@@ -4,9 +4,11 @@ import {
   ArrowDownTrayIcon as DownloadIcon,
   BellIcon,
 } from "@heroicons/react/24/outline";
+import { useRouter } from "next/router";
 import { shareKakao, shareWeb, copyUrl, shareNaver } from "../utils/share";
 
 export default function CompoundCTA({ locale = "ko", onDownloadPDF }) {
+  const router = useRouter();
   const isKo = locale === "ko";
 
   const handleShare = async () => {
@@ -73,7 +75,8 @@ export default function CompoundCTA({ locale = "ko", onDownloadPDF }) {
           type="button"
           className="btn-outline flex gap-2 items-center justify-center"
           onClick={() => {
-            if (typeof window !== "undefined") window.location.href = "/tools/goal-simulator";
+            // ✅ Keep current locale when navigating
+            router.push("/tools/goal-simulator", undefined, { locale });
           }}
         >
           {isKo ? "목표 시뮬레이터" : "Goal Simulator"}

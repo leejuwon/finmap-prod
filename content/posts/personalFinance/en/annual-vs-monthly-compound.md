@@ -1,5 +1,5 @@
 ---
-slug: "economics-annual-vs-monthly-compound-en"
+slug: "annual-vs-monthly-compound"
 title: "Annual vs Monthly Compounding: How Much Faster Can You Reach Your Goal?"
 description: "A simple explanation of the difference between annual and monthly compounding and how it affects your time to reach financial goals."
 datePublished: "2025-11-23"

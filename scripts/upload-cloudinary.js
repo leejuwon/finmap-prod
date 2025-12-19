@@ -7,7 +7,7 @@ const { uploadImage } = require('../lib/cloudinary');
 const LOCAL_DIR = path.join(__dirname, '..', 'images-to-upload');
 
 // Cloudinary 안에서 폴더 구조 (예: blog/cagr)
-const CLOUDINARY_FOLDER = 'blog/economicInfo';
+const CLOUDINARY_FOLDER = 'blog/tools';
 
 async function run() {
   if (!fs.existsSync(LOCAL_DIR)) {

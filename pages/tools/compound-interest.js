@@ -1,8 +1,9 @@
 // pages/tools/compound-interest.js
 import { useMemo, useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import SeoHead from "../../_components/SeoHead";
 import CTABar from "../../_components/CTABar";
-//import { downloadPDF } from "../../_components/PDFGenerator";
 import CompoundForm from "../../_components/CompoundForm";
 import CompoundChart from "../../_components/CompoundChart";
 import CompoundYearTable from "../../_components/CompoundYearTable";
@@ -14,15 +15,13 @@ import ValueDisplay, { formatMoneyShort } from "../../_components/ValueDisplay";
 import ScenarioPanel from "../../_components/ScenarioPanel";
 import TimelineComparePanel from "../../_components/TimelineComparePanel";
 import CashFlowLayerChart from "../../_components/CashFlowLayerChart";
-
+import ToolCta from "../../_components/ToolCta";
 
 import {
   calcCompound,
   calcCompoundNoTaxFee,
-  calcSimpleLump,  
+  calcSimpleLump,
 } from "../../lib/compound";
-
-import { getInitialLang } from "../../lib/lang";
 
 // FAQ JSON-LD 출력
 export function JsonLd({ data }) {
@@ -35,29 +34,22 @@ export function JsonLd({ data }) {
 }
 
 export default function CompoundPage() {
-
-  // PDF 처리 함수 
-  //const handleDownloadPDF = () => downloadPDF("pdf-target", "compound-result.pdf");
-
   const [isExporting, setIsExporting] = useState(false);
 
   const handleDownloadPDF = async () => {
     setIsExporting(true);
     document.body.classList.add("fm-exporting");
 
-    // details(접힌 영역) 있으면 전부 펼쳐서 캡처
     const target = document.getElementById("pdf-target");
     const details = target ? Array.from(target.querySelectorAll("details")) : [];
     const prevOpen = details.map((d) => d.open);
     details.forEach((d) => (d.open = true));
 
-    // 렌더 안정화 대기(차트/레이아웃)
     await new Promise((r) => setTimeout(r, 400));
 
     const { downloadPDF } = await import("../../_components/PDFGenerator");
     await downloadPDF("pdf-target", "compound-result.pdf");
 
-    // 원복
     details.forEach((d, i) => (d.open = prevOpen[i]));
     document.body.classList.remove("fm-exporting");
     setIsExporting(false);
@@ -66,9 +58,9 @@ export default function CompoundPage() {
   // ----------------------------
   // 언어 상태
   // ----------------------------
-  const [lang, setLang] = useState("ko");
-
-  const locale = lang === "ko" ? "ko" : "en";
+  const router = useRouter();
+  const lang = router.locale === "en" ? "en" : "ko";
+  const locale = lang; // "ko" | "en"
   const numberLocale = lang === "ko" ? "ko-KR" : "en-US";
 
   // ----------------------------
@@ -82,7 +74,6 @@ export default function CompoundPage() {
   const [uiMode, setUiMode] = useState("basic"); // "basic" | "pro"
   const [isMobile, setIsMobile] = useState(false);
 
-  // 섹션 스크롤 네비게이션용 ref
   const sectionEls = useRef({});
 
   const scrollTo = (id) => {
@@ -91,7 +82,6 @@ export default function CompoundPage() {
     el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  // 최초 uiMode: 저장값 우선, 없으면 모바일에서 pro 기본
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -99,11 +89,8 @@ export default function CompoundPage() {
     setIsMobile(mobile);
 
     const saved = window.localStorage.getItem("fm_ui_mode_compound");
-    if (saved === "basic" || saved === "pro") {
-      setUiMode(saved);
-    } else {
-      setUiMode(mobile ? "pro" : "basic");
-    }
+    if (saved === "basic" || saved === "pro") setUiMode(saved);
+    else setUiMode(mobile ? "pro" : "basic");
 
     const onResize = () => {
       setIsMobile(window.matchMedia("(max-width: 640px)").matches);
@@ -121,12 +108,11 @@ export default function CompoundPage() {
 
   const isProMobile = uiMode === "pro" && isMobile;
 
-
   // ----------------------------
   // 계산 결과 상태
   // ----------------------------
-  const [result, setResult] = useState(null);          // 세후 복리식
-  const [idealResult, setIdealResult] = useState(null); // 세전 복리식
+  const [result, setResult] = useState(null);
+  const [idealResult, setIdealResult] = useState(null);
   const [simpleResult, setSimpleResult] = useState(null);
 
   const [taxRatePercentState, setTaxRatePercentState] = useState(15.4);
@@ -145,38 +131,25 @@ export default function CompoundPage() {
     years: 0,
   });
 
-  // ----------------------------
-  // 초기 언어 설정 (전역 이벤트)
-  // ----------------------------
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const initial = getInitialLang();
-    setLang(initial);
-    setCurrency(initial === "ko" ? "KRW" : "USD");
-
-    const handler = (e) => {
-      const next = e.detail || "ko";
-      setLang(next);
-      setCurrency(next === "ko" ? "KRW" : "USD");
-    };
-
-    window.addEventListener("fm_lang_change", handler);
-    return () => window.removeEventListener("fm_lang_change", handler);
-  }, []);  
+    if (!router.isReady) return;
+    setCurrency(router.locale === "en" ? "USD" : "KRW");
+  }, [router.isReady, router.locale]);
 
   // ----------------------------
-  // 텍스트 리소스
+  // ✅ SEO 텍스트(Title/Desc) 강화
   // ----------------------------
   const t = useMemo(
     () => ({
-      title: locale === "ko" ? "복리 계산기" : "Compound Interest Calculator",
+      title:
+        locale === "ko"
+          ? "복리 이자 계산기 (월복리/연복리) · 적립식 투자 · 세금·수수료 반영"
+          : "Compound Interest Calculator (Monthly/Annual) · Contributions · Tax/Fee",
       desc:
         locale === "ko"
-          ? "초기 투자금·월 적립금·수익률·기간으로 미래가치를 계산하세요!"
-          : "Calculate future value using your principal, monthly contribution, return, and time horizon!",
+          ? "초기 투자금, 월 적립금, 수익률, 기간을 입력하면 복리 미래가치(FV)를 계산합니다. 월복리/연복리 비교, 세전·세후(세금·수수료) 영향, 연도별 표/차트까지 한 번에 확인하세요."
+          : "Calculate future value (FV) from principal, monthly contribution, return, and time horizon. Compare monthly vs annual compounding, ideal vs net (tax/fee), and view charts & yearly tables.",
 
-      // Summary 카드
       fv: locale === "ko" ? "세후 총자산" : "Net Future Value",
       fvIdeal: locale === "ko" ? "세전 기준 미래가치" : "Ideal (No Tax/Fee)",
       drag: locale === "ko" ? "세금·수수료 영향" : "Tax/Fee Drag",
@@ -185,7 +158,6 @@ export default function CompoundPage() {
       interest: locale === "ko" ? "세후 이자" : "Net Interest",
 
       chartTitle: locale === "ko" ? "자산 성장 차트" : "Growth Chart",
-
       yearlyCompoundKo: "연간 요약 테이블 (월 적립 복리식)",
       yearlyCompoundEn: "Yearly Summary (Compound / Monthly)",
       yearlySimpleKo: "연간 요약 테이블 (단리식 일시불)",
@@ -195,12 +167,68 @@ export default function CompoundPage() {
       planCompound: locale === "ko" ? "복리식(월 적립)" : "Compound (Monthly)",
       planSimple: locale === "ko" ? "단리식(일시불)" : "Simple (Lump-sum)",
 
-      // FAQ
       faqTitle: locale === "ko" ? "복리 계산기 FAQ" : "FAQ",
     }),
     [locale]
   );
-  
+
+  // ----------------------------
+  // ✅ 내부링크(추천 가이드 글)
+  // 2단계에서: 네가 제공하는 실제 제목/설명(ko/en)을 여기 배열만 교체하면 됨
+  // - ko/en 포스팅이 동일 slug를 공유하고, 상위 폴더만 ko/en로 분리되어 있다는 전제
+  // - Next.js locale 유지: <Link locale={locale} />
+  // ----------------------------
+  const relatedGuides = useMemo(
+    () => [
+      {
+        slug: "simple-vs-compound",
+        tagKo: "기초 개념",
+        tagEn: "Basics",
+        titleKo: "단리 vs 복리: 차이와 공식 한 번에 정리",
+        titleEn: "Simple vs Compound: the key difference",
+        descKo: "단리·복리의 구조/공식/예시를 빠르게 이해하고, 복리 계산기로 바로 테스트해보세요.",
+        descEn: "Understand formulas and real examples, then test results in the compound calculator.",
+      },
+      {
+        slug: "annual-vs-monthly-compound",
+        tagKo: "월복리",
+        tagEn: "Compounding",
+        titleKo: "월복리 vs 연복리: 주기 차이가 결과를 바꾸는 이유",
+        titleEn: "Monthly vs Annual Compounding: why it changes",
+        descKo: "복리 주기(월/연)에 따라 미래가치(FV)가 어떻게 달라지는지 숫자로 확인합니다.",
+        descEn: "See how compounding frequency affects future value (FV) with numbers.",
+      },
+      {
+        slug: "how-much-per-month-for-100m",
+        tagKo: "적립식",
+        tagEn: "Contributions",
+        titleKo: "목표 금액을 위한 월 투자금: 역산으로 계획 세우기",
+        titleEn: "Monthly contribution planning: reverse-calc",
+        descKo: "목표금액·기간·수익률로 필요한 월 적립금을 역산해 투자 계획을 만듭니다.",
+        descEn: "Reverse-calculate monthly contribution from target, years, and expected return.",
+      },
+      {
+        slug: "goal-amount-fast-strategy",
+        tagKo: "전략",
+        tagEn: "Strategy",
+        titleKo: "목표에 더 빨리 도달하는 방법: 원금·수익률·기간의 균형",
+        titleEn: "Reach goals faster: balance the levers",
+        descKo: "원금/월적립/수익률/기간 중 무엇을 조정해야 목표 도달이 빨라지는지 정리합니다.",
+        descEn: "Which lever matters most—principal, contribution, return, or time.",
+      },
+      {
+        slug: "personal-start-5steps",
+        tagKo: "입문",
+        tagEn: "Getting started",
+        titleKo: "사회초년생 재테크 시작 5단계: 예산·비상금·투자 루틴",
+        titleEn: "Personal finance start: 5 steps",
+        descKo: "예산→비상금→저축→투자 순서로, 장기 복리 효과를 만드는 루틴을 제안합니다.",
+        descEn: "A simple routine—budget, emergency fund, saving, investing—built for compounding.",
+      },
+    ],
+    []
+  );
+
   function safe(obj, key) {
     return (obj && Number(obj[key])) || 0;
   }
@@ -218,74 +246,57 @@ export default function CompoundPage() {
   }, [result, idealResult]);
 
   // ----------------------------
-  // FAQ 데이터 및 JSON-LD
+  // ✅ FAQ 키워드 보강(검색 의도: 월복리/적립식/복리이자/미래가치)
   // ----------------------------
   const faqItems = useMemo(
-  () =>
-    locale === "ko"
-      ? [
-          {
-            q: "세전/세후 계산 차이는 무엇인가요?",
-            a: "세전 계산은 세금과 수수료가 없다고 가정한 이상적인 미래가치이며, 세후 계산은 실제 투자에서 발생하는 세금·수수료를 모두 반영한 현실적인 미래가치입니다.",
-          },
-          {
-            q: "계산 금액 단위는 어떻게 되나요?",
-            a: "KRW를 선택하면 만원 단위로 입력하며, USD는 실제 달러 금액으로 입력합니다.",
-          },
-          {
-            q: "세금과 수수료는 어떻게 반영되나요?",
-            a: "이자 소득세 15.4%, 연간 수수료 0.5%를 기본값으로 반영합니다. 사용자가 원하면 값을 수정할 수 있습니다.",
-          },
-          {
-            q: "월복리와 연복리의 차이는 무엇인가요?",
-            a: "월단위로 계산하면 더 자주 복리 효과를 누릴 수 있어 같은 연 수익률이라도 월복리가 더 높은 미래가치를 만들게 됩니다.",
-          },
-          {
-            q: "목표 달성 엔진은 어떻게 계산되나요?",
-            a: "목표 금액을 기준으로 세 가지 값을 역산합니다.\n1) 필요 월 투자금: 초기 투자금·수익률·기간을 고정하고 월 적립금(PMT)을 역산합니다.\n2) 필요 수익률: 초기 투자금·월 적립금·기간을 유지하고 목표에 맞는 수익률을 수치해석 방식으로 계산합니다.\n3) 필요 초기 투자금: 월 적립금·수익률·기간을 유지한 채 초기 투자금(P)을 역산합니다.",
-          },
-          {
-            q: "자산 성장 민감도 분석의 그래프가 항상 비슷한 모양으로 보이는 이유는 무엇인가요?",
-            a: "수익률 변화는 미래가치에 큰 폭의 영향을 주지만 수수료·세금 변화는 상대적으로 작게 영향을 미칩니다. 따라서 y축 스케일이 크게 설정되면 수수료·세금 변화는 거의 평평하게 보일 수 있습니다. 이는 정상적인 계산 결과입니다.",
-          },
-          {
-            q: "자산 성장 민감도 분석의 y축은 어떻게 결정되나요?",
-            a: "수익률 변동으로 인한 최대 미래가치를 기준으로 자동 스케일링됩니다. 그 결과 세금·수수료 변화의 값이 상대적으로 작으면 평평하게 보일 수 있습니다.",
-          },
-        ]
-      : [
-          {
-            q: "What is the difference between net and ideal results?",
-            a: "Ideal results ignore taxes and fees, while net results reflect the actual performance after applying tax and fee deductions.",
-          },
-          {
-            q: "How should I input amounts?",
-            a: "KRW inputs use 10,000 KRW units (e.g., 1000 → 10,000,000 KRW). USD uses real dollar values.",
-          },
-          {
-            q: "How are taxes and fees applied?",
-            a: "The default settings include a 15.4% tax on interest income and a 0.5% annual fee rate. You may modify these values.",
-          },
-          {
-            q: "What is the difference between monthly compounding and annual compounding?",
-            a: "Monthly compounding applies interest more frequently, resulting in a higher future value compared to annual compounding with the same annual rate.",
-          },
-          {
-            q: "How does the Goal Engine calculate required monthly investment, rate, and initial capital?",
-            a: "The Goal Engine reverses one variable while keeping the others fixed:\n1) Required monthly investment: Solves PMT while principal, rate, and period are fixed.\n2) Required rate of return: Keeps principal and PMT fixed and finds the rate via numerical methods.\n3) Required initial capital: Solves for principal while keeping PMT and rate fixed.",
-          },
-          {
-            q: "Why does the sensitivity analysis graph look similar even when input values change?",
-            a: "Rate changes produce exponentially large differences, while fee and tax changes affect the outcome much less. This causes fee/tax lines to appear flat when scaled together with rate changes.",
-          },
-          {
-            q: "How is the Y-axis range determined in sensitivity analysis?",
-            a: "The Y-axis auto-scales based on the highest projected future value (typically from the positive rate-change scenario). Smaller changes like tax or fee variation may appear flat by comparison.",
-          },
-        ],
+    () =>
+      locale === "ko"
+        ? [
+            {
+              q: "복리 이자 계산기는 무엇을 계산하나요?",
+              a: "초기 투자금(원금)과 월 적립금(적립식 투자), 연 수익률, 기간을 입력하면 복리 방식으로 미래가치(FV)를 계산합니다. 월복리/연복리 같은 복리 주기 차이도 비교할 수 있습니다.",
+            },
+            {
+              q: "월복리 계산기와 연복리 계산기 결과가 왜 다른가요?",
+              a: "같은 연 수익률이라도 이자가 더 자주 재투자(복리 적용)되면 최종 미래가치가 커집니다. 그래서 일반적으로 월복리가 연복리보다 미래가치가 높게 나옵니다.",
+            },
+            {
+              q: "세전/세후 계산 차이는 무엇인가요?",
+              a: "세전 계산은 세금과 수수료가 없다고 가정한 이상적인 미래가치이며, 세후 계산은 실제 투자에서 발생하는 세금·수수료를 반영한 현실적인 미래가치입니다.",
+            },
+            {
+              q: "계산 금액 단위는 어떻게 되나요?",
+              a: "KRW를 선택하면 만원 단위로 입력하며, USD는 실제 달러 금액으로 입력합니다.",
+            },
+            {
+              q: "세금과 수수료는 어떻게 반영되나요?",
+              a: "기본값으로 이자 소득세 15.4%, 연간 수수료 0.5%를 반영합니다. 투자 상품/계좌 유형에 따라 다를 수 있어 사용자가 수정할 수 있습니다.",
+            },
+          ]
+        : [
+            {
+              q: "What does this compound interest calculator do?",
+              a: "It calculates future value (FV) using principal, monthly contributions (DCA-like deposits), annual return, and time horizon. You can also compare monthly vs annual compounding.",
+            },
+            {
+              q: "Why do monthly and annual compounding differ?",
+              a: "More frequent compounding reinvests returns sooner, which typically results in a higher future value than annual compounding with the same annual rate.",
+            },
+            {
+              q: "What is the difference between net and ideal results?",
+              a: "Ideal results ignore taxes and fees, while net results reflect performance after tax and fee deductions.",
+            },
+            {
+              q: "How should I input amounts?",
+              a: "KRW inputs use 10,000 KRW units, while USD uses real dollar values.",
+            },
+            {
+              q: "How are taxes and fees applied?",
+              a: "Defaults include 15.4% tax on interest and 0.5% annual fee, and you can customize them.",
+            },
+          ],
     [locale]
   );
-
 
   const faqJsonLd = useMemo(
     () => ({
@@ -299,6 +310,97 @@ export default function CompoundPage() {
     }),
     [faqItems]
   );
+
+  const howtoJsonLd = useMemo(() => {
+    const isKo = locale === "ko";
+    return {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: isKo ? "복리 이자 계산 방법" : "How to calculate compound interest",
+      step: isKo
+        ? [
+            { "@type": "HowToStep", name: "원금 입력", text: "초기 투자금(원금)을 입력합니다." },
+            { "@type": "HowToStep", name: "월 적립금 입력", text: "매월 추가 투자/저축 금액을 입력합니다." },
+            { "@type": "HowToStep", name: "수익률·기간 설정", text: "연 수익률과 투자 기간(년)을 설정합니다." },
+            { "@type": "HowToStep", name: "복리 주기 선택", text: "월복리/연복리 등 복리 주기를 선택합니다." },
+            { "@type": "HowToStep", name: "세금·수수료 반영", text: "세금/수수료를 입력해 세후 미래가치를 확인합니다." },
+          ]
+        : [
+            { "@type": "HowToStep", name: "Enter principal", text: "Input your initial investment (principal)." },
+            { "@type": "HowToStep", name: "Enter monthly contribution", text: "Add a fixed monthly contribution amount." },
+            { "@type": "HowToStep", name: "Set return and years", text: "Set annual return and time horizon." },
+            { "@type": "HowToStep", name: "Choose compounding", text: "Select monthly or annual compounding." },
+            { "@type": "HowToStep", name: "Apply tax and fees", text: "Adjust tax/fee settings to see net FV." },
+          ],
+    };
+  }, [locale]);
+
+  const breadcrumbJsonLd = useMemo(() => {
+    const site = "https://www.finmaphub.com";
+    const prefix = locale === "en" ? "/en" : "";
+    return {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: locale === "ko" ? "홈" : "Home", item: `${site}${prefix}/` },
+        { "@type": "ListItem", position: 2, name: locale === "ko" ? "금융 계산기" : "Tools", item: `${site}${prefix}/tools` },
+        { "@type": "ListItem", position: 3, name: locale === "ko" ? "복리 계산기" : "Compound Interest", item: `${site}${prefix}/tools/compound-interest` },
+      ],
+    };
+  }, [locale]);
+
+  // ----------------------------
+  // ✅ Breadcrumb + App schema (구글에 “도구 페이지”로 더 명확히 알림)
+  // ----------------------------
+  const extraJsonLd = useMemo(() => {
+    const site = "https://www.finmaphub.com";
+    const prefix = locale === "en" ? "/en" : "";
+    const url = `${site}${prefix}/tools/compound-interest`;
+
+    const breadcrumb = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: locale === "ko" ? "홈" : "Home",
+          item: `${site}${prefix}/`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: locale === "ko" ? "금융 계산기" : "Tools",
+          item: `${site}${prefix}/tools`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: locale === "ko" ? "복리 계산기" : "Compound Interest",
+          item: url,
+        },
+      ],
+    };
+
+    const app = {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name:
+        locale === "ko"
+          ? "FinMap 복리 이자 계산기"
+          : "FinMap Compound Interest Calculator",
+      applicationCategory: "FinanceApplication",
+      operatingSystem: "Web",
+      url,
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+    };
+
+    return [breadcrumb, app];
+  }, [locale]);
 
   // ----------------------------
   // 계산 처리
@@ -316,7 +418,6 @@ export default function CompoundPage() {
 
     const baseYear = new Date().getFullYear();
 
-    // 세후(실제) 복리 계산
     const compound = calcCompound({
       principal: p,
       monthly: m,
@@ -328,7 +429,6 @@ export default function CompoundPage() {
       baseYear,
     });
 
-    // 세전(이상치) 복리 계산
     const ideal = calcCompoundNoTaxFee({
       principal: p,
       monthly: m,
@@ -340,7 +440,6 @@ export default function CompoundPage() {
 
     const totalInvested = p + m * 12 * y;
 
-    // 단리 계산
     const simple = calcSimpleLump({
       principal: totalInvested,
       annualRate: r,
@@ -369,11 +468,8 @@ export default function CompoundPage() {
 
   const hasResult = !!result && !!idealResult;
 
-  const fmtShort = (v) => formatMoneyShort(Number(v) || 0, numberLocale);
-
   const insights = useMemo(() => {
     if (!hasResult) return [];
-
     const fmt = (v) => formatMoneyShort(Number(v) || 0, numberLocale);
     const dragPct = summary.fvIdeal > 0 ? (summary.drag / summary.fvIdeal) * 100 : 0;
 
@@ -387,22 +483,16 @@ export default function CompoundPage() {
 
     return [
       `Your net result is about ${summary.ratio.toFixed(1)}% of the ideal (no tax/fee) case.`,
-      `Taxes/fees (and compounding drag) reduced the final value by ~${fmt(summary.drag)} (${dragPct.toFixed(1)}%).`,
+      `Taxes/fees reduced the final value by ~${fmt(summary.drag)} (${dragPct.toFixed(1)}%).`,
       `Total contribution is ${fmt(summary.totalContrib)}, and net interest is ${fmt(summary.totalInterestNet)}.`,
     ];
   }, [hasResult, locale, numberLocale, summary]);
 
-
-
-  // ----------------------------
-  // Drag Breakdown 계산
-  // ----------------------------
   const dragBreakdown = useMemo(() => {
     if (!result || !idealResult) return null;
 
     const rowsNet = result.yearSummary;
     const rowsIdeal = idealResult.yearSummary;
-
     if (!rowsNet.length || !rowsIdeal.length) return null;
 
     const lastNet = rowsNet[rowsNet.length - 1];
@@ -413,8 +503,6 @@ export default function CompoundPage() {
 
     const taxDrag = lastNet.cumulativeTax;
     const feeDrag = lastNet.cumulativeFee;
-
-    // Compound Loss = 나머지
     const compoundDrag = (idealFV - netFV) - (taxDrag + feeDrag);
 
     return {
@@ -427,21 +515,6 @@ export default function CompoundPage() {
     };
   }, [result, idealResult]);
 
-
-  // ----------------------------
-  // Summary 값 계산
-  // ----------------------------
-  /*
-  const fvNet = safe(result, "futureValueNet");
-  const fvIdeal = safe(idealResult, "futureValueNet");
-
-  const totalContrib = safe(result, "totalContribution");
-  const totalInterestNet = safe(result, "totalInterestNet");
-
-  const drag = fvIdeal - fvNet;
-  const ratio = fvIdeal > 0 ? (fvNet / fvIdeal) * 100 : 100;
-  */
-
   // ----------------------------
   // 렌더링
   // ----------------------------
@@ -452,14 +525,23 @@ export default function CompoundPage() {
         desc={t.desc}
         url="/tools/compound-interest"
         image="/og/compound.jpg"
+        locale={locale}
       />
 
+      {/* ✅ 구조화데이터: FAQ + Breadcrumb + App */}
       <JsonLd data={faqJsonLd} />
-      
-      <div className="py-6 grid gap-6 fm-mobile-full">
+      <JsonLd data={howtoJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
+      {extraJsonLd.map((d, i) => (
+        <JsonLd key={i} data={d} />
+      ))}
+
+      <main className="py-6 grid gap-6 fm-mobile-full">
         {/* 타이틀 + 모드 토글 */}
-        <div className="flex items-start justify-between gap-3">
-          <h1 className="text-xl sm:text-2xl font-bold">{t.title}</h1>
+        <header className="flex items-start justify-between gap-3">
+          <h1 className="text-xl sm:text-2xl font-bold">
+            {locale === "ko" ? "복리 이자 계산기" : "Compound Interest Calculator"}
+          </h1>
 
           <div className="fm-pro-toggle shrink-0">
             <button
@@ -477,44 +559,69 @@ export default function CompoundPage() {
               {locale === "ko" ? "PRO" : "PRO"}
             </button>
           </div>
-        </div>
+        </header>
 
-        {/* PRO 모바일일 때: 한 화면 흐름 네비(요약→차트→해석→CTA) */}
-        {isProMobile && hasResult && (
-          <div className="fm-pro-nav">
-            <button type="button" className="fm-pro-chip" onClick={() => scrollTo("sum")}>
-              {locale === "ko" ? "요약" : "Summary"}
-            </button>
-            <button type="button" className="fm-pro-chip" onClick={() => scrollTo("chart")}>
-              {locale === "ko" ? "차트" : "Chart"}
-            </button>
-            <button type="button" className="fm-pro-chip" onClick={() => scrollTo("insight")}>
-              {locale === "ko" ? "해석" : "Insights"}
-            </button>
-            <button type="button" className="fm-pro-chip" onClick={() => scrollTo("cta")}>
-              {locale === "ko" ? "CTA" : "CTA"}
-            </button>
-          </div>
-        )}
-
-        {/* 설명 카드 */}
-        <div className="card w-full">
+        {/* ✅ “설명형 콘텐츠(H2)” 추가: 키워드 자연 삽입 */}
+        <section className="card w-full">
+          <h2 className="text-base font-semibold mb-2">
+            {locale === "ko"
+              ? "월복리·연복리, 적립식 투자까지 한 번에 계산"
+              : "Monthly/annual compounding + contributions in one place"}
+          </h2>
           <p className="text-sm text-slate-600">
             {locale === "ko"
-              ? "세전·세후, 복리 vs 단리, 세금·수수료 영향까지 한 번에 비교할 수 있는 고급 복리 계산기입니다!"
-              : "A full-featured compound calculator comparing net vs ideal, compound vs simple, and tax impact!"}
+              ? "초기 투자금(원금)과 월 적립금(적립식), 연 수익률, 기간을 입력하면 복리 방식으로 미래가치(FV)를 계산합니다. 세전·세후(세금·수수료) 결과를 비교하고, 연도별 표/차트로 자산 성장 경로를 확인할 수 있어요."
+              : "Enter principal, monthly contribution, annual return, and years to calculate FV. Compare ideal vs net (tax/fee) and explore growth with charts and yearly tables."}
           </p>
-        </div>
+
+          <div className="mt-3 grid gap-2 md:grid-cols-3 text-sm">
+            <div className="border rounded-xl p-3 bg-slate-50">
+              <div className="font-semibold mb-1">
+                {locale === "ko" ? "복리 미래가치(FV)" : "Future Value (FV)"}
+              </div>
+              <div className="text-slate-600">
+                {locale === "ko"
+                  ? "복리 이자 효과로 자산이 얼마나 늘어나는지"
+                  : "How compounding grows your assets"}
+              </div>
+            </div>
+
+            <div className="border rounded-xl p-3 bg-slate-50">
+              <div className="font-semibold mb-1">
+                {locale === "ko" ? "월복리 vs 연복리" : "Monthly vs Annual"}
+              </div>
+              <div className="text-slate-600">
+                {locale === "ko"
+                  ? "복리 주기 차이에 따른 결과 비교"
+                  : "Compare compounding frequency"}
+              </div>
+            </div>
+
+            <div className="border rounded-xl p-3 bg-slate-50">
+              <div className="font-semibold mb-1">
+                {locale === "ko" ? "세금·수수료 반영" : "Tax & Fee"}
+              </div>
+              <div className="text-slate-600">
+                {locale === "ko"
+                  ? "현실적인 세후 미래가치 확인"
+                  : "See net results after costs"}
+              </div>
+            </div>
+          </div>
+        </section>        
 
         {/* Form */}
-        <div className="card">
+        <section className="card">
+          <h2 className="text-base font-semibold mb-3">
+            {locale === "ko" ? "복리 계산 입력" : "Inputs"}
+          </h2>
           <CompoundForm
             onSubmit={onSubmit}
             locale={locale}
             currency={currency}
             onCurrencyChange={setCurrency}
           />
-        </div>
+        </section>
 
         {/* 결과 영역 */}
         {hasResult && (
@@ -1090,24 +1197,87 @@ export default function CompoundPage() {
 
                   {/* CTA */}
                   <CompoundCTA locale={locale} onDownloadPDF={handleDownloadPDF} />
+
+                  <section className="card">
+                    <h2 className="text-base font-semibold mb-2">
+                      {locale === "ko"
+                        ? "월복리·연복리, 적립식 투자까지 한 번에 계산"
+                        : "Monthly/Annual compounding + contributions in one place"}
+                    </h2>
+
+                    <p className="text-sm text-slate-600">
+                      {locale === "ko"
+                        ? "이 복리 계산기는 원금(초기 투자금)과 월 적립금(적립식), 연 수익률, 기간을 입력해 미래가치(FV)를 계산합니다. 월복리/연복리처럼 복리 주기 차이에 따른 결과도 비교할 수 있고, 세금·수수료를 반영해 현실적인 세후 총자산을 확인할 수 있어요."
+                        : "Enter principal, monthly contribution, annual return, and years to calculate FV. Compare monthly vs annual compounding and check net results after tax/fees."}
+                    </p>
+                    <p>
+                      <div className="font-semibold mb-2">
+                        {locale === "ko" ? "관련 계산기" : "Related tools"}
+                      </div>`
+                    </p>
+                    <div className="tool-cta-section">
+                      <ToolCta lang={lang} type="fire" />
+                      <ToolCta lang={lang} type="goal" />
+                      <ToolCta lang={lang} type="cagr" />
+                      <ToolCta lang={lang} type="dca" />
+                    </div>
+                  </section>
                 </>
               )}
             </div>
 
             {/* 하단 고정 CTA Bar */}
             {!isExporting && (
-            <CTABar
-              locale={locale}
-              onDownloadPDF={handleDownloadPDF}
-              onShare={() => {}}
-              mode={isProMobile ? "pro" : "basic"}
-              alwaysVisible={isProMobile}
-              onNavigate={scrollTo}
-            />
+              <CTABar
+                locale={locale}
+                onDownloadPDF={handleDownloadPDF}
+                onShare={() => {}}
+                mode={isProMobile ? "pro" : "basic"}
+                alwaysVisible={isProMobile}
+                onNavigate={scrollTo}
+              />
             )}
           </>
-        )}       
-      </div>    
+        )}
+
+        {/* ✅ 내부링크: 추천 가이드 글 5개 (SEO + 체류시간 + 내부탐색) */}
+        <section className="card">
+          <div className="flex items-center justify-between gap-3 mb-3">
+            <h2 className="text-base font-semibold">
+              {locale === "ko" ? "추천 가이드 글" : "Recommended guides"}
+            </h2>
+            <Link
+              href={locale === "ko" ? `/category/personalFinance`:`/en/category/personalFinance`}
+              locale={locale}
+              className="text-sm text-slate-600 hover:underline"
+            >
+              {locale === "ko" ? "전체 글 보기" : "View all posts"}
+            </Link>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            {relatedGuides.map((g) => (
+              <Link
+                key={g.slug}
+                href={`/posts/personalFinance/${locale}/${g.slug}`}
+                locale={locale}
+                className="block border rounded-2xl p-4 hover:shadow-sm transition"
+              >
+                <div className="text-xs text-slate-500 mb-1">
+                  {locale === "ko" ? g.tagKo : g.tagEn}
+                </div>
+                <div className="font-semibold leading-snug">
+                  {locale === "ko" ? g.titleKo : g.titleEn}
+                </div>
+                {/* 2단계에서 길이 조정해도 되지만, 기본은 1줄로 고정 */}
+                <div className="text-sm text-slate-600 mt-1 overflow-hidden text-ellipsis whitespace-nowrap">
+                  {locale === "ko" ? g.descKo : g.descEn}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </main>
     </>
   );
 }

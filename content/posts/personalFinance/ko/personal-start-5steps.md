@@ -1,5 +1,5 @@
 ---
-slug: "investing-personal-start-5steps"
+slug: "personal-start-5steps"
 title: "사회초년생을 위한 월급 관리 5단계 가이드"
 description: "사회초년생이 가장 고민하는 월급 관리. 어디서부터 시작해야 할지 막막하다면 이 글에서 소개하는 월급 관리 5단계 가이드로 재테크의 기초를 다져보세요."
 datePublished: "2025-11-17"

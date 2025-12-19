@@ -1,5 +1,5 @@
 ---
-slug: "economics-personal-finance-3pillars"
+slug: "personal-finance-3pillars"
 title: "The Three Pillars of Personal Finance: Budgeting, Emergency Funds, and Long-Term Investing"
 description: "Before investing, stabilize your household cash flow. This guide provides a clear checklist for setting up budgeting, emergency savings, and long-term investing in the right order."
 category: "Personal Finance"

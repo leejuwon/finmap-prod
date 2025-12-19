@@ -1,5 +1,5 @@
 ---
-slug: "investing-personal-start-5steps"
+slug: "personal-start-5steps"
 title: "A 5-Step Salary Management Guide for Young Professionals"
 description: "A practical five-step guide to help young professionals build a solid financial foundation using budgeting, spending limits, emergency funds, and long-term investing."
 datePublished: "2025-11-17"

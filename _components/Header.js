@@ -1,7 +1,7 @@
 // _components/Header.js
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { setLang } from "../lib/lang";
 
 const navItems = [
@@ -15,15 +15,57 @@ const navItems = [
 export default function Header() {
   const router = useRouter();
 
+  const postAvailRef = useRef(null);
+  const [langBlockMsg, setLangBlockMsg] = useState("");
+
+  useEffect(() => {
+    const onAvail = (e) => {
+      postAvailRef.current = e?.detail || null;
+    };
+
+    window.addEventListener("fm_post_availability", onAvail);
+    return () => window.removeEventListener("fm_post_availability", onAvail);
+  }, []);
+
+  useEffect(() => {
+    // 라우트 바뀌면 경고 문구는 자동 제거
+    setLangBlockMsg("");
+  }, [router.asPath]);
+
   // ✅ 이제 언어는 쿠키가 아니라 "라우터 locale"이 기준
   const lang = (router.locale === "en" ? "en" : "ko");
-
+  
   const handleLangChange = async (next) => {
-    // 1) 쿠키 저장(네 기존 로직 유지)
+    const isPostDetail = router.pathname === "/posts/[category]/[lang]/[slug]";
+
+    // ✅ 번역 없으면 막기(기존 로직 유지)
+    if (isPostDetail) {
+      const available = postAvailRef.current?.available?.[next];
+      if (!available) {
+        setLangBlockMsg(
+          lang === "ko"
+            ? "이 글은 영어 버전이 아직 없습니다."
+            : "This post doesn't have the other language version yet."
+        );
+        return;
+      }
+    }
+
+    // ✅ 쿠키/이벤트(레거시)도 유지하고 싶으면 남겨도 OK
     setLang(next);
 
-    // 2) URL 자체를 /en ... 으로 전환 (SEO 핵심)
-    // router.asPath는 쿼리/해시 포함해서 현재 페이지 유지
+    // ✅ 포스트 상세면 URL의 [lang]도 같이 바꿔서 이동
+    if (isPostDetail) {
+      const q = { ...router.query, lang: next }; // ⭐ 핵심
+      await router.push(
+        { pathname: router.pathname, query: q },
+        undefined,
+        { locale: next }
+      );
+      return;
+    }
+
+    // ✅ 나머지 페이지는 locale만 변경
     await router.push(router.asPath, router.asPath, { locale: next });
   };
 
@@ -100,6 +142,11 @@ export default function Header() {
                 EN
               </button>
             </div>
+            {langBlockMsg && (
+              <div className="mt-1 text-[11px] text-rose-600">
+                {langBlockMsg}
+              </div>
+            )}
 
             <span className="header-domain text-[9px] sm:text-[11px] md:text-sm text-slate-500">
               finmaphub.com

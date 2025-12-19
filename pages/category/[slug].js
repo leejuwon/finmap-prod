@@ -1,12 +1,37 @@
 // pages/category/[slug].js
+import { useMemo } from 'react';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import SeoHead from '../../_components/SeoHead';
-import { getAllPosts } from '../../lib/posts';
-import { getInitialLang } from '../../lib/lang';
+import { getAllPosts, getAllPostsStrict } from '../../lib/posts';
+
+/* ---------------- 카테고리 이름 ↔ slug 매핑 ---------------- */
+
+const CATEGORY_MAP_KO = {
+  경제정보: 'economicInfo',
+  재테크: 'personalFinance',
+  투자정보: 'investingInfo',
+};
+
+const CATEGORY_MAP_EN = {
+  'economic info': 'economicInfo',
+  'personal finance': 'personalFinance',
+  'investing info': 'investingInfo',
+};
+
+function getCategorySlugFromPost(post, lang = 'ko') {
+  if (!post || !post.category) return 'economicInfo';
+
+  if (lang === 'ko') {
+    return CATEGORY_MAP_KO[post.category] || 'economicInfo';
+  }
+
+  const key = (post.category || '').toLowerCase();
+  return CATEGORY_MAP_EN[key] || key || 'economicInfo';
+}
 
 const CATEGORY_LABELS_KO = {
-  economicInfo: '경제',
+  economicInfo: '경제정보',
   personalFinance: '재테크',
   investingInfo: '투자정보',
 };
@@ -17,123 +42,106 @@ const CATEGORY_LABELS_EN = {
   investingInfo: 'Investing Info',
 };
 
+/* ---------------------------------------------------------- */
+
 export default function CategoryPage({ slug, postsKo, postsEn }) {
-  const [lang, setLang] = useState('ko');
-  const isKo = lang === 'ko';
+  const router = useRouter();
+  const locale = router?.locale === 'en' ? 'en' : 'ko';
+  const isKo = locale === 'ko';
 
-  // ✅ 헤더와 동일하게 fm_lang 기준으로 언어 동기화
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
+  const title = useMemo(() => {
+    const labels = isKo ? CATEGORY_LABELS_KO : CATEGORY_LABELS_EN;
+    return labels[slug] || slug;
+  }, [isKo, slug]);
 
-    const initial = getInitialLang();
-    setLang(initial);
-
-    const handler = (e) => {
-      const next = e?.detail === 'en' ? 'en' : 'ko';
-      setLang(next);
-    };
-
-    window.addEventListener('fm_lang_change', handler);
-    return () => window.removeEventListener('fm_lang_change', handler);
-  }, []);
-
-  const LABELS = isKo ? CATEGORY_LABELS_KO : CATEGORY_LABELS_EN;
-  const title = LABELS[slug] || slug;
-
-  // ✅ en에 글이 있으면 en, 없으면 ko로 폴백
-  const posts =
-    !isKo && postsEn && postsEn.length > 0 ? postsEn : postsKo;
-
-  const urlPath = `/category/${slug}`;
+  // ✅ en UI인데 en 글이 없으면 ko 글로 폴백
+  const usingEnPosts = !isKo && Array.isArray(postsEn) && postsEn.length > 0;
+  const posts = usingEnPosts ? postsEn : postsKo;
 
   return (
     <>
       <SeoHead
-        title={isKo ? `${title} 카테고리` : `${title} category`}
-        desc={isKo ? `${title} 글 모음` : `Posts related to ${title}`}
-        url={urlPath}
+        title={isKo ? `${title} 카테고리` : `${title} Category`}
+        desc={isKo ? `${title} 관련 글 모음` : `Posts related to ${title}`}
+        url={`/category/${slug}`}
+        locale={locale}
       />
 
       <h1 className="text-2xl font-bold mb-4">{title}</h1>
 
-      {posts.length === 0 ? (
+      {!posts || posts.length === 0 ? (
         <p className="text-slate-500">
-          {isKo
-            ? '아직 이 카테고리의 글이 없습니다.'
-            : 'No posts in this category yet.'}
+          {isKo ? '아직 이 카테고리의 글이 없습니다.' : 'No posts in this category yet.'}
         </p>
       ) : (
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((p) => (
-            <li key={p.slug} className="card">
-              {p.cover && (
-                <img
-                  src={p.cover}
-                  alt={p.title}
-                  className="card-thumb"
-                />
-              )}
-              <span className="badge">{p.category}</span>
-              <h3 className="mt-2 text-lg font-semibold">
-                {/* ✅ 카테고리 slug 를 URL 첫 세그먼트로 사용 */}
-                <Link href={`/posts/${slug}/${isKo ? 'ko' : 'en'}/${p.slug}`}>
-                  {p.title}
-                </Link>
-              </h3>
-              <p className="text-sm text-slate-500 mt-1">
-                {p.datePublished}
-              </p>
-            </li>
-          ))}
+          {posts.map((p) => {
+            const postLang = p.lang || (usingEnPosts ? 'en' : 'ko');
+
+            return (
+              <li key={`${postLang}-${p.slug}`} className="card">
+                {p.cover && (
+                  <img
+                    src={p.cover}
+                    alt={p.title}
+                    className="w-full h-40 object-cover rounded-xl"
+                    loading="lazy"
+                  />
+                )}
+
+                <div className="mt-3 text-xs text-slate-500">{p.datePublished}</div>
+
+                <h3 className="mt-2 text-lg font-semibold">
+                  {/* ✅ 핵심: 글 언어에 맞는 locale로 강제 */}
+                  <Link
+                    href={`/posts/${slug}/${postLang}/${p.slug}`}
+                    locale={postLang}
+                  >
+                    {p.title}
+                  </Link>
+                </h3>
+
+                {p.description && (
+                  <p className="mt-1 text-sm text-slate-600 line-clamp-2">{p.description}</p>
+                )}
+              </li>
+            );
+          })}
         </ul>
       )}
     </>
   );
 }
 
-// 🔹 카테고리 슬러그 3개만 정적으로 생성
+/* ---------------------- SSG ---------------------- */
+
 export async function getStaticPaths() {
-  const slugs = ['economicInfo', 'personalFinance', 'investingInfo'];
+  const slugs = Object.values(CATEGORY_MAP_KO); // economicInfo, personalFinance, investingInfo
 
-  const paths = slugs.map((slug) => ({
-    params: { slug },
-  }));
+  const paths = slugs.flatMap((s) => ([
+    { params: { slug: s }, locale: 'ko' },
+    { params: { slug: s }, locale: 'en' },
+  ]));
 
-  return { paths, fallback: false };
+  return {
+    paths,
+    fallback: false,
+  };
 }
 
-// 🔹 빌드 시 KO/EN 둘 다 읽어서 props로 넘겨줌
 export async function getStaticProps({ params }) {
-  const { slug } = params;
+  const slug = params.slug;
 
-  // 언어별 전체 글 리스트
   const allKo = getAllPosts('ko');
-  const allEn = getAllPosts('en');
+  const postsKo = allKo
+    .filter((p) => getCategorySlugFromPost(p, 'ko') === slug)
+    .map((p) => ({ ...p, lang: 'ko' }));
 
-  // 카테고리 매핑 (KO)
-  const mapKo = {
-    '경제정보': 'economicInfo',
-    '재테크': 'personalFinance',
-    '투자정보': 'investingInfo',
-  };
-
-  // 카테고리 매핑 (EN - 소문자 기준)
-  const mapEn = {
-    'economic info': 'economicInfo',
-    'personal finance': 'personalFinance',
-    'investing info': 'investingInfo',    
-  };
-
-  const postsKo = allKo.filter((p) => {
-    const pSlug = mapKo[p.category] || (p.category || '').toLowerCase();
-    return pSlug === slug;
-  });
-
-  const postsEn = allEn.filter((p) => {
-    const key = (p.category || '').toLowerCase();
-    const mapped = mapEn[key] || key;
-    return mapped === slug;
-  });
+  // ✅ en은 strict로만 (KO fallback 섞임 방지)
+  const allEn = getAllPostsStrict('en');
+  const postsEn = allEn
+    .filter((p) => getCategorySlugFromPost(p, 'en') === slug)
+    .map((p) => ({ ...p, lang: 'en' }));
 
   return {
     props: {

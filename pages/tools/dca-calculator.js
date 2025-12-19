@@ -1,11 +1,12 @@
 // pages/tools/dca-calculator.js
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import SeoHead from '../../_components/SeoHead';
 import DCAForm from '../../_components/DcaForm';
 import DCAChart from '../../_components/DcaChart';
 import DCAYearTable from '../../_components/DcaYearTable';
 import { formatMoneyAuto } from '../../lib/money';
-import { getInitialLang } from '../../lib/lang';
+import ToolCta from '../../_components/ToolCta';
 
 // JSON-LD 스크립트용 컴포넌트
 export function JsonLd({ data }) {
@@ -25,17 +26,16 @@ function simulateDCA({
   years,
   annualIncrease = 0, // 연간 적립금 증가율 (%)
   compounding = 'monthly',
-  taxRate = 15.4,     // 세율(%)
-  feeRate = 0.5,      // 수수료율(연 %)
+  taxRate = 15.4, // 세율(%)
+  feeRate = 0.5, // 수수료율(연 %)
 }) {
   const months = Math.max(1, Math.floor((Number(years) || 0) * 12));
   const rYear = (Number(annualRate) || 0) / 100;
 
-  // 세금/수수료 감안한 순수익률 근사
   const tax = (Number(taxRate) || 0) / 100;
   const fee = (Number(feeRate) || 0) / 100;
 
-  //   netYear ≈ rYear * (1 - tax) - fee
+  // netYear ≈ rYear * (1 - tax) - fee
   let netYear = rYear * (1 - tax) - fee;
   if (netYear < -0.99) netYear = -0.99;
 
@@ -86,9 +86,7 @@ function simulateDCA({
 
       // 연말마다 적립금 증가율 반영
       const inc = Number(annualIncrease) || 0;
-      if (inc !== 0) {
-        monthlyCur *= 1 + inc / 100;
-      }
+      if (inc !== 0) monthlyCur *= 1 + inc / 100;
     }
   }
 
@@ -182,38 +180,23 @@ function getFaqItems(locale) {
 
 // ===================== 페이지 컴포넌트 =====================
 export default function DCACalculatorPage() {
-  const [lang, setLang] = useState('ko');
-  const locale = lang === 'ko' ? 'ko' : 'en';
-  const numberLocale = locale === 'ko' ? 'ko-KR' : 'en-US';
+  const router = useRouter();
+
+  // ✅ URL(라우터) 기준이 “정답”: /en/...이면 무조건 en
+  const routeLocale = router.locale === 'en' ? 'en' : 'ko';
+  const numberLocale = routeLocale === 'ko' ? 'ko-KR' : 'en-US';
+  const t = useMemo(() => TEXT[routeLocale] || TEXT.ko, [routeLocale]);
 
   // 언어에 따라 기본 통화 자동 설정
-  const [currency, setCurrency] = useState(
-    locale === 'ko' ? 'KRW' : 'USD'
-  );
-
+  const [currency, setCurrency] = useState(routeLocale === 'ko' ? 'KRW' : 'USD');
   const [result, setResult] = useState(null);
 
-  // 헤더 언어와 동기화 (fm_lang + fm_lang_change 이벤트)
+  // ✅ locale 변경(언어 토글) 시: 통화도 기본값으로 동기화
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    setCurrency(routeLocale === 'ko' ? 'KRW' : 'USD');
+  }, [routeLocale]);
 
-    const initial = getInitialLang();
-    setLang(initial);
-    setCurrency(initial === 'ko' ? 'KRW' : 'USD');
-
-    const handler = (e) => {
-      const next = e.detail || 'ko';
-      setLang(next);
-      setCurrency(next === 'ko' ? 'KRW' : 'USD');
-    };
-
-    window.addEventListener('fm_lang_change', handler);
-    return () => window.removeEventListener('fm_lang_change', handler);
-  }, []);
-
-  const t = useMemo(() => TEXT[locale] || TEXT.ko, [locale]);
-
-  const faqItems = useMemo(() => getFaqItems(locale), [locale]);
+  const faqItems = useMemo(() => getFaqItems(routeLocale), [routeLocale]);
 
   const faqJsonLd = useMemo(
     () => ({
@@ -231,6 +214,26 @@ export default function DCACalculatorPage() {
     [faqItems]
   );
 
+  // (선택) WebPage JSON-LD: “DCA 계산기 페이지”임을 명확히
+  const site = 'https://www.finmaphub.com';
+  const pageUrl = `${site}${routeLocale === 'en' ? '/en' : ''}/tools/dca-calculator`;
+  const webPageJsonLd = useMemo(
+    () => ({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: t.seoTitle,
+      description: t.seoDesc,
+      url: pageUrl,
+      inLanguage: routeLocale,
+      isPartOf: {
+        '@type': 'WebSite',
+        name: 'FinMap',
+        url: site,
+      },
+    }),
+    [t.seoTitle, t.seoDesc, pageUrl, routeLocale]
+  );
+
   const hasResult = !!(result && result.length);
   const last = hasResult ? result[result.length - 1] : null;
 
@@ -238,8 +241,7 @@ export default function DCACalculatorPage() {
   const totalInvested = last ? last.invested : 0;
   const totalGain = finalNet - totalInvested;
 
-  const summaryFmt = (v) =>
-    formatMoneyAuto(v || 0, currency, numberLocale);
+  const summaryFmt = (v) => formatMoneyAuto(v || 0, currency, numberLocale);
 
   const handleSubmit = (form) => {
     const scale = currency === 'KRW' ? 10_000 : 1;
@@ -271,16 +273,17 @@ export default function DCACalculatorPage() {
         desc={t.seoDesc}
         url="/tools/dca-calculator"
         image="/og/dca-calculator.jpg"
+        locale={routeLocale}   // ✅ 핵심: /en/... canonical 정합성
       />
-      {/* FAQ JSON-LD (SEO용) */}
+
+      {/* JSON-LD (SEO용) */}
       <JsonLd data={faqJsonLd} />
+      <JsonLd data={webPageJsonLd} />
 
       <div className="py-6 grid gap-6 fm-mobile-full">
         {/* 헤더 + 설명 */}
         <div className="flex flex-col gap-2">
-          <h1 className="text-xl sm:text-2xl font-bold">
-            {t.title}
-          </h1>
+          <h1 className="text-xl sm:text-2xl font-bold">{t.title}</h1>
           <p className="text-sm text-slate-600">{t.descShort}</p>
         </div>
 
@@ -288,7 +291,7 @@ export default function DCACalculatorPage() {
         <div className="card">
           <DCAForm
             onSubmit={handleSubmit}
-            locale={locale}
+            locale={routeLocale}
             currency={currency}
             onCurrencyChange={setCurrency}
           />
@@ -301,56 +304,35 @@ export default function DCACalculatorPage() {
             <div className="grid gap-4 sm:grid-cols-3">
               <div className="stat">
                 <div className="stat-title">{t.fv}</div>
-                <div className="stat-value">
-                  {summaryFmt(finalNet)}
-                </div>
+                <div className="stat-value">{summaryFmt(finalNet)}</div>
               </div>
               <div className="stat">
                 <div className="stat-title">{t.contrib}</div>
-                <div className="stat-value">
-                  {summaryFmt(totalInvested)}
-                </div>
+                <div className="stat-value">{summaryFmt(totalInvested)}</div>
               </div>
               <div className="stat">
                 <div className="stat-title">{t.gain}</div>
-                <div className="stat-value">
-                  {summaryFmt(totalGain)}
-                </div>
+                <div className="stat-value">{summaryFmt(totalGain)}</div>
               </div>
             </div>
 
             {/* 차트 */}
             <div className="card">
               <div className="flex items-center gap-3 mb-2">
-                <h2 className="text-lg font-semibold">
-                  {t.chartTitle}
-                </h2>
+                <h2 className="text-lg font-semibold">{t.chartTitle}</h2>
                 {currency === 'KRW' && (
-                  <span className="text-xs text-slate-500">
-                    {t.unitHint}
-                  </span>
+                  <span className="text-xs text-slate-500">{t.unitHint}</span>
                 )}
               </div>
-              <DCAChart
-                data={result}
-                locale={numberLocale}
-                currency={currency}
-              />
+              <DCAChart data={result} locale={numberLocale} currency={currency} />
             </div>
 
             {/* 연간 요약 테이블 */}
-            <DCAYearTable
-              rows={result}
-              locale={numberLocale}
-              currency={currency}
-              title={t.tableTitle}
-            />
+            <DCAYearTable rows={result} locale={numberLocale} currency={currency} title={t.tableTitle} />
 
             {/* FAQ 섹션 */}
             <div className="card w-full">
-              <h2 className="text-lg font-semibold mb-3">
-                {t.faqTitle}
-              </h2>
+              <h2 className="text-lg font-semibold mb-3">{t.faqTitle}</h2>
               <div className="space-y-3">
                 {faqItems.map((item, idx) => (
                   <details
@@ -367,6 +349,14 @@ export default function DCACalculatorPage() {
                   </details>
                 ))}
               </div>
+            </div>
+
+            <div className="tool-cta-section">
+              {/* DCA 페이지에서는 DCA 외 도구로 자연스러운 내부링크 강화 */}
+              <ToolCta lang={routeLocale} type="compound" />
+              <ToolCta lang={routeLocale} type="cagr" />
+              <ToolCta lang={routeLocale} type="goal" />
+              <ToolCta lang={routeLocale} type="fire" />
             </div>
           </>
         )}

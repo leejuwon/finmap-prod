@@ -1,11 +1,12 @@
 // pages/tools/goal-simulator.js
 import { useMemo, useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import SeoHead from '../../_components/SeoHead';
 import GoalForm from '../../_components/GoalForm';
 import GoalChart from '../../_components/GoalChart';
 import GoalYearTable from '../../_components/GoalYearTable';
 import { numberFmt } from '../../lib/compound';
-import { getInitialLang } from '../../lib/lang';
+import ToolCta from "../../_components/ToolCta";
 
 // ===== JSON-LD 출력용 공통 컴포넌트 =====
 export function JsonLd({ data }) {
@@ -75,36 +76,23 @@ function simulateGoalPath({
 
 // ===== Page Component =====
 export default function GoalSimulatorPage() {
-  const [lang, setLang] = useState('ko');
-  const locale = lang === 'ko' ? 'ko' : 'en';
+  const router = useRouter();
 
-  // 통화는 언어에 따라 자동 초기화
-  const [currency, setCurrency] = useState(
-    locale === 'ko' ? 'KRW' : 'USD'
-  );
+  // ✅ URL(라우터) 기준으로 언어 결정
+  const locale = router.locale === 'en' ? 'en' : 'ko';
+  const lang = locale; // ✅ ToolCta 호환용 alias
 
+  // (선택) 기존 state가 필요하면 locale에서 파생
+  const [currency, setCurrency] = useState(locale === 'ko' ? 'KRW' : 'USD');
   const [result, setResult] = useState(null);
   const [target, setTarget] = useState(0);
 
   const loc = locale === 'ko' ? 'ko-KR' : 'en-US';
 
-  // ===== 언어 초기 로딩 + Header.js 이벤트 수신 =====
+   // ✅ 라우터 locale이 바뀌면 통화도 동기화 (원하면 유지 로직으로 변경 가능)
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const initial = getInitialLang();
-    setLang(initial);
-    setCurrency(initial === 'ko' ? 'KRW' : 'USD');
-
-    const handler = (e) => {
-      const next = e.detail || 'ko';
-      setLang(next);
-      setCurrency(next === 'ko' ? 'KRW' : 'USD');
-    };
-
-    window.addEventListener('fm_lang_change', handler);
-    return () => window.removeEventListener('fm_lang_change', handler);
-  }, []);
+    setCurrency(locale === 'ko' ? 'KRW' : 'USD');
+  }, [locale]);  
 
   // ===== 텍스트 리소스 =====
   const t = useMemo(
@@ -289,6 +277,7 @@ export default function GoalSimulatorPage() {
         desc={t.desc}
         url="/tools/goal-simulator"
         image="/og/goal-simulator.jpg"
+        locale={locale}   // ✅ 이게 핵심 (canonical/hreflang 정합성)
       />
       {/* FAQ JSON-LD 삽입 (SEO용) */}
       <JsonLd data={faqJsonLd} />
@@ -392,6 +381,13 @@ export default function GoalSimulatorPage() {
                   </details>
                 ))}
               </div>
+            </div>
+
+            <div className="tool-cta-section">
+              <ToolCta lang={lang} type="fire" />
+              <ToolCta lang={lang} type="compound" />
+              <ToolCta lang={lang} type="cagr" />
+              <ToolCta lang={lang} type="dca" />
             </div>
           </>
         )}
