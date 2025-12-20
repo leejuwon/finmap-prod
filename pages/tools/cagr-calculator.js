@@ -1,13 +1,17 @@
 // pages/tools/cagr-calculator.js
 import { useState, useMemo, useEffect } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import SeoHead from "../../_components/SeoHead";
+import CTABar from "../../_components/CTABar";
+import CompoundCTA from "../../_components/CompoundCTA";
 import CagrForm from "../../_components/CagrForm";
 import CagrChart from "../../_components/CagrChart";
 import CagrYearTable from "../../_components/CagrYearTable";
 import ToolCta from "../../_components/ToolCta"; // ✅ (기존 파일에서 사용하지만 import 누락 가능성)
 import { numberFmt } from "../../lib/compound";
 import { calcCagr } from "../../lib/cagr";
+import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
 
 // JSON-LD 출력용
 export function JsonLd({ data }) {
@@ -20,6 +24,7 @@ export function JsonLd({ data }) {
 }
 
 export default function CagrCalculatorPage() {
+  const [isExporting, setIsExporting] = useState(false);
   const router = useRouter();
 
   // ✅ URL(/en/...) 기준이 진짜 언어
@@ -38,6 +43,12 @@ export default function CagrCalculatorPage() {
   const [initial, setInitial] = useState(0);
   const [finalValue, setFinalValue] = useState(0);
   const [years, setYears] = useState(0);
+
+  const scrollTo = (id) => {
+    const el = sectionEls.current?.[id];
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   // 텍스트 리소스
   const t = useMemo(
@@ -231,6 +242,82 @@ export default function CagrCalculatorPage() {
     [locale]
   );
 
+  const handleDownloadPDF = async () => {
+    setIsExporting(true);
+    document.body.classList.add("fm-exporting");
+
+    const target = document.getElementById("pdf-target");
+    const details = target ? Array.from(target.querySelectorAll("details")) : [];
+    const prevOpen = details.map((d) => d.open);
+    details.forEach((d) => (d.open = true));
+
+    await new Promise((r) => setTimeout(r, 400));
+
+    const { downloadPDF } = await import("../../_components/PDFGenerator");
+    await downloadPDF("pdf-target", "cagr-result.pdf");
+
+    details.forEach((d, i) => (d.open = prevOpen[i]));
+    document.body.classList.remove("fm-exporting");
+    setIsExporting(false);
+  };
+
+  // ----------------------------
+  // ✅ 내부링크(추천 가이드 글)
+  // 2단계에서: 네가 제공하는 실제 제목/설명(ko/en)을 여기 배열만 교체하면 됨
+  // - ko/en 포스팅이 동일 slug를 공유하고, 상위 폴더만 ko/en로 분리되어 있다는 전제
+  // - Next.js locale 유지: <Link locale={locale} />
+  // ----------------------------
+  const relatedGuides = useMemo(
+    () => [
+      {
+        slug: "what-is-cagr",
+        tagKo: "CAGR란 무엇인가?",
+        tagEn: "About CAGR",
+        titleKo: "ETF·펀드 선택 시 CAGR을 반드시 확인해야 하는 이유",
+        titleEn: "What Is CAGR? Understanding the Difference From Simple Returns",
+        descKo: "ETF·펀드 비교에서 총 수익률만 보면 위험해질 수 있습니다. 이 글에서는 연평균 복리 수익률(CAGR)의 개념부터 ETF 3·5년 CAGR 비교표, 초보자·전문가별 활용법까지 깊이 있게 정리합니다.",
+        descEn: "A complete guide to understanding why CAGR (Compound Annual Growth Rate) matters more than total return when evaluating ETFs and funds. Includes tables, long-term examples, and strategies for beginners and professionals.",
+      },
+      {
+        slug: "cagr-7percent-reality-check",
+        tagKo: "장기 CAGR",
+        tagEn: "long-term CAGR",
+        titleKo: "‘연 7% 복리’에 대하여. CAGR로 현실 체크하기",
+        titleEn: "About ‘7% Annual Return’. A Reality Check Using CAGR",
+        descKo: "많은 투자자가 말하는 ‘연 7% 수익률’은 실제 장기 CAGR과 차이가 있습니다. S&P500 장기 CAGR, 기대수익률 착시, 복리 효과를 현실적으로 이해하고 목표 자산 계획에 적용하는 고급 분석 글입니다.",
+        descEn: "Many investors assume that a 7% annual return is realistic, but the truth depends on the difference between expected returns and actual CAGR. This article analyzes S&P 500 long-term CAGR, return volatility, and how compound-growth assumptions distort expectations.",
+      },
+      {
+        slug: "diagnose-investing-skill-with-cagr",
+        tagKo: "CAGR로 투자 실력 진단",
+        tagEn: "Investing Skill Using CAGR",
+        titleKo: "CAGR로 투자 실력 진단하기: MDD·변동성·샤프비율과 함께 보는 현실적인 평가법",
+        titleEn: "Diagnosing Your Investing Skill Using CAGR: Understanding MDD, Volatility, and Sharpe Ratio",
+        descKo: "CAGR은 결국 ‘돈이 얼마나 늘어났는가’를 보여주는 핵심 지표지만, 단점도 명확합니다. MDD·변동성·샤프비율과 함께 투자 실력을 평가해야 현실적인 결과가 나옵니다. 초보자도 이해할 수 있도록 실제 포트폴리오 비교 사례까지 포함해 자세히 설명합니다.",
+        descEn: "CAGR shows how much your portfolio has grown, but it does not capture risk. To evaluate investing skill realistically, you must combine CAGR with MDD, volatility, and the Sharpe ratio. This guide explains each metric and compares two real portfolio scenarios.",
+      },
+     {
+        slug: "how-much-per-month-for-100m",
+        tagKo: "적립식",
+        tagEn: "Contributions",
+        titleKo: "목표 금액을 위한 월 투자금: 역산으로 계획 세우기",
+        titleEn: "Monthly contribution planning: reverse-calc",
+        descKo: "목표금액·기간·수익률로 필요한 월 적립금을 역산해 투자 계획을 만듭니다.",
+        descEn: "Reverse-calculate monthly contribution from target, years, and expected return.",
+      },
+      {
+        slug: "goal-amount-fast-strategy",
+        tagKo: "전략",
+        tagEn: "Strategy",
+        titleKo: "목표에 더 빨리 도달하는 방법: 원금·수익률·기간의 균형",
+        titleEn: "Reach goals faster: balance the levers",
+        descKo: "원금/월적립/수익률/기간 중 무엇을 조정해야 목표 도달이 빨라지는지 정리합니다.",
+        descEn: "Which lever matters most—principal, contribution, return, or time.",
+      },
+    ],
+    []
+  );
+
   const onSubmit = (form) => {
     const scale = currency === "KRW" ? 10_000 : 1;
     const init = (Number(form.initial) || 0) * scale;
@@ -254,6 +341,36 @@ export default function CagrCalculatorPage() {
   const hasResult = !!result;
   const netCagr = result?.netCagr || 0;
   const grossCagr = result?.grossCagr || 0;
+
+  const handleShare = async () => {
+    // 1) Web Share API
+    if (await shareWeb()) return;
+
+    // 2) Kakao SDK
+    if (typeof window !== "undefined" && window?.Kakao) {
+      shareKakao({
+        title: locale === "ko" ? "FinMap 복리 계산 결과" : "Compound result",
+        description:
+          locale === "ko"
+            ? "세전/세후, 복리·단리 비교까지 자동 생성!"
+            : "Full breakdown of compound interest.",
+        url: window.location.href,
+      });
+      return;
+    }
+
+    // 3) Naver share
+    if (typeof window !== "undefined") {
+      shareNaver({
+        title: locale === "ko" ? "FinMap 복리 계산 결과" : "Compound Result",
+        url: window.location.href,
+      });
+      return;
+    }
+
+    // 4) 최후 fallback: URL 복사
+    copyUrl();
+  };
 
   return (
     <>
@@ -329,73 +446,136 @@ export default function CagrCalculatorPage() {
         {/* 결과 */}
         {hasResult && (
           <>
-            <div className="grid gap-4 sm:grid-cols-4">
-              <div className="stat">
-                <div className="stat-title">{t.netCagrLabel}</div>
-                <div className="stat-value">{pctFmt(netCagr)}</div>
+            {/* ✅ PDF로 저장할 영역 */}
+            <div id="pdf-target" className="grid gap-6">
+              <div className="grid gap-4 sm:grid-cols-4">
+                <div className="stat">
+                  <div className="stat-title">{t.netCagrLabel}</div>
+                  <div className="stat-value">{pctFmt(netCagr)}</div>
+                </div>
+                <div className="stat">
+                  <div className="stat-title">{t.grossCagrLabel}</div>
+                  <div className="stat-value">{pctFmt(grossCagr)}</div>
+                </div>
+                <div className="stat">
+                  <div className="stat-title">{t.initialLabel}</div>
+                  <div className="stat-value">{summaryFmt(initial)}</div>
+                </div>
+                <div className="stat">
+                  <div className="stat-title">{t.finalLabel}</div>
+                  <div className="stat-value">{summaryFmt(finalValue)}</div>
+                </div>
               </div>
-              <div className="stat">
-                <div className="stat-title">{t.grossCagrLabel}</div>
-                <div className="stat-value">{pctFmt(grossCagr)}</div>
-              </div>
-              <div className="stat">
-                <div className="stat-title">{t.initialLabel}</div>
-                <div className="stat-value">{summaryFmt(initial)}</div>
-              </div>
-              <div className="stat">
-                <div className="stat-title">{t.finalLabel}</div>
-                <div className="stat-value">{summaryFmt(finalValue)}</div>
-              </div>
-            </div>
 
-            <div className="card">
-              <div className="flex items-center gap-3 mb-2">
-                <h2 className="text-lg font-semibold">{t.chartTitle}</h2>
-                {currency === "KRW" && (
-                  <span className="text-xs text-slate-500">
-                    {locale.startsWith("ko")
-                      ? "단위: 원 / 만원 / 억원 자동"
-                      : "Unit: auto (KRW / 10k / 100M)"}
-                  </span>
-                )}
+              <div className="card">
+                <div className="flex items-center gap-3 mb-2">
+                  <h2 className="text-lg font-semibold">{t.chartTitle}</h2>
+                  {currency === "KRW" && (
+                    <span className="text-xs text-slate-500">
+                      {locale.startsWith("ko")
+                        ? "단위: 원 / 만원 / 억원 자동"
+                        : "Unit: auto (KRW / 10k / 100M)"}
+                    </span>
+                  )}
+                </div>
+                <CagrChart result={result} locale={numberLocale} currency={currency} />
               </div>
-              <CagrChart result={result} locale={numberLocale} currency={currency} />
-            </div>
 
-            <CagrYearTable
-              result={result}
-              locale={numberLocale}
-              currency={currency}
-              initial={initial}
-            />
+              <CagrYearTable
+                result={result}
+                locale={numberLocale}
+                currency={currency}
+                initial={initial}
+              />
 
-            <div className="card w-full">
-              <h2 className="text-lg font-semibold mb-3">{t.faqTitle}</h2>
-              <div className="space-y-3">
-                {faqItems.map((item, idx) => (
-                  <details
-                    key={idx}
-                    className="border border-slate-200 rounded-lg p-3 bg-slate-50"
-                    open={idx === 0}
-                  >
-                    <summary className="cursor-pointer font-medium text-sm">
-                      {item.q}
-                    </summary>
-                    <p className="mt-2 text-sm text-slate-700 whitespace-pre-line">
-                      {item.a}
-                    </p>
-                  </details>
-                ))}
+              <div className="card w-full">
+                <h2 className="text-lg font-semibold mb-3">{t.faqTitle}</h2>
+                <div className="space-y-3">
+                  {faqItems.map((item, idx) => (
+                    <details
+                      key={idx}
+                      className="border border-slate-200 rounded-lg p-3 bg-slate-50"
+                      open={idx === 0}
+                    >
+                      <summary className="cursor-pointer font-medium text-sm">
+                        {item.q}
+                      </summary>
+                      <p className="mt-2 text-sm text-slate-700 whitespace-pre-line">
+                        {item.a}
+                      </p>
+                    </details>
+                  ))}
+                </div>
               </div>
+
+              {/* CTA */}
+              <CompoundCTA 
+                locale={locale} 
+                onDownloadPDF={handleDownloadPDF} 
+                shareTitle={locale === "ko" ? "FinMap CAGR 계산 결과" : "FinMap CAGR result"}
+                shareDescription={
+                  locale === "ko"
+                    ? "세전/세후 CAGR, 연도별 자산 경로까지 한 번에 공유해보세요."
+                    : "Share CAGR with gross/net breakdown and the yearly path."
+                } />
             </div>
 
             <div className="tool-cta-section">
-              <ToolCta lang={lang} type="fire" />
-              <ToolCta lang={lang} type="compound" />
-              <ToolCta lang={lang} type="goal" />
-            </div>
+              <ToolCta lang={locale} type="fire" />
+              <ToolCta lang={locale} type="compound" />
+              <ToolCta lang={locale} type="goal" />
+            </div>   
+
+            {/* 하단 고정 CTA Bar */}
+            {!isExporting && (
+              <CTABar
+                locale={locale}
+                onDownloadPDF={handleDownloadPDF}
+                onShare={handleShare}
+                mode={"basic"}
+                alwaysVisible={true}
+                onNavigate={scrollTo}
+              />
+            )}
           </>
         )}
+        {/* ✅ 내부링크: 추천 가이드 글 5개 (SEO + 체류시간 + 내부탐색) */}
+        <section className="card">
+          <div className="flex items-center justify-between gap-3 mb-3">
+            <h2 className="text-base font-semibold">
+              {locale === "ko" ? "추천 가이드 글" : "Recommended guides"}
+            </h2>
+            <Link
+              href={locale === "ko" ? `/category/personalFinance`:`/en/category/personalFinance`}
+              locale={locale}
+              className="text-sm text-slate-600 hover:underline"
+            >
+              {locale === "ko" ? "전체 글 보기" : "View all posts"}
+            </Link>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            {relatedGuides.map((g) => (
+              <Link
+                key={g.slug}
+                href={`/posts/personalFinance/${locale}/${g.slug}`}
+                locale={locale}
+                className="block border rounded-2xl p-4 hover:shadow-sm transition"
+              >
+                <div className="text-xs text-slate-500 mb-1">
+                  {locale === "ko" ? g.tagKo : g.tagEn}
+                </div>
+                <div className="font-semibold leading-snug">
+                  {locale === "ko" ? g.titleKo : g.titleEn}
+                </div>
+                {/* 2단계에서 길이 조정해도 되지만, 기본은 1줄로 고정 */}
+                <div className="text-sm text-slate-600 mt-1 overflow-hidden text-ellipsis whitespace-nowrap">
+                  {locale === "ko" ? g.descKo : g.descEn}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
       </div>
     </>
   );

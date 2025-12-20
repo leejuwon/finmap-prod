@@ -1,5 +1,5 @@
 ---
-slug: "what-is-cagr-en"
+slug: "what-is-cagr"
 title: "What Is CAGR? Understanding the Difference From Simple Returns"
 description: "CAGR shows the annual compound growth rate of an investment. It reflects the true pace of growth better than simple returns, especially for long-term investments."
 datePublished: "2025-11-26"

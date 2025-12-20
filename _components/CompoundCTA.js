@@ -7,9 +7,21 @@ import {
 import { useRouter } from "next/router";
 import { shareKakao, shareWeb, copyUrl, shareNaver } from "../utils/share";
 
-export default function CompoundCTA({ locale = "ko", onDownloadPDF }) {
+export default function CompoundCTA({ 
+  locale = "ko", 
+  onDownloadPDF,
+  shareTitle,
+  shareDescription, }) {
   const router = useRouter();
   const isKo = locale === "ko";
+
+  const resolvedTitle =
+    shareTitle ?? (isKo ? "FinMap 복리 계산 결과" : "Compound result");
+  const resolvedDesc =
+    shareDescription ??
+    (isKo
+      ? "세전/세후, 복리·단리 비교까지 자동 생성!"
+      : "Full breakdown of compound interest.");
 
   const handleShare = async () => {
     // 1) Web Share API
@@ -18,10 +30,8 @@ export default function CompoundCTA({ locale = "ko", onDownloadPDF }) {
     // 2) Kakao SDK
     if (typeof window !== "undefined" && window?.Kakao) {
       shareKakao({
-        title: isKo ? "FinMap 복리 계산 결과" : "Compound result",
-        description: isKo
-          ? "세전/세후, 복리·단리 비교까지 자동 생성!"
-          : "Full breakdown of compound interest.",
+        title: resolvedTitle,
+        description: resolvedDesc,
         url: window.location.href,
       });
       return;
@@ -30,7 +40,7 @@ export default function CompoundCTA({ locale = "ko", onDownloadPDF }) {
     // 3) Naver share (fallback)
     if (typeof window !== "undefined") {
       shareNaver({
-        title: isKo ? "FinMap 복리 계산 결과" : "Compound Result",
+        title: resolvedTitle,
         url: window.location.href,
       });
       return;
@@ -69,18 +79,7 @@ export default function CompoundCTA({ locale = "ko", onDownloadPDF }) {
           onClick={copyUrl}
         >
           🔗 {isKo ? "URL 복사" : "Copy URL"}
-        </button>
-
-        <button
-          type="button"
-          className="btn-outline flex gap-2 items-center justify-center"
-          onClick={() => {
-            // ✅ Keep current locale when navigating
-            router.push("/tools/goal-simulator", undefined, { locale });
-          }}
-        >
-          {isKo ? "목표 시뮬레이터" : "Goal Simulator"}
-        </button>
+        </button>        
       </div>
 
       <div className="mt-3 text-xs text-slate-600 flex gap-2 items-center">

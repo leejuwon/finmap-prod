@@ -1,5 +1,5 @@
 ---
-slug: "cagr-7percent-reality-check-en"
+slug: "cagr-7percent-reality-check"
 title: "What Does a “7% Annual Return” Really Mean? A Reality Check Using CAGR"
 description: "Many investors assume that a 7% annual return is realistic, but the truth depends on the difference between expected returns and actual CAGR. This article analyzes S&P 500 long-term CAGR, return volatility, and how compound-growth assumptions distort expectations."
 datePublished: "2025-11-29"

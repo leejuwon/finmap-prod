@@ -1,5 +1,5 @@
 ---
-slug: "diagnose-investing-skill-with-cagr-en"
+slug: "diagnose-investing-skill-with-cagr"
 title: "Diagnosing Your Investing Skill Using CAGR: Understanding MDD, Volatility, and Sharpe Ratio"
 description: "CAGR shows how much your portfolio has grown, but it does not capture risk. To evaluate investing skill realistically, you must combine CAGR with MDD, volatility, and the Sharpe ratio. This guide explains each metric and compares two real portfolio scenarios."
 datePublished: "2025-11-29"

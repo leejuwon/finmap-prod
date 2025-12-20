@@ -16,6 +16,7 @@ import ScenarioPanel from "../../_components/ScenarioPanel";
 import TimelineComparePanel from "../../_components/TimelineComparePanel";
 import CashFlowLayerChart from "../../_components/CashFlowLayerChart";
 import ToolCta from "../../_components/ToolCta";
+import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
 
 import {
   calcCompound,
@@ -514,6 +515,36 @@ export default function CompoundPage() {
       compoundDrag,
     };
   }, [result, idealResult]);
+
+  const handleShare = async () => {
+    // 1) Web Share API
+    if (await shareWeb()) return;
+
+    // 2) Kakao SDK
+    if (typeof window !== "undefined" && window?.Kakao) {
+      shareKakao({
+        title: locale === "ko" ? "FinMap 복리 계산 결과" : "Compound result",
+        description:
+          locale === "ko"
+            ? "세전/세후, 복리·단리 비교까지 자동 생성!"
+            : "Full breakdown of compound interest.",
+        url: window.location.href,
+      });
+      return;
+    }
+
+    // 3) Naver share
+    if (typeof window !== "undefined") {
+      shareNaver({
+        title: locale === "ko" ? "FinMap 복리 계산 결과" : "Compound Result",
+        url: window.location.href,
+      });
+      return;
+    }
+
+    // 4) 최후 fallback: URL 복사
+    copyUrl();
+  };
 
   // ----------------------------
   // 렌더링
@@ -1171,9 +1202,12 @@ export default function CompoundPage() {
                       locale={numberLocale}
                       currency={currency}
                     />
-                  </div>
+                  </div>                  
+                </>
+              )}
+            </div>
 
-                  {/* FAQ */}
+            {/* FAQ */}
                   <div className="card">
                     <h2 className="text-lg font-semibold mb-3">{t.faqTitle}</h2>
 
@@ -1222,16 +1256,13 @@ export default function CompoundPage() {
                       <ToolCta lang={lang} type="dca" />
                     </div>
                   </section>
-                </>
-              )}
-            </div>
 
             {/* 하단 고정 CTA Bar */}
             {!isExporting && (
               <CTABar
                 locale={locale}
                 onDownloadPDF={handleDownloadPDF}
-                onShare={() => {}}
+                onShare={handleShare}
                 mode={isProMobile ? "pro" : "basic"}
                 alwaysVisible={isProMobile}
                 onNavigate={scrollTo}
