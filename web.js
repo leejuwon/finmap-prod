@@ -61,7 +61,7 @@ const PORT = Number(process.env.PORT || 8002);
   });
 
   // 정적 파일 (선택: /public을 별도 라우트로 노출)
-  app.use('/public', express.static(path.join(APP_DIR, 'public'), { fallthrough: false, maxAge: 0 }));
+  app.use('/public', express.static(path.join(APP_DIR, 'public'), { fallthrough: true, maxAge: 0 }));
 
   // Next 핸들러
   app.all('*', (req, res) => handle(req, res));
