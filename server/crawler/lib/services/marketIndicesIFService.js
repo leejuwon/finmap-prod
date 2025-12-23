@@ -45,7 +45,8 @@
  ******************************************************************************/
 const db = require('../db');
 const { isKoreaMarketHoliday } = require('../utils/marketUtils');
-const yahooFinance = require('yahoo-finance2').default; // CommonJS 방식
+// yahoo-finance2 v3 client (singleton)
+const yahooFinance = require('../vendors/yahooFinance');
 const moment = require('moment-timezone');
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -54,7 +55,6 @@ const objUtils = require('../utils/utils'); //{ getSeoulDate, dbQuery, isValidVa
 // crawler/smbsFetcher.js
 
 const { launchBrowser: launchBrowserCore } = require('../puppeteer/launch');
-yahooFinance.suppressNotices(['yahooSurvey']);
 
 exports.getIndicesTypeInfo = async ({pIndicesType, pIfType,pDate, pCloseFlag}) => {
   /********************
@@ -1961,7 +1961,7 @@ async function fetchFredData(pToDate, pBfDate, pXBfDate, pUsHolyFlag, pKrHolyFla
   
         // ✅ 더미 페이지로 초기화 유도 (Daum 내 페이지로)
         await page.goto('https://m.daum.net', { waitUntil: 'domcontentloaded' });
-        await page.objUtils.sleep(2000);  // 약간의 대기 추가  
+        await objUtils.sleep(2000);  // 약간의 대기 추가  
         
         const url = 'https://m.finance.daum.net/domestic/kospi';
   

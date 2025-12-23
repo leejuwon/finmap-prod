@@ -45,7 +45,8 @@
  ******************************************************************************/
 const db = require('../db');
 const { isKoreaMarketHoliday } = require('../utils/marketUtils');
-const yahooFinance = require('yahoo-finance2').default; // CommonJS 방식
+// yahoo-finance2 v3 client (singleton)
+const yahooFinance = require('../vendors/yahooFinance');
 const moment = require('moment-timezone');
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -54,7 +55,6 @@ const objUtils = require('../utils/utils'); //{ getSeoulDate, dbQuery, isValidVa
 // crawler/smbsFetcher.js
 
 const { launchBrowser: launchBrowserCore } = require('../puppeteer/launch');
-yahooFinance.suppressNotices(['yahooSurvey']);
 
 exports.getAfterOpenTypeInfo = async ({pIndicesType, pIfType,pDate, pCloseFlag}) => {
   /********************
@@ -976,7 +976,7 @@ async function fetchIndicesDaumData( pToDate, pBfDate, pXBfDate, pUsHolyFlag, pK
 
       // ✅ 더미 페이지로 초기화 유도 (Daum 내 페이지로)
       await page.goto('https://m.daum.net', { waitUntil: 'domcontentloaded', timeout: 60000 });      
-      await page.objUtils.sleep(2000);  // 약간의 대기 추가
+      await objUtils.sleep(2000);  // 약간의 대기 추가
 
       for (const [sName, code] of Object.entries(toDayEtfsSymbols)) {
         const url =
@@ -985,7 +985,7 @@ async function fetchIndicesDaumData( pToDate, pBfDate, pXBfDate, pUsHolyFlag, pK
             : `https://m.finance.daum.net/quotes/A${code}/home`;
 
         try {      
-          await page.objUtils.sleep(500); // 소량 대기 후 페이지 이동
+          await objUtils.sleep(500); // 소량 대기 후 페이지 이동
           //await page.goto(url, { waitUntil: 'networkidle2', timeout: 20000 });  
           await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
 
