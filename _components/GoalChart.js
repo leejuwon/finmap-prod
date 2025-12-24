@@ -39,9 +39,13 @@ function formatMoneyShort(value, currency = 'KRW', locale = 'ko-KR') {
 
 export default function GoalChart({
   data = [],
-  locale = 'ko-KR',
-  currency = 'KRW',
+  series = null,              // ✅ Premium: compare 시나리오용 (배열)
+  locale = "ko-KR",
+  currency = "KRW",
   target = 0,
+  valueKey = "valueNet",      // ✅ Premium: nominal/real 전환
+  grossKey = "valueGross",
+  investedKey = "invested",
 }) {
   if (!data.length) {
     return (
@@ -53,9 +57,21 @@ export default function GoalChart({
     );
   }
 
-  const values = [
+  /*const values = [
     ...data.map((d) => Number(d.invested) || 0),
     ...data.map((d) => Number(d.valueNet) || 0),
+    target || 0,
+  ];*/
+  const mainData = Array.isArray(data) ? data : [];
+  const compareSeries = Array.isArray(series) ? series : null;
+
+  const values = [
+    ...mainData.map((d) => Number(d[investedKey]) || 0),
+    ...mainData.map((d) => Number(d[valueKey]) || 0),
+    ...mainData.map((d) => Number(d[grossKey]) || 0),
+    ...(compareSeries
+      ? compareSeries.flatMap((s) => (s?.data || []).map((d) => Number(d[valueKey]) || 0))
+      : []),
     target || 0,
   ];
   const maxVal = Math.max(...values, 1);
@@ -69,21 +85,58 @@ export default function GoalChart({
     return 80 - ratio * 50; // y: 30~80 사이
   };
 
-  const investedPoints = data
+  //const investedPoints = data
+  const investedPoints = mainData
     .map((d, i) => {
       const x = xForIndex(i);
-      const y = yForValue(Number(d.invested) || 0);
+      //const y = yForValue(Number(d.invested) || 0);
+       const y = yForValue(Number(d[investedKey]) || 0);
       return `${x},${y}`;
     })
     .join(' ');
 
-  const netPoints = data
+  //const netPoints = data
+  const grossPoints = mainData
     .map((d, i) => {
       const x = xForIndex(i);
-      const y = yForValue(Number(d.valueNet) || 0);
+      const y = yForValue(Number(d[grossKey]) || 0);
+      return `${x},${y}`;
+    })
+    .join(" ");
+
+  const netPoints = mainData
+    .map((d, i) => {
+      const x = xForIndex(i);
+      //const y = yForValue(Number(d.valueNet) || 0);
+      const y = yForValue(Number(d[valueKey]) || 0);
       return `${x},${y}`;
     })
     .join(' ');
+
+  const seriesPolylines = compareSeries
+    ? compareSeries.map((s, idx) => {
+        const points = (s?.data || [])
+          .map((d, i) => {
+            const x = xForIndex(i);
+            const y = yForValue(Number(d[valueKey]) || 0);
+            return `${x},${y}`;
+          })
+          .join(" ");
+
+        // compare 선 색상은 최소 3개만 고정 (프리미엄 비교 가독성)
+        const stroke = idx === 0 ? "#6b7280" : idx === 1 ? "#10b981" : "#f97316";
+        return (
+          <polyline
+            key={s.key || idx}
+            fill="none"
+            stroke={stroke}
+            strokeWidth={idx === 1 ? "1.6" : "1.2"}
+            points={points}
+            opacity={idx === 1 ? "1" : "0.9"}
+          />
+        );
+      })
+    : null;    
 
   // 목표선 (수평 라인)
   const targetY = target > 0 ? yForValue(target) : null;
@@ -164,13 +217,26 @@ export default function GoalChart({
           points={investedPoints}
         />
 
-        {/* 세후 자산 라인 (초록색) */}
+        {/* 세전 자산 라인 (회색) */}
         <polyline
           fill="none"
-          stroke="#10b981"      // emerald-500
-          strokeWidth="1.4"
-          points={netPoints}
+          stroke="#6b7280"
+          strokeWidth="1.1"
+          points={grossPoints}
+          opacity="0.8"
         />
+
+        {/* ✅ Premium: compare면 series, 아니면 단일 net 라인 */}
+        {seriesPolylines ? (
+          seriesPolylines
+        ) : (
+          <polyline
+            fill="none"
+            stroke="#10b981"
+            strokeWidth="1.4"
+            points={netPoints}
+          />
+        )}
 
         {/* 각 포인트에 작은 점(세후 자산) */}
         {data.map((d, i) => {
@@ -209,6 +275,10 @@ export default function GoalChart({
 
       {/* 범례 */}
       <div className="mt-2 flex flex-wrap gap-3 text-xs text-slate-600">
+        <div className="flex items-center gap-1">
+          <span className="inline-block w-3 h-[3px] rounded-full" style={{ backgroundColor: "#6b7280" }} />
+          <span>{isKo ? "세전 자산" : "Gross assets"}</span>
+        </div>
         <div className="flex items-center gap-1">
           <span
             className="inline-block w-3 h-[3px] rounded-full"

@@ -4,10 +4,8 @@ import Link from 'next/link';
 export default function ToolCta({ lang = 'ko', type = 'compound' }) {
   const isKo = lang === 'ko';
 
-  // 🔧 type별 설정 모음
   const CONFIGS = {
     compound: {
-      // ✅ 복리 계산기 (기본)
       titleKo: '복리 효과, 직접 숫자로 확인해보세요',
       titleEn: 'See the power of compound interest in numbers',
       descKo:
@@ -22,7 +20,6 @@ export default function ToolCta({ lang = 'ko', type = 'compound' }) {
     },
 
     goal: {
-      // ✅ 목표 자산 도달 시뮬레이터
       titleKo: '목표 자산까지 매달 얼마가 필요한지 계산해보세요',
       titleEn: 'Find how much you need to invest per month to reach your goal',
       descKo:
@@ -37,7 +34,6 @@ export default function ToolCta({ lang = 'ko', type = 'compound' }) {
     },
 
     cagr: {
-      // ✅ CAGR 계산기
       titleKo: 'CAGR로 내 투자 성과를 한 줄 숫자로 확인하세요',
       titleEn: 'Summarize your investment performance with CAGR',
       descKo:
@@ -52,7 +48,6 @@ export default function ToolCta({ lang = 'ko', type = 'compound' }) {
     },
 
     dca: {
-      // ✅ DCA 시뮬레이터
       titleKo: 'ETF·주식 자동 적립식 투자, 시뮬레이션으로 미리 보세요',
       titleEn: 'Simulate your ETF/stock DCA plan in advance',
       descKo:
@@ -67,25 +62,24 @@ export default function ToolCta({ lang = 'ko', type = 'compound' }) {
     },
 
     fire: {
-        // ✅ FIRE(은퇴자금) 계산기
-        titleKo: 'FIRE로 언제 경제적 자유가 가능한지 점검해보세요',
-        titleEn: 'See when you can reach FIRE',
-        descKo:
-          '현재 자산, 연 지출, 예상 수익률, 적립 기간, 출금률(4% rule)로 FIRE 목표자산과 은퇴 후 자산 유지 기간, 파산 리스크를 시뮬레이션합니다.',
-        descEn:
-          'Simulate your FIRE target, retirement asset longevity, and risk of ruin based on your assets, annual spending, expected return, accumulation period, and withdrawal rate (4% rule).',
-        href: '/tools/fire-calculator',
-        btnKo: 'FIRE 계산기 열기',
-        btnEn: 'Open FIRE calculator',
-        badgeKo: 'FinMap 도구 · 은퇴·FIRE',
-        badgeEn: 'FinMap tools · FIRE & Retirement',
-      }
+      titleKo: 'FIRE로 언제 경제적 자유가 가능한지 점검해보세요',
+      titleEn: 'See when you can reach FIRE',
+      descKo:
+        '현재 자산, 연 지출, 예상 수익률, 적립 기간, 출금률(4% rule)로 FIRE 목표자산과 은퇴 후 자산 유지 기간, 파산 리스크를 시뮬레이션합니다.',
+      descEn:
+        'Simulate your FIRE target, retirement asset longevity, and risk of ruin based on your assets, annual spending, expected return, accumulation period, and withdrawal rate (4% rule).',
+      href: '/tools/fire-calculator',
+      btnKo: 'FIRE 계산기 열기',
+      btnEn: 'Open FIRE calculator',
+      badgeKo: 'FinMap 도구 · 은퇴·FIRE',
+      badgeEn: 'FinMap tools · FIRE & Retirement',
+    },
   };
 
-  // 지원하지 않는 type이 들어오면 compound로 폴백
   const config = CONFIGS[type] || CONFIGS.compound;
 
-  const href = { pathname: config.href, query: { lang } };
+  // ✅ query 제거: 중복 URL 방지
+  const href = config.href;
 
   return (
     <section className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-5 sm:px-6 sm:py-6 flex flex-col sm:flex-row gap-4 sm:items-center shadow-sm">
@@ -102,8 +96,12 @@ export default function ToolCta({ lang = 'ko', type = 'compound' }) {
       </div>
 
       <div className="flex-shrink-0">
-        <Link href={href} className="inline-flex items-center px-4 py-2 rounded-full bg-blue-600 text-white text-xs sm:text-sm font-medium hover:bg-blue-700 transition-colors">        
-          {isKo ? config.btnKo : config.btnEn}        
+        <Link
+          href={href}
+          locale={lang} // ✅ locale 기반으로 /en 라우팅
+          className="inline-flex items-center px-4 py-2 rounded-full bg-blue-600 text-white text-xs sm:text-sm font-medium hover:bg-blue-700 transition-colors"
+        >
+          {isKo ? config.btnKo : config.btnEn}
         </Link>
       </div>
     </section>

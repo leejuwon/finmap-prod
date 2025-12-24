@@ -1,5 +1,5 @@
 // pages/tools/goal-simulator.js
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import Link from "next/link";
 import SeoHead from '../../_components/SeoHead';
@@ -32,6 +32,9 @@ function simulateGoalPath({
   // 🔥 복리 계산기와 동일하게 세율/수수료율 퍼센트로 받기
   taxRatePercent = 15.4, // 이자소득세 기본 15.4%
   feeRatePercent = 0.5,  // 연 수수료 기본 0.5%
+  // ✅ Premium
+  inflationPercent = 0,         // 연 인플레이션(%)
+  contribGrowthPercent = 0,     // 월 적립금 연 증가율(%)
 }) {
   const months = Math.max(1, Math.floor(years * 12));
   const rYear = (Number(annualRate) || 0) / 100;
@@ -56,6 +59,16 @@ function simulateGoalPath({
     compounding === 'yearly'
       ? Math.pow(1 + netYear, 1 / 12) - 1
       : netYear / 12;
+  // ✅ Premium: 인플레이션/적립금 증가율(연 %) → 월 복리화
+  const inflYear = (Number(inflationPercent) || 0) / 100;
+  const inflMonth = compounding === 'yearly'
+    ? Math.pow(1 + inflYear, 1 / 12) - 1
+    : inflYear / 12;
+
+  const gYear = (Number(contribGrowthPercent) || 0) / 100;
+  const gMonth = compounding === 'yearly'
+    ? Math.pow(1 + gYear, 1 / 12) - 1
+    : gYear / 12;
 
   let invested = Number(current) || 0;
   let valueGross = invested;
@@ -64,24 +77,292 @@ function simulateGoalPath({
   const rows = [];
 
   for (let m = 1; m <= months; m++) {
-    invested += monthly;
+    //invested += monthly;
 
-    valueGross = (valueGross + monthly) * (1 + grossMonth);
-    valueNet = (valueNet + monthly) * (1 + netMonth);
+    //valueGross = (valueGross + monthly) * (1 + grossMonth);
+    //valueNet = (valueNet + monthly) * (1 + netMonth);
+    // ✅ Premium: 월 적립금 성장 반영
+    const monthlyNow = (Number(monthly) || 0) * Math.pow(1 + gMonth, m - 1);
+    invested += monthlyNow;
+
+    valueGross = (valueGross + monthlyNow) * (1 + grossMonth);
+    valueNet = (valueNet + monthlyNow) * (1 + netMonth);
+
+    // ✅ Premium: 실질가치(인플레이션 디플레이트)
+    const deflator = Math.pow(1 + inflMonth, m);
+    const valueGrossReal = deflator > 0 ? (valueGross / deflator) : valueGross;
+    const valueNetReal = deflator > 0 ? (valueNet / deflator) : valueNet;
+    const investedReal = deflator > 0 ? (invested / deflator) : invested;
+ 
 
     if (m % 12 === 0 || m === months) {
-      const year = Math.round(m / 12);
-      rows.push({ year, invested, valueGross, valueNet });
+      //const year = Math.ceil(m / 12);
+      //rows.push({ year, invested, valueGross, valueNet });
+      const year = Math.ceil(m / 12);
+      rows.push({
+        year,
+        invested,
+        valueGross,
+        valueNet,
+        investedReal,
+        valueGrossReal,
+        valueNetReal,
+      });
     }
   }
 
   return rows;
 }
 
+
+// =========================
+// ✅ Premium: 역산(필요 월 적립금)
+// - 현재 가정(기간/수익률/세금/수수료/인플레/적립증가/복리주기) 그대로
+// - 목표(target)를 달성하는 최소 monthly를 이분탐색으로 찾음
+// =========================
+function solveRequiredMonthly({
+  target,
+  current,
+  annualRate,
+  years,
+  compounding,
+  taxRatePercent,
+  feeRatePercent,
+  inflationPercent,
+  contribGrowthPercent,
+  valueKey = "valueNet",
+}) {
+  const t = Number(target) || 0;
+  if (t <= 0) return null;
+  if ((Number(current) || 0) >= t) return 0;
+
+  const fv = (m) => {
+    const rows = simulateGoalPath({
+      current,
+      monthly: m,
+      annualRate,
+      years,
+      compounding,
+      taxRatePercent,
+      feeRatePercent,
+      inflationPercent,
+      contribGrowthPercent,
+    });
+    const last = rows?.[rows.length - 1];
+    return Number(last?.[valueKey]) || 0;
+  };
+
+  let lo = 0;
+  let hi = 1;
+  while (fv(hi) < t && hi < 1e12) hi *= 1.8;
+  if (hi >= 1e12 && fv(hi) < t) return null;
+
+  for (let i = 0; i < 50; i++) {
+    const mid = (lo + hi) / 2;
+    if (fv(mid) >= t) hi = mid;
+    else lo = mid;
+  }
+  return hi;
+}
+
+// =========================
+// ✅ Premium: 역산(필요 기간 years)
+// - 월 적립금은 고정하고 years를 이분탐색
+// =========================
+function solveRequiredYears({
+  target,
+  current,
+  monthly,
+  annualRate,
+  compounding,
+  taxRatePercent,
+  feeRatePercent,
+  inflationPercent,
+  contribGrowthPercent,
+  valueKey = "valueNet",
+  minYears = 0.5,
+  maxYears = 80,
+}) {
+  const t = Number(target) || 0;
+  if (t <= 0) return null;
+  if ((Number(current) || 0) >= t) return 0;
+
+  const fv = (y) => {
+    const rows = simulateGoalPath({
+      current,
+      monthly,
+      annualRate,
+      years: y,
+      compounding,
+      taxRatePercent,
+      feeRatePercent,
+      inflationPercent,
+      contribGrowthPercent,
+    });
+    const last = rows?.[rows.length - 1];
+    return Number(last?.[valueKey]) || 0;
+  };
+
+  if (fv(maxYears) < t) return null;
+
+  let lo = minYears;
+  let hi = maxYears;
+  for (let i = 0; i < 50; i++) {
+    const mid = (lo + hi) / 2;
+    if (fv(mid) >= t) hi = mid;
+    else lo = mid;
+  }
+  return hi;
+}
+
+// =========================
+// ✅ Premium: 목표 도달 시점(월 단위) 찾기
+// - simulateGoalPath와 동일 로직을 월 단위로 돌려서
+// - valueKey(valueNet / valueNetReal 등)가 target을 처음 넘는 month를 반환
+// =========================
+function findFirstReachMonth({
+  target,
+  current,
+  monthly,
+  annualRate,
+  years,
+  compounding = "monthly",
+  taxRatePercent = 0,
+  feeRatePercent = 0,
+  inflationPercent = 0,
+  contribGrowthPercent = 0,
+  valueKey = "valueNet",
+}) {
+  const t = Number(target) || 0;
+  if (t <= 0) return null;
+
+  const months = Math.max(1, Math.floor((Number(years) || 0) * 12));
+  const rYear = (Number(annualRate) || 0) / 100;
+
+  const taxRate = Math.max(0, (Number(taxRatePercent) || 0) / 100);
+  const feeRate = Math.max(0, (Number(feeRatePercent) || 0) / 100);
+
+  let netYear = rYear;
+  netYear *= 1 - taxRate;
+  netYear -= feeRate;
+  if (netYear < -0.99) netYear = -0.99;
+
+  const grossMonth =
+    compounding === "yearly"
+      ? Math.pow(1 + rYear, 1 / 12) - 1
+      : rYear / 12;
+
+  const netMonth =
+    compounding === "yearly"
+      ? Math.pow(1 + netYear, 1 / 12) - 1
+      : netYear / 12;
+
+  const inflYear = (Number(inflationPercent) || 0) / 100;
+  const inflMonth =
+    compounding === "yearly"
+      ? Math.pow(1 + inflYear, 1 / 12) - 1
+      : inflYear / 12;
+
+  const gYear = (Number(contribGrowthPercent) || 0) / 100;
+  const gMonth =
+    compounding === "yearly"
+      ? Math.pow(1 + gYear, 1 / 12) - 1
+      : gYear / 12;
+
+  let invested = Number(current) || 0;
+  let valueGross = invested;
+  let valueNet = invested;
+
+  for (let m = 1; m <= months; m++) {
+    const monthlyNow = (Number(monthly) || 0) * Math.pow(1 + gMonth, m - 1);
+    invested += monthlyNow;
+
+    valueGross = (valueGross + monthlyNow) * (1 + grossMonth);
+    valueNet = (valueNet + monthlyNow) * (1 + netMonth);
+
+    const deflator = Math.pow(1 + inflMonth, m);
+    const valueGrossReal = deflator > 0 ? valueGross / deflator : valueGross;
+    const valueNetReal = deflator > 0 ? valueNet / deflator : valueNet;
+    const investedReal = deflator > 0 ? invested / deflator : invested;
+
+    const row = {
+      month: m,
+      year: Math.ceil(m / 12),
+      invested,
+      valueGross,
+      valueNet,
+      investedReal,
+      valueGrossReal,
+      valueNetReal,
+    };
+
+    const v = Number(row?.[valueKey]) || 0;
+    if (v >= t) return m; // ✅ 처음 도달한 월
+  }
+
+  return null;
+}
+
+// =========================
+// ✅ Premium: years(float) -> {years, months} (월 단위로 올림)
+// - requiredYears는 "최소 연수" 추정치이므로 UI 표시는 보수적으로 올림 처리
+// =========================
+function yearsFloatToYM(yFloat) {
+  const y = Number(yFloat);
+  if (!Number.isFinite(y) || y < 0) return null;
+
+  // ✅ 최소 연수 추정치 → 월 단위로 올림(과소표시 방지)
+  const totalMonths = Math.max(0, Math.ceil(y * 12));
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+  return { years, months, totalMonths };
+}
+
+function formatYMText(ym, locale = "ko") {
+  if (!ym) return null;
+  const isKo = locale === "ko";
+  const { years, months } = ym;
+
+  if (isKo) {
+    if (years <= 0) return `${months}개월`;
+    if (months === 0) return `${years}년`;
+    return `${years}년 ${months}개월`;
+  }
+
+  // en
+  if (years <= 0) return `${months}m`;
+  if (months === 0) return `${years}y`;
+  return `${years}y ${months}m`;
+}
+
+
+// =========================
+// ✅ Premium: reachMonth(int) -> {years, months} + text
+// - reachMonth는 1부터 시작(1개월차)
+// - UI: "0년 1개월" 같은 형태를 허용
+// =========================
+function reachMonthToYM(reachMonth) {
+  const m = Number(reachMonth);
+  if (!Number.isFinite(m) || m <= 0) return null;
+  return {
+    years: Math.floor((m - 1) / 12),
+    months: ((m - 1) % 12) + 1,
+    month: m,
+  };
+}
+
+function formatReachText(reachMonth, locale = "ko") {
+  const ym = reachMonthToYM(reachMonth);
+  if (!ym) return null;
+  // months는 1~12라서 formatYMText가 잘 표현함
+  return formatYMText({ years: ym.years, months: ym.months }, locale);
+}
+
 // ===== Page Component =====
 export default function GoalSimulatorPage() {
   const [isExporting, setIsExporting] = useState(false);
   const router = useRouter();
+  const sectionEls = useRef({});
 
   // ✅ URL(라우터) 기준으로 언어 결정
   const locale = router.locale === 'en' ? 'en' : 'ko';
@@ -91,6 +372,14 @@ export default function GoalSimulatorPage() {
   const [currency, setCurrency] = useState(locale === 'ko' ? 'KRW' : 'USD');
   const [result, setResult] = useState(null);
   const [target, setTarget] = useState(0);
+  const [lastParams, setLastParams] = useState(null); // ✅ Premium: 재계산 기반
+
+  // ✅ Premium controls
+  const [scenarioMode, setScenarioMode] = useState("base"); // base | conservative | aggressive | compare
+  const [scenarioSpread, setScenarioSpread] = useState(2); // 기준 대비 ±%
+  const [valueMode, setValueMode] = useState("nominal"); // nominal | real
+  const [inflationPercent, setInflationPercent] = useState(locale === "ko" ? 2.5 : 2.0);
+  const [contribGrowthPercent, setContribGrowthPercent] = useState(0);
 
   const loc = locale === 'ko' ? 'ko-KR' : 'en-US';
 
@@ -110,12 +399,12 @@ export default function GoalSimulatorPage() {
     () => ({
       title:
         locale === 'ko'
-          ? '목표 자산 시뮬레이터'
-          : 'Goal Asset Simulator',
+          ? '목표자산 도달 계산기 | 매달 얼마 투자해야 할까?'
+          : 'Goal Amount Calculator | How Much to Invest Per Month',
       desc:
         locale === 'ko'
-          ? '현재 자산·월 적립금·수익률·기간·세금·수수료를 바탕으로 목표 자산까지의 자산 성장 경로를 시뮬레이션해 보세요.'
-          : 'Simulate your asset growth toward a target amount based on your current assets, monthly savings, expected return, time horizon, tax and fee settings.',
+          ? '현재 자산·월 적립금·수익률·기간·세금·수수료를 반영해 목표 자산까지의 성장 경로를 시뮬레이션합니다. 공유 및 PDF 저장 지원.'
+          : 'Simulate your path to a target amount with monthly contributions, expected return, horizon, tax and fees. Share and export PDF.',
       chartTitle:
         locale === 'ko'
           ? '목표 자산까지 자산 경로'
@@ -310,6 +599,16 @@ export default function GoalSimulatorPage() {
     []
   );
 
+  const appJsonLd = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": locale === "ko" ? "목표 자산 시뮬레이터" : "Goal Asset Simulator",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "url": `https://www.finmaphub.com${locale === "en" ? "/en" : ""}/tools/goal-simulator`,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }), [locale]);
+
   // ===== Form Submit =====
   const onSubmit = (form) => {
     // 통화 기준 스케일링 (만원 vs 원 / USD 그대로)
@@ -344,18 +643,266 @@ export default function GoalSimulatorPage() {
       compounding: form.compounding,
       taxRatePercent,
       feeRatePercent,
+      inflationPercent,
+      contribGrowthPercent,
     });
 
     setTarget(targetValue);
     setResult(rows);
-  };
 
-  const hasResult = !!(result && result.length);
-  const last = hasResult ? result[result.length - 1] : null;
+    // ✅ Premium: 마지막 입력값 저장(옵션 바꿔도 자동 재계산 가능)
+    setLastParams({
+      current,
+      monthly,
+      annualRate: r,
+      years: y,
+      compounding: form.compounding,
+      taxRatePercent,
+      feeRatePercent,
+      target: targetValue,
+    });
+  };  
 
-  const finalNet = last ? last.valueNet : 0;
-  const finalInvested = last ? last.invested : 0;
+  // ✅ Premium: 옵션 바뀌면 자동 재계산(최근 입력 기준)
+  useEffect(() => {
+    if (!lastParams) return;
+    const rows = simulateGoalPath({
+      ...lastParams,
+      inflationPercent,
+      contribGrowthPercent,
+    });
+    setTarget(lastParams.target || 0);
+    setResult(rows);
+  }, [lastParams, inflationPercent, contribGrowthPercent]);
+
+  // ✅ Premium: 3시나리오 데이터(보수/기준/공격) + compare
+  const scenarioData = useMemo(() => {
+    if (!lastParams) return null;
+    const baseRate = Number(lastParams.annualRate) || 0;
+    const spread = Number(scenarioSpread) || 0;
+    const consRate = baseRate - spread;
+    const aggrRate = baseRate + spread;
+
+    const common = {
+      ...lastParams,
+      inflationPercent,
+      contribGrowthPercent,
+    };
+
+    const base = simulateGoalPath({ ...common, annualRate: baseRate });
+    const conservative = simulateGoalPath({ ...common, annualRate: consRate });
+    const aggressive = simulateGoalPath({ ...common, annualRate: aggrRate });
+
+    return { base, conservative, aggressive, baseRate, consRate, aggrRate };
+  }, [lastParams, scenarioSpread, inflationPercent, contribGrowthPercent]);
+
+  const chartValueKey = valueMode === "real" ? "valueNetReal" : "valueNet";
+  const chartGrossKey = valueMode === "real" ? "valueGrossReal" : "valueGross";
+  const chartInvestKey = valueMode === "real" ? "investedReal" : "invested";
+
+  const chartPayload = useMemo(() => {
+    if (!scenarioData) return { data: result, series: null };
+    if (scenarioMode === "base") return { data: scenarioData.base, series: null };
+    if (scenarioMode === "conservative") return { data: scenarioData.conservative, series: null };
+    if (scenarioMode === "aggressive") return { data: scenarioData.aggressive, series: null };
+    // compare
+    return {
+      data: scenarioData.base,
+      series: [
+        { key: "conservative", label: locale === "ko" ? `보수 (${scenarioData.consRate}%)` : `Conservative (${scenarioData.consRate}%)`, data: scenarioData.conservative },
+        { key: "base",         label: locale === "ko" ? `기준 (${scenarioData.baseRate}%)` : `Base (${scenarioData.baseRate}%)`,         data: scenarioData.base },
+        { key: "aggressive",   label: locale === "ko" ? `공격 (${scenarioData.aggrRate}%)` : `Aggressive (${scenarioData.aggrRate}%)`,   data: scenarioData.aggressive },
+      ],
+    };
+  }, [scenarioData, scenarioMode, result, locale]);
+  
+  // ✅ viewRows는 chartPayload 이후에 계산해야 TDZ 에러가 안남
+  const viewRows = useMemo(() => {
+    return (chartPayload?.data && chartPayload.data.length) ? chartPayload.data : result;
+  }, [chartPayload, result]);
+
+  const hasResult = !!(viewRows && viewRows.length);
+  const last = hasResult ? viewRows[viewRows.length - 1] : null;
+
+  const finalNet = last ? Number(last?.[chartValueKey] || 0) : 0;
+  const finalInvested = last ? Number(last?.[chartInvestKey] || 0) : 0;
   const finalGain = finalNet - finalInvested;
+
+  // ✅ Premium: 진단 & 제안(역산) + "몇 년 몇 개월" 도달 시점
+  const diagnosis = useMemo(() => {
+    if (!hasResult || !lastParams) return null;
+    const tVal = Number(target) || 0;
+    if (tVal <= 0) return null;
+
+    const achieved = finalNet >= tVal;
+    const shortfall = Math.max(0, tVal - finalNet);
+
+    // 연 단위(기존)
+    const firstGoalYear =
+      viewRows?.find((r) => Number(r?.[chartValueKey] || 0) >= tVal)?.year ?? null;
+
+    // ✅ 월 단위(새 기능): 현재 보고 있는 시나리오의 연수익률로 계산
+    const viewAnnualRate =
+      scenarioMode === "conservative"
+        ? (scenarioData?.consRate ?? lastParams.annualRate)
+        : scenarioMode === "aggressive"
+        ? (scenarioData?.aggrRate ?? lastParams.annualRate)
+        : (scenarioData?.baseRate ?? lastParams.annualRate); // base / compare 는 baseRate
+
+    const reachMonth = findFirstReachMonth({
+      target: tVal,
+      current: lastParams.current,
+      monthly: lastParams.monthly,
+      annualRate: viewAnnualRate,
+      years: lastParams.years,
+      compounding: lastParams.compounding,
+      taxRatePercent: lastParams.taxRatePercent,
+      feeRatePercent: lastParams.feeRatePercent,
+      inflationPercent,
+      contribGrowthPercent,
+      valueKey: chartValueKey,
+    });
+
+    const reachYM = reachMonth == null ? null : reachMonthToYM(reachMonth);
+    const reachText = formatReachText(reachMonth, locale);
+
+    const requiredMonthly = !achieved
+      ? solveRequiredMonthly({
+          target: tVal,
+          current: lastParams.current,
+          annualRate: viewAnnualRate,
+          years: lastParams.years,
+          compounding: lastParams.compounding,
+          taxRatePercent: lastParams.taxRatePercent,
+          feeRatePercent: lastParams.feeRatePercent,
+          inflationPercent,
+          contribGrowthPercent,
+          valueKey: chartValueKey,
+        })
+      : null;
+
+    const requiredYears = !achieved
+      ? solveRequiredYears({
+          target: tVal,
+          current: lastParams.current,
+          monthly: lastParams.monthly,
+          annualRate: viewAnnualRate,
+          compounding: lastParams.compounding,
+          taxRatePercent: lastParams.taxRatePercent,
+          feeRatePercent: lastParams.feeRatePercent,
+          inflationPercent,
+          contribGrowthPercent,
+          valueKey: chartValueKey,
+        })
+      : null;
+
+    // ✅ (추가) 필요 월 적립금 증가분(현재 월 적립금 대비 +얼마)
+    const currentMonthly = Number(lastParams.monthly) || 0;
+    const requiredMonthlyDelta =
+      requiredMonthly === null ? null : Math.max(0, (Number(requiredMonthly) || 0) - currentMonthly);
+
+    const requiredMonthlyDeltaText =
+      requiredMonthlyDelta === null
+        ? null
+        : (locale === "ko"
+            ? `현재 월 적립금 대비 +${summaryFmt(requiredMonthlyDelta)}`
+            : `+${summaryFmt(requiredMonthlyDelta)} vs current monthly`);
+
+    // ✅ (추가) compare 모드: 보수/기준/공격 도달시점(년/개월) 3개를 동시에 계산
+    const reachCompare =
+      scenarioMode !== "compare" || !scenarioData
+        ? null
+        : {
+            conservative: {
+              rate: scenarioData.consRate,
+              month: findFirstReachMonth({
+                target: tVal,
+                current: lastParams.current,
+                monthly: lastParams.monthly,
+                annualRate: scenarioData.consRate,
+                years: lastParams.years,
+                compounding: lastParams.compounding,
+                taxRatePercent: lastParams.taxRatePercent,
+                feeRatePercent: lastParams.feeRatePercent,
+                inflationPercent,
+                contribGrowthPercent,
+                valueKey: chartValueKey,
+              }),
+            },
+            base: {
+              rate: scenarioData.baseRate,
+              month: findFirstReachMonth({
+                target: tVal,
+                current: lastParams.current,
+                monthly: lastParams.monthly,
+                annualRate: scenarioData.baseRate,
+                years: lastParams.years,
+                compounding: lastParams.compounding,
+                taxRatePercent: lastParams.taxRatePercent,
+                feeRatePercent: lastParams.feeRatePercent,
+                inflationPercent,
+                contribGrowthPercent,
+                valueKey: chartValueKey,
+              }),
+            },
+            aggressive: {
+              rate: scenarioData.aggrRate,
+              month: findFirstReachMonth({
+                target: tVal,
+                current: lastParams.current,
+                monthly: lastParams.monthly,
+                annualRate: scenarioData.aggrRate,
+                years: lastParams.years,
+                compounding: lastParams.compounding,
+                taxRatePercent: lastParams.taxRatePercent,
+                feeRatePercent: lastParams.feeRatePercent,
+                inflationPercent,
+                contribGrowthPercent,
+                valueKey: chartValueKey,
+              }),
+            },
+          };
+
+    // reachCompare에 text 미리 붙이기
+    if (reachCompare) {
+      reachCompare.conservative.text = formatReachText(reachCompare.conservative.month, locale);
+      reachCompare.base.text = formatReachText(reachCompare.base.month, locale);
+      reachCompare.aggressive.text = formatReachText(reachCompare.aggressive.month, locale);
+    }
+
+
+      
+    const requiredYearsText =
+      requiredYears === null
+        ? null
+        : formatYMText(yearsFloatToYM(requiredYears), locale);
+
+    return {
+      achieved,
+      shortfall,
+      firstGoalYear,
+      reachMonth,
+      reachText,
+      requiredMonthly,
+      requiredMonthlyDelta,
+      requiredMonthlyDeltaText,
+      requiredYears,
+      requiredYearsText,
+      reachCompare,
+    };
+  }, [
+    hasResult,
+    lastParams,
+    target,
+    finalNet,
+    viewRows,
+    chartValueKey,
+    inflationPercent,
+    contribGrowthPercent,
+    locale,
+    scenarioMode,
+    scenarioData,
+  ]);
 
   const handleShare = async () => {
     // 1) Web Share API
@@ -396,8 +943,9 @@ export default function GoalSimulatorPage() {
         image="/og/goal-simulator.jpg"
         locale={locale}   // ✅ 이게 핵심 (canonical/hreflang 정합성)
       />
-      {/* FAQ JSON-LD 삽입 (SEO용) */}
+      {/* JSON-LD (SEO용) */}
       <JsonLd data={faqJsonLd} />
+      <JsonLd data={appJsonLd} />
 
       <div className="py-6 grid gap-6 fm-mobile-full">
         {/* 제목 */}
@@ -406,7 +954,7 @@ export default function GoalSimulatorPage() {
         </div>
 
         {/* 🔹 상단 설명 카드 */}
-        <div className="card">
+        <div className="card" ref={(el) => (sectionEls.current.intro = el)}>
           <h2 className="text-lg font-semibold mb-2">{t.introTitle}</h2>
           <p className="text-sm text-slate-600 mb-2">{t.introLead}</p>
           <ul className="list-disc pl-5 text-sm text-slate-600 space-y-1">
@@ -417,13 +965,105 @@ export default function GoalSimulatorPage() {
         </div>
 
         {/* 입력 Form */}
-        <div className="card">
+        <div className="card" ref={(el) => (sectionEls.current.form = el)}>
           <GoalForm
             onSubmit={onSubmit}
             locale={locale}
             currency={currency}
             onCurrencyChange={setCurrency}
           />
+        </div>
+
+        {/* ✅ Premium 옵션 패널 (입력 후에도 재계산 가능) */}
+        <div className="card">
+          <div className="flex items-center justify-between gap-3 mb-2">
+            <h2 className="text-base font-semibold">
+              {locale === "ko" ? "프리미엄 옵션" : "Premium options"}
+            </h2>
+            <div className="flex items-center gap-2 text-xs">
+              <button
+                type="button"
+                className={`px-2 py-1 rounded-full border ${valueMode === "nominal" ? "bg-slate-900 text-white border-slate-900" : "bg-white text-slate-700 border-slate-200"}`}
+                onClick={() => setValueMode("nominal")}
+              >
+                {locale === "ko" ? "명목" : "Nominal"}
+              </button>
+              <button
+                type="button"
+                className={`px-2 py-1 rounded-full border ${valueMode === "real" ? "bg-slate-900 text-white border-slate-900" : "bg-white text-slate-700 border-slate-200"}`}
+                onClick={() => setValueMode("real")}
+              >
+                {locale === "ko" ? "실질" : "Real"}
+              </button>
+            </div>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            <label className="text-sm">
+              <div className="text-xs text-slate-500 mb-1">
+                {locale === "ko" ? "인플레이션(연, %)" : "Inflation (annual, %)"}
+              </div>
+              <input
+                value={inflationPercent}
+                onChange={(e) => setInflationPercent(e.target.value)}
+                inputMode="decimal"
+                className="w-full border rounded-xl px-3 py-2"
+              />
+            </label>
+
+            <label className="text-sm">
+              <div className="text-xs text-slate-500 mb-1">
+                {locale === "ko" ? "월 적립금 연 증가율(%, 예: 3)" : "Contribution growth (annual, %)"}
+              </div>
+              <input
+                value={contribGrowthPercent}
+                onChange={(e) => setContribGrowthPercent(e.target.value)}
+                inputMode="decimal"
+                className="w-full border rounded-xl px-3 py-2"
+              />
+            </label>
+          </div>
+
+          <div className="mt-3 grid gap-3 sm:grid-cols-3">
+            <label className="text-sm sm:col-span-1">
+              <div className="text-xs text-slate-500 mb-1">
+                {locale === "ko" ? "시나리오 스프레드(±%, 기준 대비)" : "Scenario spread (±% vs base)"}
+              </div>
+              <input
+                value={scenarioSpread}
+                onChange={(e) => setScenarioSpread(e.target.value)}
+                inputMode="decimal"
+                className="w-full border rounded-xl px-3 py-2"
+              />
+            </label>
+
+            <div className="sm:col-span-2">
+              <div className="text-xs text-slate-500 mb-1">
+                {locale === "ko" ? "시나리오 보기" : "Scenario view"}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  ["base", locale === "ko" ? "기준" : "Base"],
+                  ["conservative", locale === "ko" ? "보수" : "Conservative"],
+                  ["aggressive", locale === "ko" ? "공격" : "Aggressive"],
+                  ["compare", locale === "ko" ? "비교" : "Compare"],
+                ].map(([key, label]) => (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => setScenarioMode(key)}
+                    className={`px-3 py-2 rounded-full border text-xs sm:text-sm ${
+                      scenarioMode === key
+                        ? "bg-blue-600 text-white border-blue-600"
+                        : "bg-white text-slate-700 border-slate-200"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* 결과 영역 */}
@@ -452,8 +1092,110 @@ export default function GoalSimulatorPage() {
                 </div>
               </div>
 
+              {/* ✅ Premium: 진단 & 제안(역산) */}
+              {diagnosis && (
+                <div className="card">
+                  <div className="flex items-center justify-between gap-3">
+                    <h2 className="text-lg font-semibold">
+                      {locale === "ko" ? "진단 & 제안" : "Diagnosis & suggestion"}
+                    </h2>
+                    {(diagnosis.reachText || diagnosis.firstGoalYear !== null) && (
+                      <span className="text-xs text-slate-500">
+                        {locale === "ko"
+                          ? `첫 달성: ${diagnosis.reachText || `${diagnosis.firstGoalYear}년차`}`
+                          : `First reach: ${diagnosis.reachText || `year ${diagnosis.firstGoalYear}`}`}
+                      </span>
+                    )}
+                  </div>
+
+                  {diagnosis.achieved ? (
+                    <div className="mt-2 text-sm text-slate-700">
+                      ✅ {locale === "ko" ? "목표 달성!" : "Target achieved!"}{" "}
+                      <span className="text-slate-500">
+                        {locale === "ko"
+                          ? `목표 대비 여유: ${summaryFmt(finalNet - target)}`
+                          : `Cushion: ${summaryFmt(finalNet - target)}`}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="mt-2 text-sm text-slate-700">
+                      ⚠️ {locale === "ko" ? "목표 미달" : "Short of target"}{" "}
+                      <span className="text-slate-500">
+                        {locale === "ko"
+                          ? `부족분: ${summaryFmt(diagnosis.shortfall)}`
+                          : `Shortfall: ${summaryFmt(diagnosis.shortfall)}`}
+                      </span>
+                    </div>
+                  )}
+                  
+                  {/* ✅ compare 모드: 3시나리오 도달시점 표시 */}
+                  {scenarioMode === "compare" && diagnosis.reachCompare && (
+                    <div className="mt-3 flex flex-wrap gap-2 text-xs">
+                      {[
+                        ["conservative", locale === "ko" ? `보수 (${diagnosis.reachCompare.conservative.rate}%)` : `Conservative (${diagnosis.reachCompare.conservative.rate}%)`],
+                        ["base",         locale === "ko" ? `기준 (${diagnosis.reachCompare.base.rate}%)`         : `Base (${diagnosis.reachCompare.base.rate}%)`],
+                        ["aggressive",   locale === "ko" ? `공격 (${diagnosis.reachCompare.aggressive.rate}%)`   : `Aggressive (${diagnosis.reachCompare.aggressive.rate}%)`],
+                      ].map(([k, label]) => {
+                        const item = diagnosis.reachCompare[k];
+                        const text = item?.text || (locale === "ko" ? "미도달" : "Not reached");
+                        return (
+                          <span key={k} className="px-2 py-1 rounded-full border border-slate-200 bg-white text-slate-700">
+                            {label}: {text}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  {!diagnosis.achieved && (
+                    <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                      <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                        <div className="text-xs font-semibold tracking-[0.14em] text-slate-500 uppercase">
+                          {locale === "ko" ? "필요 월 적립금" : "Required monthly"}
+                        </div>
+                        <div className="mt-1 text-lg font-semibold">
+                          {diagnosis.requiredMonthly === null
+                            ? locale === "ko"
+                              ? "계산 범위를 초과했습니다"
+                              : "Out of range"
+                            : summaryFmt(diagnosis.requiredMonthly)}
+                        </div>
+                        {diagnosis.requiredMonthlyDeltaText && (
+                        <div className="text-xs text-slate-500 mt-1">
+                          {diagnosis.requiredMonthlyDeltaText}
+                        </div>
+                      )}
+                        <div className="text-xs text-slate-500 mt-1">
+                          {locale === "ko"
+                            ? "현재 가정(세금/수수료/인플레/적립증가/기간)은 그대로"
+                            : "Same assumptions (tax/fees/inflation/growth/horizon)"}
+                        </div>
+                      </div>
+
+                      <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                        <div className="text-xs font-semibold tracking-[0.14em] text-slate-500 uppercase">
+                          {locale === "ko" ? "필요 기간" : "Required years"}
+                        </div>
+                        <div className="mt-1 text-lg font-semibold">
+                          {diagnosis.requiredYears === null
+                            ? locale === "ko"
+                              ? "계산 범위를 초과했습니다"
+                              : "Out of range"
+                            : (diagnosis.requiredYearsText ?? `${Number(diagnosis.requiredYears).toFixed(1)}y`)}
+                        </div>
+                        <div className="text-xs text-slate-500 mt-1">
+                          {locale === "ko"
+                            ? "현재 가정(월적립/수익률/세금/수수료/인플레/적립증가)은 그대로"
+                            : "Same assumptions (monthly/return/tax/fees/inflation/growth)"}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
               {/* 차트 */}
-              <div className="card">
+              <div className="card" ref={(el) => (sectionEls.current.chart = el)}>
                 <div className="flex items-center gap-3 mb-2">
                   <h2 className="text-lg font-semibold">{t.chartTitle}</h2>
                   <span className="text-xs text-slate-500">
@@ -463,23 +1205,31 @@ export default function GoalSimulatorPage() {
                   </span>
                 </div>
                 <GoalChart
-                  data={result}
+                  //data={result}
+                  data={chartPayload.data}
+                  series={chartPayload.series}
+                  locale={loc}
+                  currency={currency}
+                  target={target}
+                  valueKey={chartValueKey}
+                  grossKey={chartGrossKey}
+                  investedKey={chartInvestKey}
+                />
+              </div>
+
+              {/* 연간 요약 테이블 */}
+              <div ref={(el) => (sectionEls.current.table = el)}>
+                <GoalYearTable
+                  //rows={result}
+                  rows={chartPayload.data}
                   locale={loc}
                   currency={currency}
                   target={target}
                 />
               </div>
 
-              {/* 연간 요약 테이블 */}
-              <GoalYearTable
-                rows={result}
-                locale={loc}
-                currency={currency}
-                target={target}
-              />
-
               {/* 🔹 FAQ 섹션 */}
-              <div className="card w-full">
+              <div className="card w-full" ref={(el) => (sectionEls.current.faq = el)}>
                 <h2 className="text-lg font-semibold mb-3">
                   {t.faqTitle}
                 </h2>
@@ -540,13 +1290,13 @@ export default function GoalSimulatorPage() {
         )}
 
         {/* ✅ 내부링크: 추천 가이드 글 5개 (SEO + 체류시간 + 내부탐색) */}
-        <section className="card">
+        <section className="card" ref={(el) => (sectionEls.current.guides = el)}>
           <div className="flex items-center justify-between gap-3 mb-3">
             <h2 className="text-base font-semibold">
               {locale === "ko" ? "추천 가이드 글" : "Recommended guides"}
             </h2>
             <Link
-              href={locale === "ko" ? `/category/personalFinance`:`/en/category/personalFinance`}
+              href="/category/personalFinance"
               locale={locale}
               className="text-sm text-slate-600 hover:underline"
             >
