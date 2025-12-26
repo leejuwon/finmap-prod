@@ -1,18 +1,18 @@
-// pages/posts/[category]/[lang]/[slug].js
+// pages/posts/[category]/[slug].js
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
-import SeoHead from '../../../../_components/SeoHead';
-import AdResponsive from '../../../../_components/AdResponsive';
-import AdInArticle from '../../../../_components/AdInArticle';
-import { AD_CLIENT, AD_SLOTS } from '../../../../config/adSlots';
+import SeoHead from '../../../_components/SeoHead';
+import AdResponsive from '../../../_components/AdResponsive';
+import AdInArticle from '../../../_components/AdInArticle';
+import { AD_CLIENT, AD_SLOTS } from '../../../config/adSlots';
 import {
   getAllPosts,
   getAllPostsStrict,
   getPostBySlugStrict,
   hasPostSlugStrict,
-} from '../../../../lib/posts';
+} from '../../../lib/posts';
 import parse, { domToReact } from 'html-react-parser';
-import ToolCta from '../../../../_components/ToolCta';
+import ToolCta from '../../../_components/ToolCta';
 
 /* ---------------- 카테고리 이름 ↔ slug 매핑 ---------------- */
 
@@ -78,30 +78,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug 
 
   // ✅ UI 언어는 무조건 Next i18n locale 기준
   const locale = router?.locale === 'en' ? 'en' : 'ko';
-  const isKo = locale === 'ko';
-
-  // ✅ locale/lang 꼬임 자동 복구(번역 있으면 해당 언어로, 없으면 원래 언어로)
-  const fixedRef = useRef(false);
-  useEffect(() => {
-    if (!router.isReady) return;
-    if (fixedRef.current) return;
-
-    if (locale !== lang) {
-      fixedRef.current = true;
-
-      if (otherLangAvailable && (locale === 'ko' || locale === 'en')) {
-        // 번역본이 있으면 locale에 맞는 [lang] URL로 정렬
-        router.replace(
-          `/posts/${categorySlug}/${locale}/${slug}`,
-          undefined,
-          { locale }
-        );
-      } else {
-        // 번역본이 없으면 원래 lang의 locale로 되돌림 (404/뒤집힘 방지)
-        router.replace(router.asPath, undefined, { locale: lang });
-      }
-    }
-  }, [router.isReady, locale, lang, otherLangAvailable, router, categorySlug, slug]);
+  const isKo = locale === 'ko';  
 
   const jsonld = {
     '@context': 'https://schema.org',
@@ -124,7 +101,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug 
   const site = 'https://www.finmaphub.com';
   const prefix = lang === 'en' ? '/en' : '';
   const [shareUrl, setShareUrl] = useState(
-    `${site}${prefix}/posts/${categorySlug}/${lang}/${slug}`
+    `${site}${prefix}/posts/${categorySlug}/${slug}`
   );
 
   const reloadComments = async () => {
@@ -351,7 +328,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug 
       <SeoHead
         title={post.title}
         desc={post.description}
-        url={`/posts/${categorySlug}/${lang}/${post.slug}`}
+        url={`/posts/${categorySlug}/${post.slug}`}
         image={post.cover}
         locale={lang} // ✅ canonical/hreflang을 컨텐츠 언어에 맞춤
       />
@@ -522,7 +499,6 @@ export async function getStaticPaths() {
     ...postsKo.map((p) => ({
       params: {
         category: getCategorySlugFromPost(p, 'ko'),
-        lang: 'ko',
         slug: p.slug,
       },
       locale: 'ko',
@@ -530,7 +506,6 @@ export async function getStaticPaths() {
     ...postsEn.map((p) => ({
       params: {
         category: getCategorySlugFromPost(p, 'en'),
-        lang: 'en',
         slug: p.slug,
       },
       locale: 'en',
@@ -540,8 +515,9 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params }) {
-  const { lang, slug } = params;
+export async function getStaticProps({ params, locale }) {
+  const lang = locale === 'en' ? 'en' : 'ko';
+  const { slug } = params;
 
   // ✅ strict 로드 (en에서 ko로 fallback 금지)
   const post = getPostBySlugStrict(lang, slug);

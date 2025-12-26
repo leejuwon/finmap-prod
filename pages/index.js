@@ -176,8 +176,8 @@ export default function Home({ posts }) {
                   <img src={p.cover} alt={p.title} className="card-thumb" />
                 )}
                 <span className="badge">{p.category}</span>
-                <h3 className="mt-2 text-lg font-semibold">
-                  <Link href={`/posts/${categorySlug}/${postLang}/${p.slug}`}>
+                <h3 className="mt-2 text-lg font-semibold">                  
+                  <Link href={`${postLang === 'en' ? '/en' : ''}/posts/${categorySlug}/${p.slug}`}>
                     {p.title}
                   </Link>
                 </h3>
@@ -211,8 +211,8 @@ export default function Home({ posts }) {
                     <img src={p.cover} alt={p.title} className="card-thumb" />
                   )}
                   <span className="badge">{p.category}</span>
-                  <h3 className="mt-2 text-base font-semibold">
-                    <Link href={`/posts/${categorySlug}/${postLang}/${p.slug}`}>
+                  <h3 className="mt-2 text-base font-semibold">                    
+                    <Link href={`${postLang === 'en' ? '/en' : ''}/posts/${categorySlug}/${p.slug}`}>
                       {p.title}
                     </Link>
                   </h3>
