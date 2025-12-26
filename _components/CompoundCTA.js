@@ -25,7 +25,14 @@ export default function CompoundCTA({
 
   const handleShare = async () => {
     // 1) Web Share API
-    if (await shareWeb()) return;
+    if (
+      await shareWeb({
+        title: resolvedTitle,
+        text: resolvedDesc,
+        url: window.location.href,
+      })
+    )
+      return;
 
     // 2) Kakao SDK
     if (typeof window !== "undefined" && window?.Kakao) {
@@ -33,6 +40,7 @@ export default function CompoundCTA({
         title: resolvedTitle,
         description: resolvedDesc,
         url: window.location.href,
+        imageUrl: "/og/og-default.png",
       });
       return;
     }
@@ -76,7 +84,9 @@ export default function CompoundCTA({
         <button
           type="button"
           className="btn-outline flex gap-2 items-center justify-center"
-          onClick={copyUrl}
+          onClick={() =>
+            copyUrl(isKo ? "URL이 복사되었습니다!" : "URL copied!")
+          }
         >
           🔗 {isKo ? "URL 복사" : "Copy URL"}
         </button>        

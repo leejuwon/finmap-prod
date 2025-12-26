@@ -343,17 +343,32 @@ export default function CagrCalculatorPage() {
   const grossCagr = result?.grossCagr || 0;
 
   const handleShare = async () => {
+    const shareTitle =
+      locale === "ko" ? "FinMap CAGR 계산 결과" : "FinMap CAGR result";
+    const shareDesc =
+      locale === "ko"
+        ? "세전/세후 CAGR, 연도별 자산 경로까지 한 번에 공유해보세요."
+        : "Share CAGR with gross/net breakdown and the yearly path.";
+    const shareImage = "/og/cagr-calculator.jpg";
+
     // 1) Web Share API
-    if (await shareWeb()) return;
+    if (
+      await shareWeb({
+        title: shareTitle,
+        text: shareDesc,
+        url: window.location.href,
+      })
+    )
+      return;
 
     // 2) Kakao SDK
     if (typeof window !== "undefined" && window?.Kakao) {
       shareKakao({
-        title: locale === "ko" ? "FinMap 복리 계산 결과" : "Compound result",
+        title: locale === "ko" ? "FinMap CAGR 계산 결과" : "CAGR result",
         description:
           locale === "ko"
-            ? "세전/세후, 복리·단리 비교까지 자동 생성!"
-            : "Full breakdown of compound interest.",
+            ? "초기/최종 금액과 기간으로 연평균 수익률(CAGR)을 계산했어요."
+            : "Calculated CAGR from initial/final value and time horizon.",
         url: window.location.href,
       });
       return;
@@ -362,14 +377,14 @@ export default function CagrCalculatorPage() {
     // 3) Naver share
     if (typeof window !== "undefined") {
       shareNaver({
-        title: locale === "ko" ? "FinMap 복리 계산 결과" : "Compound Result",
+        title: locale === "ko" ? "FinMap CAGR 계산 결과" : "CAGR result",
         url: window.location.href,
       });
       return;
     }
 
     // 4) 최후 fallback: URL 복사
-    copyUrl();
+    copyUrl(locale === "ko" ? "URL이 복사되었습니다!" : "URL copied!");
   };
 
   return (
@@ -386,7 +401,7 @@ export default function CagrCalculatorPage() {
       <JsonLd data={breadcrumbJsonLd} />
       <JsonLd data={appJsonLd} />
 
-      <div className="py-6 grid gap-6 fm-mobile-full">
+      <div className="py-6 grid gap-6 fm-mobile-full fm-safe-bottom">
         {/* 히어로 */}
         <div className="card bg-slate-900 text-white">
           <div className="flex flex-col md:flex-row gap-4 items-stretch">
@@ -546,7 +561,7 @@ export default function CagrCalculatorPage() {
               {locale === "ko" ? "추천 가이드 글" : "Recommended guides"}
             </h2>
             <Link
-              href={locale === "ko" ? `/category/personalFinance`:`/en/category/personalFinance`}
+              href={`/category/personalFinance`}
               locale={locale}
               className="text-sm text-slate-600 hover:underline"
             >

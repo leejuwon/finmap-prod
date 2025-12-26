@@ -363,8 +363,8 @@ export default function DCACalculatorPage() {
         title: locale === "ko" ? "FinMap DCA 시뮬레이터 결과" : "DCA result",
         description:
           locale === "ko"
-            ? ""
-            : "",
+            ? "정기 투자(DCA)로 자산이 어떻게 성장하는지 세전/세후 기준으로 시뮬레이션합니다."
+            : "Simulate how dollar-cost averaging (DCA) grows your portfolio (gross/net).",
         url: window.location.href,
       });
       return;

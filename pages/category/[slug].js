@@ -54,9 +54,8 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
     return labels[slug] || slug;
   }, [isKo, slug]);
 
-  // ✅ en UI인데 en 글이 없으면 ko 글로 폴백
-  const usingEnPosts = !isKo && Array.isArray(postsEn) && postsEn.length > 0;
-  const posts = usingEnPosts ? postsEn : postsKo;
+  // ✅ SEO/색인 안정성: en 카테고리에서는 en 글만 노출 (KO 폴백 금지)
+  const posts = isKo ? postsKo : postsEn;
 
   return (
     <>
@@ -71,12 +70,12 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
 
       {!posts || posts.length === 0 ? (
         <p className="text-slate-500">
-          {isKo ? '아직 이 카테고리의 글이 없습니다.' : 'No posts in this category yet.'}
+          {isKo ? '아직 이 카테고리의 글이 없습니다.' : 'No English posts in this category yet.'}
         </p>
       ) : (
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((p) => {
-            const postLang = p.lang || (usingEnPosts ? 'en' : 'ko');
+            const postLang = p.lang || (isKo ? 'ko' : 'en');
 
             return (
               <li key={`${postLang}-${p.slug}`} className="card">

@@ -1,9 +1,9 @@
 // pages/index.js
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useMemo } from 'react';
 import SeoHead from '../_components/SeoHead';
 import { getAllPostsAllLangs } from '../lib/posts';
-import { getInitialLang } from '../lib/lang';
 
 /* ✅ 카테고리 이름 → slug 매핑 (frontmatter 기준) */
 const CATEGORY_SLUG_KO = {
@@ -80,24 +80,8 @@ const TEXT = {
 
 export default function Home({ posts }) {
   // 🔥 전역 언어 시스템과 동기화되는 상태
-  const [lang, setLang] = useState('ko');
-
-  // ✅ 헤더와 동일하게: fm_lang 쿠키 + fm_lang_change 이벤트 수신
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    // 최초 진입 시 쿠키 기준 언어
-    const initial = getInitialLang();
-    setLang(initial);
-
-    // 헤더에서 setLang() 호출 시 발생하는 이벤트 구독
-    const handler = (e) => {
-      setLang(e.detail || 'ko');
-    };
-
-    window.addEventListener('fm_lang_change', handler);
-    return () => window.removeEventListener('fm_lang_change', handler);
-  }, []);
+  const router = useRouter();
+  const lang = router?.locale === 'en' ? 'en' : 'ko';
 
   const t = TEXT[lang] || TEXT.ko;
 
@@ -109,12 +93,12 @@ export default function Home({ posts }) {
 
   const latest = filtered.slice(0, 3);
   const more = filtered.slice(3, 9);
-
-  const seoUrl = lang === 'en' ? '/?lang=en' : '/';
+  
+  const seoUrl = '/';
 
   return (
     <>
-      <SeoHead title={t.seoTitle} desc={t.seoDesc} url={seoUrl} />
+      <SeoHead title={t.seoTitle} desc={t.seoDesc} url={seoUrl} locale={lang} />
 
       {/*  히어로 섹션 */}
       <section className="mt-6 mb-8">

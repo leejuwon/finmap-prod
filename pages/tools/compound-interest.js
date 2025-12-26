@@ -1243,12 +1243,10 @@ export default function CompoundPage() {
                       {locale === "ko"
                         ? "이 복리 계산기는 원금(초기 투자금)과 월 적립금(적립식), 연 수익률, 기간을 입력해 미래가치(FV)를 계산합니다. 월복리/연복리처럼 복리 주기 차이에 따른 결과도 비교할 수 있고, 세금·수수료를 반영해 현실적인 세후 총자산을 확인할 수 있어요."
                         : "Enter principal, monthly contribution, annual return, and years to calculate FV. Compare monthly vs annual compounding and check net results after tax/fees."}
-                    </p>
-                    <p>
-                      <div className="font-semibold mb-2">
-                        {locale === "ko" ? "관련 계산기" : "Related tools"}
-                      </div>`
-                    </p>
+                    </p>                    
+                    <h3 className="text-sm font-semibold mb-2">
+                      {locale === "ko" ? "관련 계산기" : "Related tools"}
+                    </h3>                 
                     <div className="tool-cta-section">
                       <ToolCta lang={lang} type="fire" />
                       <ToolCta lang={lang} type="goal" />

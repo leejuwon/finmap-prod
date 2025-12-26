@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useRef, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import SeoHead from "../../_components/SeoHead";
 import CTABar from "../../_components/CTABar";
@@ -89,31 +90,9 @@ function JsonLdPack({ lang }) {
   );
 }
 
-export default function FireCalculatorPage({ initialLang = "ko" }) {
-  // ✅ (추가) PDF Exporting 상태
-  const [isExporting, setIsExporting] = useState(false);  
-
-  // ✅ 서버/클라 첫 렌더 동일 (하이드레이션 안정)
-  const [lang, setLang] = useState(initialLang);
-
-  useEffect(() => {
-    const onLang = (e) => {
-      const next = e?.detail;
-      if (next === "ko" || next === "en") setLang(next);
-    };
-    window.addEventListener("fm_lang_change", onLang);
-
-    const onStorage = (e) => {
-      if (e.key !== "fm_lang") return;
-      if (e.newValue === "ko" || e.newValue === "en") setLang(e.newValue);
-    };
-    window.addEventListener("storage", onStorage);
-
-    return () => {
-      window.removeEventListener("fm_lang_change", onLang);
-      window.removeEventListener("storage", onStorage);
-    };
-  }, []);
+export default function FireCalculatorPage() {
+  const router = useRouter();
+  const lang = router?.locale === "en" ? "en" : "ko";
 
   const isKo = lang === "ko";
   const locale = isKo ? "ko-KR" : "en-US";
@@ -171,7 +150,7 @@ export default function FireCalculatorPage({ initialLang = "ko" }) {
   };
 
   // ✅ (보강) SeoHead도 언어별 URL 사용
-  const pageUrl = isKo ? "/tools/fire-calculator" : "/en/tools/fire-calculator";
+  const pageUrl = "/tools/fire-calculator";
 
   // ----------------------------
   // ✅ 내부링크(추천 가이드 글)
@@ -236,12 +215,12 @@ export default function FireCalculatorPage({ initialLang = "ko" }) {
 
     // 2) Kakao SDK
     if (typeof window !== "undefined" && window?.Kakao) {
-      shareKakao({
-        title: locale === "ko" ? "FinMap 복리 계산 결과" : "Compound result",
+       shareKakao({
+        title: locale === "ko" ? "FinMap 은퇴자금(FIRE) 시뮬레이션 결과" : "FIRE retirement simulation result",
         description:
           locale === "ko"
-            ? "세전/세후, 복리·단리 비교까지 자동 생성!"
-            : "Full breakdown of compound interest.",
+            ? "출금률·수익률 기준으로 은퇴 가능 시점과 자산 지속 기간을 계산했어요."
+            : "Simulated FIRE timing and asset longevity (withdrawal rate & returns).",
         url: window.location.href,
       });
       return;
@@ -250,7 +229,7 @@ export default function FireCalculatorPage({ initialLang = "ko" }) {
     // 3) Naver share
     if (typeof window !== "undefined") {
       shareNaver({
-        title: locale === "ko" ? "FinMap 복리 계산 결과" : "Compound Result",
+        title: locale === "ko" ? "FinMap 은퇴자금(FIRE) 시뮬레이션 결과" : "FIRE retirement simulation result",
         url: window.location.href,
       });
       return;
@@ -379,12 +358,4 @@ export default function FireCalculatorPage({ initialLang = "ko" }) {
       </div>
     </>
   );
-}
-
-/** ✅ pages router: 파일 맨 아래에 붙이면 됨 */
-export async function getServerSideProps({ req }) {
-  const cookie = req?.headers?.cookie || "";
-  const m = cookie.match(/(?:^|;\s*)fm_lang=(ko|en)/);
-  const initialLang = m?.[1] || "ko";
-  return { props: { initialLang } };
 }
