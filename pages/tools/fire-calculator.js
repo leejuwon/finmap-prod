@@ -98,6 +98,8 @@ export default function FireCalculatorPage() {
   const locale = isKo ? "ko-KR" : "en-US";
   const currency = isKo ? "KRW" : "USD";
 
+  const [isExporting, setIsExporting] = useState(false);
+
   const [result, setResult] = useState(null);
   const [params, setParams] = useState(null);
 
