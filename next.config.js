@@ -51,6 +51,38 @@ module.exports = {
       },
 
       // -------------------------
+      // (D) 루트 / 또는 /en 에 붙는 ?lang= 정리
+      // -------------------------
+      {
+        source: "/",
+        has: [{ type: "query", key: "lang", value: "en" }],
+        destination: "/en",
+        permanent: true,
+        locale: false,
+      },
+      {
+        source: "/",
+        has: [{ type: "query", key: "lang", value: "ko" }],
+        destination: "/",
+        permanent: true,
+        locale: false,
+      },
+      {
+        source: "/en",
+        has: [{ type: "query", key: "lang", value: "en" }],
+        destination: "/en",
+        permanent: true,
+        locale: false,
+      },
+      {
+        source: "/en",
+        has: [{ type: "query", key: "lang", value: "ko" }],
+        destination: "/",
+        permanent: true,
+        locale: false,
+      },
+
+      // -------------------------
       // (C) ?lang=ko/en 파라미터 정규화
       // ✅ locale:false 필수
       // -------------------------
@@ -95,6 +127,29 @@ module.exports = {
         source: "/posts/:path*",
         has: [{ type: "query", key: "lang", value: "ko" }],
         destination: "/posts/:path*",
+        permanent: true,
+        locale: false,
+      },
+
+      // -------------------------
+      // (E) /en/en/... 같은 과거 중복 URL 청소 (혹시 남아있다면)
+      // -------------------------
+      { source: "/en/en", destination: "/en", permanent: true, locale: false },
+      { source: "/en/en/:path*", destination: "/en/:path*", permanent: true, locale: false },
+
+      // -------------------------
+      // (F) Search Console 404로 찍힌 개별 URL 매핑
+      // -------------------------
+      {
+        source: "/posts/economics-inflation-basics",
+        destination: "/posts/economicInfo/inflation-basics",
+        permanent: true,
+        locale: false,
+      },
+      // 아래는 원칙상 이미 (B)로 커버되지만, 혹시 404로 계속 찍히면 "명시"로 박아두면 더 강력함
+      {
+        source: "/posts/personalFinance/en/personal-finance-3pillars",
+        destination: "/en/posts/personalFinance/personal-finance-3pillars",
         permanent: true,
         locale: false,
       },

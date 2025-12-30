@@ -35,8 +35,9 @@ export default function Header() {
   // ✅ 이제 언어는 쿠키가 아니라 "라우터 locale"이 기준
   const lang = (router.locale === "en" ? "en" : "ko");
   
-  const handleLangChange = async (next) => {
-    const isPostDetail = router.pathname === "/posts/[category]/[lang]/[slug]";
+  const handleLangChange = async (next) => {    
+    // ✅ i18n prefix(/en) 구조에서는 pages 경로는 그대로 /posts/[category]/[slug] 로 잡히는게 정상
+    const isPostDetail = router.pathname === "/posts/[category]/[slug]";
 
     // ✅ 번역 없으면 막기(기존 로직 유지)
     if (isPostDetail) {
@@ -54,19 +55,16 @@ export default function Header() {
     // ✅ 쿠키/이벤트(레거시)도 유지하고 싶으면 남겨도 OK
     setLang(next);
 
-    // ✅ 포스트 상세면 URL의 [lang]도 같이 바꿔서 이동
+     // ✅ 포스트 상세면: 쿼리에서 lang 제거하고 locale만 바꿔서 이동
     if (isPostDetail) {
-      const q = { ...router.query, lang: next }; // ⭐ 핵심
-      await router.push(
-        { pathname: router.pathname, query: q },
-        undefined,
-        { locale: next }
-      );
+      const { lang: _legacyLang, ...q } = router.query; // 혹시 남아있던 lang 쿼리 제거
+      await router.push({ pathname: router.pathname, query: q }, undefined, { locale: next });
       return;
     }
 
-    // ✅ 나머지 페이지는 locale만 변경
-    await router.push(router.asPath, router.asPath, { locale: next });
+    // ✅ 나머지 페이지도: ?lang= 같은 쿼리가 있으면 제거하고 locale만 변경
+    const cleanPath = String(router.asPath || "/").split("?")[0].split("#")[0];
+    await router.push(cleanPath, cleanPath, { locale: next });
   };
 
   const nav = useMemo(() => navItems, []);
