@@ -1,5 +1,5 @@
 ---
-slug: "inflation-and-interest-rates-basics"
+slug: "indicator-basics"
 title: "물가와 금리의 기본 이해: 장기 투자자가 반드시 알아야 할 핵심 구조"
 description: "물가와 금리는 경제의 '뿌리'입니다. 물가 상승이 금리에 어떤 영향을 주고, 금리가 다시 소비·기업·주식·부동산 시장에 어떤 파급을 일으키는지 고급 레이아웃으로 정리했습니다."
 datePublished: "2025-12-01"

@@ -1,5 +1,5 @@
 ---
-slug: "economics-dxy-dollar-index-basics"
+slug: "dxy-dollar-index-basics"
 title: "DXY(달러인덱스)란 무엇인가? 투자자가 꼭 알아야 할 의미 정리"
 description: "달러인덱스(DXY)의 구성, 계산 방식, 시장 영향, 해석 방법을 초중급 투자자 관점에서 쉽게 정리합니다."
 datePublished: "2025-11-23"

@@ -1,5 +1,5 @@
 ---
-slug: "economics-fx-basics"
+slug: "fx-basics"
 title: "환율의 기초: 원/달러가 움직이는 진짜 이유"
 description: "수출입, 금리차, 위험회피 심리, 경상수지 등 환율에 영향을 주는 요인을 사례별로 설명합니다."
 category: "경제정보"

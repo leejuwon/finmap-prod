@@ -1,5 +1,5 @@
 ---
-slug: "economics-price-rate-basics"
+slug: "inflation-rate-basics"
 title: "Understanding Inflation and Interest Rates: A Beginner-Friendly Guide"
 description: "A simple and clear guide that explains how inflation and interest rates work, how they interact, and how they generally influence financial markets."
 category: "Economic Info"

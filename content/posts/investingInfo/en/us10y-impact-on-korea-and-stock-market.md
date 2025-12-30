@@ -1,5 +1,5 @@
 ---
-slug: "us10y-impact-on-korea-and-stock-market-en"
+slug: "us10y-impact-on-korea-and-stock-market"
 title: "How the U.S. 10-Year Treasury Yield (TNX) Affects the U.S. Economy, Korea, and Global Stock Markets"
 description: "A comprehensive guide explaining how the U.S. 10-year Treasury yield(TNX) influences the U.S. market, Korea’s economy, foreign investment flows, currency markets, and stock valuations."
 datePublished: "2025-12-01"

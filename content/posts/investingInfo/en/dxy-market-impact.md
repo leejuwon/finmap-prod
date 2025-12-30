@@ -1,5 +1,5 @@
 ---
-slug: "economics-dxy-market-impact"
+slug: "dxy-market-impact"
 title: "How DXY Moves the Market: Impact on U.S. Stocks, USD/KRW, and KOSPI"
 description: "A clear explanation for beginner investors on how changes in the DXY affect U.S. markets, USD/KRW, Korean stocks, and global liquidity."
 datePublished: "2025-11-24"

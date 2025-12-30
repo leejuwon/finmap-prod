@@ -1,5 +1,5 @@
 ---
-slug: "economics-tnx-basics"
+slug: "tnx-basics"
 title: "TNX Explained: Why the 10-Year Treasury Yield Drives Markets"
 description: "TNX, the U.S. 10-year Treasury Yield, is one of the most important macro indicators investors must understand. It affects stocks, bonds, currencies, and global market sentiment."
 datePublished: "2025-11-23"

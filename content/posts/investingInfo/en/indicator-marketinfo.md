@@ -1,5 +1,5 @@
 ---
-slug: "economics-indicator-marketinfo"
+slug: "indicator-marketinfo"
 title: "Global Market Forces That Influence the KOSPI: A Complete Overview"
 description: "An easy-to-understand summary of how USD/KRW, WTI crude prices, major U.S. indices, the Dollar Index (DXY), U.S. 10-year Treasury yields, and the Euro Stoxx 50 affect movements in the KOSPI."
 datePublished: "2025-11-18"

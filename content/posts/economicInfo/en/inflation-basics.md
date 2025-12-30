@@ -1,5 +1,5 @@
 ---
-slug: "inflation-and-interest-rates-basics-en"
+slug: "inflation-basics"
 title: "Understanding Inflation and Interest Rates: The Core Framework Every Long-Term Investor Must Know"
 description: "Inflation and interest rates form the backbone of the economy. This guide explains how inflation drives rate decisions and how rates affect stocks, ETFs, real estate, and liquidity cycles—all in FinMap's premium layout format."
 datePublished: "2025-12-02"

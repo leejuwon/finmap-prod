@@ -1,5 +1,5 @@
 ---
-slug: "economics-indicator-marketinfo"
+slug: "indicator-marketinfo"
 title: "코스피에 가장 큰 영향을 끼치는 글로벌 시장 환경 총정리"
 description: "원·달러 환율, 유가(WTI), 미국 3대 지수, 달러인덱스(DXY), 미국 10년물 금리, Stoxx50 등 글로벌 주요 지표가 어떻게 코스피에 영향을 주는지 핵심 흐름을 이해하기 쉽게 정리했습니다."
 datePublished: "2025-11-18"

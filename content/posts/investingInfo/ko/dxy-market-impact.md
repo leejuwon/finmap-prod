@@ -1,5 +1,5 @@
 ---
-slug: "economics-dxy-market-impact"
+slug: "dxy-market-impact"
 title: "DXY가 변화하면 시장은 어떻게 움직일까? 미국 증시·환율·코스피까지"
 description: "DXY 상승과 하락이 미국 증시, 원/달러 환율, KOSPI, 글로벌 유동성에 어떤 영향을 주는지 초중급 투자자도 이해하기 쉽게 정리했습니다."
 datePublished: "2025-11-24"

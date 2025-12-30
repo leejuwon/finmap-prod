@@ -1,5 +1,5 @@
 ---
-slug: "economics-indicator-basics"
+slug: "indicator-basics"
 title: "경제지표 읽는 법: GDP·실업률·PMI를 실제로 쓰는 방법"
 description: "초심자도 이해할 수 있도록 GDP·실업률·PMI의 의미와 공표 일정, 시장 반응 포인트를 설명합니다."
 category: "경제정보"

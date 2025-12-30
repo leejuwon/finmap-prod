@@ -1,5 +1,5 @@
 ---
-slug: "economics-tnx-basics"
+slug: "tnx-basics"
 title: "TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준"
 description: "TNX(미국 10년물 국채 금리)는 전 세계 투자자들이 가장 먼저 확인하는 핵심 지표입니다. 주식·채권·부동산·환율까지 영향을 주는 이유를 초보자 눈높이에 맞춰 정리합니다."
 datePublished: "2025-11-23"

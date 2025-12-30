@@ -1,5 +1,5 @@
 ---
-slug: "economics-dxy-dollar-index-basics-en"
+slug: "dxy-dollar-index-basics"
 title: "What Is DXY (Dollar Index)? A Beginner-Friendly Explanation for Investors"
 description: "A clear explanation of the Dollar Index (DXY), how it is calculated, why it moves, and how it affects stock markets, commodities, and currencies."
 datePublished: "2025-11-23"

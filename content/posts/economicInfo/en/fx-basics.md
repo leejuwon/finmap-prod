@@ -1,5 +1,5 @@
 ---
-slug: "economics-fx-basics"
+slug: "fx-basics"
 title: "FX Basics: Why USD/KRW Really Moves"
 description: "A clear explanation of the major factors that influence exchange rates, including interest rate differentials, trade balance, risk sentiment, and global liquidity."
 category: "Economic Info"

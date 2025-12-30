@@ -1,5 +1,5 @@
 ---
-slug: "economics-interest-rate-basics"
+slug: "interest-rate-basics"
 title: "금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해"
 description: "기준금리, 시장금리, 예·적금/대출 금리의 연결고리를 쉬운 예시로 설명. 채권 가격과 금리의 역관계도 도식으로 정리합니다."
 category: "경제정보"
