@@ -5,6 +5,7 @@ description: "A clear explanation for beginner investors on how changes in the D
 datePublished: "2025-11-24"
 dateModified: "2025-11-24"
 category: "Investing Info"
+postCategory: "investingInfo"
 tags: ["DXY", "dollar index", "US interest rates", "liquidity", "forex"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428430/blog/investingInfo/dxy-market-impact-thum.png"
 lang: "en"

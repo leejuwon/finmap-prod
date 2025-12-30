@@ -5,6 +5,7 @@ description: "An easy-to-understand summary of how USD/KRW, WTI crude prices, ma
 datePublished: "2025-11-18"
 dateModified: "2025-11-18"
 category: "Investing Info"
+postCategory: "investingInfo"
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428447/blog/investingInfo/economics-marketinfo-thum.png"
 tags: ["KOSPI", "USD/KRW", "WTI", "U.S. Indices", "DXY", "10Y Treasury", "Stoxx50"]
 lang: "en"

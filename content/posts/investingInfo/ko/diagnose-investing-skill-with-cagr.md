@@ -5,6 +5,7 @@ description: "CAGR은 결국 ‘돈이 얼마나 늘어났는가’를 보여주
 datePublished: "2025-11-29"
 dateModified: "2025-11-29"
 category: "투자정보"
+postCategory: "investingInfo"
 tags: ["CAGR", "MDD", "샤프비율", "변동성", "투자평가", "포트폴리오"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428405/blog/investingInfo/diagnose-investing-skill-with-cagr-cover.png"
 lang: "ko"

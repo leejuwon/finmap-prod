@@ -5,6 +5,7 @@ description: "5천만 원, 1억, 3억을 만들기 위해 매월 얼마나 투�
 datePublished: "2025-11-20"
 dateModified: "2025-11-20"
 category: "재테크"
+postCategory: "personalFinance"
 tags: ["1억만들기", "5천만들기", "3억만들기", "월투자금", "투자계획", "목표금액", "복리", "자산계획", "목표자산"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429425/blog/personalFinance/monthly-investment-cover.png"
 lang: "ko"

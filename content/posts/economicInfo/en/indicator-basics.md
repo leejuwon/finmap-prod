@@ -3,6 +3,7 @@ slug: "indicator-basics"
 title: "How to Read Economic Indicators: Practical Use of GDP, Unemployment Rate, and PMI"
 description: "A beginner-friendly guide explaining what GDP, unemployment rate, and PMI mean, how they are released, and how markets typically react to them."
 category: "Economic Info"
+postCategory: "economicInfo"
 tags: ["GDP", "unemployment rate", "PMI", "economic indicators"]
 datePublished: "2025-11-13"
 dateModified: "2025-11-13"

@@ -5,6 +5,7 @@ description: "한국 ETF가 글로벌 ETF 중에서도 금리·환율·유동성
 datePublished: "2025-12-01"
 dateModified: "2025-12-01"
 category: "투자정보"
+postCategory: "investingInfo"
 tags: ["한국ETF", "EWY", "KOSPI", "TNX", "DXY", "KRW", "반도체ETF", "ETF매크로"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764561440/blog/investingInfo/korea-etf-deep-dive-tnx-thum.png"
 lang: "ko"

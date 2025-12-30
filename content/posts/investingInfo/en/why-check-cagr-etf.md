@@ -5,6 +5,7 @@ description: "A complete guide to understanding why CAGR (Compound Annual Growth
 datePublished: "2025-11-29"
 dateModified: "2025-11-29"
 category: "Investing Info"
+postCategory: "investingInfo"
 tags: ["CAGR", "ETF Selection", "Fund Comparison", "Long-term Investing", "Annualized Return"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428473/blog/investingInfo/why-cagr-etf-cover.png"
 tool: ["cagr","comp"]

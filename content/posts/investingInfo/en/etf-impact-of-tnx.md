@@ -5,6 +5,7 @@ description: "A full breakdown of how the U.S. 10-year Treasury yield (TNX) infl
 datePublished: "2025-12-01"
 dateModified: "2025-12-01"
 category: "Investing Info"
+postCategory: "investingInfo"
 tags: ["TNX", "ETF", "EmergingMarkets", "Yield", "EEM", "EWY", "GrowthETF", "ValueETF"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764561430/blog/investingInfo/etf-impact-of-tnx-thum.png"
 lang: "en"

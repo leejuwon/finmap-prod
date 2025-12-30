@@ -5,6 +5,7 @@ description: "ETF는 금리·달러·유동성의 영향을 강하게 받는다.
 datePublished: "2025-12-01"
 dateModified: "2025-12-01"
 category: "투자정보"
+postCategory: "investingInfo"
 tags: ["ETF", "TNX", "미국10년물", "금리영향", "성장주ETF", "가치주ETF", "신흥국ETF"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764561430/blog/investingInfo/etf-impact-of-tnx-thum.png"
 lang: "ko"

@@ -1,10 +1,11 @@
 ---
-slug: "usd-krw-exchange-rate-kospi"
+slug: "usd-krw-exchange-rate-and-kospi"
 title: "USD/KRW Exchange Rate: What It Means for Korea’s Economy and the KOSPI"
 description: "Learn what the USD/KRW exchange rate means, why it moves, and how it affects Korea’s economy and the KOSPI through earnings, inflation, and foreign investor flows."
 datePublished: "2025-12-28"
 dateModified: "2025-12-28"
 category: "Investing Info"
+postCategory: "investingInfo"
 tags: ["USD/KRW", "exchange rate", "KOSPI", "Korea economy", "foreign flows", "inflation", "exporters", "import costs", "FX hedging"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767070300/blog/tools/usd-krw-exchange-rate-kospi-impact_cover.png"
 tool: ["cagr","comp"]

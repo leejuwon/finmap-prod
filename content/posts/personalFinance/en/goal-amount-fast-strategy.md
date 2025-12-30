@@ -5,6 +5,7 @@ description: "To reach your financial goals faster, you need a realistic balance
 datePublished: "2025-11-19"
 dateModified: "2025-11-19"
 category: "Personal Finance"
+postCategory: "personalFinance"
 tags: ["target amount", "investment planning", "compound interest", "personal finance", "return", "investment period", "wealth building"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429402/blog/personalFinance/goal-amount-fast-strategy-cover.png"
 tool: ["goal","comp"]

@@ -3,6 +3,7 @@ slug: "personal-finance-3pillars"
 title: "가계 재무 3대장: 예산·비상금·장기투자를 먼저 세팅하라"
 description: "투자 전에 삶의 현금흐름을 먼저 안정화하는 방법. 예산·비상금·장기투자의 순서를 구체적인 체크리스트로 제안합니다."
 category: "재테크"
+postCategory: "personalFinance"
 tags: ["가계재무","예산","비상금","장기투자"]
 datePublished: "2025-11-13"
 dateModified: "2025-11-13"

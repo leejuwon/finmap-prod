@@ -5,6 +5,7 @@ description: "CAGR shows how much your portfolio has grown, but it does not capt
 datePublished: "2025-11-29"
 dateModified: "2025-11-29"
 category: "Investing Info"
+postCategory: "investingInfo"
 tags: ["CAGR", "MDD", "Sharpe Ratio", "Volatility", "Portfolio Analysis"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428405/blog/investingInfo/diagnose-investing-skill-with-cagr-cover.png"
 lang: "en"

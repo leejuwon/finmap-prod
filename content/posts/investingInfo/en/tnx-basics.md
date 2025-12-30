@@ -5,6 +5,7 @@ description: "TNX, the U.S. 10-year Treasury Yield, is one of the most important
 datePublished: "2025-11-23"
 dateModified: "2025-11-23"
 category: "Investing Info"
+postCategory: "investingInfo"
 tags: ["TNX", "10-year treasury yield", "macro indicators", "US bonds", "interest rates"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428464/blog/investingInfo/economics-tnx-cover.png"
 lang: "en"

@@ -3,6 +3,7 @@ slug: "inflation-rate-basics"
 title: "물가와 금리의 기본 이해"
 description: "초심자도 이해하는 물가·금리 핵심 가이드"
 category: "경제정보"
+postCategory: "economicInfo"
 tags: ["물가","금리"]
 datePublished: "2025-11-12"
 dateModified: "2025-11-12"

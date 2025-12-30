@@ -5,6 +5,7 @@ description: "A simple explanation of the difference between annual and monthly 
 datePublished: "2025-11-23"
 dateModified: "2025-11-23"
 category: "Personal Finance"
+postCategory: "personalFinance"
 tags: ["compound interest", "monthly compounding", "financial basics", "investing"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429378/blog/personalFinance/compounding-period-diff-cover.png"
 lang: "en"

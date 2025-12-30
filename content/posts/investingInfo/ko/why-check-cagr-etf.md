@@ -5,6 +5,7 @@ description: "ETF·펀드 비교에서 총 수익률만 보면 위험해질 수 
 datePublished: "2025-11-29"
 dateModified: "2025-11-29"
 category: "투자정보"
+postCategory: "investingInfo"
 tags: ["CAGR", "ETF선택", "펀드고르는법", "연평균복리수익률", "장기투자", "레버리지ETF"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428473/blog/investingInfo/why-cagr-etf-cover.png"
 tool: ["cagr","comp"]

@@ -3,6 +3,7 @@ slug: "simple-vs-compound"
 title: "Simple vs. Compound Interest — The Most Important Finance Principle for Beginners"
 description: "A beginner-friendly guide explaining simple vs compound interest, real-life examples, how banks and investments apply them, and why compound interest is essential for long-term wealth building."
 category: "Personal Finance"
+postCategory: "personalFinance"
 tags: ["simple interest", "compound interest", "finance 101", "beginner investing", "wealth building"]
 datePublished: "2025-11-15"
 dateModified: "2025-11-15"

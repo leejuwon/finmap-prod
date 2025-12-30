@@ -5,6 +5,7 @@ description: "A comprehensive guide explaining how the U.S. 10-year Treasury yie
 datePublished: "2025-12-01"
 dateModified: "2025-12-01"
 category: "Investing Info"
+postCategory: "investingInfo"
 tags: ["TNX", "US10Y", "bond yield", "Korea market", "liquidity", "valuation", "USDKRW"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764553910/blog/investingInfo/tnx_thum.png"
 lang: "en"

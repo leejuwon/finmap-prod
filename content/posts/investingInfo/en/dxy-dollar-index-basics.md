@@ -5,6 +5,7 @@ description: "A clear explanation of the Dollar Index (DXY), how it is calculate
 datePublished: "2025-11-23"
 dateModified: "2025-11-23"
 category: "Investing Info"
+postCategory: "investingInfo"
 tags: ["DXY", "dollar index", "macro indicators", "forex", "USD strength"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428438/blog/investingInfo/dxy-thum.png"
 lang: "en"

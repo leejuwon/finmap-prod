@@ -5,6 +5,7 @@ description: "미국 10년물 국채금리(TNX)가 미국 경제뿐 아니라 �
 datePublished: "2025-12-01"
 dateModified: "2025-12-01"
 category: "투자정보"
+postCategory: "investingInfo"
 tags: ["TNX", "미국10년물", "금리영향", "유동성", "한국증시", "환율", "매크로"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764553910/blog/investingInfo/tnx_thum.png"
 lang: "ko"

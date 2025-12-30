@@ -5,6 +5,7 @@ description: "연복리와 월복리의 차이를 실제 수치와 예시로 설
 datePublished: "2025-11-23"
 dateModified: "2025-11-23"
 category: "재테크"
+postCategory: "personalFinance"
 tags: ["연복리", "월복리", "복리계산", "투자기초", "시간가치"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429378/blog/personalFinance/compounding-period-diff-cover.png"
 lang: "ko"

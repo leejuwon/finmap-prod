@@ -5,6 +5,7 @@ description: "TNX(미국 10년물 국채 금리)는 전 세계 투자자들이 �
 datePublished: "2025-11-23"
 dateModified: "2025-11-23"
 category: "투자정보"
+postCategory: "investingInfo"
 tags: ["TNX", "미국채10년물", "미국금리", "국채수익률", "거시지표"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428464/blog/investingInfo/economics-tnx-cover.png"
 lang: "ko"

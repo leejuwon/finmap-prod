@@ -1,10 +1,11 @@
 ---
-slug: "usd-krw-exchange-rate-korea-kospi"
+slug: "usd-krw-exchange-rate-and-kospi"
 title: "원달러 환율이 한국 경제와 코스피에 미치는 영향: 외국인 수급·수출·물가·금리로 읽는 법"
 description: "원달러 환율(USD/KRW)은 한국 주식시장(코스피)의 ‘기류’를 바꾸는 핵심 변수입니다. 환율 상승/하락이 의미하는 것과 외국인 수급, 수출기업 실적, 물가·금리, 위험선호(달러 강세)까지 한 번에 정리합니다."
 datePublished: "2025-12-28"
 dateModified: "2025-12-28"
 category: "투자정보"
+postCategory: "investingInfo"
 tags: ["원달러환율", "USD/KRW", "환율", "코스피", "외국인수급", "수출", "물가", "금리", "달러강세", "DXY"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767070300/blog/tools/usd-krw-exchange-rate-kospi-impact_cover.png"
 tool: ["cagr","comp"]

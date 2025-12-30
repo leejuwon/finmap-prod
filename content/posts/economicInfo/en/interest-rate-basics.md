@@ -3,6 +3,7 @@ slug: "interest-rate-basics"
 title: "Understanding Interest Rates: Policy Rates, Market Rates, and How They Influence Deposits, Loans, and Bonds"
 description: "A clear beginner-friendly guide explaining policy rates, market rates, and how they translate into deposit, loan, and bond yields—plus a simple breakdown of the inverse relationship between interest rates and bond prices."
 category: "Economic Info"
+postCategory: "economicInfo"
 tags: ["interest rate", "policy rate", "bond pricing", "market rates"]
 datePublished: "2025-11-13"
 dateModified: "2025-11-13"

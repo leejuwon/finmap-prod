@@ -5,6 +5,7 @@ description: "사회초년생이 가장 고민하는 월급 관리. 어디서부
 datePublished: "2025-11-17"
 dateModified: "2025-11-17"
 category: "재테크"
+postCategory: "personalFinance"
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429439/blog/personalFinance/step5_thum.png"
 tags: ["월급관리", "사회초년생", "예산관리", "재테크기초"]
 lang: "ko"

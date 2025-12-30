@@ -5,6 +5,7 @@ description: "많은 투자자가 말하는 ‘연 7% 수익률’은 실제 장
 datePublished: "2025-11-29"
 dateModified: "2025-11-29"
 category: "투자정보"
+postCategory: "investingInfo"
 tags: ["CAGR", "복리", "S&P500", "연7%", "투자기초", "재테크전략"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428393/blog/investingInfo/cagr-7percent-reality-check-cover.png"
 lang: "ko"

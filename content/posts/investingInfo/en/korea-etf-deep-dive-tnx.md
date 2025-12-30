@@ -5,6 +5,7 @@ description: "A deep-dive into why Korea ETFs react more aggressively to TNX, US
 datePublished: "2025-12-01"
 dateModified: "2025-12-01"
 category: "Investing Info"
+postCategory: "investingInfo"
 tags: ["KoreaETF", "EWY", "KOSPI", "TNX", "USD", "KRW", "SemiconductorETF", "Macro"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764561440/blog/investingInfo/korea-etf-deep-dive-tnx-thum.png"
 lang: "en"

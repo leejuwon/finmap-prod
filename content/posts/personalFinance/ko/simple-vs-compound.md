@@ -3,6 +3,7 @@ slug: "simple-vs-compound"
 title: "단리 vs 복리 — 초보 투자자가 반드시 알아야 할 최고의 금융 공식"
 datePublished: "2025-11-15"
 category: "재테크"
+postCategory: "personalFinance"
 excerpt: "예금·적금부터 주식 투자까지, 처음 투자할 때 단리와 복리의 차이를 이해하지 못하면 평생 손해 볼 수 있습니다. 단리·복리의 개념, 차이, 실제 금융 상품 적용 사례, 그리고 복리 투자를 해야 하는 이유까지 쉽게 설명합니다."
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429436/blog/personalFinance/simple-vs-compound-cover.png"
 tags: ["단리", "복리", "금융기초", "초보투자", "재테크"]

@@ -5,6 +5,7 @@ description: "CAGR shows the annual compound growth rate of an investment. It re
 datePublished: "2025-11-26"
 dateModified: "2025-11-26"
 category: "Personal Finance"
+postCategory: "personalFinance"
 tags: ["CAGR", "investment return", "finance basics", "compound interest", "simple return"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429442/blog/personalFinance/what-is-cagr-cover-en.png"
 tool: ["cagr","comp"]
