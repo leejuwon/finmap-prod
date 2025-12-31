@@ -7,6 +7,7 @@ dateModified: "2025-12-29"
 category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["GDP","Unemployment","PMI","Economic Indicators","Macro","Investing"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427012/blog/economicInfo/indicator-cover.png"
 lang: "en"
 ---

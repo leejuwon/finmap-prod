@@ -7,6 +7,7 @@ dateModified: "2025-11-29"
 category: "Investing Info"
 postCategory: "investingInfo"
 tags: ["CAGR", "CompoundInterest", "S&P500", "7percent", "InvestingBasics"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428393/blog/investingInfo/cagr-7percent-reality-check-cover.png"
 lang: "en"
 ---

@@ -7,6 +7,7 @@ dateModified: "2025-11-24"
 category: "Investing Info"
 postCategory: "investingInfo"
 tags: ["DXY", "dollar index", "US interest rates", "liquidity", "forex"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428430/blog/investingInfo/dxy-market-impact-thum.png"
 lang: "en"
 ---

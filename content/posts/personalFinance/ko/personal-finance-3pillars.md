@@ -5,6 +5,7 @@ description: "투자 전에 삶의 현금흐름을 먼저 안정화하는 방법
 category: "재테크"
 postCategory: "personalFinance"
 tags: ["가계재무","예산","비상금","장기투자"]
+tool: ["goal","comp","cagr","fire","dca"]
 datePublished: "2025-11-13"
 dateModified: "2025-11-13"
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429434/blog/personalFinance/pf-cover.png"

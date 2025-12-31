@@ -7,6 +7,7 @@ dateModified: "2025-12-29"
 category: "경제정보"
 postCategory: "economicInfo"
 tags: ["물가","금리","인플레이션","기준금리","통화정책","경제기초"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767095271/blog/tools/inflation-rate-basics-cover.png"
 lang: "ko"
 ---

@@ -8,6 +8,7 @@ category: "Personal Finance"
 postCategory: "personalFinance"
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429439/blog/personalFinance/step5_thum.png"
 tags: ["salary management", "young professionals", "budgeting", "finance basics"]
+tool: ["goal","comp","cagr","fire","dca"]
 lang: "en"
 ---
 

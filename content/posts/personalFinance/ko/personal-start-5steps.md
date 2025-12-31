@@ -8,6 +8,7 @@ category: "재테크"
 postCategory: "personalFinance"
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429439/blog/personalFinance/step5_thum.png"
 tags: ["월급관리", "사회초년생", "예산관리", "재테크기초"]
+tool: ["goal","comp","cagr","fire","dca"]
 lang: "ko"
 ---
 

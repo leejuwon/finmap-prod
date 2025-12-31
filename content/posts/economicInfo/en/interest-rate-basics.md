@@ -5,6 +5,7 @@ description: "A clear beginner-friendly guide explaining policy rates, market ra
 category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["interest rate", "policy rate", "bond pricing", "market rates"]
+tool: ["goal","comp","cagr","fire","dca"]
 datePublished: "2025-11-13"
 dateModified: "2025-11-13"
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427018/blog/economicInfo/rate-cover.png"

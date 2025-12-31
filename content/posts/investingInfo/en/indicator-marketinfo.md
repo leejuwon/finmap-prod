@@ -8,6 +8,7 @@ category: "Investing Info"
 postCategory: "investingInfo"
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428447/blog/investingInfo/economics-marketinfo-thum.png"
 tags: ["KOSPI", "USD/KRW", "WTI", "U.S. Indices", "DXY", "10Y Treasury", "Stoxx50"]
+tool: ["goal","comp","cagr","fire","dca"]
 lang: "en"
 ---
 

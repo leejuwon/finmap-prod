@@ -7,6 +7,7 @@ dateModified: "2025-11-12"
 category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["inflation","interest rates","rate hikes","monetary policy","market basics"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767095271/blog/tools/inflation-rate-basics-cover.png"
 lang: "en"
 ---

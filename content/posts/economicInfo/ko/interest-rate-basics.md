@@ -5,6 +5,7 @@ description: "기준금리, 시장금리, 예·적금/대출 금리의 연결고
 category: "경제정보"
 postCategory: "economicInfo"
 tags: ["금리","기준금리","채권"]
+tool: ["goal","comp","cagr","fire","dca"]
 datePublished: "2025-11-13"
 dateModified: "2025-11-13"
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427018/blog/economicInfo/rate-cover.png"

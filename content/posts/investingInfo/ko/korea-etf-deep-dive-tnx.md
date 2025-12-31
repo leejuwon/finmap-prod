@@ -7,6 +7,7 @@ dateModified: "2025-12-01"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["한국ETF", "EWY", "KOSPI", "TNX", "DXY", "KRW", "반도체ETF", "ETF매크로"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764561440/blog/investingInfo/korea-etf-deep-dive-tnx-thum.png"
 lang: "ko"
 ---

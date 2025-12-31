@@ -8,7 +8,7 @@ category: "재테크"
 postCategory: "personalFinance"
 tags: ["CAGR", "수익률", "투자기초", "복리수익률", "연평균수익률", "단순수익률"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429444/blog/personalFinance/what-is-cagr-cover-ko.png"
-tool: ["cagr","comp"]
+tool: ["goal","comp","cagr","fire","dca"]
 lang: "ko"
 ---
 

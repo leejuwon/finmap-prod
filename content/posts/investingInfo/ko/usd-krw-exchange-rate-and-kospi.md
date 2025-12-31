@@ -8,7 +8,7 @@ category: "투자정보"
 postCategory: "investingInfo"
 tags: ["원달러환율", "USD/KRW", "환율", "코스피", "외국인수급", "수출", "물가", "금리", "달러강세", "DXY"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767070300/blog/tools/usd-krw-exchange-rate-kospi-impact_cover.png"
-tool: ["cagr","comp"]
+tool: ["goal","comp","cagr","fire","dca"]
 lang: "ko"
 ---
 

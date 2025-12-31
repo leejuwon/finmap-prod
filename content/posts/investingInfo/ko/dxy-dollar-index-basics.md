@@ -7,6 +7,7 @@ dateModified: "2025-11-23"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["DXY", "달러인덱스", "거시경제", "환율", "미국달러"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428438/blog/investingInfo/dxy-thum.png"
 lang: "ko"
 ---

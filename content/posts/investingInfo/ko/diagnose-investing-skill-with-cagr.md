@@ -7,6 +7,7 @@ dateModified: "2025-11-29"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["CAGR", "MDD", "샤프비율", "변동성", "투자평가", "포트폴리오"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428405/blog/investingInfo/diagnose-investing-skill-with-cagr-cover.png"
 lang: "ko"
 ---

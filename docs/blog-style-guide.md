@@ -21,6 +21,7 @@ datePublished: "{YYYY-MM-DD}"
 dateModified: "{YYYY-MM-DD}"
 category: "{경제정보·재테크·투자정보 등}"
 tags: ["키워드1", "키워드2", "키워드3"..최대10개]
+tool: ["goal","comp","cagr","fire","dca"..등 등록되어있는 계산기]
 cover: "{이미지경로}"
 lang: "{ko·en 기본은 ko}"
 ---

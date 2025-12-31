@@ -8,7 +8,7 @@ category: "Personal Finance"
 postCategory: "personalFinance"
 tags: ["CAGR", "investment return", "finance basics", "compound interest", "simple return"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429442/blog/personalFinance/what-is-cagr-cover-en.png"
-tool: ["cagr","comp"]
+tool: ["goal","comp","cagr","fire","dca"]
 lang: "en"
 ---
 

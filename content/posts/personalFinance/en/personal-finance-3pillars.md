@@ -5,6 +5,7 @@ description: "Before investing, stabilize your household cash flow. This guide p
 category: "Personal Finance"
 postCategory: "personalFinance"
 tags: ["personal finance", "budgeting", "emergency fund", "long-term investing"]
+tool: ["goal","comp","cagr","fire","dca"]
 datePublished: "2025-11-13"
 dateModified: "2025-11-13"
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429434/blog/personalFinance/pf-cover.png"

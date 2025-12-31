@@ -7,6 +7,7 @@ dateModified: "2025-12-29"
 category: "Investing Info"
 postCategory: "investingInfo"
 tags: ["USD/KRW", "weak won", "exchange rate", "KOSPI", "exporters", "importers", "sector analysis", "foreign flows"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767081421/blog/tools/usd-krw-weak-won-sector-map-kospi-cover.png"
 lang: "en"
 ---

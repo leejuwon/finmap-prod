@@ -7,6 +7,7 @@ dateModified: "2025-12-28"
 category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["exchange rate", "USDKRW", "currency basics", "interest rates", "capital flows", "FX market"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427009/blog/economicInfo/fx-cover.png"
 lang: "en"
 ---

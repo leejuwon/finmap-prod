@@ -7,6 +7,7 @@ dateModified: "2025-12-02"
 category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["Inflation", "Interest Rates", "Macro", "Economy", "Liquidity", "InvestmentBasics"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764681952/blog/economicInfo/inflation-and-interest-rates-basics-cover.png"
 lang: "en"
 ---

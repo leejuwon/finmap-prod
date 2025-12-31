@@ -7,6 +7,7 @@ dateModified: "2025-11-23"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["TNX", "미국채10년물", "미국금리", "국채수익률", "거시지표"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428464/blog/investingInfo/economics-tnx-cover.png"
 lang: "ko"
 ---

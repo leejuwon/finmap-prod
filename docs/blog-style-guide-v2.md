@@ -7,6 +7,7 @@ dateModified: "2025-11-29"
 category: "Guide"
 tags: ["블로그가이드", "FinMap", "SEO", "Markdown", "콘텐츠가이드"]
 cover: "/images/posts/guide/finmap-style-guide-cover.png"
+tool: ["goal","comp","cagr","fire","dca"]
 lang: "ko"
 ---
 
@@ -34,6 +35,7 @@ datePublished: "{YYYY-MM-DD}"
 dateModified: "{YYYY-MM-DD}"
 category: "{경제·투자·재테크 등 카테고리}"
 tags: ["태그1", "태그2", ... 최대 10개]
+tool: ["goal","comp","cagr","fire","dca", ..등 등록되어 있는 계산기]
 cover: "/images/posts/{slug}/cover.png"
 lang: "ko"
 ---

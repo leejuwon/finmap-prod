@@ -7,6 +7,7 @@ dateModified: "2025-11-24"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["DXY", "달러인덱스", "미국금리", "환율", "유동성"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428430/blog/investingInfo/dxy-market-impact-thum.png"
 lang: "ko"
 ---

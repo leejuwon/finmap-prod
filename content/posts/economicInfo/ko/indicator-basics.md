@@ -7,6 +7,7 @@ dateModified: "2025-12-29"
 category: "경제정보"
 postCategory: "economicInfo"
 tags: ["경제지표","GDP","실업률","PMI","매크로","경기판단"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427012/blog/economicInfo/indicator-cover.png"
 lang: "ko"
 ---

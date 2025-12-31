@@ -7,6 +7,7 @@ dateModified: "2025-12-29"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["원달러환율", "원화약세", "환율상승", "수혜주", "피해주", "코스피", "업종분석", "외국인수급"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767081421/blog/tools/usd-krw-weak-won-sector-map-kospi-cover.png"
 lang: "ko"
 ---

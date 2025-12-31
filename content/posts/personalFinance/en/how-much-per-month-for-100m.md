@@ -7,6 +7,7 @@ dateModified: "2025-11-20"
 category: "Personal Finance"
 postCategory: "personalFinance"
 tags: ["save 100k", "save 50k", "save 300k", "monthly investment", "investment planning", "target amount", "compound interest", "wealth planning"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429425/blog/personalFinance/monthly-investment-cover.png"
 lang: "en"
 ---

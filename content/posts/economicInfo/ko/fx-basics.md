@@ -7,6 +7,7 @@ dateModified: "2025-12-28"
 category: "경제정보"
 postCategory: "economicInfo"
 tags: ["환율", "원달러", "금리", "자본이동", "외환시장", "거시경제"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427009/blog/economicInfo/fx-cover.png"
 lang: "ko"
 ---

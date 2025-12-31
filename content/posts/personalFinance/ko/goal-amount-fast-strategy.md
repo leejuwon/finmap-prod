@@ -9,7 +9,7 @@ postCategory: "personalFinance"
 tags: ["목표자산", "투자계획", "복리", "재테크", "목표금액", "수익률", "기간설정", "자산관리"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429402/blog/personalFinance/goal-amount-fast-strategy-cover.png"
 lang: "ko"
-tool: ["goal","comp"]
+tool: ["goal","comp","cagr","fire","dca"]
 ---
 
 # 목표 금액을 빠르게 모으는 법: 원금·수익률·기간의 균형

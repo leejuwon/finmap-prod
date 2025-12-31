@@ -7,6 +7,7 @@ dateModified: "2025-12-01"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["ETF", "TNX", "미국10년물", "금리영향", "성장주ETF", "가치주ETF", "신흥국ETF"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764561430/blog/investingInfo/etf-impact-of-tnx-thum.png"
 lang: "ko"
 ---

@@ -7,6 +7,7 @@ dateModified: "2025-12-01"
 category: "Investing Info"
 postCategory: "investingInfo"
 tags: ["TNX", "ETF", "EmergingMarkets", "Yield", "EEM", "EWY", "GrowthETF", "ValueETF"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764561430/blog/investingInfo/etf-impact-of-tnx-thum.png"
 lang: "en"
 ---

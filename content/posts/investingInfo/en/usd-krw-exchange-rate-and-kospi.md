@@ -7,8 +7,8 @@ dateModified: "2025-12-28"
 category: "Investing Info"
 postCategory: "investingInfo"
 tags: ["USD/KRW", "exchange rate", "KOSPI", "Korea economy", "foreign flows", "inflation", "exporters", "import costs", "FX hedging"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767070300/blog/tools/usd-krw-exchange-rate-kospi-impact_cover.png"
-tool: ["cagr","comp"]
 lang: "en"
 ---
 

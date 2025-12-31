@@ -7,6 +7,7 @@ dateModified: "2025-12-01"
 category: "Investing Info"
 postCategory: "investingInfo"
 tags: ["TNX", "US10Y", "bond yield", "Korea market", "liquidity", "valuation", "USDKRW"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764553910/blog/investingInfo/tnx_thum.png"
 lang: "en"
 ---
