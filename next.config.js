@@ -11,6 +11,10 @@ module.exports = {
     localeDetection: false,
   },
 
+  images: {
+    unoptimized: true,
+  },
+
   async redirects() {
     return [
       // -------------------------
