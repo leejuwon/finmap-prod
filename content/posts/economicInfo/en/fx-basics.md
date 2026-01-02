@@ -8,7 +8,7 @@ category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["exchange rate", "USDKRW", "currency basics", "interest rates", "capital flows", "FX market"]
 tool: ["goal","comp","cagr","fire","dca"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427009/blog/economicInfo/fx-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767338030/blog/tools/fx-cover.png"
 lang: "en"
 ---
 
@@ -28,7 +28,7 @@ lang: "en"
 
 > The USD/KRW exchange rate is not just a number—it is a summary of global interest rates, risk appetite, and capital allocation decisions.
 
-![Currency basics cover image](https://res.cloudinary.com/dwonflmnn/image/upload/v1764427009/blog/economicInfo/fx-cover.png)
+![Currency basics cover image](https://res.cloudinary.com/dwonflmnn/image/upload/v1767338030/blog/tools/fx-cover.png)
 
 ---
 
