@@ -7,6 +7,7 @@ dateModified: "2026-01-05"
 category: "Investing Info"
 postCategory: "investingInfo"
 tags: ["TNX","10-year yield","Treasury yield","interest rates","macro","valuation","USD/KRW","KOSPI"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428464/blog/investingInfo/economics-tnx-cover.png"
 lang: "en"
 ---

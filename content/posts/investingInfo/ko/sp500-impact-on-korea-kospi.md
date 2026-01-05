@@ -6,6 +6,7 @@ datePublished: "2026-01-04"
 dateModified: "2026-01-04"
 category: "투자정보"
 tags: ["S&P500","미국증시","코스피","한국경제","환율","금리","외국인수급","달러강세","리스크온","리스크오프"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767584963/blog/tools/sp500-impact-on-korea-kospi-cover.png"
 lang: "ko"
 ---
@@ -323,7 +324,7 @@ S&P500와 함께 자주 거론되는 변수가 미국 금리(특히 10년물)입
     "@id": "https://www.finmaphub.com/posts/investingInfo/sp500-impact-on-korea-kospi"
   },
   "image": [
-    "https://www.finmaphub.com/images/posts/sp500-impact-on-korea-kospi/cover.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1767584963/blog/tools/sp500-impact-on-korea-kospi-cover.png"
   ],
   "author": {
     "@type": "Organization",

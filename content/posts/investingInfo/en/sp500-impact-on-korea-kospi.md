@@ -6,6 +6,7 @@ datePublished: "2026-01-04"
 dateModified: "2026-01-04"
 category: "investing info"
 tags: ["S&P 500","KOSPI","Korea economy","USD/KRW","foreign flows","U.S. rates","TNX","DXY","risk-on","risk-off"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767584963/blog/tools/sp500-impact-on-korea-kospi-cover.png"
 lang: "en"
 ---
@@ -295,7 +296,7 @@ If you keep only three: (1) S&P direction and volatility, (2) USD/KRW, (3) TNX (
     "@id": "https://www.finmaphub.com/en/posts/investingInfo/sp500-impact-on-korea-kospi"
   },
   "image": [
-    "https://www.finmaphub.com/images/posts/sp500-impact-on-korea-kospi/cover.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1767584963/blog/tools/sp500-impact-on-korea-kospi-cover.png"
   ],
   "author": {
     "@type": "Organization",

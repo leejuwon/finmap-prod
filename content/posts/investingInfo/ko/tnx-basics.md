@@ -7,6 +7,7 @@ dateModified: "2026-01-05"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["TNX","미국10년물","국채금리","금리","채권","성장주","달러","원달러","유동성","밸류에이션"]
+tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428464/blog/investingInfo/economics-tnx-cover.png"
 lang: "ko"
 ---
@@ -316,7 +317,7 @@ TNX 상승이 신용스프레드 확대, 달러 강세, 변동성 상승과 동�
   "author": { "@type": "Person", "name": "FinMap" },
   "publisher": { "@type": "Organization", "name": "FinMap" },
   "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.finmaphub.com/posts/investingInfo/tnx-basics" },
-  "image": ["https://www.finmaphub.com/images/posts/tnx-basics/cover.png"]
+  "image": ["https://res.cloudinary.com/dwonflmnn/image/upload/v1764428464/blog/investingInfo/economics-tnx-cover.png"]
 }
 </script>
 
