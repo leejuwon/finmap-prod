@@ -188,6 +188,16 @@ title: "ETF·펀드 선택 시 CAGR을 반드시 확인해야 하는 이유"
 description: "ETF·펀드 비교에서 총 수익률만 보면 위험해질 수 있습니다. 이 글에서는 연평균 복리 수익률(CAGR)의 개념부터 ETF 3·5년 CAGR 비교표, 초보자·전문가별 활용법까지 깊이 있게 정리합니다."
 url: /posts/investingInfo/why-check-cagr-etf
 
+## 13.
+title: "미국 증시(S&P500)가 한국 경제·코스피에 미치는 영향: 환율·금리·외국인 수급의 연결고리"
+description: "S&P500는 ‘미국 주가’ 그 이상입니다. 위험선호(리스크온/오프), 달러·환율, 미국 금리, 그리고 외국인 수급을 통해 한국 경제와 코스피에 어떻게 전이되는지 구조적으로 정리합니다."
+url: /posts/investingInfo/sp500-impact-on-korea-kospi
+
+## 14.
+title: "WTI 유가가 한국 경제·코스피에 미치는 영향: 물가·환율·금리·기업이익으로 이어지는 5단 연결"
+description: "WTI 유가는 한국처럼 원유 수입 비중이 큰 나라에서 물가와 환율, 금리, 기업 이익을 동시에 흔드는 핵심 변수입니다. 유가 변동이 코스피에 전이되는 5개 경로와 업종별 차별화 포인트를 구조적으로 정리합니다."
+url: /posts/investingInfo/wti-impact-on-korea-kospi
+
 # 투자정보(영어)
 
 ## 1. 
@@ -249,3 +259,13 @@ url: /en/posts/investingInfo/usd-krw-weak-won-sector-map-kospi
 title: "Why You Must Check the CAGR When Choosing ETFs and Funds"
 description: "A complete guide to understanding why CAGR (Compound Annual Growth Rate) matters more than total return when evaluating ETFs and funds. Includes tables, long-term examples, and strategies for beginners and professionals."
 url: /en/posts/investingInfo/why-check-cagr-etf
+
+## 13.
+title: "How the S&P 500 Moves Korea’s Economy and KOSPI: The FX–Rates–Foreign Flow Chain"
+description: "For Korea, the S&P 500 is more than “U.S. stocks.” It reshapes risk sentiment, USD/KRW, U.S. rates, and foreign investor flows—often determining how the KOSPI feels day to day."
+url: /posts/investingInfo/sp500-impact-on-korea-kospi
+
+## 14.
+title: "How WTI Oil Shapes Korea’s Economy and KOSPI: Inflation, FX, Rates, and Earnings in One Chain"
+description: "WTI is not just an energy price. For an oil-importing economy like Korea, it feeds into inflation, USD/KRW, interest rates, corporate margins, and foreign flows—often changing how the KOSPI behaves."
+url: /posts/investingInfo/wti-impact-on-korea-kospi
