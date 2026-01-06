@@ -34,6 +34,13 @@ module.exports = {
         permanent: true,
         locale: false,
       },
+      {
+        source: "/en/posts/personalFinance/monthly-investment",
+        destination: "/en/posts/personalFinance/how-much-per-month-for-100m",
+        permanent: true,
+        locale: false,
+      },
+
       // 아래는 원칙상 이미 (B)로 커버되지만, 혹시 404로 계속 찍히면 "명시"로 박아두면 더 강력함
       {
         source: "/posts/personalFinance/en/personal-finance-3pillars",
