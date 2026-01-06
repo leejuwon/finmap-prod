@@ -31,6 +31,7 @@ class MyDocument extends Document {
             name="google-site-verification"
             content="8FhqQNDjbZ-QpdePXdPiCR_VJwQstaK-tbuYIlXxs_A"
           />
+          <meta name="x-doc-build" content="lang-test-20260106-1" />
 
           {/* ✅ Favicon */}
           <link rel="icon" href="/favicon-v2.ico" />
