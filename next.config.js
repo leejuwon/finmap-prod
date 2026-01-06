@@ -49,7 +49,7 @@ module.exports = {
       },
       {
         source: "/en/posts/:category/ko/:slug",
-        destination: "/posts/:category/:slug",
+        destination: "/en/posts/:category/:slug",
         permanent: true,
         locale: false,
       },      
