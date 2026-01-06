@@ -1,29 +1,54 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
-  render(){
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx);
+
+    // ✅ 서버 사이드에서 요청 URL로 언어 판단
+    // - /en 또는 /en/... 이면 en
+    // - 그 외는 ko
+    const reqUrl = ctx.req?.url || "";
+    const isEn = reqUrl === "/en" || reqUrl.startsWith("/en/");
+
+    return {
+      ...initialProps,
+      htmlLang: isEn ? "en" : "ko",
+    };
+  }
+
+  render() {
+    const htmlLang = this.props.htmlLang || "ko";
+
     return (
-      <Html lang="ko">
-        <Head> 
+      <Html lang={htmlLang}>
+        <Head>
           {/* ✅ AdSense 사이트 검증용 메타 태그 */}
           <meta
             name="google-adsense-account"
-            content="ca-pub-1869932115288976"  // ← AdSense에서 보여준 값 그대로
+            content="ca-pub-1869932115288976" // ← AdSense에서 보여준 값 그대로
           />
-          <meta name="google-site-verification" content="8FhqQNDjbZ-QpdePXdPiCR_VJwQstaK-tbuYIlXxs_A" />
+          <meta
+            name="google-site-verification"
+            content="8FhqQNDjbZ-QpdePXdPiCR_VJwQstaK-tbuYIlXxs_A"
+          />
 
-           {/* ✅ Favicon */}
+          {/* ✅ Favicon */}
           <link rel="icon" href="/favicon-v2.ico" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
           <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
-          
+
           {/* ✅ PWA 대응 (선택) */}
           <meta name="theme-color" content="#0f172a" />
         </Head>
-        <body><Main/><NextScript/></body>
+
+        <body>
+          <Main />
+          <NextScript />
+        </body>
       </Html>
     );
   }
 }
+
 export default MyDocument;
