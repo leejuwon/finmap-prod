@@ -25,6 +25,95 @@ module.exports = {
       { source: '/investingInfo', destination: '/category/investingInfo', permanent: true },
       { source: '/economics', destination: '/category/economicInfo', permanent: true },
       { source: '/category/economics', destination: '/category/economicInfo', permanent: true },
+       // -------------------------
+      // (F) Search Console 404로 찍힌 개별 URL 매핑
+      // -------------------------
+      {
+        source: "/posts/economics-inflation-basics",
+        destination: "/posts/economicInfo/inflation-basics",
+        permanent: true,
+        locale: false,
+      },
+      // 아래는 원칙상 이미 (B)로 커버되지만, 혹시 404로 계속 찍히면 "명시"로 박아두면 더 강력함
+      {
+        source: "/posts/personalFinance/en/personal-finance-3pillars",
+        destination: "/en/posts/personalFinance/personal-finance-3pillars",
+        permanent: true,
+        locale: false,
+      },
+      {
+        source: "/category/investing",
+        destination: "/category/investingInfo",
+        permanent: true,
+        locale: false,
+      },
+      {
+        source: "/en/category/investing",
+        destination: "/en/category/investingInfo",
+        permanent: true,
+        locale: false,
+      },
+      // tax 카테고리를 지금 안 쓰더라도, 가장 가까운 personalFinance로 정리 (원하면 /category/economicInfo로 바꿔도 됨)
+      {
+        source: "/category/tax",
+        destination: "/category/personalFinance",
+        permanent: true,
+        locale: false,
+      },
+      {
+        source: "/en/category/tax",
+        destination: "/en/category/personalFinance",
+        permanent: true,
+        locale: false,
+      },
+      
+      // slug가 category 없이 있던 과거 URL → investingInfo로 이동 (추정 매핑)
+      {
+        source: "/posts/usd-krw-weak-won-sector-map-kospi",
+        destination: "/posts/investingInfo/usd-krw-weak-won-sector-map-kospi",
+        permanent: true,
+        locale: false,
+      },
+
+      // en 쪽에서 category 누락된 과거 URL → investingInfo로 이동
+      {
+        source: "/en/posts/weak-krw-winners-losers-sector-map",
+        destination: "/en/posts/investingInfo/usd-krw-weak-won-sector-map-kospi",
+        permanent: true,
+        locale: false,
+      },
+
+      // usdkrw (붙여쓴 slug) → usd-krw (하이픈 slug)로 정리
+      {
+        source: "/posts/investingInfo/usdkrw-exchange-rate-and-kospi",
+        destination: "/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
+        permanent: true,
+        locale: false,
+      },
+      {
+        source: "/en/posts/investingInfo/usdkrw-exchange-rate-and-kospi",
+        destination: "/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
+        permanent: true,
+        locale: false,
+      },      
+      {
+        source: "/en/posts/investingInfo/usd-krw-exchange-rate-kospi",
+        destination: "/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
+        permanent: true,
+        locale: false,
+      },            
+      {
+        source: "/posts/investingInfo/usd-krw-exchange-rate-kospi",
+        destination: "/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
+        permanent: true,
+        locale: false,
+      },            
+      {
+        source: "/posts/personalFinance/en/monthly-investment",
+        destination: "/en/posts/personalFinance/how-much-per-month-for-100m",
+        permanent: true,
+        locale: false,
+      }, 
       // -------------------------
       // (B) posts URL 정규화 (중복 lang 세그먼트 제거)
       // ✅ locale:false 필수 (안 붙이면 /en/en/... 발생 가능)
@@ -124,98 +213,7 @@ module.exports = {
       { source: "/posts/[category]/[slug]", destination: "/404", permanent: false, locale: false },
       { source: "/en/posts/[category]/[slug]", destination: "/404", permanent: false, locale: false },
       { source: "/posts/%5Bcategory%5D/%5Bslug%5D", destination: "/404", permanent: false, locale: false },
-      { source: "/en/posts/%5Bcategory%5D/%5Bslug%5D", destination: "/404", permanent: false, locale: false },
-
-
-      // -------------------------
-      // (F) Search Console 404로 찍힌 개별 URL 매핑
-      // -------------------------
-      {
-        source: "/posts/economics-inflation-basics",
-        destination: "/posts/economicInfo/inflation-basics",
-        permanent: true,
-        locale: false,
-      },
-      // 아래는 원칙상 이미 (B)로 커버되지만, 혹시 404로 계속 찍히면 "명시"로 박아두면 더 강력함
-      {
-        source: "/posts/personalFinance/en/personal-finance-3pillars",
-        destination: "/en/posts/personalFinance/personal-finance-3pillars",
-        permanent: true,
-        locale: false,
-      },
-      {
-        source: "/category/investing",
-        destination: "/category/investingInfo",
-        permanent: true,
-        locale: false,
-      },
-      {
-        source: "/en/category/investing",
-        destination: "/en/category/investingInfo",
-        permanent: true,
-        locale: false,
-      },
-      // tax 카테고리를 지금 안 쓰더라도, 가장 가까운 personalFinance로 정리 (원하면 /category/economicInfo로 바꿔도 됨)
-      {
-        source: "/category/tax",
-        destination: "/category/personalFinance",
-        permanent: true,
-        locale: false,
-      },
-      {
-        source: "/en/category/tax",
-        destination: "/en/category/personalFinance",
-        permanent: true,
-        locale: false,
-      },
-      
-      // slug가 category 없이 있던 과거 URL → investingInfo로 이동 (추정 매핑)
-      {
-        source: "/posts/usd-krw-weak-won-sector-map-kospi",
-        destination: "/posts/investingInfo/usd-krw-weak-won-sector-map-kospi",
-        permanent: true,
-        locale: false,
-      },
-
-      // en 쪽에서 category 누락된 과거 URL → investingInfo로 이동
-      {
-        source: "/en/posts/weak-krw-winners-losers-sector-map",
-        destination: "/en/posts/investingInfo/usd-krw-weak-won-sector-map-kospi",
-        permanent: true,
-        locale: false,
-      },
-
-      // usdkrw (붙여쓴 slug) → usd-krw (하이픈 slug)로 정리
-      {
-        source: "/posts/investingInfo/usdkrw-exchange-rate-and-kospi",
-        destination: "/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
-        permanent: true,
-        locale: false,
-      },
-      {
-        source: "/en/posts/investingInfo/usdkrw-exchange-rate-and-kospi",
-        destination: "/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
-        permanent: true,
-        locale: false,
-      },      
-      {
-        source: "/en/posts/investingInfo/usd-krw-exchange-rate-kospi",
-        destination: "/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
-        permanent: true,
-        locale: false,
-      },            
-      {
-        source: "/posts/investingInfo/usd-krw-exchange-rate-kospi",
-        destination: "/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
-        permanent: true,
-        locale: false,
-      },            
-      {
-        source: "/posts/personalFinance/en/monthly-investment",
-        destination: "/en/posts/personalFinance/how-much-per-month-for-100m",
-        permanent: true,
-        locale: false,
-      },                  
+      { source: "/en/posts/%5Bcategory%5D/%5Bslug%5D", destination: "/404", permanent: false, locale: false },                      
     ];
     
     // ✅ Next build에서 죽는 "null route" 방지
