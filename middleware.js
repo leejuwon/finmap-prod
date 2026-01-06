@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 
 export function middleware(req) {
-  const { pathname } = req.nextUrl;
+  const url = req.nextUrl;
+  const { pathname } = url;
 
   // ✅ 정적 파일/Next 내부 경로는 제외
   if (
@@ -18,6 +19,25 @@ export function middleware(req) {
     pathname.endsWith(".ico")
   ) {
     return NextResponse.next();
+  }
+
+  // ✅ (NEW) GSC 404로 남아있는 고정 URL 4개 강제 정리 (308)
+  const fixed = {
+    "/posts/usd-krw-weak-won-sector-map-kospi":
+      "/posts/investingInfo/usd-krw-weak-won-sector-map-kospi",
+
+    "/posts/investingInfo/usdkrw-exchange-rate-and-kospi":
+      "/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
+
+    "/category/investing": "/category/investingInfo",
+    "/category/tax": "/category/personalFinance",
+  };
+
+  const dest = fixed[pathname];
+  if (dest) {
+    url.pathname = dest;
+    // ✅ 쿼리는 그대로 유지 (url.search는 건드리지 않음)
+    return NextResponse.redirect(url, 308);
   }
 
   // ✅ 템플릿 문자열 URL 방어: [ ] 포함 경로는 바로 404
