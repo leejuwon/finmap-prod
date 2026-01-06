@@ -214,6 +214,18 @@ module.exports = {
         permanent: true,
         locale: false,
       },            
+      {
+        source: "/posts/investingInfo/usd-krw-exchange-rate-kospi",
+        destination: "/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
+        permanent: true,
+        locale: false,
+      },            
+      {
+        source: "/posts/personalFinance/en/monthly-investment",
+        destination: "/en/posts/personalFinance/how-much-per-month-for-100m",
+        permanent: true,
+        locale: false,
+      },                  
     ];
   },  
 
