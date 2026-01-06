@@ -191,7 +191,7 @@ module.exports = {
       // en 쪽에서 category 누락된 과거 URL → investingInfo로 이동
       {
         source: "/en/posts/weak-krw-winners-losers-sector-map",
-        destination: "/en/posts/investingInfo/weak-krw-winners-losers-sector-map",
+        destination: "/en/posts/investingInfo/usd-krw-weak-won-sector-map-kospi",
         permanent: true,
         locale: false,
       },
@@ -199,15 +199,21 @@ module.exports = {
       // usdkrw (붙여쓴 slug) → usd-krw (하이픈 slug)로 정리
       {
         source: "/posts/investingInfo/usdkrw-exchange-rate-and-kospi",
-        destination: "/posts/investingInfo/usd-krw-exchange-rate-kospi",
+        destination: "/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
         permanent: true,
       },
       {
         source: "/en/posts/investingInfo/usdkrw-exchange-rate-and-kospi",
-        destination: "/en/posts/investingInfo/usd-krw-exchange-rate-kospi",
+        destination: "/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
         permanent: true,
         locale: false,
-      },
+      },      
+      {
+        source: "/en/posts/investingInfo/usd-krw-exchange-rate-kospi",
+        destination: "/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
+        permanent: true,
+        locale: false,
+      },            
     ];
   },  
 
