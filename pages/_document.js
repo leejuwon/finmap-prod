@@ -27,12 +27,6 @@ class MyDocument extends Document {
     return (
       <Html lang={htmlLang}>
         <Head>
-          {/* ✅ 디버그 (확인 후 제거 가능) */}
-          <meta name="x-doc-build" content="lang-test-20260106-2" />
-          <meta
-            name="x-doc-debug"
-            content={`lang=${htmlLang}; locale=${this.props.__debugLocale}; reqUrl=${this.props.__debugReqUrl}`}
-          />
 
           {/* ✅ AdSense 사이트 검증용 메타 태그 */}
           <meta
