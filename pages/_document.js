@@ -4,15 +4,20 @@ class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
 
-    // ✅ 서버 사이드에서 요청 URL로 언어 판단
-    // - /en 또는 /en/... 이면 en
-    // - 그 외는 ko
+    // ✅ Next i18n이 켜져 있으면 locale이 들어올 수 있음 (가장 신뢰도 높음)
+    const locale = ctx.locale;
+
+    // ✅ fallback: req.url 기반
     const reqUrl = ctx.req?.url || "";
-    const isEn = reqUrl === "/en" || reqUrl.startsWith("/en/");
+    const isEnByPath = reqUrl === "/en" || reqUrl.startsWith("/en/");
+
+    const htmlLang = locale === "en" || isEnByPath ? "en" : "ko";
 
     return {
       ...initialProps,
-      htmlLang: isEn ? "en" : "ko",
+      htmlLang,
+      __debugLocale: locale || "",
+      __debugReqUrl: reqUrl,
     };
   }
 
@@ -22,16 +27,22 @@ class MyDocument extends Document {
     return (
       <Html lang={htmlLang}>
         <Head>
+          {/* ✅ 디버그 (확인 후 제거 가능) */}
+          <meta name="x-doc-build" content="lang-test-20260106-2" />
+          <meta
+            name="x-doc-debug"
+            content={`lang=${htmlLang}; locale=${this.props.__debugLocale}; reqUrl=${this.props.__debugReqUrl}`}
+          />
+
           {/* ✅ AdSense 사이트 검증용 메타 태그 */}
           <meta
             name="google-adsense-account"
-            content="ca-pub-1869932115288976" // ← AdSense에서 보여준 값 그대로
+            content="ca-pub-1869932115288976"
           />
           <meta
             name="google-site-verification"
             content="8FhqQNDjbZ-QpdePXdPiCR_VJwQstaK-tbuYIlXxs_A"
           />
-          <meta name="x-doc-build" content="lang-test-20260106-1" />
 
           {/* ✅ Favicon */}
           <link rel="icon" href="/favicon-v2.ico" />
@@ -42,7 +53,6 @@ class MyDocument extends Document {
           {/* ✅ PWA 대응 (선택) */}
           <meta name="theme-color" content="#0f172a" />
         </Head>
-
         <body>
           <Main />
           <NextScript />
