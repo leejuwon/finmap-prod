@@ -20,7 +20,7 @@ export default function Footer() {
             <Link href="/contact">Contact</Link>
             <Link href="/privacy">Privacy</Link>
             <Link href="/terms">TOS</Link>
-            <Link href="/disclaimer">면책</Link>
+            <Link href="/disclaimer">Disclaimer</Link>
           </div>
           {/* 우측: 카피라이트 */}
           <span className="ml-auto text-sm">
