@@ -23,7 +23,24 @@ module.exports = {
     // ✅ 혹시라도 /en/posts/... 아래에서 또 언어가 붙는 형태 방지
     "/en/posts/*/en/*",
     "/en/posts/*/ko/*",
+    "/posts/economics-inflation-basics",
   ],
+
+  // ✅ 혹시라도 이상 경로가 들어오면 sitemap에서 제거
+  transform: async (config, path) => {
+    // 템플릿/이상 URL 차단
+    if (path.includes("[") || path.includes("]")) return null;
+    if (path.includes("//")) return null;
+    if (path.startsWith("/en/en/")) return null;
+
+    // 기본 동작 유지
+    return {
+      loc: path,
+      changefreq: config.changefreq,
+      priority: config.priority,
+      lastmod: new Date().toISOString(),
+    };
+  },
 
   // ✅ hreflang을 sitemap에도 같이 넣어줌(강추)
   /*
@@ -53,7 +70,7 @@ module.exports = {
 
     const res = [];
     for (const p of extra) {
-      // transform을 타게 하면 lastmod 등 기본 속성도 같이 맞춰짐
+      // ✅ 위 transform을 타게 해서 lastmod 가드 적용
       const out = await config.transform(config, p);
       if (out) res.push(out);
     }

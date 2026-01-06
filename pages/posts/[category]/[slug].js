@@ -517,16 +517,48 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params, locale }) {
   const lang = locale === 'en' ? 'en' : 'ko';
-  const { slug } = params;
+  const slug = String(params?.slug || '');
+  const categoryFromUrl = String(params?.category || '');
+
+  // ✅ 템플릿/이상 URL 방어: /posts/[category]/[slug] 같은 케이스 500 → 404 처리
+  const bad = (v) => !v || v.includes('[') || v.includes(']') || v.includes('%5B') || v.includes('%5D');
+  if (bad(slug) || bad(categoryFromUrl)) {
+    return { notFound: true, revalidate: 60 };
+  }
+
+
 
   // ✅ strict 로드 (en에서 ko로 fallback 금지)
-  const post = getPostBySlugStrict(lang, slug);
+  let post;
+  try {
+    // ✅ strict 로드 (en에서 ko로 fallback 금지)
+    post = getPostBySlugStrict(lang, slug);
+  } catch (e) {
+    return { notFound: true, revalidate: 60 };
+  }
+
 
   // ✅ 반대 언어 존재 체크도 strict
   const otherLang = lang === 'ko' ? 'en' : 'ko';
-  const otherLangAvailable = hasPostSlugStrict(otherLang, slug);
+  let otherLangAvailable = false;
+  try {
+    otherLangAvailable = hasPostSlugStrict(otherLang, slug);
+  } catch (e) {
+    otherLangAvailable = false;
+  }
 
   const categorySlug = getCategorySlugFromPost(post, lang);
+
+  // ✅ URL의 category가 실제 post의 category와 다르면 canonical로 보내기(선택이지만 SEO에 좋음)
+  if (categoryFromUrl !== categorySlug) {
+    const prefix = lang === 'en' ? '/en' : '';
+    return {
+      redirect: {
+        destination: `${prefix}/posts/${categorySlug}/${slug}`,
+        permanent: true,
+      },
+    };
+  }
 
   return {
     props: {
