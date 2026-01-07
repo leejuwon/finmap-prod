@@ -212,7 +212,7 @@ module.exports = {
       { source: "/en/en", destination: "/en", permanent: true, locale: false },
       { source: "/en/en/:path*", destination: "/en/:path*", permanent: true, locale: false },
       // (추가) /en/ → /en (슬래시 정규화)
-      { source: "/en/", destination: "/en", permanent: true, locale: false },
+      //{ source: "/en/", destination: "/en", permanent: true, locale: false },
 
       // -------------------------
       // (X) 이상한 템플릿 URL 직접 유입 방어 (500 → 404로 차단)
