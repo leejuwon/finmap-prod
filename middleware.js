@@ -22,21 +22,14 @@ export function middleware(req) {
   }
 
   // ✅ (NEW-1) double-slash 정규화: /en/posts//investingInfo/... → /en/posts/investingInfo/...
-  // (GSC에 실제로 떠있는 케이스가 있으니 미들웨어에서 잡아주는 게 가장 확실)  
   const collapsed = pathname.replace(/\/{2,}/g, "/");
   if (collapsed !== pathname) {
     url.pathname = collapsed;
     return NextResponse.redirect(url, 308);
   }
 
-  // ✅ (NEW-2) 트레일링 슬래시 정리: /xxx/ → /xxx  (루트 "/"만 예외)
-  // 정적 파일은 위에서 이미 제외됨
-  if (pathname.length > 1 && pathname.endsWith("/")) {
-    url.pathname = pathname.slice(0, -1);
-    return NextResponse.redirect(url, 308);
-  }
-
-  // ✅ (NEW-3) ?lang=en|ko 쿼리 정리 (next.config redirects로는 쿼리 제거 불가)
+  // ✅ (NEW-2, 우선순위↑) ?lang=en|ko 쿼리 정리
+  // 트레일링 슬래시 정리보다 먼저 처리해야 /en/?lang=en 이 1-hop으로 끝남
   const lang = url.searchParams.get("lang");
   if (lang === "en" || lang === "ko") {
     url.searchParams.delete("lang");
@@ -48,20 +41,36 @@ export function middleware(req) {
       } else if (!pathname.startsWith("/en")) {
         // /posts/... ?lang=en → /en/posts/...
         url.pathname = `/en${pathname}`;
+      } else {
+        url.pathname = pathname; // 이미 /en으로 시작하면 그대로
       }
     }
 
     if (lang === "ko") {
       // /en?lang=ko → /
-      if (pathname === "/en") {
+      if (pathname === "/en" || pathname === "/en/") {
         url.pathname = "/";
       } else if (pathname.startsWith("/en/")) {
         // /en/posts/... ?lang=ko → /posts/...
         url.pathname = pathname.replace(/^\/en/, "");
+      } else {
+        url.pathname = pathname;
       }
-      // ko는 defaultLocale이므로, /category/... ?lang=ko 같은 건 "쿼리만 제거"가 됨
+      // ko는 defaultLocale이므로, /category/... ?lang=ko 같은 건 "쿼리만 제거"
     }
 
+    // ✅ lang 정리 redirect 안에서 슬래시도 같이 정리해서 hop 추가 방지
+    url.pathname = url.pathname.replace(/\/{2,}/g, "/");
+    if (url.pathname.length > 1 && url.pathname.endsWith("/")) {
+      url.pathname = url.pathname.slice(0, -1);
+    }
+
+    return NextResponse.redirect(url, 308);
+  }
+
+  // ✅ (NEW-3) 트레일링 슬래시 정리: /xxx/ → /xxx (루트 "/"만 예외)
+  if (pathname.length > 1 && pathname.endsWith("/")) {
+    url.pathname = pathname.slice(0, -1);
     return NextResponse.redirect(url, 308);
   }
 
@@ -79,7 +88,7 @@ export function middleware(req) {
 
   const dest = fixed[pathname];
   if (dest) {
-    url.pathname = dest;    
+    url.pathname = dest;
     return NextResponse.redirect(url, 308);
   }
 
