@@ -19,19 +19,23 @@ module.exports = {
     // ✅ 과거 구조: /posts/{category}/en/{slug} 류는 sitemap에 포함되면 안 됨
     "/posts/*/en/*",
     "/posts/*/ko/*",
-     
-    // ✅ 혹시라도 /en/posts/... 아래에서 또 언어가 붙는 형태 방지
     "/en/posts/*/en/*",
     "/en/posts/*/ko/*",
+     
+    // ✅ 과거 잘못된 단일 URL    
     "/posts/economics-inflation-basics",
   ],
 
   // ✅ 혹시라도 이상 경로가 들어오면 sitemap에서 제거
   transform: async (config, path) => {
-    // 템플릿/이상 URL 차단
+       // ✅ 템플릿/이상 URL 차단
+    if (!path) return null;
     if (path.includes("[") || path.includes("]")) return null;
     if (path.includes("//")) return null;
     if (path.startsWith("/en/en/")) return null;
+
+    // ✅ (NEW) 혹시라도 query가 섞이면 제외
+    if (path.includes("?")) return null;
 
     // 기본 동작 유지
     return {
@@ -54,7 +58,7 @@ module.exports = {
   // ✅ /en 정적/툴 페이지가 sitemap에 빠지는 경우를 보강
   additionalPaths: async (config) => {
     const extra = [
-      "/en",
+      "/en", // ✅ /en/ 말고 /en만 유지
       "/en/about",
       "/en/contact",
       "/en/disclaimer",
