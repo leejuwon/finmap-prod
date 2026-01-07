@@ -22,15 +22,17 @@ export function middleware(req) {
   }
 
   // ✅ (NEW-1) double-slash 정규화: /en/posts//investingInfo/... → /en/posts/investingInfo/...
-  // (GSC에 실제로 떠있는 케이스가 있으니 미들웨어에서 잡아주는 게 가장 확실)
-  if (pathname.includes("//")) {
-    url.pathname = pathname.replace(/\/{2,}/g, "/");
+  // (GSC에 실제로 떠있는 케이스가 있으니 미들웨어에서 잡아주는 게 가장 확실)  
+  const collapsed = pathname.replace(/\/{2,}/g, "/");
+  if (collapsed !== pathname) {
+    url.pathname = collapsed;
     return NextResponse.redirect(url, 308);
   }
-  
-  // ✅ (NEW-2) /en/ → /en (트레일링 슬래시 정리)
-  if (pathname === "/en/") {
-    url.pathname = "/en";
+
+  // ✅ (NEW-2) 트레일링 슬래시 정리: /xxx/ → /xxx  (루트 "/"만 예외)
+  // 정적 파일은 위에서 이미 제외됨
+  if (pathname.length > 1 && pathname.endsWith("/")) {
+    url.pathname = pathname.slice(0, -1);
     return NextResponse.redirect(url, 308);
   }
 

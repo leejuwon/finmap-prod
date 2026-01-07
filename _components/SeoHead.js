@@ -20,14 +20,19 @@ export default function SeoHead({ title, desc, url = "/", image, locale, type })
   const path = rawPath.replace(/^\/en(?=\/|$)/, ""); // url에 실수로 /en 붙여도 제거
   const normalizedPath = path || "/";
   const prefix = effectiveLocale === "en" ? "/en" : "";
-  const canonical = `${site}${prefix}${normalizedPath}`;
+  // ✅ 홈(/)일 때만 /en/ -> /en 으로 통일 (리디렉션 포함 페이지 방지)
+  const canonicalPath =
+  prefix === "/en" && normalizedPath === "/" ? "/en" : `${prefix}${normalizedPath}`;
+  const canonical = `${site}${canonicalPath}`;
 
   const ogImg = image
     ? (String(image).startsWith("http") ? image : `${site}${image.startsWith("/") ? image : `/${image}`}`)
     : `${site}/og-default.png`;
 
   const hrefKo = `${site}${normalizedPath}`;
-  const hrefEn = `${site}/en${normalizedPath}`;
+  // ✅ hreflang도 동일 규칙 적용
+  const hrefEn = normalizedPath === "/" ? `${site}/en` : `${site}/en${normalizedPath}`;
+
 
   return (
     <Head>
