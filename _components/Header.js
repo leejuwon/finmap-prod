@@ -77,7 +77,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2">
             <img
               src="/brand/finmaphub-icon.svg"
-              alt="FinMap 로고"
+              alt="FinMap Logo"
               className="h-7 w-7 sm:h-8 sm:w-8"
             />
             <div className="leading-tight">
