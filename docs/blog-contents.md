@@ -198,6 +198,11 @@ title: "WTI 유가가 한국 경제·코스피에 미치는 영향: 물가·환�
 description: "WTI 유가는 한국처럼 원유 수입 비중이 큰 나라에서 물가와 환율, 금리, 기업 이익을 동시에 흔드는 핵심 변수입니다. 유가 변동이 코스피에 전이되는 5개 경로와 업종별 차별화 포인트를 구조적으로 정리합니다."
 url: /posts/investingInfo/wti-impact-on-korea-kospi
 
+## 15.
+title: "적립식(DCA)은 ‘수익률’이 아니라 ‘지속성’ 게임: 실패하는 DCA 패턴 7가지"
+description: "DCA는 타이밍이 아니라 ‘지속성’이 성패를 가릅니다. 많은 투자자가 반복해서 무너지는 7가지 패턴과, 규칙을 다시 설계하는 실전 체크리스트를 정리했습니다."
+url: /posts/investingInfo/dca-consistency-7-fail-patterns
+
 # 투자정보(영어)
 
 ## 1. 
@@ -263,9 +268,14 @@ url: /en/posts/investingInfo/why-check-cagr-etf
 ## 13.
 title: "How the S&P 500 Moves Korea’s Economy and KOSPI: The FX–Rates–Foreign Flow Chain"
 description: "For Korea, the S&P 500 is more than “U.S. stocks.” It reshapes risk sentiment, USD/KRW, U.S. rates, and foreign investor flows—often determining how the KOSPI feels day to day."
-url: /posts/investingInfo/sp500-impact-on-korea-kospi
+url: /en/posts/investingInfo/sp500-impact-on-korea-kospi
 
 ## 14.
 title: "How WTI Oil Shapes Korea’s Economy and KOSPI: Inflation, FX, Rates, and Earnings in One Chain"
 description: "WTI is not just an energy price. For an oil-importing economy like Korea, it feeds into inflation, USD/KRW, interest rates, corporate margins, and foreign flows—often changing how the KOSPI behaves."
-url: /posts/investingInfo/wti-impact-on-korea-kospi
+url: /en/posts/investingInfo/wti-impact-on-korea-kospi
+
+## 15.
+title: "DCA Is a Consistency Game, Not a Return Hack: 7 Ways People Fail (and How to Fix Them)"
+description: "Dollar-cost averaging works when it survives real life. Here are 7 repeatable failure patterns—oversized contributions, panic pauses, rule drift—and a practical rulebook to rebuild a DCA plan you can actually keep."
+url: /en/posts/investingInfo/dca-consistency-7-fail-patterns

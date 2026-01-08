@@ -293,7 +293,7 @@ If DXY is rising, the market is often pricing tighter global conditions, which c
 
 ---
 
-## 12) Img-row (English captions, same images as Korean version)
+## 12) Img-row
 
 <div class="img-row">
   <figure>
