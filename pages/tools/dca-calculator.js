@@ -513,8 +513,8 @@ export default function DCACalculatorPage() {
             <h2 className="text-base font-semibold">
               {routeLocale === "ko" ? "추천 가이드 글" : "Recommended guides"}
             </h2>
-            <Link
-              href={routeLocale === "ko" ? `/category/personalFinance`:`/en/category/personalFinance`}
+            <Link              
+              href={`/category/personalFinance`}
               locale={routeLocale}
               className="text-sm text-slate-600 hover:underline"
             >
@@ -526,7 +526,7 @@ export default function DCACalculatorPage() {
             {relatedGuides.map((g) => (
               <Link
                 key={g.slug}
-                href={`/posts/personalFinance/${routeLocale}/${g.slug}`}
+                href={`/posts/personalFinance/${g.slug}`}
                 locale={routeLocale}
                 className="block border rounded-2xl p-4 hover:shadow-sm transition"
               >

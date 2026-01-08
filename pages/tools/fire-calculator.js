@@ -326,8 +326,8 @@ export default function FireCalculatorPage() {
             <h2 className="text-base font-semibold">
               {lang === "ko" ? "추천 가이드 글" : "Recommended guides"}
             </h2>
-            <Link
-              href={lang === "ko" ? `/category/personalFinance`:`/en/category/personalFinance`}
+            <Link              
+              href={`/category/personalFinance`}
               locale={lang}
               className="text-sm text-slate-600 hover:underline"
             >
@@ -339,7 +339,7 @@ export default function FireCalculatorPage() {
             {relatedGuides.map((g) => (
               <Link
                 key={g.slug}
-                href={`/posts/personalFinance/${lang}/${g.slug}`}
+                href={`/posts/personalFinance/${g.slug}`}
                 locale={lang}
                 className="block border rounded-2xl p-4 hover:shadow-sm transition"
               >

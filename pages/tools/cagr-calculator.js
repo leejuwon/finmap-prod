@@ -573,7 +573,7 @@ export default function CagrCalculatorPage() {
             {relatedGuides.map((g) => (
               <Link
                 key={g.slug}
-                href={`/posts/personalFinance/${locale}/${g.slug}`}
+                href={`/posts/personalFinance/${g.slug}`}
                 locale={locale}
                 className="block border rounded-2xl p-4 hover:shadow-sm transition"
               >
