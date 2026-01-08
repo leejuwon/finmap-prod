@@ -2,7 +2,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-export default function SeoHead({ title, desc, url = "/", image, locale, type }) {
+export default function SeoHead({ title, desc, url = "/", image, locale, type, robots }) {
   const router = useRouter();
   const site = "https://www.finmaphub.com";
 
@@ -47,6 +47,9 @@ export default function SeoHead({ title, desc, url = "/", image, locale, type })
     <Head>
       <title>{title ? `${title} | FinMap` : "FinMap"}</title>
       {desc && <meta name="description" content={desc} />}
+
+      {robots && <meta name="robots" content={robots} />}
+      {robots && <meta name="googlebot" content={robots} />}
 
       <link rel="canonical" href={canonical} />
       <link rel="alternate" hrefLang="ko" href={hrefKo} />

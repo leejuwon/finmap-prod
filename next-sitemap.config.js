@@ -11,16 +11,23 @@ module.exports = {
 
   exclude: [
     "/api/*", 
+    "/api/**",
     "/admin/*", 
+    "/admin/**",
     "/private/*",
+    "/private/**",
     // ✅ 중복 언어 prefix (실수로 생성되면 안 됨)
     "/en/en/*",
-
+    "/en/en/**",
     // ✅ 과거 구조: /posts/{category}/en/{slug} 류는 sitemap에 포함되면 안 됨
     "/posts/*/en/*",
+    "/posts/*/en/**",
     "/posts/*/ko/*",
+    "/posts/*/ko/**",
     "/en/posts/*/en/*",
+    "/en/posts/*/en/**",
     "/en/posts/*/ko/*",
+    "/en/posts/*/ko/**",
      
     // ✅ 과거 잘못된 단일 URL    
     "/posts/economics-inflation-basics",

@@ -1,5 +1,5 @@
 // pages/posts/[category]/[slug].js
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import SeoHead from '../../../_components/SeoHead';
 import AdResponsive from '../../../_components/AdResponsive';
@@ -80,13 +80,44 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug 
   const locale = router?.locale === 'en' ? 'en' : 'ko';
   const isKo = locale === 'ko';  
 
+  // ✅ SEO용 절대 URL (jsonld/breadcrumb에서 먼저 필요)
+  const site = 'https://www.finmaphub.com';
+  const prefix = lang === 'en' ? '/en' : '';
+  const canonicalUrl = `${site}${prefix}/posts/${categorySlug}/${slug}`;
+
+  const absImage = post.cover
+    ? (String(post.cover).startsWith('http') ? post.cover : `${site}${post.cover}`)
+    : undefined;
+
   const jsonld = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
+    description: post.description,
+    url: canonicalUrl,
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
     datePublished: post.datePublished,
     dateModified: post.dateModified || post.datePublished,
+    inLanguage: lang === "en" ? "en" : "ko",
+    articleSection: post.category,
+    keywords: (post.tags || []).join(", "),
     author: { '@type': 'Organization', name: 'FinMap' },
+    publisher: {
+      "@type": "Organization",
+      name: "FinMap",
+      logo: { "@type": "ImageObject", url: `${site}/brand/finmaphub-icon.png` },
+    },
+    ...(absImage ? { image: [absImage] } : {}),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: lang === "ko" ? "홈" : "Home", item: lang === "en" ? `${site}/en` : site },
+      { "@type": "ListItem", position: 2, name: categorySlug, item: `${site}${prefix}/category/${categorySlug}` },
+      { "@type": "ListItem", position: 3, name: post.title, item: canonicalUrl },
+    ],
   };
 
   const [likes, setLikes] = useState(0);
@@ -95,14 +126,10 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug 
     nickname: '',
     password: '',
     content: '',
-  });
+  });  
 
-  // ✅ shareUrl은 locale prefix 고려 (초기값)
-  const site = 'https://www.finmaphub.com';
-  const prefix = lang === 'en' ? '/en' : '';
-  const [shareUrl, setShareUrl] = useState(
-    `${site}${prefix}/posts/${categorySlug}/${slug}`
-  );
+  // ✅ shareUrl 초기값은 canonicalUrl로 (SEO 기준 URL)
+  const [shareUrl, setShareUrl] = useState(canonicalUrl);
 
   const reloadComments = async () => {
     try {
@@ -333,6 +360,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug 
         locale={lang} // ✅ canonical/hreflang을 컨텐츠 언어에 맞춤
       />
       <JsonLd data={jsonld} />
+      <JsonLd data={breadcrumbJsonLd} />
 
       <article className="prose prose-slate lg:prose-lg max-w-none bg-white border rounded-2xl shadow-card p-6">
         <h1 className="fm-post-title fm-post-title--clamp3">{post.title}</h1>

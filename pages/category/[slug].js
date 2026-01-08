@@ -91,10 +91,8 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                 <div className="mt-3 text-xs text-slate-500">{p.datePublished}</div>
 
                 <h3 className="mt-2 text-lg font-semibold">
-                  {/* ✅ 핵심: 글 언어에 맞는 locale로 강제 */}                  
-                  <Link
-                    href={`${postLang === 'en' ? '/en' : ''}/posts/${slug}/${p.slug}`}
-                  >
+                  {/* ✅ 핵심: 글 언어에 맞는 locale로 강제 */}                                    
+                  <Link href={`/posts/${slug}/${p.slug}`} locale={postLang}>
                     {p.title}
                   </Link>
                 </h3>
