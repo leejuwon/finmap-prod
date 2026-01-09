@@ -33,7 +33,6 @@ CAGR (Compound Annual Growth Rate) measures how much an investment grew each yea
 
 ---
 
-<!-- 가로 스크롤 이미지 4개 블록 -->
 <!-- Horizontal scroll image block -->
 <div style="display: flex; gap: 16px; overflow-x: auto; padding: 10px 0;">
   <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429352/blog/personalFinance/cagr1.jpg"  style="height: 180px; border-radius: 8px;" />
@@ -181,7 +180,6 @@ Related posts:
 - **Compound Interest: How Compounding Really Grows Your Money**  
 - **DCA Strategy: Building Wealth Through Regular Investing**
 
-<!-- 가로 스크롤 이미지 4개 블록 -->
 <!-- Horizontal scroll image block -->
 <div style="display: flex; gap: 16px; overflow-x: auto; padding: 10px 0;">
   <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764429370/blog/personalFinance/cagr9.jpg"  style="height: 180px; border-radius: 8px;" />

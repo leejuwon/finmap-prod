@@ -4,17 +4,35 @@ import { useRouter } from "next/router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { setLang } from "../lib/lang";
 
+/* ------------------------------
+   1️⃣ 상위 네비게이션
+-------------------------------- */
 const navItems = [
   { href: "/", labelKo: "홈", labelEn: "Home" },
-  { href: "/category/economicInfo", labelKo: "경제정보", labelEn: "Economic Info" },
+  // { href: "/market", labelKo: "마켓", labelEn: "Market", comingSoon: true },
+  { href: "/tools", labelKo: "금융도구", labelEn: "Finance Tools" },
+];
+
+/* ------------------------------
+   2️⃣ Blog / Insights 하위 메뉴
+-------------------------------- */
+const blogItems = [
+  { href: "/category/economicInfo", labelKo: "경제정보", labelEn: "Economics" },
   { href: "/category/personalFinance", labelKo: "재테크", labelEn: "Personal Finance" },
-  { href: "/category/investingInfo", labelKo: "투자정보", labelEn: "Investing Info" },
-  { href: "/tools", labelKo: "금융도구", labelEn: "Personal Finance Tools" },
+  { href: "/category/investingInfo", labelKo: "투자정보", labelEn: "Investing" },
 ];
 
 export default function Header() {
   const router = useRouter();
 
+  /* ------------------------------
+     언어 상태
+  -------------------------------- */
+  const lang = router.locale === "en" ? "en" : "ko";
+
+  /* ------------------------------
+     포스트 번역 가용성 이벤트
+  -------------------------------- */
   const postAvailRef = useRef(null);
   const [langBlockMsg, setLangBlockMsg] = useState("");
 
@@ -22,24 +40,38 @@ export default function Header() {
     const onAvail = (e) => {
       postAvailRef.current = e?.detail || null;
     };
-
     window.addEventListener("fm_post_availability", onAvail);
     return () => window.removeEventListener("fm_post_availability", onAvail);
   }, []);
 
   useEffect(() => {
-    // 라우트 바뀌면 경고 문구는 자동 제거
     setLangBlockMsg("");
   }, [router.asPath]);
 
-  // ✅ 이제 언어는 쿠키가 아니라 "라우터 locale"이 기준
-  const lang = (router.locale === "en" ? "en" : "ko");
-  
-  const handleLangChange = async (next) => {    
-    // ✅ i18n prefix(/en) 구조에서는 pages 경로는 그대로 /posts/[category]/[slug] 로 잡히는게 정상
+  /* ------------------------------
+     Blog dropdown 상태 + ref
+  -------------------------------- */
+  const [blogOpen, setBlogOpen] = useState(false);
+  const blogWrapRef = useRef(null);
+
+  // ✅ 바깥 클릭 시 닫기 (가장 안정적인 방식)
+  useEffect(() => {
+    const onDown = (e) => {
+      if (!blogWrapRef.current) return;
+      if (blogWrapRef.current.contains(e.target)) return;
+      setBlogOpen(false);
+    };
+    document.addEventListener("mousedown", onDown);
+    return () => document.removeEventListener("mousedown", onDown);
+  }, []);
+
+  /* ------------------------------
+     언어 변경 핸들러
+  -------------------------------- */
+  const handleLangChange = async (next) => {
     const isPostDetail = router.pathname === "/posts/[category]/[slug]";
 
-    // ✅ 번역 없으면 막기(기존 로직 유지)
+    // 포스트 상세: 번역 없으면 차단
     if (isPostDetail) {
       const available = postAvailRef.current?.available?.[next];
       if (!available) {
@@ -52,18 +84,20 @@ export default function Header() {
       }
     }
 
-    // ✅ 쿠키/이벤트(레거시)도 유지하고 싶으면 남겨도 OK
     setLang(next);
 
-     // ✅ 포스트 상세면: 쿼리에서 lang 제거하고 locale만 바꿔서 이동
     if (isPostDetail) {
-      const { lang: _legacyLang, ...q } = router.query; // 혹시 남아있던 lang 쿼리 제거
-      await router.push({ pathname: router.pathname, query: q }, undefined, { locale: next });
+      const { lang: _legacyLang, ...q } = router.query;
+      await router.push({ pathname: router.pathname, query: q }, undefined, {
+        locale: next,
+      });
       return;
     }
 
-    // ✅ 나머지 페이지도: ?lang= 같은 쿼리가 있으면 제거하고 locale만 변경
-    const cleanPath = String(router.asPath || "/").split("?")[0].split("#")[0];
+    const cleanPath = String(router.asPath || "/")
+      .split("?")[0]
+      .split("#")[0];
+
     await router.push(cleanPath, cleanPath, { locale: next });
   };
 
@@ -73,73 +107,138 @@ export default function Header() {
     <header className="sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-slate-100">
       <nav className="w-full px-3 sm:px-4">
         <div className="w-full max-w-5xl lg:max-w-6xl mx-auto flex items-center gap-3 py-2 sm:py-3">
-          {/* 로고 */}
-          <Link href="/" className="flex items-center gap-2">
+          {/* ---------------- Logo ---------------- */}
+          <Link href="/" className="flex items-center gap-2 shrink-0">
             <img
               src="/brand/finmaphub-icon.svg"
               alt="FinMap Logo"
               className="h-7 w-7 sm:h-8 sm:w-8"
             />
             <div className="leading-tight">
-              <span className="block text-sm sm:text-base font-semibold text-slate-900">FinMap</span>
+              <span className="block text-sm sm:text-base font-semibold text-slate-900">
+                FinMap
+              </span>
               <span className="hidden sm:block text-[11px] text-slate-500">
-                {lang === "ko" ? "금융 기초 · 투자계획 지도" : "Personal Finance · Investing Map"}
+                {lang === "ko"
+                  ? "금융 기초 · 투자계획 지도"
+                  : "Personal Finance · Investing Map"}
               </span>
             </div>
           </Link>
 
-          {/* 네비게이션 */}
-          <div className="header-nav flex items-center gap-1 sm:gap-2 ml-2 sm:ml-6 text-[10px] sm:text-sm">
-            {nav.map((item) => {
-              const active =
-                item.href === "/"
-                  ? router.pathname === "/"
-                  : router.pathname.startsWith(item.href);
+          {/* ---------------- Navigation ---------------- */}
+          <div className="flex items-center gap-1 sm:gap-2 ml-2 sm:ml-6">
+            {/* ===== 가로 스크롤 영역 ===== */}
+            <div className="header-nav flex items-center gap-1 sm:gap-2 text-[10px] sm:text-sm">
+              {nav.map((item) => {
+                const active =
+                  item.href === "/"
+                    ? router.pathname === "/"
+                    : router.pathname.startsWith(item.href);
 
-              const label = lang === "ko" ? item.labelKo : item.labelEn;
+                const label = lang === "ko" ? item.labelKo : item.labelEn;
 
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={
-                    "px-2 sm:px-3 py-1 rounded-full transition-colors " +
-                    (active
-                      ? "bg-blue-50 text-blue-700 font-medium"
-                      : "text-slate-600 hover:bg-slate-100 hover:text-slate-900")
-                  }
-                >
-                  {label}
-                </Link>
-              );
-            })}
+                if (item.comingSoon) {
+                  return (
+                    <span
+                      key={item.href}
+                      className="px-2 sm:px-3 py-1 rounded-full text-slate-400 bg-slate-50 cursor-not-allowed"
+                    >
+                      {label}
+                    </span>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={
+                      "px-2 sm:px-3 py-1 rounded-full transition-colors " +
+                      (active
+                        ? "bg-blue-50 text-blue-700 font-medium"
+                        : "text-slate-600 hover:bg-slate-100 hover:text-slate-900")
+                    }
+                  >
+                    {label}
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* ===== Insights dropdown (스크롤 밖) ===== */}
+            <div ref={blogWrapRef} className="relative">
+              <button
+                type="button"
+                onClick={() => setBlogOpen((v) => !v)}
+                className={
+                  "px-2 sm:px-3 py-1 rounded-full transition-colors text-[10px] sm:text-sm " +
+                  (router.pathname.startsWith("/category/")
+                    ? "bg-blue-50 text-blue-700 font-medium"
+                    : "text-slate-600 hover:bg-slate-100 hover:text-slate-900")
+                }
+              >
+                {lang === "ko" ? "인사이트" : "Insights"}
+                <span className="ml-1">▾</span>
+              </button>
+
+              {blogOpen && (
+                <div className="absolute left-0 mt-2 w-44 rounded-xl border border-slate-200 bg-white shadow-lg p-1 z-50">
+                  {blogItems.map((b) => {
+                    const bLabel = lang === "ko" ? b.labelKo : b.labelEn;
+                    const bActive = router.pathname.startsWith(b.href);
+
+                    return (
+                      <Link
+                        key={b.href}
+                        href={b.href}
+                        className={
+                          "block px-3 py-2 rounded-lg text-sm " +
+                          (bActive
+                            ? "bg-blue-50 text-blue-700 font-medium"
+                            : "text-slate-700 hover:bg-slate-100")
+                        }
+                        onClick={() => setBlogOpen(false)}
+                      >
+                        {bLabel}
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           </div>
 
-          {/* 우측: 언어 토글 + 도메인 */}
-          <div className="ml-auto flex items-center gap-2">
+
+          {/* ---------------- Right: Language ---------------- */}
+          <div className="ml-auto flex items-center gap-2 shrink-0">
             <div className="flex border border-slate-200 rounded-full text-[9px] sm:text-[11px] md:text-xs overflow-hidden">
               <button
                 type="button"
                 onClick={() => handleLangChange("ko")}
                 className={
                   "px-1.5 py-0.5 sm:px-2 sm:py-1 " +
-                  (lang === "ko" ? "bg-slate-900 text-white" : "bg-white text-slate-600")
+                  (lang === "ko"
+                    ? "bg-slate-900 text-white"
+                    : "bg-white text-slate-600")
                 }
               >
                 한국어
               </button>
-
               <button
                 type="button"
                 onClick={() => handleLangChange("en")}
                 className={
                   "px-1.5 py-0.5 sm:px-2 sm:py-1 " +
-                  (lang === "en" ? "bg-slate-900 text-white" : "bg-white text-slate-600")
+                  (lang === "en"
+                    ? "bg-slate-900 text-white"
+                    : "bg-white text-slate-600")
                 }
               >
                 EN
               </button>
             </div>
+
             {langBlockMsg && (
               <div className="mt-1 text-[11px] text-rose-600">
                 {langBlockMsg}

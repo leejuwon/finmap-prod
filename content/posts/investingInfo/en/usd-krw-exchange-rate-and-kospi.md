@@ -36,7 +36,7 @@ USD/KRW matters because it connects Korea’s real economy to global capital flo
 ## 1. Introduction — Why Koreans Watch USD/KRW So Closely
 
 Many investors treat USD/KRW as a daily scoreboard:  
-“1,300 → 안정”, “1,400 → 불안” 같은 감정이 붙기 쉽습니다.
+“It’s calm around 1,300,” “It feels risky around 1,400” — numbers quickly get tied to emotions.
 
 But the exchange rate is not just a number.  
 It is a **combined signal** of:
@@ -125,9 +125,9 @@ In that regime, KOSPI can fall even if exporters “should” benefit.
 
 | USD/KRW scenario | What it often signals | Typical KOSPI reaction (not guaranteed) |
 |---|---|---|
-| Gradual USD/KRW 상승 | mild risk-off, trade/inflation pressure | exporters mixed, valuation pressure increases |
-| Sudden USD/KRW 급등 | shock / panic / liquidity tightening | broad sell-off, foreign outflow risk |
-| USD/KRW 하락 (KRW 강세) | risk-on, 안정/유동성 개선 | multiple expansion possible, import-sensitive sectors improve |
+| Gradual USD/KRW increase | mild risk-off, trade/inflation pressure | exporters mixed, valuation pressure increases |
+| Sudden USD/KRW spike | shock / panic / liquidity tightening | broad sell-off, foreign outflow risk |
+| USD/KRW decline (KRW strengthens) | risk-on, improved stability/liquidity | multiple expansion possible, import-sensitive sectors improve |
 | High volatility (up & down) | uncertainty, hedging costs rising | foreign flows become choppy, large caps swing more |
 | FX move + oil up | inflation + margin squeeze | consumer/transport pressure, defensives preferred |
 | FX move + yields up | tighter financial conditions | growth/valuation-sensitive stocks pressured |
