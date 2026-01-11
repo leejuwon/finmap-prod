@@ -5,7 +5,7 @@
 @layer components {
   /* 카드 공통 스타일 (리스트/박스 등) */
   .card {
-    @apply bg-white border border-slate-100 rounded-2xl shadow p-5;
+    @apply bg-white border border-slate-100 rounded-2xl shadow p-5 min-w-0;
   }
 
   /* 카테고리 / 태그 뱃지 */
@@ -122,10 +122,30 @@
 
 /* ✅ 모바일에서 “페이지 자체” 가로 스크롤 방지 */
 html, body {
-  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* fallback */
+  overflow-x: clip;   /* ✅ 미세 오버플로우까지 깔끔하게 차단(지원 브라우저) */
 }
 #__next {
-  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* fallback */
+  overflow-x: clip;
+}
+
+/* ✅ 이미지/SVG/캔버스가 1px이라도 튀면 페이지 가로 스크롤 원인됨 */
+img, video, canvas, svg {
+  max-width: 100%;
+}
+
+/* ✅ Recharts(차트)에서 컨테이너가 min-width 때문에 튀는 케이스 방지 */
+.recharts-responsive-container {
+  min-width: 0 !important;
+}
+.recharts-wrapper,
+.recharts-surface {
+  max-width: 100%;
 }
 
 /* =========================================================
@@ -250,6 +270,29 @@ html, body {
     padding-right: 0.2rem;
   }
 }
+
+/* =========================================================
+   ✅ 모바일에서 "카드/툴" 내부 테이블이 body를 밀지 않게 처리
+   - fm-year-table 말고도, cagr의 표/다른 표가 있을 수 있음
+========================================================= */
+@media (max-width: 768px) {
+  .tool-page table,
+  .card table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tool-page th,
+  .tool-page td,
+  .card th,
+  .card td {
+    white-space: nowrap;
+  }
+}
+
 
 /* =========================================================
    블로그 포스트 제목 / 본문 반응형 타이포그래피
@@ -651,7 +694,7 @@ html, body {
 @layer components {
   /* 툴 페이지 레이아웃 */
   .tool-page {
-    @apply max-w-5xl mx-auto px-4 py-6 md:py-10;
+    @apply max-w-5xl mx-auto px-4 py-6 md:py-10 min-w-0;
   }
 
   .tool-header {
