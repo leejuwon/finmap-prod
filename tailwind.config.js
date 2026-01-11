@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+          xs: "480px", // ✅ 480 기준으로 UI 다듬기
+      },
       borderRadius: { 'xxl': '1rem' },
       boxShadow: { 'card': '0 6px 22px rgba(15,23,42,.08)' },
       colors: { brand: { 600: '#2563eb', 700: '#1d4ed8' } }

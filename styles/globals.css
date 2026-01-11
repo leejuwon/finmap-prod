@@ -91,6 +91,21 @@
   html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    font-size: 16px; /* 기본 */
+  }
+
+  /* ✅ 아주 좁은 폰(<=400px)에서만 전체 타이포 살짝 축소 */
+  @media (max-width: 400px) {
+    html { font-size: 15px; } /* -6.25% */
+  }
+  
+  @media (max-width: 360px) {
+    html { font-size: 14px; } /* -12.5% */
+  }
+
+  /* ✅ 초소형(320) 대응: 2단계보다 살짝 더 */
+  @media (max-width: 320px) {
+    html { font-size: 13px; } /* -18.75% */
   }
 
   body {
@@ -248,21 +263,36 @@
 /* 태블릿 / 일반 모바일 */
 @media (max-width: 1023px) {
   .fm-post-title {
-    font-size: 1.55rem;
+    font-size: 1.45rem;
   }
 }
 
 /* 좁은 모바일 (폴드 커버, 플립 등) */
 @media (max-width: 520px) {
   .fm-post-title {
-    font-size: 1.25rem;
+    font-size: 1.18rem;
+  }
+}
+
+/* ✅ 400px 이하: 1단계 더 축소 */
+@media (max-width: 400px) {
+  .fm-post-title {
+    font-size: 1.10rem;
+    line-height: 1.22;
   }
 }
 
 /* 아주 좁은 화면 (가로 360 이하) – 최대로 압축 */
 @media (max-width: 360px) {
   .fm-post-title {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+  }
+}
+
+/* ✅ 320px 이하: 확실히 더 축소 */
+@media (max-width: 320px) {
+  .fm-post-title {
+    font-size: 1.00rem;
   }
 }
 
@@ -280,16 +310,61 @@
   line-height: 1.7;
 }
 
+/* =========================================================
+   ✅ 포스트 "실제 제목"이 .fm-post-body h1 로 들어오는 케이스 대응
+   - 모바일에서 너무 큰 H1 축소
+   - 400px 이하에서 1단계 더 축소
+========================================================= */
+.fm-post-body h1 {
+  font-weight: 800;
+  line-height: 1.22;
+  margin-top: 0;
+  margin-bottom: 1.1rem;
+  font-size: 1.45rem; /* 기본(모바일 포함) */
+}
+
+@media (min-width: 1024px) {
+  .fm-post-body h1 {
+    font-size: 1.85rem;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 520px) {
+  .fm-post-body h1 {
+    font-size: 1.18rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .fm-post-body h1 {
+    font-size: 1.10rem; /* ✅ 400px 이하 1단계 더 */
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 360px) {
+  .fm-post-body h1 {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .fm-post-body h1 {
+    font-size: 1.00rem;
+  }
+}
+
 /* 본문 소제목 (H2/H3) 공통 스타일 */
 .fm-post-body h2 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
   margin-top: 1.8rem;
   margin-bottom: 0.6rem;
 }
 
 .fm-post-body h3 {
-  font-size: 1.05rem;
+  font-size: 1.0rem;
   font-weight: 600;
   margin-top: 1.2rem;
   margin-bottom: 0.45rem;
@@ -308,33 +383,52 @@
 /* 모바일에서 소제목 한 단계 축소 */
 @media (max-width: 520px) {
   .fm-post-body h2 {
-    font-size: 1.0rem;   /* 기존 1.3~1.5 수준 → 크게 축소 */
+    font-size: 0.95rem;   /* 기존 1.3~1.5 수준 → 크게 축소 */
   }
   .fm-post-body h3 {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
   }
+}
+
+/* ✅ 400px 이하: 소제목도 1단계 더 */
+@media (max-width: 400px) {
+  .fm-post-body h2 { font-size: 0.92rem; }
+  .fm-post-body h3 { font-size: 0.86rem; }
 }
 
 @media (max-width: 360px) {
   .fm-post-body h2 {
-    font-size: 0.95rem;     /* 거의 본문 크기 수준으로 조정 */
+    font-size: 0.90rem;     /* 거의 본문 크기 수준으로 조정 */
   }
   .fm-post-body h3 {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
   }
 }
 
 /* 모바일에서 본문 글씨 살짝 축소 */
 @media (max-width: 520px) {
   .fm-post-body {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     line-height: 1.6;
+  }
+}
+
+/* ✅ 400px 이하: 본문도 1단계 더 */
+@media (max-width: 400px) {
+  .fm-post-body {
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 360px) {
   .fm-post-body {
-    font-size: 0.85rem;
+    font-size: 0.83rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .fm-post-body {
+    font-size: 0.80rem;
   }
 }
 
@@ -650,4 +744,24 @@
 body.fm-exporting .fixed { display: none !important; }           /* CTABar 같은 고정요소 제거 */
 body.fm-exporting .overflow-x-auto { overflow: visible !important; } /* 가로 스크롤로 인한 캡처 끊김 방지 */
 body.fm-exporting summary { display: none !important; }          /* details summary UI 제거(선택) */
+
+/* =========================================================
+   Home Hero stats(입문자용/실전연결/헷갈림정리/숫자로확인)
+   - 400px 이하에서만 "추가로 1px 정도" 더 축소
+   - 다른 페이지 stat 컴포넌트에는 영향 없음
+========================================================= */
+@media (max-width: 400px) {
+  .home-hero-stats .stat-title { font-size: 12px; line-height: 1.2; }
+  .home-hero-stats .stat-value { font-size: 18px; line-height: 1.2; }
+}
+
+@media (max-width: 360px) {
+  .home-hero-stats .stat-title { font-size: 11px; }
+  .home-hero-stats .stat-value { font-size: 17px; }
+}
+
+@media (max-width: 320px) {
+  .home-hero-stats .stat-title { font-size: 10px; }
+  .home-hero-stats .stat-value { font-size: 14px; }
+}
 

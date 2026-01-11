@@ -57,7 +57,7 @@ const TEXT = {
     seoTitle: 'Home',
     seoDesc:
       'FinMap blog · economics basic · investing info · personal finance · compound interest calculators',
-    heroTitleLine1: 'See your money flows',
+    heroTitleLine1: 'See your money flows ',
     heroTitleLine2: 'like a map at a glance',
     heroSub:
       'From basic economic concepts to investment ideas, tax topics, and compound interest tools. We focus on the exact points beginner and intermediate investors find confusing.',
@@ -107,20 +107,29 @@ export default function Home({ posts }) {
             <p className="text-xs uppercase tracking-[0.2em] text-blue-300 mb-2">
               PERSONAL FINANCE · INVESTING
             </p>
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight mb-3">
+            <h1 className="font-semibold mb-3 leading-tight
+                           text-2xl md:text-3xl lg:text-4xl
+                           max-[400px]:text-xl max-[360px]:text-lg max-[320px]:text-[1.05rem]
+                           text-balance">
               {t.heroTitleLine1}
-              <br className="hidden sm:block" />
+              <br/>
               <span className="text-blue-300">{t.heroTitleLine2}</span>, FinMap
             </h1>
             <p className="text-sm md:text-base text-slate-200 mb-4">
               {t.heroSub}
             </p>
-            <div className="flex flex-wrap gap-3">
+            {/* ✅ 모바일(<=480)에서는 2열 grid로 고정 → 버튼이 절대 아래로 안 떨어짐 */}
+            <div className="flex flex-wrap gap-3
+                            max-[480px]:grid max-[480px]:grid-cols-2 max-[480px]:gap-2">
               {/* 계산기 링크: 언어에 따라 텍스트만 바뀌고, 기능은 쿠키 기반 */}
               <Link
                 href="/tools/compound-interest"
-                className="btn-primary bg-blue-500 hover:bg-blue-600"
-              >
+                  className="btn-primary bg-blue-500 hover:bg-blue-600
+                             max-[480px]:w-full max-[480px]:px-3 max-[480px]:py-2 max-[480px]:text-[13px]
+                             max-[360px]:text-[12px]
+                             max-[480px]:whitespace-normal max-[480px]:text-center max-[480px]:leading-snug
+                             max-[480px]:break-keep max-[480px]:min-h-[44px]"
+               >              
                 {t.btnTool}
               </Link>
 
@@ -128,8 +137,12 @@ export default function Home({ posts }) {
                   텍스트만 언어별 */}
               <Link
                 href="/category/economicInfo"
-                className="btn-secondary border-slate-500 text-slate-100 hover:bg-slate-800"
-              >
+                className="btn-secondary border-slate-500 text-slate-100 hover:bg-slate-800
+                           max-[480px]:w-full max-[480px]:px-3 max-[480px]:py-2 max-[480px]:text-[13px]
+                           max-[360px]:text-[12px]
+                           max-[480px]:whitespace-normal max-[480px]:text-center max-[480px]:leading-snug
+                           max-[480px]:break-keep max-[480px]:min-h-[44px]"
+               >
                 {t.btnEconomics}
               </Link>
             </div>
@@ -137,7 +150,7 @@ export default function Home({ posts }) {
 
           <div className="flex-1 flex items-center justify-center">
             {/* 간단한 요약 카드 세트 */}
-            <div className="grid grid-cols-2 gap-3 w-full max-w-xs">
+            <div className="home-hero-stats grid grid-cols-2 gap-3 w-full max-w-xs">
               <div className="stat bg-slate-900/60 border border-slate-700">
                 <p className="stat-title text-slate-300">{t.stat1Title}</p>
                 <p className="stat-value text-blue-300">{t.stat1Value}</p>
@@ -193,9 +206,14 @@ export default function Home({ posts }) {
       {/*  더 많은 글 섹션 */}
       {more.length > 0 && (
         <section className="mt-10 mb-12">
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-lg font-semibold">{t.moreHeading}</h2>
-            <span className="text-xs text-slate-500">{t.moreSub}</span>
+          <div className="flex items-end justify-between mb-3
+                          max-[480px]:flex-col max-[480px]:items-start max-[480px]:gap-1">
+            <h2 className="text-lg font-semibold whitespace-nowrap">
+              {t.moreHeading}
+            </h2>
+            <span className="text-xs text-slate-500 break-keep">
+              {t.moreSub}
+            </span>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {more.map((p) => {

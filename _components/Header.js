@@ -115,7 +115,7 @@ export default function Header() {
               className="h-7 w-7 sm:h-8 sm:w-8"
             />
             <div className="leading-tight">
-              <span className="block text-sm sm:text-base font-semibold text-slate-900">
+              <span className="block text-sm sm:text-base block text-[14px] sm:text-[16px] font-semibold text-slate-900">
                 FinMap
               </span>
               <span className="hidden sm:block text-[11px] text-slate-500">
