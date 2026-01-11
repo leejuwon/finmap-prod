@@ -728,6 +728,14 @@ export default function GoalSimulatorPage() {
   const finalInvested = last ? Number(last?.[chartInvestKey] || 0) : 0;
   const finalGain = finalNet - finalInvested;
 
+  // ✅ 목표선(차트용): viewRows 길이만큼 target 값을 채운 배열
+  // - GoalChart가 targetLine을 요구하는 버전에서도 안전
+  const targetSeries = useMemo(() => {
+    if (!hasResult) return [];
+    const t = Number(target) || 0;
+    return viewRows.map(() => t);
+  }, [hasResult, viewRows, target]);
+
   // ✅ Premium: 진단 & 제안(역산) + "몇 년 몇 개월" 도달 시점
   const diagnosis = useMemo(() => {
     if (!hasResult || !lastParams) return null;
@@ -1071,7 +1079,7 @@ export default function GoalSimulatorPage() {
           <>
             <div id="pdf-target" className="grid gap-6">
               {/* 상단 Summary */}
-              <div className="grid gap-4 sm:grid-cols-3">
+              <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 items-stretch">
                 <div className="stat">
                   <div className="stat-title">{t.fv}</div>
                   <div className="stat-value">
@@ -1204,28 +1212,38 @@ export default function GoalSimulatorPage() {
                       : 'Unit: auto (KRW / 10k / 100M)'}
                   </span>
                 </div>
-                <GoalChart
-                  //data={result}
-                  data={chartPayload.data}
-                  series={chartPayload.series}
-                  locale={loc}
-                  currency={currency}
-                  target={target}
-                  valueKey={chartValueKey}
-                  grossKey={chartGrossKey}
-                  investedKey={chartInvestKey}
-                />
+                  {/* ✅ 차트가 화면을 밀어내지 않게: 내부 스크롤로 흡수 */}
+                <div className="w-full overflow-x-auto">
+                  <div className="min-w-[360px]">
+                    <GoalChart
+                      data={chartPayload.data}
+                      series={chartPayload.series}
+                      locale={loc}
+                      currency={currency}
+                      target={target}
+                      /* ✅ 구버전 GoalChart 호환용(있어도 무해) */
+                      targetLine={targetSeries}
+                      valueKey={chartValueKey}
+                      grossKey={chartGrossKey}
+                      investedKey={chartInvestKey}
+                    />
+                  </div>
+                </div>
               </div>
 
               {/* 연간 요약 테이블 */}
               <div ref={(el) => (sectionEls.current.table = el)}>
-                <GoalYearTable
-                  //rows={result}
-                  rows={chartPayload.data}
-                  locale={loc}
-                  currency={currency}
-                  target={target}
-                />
+                {/* ✅ 표가 페이지를 밀어내지 않게: 표만 가로 스크롤 */}
+                <div className="w-full overflow-x-auto">
+                  <div className="min-w-[520px]">
+                    <GoalYearTable
+                      rows={chartPayload.data}
+                      locale={loc}
+                      currency={currency}
+                      target={target}
+                    />
+                  </div>
+                </div>
               </div>
 
               {/* 🔹 FAQ 섹션 */}
@@ -1291,14 +1309,14 @@ export default function GoalSimulatorPage() {
 
         {/* ✅ 내부링크: 추천 가이드 글 5개 (SEO + 체류시간 + 내부탐색) */}
         <section className="card" ref={(el) => (sectionEls.current.guides = el)}>
-          <div className="flex items-center justify-between gap-3 mb-3">
+          <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between mb-3">
             <h2 className="text-base font-semibold">
               {locale === "ko" ? "추천 가이드 글" : "Recommended guides"}
             </h2>
             <Link
               href="/category/personalFinance"
               locale={locale}
-              className="text-sm text-slate-600 hover:underline"
+              className="text-sm text-slate-600 hover:underline self-start sm:self-auto"
             >
               {locale === "ko" ? "전체 글 보기" : "View all posts"}
             </Link>
