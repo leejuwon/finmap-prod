@@ -409,23 +409,23 @@ export default function CagrCalculatorPage() {
               <h1 className="text-xl sm:text-2xl font-bold whitespace-pre-line mb-2">
                 {t.heroTitle}
               </h1>
-              <p className="text-sm text-slate-200 mb-3">{t.heroLead}</p>
+              <p className="text-base text-slate-200 mb-3 max-[400px]:text-sm">{t.heroLead}</p>
               <p className="text-xs text-slate-400 uppercase tracking-[0.16em]">
                 CAGR · COMPOUND ANNUAL GROWTH RATE
               </p>
             </div>
-            <div className="flex-1 grid grid-cols-3 gap-2 text-xs">
+            <div className="flex-1 grid grid-cols-3 gap-2 text-sm max-[400px]:text-xs">
               <div className="stat bg-slate-800/80 border border-slate-700">
                 <p className="stat-title text-slate-300">{t.stat1Title}</p>
-                <p className="stat-value text-emerald-300 text-base">{t.stat1Value}</p>
+                <p className="stat-value text-emerald-300">{t.stat1Value}</p>
               </div>
               <div className="stat bg-slate-800/80 border border-slate-700">
                 <p className="stat-title text-slate-300">{t.stat2Title}</p>
-                <p className="stat-value text-sky-300 text-base">{t.stat2Value}</p>
+                <p className="stat-value text-sky-300">{t.stat2Value}</p>
               </div>
               <div className="stat bg-slate-800/80 border border-slate-700">
                 <p className="stat-title text-slate-300">{t.stat3Title}</p>
-                <p className="stat-value text-amber-300 text-base">{t.stat3Value}</p>
+                <p className="stat-value text-amber-300">{t.stat3Value}</p>
               </div>
             </div>
           </div>
@@ -434,8 +434,8 @@ export default function CagrCalculatorPage() {
         {/* 설명 */}
         <div className="card">
           <h2 className="text-lg font-semibold mb-2">{t.introTitle}</h2>
-          <p className="text-sm text-slate-600 mb-2">{t.introLead}</p>
-          <ul className="list-disc pl-5 text-sm text-slate-600 space-y-1">
+          <p className="text-base text-slate-600 mb-2 max-[400px]:text-sm">{t.introLead}</p>
+          <ul className="list-disc pl-5 text-base text-slate-600 space-y-1 max-[400px]:text-sm">
             <li>{t.introBullet1}</li>
             <li>{t.introBullet2}</li>
             <li>{t.introBullet3}</li>
@@ -445,7 +445,7 @@ export default function CagrCalculatorPage() {
         {/* ✅ 키워드/개념 섹션(SEO + 사용자 이해) */}
         <div className="card">
           <h2 className="text-lg font-semibold mb-2">{t.explainTitle}</h2>
-          <p className="text-sm text-slate-600">{t.explainBody}</p>
+          <p className="text-base text-slate-600 max-[400px]:text-sm">{t.explainBody}</p>
         </div>
 
         {/* 입력 폼 */}

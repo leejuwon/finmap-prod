@@ -129,7 +129,7 @@ export default function Header() {
           {/* ---------------- Navigation ---------------- */}
           <div className="flex items-center gap-1 sm:gap-2 ml-2 sm:ml-6">
             {/* ===== 가로 스크롤 영역 ===== */}
-            <div className="header-nav flex items-center gap-1 sm:gap-2 text-[10px] sm:text-sm">
+            <div className="header-nav flex items-center gap-1 sm:gap-2 text-[12px] sm:text-[14px]">
               {nav.map((item) => {
                 const active =
                   item.href === "/"
@@ -172,7 +172,7 @@ export default function Header() {
                 type="button"
                 onClick={() => setBlogOpen((v) => !v)}
                 className={
-                  "px-2 sm:px-3 py-1 rounded-full transition-colors text-[10px] sm:text-sm " +
+                  "px-2 sm:px-3 py-1 rounded-full transition-colors text-[12px] sm:text-[14px] " +
                   (router.pathname.startsWith("/category/")
                     ? "bg-blue-50 text-blue-700 font-medium"
                     : "text-slate-600 hover:bg-slate-100 hover:text-slate-900")
