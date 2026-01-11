@@ -88,8 +88,8 @@ export default function GoalYearTable({
 
   if (!rows.length) {
     return (
-      <div className="card fm-year-table">
-        <div className="flex items-center gap-3 mb-2">
+      <div className="card fm-year-table w-full min-w-0 max-w-full">
+        <div className="flex items-center gap-3 mb-2 min-w-0">
           <h2 className="text-xl font-semibold">{tableTitle}</h2>
         </div>
         <p className="text-sm text-slate-500">
@@ -127,35 +127,36 @@ export default function GoalYearTable({
       : null;
 
   return (
-    <div className="card fm-year-table">
-      <div className="flex items-center gap-3 mb-2">
+    <div className="card fm-year-table w-full min-w-0 max-w-full">
+      <div className="flex items-center gap-3 mb-2 min-w-0">
         <h2 className="text-xl font-semibold">{tableTitle}</h2>
         <span className="text-xs text-slate-500">{unitText}</span>
       </div>
 
-      <div className="overflow-x-auto mt-4">
-        <table className="min-w-full border-t">
+      {/* ✅ 모바일에서만 표 가로 스크롤: 컨테이너보다 table이 더 넓게 */}
+      <div className="overflow-x-auto mt-4 w-full min-w-0 max-w-full">
+        <table className="w-max min-w-[980px] border-t whitespace-nowrap">
           <thead className="bg-slate-50">
             <tr>
-              <th className="px-2 py-1 text-left">
+              <th className="px-2 py-1 text-left whitespace-nowrap">
                 {isKo ? '연도' : 'Year'}
               </th>
-              <th className="px-2 py-1 text-right">
+              <th className="px-2 py-1 text-left whitespace-nowrap">
                 {isKo ? '누적 투자금' : 'Invested'}
               </th>
-              <th className="px-2 py-1 text-right">
+              <th className="px-2 py-1 text-left whitespace-nowrap">
                 {isKo ? '세후 자산' : 'Net assets'}
               </th>
-              <th className="px-2 py-1 text-right">
+              <th className="px-2 py-1 text-left whitespace-nowrap">
                 {isKo ? '세전 자산' : 'Gross assets'}
               </th>
-              <th className="px-2 py-1 text-right">
+              <th className="px-2 py-1 text-left whitespace-nowrap">
                 {isKo ? '세후 수익' : 'Net gain'}
               </th>
-              <th className="px-2 py-1 text-right">
+              <th className="px-2 py-1 text-left whitespace-nowrap">
                 {isKo ? '누적 수익률' : 'Total return'}
               </th>
-              <th className="px-2 py-1 text-right">
+              <th className="px-2 py-1 text-left whitespace-nowrap">
                 {isKo ? '목표 달성률' : 'Goal progress'}
               </th>
             </tr>
@@ -172,7 +173,7 @@ export default function GoalYearTable({
                     'border-t ' + (isGoalYear ? 'bg-blue-50' : '')
                   }
                 >
-                  <td className="px-2 py-1 text-left">
+                   <td className="px-2 py-1 text-left whitespace-nowrap">
                     {s.year}
                     {isGoalYear && (
                       <span className="ml-1 text-[10px] text-blue-600 font-medium">
@@ -180,22 +181,22 @@ export default function GoalYearTable({
                       </span>
                     )}
                   </td>
-                  <td className="px-2 py-1 text-right">
+                  <td className="px-2 py-1 text-right whitespace-nowrap">
                     {formatMoneyAuto(s.invested, currency, locale)}
                   </td>
-                  <td className="px-2 py-1 text-right">
+                  <td className="px-2 py-1 text-right whitespace-nowrap">
                     {formatMoneyAuto(s.valueNet, currency, locale)}
                   </td>
-                  <td className="px-2 py-1 text-right">
+                  <td className="px-2 py-1 text-right whitespace-nowrap">
                     {formatMoneyAuto(s.valueGross, currency, locale)}
                   </td>
-                  <td className="px-2 py-1 text-right">
+                  <td className="px-2 py-1 text-right whitespace-nowrap">
                     {formatMoneyAuto(s.gainNet, currency, locale)}
                   </td>
-                  <td className="px-2 py-1 text-right">
+                  <td className="px-2 py-1 text-right whitespace-nowrap">
                     {s.returnRate.toFixed(2)}%
                   </td>
-                  <td className="px-2 py-1 text-right">
+                  <td className="px-2 py-1 text-right whitespace-nowrap">
                     {s.targetProgress.toFixed(1)}%
                   </td>
                 </tr>

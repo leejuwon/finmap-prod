@@ -77,7 +77,7 @@ export default function GoalChart({
   const maxVal = Math.max(...values, 1);
   const minVal = 0;
 
-  const n = data.length;
+  const n = mainData.length;
   const xForIndex = (i) =>
     n === 1 ? 50 : 5 + (i / (n - 1)) * 90; // 5~95%
   const yForValue = (v) => {
@@ -146,8 +146,9 @@ export default function GoalChart({
 
   const isKo = locale.toLowerCase().startsWith('ko');
 
-  return (
-    <div className="w-full">
+  return (    
+    <div className="w-full min-w-[780px] sm:min-w-0">
+       
       {/* SVG 차트 영역 */}
 
       <svg viewBox="0 0 100 90" className="w-full"
@@ -239,9 +240,9 @@ export default function GoalChart({
         )}
 
         {/* 각 포인트에 작은 점(세후 자산) */}
-        {data.map((d, i) => {
+        {mainData.map((d, i) => {
           const x = xForIndex(i);
-          const y = yForValue(Number(d.valueNet) || 0);
+          const y = yForValue(Number(d?.[valueKey]) || 0);
           return (
             <circle
               key={i}
@@ -256,7 +257,7 @@ export default function GoalChart({
         })}
 
         {/* X축 라벨: 연도 */}
-        {data.map((d, i) => {
+        {mainData.map((d, i) => {
           const x = xForIndex(i);
           return (
             <text

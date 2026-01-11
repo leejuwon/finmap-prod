@@ -955,7 +955,7 @@ export default function GoalSimulatorPage() {
       <JsonLd data={faqJsonLd} />
       <JsonLd data={appJsonLd} />
 
-      <div className="py-6 grid gap-6 fm-mobile-full">
+      <main className="py-6 grid gap-6 fm-mobile-full min-w-0 w-full max-w-full">
         {/* 제목 */}
         <div className="flex items-center gap-3">
           <h1 className="text-xl sm:text-2xl font-bold">{t.title}</h1>
@@ -1077,7 +1077,7 @@ export default function GoalSimulatorPage() {
         {/* 결과 영역 */}
         {hasResult && (
           <>
-            <div id="pdf-target" className="grid gap-6">
+            <div id="pdf-target" className="grid gap-6 min-w-0 w-full max-w-full">
               {/* 상단 Summary */}
               <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 items-stretch">
                 <div className="stat">
@@ -1102,8 +1102,8 @@ export default function GoalSimulatorPage() {
 
               {/* ✅ Premium: 진단 & 제안(역산) */}
               {diagnosis && (
-                <div className="card">
-                  <div className="flex items-center justify-between gap-3">
+                <div className="card w-full min-w-0 max-w-full">
+                  <div className="flex items-center justify-between gap-3 mb-3 min-w-0">
                     <h2 className="text-lg font-semibold">
                       {locale === "ko" ? "진단 & 제안" : "Diagnosis & suggestion"}
                     </h2>
@@ -1203,8 +1203,8 @@ export default function GoalSimulatorPage() {
               )}
 
               {/* 차트 */}
-              <div className="card" ref={(el) => (sectionEls.current.chart = el)}>
-                <div className="flex items-center gap-3 mb-2">
+              <div className="card w-full min-w-0 max-w-full" ref={(el) => (sectionEls.current.chart = el)}>
+                <div className="flex items-center gap-3 mb-2 min-w-0">
                   <h2 className="text-lg font-semibold">{t.chartTitle}</h2>
                   <span className="text-xs text-slate-500">
                     {locale.startsWith('ko')
@@ -1247,7 +1247,7 @@ export default function GoalSimulatorPage() {
               </div>
 
               {/* 🔹 FAQ 섹션 */}
-              <div className="card w-full" ref={(el) => (sectionEls.current.faq = el)}>
+              <div className="card w-full min-w-0 max-w-full" ref={(el) => (sectionEls.current.faq = el)}>
                 <h2 className="text-lg font-semibold mb-3">
                   {t.faqTitle}
                 </h2>
@@ -1308,7 +1308,7 @@ export default function GoalSimulatorPage() {
         )}
 
         {/* ✅ 내부링크: 추천 가이드 글 5개 (SEO + 체류시간 + 내부탐색) */}
-        <section className="card" ref={(el) => (sectionEls.current.guides = el)}>
+        <section className="card w-full min-w-0 max-w-full" ref={(el) => (sectionEls.current.guides = el)}>
           <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between mb-3">
             <h2 className="text-base font-semibold">
               {locale === "ko" ? "추천 가이드 글" : "Recommended guides"}
@@ -1344,7 +1344,7 @@ export default function GoalSimulatorPage() {
             ))}
           </div>
         </section>
-      </div>
+      </main>
     </>
   );
 }
