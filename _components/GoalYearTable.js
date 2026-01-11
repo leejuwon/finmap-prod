@@ -135,7 +135,7 @@ export default function GoalYearTable({
 
       {/* ✅ 모바일에서만 표 가로 스크롤: 컨테이너보다 table이 더 넓게 */}
       <div className="overflow-x-auto mt-4 w-full min-w-0 max-w-full">
-        <table className="w-max min-w-[980px] border-t whitespace-nowrap">
+        <table className="w-full  min-w-[860px] border-t whitespace-nowrap">
           <thead className="bg-slate-50">
             <tr>
               <th className="px-2 py-1 text-left whitespace-nowrap">

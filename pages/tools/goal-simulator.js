@@ -1214,7 +1214,7 @@ export default function GoalSimulatorPage() {
                 </div>
                   {/* ✅ 차트가 화면을 밀어내지 않게: 내부 스크롤로 흡수 */}
                 <div className="w-full overflow-x-auto">
-                  <div className="min-w-[360px]">
+                  <div className="min-w-0">
                     <GoalChart
                       data={chartPayload.data}
                       series={chartPayload.series}
@@ -1232,18 +1232,13 @@ export default function GoalSimulatorPage() {
               </div>
 
               {/* 연간 요약 테이블 */}
-              <div ref={(el) => (sectionEls.current.table = el)}>
-                {/* ✅ 표가 페이지를 밀어내지 않게: 표만 가로 스크롤 */}
-                <div className="w-full overflow-x-auto">
-                  <div className="min-w-[520px]">
-                    <GoalYearTable
-                      rows={chartPayload.data}
-                      locale={loc}
-                      currency={currency}
-                      target={target}
-                    />
-                  </div>
-                </div>
+              <div ref={(el) => (sectionEls.current.table = el)} className="w-full min-w-0 max-w-full">
+                <GoalYearTable
+                  rows={chartPayload.data}
+                  locale={loc}
+                  currency={currency}
+                  target={target}
+                />
               </div>
 
               {/* 🔹 FAQ 섹션 */}

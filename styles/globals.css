@@ -112,6 +112,24 @@
     @apply bg-slate-50 text-slate-900;
   }
 
+  /* =========================================================
+   ✅ 전체 페이지 가로 스크롤 차단 (내부 overflow-x-auto는 허용)
+  ========================================================= */
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  #__next {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* 차트/캔버스/이미지가 뷰포트 밖으로 밀어내는 경우 방어 */
+  img, svg, canvas {
+    max-width: 100%;
+  }
+
   a {
     @apply text-slate-800;
   }
@@ -277,7 +295,7 @@ img, video, canvas, svg {
 ========================================================= */
 @media (max-width: 768px) {
   .tool-page table,
-  .card table {
+  .tool-page table {
     display: block;
     width: 100%;
     max-width: 100%;

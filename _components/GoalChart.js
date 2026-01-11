@@ -147,7 +147,7 @@ export default function GoalChart({
   const isKo = locale.toLowerCase().startsWith('ko');
 
   return (    
-    <div className="w-full min-w-[780px] sm:min-w-0">
+    <div className="w-full min-w-0">
        
       {/* SVG 차트 영역 */}
 
