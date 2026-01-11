@@ -410,7 +410,7 @@ export default function CagrCalculatorPage() {
                 {t.heroTitle}
               </h1>
               <p className="text-sm text-slate-200 mb-3">{t.heroLead}</p>
-              <p className="text-[11px] text-slate-400 uppercase tracking-[0.16em]">
+              <p className="text-xs text-slate-400 uppercase tracking-[0.16em]">
                 CAGR · COMPOUND ANNUAL GROWTH RATE
               </p>
             </div>
