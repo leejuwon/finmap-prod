@@ -127,7 +127,7 @@ DCA가 잘 돌아가는 사람은 예측을 덜 하고, **규칙을 더 강하�
 
 ---
 
-## 2) Hero Layout — DCA의 목표는 ‘평균 단가’가 아니라 ‘지속 가능한 시스템’입니다
+## 2) DCA의 목표는 ‘평균 단가’가 아니라 ‘지속 가능한 시스템’입니다
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -209,7 +209,7 @@ DCA가 잘 돌아가는 사람은 예측을 덜 하고, **규칙을 더 강하�
 
 ---
 
-## 4) Compare Layout — DCA를 망치는 사고방식 vs 이기는 운영 방식
+## 4) DCA를 망치는 사고방식 vs 이기는 운영 방식
 
 <div class="compare-grid">
   <div class="compare-card compare-bad">
@@ -249,7 +249,7 @@ DCA가 잘 돌아가는 사람은 예측을 덜 하고, **규칙을 더 강하�
 
 ---
 
-## 6) Img-row — “지속성”이 결과를 바꾸는 3단 그림
+## 6) “지속성”이 결과를 바꾸는 3단 그림
 
 <div class="img-row">
   <figure>

@@ -45,7 +45,7 @@ lang: "ko"
 
 ---
 
-# 2. Hero Layout — 물가와 금리의 핵심 구조 한눈에 보기
+# 2. 물가와 금리의 핵심 구조 한눈에 보기
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -99,7 +99,7 @@ lang: "ko"
 
 ---
 
-# 5. Compare Layout — 물가·금리가 시장에 미치는 영향 비교
+# 5. 물가·금리가 시장에 미치는 영향 비교
 
 <div class="compare-grid">
   <div class="compare-card compare-bad">
@@ -146,7 +146,7 @@ lang: "ko"
 
 ---
 
-# 7. Img-row — 물가·금리 개념 시각화
+# 7. 물가·금리 개념 시각화
 
 <div class="img-row">
   <figure>

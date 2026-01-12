@@ -150,7 +150,7 @@ Sometimes USD/KRW rises due to Korea-specific dynamics, but during global risk e
 
 ---
 
-## 8) Compare Layout — Common mistake vs safer framework
+## 8) Common mistake vs safer framework
 
 <div class="compare-grid">
   <div class="compare-card compare-bad">
@@ -190,7 +190,7 @@ Sometimes USD/KRW rises due to Korea-specific dynamics, but during global risk e
 
 ---
 
-## 10) Img-row
+## 10) Visual Overview
 
 <div class="img-row">
   <figure>

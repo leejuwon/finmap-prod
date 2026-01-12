@@ -48,7 +48,7 @@ lang: "ko"
 
 ---
 
-## 2. Hero Layout — “한국 ETF 민감도의 본질은 구조에 있다”
+## 2. “한국 ETF 민감도의 본질은 구조에 있다”
 <div class="hero-grid">
   <div class="hero-main">
     <p class="hero-kicker">Korea ETFs = High Growth + High FX Sensitivity + High Foreign Ownership</p>
@@ -97,7 +97,7 @@ lang: "ko"
 
 ---
 
-## 4. Compare Layout — “TNX 상승기에 한국 ETF가 더 크게 흔들리는 이유”
+## 4. “TNX 상승기에 한국 ETF가 더 크게 흔들리는 이유”
 <div class="compare-grid">
   <div class="compare-card compare-bad">
     <h3>TNX 상승 시 한국 ETF에 악재</h3>
@@ -131,7 +131,7 @@ lang: "ko"
 
 ---
 
-## 6. Img-row — 한국 ETF 구조 3개 핵심 개념
+## 6. 한국 ETF 구조 3개 핵심 개념
 <div class="img-row">
   <figure>
     <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764561433/blog/investingInfo/korea-etf-deep-dive-tnx-1.png" alt="한국 ETF와 TNX" />

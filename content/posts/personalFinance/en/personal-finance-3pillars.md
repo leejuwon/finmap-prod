@@ -274,7 +274,7 @@ A strong system isn’t “beginner”—it’s professional.
 
 ---
 
-## 9. Img-row — visualize the three pillars (placeholders)
+## 9. visualize the three pillars
 
 <div class="img-row">
   <figure>

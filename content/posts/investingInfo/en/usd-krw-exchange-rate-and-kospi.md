@@ -50,7 +50,7 @@ This article builds a clear map of how USD/KRW can influence the KOSPI.
 
 ---
 
-## 2. Hero Layout — The 3 Main Channels That Connect FX to Stocks
+## 2. The 3 Main Channels That Connect FX to Stocks
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -146,7 +146,7 @@ In that regime, KOSPI can fall even if exporters “should” benefit.
 
 ---
 
-## 7. Compare Layout — Wrong vs Right Way to Read USD/KRW
+## 7. Wrong vs Right Way to Read USD/KRW
 
 <div class="compare-grid">
   <div class="compare-card compare-bad">
@@ -182,7 +182,7 @@ In that regime, KOSPI can fall even if exporters “should” benefit.
 
 ---
 
-## 9. Img-row — Visual Intuition (placeholders)
+## 9. Visual Intuition
 
 <div class="img-row">
   <figure>

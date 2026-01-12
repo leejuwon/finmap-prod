@@ -43,7 +43,7 @@ This mismatch creates confusion.
 
 ---
 
-## 2. Hero Layout — The Macro Reading Framework
+## 2. The Macro Reading Framework
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -116,7 +116,7 @@ PMI often turns **months before GDP**.
 
 ---
 
-## 6. Compare Layout — What Each Indicator Does Best
+## 6. What Each Indicator Does Best
 
 <div class="compare-grid">
   <div class="compare-card compare-bad">
@@ -152,7 +152,7 @@ Context always matters.
 
 ---
 
-## 8. Img-row — Economic Cycle Visualization
+## 8. Economic Cycle Visualization
 
 <div class="img-row">
   <figure>

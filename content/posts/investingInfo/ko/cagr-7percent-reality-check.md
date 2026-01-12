@@ -52,7 +52,7 @@ lang: "ko"
 
 ---
 
-# 2. Hero Layout — “연 7%”라는 문장의 숨겨진 함의
+# 2. “연 7%”라는 문장의 숨겨진 함의
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -136,7 +136,7 @@ CAGR이 단숨에 **6%대**로 떨어진다
 
 ---
 
-# 6. Img-row — 7% 복리 효과 시각화
+# 6. 7% 복리 효과 시각화
 
 <div class="img-row">
   <figure>

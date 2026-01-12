@@ -45,7 +45,7 @@ lang: "ko"
 
 ---
 
-# 2. Hero Layout — TNX는 글로벌 자본시장의 심장
+# 2. TNX는 글로벌 자본시장의 심장
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -89,7 +89,7 @@ lang: "ko"
 
 ---
 
-# 4. Compare Layout — TNX 상승 vs TNX 하락 비교
+# 4. TNX 상승 vs TNX 하락 비교
 
 <div class="compare-grid">
   <div class="compare-card compare-bad">

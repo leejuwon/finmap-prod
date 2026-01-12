@@ -126,7 +126,7 @@ If you judge DCA by monthly performance, you’ll keep changing it. If you judge
 
 ---
 
-## 2) Hero Layout — A durable DCA system has three rules, not one
+## 2) A durable DCA system has three rules, not one
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -216,7 +216,7 @@ If you judge DCA by monthly performance, you’ll keep changing it. If you judge
 
 ---
 
-## 4) Compare Layout — Bad DCA vs Durable DCA
+## 4) Bad DCA vs Durable DCA
 
 <div class="compare-grid">
   <div class="compare-card compare-bad">
@@ -257,7 +257,7 @@ If you judge DCA by monthly performance, you’ll keep changing it. If you judge
 
 ---
 
-## 6) Img-row
+## 6) Visual Overview
 
 <div class="img-row">
   <figure>

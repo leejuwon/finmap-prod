@@ -66,7 +66,7 @@ lang: "ko"
 
 ---
 
-## 3. Hero Layout — ‘기준금리’가 경제로 전달되는 핵심 경로
+## 3. ‘기준금리’가 경제로 전달되는 핵심 경로
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -191,7 +191,7 @@ lang: "ko"
 
 ---
 
-## 9. Compare Layout — 금리 국면에서 흔한 오해 vs 현실적인 해석
+## 9. 금리 국면에서 흔한 오해 vs 현실적인 해석
 
 <div class="compare-grid">
   <div class="compare-card compare-bad">
@@ -227,7 +227,7 @@ lang: "ko"
 
 ---
 
-## 11. Img-row — 금리 구조를 ‘그림’으로 한 번에 정리
+## 11. 금리 구조를 ‘그림’으로 한 번에 정리
 
 <div class="img-row">
   <figure>

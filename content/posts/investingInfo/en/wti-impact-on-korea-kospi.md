@@ -241,7 +241,7 @@ If DXY is rising, the market is often pricing tighter global conditions, which c
 
 ---
 
-## 9) Compare Layout — Don’t oversimplify oil’s message
+## 9) Don’t oversimplify oil’s message
 
 <div class="compare-grid">
   <div class="compare-card compare-bad">
@@ -293,7 +293,7 @@ If DXY is rising, the market is often pricing tighter global conditions, which c
 
 ---
 
-## 12) Img-row
+## 12) Visual Overview
 
 <div class="img-row">
   <figure>

@@ -53,7 +53,7 @@ lang: "ko"
 
 ---
 
-## 2. Hero Layout — 경제지표의 역할을 한 번에 정리
+## 2. 경제지표의 역할을 한 번에 정리
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -149,7 +149,7 @@ PMI는 **방향성 지표**입니다.
 
 ---
 
-## 6. Compare Layout — 잘못된 해석 vs 올바른 해석
+## 6. 잘못된 해석 vs 올바른 해석
 
 <div class="compare-grid">
   <div class="compare-card compare-bad">
@@ -193,7 +193,7 @@ PMI는 **방향성 지표**입니다.
 
 ---
 
-## 9. Img-row — 경제지표 흐름 시각화
+## 9. 경제지표 흐름 시각화
 
 <div class="img-row">
   <figure>

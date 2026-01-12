@@ -51,7 +51,7 @@ Korea, in particular, reacts faster and more intensely due to its high foreign o
 
 ---
 
-# 2. Hero Layout — TNX Is the “Heart Rate” of Global Capital
+# 2. TNX Is the “Heart Rate” of Global Capital
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -143,7 +143,7 @@ respond dramatically to TNX.
 
 ---
 
-# 6. Img-row — Visualizing TNX Effects (horizontal scroll)
+# 6. Visualizing TNX Effects
 
 <div class="img-row">
   <figure>

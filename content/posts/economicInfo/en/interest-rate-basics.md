@@ -69,7 +69,7 @@ That’s why you may see a rate hike while your deposit rate barely budges—or 
 
 ---
 
-## 3. Hero Layout — the “transmission path” that actually matters
+## 3. the “transmission path” that actually matters
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -194,7 +194,7 @@ Duration doesn’t “predict,” it simply tells you the risk you’re holding.
 
 ---
 
-## 9. Compare Layout — common rate myths vs rate reality
+## 9. common rate myths vs rate reality
 
 <div class="compare-grid">
   <div class="compare-card compare-bad">
@@ -230,7 +230,7 @@ Duration doesn’t “predict,” it simply tells you the risk you’re holding.
 
 ---
 
-## 11. Img-row — the same visuals you’ll reuse across languages
+## 11. the same visuals you’ll reuse across languages
 
 <div class="img-row">
   <figure>

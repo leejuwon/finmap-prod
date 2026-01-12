@@ -148,7 +148,7 @@ That’s why “TNX up” can feel like “KOSPI liquidity down,” even if dome
 
 ---
 
-## 6) Img-row — read TNX like a map
+## 6) read TNX like a map
 
 <div class="img-row">
   <figure>

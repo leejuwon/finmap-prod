@@ -43,7 +43,7 @@ ETF 성과를 “좋다·나쁘다”로 평가하기 전에 반드시 TNX 흐�
 
 ---
 
-# 2. Hero Layout — ETF 가격을 좌우하는 첫 번째 변수는 TNX다
+# 2. ETF 가격을 좌우하는 첫 번째 변수는 TNX다
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -92,7 +92,7 @@ ETF 성과를 “좋다·나쁘다”로 평가하기 전에 반드시 TNX 흐�
 
 ---
 
-# 4. Compare Layout — TNX 상승기 ETF 반응 비교
+# 4. TNX 상승기 ETF 반응 비교
 
 <div class="compare-grid">
 

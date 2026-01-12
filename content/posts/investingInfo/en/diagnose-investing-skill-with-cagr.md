@@ -59,7 +59,7 @@ This article explains how these four metrics work together and how to use them t
 
 ---
 
-# 2. Hero Layout — “CAGR shows the growth, but not the risk behind it.”
+# 2. “CAGR shows the growth, but not the risk behind it.”
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -203,7 +203,7 @@ Characteristics:
 
 ---
 
-# 9. Img-row — Visualizing the Relationship Among CAGR, MDD, and Volatility
+# 9. Visualizing the Relationship Among CAGR, MDD, and Volatility
 
 <div class="img-row">
   <figure>

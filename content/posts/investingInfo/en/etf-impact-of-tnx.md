@@ -148,7 +148,7 @@ Korea (EWY) is particularly sensitive because:
 
 ---
 
-## 6. Img-row — Visual Overview
+## 6. Visual Overview
 <div class="img-row">
   <figure>
     <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764561421/blog/investingInfo/etf-impact-of-tnx-1.png" alt="TNX vs USD strength" />

@@ -55,7 +55,7 @@ This guide is built for practical use, not theory—focused on how a long-term i
 
 ---
 
-# 2. Hero Layout — Inflation → Rates → Economy in one simple framework
+# 2. Inflation → Rates → Economy in one simple framework
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -111,7 +111,7 @@ When it’s low (low rates) → borrowing/spending increase.
 
 ---
 
-# 5. Compare Layout — Economic impact of inflation vs interest rate cycles
+# 5. Economic impact of inflation vs interest rate cycles
 
 <div class="compare-grid">
   <div class="compare-card compare-bad">
@@ -160,7 +160,7 @@ When it’s low (low rates) → borrowing/spending increase.
 
 ---
 
-# 7. Img-row — Visualizing inflation–rate dynamics
+# 7. Visualizing inflation–rate dynamics
 
 <div class="img-row">
   <figure>

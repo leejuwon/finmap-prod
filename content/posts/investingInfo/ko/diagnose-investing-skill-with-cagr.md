@@ -52,7 +52,7 @@ CAGR만으로는 **투자 실력의 깊은 면**을 판단할 수 없습니다.
 
 ---
 
-# 2. Hero Layout — “CAGR은 좋지만, 그것만으로는 부족하다”
+# 2. “CAGR은 좋지만, 그것만으로는 부족하다”
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -188,7 +188,7 @@ MDD는 투자 성향, 리스크 허용 범위, 멘탈 강도를 모두 보여주
 
 ---
 
-# 9. Img-row — MDD·변동성·CAGR 관계를 시각적으로 보기
+# 9. MDD·변동성·CAGR 관계를 시각적으로 보기
 
 <div class="img-row">
   <figure>

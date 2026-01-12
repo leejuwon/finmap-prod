@@ -51,7 +51,7 @@ This article removes that illusion and interprets **7%** through the lens of act
 
 ---
 
-# 2. Hero Layout — The Hidden Meaning Behind “7% Per Year”
+# 2. The Hidden Meaning Behind “7% Per Year”
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -135,7 +135,7 @@ But volatility determines whether you actually get 7% or 4% or 10%.
 
 ---
 
-# 6. Img-row — Visualizing the Power of 7% CAGR
+# 6. Visualizing the Power of 7% CAGR
 
 <div class="img-row">
   <figure>

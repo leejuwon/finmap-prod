@@ -50,7 +50,7 @@ In short: **Korea ETFs are a triple-levered play on global rates, FX, and growth
 
 ---
 
-## 2. Hero Layout — “It’s not sentiment. It’s structure.”
+## 2. “It’s not sentiment. It’s structure.”
 <div class="hero-grid">
   <div class="hero-main">
     <p class="hero-kicker">Korea ETFs = High Growth + High FX Sensitivity + High Foreign Ownership</p>
@@ -97,7 +97,7 @@ This is why TNX becomes a direct directional signal for Korea ETFs.
 
 ---
 
-## 4. Compare Layout — “Why Korea reacts harder to rising TNX”
+## 4. “Why Korea reacts harder to rising TNX”
 <div class="compare-grid">
   <div class="compare-card compare-bad">
     <h3>TNX Rising → Negative for Korea ETFs</h3>
@@ -130,7 +130,7 @@ This is why TNX becomes a direct directional signal for Korea ETFs.
 
 ---
 
-## 6. Img-row — Three visual pillars of Korea ETF sensitivity
+## 6. Three visual pillars of Korea ETF sensitivity
 <div class="img-row">
   <figure>
     <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764561433/blog/investingInfo/korea-etf-deep-dive-tnx-1.png" alt="TNX and growth valuation" />
