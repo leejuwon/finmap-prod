@@ -47,7 +47,7 @@ tools: ["goal","compound","fire"]
     "@id": "https://www.finmaphub.com/en/posts/personalFinance/inflation-household-survival-strategy"
   },
   "image": [
-    "https://www.finmaphub.com/images/posts/inflation-household-survival-strategy/cover.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768205561/blog/tools/inflation-household-survival-strategy-cover.png"
   ],
   "author": { "@type": "Organization", "name": "FinMap" },
   "publisher": {

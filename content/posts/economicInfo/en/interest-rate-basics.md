@@ -230,7 +230,7 @@ Duration doesn’t “predict,” it simply tells you the risk you’re holding.
 
 ---
 
-## 11. the same visuals you’ll reuse across languages
+## 11. Visual Overview
 
 <div class="img-row">
   <figure>

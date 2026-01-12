@@ -25,6 +25,11 @@ title: "금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까�
 description: "기준금리, 시장금리, 예·적금/대출 금리의 연결고리를 쉬운 예시로 설명. 채권 가격과 금리의 역관계도 도식으로 정리합니다."
 url: /posts/economicInfo/interest-rate-basics
 
+## 6.
+title: "“금리 인하”가 와도 안 오를 수 있다: 시장금리 vs 정책금리 분리해서 읽기"
+description: "기준금리를 내린다는데 왜 대출금리·예금금리는 체감이 없을까? 정책금리(기준금리)와 시장금리(국채·은행채·대출금리)를 분리해 읽는 법, 시장금리를 움직이는 4요소(기대·인플레·기간프리미엄·스프레드), 한국 투자·가계에 적용하는 실전 체크리스트까지 정리합니다."
+url: /posts/economicInfo/policy-rate-cut-market-rates
+
 # 경제정보(영어)
 
 ## 1. 
@@ -51,6 +56,11 @@ url: /en/posts/economicInfo/inflation-rate-basics
 title: "Understanding Interest Rates: Policy Rates, Market Rates, and How They Influence Deposits, Loans, and Bonds"
 description: "A clear beginner-friendly guide explaining policy rates, market rates, and how they translate into deposit, loan, and bond yields—plus a simple breakdown of the inverse relationship between interest rates and bond prices."
 url: /en/posts/economicInfo/interest-rate-basics
+
+## 6.
+title: "A Rate Cut Doesn’t Guarantee Lower Borrowing Costs: How to Read Policy Rates vs Market Rates"
+description: "Central banks can cut policy rates and yet mortgage rates, bond yields, and even stock valuations may not move the way people expect. Learn the practical separation: policy rates (decisions) vs market rates (prices), the 4 drivers of market yields, and a checklist for Korea that links TNX, USD/KRW, spreads, and real borrowing costs."
+url: /en/posts/economicInfo/policy-rate-cut-market-rates
 
 # 재테크(한글)
 
@@ -89,6 +99,11 @@ title: "CAGR이란 무엇인가? 단순 수익률과의 차이 이해하기"
 description: "CAGR은 투자 성과를 연평균 복리 기준으로 측정하는 지표입니다. 단순 수익률과 비교하면 투자 기간 동안 실제 성장 속도를 더 정확하게 보여줍니다."
 url: /posts/personalFinance/what-is-cagr
 
+## 8. 
+title: "물가 상승 시대의 가계 생존전략: 생활비/고정비 줄이기, 현금흐름 관리(가계부·예산·비상금)"
+description: "인플레이션 시대엔 ‘돈을 버는 것’만큼 ‘새는 돈을 막는 것’이 중요합니다. 고정비 구조조정, 생활비 최적화, 가계부/예산 시스템, 비상금 설계까지—가계가 무너지지 않는 실전 생존 전략을 한 번에 정리합니다."
+url: /posts/personalFinance/inflation-household-survival-strategy
+
 # 재테크(영어)
 
 ## 1. 
@@ -125,6 +140,11 @@ url: /en/posts/personalFinance/simple-vs-compound
 title: "What Is CAGR? Understanding the Difference From Simple Returns"
 description: "CAGR shows the annual compound growth rate of an investment. It reflects the true pace of growth better than simple returns, especially for long-term investments."
 url: /en/posts/personalFinance/what-is-cagr
+
+## 8. 
+title: "Household Survival in an Inflation Era: Cut Fixed Costs, Control Spending, and Protect Cash Flow"
+description: "Inflation doesn’t just raise prices—it destabilizes household cash flow. This guide shows how to restructure fixed costs, run a cap-based budget, build an emergency fund, and keep your plan stable even when rates rise."
+url: /en/posts/personalFinance/inflation-household-survival-strategy
 
 # 투자정보(한글)
 
