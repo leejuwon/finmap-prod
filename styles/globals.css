@@ -542,9 +542,17 @@ img, video, canvas, svg {
 /* 상단 Hero 레이아웃 (제목 아래 요약 + 포인트 카드) */
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+/* 옵션: 넓은 화면에서만 좌우 2열 */
+@media (min-width: 1024px){
+  .hero-grid.hero-grid--split{
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+    align-items: start;
+  }
 }
 
 .hero-main {
@@ -836,3 +844,13 @@ body.fm-exporting summary { display: none !important; }          /* details summ
   .home-hero-stats .stat-value { font-size: 14px; }
 }
 
+/* ✅ 다크 배경(hero-card)에서 strong 색이 prose에 의해 어두워지는 문제 방지 */
+.fm-post-body .hero-card strong,
+.fm-post-body .hero-card b {
+  color: inherit;
+}
+
+.hero-card h3{
+  color: #ffffff; /* 또는 inherit */
+  background: transparent;
+}

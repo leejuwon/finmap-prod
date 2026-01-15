@@ -4,7 +4,7 @@ title: "Household Survival in an Inflation Era: Cut Fixed Costs, Control Spendin
 description: "Inflation doesn’t just raise prices—it destabilizes household cash flow. This guide shows how to restructure fixed costs, run a cap-based budget, build an emergency fund, and keep your plan stable even when rates rise."
 datePublished: "2026-01-10"
 dateModified: "2026-01-10"
-category: "personal finance"
+category: "Personal finance"
 tags: ["inflation","budgeting","household finance","fixed costs","cash flow","emergency fund","expenses","debt","interest rates","Korea"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1768205561/blog/tools/inflation-household-survival-strategy-cover.png"
 lang: "en"

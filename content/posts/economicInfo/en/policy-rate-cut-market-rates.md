@@ -4,7 +4,7 @@ title: "A Rate Cut Doesn’t Guarantee Lower Borrowing Costs: How to Read Policy
 description: "Central banks can cut policy rates and yet mortgage rates, bond yields, and even stock valuations may not move the way people expect. Learn the practical separation: policy rates (decisions) vs market rates (prices), the 4 drivers of market yields, and a checklist for Korea that links TNX, USD/KRW, spreads, and real borrowing costs."
 datePublished: "2026-01-12"
 dateModified: "2026-01-12"
-category: "economic info"
+category: "Economic Info"
 tags: ["rate cut","policy rate","market rates","bond yields","term premium","inflation expectations","credit spreads","mortgage rates","Korea","TNX"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1768210075/blog/tools/policy-rate-cut-cover.png"
 lang: "en"

@@ -4,7 +4,7 @@ title: "How WTI Oil Shapes Korea’s Economy and KOSPI: Inflation, FX, Rates, an
 description: "WTI is not just an energy price. For an oil-importing economy like Korea, it feeds into inflation, USD/KRW, interest rates, corporate margins, and foreign flows—often changing how the KOSPI behaves."
 datePublished: "2026-01-05"
 dateModified: "2026-01-05"
-category: "investing info"
+category: "Investing info"
 tags: ["WTI","oil price","KOSPI","Korea economy","inflation","USD/KRW","interest rates","DXY","corporate margins","foreign flows"]
 tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767608170/blog/tools/wti-impact-on-korea-kospi-cover.png"

@@ -4,7 +4,7 @@ title: "How the S&P 500 Moves Korea’s Economy and KOSPI: The FX–Rates–Fore
 description: "For Korea, the S&P 500 is more than “U.S. stocks.” It reshapes risk sentiment, USD/KRW, U.S. rates, and foreign investor flows—often determining how the KOSPI feels day to day."
 datePublished: "2026-01-04"
 dateModified: "2026-01-04"
-category: "investing info"
+category: "Investing info"
 tags: ["S&P 500","KOSPI","Korea economy","USD/KRW","foreign flows","U.S. rates","TNX","DXY","risk-on","risk-off"]
 tool: ["goal","comp","cagr","fire","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767584963/blog/tools/sp500-impact-on-korea-kospi-cover.png"
