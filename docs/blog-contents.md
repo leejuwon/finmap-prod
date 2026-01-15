@@ -104,6 +104,11 @@ title: "물가 상승 시대의 가계 생존전략: 생활비/고정비 줄이�
 description: "인플레이션 시대엔 ‘돈을 버는 것’만큼 ‘새는 돈을 막는 것’이 중요합니다. 고정비 구조조정, 생활비 최적화, 가계부/예산 시스템, 비상금 설계까지—가계가 무너지지 않는 실전 생존 전략을 한 번에 정리합니다."
 url: /posts/personalFinance/inflation-household-survival-strategy
 
+## 9. 
+title: "비상금은 ‘몇 개월’이 아니라 ‘리스크’로 정한다: 직장·가족·대출 기준표로 끝내기"
+description: "비상금 3개월/6개월 같은 정답은 없습니다. 직장 안정성, 가족(부양/이중소득), 대출 구조(변동금리/DSR), 건강·보험·주거 리스크를 점수화해 ‘나에게 맞는 비상금 개월 수’를 정하는 실전 기준표를 제공합니다."
+url: /posts/personalFinance/emergency-fund-by-risk
+
 # 재테크(영어)
 
 ## 1. 
@@ -145,6 +150,11 @@ url: /en/posts/personalFinance/what-is-cagr
 title: "Household Survival in an Inflation Era: Cut Fixed Costs, Control Spending, and Protect Cash Flow"
 description: "Inflation doesn’t just raise prices—it destabilizes household cash flow. This guide shows how to restructure fixed costs, run a cap-based budget, build an emergency fund, and keep your plan stable even when rates rise."
 url: /en/posts/personalFinance/inflation-household-survival-strategy
+
+## 9. 
+title: "Your Emergency Fund Isn’t a ‘Months’ Number — It’s a Risk Number (Job, Family, Debt)"
+description: "Emergency funds fail when they’re sized by a generic ‘3–6 months.’ Build a risk-based target using job stability, dependents, and debt interest—and store it in tiers that survive real-world shocks."
+url: /en/posts/personalFinance/emergency-fund-by-risk
 
 # 투자정보(한글)
 
@@ -223,6 +233,11 @@ title: "적립식(DCA)은 ‘수익률’이 아니라 ‘지속성’ 게임: �
 description: "DCA는 타이밍이 아니라 ‘지속성’이 성패를 가릅니다. 많은 투자자가 반복해서 무너지는 7가지 패턴과, 규칙을 다시 설계하는 실전 체크리스트를 정리했습니다."
 url: /posts/investingInfo/dca-consistency-7-fail-patterns
 
+## 16.
+title: "요즘형 60/40: 주식·채권·현금·금(또는 원자재)로 ‘리스크 예산’ 짜기"
+description: "수익률 예측 대신 ‘리스크 예산’으로 포트폴리오를 운영하면 불안이 줄고, 흔들릴 때도 실행 규칙이 남습니다. 주식·채권·현금·금(또는 원자재)의 역할을 분리해 현대형 60/40을 설계하고, 리밸런싱·중단 조건·실패 패턴까지 운영체계로 정리합니다."
+url: /posts/investingInfo/modern-6040-risk-budget
+
 # 투자정보(영어)
 
 ## 1. 
@@ -299,3 +314,8 @@ url: /en/posts/investingInfo/wti-impact-on-korea-kospi
 title: "DCA Is a Consistency Game, Not a Return Hack: 7 Ways People Fail (and How to Fix Them)"
 description: "Dollar-cost averaging works when it survives real life. Here are 7 repeatable failure patterns—oversized contributions, panic pauses, rule drift—and a practical rulebook to rebuild a DCA plan you can actually keep."
 url: /en/posts/investingInfo/dca-consistency-7-fail-patterns
+
+## 16.
+title: "The Modern 60/40: Build a Risk Budget with Stocks, Bonds, Cash, and Gold (or Commodities)"
+description: "Classic 60/40 was about weights. Modern 60/40 is about a risk budget: defining how much drawdown you can survive, assigning roles to each asset, and running a rules-based rebalancing system that reduces anxiety. This long-form guide gives you a practical framework, checklists, and a one-page rulebook you can actually follow."
+url: /en/posts/investingInfo/modern-6040-risk-budget

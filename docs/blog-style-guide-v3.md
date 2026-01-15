@@ -5,6 +5,46 @@
 
 ---
 
+## 글의 slug 및 title 등 구조.
+slug: slug
+link: "/posts/[postCategory]/[slug]" 영어인 경우 앞에 /en 추가
+title: 제목
+description: 설명
+datePublished: 오늘날짜
+dateModified: 오늘날짜
+category: 재테크/경제정보/투자정보 중
+postCategory: personalFinance/economicInfo/investingInfo 중
+tags: [..] 해당 글에 필요한 tag들
+tool: ["goal","dca","cagr","comp","fire"] 이 5개 중 글에 어울리는 finmap tool 선택 적용
+cover: 커버이미지
+lang: 언어
+
+샘플)
+slug: "modern-6040-risk-budget"
+link: "/posts/investingInfo/modern-6040-risk-budget"
+title: "요즘형 60/40: 주식·채권·현금·금(또는 원자재)로 ‘리스크 예산’ 짜기"
+description: "수익률 예측 대신 ‘리스크 예산’으로 포트폴리오를 운영하면 불안이 줄고, 흔들릴 때도 실행 규칙이 남습니다. 주식·채권·현금·금(또는 원자재)의 역할을 분리해 현대형 60/40을 설계하고, 리밸런싱·중단 조건·실패 패턴까지 운영체계로 정리합니다."
+datePublished: "2026-01-14"
+dateModified: "2026-01-14"
+category: "투자정보"
+postCategory: "investingInfo"
+tags: ["리스크예산", "포트폴리오", "60/40", "자산배분", "리밸런싱", "드로다운", "채권", "금", "현금", "투자규칙"]
+tool: ["goal","dca","cagr","comp","fire"]
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1768439162/blog/tools/modern-6040-risk-budget-cover.png"
+lang: "ko"
+
+---
+
+## 글 작성 시 
+category가 '투자정보'면 blog-style-guide-investing 
+category가 '재테크'면 blog-style-guide-wealth 
+category가 '경제정보'면 blog-style-guide-economy
+참고하여 블로그 작성 스타일 적용.
+
+본문 시작 전 요약문장 8~10개로 렌덤으로 작성.
+
+---
+
 ## 1) 글의 기본 스펙 (프리미엄 기준)
 
 - **분량(권장)**: 8,000 ~ 15,000자(매번 랜덤 변동)
@@ -177,3 +217,4 @@ H2 제목 예시:
 8) 내 상황 적용(액션 플랜) + CTA  
 9) 이어 읽기(내부 링크 4~6개)  
 10) FAQ(6~10개)
+

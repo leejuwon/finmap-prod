@@ -1,5 +1,6 @@
 ---
 slug: "indicator-basics"
+link: "/posts/economicInfo/indicator-basics"
 title: "경제지표 읽는 법: GDP·실업률·PMI를 실제로 쓰는 방법"
 description: "GDP, 실업률, PMI는 왜 매번 시장을 흔드는가? 초심자도 실제 투자에 활용할 수 있도록 핵심 구조와 해석 순서를 정리했습니다."
 datePublished: "2025-11-13"
