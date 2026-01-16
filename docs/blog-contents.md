@@ -30,6 +30,11 @@ title: "“금리 인하”가 와도 안 오를 수 있다: 시장금리 vs 정
 description: "기준금리를 내린다는데 왜 대출금리·예금금리는 체감이 없을까? 정책금리(기준금리)와 시장금리(국채·은행채·대출금리)를 분리해 읽는 법, 시장금리를 움직이는 4요소(기대·인플레·기간프리미엄·스프레드), 한국 투자·가계에 적용하는 실전 체크리스트까지 정리합니다."
 url: /posts/economicInfo/policy-rate-cut-market-rates
 
+## 7.
+title: "수익률곡선(2-10, 3m-10y)은 왜 다르게 말하나: 침체 신호 해석법"
+description: "2-10년 금리차와 3개월-10년 금리차는 같은 ‘침체 신호’처럼 보이지만, 실제로는 서로 다른 질문에 답합니다. 이 글은 두 스프레드가 무엇을 반영하는지(정책 기대 vs 금융여건), 언제 엇갈리는지, 그리고 한국 투자·가계 의사결정에 어떻게 ‘해석 프레임 + 실행 규칙’으로 붙이는지 정리합니다."
+url: /posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading
+
 # 경제정보(영어)
 
 ## 1. 
@@ -61,6 +66,11 @@ url: /en/posts/economicInfo/interest-rate-basics
 title: "A Rate Cut Doesn’t Guarantee Lower Borrowing Costs: How to Read Policy Rates vs Market Rates"
 description: "Central banks can cut policy rates and yet mortgage rates, bond yields, and even stock valuations may not move the way people expect. Learn the practical separation: policy rates (decisions) vs market rates (prices), the 4 drivers of market yields, and a checklist for Korea that links TNX, USD/KRW, spreads, and real borrowing costs."
 url: /en/posts/economicInfo/policy-rate-cut-market-rates
+
+## 7.
+title: "Why 2s10s and 3m10y Disagree: A Practical Recession-Signal Reading Guide"
+description: "Yield-curve inversions are famous recession signals, yet the 2s10s and 3m10y spreads often tell different stories. This guide explains what each spread truly measures (policy path vs financial conditions), why they diverge, and how to convert curve headlines into a rules-based action plan for global retail investors—with a Korea overlay when it matters."
+url: /en/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading
 
 # 재테크(한글)
 
