@@ -144,7 +144,7 @@ Could it be higher? Yes. But the threshold rule works best when it prevents plan
 
 If you want more detail on why “policy cuts” don’t always translate to cheaper real-world borrowing costs,
 this helps build your rate intuition:
-- 👉 [/en/posts/economicInfo/policy-rate-vs-market-rate-how-to-read-rate-cuts](/en/posts/economicInfo/policy-rate-vs-market-rate-how-to-read-rate-cuts)
+- 👉 [How to Read Policy Rates vs Market Rates](/en/posts/economicInfo/policy-rate-vs-market-rate-how-to-read-rate-cuts)
 
 (That link is optional reading—today’s post is about *your* household decision rule.)
 
@@ -206,7 +206,7 @@ A good rule:
 
 If you want a risk-based way (instead of “X months”),
 this post connects well:
-- 👉 [/en/posts/personalFinance/emergency-fund-risk-based](/en/posts/personalFinance/emergency-fund-risk-based)
+- 👉 [Your Emergency Fund Isn’t a ‘Months’ Number — It’s a Risk Number](/en/posts/personalFinance/emergency-fund-risk-based)
 
 ---
 
@@ -285,7 +285,7 @@ If you tend to stop investing in drawdowns, keep a minimum contribution even whi
 Your long-term outcome is driven by staying in the game.
 
 If you want to understand “why people fail at consistency,” this is relevant:
-- 👉 [/en/posts/investingInfo/dca-consistency-7-fail-patterns](/en/posts/investingInfo/dca-consistency-7-fail-patterns)
+- 👉 [DCA Is a Consistency Game, Not a Return Hack](/en/posts/investingInfo/dca-consistency-7-fail-patterns)
 
 ---
 
@@ -298,7 +298,7 @@ If you’re Korea-based, the mechanism changes but the logic doesn’t:
 - Variable-rate structures can raise the importance of the “rate shock premium”
 
 If you track one macro indicator to understand rate pressure:
-- 👉 [/en/posts/investingInfo/tnx-basics](/en/posts/investingInfo/tnx-basics)
+- 👉 [Why the 10-Year Treasury Yield Drives Markets](/en/posts/investingInfo/tnx-basics)
 
 This isn’t about predicting. It’s about understanding the risk that your debt cost stays high longer than you expect.
 
@@ -309,11 +309,11 @@ This isn’t about predicting. It’s about understanding the risk that your deb
 If you want your rule to feel real, run the numbers once:
 
 - Compound interest to understand what “investing return” could mean over time  
-  - 👉 [/en/tools/compound-interest](/en/tools/compound-interest)
+  - 👉 [Open Compound Interest Calculator](/en/tools/compound-interest)
 - Goal simulator to translate goals into required monthly contributions  
-  - 👉 [/en/tools/goal-simulator](/en/tools/goal-simulator)
+  - 👉 [Open Goal Simulator](/en/tools/goal-simulator)
 - DCA calculator to set a contribution you can keep in bad months  
-  - 👉 [/en/tools/dca-calculator](/en/tools/dca-calculator)
+  - 👉 [Open DCA Calculator](/en/tools/dca-calculator)
 
 ---
 
@@ -326,7 +326,7 @@ Debt payoff is not just math—it’s optionality.
 - Psychological relief is a real asset in high-rate eras
 
 If you want to compare growth rates more realistically (instead of headline returns):
-- 👉 [/en/posts/investingInfo/cagr-7percent-reality-check](/en/posts/investingInfo/cagr-7percent-reality-check)
+- 👉 [A Reality Check Using CAGR](/en/posts/investingInfo/cagr-7percent-reality-check)
 
 ---
 

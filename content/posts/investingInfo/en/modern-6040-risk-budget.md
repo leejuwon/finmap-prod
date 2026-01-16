@@ -151,8 +151,8 @@ Check the boxes that apply:
 
 You don’t need one exact number. Choose a range:
 
-- **Low stress**: “I can handle ~10–15% peak-to-trough.”
-- **Moderate**: “I can handle ~15–25%.”
+- **Low stress**: “I can handle \~10–15% peak-to-trough.”
+- **Moderate**: “I can handle \~15–25%.”
 - **High**: “I can handle 25%+ without breaking rules.”
 
 Your drawdown limit is your **behavioral circuit breaker**.

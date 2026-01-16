@@ -20,7 +20,7 @@
 - 본문(MD/MDX)
 - JSON-LD는 본문 하단에 코드 블록으로 제공
 --------------------------------------------------------------------
-Category: (Wealth / Economics / Investing)
+Category: (Personal Finance / Economics / Investing)
 Topic: (same topic, but write as a new original English post — not a translation)
 Slug: (same slug style)
 Audience: (global retail investors / Korea-context included if relevant)

@@ -109,6 +109,11 @@ title: "비상금은 ‘몇 개월’이 아니라 ‘리스크’로 정한다:
 description: "비상금 3개월/6개월 같은 정답은 없습니다. 직장 안정성, 가족(부양/이중소득), 대출 구조(변동금리/DSR), 건강·보험·주거 리스크를 점수화해 ‘나에게 맞는 비상금 개월 수’를 정하는 실전 기준표를 제공합니다."
 url: /posts/personalFinance/emergency-fund-by-risk
 
+## 10. 
+title: "고금리 시대: 빚부터 갚을까, 투자부터 할까? (이자율 ‘임계값’ 룰)"
+description: "고금리 구간에서는 ‘무조건 빚 먼저’도, ‘무조건 투자 먼저’도 정답이 아닙니다. 핵심은 내 부채 이자율을 ‘확정 수익률’로 환산하고, 투자 기대수익률은 ‘리스크·세금·중단 위험’까지 반영해 비교하는 것입니다. 이 글은 이자율 임계값 룰(3%·6%·9% 구간)로 월급의 우선순위를 규칙화해 불안을 줄이고 실행을 남깁니다."
+url: /posts/personalFinance/high-rate-debt-vs-invest-threshold-rule
+
 # 재테크(영어)
 
 ## 1. 
@@ -155,6 +160,11 @@ url: /en/posts/personalFinance/inflation-household-survival-strategy
 title: "Your Emergency Fund Isn’t a ‘Months’ Number — It’s a Risk Number (Job, Family, Debt)"
 description: "Emergency funds fail when they’re sized by a generic ‘3–6 months.’ Build a risk-based target using job stability, dependents, and debt interest—and store it in tiers that survive real-world shocks."
 url: /en/posts/personalFinance/emergency-fund-by-risk
+
+## 10. 
+title: "High-Rate Era: Should You Pay Down Debt or Invest First? (The Interest-Rate Threshold Rule)"
+description: "In a high-rate environment, “always pay debt first” and “always invest first” are both incomplete. The practical answer is a rules-based threshold: treat debt payoff as a risk-free return, then compare it to realistic after-tax, after-fee, behavior-adjusted investing returns. This guide gives a simple 3% / 6% / 9% rule, a paycheck allocation plan you can stick to, and a decision framework that reduces anxiety without relying on market predictions."
+url: /en/posts/personalFinance/high-rate-debt-vs-invest-threshold-rule
 
 # 투자정보(한글)
 

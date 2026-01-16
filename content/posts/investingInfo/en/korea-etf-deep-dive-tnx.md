@@ -171,7 +171,7 @@ This is why TNX becomes a direct directional signal for Korea ETFs.
 ---
 
 ## 8. Why foreign flows dominate Korea ETFs
-Korea’s foreign ownership is ~30%+ and even higher in large caps.
+Korea’s foreign ownership is \~30%+ and even higher in large caps.
 
 Thus:
 

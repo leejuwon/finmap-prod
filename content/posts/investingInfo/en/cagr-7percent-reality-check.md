@@ -119,10 +119,10 @@ Volatility destroys CAGR.
 
 | Period | CAGR | Notes |
 |--------|------|-------|
-| 1928–2023 | ~9.8% | Full historical dataset |
-| 1980–2023 | ~11.6% | Strong bull cycle |
-| 2000–2023 | ~6.6% | Includes IT bubble + Financial crisis |
-| 2010–2023 | ~12.1% | Ultra-low rates + liquidity boom |
+| 1928–2023 | \~9.8% | Full historical dataset |
+| 1980–2023 | \~11.6% | Strong bull cycle |
+| 2000–2023 | \~6.6% | Includes IT bubble + Financial crisis |
+| 2010–2023 | \~12.1% | Ultra-low rates + liquidity boom |
 
 ### ✔ “7% CAGR” is realistic — but not guaranteed  
 - Lower than long-term averages → **conservative**  
@@ -186,12 +186,12 @@ it’s a **long-term risk-adjusted performance target**.
 # 8. What 7% CAGR Actually Generates
 
 ### ✔ Example: $400/month investment at 7% for 30 years  
-(~₩500,000 → $400 conversion)
+(\~₩500,000 → $400 conversion)
 
 | Item | Result |
 |------|--------|
-| Total Contributions | ~$144,000 |
-| Compound Growth | ~$320,000 |
+| Total Contributions | \~$144,000 |
+| Compound Growth | \~$320,000 |
 | Final Portfolio | **≈ $460,000** |
 
 ➡ A modest 7% results in **over triple the contributed capital**.

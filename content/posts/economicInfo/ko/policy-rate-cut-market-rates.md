@@ -313,7 +313,7 @@ ETF/주식이 금리에 민감하게 흔들리는 구조가 궁금하면 아래 
 
 ---
 
-## 14) 내부 링크(4~6개)
+## 14) 내부 링크(4\~6개)
 
 - [금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해](/posts/economicInfo/interest-rate-basics)  
 - [물가와 금리의 기본 이해: 왜 금리가 오르면 시장이 흔들릴까?](/posts/economicInfo/inflation-rate-basics)  
