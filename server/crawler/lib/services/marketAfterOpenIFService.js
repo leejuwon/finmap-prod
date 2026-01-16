@@ -407,7 +407,7 @@ async function fetchIndicesNaverData(pToDate, pBfDate, pXBfDate, pUsHolyFlag, pK
   const entries = Object.entries(toDayEtfsSymbols);  
   for (const [sName, symbol] of entries) {
     const pollingUrl = `https://polling.finance.naver.com/api/realtime?query=SERVICE_ITEM:${symbol}`;
-
+    let pKrEtfData = {};
     try {
       openFlag = false;
       closeFlag = false;
