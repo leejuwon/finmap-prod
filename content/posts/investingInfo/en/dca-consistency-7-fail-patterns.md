@@ -4,7 +4,7 @@ title: "DCA Is a Consistency Game, Not a Return Hack: 7 Ways People Fail (and Ho
 description: "Dollar-cost averaging works when it survives real life. Here are 7 repeatable failure patterns—oversized contributions, panic pauses, rule drift—and a practical rulebook to rebuild a DCA plan you can actually keep."
 datePublished: "2026-01-08"
 dateModified: "2026-01-08"
-category: "investing info"
+category: "Investing info"
 tags: ["DCA","dollar cost averaging","long-term investing","behavioral finance","volatility","rebalancing","CAGR","drawdown","rules-based investing"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767861108/blog/tools/dca-consistency-cover.png"
 lang: "en"

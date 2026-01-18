@@ -38,3 +38,4 @@ Output:
 - frontmatter
 - MD/MDX body
 - JSON-LD blocks at the bottom
+JSON-LD must be provided as <script type="application/ld+json"> blocks (not ```json).
