@@ -25,7 +25,6 @@ lang: "ko"
       <li><strong>환헤지 비용</strong>은 “수수료”가 아니라 <strong>금리차가 만드는 구조적 비용/수익</strong>입니다.</li>
       <li><strong>TNX(미국 10년물)</strong>은 달러·헤지비용·글로벌 리스크 선호를 함께 흔들어 “정답을 바꾸는 스위치”가 됩니다.</li>
     </ul>
-
     <p class="text-sm text-slate-500">
       범위: 특정 ETF/상품 추천은 하지 않습니다. 대신 ‘조건 → 선택 → 운영 규칙’을 설계합니다.
     </p>
