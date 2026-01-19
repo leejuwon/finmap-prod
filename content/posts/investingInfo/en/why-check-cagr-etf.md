@@ -207,7 +207,7 @@ CAGR quickly reveals whether an ETF’s return pattern is sustainable.
 <div class="callout-tip">
   <strong>Beginner Insight:</strong>  
   Avoid the “1-year return trap.”  
-  Start with ETFs that have consistently positive **3-year and 5-year CAGR**.
+  Start with ETFs that have consistently positive <strong>3-year and 5-year CAGR</strong>.
 </div>
 
 Beginner-friendly checklist:
