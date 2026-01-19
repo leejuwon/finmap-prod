@@ -63,6 +63,22 @@ const PORT = Number(process.env.PORT || 8002);
   // 정적 파일 (선택: /public을 별도 라우트로 노출)
   app.use('/public', express.static(path.join(APP_DIR, 'public'), { fallthrough: true, maxAge: 0 }));
 
+  // ✅ favicon.ico는 Google이 특히 집요하게 /favicon.ico를 먼저 봄
+  app.get('/favicon.ico', (req, res) => {
+    const fp = path.join(APP_DIR, 'public', 'favicon.ico');
+    return nextApp.serveStatic(req, res, fp);
+  });
+
+  app.get('/apple-touch-icon.png', (req, res) => {
+    const fp = path.join(APP_DIR, 'public', 'apple-touch-icon.png');
+    return nextApp.serveStatic(req, res, fp);
+  });
+
+  app.get('/site.webmanifest', (req, res) => {
+    const fp = path.join(APP_DIR, 'public', 'site.webmanifest');
+    return nextApp.serveStatic(req, res, fp);
+  });
+
   // Next 핸들러
   app.all('*', (req, res) => handle(req, res));
 
