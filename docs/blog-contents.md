@@ -35,6 +35,11 @@ title: "수익률곡선(2-10, 3m-10y)은 왜 다르게 말하나: 침체 신호 
 description: "2-10년 금리차와 3개월-10년 금리차는 같은 ‘침체 신호’처럼 보이지만, 실제로는 서로 다른 질문에 답합니다. 이 글은 두 스프레드가 무엇을 반영하는지(정책 기대 vs 금융여건), 언제 엇갈리는지, 그리고 한국 투자·가계 의사결정에 어떻게 ‘해석 프레임 + 실행 규칙’으로 붙이는지 정리합니다."
 url: /posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading
 
+## 8.
+title: "실질금리(Real Rate)와 기대인플레이션(Breakeven): 자산가격의 ‘진짜 온도계’"
+description: "명목금리만 보면 판단이 느려집니다. 실질금리(Real Rate)와 기대인플레이션(Breakeven)으로 금리의 ‘구성’을 분해하면, 주식·채권·달러·금의 움직임이 훨씬 명확해집니다. 뉴스에 흔들리지 않게 읽는 프레임과 체크리스트까지 정리합니다."
+url: /posts/economicInfo/real-rates-and-breakevens
+
 # 경제정보(영어)
 
 ## 1. 
@@ -71,6 +76,12 @@ url: /en/posts/economicInfo/policy-rate-cut-market-rates
 title: "Why 2s10s and 3m10y Disagree: A Practical Recession-Signal Reading Guide"
 description: "Yield-curve inversions are famous recession signals, yet the 2s10s and 3m10y spreads often tell different stories. This guide explains what each spread truly measures (policy path vs financial conditions), why they diverge, and how to convert curve headlines into a rules-based action plan for global retail investors—with a Korea overlay when it matters."
 url: /en/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading
+
+
+## 8.
+title: "Real Rates & Breakeven Inflation: The Asset-Pricing Thermometer Most Investors Ignore"
+description: "Nominal yields can move for opposite reasons. Real rates and breakeven inflation separate the ‘growth vs inflation’ story, helping you interpret stocks, bonds, USD strength, and Korea overlays (USD/KRW, foreign flows) with rules instead of vibes."
+url: /en/posts/economicInfo/real-rates-and-breakevens
 
 # 재테크(한글)
 
@@ -258,6 +269,16 @@ title: "요즘형 60/40: 주식·채권·현금·금(또는 원자재)로 ‘리
 description: "수익률 예측 대신 ‘리스크 예산’으로 포트폴리오를 운영하면 불안이 줄고, 흔들릴 때도 실행 규칙이 남습니다. 주식·채권·현금·금(또는 원자재)의 역할을 분리해 현대형 60/40을 설계하고, 리밸런싱·중단 조건·실패 패턴까지 운영체계로 정리합니다."
 url: /posts/investingInfo/modern-6040-risk-budget
 
+## 17.
+title: "채권 ETF 완전정복: 듀레이션이 수익률을 결정한다 (TNX로 읽는 실전 프레임)"
+description: "채권 ETF는 ‘금리’만 맞히면 되는 상품이 아닙니다. 수익률의 핵심은 듀레이션(금리 민감도)이며, 듀레이션이 곧 변동성·회복속도·손익의 경로를 결정합니다. 이 글은 TNX(미국 10년물 금리)를 기준 축으로 삼아, 채권 ETF의 가격 변화(듀레이션/컨벡서티), 총수익(쿠폰+가격+롤다운), 그리고 개인 투자자가 실행 가능한 듀레이션 룰(임계값·리밸런싱·현금흐름 설계)을 한 번에 정리합니다."
+url: /posts/investingInfo/bond-etf-duration-drives-returns
+
+## 18.
+title: "환헤지 vs 환노출: 국내 개인 투자자(원화 기준)에게 ‘정답’이 달라지는 3가지 조건"
+description: "환헤지(hedged)와 환노출(unhedged)은 ‘취향’이 아니라 조건 문제입니다. 투자 기간·현금흐름 통화·헤지 비용(금리차/포워드포인트)·레짐(달러 강세/약세)까지 포함해 국내 개인 투자자에게 정답이 달라지는 3가지 조건을 규칙으로 정리합니다. TNX(미국 10년물 금리)와 USD/KRW의 연결고리까지 함께 설명합니다."
+url: /posts/investingInfo/fx-hedge-vs-fx-exposure-korea-3-conditions
+
 # 투자정보(영어)
 
 ## 1. 
@@ -339,3 +360,13 @@ url: /en/posts/investingInfo/dca-consistency-7-fail-patterns
 title: "The Modern 60/40: Build a Risk Budget with Stocks, Bonds, Cash, and Gold (or Commodities)"
 description: "Classic 60/40 was about weights. Modern 60/40 is about a risk budget: defining how much drawdown you can survive, assigning roles to each asset, and running a rules-based rebalancing system that reduces anxiety. This long-form guide gives you a practical framework, checklists, and a one-page rulebook you can actually follow."
 url: /en/posts/investingInfo/modern-6040-risk-budget
+
+## 17.
+title: "Bond ETF Mastery: Duration Drives Returns (and Why TNX Sets the Tempo)"
+description: "Bond ETF performance is not ‘mysterious.’ It is mostly duration math. Learn how TNX (the U.S. 10-year yield) transmits rate shocks into bond ETFs, how to pick duration by goal (cashflow, stability, hedge), and how to run a rules-based bond allocation without guessing the next Fed move."
+url: /en/posts/investingInfo/bond-etf-duration-tnx
+
+## 18.
+title: "FX-Hedged vs Unhedged Korea Exposure: 3 Conditions That Change the Right Answer"
+description: "For U.S.-based investors buying Korea equities or bond ETFs, FX hedging is not a moral choice—it’s a risk-budget decision. Learn the three conditions that flip the answer (liability currency, hedge cost/forward points, and portfolio role), plus rules you can actually follow."
+url: /en/posts/investingInfo/fx-hedge-vs-fx-exposure-korea-3-conditions
