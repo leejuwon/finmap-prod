@@ -100,4 +100,4 @@ function makeTxHash(lawdCd, it) {
   return sha1(key);
 }
 
-module.exports = { fetchAll, makeTxHash };
+module.exports = { fetchAll, makeTxHash, fetchPage }; // fetchPage 추가 export

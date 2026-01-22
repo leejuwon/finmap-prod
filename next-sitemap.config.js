@@ -77,6 +77,8 @@ module.exports = {
       "/en/tools/dca-calculator",
       "/en/tools/fire-calculator",
       "/en/tools/goal-simulator",
+      "/en/market",               // ✅ 추가
+      "/en/market/real-estate",   // ✅ 추가
     ];
 
     const res = [];

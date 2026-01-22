@@ -9,7 +9,7 @@ import { setLang } from "../lib/lang";
 -------------------------------- */
 const navItems = [
   { href: "/", labelKo: "홈", labelEn: "Home" },
-  // { href: "/market", labelKo: "마켓", labelEn: "Market", comingSoon: true },
+  { href: "/market", labelKo: "시장대시보드", labelEn: "Market Dashboard"},
   { href: "/tools", labelKo: "금융도구", labelEn: "Finance Tools" },
 ];
 

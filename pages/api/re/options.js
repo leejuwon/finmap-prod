@@ -1,0 +1,139 @@
+'use strict';
+
+const mysql = require('mysql2/promise');
+
+function pickLang(req) {
+  const q = (req.query && (req.query.lang || req.query.locale)) || '';
+  const qs = String(q).toLowerCase();
+  if (qs.startsWith('en')) return 'en';
+  if (qs.startsWith('ko')) return 'ko';
+
+  // fallback: accept-language
+  const al = String(req.headers['accept-language'] || '').toLowerCase();
+  return al.includes('en') ? 'en' : 'ko';
+}
+
+function sidoBilingual(code) {
+  const map = {
+    '11': { ko: '서울특별시', en: 'Seoul' },
+    '28': { ko: '인천광역시', en: 'Incheon' },
+    '41': { ko: '경기도',     en: 'Gyeonggi-do' },
+  };
+  const v = map[String(code)];
+  if (!v) return { ko: String(code), en: String(code) };
+  return v;
+}
+
+async function handler(req, res) {
+  if (req.method !== 'GET') {
+    res.statusCode = 405;
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    res.end(JSON.stringify({ ok: false, error: 'Method Not Allowed' }));
+    return;
+  }
+
+  const lang = pickLang(req);
+
+  const need = ['DB_HOST', 'DB_USER', 'DB_PASSWORD', 'DB_NAME'];
+  for (const k of need) {
+    if (!process.env[k]) {
+      res.statusCode = 500;
+      res.setHeader('Content-Type', 'application/json; charset=utf-8');
+      res.end(JSON.stringify({ ok: false, error: `${k} is missing` }));
+      return;
+    }
+  }
+
+  let conn;
+  try {
+    conn = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      port: Number(process.env.DB_PORT || 3306),
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      charset: 'utf8mb4',
+    });
+
+    // 1) 시도 목록: 실제 데이터에 존재하는 시도만
+    const [sidoRows] = await conn.execute(`
+      SELECT DISTINCT LEFT(lawd_cd, 2) AS sido_code
+      FROM re_trade_apt
+      WHERE lawd_cd IS NOT NULL AND lawd_cd <> ''
+      ORDER BY sido_code
+    `);
+
+    const allow = { '11': true, '28': true, '41': true };
+    const codes = (sidoRows || [])
+      .map(r => String(r.sido_code))
+      .filter(c => allow[c]);
+
+    // ✅ 통일된 shape: value / label_ko / label_en
+    const sidos = [
+      { value: 'all', label_ko: '전체', label_en: 'All' },
+      ...codes.map((c) => {
+        const bi = sidoBilingual(c);
+        return { value: c, label_ko: bi.ko, label_en: bi.en };
+      }),
+    ];
+
+    // 2) 기간(월/년)
+    const [monthRows] = await conn.execute(`
+      SELECT DISTINCT deal_ym
+      FROM re_trade_apt
+      WHERE deal_ym IS NOT NULL AND deal_ym <> ''
+      ORDER BY deal_ym
+    `);
+
+    const months = (monthRows || []).map(r => String(r.deal_ym));
+    const maxYm = months.length ? months[months.length - 1] : '';
+
+    const yearSet = {};
+    for (const ym of months) yearSet[ym.slice(0, 4)] = true;
+    const years = Object.keys(yearSet).sort();
+
+    // 3) 시군구 목록(기본 fallback 용) - 여기서는 영문 표기가 없으니 en은 ko를 그대로
+    const sigunguBySido = {};
+    for (const c of codes) {
+      const [gRows] = await conn.execute(
+        `
+        SELECT DISTINCT lawd_cd, sigungu_name
+        FROM re_trade_apt
+        WHERE LEFT(lawd_cd, 2) = ?
+          AND sigungu_name IS NOT NULL AND sigungu_name <> ''
+        ORDER BY sigungu_name, lawd_cd
+        `,
+        [c]
+      );
+
+      sigunguBySido[c] = [
+        { value: 'all', label_ko: '전체', label_en: 'All' },
+        ...(gRows || []).map(r => ({
+          value: String(r.lawd_cd),
+          label_ko: String(r.sigungu_name),
+          label_en: String(r.sigungu_name), // 번역/로마자화는 프리미엄 단계에서
+        })),
+      ];
+    }
+
+    res.statusCode = 200;
+    res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    res.end(JSON.stringify({
+      ok: true,
+      lang, // 디버깅용 echo
+      sidos,
+      periods: { months, years, maxYm },
+      sigunguBySido,
+    }));
+  } catch (e) {
+    res.statusCode = 500;
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    res.end(JSON.stringify({ ok: false, error: e.message }));
+  } finally {
+    try { if (conn) await conn.end(); } catch (e) {}
+  }
+}
+
+module.exports = handler;
+module.exports.default = handler;
