@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import ToolSeo from "../../_components/ToolSeo";
@@ -39,13 +38,21 @@ function fmtPyeongFromM2(m2) {
   return (n / M2_PER_PYEONG).toFixed(1);
 }
 
-function fmtManPerPyeongFromWonPerM2(wonPerM2) {
+function fmtManPerPyeongFromWonPerM2(wonPerM2, lang = 'ko') {
   const n = numOrNull(wonPerM2);
   if (n == null) return '-';
   const wonPerPyeong = n * M2_PER_PYEONG;
   const manPerPyeong = wonPerPyeong / 10_000;
-  return `${Math.round(manPerPyeong).toLocaleString()}만원/평`;
+  const v = Math.round(manPerPyeong).toLocaleString();
+  return lang === 'en' ? `${v} 10k KRW/pyeong` : `${v}만원/평`;
 }
+
+function fmtDelta(x) {
+  const n = Number(x);
+  if (!Number.isFinite(n)) return '-';
+  return n > 0 ? `+${n}` : `${n}`;
+}
+
 
 // value 기준 중복 제거 (특히 'all' 중복 방지)
 function dedupeOptions(list) {
@@ -214,50 +221,24 @@ export default function RealEstatePage() {
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // ---------- (B) SEO helpers ----------
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || ''; // 운영에서 꼭 설정 추천
-  const pathNoQuery = (router.asPath || '/market/real-estate').split('?')[0];
-
-  // locale prefix를 쓰든 안 쓰든 최대한 안전하게: 앞의 /en 또는 /ko만 제거/부착
-  const localeRegex = /^\/(en|ko)(?=\/|$)/;
-  const strippedPath = pathNoQuery.replace(localeRegex, '') || '/';
-
-  const defaultLocale = router.defaultLocale || 'ko';
-  const currentLocale = router.locale || defaultLocale;
-
-  const title = lang === "en" ? "Korea Real Estate Dashboard" : "대한민국 부동산 대시보드";
-  const desc =
-    lang === "en"
-      ? "Explore apartment transaction rankings and price metrics across South Korea."
-      : "전국 아파트 실거래 기반 랭킹·가격지표를 한 화면에서 확인합니다.";
-
-
-  function pathForLocale(targetLocale) {
-    // defaultLocale은 prefix 없는 운영이 일반적(ko가 default라는 가정)
-    if (targetLocale === defaultLocale) return strippedPath.startsWith('/') ? strippedPath : `/${strippedPath}`;
-    return `/${targetLocale}${strippedPath.startsWith('/') ? strippedPath : `/${strippedPath}`}`;
-  }
-
-  const canonical = siteUrl ? `${siteUrl}${pathForLocale(currentLocale)}` : undefined;
-  const hrefKo = siteUrl ? `${siteUrl}${pathForLocale('ko')}` : undefined;
-  const hrefEn = siteUrl ? `${siteUrl}${pathForLocale('en')}` : undefined;
-
+  // ---------- (A) SEO (중복 제거) ----------
+  // ToolSeo 안에서 canonical/hreflang/og/twitter/json-ld를 처리하므로
+  // 이 페이지에서는 title/desc만 준비해서 ToolSeo에 넘깁니다.
   const seoTitle = t.title;
   const seoDesc = t.seoDesc;
+  
+  // ---------- (B) Desktop view toggle ----------
+  const [desktopView, setDesktopView] = useState('table'); // 'table' | 'cards'
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const v = window.localStorage.getItem('re_desktop_view');
+    if (v === 'table' || v === 'cards') setDesktopView(v);
+  }, []);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    window.localStorage.setItem('re_desktop_view', desktopView);
+  }, [desktopView]);
 
-  const webAppJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: t.title,
-    description: seoDesc,
-    applicationCategory: 'FinanceApplication',
-    operatingSystem: 'Web',
-    isAccessibleForFree: true,
-    inLanguage: lang,
-    url: canonical || (siteUrl ? `${siteUrl}${pathNoQuery}` : undefined),
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'KRW' },
-    creator: { '@type': 'Organization', name: 'Finmap' },
-  };
 
   // ---------- 옵션 로드 ----------
   useEffect(() => {
@@ -315,14 +296,22 @@ export default function RealEstatePage() {
   }
 
   const sidoOptions = useMemo(() => {
-    const arr = opt?.sidos?.length ? opt.sidos : [
-      { value: 'all', label_ko: '전체', label_en: 'All' },
-      { value: '11', label_ko: '서울특별시', label_en: 'Seoul' },
-      { value: '28', label_ko: '인천광역시', label_en: 'Incheon' },
-      { value: '41', label_ko: '경기도', label_en: 'Gyeonggi-do' },
-    ];
-    return arr;
-  }, [opt]);
+  if (opt?.sidos?.length) {
+    return opt.sidos.map((x) => ({
+      value: String(x.value ?? x.code ?? ''),
+      label_ko: x.label_ko || x.name_ko || x.name || '',
+      label_en: x.label_en || x.name_en || x.name || '',
+    }));
+  }
+
+  return [
+    { value: 'all', label_ko: '전체', label_en: 'All' },
+    { value: '11', label_ko: '서울특별시', label_en: 'Seoul' },
+    { value: '28', label_ko: '인천광역시', label_en: 'Incheon' },
+    { value: '41', label_ko: '경기도', label_en: 'Gyeonggi-do' },
+  ];
+}, [opt]);
+
 
   const areaOptions = useMemo(() => {
     const base = [{ value: 'all', label_ko: t.all, label_en: t.all }];
@@ -413,41 +402,164 @@ export default function RealEstatePage() {
 
   const tableMinWidth = 'min-w-[2200px]';
 
+  // --- real-estate.js 안에 (컴포넌트 return 위쪽) 추가: 작은 UI 컴포넌트들 ---
+  function toneByPct(v) {
+    const n = Number(v);
+    if (!Number.isFinite(n)) return "bg-slate-100 text-slate-700";
+    if (n > 0) return "bg-emerald-50 text-emerald-700";
+    if (n < 0) return "bg-rose-50 text-rose-700";
+    return "bg-slate-100 text-slate-700";
+  }
+
+  function MiniStat({ label, value }) {
+    return (
+      <div className="rounded-xl border border-slate-100 bg-white px-3 py-2">
+        <div className="text-[11px] text-slate-500">{label}</div>
+        <div className="mt-0.5 text-sm font-semibold text-slate-900">{value ?? "-"}</div>
+      </div>
+    );
+  }
+
+  function Chip({ children, tone }) {
+    return (
+      <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-medium ${tone}`}>
+        {children}
+      </span>
+    );
+  }
+
+  function confidenceGrade(score, lang = "ko") {
+    const n = Number(score);
+    const L = lang === "en" ? "en" : "ko";
+
+    // 점수 스케일이 아직 애매하면, 일단 0~100 기준으로 가정
+    const s = Number.isFinite(n) ? n : 0;
+
+    const grade =
+      s >= 80 ? "A" :
+      s >= 60 ? "B" :
+      s >= 40 ? "C" : "D";
+
+    const labelMap = {
+      ko: { A: "높음", B: "보통", C: "낮음", D: "매우 낮음" },
+      en: { A: "High", B: "Medium", C: "Low", D: "Very low" },
+    };
+
+    const hintMap = {
+      ko: {
+        A: "표본/일관성이 좋아 지표 해석 신뢰도가 높아요",
+        B: "대체로 참고 가능하지만 일부 구간은 변동이 있을 수 있어요",
+        C: "표본이 적거나 변동이 커서 참고용이에요",
+        D: "데이터가 희박해 왜곡 가능성이 커요",
+      },
+      en: {
+        A: "Good consistency/sample size; metrics are reliable",
+        B: "Generally usable, but some periods may be noisy",
+        C: "Low sample or high noise; use as a reference only",
+        D: "Sparse data; high risk of distortion",
+      },
+    };
+
+    return {
+      grade,
+      label: labelMap[L][grade],
+      hint: hintMap[L][grade],
+    };
+  }
+
+  // --- (B) Result card (mobile/desktop 공용) ---
+  function ResultCard({ r, idx }) {
+    const areaText = renderArea(r);
+    const aptText = renderApt(r);
+  
+    const dealEok = fmtEokFromMan(r.latest_deal_amount_man, lang);
+    const medEok = fmtEokFromWon(r.median_price, lang);
+    const avgEok = fmtEokFromWon(r.avg_price, lang);
+  
+    const medPyeong = fmtManPerPyeongFromWonPerM2(r.median_price_per_m2, lang);
+    const avgPyeong = fmtManPerPyeongFromWonPerM2(r.avg_price_per_m2, lang);
+  
+    const momRank = fmtDelta(r.mom_rank_delta);
+    const yoyRank = fmtDelta(r.yoy_rank_delta);
+  
+    const momTx = fmtPct(r.mom_tx_count_pct);
+    const yoyTx = fmtPct(r.yoy_tx_count_pct);
+  
+    const momMed = fmtPct(r.mom_median_price_pct);
+    const yoyMed = fmtPct(r.yoy_median_price_pct);
+  
+    const momAvg = fmtPct(r.mom_avg_price_pct);
+    const yoyAvg = fmtPct(r.yoy_avg_price_pct);
+  
+    const sizeM2 = r.latest_area_m2 != null ? Number(r.latest_area_m2).toFixed(1) : '-';
+    const sizePy = r.latest_area_m2 != null ? fmtPyeongFromM2(r.latest_area_m2) : '-';
+    const buildY = r.latest_build_year ?? '-';
+    const dealDate = r.latest_deal_date ? String(r.latest_deal_date).slice(0, 10) : '-';
+    const rgstDate = r.latest_rgst_date ? String(r.latest_rgst_date).slice(0, 10) : '-';
+  
+    return (
+      <div key={r.apt_key || `${r.lawd_cd}-${r.apt_name}-${idx}`} className="card p-4">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <div className="text-xs text-slate-500">
+              {lang === 'en' ? 'Rank' : '순위'} #{r.rank_no} · {areaText}
+            </div>
+            <div className="mt-1 text-base font-semibold text-slate-900 truncate">
+              {aptText}
+            </div>
+          </div>
+          <div className="shrink-0 text-right">
+            <div className="text-xs text-slate-500">{t.cols.dealEok}</div>
+            <div className="text-base font-semibold text-slate-900">{dealEok}</div>
+          </div>
+        </div>
+  
+        <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-slate-500">
+          <span>{t.cols.areaM2}: {sizeM2}</span>
+          <span>{t.cols.pyeong}: {sizePy}</span>
+          <span>{t.cols.build}: {buildY}</span>
+          <span>{t.cols.dealDate}: {dealDate}</span>
+          <span>{t.cols.regDate}: {rgstDate}</span>
+        </div>
+  
+        <div className="mt-3 grid grid-cols-2 gap-2">
+          <MiniStat label={t.metrics.tx_count} value={r.tx_count?.toLocaleString?.() ?? r.tx_count} />
+          <MiniStat label={t.metrics.median_price} value={medEok} />
+          <MiniStat label={t.metrics.avg_price} value={avgEok} />
+          <MiniStat label={lang === 'en' ? 'Median /pyeong' : '중위 평단가'} value={medPyeong} />
+          {/* 필요하면 avgPyeong도 한 칸 더 */}
+          {/* <MiniStat label={lang === 'en' ? 'Avg /pyeong' : '평균 평단가'} value={avgPyeong} /> */}
+        </div>
+  
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Chip tone={toneByPct(r.mom_rank_delta)}>{t.cols.rankMom} {momRank}</Chip>
+          <Chip tone={toneByPct(r.yoy_rank_delta)}>{t.cols.rankYoy} {yoyRank}</Chip>
+  
+          <Chip tone={toneByPct(r.mom_tx_count_pct)}>{t.cols.txMom} {momTx}</Chip>
+          <Chip tone={toneByPct(r.yoy_tx_count_pct)}>{t.cols.txYoy} {yoyTx}</Chip>
+  
+          <Chip tone={toneByPct(r.mom_median_price_pct)}>{t.cols.medMom} {momMed}</Chip>
+          <Chip tone={toneByPct(r.yoy_median_price_pct)}>{t.cols.medYoy} {yoyMed}</Chip>
+  
+          <Chip tone={toneByPct(r.mom_avg_price_pct)}>{t.cols.avgMom} {momAvg}</Chip>
+          <Chip tone={toneByPct(r.yoy_avg_price_pct)}>{t.cols.avgYoy} {yoyAvg}</Chip>
+        </div>
+      </div>
+    );
+  }
+
   return (
       <>
       <ToolSeo
-        title={title}
-        desc={desc}
+        title={seoTitle}
+        desc={seoDesc}
         image="/og-tools/real-estate.png"
-        appName={title}
+        appName={seoTitle}
         appCategory="FinanceApplication"
         about={{ "@type": "Place", name: "South Korea" }}
         keywords={lang === "en" ? "Korea real estate, apartment transactions" : "한국 부동산, 아파트 실거래"}
       />
-    <div className="w-full px-4 py-6">
-      <Head>
-        <title>{seoTitle}</title>
-        <meta name="description" content={seoDesc} />
-        {canonical ? <link rel="canonical" href={canonical} /> : null}
-
-        {/* hreflang */}
-        {hrefKo ? <link rel="alternate" hrefLang="ko" href={hrefKo} /> : null}
-        {hrefEn ? <link rel="alternate" hrefLang="en" href={hrefEn} /> : null}
-        {hrefKo ? <link rel="alternate" hrefLang="x-default" href={hrefKo} /> : null}
-
-        {/* OG */}
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={seoTitle} />
-        <meta property="og:description" content={seoDesc} />
-        {canonical ? <meta property="og:url" content={canonical} /> : null}
-
-        {/* JSON-LD: WebApplication */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppJsonLd) }}
-        />
-      </Head>
-
+    <div className="w-full px-4 py-6">      
       <div className="w-full max-w-6xl mx-auto">
         <div className="card">
           <h1 className="text-2xl font-bold">{t.title}</h1>
@@ -578,13 +690,63 @@ export default function RealEstatePage() {
               <div className="text-sm text-slate-500">
                 {loading ? (lang === 'en' ? 'Loading...' : '조회 중...') : (lang === 'en' ? `Rows: ${rows.length}` : `건수: ${rows.length}`)}
               </div>
-              <button className="px-4 py-2 rounded-lg border bg-white hover:bg-slate-50" onClick={fetchTop}>
-                {lang === 'en' ? 'Refresh' : '새로고침'}
-              </button>
+              <div className="flex items-center gap-2">
+                {/* Desktop view toggle */}
+                <div className="hidden md:flex items-center rounded-lg border bg-white p-1">
+                  <button
+                    type="button"
+                    className={`px-3 py-1.5 text-sm rounded-md ${desktopView === 'table' ? 'bg-slate-900 text-white' : 'bg-white text-slate-700 hover:bg-slate-50'}`}
+                    onClick={() => setDesktopView('table')}
+                  >
+                    {lang === 'en' ? 'Table' : '표'}
+                  </button>
+                  <button
+                    type="button"
+                    className={`px-3 py-1.5 text-sm rounded-md ${desktopView === 'cards' ? 'bg-slate-900 text-white' : 'bg-white text-slate-700 hover:bg-slate-50'}`}
+                    onClick={() => setDesktopView('cards')}
+                  >
+                    {lang === 'en' ? 'Cards' : '카드'}
+                  </button>
+                </div>
+              
+                <button className="px-4 py-2 rounded-lg border bg-white hover:bg-slate-50" onClick={fetchTop}>
+                  {lang === 'en' ? 'Refresh' : '새로고침'}
+                </button>
+              </div>
             </div>
 
-            <div className="overflow-x-auto mt-3">
-              <table className={`${tableMinWidth} w-full text-sm`}>
+            {/* Mobile cards */}
+            <div className="md:hidden mt-3 space-y-3">
+              {!loading && rows?.length === 0 && (
+                <div className="card text-center text-slate-500 py-10">
+                  {lang === 'en' ? 'No results' : '결과 없음'}
+                </div>
+              )}
+
+              {rows?.map((r, idx) => (
+                <ResultCard key={r.apt_key || `${r.lawd_cd}-${r.apt_name}-${idx}`} r={r} idx={idx} />
+              ))}
+
+            </div>
+
+            {/* Desktop cards */}
+            {desktopView === 'cards' && (
+              <div className="hidden md:grid grid-cols-2 xl:grid-cols-3 gap-3 mt-3">
+                {!loading && rows?.length === 0 && (
+                  <div className="col-span-full card text-center text-slate-500 py-10">
+                    {lang === 'en' ? 'No data' : '데이터 없음'}
+                  </div>
+                )}
+                {rows?.map((r, idx) => (
+                  <ResultCard key={r.apt_key || `${r.lawd_cd}-${r.apt_name}-${idx}`} r={r} idx={idx} />
+                ))}
+              </div>
+            )}
+
+            {/* Desktop table */}
+            {desktopView === 'table' && (
+              <div className="hidden md:block overflow-x-auto mt-3">
+                <table className={`${tableMinWidth} w-full text-sm`}>
                 <thead>
                   <tr className="text-left border-b">
                     <th className="py-3 pr-3">{t.cols.rank}</th>
@@ -642,8 +804,8 @@ export default function RealEstatePage() {
                       <td className="py-3 pr-3">{fmtEokFromWon(r.median_price, lang)}</td>
                       <td className="py-3 pr-3">{fmtEokFromWon(r.avg_price, lang)}</td>
 
-                      <td className="py-3 pr-3">{fmtManPerPyeongFromWonPerM2(r.median_price_per_m2)}</td>
-                      <td className="py-3 pr-3">{fmtManPerPyeongFromWonPerM2(r.avg_price_per_m2)}</td>
+                      <td className="py-3 pr-3">{fmtManPerPyeongFromWonPerM2(r.median_price_per_m2, lang)}</td>
+                      <td className="py-3 pr-3">{fmtManPerPyeongFromWonPerM2(r.avg_price_per_m2, lang)}</td>
 
                       <td className="py-3 pr-3">{r.mom_rank_delta == null ? '-' : (r.mom_rank_delta > 0 ? `+${r.mom_rank_delta}` : `${r.mom_rank_delta}`)}</td>
                       <td className="py-3 pr-3">{r.yoy_rank_delta == null ? '-' : (r.yoy_rank_delta > 0 ? `+${r.yoy_rank_delta}` : `${r.yoy_rank_delta}`)}</td>
@@ -669,7 +831,7 @@ export default function RealEstatePage() {
                 </tbody>
               </table>
             </div>
-
+            )}
           </div>
         </div>
       </div>
