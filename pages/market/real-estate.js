@@ -24,6 +24,16 @@ function fmtEokFromWon(won, lang) {
   return lang === 'en' ? `${v}×100M KRW` : `${v}억원`;
 }
 
+function fmtSignedEokFromWon(won, lang) {
+  const n = numOrNull(won);
+  if (n == null) return '-';
+  const eok = n / 100_000_000;
+  const v = Math.abs(eok).toFixed(3);
+  const sign = eok > 0 ? '+' : eok < 0 ? '-' : '';
+  return lang === 'en' ? `${sign}${v}×100M` : `${sign}${v}억`;
+}
+
+
 function fmtEokFromMan(man, lang) {
   const n = numOrNull(man);
   if (n == null) return '-';
@@ -52,6 +62,21 @@ function fmtDelta(x) {
   if (!Number.isFinite(n)) return '-';
   return n > 0 ? `+${n}` : `${n}`;
 }
+
+// 신뢰도(quality) 기본 계산: 거래량(표본수) 기반
+// - API에서 quality_grade/quality_score가 오면 그걸 우선 사용
+function qualityFromTxCount(txCount) {
+  const n = Number(txCount);
+  if (!Number.isFinite(n) || n < 0) return { score: null, grade: null };
+  // score: 0~100 (log scale, 50건 근처면 100에 가깝게)
+  const score = Math.max(0, Math.min(100, Math.round((Math.log10(n + 1) / Math.log10(51)) * 100)));
+  const grade =
+    n >= 30 ? 'A' :
+    n >= 15 ? 'B' :
+    n >= 5  ? 'C' : 'D';
+  return { score, grade };
+}
+
 
 
 // value 기준 중복 제거 (특히 'all' 중복 방지)
@@ -89,20 +114,21 @@ const TEXT = {
     desc: '상위(내림차순)',
     metrics: {
       tx_count: '거래량',
-      median_price: '중위(총액)',
+      median_price: '대표가격(중앙값, 총액)',
       avg_price: '평균(총액)',
-      median_price_per_m2: '중위(㎡당)',
+      median_price_per_m2: '대표평단가(중앙값, ㎡당)',
       avg_price_per_m2: '평균(㎡당)',
     },
     metricHelp:
-      '“㎡당”은 각 거래의 (거래총액 ÷ 전용㎡)을 계산한 뒤, 단지 내 거래들의 평균/중위값을 낸 것입니다. 표에는 만원/평도 함께 표시합니다.',
+      '대표가격(중앙값)은 “가운데 값(극단값 영향↓)”입니다. “㎡당”은 (거래총액 ÷ 전용㎡)을 거래별로 계산 후 단지 내 평균/중앙값을 냅니다. 표에는 만원/평도 함께 표시합니다.',
     legendTitle: '기준/계산 방식',
     legendLines: [
       '기간 기준: 계약월(deal_ym).',
       '제외: 취소거래(cancel_yn="Y").',
-      '단지 집계: 선택 기간 내 단지별 거래값(총액/㎡당)의 평균·중위.',
+      '단지 집계: 선택 기간 내 단지별 거래값(총액/㎡당)의 평균·대표(중앙값).',
       '평단가(만원/평): (원/㎡) × 3.305785 ÷ 10,000.',
       '금액 표기: 억(=100,000,000원) 단위.',
+      '주의: 거래량이 적으면(신뢰도 C/D) 전월/전년 변화율은 왜곡될 수 있어요.',
     ],
     cols: {
       rank: '#',
@@ -115,10 +141,13 @@ const TEXT = {
       regDate: '등기일',
       dealEok: '거래금액(억)',
       tx: '거래량',
-      medEok: '중위(억)',
+      medEok: '대표(억)',
       avgEok: '평균(억)',
-      medPy: '중위평단가',
+      medPy: '대표평단가',
       avgPy: '평균평단가',
+      quality: '신뢰도',
+      medDeltaMom: '대표Δ(전월)',
+      medDeltaYoy: '대표Δ(전년)',
       rankMom: '순위Δ(전월)',
       rankYoy: '순위Δ(전년동월)',
       txMom: '거래량%(전월)',
@@ -152,13 +181,13 @@ const TEXT = {
     desc: 'Top (Desc)',
     metrics: {
       tx_count: 'Transactions',
-      median_price: 'Median (Total)',
+      median_price: 'Typical (Median, Total)',
       avg_price: 'Average (Total)',
-      median_price_per_m2: 'Median (/㎡)',
+      median_price_per_m2: 'Typical (Median, /㎡)',
       avg_price_per_m2: 'Average (/㎡)',
     },
     metricHelp:
-      '“/㎡” is computed per deal as (total price ÷ area㎡), then averaged/median across deals for the complex. Table also shows 10k KRW per pyeong.',
+      '“Typical (Median)” is the middle value (less sensitive to extremes). “/㎡” is (total ÷ area㎡) per deal, then averaged/median across deals. Table also shows 10k KRW per pyeong.',
     legendTitle: 'Basis & methodology',
     legendLines: [
       'Period basis: contract month (deal_ym).',
@@ -166,6 +195,7 @@ const TEXT = {
       'Complex aggregation: average/median within the selected period.',
       'Per-pyeong (10k KRW/pyeong): (KRW/㎡) × 3.305785 ÷ 10,000.',
       'Money display: ×100M KRW (억).',
+      'Note: with small samples (Quality C/D), MoM/YoY % can be noisy.',
     ],
     cols: {
       rank: '#',
@@ -178,10 +208,13 @@ const TEXT = {
       regDate: 'Reg. date',
       dealEok: 'Deal (×100M)',
       tx: 'Tx',
-      medEok: 'Median (×100M)',
+      medEok: 'Typical (×100M)',
       avgEok: 'Avg (×100M)',
-      medPy: 'Median /pyeong',
+      medPy: 'Typical /pyeong',
       avgPy: 'Avg /pyeong',
+      quality: 'Quality',
+      medDeltaMom: 'Typical Δ (MoM)',
+      medDeltaYoy: 'Typical Δ (YoY)',
       rankMom: 'RankΔ (MoM)',
       rankYoy: 'RankΔ (YoY)',
       txMom: 'Tx% (MoM)',
@@ -221,23 +254,33 @@ export default function RealEstatePage() {
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // ---------- (A) SEO (중복 제거) ----------
-  // ToolSeo 안에서 canonical/hreflang/og/twitter/json-ld를 처리하므로
-  // 이 페이지에서는 title/desc만 준비해서 ToolSeo에 넘깁니다.
-  const seoTitle = t.title;
-  const seoDesc = t.seoDesc;
-  
-  // ---------- (B) Desktop view toggle ----------
-  const [desktopView, setDesktopView] = useState('table'); // 'table' | 'cards'
+  // Desktop view toggles (카드/테이블) + Advanced
+  const [desktopView, setDesktopView] = useState('card'); // 'card' | 'table'
+  const [showAdvanced, setShowAdvanced] = useState(false);
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const v = window.localStorage.getItem('re_desktop_view');
-    if (v === 'table' || v === 'cards') setDesktopView(v);
+    const a = window.localStorage.getItem('re_show_advanced');
+    if (v === 'card' || v === 'table') setDesktopView(v);
+    if (a === '1' || a === '0') setShowAdvanced(a === '1');
   }, []);
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
     window.localStorage.setItem('re_desktop_view', desktopView);
   }, [desktopView]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    window.localStorage.setItem('re_show_advanced', showAdvanced ? '1' : '0');
+  }, [showAdvanced]);
+
+  // ---------- (A) SEO (중복 제거) ----------
+  // ToolSeo 안에서 canonical/hreflang/og/twitter/json-ld를 처리하므로
+  // 이 페이지에서는 title/desc만 준비해서 ToolSeo에 넘깁니다.
+  const seoTitle = t.title;
+  const seoDesc = t.seoDesc;    
 
 
   // ---------- 옵션 로드 ----------
@@ -400,17 +443,17 @@ export default function RealEstatePage() {
     return `${row.apt_name}${dong}${fl}`;
   }
 
-  const tableMinWidth = 'min-w-[2200px]';
+  const tableMinWidth = showAdvanced ? 'min-w-[2200px]' : 'min-w-[1600px]';
 
   // --- real-estate.js 안에 (컴포넌트 return 위쪽) 추가: 작은 UI 컴포넌트들 ---
-  function toneByPct(v) {
+  function toneByNumber(v) {
     const n = Number(v);
     if (!Number.isFinite(n)) return "bg-slate-100 text-slate-700";
     if (n > 0) return "bg-emerald-50 text-emerald-700";
     if (n < 0) return "bg-rose-50 text-rose-700";
     return "bg-slate-100 text-slate-700";
   }
-
+    
   function MiniStat({ label, value }) {
     return (
       <div className="rounded-xl border border-slate-100 bg-white px-3 py-2">
@@ -427,123 +470,94 @@ export default function RealEstatePage() {
       </span>
     );
   }
-
-  function confidenceGrade(score, lang = "ko") {
-    const n = Number(score);
-    const L = lang === "en" ? "en" : "ko";
-
-    // 점수 스케일이 아직 애매하면, 일단 0~100 기준으로 가정
-    const s = Number.isFinite(n) ? n : 0;
-
-    const grade =
-      s >= 80 ? "A" :
-      s >= 60 ? "B" :
-      s >= 40 ? "C" : "D";
-
-    const labelMap = {
-      ko: { A: "높음", B: "보통", C: "낮음", D: "매우 낮음" },
-      en: { A: "High", B: "Medium", C: "Low", D: "Very low" },
-    };
-
-    const hintMap = {
-      ko: {
-        A: "표본/일관성이 좋아 지표 해석 신뢰도가 높아요",
-        B: "대체로 참고 가능하지만 일부 구간은 변동이 있을 수 있어요",
-        C: "표본이 적거나 변동이 커서 참고용이에요",
-        D: "데이터가 희박해 왜곡 가능성이 커요",
-      },
-      en: {
-        A: "Good consistency/sample size; metrics are reliable",
-        B: "Generally usable, but some periods may be noisy",
-        C: "Low sample or high noise; use as a reference only",
-        D: "Sparse data; high risk of distortion",
-      },
-    };
-
-    return {
-      grade,
-      label: labelMap[L][grade],
-      hint: hintMap[L][grade],
-    };
+  
+  function QualityChip({ row }) {
+    const derived = qualityFromTxCount(row?.tx_count);
+    const grade = row?.quality_grade || derived.grade || null;
+    const score = (row?.quality_score != null) ? row.quality_score : derived.score;     
+    const label = lang === 'en' ? 'Quality' : '신뢰도';
+    const text = grade ? `${label} ${grade}` : (score != null ? `${label} ${score}` : `${label} -`);
+    // A/B/C/D 기준으로 톤
+    const tone =
+      grade === 'A' ? 'bg-emerald-50 text-emerald-700' :
+      grade === 'B' ? 'bg-sky-50 text-sky-700' :
+      grade === 'C' ? 'bg-amber-50 text-amber-700' :
+      grade === 'D' ? 'bg-rose-50 text-rose-700' :
+      'bg-slate-100 text-slate-700';
+    return <Chip tone={tone}>{text}</Chip>;
   }
 
-  // --- (B) Result card (mobile/desktop 공용) ---
   function ResultCard({ r, idx }) {
     const areaText = renderArea(r);
     const aptText = renderApt(r);
-  
+
     const dealEok = fmtEokFromMan(r.latest_deal_amount_man, lang);
     const medEok = fmtEokFromWon(r.median_price, lang);
     const avgEok = fmtEokFromWon(r.avg_price, lang);
-  
+
     const medPyeong = fmtManPerPyeongFromWonPerM2(r.median_price_per_m2, lang);
-    const avgPyeong = fmtManPerPyeongFromWonPerM2(r.avg_price_per_m2, lang);
-  
     const momRank = fmtDelta(r.mom_rank_delta);
     const yoyRank = fmtDelta(r.yoy_rank_delta);
-  
+
     const momTx = fmtPct(r.mom_tx_count_pct);
     const yoyTx = fmtPct(r.yoy_tx_count_pct);
-  
-    const momMed = fmtPct(r.mom_median_price_pct);
-    const yoyMed = fmtPct(r.yoy_median_price_pct);
-  
-    const momAvg = fmtPct(r.mom_avg_price_pct);
-    const yoyAvg = fmtPct(r.yoy_avg_price_pct);
-  
-    const sizeM2 = r.latest_area_m2 != null ? Number(r.latest_area_m2).toFixed(1) : '-';
-    const sizePy = r.latest_area_m2 != null ? fmtPyeongFromM2(r.latest_area_m2) : '-';
-    const buildY = r.latest_build_year ?? '-';
+
+    const momMedDelta = fmtSignedEokFromWon(r.mom_median_price_delta_won, lang);
+    const yoyMedDelta = fmtSignedEokFromWon(r.yoy_median_price_delta_won, lang);
+
+    const sizeM2 = r.latest_area_m2 != null ? `${Number(r.latest_area_m2).toFixed(1)}㎡` : '-';
+    const sizePy = r.latest_area_m2 != null ? `${fmtPyeongFromM2(r.latest_area_m2)}${lang === 'en' ? 'pyeong' : '평'}` : '-';
+    const buildY = r.latest_build_year != null ? `${r.latest_build_year}${lang === 'en' ? '' : '년식'}` : '-';
     const dealDate = r.latest_deal_date ? String(r.latest_deal_date).slice(0, 10) : '-';
-    const rgstDate = r.latest_rgst_date ? String(r.latest_rgst_date).slice(0, 10) : '-';
-  
+
     return (
-      <div key={r.apt_key || `${r.lawd_cd}-${r.apt_name}-${idx}`} className="card p-4">
+      <div className="card p-4">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <div className="text-xs text-slate-500">
-              {lang === 'en' ? 'Rank' : '순위'} #{r.rank_no} · {areaText}
+              {r.rank_no}. {areaText}
             </div>
-            <div className="mt-1 text-base font-semibold text-slate-900 truncate">
+            <div className="mt-0.5 text-base font-semibold text-slate-900 truncate">
               {aptText}
             </div>
+            <div className="mt-1 text-xs text-slate-500">
+              {sizeM2} · {sizePy} · {buildY} · {dealDate}
+            </div>
           </div>
-          <div className="shrink-0 text-right">
-            <div className="text-xs text-slate-500">{t.cols.dealEok}</div>
-            <div className="text-base font-semibold text-slate-900">{dealEok}</div>
+          <div className="flex flex-col items-end gap-2 shrink-0">
+            <QualityChip row={r} />
+            <div className="text-xs text-slate-500">
+              {t.metrics.tx_count}: {r.tx_count?.toLocaleString?.() ?? r.tx_count}
+            </div>
           </div>
         </div>
-  
-        <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-slate-500">
-          <span>{t.cols.areaM2}: {sizeM2}</span>
-          <span>{t.cols.pyeong}: {sizePy}</span>
-          <span>{t.cols.build}: {buildY}</span>
-          <span>{t.cols.dealDate}: {dealDate}</span>
-          <span>{t.cols.regDate}: {rgstDate}</span>
-        </div>
-  
+
         <div className="mt-3 grid grid-cols-2 gap-2">
-          <MiniStat label={t.metrics.tx_count} value={r.tx_count?.toLocaleString?.() ?? r.tx_count} />
           <MiniStat label={t.metrics.median_price} value={medEok} />
           <MiniStat label={t.metrics.avg_price} value={avgEok} />
-          <MiniStat label={lang === 'en' ? 'Median /pyeong' : '중위 평단가'} value={medPyeong} />
-          {/* 필요하면 avgPyeong도 한 칸 더 */}
-          {/* <MiniStat label={lang === 'en' ? 'Avg /pyeong' : '평균 평단가'} value={avgPyeong} /> */}
+          <MiniStat label={lang === 'en' ? 'Typical /pyeong' : '대표 평단가'} value={medPyeong} />
+          <MiniStat label={lang === 'en' ? 'Latest deal' : '최근 거래'} value={dealEok} />
         </div>
-  
+
         <div className="mt-3 flex flex-wrap gap-2">
-          <Chip tone={toneByPct(r.mom_rank_delta)}>{t.cols.rankMom} {momRank}</Chip>
-          <Chip tone={toneByPct(r.yoy_rank_delta)}>{t.cols.rankYoy} {yoyRank}</Chip>
-  
-          <Chip tone={toneByPct(r.mom_tx_count_pct)}>{t.cols.txMom} {momTx}</Chip>
-          <Chip tone={toneByPct(r.yoy_tx_count_pct)}>{t.cols.txYoy} {yoyTx}</Chip>
-  
-          <Chip tone={toneByPct(r.mom_median_price_pct)}>{t.cols.medMom} {momMed}</Chip>
-          <Chip tone={toneByPct(r.yoy_median_price_pct)}>{t.cols.medYoy} {yoyMed}</Chip>
-  
-          <Chip tone={toneByPct(r.mom_avg_price_pct)}>{t.cols.avgMom} {momAvg}</Chip>
-          <Chip tone={toneByPct(r.yoy_avg_price_pct)}>{t.cols.avgYoy} {yoyAvg}</Chip>
+          <Chip tone={toneByNumber(r.mom_rank_delta)}>{t.cols.rankMom} {momRank}</Chip>
+          <Chip tone={toneByNumber(r.yoy_rank_delta)}>{t.cols.rankYoy} {yoyRank}</Chip>
+
+          <Chip tone={toneByNumber(r.mom_tx_count_pct)}>{t.cols.txMom} {momTx}</Chip>
+          <Chip tone={toneByNumber(r.yoy_tx_count_pct)}>{t.cols.txYoy} {yoyTx}</Chip>
+
+          <Chip tone={toneByNumber(r.mom_median_price_delta_won)}>{t.cols.medDeltaMom} {momMedDelta}</Chip>
+          <Chip tone={toneByNumber(r.yoy_median_price_delta_won)}>{t.cols.medDeltaYoy} {yoyMedDelta}</Chip>         
         </div>
+
+        {showAdvanced && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            <Chip tone={toneByNumber(r.mom_median_price_pct)}>{t.cols.medMom} {fmtPct(r.mom_median_price_pct)}</Chip>
+            <Chip tone={toneByNumber(r.yoy_median_price_pct)}>{t.cols.medYoy} {fmtPct(r.yoy_median_price_pct)}</Chip>
+            <Chip tone={toneByNumber(r.mom_avg_price_pct)}>{t.cols.avgMom} {fmtPct(r.mom_avg_price_pct)}</Chip>
+            <Chip tone={toneByNumber(r.yoy_avg_price_pct)}>{t.cols.avgYoy} {fmtPct(r.yoy_avg_price_pct)}</Chip>           
+          </div>
+        )}
       </div>
     );
   }
@@ -691,57 +705,43 @@ export default function RealEstatePage() {
                 {loading ? (lang === 'en' ? 'Loading...' : '조회 중...') : (lang === 'en' ? `Rows: ${rows.length}` : `건수: ${rows.length}`)}
               </div>
               <div className="flex items-center gap-2">
-                {/* Desktop view toggle */}
-                <div className="hidden md:flex items-center rounded-lg border bg-white p-1">
+                {/* Desktop only: Cards/Table toggle + Advanced */}
+                <div className="hidden md:flex items-center gap-2">
                   <button
-                    type="button"
-                    className={`px-3 py-1.5 text-sm rounded-md ${desktopView === 'table' ? 'bg-slate-900 text-white' : 'bg-white text-slate-700 hover:bg-slate-50'}`}
-                    onClick={() => setDesktopView('table')}
-                  >
-                    {lang === 'en' ? 'Table' : '표'}
-                  </button>
-                  <button
-                    type="button"
-                    className={`px-3 py-1.5 text-sm rounded-md ${desktopView === 'cards' ? 'bg-slate-900 text-white' : 'bg-white text-slate-700 hover:bg-slate-50'}`}
-                    onClick={() => setDesktopView('cards')}
+                    className={`px-3 py-2 rounded-lg border ${desktopView === 'card' ? 'bg-slate-900 text-white border-slate-900' : 'bg-white hover:bg-slate-50'}`}
+                    onClick={() => setDesktopView('card')}
                   >
                     {lang === 'en' ? 'Cards' : '카드'}
                   </button>
+                  <button
+                    className={`px-3 py-2 rounded-lg border ${desktopView === 'table' ? 'bg-slate-900 text-white border-slate-900' : 'bg-white hover:bg-slate-50'}`}
+                    onClick={() => setDesktopView('table')}
+                  >
+                    {lang === 'en' ? 'Table' : '표'}
+                  </button>                  
                 </div>
-              
+                {/* Advanced: 모바일/데스크탑 공통 */}
+                <label className="inline-flex items-center gap-2 text-xs text-slate-600">
+                  <input type="checkbox" checked={showAdvanced} onChange={(e) => setShowAdvanced(e.target.checked)} />
+                  {lang === 'en' ? 'Advanced' : '고급'}
+                </label>
                 <button className="px-4 py-2 rounded-lg border bg-white hover:bg-slate-50" onClick={fetchTop}>
                   {lang === 'en' ? 'Refresh' : '새로고침'}
                 </button>
               </div>
             </div>
 
-            {/* Mobile cards */}
-            <div className="md:hidden mt-3 space-y-3">
+            {/* Cards: always on mobile. On desktop, shown when desktopView === 'card' */}
+            <div className={`${desktopView === 'card' ? '' : 'md:hidden'} mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3`}>               
               {!loading && rows?.length === 0 && (
-                <div className="card text-center text-slate-500 py-10">
+                <div className="card text-center text-slate-500 py-10 md:col-span-2 lg:col-span-3">                  
                   {lang === 'en' ? 'No results' : '결과 없음'}
                 </div>
               )}
 
-              {rows?.map((r, idx) => (
-                <ResultCard key={r.apt_key || `${r.lawd_cd}-${r.apt_name}-${idx}`} r={r} idx={idx} />
-              ))}
+              {rows?.map((r, idx) => <ResultCard key={r.apt_key || `${r.lawd_cd}-${r.apt_name}-${idx}`} r={r} idx={idx} />)}
 
-            </div>
-
-            {/* Desktop cards */}
-            {desktopView === 'cards' && (
-              <div className="hidden md:grid grid-cols-2 xl:grid-cols-3 gap-3 mt-3">
-                {!loading && rows?.length === 0 && (
-                  <div className="col-span-full card text-center text-slate-500 py-10">
-                    {lang === 'en' ? 'No data' : '데이터 없음'}
-                  </div>
-                )}
-                {rows?.map((r, idx) => (
-                  <ResultCard key={r.apt_key || `${r.lawd_cd}-${r.apt_name}-${idx}`} r={r} idx={idx} />
-                ))}
-              </div>
-            )}
+            </div>            
 
             {/* Desktop table */}
             {desktopView === 'table' && (
@@ -756,27 +756,30 @@ export default function RealEstatePage() {
                     <th className="py-3 pr-3">{t.cols.pyeong}</th>
                     <th className="py-3 pr-3">{t.cols.build}</th>
                     <th className="py-3 pr-3">{t.cols.dealDate}</th>
-                    <th className="py-3 pr-3">{t.cols.regDate}</th>
                     <th className="py-3 pr-3">{t.cols.dealEok}</th>
 
                     <th className="py-3 pr-3">{t.cols.tx}</th>
                     <th className="py-3 pr-3">{t.cols.medEok}</th>
-                    <th className="py-3 pr-3">{t.cols.avgEok}</th>
+                    <th className="py-3 pr-3">{t.cols.medDeltaMom}</th>
+                    <th className="py-3 pr-3">{t.cols.medDeltaYoy}</th>
 
                     <th className="py-3 pr-3">{t.cols.medPy}</th>
-                    <th className="py-3 pr-3">{t.cols.avgPy}</th>
+                    <th className="py-3 pr-3">{t.cols.quality}</th>
 
-                    <th className="py-3 pr-3">{t.cols.rankMom}</th>
-                    <th className="py-3 pr-3">{t.cols.rankYoy}</th>
-
-                    <th className="py-3 pr-3">{t.cols.txMom}</th>
-                    <th className="py-3 pr-3">{t.cols.txYoy}</th>
-
-                    <th className="py-3 pr-3">{t.cols.medMom}</th>
-                    <th className="py-3 pr-3">{t.cols.medYoy}</th>
-
-                    <th className="py-3 pr-3">{t.cols.avgMom}</th>
-                    <th className="py-3 pr-3">{t.cols.avgYoy}</th>
+                    {showAdvanced && (
+                      <>
+                        <th className="py-3 pr-3">{t.cols.avgEok}</th>
+                        <th className="py-3 pr-3">{t.cols.avgPy}</th>
+                        <th className="py-3 pr-3">{t.cols.rankMom}</th>
+                        <th className="py-3 pr-3">{t.cols.rankYoy}</th>
+                        <th className="py-3 pr-3">{t.cols.txMom}</th>
+                        <th className="py-3 pr-3">{t.cols.txYoy}</th>
+                        <th className="py-3 pr-3">{t.cols.medMom}</th>
+                        <th className="py-3 pr-3">{t.cols.medYoy}</th>
+                        <th className="py-3 pr-3">{t.cols.avgMom}</th>
+                        <th className="py-3 pr-3">{t.cols.avgYoy}</th>
+                      </>
+                    )}
                   </tr>
                 </thead>
 
@@ -796,34 +799,39 @@ export default function RealEstatePage() {
                       <td className="py-3 pr-3">{r.latest_build_year ?? '-'}</td>
 
                       <td className="py-3 pr-3">{r.latest_deal_date ? String(r.latest_deal_date).slice(0, 10) : '-'}</td>
-                      <td className="py-3 pr-3">{r.latest_rgst_date ? String(r.latest_rgst_date).slice(0, 10) : '-'}</td>
+                      
 
                       <td className="py-3 pr-3">{fmtEokFromMan(r.latest_deal_amount_man, lang)}</td>
 
                       <td className="py-3 pr-3">{Number(r.tx_count).toLocaleString()}</td>
                       <td className="py-3 pr-3">{fmtEokFromWon(r.median_price, lang)}</td>
-                      <td className="py-3 pr-3">{fmtEokFromWon(r.avg_price, lang)}</td>
+                      <td className="py-3 pr-3">{fmtSignedEokFromWon(r.mom_median_price_delta_won, lang)}</td>
+                      <td className="py-3 pr-3">{fmtSignedEokFromWon(r.yoy_median_price_delta_won, lang)}</td>
+ 
 
                       <td className="py-3 pr-3">{fmtManPerPyeongFromWonPerM2(r.median_price_per_m2, lang)}</td>
-                      <td className="py-3 pr-3">{fmtManPerPyeongFromWonPerM2(r.avg_price_per_m2, lang)}</td>
+                      <td className="py-3 pr-3"><QualityChip row={r} /></td>
 
-                      <td className="py-3 pr-3">{r.mom_rank_delta == null ? '-' : (r.mom_rank_delta > 0 ? `+${r.mom_rank_delta}` : `${r.mom_rank_delta}`)}</td>
-                      <td className="py-3 pr-3">{r.yoy_rank_delta == null ? '-' : (r.yoy_rank_delta > 0 ? `+${r.yoy_rank_delta}` : `${r.yoy_rank_delta}`)}</td>
-
-                      <td className="py-3 pr-3">{fmtPct(r.mom_tx_count_pct)}</td>
-                      <td className="py-3 pr-3">{fmtPct(r.yoy_tx_count_pct)}</td>
-
-                      <td className="py-3 pr-3">{fmtPct(r.mom_median_price_pct)}</td>
-                      <td className="py-3 pr-3">{fmtPct(r.yoy_median_price_pct)}</td>
-
-                      <td className="py-3 pr-3">{fmtPct(r.mom_avg_price_pct)}</td>
-                      <td className="py-3 pr-3">{fmtPct(r.yoy_avg_price_pct)}</td>
+                      {showAdvanced && (
+                        <>
+                          <td className="py-3 pr-3">{fmtEokFromWon(r.avg_price, lang)}</td>
+                          <td className="py-3 pr-3">{fmtManPerPyeongFromWonPerM2(r.avg_price_per_m2, lang)}</td>
+                          <td className="py-3 pr-3">{r.mom_rank_delta == null ? '-' : (r.mom_rank_delta > 0 ? `+${r.mom_rank_delta}` : `${r.mom_rank_delta}`)}</td>
+                          <td className="py-3 pr-3">{r.yoy_rank_delta == null ? '-' : (r.yoy_rank_delta > 0 ? `+${r.yoy_rank_delta}` : `${r.yoy_rank_delta}`)}</td>
+                          <td className="py-3 pr-3">{fmtPct(r.mom_tx_count_pct)}</td>
+                          <td className="py-3 pr-3">{fmtPct(r.yoy_tx_count_pct)}</td>
+                          <td className="py-3 pr-3">{fmtPct(r.mom_median_price_pct)}</td>
+                          <td className="py-3 pr-3">{fmtPct(r.yoy_median_price_pct)}</td>
+                          <td className="py-3 pr-3">{fmtPct(r.mom_avg_price_pct)}</td>
+                          <td className="py-3 pr-3">{fmtPct(r.yoy_avg_price_pct)}</td>
+                        </>
+                      )}
                     </tr>
                   ))}
 
                   {!rows.length && !loading && (
                     <tr>
-                      <td colSpan={22} className="py-10 text-center text-slate-500">
+                      <td colSpan={showAdvanced ? 24 : 14} className="py-10 text-center text-slate-500">
                         {lang === 'en' ? 'No data' : '데이터 없음'}
                       </td>
                     </tr>

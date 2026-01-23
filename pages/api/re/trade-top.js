@@ -18,6 +18,39 @@ function getPool() {
   return _pool;
 }
 
+function clamp(n, lo, hi) {
+  const x = Number(n);
+  if (!Number.isFinite(x)) return lo;
+  return Math.min(Math.max(x, lo), hi);
+}
+
+function toNum(v) {
+  if (v == null) return null;
+  const n = Number(v);
+  return Number.isFinite(n) ? n : null;
+}
+
+// 거래표본(tx_count) + 평단가 일관성(CV) 기반 "신뢰도 점수"
+function computeQuality({ txCount, cvPpm2 }) {
+  const tx = Math.max(0, Number(txCount || 0));
+  // 표본 점수: 0~30건 사이에서 빠르게 올라가고 이후 완만
+  const txScore = clamp((Math.log10(tx + 1) / Math.log10(31)) * 100, 0, 100);
+
+  // CV 점수: cv 0.05 이하면 매우 안정(100), 0.35 이상이면 불안정(20)
+  const cv = toNum(cvPpm2);
+  const cvScore =
+    cv == null ? 60 :
+    cv <= 0.05 ? 100 :
+    cv >= 0.35 ? 20 :
+    clamp(100 - ((cv - 0.05) / (0.35 - 0.05)) * 80, 20, 100);
+
+  const score = Math.round(txScore * 0.7 + cvScore * 0.3);
+  const grade = score >= 80 ? 'A' : score >= 60 ? 'B' : score >= 40 ? 'C' : 'D';
+
+  return { score, grade };
+}
+
+
 function prevMonth(yyyymm) {
   const y = Number(yyyymm.slice(0, 4));
   const m = Number(yyyymm.slice(4, 6));
@@ -54,7 +87,7 @@ function pct(cur, prev) {
   if (c == null || !Number.isFinite(c) || p == null || !Number.isFinite(p) || p === 0) return null;
   return ((c - p) / p) * 100;
 }
-
+ 
 function buildWhere({ timeframe, period, sido, lawd, gu, pyeong, buildFrom, buildTo }) {
   const filters = [];
   const params = [];
@@ -176,6 +209,9 @@ function makeSql({ whereSql, metricCol, orderDir, withLatest }) {
 
         ROUND(AVG(ppm2), 2) AS avg_price_per_m2,
         ROUND(AVG(CASE WHEN rn_ppm2 IN (FLOOR((cnt+1)/2), FLOOR((cnt+2)/2)) THEN ppm2 END), 2) AS median_price_per_m2,
+
+        -- 프리미엄용: 평단가 분산/일관성(표본이 적으면 NULL일 수 있음)
+        ROUND(STDDEV_SAMP(ppm2), 2) AS std_price_per_m2,
 
         CAST(ROUND(AVG(price_won), 0) AS UNSIGNED) AS avg_price,
         CAST(ROUND(AVG(CASE WHEN rn_price IN (FLOOR((cnt+1)/2), FLOOR((cnt+2)/2)) THEN price_won END), 0) AS UNSIGNED) AS median_price
@@ -317,6 +353,39 @@ export default async function handler(req, res) {
       const momMetricPct = mom ? pct(Number(r.value), Number(mom.value)) : null;
       const yoyMetricPct = yoy ? pct(Number(r.value), Number(yoy.value)) : null;
 
+      // 대표가격(중앙값) 금액 Δ (원)
+      const momMedianDeltaWon =
+        mom && r.median_price != null && mom.median_price != null
+          ? (Number(r.median_price) - Number(mom.median_price))
+          : null;
+
+      const yoyMedianDeltaWon =
+        yoy && r.median_price != null && yoy.median_price != null
+          ? (Number(r.median_price) - Number(yoy.median_price))
+          : null;
+
+      // 평균(총액) 금액 Δ (원)
+      const momAvgDeltaWon =
+        mom && r.avg_price != null && mom.avg_price != null
+          ? (Number(r.avg_price) - Number(mom.avg_price))
+          : null;
+
+      const yoyAvgDeltaWon =
+        yoy && r.avg_price != null && yoy.avg_price != null
+          ? (Number(r.avg_price) - Number(yoy.avg_price))
+          : null;
+
+      // ✅ CV 계산 (std / avg). std_price_per_m2는 makeSql에서 이미 내려줌
+      const avgPpm2 = toNum(r.avg_price_per_m2);
+      const stdPpm2 = toNum(r.std_price_per_m2);
+      const cvPpm2 =
+        (avgPpm2 != null && stdPpm2 != null && avgPpm2 > 0)
+          ? (stdPpm2 / avgPpm2)
+          : null;
+
+      // ✅ 신뢰도 점수/등급 (거래표본 + CV 기반)
+      const q = computeQuality({ txCount: r.tx_count, cvPpm2 });
+
       return {
         ...r,
 
@@ -332,22 +401,32 @@ export default async function handler(req, res) {
         mom_metric_pct: momMetricPct,
         yoy_metric_pct: yoyMetricPct,
 
-        // 거래량/가격 % (요청한 것들)
+        // 거래량 %
         mom_tx_count_pct: mom ? pct(r.tx_count, mom.tx_count) : null,
         yoy_tx_count_pct: yoy ? pct(r.tx_count, yoy.tx_count) : null,
 
+        // 중앙값/평균 % (총액)
         mom_median_price_pct: mom ? pct(r.median_price, mom.median_price) : null,
         yoy_median_price_pct: yoy ? pct(r.median_price, yoy.median_price) : null,
-
         mom_avg_price_pct: mom ? pct(r.avg_price, mom.avg_price) : null,
         yoy_avg_price_pct: yoy ? pct(r.avg_price, yoy.avg_price) : null,
 
-        // 평단가 쪽도 같이(원/㎡ 기준)
+        // 평단가 % (원/㎡)
         mom_median_price_per_m2_pct: mom ? pct(r.median_price_per_m2, mom.median_price_per_m2) : null,
         yoy_median_price_per_m2_pct: yoy ? pct(r.median_price_per_m2, yoy.median_price_per_m2) : null,
-
         mom_avg_price_per_m2_pct: mom ? pct(r.avg_price_per_m2, mom.avg_price_per_m2) : null,
         yoy_avg_price_per_m2_pct: yoy ? pct(r.avg_price_per_m2, yoy.avg_price_per_m2) : null,
+
+        // ✅ 프리미엄: 금액 증감(원)
+        mom_median_price_delta_won: momMedianDeltaWon,
+        yoy_median_price_delta_won: yoyMedianDeltaWon,
+        mom_avg_price_delta_won: momAvgDeltaWon,
+        yoy_avg_price_delta_won: yoyAvgDeltaWon,
+
+        // ✅ 프리미엄: CV + 신뢰도
+        cv_price_per_m2: cvPpm2,
+        quality_score: q.score,
+        quality_grade: q.grade,
       };
     });
 
