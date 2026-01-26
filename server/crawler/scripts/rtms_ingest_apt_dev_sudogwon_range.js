@@ -12,13 +12,18 @@ function loadEnv() {
         ? path.resolve(process.cwd(), '.env.production')
         : path.resolve(process.cwd(), '.env.local');
 
-    if (fs.existsSync(envPath)) dotenv.config({ path: envPath });
+    // ✅ 중요: 기존 환경변수(DB_HOST/DB_PORT 등)가 잡혀있어도 .env 값을 우선 적용
+    if (fs.existsSync(envPath)) {
+      dotenv.config({ path: envPath, override: true });
+      console.log(`[env] loaded ${path.basename(envPath)} (override=true)`);
+    } else {
+      console.log(`[env] not found: ${envPath}`);
+    }
   } catch (e) {}
 }
 loadEnv();
 
 const { fetchAll, makeTxHash, fetchPage } = require('../lib/vendors/molitAptTrade');
-
 
 function arg(name, defVal) {
   for (const v of process.argv) {
@@ -116,9 +121,6 @@ function canonicalLawdCd(sidoName, reqLawdCd) {
 }
 
 // ✅ 최신 법정구 목록(유저 제공 기준) -> 구조화
-// - sido_name: 서울특별시 / 인천광역시 / 경기도
-// - sigungu_name: (서울/인천) 구/군, (경기) 시/군
-// - gu_name: (경기만) 장안구/분당구/... 없으면 null
 const AREAS = [
   // --- 서울특별시 ---
   { sido: '서울특별시', sigungu: '종로구', gu: null, lawd: '11110' },
@@ -159,7 +161,7 @@ const AREAS = [
   { sido: '인천광역시', sigungu: '강화군', gu: null, lawd: '28710' },
   { sido: '인천광역시', sigungu: '옹진군', gu: null, lawd: '28720' },
 
-  // --- 경기도 (시+구 있는 곳은 gu 저장) ---
+  // --- 경기도 ---
   { sido: '경기도', sigungu: '수원시', gu: '장안구', lawd: '41111' },
   { sido: '경기도', sigungu: '수원시', gu: '권선구', lawd: '41113' },
   { sido: '경기도', sigungu: '수원시', gu: '팔달구', lawd: '41115' },
@@ -236,6 +238,24 @@ function filterAreasByScope(list, scopeObj) {
   });
 }
 
+async function assertHasColumn(conn, table, col) {
+  const [rows] = await conn.query(
+    `
+    SELECT 1 AS ok
+    FROM information_schema.columns
+    WHERE table_schema = DATABASE()
+      AND table_name = ?
+      AND column_name = ?
+    LIMIT 1
+    `,
+    [table, col]
+  );
+  if (!rows || rows.length === 0) {
+    const [ci] = await conn.query('SELECT DATABASE() db, @@hostname host, @@port port, USER() user');
+    throw new Error(`Missing column ${table}.${col} on ${ci[0].host}:${ci[0].port}/${ci[0].db} (user=${ci[0].user})`);
+  }
+}
+
 (async () => {
   const fromYm = arg('from', '202401');
   const toYm = arg('to', '202401');
@@ -261,86 +281,66 @@ function filterAreasByScope(list, scopeObj) {
     charset: 'utf8mb4',
   });
 
-  // conn 생성 이후
-  await conn.execute(`
-    CREATE TABLE IF NOT EXISTS re_trade_deal_ym (
-      deal_ym CHAR(6) NOT NULL PRIMARY KEY
-    ) ENGINE=InnoDB
-  `);
-  await conn.execute(`
-    CREATE TABLE IF NOT EXISTS re_trade_meta (
-      id TINYINT NOT NULL PRIMARY KEY,
-      min_build_year SMALLINT NULL,
-      max_build_year SMALLINT NULL,
-      updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-    ) ENGINE=InnoDB
-  `);
-  await conn.execute(`INSERT IGNORE INTO re_trade_meta (id) VALUES (1)`);
+  // ✅ 실제 접속한 DB를 강제 로그(“다른 DB 붙는 문제” 즉시 확인 가능)
+  const [connInfo] = await conn.query('SELECT DATABASE() db, @@hostname host, @@port port, USER() user');
+  console.log('[conn]', connInfo[0]);
 
-  await conn.execute(`
-    CREATE TABLE IF NOT EXISTS re_trade_area_dim (
-      sido_code CHAR(2) NOT NULL,
-      lawd_cd CHAR(5) NOT NULL,
-      sigungu_name VARCHAR(30) NOT NULL,
-      gu_name VARCHAR(30) NOT NULL DEFAULT '',
-      PRIMARY KEY (sido_code, lawd_cd, gu_name),
-      KEY idx_area_sido (sido_code, sigungu_name, gu_name)
-    ) ENGINE=InnoDB
-  `);
+  // ✅ 스키마 핵심 컬럼 검증 (테이블 생성/insert는 요청대로 여기서 안함)
+  await assertHasColumn(conn, 're_trade_apt', 'req_lawd_cd');
+  await assertHasColumn(conn, 're_trade_apt', 'lawd_cd');
+  await assertHasColumn(conn, 're_trade_apt', 'deal_ym');
 
   const sqlInsYm = `INSERT IGNORE INTO re_trade_deal_ym (deal_ym) VALUES (?)`;
-  const sqlInsArea = `INSERT IGNORE INTO re_trade_area_dim (sido_code, lawd_cd, req_lawd_cd, sigungu_name, gu_name) VALUES (?,?,?,?,?)`;
 
+  // ✅ 중요: re_trade_area_dim 컬럼에 req_lawd_cd 넣지 말 것 (trade-areas.js도 사용 안함)
+  const sqlInsArea = `
+    INSERT IGNORE INTO re_trade_area_dim (sido_code, lawd_cd, sigungu_name, gu_name)
+    VALUES (?,?,?,?)
+  `;
 
   const scopeObj = parseScope(scope);
   const areas = filterAreasByScope(AREAS, scopeObj);
 
   console.log(`[start] scope=${scope} months=${months.join(',')} areas=${areas.length}`);
-  console.log(`[db] ${process.env.DB_HOST}:${process.env.DB_PORT || 3306} / ${process.env.DB_NAME}`);
+  console.log(`[db-env] ${process.env.DB_HOST}:${process.env.DB_PORT || 3306} / ${process.env.DB_NAME}`);
 
   let totalFetch = 0;
   let totalItems = 0;
   let totalUpserted = 0;
   let totalSkipped = 0;
   let totalErrors = 0;
-  
 
   let minBuildSeen = null;
   let maxBuildSeen = null;
-  const seenYms = new Set();
 
   for (const ym of months) {
-    seenYms.add(ym);
-    await conn.execute(sqlInsYm, [ym]);    
+    await conn.execute(sqlInsYm, [ym]);
     console.log(`\n[month] ${ym}`);
 
-    for (const a of areas) {     
-
+    for (const a of areas) {
       const reqLawdCd = String(a.lawd);
       const storeLawdCd = canonicalLawdCd(a.sido, reqLawdCd);
 
       const sidoName = a.sido;
-      const sigunguName = a.sigungu;      
-      const guName = a.gu ? String(a.gu).trim() : '';      
+      const sigunguName = a.sigungu;
+      const guName = a.gu ? String(a.gu).trim() : '';
+
+      // ✅ area_dim은 “데이터 유무와 무관하게” 항상 확보(옵션/필터에서 누락 방지)
+      const sidoCode = String(storeLawdCd).slice(0, 2);
+      await conn.execute(sqlInsArea, [sidoCode, storeLawdCd, sigunguName, '']); // city/all row
+      if (guName) {
+        await conn.execute(sqlInsArea, [sidoCode, storeLawdCd, sigunguName, guName]);
+      }
 
       try {
         totalFetch++;
-        let totalCount = null;
         if (debugApiTotal) {
-        const r = await fetchPage({ lawdCd: reqLawdCd, dealYmd: ym, pageNo: 1, numOfRows: 1 });
-        totalCount = r.totalCount;
-        console.log(`[api] ${ym} ${sidoName} ${sigunguName}${guName ? ' ' + guName : ''} req=${reqLawdCd} totalCount=${totalCount}`);
+          const r = await fetchPage({ lawdCd: reqLawdCd, dealYmd: ym, pageNo: 1, numOfRows: 1 });
+          console.log(`[api] ${ym} ${sidoName} ${sigunguName}${guName ? ' ' + guName : ''} req=${reqLawdCd} totalCount=${r.totalCount}`);
         }
+
         const items = await fetchAll({ lawdCd: reqLawdCd, dealYmd: ym });
         totalItems += items.length;
-
-        if (items.length > 0) {
-          const sidoCode = String(storeLawdCd).slice(0, 2);
-          await conn.execute(sqlInsArea, [sidoCode, storeLawdCd, reqLawdCd, sigunguName, '']); // city/all row
-          if (guName) {
-            await conn.execute(sqlInsArea, [sidoCode, storeLawdCd, reqLawdCd, sigunguName, guName]);
-          }
-        }
 
         const guLabel = guName ? guName : (a.sido === '경기도' ? '전체' : '');
         console.log(`[fetch] ${ym} ${sidoName} ${sigunguName}${guLabel ? ' ' + guLabel : ''} req=${reqLawdCd} store=${storeLawdCd} items=${items.length}`);
@@ -364,7 +364,7 @@ function filterAreasByScope(list, scopeObj) {
           const floor = toInt(it.floor);
           const buildYear = toInt(it.buildYear);
           const dealAmountMan = toInt(it.dealAmount);
-          
+
           if (buildYear != null) {
             if (minBuildSeen == null || buildYear < minBuildSeen) minBuildSeen = buildYear;
             if (maxBuildSeen == null || buildYear > maxBuildSeen) maxBuildSeen = buildYear;
@@ -375,8 +375,6 @@ function filterAreasByScope(list, scopeObj) {
             continue;
           }
 
-
-          // 기존 매핑(컬럼 있음)
           const aptSeq = trim(it.aptSeq) || null;
           const aptDong = trim(it.aptDong) || null;
           const dealingGbn = trim(it.dealingGbn) || null;
@@ -385,7 +383,6 @@ function filterAreasByScope(list, scopeObj) {
           const rgstDate = parseAnyDateToSqlDate(it.rgstDate);
           const estateAgentSggNm = trim(it.estateAgentSggNm) || null;
 
-          // 컬럼화 확장
           const umdCd = trim(it.umdCd) || null;
           const landCd = trim(it.landCd) || null;
           const landLeaseholdGbn = trim(it.landLeaseholdGbn) || null;
@@ -406,19 +403,6 @@ function filterAreasByScope(list, scopeObj) {
 
           // ✅ 해시 충돌 방지: 요청 코드(reqLawdCd)로 해시 생성
           const txHash = makeTxHash(reqLawdCd, it);
-
-          // raw_json에 메타 박아두면 나중에 검증/재처리에 매우 유리
-          /*
-          const raw = Object.assign({}, it, {
-            _meta: {
-              reqLawdCd,
-              storeLawdCd,
-              sidoName,
-              sigunguName,
-              guName: guName,
-            }
-          });
-          */
 
           const rawJson = null;
 
@@ -519,7 +503,10 @@ function filterAreasByScope(list, scopeObj) {
     }
   }
 
+  // meta 업데이트(요청대로 DDL/초기 insert는 안하지만, 값 갱신은 유지)
   if (minBuildSeen != null || maxBuildSeen != null) {
+    const minY = (minBuildSeen == null) ? 9999 : minBuildSeen;
+    const maxY = (maxBuildSeen == null) ? 0 : maxBuildSeen;
     await conn.execute(
       `
       UPDATE re_trade_meta
@@ -528,10 +515,9 @@ function filterAreasByScope(list, scopeObj) {
         max_build_year = IF(max_build_year IS NULL OR ? > max_build_year, ?, max_build_year)
       WHERE id=1
       `,
-      [minBuildSeen ?? 9999, minBuildSeen ?? 9999, maxBuildSeen ?? 0, maxBuildSeen ?? 0]
+      [minY, minY, maxY, maxY]
     );
   }
-
 
   await conn.end();
   console.log(`\n[done] fetch=${totalFetch} totalItems=${totalItems} totalUpserted=${totalUpserted} totalSkipped=${totalSkipped} totalErrors=${totalErrors}`);
