@@ -261,6 +261,37 @@ function filterAreasByScope(list, scopeObj) {
     charset: 'utf8mb4',
   });
 
+  // conn 생성 이후
+  await conn.execute(`
+    CREATE TABLE IF NOT EXISTS re_trade_deal_ym (
+      deal_ym CHAR(6) NOT NULL PRIMARY KEY
+    ) ENGINE=InnoDB
+  `);
+  await conn.execute(`
+    CREATE TABLE IF NOT EXISTS re_trade_meta (
+      id TINYINT NOT NULL PRIMARY KEY,
+      min_build_year SMALLINT NULL,
+      max_build_year SMALLINT NULL,
+      updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB
+  `);
+  await conn.execute(`INSERT IGNORE INTO re_trade_meta (id) VALUES (1)`);
+
+  await conn.execute(`
+    CREATE TABLE IF NOT EXISTS re_trade_area_dim (
+      sido_code CHAR(2) NOT NULL,
+      lawd_cd CHAR(5) NOT NULL,
+      sigungu_name VARCHAR(30) NOT NULL,
+      gu_name VARCHAR(30) NOT NULL DEFAULT '',
+      PRIMARY KEY (sido_code, lawd_cd, gu_name),
+      KEY idx_area_sido (sido_code, sigungu_name, gu_name)
+    ) ENGINE=InnoDB
+  `);
+
+  const sqlInsYm = `INSERT IGNORE INTO re_trade_deal_ym (deal_ym) VALUES (?)`;
+  const sqlInsArea = `INSERT IGNORE INTO re_trade_area_dim (sido_code, lawd_cd, req_lawd_cd, sigungu_name, gu_name) VALUES (?,?,?,?,?)`;
+
+
   const scopeObj = parseScope(scope);
   const areas = filterAreasByScope(AREAS, scopeObj);
 
@@ -272,17 +303,25 @@ function filterAreasByScope(list, scopeObj) {
   let totalUpserted = 0;
   let totalSkipped = 0;
   let totalErrors = 0;
+  
+
+  let minBuildSeen = null;
+  let maxBuildSeen = null;
+  const seenYms = new Set();
 
   for (const ym of months) {
+    seenYms.add(ym);
+    await conn.execute(sqlInsYm, [ym]);    
     console.log(`\n[month] ${ym}`);
 
-    for (const a of areas) {
+    for (const a of areas) {     
+
       const reqLawdCd = String(a.lawd);
       const storeLawdCd = canonicalLawdCd(a.sido, reqLawdCd);
 
       const sidoName = a.sido;
-      const sigunguName = a.sigungu;
-      const guName = a.gu ? a.gu : null;
+      const sigunguName = a.sigungu;      
+      const guName = a.gu ? String(a.gu).trim() : '';      
 
       try {
         totalFetch++;
@@ -294,6 +333,14 @@ function filterAreasByScope(list, scopeObj) {
         }
         const items = await fetchAll({ lawdCd: reqLawdCd, dealYmd: ym });
         totalItems += items.length;
+
+        if (items.length > 0) {
+          const sidoCode = String(storeLawdCd).slice(0, 2);
+          await conn.execute(sqlInsArea, [sidoCode, storeLawdCd, reqLawdCd, sigunguName, '']); // city/all row
+          if (guName) {
+            await conn.execute(sqlInsArea, [sidoCode, storeLawdCd, reqLawdCd, sigunguName, guName]);
+          }
+        }
 
         const guLabel = guName ? guName : (a.sido === '경기도' ? '전체' : '');
         console.log(`[fetch] ${ym} ${sidoName} ${sigunguName}${guLabel ? ' ' + guLabel : ''} req=${reqLawdCd} store=${storeLawdCd} items=${items.length}`);
@@ -317,8 +364,17 @@ function filterAreasByScope(list, scopeObj) {
           const floor = toInt(it.floor);
           const buildYear = toInt(it.buildYear);
           const dealAmountMan = toInt(it.dealAmount);
+          
+          if (buildYear != null) {
+            if (minBuildSeen == null || buildYear < minBuildSeen) minBuildSeen = buildYear;
+            if (maxBuildSeen == null || buildYear > maxBuildSeen) maxBuildSeen = buildYear;
+          }
 
-          if (!aptName || !areaM2 || !dealAmountMan) { skipped++; continue; }
+          if (!aptName || areaM2 == null || areaM2 <= 0 || dealAmountMan == null || dealAmountMan <= 0) {
+            skipped++;
+            continue;
+          }
+
 
           // 기존 매핑(컬럼 있음)
           const aptSeq = trim(it.aptSeq) || null;
@@ -462,6 +518,20 @@ function filterAreasByScope(list, scopeObj) {
       }
     }
   }
+
+  if (minBuildSeen != null || maxBuildSeen != null) {
+    await conn.execute(
+      `
+      UPDATE re_trade_meta
+      SET
+        min_build_year = IF(min_build_year IS NULL OR ? < min_build_year, ?, min_build_year),
+        max_build_year = IF(max_build_year IS NULL OR ? > max_build_year, ?, max_build_year)
+      WHERE id=1
+      `,
+      [minBuildSeen ?? 9999, minBuildSeen ?? 9999, maxBuildSeen ?? 0, maxBuildSeen ?? 0]
+    );
+  }
+
 
   await conn.end();
   console.log(`\n[done] fetch=${totalFetch} totalItems=${totalItems} totalUpserted=${totalUpserted} totalSkipped=${totalSkipped} totalErrors=${totalErrors}`);

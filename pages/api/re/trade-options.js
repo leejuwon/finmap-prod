@@ -37,42 +37,38 @@ export default async function handler(req, res) {
   try {
     if (req.method !== 'GET') return res.status(405).json({ ok: false, error: 'Method Not Allowed' });
 
-    // HTTP 캐시
     res.setHeader('Cache-Control', 'public, max-age=60, s-maxage=3600, stale-while-revalidate=86400');
 
-    const cacheKey = 'trade-options:v2';
+    const cacheKey = 'trade-options:v3';
     const cached = cacheGet(cacheKey);
     if (cached) return res.json(cached);
 
     const pool = getPool();
 
-    // ✅ deal_ym 인덱스만 있으면 GROUP BY + ORDER BY가 매우 빨라짐
+    // ✅ 월 목록: re_trade_deal_ym
     const [monthsRows] = await pool.query(`
       SELECT deal_ym
-      FROM re_trade_apt
-      WHERE deal_ym IS NOT NULL AND deal_ym <> ''
-      GROUP BY deal_ym
+      FROM re_trade_deal_ym
       ORDER BY deal_ym DESC
       LIMIT 600
     `);
-
     const months = monthsRows.map(r => String(r.deal_ym)).filter(Boolean);
 
-    // ✅ years는 DB LEFT() 없이 JS로 파생
+    // ✅ year 파생
     const yearSet = new Set();
-    for (const ym of months) {
-      if (ym.length >= 4) yearSet.add(ym.slice(0, 4));
-    }
+    for (const ym of months) if (ym.length >= 4) yearSet.add(ym.slice(0, 4));
     const years = Array.from(yearSet).sort((a, b) => b.localeCompare(a));
 
-    // build year range (인덱스 있으면 빨라짐)
-    const [buildYears] = await pool.query(`
-      SELECT MIN(build_year) AS min_year, MAX(build_year) AS max_year
-      FROM re_trade_apt
-      WHERE build_year IS NOT NULL
+    // ✅ build year range: re_trade_meta
+    const [metaRows] = await pool.query(`
+      SELECT min_build_year AS min_year, max_build_year AS max_year
+      FROM re_trade_meta
+      WHERE id=1
+      LIMIT 1
     `);
+    const min_year = metaRows?.[0]?.min_year ?? null;
+    const max_year = metaRows?.[0]?.max_year ?? null;
 
-    // ✅ sidos는 상수 (데이터가 서울/인천/경기만 쌓이는 상황에서 가장 가벼움)
     const sidos = [
       { code: 'all', name: '전체' },
       { code: '11', name: '서울특별시' },
@@ -82,15 +78,9 @@ export default async function handler(req, res) {
 
     const out = {
       ok: true,
-      periods: {
-        month: months,
-        year: years,
-      },
+      periods: { month: months, year: years },
       sidos,
-      buildYearRange: {
-        min: buildYears?.[0]?.min_year ?? null,
-        max: buildYears?.[0]?.max_year ?? null,
-      },
+      buildYearRange: { min: min_year, max: max_year },
       pyeongBands: [
         { key: 'all', label: '전체' },
         { key: '10', label: '10평대' },
@@ -109,7 +99,7 @@ export default async function handler(req, res) {
       tops: [10, 20, 50, 100],
     };
 
-    cacheSet(cacheKey, out, 60 * 60 * 1000); // 1h
+    cacheSet(cacheKey, out, 60 * 60 * 1000);
     return res.json(out);
   } catch (e) {
     console.error(e);
