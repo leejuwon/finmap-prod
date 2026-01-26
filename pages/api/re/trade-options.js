@@ -18,51 +18,75 @@ function getPool() {
   return _pool;
 }
 
+// TTL 캐시
+const _cache = globalThis.__re_trade_options_cache || (globalThis.__re_trade_options_cache = new Map());
+function cacheGet(key) {
+  const v = _cache.get(key);
+  if (!v) return null;
+  if (Date.now() > v.exp) {
+    _cache.delete(key);
+    return null;
+  }
+  return v.data;
+}
+function cacheSet(key, data, ttlMs) {
+  _cache.set(key, { exp: Date.now() + ttlMs, data });
+}
+
 export default async function handler(req, res) {
   try {
     if (req.method !== 'GET') return res.status(405).json({ ok: false, error: 'Method Not Allowed' });
 
+    // HTTP 캐시
+    res.setHeader('Cache-Control', 'public, max-age=60, s-maxage=3600, stale-while-revalidate=86400');
+
+    const cacheKey = 'trade-options:v2';
+    const cached = cacheGet(cacheKey);
+    if (cached) return res.json(cached);
+
     const pool = getPool();
 
-    const [months] = await pool.query(`
-      SELECT DISTINCT deal_ym
+    // ✅ deal_ym 인덱스만 있으면 GROUP BY + ORDER BY가 매우 빨라짐
+    const [monthsRows] = await pool.query(`
+      SELECT deal_ym
       FROM re_trade_apt
       WHERE deal_ym IS NOT NULL AND deal_ym <> ''
+      GROUP BY deal_ym
       ORDER BY deal_ym DESC
       LIMIT 600
     `);
 
-    const [years] = await pool.query(`
-      SELECT DISTINCT LEFT(deal_ym, 4) AS deal_y
-      FROM re_trade_apt
-      WHERE deal_ym IS NOT NULL AND deal_ym <> ''
-      ORDER BY deal_y DESC
-      LIMIT 50
-    `);
+    const months = monthsRows.map(r => String(r.deal_ym)).filter(Boolean);
 
-    const [sidos] = await pool.query(`
-      SELECT DISTINCT LEFT(lawd_cd, 2) AS sido_code, sido_name
-      FROM re_trade_apt
-      WHERE sido_name IS NOT NULL AND sido_name <> ''
-      ORDER BY sido_code
-    `);
+    // ✅ years는 DB LEFT() 없이 JS로 파생
+    const yearSet = new Set();
+    for (const ym of months) {
+      if (ym.length >= 4) yearSet.add(ym.slice(0, 4));
+    }
+    const years = Array.from(yearSet).sort((a, b) => b.localeCompare(a));
 
+    // build year range (인덱스 있으면 빨라짐)
     const [buildYears] = await pool.query(`
       SELECT MIN(build_year) AS min_year, MAX(build_year) AS max_year
       FROM re_trade_apt
       WHERE build_year IS NOT NULL
     `);
 
-    return res.json({
+    // ✅ sidos는 상수 (데이터가 서울/인천/경기만 쌓이는 상황에서 가장 가벼움)
+    const sidos = [
+      { code: 'all', name: '전체' },
+      { code: '11', name: '서울특별시' },
+      { code: '28', name: '인천광역시' },
+      { code: '41', name: '경기도' },
+    ];
+
+    const out = {
       ok: true,
       periods: {
-        month: months.map((r) => String(r.deal_ym)),
-        year: years.map((r) => String(r.deal_y)),
+        month: months,
+        year: years,
       },
-      sidos: [
-        { code: 'all', name: '전체' },
-        ...sidos.map((r) => ({ code: String(r.sido_code), name: String(r.sido_name) })),
-      ],
+      sidos,
       buildYearRange: {
         min: buildYears?.[0]?.min_year ?? null,
         max: buildYears?.[0]?.max_year ?? null,
@@ -83,7 +107,10 @@ export default async function handler(req, res) {
         { key: 'avg_price_per_m2', label: '평균(㎡당)' },
       ],
       tops: [10, 20, 50, 100],
-    });
+    };
+
+    cacheSet(cacheKey, out, 60 * 60 * 1000); // 1h
+    return res.json(out);
   } catch (e) {
     console.error(e);
     return res.status(500).json({ ok: false, error: e?.message || 'Server Error' });

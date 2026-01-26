@@ -352,6 +352,7 @@ function filterAreasByScope(list, scopeObj) {
           const txHash = makeTxHash(reqLawdCd, it);
 
           // raw_json에 메타 박아두면 나중에 검증/재처리에 매우 유리
+          /*
           const raw = Object.assign({}, it, {
             _meta: {
               reqLawdCd,
@@ -361,6 +362,9 @@ function filterAreasByScope(list, scopeObj) {
               guName: guName,
             }
           });
+          */
+
+          const rawJson = null;
 
           await conn.execute(
             `
@@ -440,7 +444,7 @@ function filterAreasByScope(list, scopeObj) {
               bonbun, bubun,
               roadNm, roadNmCd, roadNmSeq, roadNmbCd, roadNmSggCd, roadNmBonbun, roadNmBubun,
 
-              cancelYN, cancelDate, JSON.stringify(raw),
+              cancelYN, cancelDate, rawJson,
             ]
           );
 
