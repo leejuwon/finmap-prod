@@ -86,7 +86,7 @@ INSERT INTO ${table} (
   apt_key,
   tx_count, sum_price,
   avg_price_per_m2, median_price_per_m2, std_price_per_m2,
-  avg_price, median_price,
+  avg_price, median_price, max_price,
   latest_deal_date, latest_apt_dong, latest_floor, latest_area_m2, latest_deal_amount_man,
   build_year, rgst_date
 )
@@ -97,7 +97,7 @@ SELECT
   a.apt_key,
   a.tx_count, a.sum_price,
   a.avg_price_per_m2, a.median_price_per_m2, a.std_price_per_m2,
-  a.avg_price, a.median_price,
+  a.avg_price, a.median_price, a.max_price,
   a.latest_deal_date, a.latest_apt_dong, a.latest_floor, a.latest_area_m2, a.latest_deal_amount_man,
   a.build_year, a.rgst_date
 FROM (
@@ -114,6 +114,7 @@ FROM (
 
     MAX(cnt) AS tx_count,
     CAST(ROUND(SUM(price_won), 0) AS UNSIGNED) AS sum_price,
+    CAST(MAX(price_won) AS UNSIGNED) AS max_price,
 
     ROUND(AVG(ppm2), 2) AS avg_price_per_m2,
     ROUND(AVG(CASE WHEN rn_ppm2 IN (FLOOR((cnt+1)/2), FLOOR((cnt+2)/2)) THEN ppm2 END), 2) AS median_price_per_m2,
@@ -207,6 +208,7 @@ async function ensureTables(conn) {
 
       avg_price BIGINT UNSIGNED NULL,
       median_price BIGINT UNSIGNED NULL,
+      max_price BIGINT UNSIGNED NULL,
 
       latest_deal_date DATE NULL,
       latest_apt_dong VARCHAR(30) NULL,
@@ -249,6 +251,7 @@ async function ensureTables(conn) {
 
       avg_price BIGINT UNSIGNED NULL,
       median_price BIGINT UNSIGNED NULL,
+      max_price BIGINT UNSIGNED NULL,
 
       latest_deal_date DATE NULL,
       latest_apt_dong VARCHAR(30) NULL,

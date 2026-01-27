@@ -229,6 +229,8 @@ function makeStatsTopSql({ table, whereSql, metricCol, orderDir }) {
         s.std_price_per_m2,
         s.avg_price,
         s.median_price,
+        s.max_price,
+        s.sum_price,
 
         s.latest_deal_date,
         s.latest_apt_dong,
@@ -397,7 +399,9 @@ function makeRawTopSql({ whereSql, metricCol, orderDir, withLatest }) {
         ROUND(STDDEV_SAMP(ppm2), 2) AS std_price_per_m2,
 
         CAST(ROUND(AVG(price_won), 0) AS UNSIGNED) AS avg_price,
-        CAST(ROUND(AVG(CASE WHEN rn_price IN (FLOOR((cnt+1)/2), FLOOR((cnt+2)/2)) THEN price_won END), 0) AS UNSIGNED) AS median_price
+        CAST(ROUND(AVG(CASE WHEN rn_price IN (FLOOR((cnt+1)/2), FLOOR((cnt+2)/2)) THEN price_won END), 0) AS UNSIGNED) AS median_price,
+        CAST(MAX(price_won) AS UNSIGNED) AS max_price,
+        CAST(SUM(price_won) AS UNSIGNED) AS sum_price
         ${withLatest ? `,
         MAX(CASE WHEN rn_latest=1 THEN deal_date END) AS latest_deal_date,
         MAX(CASE WHEN rn_latest=1 THEN apt_dong END) AS latest_apt_dong,
@@ -508,12 +512,13 @@ export default async function handler(req, res) {
 
     // ---- 1) stats 시도 ----
     const METRIC_MAP_STATS = {
-      tx_count: 's.tx_count',
-      sum_price: 'sum_price',
+      tx_count: 's.tx_count',      
       median_price: 's.median_price',
       avg_price: 's.avg_price',
+      max_price: 's.max_price',
+      sum_price: 's.sum_price',
       median_price_per_m2: 's.median_price_per_m2',
-      avg_price_per_m2: 's.avg_price_per_m2',
+      avg_price_per_m2: 's.avg_price_per_m2',                  
     };
     const metricColStats = METRIC_MAP_STATS[metric] || 's.avg_price';
 
@@ -542,11 +547,13 @@ export default async function handler(req, res) {
       source = 'raw';
 
       const METRIC_MAP_RAW = {
-        tx_count: 'tx_count',
+        tx_count: 'tx_count',        
         median_price: 'median_price',
         avg_price: 'avg_price',
+        max_price: 'max_price',
+        sum_price: 'sum_price',
         median_price_per_m2: 'median_price_per_m2',
-        avg_price_per_m2: 'avg_price_per_m2',
+        avg_price_per_m2: 'avg_price_per_m2',                
       };
       const metricColRaw = METRIC_MAP_RAW[metric] || 'avg_price';
 
@@ -598,11 +605,14 @@ export default async function handler(req, res) {
       }
     } else {
       const METRIC_MAP_RAW = {
-        tx_count: 'tx_count',
+        tx_count: 'tx_count',        
         median_price: 'median_price',
         avg_price: 'avg_price',
+        max_price: 'max_price',        
+        sum_price: 'sum_price',
         median_price_per_m2: 'median_price_per_m2',
-        avg_price_per_m2: 'avg_price_per_m2',
+        avg_price_per_m2: 'avg_price_per_m2',        
+        
       };
       const metricCol = METRIC_MAP_RAW[metric] || 'avg_price';
 
