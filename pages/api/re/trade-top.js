@@ -54,6 +54,97 @@ function computeQuality({ txCount, cvPpm2 }) {
   return { score, grade };
 }
 
+
+// -------------------------
+// Premium signals (heat / move / valuation)
+// -------------------------
+function clampNum(x, lo, hi) {
+  const n = Number(x);
+  if (!Number.isFinite(n)) return lo;
+  return Math.min(hi, Math.max(lo, n));
+}
+
+function scoreFromPct(pctVal, loPct, hiPct) {
+  // map pct(lo..hi) -> 0..100, null -> 50
+  if (pctVal == null) return 50;
+  const p = clampNum(pctVal, loPct, hiPct);
+  const t = (p - loPct) / (hiPct - loPct);
+  return Math.round(clampNum(t * 100, 0, 100));
+}
+
+function scoreFromDelta(deltaVal, lo, hi) {
+  if (deltaVal == null) return 50;
+  const d = clampNum(deltaVal, lo, hi);
+  const t = (d - lo) / (hi - lo);
+  return Math.round(clampNum(t * 100, 0, 100));
+}
+
+function heatLabelFromScore(score) {
+  const s = Number(score);
+  if (!Number.isFinite(s)) return 'Neutral';
+  if (s >= 80) return 'Hot';
+  if (s >= 65) return 'Warm';
+  if (s >= 45) return 'Neutral';
+  if (s >= 30) return 'Cool';
+  return 'Cold';
+}
+
+function thinThreshold(timeframe) {
+  return timeframe === 'year' ? 15 : 5;
+}
+
+function computeHeatSignal({ momPricePct, momTxPct, qualityScore, cvPpm2, txCount, timeframe }) {
+  // price momentum + activity + data quality
+  const priceScore = scoreFromPct(momPricePct, -8, 8);
+  const txScore = scoreFromPct(momTxPct, -40, 60);
+  const qScore = (qualityScore == null) ? 60 : clampNum(qualityScore, 0, 100);
+
+  let penalty = 0;
+  const cv = Number(cvPpm2);
+  if (Number.isFinite(cv)) {
+    if (cv > 0.35) penalty += 20;
+    else if (cv > 0.25) penalty += 10;
+  }
+
+  const tx = Number(txCount);
+  const th = thinThreshold(timeframe);
+  if (Number.isFinite(tx) && tx < th) penalty += 10;
+
+  const score = Math.round(clampNum(priceScore * 0.45 + txScore * 0.25 + qScore * 0.30 - penalty, 0, 100));
+  return { score, label: heatLabelFromScore(score), penalty };
+}
+
+function computeMoveQualityLabel({ momPricePct, momTxPct, qualityGrade, txCount, timeframe }) {
+  if (momPricePct == null || momTxPct == null) return 'N/A';
+
+  const priceUp = momPricePct > 1.0;
+  const priceDown = momPricePct < -1.0;
+  const txUp = momTxPct > 0;
+  const txDown = momTxPct < 0;
+
+  const grade = String(qualityGrade || '').toUpperCase();
+  const goodQ = grade === 'A' || grade === 'B';
+
+  const tx = Number(txCount);
+  const th = thinThreshold(timeframe);
+  if (priceUp && txUp && goodQ) return 'Healthy Breakout';
+  if (priceUp && (txDown || !goodQ)) return 'Thin Jump';
+  if (priceDown && txUp) return 'Distribution';
+  if (priceDown && txDown) return 'Quiet Drift';
+  return 'Mixed';
+}
+
+function valuationLabelFromPremium(premiumPct) {
+  if (premiumPct == null) return null;
+  const p = Number(premiumPct);
+  if (!Number.isFinite(p)) return null;
+  if (p >= 15) return 'Premium';
+  if (p >= 5) return 'Slight Premium';
+  if (p > -5) return 'Neutral';
+  if (p > -15) return 'Slight Discount';
+  return 'Discount';
+}
+
 function prevMonth(yyyymm) {
   const y = Number(yyyymm.slice(0, 4));
   const m = Number(yyyymm.slice(4, 6));
@@ -543,7 +634,7 @@ export default async function handler(req, res) {
     const yoyMap = new Map();
     for (const r of yoyRowsRaw) yoyMap.set(String(r.apt_key), r);
 
-    const rows = (curRowsRaw || []).map((r) => {
+    let rows = (curRowsRaw || []).map((r) => {
       const key = String(r.apt_key);
       const mom = momMap.get(key);
       const yoy = yoyMap.get(key);
@@ -553,6 +644,19 @@ export default async function handler(req, res) {
 
       const momMetricPct = mom ? pct(Number(r.value), Number(mom.value)) : null;
       const yoyMetricPct = yoy ? pct(Number(r.value), Number(yoy.value)) : null;
+
+      const momTxPct = mom ? pct(r.tx_count, mom.tx_count) : null;
+      const yoyTxPct = yoy ? pct(r.tx_count, yoy.tx_count) : null;
+
+      const momMedianPct = mom ? pct(r.median_price, mom.median_price) : null;
+      const yoyMedianPct = yoy ? pct(r.median_price, yoy.median_price) : null;
+      const momAvgPct = mom ? pct(r.avg_price, mom.avg_price) : null;
+      const yoyAvgPct = yoy ? pct(r.avg_price, yoy.avg_price) : null;
+
+      const momMedianPpm2Pct = mom ? pct(r.median_price_per_m2, mom.median_price_per_m2) : null;
+      const yoyMedianPpm2Pct = yoy ? pct(r.median_price_per_m2, yoy.median_price_per_m2) : null;
+      const momAvgPpm2Pct = mom ? pct(r.avg_price_per_m2, mom.avg_price_per_m2) : null;
+      const yoyAvgPpm2Pct = yoy ? pct(r.avg_price_per_m2, yoy.avg_price_per_m2) : null;
 
       const momMedianDeltaWon =
         mom && r.median_price != null && mom.median_price != null
@@ -583,6 +687,26 @@ export default async function handler(req, res) {
 
       const q = computeQuality({ txCount: r.tx_count, cvPpm2 });
 
+      const thinTh = thinThreshold(timeframe);
+      const thinMarket = Number(r.tx_count) < thinTh || q.grade === 'D';
+
+      const heat = computeHeatSignal({
+        momPricePct: momMedianPpm2Pct,
+        momTxPct: momTxPct,
+        qualityScore: q.score,
+        cvPpm2,
+        txCount: r.tx_count,
+        timeframe,
+      });
+
+      const moveQuality = computeMoveQualityLabel({
+        momPricePct: momMedianPpm2Pct,
+        momTxPct: momTxPct,
+        qualityGrade: q.grade,
+        txCount: r.tx_count,
+        timeframe,
+      });
+
       return {
         ...r,
 
@@ -595,18 +719,18 @@ export default async function handler(req, res) {
         mom_metric_pct: momMetricPct,
         yoy_metric_pct: yoyMetricPct,
 
-        mom_tx_count_pct: mom ? pct(r.tx_count, mom.tx_count) : null,
-        yoy_tx_count_pct: yoy ? pct(r.tx_count, yoy.tx_count) : null,
+        mom_tx_count_pct: momTxPct,
+        yoy_tx_count_pct: yoyTxPct,
 
-        mom_median_price_pct: mom ? pct(r.median_price, mom.median_price) : null,
-        yoy_median_price_pct: yoy ? pct(r.median_price, yoy.median_price) : null,
-        mom_avg_price_pct: mom ? pct(r.avg_price, mom.avg_price) : null,
-        yoy_avg_price_pct: yoy ? pct(r.avg_price, yoy.avg_price) : null,
+        mom_median_price_pct: momMedianPct,
+        yoy_median_price_pct: yoyMedianPct,
+        mom_avg_price_pct: momAvgPct,
+        yoy_avg_price_pct: yoyAvgPct,
 
-        mom_median_price_per_m2_pct: mom ? pct(r.median_price_per_m2, mom.median_price_per_m2) : null,
-        yoy_median_price_per_m2_pct: yoy ? pct(r.median_price_per_m2, yoy.median_price_per_m2) : null,
-        mom_avg_price_per_m2_pct: mom ? pct(r.avg_price_per_m2, mom.avg_price_per_m2) : null,
-        yoy_avg_price_per_m2_pct: yoy ? pct(r.avg_price_per_m2, yoy.avg_price_per_m2) : null,
+        mom_median_price_per_m2_pct: momMedianPpm2Pct,
+        yoy_median_price_per_m2_pct: yoyMedianPpm2Pct,
+        mom_avg_price_per_m2_pct: momAvgPpm2Pct,
+        yoy_avg_price_per_m2_pct: yoyAvgPpm2Pct,
 
         mom_median_price_delta_won: momMedianDeltaWon,
         yoy_median_price_delta_won: yoyMedianDeltaWon,
@@ -616,8 +740,72 @@ export default async function handler(req, res) {
         cv_price_per_m2: cvPpm2,
         quality_score: q.score,
         quality_grade: q.grade,
+
+        // ✅ Premium fields
+        heat_score: heat.score,
+        heat_label: heat.label,
+        heat_penalty: heat.penalty,
+        move_quality_label: moveQuality,
+        thin_market_flag: thinMarket,
+        thin_market_threshold: thinTh,
       };
     });
+
+    // ✅ Valuation context: "this complex vs its dong median" (month only / non-Gyeonggi)
+    // - lightweight "premium" proxy users can understand immediately.
+    if (timeframe === 'month' && rows.length > 0) {
+      const pairs = [];
+      const seen = new Set();
+      for (const r of rows) {
+        if (String(r.sido_code) === '41') continue; // skip Gyeonggi due to gu/dong ambiguity
+        const lawd = String(r.lawd_cd || '');
+        const dong = String(r.dong_name || '');
+        if (!lawd || !dong) continue;
+        const k = lawd + '|' + dong;
+        if (seen.has(k)) continue;
+        seen.add(k);
+        pairs.push([lawd, dong]);
+      }
+
+      if (pairs.length > 0) {
+        const inSql = pairs.map(() => '(?, ?)').join(', ');
+        const params = [period];
+        for (const [lawd, dong] of pairs) {
+          params.push(lawd, dong);
+        }
+
+        const sql = `
+          SELECT lawd_cd, dong_name, median_price_per_m2 AS area_median_price_per_m2
+          FROM re_stat_month_dong
+          WHERE deal_ym = ?
+            AND (lawd_cd, dong_name) IN (${inSql})
+        `;
+
+        const [areaRows] = await pool.query(sql, params);
+        const areaMap = new Map();
+        for (const a of (areaRows || [])) {
+          const k = String(a.lawd_cd) + '|' + String(a.dong_name);
+          const v = Number(a.area_median_price_per_m2);
+          if (Number.isFinite(v)) areaMap.set(k, v);
+        }
+
+        rows = rows.map((r) => {
+          const k = String(r.lawd_cd) + '|' + String(r.dong_name);
+          const areaMedian = areaMap.get(k);
+          const base = Number(areaMedian);
+          const cur = Number(r.median_price_per_m2);
+          const premiumPct = (Number.isFinite(base) && base !== 0 && Number.isFinite(cur))
+            ? ((cur - base) / base) * 100
+            : null;
+          return {
+            ...r,
+            area_median_price_per_m2: (areaMedian != null ? areaMedian : null),
+            premium_vs_area_pct: premiumPct,
+            valuation_label: valuationLabelFromPremium(premiumPct),
+          };
+        });
+      }
+    }
 
     const out = {
       ok: true,

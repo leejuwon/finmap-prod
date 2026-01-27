@@ -19,6 +19,46 @@ const METRICS = new Set([
   "tx_count",
 ]);
 
+
+function clampNum(x, lo, hi) {
+  const n = Number(x);
+  if (!Number.isFinite(n)) return lo;
+  return Math.min(hi, Math.max(lo, n));
+}
+
+function scoreFromPct(pctVal, loPct, hiPct) {
+  // map pct(lo..hi) -> 0..100, null -> 50
+  if (pctVal == null) return 50;
+  const p = clampNum(pctVal, loPct, hiPct);
+  const t = (p - loPct) / (hiPct - loPct);
+  return Math.round(clampNum(t * 100, 0, 100));
+}
+
+function scoreFromDelta(deltaVal, lo, hi) {
+  if (deltaVal == null) return 50;
+  const d = clampNum(deltaVal, lo, hi);
+  const t = (d - lo) / (hi - lo);
+  return Math.round(clampNum(t * 100, 0, 100));
+}
+
+function heatLabelFromScore(score) {
+  const s = Number(score);
+  if (!Number.isFinite(s)) return 'Neutral';
+  if (s >= 80) return 'Hot';
+  if (s >= 65) return 'Warm';
+  if (s >= 45) return 'Neutral';
+  if (s >= 30) return 'Cool';
+  return 'Cold';
+}
+
+function computeDongHeatScore({ momPct, momRankDelta, yoyPct }) {
+  const priceScore = scoreFromPct(momPct, -3, 3);
+  const rankScore = scoreFromDelta(momRankDelta, -20, 20);
+  const yoyScore = scoreFromPct(yoyPct, -8, 8);
+  const score = Math.round(priceScore * 0.50 + rankScore * 0.30 + yoyScore * 0.20);
+  return { score, label: heatLabelFromScore(score) };
+}
+
 export default async function handler(req, res) {
   try {
     const scope = String(req.query.scope || "11"); // 서울=11
@@ -96,10 +136,8 @@ export default async function handler(req, res) {
       const yoyRankDelta =
         r.yoy_rank != null ? Number(r.yoy_rank) - Number(r.rank_no) : null;
 
-      // 간단 “열기 배지” 룰(초기)
-      let heat = "Neutral";
-      if (momPct != null && momPct > 1 && momRankDelta != null && momRankDelta > 0) heat = "Hot";
-      else if (momPct != null && momPct < -1) heat = "Cool";
+      const heatSig = computeDongHeatScore({ momPct, momRankDelta, yoyPct });
+      const heat = heatSig.label;
 
       return {
         rank: Number(r.rank_no),
@@ -112,8 +150,20 @@ export default async function handler(req, res) {
         momRankDelta,
         yoyRankDelta,
         heat,
+        heat_score: heatSig.score,
+        heat_label: heatSig.label,
       };
     });
+
+    const gainers = [...items]
+      .filter((i) => i.momPct != null && Number.isFinite(i.momPct))
+      .sort((a, b) => b.momPct - a.momPct)
+      .slice(0, 10);
+
+    const losers = [...items]
+      .filter((i) => i.momPct != null && Number.isFinite(i.momPct))
+      .sort((a, b) => a.momPct - b.momPct)
+      .slice(0, 10);
 
     res.status(200).json({
       scope,
@@ -123,6 +173,7 @@ export default async function handler(req, res) {
       yoyYm,
       count: items.length,
       items,
+      movers: { gainers, losers },
     });
   } catch (e) {
     console.error(e);

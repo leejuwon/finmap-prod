@@ -133,6 +133,7 @@ const TEXT = {
       '단지 집계: 선택 기간 내 단지별 거래값(총액/㎡당)의 평균·대표(중앙값).',
       '평단가(만원/평): (원/㎡) × 3.305785 ÷ 10,000.',
       '금액 표기: 억(=100,000,000원) 단위.',
+      '열기(Heat): 대표평단가(전월%) + 거래량(전월%) + 신뢰도를 합산한 0~100 점수입니다.',
       '주의: 거래량이 적으면(신뢰도 C/D) 전월/전년 변화율은 왜곡될 수 있어요.',
     ],
     cols: {
@@ -151,6 +152,9 @@ const TEXT = {
       medPy: '대표평단가',
       avgPy: '평균평단가',
       quality: '신뢰도',
+      heat: '열기',
+      move: '무브',
+      premium: '동 대비',
       medDeltaMom: '대표Δ(전월)',
       medDeltaYoy: '대표Δ(전년)',
       rankMom: '순위Δ(전월)',
@@ -218,6 +222,9 @@ const TEXT = {
       medPy: 'Typical /pyeong',
       avgPy: 'Avg /pyeong',
       quality: 'Quality',
+      heat: 'Heat',
+      move: 'Move',
+      premium: 'vs Area',
       medDeltaMom: 'Typical Δ (MoM)',
       medDeltaYoy: 'Typical Δ (YoY)',
       rankMom: 'RankΔ (MoM)',
@@ -448,7 +455,7 @@ export default function RealEstatePage() {
     return `${row.apt_name}${dong}${fl}`;
   }
 
-  const tableMinWidth = showAdvanced ? 'min-w-[2200px]' : 'min-w-[1600px]';
+  const tableMinWidth = showAdvanced ? 'min-w-[2500px]' : 'min-w-[1900px]';
 
   // --- real-estate.js 안에 (컴포넌트 return 위쪽) 추가: 작은 UI 컴포넌트들 ---
   function toneByNumber(v) {
@@ -492,6 +499,99 @@ export default function RealEstatePage() {
     return <Chip tone={tone}>{text}</Chip>;
   }
 
+
+  function localizeHeatLabel(label) {
+    if (lang === 'en') return label || '';
+    const m = {
+      Hot: '과열',
+      Warm: '강세',
+      Neutral: '중립',
+      Cool: '약세',
+      Cold: '침체',
+    };
+    return m[label] || (label || '');
+  }
+
+  function toneByHeatLabel(label) {
+    return label === 'Hot' ? 'bg-emerald-50 text-emerald-700'
+      : label === 'Warm' ? 'bg-sky-50 text-sky-700'
+      : label === 'Neutral' ? 'bg-slate-100 text-slate-700'
+      : label === 'Cool' ? 'bg-amber-50 text-amber-700'
+      : label === 'Cold' ? 'bg-rose-50 text-rose-700'
+      : 'bg-slate-100 text-slate-700';
+  }
+
+  function HeatChip({ row }) {
+    const score = row?.heat_score != null ? Number(row.heat_score) : null;
+    const label = row?.heat_label || null;
+    if (!label && score == null) return null;
+    const base = (lang === 'en') ? 'Heat' : t.cols.heat;
+    const labelText = localizeHeatLabel(label);
+    const text = `${base} ${labelText}${score != null && Number.isFinite(score) ? ` ${score}` : ''}`;
+    return <Chip tone={toneByHeatLabel(label)}>{text}</Chip>;
+  }
+
+  function localizeMoveQuality(label) {
+    if (!label) return '';
+    if (lang === 'en') return label;
+    const m = {
+      'Healthy Breakout': '건강한 돌파',
+      'Thin Jump': '얇은 상승',
+      'Distribution': '분산(거래↑·가격↓)',
+      'Quiet Drift': '조용한 하락',
+      'Mixed': '혼조',
+      'N/A': '정보없음',
+    };
+    return m[label] || label;
+  }
+
+  function toneByMoveQuality(label) {
+    return label === 'Healthy Breakout' ? 'bg-emerald-50 text-emerald-700'
+      : label === 'Thin Jump' ? 'bg-amber-50 text-amber-700'
+      : label === 'Distribution' ? 'bg-rose-50 text-rose-700'
+      : label === 'Quiet Drift' ? 'bg-slate-100 text-slate-700'
+      : label === 'Mixed' ? 'bg-sky-50 text-sky-700'
+      : 'bg-slate-100 text-slate-700';
+  }
+
+  function MoveQualityChip({ row }) {
+    const label = row?.move_quality_label || null;
+    if (!label || label === 'N/A') return null;
+    const base = (lang === 'en') ? 'Move' : t.cols.move;
+    return <Chip tone={toneByMoveQuality(label)}>{base} {localizeMoveQuality(label)}</Chip>;
+  }
+
+  function localizeValuationLabel(label) {
+    if (!label) return '';
+    if (lang === 'en') return label;
+    const m = {
+      Premium: '프리미엄',
+      'Slight Premium': '약프리미엄',
+      Neutral: '중립',
+      'Slight Discount': '약할인',
+      Discount: '할인',
+    };
+    return m[label] || label;
+  }
+
+  function PremiumChip({ row }) {
+    const pct = row?.premium_vs_area_pct;
+    if (pct == null || !Number.isFinite(Number(pct))) return null;
+    const label = row?.valuation_label || null;
+    const base = (lang === 'en') ? 'vs Area' : t.cols.premium;
+    const text = `${base} ${fmtPct(pct)}${label ? ` · ${localizeValuationLabel(label)}` : ''}`;
+    return <Chip tone={toneByNumber(pct)}>{text}</Chip>;
+  }
+
+  function ThinMarketChip({ row }) {
+    if (!row?.thin_market_flag) return null;
+    const th = row?.thin_market_threshold;
+    const text = (lang === 'en')
+      ? `Thin (tx < ${th ?? '-'})`
+      : `표본주의(거래 < ${th ?? '-'})`;
+    return <Chip tone="bg-rose-50 text-rose-700">{text}</Chip>;
+  }
+
   function ResultCard({ r, idx }) {
     const areaText = renderArea(r);
     const aptText = renderApt(r);
@@ -531,6 +631,7 @@ export default function RealEstatePage() {
           </div>
           <div className="flex flex-col items-end gap-2 shrink-0">
             <QualityChip row={r} />
+            <HeatChip row={r} />
             <div className="text-xs text-slate-500">
               {t.metrics.tx_count}: {r.tx_count?.toLocaleString?.() ?? r.tx_count}
             </div>
@@ -545,6 +646,9 @@ export default function RealEstatePage() {
         </div>
 
         <div className="mt-3 flex flex-wrap gap-2">
+          <MoveQualityChip row={r} />
+          <PremiumChip row={r} />
+          <ThinMarketChip row={r} />
           <Chip tone={toneByNumber(r.mom_rank_delta)}>{t.cols.rankMom} {momRank}</Chip>
           <Chip tone={toneByNumber(r.yoy_rank_delta)}>{t.cols.rankYoy} {yoyRank}</Chip>
 
@@ -792,6 +896,9 @@ export default function RealEstatePage() {
 
                     <th className="py-3 pr-3">{t.cols.medPy}</th>
                     <th className="py-3 pr-3">{t.cols.quality}</th>
+                    <th className="py-3 pr-3">{t.cols.heat}</th>
+                    <th className="py-3 pr-3">{t.cols.move}</th>
+                    <th className="py-3 pr-3">{t.cols.premium}</th>
 
                     {showAdvanced && (
                       <>
@@ -837,7 +944,16 @@ export default function RealEstatePage() {
  
 
                       <td className="py-3 pr-3">{fmtManPerPyeongFromWonPerM2(r.median_price_per_m2, lang)}</td>
-                      <td className="py-3 pr-3"><QualityChip row={r} /></td>
+                      <td className="py-3 pr-3">
+                        <div className="flex flex-col gap-1">
+                          <QualityChip row={r} />
+                          <ThinMarketChip row={r} />
+                        </div>
+                      </td>
+
+                      <td className="py-3 pr-3"><HeatChip row={r} /></td>
+                      <td className="py-3 pr-3"><MoveQualityChip row={r} /></td>
+                      <td className="py-3 pr-3"><PremiumChip row={r} /></td>
 
                       {showAdvanced && (
                         <>
@@ -858,7 +974,7 @@ export default function RealEstatePage() {
 
                   {!rows.length && !loading && (
                     <tr>
-                      <td colSpan={showAdvanced ? 24 : 14} className="py-10 text-center text-slate-500">
+                      <td colSpan={showAdvanced ? 27 : 17} className="py-10 text-center text-slate-500">
                         {lang === 'en' ? 'No data' : '데이터 없음'}
                       </td>
                     </tr>
