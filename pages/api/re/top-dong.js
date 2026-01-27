@@ -1,5 +1,5 @@
 // pages/api/re/top-dong.js
-import { dbQuery } from "../../../lib/db";
+const { dbQuery } = require("../../../lib/db");
 
 function ymMinus(ym, months) {
   const y = Number(ym.slice(0, 4));

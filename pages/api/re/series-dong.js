@@ -1,5 +1,5 @@
 // pages/api/re/series-dong.js
-import { dbQuery } from "../../../lib/db";
+const { dbQuery } = require("../../../lib/db");
 
 const COLS = new Set([
   "tx_count",

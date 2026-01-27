@@ -1,22 +1,7 @@
 // pages/api/re/trade-top.js
 'use strict';
 
-import mysql from 'mysql2/promise';
-
-let _pool;
-function getPool() {
-  if (_pool) return _pool;
-  _pool = mysql.createPool({
-    host: process.env.DB_HOST || '127.0.0.1',
-    port: Number(process.env.DB_PORT || 3306),
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    connectionLimit: 10,
-    charset: 'utf8mb4',
-  });
-  return _pool;
-}
+const { pool: dbPool } = require('../../../lib/db');
 
 // ---- TTL 캐시 ----
 const _cache = globalThis.__re_trade_top_cache || (globalThis.__re_trade_top_cache = new Map());
@@ -362,7 +347,7 @@ export default async function handler(req, res) {
         : 'public, max-age=20, s-maxage=120, stale-while-revalidate=86400'
     );
 
-    const pool = getPool();
+    const pool = dbPool;
 
     const sido = String(req.query.sido || 'all').trim(); // all|11|28|41
     let lawd = String(req.query.lawd || '').trim();
@@ -433,6 +418,7 @@ export default async function handler(req, res) {
     // ---- 1) stats 시도 ----
     const METRIC_MAP_STATS = {
       tx_count: 's.tx_count',
+      sum_price: 'sum_price',
       median_price: 's.median_price',
       avg_price: 's.avg_price',
       median_price_per_m2: 's.median_price_per_m2',

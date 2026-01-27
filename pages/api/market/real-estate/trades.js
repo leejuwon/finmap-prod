@@ -108,6 +108,12 @@ export default function RealEstateTradeTopPage() {
     }
   }
 
+  // ✅ 정렬/지표 바꾸면 자동으로 다시 조회 (프리미엄 UX)
+  useEffect(() => {
+    if (!ready) return; // 옵션 로딩 완료 플래그가 있다면 사용
+    runSearch();
+  }, [topBy, sort, timeframe, period, sido, gu, lawd, areaBand, top]);
+
   // 시군구 dropdown: 경기도는 "도시 전체 / 도시 구"가 섞여 있음 → lawd/gu를 함께 세팅
   function onSelectArea(v) {
     if (!v) {
@@ -266,6 +272,9 @@ export default function RealEstateTradeTopPage() {
       <div className="mt-5 text-xs text-slate-500">
         팁: 202501이면 이전 기간은 202412(월간)로 비교합니다. 이전 데이터가 없으면 이전(%) / 순위변동이 “-”로 나올 수 있어요.
       </div>
+      <div className="mt-2 text-xs text-slate-500">
+        거래량(tx_count)은 선택한 기간·평형·지역·년식 조건을 만족하는 <b>해당 단지의 실거래 “건수”</b>입니다. (취소거래 제외)
+      </div>
 
       <div className="mt-4 overflow-x-auto">
         <table className="min-w-[1100px] w-full text-sm">
@@ -279,7 +288,12 @@ export default function RealEstateTradeTopPage() {
               <th className="py-2 pr-3 w-32">지표값</th>
               <th className="py-2 pr-3 w-24">이전(%)</th>
               <th className="py-2 pr-3 w-24">순위변동</th>
-              <th className="py-2 pr-3 w-20">거래량</th>
+              <th
+                className="py-2 pr-3 w-20"
+                title="거래량(tx_count)=선택한 기간·평형·지역·년식 조건을 만족하는 해당 단지의 실거래 건수(취소거래 제외)"
+              >
+                거래량
+              </th>
             </tr>
           </thead>
           <tbody>

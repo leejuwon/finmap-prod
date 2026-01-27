@@ -1,22 +1,7 @@
 // pages/api/re/top-apt.js
-import mysql from "mysql2/promise";
+import { pool as dbPool } from "../../../lib/db";
 
 const PY = 3.305785; // 1평 ≈ 3.305785㎡
-
-let _pool;
-function getPool() {
-  if (_pool) return _pool;
-  _pool = mysql.createPool({
-    host: process.env.DB_HOST || "127.0.0.1",
-    port: Number(process.env.DB_PORT || 3306),
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    connectionLimit: 10,
-    charset: "utf8mb4",
-  });
-  return _pool;
-}
 
 function s(v, def = "") {
   return v === undefined || v === null ? def : String(v);
@@ -237,7 +222,7 @@ function metricValue(row, metric, prevRow, yoyRow) {
 
 export default async function handler(req, res) {
   try {
-    const pool = getPool();
+    const pool = dbPool;
 
     const timeframe = s(req.query.timeframe, "month"); // month|year
     const period = s(req.query.period, "");            // 202501 or 2025

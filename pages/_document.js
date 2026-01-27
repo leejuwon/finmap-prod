@@ -26,12 +26,7 @@ class MyDocument extends Document {
 
     return (
       <Html lang={htmlLang}>
-        <Head>
-          {/* ✅ Responsive 필수: 모바일 레이아웃/폰트 일관성 확보 */}
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, viewport-fit=cover"
-          />
+        <Head>          
           {/* ✅ AdSense 사이트 검증용 메타 태그 */}
           <meta
             name="google-adsense-account"

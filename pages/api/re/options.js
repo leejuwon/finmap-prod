@@ -1,6 +1,6 @@
 'use strict';
 
-const mysql = require('mysql2/promise');
+const { pool } = require('../../../lib/db');
 
 function pickLang(req) {
   const q = (req.query && (req.query.lang || req.query.locale)) || '';
@@ -44,19 +44,10 @@ async function handler(req, res) {
     }
   }
 
-  let conn;
-  try {
-    conn = await mysql.createConnection({
-      host: process.env.DB_HOST,
-      port: Number(process.env.DB_PORT || 3306),
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
-      charset: 'utf8mb4',
-    });
+  try {    
 
     // 1) 시도 목록: 실제 데이터에 존재하는 시도만
-    const [sidoRows] = await conn.execute(`
+    const [sidoRows] = await pool.execute(`
       SELECT DISTINCT LEFT(lawd_cd, 2) AS sido_code
       FROM re_trade_apt
       WHERE lawd_cd IS NOT NULL AND lawd_cd <> ''
@@ -78,7 +69,7 @@ async function handler(req, res) {
     ];
 
     // 2) 기간(월/년)
-    const [monthRows] = await conn.execute(`
+    const [monthRows] = await pool.execute(`
       SELECT DISTINCT deal_ym
       FROM re_trade_apt
       WHERE deal_ym IS NOT NULL AND deal_ym <> ''
@@ -95,7 +86,7 @@ async function handler(req, res) {
     // 3) 시군구 목록(기본 fallback 용) - 여기서는 영문 표기가 없으니 en은 ko를 그대로
     const sigunguBySido = {};
     for (const c of codes) {
-      const [gRows] = await conn.execute(
+      const [gRows] = await pool.execute(
         `
         SELECT DISTINCT lawd_cd, sigungu_name
         FROM re_trade_apt
@@ -129,9 +120,7 @@ async function handler(req, res) {
   } catch (e) {
     res.statusCode = 500;
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
-    res.end(JSON.stringify({ ok: false, error: e.message }));
-  } finally {
-    try { if (conn) await conn.end(); } catch (e) {}
+    res.end(JSON.stringify({ ok: false, error: e.message }));  
   }
 }
 

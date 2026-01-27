@@ -573,8 +573,6 @@ export default function RealEstatePage() {
         about={{ "@type": "Place", name: "South Korea" }}
         keywords={lang === "en" ? "Korea real estate, apartment transactions" : "한국 부동산, 아파트 실거래"}
       />
-    <div className="w-full px-4 py-6">      
-      <div className="w-full max-w-6xl mx-auto">
         <div className="card">
           <h1 className="text-2xl font-bold">{t.title}</h1>
           <p className="text-slate-600 mt-1">{t.subtitle}</p>
@@ -841,9 +839,7 @@ export default function RealEstatePage() {
             </div>
             )}
           </div>
-        </div>
-      </div>
-    </div>
+        </div>      
     </>
   );
 }

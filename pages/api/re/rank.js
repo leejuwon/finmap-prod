@@ -257,7 +257,8 @@ export default async function handler(req, res) {
 
     const curParams = [...commonParams, ...curPeriod.params, topN];
 
-    const [curRows] = await dbQuery(curSql, curParams);
+    //const [curRows] = await dbQuery(curSql, curParams);
+    const curRows = await dbQuery(curSql, curParams);
 
     // prev 없으면 cur만 리턴
     let prevMap = new Map();
@@ -279,7 +280,8 @@ export default async function handler(req, res) {
       `;
 
       const prevParams = [...commonParams, ...prevPeriodWhere.params];
-      const [prevRows] = await dbQuery(prevSql, prevParams);
+      //const [prevRows] = await dbQuery(prevSql, prevParams);
+      const prevRows = await dbQuery(prevSql, prevParams);
 
       prevRows.forEach(r => {
         const key =

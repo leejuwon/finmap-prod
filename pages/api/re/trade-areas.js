@@ -1,22 +1,7 @@
 // pages/api/re/trade-areas.js
 'use strict';
 
-import mysql from 'mysql2/promise';
-
-let _pool;
-function getPool() {
-  if (_pool) return _pool;
-  _pool = mysql.createPool({
-    host: process.env.DB_HOST || '127.0.0.1',
-    port: Number(process.env.DB_PORT || 3306),
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    connectionLimit: 10,
-    charset: 'utf8mb4',
-  });
-  return _pool;
-}
+const { pool: dbPool } = require('../../../lib/db');
 
 // TTL 캐시
 const _cache = globalThis.__re_trade_areas_cache || (globalThis.__re_trade_areas_cache = new Map());
@@ -54,7 +39,7 @@ export default async function handler(req, res) {
     const cached = cacheGet(cacheKey);
     if (cached) return res.json(cached);
 
-    const pool = getPool();
+    const pool = dbPool;
 
     const [rows] = await pool.query(
       `
