@@ -12,13 +12,7 @@ function loadEnv() {
         ? path.resolve(process.cwd(), '.env.production')
         : path.resolve(process.cwd(), '.env.local');
 
-    // ✅ 중요: 기존 환경변수(DB_HOST/DB_PORT 등)가 잡혀있어도 .env 값을 우선 적용
-    if (fs.existsSync(envPath)) {
-      dotenv.config({ path: envPath, override: true });
-      console.log(`[env] loaded ${path.basename(envPath)} (override=true)`);
-    } else {
-      console.log(`[env] not found: ${envPath}`);
-    }
+    if (fs.existsSync(envPath)) dotenv.config({ path: envPath });
   } catch (e) {}
 }
 loadEnv();
@@ -53,13 +47,11 @@ function parseCancelYN(v) {
   return (t === 'O' || t === 'Y' || t === '1') ? 'Y' : null;
 }
 
-// DATE 컬럼용 'YYYY-MM-DD'
 function parseAnyDateToSqlDate(v) {
   if (v == null) return null;
   const t = String(v).trim();
   if (!t) return null;
 
-  // "25.05.17"
   let m = t.match(/^(\d{2})\.(\d{2})\.(\d{2})$/);
   if (m) {
     const yy = Number(m[1]);
@@ -67,13 +59,11 @@ function parseAnyDateToSqlDate(v) {
     return `${year}-${m[2]}-${m[3]}`;
   }
 
-  // "20250517" / "2025-05-17" / "2025.05.17" / "2025/05/17"
   const digits = t.replace(/\D/g, '');
   if (digits.length === 8) {
     return `${digits.slice(0, 4)}-${digits.slice(4, 6)}-${digits.slice(6, 8)}`;
   }
 
-  // "250517" (YYMMDD)
   if (digits.length === 6) {
     const yy = Number(digits.slice(0, 2));
     const year = yy >= 70 ? 1900 + yy : 2000 + yy;
@@ -116,13 +106,11 @@ function canonicalLawdCd(sidoName, reqLawdCd) {
   if (sidoName === '경기도') {
     return s.endsWith('0') ? s : `${s.slice(0, 4)}0`;
   }
-  // 서울/인천은 그대로 저장
   return s;
 }
 
-// ✅ 최신 법정구 목록(유저 제공 기준) -> 구조화
+// ✅ 최신 법정구 목록(유저 제공 기준)
 const AREAS = [
-  // --- 서울특별시 ---
   { sido: '서울특별시', sigungu: '종로구', gu: null, lawd: '11110' },
   { sido: '서울특별시', sigungu: '중구', gu: null, lawd: '11140' },
   { sido: '서울특별시', sigungu: '용산구', gu: null, lawd: '11170' },
@@ -149,7 +137,6 @@ const AREAS = [
   { sido: '서울특별시', sigungu: '송파구', gu: null, lawd: '11710' },
   { sido: '서울특별시', sigungu: '강동구', gu: null, lawd: '11740' },
 
-  // --- 인천광역시 ---
   { sido: '인천광역시', sigungu: '중구', gu: null, lawd: '28110' },
   { sido: '인천광역시', sigungu: '동구', gu: null, lawd: '28140' },
   { sido: '인천광역시', sigungu: '미추홀구', gu: null, lawd: '28177' },
@@ -161,7 +148,6 @@ const AREAS = [
   { sido: '인천광역시', sigungu: '강화군', gu: null, lawd: '28710' },
   { sido: '인천광역시', sigungu: '옹진군', gu: null, lawd: '28720' },
 
-  // --- 경기도 ---
   { sido: '경기도', sigungu: '수원시', gu: '장안구', lawd: '41111' },
   { sido: '경기도', sigungu: '수원시', gu: '권선구', lawd: '41113' },
   { sido: '경기도', sigungu: '수원시', gu: '팔달구', lawd: '41115' },
@@ -238,32 +224,14 @@ function filterAreasByScope(list, scopeObj) {
   });
 }
 
-async function assertHasColumn(conn, table, col) {
-  const [rows] = await conn.query(
-    `
-    SELECT 1 AS ok
-    FROM information_schema.columns
-    WHERE table_schema = DATABASE()
-      AND table_name = ?
-      AND column_name = ?
-    LIMIT 1
-    `,
-    [table, col]
-  );
-  if (!rows || rows.length === 0) {
-    const [ci] = await conn.query('SELECT DATABASE() db, @@hostname host, @@port port, USER() user');
-    throw new Error(`Missing column ${table}.${col} on ${ci[0].host}:${ci[0].port}/${ci[0].db} (user=${ci[0].user})`);
-  }
-}
-
 (async () => {
   const fromYm = arg('from', '202401');
   const toYm = arg('to', '202401');
-  const scope = arg('scope', 'all'); // all | seoul | incheon | gyeonggi | seoul,incheon ...
-  const throttleMs = Number(arg('throttle', '120')); // 요청 간 sleep
+  const scope = arg('scope', 'all');
+  const throttleMs = Number(arg('throttle', '120'));
   const months = buildYmList(fromYm, toYm);
 
-  const debugApiTotal = String(arg('apiTotal', '0')) === '1'; // --apiTotal=1 일 때만 totalCount 로깅
+  const debugApiTotal = String(arg('apiTotal', '0')) === '1';
 
   if (!process.env.MOLIT_SERVICE_KEY) throw new Error('MOLIT_SERVICE_KEY is missing');
   if (!process.env.MOLIT_APT_TRADE_DETAIL_URL) throw new Error('MOLIT_APT_TRADE_DETAIL_URL is missing');
@@ -281,28 +249,40 @@ async function assertHasColumn(conn, table, col) {
     charset: 'utf8mb4',
   });
 
-  // ✅ 실제 접속한 DB를 강제 로그(“다른 DB 붙는 문제” 즉시 확인 가능)
-  const [connInfo] = await conn.query('SELECT DATABASE() db, @@hostname host, @@port port, USER() user');
-  console.log('[conn]', connInfo[0]);
+  await conn.execute(`
+    CREATE TABLE IF NOT EXISTS re_trade_deal_ym (
+      deal_ym CHAR(6) NOT NULL PRIMARY KEY
+    ) ENGINE=InnoDB
+  `);
+  await conn.execute(`
+    CREATE TABLE IF NOT EXISTS re_trade_meta (
+      id TINYINT NOT NULL PRIMARY KEY,
+      min_build_year SMALLINT NULL,
+      max_build_year SMALLINT NULL,
+      updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB
+  `);
+  await conn.execute(`INSERT IGNORE INTO re_trade_meta (id) VALUES (1)`);
 
-  // ✅ 스키마 핵심 컬럼 검증 (테이블 생성/insert는 요청대로 여기서 안함)
-  await assertHasColumn(conn, 're_trade_apt', 'req_lawd_cd');
-  await assertHasColumn(conn, 're_trade_apt', 'lawd_cd');
-  await assertHasColumn(conn, 're_trade_apt', 'deal_ym');
+  await conn.execute(`
+    CREATE TABLE IF NOT EXISTS re_trade_area_dim (
+      sido_code CHAR(2) NOT NULL,
+      lawd_cd CHAR(5) NOT NULL,
+      sigungu_name VARCHAR(30) NOT NULL,
+      gu_name VARCHAR(30) NOT NULL DEFAULT '',
+      PRIMARY KEY (sido_code, lawd_cd, gu_name),
+      KEY idx_area_sido (sido_code, sigungu_name, gu_name)
+    ) ENGINE=InnoDB
+  `);
 
   const sqlInsYm = `INSERT IGNORE INTO re_trade_deal_ym (deal_ym) VALUES (?)`;
-
-  // ✅ 중요: re_trade_area_dim 컬럼에 req_lawd_cd 넣지 말 것 (trade-areas.js도 사용 안함)
-  const sqlInsArea = `
-    INSERT IGNORE INTO re_trade_area_dim (sido_code, lawd_cd, sigungu_name, gu_name)
-    VALUES (?,?,?,?)
-  `;
+  const sqlInsArea = `INSERT IGNORE INTO re_trade_area_dim (sido_code, lawd_cd, sigungu_name, gu_name) VALUES (?,?,?,?)`;
 
   const scopeObj = parseScope(scope);
   const areas = filterAreasByScope(AREAS, scopeObj);
 
   console.log(`[start] scope=${scope} months=${months.join(',')} areas=${areas.length}`);
-  console.log(`[db-env] ${process.env.DB_HOST}:${process.env.DB_PORT || 3306} / ${process.env.DB_NAME}`);
+  console.log(`[db] ${process.env.DB_HOST}:${process.env.DB_PORT || 3306} / ${process.env.DB_NAME}`);
 
   let totalFetch = 0;
   let totalItems = 0;
@@ -325,15 +305,14 @@ async function assertHasColumn(conn, table, col) {
       const sigunguName = a.sigungu;
       const guName = a.gu ? String(a.gu).trim() : '';
 
-      // ✅ area_dim은 “데이터 유무와 무관하게” 항상 확보(옵션/필터에서 누락 방지)
+      // ✅ 드롭다운/필터용 area_dim은 항상 upsert
       const sidoCode = String(storeLawdCd).slice(0, 2);
-      await conn.execute(sqlInsArea, [sidoCode, storeLawdCd, sigunguName, '']); // city/all row
-      if (guName) {
-        await conn.execute(sqlInsArea, [sidoCode, storeLawdCd, sigunguName, guName]);
-      }
+      await conn.execute(sqlInsArea, [sidoCode, storeLawdCd, sigunguName, '']);
+      if (guName) await conn.execute(sqlInsArea, [sidoCode, storeLawdCd, sigunguName, guName]);
 
       try {
         totalFetch++;
+
         if (debugApiTotal) {
           const r = await fetchPage({ lawdCd: reqLawdCd, dealYmd: ym, pageNo: 1, numOfRows: 1 });
           console.log(`[api] ${ym} ${sidoName} ${sigunguName}${guName ? ' ' + guName : ''} req=${reqLawdCd} totalCount=${r.totalCount}`);
@@ -401,9 +380,7 @@ async function assertHasColumn(conn, table, col) {
           const cancelYN = parseCancelYN(it.cdealType);
           const cancelDate = parseCancelDate(it.cdealDay);
 
-          // ✅ 해시 충돌 방지: 요청 코드(reqLawdCd)로 해시 생성
           const txHash = makeTxHash(reqLawdCd, it);
-
           const rawJson = null;
 
           await conn.execute(
@@ -503,10 +480,7 @@ async function assertHasColumn(conn, table, col) {
     }
   }
 
-  // meta 업데이트(요청대로 DDL/초기 insert는 안하지만, 값 갱신은 유지)
   if (minBuildSeen != null || maxBuildSeen != null) {
-    const minY = (minBuildSeen == null) ? 9999 : minBuildSeen;
-    const maxY = (maxBuildSeen == null) ? 0 : maxBuildSeen;
     await conn.execute(
       `
       UPDATE re_trade_meta
@@ -515,7 +489,7 @@ async function assertHasColumn(conn, table, col) {
         max_build_year = IF(max_build_year IS NULL OR ? > max_build_year, ?, max_build_year)
       WHERE id=1
       `,
-      [minY, minY, maxY, maxY]
+      [minBuildSeen ?? 9999, minBuildSeen ?? 9999, maxBuildSeen ?? 0, maxBuildSeen ?? 0]
     );
   }
 

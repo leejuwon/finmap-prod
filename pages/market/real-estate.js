@@ -1,8 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import ToolSeo from "../../_components/ToolSeo";
+import AdSenseUnit from '../../_components/AdSenseUnit'; // 예시
+import { AD_SLOTS } from '../../config/adSlots';
 
 const M2_PER_PYEONG = 3.305785;
+
+const INFEED_SLOT = AD_SLOTS.responsiveBottom;
+
 
 function numOrNull(x) {
   const n = Number(x);
@@ -737,7 +742,31 @@ export default function RealEstatePage() {
                 </div>
               )}
 
-              {rows?.map((r, idx) => <ResultCard key={r.apt_key || `${r.lawd_cd}-${r.apt_name}-${idx}`} r={r} idx={idx} />)}
+              {rows?.flatMap((r, idx) => {
+                const out = [
+                  <ResultCard
+                    key={r.apt_key || `${r.lawd_cd}-${r.apt_name}-${idx}`}
+                    r={r}
+                    idx={idx}
+                  />
+                ];
+
+                const interval = 6; // 6개마다 1개 광고
+                const shouldInsert = (idx + 1) % interval === 0 && (idx + 1) < rows.length;
+
+                if (shouldInsert) {
+                  out.push(
+                    <AdSenseUnit
+                      key={`ad-infeed-${idx}`}
+                      slot={INFEED_SLOT}
+                      className="md:col-span-2 lg:col-span-3" // grid 전체 폭 차지
+                      adTest={false} // 테스트 시 true
+                    />
+                  );
+                }
+
+                return out;
+              })}
 
             </div>            
 
