@@ -37,11 +37,11 @@ class MyDocument extends Document {
             content="8FhqQNDjbZ-QpdePXdPiCR_VJwQstaK-tbuYIlXxs_A"
           />
 
-          {/* ✅ Favicon */}
-          <link rel="icon" href="/favicon-v2.ico" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+          {/* ✅ Favicon */}          
           <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />          
+          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />          
+          <link rel="icon" href="/favicon.ico" />
 
           {/* ✅ PWA 대응 (선택) */}
           <meta name="theme-color" content="#0f172a" />
