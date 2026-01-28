@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import ToolSeo from "../../_components/ToolSeo";
 import AdSenseUnit from '../../_components/AdSenseUnit'; // 예시
 import { AD_SLOTS } from '../../config/adSlots';
@@ -82,7 +83,11 @@ function qualityFromTxCount(txCount) {
   return { score, grade };
 }
 
-
+function ymToLabel(ym) {
+  const s = String(ym || '');
+  if (!/^\d{6}$/.test(s)) return s || '-';
+  return `${s.slice(0, 4)}-${s.slice(4, 6)}`;
+}
 
 // value 기준 중복 제거 (특히 'all' 중복 방지)
 function dedupeOptions(list) {
@@ -461,6 +466,18 @@ export default function RealEstatePage() {
     return `${row.apt_name}${dong}${fl}`;
   }
 
+  // ✅ 상세페이지 링크 생성 (Top 리스트의 apt_key 그대로 사용)
+  function makeAptDetailHref(row) {
+    const aptKey = row?.apt_key ? encodeURIComponent(String(row.apt_key)) : '';
+    const qs = new URLSearchParams();
+    if (timeframe) qs.set('timeframe', timeframe);
+    if (period) qs.set('period', period);
+    if (pyeong) qs.set('band', pyeong); // 상세에서는 band로 받음
+    if (sido) qs.set('sido', sido);
+    if (area) qs.set('area', area);
+    return `/market/real-estate/apt/${aptKey}${qs.toString() ? `?${qs.toString()}` : ''}`;
+  }
+
   const tableMinWidth = showAdvanced ? 'min-w-[2500px]' : 'min-w-[1900px]';
 
   // --- real-estate.js 안에 (컴포넌트 return 위쪽) 추가: 작은 UI 컴포넌트들 ---
@@ -598,6 +615,68 @@ export default function RealEstatePage() {
     return <Chip tone="bg-rose-50 text-rose-700">{text}</Chip>;
   }
 
+  const [loadingOpt, setLoadingOpt] = useState(true);
+  const [loadingAreas, setLoadingAreas] = useState(false);
+
+  function BlockingOverlay({ show, text }) {
+    if (!show) return null;
+    return (
+      <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-white/70 backdrop-blur-sm">
+        <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow">
+          <div className="h-5 w-5 animate-spin rounded-full border-2 border-slate-300 border-t-slate-900" />
+          <div className="text-sm text-slate-700">{text}</div>
+        </div>
+      </div>
+    );
+  }
+
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      setLoadingOpt(true);
+      try {
+        const r = await fetch(`/api/re/options?lang=${encodeURIComponent(lang)}`);
+        const j = await r.json();
+        if (!alive) return;
+        if (j?.ok) {
+          setOpt(j);
+
+          if (!period) {
+            if (timeframe === 'month') setPeriod(j.periods?.maxYm || (j.periods?.months?.[j.periods.months.length - 1] || ''));
+            else setPeriod((j.periods?.years?.[j.periods.years.length - 1] || ''));
+          }
+        }
+      } finally {
+        if (alive) setLoadingOpt(false);
+      }
+    })();
+    return () => { alive = false; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lang]); // ✅ lang 바뀌면 다시 로드
+
+  useEffect(() => {
+    setArea('all');
+    (async () => {
+      if (!sido || sido === 'all') {
+        setAreas([]);
+        return;
+      }
+      setLoadingAreas(true);
+      try {
+        const r = await fetch(`/api/re/trade-areas?sido=${encodeURIComponent(sido)}&lang=${encodeURIComponent(lang)}`);
+        const j = await r.json();
+        if (j?.ok) setAreas(j.areas || j.rows || j.items || []);
+        else setAreas([]);
+      } catch {
+        setAreas([]);
+      } finally {
+        setLoadingAreas(false);
+      }
+    })();
+  }, [sido, lang]);
+
+
+
   function ResultCard({ r, idx }) {
     const areaText = renderArea(r);
     const aptText = renderApt(r);
@@ -627,75 +706,91 @@ export default function RealEstatePage() {
     const buildY = buildYVal != null ? `${buildYVal}${lang === 'en' ? '' : '년식'}` : '-';
     const dealDate = r.latest_deal_date ? String(r.latest_deal_date).slice(0, 10) : '-';    
 
+    const busy = loadingOpt || loadingAreas || loading;
+
     return (
-      <div className="card p-4">
-        <div className="flex items-start justify-between gap-3">
-          <div className="min-w-0">
-            <div className="text-xs text-slate-500">
-              {r.rank_no}. {areaText}
+      <>
+        <BlockingOverlay
+          show={busy}
+          text={lang === 'en' ? 'Loading data...' : '데이터 불러오는 중...'}
+        />
+        <div className="card p-4">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <div className="text-xs text-slate-500">
+                {r.rank_no}. {areaText}
+              </div>
+              {/* ✅ 아파트명: 상세페이지 링크 + (옵션) 펼침 버튼 */}
+              <div className="mt-0.5 flex items-start gap-2">
+                <Link
+                  href={makeAptDetailHref(r)}
+                  title={aptText}
+                  className={`min-w-0 flex-1 text-left text-base font-semibold text-slate-900 hover:underline underline-offset-2 ${
+                    expanded ? "whitespace-normal break-words" : "truncate"
+                  }`}
+                >
+                  {aptText}
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => setExpandedAptKey(expanded ? null : rowKey)}
+                  className="shrink-0 text-xs px-2 py-1 rounded-lg border bg-white hover:bg-slate-50"
+                >
+                  {expanded ? (lang === 'en' ? 'Less' : '접기') : (lang === 'en' ? 'More' : '펼침')}
+                </button>
+              </div>       
+              <div className="mt-1 text-xs text-slate-500">
+                {sizeM2} · {sizePy} · {buildY} · {dealDate}
+              </div>
             </div>
-            {/* ✅ 아파트명: 기본 말줄임 + hover title + 모바일 탭 펼침 */}
-            <button
-              type="button"
-              title={aptText}
-              onClick={() => setExpandedAptKey(expanded ? null : rowKey)}
-              className={`mt-0.5 w-full text-left text-base font-semibold text-slate-900 ${
-                expanded ? "whitespace-normal break-words" : "truncate"
-              }`}
-            >
-              {aptText}
-            </button>            
-            <div className="mt-1 text-xs text-slate-500">
-              {sizeM2} · {sizePy} · {buildY} · {dealDate}
+            <div className="flex flex-col items-end gap-2 shrink-0">
+              <QualityChip row={r} />
+              <HeatChip row={r} />
+              <div className="text-xs text-slate-500">
+                {t.metrics.tx_count}: {r.tx_count?.toLocaleString?.() ?? r.tx_count}
+              </div>
             </div>
           </div>
-          <div className="flex flex-col items-end gap-2 shrink-0">
-            <QualityChip row={r} />
-            <HeatChip row={r} />
-            <div className="text-xs text-slate-500">
-              {t.metrics.tx_count}: {r.tx_count?.toLocaleString?.() ?? r.tx_count}
-            </div>
-          </div>
-        </div>
 
-        <div className="mt-3 grid grid-cols-2 gap-2">
-          <MiniStat label={t.metrics.median_price} value={medEok} />
-          <MiniStat label={t.metrics.avg_price} value={avgEok} />
-          <MiniStat label={lang === 'en' ? 'Typical /pyeong' : '대표 평단가'} value={medPyeong} />
-          <MiniStat label={lang === 'en' ? 'Latest deal' : '최근 거래'} value={dealEok} />
-        </div>
-
-        <div className="mt-3 flex flex-wrap gap-2">
-          <MoveQualityChip row={r} />
-          <PremiumChip row={r} />
-          <ThinMarketChip row={r} />
-          <Chip tone={toneByNumber(r.mom_rank_delta)}>{t.cols.rankMom} {momRank}</Chip>
-          <Chip tone={toneByNumber(r.yoy_rank_delta)}>{t.cols.rankYoy} {yoyRank}</Chip>
-
-          <Chip tone={toneByNumber(r.mom_tx_count_pct)}>{t.cols.txMom} {momTx}</Chip>
-          <Chip tone={toneByNumber(r.yoy_tx_count_pct)}>{t.cols.txYoy} {yoyTx}</Chip>
-
-          <Chip tone={toneByNumber(r.mom_median_price_delta_won)}>{t.cols.medDeltaMom} {momMedDelta}</Chip>
-          <Chip tone={toneByNumber(r.yoy_median_price_delta_won)}>{t.cols.medDeltaYoy} {yoyMedDelta}</Chip>         
-        </div>
-
-        {showAdvanced && (
           <div className="mt-3 grid grid-cols-2 gap-2">
-            <MiniStat label={lang === 'en' ? 'Max deal (×100M)' : '최고 거래(억)'} value={maxEok} />
-            <MiniStat label={lang === 'en' ? 'Total value (×100M)' : '총 거래금액(억)'} value={sumEok} />
+            <MiniStat label={t.metrics.median_price} value={medEok} />
+            <MiniStat label={t.metrics.avg_price} value={avgEok} />
+            <MiniStat label={lang === 'en' ? 'Typical /pyeong' : '대표 평단가'} value={medPyeong} />
+            <MiniStat label={lang === 'en' ? 'Latest deal' : '최근 거래'} value={dealEok} />
           </div>
-        )}
 
-
-        {showAdvanced && (          
           <div className="mt-3 flex flex-wrap gap-2">
-            <Chip tone={toneByNumber(r.mom_median_price_pct)}>{t.cols.medMom} {fmtPct(r.mom_median_price_pct)}</Chip>
-            <Chip tone={toneByNumber(r.yoy_median_price_pct)}>{t.cols.medYoy} {fmtPct(r.yoy_median_price_pct)}</Chip>
-            <Chip tone={toneByNumber(r.mom_avg_price_pct)}>{t.cols.avgMom} {fmtPct(r.mom_avg_price_pct)}</Chip>
-            <Chip tone={toneByNumber(r.yoy_avg_price_pct)}>{t.cols.avgYoy} {fmtPct(r.yoy_avg_price_pct)}</Chip>           
+            <MoveQualityChip row={r} />
+            <PremiumChip row={r} />
+            <ThinMarketChip row={r} />
+            <Chip tone={toneByNumber(r.mom_rank_delta)}>{t.cols.rankMom} {momRank}</Chip>
+            <Chip tone={toneByNumber(r.yoy_rank_delta)}>{t.cols.rankYoy} {yoyRank}</Chip>
+
+            <Chip tone={toneByNumber(r.mom_tx_count_pct)}>{t.cols.txMom} {momTx}</Chip>
+            <Chip tone={toneByNumber(r.yoy_tx_count_pct)}>{t.cols.txYoy} {yoyTx}</Chip>
+
+            <Chip tone={toneByNumber(r.mom_median_price_delta_won)}>{t.cols.medDeltaMom} {momMedDelta}</Chip>
+            <Chip tone={toneByNumber(r.yoy_median_price_delta_won)}>{t.cols.medDeltaYoy} {yoyMedDelta}</Chip>         
           </div>
-        )}
-      </div>
+
+          {showAdvanced && (
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              <MiniStat label={lang === 'en' ? 'Max deal (×100M)' : '최고 거래(억)'} value={maxEok} />
+              <MiniStat label={lang === 'en' ? 'Total value (×100M)' : '총 거래금액(억)'} value={sumEok} />
+            </div>
+          )}
+
+
+          {showAdvanced && (          
+            <div className="mt-3 flex flex-wrap gap-2">
+              <Chip tone={toneByNumber(r.mom_median_price_pct)}>{t.cols.medMom} {fmtPct(r.mom_median_price_pct)}</Chip>
+              <Chip tone={toneByNumber(r.yoy_median_price_pct)}>{t.cols.medYoy} {fmtPct(r.yoy_median_price_pct)}</Chip>
+              <Chip tone={toneByNumber(r.mom_avg_price_pct)}>{t.cols.avgMom} {fmtPct(r.mom_avg_price_pct)}</Chip>
+              <Chip tone={toneByNumber(r.yoy_avg_price_pct)}>{t.cols.avgYoy} {fmtPct(r.yoy_avg_price_pct)}</Chip>           
+            </div>
+          )}
+        </div>
+      </>
     );
   }
 
@@ -761,7 +856,11 @@ export default function RealEstatePage() {
             <div>
               <div className="text-sm text-slate-500 mb-1">{t.period}</div>
               <select className="w-full border rounded-lg px-3 py-2" value={period} onChange={(e) => setPeriod(e.target.value)}>
-                {periodOptions.map((p) => <option key={p} value={p}>{p}</option>)}
+                {periodOptions.map((p) => (
+                  <option key={p} value={p}>
+                    {timeframe === 'month' ? ymToLabel(p) : String(p)}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -953,9 +1052,13 @@ export default function RealEstatePage() {
                       <td className="py-3 pr-3">{r.rank_no}</td>
                       <td className="py-3 pr-3">{renderArea(r)}</td>
                       <td className="py-3 pr-3 font-medium">
-                        <span className="underline underline-offset-2 cursor-pointer" onClick={() => alert(`TODO: 상세화면\napt_key=${r.apt_key}`)}>
+                        <Link
+                          href={makeAptDetailHref(r)}
+                          className="underline underline-offset-2 hover:text-slate-900"
+                          title={renderApt(r)}
+                        >
                           {renderApt(r)}
-                        </span>
+                        </Link>
                       </td>
 
                       <td className="py-3 pr-3">{r.latest_area_m2 != null ? Number(r.latest_area_m2).toFixed(2) : '-'}</td>
