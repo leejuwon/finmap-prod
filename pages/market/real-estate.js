@@ -961,7 +961,7 @@ export default function RealEstatePage() {
                       <td className="py-3 pr-3">{r.latest_area_m2 != null ? Number(r.latest_area_m2).toFixed(2) : '-'}</td>
                       <td className="py-3 pr-3">{fmtPyeongFromM2(r.latest_area_m2)}</td>
                       <td className="py-3 pr-3">{(r.latest_build_year ?? r.build_year) ?? '-'}</td>
-
+    
                       <td className="py-3 pr-3">{r.latest_deal_date ? String(r.latest_deal_date).slice(0, 10) : '-'}</td>
                       
 
