@@ -5,7 +5,7 @@ import SeoHead from "../../_components/SeoHead";
 
 const TEXT = {
   ko: {
-    title: "시장대시보드",
+    title: "시장정보",
     desc: "부동산과 주가지수를 한 곳에서. (현재: 부동산)",
     card1: "부동산 대시보드",
     card1sub: "서울(동) · 경기(시/군) Top100 / 월·연",
@@ -14,7 +14,7 @@ const TEXT = {
     coming: "준비중",
   },
   en: {
-    title: "Market Dashboard",
+    title: "Market Info",
     desc: "Real estate and stock indexes in one place. (Now: Real Estate)",
     card1: "Real Estate Dashboard",
     card1sub: "Seoul (Dong) · Gyeonggi (City/County) Top100 / Monthly & Yearly",

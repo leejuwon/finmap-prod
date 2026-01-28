@@ -1,9 +1,12 @@
 // pages/market/real-estate/apt/[aptKey].js
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import ToolSeo from '../../../../_components/ToolSeo';
+import AdSenseUnit from '../../../../_components/AdSenseUnit';
+import { AD_SLOTS } from '../../../../config/adSlots';
 
+const INFEED_SLOT = AD_SLOTS.responsiveBottom;
 const M2_PER_PYEONG = 3.305785;
 
 function numOrNull(x) {
@@ -237,6 +240,39 @@ export default function AptDetailPage() {
 
   const [loading, setLoading] = useState(false);
   const [errMsg, setErrMsg] = useState('');
+  
+  // ✅ 데스크탑에서만 카드/표 토글, 모바일은 카드 고정
+  const [desktopView, setDesktopView] = useState('table'); // 'card' | 'table'
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const v = window.localStorage.getItem('re_apt_desktop_view');
+    if (v === 'card' || v === 'table') setDesktopView(v);
+  }, []);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    window.localStorage.setItem('re_apt_desktop_view', desktopView);
+  }, [desktopView]);
+
+  // ✅ "초기 진입/페이지 전환"에서만 오버레이
+  const firstFetchRef = useRef(false);
+  const [routeLoading, setRouteLoading] = useState(false);
+  useEffect(() => {
+    if (!router?.events) return;
+    const onStart = (url) => {
+      if (typeof url === 'string' && url.startsWith('/market/real-estate')) {
+        setRouteLoading(true);
+      }
+    };
+    const onDone = () => setRouteLoading(false);
+    router.events.on('routeChangeStart', onStart);
+    router.events.on('routeChangeComplete', onDone);
+    router.events.on('routeChangeError', onDone);
+    return () => {
+      router.events.off('routeChangeStart', onStart);
+      router.events.off('routeChangeComplete', onDone);
+      router.events.off('routeChangeError', onDone);
+    };
+  }, [router]);
 
   const { dong_name, apt_name } = useMemo(() => parseAptKey(aptKey), [aptKey]);
 
@@ -347,6 +383,8 @@ export default function AptDetailPage() {
       setSeries([]);
     } finally {
       setLoading(false);
+      // ✅ 최초 1회 fetchAll 완료 표시 (이후 필터변경은 오버레이 제외)
+      if (!firstFetchRef.current) firstFetchRef.current = true;
     }
   }
 
@@ -384,6 +422,60 @@ export default function AptDetailPage() {
   const periodLabel = timeframe === 'month' ? ymToLabel(period) : yearToLabel(period);
 
   const seriesTableLimit = timeframe === 'month' ? 24 : 10;
+  const seriesRows = useMemo(() => (series || []).slice(-seriesTableLimit), [series, seriesTableLimit]);
+
+  function SeriesPointCard({ r }) {
+    return (
+      <div className="rounded-2xl border border-slate-100 bg-white p-4">
+        <div className="flex items-start justify-between gap-2">
+          <div className="text-sm font-semibold text-slate-900">{fmtXPeriod(r.period)}</div>
+          <div className="text-xs text-slate-500">
+            {lang === 'en' ? 'Tx' : '거래'}: {r.tx_count != null ? Number(r.tx_count).toLocaleString() : '-'}
+          </div>
+        </div>
+        <div className="mt-3 grid grid-cols-2 gap-2">
+          <div className="rounded-xl border border-slate-100 bg-white px-3 py-2">
+            <div className="text-[11px] text-slate-500">{lang === 'en' ? 'Median (total)' : '중앙값(총액)'}</div>
+            <div className="mt-0.5 text-sm font-semibold text-slate-900">{fmtEokFromWon(r.median_price, lang)}</div>
+          </div>
+          <div className="rounded-xl border border-slate-100 bg-white px-3 py-2">
+            <div className="text-[11px] text-slate-500">{lang === 'en' ? 'Avg (total)' : '평균(총액)'}</div>
+            <div className="mt-0.5 text-sm font-semibold text-slate-900">{fmtEokFromWon(r.avg_price, lang)}</div>
+          </div>
+          <div className="rounded-xl border border-slate-100 bg-white px-3 py-2">
+            <div className="text-[11px] text-slate-500">{lang === 'en' ? 'Median /pyeong' : '중앙값/평'}</div>
+            <div className="mt-0.5 text-sm font-semibold text-slate-900">{fmtManPerPyeongFromWonPerM2(r.median_price_per_m2, lang)}</div>
+          </div>
+          <div className="rounded-xl border border-slate-100 bg-white px-3 py-2">
+            <div className="text-[11px] text-slate-500">{lang === 'en' ? 'Sum' : '총액'}</div>
+            <div className="mt-0.5 text-sm font-semibold text-slate-900">{fmtEokFromWon(r.sum_price, lang)}</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  function TradeCard({ x }) {
+    return (
+      <div className="rounded-2xl border border-slate-100 bg-white p-4">
+        <div className="flex items-start justify-between gap-2">
+          <div className="text-sm font-semibold text-slate-900">
+            {x.deal_date ? String(x.deal_date).slice(0, 10) : '-'}
+          </div>
+          <div className="text-sm font-bold text-slate-900">{fmtEokFromMan(x.deal_amount_man, lang)}</div>
+        </div>
+        <div className="mt-2 text-xs text-slate-500">
+          {lang === 'en' ? 'Area' : '전용'}: {x.area_m2 != null ? Number(x.area_m2).toFixed(1) : '-'}㎡
+          {' · '}
+          {lang === 'en' ? 'Pyeong' : '평'}: {fmtPyeongFromM2(x.area_m2)}
+          {' · '}
+          {lang === 'en' ? 'Floor' : '층'}: {x.floor != null ? x.floor : '-'}
+          {' · '}
+          {lang === 'en' ? 'Dong' : '동'}: {x.apt_dong || '-'}
+        </div>
+      </div>
+    );
+  }
 
   // chart value: KRW/㎡ → 만원/평(숫자)
   const toManPerPyeongNumber = (wonPerM2) => {
@@ -402,14 +494,14 @@ export default function AptDetailPage() {
     return yearToLabel(p);
   };
 
-  const busy = loadingOpt || loading;
+  const blockingBusy = routeLoading || loadingOpt || (!firstFetchRef.current && loading);
 
   return (
     <>
-        <BlockingOverlay
-            show={busy}
-            text={lang === 'en' ? 'Loading data...' : '데이터 불러오는 중...'}
-        />
+      <BlockingOverlay
+        show={blockingBusy}
+        text={lang === 'en' ? 'Loading data...' : '데이터 불러오는 중...'}
+      />
       <ToolSeo
         title={seoTitle}
         desc={seoDesc}
@@ -449,12 +541,30 @@ export default function AptDetailPage() {
             </div>
           </div>
 
-          <button
-            className="px-4 py-2 rounded-lg border bg-white hover:bg-slate-50"
-            onClick={fetchAll}
-          >
-            {lang === 'en' ? 'Refresh' : '새로고침'}
-          </button>
+          <div className="flex items-center gap-2">
+            {/* ✅ Desktop only: Cards/Table toggle */}
+            <div className="hidden md:flex items-center gap-2">
+              <button
+                className={`px-3 py-2 rounded-lg border ${desktopView === 'card' ? 'bg-slate-900 text-white border-slate-900' : 'bg-white hover:bg-slate-50'}`}
+                onClick={() => setDesktopView('card')}
+              >
+                {lang === 'en' ? 'Cards' : '카드'}
+              </button>
+              <button
+                className={`px-3 py-2 rounded-lg border ${desktopView === 'table' ? 'bg-slate-900 text-white border-slate-900' : 'bg-white hover:bg-slate-50'}`}
+                onClick={() => setDesktopView('table')}
+              >
+                {lang === 'en' ? 'Table' : '표'}
+              </button>
+            </div>
+
+            <button
+              className="px-4 py-2 rounded-lg border bg-white hover:bg-slate-50"
+              onClick={fetchAll}
+            >
+              {lang === 'en' ? 'Refresh' : '새로고침'}
+            </button>
+          </div>
         </div>
 
         {/* 컨트롤 */}
@@ -628,37 +738,65 @@ export default function AptDetailPage() {
               : `표는 범위 내에서도 최근 ${seriesTableLimit}개만 표시합니다.`}
           </div>
 
-          <div className="mt-3 overflow-x-auto">
-            <table className="min-w-[900px] w-full text-sm">
-              <thead>
-                <tr className="border-b text-left">
-                  <th className="py-2 pr-3">{lang === 'en' ? 'Period' : '기간'}</th>
-                  <th className="py-2 pr-3">{lang === 'en' ? 'Tx' : '거래량'}</th>
-                  <th className="py-2 pr-3">{lang === 'en' ? 'Median (total)' : '중앙값(총액)'}</th>
-                  <th className="py-2 pr-3">{lang === 'en' ? 'Avg (total)' : '평균(총액)'}</th>
-                  <th className="py-2 pr-3">{lang === 'en' ? 'Median /pyeong' : '중앙값/평'}</th>
-                  <th className="py-2 pr-3">{lang === 'en' ? 'Sum' : '총액'}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {(series || []).slice(-seriesTableLimit).map((r) => (
-                  <tr key={r.period} className="border-b">
-                    <td className="py-2 pr-3">{fmtXPeriod(r.period)}</td>
-                    <td className="py-2 pr-3">{r.tx_count != null ? Number(r.tx_count).toLocaleString() : '-'}</td>
-                    <td className="py-2 pr-3">{fmtEokFromWon(r.median_price, lang)}</td>
-                    <td className="py-2 pr-3">{fmtEokFromWon(r.avg_price, lang)}</td>
-                    <td className="py-2 pr-3">{fmtManPerPyeongFromWonPerM2(r.median_price_per_m2, lang)}</td>
-                    <td className="py-2 pr-3">{fmtEokFromWon(r.sum_price, lang)}</td>
-                  </tr>
-                ))}
-                {!series?.length ? (
-                  <tr>
-                    <td colSpan={6} className="py-8 text-center text-slate-400">No series</td>
-                  </tr>
-                ) : null}
-              </tbody>
-            </table>
+          {/* ✅ 모바일: 카드 고정 / 데스크탑: 토글 */}
+          <div className={`${desktopView === 'card' ? '' : 'md:hidden'} mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3`}>
+            {seriesRows?.length ? (
+              seriesRows.flatMap((r, idx) => {
+                const out = [<SeriesPointCard key={`s-${r.period}`} r={r} />];
+                const interval = 8;
+                const shouldInsert = (idx + 1) % interval === 0 && (idx + 1) < seriesRows.length;
+                if (shouldInsert) {
+                  out.push(
+                    <AdSenseUnit
+                      key={`ad-series-${idx}`}
+                      slot={INFEED_SLOT}
+                      className="md:col-span-2 lg:col-span-3"
+                      adTest={false}
+                    />
+                  );
+                }
+                return out;
+              })
+            ) : (
+              <div className="rounded-2xl border border-slate-100 bg-white p-8 text-center text-slate-400 md:col-span-2 lg:col-span-3">
+                No series
+              </div>
+            )}
           </div>
+
+          {desktopView === 'table' && (
+            <div className="hidden md:block mt-4 overflow-x-auto">
+              <table className="min-w-[900px] w-full text-sm">
+                <thead>
+                  <tr className="border-b text-left">
+                    <th className="py-2 pr-3">{lang === 'en' ? 'Period' : '기간'}</th>
+                    <th className="py-2 pr-3">{lang === 'en' ? 'Tx' : '거래량'}</th>
+                    <th className="py-2 pr-3">{lang === 'en' ? 'Median (total)' : '중앙값(총액)'}</th>
+                    <th className="py-2 pr-3">{lang === 'en' ? 'Avg (total)' : '평균(총액)'}</th>
+                    <th className="py-2 pr-3">{lang === 'en' ? 'Median /pyeong' : '중앙값/평'}</th>
+                    <th className="py-2 pr-3">{lang === 'en' ? 'Sum' : '총액'}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {seriesRows.map((r) => (
+                    <tr key={r.period} className="border-b">
+                      <td className="py-2 pr-3">{fmtXPeriod(r.period)}</td>
+                      <td className="py-2 pr-3">{r.tx_count != null ? Number(r.tx_count).toLocaleString() : '-'}</td>
+                      <td className="py-2 pr-3">{fmtEokFromWon(r.median_price, lang)}</td>
+                      <td className="py-2 pr-3">{fmtEokFromWon(r.avg_price, lang)}</td>
+                      <td className="py-2 pr-3">{fmtManPerPyeongFromWonPerM2(r.median_price_per_m2, lang)}</td>
+                      <td className="py-2 pr-3">{fmtEokFromWon(r.sum_price, lang)}</td>
+                    </tr>
+                  ))}
+                  {!seriesRows?.length ? (
+                    <tr>
+                      <td colSpan={6} className="py-8 text-center text-slate-400">No series</td>
+                    </tr>
+                  ) : null}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
 
         {/* 최신 거래 (range: from~to) */}
@@ -672,40 +810,68 @@ export default function AptDetailPage() {
               : `추이 범위(${rangeLabel})로 필터되며, 취소거래는 제외합니다.`}
           </div>
 
-          <div className="mt-4 overflow-x-auto">
-            <table className="min-w-[900px] w-full text-sm">
-              <thead>
-                <tr className="border-b text-left">
-                  <th className="py-2 pr-3">{lang === 'en' ? 'Date' : '계약일'}</th>
-                  <th className="py-2 pr-3">{lang === 'en' ? 'Price' : '거래금액'}</th>
-                  <th className="py-2 pr-3">{lang === 'en' ? 'Area(㎡)' : '전용(㎡)'}</th>
-                  <th className="py-2 pr-3">{lang === 'en' ? 'Pyeong' : '평'}</th>
-                  <th className="py-2 pr-3">{lang === 'en' ? 'Floor' : '층'}</th>
-                  <th className="py-2 pr-3">{lang === 'en' ? 'Dong' : '동'}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {(detail?.latest_trades || []).map((x, i) => (
-                  <tr key={`${x.deal_date}-${i}`} className="border-b">
-                    <td className="py-2 pr-3">{x.deal_date ? String(x.deal_date).slice(0, 10) : '-'}</td>
-                    <td className="py-2 pr-3">{fmtEokFromMan(x.deal_amount_man, lang)}</td>
-                    <td className="py-2 pr-3">{x.area_m2 != null ? Number(x.area_m2).toFixed(1) : '-'}</td>
-                    <td className="py-2 pr-3">{fmtPyeongFromM2(x.area_m2)}</td>
-                    <td className="py-2 pr-3">{x.floor != null ? x.floor : '-'}</td>
-                    <td className="py-2 pr-3">{x.apt_dong || '-'}</td>
-                  </tr>
-                ))}
-
-                {!detail?.latest_trades?.length ? (
-                  <tr>
-                    <td colSpan={6} className="py-8 text-center text-slate-400">
-                      {lang === 'en' ? 'No trades' : '거래 없음'}
-                    </td>
-                  </tr>
-                ) : null}
-              </tbody>
-            </table>
+          {/* ✅ 모바일: 카드 고정 / 데스크탑: 토글 + 카드 중간 광고 */}
+          <div className={`${desktopView === 'card' ? '' : 'md:hidden'} mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3`}>
+            {(detail?.latest_trades || []).length ? (
+              (detail.latest_trades).flatMap((x, idx) => {
+                const out = [<TradeCard key={`t-${x.deal_date}-${idx}`} x={x} />];
+                const interval = 6; // 6개마다 광고
+                const shouldInsert = (idx + 1) % interval === 0 && (idx + 1) < detail.latest_trades.length;
+                if (shouldInsert) {
+                  out.push(
+                    <AdSenseUnit
+                      key={`ad-trade-${idx}`}
+                      slot={INFEED_SLOT}
+                      className="md:col-span-2 lg:col-span-3"
+                      adTest={false}
+                    />
+                  );
+                }
+                return out;
+              })
+            ) : (
+              <div className="rounded-2xl border border-slate-100 bg-white p-8 text-center text-slate-400 md:col-span-2 lg:col-span-3">
+                {lang === 'en' ? 'No trades' : '거래 없음'}
+              </div>
+            )}
           </div>
+
+          {desktopView === 'table' && (
+            <div className="hidden md:block mt-4 overflow-x-auto">
+              <table className="min-w-[900px] w-full text-sm">
+                <thead>
+                  <tr className="border-b text-left">
+                    <th className="py-2 pr-3">{lang === 'en' ? 'Date' : '계약일'}</th>
+                    <th className="py-2 pr-3">{lang === 'en' ? 'Price' : '거래금액'}</th>
+                    <th className="py-2 pr-3">{lang === 'en' ? 'Area(㎡)' : '전용(㎡)'}</th>
+                    <th className="py-2 pr-3">{lang === 'en' ? 'Pyeong' : '평'}</th>
+                    <th className="py-2 pr-3">{lang === 'en' ? 'Floor' : '층'}</th>
+                    <th className="py-2 pr-3">{lang === 'en' ? 'Dong' : '동'}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(detail?.latest_trades || []).map((x, i) => (
+                    <tr key={`${x.deal_date}-${i}`} className="border-b">
+                      <td className="py-2 pr-3">{x.deal_date ? String(x.deal_date).slice(0, 10) : '-'}</td>
+                      <td className="py-2 pr-3">{fmtEokFromMan(x.deal_amount_man, lang)}</td>
+                      <td className="py-2 pr-3">{x.area_m2 != null ? Number(x.area_m2).toFixed(1) : '-'}</td>
+                      <td className="py-2 pr-3">{fmtPyeongFromM2(x.area_m2)}</td>
+                      <td className="py-2 pr-3">{x.floor != null ? x.floor : '-'}</td>
+                      <td className="py-2 pr-3">{x.apt_dong || '-'}</td>
+                    </tr>
+                  ))}
+
+                  {!detail?.latest_trades?.length ? (
+                    <tr>
+                      <td colSpan={6} className="py-8 text-center text-slate-400">
+                        {lang === 'en' ? 'No trades' : '거래 없음'}
+                      </td>
+                    </tr>
+                  ) : null}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
 
         <div className="mt-8 text-xs text-slate-500">

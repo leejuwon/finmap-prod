@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import ToolSeo from "../../_components/ToolSeo";
@@ -281,6 +281,29 @@ export default function RealEstatePage() {
 
   const [expandedAptKey, setExpandedAptKey] = useState(null);
 
+  // ✅ "초기 진입/페이지 전환"에서만 오버레이를 띄우기 위한 상태
+  const firstTopFetchedRef = useRef(false);
+  const [routeLoading, setRouteLoading] = useState(false);
+
+  useEffect(() => {
+    if (!router?.events) return;
+    const onStart = (url) => {
+      // real-estate 영역 이동(대시보드<->상세 포함)일 때만
+      if (typeof url === 'string' && url.startsWith('/market/real-estate')) {
+        setRouteLoading(true);
+      }
+    };
+    const onDone = () => setRouteLoading(false);
+    router.events.on('routeChangeStart', onStart);
+    router.events.on('routeChangeComplete', onDone);
+    router.events.on('routeChangeError', onDone);
+    return () => {
+      router.events.off('routeChangeStart', onStart);
+      router.events.off('routeChangeComplete', onDone);
+      router.events.off('routeChangeError', onDone);
+    };
+  }, [router]);
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const v = window.localStorage.getItem('re_desktop_view');
@@ -304,24 +327,6 @@ export default function RealEstatePage() {
   // 이 페이지에서는 title/desc만 준비해서 ToolSeo에 넘깁니다.
   const seoTitle = t.title;
   const seoDesc = t.seoDesc;    
-
-
-  // ---------- 옵션 로드 ----------
-  useEffect(() => {
-    (async () => {
-      const r = await fetch(`/api/re/options?lang=${encodeURIComponent(lang)}`);
-      const j = await r.json();
-      if (j?.ok) {
-        setOpt(j);
-
-        if (!period) {
-          if (timeframe === 'month') setPeriod(j.periods?.maxYm || (j.periods?.months?.[j.periods.months.length - 1] || ''));
-          else setPeriod((j.periods?.years?.[j.periods.years.length - 1] || ''));
-        }
-      }
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // 최초 1회
 
   // timeframe 변경 시 period 자동 보정
   useEffect(() => {
@@ -445,6 +450,8 @@ export default function RealEstatePage() {
       else setRows([]);
     } finally {
       setLoading(false);
+      // ✅ 최초 1회 fetchTop 완료(성공/실패 무관) 표시
+      if (!firstTopFetchedRef.current) firstTopFetchedRef.current = true;
     }
   }
 
@@ -634,6 +641,8 @@ export default function RealEstatePage() {
     let alive = true;
     (async () => {
       setLoadingOpt(true);
+       // ✅ 언어 변경/재진입 성격이면 "초기 fetch"로 간주하고 다시 오버레이 대상
+      firstTopFetchedRef.current = false;
       try {
         const r = await fetch(`/api/re/options?lang=${encodeURIComponent(lang)}`);
         const j = await r.json();
@@ -705,15 +714,9 @@ export default function RealEstatePage() {
     const buildYVal = (r.latest_build_year ?? r.build_year);
     const buildY = buildYVal != null ? `${buildYVal}${lang === 'en' ? '' : '년식'}` : '-';
     const dealDate = r.latest_deal_date ? String(r.latest_deal_date).slice(0, 10) : '-';    
-
-    const busy = loadingOpt || loadingAreas || loading;
-
+    
     return (
-      <>
-        <BlockingOverlay
-          show={busy}
-          text={lang === 'en' ? 'Loading data...' : '데이터 불러오는 중...'}
-        />
+      <>        
         <div className="card p-4">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
@@ -796,6 +799,17 @@ export default function RealEstatePage() {
 
   return (
       <>
+      {/*
+        ✅ 오버레이는 "초기/전환" 때만:
+        - routeLoading: 대시보드<->상세 이동 등 라우팅 전환
+        - loadingOpt: 옵션(기간) 로딩(느린 구간)
+        - (!firstTopFetchedRef && loading): 최초 1회 Top 조회(초기 진입/복귀에서만)
+        ※ loadingAreas, 이후 필터변경 loading 은 오버레이 제외(요청사항)
+      */}
+      <BlockingOverlay
+        show={routeLoading || loadingOpt || (!firstTopFetchedRef.current && loading)}
+        text={lang === 'en' ? 'Loading data...' : '데이터 불러오는 중...'}
+      />
       <ToolSeo
         title={seoTitle}
         desc={seoDesc}
