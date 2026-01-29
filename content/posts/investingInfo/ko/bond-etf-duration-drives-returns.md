@@ -80,7 +80,7 @@ TNX(미국 10년물 금리)는 채권 그 자체이기도 하지만, 시장에�
 그래서 채권 ETF를 TNX와 연결해 읽는 게 실전에서 훨씬 유리합니다.
 
 (미국 10년물 자체를 더 기초부터 정리해 두었어요.)  
-- 👉 [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)
+- 🔗 [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)
 
 ---
 
@@ -214,7 +214,7 @@ TNX를 볼 때 많은 사람이 “오르냐 내리냐”만 보지만,
 → 이때는 “단순한 정책금리 예측”이 잘 안 먹힙니다.
 
 (정책금리 vs 시장금리 분리 프레임은 여기에서 더 자세히.)  
-- 👉 [“금리 인하”가 와도 안 오를 수 있다: 시장금리 vs 정책금리 분리해서 읽기](/posts/economicInfo/policy-rate-cut-market-rates)
+- 🔗 [“금리 인하”가 와도 안 오를 수 있다: 시장금리 vs 정책금리 분리해서 읽기](/posts/economicInfo/policy-rate-cut-market-rates)
 
 ---
 
@@ -301,10 +301,10 @@ TNX를 볼 때 많은 사람이 “오르냐 내리냐”만 보지만,
 
 듀레이션과 TNX 프레임을 한 번 잡아두면, 아래 글들과 함께 퍼즐이 훨씬 빨리 맞춰집니다.
 
-- 👉 [미국 10년물 금리(TNX)는 왜 ETF를 뒤흔드는가? 성장·가치·신흥국 ETF까지 모두 설명하는 금리 로직](/posts/investingInfo/etf-impact-of-tnx)  
-- 👉 [왜 한국 ETF는 TNX(미국 10년물 금리)에 가장 민감한가: 구조·환율·유동성 심화 분석](/posts/investingInfo/korea-etf-deep-dive-tnx)  
-- 👉 [금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해](/posts/economicInfo/interest-rate-basics)  
-- 👉 [요즘형 60/40: 주식·채권·현금·금(또는 원자재)로 ‘리스크 예산’ 짜기](/posts/investingInfo/modern-6040-risk-budget)
+- 🔗 [미국 10년물 금리(TNX)는 왜 ETF를 뒤흔드는가? 성장·가치·신흥국 ETF까지 모두 설명하는 금리 로직](/posts/investingInfo/etf-impact-of-tnx)  
+- 🔗 [왜 한국 ETF는 TNX(미국 10년물 금리)에 가장 민감한가: 구조·환율·유동성 심화 분석](/posts/investingInfo/korea-etf-deep-dive-tnx)  
+- 🔗 [금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해](/posts/economicInfo/interest-rate-basics)  
+- 🔗 [요즘형 60/40: 주식·채권·현금·금(또는 원자재)로 ‘리스크 예산’ 짜기](/posts/investingInfo/modern-6040-risk-budget)
 
 ---
 

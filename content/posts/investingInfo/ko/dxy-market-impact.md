@@ -137,8 +137,8 @@ DXY는 미국 금리, 글로벌 유동성과 아주 밀접한 3중 관계를 이
 원화 약세는 변동성 확대 신호입니다.
 
 ### ✔ TIP 3) FinMap 도구 활용  
-👉 [복리 계산기](https://www.finmaphub.com/tools/compound-interest)  
-👉 [목표 자산 도달 시뮬레이터](https://www.finmaphub.com/tools/goal-amount)
+🔗 [복리 계산기](https://www.finmaphub.com/tools/compound-interest)  
+🔗 [목표 자산 도달 시뮬레이터](https://www.finmaphub.com/tools/goal-amount)
 
 ---
 

@@ -192,10 +192,10 @@ Two important reminders:
 - FX can amplify or dampen the local impact. USD/KRW moves can matter as much as the oil move.
 
 Here’s a clean baseline on FX mechanics you can use as your anchor when headlines get noisy:  
-- 👉 [Currency mechanics behind USD/KRW (a clean baseline)](/en/posts/economicInfo/fx-basics)
+- 🔗 [Currency mechanics behind USD/KRW (a clean baseline)](/en/posts/economicInfo/fx-basics)
 
 And if you want the full “Korea chain” from WTI into inflation, FX, rates, and earnings, use this as the longer map:  
-- 👉 [How WTI flows into Korea’s inflation, FX, rates, and earnings](/en/posts/investingInfo/wti-impact-on-korea-kospi)
+- 🔗 [How WTI flows into Korea’s inflation, FX, rates, and earnings](/en/posts/investingInfo/wti-impact-on-korea-kospi)
 
 <div class="callout-tip">
   <strong>One-line takeaway</strong><br/>
@@ -257,10 +257,10 @@ You don’t need a perfect model. You need a repeatable routine.
 
 If you want a broader framework so oil headlines don’t fool you by “feeling inflationary” every time, these posts help you anchor the macro basics:
 
-- 👉 [Inflation–rates framework (so oil headlines don’t fool you)](/en/posts/economicInfo/inflation-rate-basics)  
-- 👉 [How DXY reshapes stocks, FX, and liquidity](/en/posts/investingInfo/dxy-market-impact)  
-- 👉 [TNX explained: why the 10Y yield drives markets](/en/posts/investingInfo/tnx-basics)  
-- 👉 [Why USD/KRW changes the mood of the KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- 🔗 [Inflation–rates framework (so oil headlines don’t fool you)](/en/posts/economicInfo/inflation-rate-basics)  
+- 🔗 [How DXY reshapes stocks, FX, and liquidity](/en/posts/investingInfo/dxy-market-impact)  
+- 🔗 [TNX explained: why the 10Y yield drives markets](/en/posts/investingInfo/tnx-basics)  
+- 🔗 [Why USD/KRW changes the mood of the KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
 
 <figure>
   <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769587427/blog/insight/war-risk-oil-supply-en-img3.png" alt="Stop reacting to headlines—update only when flip conditions are met." />

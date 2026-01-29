@@ -102,7 +102,7 @@ Rate-cut expectations → DXY down
 - Understanding KRW direction  
 - Anticipating KOSPI volatility
 
-👉 Helpful tools:  
+🔗 Helpful tools:  
 - **[Compound Interest Calculator](/tools/compound-interest)**  
 - **[Goal Amount Simulator](/tools/goal-simulator)**
 

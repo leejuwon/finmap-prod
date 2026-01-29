@@ -178,7 +178,7 @@ Two quick signals:
 A curve inversion without credit stress can still matter—but credit stress is often the channel where “macro becomes personal.”
 
 If you want a clean mental model of rates as “decisions vs prices,” this post connects directly:  
-- 👉 [A Rate Cut Doesn’t Guarantee Lower Borrowing Costs: Policy Rates vs Market Rates](/en/posts/economicInfo/policy-rate-cut-market-rates)
+- 🔗 [A Rate Cut Doesn’t Guarantee Lower Borrowing Costs: Policy Rates vs Market Rates](/en/posts/economicInfo/policy-rate-cut-market-rates)
 
 ---
 
@@ -197,7 +197,7 @@ You don’t need to become an FX trader. You just need a rule:
 If your local currency is weakening sharply while global yields rise, treat it as **tighter conditions** until proven otherwise.
 
 If you want a Korea-focused bridge:
-- 👉 [USD/KRW Exchange Rate: What It Means for Korea’s Economy and Markets](/en/posts/investingInfo/usd-krw-korea-kospi)
+- 🔗 [USD/KRW Exchange Rate: What It Means for Korea’s Economy and Markets](/en/posts/investingInfo/usd-krw-korea-kospi)
 
 ---
 
@@ -235,12 +235,12 @@ The goal is to stay in the game.
 
 ## Keep reading if you want the full “rates → markets” chain
 
-- 👉 [How Interest Rates Work: From Policy Rates to Loans and Bonds](/en/posts/economicInfo/interest-rate-basics)
+- 🔗 [How Interest Rates Work: From Policy Rates to Loans and Bonds](/en/posts/economicInfo/interest-rate-basics)
 
 And for a deeper global rates anchor:
-- 👉 [TNX Explained: Why the 10-Year Treasury Yield Drives Markets](/en/posts/investingInfo/tnx-basics)  
-- 👉 [How WTI Oil Can Tighten Financial Conditions Through Inflation and Rates](/en/posts/economicInfo/wti-impact-on-korea-kospi)  
-- 👉 [CAGR Reality Check: What “7% per year” really means](/en/posts/investingInfo/cagr-7percent-reality-check)
+- 🔗 [TNX Explained: Why the 10-Year Treasury Yield Drives Markets](/en/posts/investingInfo/tnx-basics)  
+- 🔗 [How WTI Oil Can Tighten Financial Conditions Through Inflation and Rates](/en/posts/economicInfo/wti-impact-on-korea-kospi)  
+- 🔗 [CAGR Reality Check: What “7% per year” really means](/en/posts/investingInfo/cagr-7percent-reality-check)
 
 ---
 

@@ -109,7 +109,7 @@ lang: "ko"
 이 얘기를 더 깊게 이해하면 “채권은 왜 움직이는가?”가 선명해집니다.  
 (중간에 한 번만 링크 걸게요)
 
-- 👉 [미국 10년물 금리(TNX): 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)
+- 🔗 [미국 10년물 금리(TNX): 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)
 
 ---
 
@@ -290,7 +290,7 @@ lang: "ko"
 
 (원자재/인플레 체인을 더 깊게 보고 싶다면 아래 글이 퍼즐을 맞춰줍니다.)
 
-- 👉 [WTI 유가가 한국 경제·코스피에 미치는 영향: 물가·환율·금리·기업이익으로 이어지는 5단 연결](/posts/investingInfo/wti-impact-on-korea-kospi)
+- 🔗 [WTI 유가가 한국 경제·코스피에 미치는 영향: 물가·환율·금리·기업이익으로 이어지는 5단 연결](/posts/investingInfo/wti-impact-on-korea-kospi)
 
 ---
 
@@ -329,7 +329,7 @@ lang: "ko"
 
 (드로다운/변동성/샤프비율까지 한 번에 프레임을 잡고 싶다면 이 글이 연결됩니다.)
 
-- 👉 [CAGR로 투자 실력 진단하기: MDD·변동성·샤프비율과 함께 보는 현실적인 평가법](/posts/investingInfo/diagnose-investing-skill-with-cagr)
+- 🔗 [CAGR로 투자 실력 진단하기: MDD·변동성·샤프비율과 함께 보는 현실적인 평가법](/posts/investingInfo/diagnose-investing-skill-with-cagr)
 
 ---
 
@@ -351,10 +351,10 @@ lang: "ko"
 
 아래 글들은 오늘 내용(리스크 예산/요즘형 60/40)을 더 단단하게 만들어줍니다.
 
-- 👉 [ETF·펀드 선택 시 CAGR을 반드시 확인해야 하는 이유](/posts/investingInfo/why-check-cagr-etf)  
-- 👉 [‘연 7% 복리’는 실제로 무엇을 의미할까? CAGR로 현실 체크하기](/posts/investingInfo/cagr-7percent-reality-check)  
-- 👉 [적립식(DCA)은 ‘수익률’이 아니라 ‘지속성’ 게임: 실패하는 DCA 패턴 7가지](/posts/investingInfo/dca-consistency-7-fail-patterns)  
-- 👉 [미국 10년물 금리(TNX)는 왜 ETF를 뒤흔드는가?](/posts/investingInfo/etf-impact-of-tnx)
+- 🔗 [ETF·펀드 선택 시 CAGR을 반드시 확인해야 하는 이유](/posts/investingInfo/why-check-cagr-etf)  
+- 🔗 [‘연 7% 복리’는 실제로 무엇을 의미할까? CAGR로 현실 체크하기](/posts/investingInfo/cagr-7percent-reality-check)  
+- 🔗 [적립식(DCA)은 ‘수익률’이 아니라 ‘지속성’ 게임: 실패하는 DCA 패턴 7가지](/posts/investingInfo/dca-consistency-7-fail-patterns)  
+- 🔗 [미국 10년물 금리(TNX)는 왜 ETF를 뒤흔드는가?](/posts/investingInfo/etf-impact-of-tnx)
 
 ---
 

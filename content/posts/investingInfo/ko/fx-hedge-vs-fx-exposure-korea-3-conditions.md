@@ -148,7 +148,7 @@ lang: "ko"
   “헤지 vs 노출”의 기대 경로를 바꿔버립니다.
 
 중간에 이 연결 고리를 더 깊게 보려면 아래 글이 퍼즐을 맞춰줍니다.  
-- 👉 [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)
+- 🔗 [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)
 
 <figure>
   <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1768789698/blog/insight/fx-hedge-kr-img2.png" alt="TNX는 달러 흐름과 헤지 비용의 체감을 바꿔 환헤지 정답을 흔든다" />
@@ -224,10 +224,10 @@ lang: "ko"
 - 그래서 환율을 단독으로 보기보다,  
   <strong>달러의 ‘원인’(DXY, 금리, 위험선호)</strong>을 함께 보는 게 판단에 유리합니다.
 
-- 👉 [DXY(달러인덱스)란 무엇인가? 투자자가 꼭 알아야 할 의미 정리](/posts/investingInfo/dxy-dollar-index-basics)
+- 🔗 [DXY(달러인덱스)란 무엇인가? 투자자가 꼭 알아야 할 의미 정리](/posts/investingInfo/dxy-dollar-index-basics)
 
 (USD/KRW가 코스피와 어떻게 연결되는지까지 보면 “환노출이 심리적으로 왜 어려운지”가 선명해집니다.)  
-- 👉 [원달러 환율이 한국 경제와 코스피에 미치는 영향: 외국인 수급·수출·물가·금리로 읽는 법](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- 🔗 [원달러 환율이 한국 경제와 코스피에 미치는 영향: 외국인 수급·수출·물가·금리로 읽는 법](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
 
 ---
 
@@ -267,10 +267,10 @@ lang: "ko"
 
 아래 글들은 오늘 주제(환헤지 vs 환노출)를 **달러·금리·한국 시장**과 연결해 “왜 이런 룰이 필요한지”를 더 선명하게 해줍니다.
 
-- 👉 [환율의 기초: 원/달러가 움직이는 진짜 이유](/posts/economicInfo/fx-basics)  
-- 👉 [DXY가 변화하면 시장은 어떻게 움직일까? 미국 증시·환율·코스피까지](/posts/investingInfo/dxy-market-impact)  
-- 👉 [미국 10년물 금리(TNX)는 왜 ETF를 뒤흔드는가? 성장·가치·신흥국 ETF까지 모두 설명하는 금리 로직](/posts/investingInfo/etf-impact-of-tnx)  
-- 👉 [미국 증시(S&P500)가 한국 경제·코스피에 미치는 영향: 환율·금리·외국인 수급의 연결고리](/posts/investingInfo/sp500-impact-on-korea-kospi)
+- 🔗 [환율의 기초: 원/달러가 움직이는 진짜 이유](/posts/economicInfo/fx-basics)  
+- 🔗 [DXY가 변화하면 시장은 어떻게 움직일까? 미국 증시·환율·코스피까지](/posts/investingInfo/dxy-market-impact)  
+- 🔗 [미국 10년물 금리(TNX)는 왜 ETF를 뒤흔드는가? 성장·가치·신흥국 ETF까지 모두 설명하는 금리 로직](/posts/investingInfo/etf-impact-of-tnx)  
+- 🔗 [미국 증시(S&P500)가 한국 경제·코스피에 미치는 영향: 환율·금리·외국인 수급의 연결고리](/posts/investingInfo/sp500-impact-on-korea-kospi)
 
 ---
 

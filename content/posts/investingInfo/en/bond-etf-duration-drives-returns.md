@@ -122,7 +122,7 @@ In practice, when TNX jumps, investors often reprice duration risk across:
 - and bond ETF pricing expectations.
 
 If you want a clean TNX primer, this helps:  
-- 👉 [TNX Explained: Why the 10-Year Treasury Yield Drives Markets](/en/posts/investingInfo/tnx-basics)
+- 🔗 [TNX Explained: Why the 10-Year Treasury Yield Drives Markets](/en/posts/investingInfo/tnx-basics)
 
 ---
 
@@ -204,7 +204,7 @@ So when the curve changes shape:
 - it responds to *which part of the curve moved* and *why*.
 
 If you want the foundational “policy rate vs market rate” separation:
-- 👉 [Understanding Interest Rates: Policy Rates, Market Rates, and How They Influence Deposits, Loans, and Bonds](/en/posts/economicInfo/interest-rate-basics)
+- 🔗 [Understanding Interest Rates: Policy Rates, Market Rates, and How They Influence Deposits, Loans, and Bonds](/en/posts/economicInfo/interest-rate-basics)
 
 ---
 
@@ -306,7 +306,7 @@ Common fit:
 - explicit rules tied to your risk budget (not rate forecasts)
 
 If you like the “risk budget” style portfolio design (stocks + bonds + cash + diversifiers):
-- 👉 [The Modern 60/40: Build a Risk Budget with Stocks, Bonds, Cash, and Gold (or Commodities)](/en/posts/investingInfo/modern-6040-risk-budget)
+- 🔗 [The Modern 60/40: Build a Risk Budget with Stocks, Bonds, Cash, and Gold (or Commodities)](/en/posts/investingInfo/modern-6040-risk-budget)
 
 ---
 
@@ -321,7 +321,7 @@ When TNX rises, the effect often travels through:
 which can influence local financial conditions.
 
 If you want a practical FX linkage explanation:
-- 👉 [Currency Basics: What Really Moves the USD/KRW Exchange Rate](/en/posts/economicInfo/fx-basics)
+- 🔗 [Currency Basics: What Really Moves the USD/KRW Exchange Rate](/en/posts/economicInfo/fx-basics)
 
 (If you’re not Korea-focused, treat this as an example of how FX amplifies rate regimes in smaller open economies.)
 
@@ -366,9 +366,9 @@ This is how you make bonds boring again—in a good way.
 
 ## Continue reading: posts that connect the same framework to TNX, rates, and ETF behavior
 
-- 👉 [How U.S. 10Y Yield (TNX) Affects ETFs: Growth, Value, EM, and Korea](/en/posts/investingInfo/etf-impact-of-tnx)  
-- 👉 [A Rate Cut Doesn’t Guarantee Lower Borrowing Costs: How to Read Policy Rates vs Market Rates](/en/posts/economicInfo/policy-rate-cut-market-rates)  
-- 👉 [Why You Must Check the CAGR When Choosing ETFs and Funds](/en/posts/investingInfo/why-check-cagr-etf)
+- 🔗 [How U.S. 10Y Yield (TNX) Affects ETFs: Growth, Value, EM, and Korea](/en/posts/investingInfo/etf-impact-of-tnx)  
+- 🔗 [A Rate Cut Doesn’t Guarantee Lower Borrowing Costs: How to Read Policy Rates vs Market Rates](/en/posts/economicInfo/policy-rate-cut-market-rates)  
+- 🔗 [Why You Must Check the CAGR When Choosing ETFs and Funds](/en/posts/investingInfo/why-check-cagr-etf)
 
 ---
 

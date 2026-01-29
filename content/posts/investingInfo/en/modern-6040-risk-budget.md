@@ -325,10 +325,10 @@ Use this simple mapping:
 | “FX stress (Korea)” | KRW assets + foreign flows | correlation shifts | treat FX as risk factor, not a story |
 
 If you want a deeper macro lens for why yields matter across assets, this explainer helps mid-article:  
-- 👉 [TNX Explained: Why the 10-Year Treasury Yield Drives Markets](/en/posts/investingInfo/tnx-basics)
+- 🔗 [TNX Explained: Why the 10-Year Treasury Yield Drives Markets](/en/posts/investingInfo/tnx-basics)
 
 And if you often feel confused about “strong dollar vs stocks,” this is a good companion:  
-- 👉 [What Is DXY (Dollar Index)? A Beginner-Friendly Explanation for Investors](/en/posts/investingInfo/dxy-dollar-index-basics)
+- 🔗 [What Is DXY (Dollar Index)? A Beginner-Friendly Explanation for Investors](/en/posts/investingInfo/dxy-dollar-index-basics)
 
 ---
 
@@ -346,7 +346,7 @@ A simple rulebook upgrade:
 - treat FX as part of your risk budget (not as a separate bet).
 
 If that’s relevant, this chain-of-impact post is a strong reference:  
-- 👉 [USD/KRW Exchange Rate: What It Means for Korea’s Economy and the KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- 🔗 [USD/KRW Exchange Rate: What It Means for Korea’s Economy and the KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
 
 ---
 
@@ -359,7 +359,7 @@ The easiest way to avoid performance chasing is to judge long-term outcomes with
 - drawdown and volatility for survivability.
 
 This article explains why CAGR beats “total return” for comparing funds:  
-- 👉 [Why You Must Check the CAGR When Choosing ETFs and Funds](/en/posts/investingInfo/why-check-cagr-etf)
+- 🔗 [Why You Must Check the CAGR When Choosing ETFs and Funds](/en/posts/investingInfo/why-check-cagr-etf)
 
 ---
 
@@ -383,7 +383,7 @@ If you only do one thing after reading, do this.
 - Do nothing else until review day.
 
 If you tend to drift or pause contributions, this post helps you build consistency rules:  
-- 👉 [DCA Is a Consistency Game, Not a Return Hack: 7 Ways People Fail (and How to Fix Them)](/en/posts/investingInfo/dca-consistency-7-fail-patterns)
+- 🔗 [DCA Is a Consistency Game, Not a Return Hack: 7 Ways People Fail (and How to Fix Them)](/en/posts/investingInfo/dca-consistency-7-fail-patterns)
 
 ---
 
@@ -403,9 +403,9 @@ You can sanity-check with FinMap tools:
 
 If you want to deepen your macro intuition and keep your rules stable across regimes:
 
-- 👉 [How U.S. 10Y Yield (TNX) Affects ETFs: Growth, Value, EM, and Korea](/en/posts/investingInfo/etf-impact-of-tnx)  
-- 👉 [Diagnosing Your Investing Skill Using CAGR: Understanding MDD, Volatility, and Sharpe Ratio](/en/posts/investingInfo/diagnose-investing-skill-with-cagr)  
-- 👉 [How WTI Oil Shapes Korea’s Economy and KOSPI: Inflation, FX, Rates, and Earnings in One Chain](/en/posts/investingInfo/wti-impact-on-korea-kospi)
+- 🔗 [How U.S. 10Y Yield (TNX) Affects ETFs: Growth, Value, EM, and Korea](/en/posts/investingInfo/etf-impact-of-tnx)  
+- 🔗 [Diagnosing Your Investing Skill Using CAGR: Understanding MDD, Volatility, and Sharpe Ratio](/en/posts/investingInfo/diagnose-investing-skill-with-cagr)  
+- 🔗 [How WTI Oil Shapes Korea’s Economy and KOSPI: Inflation, FX, Rates, and Earnings in One Chain](/en/posts/investingInfo/wti-impact-on-korea-kospi)
 
 ---
 

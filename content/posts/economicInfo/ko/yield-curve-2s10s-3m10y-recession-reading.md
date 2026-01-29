@@ -230,7 +230,7 @@ lang: "ko"
 </div>
 
 (정책금리와 시장금리의 차이를 먼저 잡아두면, 이 파트가 훨씬 쉬워집니다.)  
-- 👉 [금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해](/posts/economicInfo/interest-rate-basics)
+- 🔗 [금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해](/posts/economicInfo/interest-rate-basics)
 
 ---
 
@@ -295,14 +295,14 @@ lang: "ko"
 
 아래 글들을 같이 보면, 수익률곡선 뉴스가 더 단순해집니다. (중간 1\~2개 + 끝 2\~4개 규칙 반영)
 
-- 👉 [“금리 인하”가 와도 안 오를 수 있다: 시장금리 vs 정책금리 분리해서 읽기](/posts/economicInfo/policy-rate-cut-market-rates)
+- 🔗 [“금리 인하”가 와도 안 오를 수 있다: 시장금리 vs 정책금리 분리해서 읽기](/posts/economicInfo/policy-rate-cut-market-rates)
 
 그리고 다음 퍼즐 조각들은 ‘한국 체감’으로 번역할 때 특히 도움이 됩니다.
 
-- 👉 [물가와 금리의 기본 이해: 왜 금리가 오르면 시장이 흔들릴까?](/posts/economicInfo/inflation-rate-basics)  
-- 👉 [환율의 기초: 원/달러가 움직이는 진짜 이유](/posts/economicInfo/fx-basics)  
-- 👉 [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)  
-- 👉 [원달러 환율이 한국 경제와 코스피에 미치는 영향: 외국인 수급·수출·물가·금리로 읽는 법](/posts/investingInfo/usd-krw-korea-kospi)
+- 🔗 [물가와 금리의 기본 이해: 왜 금리가 오르면 시장이 흔들릴까?](/posts/economicInfo/inflation-rate-basics)  
+- 🔗 [환율의 기초: 원/달러가 움직이는 진짜 이유](/posts/economicInfo/fx-basics)  
+- 🔗 [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)  
+- 🔗 [원달러 환율이 한국 경제와 코스피에 미치는 영향: 외국인 수급·수출·물가·금리로 읽는 법](/posts/investingInfo/usd-krw-korea-kospi)
 
 ---
 

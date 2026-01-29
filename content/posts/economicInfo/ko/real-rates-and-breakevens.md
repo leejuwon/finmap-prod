@@ -181,7 +181,7 @@ lang: "ko"
 
 > 중간 연결(1)  
 > 물가-금리 기본 구조가 아직 헷갈리면, 이 글을 먼저 보면 오늘 내용이 더 빨라집니다.  
-> - 👉 [물가와 금리의 기본 이해: 왜 금리가 오르면 시장이 흔들릴까?](/posts/economicInfo/inflation-rate-basics)
+> - 🔗 [물가와 금리의 기본 이해: 왜 금리가 오르면 시장이 흔들릴까?](/posts/economicInfo/inflation-rate-basics)
 
 ---
 
@@ -314,10 +314,10 @@ lang: "ko"
 
 (중간 1~2개는 이미 연결했고, 여기서는 다음 행동용으로 4개를 더 추천합니다.)
 
-- 👉 [“금리 인하”가 와도 안 오를 수 있다: 시장금리 vs 정책금리 분리해서 읽기](/posts/economicInfo/policy-rate-cut-market-rates)  
-- 👉 [환율의 기초: 원/달러가 움직이는 진짜 이유](/posts/economicInfo/fx-basics)  
-- 👉 [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)  
-- 👉 [DXY(달러인덱스)란 무엇인가? 투자자가 꼭 알아야 할 의미 정리](/posts/investingInfo/dxy-dollar-index-basics)  
+- 🔗 [“금리 인하”가 와도 안 오를 수 있다: 시장금리 vs 정책금리 분리해서 읽기](/posts/economicInfo/policy-rate-cut-market-rates)  
+- 🔗 [환율의 기초: 원/달러가 움직이는 진짜 이유](/posts/economicInfo/fx-basics)  
+- 🔗 [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)  
+- 🔗 [DXY(달러인덱스)란 무엇인가? 투자자가 꼭 알아야 할 의미 정리](/posts/investingInfo/dxy-dollar-index-basics)  
 
 ---
 
