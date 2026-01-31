@@ -55,7 +55,7 @@ lang: "en"
 - <strong>Volume & recovery signals:</strong> distinguish <strong>sharp rebound</strong>(chase risk) vs <strong>base-building</strong>(stabilization)  
 
 <p>
-Open the dashboard here: <a href="https://www.finmaphub.com/en/market/real-estate">South Korea Apartment Transaction Dashboard</a>
+Open the dashboard here: <a href="/en/market/real-estate">South Korea Apartment Transaction Dashboard</a>
 </p>
 
 <figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769749563/blog/insight/apt-dashboard-home-goal-roadmap-cover.png" alt="A home goal is not a forecast; it’s a rules-based plan built from distribution, trend, and cashflow" /><figcaption>A home goal is not a forecast; it’s a rules-based plan built from distribution, trend, and cashflow</figcaption></figure>
@@ -193,7 +193,7 @@ You don’t need to stare at charts daily. You need a cadence.
 
 ### Checklist 1) “What to read on the dashboard” (weekly, 15 minutes)
 
-- □ Open: <a href="https://www.finmaphub.com/en/market/real-estate">South Korea Apartment Transaction Dashboard</a>  
+- □ Open: <a href="/en/market/real-estate">South Korea Apartment Transaction Dashboard</a>  
 - □ Confirm my target band (lower/median/upper) for my top 10 complexes  
 - □ Check 6–12 month slope: <strong>steep</strong> or <strong>manageable</strong>  
 - □ Check volume: sharp rebound vs base-building  
@@ -266,7 +266,7 @@ Write one sentence: <strong>“I act only inside my target band, and I pause whe
 It’s not perfect, but it immediately reduces headline-driven decisions.
 
 ### Where should I start on the dashboard if I feel overwhelmed
-Start with distribution. Pick your target band and list 10 candidate complexes. Only then look at slope and volume signals to decide your state. Open it here: <a href="https://www.finmaphub.com/market/real-estate">https://www.finmaphub.com/market/real-estate</a>
+Start with distribution. Pick your target band and list 10 candidate complexes. Only then look at slope and volume signals to decide your state. Open it here: <a href="/en/market/real-estate">South Korea Apartment Transaction Dashboard</a>
 
 ---
 
