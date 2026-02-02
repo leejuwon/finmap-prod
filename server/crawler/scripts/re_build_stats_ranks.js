@@ -4,9 +4,9 @@
  * - level=dong(서울) / sigungu(경기/인천/서울 구단위 등)
  *
  * 예)
- *  node server/crawler/scripts/re_build_stats_ranks.js --sido=41 --level=sigungu --from=202101 --to=202312 --top=100 --timeframe=both --only=all
- *  node server/crawler/scripts/re_build_stats_ranks.js --sido=28 --level=sigungu --from=202101 --to=202312 --top=100 --timeframe=both --only=all
- *  node server/crawler/scripts/re_build_stats_ranks.js --sido=11 --level=dong    --from=202101 --to=202312 --top=100 --timeframe=both --only=all
+ *  node server/crawler/scripts/re_build_stats_ranks.js --sido=41 --level=sigungu --from=200101 --to=202601 --top=100 --timeframe=both --only=all
+ *  node server/crawler/scripts/re_build_stats_ranks.js --sido=28 --level=sigungu --from=200101 --to=202601 --top=100 --timeframe=both --only=all
+ *  node server/crawler/scripts/re_build_stats_ranks.js --sido=11 --level=dong    --from=200101 --to=202601 --top=100 --timeframe=both --only=all
  */
 'use strict';
 

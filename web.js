@@ -68,6 +68,18 @@ const PORT = Number(process.env.PORT || 8002);
     fallthrough: true,
     maxAge: 0,
   }));
+
+  app.use((req, res, next) => {
+    const p = req.path || '';
+    if (
+      p.includes('[') || p.includes(']') ||
+      p.toLowerCase().includes('%5b') || p.toLowerCase().includes('%5d')
+    ) {
+      res.status(404).send('Not Found');
+      return;
+    }
+    next();
+  });
   
   // Next 핸들러
   app.all('*', (req, res) => handle(req, res));
