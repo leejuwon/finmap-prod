@@ -78,6 +78,25 @@ const TEXT = {
   },
 };
 
+const PILLAR_SLUGS = {
+  ko: [
+    'inflation-basics',
+    'tnx-us-10y-yield-basics',
+    'usd-krw-exchange-rate-and-kospi',
+    'policy-rate-cut-market-rates',
+    'mortgage-risk-checklist-dsr-variable',
+    'how-much-per-month-for-100m',
+  ],
+  en: [
+    'inflation-basics',
+    'tnx-us-10y-yield-basics',
+    'usd-krw-exchange-rate-and-kospi',
+    'policy-rate-cut-market-rates',
+    'mortgage-risk-checklist-dsr-variable',
+    'how-much-per-month-for-100m',
+  ],
+};
+
 export default function Home({ posts }) {
   // 🔥 전역 언어 시스템과 동기화되는 상태
   const router = useRouter();
@@ -85,11 +104,20 @@ export default function Home({ posts }) {
 
   const t = TEXT[lang] || TEXT.ko;
 
-  // 언어별 포스트 필터링 (lang 필드가 없으면 ko로 간주)
-  const filtered = posts.filter((p) => {
-    if (!p.lang) return lang === 'ko';
-    return p.lang === lang;
-  });
+  const filtered = useMemo(() => {
+    return (posts || []).filter((p) => {
+      if (!p.lang) return lang === 'ko';
+      return p.lang === lang;
+    });
+  }, [posts, lang]);  
+
+  const pillars = useMemo(() => {
+    const slugs = PILLAR_SLUGS[lang] || [];
+    return slugs
+      .map((s) => filtered.find((p) => p.slug === s))
+      .filter(Boolean)
+      .slice(0, 9);
+  }, [lang, filtered]);
 
   const latest = filtered.slice(0, 3);
   const more = filtered.slice(3, 9);
@@ -98,7 +126,7 @@ export default function Home({ posts }) {
 
   return (
     <>
-      <SeoHead title={t.seoTitle} desc={t.seoDesc} url={seoUrl} locale={lang} />
+      <SeoHead title={t.seoTitle} desc={t.seoDesc} url={seoUrl} locale={lang} />      
 
       {/*  히어로 섹션 */}
       <section className="mt-6 mb-8">
@@ -169,6 +197,32 @@ export default function Home({ posts }) {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="mt-4 mb-8">
+        <h2 className="text-xl font-semibold mb-3">
+          {lang === 'en' ? 'Start here' : '처음 읽기 좋은 글'}
+        </h2>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {pillars.map((p) => {
+            const categorySlug = getCategorySlugFromPost(p);
+            const postLang = p.lang || 'ko';
+            return (
+              <article key={`pillar-${postLang}-${p.slug}`} className="card">
+                {p.cover && (
+                  <img src={p.cover} alt={p.title} className="card-thumb" />
+                )}
+                <span className="badge">{p.category}</span>
+                <h3 className="text-base font-semibold">
+                  <Link href={`${postLang === 'en' ? '/en' : ''}/posts/${categorySlug}/${p.slug}`}>
+                    {p.title}
+                  </Link>
+                </h3>
+                {p.description ? <p className="text-sm text-slate-600 mt-1 line-clamp-2">{p.description}</p> : null}
+              </article>
+            );
+          })}
         </div>
       </section>
 

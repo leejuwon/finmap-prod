@@ -21,6 +21,7 @@ export default function Footer() {
             <Link href="/privacy">Privacy</Link>
             <Link href="/terms">TOS</Link>
             <Link href="/disclaimer">Disclaimer</Link>
+            <Link href="/sitemap-pages" className="text-sm underline">Sitemap</Link>
           </div>
           {/* 우측: 카피라이트 */}
           <span className="ml-auto text-sm">

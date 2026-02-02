@@ -1,5 +1,6 @@
 // pages/market/real-estate/apt/[aptKey].js
 import { useEffect, useMemo, useRef, useState } from 'react';
+import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import ToolSeo from '../../../../_components/ToolSeo';
@@ -498,6 +499,20 @@ export default function AptDetailPage() {
 
   return (
     <>
+      <Head>
+        {/* ✅ 인덱스 금지: 상세(무한) 페이지는 검색결과로 안 쌓고, 링크만 따라가게 */}
+        <meta name="robots" content="noindex,follow" />
+
+        {/* ✅ canonical: 쿼리(필터) 섞여도 대표 URL은 “같은 상세”로 고정 */}
+        {aptKey ? (
+          <link
+            rel="canonical"
+            href={`https://www.finmaphub.com${lang === 'en' ? '/en' : ''}/market/real-estate/apt/${encodeURIComponent(
+              String(aptKey)
+            )}`}
+          />
+        ) : null}
+      </Head>
       <BlockingOverlay
         show={blockingBusy}
         text={lang === 'en' ? 'Loading data...' : '데이터 불러오는 중...'}

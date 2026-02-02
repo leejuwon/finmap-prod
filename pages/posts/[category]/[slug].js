@@ -1,6 +1,7 @@
 // pages/posts/[category]/[slug].js
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import SeoHead from '../../../_components/SeoHead';
 import AdResponsive from '../../../_components/AdResponsive';
 import AdInArticle from '../../../_components/AdInArticle';
@@ -50,7 +51,8 @@ export function JsonLd({ data }) {
   );
 }
 
-export default function PostPage({ post, lang, otherLangAvailable, categorySlug }) {
+export default function PostPage({ post, lang, otherLangAvailable, categorySlug, relatedPosts }) {
+
   const router = useRouter();
   const slug = post.slug;
 
@@ -512,6 +514,30 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug 
             ))}
           </div>
         )}
+
+        {Array.isArray(relatedPosts) && relatedPosts.length > 0 && (
+          <section className="mt-10 border-t pt-6">
+            <h2 className="text-base md:text-lg font-semibold mb-3">
+              {lang === 'en' ? 'Related posts' : '관련 글'}
+            </h2>
+            <div className="text-sm mb-3">
+              <Link className="underline" href={`/category/${categorySlug}`} locale={lang}>
+                {lang === 'en' ? 'Open category' : '카테고리 더 보기'}
+              </Link>
+            </div>
+            <ul className="grid gap-2">
+              {relatedPosts.map((rp) => (
+                <li key={`${rp.lang}-${rp.slug}`} className="text-sm">
+                  <Link className="underline" href={`/posts/${categorySlug}/${rp.slug}`} locale={rp.lang}>
+                    {rp.title}
+                  </Link>
+                  {rp.datePublished ? <span className="text-slate-400"> · {rp.datePublished}</span> : null}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
       </article>
     </>
   );
@@ -588,12 +614,28 @@ export async function getStaticProps({ params, locale }) {
     };
   }
 
+  // ✅ related: 같은 언어 + 같은 카테고리에서 최신 5개 (현재 글 제외)
+  const allSameLang = lang === 'en' ? getAllPostsStrict('en') : getAllPosts('ko');
+  const sameCat = allSameLang
+    .filter((p) => p.slug !== slug)
+    .filter((p) => getCategorySlugFromPost(p, lang) === categorySlug)
+    .sort((a, b) => new Date(b.datePublished || 0) - new Date(a.datePublished || 0))
+    .slice(0, 5)
+    .map((p) => ({
+      lang,
+      slug: p.slug,
+      title: p.title,
+      datePublished: p.datePublished || '',
+  }));
+
+
   return {
     props: {
       post,
       lang,
       otherLangAvailable,
       categorySlug,
+      relatedPosts: sameCat,
     },
   };
 }
