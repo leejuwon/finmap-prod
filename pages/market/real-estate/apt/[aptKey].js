@@ -525,6 +525,7 @@ export default function AptDetailPage() {
         appCategory="FinanceApplication"
         about={{ "@type": "Place", name: "South Korea" }}
         keywords={lang === "en" ? "Korea apartment transactions, real estate" : "한국 아파트 실거래, 부동산"}
+        robots="noindex,follow"
       />
 
       <div className="card">
