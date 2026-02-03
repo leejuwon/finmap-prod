@@ -309,3 +309,24 @@ H2 제목 예시:
   특히 한글 블로그 작성의 경우 **문장**바로 뒤에 띄워쓰기 없이 바로 글자가 오는 경우 문자 그대로 노출되는 케이스가 많아서
   해당 케이스의 경우 **문장**안에 포함시킨다. 예) '**오늘**도' 같은 경우 **오늘도**로 적용한다.
 ---
+
+### (중요) “한 번에 복사 가능한 .md 출력” 규칙
+
+- 전체 포스트를 하나의 코드블록(예: ```md)으로 감싸서 제공할 때, **그 안에 또 다른 fenced code block(```html, ```json 등)을 절대 넣지 않는다.**
+  - 이유: 내부의 ```가 바깥 코드블록을 닫아버려, 이후 내용이 코드블록 밖으로 튀어나간다.
+- Hero HTML, JSON-LD, 이미지 figure 등은 **그대로 ‘원문 HTML’로 본문에 삽입**한다(코드펜스 없이).
+  - OK: <div class="hero-grid">...</div>
+  - OK: <script type="application/ld+json">...</script>
+  - OK: <figure>...</figure>
+- 만약 본문에 코드펜스가 꼭 필요하면(드문 케이스),
+  1) “전체 포스트를 단일 코드블록으로 감싸지 않거나”, 또는
+  2) “바깥/안쪽 펜스 문자를 다르게 사용한다(예: 바깥은 ``` , 안쪽은 ~~~ )”
+  중 하나를 선택한다.
+- 강조는 **문장 단위는 <strong>로 처리**하고, Markdown **는 괄호/조사 결합에서 오작동할 수 있으니 주의한다.
+
+### Korea-only terms in English posts (mandatory)
+- If a post includes Korea-specific concepts that are unfamiliar to US/global readers (e.g., Jeonse), define them once on first mention.
+- Use the pattern: “Term (short global-friendly label)” + one-sentence plain-English definition + one-sentence economic intuition/risk.
+  - Example: “Jeonse (Korea’s lump-sum deposit lease) … refundable deposit … opportunity cost + deposit-return risk.”
+- After the first definition, you may use the original term consistently (avoid switching synonyms mid-article).
+
