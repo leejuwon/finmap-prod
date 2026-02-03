@@ -163,13 +163,13 @@ export default function FireCalculatorPage() {
   const relatedGuides = useMemo(
     () => [
       {
-        slug: "simple-vs-compound",
-        tagKo: "기초 개념",
-        tagEn: "Basics",
-        titleKo: "단리 vs 복리: 차이와 공식 한 번에 정리",
-        titleEn: "Simple vs Compound: the key difference",
-        descKo: "단리·복리의 구조/공식/예시를 빠르게 이해하고, 복리 계산기로 바로 테스트해보세요.",
-        descEn: "Understand formulas and real examples, then test results in the compound calculator.",
+        slug: "fire-3-numbers-spending-horizon-withdrawal",
+        tagKo: "은퇴자산",
+        tagEn: "retirement planning",
+        titleKo: "은퇴자산 목표는 ‘3개 숫자’로 결정된다: 연지출·은퇴기간·인출률(4%룰 오해까지) + FIRE 툴로 10분 계산",
+        titleEn: "FIRE Is Just 3 Numbers: Annual Spending, Retirement Horizon, and Withdrawal Rate (Then Validate in 10 Minutes)",
+        descKo: "은퇴 준비는 전망이 아니라 숫자 3개(연지출·은퇴기간·인출률)로 결정된다. 한국 거주 직장인/자영업자 관점에서 주거비(전/월세·대출이자), 건강보험료, 자녀/부양, 국민연금·퇴직연금·IRP까지 반영해 FIRE 목표자산을 10분 안에 계산하는 프레임을 정리한다.",
+        descEn: "FIRE planning becomes simple when you lock in three numbers: annual spending, retirement horizon, and withdrawal rate. This guide gives a rules-based framework (not stock picks) and shows how to validate your target with the FinMap FIRE calculator using 401(k)/IRA/Social Security and inflation-adjusted spending—plus sequence-of-returns guardrails.",
       },
       {
         slug: "annual-vs-monthly-compound",
