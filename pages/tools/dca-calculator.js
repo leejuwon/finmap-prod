@@ -273,36 +273,40 @@ export default function DCACalculatorPage() {
   const relatedGuides = useMemo(
     () => [
       {
-        slug: "simple-vs-compound",
-        tagKo: "기초 개념",
-        tagEn: "Basics",
-        titleKo: "단리 vs 복리: 차이와 공식 한 번에 정리",
-        titleEn: "Simple vs Compound: the key difference",
-        descKo: "단리·복리의 구조/공식/예시를 빠르게 이해하고, 복리 계산기로 바로 테스트해보세요.",
-        descEn: "Understand formulas and real examples, then test results in the compound calculator.",
+        slug: "dca-fx-volatility-decomposition",
+        tagKo: "DCA",
+        tagEn: "DCA",
+        category: "personalFinance",
+        titleKo: "해외자산 DCA에서 ‘수익률 변동’과 ‘환율 변동’을 분리해 읽는 법: 한국 사용자용 운영 규칙(불안·중단 방지)",
+        titleEn: "DCA Returns Are “Asset Return + Currency Return”: A Volatility Decomposition Framework That Reduces Panic and Rule-Drift",
+        descKo: "해외자산 적립식(DCA)은 ‘원화 수익률’만 보면 불안이 커지고 중단 확률이 올라갑니다. 이 글은 달러 기준 자산수익과 USD/KRW 환율 변동을 분리해 해석하는 프레임, 그리고 중단/증액/리밸런싱을 예측 없이 실행으로 바꾸는 운영 규칙을 제공합니다. 마지막엔 DCA 계산기로 민감도(수익률·인플레·세금·수수료·적립금 증가율)를 체크합니다.",
+        descEn: "Global DCA often fails for a simple reason: you judge one number (USD return) even though two engines drive it—asset returns and currency returns. This US-first guide gives a decomposition framework you can apply in minutes, plus a rules-based operating plan (contributions, guardrails, rebalancing triggers) that prevents panic pauses and strategy drift. You’ll also stress-test assumptions using the FinMap DCA Calculator.",
       },
       {
-        slug: "annual-vs-monthly-compound",
-        tagKo: "월복리",
-        tagEn: "Compounding",
-        titleKo: "월복리 vs 연복리: 주기 차이가 결과를 바꾸는 이유",
-        titleEn: "Monthly vs Annual Compounding: why it changes",
-        descKo: "복리 주기(월/연)에 따라 미래가치(FV)가 어떻게 달라지는지 숫자로 확인합니다.",
-        descEn: "See how compounding frequency affects future value (FV) with numbers.",
+        slug: "dca-step-up-ruleset",
+        tagKo: "스텝업",
+        tagEn: "step-up contributions",
+        category: "personalFinance",
+        titleKo: "DCA의 핵심은 ‘월 납입액 설계’다: 증액(스텝업)·감액·일시중단 조건을 운영규칙으로 만드는 법",
+        titleEn: "Step-Up DCA: A Rulebook for Raising (or Pausing) Contributions Without Breaking Your Plan",
+        descKo: "적립식(DCA)은 타이밍이 아니라 ‘지속성’이 성패를 가릅니다. 월 납입액을 스텝업(증액)·감액·일시중단·재개 규칙으로 바꾸고, /tools/dca-calculator로 민감도(수익률·인플레·중단기간)를 스트레스 테스트하는 한국 사용자용 운영 가이드.",
+        descEn: "A rules-based operating system for DCA: design a base contribution, add step-up and pause rules, and stress-test your plan with the DCA calculator—without relying on forecasts or product picks.",
       },
       {
-        slug: "how-much-per-month-for-100m",
-        tagKo: "적립식",
-        tagEn: "Contributions",
-        titleKo: "목표 금액을 위한 월 투자금: 역산으로 계획 세우기",
-        titleEn: "Monthly contribution planning: reverse-calc",
-        descKo: "목표금액·기간·수익률로 필요한 월 적립금을 역산해 투자 계획을 만듭니다.",
-        descEn: "Reverse-calculate monthly contribution from target, years, and expected return.",
+        slug: "dca-consistency-7-fail-patterns",
+        tagKo: "장기투자",
+        tagEn: "long-term investing",
+        category: "investingInfo",
+        titleKo: "적립식(DCA)은 ‘수익률’이 아니라 ‘지속성’ 게임: 실패하는 DCA 패턴 7가지",
+        titleEn: "DCA Is a Consistency Game, Not a Return Hack: 7 Ways People Fail (and How to Fix Them)",
+        descKo: "DCA는 타이밍이 아니라 ‘지속성’이 성패를 가릅니다. 많은 투자자가 반복해서 무너지는 7가지 패턴과, 규칙을 다시 설계하는 실전 체크리스트를 정리했습니다.",
+        descEn: "Dollar-cost averaging works when it survives real life. Here are 7 repeatable failure patterns—oversized contributions, panic pauses, rule drift—and a practical rulebook to rebuild a DCA plan you can actually keep.",
       },
       {
         slug: "goal-amount-fast-strategy",
         tagKo: "전략",
         tagEn: "Strategy",
+        category: "personalFinance",
         titleKo: "목표에 더 빨리 도달하는 방법: 원금·수익률·기간의 균형",
         titleEn: "Reach goals faster: balance the levers",
         descKo: "원금/월적립/수익률/기간 중 무엇을 조정해야 목표 도달이 빨라지는지 정리합니다.",
@@ -312,6 +316,7 @@ export default function DCACalculatorPage() {
         slug: "personal-start-5steps",
         tagKo: "입문",
         tagEn: "Getting started",
+        category: "personalFinance",
         titleKo: "사회초년생 재테크 시작 5단계: 예산·비상금·투자 루틴",
         titleEn: "Personal finance start: 5 steps",
         descKo: "예산→비상금→저축→투자 순서로, 장기 복리 효과를 만드는 루틴을 제안합니다.",
@@ -526,7 +531,7 @@ export default function DCACalculatorPage() {
             {relatedGuides.map((g) => (
               <Link
                 key={g.slug}
-                href={`/posts/personalFinance/${g.slug}`}
+                href={`/posts/${g.category}/${g.slug}`}
                 locale={routeLocale}
                 className="block border rounded-2xl p-4 hover:shadow-sm transition"
               >
