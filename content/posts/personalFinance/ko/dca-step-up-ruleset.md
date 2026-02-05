@@ -70,20 +70,20 @@ lang: "ko"
   <p><strong>핵심 원칙 1</strong>: 월 납입액은 ‘최대치’가 아니라 <strong>최악의 달에도 유지 가능한 최소치</strong>에서 출발한다.</p>
 </div>
 
-<div class="img-row">
-  <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770269543/blog/insight/dca-step-up-ruleset-kr-img1.png" alt="급여/매출에서 납입액을 자동화하는 통장 흐름도" />
-    <figcaption>돈의 흐름을 먼저 분리하면, 의지보다 시스템이 작동한다</figcaption>
-  </figure>
-  <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770269545/blog/insight/dca-step-up-ruleset-kr-img2.png" alt="월 납입액을 유지·증액·중단으로 나누는 상태 머신" />
-    <figcaption>‘유지/증액/감액/중단/재개’가 정해져 있으면 흔들림이 줄어든다</figcaption>
-  </figure>
-  <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770269546/blog/insight/dca-step-up-ruleset-kr-img3.png" alt="증액은 수익을 키우지만 현금흐름 압박도 키운다" />
-    <figcaption>스텝업은 성장 레버이자 중단 리스크 레버다</figcaption>
-  </figure>
-</div>
+
+<figure>
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770269543/blog/insight/dca-step-up-ruleset-kr-img1.png" alt="급여/매출에서 납입액을 자동화하는 통장 흐름도" />
+  <figcaption>돈의 흐름을 먼저 분리하면, 의지보다 시스템이 작동한다</figcaption>
+</figure>
+<figure>
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770269545/blog/insight/dca-step-up-ruleset-kr-img2.png" alt="월 납입액을 유지·증액·중단으로 나누는 상태 머신" />
+  <figcaption>‘유지/증액/감액/중단/재개’가 정해져 있으면 흔들림이 줄어든다</figcaption>
+</figure>
+<figure>
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770269546/blog/insight/dca-step-up-ruleset-kr-img3.png" alt="증액은 수익을 키우지만 현금흐름 압박도 키운다" />
+  <figcaption>스텝업은 성장 레버이자 중단 리스크 레버다</figcaption>
+</figure>
+
 
 ## 월 납입액을 정하는 3층 구조: 생존·유지·성장
 
