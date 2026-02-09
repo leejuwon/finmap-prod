@@ -358,7 +358,7 @@ lang: "ko"
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269545/blog/insight/dca-step-up-ruleset-kr-img2.png",
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269546/blog/insight/dca-step-up-ruleset-kr-img3.png",
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269548/blog/insight/dca-step-up-ruleset-kr-img4.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269549/blog/insight/dca-step-up-ruleset-kr-img5.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269549/blog/insight/dca-step-up-ruleset-kr-img5.png"
   ],
   "author": {
     "@type": "Organization",

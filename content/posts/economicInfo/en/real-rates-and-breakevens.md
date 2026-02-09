@@ -403,7 +403,7 @@ It often signals a “mixed” regime: inflation pressure plus tightening condit
     }
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768833306/blog/insight/real-rates-and-breakevens-cover.png",    
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768833306/blog/insight/real-rates-and-breakevens-cover.png"
   ]
 }
 </script>

@@ -316,7 +316,7 @@ FIRE 목표가 현실적으로 느껴지려면, 연금은 “나중에 받는 �
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770122121/blog/insight/fire-3-numbers-kr-img1.png",
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770122122/blog/insight/fire-3-numbers-kr-img2.png",
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770122123/blog/insight/fire-3-numbers-kr-img3.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770122799/blog/insight/fire-3-numbers-kr-img4.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770122799/blog/insight/fire-3-numbers-kr-img4.png"
   ],
   "keywords": ["은퇴자산", "FIRE", "연지출", "은퇴기간", "인출률", "4%룰", "국민연금", "퇴직연금", "IRP", "KRW", "인플레이션"]
 }

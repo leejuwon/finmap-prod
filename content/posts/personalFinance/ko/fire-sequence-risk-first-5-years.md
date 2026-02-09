@@ -307,7 +307,7 @@ FIRE 계산기에서 <strong>연지출</strong>을 10% 올린 버전(건보료/�
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770131155/blog/insight/fire-sequence-risk-kr_img2.png",
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770131157/blog/insight/fire-sequence-risk-kr_img3.png",
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770131159/blog/insight/fire-sequence-risk-kr_img4.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770131162/blog/insight/fire-sequence-risk-kr_img5.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770131162/blog/insight/fire-sequence-risk-kr_img5.png"
   ],
   "keywords": [
     "FIRE",

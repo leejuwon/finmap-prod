@@ -356,7 +356,7 @@ Use it to test robustness, not to predict. Run a base case, then deliberately ma
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269517/blog/insight/dca-fx-volatility-en-img1.png",
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269518/blog/insight/dca-fx-volatility-en-img2.png",
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269520/blog/insight/dca-fx-volatility-en-img3.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269521/blog/insight/dca-fx-volatility-en-img4.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269521/blog/insight/dca-fx-volatility-en-img4.png"
   ],
   "keywords": [
     "DCA",

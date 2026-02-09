@@ -285,7 +285,7 @@ They can change the KRW value of global assets and influence domestic risk appet
   "image": [
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770092902/blog/insight/real-estate-role-cover.png",
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770092903/blog/insight/real-estate-role-en-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770092905/blog/insight/real-estate-role-en-img2.png",    
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770092905/blog/insight/real-estate-role-en-img2.png"
   ],
   "author": {
     "@type": "Organization",

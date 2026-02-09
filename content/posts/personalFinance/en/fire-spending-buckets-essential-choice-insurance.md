@@ -400,7 +400,7 @@ Lifestyle caps are best reviewed monthly; Essential drift quarterly; Insurance b
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269578/blog/insight/fire-spending-buckets-essential-en-img2.png",
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269580/blog/insight/fire-spending-buckets-essential-en-img3.png",
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269582/blog/insight/fire-spending-buckets-essential-en-img4.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269583/blog/insight/fire-spending-buckets-essential-en-img5.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269583/blog/insight/fire-spending-buckets-essential-en-img5.png"
   ],
   "keywords": ["FIRE", "retirement spending", "budget buckets", "withdrawal rules", "inflation", "healthcare costs", "Medicare", "buffers", "guardrails"]
 }

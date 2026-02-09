@@ -358,7 +358,7 @@ Not “the plan never changes,” but “the plan stays workable.” You can ide
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269555/blog/insight/fire-assumption-errors-en-img2.png",
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269557/blog/insight/fire-assumption-errors-en-img3.png",
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269558/blog/insight/fire-assumption-errors-en-img4.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269560/blog/insight/fire-assumption-errors-en-img5.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269560/blog/insight/fire-assumption-errors-en-img5.png"
   ],
   "keywords": [
     "FIRE",

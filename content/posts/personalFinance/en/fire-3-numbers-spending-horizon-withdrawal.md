@@ -385,7 +385,7 @@ Once per year is usually enough for a rules-based plan, plus updates after major
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770122117/blog/insight/fire-3-numbers-en-img1.png",
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770122118/blog/insight/fire-3-numbers-en-img2.png",
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1770122119/blog/insight/fire-3-numbers-en-img3.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770122798/blog/insight/fire-3-numbers-en-img4.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770122798/blog/insight/fire-3-numbers-en-img4.png"
   ],
   "keywords": [
     "FIRE",
