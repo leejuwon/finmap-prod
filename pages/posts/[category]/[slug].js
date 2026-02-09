@@ -430,6 +430,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
           <h2 className="text-base md:text-lg font-semibold mb-3">{isKo ? '댓글' : 'Comments'}</h2>
             <form
               className="grid gap-2 mb-4"
+              autoComplete="off"
               onSubmit={(e) => {
                 e.preventDefault();
                 handleCommentSubmit();

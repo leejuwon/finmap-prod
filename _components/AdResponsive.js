@@ -6,6 +6,7 @@ export default function AdResponsive({
   slot, 
   align = "center" 
 }) {
+  if (!slot) return null;
   const [mounted, setMounted] = useState(false);
   const adRef = useRef(null);
   const loadedRef = useRef(false); // 성공적으로 push 되었는지
@@ -18,13 +19,23 @@ export default function AdResponsive({
 
   useEffect(() => {
     if (!mounted) return;
-    if (!adRef.current) return;
-    if (loadedRef.current) return;
+    if (!adRef.current) return;    
     if (typeof window === "undefined") return;
+
+    // slot/client 변경 시 재시도 가능하게 리셋
+    loadedRef.current = false;
+    retryRef.current = 0;
 
     const tryPush = () => {
       if (!adRef.current) return;
       if (loadedRef.current) return;
+
+      // 이미 AdSense가 처리한 ins면 중복 push 방지
+      const status = adRef.current.getAttribute("data-adsbygoogle-status");
+      if (status) {
+        loadedRef.current = true;
+        return;
+      }
 
       // 광고 로더가 아직 로드되지 않았을 수 있음 → 재시도
       try {

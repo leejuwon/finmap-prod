@@ -49,14 +49,6 @@ function MyApp({ Component, pageProps }) {
         </>
       )}      
 
-       {/* ✅ AdSense Loader: 오직 1곳(_app)에서만, 하이드레이션 이후 로드 */}
-      <Script
-        id="adsbygoogle-loader"
-        strategy="afterInteractive"
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS_CLIENT}`}
-        crossOrigin="anonymous"
-      />
-
       <Layout>
         <Component {...pageProps} />
       </Layout>
