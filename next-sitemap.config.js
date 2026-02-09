@@ -1,3 +1,4 @@
+//next-sitemap.config.js
 /** @type {import('next-sitemap').IConfig} */
 const fs = require('fs');
 const path = require('path');

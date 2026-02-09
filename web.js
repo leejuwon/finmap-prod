@@ -50,6 +50,20 @@ const PORT = Number(process.env.PORT || 8002);
   app.set('trust proxy', true);
   app.use(compression());
 
+  // ✅ Next 빌드 산출물(청크/매니페스트)을 Express가 직접 서빙 (가장 안전)
+  const NEXT_STATIC_DIR = path.join(APP_DIR, '.next', 'static');
+  console.log('📌 .next/static exists:', fs.existsSync(NEXT_STATIC_DIR), NEXT_STATIC_DIR);
+
+  app.use('/_next/static', express.static(NEXT_STATIC_DIR, {
+    fallthrough: false,     // 없으면 바로 404 (다른 미들웨어로 새지 않게)
+    immutable: true,
+    maxAge: '365d',
+  }));
+
+  // ✅ _next, api 는 어떤 미들웨어도 타지 말고 Next로 즉시 넘김 (안전)
+  app.all('/_next/*', (req, res) => handle(req, res));
+  app.all('/api/*', (req, res) => handle(req, res));
+
   // 헬스체크
   app.get('/healthz', (_req, res) => {
     res.set('Cache-Control', 'no-store');
@@ -79,15 +93,7 @@ const PORT = Number(process.env.PORT || 8002);
 
     // (선택) 정적 확장자도 통과
     if (/\.(?:js|css|map|png|jpg|jpeg|webp|svg|ico|txt|xml)$/.test(p)) return next();
-
-    if (
-      p.includes('[') || p.includes(']') ||
-      p.toLowerCase().includes('%5b') || p.toLowerCase().includes('%5d')
-    ) {
-      res.status(404).send('Not Found');
-      return;
-    }
-
+    
     if (req.url === '/ko' || req.url.startsWith('/ko/')) {
       const dest = req.url.replace(/^\/ko(?=\/|$)/, '') || '/';
       res.redirect(308, dest);
