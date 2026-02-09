@@ -26,7 +26,12 @@ class MyDocument extends Document {
 
     return (
       <Html lang={htmlLang}>
-        <Head>          
+        <Head> 
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976"
+            crossOrigin="anonymous"
+          />         
           {/* ✅ AdSense 사이트 검증용 메타 태그 */}
           <meta
             name="google-adsense-account"

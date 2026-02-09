@@ -428,8 +428,13 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
         {/* 댓글 영역 (원본 유지) */}
         <section className="mt-6 border-t pt-4">
           <h2 className="text-base md:text-lg font-semibold mb-3">{isKo ? '댓글' : 'Comments'}</h2>
-
-          <div className="grid gap-2 mb-4">
+            <form
+              className="grid gap-2 mb-4"
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleCommentSubmit();
+              }}
+            >
             <div className="grid grid-cols-2 gap-2">
               <input
                 name="nickname"
@@ -442,6 +447,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
                 name="password"
                 type="password"
                 placeholder={isKo ? '비밀번호 (수정/삭제용)' : 'Password (for edit/delete)'}
+                autoComplete="new-password"
                 className="input"
                 value={commentForm.password}
                 onChange={handleCommentChange}
@@ -457,11 +463,11 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
             />
 
             <div className="flex justify-end">
-              <button type="button" className="btn-primary" onClick={handleCommentSubmit}>
+              <button type="submit" className="btn-primary">
                 {isKo ? '댓글 등록' : 'Submit comment'}
               </button>
             </div>
-          </div>
+          </form>
 
           {comments.length === 0 ? (
             <p className="text-sm text-slate-500">{isKo ? '아직 댓글이 없습니다.' : 'No comments yet.'}</p>

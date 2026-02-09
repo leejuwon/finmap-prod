@@ -7,16 +7,37 @@ export default function AdInArticle({
 }) {
   const adRef = useRef(null);
   const loadedRef = useRef(false);
+  const retryRef = useRef(0);
+  const timerRef = useRef(null);
 
   useEffect(() => {
-    if (!adRef.current || loadedRef.current) return;
+    if (!adRef.current) return;
+    if (loadedRef.current) return;
+    if (typeof window === "undefined") return;
 
-    try {
-      loadedRef.current = true;
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-      console.error("AdSense error:", e);
-    }
+    const tryPush = () => {
+      if (!adRef.current) return;
+      if (loadedRef.current) return;
+
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        loadedRef.current = true;
+      } catch (e) {
+        retryRef.current += 1;
+        if (retryRef.current <= 2) {
+          console.warn("AdSense push retry...", e);
+        }
+        if (retryRef.current <= 6) {
+          timerRef.current = setTimeout(tryPush, 800);
+        }
+      }
+    };
+
+    tryPush();
+
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
   }, []);
 
   return (

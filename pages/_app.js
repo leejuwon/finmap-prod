@@ -47,22 +47,7 @@ function MyApp({ Component, pageProps }) {
             `}
           </Script>
         </>
-      )}
-
-      {/* ✔ AdSense Loader – ONLY THIS SCRIPT */}
-      <Script
-        id="adsbygoogle-loader"
-        strategy="afterInteractive"
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS_CLIENT}`}
-        crossOrigin="anonymous"
-      />
-
-      {/* ❌ 삭제됨: Auto Ads push → 광고 오류 원인 */}
-      {/*
-      <Script id="adsbygoogle-auto" strategy="afterInteractive">
-        {(adsbygoogle = window.adsbygoogle || []).push({});}
-      </Script>
-      */}
+      )}      
 
       <Layout>
         <Component {...pageProps} />
