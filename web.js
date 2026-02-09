@@ -71,6 +71,15 @@ const PORT = Number(process.env.PORT || 8002);
 
   app.use((req, res, next) => {
     const p = req.path || '';
+
+    // ✅ Next 내부 정적 자산/빌드 산출물은 절대 차단하면 안 됨
+    //    동적 라우트 chunk 파일명이 [slug] 형태라 URL에 %5B/%5D가 포함됨
+    if (p.startsWith('/_next')) return next();
+    if (p.startsWith('/api')) return next();
+
+    // (선택) 정적 확장자도 통과
+    if (/\.(?:js|css|map|png|jpg|jpeg|webp|svg|ico|txt|xml)$/.test(p)) return next();
+
     if (
       p.includes('[') || p.includes(']') ||
       p.toLowerCase().includes('%5b') || p.toLowerCase().includes('%5d')
