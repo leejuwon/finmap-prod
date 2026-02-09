@@ -97,8 +97,6 @@ module.exports = {
   priority: 0.7,
 
   exclude: [
-    "/ko",
-    "/ko/*", "/ko/**",
     "/api/*", "/api/**",
     "/admin/*", "/admin/**",
     "/private/*", "/private/**",
@@ -108,14 +106,11 @@ module.exports = {
     "/en/posts/*/en/*", "/en/posts/*/en/**",
     "/en/posts/*/ko/*", "/en/posts/*/ko/**",
     "/posts/economics-inflation-basics",
-    "/404", "/500",
-    "/en/404", "/en/500",
   ],
 
   transform: async (config, loc) => {
     // ---- 이상 경로 제거 ----
     if (!loc) return null;
-    if (loc === "/ko" || loc.startsWith("/ko/")) return null;
     if (loc.includes("[") || loc.includes("]")) return null;
     if (loc.includes("//")) return null;
     if (loc.startsWith("/en/en/")) return null;

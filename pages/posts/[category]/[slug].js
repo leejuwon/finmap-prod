@@ -154,8 +154,9 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
   };
 
   useEffect(() => {
-    // ✅ 공유/외부 확산은 항상 canonical로 고정 (중복 URL 확산 방지)
-    setShareUrl(canonicalUrl);
+    if (typeof window !== 'undefined') {
+      setShareUrl(window.location.href);
+    }
     reloadLikes();
     reloadComments();
   }, [slug, lang]);
