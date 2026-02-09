@@ -1,6 +1,7 @@
 // _components/Header.js
 import Link from "next/link";
 import { useRouter } from "next/router";
+import React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { setLang } from "../lib/lang";
 
@@ -69,6 +70,9 @@ export default function Header() {
      언어 변경 핸들러
   -------------------------------- */
   const handleLangChange = async (next) => {
+    if (!router.isReady) return;
+    if (next === lang) return;
+
     const isPostDetail = router.pathname === "/posts/[category]/[slug]";
 
     // 포스트 상세: 번역 없으면 차단
@@ -84,21 +88,17 @@ export default function Header() {
       }
     }
 
-    setLang(next);
+    setLang(next);    
 
-    if (isPostDetail) {
-      const { lang: _legacyLang, ...q } = router.query;
-      await router.push({ pathname: router.pathname, query: q }, undefined, {
-        locale: next,
-      });
-      return;
-    }
+    // ✅ 혹시 query에 남아있을 수 있는 lang 파라미터 제거
+    const q = { ...(router.query || {}) };
+    delete q.lang;
 
-    const cleanPath = String(router.asPath || "/")
-      .split("?")[0]
-      .split("#")[0];
-
-    await router.push(cleanPath, cleanPath, { locale: next });
+    // ✅ 핵심: asPath(이미 /en 포함 가능)로 push하지 말고
+    //          pathname/query + locale 옵션으로만 전환해야 토글이 안정적임
+    await router.push({ pathname: router.pathname, query: q }, undefined, {
+      locale: next,
+    });
   };
 
   const nav = useMemo(() => navItems, []);
