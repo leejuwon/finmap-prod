@@ -1,17 +1,23 @@
 // _components/AdResponsive.js
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function AdResponsive({ 
   client = "ca-pub-1869932115288976", 
   slot, 
   align = "center" 
 }) {
+  const [mounted, setMounted] = useState(false);
   const adRef = useRef(null);
   const loadedRef = useRef(false); // 성공적으로 push 되었는지
   const retryRef = useRef(0);
   const timerRef = useRef(null);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     if (!adRef.current) return;
     if (loadedRef.current) return;
     if (typeof window === "undefined") return;
@@ -42,7 +48,13 @@ export default function AdResponsive({
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, []);
+  }, [mounted, slot, client]);
+
+  // ✅ SSR/하이드레이션 안정: mounted 전에는 ins를 렌더하지 않음
+  if (!mounted) {
+    return <div style={{ textAlign: align, minHeight: 120 }} />;
+  }
+
 
   return (
     <div style={{ textAlign: align }}>

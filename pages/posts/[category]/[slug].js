@@ -374,7 +374,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
         </p>
 
         <div className="my-4">
-          <AdResponsive client={AD_CLIENT} slot={AD_SLOTS.responsiveTop} align="center" />
+          <AdResponsive key={`post-top-${lang}-${slug}`} client={AD_CLIENT} slot={AD_SLOTS.responsiveTop} align="center" />
         </div>
 
         {post.cover && (
@@ -392,7 +392,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
         )}
 
         <div className="mt-8 mb-4">
-          <AdResponsive client={AD_CLIENT} slot={AD_SLOTS.responsiveBottom} align="center" />
+          <AdResponsive key={`post-bot-${lang}-${slug}`} client={AD_CLIENT} slot={AD_SLOTS.responsiveBottom} align="center" />
         </div>
 
         <div className="mt-4 flex flex-wrap items-center gap-3 border-t pt-4">
@@ -439,6 +439,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
               <input
                 name="nickname"
                 placeholder={isKo ? '닉네임' : 'Nickname'}
+                autoComplete="username"
                 className="input"
                 value={commentForm.nickname}
                 onChange={handleCommentChange}
