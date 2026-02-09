@@ -3,7 +3,10 @@ import { NextResponse } from "next/server";
 export function middleware(req) {
   const url = req.nextUrl.clone();
   const originalPath = url.pathname;
+  const href = url.href;
 
+  const beforePath = req.nextUrl.pathname;
+  const beforeSearch = req.nextUrl.search; // '?a=1' 또는 ''
   // ✅ 정적 파일/Next 내부 경로는 제외
   if (
     originalPath.startsWith("/_next") ||
@@ -24,10 +27,13 @@ export function middleware(req) {
   let changed = false;
   let path = originalPath;
 
-  // ✅ 템플릿 문자열 URL 방어: [ ] 포함 경로는 바로 404
-  if (path.includes("[") || path.includes("]")) {
+  // ✅ 템플릿 문자열 URL 방어: [ ] 및 인코딩(%5B/%5D)까지 바로 404
+  if (
+    path.includes("[") || path.includes("]") ||
+    href.includes("%5B") || href.includes("%5D")
+  ) {
     return new NextResponse("Not Found", { status: 404 });
-  }
+  }  
 
   // ✅ (1) double-slash 정규화
   const collapsed = path.replace(/\/{2,}/g, "/");
@@ -35,6 +41,10 @@ export function middleware(req) {
     path = collapsed;
     changed = true;
   }
+
+  // ✅ (1.5) /en/en 정규화 (체인 줄이기)
+  if (path === "/en/en") { path = "/en"; changed = true; }
+  else if (path.startsWith("/en/en/")) { path = path.replace(/^\/en\/en/, "/en"); changed = true; }
 
   // ✅ (2) lang 파라미터 정리 + locale prefix 정규화
   const lang = url.searchParams.get("lang");
@@ -79,12 +89,15 @@ export function middleware(req) {
     changed = true;
   }
 
-  // ✅ 최종 redirect 1회만
-  if (changed) {
-    url.pathname = path;
+  // ✅ 최종 URL 계산
+  url.pathname = path;
+  const afterPath = url.pathname;
+  const afterSearch = url.search;
+
+  // ✅ "진짜로 달라질 때만" redirect (셀프-redirect 무한루프 방지)
+  if (afterPath !== beforePath || afterSearch !== beforeSearch) {
     return NextResponse.redirect(url, 308);
   }
-
   return NextResponse.next();
 }
 

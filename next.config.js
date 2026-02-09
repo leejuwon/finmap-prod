@@ -148,56 +148,7 @@ module.exports = {
         destination: "/en/posts/:category/:slug",
         permanent: true,
         locale: false,
-      },      
-
-      // -------------------------
-      // (C) ?lang=ko/en 파라미터 정규화
-      // ✅ locale:false 필수
-      // -------------------------
-      {
-        source: "/tools/:path*",
-        has: [{ type: "query", key: "lang", value: "en" }],
-        destination: "/en/tools/:path*",
-        permanent: true,
-        locale: false,
-      },
-      {
-        source: "/tools/:path*",
-        has: [{ type: "query", key: "lang", value: "ko" }],
-        destination: "/tools/:path*",
-        permanent: true,
-        locale: false,
-      },
-      {
-        source: "/category/:path*",
-        has: [{ type: "query", key: "lang", value: "en" }],
-        destination: "/en/category/:path*",
-        permanent: true,
-        locale: false,
-      },
-      {
-        source: "/category/:path*",
-        has: [{ type: "query", key: "lang", value: "ko" }],
-        destination: "/category/:path*",
-        permanent: true,
-        locale: false,
-      },
-
-      // (옵션) posts에도 ?lang= 붙는 경우 정리
-      {
-        source: "/posts/:path*",
-        has: [{ type: "query", key: "lang", value: "en" }],
-        destination: "/en/posts/:path*",
-        permanent: true,
-        locale: false,
-      },
-      {
-        source: "/posts/:path*",
-        has: [{ type: "query", key: "lang", value: "ko" }],
-        destination: "/posts/:path*",
-        permanent: true,
-        locale: false,
-      },
+      },            
 
       // -------------------------
       // (D) 루트 / 또는 /en 에 붙는 ?lang= 정리
@@ -212,15 +163,7 @@ module.exports = {
       { source: "/en/en", destination: "/en", permanent: true, locale: false },
       { source: "/en/en/:path*", destination: "/en/:path*", permanent: true, locale: false },
       // (추가) /en/ → /en (슬래시 정규화)
-      //{ source: "/en/", destination: "/en", permanent: true, locale: false },
-
-      // -------------------------
-      // (X) 이상한 템플릿 URL 직접 유입 방어 (500 → 404로 차단)
-      // -------------------------
-      { source: "/posts/[category]/[slug]", destination: "/404", permanent: false, locale: false },
-      { source: "/en/posts/[category]/[slug]", destination: "/404", permanent: false, locale: false },
-      { source: "/posts/%5Bcategory%5D/%5Bslug%5D", destination: "/404", permanent: false, locale: false },
-      { source: "/en/posts/%5Bcategory%5D/%5Bslug%5D", destination: "/404", permanent: false, locale: false },                      
+      //{ source: "/en/", destination: "/en", permanent: true, locale: false },      
     ];
     
     // ✅ Next build에서 죽는 "null route" 방지

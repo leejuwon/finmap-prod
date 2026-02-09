@@ -78,6 +78,12 @@ const PORT = Number(process.env.PORT || 8002);
       res.status(404).send('Not Found');
       return;
     }
+
+    if (req.url === '/ko' || req.url.startsWith('/ko/')) {
+      const dest = req.url.replace(/^\/ko(?=\/|$)/, '') || '/';
+      res.redirect(308, dest);
+      return;
+    }
     next();
   });
   
