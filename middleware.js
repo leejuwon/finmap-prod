@@ -97,7 +97,11 @@ export function middleware(req) {
 
   // ✅ "진짜로 달라질 때만" redirect (셀프-redirect 무한루프 방지)
   if (afterPath !== beforePath || afterSearch !== beforeSearch) {
-    return NextResponse.redirect(url, 308);
+    const status = (req.method === "GET" || req.method === "HEAD") ? 301 : 308;
+    const res = NextResponse.redirect(url, status);
+    // 🔎 (원인 추적용) 이 헤더가 보이면 "미들웨어가 리다이렉트 만든 것"
+    res.headers.set("x-fm-redirect", "middleware");
+    return res;
   }
   return NextResponse.next();
 }
