@@ -30,7 +30,7 @@ FinMap 고급 매크로로 보는 ETF 영향 분석
 > **한 문단 요약**  
 ETF는 여러 종목을 묶어 구성되기 때문에 금리·달러·유동성의 변화에 구조적으로 민감하다. 특히 미국 10년물 금리(TNX)는 성장 ETF의 밸류에이션을 압박하고, 가치 ETF의 수익 구조를 변화시키며, 신흥국 ETF에는 환율 리스크를 크게 만든다. ETF 성과를 이해하려면 개별 종목 분석보다 *금리 → 달러 → 유동성*이라는 매크로 흐름을 먼저 읽어야 한다.
 
-![대표 이미지](./cover.png)
+![대표 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764561430/blog/investingInfo/etf-impact-of-tnx-thum.png)
 
 ---
 

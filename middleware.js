@@ -67,6 +67,8 @@ export function middleware(req) {
   const fixed = {
     "/posts/usd-krw-weak-won-sector-map-kospi":
       "/posts/investingInfo/usd-krw-weak-won-sector-map-kospi",
+    "/posts/investingInfo/usd-krw-exchange-rate-kospi":
+      "/posts/investingInfo/usd-krw-weak-won-sector-map-kospi",
     "/posts/investingInfo/usdkrw-exchange-rate-and-kospi":
       "/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
     "/category/investing": "/category/investingInfo",

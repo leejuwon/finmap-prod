@@ -107,7 +107,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
     publisher: {
       "@type": "Organization",
       name: "FinMap",
-      logo: { "@type": "ImageObject", url: `${site}/brand/finmaphub-icon.png` },
+      logo: { "@type": "ImageObject", url: `${site}/brand/finmaphub_logo.png` },
     },
     ...(absImage ? { image: [absImage] } : {}),
   };

@@ -393,7 +393,7 @@ export default function CagrCalculatorPage() {
         title={t.title}
         desc={t.desc}
         url="/tools/cagr-calculator"
-        image="/og/cagr-calculator.jpg"
+        image="https://res.cloudinary.com/dwonflmnn/image/upload/v1766124234/blog/tools/CAGR_MAIN.png"
         locale={locale} // ✅ canonical/hreflang 분기 핵심
       />
 

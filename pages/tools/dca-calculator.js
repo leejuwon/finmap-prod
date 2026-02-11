@@ -394,7 +394,7 @@ export default function DCACalculatorPage() {
         title={t.seoTitle}
         desc={t.seoDesc}
         url="/tools/dca-calculator"
-        image="/og/dca-calculator.jpg"
+        image="https://res.cloudinary.com/dwonflmnn/image/upload/v1766124235/blog/tools/DCA_MAIN.png"
         locale={routeLocale}   // ✅ 핵심: /en/... canonical 정합성
       />
 
