@@ -292,7 +292,7 @@ EU의 러시아 가스 축소는 하나의 사건처럼 보이지만, 시장은 
     "name": "FinMap",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub-icon.png"
+      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
     }
   },
   "articleSection": "경제정보",

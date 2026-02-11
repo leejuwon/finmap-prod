@@ -253,7 +253,7 @@ Use structure-driven checklists to reduce noise and improve decisions.
     "name": "FinMap",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/logo.png"
+      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
     }
   },
   "mainEntityOfPage": {

@@ -294,7 +294,7 @@ Turning curve talk into all-or-nothing actions. The goal is durable rules, not p
     "name": "FinMap",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub-icon.png"
+      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
     }
   },
   "image": [

@@ -47,7 +47,10 @@ tools: ["dca","cagr","goal"]
     "@id": "https://www.finmaphub.com/posts/investingInfo/dca-consistency-7-fail-patterns"
   },
   "image": [
-    "https://www.finmaphub.com/images/posts/dca-consistency-7-fail-patterns/cover.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1767861108/blog/tools/dca-consistency-cover.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1767861109/blog/tools/dca-consistency-img1.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1767861110/blog/tools/dca-consistency-img2.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1767861112/blog/tools/dca-consistency-img3.png"
   ],
   "author": { "@type": "Organization", "name": "FinMap" },
   "publisher": {

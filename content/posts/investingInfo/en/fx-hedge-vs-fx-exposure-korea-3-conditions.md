@@ -357,7 +357,7 @@ Prefer calendar-based reviews (semiannual/annual) unless your portfolio goals ma
     "name": "FinMap",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub-icon.png"
+      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
     }
   },
   "image": [

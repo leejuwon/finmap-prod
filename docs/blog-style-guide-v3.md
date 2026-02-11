@@ -182,7 +182,7 @@ lang: "ko"
 
 ### 파일/경로 규칙(권장)
 
-- 커버: `/images/posts/{slug}/cover.png` (또는 og.png)
+- 커버: `/images/posts/{slug}/cover.png` (또는 /og/og-default.png)
 - 내부: `/images/posts/{slug}/img1.png`, `img2.png`, `img3.png` …
 - 필요하면 추가: `img4.png`, `img5.png`
 

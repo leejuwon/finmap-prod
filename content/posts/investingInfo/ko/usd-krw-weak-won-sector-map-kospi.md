@@ -258,7 +258,7 @@ lang: "ko"
     "name": "FinMap",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/logo.png"
+      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
     }
   },
   "mainEntityOfPage": {

@@ -459,7 +459,7 @@ You can, but you lose two stabilizers: liquidity and regime hedge. If you drop s
     "name": "FinMap",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub-icon.png"
+      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
     }
   },
   "image": [

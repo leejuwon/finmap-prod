@@ -95,7 +95,7 @@ lang: "ko"
 - 관측: 거치 여부, 만기(20/30/40년), 원리금/원금 균등, 만기일시 상환  
 - 한계: 월 부담이 낮아 보인다고 안전한 게 아니라, 만기·재조달 리스크가 커질 수 있습니다
 
-<figure><img src="/images/posts/mortgage-risk-checklist-dsr-variable/img1.png" alt="대출 리스크는 금리·소득·상환구조 3변수로 먼저 단순화한다" /><figcaption>대출 리스크는 금리·소득·상환구조 3변수로 먼저 단순화한다</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770794244/blog/insight/mortgage-risk-checklist-kr-img1.png" alt="대출 리스크는 금리·소득·상환구조 3변수로 먼저 단순화한다" /><figcaption>대출 리스크는 금리·소득·상환구조 3변수로 먼저 단순화한다</figcaption></figure>
 
 이 3변수를 잡으면, “금리 오르면 집값?” 같은 외부 이야기가 아니라 <strong>내가 버틸 수 있나</strong>로 질문이 바뀝니다.
 
@@ -306,12 +306,12 @@ DSR이 낮다는 건 출발점이 좋다는 뜻일 수 있지만, “안전”�
     "name": "FinMap",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/images/og.png"
+      "url": "https://www.finmaphub.com/og-default.png"
     }
   },
   "image": [
     "https://res.cloudinary.com/dwonflmnn/image/upload/v1769863768/blog/insight/mortgage-risk-checklist-cover.png",
-    "https://www.finmaphub.com/images/posts/mortgage-risk-checklist-dsr-variable/img1.png"    
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770794244/blog/insight/mortgage-risk-checklist-kr-img1.png"    
   ]
 }
 </script>

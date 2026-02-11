@@ -380,7 +380,7 @@ If you’re unsure, use a 90-day 50/50 split (paydown/investing), keep a starter
     "name": "FinMap",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub-icon.png"
+      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
     }
   },
   "image": [

@@ -181,8 +181,8 @@ CAGR로 계산해보면 변동성과 투자 기간에 따라 순위가 바뀔 �
 
 관련 글:  
 
-- **[복리란 무엇인가? 쉽게 이해하는 복리의 힘](/posts/compound-interest)**  
-- **[DCA 적립식 투자란? 장기 투자 핵심 전략](/posts/dca-investing)**  
+- **[복리란 무엇인가? 쉽게 이해하는 복리의 힘](/posts/personalFinance/simple-vs-compound)**  
+- **[적립식(DCA)은 ‘수익률’이 아니라 ‘지속성’ 게임](/posts/investingInfo/dca-consistency-7-fail-patterns)**  
 
 <!-- 가로 스크롤 이미지 4개 블록 -->
 <!-- Horizontal scroll image block -->

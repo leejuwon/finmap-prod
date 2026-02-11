@@ -520,7 +520,7 @@ export default function AptDetailPage() {
       <ToolSeo
         title={seoTitle}
         desc={seoDesc}
-        image="/og-tools/real-estate.png"
+        image="https://res.cloudinary.com/dwonflmnn/image/upload/v1769749571/blog/insight/apt-dashboard-home-goal-roadmap-kr-img1.png"
         appName={seoTitle}
         appCategory="FinanceApplication"
         about={{ "@type": "Place", name: "South Korea" }}

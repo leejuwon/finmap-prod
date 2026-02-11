@@ -948,7 +948,7 @@ export default function GoalSimulatorPage() {
         title={t.title}
         desc={t.desc}
         url="/tools/goal-simulator"
-        image="/og/goal-simulator.jpg"
+        image="https://res.cloudinary.com/dwonflmnn/image/upload/v1766124237/blog/tools/GOAL_MAIN.png"
         locale={locale}   // ✅ 이게 핵심 (canonical/hreflang 정합성)
       />
       {/* JSON-LD (SEO용) */}

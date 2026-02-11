@@ -555,7 +555,7 @@ export default function CompoundPage() {
         title={t.title}
         desc={t.desc}
         url="/tools/compound-interest"
-        image="/og/compound.jpg"
+        image="https://res.cloudinary.com/dwonflmnn/image/upload/v1766108372/blog/tools/compound_calculator.png"
         locale={locale}
       />
 

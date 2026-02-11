@@ -358,7 +358,7 @@ TNX를 볼 때 많은 사람이 “오르냐 내리냐”만 보지만,
     "name": "FinMap",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub-icon.png"
+      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
     }
   },
   "image": [

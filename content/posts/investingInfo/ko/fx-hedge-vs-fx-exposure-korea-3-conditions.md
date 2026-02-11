@@ -343,7 +343,7 @@ KOSPI가 어떤 힘에 의해 움직이는 모드인지를 뜻합니다. 예를 
     "name": "FinMap",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub-icon.png"
+      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
     }
   },
   "image": [
