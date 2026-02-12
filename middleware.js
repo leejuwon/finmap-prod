@@ -20,7 +20,9 @@ export function middleware(req) {
     originalPath.endsWith(".jpeg") ||
     originalPath.endsWith(".webp") ||
     originalPath.endsWith(".svg") ||
-    originalPath.endsWith(".ico")
+    originalPath.endsWith(".ico") ||
+    originalPath === "/apple-app-site-association" ||
+    originalPath === "/.well-known/apple-app-site-association"
   ) {
     return NextResponse.next();
   }
@@ -73,6 +75,7 @@ export function middleware(req) {
       "/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
     "/category/investing": "/category/investingInfo",
     "/category/tax": "/category/personalFinance",
+    "/posts/compound-interest": "/tools/compound-interest",
 
     // en 쪽도 혹시 들어오면 같이 정리 (안전빵)
     "/en/category/investing": "/en/category/investingInfo",

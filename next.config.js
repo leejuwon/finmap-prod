@@ -165,6 +165,21 @@ module.exports = {
       { source: "/en/en/:path*", destination: "/en/:path*", permanent: true, locale: false },
       // (추가) /en/ → /en (슬래시 정규화)
       //{ source: "/en/", destination: "/en", permanent: true, locale: false },      
+      {
+        source: "/en/market/real-estate/apt/[aptKey]",
+        destination: "/en/market/real-estate",
+        permanent: true,
+      },
+      {
+        source: "/market/real-estate/apt/[aptKey]",
+        destination: "/market/real-estate",
+        permanent: true,
+      },
+      {
+        source: "/posts/compound-interest",
+        destination: "/tools/compound-interest",
+        permanent: true,
+      },
     ];
     
     // ✅ Next build에서 죽는 "null route" 방지
