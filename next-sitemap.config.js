@@ -87,9 +87,32 @@ function buildPostsLastmodMap() {
 
 const POSTS_LASTMOD_MAP = buildPostsLastmodMap();
 
+function maxIso(a, b) {
+  if (!a) return b;
+  if (!b) return a;
+  return new Date(a).getTime() >= new Date(b).getTime() ? a : b;
+}
+
+// 카테고리 허브 lastmod = 해당 카테고리 글 중 최신(lastmod 최대)
+function buildCategoryLastmodMap(postsMap) {
+  const catMap = new Map();
+  for (const [loc, lastmod] of postsMap.entries()) {
+    const m = loc.match(/^\/(?:en\/)?posts\/([^/]+)\//);
+    if (!m) continue;
+    const cat = m[1];
+    const koLoc = `/category/${cat}`;
+    const enLoc = `/en/category/${cat}`;
+    catMap.set(koLoc, maxIso(catMap.get(koLoc), lastmod));
+    catMap.set(enLoc, maxIso(catMap.get(enLoc), lastmod));
+  }
+  return catMap;
+}
+
+const CATEGORY_LASTMOD_MAP = buildCategoryLastmodMap(POSTS_LASTMOD_MAP);
+
 module.exports = {
   siteUrl: SITE_URL,
-
+  trailingSlash: false,
   generateIndexSitemap: true,
   sitemapSize: 2000,
   generateRobotsTxt: true,
@@ -103,7 +126,7 @@ module.exports = {
     "/api/*", "/api/**",
     "/admin/*", "/admin/**",
     "/private/*", "/private/**",
-    "/en/en/*", "/en/en/**",
+    "/en/en/*", "/en/en/**", "/en/en",
     "/posts/*/en/*", "/posts/*/en/**",
     "/posts/*/ko/*", "/posts/*/ko/**",
     "/en/posts/*/en/*", "/en/posts/*/en/**",
@@ -119,11 +142,14 @@ module.exports = {
     if (loc === "/ko" || loc.startsWith("/ko/")) return null;
     if (loc.includes("[") || loc.includes("]")) return null;
     if (loc.includes("//")) return null;
-    if (loc.startsWith("/en/en/")) return null;
+    if (loc === "/en/en" || loc.startsWith("/en/en/")) return null;
     if (loc.includes("?")) return null;
 
     // ---- posts는 글별 lastmod 적용 ----
     let lastmod = POSTS_LASTMOD_MAP.get(loc);
+
+    // ---- category hub는 "카테고리 최신 글" lastmod 적용 ----
+    if (!lastmod) lastmod = CATEGORY_LASTMOD_MAP.get(loc);
 
     // posts인데 맵에 없으면(예: 동적/잘못된) 빌드 시각으로라도 넣기
     if (!lastmod && (loc.startsWith('/posts/') || loc.startsWith('/en/posts/'))) {
@@ -142,6 +168,15 @@ module.exports = {
   },
 
   additionalPaths: async (config) => {
+    // ✅ 카테고리 허브를 sitemap에 실제 URL로 추가 (목차 허브 노출/크롤링 가속)
+    const categories = Array.from(
+      new Set(
+        Array.from(CATEGORY_LASTMOD_MAP.keys())
+          .filter((p) => p.startsWith("/category/"))
+          .map((p) => p.replace("/category/", ""))
+      )
+    );
+
     const extra = [
       "/en",
       "/en/about",
@@ -159,6 +194,11 @@ module.exports = {
       "/en/market/real-estate",
     ];
 
+    for (const c of categories) {
+      extra.push(`/category/${c}`);
+      extra.push(`/en/category/${c}`);
+    }
+
     const res = [];
     for (const p of extra) {
       const out = await config.transform(config, p);
@@ -168,7 +208,13 @@ module.exports = {
   },
 
   robotsTxtOptions: {
-    policies: [{ userAgent: "*", allow: "/" }],
+    policies: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/api/", "/admin/", "/private/"],
+      },
+    ],
     additionalSitemaps: [],
   },
 };

@@ -1,9 +1,11 @@
 # *
 User-agent: *
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
 Allow: /
-
-# Host
-Host: https://www.finmaphub.com
 
 # Sitemaps
 Sitemap: https://www.finmaphub.com/sitemap.xml
+# Host
+Host: https://www.finmaphub.com

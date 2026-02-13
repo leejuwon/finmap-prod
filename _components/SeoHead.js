@@ -15,8 +15,12 @@ export default function SeoHead({ title, desc, url = "/", image, locale, type, r
   // ✅ url에 쿼리/해시가 붙어도 canonical/hreflang이 흔들리지 않도록 제거
   const safeUrl = String(url || "/");
   const noQuery = safeUrl.split("?")[0].split("#")[0];
-  const rawPath = noQuery.startsWith("/") ? noQuery : `/${noQuery}`;
-  const path = rawPath.replace(/^\/en(?=\/|$)/, ""); // url에 실수로 /en 붙여도 제거
+   const rawPath = noQuery.startsWith("/") ? noQuery : `/${noQuery}`;
+  // url에 실수로 /en 붙여도 제거
+  let path = rawPath.replace(/^\/en(?=\/|$)/, "");
+  // double-slash, trailing-slash 정규화 (canonical 일관성)
+  path = path.replace(/\/{2,}/g, "/");
+  if (path.length > 1 && path.endsWith("/")) path = path.slice(0, -1);
   const normalizedPath = path || "/";
 
   const prefix = effectiveLocale === "en" ? "/en" : "";
@@ -29,7 +33,7 @@ export default function SeoHead({ title, desc, url = "/", image, locale, type, r
   const ogImg = image
     ? (String(image).startsWith("http")
         ? image
-        : `${site}${image.startsWith("/") ? image : `/${image}`}`)
+        : `${site}${String(image).startsWith("/") ? image : `/${image}`}`)
     : `${site}/og-default.png`;
 
   const hrefKo = `${site}${normalizedPath}`;

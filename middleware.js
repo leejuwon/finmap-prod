@@ -9,39 +9,52 @@ export function middleware(req) {
   const beforePath = req.nextUrl.pathname;
   const beforeSearch = req.nextUrl.search; // '?a=1' 또는 ''
   // ✅ 정적 파일/Next 내부 경로는 제외
+  const STATIC_EXT_RE =
+    /\.(?:xml|txt|png|jpe?g|webp|svg|ico|gif|css|js|map|json|woff2?|ttf|eot|otf|pdf|mp4|webm|webmanifest)$/i;
   if (
     originalPath.startsWith("/_next") ||
     originalPath.startsWith("/api") ||
     originalPath === "/favicon.ico" ||
-    originalPath.endsWith(".xml") ||
-    originalPath.endsWith(".txt") ||
-    originalPath.endsWith(".png") ||
-    originalPath.endsWith(".jpg") ||
-    originalPath.endsWith(".jpeg") ||
-    originalPath.endsWith(".webp") ||
-    originalPath.endsWith(".svg") ||
-    originalPath.endsWith(".ico") ||
+    STATIC_EXT_RE.test(originalPath) ||
     originalPath === "/apple-app-site-association" ||
     originalPath === "/.well-known/apple-app-site-association"
-  ) {
-    return NextResponse.next();
-  }
+  ) return NextResponse.next();
+ 
 
   let changed = false;
   let path = originalPath;
 
   // ✅ 템플릿 문자열 URL 방어: [ ] 및 인코딩(%5B/%5D)까지 바로 404
-  if (
-    path.includes("[") || path.includes("]") ||
-    href.includes("%5B") || href.includes("%5D")
-  ) {
+  if (path.includes("[") || path.includes("]") || /%5b|%5d/i.test(href)) {
     return new NextResponse("Not Found", { status: 404 });
   }  
+
+  // ✅ (0) marketing/query 노이즈 제거 (중복 URL 감소 → category hub/목차 페이지 색인에 도움)
+  // - 필요한 쿼리는 남기고, 추적용 파라미터만 제거
+  // - lang 은 아래에서 별도로 처리
+  const DROP_QS = [
+    /^utm_/i,
+    /^(gclid|fbclid|igshid|mc_cid|mc_eid)$/i,
+  ];
+  for (const key of Array.from(url.searchParams.keys())) {
+    if (key === "lang") continue;
+    if (DROP_QS.some((re) => re.test(key))) {
+      url.searchParams.delete(key);
+      changed = true;
+    }
+  }
 
   // ✅ (1) double-slash 정규화
   const collapsed = path.replace(/\/{2,}/g, "/");
   if (collapsed !== path) {
     path = collapsed;
+    changed = true;
+  }
+
+  // ✅ (1.25) index.html 류 제거
+  if (/\/index\.html?$/i.test(path)) {
+    path = path.replace(/\/index\.html?$/i, "");
+    if (path === "") path = "/";
     changed = true;
   }
 

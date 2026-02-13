@@ -1,5 +1,5 @@
 // pages/category/[slug].js
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import SeoHead from '../../_components/SeoHead';
@@ -42,6 +42,73 @@ const CATEGORY_LABELS_EN = {
   investingInfo: 'Investing Info',
 };
 
+const CATEGORY_ORDER = ['economicInfo', 'personalFinance', 'investingInfo'];
+
+// 카테고리 허브(목차) 상단 설명(원하면 문구만 여기서 조정)
+const CATEGORY_META = {
+  economicInfo: {
+    ko: {
+      tagline: '금리·물가·환율·경기 지표를 “한 번에 읽는” 경제 목차입니다.',
+      bullets: [
+        '지표를 “정의 → 해석 → 체크리스트” 순서로 정리합니다.',
+        '뉴스보다 “지표 변화의 방향/속도”에 초점을 맞춥니다.',
+        '투자 판단을 규칙(조건)으로 바꾸는 것을 목표로 합니다.',
+      ],
+    },
+    en: {
+      tagline: 'A table of contents for rates, inflation, FX, and macro—read in one flow.',
+      bullets: [
+        'We structure indicators as “definition → interpretation → checklist”.',
+        'We focus on direction/speed, not headlines.',
+        'We turn decisions into simple if/then rules.',
+      ],
+    },
+  },
+  personalFinance: {
+    ko: {
+      tagline: '현금흐름·저축·세금·보험을 “계획”으로 바꾸는 재테크 목차입니다.',
+      bullets: [
+        '지출/저축/부채를 한 장으로 정리합니다.',
+        '세금·보험·수수료처럼 “새는 구멍”을 우선 막습니다.',
+        '목표를 숫자와 루틴으로 연결합니다.',
+      ],
+    },
+    en: {
+      tagline: 'Personal finance topics that turn your money life into a plan.',
+      bullets: [
+        'Cashflow, saving, and debt—summarized into one system.',
+        'Plug leaks: taxes, insurance, and fees first.',
+        'Connect goals to numbers and routines.',
+      ],
+    },
+  },
+  investingInfo: {
+    ko: {
+      tagline: '자산배분·리스크·환헤지·전략을 “규칙”으로 정리하는 투자 목차입니다.',
+      bullets: [
+        '리스크를 먼저 정의하고 포지션을 정합니다.',
+        '환율/금리 레짐에 따른 행동을 미리 정합니다.',
+        '장기 전략을 흔드는 “감정 트리거”를 줄입니다.',
+      ],
+    },
+    en: {
+      tagline: 'Investing topics that compress allocation, risk, and FX into a playbook.',
+      bullets: [
+        'Define risk first, then size positions.',
+        'Predefine actions by FX/rate regimes.',
+        'Reduce emotional rule-drift over the long run.',
+      ],
+    },
+  },
+};
+
+function dateValue(s) {
+  if (!s) return 0;
+  const t = Date.parse(String(s));
+  return Number.isFinite(t) ? t : 0;
+}
+
+
 /* ---------------------------------------------------------- */
 
 export default function CategoryPage({ slug, postsKo, postsEn }) {
@@ -57,6 +124,44 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
   // ✅ SEO/색인 안정성: en 카테고리에서는 en 글만 노출 (KO 폴백 금지)
   const posts = isKo ? postsKo : postsEn;
 
+  const meta = useMemo(() => {
+    const m = CATEGORY_META[slug];
+    const fallback = {
+      tagline: isKo ? `${title} 글을 모아둔 목차입니다.` : `A hub for ${title} posts.`,
+      bullets: [],
+    };
+    if (!m) return fallback;
+    return isKo ? m.ko : m.en;
+  }, [isKo, slug, title]);
+
+  const postsSorted = useMemo(() => {
+    const arr = Array.isArray(posts) ? [...posts] : [];
+    arr.sort((a, b) => dateValue(b?.datePublished) - dateValue(a?.datePublished));
+    return arr;
+  }, [posts]);
+
+  const totalCount = postsSorted.length;
+  const lastUpdated = postsSorted[0]?.datePublished || null;
+
+  const featured = useMemo(() => postsSorted.slice(0, 6), [postsSorted]);
+  const latest = useMemo(() => postsSorted.slice(0, 12), [postsSorted]);
+
+  const [tab, setTab] = useState('featured'); // featured | latest | all
+  const [q, setQ] = useState('');
+
+  const filtered = useMemo(() => {
+    const qq = String(q || '').trim().toLowerCase();
+    if (!qq) return postsSorted;
+    return postsSorted.filter((p) => {
+      const t = (p?.title || '').toLowerCase();
+      const d = (p?.description || '').toLowerCase();
+      return t.includes(qq) || d.includes(qq);
+    });
+  }, [postsSorted, q]);
+
+  const visibleCards = q ? filtered.slice(0, 12) : (tab === 'latest' ? latest : featured);
+
+
   return (
     <>
       <SeoHead
@@ -66,45 +171,227 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
         locale={locale}
       />
 
-      <h1 className="text-2xl font-bold mb-4">{title}</h1>
+      <div className="w-full bg-slate-50">
+        <div className="w-full max-w-6xl mx-auto px-4 py-8">
+          {/* 상단 히어로 카드 */}
+          <section className="relative overflow-hidden rounded-3xl border bg-white shadow-card">
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-900/[0.03] via-transparent to-slate-900/[0.02]" />
+            <div className="relative p-6 sm:p-8">
+              {/* 카테고리 탭(상단) */}
+              <div className="flex flex-wrap items-center gap-2 mb-5">
+                {CATEGORY_ORDER.map((s) => {
+                  const labels = isKo ? CATEGORY_LABELS_KO : CATEGORY_LABELS_EN;
+                  const active = s === slug;
+                  return (
+                    <Link
+                      key={s}
+                      href={`/category/${s}`}
+                      locale={locale}
+                      className={
+                        active
+                          ? 'inline-flex items-center rounded-full bg-slate-900 px-3 py-1.5 text-sm font-semibold text-white'
+                          : 'inline-flex items-center rounded-full border bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100'
+                      }
+                    >
+                      {labels[s] || s}
+                    </Link>
+                  );
+                })}
 
-      {!posts || posts.length === 0 ? (
-        <p className="text-slate-500">
-          {isKo ? '아직 이 카테고리의 글이 없습니다.' : 'No English posts in this category yet.'}
-        </p>
-      ) : (
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((p) => {
-            const postLang = p.lang || (isKo ? 'ko' : 'en');
+                <div className="ml-auto flex items-center gap-2 text-xs text-slate-500">
+                  <span className="inline-flex items-center rounded-full border bg-white px-2 py-1">
+                    {isKo ? `총 ${totalCount}개` : `${totalCount} posts`}
+                  </span>
+                  {lastUpdated && (
+                    <span className="inline-flex items-center rounded-full border bg-white px-2 py-1">
+                      {isKo ? `최근 업데이트: ${lastUpdated}` : `Updated: ${lastUpdated}`}
+                    </span>
+                  )}
+                </div>
+              </div>
 
-            return (
-              <li key={`${postLang}-${p.slug}`} className="card">
-                {p.cover && (
-                  <img
-                    src={p.cover}
-                    alt={p.title}
-                    className="w-full h-40 object-cover rounded-xl"
-                    loading="lazy"
-                  />
-                )}
+              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+                {title}
+              </h1>
+              <p className="mt-2 text-slate-700">{meta.tagline}</p>
 
-                <div className="mt-3 text-xs text-slate-500">{p.datePublished}</div>
+              {meta.bullets?.length > 0 && (
+                <ul className="mt-4 grid gap-2 text-sm text-slate-600 sm:grid-cols-2">
+                  {meta.bullets.map((b, i) => (
+                    <li key={i} className="flex gap-2">
+                      <span className="mt-0.5 inline-block h-1.5 w-1.5 rounded-full bg-slate-400" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
 
-                <h3 className="mt-2 text-lg font-semibold">
-                  {/* ✅ 핵심: 글 언어에 맞는 locale로 강제 */}                                    
-                  <Link href={`/posts/${slug}/${p.slug}`} locale={postLang}>
-                    {p.title}
+              {/* CTA/탭/검색 */}
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex flex-wrap items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setTab('featured')}
+                    className={
+                      tab === 'featured'
+                        ? 'inline-flex items-center rounded-full bg-blue-600 px-3 py-1.5 text-sm font-semibold text-white'
+                        : 'inline-flex items-center rounded-full border bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100'
+                    }
+                  >
+                    {isKo ? '추천' : 'Featured'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setTab('latest')}
+                    className={
+                      tab === 'latest'
+                        ? 'inline-flex items-center rounded-full bg-blue-600 px-3 py-1.5 text-sm font-semibold text-white'
+                        : 'inline-flex items-center rounded-full border bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100'
+                    }
+                  >
+                    {isKo ? '최신' : 'Latest'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setTab('all')}
+                    className={
+                      tab === 'all'
+                        ? 'inline-flex items-center rounded-full bg-blue-600 px-3 py-1.5 text-sm font-semibold text-white'
+                        : 'inline-flex items-center rounded-full border bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100'
+                    }
+                  >
+                    {isKo ? '전체 목록' : 'All titles'}
+                  </button>
+
+                  <Link
+                    href="/tools"
+                    locale={locale}
+                    className="inline-flex items-center rounded-full border bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100"
+                  >
+                    {isKo ? '금융 계산기' : 'Tools'}
                   </Link>
-                </h3>
+                </div>
 
-                {p.description && (
-                  <p className="mt-1 text-sm text-slate-600 line-clamp-2">{p.description}</p>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      )}
+                <div className="w-full sm:w-[340px]">
+                  <input
+                    value={q}
+                    onChange={(e) => setQ(e.target.value)}
+                    placeholder={isKo ? '이 카테고리에서 검색…' : 'Search in this category…'}
+                    className="w-full rounded-2xl border bg-white px-4 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 내용 */}
+          {!postsSorted || postsSorted.length === 0 ? (
+            <p className="mt-8 text-slate-500">
+              {isKo ? '아직 이 카테고리의 글이 없습니다.' : 'No English posts in this category yet.'}
+            </p>
+          ) : (
+            <>
+              {/* 카드 섹션 */}
+              {tab !== 'all' && (
+                <section className="mt-8">
+                  <div className="flex items-end justify-between gap-4 mb-4">
+                    <h2 className="text-lg sm:text-xl font-bold text-slate-900">
+                      {q
+                        ? (isKo ? `검색 결과 (${Math.min(12, filtered.length)}개 표시)` : `Search results (showing ${Math.min(12, filtered.length)})`)
+                        : (tab === 'latest' ? (isKo ? '최신 글' : 'Latest posts') : (isKo ? '추천 글' : 'Featured posts'))}
+                    </h2>
+                    <div className="text-xs text-slate-500">
+                      {isKo ? '카드는 12개까지 표시합니다.' : 'Cards show up to 12 posts.'}
+                    </div>
+                  </div>
+
+                  <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {visibleCards.map((p) => {
+                      const postLang = p.lang || (isKo ? 'ko' : 'en');
+                      return (
+                        <li
+                          key={`${postLang}-${p.slug}`}
+                          className="group rounded-2xl border bg-white shadow-card overflow-hidden hover:shadow-lg transition-shadow"
+                        >
+                          {p.cover ? (
+                            <div className="relative">
+                              <img
+                                src={p.cover}
+                                alt={p.title}
+                                className="w-full h-44 object-cover"
+                                loading="lazy"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </div>
+                          ) : (
+                            <div className="h-20 bg-slate-100" />
+                          )}
+
+                          <div className="p-4">
+                            <div className="text-xs text-slate-500">{p.datePublished}</div>
+                            <h3 className="mt-2 text-base font-semibold leading-snug text-slate-900">
+                              <Link
+                                href={`/posts/${slug}/${p.slug}`}
+                                locale={postLang}
+                                className="hover:underline underline-offset-4"
+                              >
+                                {p.title}
+                              </Link>
+                            </h3>
+                            {p.description && (
+                              <p className="mt-2 text-sm text-slate-600 line-clamp-2">
+                                {p.description}
+                              </p>
+                            )}
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </section>
+              )}
+
+              {/* 전체 목록(리스트형) */}
+              {tab === 'all' && (
+                <section className="mt-8">
+                  <div className="flex items-end justify-between gap-4 mb-3">
+                    <h2 className="text-lg sm:text-xl font-bold text-slate-900">
+                      {isKo ? '전체 목록' : 'All titles'}
+                    </h2>
+                    <div className="text-xs text-slate-500">
+                      {isKo ? '제목을 클릭하면 글로 이동합니다.' : 'Click a title to open the post.'}
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border bg-white shadow-card overflow-hidden">
+                    <ul className="divide-y">
+                      {filtered.map((p) => {
+                        const postLang = p.lang || (isKo ? 'ko' : 'en');
+                        return (
+                          <li key={`${postLang}-${p.slug}`} className="px-4 py-3 hover:bg-slate-50">
+                            <div className="flex items-center gap-3">
+                              <div className="min-w-[84px] text-xs text-slate-500">
+                                {p.datePublished}
+                              </div>
+                              <Link
+                                href={`/posts/${slug}/${p.slug}`}
+                                locale={postLang}
+                                className="text-sm font-medium text-slate-900 hover:underline underline-offset-4"
+                              >
+                                {p.title}
+                              </Link>
+                            </div>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </section>
+              )}
+            </>
+          )}
+        </div>
+      </div>
     </>
   );
 }

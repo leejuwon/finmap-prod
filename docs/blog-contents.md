@@ -95,7 +95,7 @@ url: /en/posts/economicInfo/indicator-basics
 ## 3. 
 title: "Understanding Inflation and Interest Rates: The Core Framework Every Long-Term Investor Must Know"
 description: "Inflation and interest rates form the backbone of the economy. This guide explains how inflation drives rate decisions and how rates affect stocks, ETFs, real estate, and liquidity cycles—all in FinMap's premium layout format."
-url: /en/posts/economicInfo/indicator-basics
+url: /en/posts/economicInfo/inflation-basics
 
 ## 4. 
 title: "Inflation and Interest Rates Explained: Why Rate Changes Shake Markets"
