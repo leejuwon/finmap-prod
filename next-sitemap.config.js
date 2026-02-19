@@ -115,7 +115,7 @@ module.exports = {
   trailingSlash: false,
   generateIndexSitemap: true,
   sitemapSize: 2000,
-  generateRobotsTxt: true,
+  generateRobotsTxt: false, // ✅ robots는 직접 public/robots.txt로 관리
 
   changefreq: "daily",
   priority: 0.7,
