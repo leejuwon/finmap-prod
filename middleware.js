@@ -71,6 +71,11 @@ export function middleware(req) {
 
   if (path === "/category/economics") { path = "/category/economicInfo"; changed = true; }
 
+  // ✅ (1.6) /ko prefix 정규화
+  if (path === "/ko") { path = "/"; changed = true; }
+  else if (path.startsWith("/ko/")) { path = path.replace(/^\/ko/, ""); changed = true; }
+
+
   // ✅ (2) lang 파라미터 정리 + locale prefix 정규화
   const lang = url.searchParams.get("lang");
   if (lang === "en" || lang === "ko") {
@@ -86,6 +91,24 @@ export function middleware(req) {
       else if (path.startsWith("/en/")) path = path.replace(/^\/en/, "");
     }
   }
+
+  // ✅ (2.5) legacy 언어 패턴 정리
+  // /posts/{cat}/en/{slug} -> /en/posts/{cat}/{slug}
+  let m = path.match(/^\/posts\/([^/]+)\/en\/([^/]+)$/);
+  if (m) { path = `/en/posts/${m[1]}/${m[2]}`; changed = true; }
+
+  // /en/posts/{cat}/ko/{slug} -> /posts/{cat}/{slug}
+  m = path.match(/^\/en\/posts\/([^/]+)\/ko\/([^/]+)$/);
+  if (m) { path = `/posts/${m[1]}/${m[2]}`; changed = true; }
+
+  // (옵션) /en/posts/{cat}/en/{slug} -> /en/posts/{cat}/{slug}
+  m = path.match(/^\/en\/posts\/([^/]+)\/en\/([^/]+)$/);
+  if (m) { path = `/en/posts/${m[1]}/${m[2]}`; changed = true; }
+
+  // (옵션) /posts/{cat}/ko/{slug} -> /posts/{cat}/{slug}
+  m = path.match(/^\/posts\/([^/]+)\/ko\/([^/]+)$/);
+  if (m) { path = `/posts/${m[1]}/${m[2]}`; changed = true; }
+
 
   // ✅ (3) 고정 URL 매핑 (※ 여기서 path 기준으로 적용)
   const fixed = {
