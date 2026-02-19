@@ -1,7 +1,6 @@
 // _components/Header.js
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { setLang } from "../lib/lang";
 
@@ -30,6 +29,17 @@ export default function Header() {
      언어 상태
   -------------------------------- */
   const lang = router.locale === "en" ? "en" : "ko";
+
+  // ✅ active 판정은 pathname 말고 asPath 기반이 안정적(동적 라우트 대응)
+  const asPathNoHash = (router.asPath || "/").split("#")[0];
+  const asPathNoQuery = asPathNoHash.split("?")[0] || "/";
+  // 비교용: locale prefix 제거
+  const pathNoLocale = asPathNoQuery.replace(/^\/en(?=\/|$)/, "") || "/";
+
+  // ✅ Insights 드롭다운 active (category/posts 범주면 활성화)
+  const insightsActive =
+    pathNoLocale.startsWith("/category/") || pathNoLocale.startsWith("/posts/");
+
 
   /* ------------------------------
      포스트 번역 가용성 이벤트
@@ -133,8 +143,8 @@ export default function Header() {
               {nav.map((item) => {
                 const active =
                   item.href === "/"
-                    ? router.pathname === "/"
-                    : router.pathname.startsWith(item.href);
+                    ? pathNoLocale === "/"
+                    : pathNoLocale === item.href || pathNoLocale.startsWith(item.href + "/");
 
                 const label = lang === "ko" ? item.labelKo : item.labelEn;
 
@@ -173,7 +183,7 @@ export default function Header() {
                 onClick={() => setBlogOpen((v) => !v)}
                 className={
                   "px-2 sm:px-3 py-1 rounded-full transition-colors text-[12px] sm:text-[14px] " +
-                  (router.pathname.startsWith("/category/")
+                  (insightsActive
                     ? "bg-blue-50 text-blue-700 font-medium"
                     : "text-slate-600 hover:bg-slate-100 hover:text-slate-900")
                 }
@@ -186,7 +196,7 @@ export default function Header() {
                 <div className="absolute left-0 mt-2 w-44 rounded-xl border border-slate-200 bg-white shadow-lg p-1 z-50">
                   {blogItems.map((b) => {
                     const bLabel = lang === "ko" ? b.labelKo : b.labelEn;
-                    const bActive = router.pathname.startsWith(b.href);
+                    const bActive = pathNoLocale === b.href || pathNoLocale.startsWith(b.href + "/");
 
                     return (
                       <Link
