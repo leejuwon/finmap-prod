@@ -2,6 +2,13 @@
 import { NextResponse } from "next/server";
 
 export function middleware(req) {
+  const { pathname } = req.nextUrl;
+
+  if (pathname.startsWith("/api")) {
+    const res = NextResponse.next();
+    res.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return res;
+  }
   const url = req.nextUrl.clone();
   const originalPath = url.pathname;
   const href = url.href;
