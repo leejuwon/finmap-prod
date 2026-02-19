@@ -69,6 +69,8 @@ export function middleware(req) {
   if (path === "/en/en") { path = "/en"; changed = true; }
   else if (path.startsWith("/en/en/")) { path = path.replace(/^\/en\/en/, "/en"); changed = true; }
 
+  if (path === "/category/economics") { path = "/category/economicInfo"; fixed = true; }
+
   // ✅ (2) lang 파라미터 정리 + locale prefix 정규화
   const lang = url.searchParams.get("lang");
   if (lang === "en" || lang === "ko") {
