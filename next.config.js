@@ -3,7 +3,6 @@
 module.exports = {
   reactStrictMode: false,
   poweredByHeader: false,
-  swcMinify: false,
 
   // ✅ i18n 추가: /en/... URL 생성
   i18n: {
