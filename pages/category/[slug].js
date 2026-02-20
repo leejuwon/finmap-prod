@@ -314,11 +314,11 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                           className="group rounded-2xl border bg-white shadow-card overflow-hidden hover:shadow-lg transition-shadow"
                         >
                           {p.cover ? (
-                            <div className="relative">
+                            <div className="relative w-full aspect-[16/9]">
                               <img
                                 src={p.cover}
                                 alt={p.title}
-                                className="w-full h-44 object-cover"
+                                className="absolute inset-0 w-full h-full object-cover"
                                 loading="lazy"
                               />
                               <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -332,7 +332,7 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                             <h3 className="mt-2 text-base font-semibold leading-snug text-slate-900">
                               <Link
                                 href={`/posts/${slug}/${p.slug}`}
-                                locale={postLang}
+                                locale={locale}
                                 className="hover:underline underline-offset-4"
                               >
                                 {p.title}
@@ -351,7 +351,45 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                 </section>
               )}
 
-              {/* 전체 목록(리스트형) */}
+              <section className="mt-10" id="all-post-links">
+                <details className="rounded-2xl border bg-white shadow-card overflow-hidden">
+                  <summary className="cursor-pointer select-none px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50">
+                    {isKo ? '전체 글 링크(검색/탭 없이 항상 포함)' : 'All post links (always included)'}
+                    <span className="ml-2 text-xs font-normal text-slate-500">
+                      {isKo ? `(총 ${totalCount}개)` : `(${totalCount} posts)`}
+                    </span>
+                  </summary>
+
+                  <div className="px-4 pb-4 pt-3">
+                    <ul className="grid gap-3 sm:grid-cols-2">
+                      {postsSorted.map((p) => (
+                        <li
+                          key={`all-${p.slug}`}
+                          className="rounded-xl border bg-slate-50/60 p-3 hover:bg-slate-50"
+                        >
+                          <div className="text-xs text-slate-500">{p.datePublished}</div>
+
+                          <Link
+                            href={`/posts/${slug}/${p.slug}`}
+                            locale={locale} // ✅ 여기서는 locale로 고정 추천
+                            className="mt-1 block text-sm font-semibold leading-snug text-slate-900 hover:underline underline-offset-4 line-clamp-2"
+                          >
+                            {p.title}
+                          </Link>
+
+                          {p.description ? (
+                            <p className="mt-1 text-xs text-slate-600 line-clamp-2">
+                              {p.description}
+                            </p>
+                          ) : null}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </details>
+              </section>
+
+              {/* 전체 목록(이미지 없는 카드형) */}
               {tab === 'all' && (
                 <section className="mt-8">
                   <div className="flex items-end justify-between gap-4 mb-3">
@@ -363,29 +401,32 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border bg-white shadow-card overflow-hidden">
-                    <ul className="divide-y">
-                      {filtered.map((p) => {
-                        const postLang = p.lang || (isKo ? 'ko' : 'en');
-                        return (
-                          <li key={`${postLang}-${p.slug}`} className="px-4 py-3 hover:bg-slate-50">
-                            <div className="flex items-center gap-3">
-                              <div className="min-w-[84px] text-xs text-slate-500">
-                                {p.datePublished}
-                              </div>
-                              <Link
-                                href={`/posts/${slug}/${p.slug}`}
-                                locale={postLang}
-                                className="text-sm font-medium text-slate-900 hover:underline underline-offset-4"
-                              >
-                                {p.title}
-                              </Link>
-                            </div>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
+                  <ul className="grid gap-3 sm:grid-cols-2">
+                    {filtered.map((p) => (
+                      <li
+                        key={`alltab-${p.slug}`}
+                        className="rounded-2xl border bg-white shadow-card p-4 hover:shadow-lg transition-shadow"
+                      >
+                        <div className="text-xs text-slate-500">{p.datePublished}</div>
+
+                        <h3 className="mt-2 text-base font-semibold leading-snug text-slate-900">
+                          <Link
+                            href={`/posts/${slug}/${p.slug}`}
+                            locale={locale} // ✅ 카테고리 로케일과 동일하게
+                            className="hover:underline underline-offset-4 line-clamp-2"
+                          >
+                            {p.title}
+                          </Link>
+                        </h3>
+
+                        {p.description ? (
+                          <p className="mt-2 text-sm text-slate-600 line-clamp-2">
+                            {p.description}
+                          </p>
+                        ) : null}
+                      </li>
+                    ))}
+                  </ul>
                 </section>
               )}
             </>
