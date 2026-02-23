@@ -3,7 +3,7 @@ slug: "usd-krw-exchange-rate-and-kospi"
 title: "원달러 환율이 한국 경제와 코스피에 미치는 영향: 외국인 수급·수출·물가·금리로 읽는 법"
 description: "원달러 환율(USD/KRW)은 한국 주식시장(코스피)의 ‘기류’를 바꾸는 핵심 변수입니다. 환율 상승/하락이 의미하는 것과 외국인 수급, 수출기업 실적, 물가·금리, 위험선호(달러 강세)까지 한 번에 정리합니다."
 datePublished: "2025-12-28"
-dateModified: "2025-12-28"
+dateModified: "2026-02-23"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["원달러환율", "USD/KRW", "환율", "코스피", "외국인수급", "수출", "물가", "금리", "달러강세", "DXY"]
@@ -24,6 +24,11 @@ lang: "ko"
 > - 투자자는 ‘업종별’로 환율 민감도가 다르다는 점을 반드시 분리해서 봐야 합니다.  
 > - 결론: 환율은 코스피의 “배경음악”입니다. 배경이 바뀌면 같은 뉴스도 다르게 반응합니다.
 
++## 먼저 “큰 그림”으로 연결 (2분이면 이해가 빨라집니다)
+- 🔗 [환율(원/달러)을 구조로 읽는 기본](/posts/economicInfo/fx-basics)
+- 🔗 [미국 증시(S&P500) → 한국 전이: 환율·금리·외국인 수급의 연결고리](/posts/investingInfo/sp500-impact-on-korea-kospi)
+- 🔗 [지정학이 ‘달러 강세’로 번역되는 순간: 달러 유동성으로 읽기](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+ 
 ---
 
 # 1) 원달러 환율(USD/KRW)이란?
@@ -55,6 +60,14 @@ lang: "ko"
 5) **정책/심리(당국 스탠스, 레벨 인식)**  
 - 특정 “심리적 레벨(예: 1,300/1,350/1,400)”은 수급을 자극합니다.
 
+◈ 리스크오프/전쟁 뉴스가 많은 구간이라면, “공포”보다 **달러 조달(유동성)** 메커니즘이 더 핵심일 때가 많습니다:  
+- 🔗 [지정학 → 달러 강세: 달러 유동성 모델](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+
+◈ “금리”가 원인일 때는, **정책금리 vs 시장금리**를 분리해서 봐야 환율/주식의 ‘역행’이 설명됩니다:  
+- 🔗 [정책금리 vs 시장금리: 금리/달러 국면 분해](/posts/economicInfo/policy-rate-cut-market-rates)
+- 🔗 [금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지](/posts/economicInfo/interest-rate-basics)
+- 🔗 [TNX(미 10년물) 기초: 달러·주식·채권의 기준선](/posts/investingInfo/tnx-basics)
+
 ◈ 더 큰 그림이 필요하면:  
 - [KOSPI를 움직이는 글로벌 지표 한 장 정리](/posts/investingInfo/indicator-marketinfo)
 
@@ -77,6 +90,13 @@ lang: "ko"
 - [DXY란 무엇인가?](/posts/investingInfo/dxy-dollar-index-basics)  
 - [DXY가 시장을 움직이는 방식](/posts/investingInfo/dxy-market-impact)
 
+🔎 “원화 약세에서 누가 이기고 지는지(업종별로)”를 더 실전적으로 보고 싶다면:  
+- 🔗 [환율 상승(원화 약세) 수혜·피해 섹터 지도: 코스피 업종별 체크리스트](/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
+
+🔎 유가·관세 같은 “촉매”가 환율로 번역되는 경로:
+- 🔗 [유가 충격 → 원/달러 → 한국: 전파(전이) 경로](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
+- 🔗 [관세는 패키지 충격이다: 성장·마진·환율·물가](/posts/economicInfo/tariffs-growth-margins-fx-package-shock)
+ 
 ---
 
 # 4) 업종별로는 “같은 환율”도 반응이 다릅니다
@@ -108,6 +128,10 @@ lang: "ko"
 
 ## 5-3) 3단계: 신호를 1개만 쓰지 말기
 USD/KRW 하나로 판단하지 말고, 최소 **DXY / 10Y 금리(TNX) / 유가** 중 1~2개를 묶어 보세요.
+
+- (달러 체력) 🔗 [DXY가 시장·환율·코스피에 미치는 영향](/posts/investingInfo/dxy-market-impact)
+- (금리 기준선) 🔗 [TNX(미국 10년물) 기초](/posts/investingInfo/tnx-basics)
+- (에너지 촉매) 🔗 [유가 충격 → 원/달러 전이 경로](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
 
 - [TNX(미국 10년물) 민감도 관점에서 본 한국 ETF 구조](/posts/investingInfo/korea-etf-deep-dive-tnx)
 
@@ -141,6 +165,32 @@ USD/KRW 하나로 판단하지 말고, 최소 **DXY / 10Y 금리(TNX) / 유가**
 - [DXY가 시장·환율·코스피에 미치는 영향](/posts/investingInfo/dxy-market-impact)  
 - [물가와 금리의 기본 프레임](/posts/economicInfo/inflation-rate-basics)  
 - [한국 ETF가 TNX에 민감한 구조적 이유](/posts/investingInfo/korea-etf-deep-dive-tnx)
+
+### 환율 기본기(구조)
+- [환율(원/달러)을 구조로 읽는 기본](/posts/economicInfo/fx-basics)
+- [KOSPI를 움직이는 글로벌 지표 한 장 정리](/posts/investingInfo/indicator-marketinfo)
+- [DXY란? 달러 인덱스 초보자 설명](/posts/investingInfo/dxy-dollar-index-basics)
+
+### 금리/레짐(왜 같은 환율도 다르게 움직이나)
+- [TNX(미국 10년물) 기초: 금리의 기준선](/posts/investingInfo/tnx-basics)
+- [미국 10년물 국채금리(TNX)가 미국·한국 시장에 미치는 실제 영향](/posts/investingInfo/us10y-impact-on-korea-and-stock-market)
+- [정책금리 vs 시장금리: 금리/달러 국면 분해](/posts/economicInfo/policy-rate-cut-market-rates)
+- [금리의 구조와 기준금리: 대출·채권 금리까지](/posts/economicInfo/interest-rate-basics)
+- [수익률곡선 읽는 법: 2s10s vs 3m10y](/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
+
+### 한국 주식 체인(환율 → 수급/업종 → 코스피)
+- [미국 증시(S&P500) → 한국 전이: 환율·금리·외국인 수급](/posts/investingInfo/sp500-impact-on-korea-kospi)
+- [환율 상승(원화 약세) 수혜·피해 섹터 지도](/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
+- [DXY가 시장·환율·코스피에 미치는 영향](/posts/investingInfo/dxy-market-impact)
+
+### 촉매(유가/관세/지정학)
+- [유가 충격 → 원/달러 → 한국: 전이 경로](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
+- [관세는 패키지 충격이다: 성장·마진·환율·물가](/posts/economicInfo/tariffs-growth-margins-fx-package-shock)
+- [지정학이 ‘달러 강세’로 번역되는 순간: 달러 유동성](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+
+### ETF 연결(실전 응용)
+- [한국 ETF가 TNX에 민감한 구조적 이유](/posts/investingInfo/korea-etf-deep-dive-tnx)
+ 
 
 ---
 
@@ -178,9 +228,24 @@ A. 원달러 환율은 한국 내부 요인도 반영하지만, DXY는 “달러
   "@type": "Article",
   "headline": "원달러 환율이 한국 경제와 코스피에 미치는 영향: 외국인 수급·수출·물가·금리로 읽는 법",
   "description": "원달러 환율(USD/KRW)의 의미와 변화가 한국 경제·코스피에 미치는 영향을 외국인 수급, 수출입 구조, 물가·금리, 달러 강세(DXY) 관점에서 정리합니다.",
-  "datePublished": "2025-12-30",
-  "dateModified": "2025-12-30",
+  "datePublished": "2025-12-28",
+  "dateModified": "2026-02-23",
+  "inLanguage": "ko",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.finmaphub.com/posts/investingInfo/usd-krw-exchange-rate-and-kospi"
+  },
   "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" }
+  "publisher": {
+    "@type": "Organization",
+    "name": "FinMap",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
+    }
+  },
+  "image": [
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1767070300/blog/tools/usd-krw-exchange-rate-kospi-impact_cover.png"
+  ]
 }
 </script>

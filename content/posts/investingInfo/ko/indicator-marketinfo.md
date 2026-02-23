@@ -51,6 +51,16 @@ lang: "ko"
 “왜 이 지표들이 코스피에 영향을 미치는지”  
 전체적인 그림을 먼저 이해하는 데 목적이 있습니다.
 
+아래 글들은 이 페이지(지표 허브)를 “해석/행동”으로 연결해줍니다. (각 5~8분이면 충분)
+- 🔗 [원달러 환율이 한국 경제와 코스피에 미치는 영향: 외국인 수급·수출·물가·금리로 읽는 법](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- 🔗 [환율(원/달러)을 구조로 읽는 기본](/posts/economicInfo/fx-basics)
+- 🔗 [미국 증시(S&P500) → 한국 전이: 환율·금리·외국인 수급의 연결고리](/posts/investingInfo/sp500-impact-on-korea-kospi)
+- 🔗 [TNX(미 10년물) 기초: 달러·주식·채권의 기준선](/posts/investingInfo/tnx-basics)
+- 🔗 [DXY란 무엇인가? 달러 인덱스 초보자 설명](/posts/investingInfo/dxy-dollar-index-basics)
+
+리스크오프/전쟁/“달러 부족” 헤드라인이 많은 국면이라면, 아래 글이 ‘번역기’ 역할을 해줍니다.
+- 🔗 [지정학이 ‘달러 강세’로 번역되는 순간: 달러 유동성으로 읽기](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+
 ---
 
 ## 2. 글로벌 환경이 코스피에 영향을 주는 핵심 메커니즘
@@ -70,6 +80,10 @@ lang: "ko"
 특히 1,300원, 1,400원 같은 심리적 구간에서는  
 외국인 수급이 급격히 방향을 바꾸는 경우가 많습니다.
 
+환율을 “숫자”로만 보면 실전에서 자주 틀립니다. 아래 2개를 같이 보면 ‘왜 움직였는지’가 정리됩니다.
+- 🔗 [원달러 환율이 한국 경제와 코스피에 미치는 영향](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- 🔗 [환율(원/달러)을 구조로 읽는 기본](/posts/economicInfo/fx-basics)
+
 ---
 
 ### **② WTI(국제유가)와 제조업 중심 국가인 한국**
@@ -86,6 +100,10 @@ lang: "ko"
 
 특히 정유·화학·항공주는 유가 변화에 더욱 민감하게 반응합니다.
 
+유가가 “코스피/환율”로 번역되는 경로를 한 번에 정리한 글:
+- 🔗 [유가 충격 → 원/달러 → 한국: 전파(전이) 경로](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
+- 🔗 [WTI 유가가 코스피에 미치는 영향: 업종별 민감도](/posts/investingInfo/wti-impact-on-korea-kospi)
+
 ---
 
 ### **③ 미국의 3대 지수(S&P500·Nasdaq·Dow)**
@@ -99,6 +117,9 @@ lang: "ko"
 
 미국 기업 실적과 경기지표가 긍정적일수록  
 코스피도 위험자산 선호 심리로 인해 상승 흐름을 따르는 경우가 많습니다.
+
+미국 증시가 한국으로 전이되는 “환율·금리·외국인 수급” 체인:
+- 🔗 [S&P500 리스크오프가 한국으로 전이되는 체인](/posts/investingInfo/sp500-impact-on-korea-kospi)
 
 ---
 
@@ -115,6 +136,10 @@ DXY는 코스피에 다음과 같은 영향을 줍니다.
 특히 DXY가 105 이상으로 올라가면  
 신흥국 증시가 동시에 약세를 보이는 경우가 많습니다.
 
+DXY는 “달러 자체의 힘”이라서 원/달러(국내 요인)와 같이 보면 국면 분리가 쉬워집니다.
+- 🔗 [DXY란 무엇인가?](/posts/investingInfo/dxy-dollar-index-basics)
+- 🔗 [DXY가 변화하면 시장은 어떻게 움직일까? 미국 증시·환율·코스피까지](/posts/investingInfo/dxy-market-impact)
+
 ---
 
 ### **⑤ 미국 10년물 국채금리(TNX)와 밸류에이션**
@@ -129,6 +154,12 @@ DXY는 코스피에 다음과 같은 영향을 줍니다.
 
 반도체·2차전지 등 성장 섹터는  
 미국 금리가 조금만 움직여도 민감하게 반응합니다.
+
+“금리↑/금리↓”를 예측이 아니라 구조로 해석하고 싶다면:
+- 🔗 [TNX(미 10년물) 기초: 달러·주식·채권의 기준선](/posts/investingInfo/tnx-basics)
+- 🔗 [미국 10년물 금리(TNX)가 미국·한국 시장에 미치는 실제 영향](/posts/investingInfo/us10y-impact-on-korea-and-stock-market)
+- 🔗 [정책금리 vs 시장금리: 금리/달러 국면 분해](/posts/economicInfo/policy-rate-cut-market-rates)
+- 🔗 [수익률곡선 읽는 법: 2s10s vs 3m10y](/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
 
 ---
 
@@ -186,7 +217,28 @@ KOSPI 및 KOSPI200 추종 ETF 투자에 필요한 기초 데이터를 제공합�
 
 ---
 
-## 5. 결론
+## 5. 더 깊게 보기(내부링크 허브)
+
+### 환율/수급
+- [원달러 환율이 한국 경제와 코스피에 미치는 영향](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- [환율(원/달러)을 구조로 읽는 기본](/posts/economicInfo/fx-basics)
+- [원화 약세에서 누가 이기고 지는가: 코스피 섹터 맵](/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
+
+### 금리/레짐
+- [TNX(미 10년물) 기초](/posts/investingInfo/tnx-basics)
+- [미국 10년물 금리(TNX)가 한국/주식에 미치는 영향](/posts/investingInfo/us10y-impact-on-korea-and-stock-market)
+- [정책금리 vs 시장금리](/posts/economicInfo/policy-rate-cut-market-rates)
+- [금리의 구조와 기준금리](/posts/economicInfo/interest-rate-basics)
+- [수익률곡선 읽는 법: 2s10s vs 3m10y](/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
+
+### 촉매(유가/관세/지정학)
+- [유가 충격 → 원/달러 → 한국: 전이 경로](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
+- [관세는 패키지 충격이다: 성장·마진·환율·물가](/posts/economicInfo/tariffs-growth-margins-fx-package-shock)
+- [지정학 → 달러 강세: 달러 유동성으로 읽기](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+
+---
+
+## 6. 결론
 
 - 코스피는 국내 요인보다 **글로벌 지표들이 더 큰 영향**을 미치는 시장입니다.  
 - 환율·미국 증시·금리·유가·DXY는 매일 체크해야 하는 핵심 변수입니다.  
@@ -225,13 +277,23 @@ KOSPI 및 KOSPI200 추종 ETF 투자에 필요한 기초 데이터를 제공합�
   "headline": "코스피에 가장 큰 영향을 끼치는 글로벌 시장 환경 총정리",
   "description": "원·달러 환율, 유가(WTI), 미국 3대 지수, 달러인덱스(DXY), 미국 10년물 금리, Stoxx50 등 글로벌 주요 지표가 어떻게 코스피에 영향을 주는지 핵심 흐름을 이해하기 쉽게 정리했습니다.",
   "datePublished": "2025-11-18",
-  "author": {
-    "@type": "Person",
-    "name": "FinMap"
+  "dateModified": "2026-02-23",
+  "inLanguage": "ko",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.finmaphub.com/posts/investingInfo/indicator-marketinfo"
   },
+  "author": { "@type": "Organization", "name": "FinMap" },
   "publisher": {
     "@type": "Organization",
-    "name": "FinMap"
-  }
+    "name": "FinMap",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
+    }
+  },
+  "image": [
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428447/blog/investingInfo/economics-marketinfo-thum.png"
+  ]
 }
 </script>

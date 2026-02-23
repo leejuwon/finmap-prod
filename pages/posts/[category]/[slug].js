@@ -9,11 +9,48 @@ import { AD_CLIENT, AD_SLOTS } from '../../../config/adSlots';
 import {
   getAllPosts,
   getAllPostsStrict,
-  getPostBySlugStrict,
-  hasPostSlugStrict,
+  getPostBySlugStrict,  
 } from '../../../lib/posts';
 import parse, { domToReact } from 'html-react-parser';
 import ToolCta from '../../../_components/ToolCta';
+
+/* ---------------------- build-time cache ---------------------- */
+// 빌드(SSG) 때 getStaticProps가 포스트 수만큼 반복 호출되므로,
+// 매번 전체 포스트를 다시 스캔/파싱하지 않도록 메모리 캐시를 둡니다.
+// (Next build 프로세스 내에서만 유효)
+const __ALL_POSTS_CACHE = { ko: null, en: null };
+const __SLUG_SET_CACHE = { ko: null, en: null };
+
+function getAllPostsCached(lang) {
+  if (lang === 'en') {
+    if (!__ALL_POSTS_CACHE.en) __ALL_POSTS_CACHE.en = getAllPostsStrict('en');
+    return __ALL_POSTS_CACHE.en;
+  }
+  if (!__ALL_POSTS_CACHE.ko) __ALL_POSTS_CACHE.ko = getAllPosts('ko');
+  return __ALL_POSTS_CACHE.ko;
+}
+
+function getSlugSetCached(lang) {
+  if (lang === 'en') {
+    if (!__SLUG_SET_CACHE.en) {
+      __SLUG_SET_CACHE.en = new Set(getAllPostsCached('en').map((p) => p.slug));
+    }
+    return __SLUG_SET_CACHE.en;
+  }
+  if (!__SLUG_SET_CACHE.ko) {
+    __SLUG_SET_CACHE.ko = new Set(getAllPostsCached('ko').map((p) => p.slug));
+  }
+  return __SLUG_SET_CACHE.ko;
+}
+
+function hasSlugCached(lang, slug) {
+  try {
+    return getSlugSetCached(lang).has(slug);
+  } catch {
+    return false;
+  }
+}
+
 
 /* ---------------- 카테고리 이름 ↔ slug 매핑 ---------------- */
 
@@ -337,7 +374,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
     },
   });
 
-  const toolList = Array.isArray(post.tools) ? post.tools : [];
+  const toolList = Array.isArray(post.tools) ? post.tools : Array.isArray(post.tool) ? post.tool : [];
   const TOOL_TYPE_MAP = {
     comp: 'compound',
     goal: 'goal',
@@ -356,7 +393,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
       <SeoHead
         title={post.title}
         desc={post.description}
-        url={`/posts/${categorySlug}/${post.slug}`}
+        url={`${prefix}/posts/${categorySlug}/${post.slug}`}
         image={post.cover}
         locale={lang} // ✅ canonical/hreflang을 컨텐츠 언어에 맞춤
       />
@@ -553,8 +590,8 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
 /* ---------------------- SSG ---------------------- */
 
 export async function getStaticPaths() {
-  const postsKo = getAllPosts('ko');
-  const postsEn = getAllPostsStrict('en');
+  const postsKo = getAllPostsCached('ko');
+  const postsEn = getAllPostsCached('en');
 
   const paths = [
     ...postsKo.map((p) => ({
@@ -601,12 +638,7 @@ export async function getStaticProps({ params, locale }) {
 
   // ✅ 반대 언어 존재 체크도 strict
   const otherLang = lang === 'ko' ? 'en' : 'ko';
-  let otherLangAvailable = false;
-  try {
-    otherLangAvailable = hasPostSlugStrict(otherLang, slug);
-  } catch (e) {
-    otherLangAvailable = false;
-  }
+  const otherLangAvailable = hasSlugCached(otherLang, slug);
 
   const categorySlug = getCategorySlugFromPost(post, lang);
 
@@ -622,7 +654,7 @@ export async function getStaticProps({ params, locale }) {
   }
 
   // ✅ related: 같은 언어 + 같은 카테고리에서 최신 5개 (현재 글 제외)
-  const allSameLang = lang === 'en' ? getAllPostsStrict('en') : getAllPosts('ko');
+  const allSameLang = getAllPostsCached(lang);
   const sameCat = allSameLang
     .filter((p) => p.slug !== slug)
     .filter((p) => getCategorySlugFromPost(p, lang) === categorySlug)

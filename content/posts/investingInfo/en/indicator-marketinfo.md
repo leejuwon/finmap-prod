@@ -3,7 +3,7 @@ slug: "indicator-marketinfo"
 title: "Global Market Forces That Influence the KOSPI: A Complete Overview"
 description: "An easy-to-understand summary of how USD/KRW, WTI crude prices, major U.S. indices, the Dollar Index (DXY), U.S. 10-year Treasury yields, and the Euro Stoxx 50 affect movements in the KOSPI."
 datePublished: "2025-11-18"
-dateModified: "2025-11-18"
+dateModified: "2026-02-23"
 category: "Investing Info"
 postCategory: "investingInfo"
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428447/blog/investingInfo/economics-marketinfo-thum.png"
@@ -34,6 +34,16 @@ lang: "en"
 
 ## 1. Introduction
 
+If you want to go one layer deeper (without turning this into a daily “macro prediction” habit), these guides connect each indicator to a concrete decision:
+- 🔗 [USD/KRW Exchange Rate: What It Means for Korea’s Economy and the KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- 🔗 [Currency Basics: What Really Moves the USD/KRW Exchange Rate](/en/posts/economicInfo/fx-basics)
+- 🔗 [How the S&P 500 Moves Korea’s Economy and KOSPI: The FX–Rates–Foreign Flow Chain](/en/posts/investingInfo/sp500-impact-on-korea-kospi)
+- 🔗 [TNX Explained: Why the 10-Year Treasury Yield Drives Markets](/en/posts/investingInfo/tnx-basics)
+- 🔗 [What Is DXY (Dollar Index)?](/en/posts/investingInfo/dxy-dollar-index-basics)
+
+And when the market is dominated by risk-off / geopolitics / “USD shortage” headlines:
+- 🔗 [When Geopolitics Turns Into Dollar Strength: Read It as USD Liquidity](/en/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+ 
 Many investors analyze the KOSPI only using charts or headlines.  
 In reality, the KOSPI is **highly sensitive to global macro and capital flows**.
 
@@ -69,6 +79,11 @@ making USD/KRW their primary decision factor.
 
 Key psychological levels such as **₩1,300, ₩1,350, ₩1,400** often trigger shift points in foreign capital.
 
+For a practical “FX → earnings/inflation → flows” map you can reuse:
+- 🔗 [USD/KRW Exchange Rate: What It Means for Korea’s Economy and the KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- 🔗 [Currency Basics: What Really Moves the USD/KRW Exchange Rate](/en/posts/economicInfo/fx-basics)
+ 
+
 ---
 
 ### **2) WTI Crude Oil and Korea’s Manufacturing Cost Structure**
@@ -82,6 +97,11 @@ WTI has direct impact on **manufacturing costs and export competitiveness**.
   → earnings pressure on listed firms  
 
 Refining, chemicals, and airline industries react particularly strongly to oil price changes.
+
+If you want the “oil → FX → inflation/rates → equities” transmission (more actionable than daily headlines):
+- 🔗 [Oil Shocks and USD/KRW: Trade Balance, Import Inflation, and Flows](/en/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
+- 🔗 [WTI and Korea: How Oil Prices Affect the KOSPI (Channels + Sector Sensitivity)](/en/posts/investingInfo/wti-impact-on-korea-kospi)
+ 
 
 ---
 
@@ -97,6 +117,9 @@ it acts as a **leading indicator** for KOSPI’s opening mood.
 
 Positive U.S. earnings or macro data frequently translate into stronger KOSPI sentiment.
 
+If you want the “US → Korea” chain (FX + rates + foreign flows) in one framework:
+- 🔗 [How the S&P 500 Moves Korea’s Economy and KOSPI](/en/posts/investingInfo/sp500-impact-on-korea-kospi)
+ 
 ---
 
 ### **4) Dollar Index (DXY) and Global Risk Appetite**
@@ -109,6 +132,11 @@ DXY indicates global dollar strength, and the USD is a traditional **safe-haven 
   → risk-on → KOSPI support  
 
 When DXY exceeds **105**, emerging markets often experience coordinated weakness.
+
+
+Two posts that help you avoid overreacting to “DXY up” days:
+- 🔗 [What Is DXY (Dollar Index)?](/en/posts/investingInfo/dxy-dollar-index-basics)
+- 🔗 [How DXY Moves the Market: Impact on U.S. Stocks, USD/KRW, and KOSPI](/en/posts/investingInfo/dxy-market-impact)
 
 ---
 
@@ -124,6 +152,13 @@ Changes in the 10-year yield directly affect valuations of Korea’s growth stoc
 
 Sectors like semiconductors and batteries react especially quickly.
 
+If you want to interpret “rates up / rates down” without guessing the Fed:
+- 🔗 [TNX Explained: Why the 10-Year Treasury Yield Drives Markets](/en/posts/investingInfo/tnx-basics)
+- 🔗 [How U.S. 10-Year Treasury Yield (TNX) Affects the U.S. Economy, Korea, and Global Stock Markets](/en/posts/investingInfo/us10y-impact-on-korea-and-stock-market)
+- 🔗 [A Rate Cut Doesn’t Guarantee Lower Borrowing Costs: Policy vs Market Rates](/en/posts/economicInfo/policy-rate-cut-market-rates)
+- 🔗 [Understanding Interest Rates: Policy Rates, Market Rates, and Bonds](/en/posts/economicInfo/interest-rate-basics)
+- 🔗 [Yield Curve Signals: 2s10s vs 3m10y Recession Reading](/en/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
+ 
 ---
 
 ### **6) Euro Stoxx 50 and Global Demand Conditions**
@@ -171,6 +206,31 @@ FinMap collects all six indicators daily to support KOSPI and KOSPI200 ETF strat
 
 ---
 
+## 6. Continue reading (Internal Links)
+
+### FX & flows
+- [USD/KRW Exchange Rate: What It Means for Korea’s Economy and the KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- [Currency Basics: What Really Moves the USD/KRW Exchange Rate](/en/posts/economicInfo/fx-basics)
+
+### Rates & regimes
+- [TNX Explained: Why the 10-Year Treasury Yield Drives Markets](/en/posts/investingInfo/tnx-basics)
+- [How U.S. 10Y Yields (TNX) Affect Korea and Stocks](/en/posts/investingInfo/us10y-impact-on-korea-and-stock-market)
+- [A Rate Cut Doesn’t Guarantee Lower Borrowing Costs: Policy vs Market Rates](/en/posts/economicInfo/policy-rate-cut-market-rates)
+- [Yield Curve Signals: 2s10s vs 3m10y Recession Reading](/en/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
+
+### Risk-off catalysts
+- [When Geopolitics Turns Into Dollar Strength: Read It as USD Liquidity](/en/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+- [Tariffs as a Package Shock: Growth, Margins, FX, and Inflation](/en/posts/economicInfo/tariffs-growth-margins-fx-package-shock)
+- [Oil Shocks and USD/KRW: Trade Balance, Import Inflation, and Flows](/en/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
+
+### Index & sector translation
+- [How the S&P 500 Moves Korea’s Economy and KOSPI](/en/posts/investingInfo/sp500-impact-on-korea-kospi)
+- [WTI and Korea: How Oil Prices Affect the KOSPI](/en/posts/investingInfo/wti-impact-on-korea-kospi)
+- [What Is DXY (Dollar Index)?](/en/posts/investingInfo/dxy-dollar-index-basics)
+- [How DXY Moves the Market: Impact on U.S. Stocks, USD/KRW, and KOSPI](/en/posts/investingInfo/dxy-market-impact)
+
+---
+
 ## FAQ
 
 ### **Q1. Which indicator affects the KOSPI most directly?**  
@@ -191,9 +251,23 @@ Direction matters more—trend changes carry greater significance than absolute 
   "headline": "Global Market Forces That Influence the KOSPI: A Complete Overview",
   "description": "A summary of how USD/KRW, WTI, U.S. indices, DXY, U.S. 10-year yields, and the Euro Stoxx 50 shape movements in the KOSPI.",
   "datePublished": "2025-11-18",
-  "author": {
-    "@type": "Person",
-    "name": "FinMap"
+  "dateModified": "2026-02-23",
+  "inLanguage": "en",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.finmaphub.com/en/posts/investingInfo/indicator-marketinfo"
   },
+  "author": { "@type": "Organization", "name": "FinMap" },
   "publisher": {
-    "@type": "Organ
+    "@type": "Organization",
+    "name": "FinMap",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
+    }
+  },
+  "image": [
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428447/blog/investingInfo/economics-marketinfo-thum.png"
+  ]
+ }
+ </script>
