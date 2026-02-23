@@ -110,6 +110,73 @@ function buildCategoryLastmodMap(postsMap) {
 
 const CATEGORY_LASTMOD_MAP = buildCategoryLastmodMap(POSTS_LASTMOD_MAP);
 
+/* ---------------------- hreflang (xhtml:link) ---------------------- */
+// next-sitemap은 transform()에서 alternateRefs를 반환하면
+// sitemap에 <xhtml:link rel="alternate" hreflang="..."> 를 함께 출력합니다.
+// (ko: 기본, en: /en 프리픽스)
+
+const STATIC_I18N_BASE_LOCS = new Set([
+  '/',
+  '/about',
+  '/contact',
+  '/disclaimer',
+  '/privacy',
+  '/terms',
+  '/sitemap-pages',
+  '/tools',
+  '/tools/cagr-calculator',
+  '/tools/compound-interest',
+  '/tools/dca-calculator',
+  '/tools/fire-calculator',
+  '/tools/goal-simulator',
+  '/market',
+  '/market/real-estate',
+]);
+
+function toKoLoc(loc) {
+  if (loc === '/en') return '/';
+  if (loc.startsWith('/en/')) return loc.slice(3);
+  return loc;
+}
+
+function toEnLoc(loc) {
+  if (loc === '/') return '/en';
+  if (loc.startsWith('/en')) return loc;
+  return `/en${loc}`;
+}
+
+function hasKoEnPairForLoc(koLoc, enLoc) {
+  // posts: 양쪽 모두 실제 글이 존재할 때만
+  if (koLoc.startsWith('/posts/') || enLoc.startsWith('/en/posts/')) {
+    return POSTS_LASTMOD_MAP.has(koLoc) && POSTS_LASTMOD_MAP.has(enLoc);
+  }
+  // category: 양쪽 모두 허브가 존재할 때만
+  if (koLoc.startsWith('/category/') || enLoc.startsWith('/en/category/')) {
+    return CATEGORY_LASTMOD_MAP.has(koLoc) && CATEGORY_LASTMOD_MAP.has(enLoc);
+  }
+  // static: 우리가 관리하는 정적 페이지 목록만
+  return STATIC_I18N_BASE_LOCS.has(koLoc);
+}
+
+function buildAlternateRefs(loc) {
+  const koLoc = toKoLoc(loc);
+  const enLoc = toEnLoc(koLoc);
+
+  if (!hasKoEnPairForLoc(koLoc, enLoc)) return null;
+
+  // href는 absolute URL이어야 sitemap에 xhtml:link로 정상 출력됩니다.
+  const koHref = `${SITE_URL}${koLoc}`;
+  const enHref = `${SITE_URL}${enLoc}`;
+
+  return [
+    { hreflang: 'ko', href: koHref },
+    { hreflang: 'en', href: enHref },
+    // 기본(대표) 언어를 명시하고 싶으면 x-default 추가 (선택)
+    { hreflang: 'x-default', href: koHref },
+  ];
+}
+
+
 module.exports = {
   siteUrl: SITE_URL,
   trailingSlash: false,
@@ -159,11 +226,15 @@ module.exports = {
     // ---- 나머지 페이지는 빌드 시각 사용 ----
     if (!lastmod) lastmod = BUILD_TIME_ISO;
 
+    // ---- hreflang alternateRefs(ko/en) ----
+    const alternateRefs = buildAlternateRefs(loc);
+
     return {
       loc,
       changefreq: config.changefreq,
       priority: config.priority,
       lastmod,
+      ...(alternateRefs ? { alternateRefs } : {}),
     };
   },
 
