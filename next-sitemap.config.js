@@ -111,9 +111,11 @@ function buildCategoryLastmodMap(postsMap) {
 const CATEGORY_LASTMOD_MAP = buildCategoryLastmodMap(POSTS_LASTMOD_MAP);
 
 /* ---------------------- hreflang (xhtml:link) ---------------------- */
-// next-sitemap은 transform()에서 alternateRefs를 반환하면
-// sitemap에 <xhtml:link rel="alternate" hreflang="..."> 를 함께 출력합니다.
-// (ko: 기본, en: /en 프리픽스)
+// ⚠️ next-sitemap는 sub-path locale(/en/...) + alternateRefs 조합에서
+//     href에 path를 "한 번 더 붙여" /en/en/about 같은 중복이 발생하는 버그가 있습니다.
+//     해결: transform()에서 "완성형 absolute href"를 직접 만들고,
+//           각 ref에 hrefIsAbsolute: true를 넣어 중복 append를 방지합니다.
+// 참고: next-sitemap issue #212 / StackOverflow workaround 패턴과 동일.
 
 const STATIC_I18N_BASE_LOCS = new Set([
   '/',
@@ -133,16 +135,16 @@ const STATIC_I18N_BASE_LOCS = new Set([
   '/market/real-estate',
 ]);
 
-function toKoLoc(loc) {
+function stripEnPrefix(loc) {
   if (loc === '/en') return '/';
-  if (loc.startsWith('/en/')) return loc.slice(3);
-  return loc;
+  if (loc.startsWith('/en/')) return loc.slice(3) || '/';
+  return loc || '/';
 }
 
-function toEnLoc(loc) {
-  if (loc === '/') return '/en';
-  if (loc.startsWith('/en')) return loc;
-  return `/en${loc}`;
+function toEnPath(koPath) {
+  if (!koPath || koPath === '/') return '/en';
+  if (koPath.startsWith('/en')) return koPath; // 안전
+  return `/en${koPath}`;
 }
 
 function hasKoEnPairForLoc(koLoc, enLoc) {
@@ -159,20 +161,20 @@ function hasKoEnPairForLoc(koLoc, enLoc) {
 }
 
 function buildAlternateRefs(loc) {
-  const koLoc = toKoLoc(loc);
-  const enLoc = toEnLoc(koLoc);
+  // loc이 '/en/...'인 경우도 KO 기준 path로 정규화
+  const koLoc = stripEnPrefix(loc);
+  const enLoc = toEnPath(koLoc);
 
   if (!hasKoEnPairForLoc(koLoc, enLoc)) return null;
 
-  // href는 absolute URL이어야 sitemap에 xhtml:link로 정상 출력됩니다.
+  // ✅ "완성형 absolute href" + hrefIsAbsolute:true 로 중복 append 방지
   const koHref = `${SITE_URL}${koLoc}`;
   const enHref = `${SITE_URL}${enLoc}`;
 
   return [
-    { hreflang: 'ko', href: koHref },
-    { hreflang: 'en', href: enHref },
-    // 기본(대표) 언어를 명시하고 싶으면 x-default 추가 (선택)
-    { hreflang: 'x-default', href: koHref },
+    { hreflang: 'ko', href: koHref, hrefIsAbsolute: true },
+    { hreflang: 'en', href: enHref, hrefIsAbsolute: true },
+    { hreflang: 'x-default', href: koHref, hrefIsAbsolute: true },
   ];
 }
 
