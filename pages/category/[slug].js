@@ -108,6 +108,19 @@ function dateValue(s) {
   return Number.isFinite(t) ? t : 0;
 }
 
+function toLitePost(p, forcedLang) {
+  const lang = forcedLang || p?.lang || 'ko';
+  return {
+    slug: p?.slug || '',
+    lang,
+    category: p?.category || '',
+    title: p?.title || '',
+    description: p?.description || '',
+    datePublished: p?.datePublished || '',
+    cover: p?.cover || '',
+  };
+}
+
 
 /* ---------------------------------------------------------- */
 
@@ -453,19 +466,27 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
-  const slug = params.slug;
+export async function getStaticProps({ params, locale }) {
+  const slug = params?.slug;
+  const lang = locale === 'en' ? 'en' : 'ko';
 
-  const allKo = getAllPosts('ko');
-  const postsKo = allKo
-    .filter((p) => getCategorySlugFromPost(p, 'ko') === slug)
-    .map((p) => ({ ...p, lang: 'ko' }));
+  // ✅ locale별로 필요한 언어만 내려서 page-data 크기 절감
+  let postsKo = [];
+  let postsEn = [];
 
   // ✅ en은 strict로만 (KO fallback 섞임 방지)
-  const allEn = getAllPostsStrict('en');
-  const postsEn = allEn
-    .filter((p) => getCategorySlugFromPost(p, 'en') === slug)
-    .map((p) => ({ ...p, lang: 'en' }));
+  if (lang === 'ko') {
+    const allKo = getAllPosts('ko');
+    postsKo = allKo
+      .filter((p) => getCategorySlugFromPost(p, 'ko') === slug)
+      .map((p) => toLitePost(p, 'ko'));
+  } else {
+    // ✅ en은 strict로만 (KO fallback 섞임 방지)
+    const allEn = getAllPostsStrict('en');
+    postsEn = allEn
+      .filter((p) => getCategorySlugFromPost(p, 'en') === slug)
+      .map((p) => toLitePost(p, 'en'));
+  }
 
   return {
     props: {

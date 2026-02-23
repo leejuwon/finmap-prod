@@ -36,6 +36,19 @@ function dateValue(s) {
   return Number.isFinite(t) ? t : 0;
 }
 
+function toLitePost(p) {
+  const lang = p?.lang || 'ko';
+  return {
+    slug: p?.slug || '',
+    lang,
+    category: p?.category || '',
+    title: p?.title || '',
+    description: p?.description || '',
+    datePublished: p?.datePublished || '',
+    cover: p?.cover || '',
+  };
+}
+
 export default function SitemapPages({ posts }) {
   const router = useRouter();
   const lang = router?.locale === 'en' ? 'en' : 'ko';
@@ -330,7 +343,13 @@ export default function SitemapPages({ posts }) {
   );
 }
 
-export async function getStaticProps() {
-  const posts = getAllPostsAllLangs();
+export async function getStaticProps({ locale }) {
+  const lang = locale === 'en' ? 'en' : 'ko';
+
+  // ✅ 사이트맵 페이지도 해당 locale 언어만 + lite로 축소
+  const posts = getAllPostsAllLangs()
+    .map(toLitePost)
+    .filter((p) => (p.lang || 'ko') === lang);
+
   return { props: { posts } };
 }

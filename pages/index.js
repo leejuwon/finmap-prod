@@ -301,7 +301,34 @@ export default function Home({ posts }) {
   );
 }
 
-export async function getStaticProps() {
-  const posts = getAllPostsAllLangs(); // ✅ ko + en 전부
+function toLitePost(p) {
+  const lang = p?.lang || 'ko';
+  return {
+    slug: p?.slug || '',
+    lang,
+    category: p?.category || '',
+    title: p?.title || '',
+    description: p?.description || '',
+    datePublished: p?.datePublished || '',
+    cover: p?.cover || '',
+  };
+}
+
+function dateValue(s) {
+  if (!s) return 0;
+  const t = Date.parse(String(s));
+  return Number.isFinite(t) ? t : 0;
+}
+
+export async function getStaticProps({ locale }) {
+  const lang = locale === 'en' ? 'en' : 'ko';
+
+  // ✅ 목록 페이지에는 본문/HTML 등 무거운 필드가 필요 없음 → lite로 축소
+  // ✅ locale별로 필요한 언어만 내려서 page-data 크기 절반으로 감소
+  const posts = getAllPostsAllLangs()
+    .map(toLitePost)
+    .filter((p) => (p.lang || 'ko') === lang)
+    .sort((a, b) => dateValue(b.datePublished) - dateValue(a.datePublished));
+
   return { props: { posts } };
 }
