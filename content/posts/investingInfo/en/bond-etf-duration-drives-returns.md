@@ -1,6 +1,6 @@
 ---
 slug: "bond-etf-duration-drives-returns"
-link: "/en/posts/investingInfo/bond-etf-duration-tnx"
+link: "/en/posts/investingInfo/bond-etf-duration-drives-returns"
 title: "Bond ETF Mastery: Duration Drives Returns (and Why TNX Sets the Tempo)"
 description: "Bond ETF performance is not ‘mysterious.’ It is mostly duration math. Learn how TNX (the U.S. 10-year yield) transmits rate shocks into bond ETFs, how to pick duration by goal (cashflow, stability, hedge), and how to run a rules-based bond allocation without guessing the next Fed move."
 datePublished: "2026-01-18"
@@ -414,7 +414,7 @@ plus a calendar rebalancing rule.
   "dateModified": "2026-01-18",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/en/posts/investingInfo/bond-etf-duration-tnx"
+    "@id": "https://www.finmaphub.com/en/posts/investingInfo/bond-etf-duration-drives-returns"
   },
   "author": {
     "@type": "Organization",

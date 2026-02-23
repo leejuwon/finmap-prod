@@ -258,7 +258,7 @@ In that regime, KOSPI can fall even if exporters “should” benefit.
     Use FinMap’s CAGR calculator to measure your real annualized return.
     It helps you compare strategies even when markets are volatile.
   </p>
-  <a class="tool-cta-btn" href="/tools/cagr-calculator">
+  <a class="tool-cta-btn" href="/en/tools/cagr-calculator">
     Try FinMap CAGR Calculator
   </a>
 </div>

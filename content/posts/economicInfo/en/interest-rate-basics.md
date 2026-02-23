@@ -363,7 +363,7 @@ The goal is not perfect forecasting; it’s holding the right level of rate sens
     A 1% change in assumed annual returns can materially shift long-term outcomes.
     Use FinMap tools to quantify your assumptions first—then use rate news to refine them over time.
   </p>
-  <a class="tool-cta-btn" href="/tools/compound-interest">Open the Compound Interest Tool</a>
+  <a class="tool-cta-btn" href="/en/tools/compound-interest">Open the Compound Interest Tool</a>
 </div>
 
 ---

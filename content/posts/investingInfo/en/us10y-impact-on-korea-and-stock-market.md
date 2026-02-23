@@ -245,10 +245,10 @@ This makes Korea one of the **most sensitive markets to TNX**.
 <div class="tool-cta">
   <h3>FinMap Compound Interest & Goal Simulator</h3>
   <p>Compare TNX-based real returns with your long-term targets using FinMap's calculators and simulators.</p>
-  <a class="tool-cta-btn" href="/tools/compound-interest">
+  <a class="tool-cta-btn" href="/en/tools/compound-interest">
     Open Compound Interest Calculator
   </a>
-  <a class="tool-cta-btn" href="/tools/goal-simulator">Open Goal Simulator</a>
+  <a class="tool-cta-btn" href="/en/tools/goal-simulator">Open Goal Simulator</a>
 </div>
 
 ---

@@ -235,7 +235,7 @@ it’s a **long-term risk-adjusted performance target**.
 <div class="tool-cta">
   <h3>Check 7% CAGR Using FinMap’s Compound Calculator</h3>
   <p>See how much your wealth could grow with realistic CAGR assumptions.</p>
-  <a class="tool-cta-btn" href="/tools/compound-interest">
+  <a class="tool-cta-btn" href="/en/tools/compound-interest">
     Try Compound Interest Calculator
   </a>
 </div>

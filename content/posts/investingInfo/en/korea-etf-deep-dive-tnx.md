@@ -207,7 +207,7 @@ Therefore, monitoring **TNX + USD/KRW** is essential for any Korea ETF investor.
 <div class="tool-cta">
   <h3>Analyze TNX sensitivity with FinMap Tools</h3>
   <p>Use our compound calculator, goal simulator, and ETF comparison tools to measure how rate changes affect your portfolio.</p>
-  <a class="tool-cta-btn" href="/tools/goal-simulator">
+  <a class="tool-cta-btn" href="/en/tools/goal-simulator">
     Open Goal Simulator
   </a>
 </div>

@@ -197,7 +197,7 @@ You don’t need to become an FX trader. You just need a rule:
 If your local currency is weakening sharply while global yields rise, treat it as **tighter conditions** until proven otherwise.
 
 If you want a Korea-focused bridge:
-- 🔗 [USD/KRW Exchange Rate: What It Means for Korea’s Economy and Markets](/en/posts/investingInfo/usd-krw-korea-kospi)
+- 🔗 [USD/KRW Exchange Rate: What It Means for Korea’s Economy and Markets](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
 
 ---
 
@@ -239,7 +239,7 @@ The goal is to stay in the game.
 
 And for a deeper global rates anchor:
 - 🔗 [TNX Explained: Why the 10-Year Treasury Yield Drives Markets](/en/posts/investingInfo/tnx-basics)  
-- 🔗 [How WTI Oil Can Tighten Financial Conditions Through Inflation and Rates](/en/posts/economicInfo/wti-impact-on-korea-kospi)  
+- 🔗 [How WTI Oil Can Tighten Financial Conditions Through Inflation and Rates](/en/posts/investingInfo/wti-impact-on-korea-kospi)  
 - 🔗 [CAGR Reality Check: What “7% per year” really means](/en/posts/investingInfo/cagr-7percent-reality-check)
 
 ---

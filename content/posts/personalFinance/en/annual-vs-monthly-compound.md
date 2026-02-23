@@ -72,8 +72,8 @@ This small difference becomes noticeable when comparing long-term results or goa
 | Time needed | ~14.2 years | ~14.0 years |
 
 👉 Try calculating different goals:  
-- **[Compound Interest Calculator](/tools/compound-interest)**  
-- **[Goal Amount Simulator](/tools/goal-simulator)**
+- **[Compound Interest Calculator](/en/tools/compound-interest)**  
+- **[Goal Amount Simulator](/en/tools/goal-simulator)**
 
 ---
 

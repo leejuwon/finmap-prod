@@ -206,7 +206,7 @@ Understanding the cycle helps investors stay disciplined.
     Adjusting expected returns based on inflation and rates  
     often reveals whether long-term goals are realistic.
   </p>
-  <a class="tool-cta-btn" href="/tools/compound-interest">
+  <a class="tool-cta-btn" href="/en/tools/compound-interest">
     Use the Compound Interest Calculator
   </a>
 </div>

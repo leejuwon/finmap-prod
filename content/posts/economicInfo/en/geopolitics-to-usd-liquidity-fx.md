@@ -202,7 +202,7 @@ You can’t control the news cycle. You can control your process.
 - □ Track your progress with a long-horizon metric, not a daily FX move.
 
 Tool note: if you’re investing over years, your results are dominated by consistency and compounding. A quick CAGR check can re-anchor performance.  
-- Open the CAGR tool: <a href="/tools/cagr-calculator">CAGR calculator</a>
+- Open the CAGR tool: <a href="/en/tools/cagr-calculator">CAGR calculator</a>
 
 ## Put the dollar story on a bigger map (read next, near the end)
 

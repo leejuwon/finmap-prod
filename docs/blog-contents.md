@@ -551,7 +551,7 @@ url: /en/posts/investingInfo/modern-6040-risk-budget
 ## 17.
 title: "Bond ETF Mastery: Duration Drives Returns (and Why TNX Sets the Tempo)"
 description: "Bond ETF performance is not ‘mysterious.’ It is mostly duration math. Learn how TNX (the U.S. 10-year yield) transmits rate shocks into bond ETFs, how to pick duration by goal (cashflow, stability, hedge), and how to run a rules-based bond allocation without guessing the next Fed move."
-url: /en/posts/investingInfo/bond-etf-duration-tnx
+url: /en/posts/investingInfo/bond-etf-duration-drives-returns
 
 ## 18.
 title: "FX-Hedged vs Unhedged Korea Exposure: 3 Conditions That Change the Right Answer"

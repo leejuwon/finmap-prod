@@ -3,7 +3,7 @@ slug: "fx-basics"
 title: "Currency Basics: What Really Moves the USD/KRW Exchange Rate"
 description: "Interest rate gaps, capital flows, risk sentiment, and trade structure—this guide explains what truly drives the USD/KRW exchange rate and why it matters for investors."
 datePublished: "2025-11-13"
-dateModified: "2025-12-28"
+dateModified: "2026-02-23"
 category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["exchange rate", "USDKRW", "currency basics", "interest rates", "capital flows", "FX market"]
@@ -47,6 +47,12 @@ For Korea, USD/KRW is especially important because:
 When USD/KRW moves sharply, it is rarely accidental.  
 It reflects deeper macro forces already in motion.
 
+If you want the “full chain view” (FX → foreign flows → equity behavior),  
+start here:
+- [USD/KRW → KOSPI chain (earnings, inflation, foreign flows)](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- [How the S&P 500 moves Korea: the FX–rates–foreign-flow chain](/en/posts/investingInfo/sp500-impact-on-korea-kospi)
+
+
 ---
 
 ## 2. The Core Structure Behind USD/KRW Movements
@@ -64,6 +70,14 @@ This is not speculation—it is portfolio optimization.
 
 Even long-term investors such as pension funds and sovereign funds adjust allocations based on yield differentials.
 
+If you want a practical framework for *why* “rate cuts” sometimes do **not** lower real borrowing costs (and why FX can still move the opposite way),
++read:
+- [Policy vs market rates: why cuts don’t guarantee lower borrowing costs](/en/posts/economicInfo/policy-rate-cut-market-rates)
+
+And if you want the single rate that often anchors global “USD strength” narratives:
+- [TNX explained: why the U.S. 10Y yield drives markets](/en/posts/investingInfo/tnx-basics)
+ 
+
 <div class="callout-tip">
   <strong>Key insight:</strong> Exchange rates follow capital flows, and capital flows follow interest rate gaps.
 </div>
@@ -75,6 +89,10 @@ Even long-term investors such as pension funds and sovereign funds adjust alloca
 Interest rates alone do not explain everything.
 
 During periods of global stress—financial crises, geopolitical shocks, or liquidity squeezes—investors seek safety.
+
+In those episodes, “fear” is only half the story. The other half is funding and USD liquidity mechanics.
+If you want the cleanest one-page model for that translation, read:
+- [When geopolitics turns into dollar strength: read it as USD liquidity](/en/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
 
 The U.S. dollar plays a unique role:
 - Deepest bond market  
@@ -100,6 +118,12 @@ This means USD/KRW reacts not only to U.S. policy, but also to:
 - Global tech cycles  
 - Semiconductor demand  
 - Changes in risk appetite toward Asia  
+
+In practice, DXY headlines often proxy “USD strength,” but what matters is *how* DXY moves the system.
+Go deeper:
+- [What is DXY? (beginner-friendly)](/en/posts/investingInfo/dxy-dollar-index-basics)
+- [How DXY moves the market: impact on USD/KRW and KOSPI](/en/posts/investingInfo/dxy-market-impact)
+ 
 
 FX volatility is therefore a **structural feature**, not a temporary anomaly.
 
@@ -140,6 +164,13 @@ USD/KRW movements directly influence Korean equities in three ways:
    Exporters may benefit short-term, but valuation effects often dominate.
 
 This explains why FX spikes often coincide with equity volatility.
+
+If your goal is “actionable interpretation,” these two are the best next steps:
+- [Who wins and loses when KRW weakens? A KOSPI sector map](/en/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
+- [How U.S. 10Y yields impact Korea and global markets](/en/posts/investingInfo/us10y-impact-on-korea-and-stock-market)
+
+And if you’re tracking oil shocks as a KRW catalyst:
+- [Oil shock → USD/KRW → Korea: the transmission channel](/en/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
 
 ---
 
@@ -188,6 +219,24 @@ FX awareness improves **risk context**, not speculation accuracy.
 - [How U.S. 10Y Yields Impact Korea](/en/posts/investingInfo/us10y-impact-on-korea-and-stock-market)  
 - [ETF Selection and Macro Sensitivity](/en/posts/investingInfo/etf-impact-of-tnx)  
 
+### FX + liquidity (why USD strengthens)
+- [When geopolitics turns into dollar strength: USD liquidity model](/en/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+- [How DXY moves the market: USD/KRW and KOSPI impact](/en/posts/investingInfo/dxy-market-impact)
+
+### Rates (why “cuts” don’t always ease conditions)
+- [Policy vs market rates: the practical separation](/en/posts/economicInfo/policy-rate-cut-market-rates)
+- [Why 2s10s and 3m10y disagree (recession-signal reading)](/en/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
+
+### Korea market chain (FX → flows → equities)
+- [USD/KRW → KOSPI chain](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- [S&P 500 → Korea chain (FX–rates–foreign flows)](/en/posts/investingInfo/sp500-impact-on-korea-kospi)
+- [KRW weakness: KOSPI sector map](/en/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
+
+### Oil / tariffs as FX catalysts
+- [Oil shock → USD/KRW transmission](/en/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
+- [Tariffs as a package shock (growth, margins, FX, inflation)](/en/posts/economicInfo/tariffs-growth-margins-fx-package-shock)
+ 
+
 ---
 
 ## 10. Using FX Insight with FinMap Tools
@@ -225,10 +274,15 @@ Short-term moves can reverse, but structural drivers persist longer than most ex
 {
   "@context": "https://schema.org",
   "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.finmaphub.com/en/posts/economicInfo/fx-basics"
+  },
   "headline": "Currency Basics: What Really Moves the USD/KRW Exchange Rate",
   "description": "Interest rate gaps, capital flows, and risk sentiment explain the real drivers of USD/KRW and why exchange rates matter for investors.",
-  "datePublished": "2025-12-01",
-  "dateModified": "2025-12-01",
+  "datePublished": "2025-11-13",
+  "dateModified": "2026-02-23",
+  "inLanguage": "en",
   "author": {
     "@type": "Person",
     "name": "FinMap"

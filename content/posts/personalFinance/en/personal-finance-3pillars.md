@@ -319,7 +319,7 @@ Once the foundation is in place, long-term investing becomes calm—and compound
     If you already have a baseline monthly surplus, you can simulate the long-term outcome.
     Use a goal simulator to turn “someday” into a number—and a timeline.
   </p>
-  <a class="tool-cta-btn" href="/tools/goal-simulator">
+  <a class="tool-cta-btn" href="/en/tools/goal-simulator">
     Open Goal Simulator
   </a>
 </div>
@@ -330,7 +330,7 @@ Once the foundation is in place, long-term investing becomes calm—and compound
     Before you set a target, check how sensitive your plan is to return rates and time.
     Small return changes can shift your timeline more than people expect.
   </p>
-  <a class="tool-cta-btn" href="/tools/compound-interest">
+  <a class="tool-cta-btn" href="/en/tools/compound-interest">
     Open Compound Interest Calculator
   </a>
 </div>

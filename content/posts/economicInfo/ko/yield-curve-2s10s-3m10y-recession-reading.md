@@ -302,7 +302,7 @@ lang: "ko"
 - 🔗 [물가와 금리의 기본 이해: 왜 금리가 오르면 시장이 흔들릴까?](/posts/economicInfo/inflation-rate-basics)  
 - 🔗 [환율의 기초: 원/달러가 움직이는 진짜 이유](/posts/economicInfo/fx-basics)  
 - 🔗 [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)  
-- 🔗 [원달러 환율이 한국 경제와 코스피에 미치는 영향: 외국인 수급·수출·물가·금리로 읽는 법](/posts/investingInfo/usd-krw-korea-kospi)
+- 🔗 [원달러 환율이 한국 경제와 코스피에 미치는 영향: 외국인 수급·수출·물가·금리로 읽는 법](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
 
 ---
 

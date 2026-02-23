@@ -236,7 +236,7 @@ At those moments, macro “knowledge” matters less than risk management basics
     TNX headlines feel abstract until you see how assumptions change outcomes.
     Stress-test your plan with realistic return bands rather than a single “expected return.”
   </p>
-  <a class="tool-cta-btn" href="/tools/cagr-calculator">Open CAGR calculator</a>
+  <a class="tool-cta-btn" href="/en/tools/cagr-calculator">Open CAGR calculator</a>
 </div>
 
 <div class="tool-cta">
@@ -245,7 +245,7 @@ At those moments, macro “knowledge” matters less than risk management basics
     TNX regimes can change return paths. Use a range-based goal plan to see how much monthly investing you need
     under multiple scenarios.
   </p>
-  <a class="tool-cta-btn" href="/tools/goal-simulator">Open goal simulator</a>
+  <a class="tool-cta-btn" href="/en/tools/goal-simulator">Open goal simulator</a>
 </div>
 
 ---

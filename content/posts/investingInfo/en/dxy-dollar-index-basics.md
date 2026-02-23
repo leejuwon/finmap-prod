@@ -103,8 +103,8 @@ Rate-cut expectations → DXY down
 - Anticipating KOSPI volatility
 
 🔗 Helpful tools:  
-- **[Compound Interest Calculator](/tools/compound-interest)**  
-- **[Goal Amount Simulator](/tools/goal-simulator)**
+- **[Compound Interest Calculator](/en/tools/compound-interest)**  
+- **[Goal Amount Simulator](/en/tools/goal-simulator)**
 
 ---
 

@@ -247,7 +247,7 @@ Characteristics:
 <div class="tool-cta">
   <h3>Analyze Your Portfolio with FinMap</h3>
   <p>Use FinMap's compound calculator and goal simulator to measure CAGR, volatility, and realistic long-term outcomes.</p>
-  <a class="tool-cta-btn" href="/tools/compound-interest">
+  <a class="tool-cta-btn" href="/en/tools/compound-interest">
     Open Compound Interest Calculator
   </a>
 </div>

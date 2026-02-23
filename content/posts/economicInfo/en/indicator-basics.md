@@ -215,7 +215,7 @@ For tactical investors:
 <div class="tool-cta">
   <h3>Apply Macro Data to Your Own Goals</h3>
   <p>Use FinMap’s tools to translate economic conditions into realistic return expectations.</p>
-  <a class="tool-cta-btn" href="/tools/compound-interest">
+  <a class="tool-cta-btn" href="/en/tools/compound-interest">
     Try the Compound Interest Calculator
   </a>
 </div>

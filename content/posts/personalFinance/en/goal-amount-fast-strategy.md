@@ -81,7 +81,7 @@ Time is the foundation of compound interest, and longer periods amplify its impa
 
 For a precise analysis, you can use the FinMap **Target Amount Simulator**:
 
-- [Target Amount Simulator](/tools/goal-simulator)
+- [Target Amount Simulator](/en/tools/goal-simulator)
 
 ## 5. Conclusion
 

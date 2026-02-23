@@ -64,7 +64,7 @@ Rising FX volatility often leads to cautious positioning and reduced exposure.
 
 > For the broader macro framework, see  
 > **[How USD/KRW Affects the KOSPI]**  
-> [How USD/KRW Affects the KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-kospi)
+> [How USD/KRW Affects the KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
 
 ---
 

@@ -222,7 +222,7 @@ These are **long-duration, high-growth industries**, making EWY (and Korean ETFs
 <div class="tool-cta">
   <h3>Check the Impact with FinMap’s Tools</h3>
   <p>Use the Compounding Calculator and Goal Simulator to compare realistic return scenarios under different yield environments.</p>
-  <a class="tool-cta-btn" href="/tools/compound-interest">
+  <a class="tool-cta-btn" href="/en/tools/compound-interest">
     Open Compound Calculator
   </a>
 </div>

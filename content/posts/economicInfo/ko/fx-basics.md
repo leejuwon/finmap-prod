@@ -3,7 +3,7 @@ slug: "fx-basics"
 title: "환율의 기초: 원/달러가 움직이는 진짜 이유"
 description: "원/달러 환율은 단순한 숫자가 아닙니다. 금리 차이, 자본 이동, 글로벌 위험 심리까지 환율을 움직이는 핵심 구조를 체계적으로 설명합니다."
 datePublished: "2025-11-13"
-dateModified: "2025-12-28"
+dateModified: "2026-02-23"
 category: "경제정보"
 postCategory: "economicInfo"
 tags: ["환율", "원달러", "금리", "자본이동", "외환시장", "거시경제"]
@@ -27,6 +27,13 @@ lang: "ko"
 > - 이 글은 환율의 “움직이는 원리”를 체계적으로 설명합니다.
 
 > 원/달러 환율은 뉴스 헤드라인보다 구조를 이해할 때 비로소 투자 판단에 도움이 됩니다.
+
+환율을 “단독 변수”로 보지 말고, 아래 2개 체인을 함께 보면 이해가 훨씬 빨라집니다.
+- [USD/KRW가 코스피·외국인 수급과 연결되는 구조](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- [S&P500 리스크오프가 한국으로 전이되는 체인](/posts/investingInfo/sp500-impact-on-korea-kospi)
+
+그리고 달러 강세 뉴스가 많은 시기라면, “달러 유동성” 관점도 같이 보세요.
+- [지정학이 ‘달러 강세’로 번역되는 순간: 달러 유동성으로 읽기](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
 
 ![환율 개념 상단 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764427009/blog/economicInfo/fx-cover.png)
 
@@ -89,6 +96,12 @@ lang: "ko"
 
 이 구조는 단기 뉴스보다 훨씬 강력하게 작동합니다.
 
+금리 뉴스를 볼 때 “기준금리(정책)”와 “시장금리(가격)”가 엇갈리는 경우가 많습니다.
+아래 글을 같이 보면, 환율/주식이 왜 반대로 움직였는지 해석이 쉬워집니다.
+- [“금리 인하”가 와도 안 오를 수 있다: 시장금리 vs 정책금리 분리해서 읽기](/posts/economicInfo/policy-rate-cut-market-rates)
+- [금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해](/posts/economicInfo/interest-rate-basics)
+- [TNX(미 10년물) 기초: 달러·주식·채권의 기준선](/posts/investingInfo/tnx-basics)
+
 ---
 
 ## 4. 글로벌 위험 심리와 달러 강세
@@ -112,6 +125,11 @@ lang: "ko"
   “글로벌 자금이 안전자산으로 이동하고 있다는 신호”입니다.
 </div>
 
+여기서 한 단계 더 들어가면, “공포”보다 중요한 게 **달러 조달/유동성** 메커니즘인 경우가 많습니다.
+리스크오프가 달러 강세로 번역되는 기본 모델은 아래 글이 가장 깔끔합니다.
+- [지정학 → 달러 강세: 달러 유동성 모델](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+- [S&P500 리스크오프 → 한국 전이(환율·금리·외국인 수급)](/posts/investingInfo/sp500-impact-on-korea-kospi)
+
 ---
 
 ## 5. 무역 구조와 한국 환율의 특수성
@@ -124,6 +142,11 @@ lang: "ko"
 
 하지만 동시에 외국인 자금 유출입에도 민감합니다.  
 이중 구조 때문에 한국 환율은 변동성이 큽니다.
+
+“원화 약세 = 무조건 좋은가?” 같은 질문은 결국 **섹터/수급/비용 구조**로 분해해야 답이 나옵니다.
+아래 2개는 실제 투자 판단으로 연결하기 좋은 후속 글입니다.
+- [원/달러 환율이 코스피·외국인 수급과 연결되는 구조](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- [원화 약세에서 누가 이기고 지는가: 코스피 섹터 맵](/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
 
 ---
 
@@ -141,6 +164,11 @@ lang: "ko"
 
 환율을 이해하면  
 **주식·ETF·채권 투자 판단이 훨씬 명확해집니다.**
+
+특히 환율 변동은 단독으로 오기보다, 보통 아래 촉매들과 “패키지”로 옵니다.
+- [DXY가 한국 시장에 미치는 영향: 환율 민감도·전이 구조](/posts/investingInfo/dxy-market-impact)
+- [유가 급등이 원/달러에 미치는 영향: 한국식 전파 경로](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
+- [관세는 패키지 충격이다: 성장·마진·환율·물가](/posts/economicInfo/tariffs-growth-margins-fx-package-shock)
 
 ---
 
@@ -196,6 +224,32 @@ lang: "ko"
 - [물가와 금리의 기본 이해](/posts/economicInfo/inflation-rate-basics)
 - [ETF 선택 시 반드시 확인해야 할 핵심 지표](/posts/investingInfo/why-check-cagr-etf)
 
+### FX + 유동성(왜 달러가 강해지는가)
+- [지정학 → 달러 강세: 달러 유동성으로 읽기](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+- [DXY가 한국 시장에 미치는 영향: 환율 민감도·전이 구조](/posts/investingInfo/dxy-market-impact)
+
+### 금리(왜 “인하”가 체감으로 안 이어지나)
+- [“금리 인하”가 와도 안 오를 수 있다: 시장금리 vs 정책금리](/posts/economicInfo/policy-rate-cut-market-rates)
+- [수익률곡선 읽는 법: 2s10s vs 3m10y가 다른 이유](/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
+- [금리의 구조와 기준금리: 대출·채권 금리까지](/posts/economicInfo/interest-rate-basics)
+
+### 한국 시장 체인(환율 → 수급 → 주식)
+- [USD/KRW가 코스피·외국인 수급과 연결되는 구조](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- [S&P500 리스크오프가 한국으로 전이되는 체인](/posts/investingInfo/sp500-impact-on-korea-kospi)
+- [원화 약세에서 누가 이기고 지는가: 코스피 섹터 맵](/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
+
+### 촉매(유가·관세)
+- [유가 급등이 원/달러에 미치는 영향: 한국식 전파 경로](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
+- [관세는 패키지 충격이다: 성장·마진·환율·물가](/posts/economicInfo/tariffs-growth-margins-fx-package-shock)
+
+### 투자 기본기(수익률/평가)
+- [CAGR이란 무엇인가? 단순 수익률과의 차이](/posts/personalFinance/what-is-cagr)
+- [연 7% 복리는 현실적인가? CAGR로 다시 보기](/posts/investingInfo/cagr-7percent-reality-check)
+- [미국 10년물 국채금리(TNX)가 시장에 미치는 영향](/posts/investingInfo/us10y-impact-on-korea-and-stock-market)
+- [물가와 금리의 기본 이해](/posts/economicInfo/inflation-rate-basics)
+- [ETF 선택 시 반드시 확인해야 할 핵심 지표](/posts/investingInfo/why-check-cagr-etf)
+ 
+
 ---
 
 ## FAQ
@@ -215,10 +269,15 @@ A. 외국인 비중이 높은 시장일수록 영향이 큽니다.
 {
   "@context": "https://schema.org",
   "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.finmaphub.com/posts/economicInfo/fx-basics"
+  },
   "headline": "환율의 기초: 원/달러가 움직이는 진짜 이유",
   "description": "원/달러 환율을 움직이는 금리, 자본 이동, 글로벌 위험 심리를 구조적으로 설명합니다.",
-  "datePublished": "2025-11-30",
-  "dateModified": "2025-11-30",
+  "datePublished": "2025-11-13",
+  "dateModified": "2026-02-23",
+  "inLanguage": "ko",
   "author": { "@type": "Person", "name": "FinMap" },
   "publisher": { "@type": "Organization", "name": "FinMap" }
 }

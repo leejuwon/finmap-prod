@@ -190,7 +190,7 @@ This gap grows much larger over 15–20 years.
 
 Try changing the numbers yourself using the calculator:
 
-[FinMap Compound Interest Calculator](https://www.finmaphub.com/tools/compound-interest)
+[FinMap Compound Interest Calculator](https://www.finmaphub.com/en/tools/compound-interest)
 
 ---
 

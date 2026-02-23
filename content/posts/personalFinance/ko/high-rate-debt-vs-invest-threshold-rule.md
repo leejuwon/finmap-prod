@@ -169,7 +169,7 @@ lang: "ko"
 - 그 순간 계획이 리셋됩니다.
 
 비상금 프레임을 더 정교하게 잡고 싶다면, 이 글이 같이 맞물립니다.
-- 👉 [비상금은 ‘몇 개월’이 아니라 ‘리스크’로 정한다: 직장·가족·대출 기준표로 끝내기](/posts/personalFinance/emergency-fund-risk-based)
+- 👉 [비상금은 ‘몇 개월’이 아니라 ‘리스크’로 정한다: 직장·가족·대출 기준표로 끝내기](/posts/personalFinance/emergency-fund-by-risk)
 
 ---
 
@@ -219,7 +219,7 @@ lang: "ko"
 고금리에서 중요한 포인트 중 하나는 “정책금리 vs 시장금리”입니다.
 중앙은행이 금리를 내렸다고 해서, 내 대출금리가 즉시 내려가지 않을 수 있어요.
 
-- 👉 ['금리 인하'가 와도 안 오를 수 있다: 시장금리 vs 정책금리 분리해서 읽기](/posts/economicInfo/policy-rate-vs-market-rate-how-to-read-rate-cuts)
+- 👉 ['금리 인하'가 와도 안 오를 수 있다: 시장금리 vs 정책금리 분리해서 읽기](/posts/economicInfo/policy-rate-cut-market-rates)
 
 ---
 

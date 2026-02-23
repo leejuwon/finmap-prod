@@ -220,7 +220,7 @@ When it’s low (low rates) → borrowing/spending increase.
 <div class="tool-cta">
   <h3>See how changing interest rates affect your long-term wealth</h3>
   <p>Use FinMap’s compound interest calculator and goal simulator to understand the long-term effect of different rate environments.</p>
-  <a class="tool-cta-btn" href="/tools/compound-interest">
+  <a class="tool-cta-btn" href="/en/tools/compound-interest">
     Open Compound Calculator
   </a>
 </div>

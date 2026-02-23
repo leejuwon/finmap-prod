@@ -19,7 +19,7 @@ lang: "en"
 - Demand is not “how many people want to buy”; it’s how many can still qualify and close—under the current lending rules and income reality.
 - Sentiment is not headlines; it’s the day-to-day difficulty of funding and de-risking (spreads, tighter credit, risk-off), which shows up first in liquidity and volume.
 - <strong>A practical framework is “support vs break”: support looks like stable median prices plus improving volume; break looks like lower-tail weakness spreading upward while volume dries up.</strong>
-- The dashboard at <a href="/market/real-estate">South Korea Apartment Transaction Dashboard</a> helps you read distribution, trend, and volume together, so you don’t confuse a bounce with a regime shift.
+- The dashboard at <a href="/en/market/real-estate">South Korea Apartment Transaction Dashboard</a> helps you read distribution, trend, and volume together, so you don’t confuse a bounce with a regime shift.
 - <strong>Stop asking “will prices go up or down”; start defining triggers for “wait / prepare / execute / stop.”</strong>
 - Cross-asset context matters: when financial conditions tighten, real estate, equities, and FX can reinforce the same risk-off loop.
 

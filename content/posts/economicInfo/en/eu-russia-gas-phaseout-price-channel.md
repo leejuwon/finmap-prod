@@ -229,7 +229,7 @@ This plan is deliberately boring. Boring is good when news is loud.
 Tool CTA (optional but useful): If your portfolio decisions are being pushed around by macro headlines, run a quick CAGR check. It reframes performance in a single annualized number.  
 Inputs are simple: starting value, ending value, and time period.
 
-- Open the CAGR tool: <a href="/tools/cagr-calculator">CAGR calculator</a>
+- Open the CAGR tool: <a href="/en/tools/cagr-calculator">CAGR calculator</a>
 
 ## If you want the “next pieces” that complete the map
 

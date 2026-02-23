@@ -144,7 +144,7 @@ Could it be higher? Yes. But the threshold rule works best when it prevents plan
 
 If you want more detail on why “policy cuts” don’t always translate to cheaper real-world borrowing costs,
 this helps build your rate intuition:
-- 🔗 [How to Read Policy Rates vs Market Rates](/en/posts/economicInfo/policy-rate-vs-market-rate-how-to-read-rate-cuts)
+- 🔗 [How to Read Policy Rates vs Market Rates](/en/posts/economicInfo/policy-rate-cut-market-rates)
 
 (That link is optional reading—today’s post is about *your* household decision rule.)
 
@@ -206,7 +206,7 @@ A good rule:
 
 If you want a risk-based way (instead of “X months”),
 this post connects well:
-- 🔗 [Your Emergency Fund Isn’t a ‘Months’ Number — It’s a Risk Number](/en/posts/personalFinance/emergency-fund-risk-based)
+- 🔗 [Your Emergency Fund Isn’t a ‘Months’ Number — It’s a Risk Number](/en/posts/personalFinance/emergency-fund-by-risk)
 
 ---
 
