@@ -3,7 +3,7 @@ slug: "sp500-impact-on-korea-kospi"
 title: "How the S&P 500 Moves Korea’s Economy and KOSPI: The FX–Rates–Foreign Flow Chain"
 description: "For Korea, the S&P 500 is more than “U.S. stocks.” It reshapes risk sentiment, USD/KRW, U.S. rates, and foreign investor flows—often determining how the KOSPI feels day to day."
 datePublished: "2026-01-04"
-dateModified: "2026-01-04"
+dateModified: "2026-02-23"
 category: "Investing info"
 tags: ["S&P 500","KOSPI","Korea economy","USD/KRW","foreign flows","U.S. rates","TNX","DXY","risk-on","risk-off"]
 tool: ["goal","comp","cagr","fire","dca"]
@@ -29,19 +29,6 @@ lang: "en"
 > If you invest in Korean equities, the S&P 500 often functions less like “foreign news” and more like a dashboard for global positioning. When U.S. risk appetite shifts, it transmits into Korea through a chain reaction: dollar strength/weakness (USD/KRW), U.S. rates (discount rate pressure), and foreign investor flows (risk budgeting). This post breaks that chain into observable signals, provides scenario tables for faster diagnosis, and ends with a practical checklist you can use when the KOSPI feels “out of sync” with local headlines.
 
 ![Cover](https://res.cloudinary.com/dwonflmnn/image/upload/v1767584963/blog/tools/sp500-impact-on-korea-kospi-cover.png)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "How the S&P 500 Moves Korea’s Economy and KOSPI: The FX–Rates–Foreign Flow Chain",
-  "description": "For Korea, the S&P 500 is more than “U.S. stocks.” It reshapes risk sentiment, USD/KRW, U.S. rates, and foreign investor flows—often determining how the KOSPI feels day to day.",
-  "datePublished": "2026-01-05",
-  "dateModified": "2026-01-05",
-  "author": { "@type": "Person", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" }
-}
-</script>
 
 ---
 
@@ -97,6 +84,9 @@ In Korea, that often shows up as:
 
 This doesn’t mean the KOSPI is “weak.” It means that global flows can dominate local narratives, particularly during transitions (from calm to stress, or vice versa).
 
+If you want a portfolio-level “risk budget” lens (how much equity/bond/FX risk you are implicitly carrying), this connects cleanly to the same framework:
+- **[The Modern 60/40: Build a Risk Budget with Stocks, Bonds, Cash, and Gold (or Commodities)](/en/posts/investingInfo/modern-6040-risk-budget)**
+
 ---
 
 ## 4) Channel B: The dollar and USD/KRW → foreign returns and “financial conditions”
@@ -111,6 +101,14 @@ FX also influences corporate profitability—but not uniformly. Export-heavy fir
 If you want a dedicated foundation for reading USD/KRW and its market implications, these internal posts are useful:  
 - **[FX basics: what really moves USD/KRW](/en/posts/economicInfo/fx-basics)**  
 - **[How USD/KRW influences Korea and KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)**
+
+If you want a more “investor-useful” extension of this FX channel, link the story to who actually benefits when KRW weakens:  
+- **[Who wins and loses when the KRW weakens? (sector map for the KOSPI)](/en/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)**
+
+And when FX moves are driven by headline risk (geopolitics/tariffs), USD liquidity and positioning often dominate “export logic.” These two posts connect that mechanism:  
+- **[Geopolitics → USD liquidity → FX: why stress can lift the dollar](/en/posts/economicInfo/geopolitics-to-usd-liquidity-fx)**  
+- **[Tariffs, growth, margins, and FX: how a policy shock can transmit](/en/posts/economicInfo/tariffs-growth-margins-fx-package-shock)**
+ 
 
 ---
 
@@ -128,6 +126,10 @@ If you want a clean foundation for understanding TNX and how rate mechanics tran
 - **[TNX explained: why the 10Y yield drives markets](/en/posts/investingInfo/tnx-basics)**  
 - **[How interest rates work: from policy rates to loans and bonds](/en/posts/economicInfo/interest-rate-basics)**
 
+If you want to go one step deeper than “rates up/down” and read the *shape* of rates (inversion/steepening) without overreacting:
+- **[How to Read the Yield Curve (2s10s & 3m10y) Without Overreacting](/en/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)**
+ 
+ 
 ---
 
 ## 6) The “DXY layer”: why broad USD strength matters for Korea
@@ -135,6 +137,10 @@ If you want a clean foundation for understanding TNX and how rate mechanics tran
 Sometimes USD/KRW rises due to Korea-specific dynamics, but during global risk events it often moves with the dollar broadly—captured by DXY. Broad USD strength can coincide with tighter global financial conditions, reduced appetite for EM risk, and more cautious cross-border positioning.
 
 - **[DXY and market impact (stocks, FX, KOSPI)](/en/posts/investingInfo/dxy-market-impact)**
+
+When headlines are geopolitical, the market impact often comes through *USD liquidity + positioning* more than through “who wins” narratives:
+- **[Geopolitics → USD Liquidity → FX: the channel checklist](/en/posts/economicInfo/geopolitics-to-usd-liquidity-fx)**
+ 
 
 ---
 
@@ -146,7 +152,9 @@ Sometimes USD/KRW rises due to Korea-specific dynamics, but during global risk e
 | FX / USD | USD/KRW jump amplifies stress | USD/KRW, DXY | FX speed matters more than level short-term |
 | U.S. rates | growth-heavy segments pressure | U.S. 10Y / TNX | Rising yields can compress valuations |
 | Earnings narrative | sector divergence (export vs domestic) | guidance, cycle data | Separate “flow” from “earnings reprice” |
-| Commodities | inflation re-acceleration risk | WTI (context) | Can feed back into rates and USD |
+| Commodities | inflation re-acceleration risk | [Oil shock → USD/KRW transmission](/en/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission) | Can feed back into rates and USD |
+
+
 
 ---
 
@@ -221,7 +229,8 @@ Use this checklist when KOSPI moves feel “bigger than the news.”
 - [ ] Are foreign flows negative in both cash and futures (if you track them)?  
 - [ ] Is weakness concentrated in semis/tech, or broad across domestic sectors too?  
 - [ ] Is this primarily a *flow event* or an *earnings narrative reset*?  
-- [ ] Are commodities/energy adding inflation pressure that could push rates up again?  
+- [ ] Are commodities/energy adding inflation pressure that could push rates up again? (See: **[oil shock → USD/KRW transmission](/en/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)**)
+ 
 - [ ] Are you trying to explain everything with a single headline?
 
 ---
@@ -257,7 +266,7 @@ Use this checklist when KOSPI moves feel “bigger than the news.”
 
 ---
 
-## 15) Internal links used (4–6)
+## 15) Internal links used
 
 - [Global market environment that most affects KOSPI (overview)](/en/posts/investingInfo/indicator-marketinfo)  
 - [How USD/KRW influences Korea and KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)  
@@ -265,6 +274,10 @@ Use this checklist when KOSPI moves feel “bigger than the news.”
 - [How interest rates work: from policy rates to loans and bonds](/en/posts/economicInfo/interest-rate-basics)  
 - [DXY and market impact (stocks, FX, KOSPI)](/en/posts/investingInfo/dxy-market-impact)  
 - [TNX explained: why the 10Y yield drives markets](/en/posts/investingInfo/tnx-basics)
+- [The Modern 60/40: risk budget framework](/en/posts/investingInfo/modern-6040-risk-budget)
+- [How to read the yield curve (2s10s & 3m10y)](/en/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
+- [Geopolitics → USD liquidity → FX](/en/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+- [Oil shock → USD/KRW transmission](/en/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
 
 ---
 
@@ -289,7 +302,7 @@ If you keep only three: (1) S&P direction and volatility, (2) USD/KRW, (3) TNX (
   "headline": "How the S&P 500 Moves Korea’s Economy and KOSPI: The FX–Rates–Foreign Flow Chain",
   "description": "For Korea, the S&P 500 is more than “U.S. stocks.” It reshapes risk sentiment, USD/KRW, U.S. rates, and foreign investor flows—often determining how the KOSPI feels day to day.",
   "datePublished": "2026-01-04",
-  "dateModified": "2026-01-04",
+  "dateModified": "2026-02-23",
   "inLanguage": "en",
   "mainEntityOfPage": {
     "@type": "WebPage",
@@ -307,7 +320,7 @@ If you keep only three: (1) S&P direction and volatility, (2) USD/KRW, (3) TNX (
     "name": "FinMap",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/og-default.png"
+      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
     }
   }
 }

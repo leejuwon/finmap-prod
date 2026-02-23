@@ -3,7 +3,7 @@ slug: "sp500-impact-on-korea-kospi"
 title: "미국 증시(S&P500)가 한국 경제·코스피에 미치는 영향: 환율·금리·외국인 수급의 연결고리"
 description: "S&P500는 ‘미국 주가’ 그 이상입니다. 위험선호(리스크온/오프), 달러·환율, 미국 금리, 그리고 외국인 수급을 통해 한국 경제와 코스피에 어떻게 전이되는지 구조적으로 정리합니다."
 datePublished: "2026-01-04"
-dateModified: "2026-01-04"
+dateModified: "2026-02-23"
 category: "투자정보"
 tags: ["S&P500","미국증시","코스피","한국경제","환율","금리","외국인수급","달러강세","리스크온","리스크오프"]
 tool: ["goal","comp","cagr","fire","dca"]
@@ -43,6 +43,11 @@ lang: "ko"
 - “환율이 왜 코스피의 체감 난이도를 바꾸는지”는 이 글이 기본 프레임을 만들어줍니다:  
   **[원달러 환율이 한국 경제와 코스피에 미치는 영향](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)**
 
+추가로, “하락의 원인이 수급(리스크오프)인지 / 레짐(금리·달러)인지”를 한 단계 더 구조화하려면:
+- **[현대 60/40: ‘비중’이 아니라 ‘리스크 예산’으로 포트폴리오를 설계하는 법](/posts/investingInfo/modern-6040-risk-budget)**
+- **[정책금리 vs 시장금리: 금리/달러 국면 분해](/posts/economicInfo/policy-rate-cut-market-rates)**
+- **[수익률곡선 읽는 법: 2s10s vs 3m10y](/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)**
+ 
 ---
 
 ## 2. Hero Layout: 핵심은 “S&P500 → 달러·금리·수급” 3단 연결이다
@@ -105,6 +110,14 @@ S&P500가 강할 때는 대체로 “위험을 감수해도 된다”는 분위�
 - **[환율의 기초: 원/달러가 움직이는 진짜 이유](/posts/economicInfo/fx-basics)**  
 - 코스피 관점에서의 연결은: **[원달러 환율이 한국 경제와 코스피에 미치는 영향](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)**
 
+원화 약세(USD/KRW 상승)가 “모두에게 호재”가 아닌 이유(업종별 승패)를 같이 붙이면 해석이 훨씬 안정됩니다:
+- **[원화 약세에서 누가 이기고 지는가: 코스피 섹터 맵](/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)**
+
+그리고 지정학/관세 같은 헤드라인 국면에서는 ‘수출 논리’보다 먼저 **달러 유동성/포지션 청산**으로 환율이 반응할 때가 많습니다:
+- **[지정학이 ‘달러 강세’로 번역되는 순간: 달러 유동성으로 읽기](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)**
+- **[관세는 패키지 충격이다: 성장·마진·환율·물가](/posts/economicInfo/tariffs-growth-margins-fx-package-shock)**
+ 
+
 ---
 
 ## 5. 전이 경로 3: 미국 금리(TNX) → 할인율 변화 → 성장주·장기자산 압력
@@ -116,6 +129,11 @@ S&P500와 함께 자주 거론되는 변수가 미국 금리(특히 10년물)입
 - TNX의 기본 프레임: **[TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)**  
 - 금리 구조를 더 넓게 보고 싶다면: **[금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해](/posts/economicInfo/interest-rate-basics)**
 
+“금리 인하” 뉴스가 나왔는데도 시장금리가 안 내려가거나(혹은 반대로) 곡선이 다른 신호를 줄 때가 많아서,
+아래 2개를 같이 보면 금리 국면을 훨씬 덜 틀립니다:
+- **[정책금리 vs 시장금리: 금리/달러 국면 분해](/posts/economicInfo/policy-rate-cut-market-rates)**
+- **[수익률곡선 읽는 법: 2s10s vs 3m10y](/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)**
+ 
 ---
 
 ## 6. 전이 경로 4: DXY(달러 인덱스) → 글로벌 유동성 → 신흥국·코스피 민감도
@@ -130,6 +148,9 @@ S&P500와 함께 자주 거론되는 변수가 미국 금리(특히 10년물)입
 
 - DXY를 “코스피 해석 도구”로 쓰는 방법은 아래 글을 참고하세요:  
   **[DXY가 변화하면 시장은 어떻게 움직일까? 미국 증시·환율·코스피까지](/posts/investingInfo/dxy-market-impact)**
+  - DXY 자체를 1페이지로 정리해두면(‘달러가 강하다’의 의미) 판단이 빨라집니다:  
+  **[DXY란 무엇인가? 달러 인덱스 초보자 설명](/posts/investingInfo/dxy-dollar-index-basics)**
+ 
 
 ---
 
@@ -141,7 +162,8 @@ S&P500와 함께 자주 거론되는 변수가 미국 금리(특히 10년물)입
 | 달러/환율 | 원/달러 상승 시 체감 약세 확대 | USD/KRW, DXY | 급등(쇼크)인지 완만한 상승(추세)인지 구분 |
 | 미국 금리(TNX) | 성장주·고PER 압력 | 미국 10년물 금리 | 금리 상승+달러 강세가 겹치면 부담 확대 |
 | 실적 프레임 | 업종별 차별화(특히 IT/수출) | 실적 가이던스/서프라이즈(참고) | 수급 충격인지 실적 재평가인지 분리 |
-| 원자재/유가 | 물가·금리 경로로 재전이 | 유가(WTI) | 인플레 재자극이면 금리 부담으로 연결 가능 |
+| 원자재/유가 | 물가·금리 경로로 재전이 | 유가(WTI) | **[유가 충격 → 원/달러 → 한국: 전이 경로](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)** / **[WTI가 코스피에 미치는 영향](/posts/investingInfo/wti-impact-on-korea-kospi)** |
+
 
 ---
 
@@ -255,7 +277,8 @@ S&P500와 함께 자주 거론되는 변수가 미국 금리(특히 10년물)입
 - [ ] 외국인 현물·선물 수급이 동시에 악화되는가?  
 - [ ] 하락이 IT/반도체 중심인지, 내수/금융까지 확산되는지?  
 - [ ] 국내 요인(정책/실적)과 글로벌 요인(달러/금리) 중 무엇이 더 큰가?  
-- [ ] 유가·원자재가 물가/금리 경로로 재자극하는 흐름인가?  
+- [ ] 유가·원자재가 물가/금리 경로로 재자극하는 흐름인가? (참고: **[유가 충격 → 원/달러 → 한국](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)**)  
+ 
 - [ ] “뉴스 1개”로 모든 움직임을 설명하려는 함정에 빠지지 않았는가?
 
 ---
@@ -282,7 +305,7 @@ S&P500와 함께 자주 거론되는 변수가 미국 금리(특히 10년물)입
 
 ---
 
-## 16. 내부 링크(4~6개)
+## 16. 내부 링크
 
 - [코스피에 가장 큰 영향을 끼치는 글로벌 시장 환경 총정리](/posts/investingInfo/indicator-marketinfo)  
 - [원달러 환율이 한국 경제와 코스피에 미치는 영향](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)  
@@ -290,6 +313,14 @@ S&P500와 함께 자주 거론되는 변수가 미국 금리(특히 10년물)입
 - [금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해](/posts/economicInfo/interest-rate-basics)  
 - [DXY가 변화하면 시장은 어떻게 움직일까? 미국 증시·환율·코스피까지](/posts/investingInfo/dxy-market-impact)  
 - [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)
+- [원화 약세에서 누가 이기고 지는가: 코스피 섹터 맵](/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
+- [정책금리 vs 시장금리: 금리/달러 국면 분해](/posts/economicInfo/policy-rate-cut-market-rates)
+- [수익률곡선 읽는 법: 2s10s vs 3m10y](/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
+- [지정학이 ‘달러 강세’로 번역되는 순간: 달러 유동성으로 읽기](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+- [관세는 패키지 충격이다: 성장·마진·환율·물가](/posts/economicInfo/tariffs-growth-margins-fx-package-shock)
+- [유가 충격 → 원/달러 → 한국: 전이 경로](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
+- [WTI가 코스피에 미치는 영향: 업종별 민감도](/posts/investingInfo/wti-impact-on-korea-kospi)
+ 
 
 ---
 
@@ -317,8 +348,8 @@ S&P500와 함께 자주 거론되는 변수가 미국 금리(특히 10년물)입
   "headline": "미국 증시(S&P500)가 한국 경제·코스피에 미치는 영향: 환율·금리·외국인 수급의 연결고리",
   "description": "S&P500는 ‘미국 주가’ 그 이상입니다. 위험선호(리스크온/오프), 달러·환율, 미국 금리, 그리고 외국인 수급을 통해 한국 경제와 코스피에 어떻게 전이되는지 구조적으로 정리합니다.",
   "datePublished": "2026-01-04",
-  "dateModified": "2026-01-04",
-  "inLanguage": "ko-KR",
+  "dateModified": "2026-02-23",
+  "inLanguage": "ko",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://www.finmaphub.com/posts/investingInfo/sp500-impact-on-korea-kospi"
@@ -335,7 +366,7 @@ S&P500와 함께 자주 거론되는 변수가 미국 금리(특히 10년물)입
     "name": "FinMap",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/og-default.png"
+      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
     }
   }
 }
@@ -345,7 +376,7 @@ S&P500와 함께 자주 거론되는 변수가 미국 금리(특히 10년물)입
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "inLanguage": "ko-KR",
+  "inLanguage": "ko",
   "mainEntity": [
     {
       "@type": "Question",

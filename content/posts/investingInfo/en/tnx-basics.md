@@ -3,7 +3,7 @@ slug: "tnx-basics"
 title: "TNX Explained: Why the 10-Year Treasury Yield Drives Markets"
 description: "TNX (the U.S. 10-year Treasury yield) is a global pricing anchor. Learn the key channels—valuation, FX, liquidity, and risk sentiment—and how to read TNX without overreacting."
 datePublished: "2025-11-23"
-dateModified: "2026-01-05"
+dateModified: "2026-02-23"
 category: "Investing Info"
 postCategory: "investingInfo"
 tags: ["TNX","10-year yield","Treasury yield","interest rates","macro","valuation","USD/KRW","KOSPI"]
@@ -30,6 +30,13 @@ lang: "en"
 TNX—the U.S. 10-year Treasury yield—acts like a global reference rate. It changes how investors discount future cash flows, how currencies reprice risk, and how liquidity conditions feel across markets. The goal isn’t to “predict TNX,” but to identify *which channel* is active (valuation vs FX vs liquidity) and adjust expectations, risk, and time horizon accordingly.
 
 ![Top image: TNX as a global anchor](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428464/blog/investingInfo/economics-tnx-cover.png)
+
+If you’re here because “rates” headlines are confusing, this separation removes 80% of the noise:
+- 🔗 [Policy vs Market Rates: Why a Rate Cut Doesn’t Guarantee Lower Borrowing Costs](/en/posts/economicInfo/policy-rate-cut-market-rates)
+
+And if you want the “TNX context layer” that most people miss (curve shape), start here:
+- 🔗 [Yield Curve Reading: 2s10s vs 3m10y Recession Signals](/en/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
+
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -79,6 +86,10 @@ Most confusion comes from mixing channels. TNX can move markets through differen
 - That can strengthen USD and weaken EM FX—KRW included.
 - FX moves often trigger foreign flow adjustments and hedging behavior.
 
+If you want a practical “Korea translation” for this FX channel:
+- 🔗 [USD/KRW Exchange Rate: What It Means for Korea’s Economy and the KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- 🔗 [Who Wins and Loses When the KRW Weakens? (KOSPI Sector Map)](/en/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
+ 
 ### Channel C — Liquidity (financial conditions)
 - Rising yields often tighten financial conditions: borrowing costs rise, risk appetite cools.
 - When liquidity thins, correlations rise—and diversification “feels worse” temporarily.
@@ -102,6 +113,12 @@ A yield of 4.5% is a level. A move from 4.0% to 4.5% in two weeks is a *shock*. 
 - **Level matters for valuation anchors.** Over time, levels influence expected returns and “fair” multiples.
 
 If you only track the level, you’ll miss why the same TNX level can coexist with both rallies and sell-offs.
+
+When the move is shock-like, “what triggered it” often matters more than the yield itself. Two common headline regimes:
+- **Geopolitics / risk-off:** USD liquidity + positioning can dominate the response  
+  🔗 [Geopolitics → USD Liquidity → FX: the channel checklist](/en/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+- **Policy / trade shock:** markets reprice growth + margins + FX as a package  
+  🔗 [Tariffs as a Package Shock: Growth, Margins, FX, and Inflation](/en/posts/economicInfo/tariffs-growth-margins-fx-package-shock)
 
 ---
 
@@ -133,6 +150,9 @@ A steepening curve can mean something very different than an inversion deepening
   </div>
 </div>
 
+If you want a cleaner “curve-first” reading that avoids overreacting:
+- 🔗 [Yield Curve Reading: 2s10s vs 3m10y Recession Signals](/en/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
+
 ---
 
 ## 5) Why Korea often feels TNX more than the U.S. itself
@@ -143,6 +163,9 @@ Korea sits at the intersection of USD cycles, global liquidity, and a tech-heavy
 1) **FX sensitivity (USD/KRW):** USD strength and KRW weakness can reshape foreign flow behavior.  
 2) **Ownership structure:** higher foreign participation can accelerate rebalancing.  
 3) **Index composition:** growth/export sensitivity increases discount-rate and FX exposure.
+
+This is the same “U.S. → Korea” transmission logic, summarized as a checklist here:
+- 🔗 [S&P 500 → Korea: The FX–Rates–Foreign Flow Chain](/en/posts/investingInfo/sp500-impact-on-korea-kospi) 
 
 That’s why “TNX up” can feel like “KOSPI liquidity down,” even if domestic fundamentals didn’t change overnight.
 
@@ -200,6 +223,10 @@ Advanced investors focus less on “direction” and more on *regime*. The same 
 - cross-asset confirmation (DXY, VIX, credit spreads),
 - correlation spikes (a liquidity stress clue).
 
+If you want the “USD layer” that often co-moves with TNX in stress regimes:
+- 🔗 [What Is DXY (Dollar Index)?](/en/posts/investingInfo/dxy-dollar-index-basics)
+- 🔗 [How DXY Moves the Market: Impact on U.S. Stocks, USD/KRW, and KOSPI](/en/posts/investingInfo/dxy-market-impact)
+
 ---
 
 ## 8) Mini scenarios: the same TNX level, two different outcomes
@@ -223,6 +250,9 @@ TNX becomes truly disruptive when policy expectations shift quickly and liquidit
 - and diversification fails.
 
 At those moments, macro “knowledge” matters less than risk management basics: position sizing, time horizon, and the ability to hold through volatility.
+
+One shock channel that often re-ignites inflation + rates + USD together is oil:
+- 🔗 [Oil Shocks and USD/KRW: Trade Balance, Import Inflation, and Flows](/en/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
 
 ![Bottom image: rate regime recap](https://res.cloudinary.com/dwonflmnn/image/upload/v1767584968/blog/tools/tnx-basics-bottom.png)
 
@@ -250,7 +280,7 @@ At those moments, macro “knowledge” matters less than risk management basics
 
 ---
 
-## 11) Internal links (blog-contents.md)
+## 11) Internal links
 
 - [Understanding Interest Rates: Policy Rates, Market Rates, and How They Influence Deposits, Loans, and Bonds](/en/posts/economicInfo/interest-rate-basics)  
 - [Inflation and Interest Rates Explained: Why Rate Changes Shake Markets](/en/posts/economicInfo/inflation-rate-basics)  
@@ -258,6 +288,18 @@ At those moments, macro “knowledge” matters less than risk management basics
 - [How DXY Moves the Market: Impact on U.S. Stocks, USD/KRW, and KOSPI](/en/posts/investingInfo/dxy-market-impact)  
 - [How U.S. 10Y Yield (TNX) Affects ETFs: Growth, Value, EM, and Korea](/en/posts/investingInfo/etf-impact-of-tnx)  
 - [How the U.S. 10-Year Treasury Yield (TNX) Affects the U.S. Economy, Korea, and Global Stock Markets](/en/posts/investingInfo/us10y-impact-on-korea-and-stock-market)  
+
+### Extra: “indexing push” links (highly connected targets)
+- [Policy vs Market Rates](/en/posts/economicInfo/policy-rate-cut-market-rates)
+- [Yield Curve Reading: 2s10s vs 3m10y](/en/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
+- [USD/KRW → KOSPI chain](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- [KRW weakness winners/losers (sector map)](/en/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
+- [S&P 500 → Korea chain](/en/posts/investingInfo/sp500-impact-on-korea-kospi)
+- [What is DXY?](/en/posts/investingInfo/dxy-dollar-index-basics)
+- [Geopolitics → USD liquidity → FX](/en/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+- [Tariffs as a package shock](/en/posts/economicInfo/tariffs-growth-margins-fx-package-shock)
+- [Oil shocks → USD/KRW transmission](/en/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
+
 
 ---
 
@@ -297,9 +339,20 @@ Start with: (1) driver (inflation vs growth vs policy), (2) speed, (3) USD/KRW, 
   "headline": "TNX Explained: Why the 10-Year Treasury Yield Drives Markets",
   "description": "TNX (the U.S. 10-year Treasury yield) is a global pricing anchor. Learn the key channels—valuation, FX, liquidity, and risk sentiment—and how to read TNX without overreacting.",
   "datePublished": "2025-11-23",
-  "dateModified": "2026-01-05",
-  "author": { "@type": "Person", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" },
+  "dateModified": "2026-02-23",
+  "inLanguage": "en",
+  "author": { "@type": "Organization", "name": "FinMap" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "FinMap",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
+    }
+  },
+  "image": [
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428464/blog/investingInfo/economics-tnx-cover.png"
+  ],
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://www.finmaphub.com/en/posts/investingInfo/tnx-basics"

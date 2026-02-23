@@ -3,7 +3,7 @@ slug: "tnx-basics"
 title: "TNX(미국 10년물 국채금리) 완전 이해: 주식·환율·채권을 움직이는 ‘기준 금리’"
 description: "미국 10년물 국채금리(TNX)는 ‘시장 전체의 할인율’로 작동합니다. 왜 성장주가 민감하고, 달러·원화·유동성이 함께 움직이는지—초중급 투자자도 구조로 이해할 수 있게 정리합니다."
 datePublished: "2025-11-23"
-dateModified: "2026-01-05"
+dateModified: "2026-02-23"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["TNX","미국10년물","국채금리","금리","채권","성장주","달러","원달러","유동성","밸류에이션"]
@@ -61,6 +61,12 @@ TNX는 미국 10년 만기 국채의 수익률(금리)입니다.
 - 10년은 기업 투자·대출·주택담보대출·연금 운용 등 장기 의사결정의 대표 구간입니다.  
 - 중앙은행 정책금리(단기)와 달리, 10년물은 **시장 참가자들이 생각하는 미래(성장·물가·리스크)가** 반영됩니다.  
 - 그래서 TNX는 “기준금리의 그림자”이자 “시장 기대의 압축 파일”처럼 작동합니다.
+
+특히 “금리 인하(또는 동결)” 뉴스를 봤는데도 시장금리가 안 내려가거나(오히려 오르는) 장면이 자주 나오죠.  
+이 혼선을 줄이려면 아래 2개를 함께 보면 좋습니다:
+- 🔗 **[정책금리 vs 시장금리: 금리/달러 국면 분해](/posts/economicInfo/policy-rate-cut-market-rates)**
+- 🔗 **[수익률곡선 읽는 법: 2s10s vs 3m10y](/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)**
+ 
 
 ### TNX를 ‘이자율’이 아니라 ‘할인율’로 보면 갑자기 이해가 쉬워집니다
 많은 투자자들이 금리를 “예금/대출 금리”로만 떠올립니다.  
@@ -130,6 +136,13 @@ TNX가 상승하는 상황은 크게 두 가지로 나뉩니다.
 한국 시장에서 체감 충격이 큰 건 보통 2) 쪽입니다.  
 환율(USD/KRW)이 함께 움직이며, 외국인 수급에 부담이 생기기 쉽기 때문입니다.
 
+이 “TNX → 달러/원화 → 수급” 체인을 더 실전형으로 정리한 글은 아래 2개야:
+- 🔗 **[원달러 환율이 한국 경제와 코스피에 미치는 영향](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)**
+- 🔗 **[환율의 기초: 원/달러가 움직이는 진짜 이유](/posts/economicInfo/fx-basics)**
+
+원화 약세가 “모두에게 호재”가 아닌 이유(업종별 승패)까지 연결하면 해석이 훨씬 안정됩니다:
+- 🔗 **[원화 약세에서 누가 이기고 지는가: 코스피 섹터 맵](/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)**
+ 
 ### (2) 원화 약세는 기업 실적에 ‘양면’으로 작동합니다
 원화 약세가 항상 주식에 나쁜 건 아닙니다.  
 수출 비중이 큰 기업에는 이익에 플러스가 될 수도 있습니다.
@@ -160,6 +173,14 @@ TNX를 매번 복잡하게 분석할 필요는 없습니다.
 - USD/KRW, 외국인 선물/현물 흐름, 위험자산 선호(VIX 같은 변동성 지표)까지  
 - “금리만 오르는 장면”과 “금리·달러·변동성이 같이 뛰는 장면”은 결이 다릅니다.
 
+헤드라인이 지정학/관세/전쟁처럼 불확실성 중심일 때는,  
+‘수출 논리’보다 먼저 **달러 유동성·포지션 청산**으로 환율/달러가 반응하는 경우가 많습니다:
+- 🔗 **[지정학이 ‘달러 강세’로 번역되는 순간: 달러 유동성으로 읽기](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)**
+- 🔗 **[관세는 패키지 충격이다: 성장·마진·환율·물가](/posts/economicInfo/tariffs-growth-margins-fx-package-shock)**
+
+또, 유가 충격은 “물가 → 금리 → 달러/원화”를 한 번에 자극해 TNX·USD/KRW로 전이되기 쉽습니다:
+- 🔗 **[유가 충격 → 원/달러 → 한국: 전이 경로](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)**
+ 
 ---
 
 ## 5. 표 1 — TNX 변화가 자산군에 전달되는 ‘대표 경로’ 정리
@@ -278,7 +299,7 @@ TNX 상승이 신용스프레드 확대, 달러 강세, 변동성 상승과 동�
 
 ---
 
-## 12. 내부 링크 (blog-contents.md 기반 적용)
+## 12. 내부 링크
 
 - [물가와 금리의 기본 이해](/posts/economicInfo/inflation-rate-basics)  
 - [금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해](/posts/economicInfo/interest-rate-basics)  
@@ -286,6 +307,14 @@ TNX 상승이 신용스프레드 확대, 달러 강세, 변동성 상승과 동�
 - [DXY(달러인덱스)란 무엇인가? 투자자가 꼭 알아야 할 의미 정리](/posts/investingInfo/dxy-dollar-index-basics)  
 - [DXY가 변화하면 시장은 어떻게 움직일까? 미국 증시·환율·코스피까지](/posts/investingInfo/dxy-market-impact)  
 - [미국 10년물 국채금리(TNX)가 미국·한국 시장에 미치는 실제 영향](/posts/investingInfo/us10y-impact-on-korea-and-stock-market)  
+- [정책금리 vs 시장금리](/posts/economicInfo/policy-rate-cut-market-rates)
+- [수익률곡선 읽는 법](/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
+- [원달러 환율 → 코스피 체인](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- [원화 약세 섹터 맵](/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
+- [지정학 → 달러 유동성](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+- [관세 패키지 충격](/posts/economicInfo/tariffs-growth-margins-fx-package-shock)
+- [유가 충격 → 원/달러 전이](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
+
 
 ---
 
@@ -313,9 +342,17 @@ TNX 상승이 신용스프레드 확대, 달러 강세, 변동성 상승과 동�
   "headline": "TNX(미국 10년물 국채금리) 완전 이해: 주식·환율·채권을 움직이는 ‘기준 금리’",
   "description": "미국 10년물 국채금리(TNX)는 ‘시장 전체의 할인율’로 작동합니다. 왜 성장주가 민감하고, 달러·원화·유동성이 함께 움직이는지—초중급 투자자도 구조로 이해할 수 있게 정리합니다.",
   "datePublished": "2025-11-23",
-  "dateModified": "2026-01-05",
-  "author": { "@type": "Person", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" },
+  "dateModified": "2026-02-23",
+  "inLanguage": "ko",
+  "author": { "@type": "Organization", "name": "FinMap" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "FinMap",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
+    }
+  },
   "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.finmaphub.com/posts/investingInfo/tnx-basics" },
   "image": ["https://res.cloudinary.com/dwonflmnn/image/upload/v1764428464/blog/investingInfo/economics-tnx-cover.png"]
 }
