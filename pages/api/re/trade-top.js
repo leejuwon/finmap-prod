@@ -32,6 +32,13 @@ function toNum(v) {
   const n = Number(v);
   return Number.isFinite(n) ? n : null;
 }
+function toNumLoose(v) {
+  if (v == null) return null;
+  const s = String(v).replace(/,/g, '').trim();
+  if (!s) return null;
+  const n = Number(s);
+  return Number.isFinite(n) ? n : null;
+}
 function toIntOrNull(v) {
   if (v == null) return null;
   const n = Number(String(v));
@@ -210,9 +217,16 @@ function buildStatsWhere({ timeframe, period, pyeongBand, sido, lawd, gu, buildF
   return { whereSql: `WHERE ${filters.join('\n  AND ')}`, params, band };
 }
 
-function makeStatsTopSql({ table, whereSql, metricCol, orderDir }) {
+function makeStatsTopSql({ table, whereSql, metricCol, orderDir, priceExpr, priceMinWon, priceMaxWon }) {
+  const priceSelect = priceExpr ? `,\n        (${priceExpr}) AS price_value` : '';
+  const priceWhere =
+    priceExpr
+      ? `\n  AND price_value IS NOT NULL` +
+        (priceMinWon != null ? `\n  AND price_value >= ?` : ``) +
+        (priceMaxWon != null ? `\n  AND price_value <= ?` : ``)
+      : '';
   return `
-    WITH filtered AS (
+    WITH base AS (
       SELECT
         s.apt_key,
         s.sido_name,
@@ -241,17 +255,24 @@ function makeStatsTopSql({ table, whereSql, metricCol, orderDir }) {
         s.rgst_date,
 
         ${metricCol} AS value
+        ${priceSelect}
       FROM ${table} s
       ${whereSql}
+    ),
+    filtered AS (
+      SELECT *
+      FROM base
+      WHERE value IS NOT NULL
+      ${priceWhere}
     ),
     final AS (
       SELECT
         *,
         ROW_NUMBER() OVER (ORDER BY value ${orderDir}, tx_count DESC) AS rank_no
       FROM filtered
-      WHERE value IS NOT NULL
     )
-    SELECT * FROM final
+    SELECT *
+    FROM final
     WHERE rank_no <= ?
     ORDER BY rank_no
   `;
@@ -289,13 +310,21 @@ function buildRawWhere({ timeframe, period, sido, lawd, gu, pyeong, buildFrom, b
   const filters = [];
   const params = [];
 
-  if (timeframe === 'year') {
-    const y = String(period).slice(0, 4);
+  // ✅ from/to(range) 지원: handler에서 dealYmFrom/dealYmTo 계산해서 넘김
+  if (period && period.includes('|')) {
+    const [fromYm, toYm] = period.split('|');
     filters.push(`t.deal_ym BETWEEN ? AND ?`);
-    params.push(`${y}01`, `${y}12`);
+    params.push(fromYm, toYm);
   } else {
-    filters.push(`t.deal_ym = ?`);
-    params.push(period);
+    // 기존 단일기간(하위호환)
+    if (timeframe === 'year') {
+      const y = String(period).slice(0, 4);
+      filters.push(`t.deal_ym BETWEEN ? AND ?`);
+      params.push(`${y}01`, `${y}12`);
+    } else {
+      filters.push(`t.deal_ym = ?`);
+      params.push(period);
+    }
   }
 
   if (sido && sido !== 'all') {
@@ -333,7 +362,22 @@ function buildRawWhere({ timeframe, period, sido, lawd, gu, pyeong, buildFrom, b
   return { whereSql, params };
 }
 
-function makeRawTopSql({ whereSql, metricCol, orderDir, withLatest }) {
+function makeRawTopSql({ whereSql, metricCol, orderDir, withLatest, priceMetric, priceMinWon, priceMaxWon }) {
+  // priceMetric: none|median_price|avg_price|max_price|sum_price|latest_price
+  const PRICE_COL = {
+    median_price: 'median_price',
+    avg_price: 'avg_price',
+    max_price: 'max_price',
+    sum_price: 'sum_price',
+    latest_price: 'latest_price',
+  };
+  const priceCol = PRICE_COL[String(priceMetric || 'none')] || null;
+  const priceWhere =
+    priceCol
+      ? `\n  AND ${priceCol} IS NOT NULL` +
+        (priceMinWon != null ? `\n  AND ${priceCol} >= ?` : ``) +
+        (priceMaxWon != null ? `\n  AND ${priceCol} <= ?` : ``)
+      : '';
   // metricCol: 'tx_count' | 'median_price' | 'avg_price' | ...
   return `
     WITH base AS (
@@ -403,6 +447,7 @@ function makeRawTopSql({ whereSql, metricCol, orderDir, withLatest }) {
         CAST(MAX(price_won) AS UNSIGNED) AS max_price,
         CAST(SUM(price_won) AS UNSIGNED) AS sum_price
         ${withLatest ? `,
+        CAST(MAX(CASE WHEN rn_latest=1 THEN price_won END) AS UNSIGNED) AS latest_price,         
         MAX(CASE WHEN rn_latest=1 THEN deal_date END) AS latest_deal_date,
         MAX(CASE WHEN rn_latest=1 THEN apt_dong END) AS latest_apt_dong,
         MAX(CASE WHEN rn_latest=1 THEN floor END) AS latest_floor,
@@ -415,13 +460,19 @@ function makeRawTopSql({ whereSql, metricCol, orderDir, withLatest }) {
       GROUP BY
         lawd_cd, sigungu_name, gu_name, dong_name, apt_name
     ),
+    filtered AS (
+      SELECT
+        agg.*,
+        ${metricCol} AS value
+      FROM agg
+      WHERE ${metricCol} IS NOT NULL
+      ${priceWhere}
+    ),
     final AS (
       SELECT
         *,
-        ${metricCol} AS value,
-        ROW_NUMBER() OVER (ORDER BY ${metricCol} ${orderDir}, tx_count DESC) AS rank_no
-      FROM agg
-      WHERE ${metricCol} IS NOT NULL
+        ROW_NUMBER() OVER (ORDER BY value ${orderDir}, tx_count DESC) AS rank_no
+      FROM filtered
     )
     SELECT * FROM final
   `;
@@ -463,23 +514,43 @@ export default async function handler(req, res) {
 
     const timeframe = String(req.query.timeframe || 'month').trim(); // month|year
     let period = String(req.query.period || '').trim();
+    let from = String(req.query.from || '').trim();
+    let to = String(req.query.to || '').trim();
 
     const metric = String(req.query.metric || 'avg_price').trim();
     const order = String(req.query.order || 'desc').toLowerCase();
     const orderDir = order === 'asc' ? 'ASC' : 'DESC';
-    const topN = Math.min(Math.max(Number(req.query.top || 100), 1), 200);
+    const topN = Math.min(Math.max(Number(req.query.top || 100), 1), 500);
 
     const pyeong = String(req.query.pyeong || 'all').trim();
     const buildFrom = toIntOrNull(req.query.buildFrom === 'all' ? null : req.query.buildFrom);
     const buildTo = toIntOrNull(req.query.buildTo === 'all' ? null : req.query.buildTo);
 
+    // ✅ 금액구간(억 단위)
+    const priceMetric = String(req.query.priceMetric || 'none').trim();
+    const priceMinEok = toNumLoose(req.query.priceMin);
+    const priceMaxEok = toNumLoose(req.query.priceMax);
+    const priceMinWon = priceMinEok == null ? null : Math.round(priceMinEok * 100_000_000);
+    const priceMaxWon = priceMaxEok == null ? null : Math.round(priceMaxEok * 100_000_000);
+
     const compareModeRaw = String(req.query.compare || 'both').toLowerCase();
     const compareMode = (compareModeRaw === '1' || compareModeRaw === 'true') ? 'both' : compareModeRaw;
-    const wantMoM = compareMode === 'both' || compareMode === 'mom';
-    const wantYoY = compareMode === 'both' || compareMode === 'yoy';
+    // ✅ range(from!=to)일 때는 compare를 강제로 none
+    // (범위 비교는 "직전 범위" 정의가 필요해서 의미가 애매)
+    const effFrom = from || period;
+    const effTo = to || period;
+    let isRange = false;
+    if (effFrom && effTo) {
+      const a = String(effFrom);
+      const b = String(effTo);
+      isRange = a !== b;
+    }
+    const effCompare = isRange ? 'none' : compareMode;
+    const wantMoM = effCompare === 'both' || effCompare === 'mom';
+    const wantYoY = effCompare === 'both' || effCompare === 'yoy';
 
     // period 기본값: re_trade_deal_ym
-    if (!period) {
+    if (!period && !from && !to) {
       if (timeframe === 'year') {
         const [r] = await pool.query(`SELECT LEFT(MAX(deal_ym),4) AS max_y FROM re_trade_deal_ym`);
         period = String(r?.[0]?.max_y || '');
@@ -488,11 +559,33 @@ export default async function handler(req, res) {
         period = String(r?.[0]?.max_ym || '');
       }
     }
-    if (!period) return res.status(400).json({ ok: false, error: 'period is required' });
+    if (!period && (!from || !to)) return res.status(400).json({ ok: false, error: 'period/from/to is required' });
+
+    // ✅ from/to 정리 + range용 deal_ym 범위 계산
+    from = from || period;
+    to = to || period;
+    if (from && to && String(from) > String(to)) { const tmp = from; from = to; to = tmp; }
+    isRange = String(from) !== String(to);
+
+    let dealYmFrom = '';
+    let dealYmTo = '';
+    if (timeframe === 'year') {
+      const fy = String(from).slice(0, 4);
+      const ty = String(to).slice(0, 4);
+      dealYmFrom = `${fy}01`;
+      dealYmTo = `${ty}12`;
+      // meta용 대표 period는 "to"로 둠
+      period = ty;
+    } else {
+      dealYmFrom = String(from);
+      dealYmTo = String(to);
+      period = String(to);
+    }
 
     // 캐시 (nocache면 내부 캐시도 스킵)
     const cacheKey = JSON.stringify({
-      sido, lawd, gu, timeframe, period, metric, orderDir, topN, pyeong, buildFrom, buildTo, compareMode
+      sido, lawd, gu, timeframe, period, from, to, metric, orderDir, topN, pyeong, buildFrom, buildTo, effCompare,
+      priceMetric, priceMinWon, priceMaxWon
     });
     if (!noCache) {
       const cached = cacheGet(cacheKey);
@@ -528,7 +621,20 @@ export default async function handler(req, res) {
     let source = 'stats';
     let curRowsRaw = [];
 
-    if (exists) {
+    // ✅ range면 stats 재집계가 필요(특히 median)해서 raw로 강제
+    const canUseStats = exists && !isRange;
+
+    // stats priceExpr (s alias)
+    const PRICE_EXPR_STATS = {
+      median_price: 's.median_price',
+      avg_price: 's.avg_price',
+      max_price: 's.max_price',
+      sum_price: 's.sum_price',
+      latest_price: '(CAST(s.latest_deal_amount_man AS DECIMAL(20,0)) * 10000)',
+    };
+    const priceExprStats = PRICE_EXPR_STATS[String(priceMetric || 'none')] || null;
+
+    if (canUseStats) {
       const curWhere = buildStatsWhere({
         timeframe, period, pyeongBand: pyeong, sido, lawd, gu, buildFrom, buildTo
       });
@@ -536,9 +642,15 @@ export default async function handler(req, res) {
         table,
         whereSql: curWhere.whereSql,
         metricCol: metricColStats,
-        orderDir
+        orderDir,
+        priceExpr: priceExprStats,
+        priceMinWon,
+        priceMaxWon
       });
-      const [rows] = await pool.query(sqlCur, [...curWhere.params, topN]);
+      const priceParams = [];
+      if (priceExprStats && priceMinWon != null) priceParams.push(priceMinWon);
+      if (priceExprStats && priceMaxWon != null) priceParams.push(priceMaxWon);
+      const [rows] = await pool.query(sqlCur, [...curWhere.params, ...priceParams, topN]);       
       curRowsRaw = rows || [];
     }
 
@@ -557,20 +669,34 @@ export default async function handler(req, res) {
       };
       const metricColRaw = METRIC_MAP_RAW[metric] || 'avg_price';
 
-      const curWhere = buildRawWhere({ timeframe, period, sido, lawd, gu, pyeong, buildFrom, buildTo });
-      const sql = makeRawTopSql({ whereSql: curWhere.whereSql, metricCol: metricColRaw, orderDir, withLatest: true }) + `
+      // range 지원: period에 "fromYm|toYm" 형태로 전달
+      const rangePeriod = `${dealYmFrom}|${dealYmTo}`;
+      const curWhere = buildRawWhere({ timeframe, period: rangePeriod, sido, lawd, gu, pyeong, buildFrom, buildTo });
+      const sql = makeRawTopSql({
+        whereSql: curWhere.whereSql,
+        metricCol: metricColRaw,
+        orderDir,
+        withLatest: true,
+        priceMetric,
+        priceMinWon,
+        priceMaxWon
+      }) + `
         WHERE rank_no <= ?
         ORDER BY rank_no
       `;
-      const [rows] = await pool.query(sql, [...curWhere.params, topN]);
+      const priceParams = [];
+      const pm = String(priceMetric || 'none');
+      if (pm !== 'none' && priceMinWon != null) priceParams.push(priceMinWon);
+      if (pm !== 'none' && priceMaxWon != null) priceParams.push(priceMaxWon);
+      const [rows] = await pool.query(sql, [...curWhere.params, ...priceParams, topN]);       
       curRowsRaw = rows || [];
     }
 
     // 비교 안하면 종료
-    if (compareMode === 'none' || compareMode === '0' || compareMode === 'false') {
+    if (effCompare === 'none' || effCompare === '0' || effCompare === 'false') {     
       const out = {
         ok: true,
-        meta: { timeframe, period, metric, order: orderDir, top: topN, compare: 'none', source },
+        meta: { timeframe, period, from, to, metric, order: orderDir, top: topN, compare: 'none', source, note: isRange ? 'range query: compare disabled' : undefined },         
         rows: curRowsRaw,
       };
       if (!noCache) cacheSet(cacheKey, out, 20 * 1000);
@@ -822,12 +948,14 @@ export default async function handler(req, res) {
       meta: {
         timeframe,
         period,
+        from,
+        to,
         mom_period: momPeriod,
         yoy_period: yoyPeriod,
         metric,
         order: orderDir,
         top: topN,
-        compare: compareMode,
+        compare: effCompare,
         source,
         note: `compare period rank is mapped from top ${prevTop} of prev periods`,
       },

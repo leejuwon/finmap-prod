@@ -1,3 +1,4 @@
+// pages/market/real-estate.js
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -259,10 +260,18 @@ export default function RealEstatePage() {
   const [opt, setOpt] = useState(null);
   const [areas, setAreas] = useState([]); // trade-areas 결과
 
-  const [sido, setSido] = useState('all');
+  // ✅ 초기값: 전체(all) 대신 서울(11)
+  const [sido, setSido] = useState('11');
   const [area, setArea] = useState('all'); // all | lawd | lawd|gu
   const [timeframe, setTimeframe] = useState('month');
-  const [period, setPeriod] = useState('');
+   // ✅ 기간을 From~To로
+  const [periodFrom, setPeriodFrom] = useState('');
+  const [periodTo, setPeriodTo] = useState('');
+
+  // ✅ 금액 구간 필터(억 단위 입력)
+  const [priceMetric, setPriceMetric] = useState('none'); // none|median_price|avg_price|latest_price|max_price|sum_price
+  const [priceMin, setPriceMin] = useState(''); // e.g. "3.5" => 3.5억
+  const [priceMax, setPriceMax] = useState('');
 
   const [topBy, setTopBy] = useState('avg_price');
   const [sort, setSort] = useState('desc');
@@ -328,32 +337,22 @@ export default function RealEstatePage() {
   const seoTitle = t.title;
   const seoDesc = t.seoDesc;    
 
-  // timeframe 변경 시 period 자동 보정
+  // timeframe 변경 시 periodFrom/To 자동 보정
   useEffect(() => {
     if (!opt) return;
-    if (timeframe === 'month') setPeriod(opt.periods?.maxYm || (opt.periods?.months?.[opt.periods.months.length - 1] || ''));
-    else setPeriod(opt.periods?.years?.[opt.periods.years.length - 1] || '');
+    if (timeframe === 'month') {
+      const v = opt.periods?.maxYm || (opt.periods?.months?.[opt.periods.months.length - 1] || '');
+      setPeriodFrom(v);
+      setPeriodTo(v);
+    } else {
+      const v = opt.periods?.years?.[opt.periods.years.length - 1] || '';
+      setPeriodFrom(v);
+      setPeriodTo(v);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeframe, opt]);
 
-  // sido 변경 → area 초기화 + trade-areas 로드(경기도 구 포함)
-  useEffect(() => {
-    setArea('all');
-    (async () => {
-      if (!sido || sido === 'all') {
-        setAreas([]);
-        return;
-      }
-      try {
-        const r = await fetch(`/api/re/trade-areas?sido=${encodeURIComponent(sido)}&lang=${encodeURIComponent(lang)}`);
-        const j = await r.json();
-        if (j?.ok) setAreas(j.areas || j.rows || j.items || []);
-        else setAreas([]);
-      } catch {
-        setAreas([]);
-      }
-    })();
-  }, [sido, lang]);
+  // (중복 호출 방지) trade-areas 로드는 아래 loadingAreas useEffect에서만 처리
 
   // bilingual label picker
   function labelOf(x, preferParenKo = false) {
@@ -390,7 +389,7 @@ export default function RealEstatePage() {
     // trade-areas 우선
     if (areas && areas.length) {
       const mapped = areas.map((x) => ({
-        value: String(x.value ?? x.code ?? ''),
+        value: String(x.value ?? x.code ?? x.lawd_cd ?? ''),
         label_ko: x.label_ko || x.name_ko || x.name || x.label || '',
         label_en: x.label_en || x.name_en || x.name || x.label || x.label_ko || x.name_ko || '',
       }));
@@ -412,6 +411,21 @@ export default function RealEstatePage() {
     return timeframe === 'month' ? (opt.periods?.months || []) : (opt.periods?.years || []);
   }, [opt, timeframe]);
 
+  const buildYearOptions = useMemo(() => {
+    if (opt?.buildYears?.years?.length) return opt.buildYears.years;
+    // fallback
+    return Array.from({ length: 60 }).map((_, i) => String(1970 + i));
+  }, [opt]);
+
+  const priceMetricOptions = useMemo(() => ([
+    { value: 'none', label_ko: '없음', label_en: 'None' },
+    { value: 'median_price', label_ko: '대표가격(중앙값)', label_en: 'Typical (Median)' },
+    { value: 'avg_price', label_ko: '평균(총액)', label_en: 'Average (Total)' },
+    { value: 'latest_price', label_ko: '최근 거래', label_en: 'Latest deal' },
+    { value: 'max_price', label_ko: '최고 거래금액', label_en: 'Max deal' },
+    { value: 'sum_price', label_ko: '총 거래금액', label_en: 'Sum (Total)' },
+  ]), []);
+
   function parseAreaValue(v) {
     if (!v || v === 'all') return { lawd: '', gu: '' };
     const s = String(v);
@@ -423,26 +437,52 @@ export default function RealEstatePage() {
   }
 
   async function fetchTop() {
-    if (!period) return;
+    if (!periodFrom || !periodTo) return;
+    let from = String(periodFrom);
+    let to = String(periodTo);
+    // 문자열 비교로도 YYYYMM/YYY Y 안전
+    if (from > to) { const tmp = from; from = to; to = tmp; }
+    const isRange = from !== to;
 
-    const { lawd, gu } = parseAreaValue(area);
+    // ✅ area값을 직접 해석해서 lawd/gu를 강제 세팅 (강서구 필터 누락 방지)
+    // - 서울/인천: area = "lawd_cd" 형태 (예: 11500)
+    // - 경기: area = "lawd_cd|gu" 또는 "lawd_cd" (city all)
+    const areaVal = String(area || 'all');
+    let lawd = '';
+   let gu = '';
+    if (areaVal && areaVal !== 'all') {
+      const parts = areaVal.split('|');
+      lawd = (parts[0] || '').trim();
+      gu = (parts[1] || '').trim();
+    }
 
     setLoading(true);
     try {
       const qs = new URLSearchParams({
         timeframe,
-        period,
+        // ✅ API는 from/to 우선, period는 하위호환용(상세 링크 등에서 사용 가능)
+        from,
+        to,
+        period: to,
         sido,
         metric: topBy,
         order: sort,
         top,
         pyeong,
-        compare: 'both',
+        // ✅ range는 compare의 정의가 애매해서 none으로 고정
+        compare: isRange ? 'none' : 'both',
       });
+      // ✅ 시군구(서울/인천)/시(경기) 필터는 lawd로 통일해서 전달
       if (lawd) qs.set('lawd', lawd);
-      if (gu) qs.set('gu', gu);
+      // ✅ 경기도만 gu 필터 사용
+      if (sido === '41' && gu) qs.set('gu', gu);
       if (buildFrom !== 'all') qs.set('buildFrom', buildFrom);
       if (buildTo !== 'all') qs.set('buildTo', buildTo);
+      if (priceMetric && priceMetric !== 'none') {
+        qs.set('priceMetric', priceMetric);
+        if (String(priceMin || '').trim()) qs.set('priceMin', String(priceMin).trim());
+        if (String(priceMax || '').trim()) qs.set('priceMax', String(priceMax).trim());
+      }
 
       const r = await fetch(`/api/re/trade-top?${qs.toString()}`);
       const j = await r.json();
@@ -456,10 +496,10 @@ export default function RealEstatePage() {
   }
 
   useEffect(() => {
-    if (!opt || !period) return;
+    if (!opt || !periodFrom || !periodTo) return;
     fetchTop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [opt, timeframe, period, sido, area, topBy, sort, top, pyeong, buildFrom, buildTo]);
+  }, [opt, timeframe, periodFrom, periodTo, sido, area, topBy, sort, top, pyeong, buildFrom, buildTo, priceMetric, priceMin, priceMax]);
 
   function renderArea(row) {
     if (row.sido_name !== '경기도') return row.sigungu_name || '-';
@@ -478,7 +518,8 @@ export default function RealEstatePage() {
     const aptKey = row?.apt_key ? encodeURIComponent(String(row.apt_key)) : '';
     const qs = new URLSearchParams();
     if (timeframe) qs.set('timeframe', timeframe);
-    if (period) qs.set('period', period);
+    // 상세는 기존 period 기반이므로 to 값을 넣어 호환 유지
+    if (periodTo || periodFrom) qs.set('period', String(periodTo || periodFrom));     
     if (pyeong) qs.set('band', pyeong); // 상세에서는 band로 받음
     if (sido) qs.set('sido', sido);
     if (area) qs.set('area', area);
@@ -650,10 +691,23 @@ export default function RealEstatePage() {
         if (j?.ok) {
           setOpt(j);
 
-          if (!period) {
-            if (timeframe === 'month') setPeriod(j.periods?.maxYm || (j.periods?.months?.[j.periods.months.length - 1] || ''));
-            else setPeriod((j.periods?.years?.[j.periods.years.length - 1] || ''));
-          }
+          // ✅ 안전장치: 만약 sido가 all이면 서울(11)로 기본 세팅
+          // (초기/리로드/언어전환 등에서 상태 꼬임 방지)
+          setSido((prev) => {
+            const p = String(prev || 'all');
+            if (p !== 'all') return p;
+            const has11 = Array.isArray(j.sidos) && j.sidos.some((x) => String(x.value) === '11');
+            return has11 ? '11' : p;
+          });
+
+          // ✅ 초기값: from/to 둘 다 세팅
+          const isMonth = timeframe === 'month';
+          const latest =
+            isMonth
+              ? (j.periods?.maxYm || (j.periods?.months?.[j.periods?.months?.length - 1] || ''))
+              : (j.periods?.years?.[j.periods?.years?.length - 1] || '');
+          if (!periodFrom) setPeriodFrom(latest);
+          if (!periodTo) setPeriodTo(latest);
         }
       } finally {
         if (alive) setLoadingOpt(false);
@@ -721,7 +775,7 @@ export default function RealEstatePage() {
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
               <div className="text-xs text-slate-500">
-                {r.rank_no}. {areaText}
+                {idx + 1}. {areaText}
               </div>
               {/* ✅ 아파트명: 상세페이지 링크 + (옵션) 펼침 버튼 */}
               <div className="mt-0.5 flex items-start gap-2">
@@ -831,8 +885,8 @@ export default function RealEstatePage() {
             </ul>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-3 mt-5">
-            <div>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-3 mt-5">
+            <div className="md:col-span-2">
               <div className="text-sm text-slate-500 mb-1">{t.sido}</div>
               <select className="w-full border rounded-lg px-3 py-2" value={sido} onChange={(e) => setSido(e.target.value)}>
                 {sidoOptions.map((x) => (
@@ -843,7 +897,7 @@ export default function RealEstatePage() {
               </select>
             </div>
 
-            <div>
+            <div className="md:col-span-2">
               <div className="text-sm text-slate-500 mb-1">{t.sigungu}</div>
               <select
                 className="w-full border rounded-lg px-3 py-2"
@@ -859,26 +913,51 @@ export default function RealEstatePage() {
               </select>
             </div>
 
-            <div>
+            <div className="md:col-span-1">
               <div className="text-sm text-slate-500 mb-1">{t.timeframe}</div>
-              <select className="w-full border rounded-lg px-3 py-2" value={timeframe} onChange={(e) => setTimeframe(e.target.value)}>
+              <select className="w-full border rounded-lg px-2 py-2 text-sm" value={timeframe} onChange={(e) => setTimeframe(e.target.value)}>               
                 <option value="month">{t.month}</option>
                 <option value="year">{t.year}</option>
               </select>
             </div>
 
-            <div>
+            <div className="md:col-span-3">
               <div className="text-sm text-slate-500 mb-1">{t.period}</div>
-              <select className="w-full border rounded-lg px-3 py-2" value={period} onChange={(e) => setPeriod(e.target.value)}>
-                {periodOptions.map((p) => (
-                  <option key={p} value={p}>
-                    {timeframe === 'month' ? ymToLabel(p) : String(p)}
-                  </option>
-                ))}
-              </select>
+              <div className="flex gap-2">
+                <select
+                  className="w-full border rounded-lg px-2 py-2 text-sm min-w-[120px]"
+                  value={periodFrom}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    setPeriodFrom(v);
+                    if (periodTo && v > periodTo) setPeriodTo(v);
+                  }}
+                >
+                  {periodOptions.map((p) => (
+                    <option key={`from-${p}`} value={p}>
+                      {timeframe === 'month' ? ymToLabel(p) : String(p)}
+                    </option>
+                  ))}
+               </select>
+                <select
+                  className="w-full border rounded-lg px-2 py-2 text-sm min-w-[120px]"                   
+                  value={periodTo}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    setPeriodTo(v);
+                    if (periodFrom && v < periodFrom) setPeriodFrom(v);
+                  }}
+                >
+                  {periodOptions.map((p) => (
+                    <option key={`to-${p}`} value={p}>
+                      {timeframe === 'month' ? ymToLabel(p) : String(p)}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
 
-            <div>
+            <div className="md:col-span-2">
               <div className="text-sm text-slate-500 mb-1">{t.topBy}</div>
               <select className="w-full border rounded-lg px-3 py-2" value={topBy} onChange={(e) => setTopBy(e.target.value)}>
                 {Object.entries(t.metrics).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
@@ -886,27 +965,26 @@ export default function RealEstatePage() {
               <div className="text-[11px] text-slate-400 mt-1">{t.metricHelp}</div>
             </div>
 
-            <div>
+            <div className="md:col-span-2">
               <div className="text-sm text-slate-500 mb-1">{t.sort}</div>
-              <select className="w-full border rounded-lg px-3 py-2" value={sort} onChange={(e) => setSort(e.target.value)}>
+              <select className="w-full border rounded-lg px-2 py-2 text-sm" value={sort} onChange={(e) => setSort(e.target.value)}>               
                 <option value="desc">{t.desc}</option>
                 <option value="asc">{t.asc}</option>
               </select>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-3 mt-3">
-            <div>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-3 mt-3">
+            <div className="md:col-span-1">
               <div className="text-sm text-slate-500 mb-1">{t.top}</div>
-              <select className="w-full border rounded-lg px-3 py-2" value={top} onChange={(e) => setTop(e.target.value)}>
-                {['10', '20', '50', '100'].map((v) => <option key={v} value={v}>{v}</option>)}
+              <select className="w-full border rounded-lg px-2 py-2 text-sm" value={top} onChange={(e) => setTop(e.target.value)}>               
+                {['10', '20', '50', '100', '300', '500'].map((v) => <option key={v} value={v}>{v}</option>)}               
               </select>
             </div>
 
-            <div>
+            <div className="md:col-span-1">
               <div className="text-sm text-slate-500 mb-1">{t.pyeong}</div>
-              <select className="w-full border rounded-lg px-3 py-2" value={pyeong} onChange={(e) => setPyeong(e.target.value)}>
-                <option value="all">{t.all}</option>
+              <select className="w-full border rounded-lg px-2 py-2 text-sm" value={pyeong} onChange={(e) => setPyeong(e.target.value)}>                
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="30">30</option>
@@ -914,11 +992,11 @@ export default function RealEstatePage() {
               </select>
             </div>
 
-            <div className="md:col-span-2">
+            <div className="md:col-span-3">
               <div className="text-sm text-slate-500 mb-1">{t.buildYear}</div>
               <div className="flex gap-2">
                 <select
-                  className="w-full border rounded-lg px-3 py-2"
+                  className="w-full border rounded-lg px-2 py-2 text-sm"
                   value={buildFrom}
                   onChange={(e) => {
                     setBuildFrom(e.target.value);
@@ -926,26 +1004,70 @@ export default function RealEstatePage() {
                   }}
                 >
                   <option value="all">{t.all}</option>
-                  {Array.from({ length: 60 }).map((_, i) => {
-                    const y = 1970 + i;
-                    return <option key={y} value={y}>{y}</option>;
-                  })}
+                  {buildYearOptions.map((y) => (
+                    <option key={`bf-${y}`} value={y}>{y}</option>
+                  ))}
                 </select>
 
-                <select className="w-full border rounded-lg px-3 py-2" value={buildTo} onChange={(e) => setBuildTo(e.target.value)}>
+                <select className="w-full border rounded-lg px-2 py-2 text-sm" value={buildTo} onChange={(e) => setBuildTo(e.target.value)}>                 
                   <option value="all">{t.all}</option>
-                  {Array.from({ length: 60 }).map((_, i) => {
-                    const y = 1970 + i;
-                    return <option key={y} value={y}>{y}</option>;
-                  })}
+                  {buildYearOptions.map((y) => (
+                    <option key={`bt-${y}`} value={y}>{y}</option>
+                  ))}
                 </select>
               </div>
             </div>
 
-            <div className="md:col-span-2 flex items-end">
-              <div className="text-sm text-slate-500">{t.tip}</div>
+            {/* ✅ 금액 구간 필터 */}
+            <div className="md:col-span-7">
+              <div className="text-sm text-slate-500 mb-1">{lang === 'en' ? 'Price range' : '금액 구간'}</div>
+              <div className="flex gap-2">
+                <select
+                  className="w-full border rounded-lg px-3 py-2"
+                  value={priceMetric}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    setPriceMetric(v);
+                    if (v === 'none') { setPriceMin(''); setPriceMax(''); }
+                  }}
+                >
+                  {priceMetricOptions.map((o) => (
+                    <option key={o.value} value={o.value}>
+                      {lang === 'en' ? o.label_en : o.label_ko}
+                    </option>
+                  ))}
+                </select>
+                <div className="flex items-center gap-1 w-full">
+                  <input
+                    className="w-full border rounded-lg px-3 py-2"
+                    type="number"
+                    step="0.1"
+                    inputMode="decimal"
+                    placeholder={lang === 'en' ? 'Min' : '최소'}
+                    value={priceMin}
+                    onChange={(e) => setPriceMin(e.target.value)}
+                    disabled={priceMetric === 'none'}
+                  />
+                  <span className="text-xs text-slate-400">(억)</span>
+                </div>
+                <div className="flex items-center gap-1 w-full">
+                  <input
+                    className="w-full border rounded-lg px-3 py-2"
+                    type="number"
+                    step="0.1"
+                    inputMode="decimal"
+                    placeholder={lang === 'en' ? 'Max' : '최대'}
+                    value={priceMax}
+                    onChange={(e) => setPriceMax(e.target.value)}
+                    disabled={priceMetric === 'none'}
+                  />
+                  <span className="text-xs text-slate-400">(억)</span>
+                </div>
+              </div>
             </div>
           </div>
+
+          <div className="mt-2 text-sm text-slate-500">{t.tip}</div> 
 
           <div className="mt-6">
             <div className="flex items-center justify-between">
@@ -1061,9 +1183,9 @@ export default function RealEstatePage() {
                 </thead>
 
                 <tbody>
-                  {rows.map((r) => (
+                  {rows.map((r, idx) => (
                     <tr key={r.apt_key || `${r.lawd_cd}-${r.apt_name}-${r.dong_name}`} className="border-b hover:bg-slate-50">
-                      <td className="py-3 pr-3">{r.rank_no}</td>
+                      <td className="py-3 pr-3">{idx + 1}</td>
                       <td className="py-3 pr-3">{renderArea(r)}</td>
                       <td className="py-3 pr-3 font-medium">
                         <Link

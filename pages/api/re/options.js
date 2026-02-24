@@ -1,3 +1,4 @@
+//pages/api/re/options.js
 'use strict';
 
 const { pool } = require('../../../lib/db');
@@ -83,6 +84,27 @@ async function handler(req, res) {
     for (const ym of months) yearSet[ym.slice(0, 4)] = true;
     const years = Object.keys(yearSet).sort();
 
+    // 2-1) build year 범위 (UI에서 년식 From~To 리스트로 사용)
+    const [byRows] = await pool.execute(`
+      SELECT
+        MIN(build_year) AS min_y,
+        MAX(build_year) AS max_y
+      FROM re_trade_apt
+      WHERE build_year IS NOT NULL
+        AND build_year >= 1900
+        AND build_year <= 2100
+    `);
+    const minY = byRows?.[0]?.min_y ? Number(byRows[0].min_y) : null;
+    const maxY = byRows?.[0]?.max_y ? Number(byRows[0].max_y) : null;
+    let buildYears = [];
+    if (Number.isFinite(minY) && Number.isFinite(maxY) && minY <= maxY) {
+      const lo = Math.max(1900, minY);
+      const hi = Math.min(2100, maxY);
+      // 너무 길어지는 것 방지(최대 180개)
+      const capLo = Math.max(lo, hi - 179);
+      buildYears = Array.from({ length: (hi - capLo + 1) }, (_, i) => String(capLo + i));
+    }
+
     // 3) 시군구 목록(기본 fallback 용) - 여기서는 영문 표기가 없으니 en은 ko를 그대로
     const sigunguBySido = {};
     for (const c of codes) {
@@ -114,7 +136,18 @@ async function handler(req, res) {
       ok: true,
       lang, // 디버깅용 echo
       sidos,
-      periods: { months, years, maxYm },
+      periods: {
+        months,
+        years,
+        maxYm,
+        minYm: months.length ? months[0] : '',
+        maxY: years.length ? years[years.length - 1] : '',
+        minY: years.length ? years[0] : '',
+      },
+      // UI 편의 옵션들
+      topOptions: ['10','20','50','100','300','500'],
+      buildYears: { min: minY, max: maxY, years: buildYears },
+      priceMetricOptions: ['none','median_price','avg_price','latest_price','max_price','sum_price'],
       sigunguBySido,
     }));
   } catch (e) {
