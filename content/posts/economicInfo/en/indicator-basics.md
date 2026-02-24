@@ -222,7 +222,7 @@ For tactical investors:
 
 ---
 
-## 14. Internal Links (blog-contents.md based)
+## 14. A good piece of writing to read together
 
 - [Inflation and Interest Rate Basics](/en/posts/economicInfo/inflation-rate-basics)
 - [The Reality of a 7% Compound Return](/en/posts/investingInfo/cagr-7percent-reality-check)

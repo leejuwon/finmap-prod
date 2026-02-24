@@ -368,7 +368,7 @@ The goal is not perfect forecasting; it’s holding the right level of rate sens
 
 ---
 
-## 19. Internal links
+## 19. A good piece of writing to read together
 
 - [Inflation & Interest Rates Basics](/en/posts/economicInfo/inflation-rate-basics)
 - [FX Basics: What Really Moves USD/KRW?](/en/posts/economicInfo/fx-basics)

@@ -371,7 +371,7 @@ FinMap에서는 다음 흐름이 자연스럽습니다.
 
 ---
 
-## 19. 내부 링크 (blog-contents.md 기반 적용)
+## 19. 함께 읽으면 좋은 글
 
 - [물가와 금리의 기본 이해: 왜 금리가 오르면 시장이 흔들릴까?](/posts/economicInfo/inflation-rate-basics)
 - [환율의 기초: 원/달러가 움직이는 진짜 이유](/posts/economicInfo/fx-basics)

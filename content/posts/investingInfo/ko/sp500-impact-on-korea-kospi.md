@@ -305,7 +305,7 @@ S&P500와 함께 자주 거론되는 변수가 미국 금리(특히 10년물)입
 
 ---
 
-## 16. 내부 링크
+## 16. 함께 읽으면 좋은 글
 
 - [코스피에 가장 큰 영향을 끼치는 글로벌 시장 환경 총정리](/posts/investingInfo/indicator-marketinfo)  
 - [원달러 환율이 한국 경제와 코스피에 미치는 영향](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)  

@@ -196,7 +196,7 @@ Two-leg risk controls:
 - □ Use “conditional execute” rules: triggers must agree before you act  
 - □ Document your rules once; update slowly (avoid rule-drifting every week)
 
-## Mid-post internal links (1–2): strengthen your discount-rate intuition
+## Mid-post A good piece of writing to read together: strengthen your discount-rate intuition
 
 If you want faster intuition for why “discount rate” logic matters across assets (not just housing), these help:
 - <a href="/en/posts/investingInfo/tnx-basics">Understand TNX as a global discount-rate signal (so housing doesn’t feel “isolated”)</a>  

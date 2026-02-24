@@ -159,7 +159,7 @@ USD/KRW 하나로 판단하지 말고, 최소 **DXY / 10Y 금리(TNX) / 유가**
 
 ---
 
-# 관련 글(내부링크)
+# 관련 글(함께 읽으면 좋은 글)
 - [KOSPI를 움직이는 글로벌 지표 한 장 정리](/posts/investingInfo/indicator-marketinfo)  
 - [DXY란? 달러 인덱스 초보자 설명](/posts/investingInfo/dxy-dollar-index-basics)  
 - [DXY가 시장·환율·코스피에 미치는 영향](/posts/investingInfo/dxy-market-impact)  

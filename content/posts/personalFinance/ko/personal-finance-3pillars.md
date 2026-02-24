@@ -321,7 +321,7 @@ lang: "ko"
 
 ---
 
-## 14. 내부 링크 (blog-contents.md 기반)
+## 14. 함께 읽으면 좋은 글
 
 - [사회초년생을 위한 월급 관리 5단계 가이드](/posts/personalFinance/personal-start-5steps)  
 - [단리 vs 복리 — 초보 투자자가 반드시 알아야 할 최고의 금융 공식](/posts/personalFinance/simple-vs-compound)  

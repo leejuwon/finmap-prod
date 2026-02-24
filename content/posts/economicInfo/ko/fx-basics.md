@@ -216,7 +216,7 @@ lang: "ko"
 
 ---
 
-## 10. 내부 링크 (구조 기반 연결)
+## 10. 함께 읽으면 좋은 글
 
 - [CAGR이란 무엇인가? 단순 수익률과의 차이](/posts/personalFinance/what-is-cagr)
 - [연 7% 복리는 현실적인가? CAGR로 다시 보기](/posts/investingInfo/cagr-7percent-reality-check)

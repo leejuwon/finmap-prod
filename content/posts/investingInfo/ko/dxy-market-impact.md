@@ -181,7 +181,7 @@ TNX(미 10년물) 프레임이 약하면 DXY를 잘못 해석하는 경우가 �
 
 ![DXY 하단 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428425/blog/investingInfo/dxy-market-impact-bottom.png "DXY 이미지")
 
-## 더 깊게 보기(내부링크 허브)
+## 더 깊게 보기
 
 ### DXY/환율 기초
 - [DXY란 무엇인가? 달러 인덱스 초보자 설명](/posts/investingInfo/dxy-dollar-index-basics)

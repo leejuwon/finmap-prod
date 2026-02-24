@@ -112,7 +112,7 @@ Both U.S. tech stocks and KOSPI become more volatile.
 
 ![DXY Bottom Image](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428425/blog/investingInfo/dxy-market-impact-bottom.png "DXY Image")
 
-## Continue reading (Internal Links)
+## Continue reading (A good piece of writing to read together)
 
 ### DXY / FX foundations
 - [What Is DXY (Dollar Index)?](/en/posts/investingInfo/dxy-dollar-index-basics)

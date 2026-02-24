@@ -280,7 +280,7 @@ One shock channel that often re-ignites inflation + rates + USD together is oil:
 
 ---
 
-## 11) Internal links
+## 11) A good piece of writing to read together
 
 - [Understanding Interest Rates: Policy Rates, Market Rates, and How They Influence Deposits, Loans, and Bonds](/en/posts/economicInfo/interest-rate-basics)  
 - [Inflation and Interest Rates Explained: Why Rate Changes Shake Markets](/en/posts/economicInfo/inflation-rate-basics)  

@@ -217,6 +217,6 @@ Compound interest is not just a strategy — it is **the foundation of real fina
 
 ---
 
-## Internal Link
+## A good piece of writing to read together
 - Use the **FinMap Compound Interest Calculator** to estimate long-term growth:  
   **/tools/compound-interest**

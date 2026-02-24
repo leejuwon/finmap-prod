@@ -224,14 +224,14 @@ If you’re assuming investment returns inside your plan, keep the assumption re
 
 <ToolCta lang="en" type="cagr" />
 
-## Mid-read internal links (1–2): strengthen your rule system
+## Mid-read A good piece of writing to read together: strengthen your rule system
 
 These two pieces help you lock the “cashflow-first” mindset so the housing goal doesn’t break your overall wealth system.
 
 - <a href="/en/posts/personalFinance/personal-finance-3pillars">Build your money system around three pillars (cashflow, protection, growth)</a>  
 - <a href="/en/posts/personalFinance/emergency-fund-by-risk">Set an emergency fund by risk (not by vague “months”)</a>  
 
-## End-game internal links (2–4): make your plan faster and safer
+## End-game A good piece of writing to read together: make your plan faster and safer
 
 If you want the home plan to move from “idea” to “execution,” these make the next steps concrete:
 

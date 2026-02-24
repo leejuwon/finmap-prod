@@ -274,7 +274,7 @@ If you’re building a “one-page dashboard” mindset, these help connect the 
 
 ---
 
-## 13. Related FinMap posts (Internal Links)
+## 13. Related FinMap posts (A good piece of writing to read together)
 
 - [What Is DXY (Dollar Index)?](/en/posts/investingInfo/dxy-dollar-index-basics)  
 - [Global Market Forces That Influence the KOSPI](/en/posts/investingInfo/indicator-marketinfo)  

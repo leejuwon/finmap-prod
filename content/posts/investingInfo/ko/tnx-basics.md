@@ -299,7 +299,7 @@ TNX 상승이 신용스프레드 확대, 달러 강세, 변동성 상승과 동�
 
 ---
 
-## 12. 내부 링크
+## 12. 함께 읽으면 좋은 글
 
 - [물가와 금리의 기본 이해](/posts/economicInfo/inflation-rate-basics)  
 - [금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해](/posts/economicInfo/interest-rate-basics)  

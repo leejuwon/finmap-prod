@@ -212,7 +212,7 @@ FX awareness improves **risk context**, not speculation accuracy.
 
 ---
 
-## 9. Related FinMap Articles (Internal Links)
+## 9. Related FinMap Articles (A good piece of writing to read together)
 
 - [What Is CAGR and Why It Matters](/en/posts/personalFinance/what-is-cagr)  
 - [Inflation and Interest Rate Basics](/en/posts/economicInfo/inflation-rate-basics)  

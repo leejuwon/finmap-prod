@@ -116,7 +116,7 @@ This is not just budgeting. It’s what makes your withdrawal rate survivable wh
 Interpretation (2–3 lines):  
 Your annual spending estimate is a <strong>decision</strong>, not a discovery. The point is not perfect precision; it’s to build a plan that stays true even when costs shift across phases (especially healthcare and housing). If you can separate spending into a floor and a flex band, you gain a powerful lever for sequence-risk survival.
 
-Mid-post “connective tissue” (internal links, 1–2):  
+Mid-post “connective tissue” (A good piece of writing to read together):  
 If your cash flow foundation is shaky, FIRE math won’t fix it—these help you build the base system first.  
 - <a href="/en/posts/personalFinance/personal-finance-3pillars">Set the foundation first: budgeting + emergency fund + long-term investing (a checklist system)</a>  
 - <a href="/en/posts/personalFinance/emergency-fund-by-risk">Size your emergency fund by risk (job/family/debt), not a generic “3–6 months” rule</a>  
@@ -321,7 +321,7 @@ Once those numbers are written down, the plan becomes a rules-based system:
 
 You don’t need perfect forecasts. You need a plan that survives imperfect reality.
 
-## Continue reading to make the plan easier to execute (internal links, 2–4 near end)
+## Continue reading to make the plan easier to execute (A good piece of writing to read together)
 
 - <a href="/en/posts/personalFinance/high-rate-debt-vs-invest-threshold-rule">Debt vs investing without regret: a simple threshold rule you can actually follow</a>  
 - <a href="/en/posts/personalFinance/inflation-household-survival-strategy">Inflation-proof your cash flow: restructure fixed costs and protect spending power</a>  

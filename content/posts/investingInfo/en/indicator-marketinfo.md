@@ -206,7 +206,7 @@ FinMap collects all six indicators daily to support KOSPI and KOSPI200 ETF strat
 
 ---
 
-## 6. Continue reading (Internal Links)
+## 6. Continue reading (A good piece of writing to read together)
 
 ### FX & flows
 - [USD/KRW Exchange Rate: What It Means for Korea’s Economy and the KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)

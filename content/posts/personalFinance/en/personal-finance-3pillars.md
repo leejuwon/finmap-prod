@@ -337,7 +337,7 @@ Once the foundation is in place, long-term investing becomes calm—and compound
 
 ---
 
-## 12. Internal links (blog-contents.md based)
+## 12. A good piece of writing to read together
 
 - [Simple vs. Compound Interest — The Most Important Finance Principle for Beginners](/en/posts/personalFinance/simple-vs-compound)
 - [How Much Should You Invest Each Month to Reach $100,000?](/en/posts/personalFinance/how-much-per-month-for-100m)

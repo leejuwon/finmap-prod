@@ -3,7 +3,7 @@ slug: "inflation-rate-basics"
 title: "물가와 금리의 기본 이해: 왜 금리가 오르면 시장이 흔들릴까?"
 description: "물가와 금리의 관계를 구조적으로 이해하고, 금리 변화가 주식·ETF·환율에 어떤 영향을 주는지 초보자도 쉽게 정리한 가이드입니다."
 datePublished: "2025-11-12"
-dateModified: "2025-12-29"
+dateModified: "2026-02-24"
 category: "경제정보"
 postCategory: "economicInfo"
 tags: ["물가","금리","인플레이션","기준금리","통화정책","경제기초"]
@@ -82,6 +82,10 @@ lang: "ko"
 금리는 그래서 단기 자극책이 아니라  
 **경제 전반을 서서히 식히는 장치**에 가깝습니다.
 
+정책(기준금리) 뉴스가 내 대출·예금 체감과 다르게 느껴지는 이유는, 실제 가격을 만드는 **시장금리**가 별도로 움직이기 때문입니다.  
+- [“금리 인하”가 와도 안 오를 수 있다: 시장금리 vs 정책금리 분리해서 읽기](/posts/economicInfo/policy-rate-cut-market-rates)  
+- [금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해](/posts/economicInfo/interest-rate-basics)
+
 ---
 
 ## 3. 물가 상승 → 금리 인상 → 시장 반응의 연결 고리
@@ -125,6 +129,9 @@ lang: "ko"
   <strong>핵심 인사이트:</strong>  
   금리는 기업의 미래를 현재로 끌어오는 속도를 늦추는 역할을 합니다.
 </div>
+
+이때 “금리”를 조금 더 정교하게 보면, 시장이 흔들리는 핵심은 명목금리보다 **실질금리(Real rate)** 변화인 경우가 많습니다.  
+- [실질금리(Real Rate)와 기대인플레이션(Breakeven): 자산가격의 ‘진짜 온도계’](/posts/economicInfo/real-rates-and-breakevens)
 
 이 때문에 금리 환경에서는  
 - 가치주  
@@ -175,6 +182,13 @@ lang: "ko"
 - 금리 수준보다 ‘속도’와 ‘기대 변화’를 봐야 합니다.
 - 실질 금리와 유동성 조건까지 함께 고려해야 합니다.
 
+실전에서는 “장단기 금리차” 같은 수익률곡선 신호가 서로 다르게 보일 때가 있어, 해석 프레임을 하나 갖고 있는 편이 안전합니다.  
+- [수익률곡선(2-10, 3m-10y)은 왜 다르게 말하나: 침체 신호 해석법](/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
+
+또 지정학/전쟁 같은 이벤트는 ‘공포’보다 **달러 유동성** 경로로 시장금리·환율에 전이되는 경우가 많습니다.  
+- [전쟁이 달러 강세로 번역되는 순간: ‘안전자산’이 아니라 ‘달러 유동성’으로 읽기](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+ 
+
 ---
 
 ## 8. 체크리스트: 지금 어떤 환경인가
@@ -186,6 +200,9 @@ lang: "ko"
 - 환율 리스크는 관리되고 있는가?  
 - 장기 CAGR 가정은 현실적인가?
 
+환율/달러 국면을 함께 보면(특히 한국 투자자는) 같은 금리 뉴스도 체감이 달라지는 이유가 더 분명해집니다.  
+- [환율의 기초: 원/달러가 움직이는 진짜 이유](/posts/economicInfo/fx-basics)
+ 
 ---
 
 ## 9. FinMap 도구와 함께 활용하기
@@ -203,12 +220,19 @@ lang: "ko"
 
 ---
 
-## 10. 관련 글 더 읽기 (내부링크)
+## 10. 관련 글 더 읽기
 
 - [CAGR이란 무엇인가? 단순 수익률과의 차이](/posts/personalFinance/what-is-cagr)  
 - [미국 10년물 국채금리(TNX)가 시장에 미치는 영향](/posts/investingInfo/us10y-impact-on-korea-and-stock-market)  
 - [ETF 선택 시 CAGR을 반드시 확인해야 하는 이유](/posts/investingInfo/why-check-cagr-etf)  
 - [환율의 기초: 원/달러가 움직이는 진짜 이유](/posts/economicInfo/fx-basics)
+- [“금리 인하”가 와도 안 오를 수 있다: 시장금리 vs 정책금리 분리해서 읽기](/posts/economicInfo/policy-rate-cut-market-rates)
+- [금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해](/posts/economicInfo/interest-rate-basics)
+- [실질금리(Real Rate)와 기대인플레이션(Breakeven): 자산가격의 ‘진짜 온도계’](/posts/economicInfo/real-rates-and-breakevens)
+- [수익률곡선(2-10, 3m-10y)은 왜 다르게 말하나: 침체 신호 해석법](/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
+- [전쟁이 달러 강세로 번역되는 순간: ‘안전자산’이 아니라 ‘달러 유동성’으로 읽기](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+- [관세는 ‘물가’만의 문제가 아니다: 성장·마진·환율을 동시에 흔드는 패키지 충격](/posts/economicInfo/tariffs-growth-margins-fx-package-shock)
+- [유가 급등이 원/달러에 미치는 영향: 한국식 전파 경로(무역수지·물가·수급)로 읽기](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
 
 ---
 
@@ -232,7 +256,7 @@ lang: "ko"
   "headline": "물가와 금리의 기본 이해",
   "description": "물가와 금리의 관계를 구조적으로 이해하고 금융시장에 미치는 영향을 정리한 기초 가이드",
   "datePublished": "2025-11-12",
-  "dateModified": "2025-11-12",
+  "dateModified": "2026-02-24",
   "author": { "@type": "Person", "name": "FinMap" },
   "publisher": { "@type": "Organization", "name": "FinMap" }
 }

@@ -3,7 +3,7 @@ slug: "policy-rate-cut-market-rates"
 title: "A Rate Cut Doesn’t Guarantee Lower Borrowing Costs: How to Read Policy Rates vs Market Rates"
 description: "Central banks can cut policy rates and yet mortgage rates, bond yields, and even stock valuations may not move the way people expect. Learn the practical separation: policy rates (decisions) vs market rates (prices), the 4 drivers of market yields, and a checklist for Korea that links TNX, USD/KRW, spreads, and real borrowing costs."
 datePublished: "2026-01-12"
-dateModified: "2026-01-12"
+dateModified: "2026-02-24"
 category: "Economic Info"
 tags: ["rate cut","policy rate","market rates","bond yields","term premium","inflation expectations","credit spreads","mortgage rates","Korea","TNX"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1768210075/blog/tools/policy-rate-cut-cover.png"
@@ -39,7 +39,7 @@ lang: "en"
   "headline": "A Rate Cut Doesn’t Guarantee Lower Borrowing Costs: How to Read Policy Rates vs Market Rates",
   "description": "Central banks can cut policy rates and yet mortgage rates, bond yields, and even stock valuations may not move the way people expect. Learn the practical separation: policy rates (decisions) vs market rates (prices), the 4 drivers of market yields, and a checklist for Korea that links TNX, USD/KRW, spreads, and real borrowing costs.",
   "datePublished": "2026-01-12",
-  "dateModified": "2026-01-12",
+  "dateModified": "2026-02-24",
   "inLanguage": "en",
   "mainEntityOfPage": {
     "@type": "WebPage",
@@ -153,6 +153,10 @@ if markets already priced it, the announcement adds little new information.
   <strong>Practical rule:</strong> Don’t trade the headline—watch what the curve did in the weeks before the meeting.
 </div>
 
+If you’re trying to interpret “curve” headlines without mixing signals (e.g., 2s10s vs 3m10y), this guide helps you convert the headline into a rules-based reading:
+- [Why 2s10s and 3m10y Disagree: A Practical Recession-Signal Reading Guide](/en/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
+
+
 ---
 
 ## 4) The 4 drivers of market yields (the decomposition that explains surprises)
@@ -169,6 +173,10 @@ If inflation is expected to re-accelerate, investors demand higher yields to com
 
 To connect inflation to rates and why markets react, see:
 - [Inflation & Rates Basics: Why Markets Shake When Rates Rise](/en/posts/economicInfo/inflation-rate-basics)
+
+If you want to know whether yields are moving because of **real rates** or **inflation compensation**, start here:
+- [Real Rates & Breakeven Inflation: The Asset-Pricing Thermometer Most Investors Ignore](/en/posts/economicInfo/real-rates-and-breakevens)
+
 
 ### (3) Term premium (uncertainty compensation)
 Term premium is extra yield required for holding long-duration bonds amid uncertainty (volatility, fiscal risk, supply shocks).
@@ -220,7 +228,9 @@ Related internal posts:
 - [TNX Explained: Why the 10-Year Treasury Yield Drives Markets](/en/posts/investingInfo/tnx-basics)  
 - [USD/KRW Exchange Rate: What It Means for Korea’s Economy and the KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)  
 - For a broader map: [Global Indicators That Move KOSPI Most](/en/posts/investingInfo/indicator-marketinfo)
-
+- [How DXY Moves the Market: Impact on U.S. Stocks, USD/KRW, and KOSPI](/en/posts/investingInfo/dxy-market-impact)
+- [When Geopolitics Turns Into Dollar Strength: Read It as USD Liquidity, Not Just “Fear”](/en/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+ 
 ---
 
 ## 8) What households should check: your loan isn’t “the policy rate”
@@ -235,6 +245,9 @@ Even if the reference rate falls, spreads can stay wide.
 <div class="callout-tip">
   <strong>Household reality:</strong> Borrowing cost = benchmark + spread. Headlines describe the benchmark; your payment includes the spread.
 </div>
+
+If you’re turning a target amount into a monthly plan (and want realistic assumptions), this reverse-calculation guide is a practical companion:
+- [How Much Should You Invest Each Month to Reach $100,000?](/en/posts/personalFinance/how-much-per-month-for-100m)
 
 ---
 
@@ -285,7 +298,7 @@ Use this checklist in order:
 
 ---
 
-## 12) Conclusion (3 lines)
+## 12) Conclusion
 
 - A policy rate cut is a central bank decision—not a guarantee that market prices will follow.  
 - Market rates embed expectations, inflation risk, term premium, and credit/liquidity conditions.  
@@ -293,7 +306,7 @@ Use this checklist in order:
 
 ---
 
-## 13) Internal links used (4–6)
+## 13) A good piece of writing to read together
 
 - [How Interest Rates Work: From Policy Rates to Deposits, Loans, and Bonds](/en/posts/economicInfo/interest-rate-basics)  
 - [Inflation & Rates Basics: Why Markets Shake When Rates Rise](/en/posts/economicInfo/inflation-rate-basics)  
@@ -301,5 +314,11 @@ Use this checklist in order:
 - [TNX Explained: Why the 10-Year Treasury Yield Drives Markets](/en/posts/investingInfo/tnx-basics)  
 - [USD/KRW Exchange Rate: What It Means for Korea’s Economy and the KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)  
 - [Global Indicators That Move KOSPI Most](/en/posts/investingInfo/indicator-marketinfo)  
+- [Why 2s10s and 3m10y Disagree: A Practical Recession-Signal Reading Guide](/en/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
+- [Real Rates & Breakeven Inflation: The Asset-Pricing Thermometer Most Investors Ignore](/en/posts/economicInfo/real-rates-and-breakevens)
+- [How DXY Moves the Market: Impact on U.S. Stocks, USD/KRW, and KOSPI](/en/posts/investingInfo/dxy-market-impact)
+- [When Geopolitics Turns Into Dollar Strength: Read It as USD Liquidity, Not Just “Fear”](/en/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+- [How Much Should You Invest Each Month to Reach $100,000?](/en/posts/personalFinance/how-much-per-month-for-100m)
+ 
 
 ---

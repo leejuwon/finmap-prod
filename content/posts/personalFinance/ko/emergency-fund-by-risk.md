@@ -313,7 +313,7 @@ lang: "ko"
 
 ---
 
-## 11) 내부 링크 — 비상금은 ‘단독 전략’이 아니라 ‘가계 안전 시스템’의 일부다
+## 11) 함께 읽으면 좋은 글 — 비상금은 ‘단독 전략’이 아니라 ‘가계 안전 시스템’의 일부다
 
 - [가계 재무 3대장: 예산·비상금·장기투자를 먼저 세팅하라](/posts/personalFinance/personal-finance-3pillars)  
 - [물가 상승 시대의 가계 생존전략: 생활비/고정비 줄이기, 현금흐름 관리(가계부·예산·비상금)](/posts/personalFinance/inflation-household-survival-strategy)  

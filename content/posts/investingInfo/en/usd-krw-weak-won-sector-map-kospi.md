@@ -223,7 +223,7 @@ Volatility matters more than absolute levels, especially for foreign capital flo
 
 ---
 
-## Related FinMap Posts (Internal Links)
+## Related FinMap Posts (A good piece of writing to read together)
 
 - [How USD/KRW Shapes the KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)  
 - [Understanding Inflation and Interest Rates](/en/posts/economicInfo/inflation-rate-basics)  

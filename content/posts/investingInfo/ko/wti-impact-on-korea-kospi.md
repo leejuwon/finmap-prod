@@ -3,7 +3,7 @@ slug: "wti-impact-on-korea-kospi"
 title: "WTI 유가가 한국 경제·코스피에 미치는 영향: 물가·환율·금리·기업이익으로 이어지는 5단 연결"
 description: "WTI 유가는 한국처럼 원유 수입 비중이 큰 나라에서 물가와 환율, 금리, 기업 이익을 동시에 흔드는 핵심 변수입니다. 유가 변동이 코스피에 전이되는 5개 경로와 업종별 차별화 포인트를 구조적으로 정리합니다."
 datePublished: "2026-01-05"
-dateModified: "2026-01-05"
+dateModified: "2026-02-24"
 category: "투자정보"
 tags: ["WTI","유가","원유","코스피","한국경제","인플레이션","환율","금리","기업이익","업종별영향"]
 tool: ["goal","comp","cagr","fire","dca"]
@@ -40,7 +40,7 @@ lang: "ko"
   "headline": "WTI 유가가 한국 경제·코스피에 미치는 영향: 물가·환율·금리·기업이익으로 이어지는 5단 연결",
   "description": "WTI 유가는 한국처럼 원유 수입 비중이 큰 나라에서 물가와 환율, 금리, 기업 이익을 동시에 흔드는 핵심 변수입니다. 유가 변동이 코스피에 전이되는 5개 경로와 업종별 차별화 포인트를 구조적으로 정리합니다.",
   "datePublished": "2026-01-05",
-  "dateModified": "2026-01-05",
+  "dateModified": "2026-02-24",
   "inLanguage": "ko-KR",
   "mainEntityOfPage": {
     "@type": "WebPage",
@@ -206,6 +206,8 @@ lang: "ko"
 
 - 환율 기초 프레임: **[환율의 기초: 원/달러가 움직이는 진짜 이유](/posts/economicInfo/fx-basics)**  
 - 코스피 관점 연결: **[원달러 환율이 한국 경제와 코스피에 미치는 영향](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)**
+- 유가 급등이 원/달러로 전이되는 한국식 경로: **[유가 급등이 원/달러에 미치는 영향: 한국식 전파 경로(무역수지·물가·수급)로 읽기](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)**
+
 
 ---
 
@@ -230,6 +232,13 @@ lang: "ko"
 
 - **공급 충격형 상승**: 지정학, 공급 차질, 생산 제한 등으로 유가가 급등하는 경우  
   - 비용 급등 → 물가 상승 → 금리 부담 → 소비/기업 마진 압박이 동시 발생할 수 있어 체감이 커질 수 있습니다.
+
+공급 충격형에서 특히 자주 놓치는 포인트는, **실물 공급 차질이 “확정”되기 전에도**  
+‘보험료·운임·우회 비용’ 같은 **리스크 프리미엄**이 먼저 붙어 가격이 뛸 수 있다는 점입니다(뉴스 해석이 빨라짐).
+- **[중동 원유 수송 리스크 한 장으로 끝내기: 유가는 ‘봉쇄’보다 ‘보험료·운임 프리미엄’에 먼저 반응한다](/posts/economicInfo/hormuz-risk-oil-insurance-freight-premium)**
+- **[전쟁 뉴스가 유가를 움직이는 3단계: 공급·보험·운송이 만드는 ‘리스크 프리미엄’](/posts/economicInfo/war-risk-oil-supply-insurance-shipping)**
+- **[전쟁 테마의 함정: ‘수혜주’가 아니라 ‘가격 사슬(원가·운임·환율)’로 읽어야 한다](/posts/economicInfo/war-theme-investing-price-chain-not-winners)**
+
 
 이 “성격 판단”에 도움이 되는 것이 글로벌 지표 묶음(미국 지수·금리·환율·유가 등)입니다.  
 - **[코스피에 가장 큰 영향을 끼치는 글로벌 시장 환경 총정리](/posts/investingInfo/indicator-marketinfo)**
@@ -355,7 +364,7 @@ lang: "ko"
 
 ---
 
-## 16) 내부 링크(4~6개)
+## 16) 함께 읽으면 좋은 글
 
 - [물가와 금리의 기본 이해: 왜 금리가 오르면 시장이 흔들릴까?](/posts/economicInfo/inflation-rate-basics)  
 - [금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해](/posts/economicInfo/interest-rate-basics)  
@@ -363,6 +372,10 @@ lang: "ko"
 - [원달러 환율이 한국 경제와 코스피에 미치는 영향](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)  
 - [DXY가 변화하면 시장은 어떻게 움직일까? 미국 증시·환율·코스피까지](/posts/investingInfo/dxy-market-impact)  
 - [코스피에 가장 큰 영향을 끼치는 글로벌 시장 환경 총정리](/posts/investingInfo/indicator-marketinfo)
+- [유가 급등이 원/달러에 미치는 영향: 한국식 전파 경로(무역수지·물가·수급)로 읽기](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
+- [중동 원유 수송 리스크 한 장으로 끝내기: 유가는 ‘봉쇄’보다 ‘보험료·운임 프리미엄’에 먼저 반응한다](/posts/economicInfo/hormuz-risk-oil-insurance-freight-premium)
+- [전쟁 뉴스가 유가를 움직이는 3단계: 공급·보험·운송이 만드는 ‘리스크 프리미엄’](/posts/economicInfo/war-risk-oil-supply-insurance-shipping)
+- [전쟁 테마의 함정: ‘수혜주’가 아니라 ‘가격 사슬(원가·운임·환율)’로 읽어야 한다](/posts/economicInfo/war-theme-investing-price-chain-not-winners)
 
 ---
 

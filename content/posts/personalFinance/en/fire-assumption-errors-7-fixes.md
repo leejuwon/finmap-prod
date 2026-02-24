@@ -237,7 +237,7 @@ Then run the sensitivity mission: change <strong>returns (-1% / -2%)</strong>, <
 - If inflation changes dominate: your plan is purchasing-power-sensitive → core costs need stronger protection.
 - If savings changes dominate: your plan is behavior/cash-flow-sensitive → contribution automation and flexibility matter more than tiny return tweaks.
 
-Mid-post internal links (concept connection, not just “more reading”):
+A good piece of writing to read together (concept connection, not just “more reading”):
 - <a href="/en/posts/personalFinance/what-is-cagr">CAGR explained (so your return assumption is reality-based)</a>
 - <a href="/en/posts/investingInfo/cagr-7percent-reality-check">What “7% annual return” really means (why averages can mislead)</a>
 
@@ -300,7 +300,7 @@ If you do this, your FIRE model stops being a motivational poster and becomes a 
 
 ## Related reads that make your FIRE model more realistic
 
-End-of-post internal links (next puzzle pieces):
+A good piece of writing to read together (next puzzle pieces):
 - <a href="/en/posts/personalFinance/personal-finance-3pillars">Build the foundation first: budgeting, emergency funds, and long-term investing</a>
 - <a href="/en/posts/personalFinance/emergency-fund-by-risk">Emergency fund sizing by risk (not generic “months”)</a>
 - <a href="/en/posts/personalFinance/high-rate-debt-vs-invest-threshold-rule">Debt vs investing: a rules-based threshold approach (reduces modeling anxiety)</a>

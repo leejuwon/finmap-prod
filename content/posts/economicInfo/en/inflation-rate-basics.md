@@ -213,7 +213,7 @@ Understanding the cycle helps investors stay disciplined.
 
 ---
 
-## 10. Related Reading (Internal Links)
+## 10. Related Reading (A good piece of writing to read together)
 
 - [What Is CAGR? Understanding Long-Term Returns](/en/posts/personalFinance/what-is-cagr)  
 - [How U.S. 10-Year Treasury Yields Impact Global Markets](/en/posts/investingInfo/us10y-impact-on-korea-and-stock-market)  

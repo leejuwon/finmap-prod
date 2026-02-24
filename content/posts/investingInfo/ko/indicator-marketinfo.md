@@ -217,7 +217,7 @@ KOSPI 및 KOSPI200 추종 ETF 투자에 필요한 기초 데이터를 제공합�
 
 ---
 
-## 5. 더 깊게 보기(내부링크 허브)
+## 5. 더 깊게 보기(함께 읽으면 좋은 글)
 
 ### 환율/수급
 - [원달러 환율이 한국 경제와 코스피에 미치는 영향](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)

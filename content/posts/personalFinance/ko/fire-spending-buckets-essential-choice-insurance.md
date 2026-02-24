@@ -219,7 +219,7 @@ lang: "ko"
 - 의료·주거 수리처럼 “어차피 올 비용”은 보험 버킷에서 처리하고, 선택 버킷을 빚처럼 당겨쓰지 않는다.  
 - 금리 상승으로 이자가 늘면, “그 증가분”을 보험 버킷의 리스크 비용으로 기록해두고, 안전마진 재계산을 한다.
 
-중간 내부 링크(개념 연결):
+중간 함께 읽으면 좋은 글(개념 연결):
 - <a href="/posts/personalFinance/personal-finance-3pillars">투자보다 먼저 해야 할 ‘예산·비상금·장기투자’ 3대장 세팅</a>  
 - <a href="/posts/personalFinance/inflation-household-survival-strategy">물가가 체감될수록 고정비를 줄여 현금흐름을 지키는 방법</a>
 

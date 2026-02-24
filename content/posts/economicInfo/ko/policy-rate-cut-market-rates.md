@@ -3,7 +3,7 @@ slug: "policy-rate-cut-market-rates"
 title: "“금리 인하”가 와도 안 오를 수 있다: 시장금리 vs 정책금리 분리해서 읽기"
 description: "기준금리를 내린다는데 왜 대출금리·예금금리는 체감이 없을까? 정책금리(기준금리)와 시장금리(국채·은행채·대출금리)를 분리해 읽는 법, 시장금리를 움직이는 4요소(기대·인플레·기간프리미엄·스프레드), 한국 투자·가계에 적용하는 실전 체크리스트까지 정리합니다."
 datePublished: "2026-01-12"
-dateModified: "2026-01-12"
+dateModified: "2026-02-24"
 category: "경제정보"
 tags: ["금리인하","기준금리","정책금리","시장금리","국채금리","기간프리미엄","인플레이션기대","스프레드","대출금리","예금금리"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1768210075/blog/tools/policy-rate-cut-cover.png"
@@ -36,8 +36,8 @@ lang: "ko"
   "headline": "“금리 인하”가 와도 안 오를 수 있다: 시장금리 vs 정책금리 분리해서 읽기",
   "description": "기준금리를 내린다는데 왜 대출금리·예금금리는 체감이 없을까? 정책금리(기준금리)와 시장금리(국채·은행채·대출금리)를 분리해 읽는 법, 시장금리를 움직이는 4요소(기대·인플레·기간프리미엄·스프레드), 한국 투자·가계에 적용하는 실전 체크리스트까지 정리합니다.",
   "datePublished": "2026-01-12",
-  "dateModified": "2026-01-12",
-  "inLanguage": "ko-KR",
+  "dateModified": "2026-02-24",
+  "inLanguage": "ko",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://www.finmaphub.com/posts/economicInfo/policy-rate-cut-market-rates"
@@ -170,11 +170,17 @@ lang: "ko"
 인플레가 다시 오를 것 같으면 장기금리는 오히려 버팁니다.  
 물가-금리의 구조는 아래 글에서 더 깊게 다룹니다.  
 - [물가와 금리의 기본 이해: 왜 금리가 오르면 시장이 흔들릴까?](/posts/economicInfo/inflation-rate-basics)
+- [물가와 금리의 기본 이해: 장기 투자자가 반드시 알아야 할 핵심 구조](/posts/economicInfo/inflation-basics)
+- [실질금리(Real Rate)와 기대인플레이션(Breakeven): 자산가격의 ‘진짜 온도계’](/posts/economicInfo/real-rates-and-breakevens)
+ 
 
 ### (3) 기간프리미엄(Term premium)
 “장기채를 들고 있는 위험(불확실성)”에 대한 보상입니다.  
 불확실성이 커지면(재정, 정치, 공급충격) 장기금리에 프리미엄이 붙을 수 있습니다.
 
+이때 “기대(정책 경로)”와 “프리미엄(불확실성)”이 섞여 수익률곡선이 어떻게 변하는지까지 보면, 뉴스 해석이 더 안정적입니다.  
+- [수익률곡선(2-10, 3m-10y)은 왜 다르게 말하나: 침체 신호 해석법](/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
+ 
 ### (4) 스프레드(신용/유동성/은행 마진)
 정책금리가 내려도 회사채 스프레드가 벌어지거나(신용불안), 은행이 가산금리를 올리면(위험 회피) **대출금리는 안 내려갑니다**.
 
@@ -200,6 +206,9 @@ lang: "ko"
 | 인하 | 금융불안/신용경색 완화 목적 | 국채금리 ↓ 가능 but 스프레드 ↑ | 위험회피로 변동성 ↑ |
 | 인하 | 이미 예상된 이벤트(선반영) | 반응 미미(“뉴스는 가격”) | 이벤트 효과 제한적 |
 | 인하 | 해외금리(TNX) 상승 동반 | 국내 장기금리 하락 제한 | 환율/외국인 수급 변수 커짐 |
+
+특히 관세 같은 이슈는 ‘물가 한 줄’로 끝나지 않고, 성장·마진·환율을 동시에 건드려 시장금리(기간프리미엄/스프레드)의 반응을 더 복잡하게 만들 수 있습니다.  
+- [관세는 ‘물가’만의 문제가 아니다: 성장·마진·환율을 동시에 흔드는 패키지 충격](/posts/economicInfo/tariffs-growth-margins-fx-package-shock)
 
 ---
 
@@ -239,6 +248,9 @@ lang: "ko"
 이 연결고리는 아래 글들이 확장 설명을 제공합니다.  
 - [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)  
 - [원달러 환율이 한국 경제와 코스피에 미치는 영향: 외국인 수급·수출·물가·금리로 읽는 법](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)  
+- (환율 프레임부터 정리) [환율의 기초: 원/달러가 움직이는 진짜 이유](/posts/economicInfo/fx-basics)  
+- (지정학 리스크 때 달러가 강해지는 ‘유동성’ 경로) [전쟁이 달러 강세로 번역되는 순간: ‘안전자산’이 아니라 ‘달러 유동성’으로 읽기](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)  
+- (유가 충격이 원/달러로 전이되는 한국식 경로) [유가 급등이 원/달러에 미치는 영향: 한국식 전파 경로(무역수지·물가·수급)로 읽기](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)   
 - (큰 그림이 필요하면) [코스피에 가장 큰 영향을 끼치는 글로벌 시장 환경 총정리](/posts/investingInfo/indicator-marketinfo)
 
 ---
@@ -313,11 +325,17 @@ ETF/주식이 금리에 민감하게 흔들리는 구조가 궁금하면 아래 
 
 ---
 
-## 14) 내부 링크(4\~6개)
+## 14) 함께 읽으면 좋은 글
 
 - [금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해](/posts/economicInfo/interest-rate-basics)  
+- [물가와 금리의 기본 이해: 장기 투자자가 반드시 알아야 할 핵심 구조](/posts/economicInfo/inflation-basics)   
 - [물가와 금리의 기본 이해: 왜 금리가 오르면 시장이 흔들릴까?](/posts/economicInfo/inflation-rate-basics)  
 - [환율의 기초: 원/달러가 움직이는 진짜 이유](/posts/economicInfo/fx-basics)  
+- [실질금리(Real Rate)와 기대인플레이션(Breakeven): 자산가격의 ‘진짜 온도계’](/posts/economicInfo/real-rates-and-breakevens)  
+- [수익률곡선(2-10, 3m-10y)은 왜 다르게 말하나: 침체 신호 해석법](/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)  
+- [전쟁이 달러 강세로 번역되는 순간: ‘안전자산’이 아니라 ‘달러 유동성’으로 읽기](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)  
+- [관세는 ‘물가’만의 문제가 아니다: 성장·마진·환율을 동시에 흔드는 패키지 충격](/posts/economicInfo/tariffs-growth-margins-fx-package-shock)  
+- [유가 급등이 원/달러에 미치는 영향: 한국식 전파 경로(무역수지·물가·수급)로 읽기](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)  
 - [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)  
 - [원달러 환율이 한국 경제와 코스피에 미치는 영향: 외국인 수급·수출·물가·금리로 읽는 법](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)  
 - [미국 10년물 금리(TNX)는 왜 ETF를 뒤흔드는가? 성장·가치·신흥국 ETF까지 모두 설명하는 금리 로직](/posts/investingInfo/etf-impact-of-tnx)  

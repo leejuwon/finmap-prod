@@ -402,7 +402,7 @@ If you want to sanity-check long-run assumptions (instead of relying on a single
 
 ---
 
-## 16) Internal links used (4–6)
+## 16) A good piece of writing to read together
 
 - [Inflation and rates basics: why markets react to price pressure](/en/posts/economicInfo/inflation-rate-basics)  
 - [How interest rates work: from policy rates to deposits, loans, and bonds](/en/posts/economicInfo/interest-rate-basics)  

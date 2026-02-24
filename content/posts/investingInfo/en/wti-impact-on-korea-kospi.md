@@ -3,7 +3,7 @@ slug: "wti-impact-on-korea-kospi"
 title: "How WTI Oil Shapes Korea’s Economy and KOSPI: Inflation, FX, Rates, and Earnings in One Chain"
 description: "WTI is not just an energy price. For an oil-importing economy like Korea, it feeds into inflation, USD/KRW, interest rates, corporate margins, and foreign flows—often changing how the KOSPI behaves."
 datePublished: "2026-01-05"
-dateModified: "2026-01-05"
+dateModified: "2026-02-24"
 category: "Investing info"
 tags: ["WTI","oil price","KOSPI","Korea economy","inflation","USD/KRW","interest rates","DXY","corporate margins","foreign flows"]
 tool: ["goal","comp","cagr","fire","dca"]
@@ -40,7 +40,7 @@ lang: "en"
   "headline": "How WTI Oil Shapes Korea’s Economy and KOSPI: Inflation, FX, Rates, and Earnings in One Chain",
   "description": "WTI is not just an energy price. For an oil-importing economy like Korea, it feeds into inflation, USD/KRW, interest rates, corporate margins, and foreign flows—often changing how the KOSPI behaves.",
   "datePublished": "2026-01-05",
-  "dateModified": "2026-01-05",
+  "dateModified": "2026-02-24",
   "inLanguage": "en",
   "mainEntityOfPage": {
     "@type": "WebPage",
@@ -123,6 +123,9 @@ Because the oil price is typically quoted in USD, Korea also faces a *currency o
 If you prefer to keep a broader dashboard of global drivers for the KOSPI, this internal post provides a structured map:  
 - **[Global market environment that most affects KOSPI (overview)](/en/posts/investingInfo/indicator-marketinfo)**
 
+For a full “U.S. → Korea” transmission checklist (rates + FX + foreign flows), this post connects the dots:
+- 🔗 **[S&P 500 → Korea: The FX–Rates–Foreign Flow Chain](/en/posts/investingInfo/sp500-impact-on-korea-kospi)**
+ 
 ---
 
 ## 2) Hero Layout: the 5-step transmission chain (WTI → KOSPI)
@@ -186,6 +189,8 @@ This matters because equity markets are forward-looking: if oil forces inflation
 If you want a simple inflation-and-rates lens you can reuse across topics, these internal posts help:  
 - **[Inflation and rates basics: why markets react to price pressure](/en/posts/economicInfo/inflation-rate-basics)**  
 - **[How interest rates work: from policy rates to loans and bonds](/en/posts/economicInfo/interest-rate-basics)**
+- **[TNX explained: why the U.S. 10-year yield drives markets](/en/posts/investingInfo/tnx-basics)**
+
 
 ---
 
@@ -226,7 +231,8 @@ DXY can help you distinguish “KRW-specific FX” from “broad USD strength.�
 If DXY is rising, the market is often pricing tighter global conditions, which can be more challenging for EM assets.
 
 - **[DXY and market impact (stocks, FX, KOSPI)](/en/posts/investingInfo/dxy-market-impact)**
-
+- **[How the S&P 500 affects Korea and KOSPI](/en/posts/investingInfo/sp500-impact-on-korea-kospi)**
+ 
 ---
 
 ## 8) Table 1 — The transmission map (WTI → Korea → KOSPI)
@@ -313,7 +319,8 @@ If DXY is rising, the market is often pricing tighter global conditions, which c
 ---
 
 ## 13) Checklist (10 items): is oil the driver, or just background noise?
-
+If you want a one-screen macro view that combines WTI, USD/KRW, DXY, and U.S. rates, start with **[Market Indicators That Move Korea: A One-Screen Macro Dashboard](/en/posts/investingInfo/indicator-marketinfo)**.
+ 
 - [ ] Is the move demand-led (growth) or supply-led (disruption)?  
 - [ ] Is WTI rising gradually or spiking (speed shock)?  
 - [ ] Is USD/KRW moving up sharply at the same time?  
@@ -348,13 +355,15 @@ If DXY is rising, the market is often pricing tighter global conditions, which c
 
 ---
 
-## 16) Internal links used (4–6)
+## 16) A good piece of writing to read together
 
 - [Inflation and rates basics: why markets react to price pressure](/en/posts/economicInfo/inflation-rate-basics)  
 - [How interest rates work: from policy rates to loans and bonds](/en/posts/economicInfo/interest-rate-basics)  
+- [TNX explained: why the U.S. 10-year yield drives markets](/en/posts/investingInfo/tnx-basics)
 - [FX basics: what really moves USD/KRW](/en/posts/economicInfo/fx-basics)  
 - [How USD/KRW influences Korea and KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)  
-- [DXY and market impact (stocks, FX, KOSPI)](/en/posts/investingInfo/dxy-market-impact)  
+- [DXY and market impact (stocks, FX, KOSPI)](/en/posts/investingInfo/dxy-market-impact) 
+- [How the S&P 500 affects Korea and KOSPI](/en/posts/investingInfo/sp500-impact-on-korea-kospi)  
 - [Global market environment that most affects KOSPI (overview)](/en/posts/investingInfo/indicator-marketinfo)
 
 ---

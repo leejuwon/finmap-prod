@@ -210,7 +210,7 @@ lang: "ko"
 
 ---
 
-## 관련 글 (내부링크)
+## 함께 읽으면 좋은 글
 
 - [원달러 환율이 한국 경제와 코스피에 미치는 영향](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)  
 - [물가와 금리의 기본 이해](/posts/economicInfo/inflation-rate-basics)  

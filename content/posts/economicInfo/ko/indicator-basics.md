@@ -252,7 +252,7 @@ PMI는 **방향성 지표**입니다.
 
 ---
 
-## 13. 내부 링크 (blog-contents.md 기반 적용)
+## 13. 함께 읽으면 좋은 글
 
 - [물가와 금리의 기본 이해](/posts/economicInfo/inflation-rate-basics)
 - [연 7% 복리의 현실적 의미](/posts/investingInfo/cagr-7percent-reality-check)
@@ -261,7 +261,7 @@ PMI는 **방향성 지표**입니다.
 
 ---
 
-## 14. 결론 (3줄)
+## 14. 결론
 
 - 경제지표는 단독으로 보면 항상 혼란스럽습니다.  
 - 순서와 역할을 이해하면 시장 흐름이 보입니다.  

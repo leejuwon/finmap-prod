@@ -229,7 +229,7 @@ lang: "ko"
 <strong>1주:</strong> 전세/매매/월세 중 1순위 선택지를 정하고, 그 선택지를 깨는 트리거가 오면 “대안 선택지”로 이동하는 룰(플랜B)을 만듭니다.  
 예: “거래량이 급감하고 이사 시점이 다가오면 매매 대신 전세로 이동.”
 
-## 이어서 읽으면 결정이 더 쉬워지는 글(내부 링크)
+## 이어서 읽으면 결정이 더 쉬워지는 글
 
 - [비상금을 ‘개월’이 아니라 리스크로 정하는 기준표](/posts/personalFinance/emergency-fund-by-risk)  
 - [물가 상승기에 고정비·생활비를 버티게 만드는 생존전략](/posts/personalFinance/inflation-household-survival-strategy)  

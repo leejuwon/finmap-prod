@@ -357,7 +357,7 @@ This is why a CAGR-based review (with drawdown awareness) is often a better comp
 
 ---
 
-## 13) Internal links used (4–6)
+## 13) A good piece of writing to read together
 
 - [Why “7% per year” needs a reality check (CAGR lens)](/en/posts/investingInfo/cagr-7percent-reality-check)  
 - [Diagnose your investing skill with CAGR (with drawdown & volatility)](/en/posts/investingInfo/diagnose-investing-skill-with-cagr)  

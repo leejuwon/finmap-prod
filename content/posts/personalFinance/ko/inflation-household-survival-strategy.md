@@ -389,7 +389,7 @@ tools: ["goal","compound","fire"]
 
 ---
 
-## 16) 내부 링크 (4~6개)
+## 16) 함께 읽으면 좋은 글
 
 - [물가와 금리의 기본 이해: 왜 금리가 오르면 시장이 흔들릴까?](/posts/economicInfo/inflation-rate-basics)  
 - [금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해](/posts/economicInfo/interest-rate-basics)  

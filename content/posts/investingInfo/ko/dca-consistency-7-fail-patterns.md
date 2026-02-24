@@ -349,7 +349,7 @@ DCA의 목표는 ‘최고 수익률’이 아니라, **실수 확률을 낮춘 
 
 ---
 
-## 13) 내부 링크 (4\~6개)
+## 13) 함께 읽으면 좋은 글
 
 - [‘연 7% 복리’는 실제로 무엇을 의미할까? CAGR로 현실 체크하기](/posts/investingInfo/cagr-7percent-reality-check)  
 - [CAGR로 투자 실력 진단하기: MDD·변동성·샤프비율과 함께 보는 현실적인 평가법](/posts/investingInfo/diagnose-investing-skill-with-cagr)  

@@ -266,7 +266,7 @@ Use this checklist when KOSPI moves feel “bigger than the news.”
 
 ---
 
-## 15) Internal links used
+## 15) A good piece of writing to read together
 
 - [Global market environment that most affects KOSPI (overview)](/en/posts/investingInfo/indicator-marketinfo)  
 - [How USD/KRW influences Korea and KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)  
