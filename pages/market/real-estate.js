@@ -1,5 +1,5 @@
 // pages/market/real-estate.js
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import ToolSeo from "../../_components/ToolSeo";
@@ -116,6 +116,9 @@ const TEXT = {
     sort: '정렬',
     top: 'Top',
     pyeong: '평형',
+    aptName: '아파트명',
+    aptNamePh: '예: 삼성',
+    aptNameHelp: '입력한 문자열을 포함한 단지만 조회합니다.',
     buildYear: '년식',
     regDate: '등기일',
     all: '전체',
@@ -189,6 +192,9 @@ const TEXT = {
     sort: 'Sort',
     top: 'Top',
     pyeong: 'Size',
+    aptName: 'Apartment name',
+    aptNamePh: 'e.g., Samsung',
+    aptNameHelp: 'Filters complexes that contain the text.',
     buildYear: 'Build Year',
     regDate: 'Reg. date',
     all: 'All',
@@ -273,11 +279,15 @@ export default function RealEstatePage() {
   const [priceMin, setPriceMin] = useState(''); // e.g. "3.5" => 3.5억
   const [priceMax, setPriceMax] = useState('');
 
+  const [aptName, setAptName] = useState('');          // ✅ 아파트명 검색(입력)
+  const [aptNameDeb, setAptNameDeb] = useState('');    // ✅ 디바운스된 값(API에 전달)
+
   const [topBy, setTopBy] = useState('avg_price');
   const [sort, setSort] = useState('desc');
   const [top, setTop] = useState('100');
 
-  const [pyeong, setPyeong] = useState('all');
+  // ✅ 평형 기본값: 10평대 (초기 조회에도 반드시 반영되도록)
+  const [pyeong, setPyeong] = useState('10');
   const [buildFrom, setBuildFrom] = useState('all');
   const [buildTo, setBuildTo] = useState('all');
 
@@ -293,6 +303,9 @@ export default function RealEstatePage() {
   // ✅ "초기 진입/페이지 전환"에서만 오버레이를 띄우기 위한 상태
   const firstTopFetchedRef = useRef(false);
   const [routeLoading, setRouteLoading] = useState(false);
+
+  const reqSeqRef = useRef(0);
+  const abortRef = useRef(null);  
 
   useEffect(() => {
     if (!router?.events) return;
@@ -312,6 +325,12 @@ export default function RealEstatePage() {
       router.events.off('routeChangeError', onDone);
     };
   }, [router]);
+
+  useEffect(() => {
+    return () => {
+      try { abortRef.current?.abort?.(); } catch {}
+    };
+  }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -336,6 +355,14 @@ export default function RealEstatePage() {
   // 이 페이지에서는 title/desc만 준비해서 ToolSeo에 넘깁니다.
   const seoTitle = t.title;
   const seoDesc = t.seoDesc;    
+
+  // ✅ aptName 디바운스(타이핑마다 과도한 API 호출 방지)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAptNameDeb(String(aptName || '').trim());
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [aptName]);
 
   // timeframe 변경 시 periodFrom/To 자동 보정
   useEffect(() => {
@@ -438,9 +465,13 @@ export default function RealEstatePage() {
 
   async function fetchTop() {
     if (!periodFrom || !periodTo) return;
+    const seq = ++reqSeqRef.current;
+    try { abortRef.current?.abort?.(); } catch {}
+    const controller = new AbortController();
+    abortRef.current = controller;
+
     let from = String(periodFrom);
     let to = String(periodTo);
-    // 문자열 비교로도 YYYYMM/YYY Y 안전
     if (from > to) { const tmp = from; from = to; to = tmp; }
     const isRange = from !== to;
 
@@ -457,6 +488,7 @@ export default function RealEstatePage() {
     }
 
     setLoading(true);
+    setRows([]); // ✅ 카드 잔상/덧붙임 방지
     try {
       const qs = new URLSearchParams({
         timeframe,
@@ -483,13 +515,28 @@ export default function RealEstatePage() {
         if (String(priceMin || '').trim()) qs.set('priceMin', String(priceMin).trim());
         if (String(priceMax || '').trim()) qs.set('priceMax', String(priceMax).trim());
       }
+      // ✅ 아파트명 검색(앞뒤 like)
+      if (aptNameDeb) qs.set('apt', aptNameDeb);
 
-      const r = await fetch(`/api/re/trade-top?${qs.toString()}`);
+      const url = `/api/re/trade-top?${qs.toString()}`;
+      const r = await fetch(url, {
+        signal: controller.signal,
+        cache: 'no-store',
+      });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
       const j = await r.json();
-      if (j.ok) setRows(j.rows || []);
+
+      // ✅ 최신 요청만 반영
+      if (seq !== reqSeqRef.current) return;
+
+      if (j?.ok && Array.isArray(j.rows)) setRows(j.rows);
       else setRows([]);
+    } catch (e) {
+      if (e?.name === 'AbortError') return;
+      if (seq !== reqSeqRef.current) return;
+      setRows([]);
     } finally {
-      setLoading(false);
+      if (seq === reqSeqRef.current) setLoading(false);
       // ✅ 최초 1회 fetchTop 완료(성공/실패 무관) 표시
       if (!firstTopFetchedRef.current) firstTopFetchedRef.current = true;
     }
@@ -499,7 +546,7 @@ export default function RealEstatePage() {
     if (!opt || !periodFrom || !periodTo) return;
     fetchTop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [opt, timeframe, periodFrom, periodTo, sido, area, topBy, sort, top, pyeong, buildFrom, buildTo, priceMetric, priceMin, priceMax]);
+  }, [opt, timeframe, periodFrom, periodTo, sido, area, topBy, sort, top, pyeong, buildFrom, buildTo, priceMetric, priceMin, priceMax, aptNameDeb]);
 
   function renderArea(row) {
     if (row.sido_name !== '경기도') return row.sigungu_name || '-';
@@ -985,6 +1032,8 @@ export default function RealEstatePage() {
             <div className="md:col-span-1">
               <div className="text-sm text-slate-500 mb-1">{t.pyeong}</div>
               <select className="w-full border rounded-lg px-2 py-2 text-sm" value={pyeong} onChange={(e) => setPyeong(e.target.value)}>                
+                {/* ✅ all 옵션이 없으면 UI는 10처럼 보여도 state는 all로 남아 최초 조회가 틀어질 수 있음 */}
+                <option value="all">{t.all}</option>
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="30">30</option>
@@ -999,8 +1048,26 @@ export default function RealEstatePage() {
                   className="w-full border rounded-lg px-2 py-2 text-sm"
                   value={buildFrom}
                   onChange={(e) => {
-                    setBuildFrom(e.target.value);
-                    if (buildTo === 'all') setBuildTo(e.target.value);
+                    const v = e.target.value; // 'all' or year
+                    setBuildFrom(v);
+
+                    setBuildTo((prevTo) => {
+                      const toVal = String(prevTo || 'all');
+
+                      // ✅ to가 전체면 그대로 둔다
+                      if (toVal === 'all') return toVal;
+
+                      // from이 전체면 to 그대로
+                      if (v === 'all') return toVal;
+
+                      const nFrom = Number(v);
+                      const nTo = Number(toVal);
+                      if (Number.isFinite(nFrom) && Number.isFinite(nTo) && nTo < nFrom) {
+                        // ✅ from이 to보다 커지면 to를 from으로 끌어올림
+                        return v;
+                      }
+                      return toVal;
+                    });
                   }}
                 >
                   <option value="all">{t.all}</option>
@@ -1009,7 +1076,27 @@ export default function RealEstatePage() {
                   ))}
                 </select>
 
-                <select className="w-full border rounded-lg px-2 py-2 text-sm" value={buildTo} onChange={(e) => setBuildTo(e.target.value)}>                 
+                <select
+                  className="w-full border rounded-lg px-2 py-2 text-sm"
+                  value={buildTo}
+                  onChange={(e) => {
+                    const v = e.target.value; // 'all' or year
+                    setBuildTo(v);
+
+                    // ✅ (권장) to를 낮춰서 from보다 작아지면 from을 to로 맞춤
+                    setBuildFrom((prevFrom) => {
+                      const fromVal = String(prevFrom || 'all');
+                      if (v === 'all') return fromVal;
+                      if (fromVal === 'all') return fromVal;
+                      const nFrom = Number(fromVal);
+                      const nTo = Number(v);
+                      if (Number.isFinite(nFrom) && Number.isFinite(nTo) && nFrom > nTo) {
+                        return v;
+                      }
+                      return fromVal;
+                    });
+                  }}
+                >
                   <option value="all">{t.all}</option>
                   {buildYearOptions.map((y) => (
                     <option key={`bt-${y}`} value={y}>{y}</option>
@@ -1067,6 +1154,20 @@ export default function RealEstatePage() {
             </div>
           </div>
 
+          {/* ✅ 아파트명 검색 */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-3 mt-3">
+            <div className="md:col-span-4">
+              <div className="text-sm text-slate-500 mb-1">{t.aptName}</div>
+              <input
+                className="w-full border rounded-lg px-3 py-2"
+                value={aptName}
+                onChange={(e) => setAptName(e.target.value)}
+                placeholder={t.aptNamePh}
+              />
+              <div className="text-[11px] text-slate-400 mt-1">{t.aptNameHelp}</div>
+            </div>
+          </div>
+
           <div className="mt-2 text-sm text-slate-500">{t.tip}</div> 
 
           <div className="mt-6">
@@ -1109,30 +1210,22 @@ export default function RealEstatePage() {
                 </div>
               )}
 
-              {rows?.flatMap((r, idx) => {
-                const out = [
-                  <ResultCard
-                    key={r.apt_key || `${r.lawd_cd}-${r.apt_name}-${idx}`}
-                    r={r}
-                    idx={idx}
-                  />
-                ];
-
+              {rows.map((r, idx) => {
                 const interval = 6; // 6개마다 1개 광고
                 const shouldInsert = (idx + 1) % interval === 0 && (idx + 1) < rows.length;
 
-                if (shouldInsert) {
-                  out.push(
-                    <AdSenseUnit
-                      key={`ad-infeed-${idx}`}
-                      slot={INFEED_SLOT}
-                      className="md:col-span-2 lg:col-span-3" // grid 전체 폭 차지
-                      adTest={false} // 테스트 시 true
-                    />
-                  );
-                }
-
-                return out;
+                return (
+                  <Fragment key={r.apt_key || `${r.lawd_cd}-${r.apt_name}-${idx}`}>
+                    <ResultCard r={r} idx={idx} />
+                    {shouldInsert && (
+                      <AdSenseUnit
+                        slot={INFEED_SLOT}
+                        className="md:col-span-2 lg:col-span-3" // grid 전체 폭 차지
+                        adTest={false} // 테스트 시 true
+                      />
+                    )}
+                  </Fragment>
+                );
               })}
 
             </div>            

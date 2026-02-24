@@ -44,6 +44,15 @@ function toIntOrNull(v) {
   const n = Number(String(v));
   return Number.isFinite(n) ? n : null;
 }
+// LIKE 안전 처리 (%/_/\)
+function escapeLike(s) {
+  return String(s || '').replace(/[\\%_]/g, '\\$&');
+}
+function normalizeAptQuery(v) {
+  const s = String(v == null ? '' : v).trim();
+  if (!s) return '';
+  return s.slice(0, 50); // 과도한 문자열 방지
+}
 
 function computeQuality({ txCount, cvPpm2 }) {
   const tx = Math.max(0, Number(txCount || 0));
@@ -178,7 +187,7 @@ function normalizeGu(v) {
 // -------------------------
 // stats WHERE / SQL
 // -------------------------
-function buildStatsWhere({ timeframe, period, pyeongBand, sido, lawd, gu, buildFrom, buildTo }) {
+function buildStatsWhere({ timeframe, period, pyeongBand, sido, lawd, gu, buildFrom, buildTo, apt }) {
   const filters = [];
   const params = [];
 
@@ -212,6 +221,13 @@ function buildStatsWhere({ timeframe, period, pyeongBand, sido, lawd, gu, buildF
     filters.push(`s.build_year IS NOT NULL`);
     if (buildFrom != null) { filters.push(`s.build_year >= ?`); params.push(buildFrom); }
     if (buildTo != null) { filters.push(`s.build_year <= ?`); params.push(buildTo); }
+  }
+
+  // ✅ 아파트명 LIKE 검색
+  const aq = normalizeAptQuery(apt);
+  if (aq) {
+    filters.push(`s.apt_name LIKE ? ESCAPE '\\\\'`);
+    params.push(`%${escapeLike(aq)}%`);
   }
 
   return { whereSql: `WHERE ${filters.join('\n  AND ')}`, params, band };
@@ -306,7 +322,7 @@ function pyeongBandToM2Range(bandKey) {
   return { lo, hi };
 }
 
-function buildRawWhere({ timeframe, period, sido, lawd, gu, pyeong, buildFrom, buildTo }) {
+function buildRawWhere({ timeframe, period, sido, lawd, gu, pyeong, buildFrom, buildTo, apt }) {
   const filters = [];
   const params = [];
 
@@ -356,6 +372,13 @@ function buildRawWhere({ timeframe, period, sido, lawd, gu, pyeong, buildFrom, b
     filters.push(`t.build_year IS NOT NULL`);
     if (buildFrom != null) { filters.push(`t.build_year >= ?`); params.push(buildFrom); }
     if (buildTo != null) { filters.push(`t.build_year <= ?`); params.push(buildTo); }
+  }
+
+  // ✅ 아파트명 LIKE 검색
+  const aq = normalizeAptQuery(apt);
+  if (aq) {
+    filters.push(`t.apt_name LIKE ? ESCAPE '\\\\'`);
+    params.push(`%${escapeLike(aq)}%`);
   }
 
   const whereSql = filters.length ? `WHERE ${filters.join('\n  AND ')}` : '';
@@ -525,6 +548,8 @@ export default async function handler(req, res) {
     const pyeong = String(req.query.pyeong || 'all').trim();
     const buildFrom = toIntOrNull(req.query.buildFrom === 'all' ? null : req.query.buildFrom);
     const buildTo = toIntOrNull(req.query.buildTo === 'all' ? null : req.query.buildTo);
+    // ✅ 아파트명 검색
+    const apt = normalizeAptQuery(req.query.apt);
 
     // ✅ 금액구간(억 단위)
     const priceMetric = String(req.query.priceMetric || 'none').trim();
@@ -585,7 +610,7 @@ export default async function handler(req, res) {
     // 캐시 (nocache면 내부 캐시도 스킵)
     const cacheKey = JSON.stringify({
       sido, lawd, gu, timeframe, period, from, to, metric, orderDir, topN, pyeong, buildFrom, buildTo, effCompare,
-      priceMetric, priceMinWon, priceMaxWon
+      priceMetric, priceMinWon, priceMaxWon, apt
     });
     if (!noCache) {
       const cached = cacheGet(cacheKey);
@@ -636,7 +661,7 @@ export default async function handler(req, res) {
 
     if (canUseStats) {
       const curWhere = buildStatsWhere({
-        timeframe, period, pyeongBand: pyeong, sido, lawd, gu, buildFrom, buildTo
+        timeframe, period, pyeongBand: pyeong, sido, lawd, gu, buildFrom, buildTo, apt
       });
       const sqlCur = makeStatsTopSql({
         table,
@@ -671,7 +696,7 @@ export default async function handler(req, res) {
 
       // range 지원: period에 "fromYm|toYm" 형태로 전달
       const rangePeriod = `${dealYmFrom}|${dealYmTo}`;
-      const curWhere = buildRawWhere({ timeframe, period: rangePeriod, sido, lawd, gu, pyeong, buildFrom, buildTo });
+      const curWhere = buildRawWhere({ timeframe, period: rangePeriod, sido, lawd, gu, pyeong, buildFrom, buildTo, apt });       
       const sql = makeRawTopSql({
         whereSql: curWhere.whereSql,
         metricCol: metricColRaw,
@@ -715,7 +740,7 @@ export default async function handler(req, res) {
 
       if (wantMoM && timeframe !== 'year' && momPeriod) {
         const w = buildStatsWhere({
-          timeframe, period: momPeriod, pyeongBand: pyeong, sido, lawd, gu, buildFrom, buildTo
+          timeframe, period: momPeriod, pyeongBand: pyeong, sido, lawd, gu, buildFrom, buildTo, apt
         });
         const sql = makeStatsTopSql({ table, whereSql: w.whereSql, metricCol, orderDir });
         const [rows] = await pool.query(sql, [...w.params, prevTop]);
@@ -723,7 +748,7 @@ export default async function handler(req, res) {
       }
       if (wantYoY && yoyPeriod) {
         const w = buildStatsWhere({
-          timeframe, period: yoyPeriod, pyeongBand: pyeong, sido, lawd, gu, buildFrom, buildTo
+          timeframe, period: yoyPeriod, pyeongBand: pyeong, sido, lawd, gu, buildFrom, buildTo, apt
         });
         const sql = makeStatsTopSql({ table, whereSql: w.whereSql, metricCol, orderDir });
         const [rows] = await pool.query(sql, [...w.params, prevTop]);
@@ -743,7 +768,7 @@ export default async function handler(req, res) {
       const metricCol = METRIC_MAP_RAW[metric] || 'avg_price';
 
       if (wantMoM && timeframe !== 'year' && momPeriod) {
-        const w = buildRawWhere({ timeframe, period: momPeriod, sido, lawd, gu, pyeong, buildFrom, buildTo });
+        const w = buildRawWhere({ timeframe, period: momPeriod, sido, lawd, gu, pyeong, buildFrom, buildTo, apt });        
         const sql = makeRawTopSql({ whereSql: w.whereSql, metricCol, orderDir, withLatest: false }) + `
           WHERE rank_no <= ?
           ORDER BY rank_no
@@ -753,7 +778,7 @@ export default async function handler(req, res) {
       }
 
       if (wantYoY && yoyPeriod) {
-        const w = buildRawWhere({ timeframe, period: yoyPeriod, sido, lawd, gu, pyeong, buildFrom, buildTo });
+        const w = buildRawWhere({ timeframe, period: yoyPeriod, sido, lawd, gu, pyeong, buildFrom, buildTo, apt });         
         const sql = makeRawTopSql({ whereSql: w.whereSql, metricCol, orderDir, withLatest: false }) + `
           WHERE rank_no <= ?
           ORDER BY rank_no
@@ -950,6 +975,7 @@ export default async function handler(req, res) {
         period,
         from,
         to,
+        apt: apt || undefined,
         mom_period: momPeriod,
         yoy_period: yoyPeriod,
         metric,
