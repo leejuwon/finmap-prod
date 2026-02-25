@@ -1,6 +1,7 @@
 // pages/market/real-estate/magok-top100.js
 import RealEstateTop100Landing from "../../../_components/RealEstateTop100Landing";
 import { jsonSafe } from "../../../lib/jsonSafe";
+import { calcRangeFromLatestYm, fetchTop100Rows } from "../../../lib/reTop100Landing";
 
 const REGION = {
   slug: "magok-top100",
@@ -136,7 +137,7 @@ function cacheSet(key, data, ttlMs) {
   _cache.set(key, { exp: Date.now() + ttlMs, data });
 }
 
-export default function MagokTop100Page({ period, band, rows }) {
+export default function MagokTop100Page({ period, band, rows, rangeKey, fromYm, toYm, rangeLabelKo, rangeLabelEn, year }) {
   return (
     <RealEstateTop100Landing
       region={REGION}
@@ -146,6 +147,12 @@ export default function MagokTop100Page({ period, band, rows }) {
       period={period}
       band={band}
       rows={rows}
+      rangeKey={rangeKey}
+      fromYm={fromYm}
+      toYm={toYm}
+      rangeLabelKo={rangeLabelKo}
+      rangeLabelEn={rangeLabelEn}
+      year={year}
     />
   );
 }
@@ -155,13 +162,14 @@ export async function getServerSideProps(ctx) {
   const lang = String(locale || "ko").startsWith("en") ? "en" : "ko";
   const nocache = String(query.nocache || "0") === "1";
   const band = String(query.band || "all").trim() || "all";
+  const rangeKey = String(query.range || "pm").trim() || "pm";
 
   res.setHeader(
     "Cache-Control",
     nocache ? "no-store" : "public, s-maxage=300, stale-while-revalidate=86400"
   );
 
-  const cacheKey = JSON.stringify({ page: REGION.slug, band, lang });
+  const cacheKey = JSON.stringify({ page: REGION.slug, band, lang, rangeKey });
   if (!nocache) {
     const cached = cacheGet(cacheKey);
     if (cached) return { props: cached };
@@ -169,32 +177,37 @@ export async function getServerSideProps(ctx) {
 
   const { pool } = require("../../../lib/db");
 
-  const [pRows] = await pool.query(`SELECT MAX(deal_ym) AS max_ym FROM re_trade_deal_ym`);
-  const period = String(pRows?.[0]?.max_ym || "").trim();
-
-  // ✅ 마곡동만 필터 (stats_m에 dong_name 컬럼 존재 전제)
-  const sql = `
-    SELECT
-      s.apt_key,
-      s.sigungu_name,
-      s.apt_name,
-      s.tx_count,
-      s.median_price,
-      s.latest_deal_date,
-      s.latest_deal_amount_man,
-      s.build_year
-    FROM re_trade_apt_stats_m s
-    WHERE s.deal_ym = ?
-      AND s.pyeong_band = ?
-      AND s.lawd_cd = ?
-      AND s.dong_name = ?
-      AND s.median_price IS NOT NULL
-    ORDER BY s.median_price DESC, s.tx_count DESC
-    LIMIT 100
-  `;
-  const [rows] = await pool.query(sql, [period, band, REGION.lawd, REGION.dongName]);
-
-  const props = jsonSafe({ period, band, rows: rows || [] });
+  // ✅ "업데이트 기준" 앵커(항상 전월 데이터): latestYm
+    const [pRows] = await pool.query(`SELECT MAX(deal_ym) AS max_ym FROM re_trade_deal_ym`);
+    const latestYm = String(pRows?.[0]?.max_ym || "").trim();
+  
+    // ✅ 기간 범위 계산: 전월/3개월/6개월/1년/2026년(1월~전월)
+    const rangeInfo = calcRangeFromLatestYm(latestYm, rangeKey);
+  
+    // ✅ 기간 집계 Top100
+    const rows = await fetchTop100Rows({
+      pool,
+      latestYm,
+      fromYm: rangeInfo.fromYm,
+      toYm: rangeInfo.toYm,
+      band,
+      regionWhereSql: "s.lawd_cd  = ?",
+      regionParams: [REGION.lawd],
+      limit: 100,
+    });
+  
+    // ✅ rows 안에 Date 객체가 들어오면 Next SSR 직렬화 에러 발생
+    const props = jsonSafe({
+      period: latestYm, // UI 상 "업데이트 기준" 표시용(앵커)
+      band,
+      rows: rows || [],
+      rangeKey: rangeInfo.rangeKey,
+      fromYm: rangeInfo.fromYm,
+      toYm: rangeInfo.toYm,
+      rangeLabelKo: rangeInfo.labelKo,
+      rangeLabelEn: rangeInfo.labelEn,
+      year: rangeInfo.year,
+    });
   if (!nocache) cacheSet(cacheKey, props, 5 * 60 * 1000);
   return { props };
 }

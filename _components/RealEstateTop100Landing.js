@@ -54,13 +54,26 @@ function Badge({ tone, label, value }) {
   );
 }
 
+function pushQuery(router, next = {}, removeKeys = []) {
+  const q = { ...router.query, ...next };
+  for (const k of removeKeys) delete q[k];
+  // undefined/null/"" 제거 (URL 깔끔하게)
+  for (const k of Object.keys(q)) {
+    const v = q[k];
+    if (v === undefined || v === null || v === "") delete q[k];
+  }
+  router.push({ pathname: router.pathname, query: q }, undefined, { scroll: false });
+}
+
+
 /**
  * Props:
  * - region: { slug, nameKo, nameEn, detailSido? }
  * - text:   { ko: {...}, en: {...} } (title/desc/h1/sub/bullets/cols/cta/faqs...)
  * - seo:    { image, about, keywordsKo, keywordsEn, appCategory? }
  * - relatedLinks: [{ href, labelKo, labelEn }]
- * - period, band, rows
+ * - period(=latestYm), band, rows
+ * - rangeKey, fromYm, toYm, rangeLabelKo, rangeLabelEn, year
  */
 export default function RealEstateTop100Landing({
   region,
@@ -70,6 +83,12 @@ export default function RealEstateTop100Landing({
   period,
   band,
   rows,
+  rangeKey = "pm",
+  fromYm,
+  toYm,
+  rangeLabelKo,
+  rangeLabelEn,
+  year,
 }) {
   const router = useRouter();
   const lang = (router.locale || "ko").startsWith("en") ? "en" : "ko";
@@ -77,6 +96,45 @@ export default function RealEstateTop100Landing({
 
   const list = Array.isArray(rows) ? rows : [];
   const detailSido = region?.detailSido || "11";
+
+  // band select
+  const effectiveBand = useMemo(() => {
+    const q = String(router.query.band || "").trim();
+    return q || String(band || "all");
+  }, [router.query.band, band]);
+
+  // range select (5 options)
+  const effectiveRangeKey = useMemo(() => {
+    const q = String(router.query.range || "").trim();
+    return q || String(rangeKey || "pm");
+  }, [router.query.range, rangeKey]);
+
+  const bandOptions = useMemo(() => {
+    return [
+      { value: "all", labelKo: "전체", labelEn: "All sizes" },
+      { value: "10", labelKo: "10평대", labelEn: "Band 10" },
+      { value: "20", labelKo: "20평대", labelEn: "Band 20" },
+      { value: "30", labelKo: "30평대", labelEn: "Band 30" },
+      { value: "40", labelKo: "40평대", labelEn: "Band 40" },
+      { value: "50", labelKo: "50평대", labelEn: "Band 50" },
+    ];
+  }, []);
+
+  const bandLabel = useMemo(() => {
+    const opt = bandOptions.find((x) => String(x.value) === String(effectiveBand));
+    return opt ? (lang === "en" ? opt.labelEn : opt.labelKo) : String(effectiveBand || "all");
+  }, [bandOptions, effectiveBand, lang]);
+
+  const rangeOptions = useMemo(() => {
+    const yy = String(year || String(period || "").slice(0, 4) || "");
+    return [
+      { value: "pm", labelKo: "전월(기본)", labelEn: "Prev month (default)" },
+      { value: "m3", labelKo: "최근 3개월", labelEn: "Last 3 months" },
+      { value: "m6", labelKo: "최근 6개월", labelEn: "Last 6 months" },
+      { value: "y1", labelKo: "최근 1년", labelEn: "Last 12 months" },
+      { value: "ytd", labelKo: `${yy}년`, labelEn: `${yy} (YTD)` },
+    ];
+  }, [year, period]);
 
   const basePath = `/market/real-estate/${region?.slug || ""}`;
   const canonical =
@@ -160,7 +218,7 @@ export default function RealEstateTop100Landing({
     const aptKey = encodeURIComponent(String(r?.apt_key || ""));
     return `/market/real-estate/apt/${aptKey}?timeframe=month&period=${encodeURIComponent(
       String(period || "")
-    )}&band=${encodeURIComponent(String(band || "all"))}&sido=${encodeURIComponent(detailSido)}`;
+    )}&band=${encodeURIComponent(String(effectiveBand || "all"))}&sido=${encodeURIComponent(detailSido)}`;   
   }
 
   return (
@@ -192,14 +250,69 @@ export default function RealEstateTop100Landing({
           <div className="text-sm font-semibold text-slate-700">
             {t.updated}: <span className="font-bold">{ymLabel(period)}</span>
             <span className="ml-2 text-slate-500">
-              {lang === "en" ? `(Size band: ${band})` : `(평형 밴드: ${band})`}
+              {lang === "en" ? `(Size band: ${bandLabel})` : `(평형: ${bandLabel})`}             
             </span>
+          </div>
+          {/* ✅ "업데이트 기준은 항상 전월" + 집계범위 */}
+          <div className="mt-2 text-xs text-slate-600">
+            * {lang === "en"
+              ? `Update anchor is always the latest available month (${ymLabel(period)}). (Data pipeline)`
+              : `업데이트 기준(앵커)은 항상 전월(${ymLabel(period)})입니다. (데이터 생성 스케줄 때문)`}
+          </div>
+          <div className="mt-1 text-xs text-slate-600">
+            {lang === "en"
+              ? `Aggregation range: ${ymLabel(fromYm)} ~ ${ymLabel(toYm)} (${rangeLabelEn || ""})`
+              : `집계 범위: ${ymLabel(fromYm)} ~ ${ymLabel(toYm)} (${rangeLabelKo || ""})`}
           </div>
           <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
             {(t.bullets || []).map((s) => (
               <li key={s}>{s}</li>
             ))}
           </ul>
+        </div>
+
+        {/* ✅ 기간 선택 (5개) */}
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <div className="text-xs text-slate-500">
+            {lang === "en" ? "Range:" : "기간:"}
+          </div>
+          <select
+            className="border rounded-lg px-3 py-2 text-sm"
+            value={effectiveRangeKey}
+            onChange={(e) => {
+              const v = e.target.value;
+              // ✅ pm은 range query를 "삭제"해야 다시 선택 가능
+              if (v === "pm") pushQuery(router, {}, ["range"]);
+              else pushQuery(router, { range: v });
+            }}
+          >
+            {rangeOptions.map((o) => (
+              <option key={o.value} value={o.value}>
+                {lang === "en" ? o.labelEn : o.labelKo}
+              </option>
+            ))}
+          </select>
+
+          {/* ✅ 평형(band) 선택 */}
+          <div className="ml-2 text-xs text-slate-500">
+            {lang === "en" ? "Size:" : "평형:"}
+          </div>
+          <select
+            className="border rounded-lg px-3 py-2 text-sm"
+            value={String(effectiveBand || "all")}
+            onChange={(e) => {
+              const v = e.target.value;
+              // all은 query에서 제거(깔끔하게)
+              if (v === "all") pushQuery(router, {}, ["band"]);
+              else pushQuery(router, { band: v });
+            }}
+          >
+            {bandOptions.map((o) => (
+              <option key={o.value} value={o.value}>
+                {lang === "en" ? o.labelEn : o.labelKo}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="mt-5 flex flex-wrap items-center gap-2 text-sm">

@@ -1,7 +1,7 @@
 // pages/market/real-estate/mayongseong-top100.js
 import RealEstateTop100Landing from "../../../_components/RealEstateTop100Landing";
 import { jsonSafe } from "../../../lib/jsonSafe";
-
+import { calcRangeFromLatestYm, fetchTop100Rows } from "../../../lib/reTop100Landing";
 
 const REGION = {
   slug: "mayongseong-top100",
@@ -149,7 +149,7 @@ const RELATED = [
   { href: '/market/real-estate/seoul-top100',          labelEn: 'Seoul Top 100',           labelKo: '서울 Top100' },
 ];
 
-export default function MayongseongTop100Page({ period, band, rows }) {
+export default function MayongseongTop100Page({ period, band, rows, rangeKey, fromYm, toYm, rangeLabelKo, rangeLabelEn, year }) {
   return (
     <RealEstateTop100Landing
       region={REGION}
@@ -159,6 +159,12 @@ export default function MayongseongTop100Page({ period, band, rows }) {
       period={period}
       band={band}
       rows={rows}
+      rangeKey={rangeKey}
+      fromYm={fromYm}
+      toYm={toYm}
+      rangeLabelKo={rangeLabelKo}
+      rangeLabelEn={rangeLabelEn}
+      year={year}
     />
   );
 }
@@ -188,6 +194,7 @@ export async function getServerSideProps(ctx) {
   const lang = String(locale || "ko").startsWith("en") ? "en" : "ko";
   const nocache = String(query.nocache || "0") === "1";
   const band = String(query.band || "all").trim() || "all";
+  const rangeKey = String(query.range || "pm").trim() || "pm";
 
   // CDN/Proxy 캐시 힌트(원치 않으면 제거 가능)
   res.setHeader(
@@ -195,7 +202,7 @@ export async function getServerSideProps(ctx) {
     nocache ? "no-store" : "public, s-maxage=300, stale-while-revalidate=86400"
   );
 
-  const cacheKey = JSON.stringify({ page: REGION.slug, band, lang });
+  const cacheKey = JSON.stringify({ page: REGION.slug, band, lang, rangeKey });
   if (!nocache) {
     const cached = cacheGet(cacheKey);
     if (cached) return { props: cached };
@@ -203,41 +210,39 @@ export async function getServerSideProps(ctx) {
 
   const { pool } = require("../../../lib/db");
 
-  // 최신 거래월
-  const [pRows] = await pool.query(`SELECT MAX(deal_ym) AS max_ym FROM re_trade_deal_ym`);
-  const period = String(pRows?.[0]?.max_ym || "").trim();
+  // ✅ "업데이트 기준" 앵커(항상 전월 데이터): latestYm
+    const [pRows] = await pool.query(`SELECT MAX(deal_ym) AS max_ym FROM re_trade_deal_ym`);
+    const latestYm = String(pRows?.[0]?.max_ym || "").trim();
+  
+    // ✅ 기간 범위 계산: 전월/3개월/6개월/1년/2026년(1월~전월)
+    const rangeInfo = calcRangeFromLatestYm(latestYm, rangeKey);
 
-  // Top 100 (stats_m) — 대표가격(중앙값) 기준
-  const placeholders = REGION.lawds.map(() => "?").join(", ");
-  const params = [period, band, ...REGION.lawds, 100];
-
-  const sql = `
-    SELECT
-      s.apt_key,
-      s.sigungu_name,
-      s.apt_name,
-      s.tx_count,
-      s.median_price,
-      s.avg_price,
-      s.max_price,
-      s.sum_price,
-      s.latest_deal_date,
-      s.latest_deal_amount_man,
-      s.build_year
-    FROM re_trade_apt_stats_m s
-    WHERE s.deal_ym = ?
-      AND s.pyeong_band = ?
-      AND s.lawd_cd IN (${placeholders})
-      AND s.median_price IS NOT NULL
-    ORDER BY s.median_price DESC, s.tx_count DESC
-    LIMIT ?
-  `;
-
-  const [rows] = await pool.query(sql, params);
-
-  // ✅ rows 안에 Date 객체가 들어오면 Next SSR 직렬화 에러 발생
-  const props = jsonSafe({ period, band, rows: rows || [] });
-
+    const placeholders = REGION.lawds.map(() => "?").join(",");
+  
+    // ✅ 기간 집계 Top100
+    const rows = await fetchTop100Rows({
+      pool,
+      latestYm,
+      fromYm: rangeInfo.fromYm,
+      toYm: rangeInfo.toYm,
+      band,      
+      regionWhereSql: `s.lawd_cd IN (${placeholders})`,
+      regionParams: REGION.lawds,
+      limit: 100,
+    });
+  
+    // ✅ rows 안에 Date 객체가 들어오면 Next SSR 직렬화 에러 발생
+    const props = jsonSafe({
+      period: latestYm, // UI 상 "업데이트 기준" 표시용(앵커)
+      band,
+      rows: rows || [],
+      rangeKey: rangeInfo.rangeKey,
+      fromYm: rangeInfo.fromYm,
+      toYm: rangeInfo.toYm,
+      rangeLabelKo: rangeInfo.labelKo,
+      rangeLabelEn: rangeInfo.labelEn,
+      year: rangeInfo.year,
+    });
   if (!nocache) cacheSet(cacheKey, props, 5 * 60 * 1000);
   return { props };
 }
