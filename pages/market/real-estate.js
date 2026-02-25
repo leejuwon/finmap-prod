@@ -575,6 +575,22 @@ export default function RealEstatePage() {
 
   const tableMinWidth = showAdvanced ? 'min-w-[2500px]' : 'min-w-[1900px]';
 
+  // ✅ SEO/검색 유입용 프리셋 랜딩(마용성/강남/서울 Top100) 링크
+  // - 현재 선택한 평형(pyeong)을 band로 전달하여 사용자가 "같은 조건"으로 넘어간 느낌을 주도록 구성
+  function presetHref(path) {
+    const band = encodeURIComponent(String(pyeong || 'all'));
+    return `${path}?band=${band}`;
+  }
+  const presetLinks = useMemo(() => ([
+    { key: 'mayongseong', href: presetHref('/market/real-estate/mayongseong-top100'),    label: lang === 'en' ? 'Mayongseong Top 100'     : '마용성 Top100' },
+    { key: 'gangnam',     href: presetHref('/market/real-estate/gangnam-top100'),        label: lang === 'en' ? 'Gangnam Top 100'         : '강남 Top100' },
+    { key: 'songpa',      href: presetHref('/market/real-estate/songpa-top100'),         label: lang === 'en' ? 'Songpa Top 100'          : '송파(잠실) Top100' },
+    { key: 'magok',       href: presetHref('/market/real-estate/magok-top100'),          label: lang === 'en' ? 'Magok Top 100'           : '마곡 Top100' },
+    { key: 'gananam3gu',  href: presetHref('/market/real-estate/gangnam3-top100'),       label: lang === 'en' ? 'Gangnam 3Gu Top 100'     : '강남3구 Top100' },    
+    { key: 'spa-gnam',    href: presetHref('/market/real-estate/songpa-gangnam-top100'), label: lang === 'en' ? 'Songpa-Gangnam Top 100'  : '송파(잠실)+강남구 Top100' },    
+    { key: 'seoul',       href: presetHref('/market/real-estate/seoul-top100'),          label: lang === 'en' ? 'Seoul Top 100'           : '서울 Top100' },
+  ]), [lang, pyeong]);
+
   // --- real-estate.js 안에 (컴포넌트 return 위쪽) 추가: 작은 UI 컴포넌트들 ---
   function toneByNumber(v) {
     const n = Number(v);
@@ -918,11 +934,33 @@ export default function RealEstatePage() {
         appName={seoTitle}
         appCategory="FinanceApplication"
         about={{ "@type": "Place", name: "South Korea" }}
-        keywords={lang === "en" ? "Korea real estate, apartment transactions" : "한국 부동산, 아파트 실거래"}
+        keywords={
+          lang === "en"
+            ? "Seoul apartment prices, Seoul Top 100, Gangnam apartment prices, Mayongseong, Songpa, Magok Korea real estate transactions"
+            : "서울 아파트값 순위, 서울 Top100, 강남 아파트값 순위, 마용성, 송파, 마곡 아파트 실거래"
+        }
       />
         <div className="card">
           <h1 className="text-2xl font-bold">{t.title}</h1>
           <p className="text-slate-600 mt-1">{t.subtitle}</p>
+
+          {/* ✅ 검색 유입용 프리셋(고정 URL) */}
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            {presetLinks.map((x) => (
+              <Link
+                key={x.key}
+                href={x.href}
+                className="inline-flex items-center rounded-full border bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+                title={x.label}
+              >
+                {x.label}
+              </Link>
+            ))}
+            <span className="text-xs text-slate-500">
+              {lang === 'en' ? 'Landing pages for Google search (Top 100).' : '구글 검색 유입을 위한 고정 URL 랜딩(Top100).'}
+            </span>
+          </div>
+
 
           {/* (B) legend 박스 */}
           <div className="mt-4 rounded-xl border bg-slate-50 p-4">
