@@ -19,6 +19,12 @@ const TEXT = {
       "마용성(마포·용산·성수) 아파트 실거래를 기반으로, 대표가격(중앙값) 기준 TOP 100을 보여줍니다. 최신 거래월, 거래량, 최근 거래도 함께 확인하세요.",
     h1: "마용성 아파트 집값 TOP 100",
     sub: "마포·용산·성수(성동) 실거래 기반 · 대표가격(중앙값) 기준",
+    introLines: [
+      "이 페이지는 ‘마용성 아파트 순위’를 마포·용산·성동(성수) 실거래 기반 Top100으로 정리한 랭킹입니다.",
+      "정렬 기준은 대표가격(중앙값)이며, 평균 대비 극단값 영향이 덜한 편입니다.",
+      "최근 거래/계약일과 거래량을 함께 보면 ‘최근 분위기’와 신뢰도를 같이 판단할 수 있어요.",
+      "거래량이 적은 단지는 값이 튈 수 있으니 표본수와 함께 해석하세요.",
+    ],
     bullets: [
       "마용성은 마포·용산·성수(성동) 핵심 지역을 묶어 부르는 별칭입니다.",
       "순위는 ‘대표가격(중앙값, 총액)’ 기준으로 정렬됩니다.",
@@ -78,6 +84,11 @@ const TEXT = {
       "Top 100 apartment complexes in Mayongseong (Mapo, Yongsan, Seongsu/Seongdong) based on median total sale price from official transaction data.",
     h1: "Mayongseong Apartment Prices Top 100",
     sub: "Official transactions · Ranked by median total sale price",
+    introLines: [
+      "This fixed-URL page summarizes a Top 100 ranking for Mayongseong (Mapo, Yongsan, Seongsu/Seongdong) using official transactions.",
+      "Complexes are ranked by median total price, often more robust than averages under outliers.",
+      "Use latest deal and transaction count together to interpret both recency and reliability.",
+    ],
     bullets: [
       "“Mayongseong” commonly refers to Mapo, Yongsan, and Seongsu (Seongdong).",
       "Ranking metric: median total price (less sensitive to outliers than average).",

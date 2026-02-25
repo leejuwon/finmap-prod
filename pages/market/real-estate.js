@@ -581,6 +581,12 @@ export default function RealEstatePage() {
     const band = encodeURIComponent(String(pyeong || 'all'));
     return `${path}?band=${band}`;
   }
+
+  // ✅ 대표 URL(파라미터 없는 링크) — SEO 텍스트 링크용
+  function canonicalHref(path) {
+    return String(path || '');
+  }
+
   const presetLinks = useMemo(() => ([
     { key: 'mayongseong', href: presetHref('/market/real-estate/mayongseong-top100'),    label: lang === 'en' ? 'Mayongseong Top 100'     : '마용성 Top100' },
     { key: 'gangnam',     href: presetHref('/market/real-estate/gangnam-top100'),        label: lang === 'en' ? 'Gangnam Top 100'         : '강남 Top100' },
@@ -961,6 +967,116 @@ export default function RealEstatePage() {
             </span>
           </div>
 
+          {/* ✅ SEO용 내부링크 섹션: "키워드 문장 + 텍스트 링크(앵커)" */}
+          <div className="mt-3 rounded-2xl border bg-white p-4">
+            <div className="text-sm font-semibold text-slate-900">
+              {lang === 'en' ? 'Popular rankings (official transactions)' : '인기 검색: 아파트 순위(실거래)'}
+            </div>
+            <div className="mt-2 text-sm text-slate-600 leading-6">
+              {lang === 'en' ? (
+                <>
+                  Explore fixed-URL ranking pages:{" "}
+                  <Link href={canonicalHref('/market/real-estate/gangnam-top100')} className="underline underline-offset-2">                     
+                    Gangnam apartment ranking
+                  </Link>
+                  <Link
+                    href={presetHref('/market/real-estate/gangnam-top100')}
+                    className="ml-2 text-xs text-slate-500 underline underline-offset-2"
+                    title="Open with current size band"
+                  >
+                    (current band)
+                  </Link>
+                  ,{" "}
+                  <Link href={canonicalHref('/market/real-estate/mayongseong-top100')} className="underline underline-offset-2">                   
+                    Mayongseong apartment ranking
+                  </Link>
+                  <Link
+                    href={presetHref('/market/real-estate/mayongseong-top100')}
+                    className="ml-2 text-xs text-slate-500 underline underline-offset-2"
+                    title="Open with current size band"
+                  >
+                    (current band)
+                  </Link>
+                  ,{" "}                  
+                  <Link href={canonicalHref('/market/real-estate/songpa-top100')} className="underline underline-offset-2">                   
+                    Songpa(Jamsil) apartment ranking
+                  </Link>
+                  <Link
+                    href={presetHref('/market/real-estate/songpa-top100')}
+                    className="ml-2 text-xs text-slate-500 underline underline-offset-2"
+                    title="Open with current size band"
+                  >
+                    (current band)
+                  </Link>
+                  ,{" "}
+                  <Link href={canonicalHref('/market/real-estate/magok-top100')} className="underline underline-offset-2">                   
+                    Magok apartment ranking
+                  </Link>
+                  <Link
+                    href={presetHref('/market/real-estate/magok-top100')}
+                    className="ml-2 text-xs text-slate-500 underline underline-offset-2"
+                    title="Open with current size band"
+                  >
+                    (current band)
+                  </Link>
+                  .
+                </>
+              ) : (
+                <>
+                  자주 검색되는 키워드별로 고정 URL 순위 페이지를 준비했어요:{" "}
+                  <Link href={canonicalHref('/market/real-estate/gangnam-top100')} className="underline underline-offset-2">                 
+                    강남 아파트 순위
+                  </Link>
+                  <Link
+                    href={presetHref('/market/real-estate/gangnam-top100')}
+                    className="ml-2 text-xs text-slate-500 underline underline-offset-2"
+                    title="현재 선택 평형으로 보기"
+                  >
+                    (현재 평형)
+                  </Link>
+                  ,{" "}
+                  <Link href={canonicalHref('/market/real-estate/mayongseong-top100')} className="underline underline-offset-2">                    
+                    마용성 아파트 순위
+                  </Link>
+                  <Link
+                    href={presetHref('/market/real-estate/mayongseong-top100')}
+                    className="ml-2 text-xs text-slate-500 underline underline-offset-2"
+                    title="현재 선택 평형으로 보기"
+                  >
+                    (현재 평형)
+                  </Link>
+                  ,{" "}
+                  <Link href={canonicalHref('/market/real-estate/songpa-top100')} className="underline underline-offset-2">                   
+                    송파(잠실) 아파트 순위
+                  </Link>
+                  <Link
+                    href={presetHref('/market/real-estate/songpa-top100')}
+                    className="ml-2 text-xs text-slate-500 underline underline-offset-2"
+                    title="현재 선택 평형으로 보기"
+                  >
+                    (현재 평형)
+                  </Link>
+                  ,{" "}
+                  <Link href={canonicalHref('/market/real-estate/magok-top100')} className="underline underline-offset-2">                    
+                    마곡 아파트 순위
+                  </Link>
+                  <Link
+                    href={presetHref('/market/real-estate/magok-top100')}
+                    className="ml-2 text-xs text-slate-500 underline underline-offset-2"
+                    title="현재 선택 평형으로 보기"
+                  >
+                    (현재 평형)
+                  </Link>
+                  .
+                </>
+              )}
+            </div>
+            <div className="mt-2 text-xs text-slate-500">
+              {lang === 'en'
+                ? 'Tip: These pages are designed to match search intent and load fast. Use filters for a deeper comparison.'
+                : 'Tip: 검색 의도에 맞춘 빠른 순위 페이지입니다. 더 깊은 비교는 위 필터로 조건을 좁혀보세요.'}
+            </div>
+          </div>
 
           {/* (B) legend 박스 */}
           <div className="mt-4 rounded-xl border bg-slate-50 p-4">

@@ -18,6 +18,12 @@ const TEXT = {
       "서울 아파트 실거래 집계 데이터를 기반으로, 대표가격(중앙값) 기준 TOP 100 순위를 제공합니다. 최신 거래월 기준으로 확인하세요.",
     h1: "서울 아파트 집값 TOP 100",
     sub: "서울 전체 · 실거래 기반 · 대표가격(중앙값) 기준",
+    introLines: [
+      "이 페이지는 서울 아파트 순위를 실거래 기반 Top100으로 정리한 ‘기본 벤치마크’ 페이지입니다.",
+     "단지별 대표가격(중앙값) 기준 정렬로 전형적인 가격대를 빠르게 비교할 수 있어요.",
+      "최근 거래/계약일과 거래량(표본수)을 함께 보면 해석이 더 안전합니다.",
+      "특정 지역(강남/마용성/송파/마곡) 랭킹은 관련 페이지에서 더 빠르게 확인할 수 있습니다.",
+    ],
     bullets: [
       "서울 전체를 한 번에 훑는 ‘기본 벤치마크’용 페이지입니다.",
       "순위는 ‘대표가격(중앙값, 총액)’ 기준 내림차순입니다.",
@@ -70,6 +76,11 @@ const TEXT = {
       "Top 100 apartment complexes in Seoul ranked by median total sale price from official transaction data.",
     h1: "Seoul Apartment Prices Top 100",
     sub: "Seoul-wide · Ranked by median total sale price",
+    introLines: [
+      "This is a Seoul-wide benchmark Top 100 ranking page based on official transaction aggregates.",
+      "Complexes are ranked by median total price for a more typical price level under outliers.",
+      "Use latest deal and transaction count together to judge recency and reliability.",
+    ],
     bullets: [
       "A Seoul-wide benchmark page (fixed URL) for SEO and quick scanning.",
       "Ranked by median total sale price (descending).",

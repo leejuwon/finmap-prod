@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
 import ToolSeo from "./ToolSeo";
 
+const M2_PER_PYEONG = 3.305785;
+
 function toNum(v) {
   const n = Number(v);
   return Number.isFinite(n) ? n : null;
@@ -125,6 +127,30 @@ export default function RealEstateTop100Landing({
     return opt ? (lang === "en" ? opt.labelEn : opt.labelKo) : String(effectiveBand || "all");
   }, [bandOptions, effectiveBand, lang]);
 
+  const sizeColLabel = useMemo(() => {
+    // "밴드"가 아니라 "단지 최근거래 평형(전용면적)"을 보여주려는 의도라 라벨을 명확히
+    return lang === "en" ? "Latest size" : "최근거래 평형";
+  }, [lang]);
+
+  function fmtPyeongFromM2(m2) {
+    const n = toNum(m2);
+    if (n == null) return null;
+    return (n / M2_PER_PYEONG).toFixed(1);
+  }
+
+  function fmtSizeFromRow(r) {
+    // ✅ 우선순위: row에 최신 전용면적이 있으면 그걸 사용
+    const m2 = toNum(r?.latest_area_m2);
+    if (m2 != null) {
+      const py = fmtPyeongFromM2(m2);
+      if (lang === "en") return `${m2.toFixed(1)}㎡ · ${py} pyeong`;
+      return `${m2.toFixed(1)}㎡ · ${py}평`;
+    }
+    // ✅ 없으면 현재 선택 밴드 라벨로 fallback
+    return bandLabel;
+  }
+
+
   const rangeOptions = useMemo(() => {
     const yy = String(year || String(period || "").slice(0, 4) || "");
     return [
@@ -231,6 +257,7 @@ export default function RealEstateTop100Landing({
         appCategory={seo?.appCategory || "FinanceApplication"}
         about={seo?.about || { "@type": "Place", name: "South Korea" }}
         keywords={keywords}
+        canonical={canonical}  // ✅ 쿼리스트링 없는 대표 URL
       />
 
       <script
@@ -245,6 +272,15 @@ export default function RealEstateTop100Landing({
       <div className="card">
         <h1 className="text-2xl font-bold text-slate-900">{t.h1}</h1>
         <p className="mt-1 text-slate-600">{t.sub}</p>
+
+        {/* ✅ SEO용 자연스러운 본문 문장(3~5줄) */}
+        {Array.isArray(t.introLines) && t.introLines.length > 0 && (
+          <div className="mt-3 space-y-1 text-sm text-slate-700 leading-6">
+            {t.introLines.map((s) => (
+              <p key={s}>{s}</p>
+            ))}
+          </div>
+        )}
 
         <div className="mt-4 rounded-xl border bg-slate-50 p-4">
           <div className="text-sm font-semibold text-slate-700">
@@ -368,6 +404,7 @@ export default function RealEstateTop100Landing({
               : "-";
             const build = r?.build_year ?? "-";
             const tx = r?.tx_count?.toLocaleString?.() ?? r?.tx_count ?? "-";
+            const sizeText = fmtSizeFromRow(r);
 
             const medianVal = fmtEokFromWon(r?.median_price, lang);
             const latestVal = fmtEokFromMan(r?.latest_deal_amount_man, lang);
@@ -384,6 +421,11 @@ export default function RealEstateTop100Landing({
                 >
                   {r?.apt_name || "-"}
                 </Link>
+
+                {/* ✅ 평형(단지의 최근거래 전용면적 기반, 없으면 밴드 fallback) */}                 
+                <div className="mt-1 text-xs text-slate-500">
+                  {sizeColLabel}: <span className="font-semibold text-slate-700">{sizeText}</span>                
+                </div>
 
                 {/* ✅ 검색의도 핵심 3개: 대표가격/최근거래/거래량 "강조 뱃지" */}
                 <div className="mt-2 flex flex-wrap gap-2">
@@ -404,9 +446,10 @@ export default function RealEstateTop100Landing({
                   />
                 </div>
 
-                <div className="mt-2 grid grid-cols-2 gap-2">
+                <div className="mt-2 grid grid-cols-2 md:grid-cols-3 gap-2">                 
                   <MiniStat label={t.cols.latestDate} value={latestDate} />
                   <MiniStat label={t.cols.build} value={build} />
+                  <MiniStat label={sizeColLabel} value={sizeText} />
                 </div>
               </div>
             );
@@ -422,6 +465,7 @@ export default function RealEstateTop100Landing({
                   <th className="px-3 py-3">{t.cols.rank}</th>
                   <th className="px-3 py-3">{t.cols.sigungu}</th>
                   <th className="px-3 py-3">{t.cols.apt}</th>
+                  <th className="px-3 py-3">{sizeColLabel}</th>
                   <th className="px-3 py-3">{t.cols.latestDeal}</th>
                   <th className="px-3 py-3">{t.cols.latestDate}</th>
                   <th className="px-3 py-3">{t.cols.median}</th>
@@ -445,6 +489,7 @@ export default function RealEstateTop100Landing({
                         {r?.apt_name || "-"}
                       </Link>
                     </td>
+                    <td className="px-3 py-3">{fmtSizeFromRow(r)}</td>
                     <td className="px-3 py-3">
                       {fmtEokFromMan(r?.latest_deal_amount_man, lang)}
                     </td>
@@ -460,7 +505,7 @@ export default function RealEstateTop100Landing({
                 ))}
                 {!list.length && (
                   <tr>
-                    <td colSpan={8} className="px-3 py-10 text-center text-slate-500">
+                    <td colSpan={9} className="px-3 py-10 text-center text-slate-500">                     
                       {lang === "en" ? "No data" : "데이터 없음"}
                     </td>
                   </tr>

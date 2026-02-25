@@ -19,6 +19,12 @@ const TEXT = {
       "강남3구(강남·서초·송파) 아파트 실거래 집계 데이터를 기반으로, 대표가격(중앙값) 기준 TOP 100 순위를 제공합니다. 최신 거래월 기준으로 빠르게 확인하세요.",
     h1: "강남3구 아파트 집값 TOP 100",
     sub: "강남·서초·송파 합산 · 실거래 기반 · 대표가격(중앙값) 기준",
+    introLines: [
+      "이 페이지는 강남3구(강남·서초·송파) 아파트 순위를 실거래 기반 Top100으로 보여줍니다.",
+      "대표가격(중앙값) 기준 정렬로 극단값 영향이 상대적으로 적습니다.",
+      "최근 거래/계약일과 거래량(표본수)을 함께 확인하면 해석이 더 안전합니다.",
+      "평형·년식이 섞이므로, 더 공정한 비교는 대시보드 필터로 조건을 고정해보세요.",
+    ],
     bullets: [
       "‘강남3구 아파트값 순위’ 검색 의도에 맞춘 고정 URL 랜딩페이지입니다.",
       "행정구역 기준 강남구(11680)·서초구(11650)·송파구(11710)를 합산합니다.",
@@ -68,6 +74,11 @@ const TEXT = {
       "Top 100 apartment complexes in Gangnam 3 districts (Gangnam, Seocho, Songpa) ranked by median total sale price from official transaction data.",
     h1: "Gangnam 3 Districts Apartment Prices Top 100",
     sub: "Gangnam · Seocho · Songpa · Ranked by median total sale price",
+    introLines: [
+      "This page merges Gangnam, Seocho, and Songpa and shows a Top 100 ranking based on official transactions.",
+      "The ranking metric is median total price, which is generally less sensitive to outliers than averages.",
+      "Check latest deal and transaction count together to avoid small-sample noise.",
+    ],
     bullets: [
       "A fixed-URL landing page for the query “Gangnam 3 districts apartment price ranking.”",
       "Scope: Gangnam-gu (11680), Seocho-gu (11650), Songpa-gu (11710).",

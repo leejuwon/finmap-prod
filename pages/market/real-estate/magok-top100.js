@@ -18,7 +18,13 @@ const TEXT = {
     desc:
       "마곡(강서구 마곡동) 아파트 실거래 집계 데이터를 기반으로, 대표가격(중앙값) 기준 TOP 100 순위를 제공합니다. 최신 거래월 기준으로 확인하세요.",
     h1: "마곡 아파트 집값 TOP 100",
-    sub: "강서구 마곡동 · 실거래 기반 · 대표가격(중앙값) 기준",
+    sub: "강서구 마곡동 · 실거래 기반 · 대표가격(중앙값) 기준",    
+    introLines: [
+      "이 페이지는 ‘마곡 아파트 순위’를 실거래 기반으로 정리한 Top100 랭킹입니다.",
+      "단지별 대표가격(중앙값)과 최근 거래, 거래량을 함께 제공해 가격대와 유동성을 같이 봅니다.",
+      "거래량이 적으면 단기 변동이 커질 수 있으니 표본수와 함께 해석하는 것을 추천합니다.",
+      "관심 단지는 상세에서 기간·평형 조건을 좁혀 비교해보세요.",
+    ],
     bullets: [
       "‘마곡 아파트 집값/순위’ 검색 의도에 맞춘 고정 URL 랜딩페이지입니다.",
       "행정구역은 강서구(11500)이며, 동 기준으로 ‘마곡동’만 포함합니다.",
@@ -67,7 +73,12 @@ const TEXT = {
     desc:
       "Top apartment complexes in Magok-dong (Gangseo-gu) ranked by median total sale price from official transaction data.",
     h1: "Magok Apartment Prices Top 100",
-    sub: "Magok-dong, Gangseo-gu · Ranked by median total sale price",
+    sub: "Magok-dong, Gangseo-gu · Ranked by median total sale price",    
+    introLines: [
+      "This page provides a fixed-URL Top 100 ranking for Magok based on official transactions.",
+      "It combines median price with latest deal and transaction count so you can judge level, recency, and liquidity together.",
+      "Small samples can be noisy; use tx count as a reliability signal.",
+    ],
     bullets: [
       "A fixed-URL landing page for the query “Magok apartment price ranking.”",
       "Scope: Magok-dong within Gangseo-gu (11500).",

@@ -18,6 +18,12 @@ const TEXT = {
       "송파(잠실) 아파트 실거래 집계 데이터를 기반으로, 대표가격(중앙값) 기준 TOP 100 순위를 제공합니다. 최신 거래월 기준으로 확인하세요.",
     h1: "송파(잠실) 아파트 집값 TOP 100",
     sub: "송파구 전체(잠실 포함) · 실거래 기반 · 대표가격(중앙값) 기준",
+    introLines: [
+      "이 페이지는 ‘송파(잠실) 아파트 순위’를 국토부 실거래 집계로 만든 Top100 랭킹입니다.",
+      "단지별 대표가격(중앙값) 기준으로 정렬해 전형적인 가격대를 빠르게 비교할 수 있어요.",
+      "최근 거래/계약일은 ‘가장 최근 체결’ 확인용이고, 거래량은 신뢰도 판단에 유용합니다.",
+      "잠실 생활권 단지들을 빠르게 스캔한 뒤, 관심 단지는 상세에서 조건을 더 좁혀보세요.",
+    ],
     bullets: [
       "‘송파(잠실) 아파트’ 검색 의도에 맞춘 고정 URL 랜딩페이지입니다.",
       "행정구역 기준 송파구(11710) 전체를 포함합니다(잠실은 송파구 내 지역).",
@@ -67,6 +73,11 @@ const TEXT = {
       "Top 100 apartment complexes in Songpa-gu (incl. Jamsil) ranked by median total sale price from official transaction data.",
     h1: "Songpa (Jamsil) Apartment Prices Top 100",
     sub: "Songpa-gu · Ranked by median total sale price",
+    introLines: [
+      "This is a fixed-URL Top 100 ranking for Songpa (including Jamsil) based on official transactions.",
+      "Ranked by median total price to represent a typical price level with less sensitivity to outliers.",
+      "Use latest deal and transaction count together for recency and reliability checks.",
+    ],
     bullets: [
       "A fixed-URL landing page for the query “Songpa/Jamsil apartment price ranking.”",
       "Scope: Songpa-gu (11710). Jamsil is a major area within Songpa-gu.",
