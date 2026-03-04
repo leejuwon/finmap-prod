@@ -87,9 +87,9 @@ export default function ToolCta({ lang = 'ko', type = 'compound' }) {
         <p className="text-[11px] font-semibold tracking-[0.16em] text-slate-500 uppercase mb-1">
           {isKo ? config.badgeKo : config.badgeEn}
         </p>
-        <h2 className="text-base sm:text-lg font-semibold text-slate-900 mb-1">
+        <h3 className="text-base sm:text-lg font-semibold text-slate-900 mb-1">
           {isKo ? config.titleKo : config.titleEn}
-        </h2>
+        </h3>
         <p className="text-xs sm:text-sm text-slate-600">
           {isKo ? config.descKo : config.descEn}
         </p>

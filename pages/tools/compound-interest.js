@@ -144,12 +144,12 @@ export default function CompoundPage() {
     () => ({
       title:
         locale === "ko"
-          ? "복리 이자 계산기 (월복리/연복리) · 적립식 투자 · 세금·수수료 반영"
-          : "Compound Interest Calculator (Monthly/Annual) · Contributions · Tax/Fee",
+          ? "복리 계산기 | FinMap"
+          : "Compound Interest Calculator | FinMap",
       desc:
         locale === "ko"
-          ? "초기 투자금, 월 적립금, 수익률, 기간을 입력하면 복리 미래가치(FV)를 계산합니다. 월복리/연복리 비교, 세전·세후(세금·수수료) 영향, 연도별 표/차트까지 한 번에 확인하세요."
-          : "Calculate future value (FV) from principal, monthly contribution, return, and time horizon. Compare monthly vs annual compounding, ideal vs net (tax/fee), and view charts & yearly tables.",
+          ? "원금·월적립·수익률·기간으로 미래가치(FV)를 계산합니다. 월복리/연복리 비교, 세금·수수료 반영 결과를 연도별 표·차트로 확인하세요."
+          : "Calculate FV from principal, monthly deposits, return and years. Compare monthly vs annual compounding and net vs ideal (tax/fee).",
 
       fv: locale === "ko" ? "세후 총자산" : "Net Future Value",
       fvIdeal: locale === "ko" ? "세전 기준 미래가치" : "Ideal (No Tax/Fee)",
