@@ -12,8 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428430/blog/inves
 lang: "ko"
 ---
 
-# DXY가 변화하면 시장은 어떻게 움직일까?
-
 > **요약 (10문장)**  
 1. DXY는 달러의 상대적 강도를 보여주는 핵심 지표입니다.  
 2. DXY 상승은 보통 위험회피 심리와 글로벌 유동성 축소를 의미합니다.  

@@ -12,9 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764561440/blog/inves
 lang: "en"
 ---
 
-# Why Korea ETFs Are the Most Sensitive to TNX  
-### — A Deep Dive into Structure, FX Exposure, and Liquidity Cycles —
-
 > **Summary (10 bullet points)**  
 > - Korea ETFs are among the world’s most sensitive equity markets to TNX movements.  
 > - The reason isn’t “just because Korea has many tech stocks.”  

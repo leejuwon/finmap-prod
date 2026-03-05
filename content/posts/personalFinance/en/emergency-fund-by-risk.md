@@ -10,8 +10,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1768379054/blog/tools
 lang: "en"
 ---
 
-# Your Emergency Fund Isn’t a ‘Months’ Number — It’s a Risk Number (Job, Family, Debt)
-
 > **Summary (10 sentences)**  
 > - A “3–6 months” emergency fund rule breaks because people have different risks, not different calendars.  
 > - The right target starts with your **essential burn rate** (must-pay expenses), not your total lifestyle spend.  

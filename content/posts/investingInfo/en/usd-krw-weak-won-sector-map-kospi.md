@@ -12,9 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767081421/blog/tools
 lang: "en"
 ---
 
-# Who Wins and Loses When the KRW Weakens?  
-## A Practical Sector Map for the KOSPI
-
 > **Summary (10 key points)**  
 > - A rising USD/KRW means a weaker Korean won, but market impact varies by sector.  
 > - Export-oriented companies may benefit from currency translation effects.  

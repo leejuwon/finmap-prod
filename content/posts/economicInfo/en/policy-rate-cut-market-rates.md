@@ -10,8 +10,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1768210075/blog/tools
 lang: "en"
 ---
 
-# A Rate Cut Doesn’t Guarantee Lower Borrowing Costs: How to Read Policy Rates vs Market Rates
-
 > **Summary (10 sentences)**  
 > - “Rate cuts” in headlines usually mean a **policy rate** move, but most real-world prices are driven by **market rates**.  
 > - Policy rates are central bank decisions; market rates are prices formed by expectations, risk premia, and funding conditions.  

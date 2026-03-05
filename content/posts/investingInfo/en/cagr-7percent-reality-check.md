@@ -12,9 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428393/blog/inves
 lang: "en"
 ---
 
-# What a “7% Annual Return” Really Means  
-— *A full reality check using long-term CAGR and real investment data* —
-
 > **Summary (10 key sentences)**  
 > 1) Many investors say “7% per year is enough,” but very few understand what the number actually represents.  
 > 2) A 7% annual assumption must be interpreted as CAGR, not as a simple expectation.  
@@ -34,7 +31,7 @@ Investors frequently assume that earning “7% per year” is both realistic and
 
 ---
 
-# 1. Introduction  
+## 1. Introduction  
 When discussing investing, one of the most common statements is:  
 **“If I can just earn 7% a year, I’ll be fine.”**  
 
@@ -51,7 +48,7 @@ This article removes that illusion and interprets **7%** through the lens of act
 
 ---
 
-# 2. The Hidden Meaning Behind “7% Per Year”
+## 2. The Hidden Meaning Behind “7% Per Year”
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -76,7 +73,7 @@ This article removes that illusion and interprets **7%** through the lens of act
 
 ---
 
-# 3. The Common Misunderstanding: Expected Returns vs. Actual CAGR  
+## 3. The Common Misunderstanding: Expected Returns vs. Actual CAGR  
 When people say “7% return,” they usually mean **expected returns (arithmetic average)**.  
 But what actually matters is **CAGR (geometric return)**.
 
@@ -103,7 +100,7 @@ Volatility destroys CAGR.
 
 ---
 
-# 4. Table 1 — Expected Return vs. Real CAGR
+## 4. Table 1 — Expected Return vs. Real CAGR
 
 | Scenario | Yearly Returns | Simple Average | Actual CAGR |
 |---------|----------------|----------------|-------------|
@@ -115,7 +112,7 @@ Volatility destroys CAGR.
 
 ---
 
-# 5. S&P 500 Long-Term CAGR — Is 7% Realistic?
+## 5. S&P 500 Long-Term CAGR — Is 7% Realistic?
 
 | Period | CAGR | Notes |
 |--------|------|-------|
@@ -135,7 +132,7 @@ But volatility determines whether you actually get 7% or 4% or 10%.
 
 ---
 
-# 6. Visualizing the Power of 7% CAGR
+## 6. Visualizing the Power of 7% CAGR
 
 <div class="img-row">
   <figure>
@@ -154,7 +151,7 @@ But volatility determines whether you actually get 7% or 4% or 10%.
 
 ---
 
-# 7. Beginners vs. Experts — How Each Should Use the 7% CAGR
+## 7. Beginners vs. Experts — How Each Should Use the 7% CAGR
 
 ## ✔ 1) Beginner Investors  
 For beginners, **savings rate matters more than CAGR**.
@@ -183,7 +180,7 @@ it’s a **long-term risk-adjusted performance target**.
 
 ---
 
-# 8. What 7% CAGR Actually Generates
+## 8. What 7% CAGR Actually Generates
 
 ### ✔ Example: $400/month investment at 7% for 30 years  
 (\~₩500,000 → $400 conversion)
@@ -198,7 +195,7 @@ it’s a **long-term risk-adjusted performance target**.
 
 ---
 
-# 9. Callout — The Real Meaning of “7% CAGR”
+## 9. Callout — The Real Meaning of “7% CAGR”
 
 <div class="callout-tip">
   <strong>Bottom Line:</strong>  
@@ -210,7 +207,7 @@ it’s a **long-term risk-adjusted performance target**.
 
 ---
 
-# 10. Checklist — Making 7% CAGR Realistic
+## 10. Checklist — Making 7% CAGR Realistic
 
 - Do not rely solely on historical averages  
 - Separate expected return from actual CAGR  
@@ -222,7 +219,7 @@ it’s a **long-term risk-adjusted performance target**.
 
 ---
 
-# 11. Conclusion (3 lines)
+## 11. Conclusion
 
 1) A 7% annual return must be interpreted as long-term CAGR, not a simple expectation.  
 2) Historical data suggests that 7% is realistic but not guaranteed due to volatility.  
@@ -230,7 +227,7 @@ it’s a **long-term risk-adjusted performance target**.
 
 ---
 
-# 12. FinMap Tool CTA
+## 12. FinMap Tool CTA
 
 <div class="tool-cta">
   <h3>Check 7% CAGR Using FinMap’s Compound Calculator</h3>
@@ -242,7 +239,7 @@ it’s a **long-term risk-adjusted performance target**.
 
 ---
 
-# 13. FAQ
+## 13. FAQ
 
 **Q1. Is the 7% assumption before or after tax?**  
 A: Typically before tax. After tax, net CAGR is usually 1–2% lower.

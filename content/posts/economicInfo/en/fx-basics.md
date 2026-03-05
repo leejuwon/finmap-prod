@@ -12,8 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767338030/blog/tools
 lang: "en"
 ---
 
-# Currency Basics: What Really Moves the USD/KRW Exchange Rate
-
 > **Summary (10 key points)**  
 > - Many investors believe exchange rates move randomly, but they do not.  
 > - USD/KRW is primarily driven by interest rate gaps and global capital flows.  

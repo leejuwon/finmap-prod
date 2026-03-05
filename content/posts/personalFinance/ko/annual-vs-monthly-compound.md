@@ -12,8 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429378/blog/perso
 lang: "ko"
 ---
 
-# 연복리 vs 월복리: 목표 도달 기간은 얼마나 달라질까?
-
 > **요약 (10문장 정리)**  
 > 1. 연복리는 1년에 한 번 이자를 계산하고, 월복리는 매달 이자를 계산합니다.  
 > 2. 계산 빈도가 많아질수록 원금이 더 빨리 늘어납니다.  

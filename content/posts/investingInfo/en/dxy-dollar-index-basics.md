@@ -12,8 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428438/blog/inves
 lang: "en"
 ---
 
-# What Is DXY (Dollar Index)? A Beginner-Friendly Explanation for Investors
-
 > **Summary (10 sentences)**  
 > 1. DXY measures the strength of the U.S. dollar against major currencies.  
 > 2. It compares the dollar with six major currencies like EUR and JPY.  

@@ -13,8 +13,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427012/blog/econo
 lang: "ko"
 ---
 
-# 경제지표 읽는 법: GDP·실업률·PMI를 실제로 쓰는 방법
-
 > **요약 (10문장)**  
 > - 많은 투자자는 경제지표를 “뉴스용 숫자”로만 소비합니다.  
 > - 하지만 시장은 숫자보다 **방향과 변화 속도**에 반응합니다.  

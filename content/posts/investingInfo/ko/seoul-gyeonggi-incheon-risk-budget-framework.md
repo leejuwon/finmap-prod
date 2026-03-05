@@ -12,8 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1770087533/blog/insig
 lang: "ko"
 ---
 
-# 서울·경기·인천을 ‘지역 선택’이 아니라 ‘리스크 예산’으로 읽는 법: 변동성·유동성·회복탄력 3축
-
 - 서울·경기·인천은 “어디가 더 좋냐”가 아니라 “내 리스크 예산을 어디에 배정하냐”의 문제입니다.  
 - 같은 가격이라도 <strong>변동성(흔들림)</strong>, <strong>유동성(갈아타기 가능성)</strong>, <strong>회복탄력(되돌림 속도)</strong>이 다르면 체감 리스크가 완전히 달라집니다.  
 - 대시보드에서 먼저 볼 것은 가격보다 <strong>거래량·회복 신호·하방 방어</strong>입니다.  

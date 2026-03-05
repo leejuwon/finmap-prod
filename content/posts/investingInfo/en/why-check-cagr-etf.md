@@ -12,8 +12,6 @@ tool: ["goal","comp","cagr","fire","dca"]
 lang: "en"
 ---
 
-# Why You Must Check the CAGR When Choosing ETFs and Funds
-
 > **10-Sentence Summary**  
 > - Many investors judge ETFs and funds based solely on their latest 1-year performance.  
 > - However, the true driver of long-term wealth is not “how fast it went up,” but “how steadily it grew.”  
@@ -32,7 +30,7 @@ lang: "en"
 
 ---
 
-# 1. Why Evaluating ETF Performance Is More Complicated Than It Looks
+## 1. Why Evaluating ETF Performance Is More Complicated Than It Looks
 
 At first glance, ETF selection seems simple.  
 “If it went up the most, it must be the best.”  
@@ -51,9 +49,9 @@ CAGR often reveals a completely different ranking than the 1-year return list.
 
 ---
 
-# 2. What CAGR Really Means
+## 2. What CAGR Really Means
 
-## 2-1. Definition  
+### 2-1. Definition  
 CAGR (Compound Annual Growth Rate) answers the question:
 
 **“If my investment grew at a steady rate every year, what would that rate be?”**
@@ -63,7 +61,7 @@ CAGR smooths it all into a single clean number — the *average annual growth sp
 
 This is why professionals rely on CAGR to compare ETFs fairly.
 
-## 2-2. Hero Layout Summary
+### 2-2. Hero Layout Summary
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -85,7 +83,7 @@ This is why professionals rely on CAGR to compare ETFs fairly.
   </div>
 </div>
 
-## 2-3. CAGR Formula
+### 2-3. CAGR Formula
 
 CAGR =  
 <span style="display:inline-block; text-align:center;">
@@ -104,9 +102,9 @@ Meaning:
 
 ---
 
-# 3. Total Return vs CAGR — Why Total Return Alone Misleads Investors
+## 3. Total Return vs CAGR — Why Total Return Alone Misleads Investors
 
-## 3-1. Total Return Hides Volatility
+### 3-1. Total Return Hides Volatility
 
 Simple Return =  
 <span style="display:inline-block; text-align:center;">
@@ -130,7 +128,7 @@ CAGR exposes the truth.
 
 ---
 
-# 3-2. Comparison Table ① Total Return vs CAGR
+### 3-2. Comparison Table ① Total Return vs CAGR
 
 | Metric | Meaning | Strength | Weakness | When It Matters |
 |--------|----------|-----------|-----------|-----------------|
@@ -138,7 +136,7 @@ CAGR exposes the truth.
 | **CAGR** | Annualized growth rate assuming steady growth | Shows quality & consistency | Slightly more complex | Long-term ETF comparison |
 | **Year-by-year Returns** | Actual yearly fluctuations | Excellent for risk analysis | Hard to interpret quickly | Professional risk management |
 
-## 3-3. Visual Comparison Layout
+### 3-3. Visual Comparison Layout
 
 <div class="compare-grid">
   <div class="compare-card compare-bad">
@@ -162,7 +160,7 @@ CAGR exposes the truth.
 
 ---
 
-# 4. ETF 3-Year and 5-Year CAGR Comparison (Sample Data)
+## 4. ETF 3-Year and 5-Year CAGR Comparison (Sample Data)
 
 > *Note: The table uses sample data for educational purposes.*
 
@@ -179,7 +177,7 @@ CAGR quickly reveals whether an ETF’s return pattern is sustainable.
 
 ---
 
-# 5. Visual Range: CAGR and Total Return Compared
+## 5. Visual Range: CAGR and Total Return Compared
 
 <div class="img-row">
   <figure>
@@ -200,9 +198,9 @@ CAGR quickly reveals whether an ETF’s return pattern is sustainable.
 
 ---
 
-# 6. How to Use CAGR Depending on Your Investing Skill Level
+## 6. How to Use CAGR Depending on Your Investing Skill Level
 
-## 6-1. For Beginners — Start With “ETFs With Strong 3- and 5-Year CAGR”
+### 6-1. For Beginners — Start With “ETFs With Strong 3- and 5-Year CAGR”
 
 <div class="callout-tip">
   <strong>Beginner Insight:</strong>  
@@ -230,7 +228,7 @@ The safer long-term choice is clear: **consistent growth wins**.
 
 ---
 
-## 6-2. For Intermediate and Professional Investors — Combine CAGR with Volatility
+### 6-2. For Intermediate and Professional Investors — Combine CAGR with Volatility
 
 Professionals don’t just check CAGR.  
 They compare CAGR relative to **volatility** to estimate risk-adjusted performance.
@@ -252,7 +250,7 @@ A professional might overweight S&P 500 for better portfolio stability.
 
 ---
 
-# 7. Practical Checklist Before Choosing an ETF
+## 7. Practical Checklist Before Choosing an ETF
 
 1. **Check the ETF’s operating history (at least 3 years)**  
 2. **Compare 3-year & 5-year CAGR**  
@@ -266,7 +264,7 @@ This simple checklist dramatically improves the quality of ETF selection decisio
 
 ---
 
-# 8. Conclusion – Long-Term Investment Success Is Built on Consistent CAGR
+## 8. Conclusion – Long-Term Investment Success Is Built on Consistent CAGR
 
 - Total return shows the final result  
 - CAGR shows the *quality of the journey*  
@@ -279,7 +277,7 @@ ETF selection becomes far clearer when anchored in CAGR.
 
 ---
 
-## FAQ
+### FAQ
 
 **Q1. Is a higher CAGR always better?**  
 A1. Not necessarily. High CAGR with extreme volatility may be risky. Combine CAGR with volatility and expenses for balanced evaluation.

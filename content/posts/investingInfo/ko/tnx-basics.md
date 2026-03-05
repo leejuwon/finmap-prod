@@ -12,8 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428464/blog/inves
 lang: "ko"
 ---
 
-# TNX(미국 10년물 국채금리) 완전 이해: 주식·환율·채권을 움직이는 ‘기준 금리’
-
 > **요약 (10문장)**  
 > - TNX는 “미국 10년물 국채 수익률”이며, 전 세계 자산 가격의 **할인율(Discount Rate)** 역할을 합니다.  
 > - 금리가 오르면 미래 현금흐름의 현재가치가 낮아져 **성장주 밸류에이션이 먼저 눌립니다.**  

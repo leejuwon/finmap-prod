@@ -12,8 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428430/blog/inves
 lang: "en"
 ---
 
-# How DXY Moves the Market
-
 > **10-sentence summary**  
 1. DXY reflects the relative strength of the U.S. dollar.  
 2. Rising DXY often signals risk-off sentiment and shrinking global liquidity.  

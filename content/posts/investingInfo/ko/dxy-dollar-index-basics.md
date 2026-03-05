@@ -12,8 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428438/blog/inves
 lang: "ko"
 ---
 
-# DXY(달러인덱스)란 무엇인가? 투자자가 꼭 알아야 할 의미 정리
-
 > **요약 (10문장 정리)**  
 > 1. DXY는 미국 달러의 강도를 나타내는 지표입니다.  
 > 2. 미국 달러를 유럽·일본 등 주요 통화와 비교해 계산합니다.  

@@ -12,9 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428405/blog/inves
 lang: "en"
 ---
 
-# Diagnosing Your Investing Skill with CAGR  
-— *A complete guide using MDD, volatility, and the Sharpe ratio* —
-
 > **10-Sentence Summary**  
 > 1) CAGR reveals how much your money actually grew over time.  
 > 2) However, CAGR alone cannot measure the risk you took to achieve that return.  
@@ -34,7 +31,7 @@ CAGR is one of the most important return metrics, but it hides all information a
 
 ---
 
-# 1. Introduction  
+## 1. Introduction  
 When investors talk about their results, they often summarize everything with a single number:
 
 **“My CAGR is 9% over the last five years.”**
@@ -59,7 +56,7 @@ This article explains how these four metrics work together and how to use them t
 
 ---
 
-# 2. “CAGR shows the growth, but not the risk behind it.”
+## 2. “CAGR shows the growth, but not the risk behind it.”
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -84,7 +81,7 @@ This article explains how these four metrics work together and how to use them t
 
 ---
 
-# 3. The Limitation of CAGR: It Does Not Reflect Volatility  
+## 3. The Limitation of CAGR: It Does Not Reflect Volatility  
 CAGR answers the question:
 
 **“How much did my portfolio grow from start to finish?”**
@@ -104,7 +101,7 @@ Even with identical CAGR, the emotional difficulty and sustainability differ dra
 
 ---
 
-# 4. What Is MDD (Maximum Drawdown)?  
+## 4. What Is MDD (Maximum Drawdown)?  
 MDD answers:
 
 **“What was the deepest drop from peak to bottom?”**
@@ -123,7 +120,7 @@ Most investors underestimate how important MDD is until they experience a deep d
 
 ---
 
-# 5. Explaining the Sharpe Ratio for Beginners  
+## 5. Explaining the Sharpe Ratio for Beginners  
 The Sharpe ratio measures:
 
 **“How efficiently did you earn returns relative to risk?”**
@@ -144,7 +141,7 @@ For beginners, simply remember:
 
 ---
 
-# 6. Table 1 — Comparing CAGR, Volatility, and Sharpe Ratio
+## 6. Table 1 — Comparing CAGR, Volatility, and Sharpe Ratio
 
 | Portfolio | CAGR | Volatility | MDD | Sharpe Ratio | Interpretation |
 |-----------|------|------------|------|---------------|----------------|
@@ -158,9 +155,9 @@ For beginners, simply remember:
 
 ---
 
-# 7. Two Portfolio Scenarios (Realistic Comparison)
+## 7. Two Portfolio Scenarios (Realistic Comparison)
 
-## **Scenario 1 — High CAGR, high volatility**
+### **Scenario 1 — High CAGR, high volatility**
 - CAGR: 11%  
 - MDD: -45%  
 - Volatility: 28%  
@@ -174,7 +171,7 @@ Characteristics:
 
 ---
 
-## **Scenario 2 — Moderate CAGR, low volatility**
+### **Scenario 2 — Moderate CAGR, low volatility**
 - CAGR: 8%  
 - MDD: -12%  
 - Volatility: 10%  
@@ -188,7 +185,7 @@ Characteristics:
 
 ---
 
-# 8. Table 2 — Scenario 1 vs Scenario 2 Comparison
+## 8. Table 2 — Scenario 1 vs Scenario 2 Comparison
 
 | Metric | Scenario 1 | Scenario 2 | Better Performer |
 |--------|------------|------------|------------------|
@@ -203,7 +200,7 @@ Characteristics:
 
 ---
 
-# 9. Visualizing the Relationship Among CAGR, MDD, and Volatility
+## 9. Visualizing the Relationship Among CAGR, MDD, and Volatility
 
 <div class="img-row">
   <figure>
@@ -222,7 +219,7 @@ Characteristics:
 
 ---
 
-# 10. Checklist — How to Diagnose Your Investing Skill
+## 10. Checklist — How to Diagnose Your Investing Skill
 
 - Never evaluate performance using CAGR alone  
 - Check MDD to understand your portfolio’s stress points  
@@ -234,7 +231,7 @@ Characteristics:
 
 ---
 
-# 11. Conclusion (3 Lines)
+## 11. Conclusion
 
 1) CAGR is important but insufficient for evaluating investing skill.  
 2) MDD, volatility, and Sharpe ratio complete the picture of true performance.  
@@ -242,7 +239,7 @@ Characteristics:
 
 ---
 
-# 12. FinMap CTA
+## 12. FinMap CTA
 
 <div class="tool-cta">
   <h3>Analyze Your Portfolio with FinMap</h3>
@@ -254,7 +251,7 @@ Characteristics:
 
 ---
 
-# 13. FAQ
+## 13. FAQ
 
 **Q1. Does a higher CAGR mean better investing skill?**  
 A: No. Without considering volatility and MDD, the assessment is incomplete.

@@ -12,8 +12,6 @@ tool: ["goal","comp","cagr","fire","dca"]
 lang: "en"
 ---
 
-# How to Reach Your Target Amount Faster: Balancing Principal, Return, and Time
-
 > **10-Sentence Summary**  
 > 1. The speed of reaching a financial goal depends on three variables: principal, return rate, and time.  
 > 2. Increasing the monthly contribution has the most immediate impact.  

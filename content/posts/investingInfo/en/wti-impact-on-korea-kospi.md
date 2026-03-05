@@ -11,8 +11,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767608170/blog/tools
 lang: "en"
 ---
 
-# How WTI Oil Shapes Korea’s Economy and KOSPI: Inflation, FX, Rates, and Earnings in One Chain
-
 > **Summary (10 sentences)**  
 > - WTI is more than an energy quote—it’s a macro variable that changes Korea’s cost structure.  
 > - Korea’s heavy reliance on imported energy makes oil shocks transmit quickly into trade, prices, and corporate margins.  

@@ -12,8 +12,6 @@ tool: ["goal","comp","cagr","fire","dca"]
 lang: "en"
 ---
 
-# A 5-Step Salary Management Guide for Young Professionals
-
 > **10-Sentence Summary**
 > 1. Salary management begins with understanding fixed monthly expenses.  
 > 2. Rent, phone bills, and subscription costs should be clarified first.  

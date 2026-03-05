@@ -12,9 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764553910/blog/inves
 lang: "en"
 ---
 
-# How the U.S. 10-Year Treasury Yield (TNX) Impacts the U.S. Economy, Korea, and Global Stock Markets  
-— *A complete FinMap premium macro guide* —
-
 > **Summary (10 sentences)**  
 > - The U.S. 10-year Treasury yield (TNX) functions as the global discount rate.  
 > - When TNX rises, asset valuations across the world adjust downward.  
@@ -32,7 +29,7 @@ The U.S. 10-year Treasury yield is the anchor of global financial markets. TNX a
 
 ---
 
-# 1. Introduction — Why TNX Drives the Global Market
+## 1. Introduction — Why TNX Drives the Global Market
 
 Every global investor watches TNX every single day.  
 There is one key reason:
@@ -51,7 +48,7 @@ Korea, in particular, reacts faster and more intensely due to its high foreign o
 
 ---
 
-# 2. TNX Is the “Heart Rate” of Global Capital
+## 2. TNX Is the “Heart Rate” of Global Capital
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -77,18 +74,18 @@ Korea, in particular, reacts faster and more intensely due to its high foreign o
 
 ---
 
-# 3. How TNX Affects the Economy
+## 3. How TNX Affects the Economy
 
 When TNX changes, several macro mechanisms follow immediately.
 
-## 3-1. When TNX rises
+### 3-1. When TNX rises
 - Money shifts from risk assets → U.S. Treasury bonds  
 - USD strengthens as yields rise  
 - Emerging markets face selling pressure  
 - Corporate borrowing costs rise  
 - Equity valuations (PER, PBR) contract  
 
-## 3-2. When TNX falls
+### 3-2. When TNX falls
 - Liquidity returns to equities  
 - Growth stocks outperform  
 - KRW strengthens and foreign capital flows into Korea  
@@ -96,7 +93,7 @@ When TNX changes, several macro mechanisms follow immediately.
 
 ---
 
-# 4. Rise vs Fall — TNX Comparison (Compare Layout)
+## 4. Rise vs Fall — TNX Comparison (Compare Layout)
 
 <div class="compare-grid">
   <div class="compare-card compare-bad">
@@ -124,7 +121,7 @@ When TNX changes, several macro mechanisms follow immediately.
 
 ---
 
-# 5. Why TNX Acts as a “Discount Rate”
+## 5. Why TNX Acts as a “Discount Rate”
 
 All asset pricing boils down to one formula:
 
@@ -143,7 +140,7 @@ respond dramatically to TNX.
 
 ---
 
-# 6. Visualizing TNX Effects
+## 6. Visualizing TNX Effects
 
 <div class="img-row">
   <figure>
@@ -164,7 +161,7 @@ respond dramatically to TNX.
 
 ---
 
-# 7. Table 1 — Korea’s Sensitivity to TNX (Example)
+## 7. Table 1 — Korea’s Sensitivity to TNX (Example)
 
 | Category | Rising TNX | Falling TNX |
 |----------|------------|-------------|
@@ -176,7 +173,7 @@ respond dramatically to TNX.
 
 ---
 
-# 8. Table 2 — Why TNX Matters More for Korea
+## 8. Table 2 — Why TNX Matters More for Korea
 
 | No. | Reason | Description |
 |----|--------|-------------|
@@ -188,9 +185,9 @@ respond dramatically to TNX.
 
 ---
 
-# 9. Why Korea Reacts Faster Than the U.S.
+## 9. Why Korea Reacts Faster Than the U.S.
 
-## 9-1. KRW is a “risk-on currency”
+### 9-1. KRW is a “risk-on currency”
 KRW is classified globally as a **risk-on/emerging-market currency**.
 
 Meaning:
@@ -198,7 +195,7 @@ Meaning:
 - Good global sentiment → KRW strengthens  
 - TNX rises, oil rises, or USD strengthens → KRW weakens  
 
-## 9-2. Foreign investors = 30% of KOSPI  
+### 9-2. Foreign investors = 30% of KOSPI  
 When TNX rises and USD strengthens,  
 foreign investors automatically reduce Korean equity positions.
 
@@ -206,15 +203,15 @@ This makes Korea one of the **most sensitive markets to TNX**.
 
 ---
 
-# 10. How to Use TNX — Beginner vs Experienced Investor
+## 10. How to Use TNX — Beginner vs Experienced Investor
 
-## 10-1. For beginners
+### 10-1. For beginners
 - Avoid aggressive buying when TNX surges  
 - Watch USDKRW first before buying Korean equities  
 - Prefer large caps or defensive ETFs  
 - Start buying when TNX stabilizes or reverses downward  
 
-## 10-2. For experienced investors
+### 10-2. For experienced investors
 - Adjust portfolio weights according to TNX zones  
 - Use Treasury futures or currency hedging  
 - Increase growth-stock allocation when TNX < 4%  
@@ -223,7 +220,7 @@ This makes Korea one of the **most sensitive markets to TNX**.
 
 ---
 
-# 11. Callout — Core Insight
+## 11. Callout — Core Insight
 
 <div class="callout-tip">
   <strong>Core Insight:</strong>
@@ -232,7 +229,7 @@ This makes Korea one of the **most sensitive markets to TNX**.
 
 ---
 
-# 12. Conclusion (3 lines)
+## 12. Conclusion (3 lines)
 
 - TNX drives valuation, liquidity, and global capital flows.  
 - Korea reacts more strongly than most markets due to currency and foreign-investor sensitivity.  
@@ -240,7 +237,7 @@ This makes Korea one of the **most sensitive markets to TNX**.
 
 ---
 
-# 13. CTA — FinMap Tools
+## 13. CTA — FinMap Tools
 
 <div class="tool-cta">
   <h3>FinMap Compound Interest & Goal Simulator</h3>
@@ -253,7 +250,7 @@ This makes Korea one of the **most sensitive markets to TNX**.
 
 ---
 
-# 14. FAQ (5 items)
+## 14. FAQ (5 items)
 
 ### Q1. Should investors check TNX daily?  
 A: Yes. TNX is the most important leading macro indicator, especially for Korean equity investors.

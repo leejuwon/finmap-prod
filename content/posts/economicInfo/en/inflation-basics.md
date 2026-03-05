@@ -12,9 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764681952/blog/econo
 lang: "en"
 ---
 
-# Understanding Inflation and Interest Rates  
-— *The Two Forces That Determine the Direction of the Entire Economy*
-
 > **Summary (10 key statements)**  
 > - Inflation and interest rates are the core mechanism that sets the pace, cost, and liquidity of the economy.  
 > - When inflation rises, central banks raise interest rates to cool economic activity.  
@@ -34,7 +31,7 @@ Inflation and interest rates are not abstract economic indicators—they are the
 
 ---
 
-# 1. Introduction — Why this is the starting point for all macro analysis
+## 1. Introduction — Why this is the starting point for all macro analysis
 Most investors know only one rule:
 
 > “When rates go up, stocks fall.”
@@ -55,7 +52,7 @@ This guide is built for practical use, not theory—focused on how a long-term i
 
 ---
 
-# 2. Inflation → Rates → Economy in one simple framework
+## 2. Inflation → Rates → Economy in one simple framework
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -79,7 +76,7 @@ This guide is built for practical use, not theory—focused on how a long-term i
 
 ---
 
-# 3. Understanding Inflation (What pushes prices up?)
+## 3. Understanding Inflation (What pushes prices up?)
 
 ### ■ Three main drivers of inflation  
 - **Demand-pull inflation**: Strong consumption pushes prices up  
@@ -94,7 +91,7 @@ To cool these pressures, central banks raise rates.
 
 ---
 
-# 4. Interest Rates — How they are determined
+## 4. Interest Rates — How they are determined
 
 ### ■ Core rule  
 - Inflation ↑ → Rate hikes  
@@ -111,7 +108,7 @@ When it’s low (low rates) → borrowing/spending increase.
 
 ---
 
-# 5. Economic impact of inflation vs interest rate cycles
+## 5. Economic impact of inflation vs interest rate cycles
 
 <div class="compare-grid">
   <div class="compare-card compare-bad">
@@ -137,7 +134,7 @@ When it’s low (low rates) → borrowing/spending increase.
 
 ---
 
-# 6. Tables — Seeing inflation & rate dynamics numerically
+## 6. Tables — Seeing inflation & rate dynamics numerically
 
 ### ■ Table 1: Market reaction by inflation phase
 
@@ -160,7 +157,7 @@ When it’s low (low rates) → borrowing/spending increase.
 
 ---
 
-# 7. Visualizing inflation–rate dynamics
+## 7. Visualizing inflation–rate dynamics
 
 <div class="img-row">
   <figure>
@@ -179,7 +176,7 @@ When it’s low (low rates) → borrowing/spending increase.
 
 ---
 
-# 8. Beginner vs Expert Interpretation
+## 8. Beginner vs Expert Interpretation
 
 ## ■ Beginner’s view  
 - Rates = “loan interest”  
@@ -195,7 +192,7 @@ When it’s low (low rates) → borrowing/spending increase.
 
 ---
 
-# 9. Practical Investor Checklist (7 items)
+## 9. Practical Investor Checklist (7 items)
 
 - Is inflation demand-driven or supply-driven?  
 - Where is the rate cycle? (Hiking / Peak / Cut)  
@@ -207,7 +204,7 @@ When it’s low (low rates) → borrowing/spending increase.
 
 ---
 
-# 10. Final Takeaways (3 lines)
+## 10. Final Takeaways
 
 - Inflation and interest rates determine the broad direction of markets.  
 - Rate turning points are the most important macro signals for investors.  
@@ -215,7 +212,7 @@ When it’s low (low rates) → borrowing/spending increase.
 
 ---
 
-# 11. CTA — Connect to FinMap tools
+## 11. CTA — Connect to FinMap tools
 
 <div class="tool-cta">
   <h3>See how changing interest rates affect your long-term wealth</h3>
@@ -227,7 +224,7 @@ When it’s low (low rates) → borrowing/spending increase.
 
 ---
 
-# FAQ
+## FAQ
 
 ### Q1. Do central banks raise rates even if inflation rises only slightly?  
 A. It depends on inflation composition. Central banks focus more on “core inflation” than volatile items like food or energy.

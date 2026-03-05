@@ -12,9 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764561440/blog/inves
 lang: "ko"
 ---
 
-# 왜 한국 ETF는 TNX(미국 10년물 금리)에 가장 민감한가  
-### — 구조·환율·유동성으로 완전히 해부한 한국 ETF 심화 분석 —
-
 > **요약 (10문장)**  
 > - 한국 ETF는 글로벌 ETF 중에서도 TNX 상승 시 낙폭이 가장 큰 시장 중 하나다.  
 > - 이유는 단순히 “기술주 비중이 높아서”가 아니라 구조적 요인이 복합적으로 작용하기 때문이다.  

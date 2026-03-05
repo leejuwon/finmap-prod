@@ -12,8 +12,6 @@ tool: ["goal","comp","cagr","fire","dca"]
 lang: "en"
 ---
 
-# What Is CAGR? Understanding the Difference From Simple Returns
-
 > **Summary (10 sentences)**  
 > CAGR refers to the compound annual growth rate of an investment.  
 > It shows how much the investment grew per year on average.  

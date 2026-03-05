@@ -12,9 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764561430/blog/inves
 lang: "en"
 ---
 
-# How U.S. 10-Year Treasury Yield (TNX) Shapes ETF Performance  
-*— A Complete Macro Guide for Growth, Value, Emerging Markets, and Korea —*
-
 > **10-Sentence Summary**
 > - TNX is the single most powerful macro variable affecting global ETF performance.  
 > - When TNX rises, the discount rate rises → growth ETF valuations fall.  

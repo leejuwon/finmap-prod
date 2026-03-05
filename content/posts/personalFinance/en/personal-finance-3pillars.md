@@ -12,9 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429434/blog/perso
 lang: "en"
 ---
 
-# The Three Pillars of Personal Finance: Budgeting, Emergency Funds, and Long-Term Investing  
-— set the system first, then grow it —
-
 > **Summary (10 sentences)**  
 > - Most people try to invest first, but the real win is building a system that survives bad months.  
 > - Your “return” is meaningless if one unexpected bill forces you to sell at the worst time.  

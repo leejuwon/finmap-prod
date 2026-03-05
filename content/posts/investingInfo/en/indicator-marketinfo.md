@@ -12,8 +12,6 @@ tool: ["goal","comp","cagr","fire","dca"]
 lang: "en"
 ---
 
-# Global Market Forces That Influence the KOSPI: A Complete Overview
-
 > **10-Sentence Summary**  
 > 1. The KOSPI is more sensitive to global financial conditions than domestic factors.  
 > 2. The USD/KRW exchange rate is the top variable guiding foreign capital flows.  

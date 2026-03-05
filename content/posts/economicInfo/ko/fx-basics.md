@@ -12,8 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427009/blog/econo
 lang: "ko"
 ---
 
-# 환율의 기초: 원/달러가 움직이는 진짜 이유
-
 > **요약 (10문장)**  
 > - 환율은 단순히 통화의 가격이 아니라 국가 경제의 종합 신호입니다.  
 > - 원/달러 환율은 금리 차이, 자본 이동, 무역 구조의 영향을 동시에 받습니다.  

@@ -11,8 +11,6 @@ lang: "en"
 tools: ["goal","compound","fire"]
 ---
 
-# Household Survival in an Inflation Era: Cut Fixed Costs, Control Spending, and Protect Cash Flow
-
 > **Summary (10 sentences)**  
 > - In inflation, households don’t break because income collapses overnight—many break because **expenses silently climb**.  
 > - The first priority isn’t “extreme saving,” but **cash-flow stability**: eliminate monthly deficits and build shock absorbers.  

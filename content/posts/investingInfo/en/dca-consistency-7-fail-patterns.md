@@ -11,8 +11,6 @@ lang: "en"
 tools: ["dca","cagr","goal"]
 ---
 
-# DCA Is a Consistency Game, Not a Return Hack: 7 Ways People Fail (and How to Fix Them)
-
 > **Summary (10 sentences)**  
 > - Dollar-cost averaging (DCA) is less about “beating the market” and more about **staying invested through real life**.  
 > - Most DCA plans don’t fail because the market is hard—they fail because the plan is **too fragile to survive volatility**.  

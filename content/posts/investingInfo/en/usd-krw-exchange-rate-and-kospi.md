@@ -12,8 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767070300/blog/tools
 lang: "en"
 ---
 
-# USD/KRW Exchange Rate: What It Means for Korea’s Economy and the KOSPI
-
 > **Summary (10 sentences)**  
 > 1) The USD/KRW exchange rate is the price of the U.S. dollar in Korean won.  
 > 2) When USD/KRW rises, the won weakens; when it falls, the won strengthens.  

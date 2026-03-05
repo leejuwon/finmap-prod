@@ -11,8 +11,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767338032/blog/tools
 lang: "en"
 ---
 
-# How Interest Rates Work: From Policy Rates to Deposits, Loans, and Bonds
-
 > **Summary (10 sentences)**  
 > - “Interest rates” are not one number; they form a structure: **policy rate → market yields → product rates**.  
 > - The policy rate is a direction signal, while market yields reflect expectations about inflation, growth, and risk.  

@@ -11,8 +11,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767584963/blog/tools
 lang: "en"
 ---
 
-# How the S&P 500 Moves Korea’s Economy and KOSPI: The FX–Rates–Foreign Flow Chain
-
 > **Summary (10 sentences)**  
 > - The S&P 500 is not just an American stock index—it’s a global “risk appetite gauge.”  
 > - Korea’s stock market tends to react strongly because foreign participation is meaningful and capital flows are sensitive to global sentiment.  

@@ -12,8 +12,6 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428464/blog/inves
 lang: "en"
 ---
 
-# TNX Explained: Why the 10-Year Treasury Yield Drives Markets
-
 > **Summary (10 sentences)**  
 > - TNX is the market’s discount-rate headline, and that alone can move stock valuations.  
 > - When TNX rises fast, duration-heavy assets (growth/tech, long bonds) usually react first.  
