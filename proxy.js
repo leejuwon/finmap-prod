@@ -31,6 +31,14 @@ export function proxy(req) {
   let changed = false;
   let path = originalPath;
 
+  // ✅ 카테고리 canonical case 매핑 (중복/404 방지: economicinfo -> economicInfo 등)
+  const CATEGORY_CANON = {
+    economicinfo: "economicInfo",
+    personalfinance: "personalFinance",
+    investinginfo: "investingInfo",
+  };
+
+
   // ✅ 템플릿 문자열 URL 방어: [ ] 및 인코딩(%5B/%5D)까지 바로 404
   if (path.includes("[") || path.includes("]") || /%5b|%5d/i.test(href)) {
     return new NextResponse("Not Found", { status: 404 });
@@ -109,6 +117,62 @@ export function proxy(req) {
   m = path.match(/^\/posts\/([^/]+)\/ko\/([^/]+)$/);
   if (m) { path = `/posts/${m[1]}/${m[2]}`; changed = true; }
 
+  // ✅ (2.75) category case 정규화
+  // - /en/posts/{cat}/{slug} , /posts/{cat}/{slug}
+  // - /en/category/{cat} , /category/{cat}
+  // - trailing slash 유무 모두 커버(/?$)
+  const getCanonCat = (cat) => {
+    if (!cat) return null;
+    return CATEGORY_CANON[String(cat).toLowerCase()] || null;
+  };
+
+  let mm;
+
+  // /en/posts/{cat}/{slug}
+  mm = path.match(/^\/en\/posts\/([^/]+)\/([^/]+)\/?$/);
+  if (mm) {
+    const cat = mm[1];
+    const slug = mm[2];
+    const canon = getCanonCat(cat);
+    if (canon && cat !== canon) {
+      path = `/en/posts/${canon}/${slug}`;
+      changed = true;
+    }
+  }
+
+  // /posts/{cat}/{slug}
+  mm = path.match(/^\/posts\/([^/]+)\/([^/]+)\/?$/);
+  if (mm) {
+    const cat = mm[1];
+    const slug = mm[2];
+    const canon = getCanonCat(cat);
+    if (canon && cat !== canon) {
+      path = `/posts/${canon}/${slug}`;
+      changed = true;
+    }
+  }
+
+  // /en/category/{cat}
+  mm = path.match(/^\/en\/category\/([^/]+)\/?$/);
+  if (mm) {
+    const cat = mm[1];
+    const canon = getCanonCat(cat);
+    if (canon && cat !== canon) {
+      path = `/en/category/${canon}`;
+      changed = true;
+    }
+  }
+
+  // /category/{cat}
+  mm = path.match(/^\/category\/([^/]+)\/?$/);
+  if (mm) {
+    const cat = mm[1];
+    const canon = getCanonCat(cat);
+    if (canon && cat !== canon) {
+      path = `/category/${canon}`;
+      changed = true;
+    }
+  }
 
   // ✅ (3) 고정 URL 매핑 (※ 여기서 path 기준으로 적용)
   const fixed = {

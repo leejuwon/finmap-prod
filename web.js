@@ -93,9 +93,17 @@ const PORT = Number(process.env.PORT || 8002);
 
     // (선택) 정적 확장자도 통과
     if (/\.(?:js|css|map|png|jpg|jpeg|webp|svg|ico|txt|xml)$/.test(p)) return next();
-    
+    // ✅ /ko prefix 정규화: /ko/* -> /* (그리고 끝 슬래시도 제거해서 체인/중복 최소화)
     if (req.url === '/ko' || req.url.startsWith('/ko/')) {
-      const dest = req.url.replace(/^\/ko(?=\/|$)/, '') || '/';
+      const original = req.url || '';
+      const [pathname, qs] = original.split('?');
+
+      // prefix 제거
+      let destPath = pathname.replace(/^\/ko(?=\/|$)/, '') || '/';
+      // trailing slash 제거 (루트 "/" 제외)
+      if (destPath.length > 1) destPath = destPath.replace(/\/+$/, '');
+
+      const dest = destPath + (qs ? `?${qs}` : '');
       res.redirect(308, dest);
       return;
     }

@@ -148,7 +148,31 @@ module.exports = {
         destination: "/en/posts/:category/:slug",
         permanent: true,
         locale: false,
-      },            
+      }, 
+      {
+        source: "/en/posts/:category/:slug/",
+        destination: "/en/posts/:category/:slug",
+        permanent: true,
+        locale: false,
+      },        
+       {
+        source: "/posts/:category/:slug/",
+        destination: "/posts/:category/:slug",
+        permanent: true,
+        locale: false,
+      },   
+      {
+        source: "/en/category/:slug/",
+        destination: "/en/category/:slug",
+        permanent: true,
+        locale: false,
+      },
+      {
+        source: "/category/:slug/",
+        destination: "/category/:slug",
+        permanent: true,
+        locale: false,
+      },
 
       // -------------------------
       // (D) 루트 / 또는 /en 에 붙는 ?lang= 정리
