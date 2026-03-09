@@ -260,6 +260,11 @@ title: "전세·월세·매매, 무엇이 ‘더 싸다’가 아니라 무엇�
 description: "전세·월세·매매는 ‘최저비용’ 경쟁이 아니라 ‘내 계획이 깨지지 않는 안정성’ 경쟁입니다. 대시보드 가격대를 입력값으로 고정한 뒤, 월 현금흐름·기회비용·리스크 트리거 3표로 내게 더 안전한 선택을 규칙으로 정리합니다."
 url: /posts/personalFinance/rent-jeonse-buy-cashflow-opportunity-cost
 
+## 20.
+title: "DCA vs 일시금투자: 기대수익이 아니라 ‘후회·중단·변동성(실행 리스크)’로 결정하는 3단계 규칙"
+description: "DCA(적립식)와 일시금투자는 수익률 논쟁이 아니라 ‘실행 리스크’의 선택입니다. 현금버퍼·부채이자율·심리내성·기간·소득안정성 5조건으로 DCA/혼합/일시를 고르고, 실패 신호까지 포함한 3단계 의사결정 표와 체크리스트를 제공합니다."
+url: /posts/personalFinance/dca-vs-lumpsum-decision-rules
+
 
 # 재테크(영어)
 
@@ -357,6 +362,11 @@ url: /en/posts/personalFinance/mortgage-risk-checklist-dsr-variable
 title: "Rent vs Jeonse vs Buy: Not “Cheaper,” but “Safer” — Compare Cash Flow, Opportunity Cost, and Risk Triggers"
 description: "In Korea, the best housing choice is rarely the cheapest on paper—it’s the one that keeps your plan intact when rates, deposits, or prices move. Use a dashboard-anchored price band to compare monthly cash flow, opportunity cost, and risk triggers across rent, jeonse, and buying."
 url: /en/posts/personalFinance/rent-jeonse-buy-cashflow-opportunity-cost
+
+## 20.
+title: "DCA vs Lump Sum Without the Debate: A 3-Step Rule Based on Behavior Risk, Cash Buffers, and Time Horizon"
+description: "Stop arguing about theoretical edge. Use a 3-step rule (survival → consistency → optimization) built on cash buffers, debt APR, time horizon, income stability, and behavior tolerance—then stress-test your choice in /en/tools/dca-calculator."
+url: /en/posts/personalFinance/dca-vs-lumpsum-decision-rules
 
 
 # 투자정보(한글)
