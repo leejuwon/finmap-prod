@@ -271,6 +271,7 @@ export default function CagrCalculatorPage() {
     () => [
       {
         slug: "what-is-cagr",
+        category: "personalFinance",
         tagKo: "CAGR란 무엇인가?",
         tagEn: "About CAGR",
         titleKo: "ETF·펀드 선택 시 CAGR을 반드시 확인해야 하는 이유",
@@ -280,6 +281,7 @@ export default function CagrCalculatorPage() {
       },
       {
         slug: "cagr-7percent-reality-check",
+        category: "investingInfo",
         tagKo: "장기 CAGR",
         tagEn: "long-term CAGR",
         titleKo: "‘연 7% 복리’에 대하여. CAGR로 현실 체크하기",
@@ -289,6 +291,7 @@ export default function CagrCalculatorPage() {
       },
       {
         slug: "diagnose-investing-skill-with-cagr",
+        category: "investingInfo",
         tagKo: "CAGR로 투자 실력 진단",
         tagEn: "Investing Skill Using CAGR",
         titleKo: "CAGR로 투자 실력 진단하기: MDD·변동성·샤프비율과 함께 보는 현실적인 평가법",
@@ -298,6 +301,7 @@ export default function CagrCalculatorPage() {
       },
      {
         slug: "how-much-per-month-for-100m",
+        category: "personalFinance",
         tagKo: "적립식",
         tagEn: "Contributions",
         titleKo: "목표 금액을 위한 월 투자금: 역산으로 계획 세우기",
@@ -307,6 +311,7 @@ export default function CagrCalculatorPage() {
       },
       {
         slug: "goal-amount-fast-strategy",
+        category: "personalFinance",
         tagKo: "전략",
         tagEn: "Strategy",
         titleKo: "목표에 더 빨리 도달하는 방법: 원금·수익률·기간의 균형",
@@ -573,7 +578,7 @@ export default function CagrCalculatorPage() {
             {relatedGuides.map((g) => (
               <Link
                 key={g.slug}
-                href={`/posts/personalFinance/${g.slug}`}
+                href={`/posts/${g.category}/${g.slug}`}
                 locale={locale}
                 className="block border rounded-2xl p-4 hover:shadow-sm transition"
               >
