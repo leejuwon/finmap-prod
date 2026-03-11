@@ -59,6 +59,12 @@ export default function Header() {
     setLangBlockMsg("");
   }, [router.asPath]);
 
+  
+  // 라우트가 바뀌면 드롭다운 닫기
+  useEffect(() => {
+    setBlogOpen(false);
+  }, [router.asPath]);
+
   /* ------------------------------
      Blog dropdown 상태 + ref
   -------------------------------- */
