@@ -4,6 +4,7 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
+Disallow: /cdn-cgi/
 
 # Sitemaps
 Sitemap: https://www.finmaphub.com/sitemap.xml
