@@ -160,6 +160,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
   };
 
   const [likes, setLikes] = useState(0);
+  const [views, setViews] = useState(0);
   const [comments, setComments] = useState([]);
   const [commentForm, setCommentForm] = useState({
     nickname: '',
@@ -170,9 +171,11 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
   // ✅ shareUrl 초기값은 canonicalUrl로 (SEO 기준 URL)
   const [shareUrl, setShareUrl] = useState(canonicalUrl);
 
+  const engagementQuery = `slug=${encodeURIComponent(slug)}&lang=${encodeURIComponent(lang)}`;
+
   const reloadComments = async () => {
     try {
-      const res = await fetch(`/api/comments?slug=${slug}`);
+      const res = await fetch(`/api/comments?${engagementQuery}`);
       const data = await res.json();
       setComments(data.comments || []);
     } catch (e) {
@@ -182,7 +185,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
 
   const reloadLikes = async () => {
     try {
-      const res = await fetch(`/api/like?slug=${slug}`);
+      const res = await fetch(`/api/like?${engagementQuery}`);
       const data = await res.json();
       setLikes(data.likes || 0);
     } catch (e) {
@@ -190,16 +193,34 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
     }
   };
 
+ const registerView = async () => {
+  try {
+    const res = await fetch(`/api/view?${engagementQuery}`, { method: 'POST' });
+
+    if (!res.ok) {
+      const text = await res.text().catch(() => '');
+      console.error('view api failed:', res.status, text);
+      return;
+    }
+
+    const data = await res.json();
+    setViews(data.views || 0);
+  } catch (e) {
+    console.error('registerView error:', e);
+  }
+};
+
   useEffect(() => {
     // ✅ 공유/외부 확산은 항상 canonical로 고정 (중복 URL 확산 방지)
     setShareUrl(canonicalUrl);
     reloadLikes();
     reloadComments();
+    registerView();
   }, [slug, lang]);
 
   const handleLike = async () => {
     try {
-      const res = await fetch(`/api/like?slug=${slug}`, { method: 'POST' });
+      const res = await fetch(`/api/like?${engagementQuery}`, { method: 'POST' });
       const data = await res.json();
       if (data.likes != null) setLikes(data.likes);
     } catch (e) {
@@ -223,7 +244,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
     }
 
     try {
-      const res = await fetch(`/api/comments?slug=${slug}`, {
+      const res = await fetch(`/api/comments?${engagementQuery}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(commentForm),
@@ -253,7 +274,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
     if (!password) return;
 
     try {
-      const res = await fetch(`/api/comments?slug=${slug}`, {
+      const res = await fetch(`/api/comments?${engagementQuery}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -294,7 +315,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
     if (!password) return;
 
     try {
-      const res = await fetch(`/api/comments?slug=${slug}`, {
+      const res = await fetch(`/api/comments?${engagementQuery}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -403,12 +424,15 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
       <article className="prose prose-slate lg:prose-lg max-w-none bg-white border rounded-2xl shadow-card p-6">
         <h1 className="fm-post-title fm-post-title--clamp3">{post.title}</h1>
 
-        <p className="text-sm text-slate-500">
-          {post.category} · {post.datePublished}
-          {post.dateModified && post.dateModified !== post.datePublished
-            ? ` · ${isKo ? '수정' : 'Updated'}: ${post.dateModified}`
-            : ''}
-        </p>
+        <div className="text-sm text-slate-500 space-y-1">
+          <p>
+            {post.category} · {post.datePublished}
+            {post.dateModified && post.dateModified !== post.datePublished
+              ? ` · ${isKo ? '수정' : 'Updated'}: ${post.dateModified}`
+              : ''}
+          </p>
+          <p>👁️ {isKo ? '조회수' : 'Views'} {views.toLocaleString()}</p>
+        </div>
 
         <div className="my-4">
           <AdResponsive key={`post-top-${lang}-${slug}`} client={AD_CLIENT} slot={AD_SLOTS.responsiveTop} align="center" />
@@ -519,7 +543,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
                     <span className="flex items-center gap-2">
                       {c.created_at && (
                         <span className="text-[11px] text-slate-400">
-                          {new Date(c.created_at).toLocaleString('ko-KR')}
+                          {new Date(c.created_at).toLocaleString(isKo ? 'ko-KR' : 'en-US')}
                         </span>
                       )}
                     </span>

@@ -1,4 +1,4 @@
-// pages/api/like.js
+// pages/api/view.js
 import { getDB } from '../../lib/db';
 
 function normalizeLang(raw) {
@@ -19,31 +19,30 @@ export default async function handler(req, res) {
   try {
     if (method === 'GET') {
       const [rows] = await db.query(
-        'SELECT likes FROM blog_post_likes WHERE slug = ? AND lang = ?',
+        'SELECT views FROM blog_post_views WHERE slug = ? AND lang = ?',
         [slug, lang]
       );
-      const likes = rows[0]?.likes || 0;
-      return res.status(200).json({ likes, lang });
+      const views = rows[0]?.views || 0;
+      return res.status(200).json({ views, lang });
     }
 
     if (method === 'POST') {
-      // 단순 +1 (언어별 분리)
       await db.query(
         `
-        INSERT INTO blog_post_likes (slug, lang, likes)
+        INSERT INTO blog_post_views (slug, lang, views)
         VALUES (?, ?, 1)
-        ON DUPLICATE KEY UPDATE likes = likes + 1
+        ON DUPLICATE KEY UPDATE views = views + 1
         `,
         [slug, lang]
       );
 
       const [rows] = await db.query(
-        'SELECT likes FROM blog_post_likes WHERE slug = ? AND lang = ?',
+        'SELECT views FROM blog_post_views WHERE slug = ? AND lang = ?',
         [slug, lang]
       );
-      const likes = rows[0]?.likes || 0;
+      const views = rows[0]?.views || 0;
 
-      return res.status(200).json({ likes, lang });
+      return res.status(200).json({ views, lang });
     }
 
     res.setHeader('Allow', ['GET', 'POST']);
