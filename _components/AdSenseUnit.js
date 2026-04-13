@@ -6,6 +6,7 @@ export default function AdSenseUnit({ slot, className = "", adTest = false }) {
   const router = useRouter();
   const insRef = useRef(null);
   const [mounted, setMounted] = useState(false);
+  const loadedRef = useRef(false);
 
   useEffect(() => {
     setMounted(true);
@@ -15,12 +16,14 @@ export default function AdSenseUnit({ slot, className = "", adTest = false }) {
     if (!mounted) return;
     if (typeof window === "undefined") return;
     if (!slot) return;
+    if (!insRef.current) return;
 
     let cancelled = false;
     let tries = 0;
 
     const tick = () => {
       if (cancelled) return;
+      if (loadedRef.current) return;
       tries += 1;
 
       const ins = insRef.current;
@@ -32,16 +35,34 @@ export default function AdSenseUnit({ slot, className = "", adTest = false }) {
       }
 
       const status = ins.getAttribute("data-adsbygoogle-status");
-      if (status) return;
+      const pushed = ins.getAttribute("data-fm-ads-pushed");
+      if (status || pushed) {
+        loadedRef.current = true;
+        return;
+      }
 
       try {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
+        ins.setAttribute("data-fm-ads-pushed", "1");
+        loadedRef.current = true;
       } catch (_) {}
     };
 
-    tick();
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          tick();
+        });
+      },
+      { rootMargin: "300px" }
+    );
+
+    io.observe(insRef.current);
+
     return () => {
       cancelled = true;
+      io.disconnect();
     };
   }, [mounted, slot, router.asPath, adTest]);
 
@@ -58,7 +79,7 @@ export default function AdSenseUnit({ slot, className = "", adTest = false }) {
         key={`${slot}-${router.asPath}`} // mounted 이후라 SSR mismatch 없음
         ref={insRef}
         className="adsbygoogle"
-        style={{ display: "block" }}
+        style={{ display: "block", minHeight: 120 }}
         data-ad-client={AD_CLIENT}
         data-ad-slot={slot}
         data-ad-format="auto"

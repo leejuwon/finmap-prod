@@ -151,6 +151,7 @@ const TEXT = {
       rank: '#',
       area: '시군구',
       apt: '단지(최근거래)',
+      complexScale: '세대/동',
       areaM2: '전용(㎡)',
       pyeong: '평형(평)',
       build: '년식',
@@ -226,6 +227,7 @@ const TEXT = {
       rank: '#',
       area: 'Area',
       apt: 'Complex (latest deal)',
+      complexScale: 'HH/Dong',
       areaM2: 'Area(㎡)',
       pyeong: 'Pyeong',
       build: 'Build',
@@ -278,6 +280,10 @@ export default function RealEstatePage() {
   const [priceMetric, setPriceMetric] = useState('none'); // none|median_price|avg_price|latest_price|max_price|sum_price
   const [priceMin, setPriceMin] = useState(''); // e.g. "3.5" => 3.5억
   const [priceMax, setPriceMax] = useState('');
+
+  // ✅ 세대수 필터 (단지정보 기반)
+  const [hhOp, setHhOp] = useState('gte'); // gte | lte
+  const [hh, setHh] = useState(''); // number string
 
   const [aptName, setAptName] = useState('');          // ✅ 아파트명 검색(입력)
   const [aptNameDeb, setAptNameDeb] = useState('');    // ✅ 디바운스된 값(API에 전달)
@@ -515,6 +521,15 @@ export default function RealEstatePage() {
         if (String(priceMin || '').trim()) qs.set('priceMin', String(priceMin).trim());
         if (String(priceMax || '').trim()) qs.set('priceMax', String(priceMax).trim());
       }
+
+      // ✅ 세대수 필터
+    {
+      const n = Number(String(hh || '').replace(/[^\d]/g, ''));
+      if (Number.isFinite(n) && n > 0) {
+        qs.set('hh', String(Math.trunc(n)));
+        qs.set('hhOp', hhOp === 'lte' ? 'lte' : 'gte');
+      }
+    }
       // ✅ 아파트명 검색(앞뒤 like)
       if (aptNameDeb) qs.set('apt', aptNameDeb);
 
@@ -546,7 +561,7 @@ export default function RealEstatePage() {
     if (!opt || !periodFrom || !periodTo) return;
     fetchTop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [opt, timeframe, periodFrom, periodTo, sido, area, topBy, sort, top, pyeong, buildFrom, buildTo, priceMetric, priceMin, priceMax, aptNameDeb]);
+  }, [opt, timeframe, periodFrom, periodTo, sido, area, topBy, sort, top, pyeong, buildFrom, buildTo, priceMetric, priceMin, priceMax, hh, hhOp, aptNameDeb]);
 
   function renderArea(row) {
     if (row.sido_name !== '경기도') return row.sigungu_name || '-';
@@ -558,6 +573,15 @@ export default function RealEstatePage() {
     const dong = row.latest_apt_dong ? ` ${row.latest_apt_dong}` : '';
     const fl = row.latest_floor != null ? ` (${row.latest_floor}${lang === 'en' ? 'F' : '층'})` : '';
     return `${row.apt_name}${dong}${fl}`;
+  }
+
+  function renderHouseholdDong(row) {
+    const hc = row?.household_count;
+    const dc = row?.dong_count;
+    if (hc == null && dc == null) return '-';
+    const h = hc != null ? Number(hc).toLocaleString() : '-';
+    const d = dc != null ? Number(dc).toLocaleString() : '-';
+    return lang === 'en' ? `${h}/${d}` : `${h}/${d}`;
   }
 
   // ✅ 상세페이지 링크 생성 (Top 리스트의 apt_key 그대로 사용)
@@ -836,7 +860,8 @@ export default function RealEstatePage() {
     const sizePy = r.latest_area_m2 != null ? `${fmtPyeongFromM2(r.latest_area_m2)}${lang === 'en' ? 'pyeong' : '평'}` : '-';
     const buildYVal = (r.latest_build_year ?? r.build_year);
     const buildY = buildYVal != null ? `${buildYVal}${lang === 'en' ? '' : '년식'}` : '-';
-    const dealDate = r.latest_deal_date ? String(r.latest_deal_date).slice(0, 10) : '-';    
+    const dealDate = r.latest_deal_date ? String(r.latest_deal_date).slice(0, 10) : '-';  
+    const complexScale = renderHouseholdDong(r);  
     
     return (
       <>        
@@ -866,7 +891,7 @@ export default function RealEstatePage() {
                 </button>
               </div>       
               <div className="mt-1 text-xs text-slate-500">
-                {sizeM2} · {sizePy} · {buildY} · {dealDate}
+                {sizeM2} · {sizePy} · {buildY} · {t.cols.complexScale}: {complexScale} · {dealDate}
               </div>
             </div>
             <div className="flex flex-col items-end gap-2 shrink-0">
@@ -1306,6 +1331,44 @@ export default function RealEstatePage() {
                 </div>
               </div>
             </div>
+
+            {/* ✅ 세대수 필터 */}
+            <div className="md:col-span-6">
+              <div className="text-sm text-slate-500 mb-1">
+                {lang === 'en' ? 'Households (complex)' : '세대수(단지)'}
+              </div>
+              <div className="flex gap-2">
+                <select
+                  className="border rounded-lg px-3 py-2 bg-white"
+                  value={hhOp}
+                  onChange={(e) => setHhOp(e.target.value === 'lte' ? 'lte' : 'gte')}
+                >
+                  <option value="gte">{lang === 'en' ? '≥' : '이상'}</option>
+                  <option value="lte">{lang === 'en' ? '≤' : '이하'}</option>
+                </select>
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  className="w-full border rounded-lg px-3 py-2"
+                  placeholder={lang === 'en' ? 'e.g. 1000' : '예: 1000'}
+                  value={hh}
+                  onChange={(e) => setHh(e.target.value)}
+                />
+                <button
+                  type="button"
+                  className="border rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-50"
+                  onClick={() => setHh('')}
+                  title={lang === 'en' ? 'Clear' : '초기화'}
+                >
+                  {lang === 'en' ? 'Clear' : '초기화'}
+                </button>
+              </div>
+              <div className="mt-1 text-[11px] text-slate-400">
+                {lang === 'en'
+                  ? 'Filtered using complex (kapt) data. If basis sync is not complete, some complexes may be missing.'
+                  : '공동주택(단지) 정보로 필터링합니다. 기본정보(Basis) 보충 전엔 일부 단지가 누락될 수 있어요.'}
+              </div>
+            </div>
           </div>
 
           {/* ✅ 아파트명 검색 */}
@@ -1393,6 +1456,7 @@ export default function RealEstatePage() {
                     <th className="py-3 pr-3">{t.cols.rank}</th>
                     <th className="py-3 pr-3">{t.cols.area}</th>
                     <th className="py-3 pr-3">{t.cols.apt}</th>
+                    <th className="py-3 pr-3">{t.cols.complexScale}</th>
                     <th className="py-3 pr-3">{t.cols.areaM2}</th>
                     <th className="py-3 pr-3">{t.cols.pyeong}</th>
                     <th className="py-3 pr-3">{t.cols.build}</th>
@@ -1443,6 +1507,7 @@ export default function RealEstatePage() {
                           {renderApt(r)}
                         </Link>
                       </td>
+                       <td className="py-3 pr-3">{renderHouseholdDong(r)}</td>
 
                       <td className="py-3 pr-3">{r.latest_area_m2 != null ? Number(r.latest_area_m2).toFixed(2) : '-'}</td>
                       <td className="py-3 pr-3">{fmtPyeongFromM2(r.latest_area_m2)}</td>
@@ -1492,7 +1557,7 @@ export default function RealEstatePage() {
 
                   {!rows.length && !loading && (
                     <tr>
-                      <td colSpan={showAdvanced ? 29 : 17} className="py-10 text-center text-slate-500">
+                      <td colSpan={showAdvanced ? 30 : 18} className="py-10 text-center text-slate-500">
                         {lang === 'en' ? 'No data' : '데이터 없음'}
                       </td>
                     </tr>

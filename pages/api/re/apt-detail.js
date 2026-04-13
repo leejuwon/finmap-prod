@@ -100,21 +100,40 @@ export default async function handler(req, res) {
 
     const statsSql = `
       SELECT
-        ${periodCol} AS period,
-        pyeong_band,
-        sido_code, sido_name, lawd_cd, sigungu_name, gu_name, dong_name, apt_name,
-        apt_key,
-        tx_count,
-        avg_price_per_m2, median_price_per_m2, std_price_per_m2,
-        avg_price, median_price,
-        ${hasMax ? 'max_price' : 'NULL AS max_price'},
-        ${hasSum ? 'sum_price' : 'NULL AS sum_price'},
-        latest_deal_date, latest_apt_dong, latest_floor, latest_area_m2, latest_deal_amount_man,
-        build_year, rgst_date
-      FROM ${statsTable}
-      WHERE ${periodCol} = ?
-        AND pyeong_band = ?
-        AND apt_key = ?
+        s.${periodCol} AS period,
+        s.pyeong_band,
+        s.sido_code, s.sido_name, s.lawd_cd, s.sigungu_name, s.gu_name, s.dong_name, s.apt_name,
+        s.apt_key,
+        s.tx_count,
+        s.avg_price_per_m2, s.median_price_per_m2, s.std_price_per_m2,
+        s.avg_price, s.median_price,
+        ${hasMax ? 's.max_price' : 'NULL AS max_price'},
+        ${hasSum ? 's.sum_price' : 'NULL AS sum_price'},
+        s.latest_deal_date, s.latest_apt_dong, s.latest_floor, s.latest_area_m2, s.latest_deal_amount_man,
+        s.build_year, s.rgst_date,
+        c.kapt_code,
+        c.household_count,
+        c.dong_count
+      FROM ${statsTable} s
+      LEFT JOIN (
+        SELECT
+          sido_code,
+          lawd_cd,
+          gu_name,
+          kapt_name_norm,
+          MIN(kapt_code) AS kapt_code,
+          MAX(household_count) AS household_count,
+          MAX(dong_count) AS dong_count
+        FROM re_apt_complex_dim
+        GROUP BY sido_code, lawd_cd, gu_name, kapt_name_norm
+      ) c
+        ON c.sido_code = s.sido_code
+       AND c.lawd_cd = s.lawd_cd
+       AND COALESCE(c.gu_name, '') = COALESCE(s.gu_name, '')
+       AND c.kapt_name_norm = LOWER(TRIM(REGEXP_REPLACE(s.apt_name, '[[:space:]]+', ' ')))
+      WHERE s.${periodCol} = ?
+        AND s.pyeong_band = ?
+        AND s.apt_key = ?
       LIMIT 1
     `;
 

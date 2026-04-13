@@ -67,10 +67,21 @@ export default function AdResponsive({
     };
 
     // 첫 시도
-    tryPush();
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          tryPush();
+        });
+      },
+      { rootMargin: "300px" }
+    );
+
+    io.observe(adRef.current);
 
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
+      io.disconnect();
     };
   }, [mounted, slot, client, router.asPath]);
 
@@ -87,7 +98,7 @@ export default function AdResponsive({
         key={`${slot}-${router.asPath}`}
         ref={adRef}
         className="adsbygoogle"
-        style={{ display: "block" }}
+        style={{ display: "block", minHeight: 120 }}
         data-ad-client={client}
         data-ad-slot={slot}
         data-ad-format="auto"

@@ -65,10 +65,21 @@ export default function AdInArticle({
       }
     };
 
-    tryPush();
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          tryPush();
+        });
+      },
+      { rootMargin: "300px" }
+    );
+
+    io.observe(adRef.current);
 
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
+      io.disconnect();
     };
   }, [mounted, slot, client, router.asPath]);
 

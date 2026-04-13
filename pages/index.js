@@ -1,9 +1,11 @@
 // pages/index.js
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 import SeoHead from '../_components/SeoHead';
 import { getAllPostsAllLangs } from '../lib/posts';
+import { cloudinaryThumb } from '../lib/cloudinaryUrl';
 
 /* ✅ 카테고리 이름 → slug 매핑 (frontmatter 기준) */
 const CATEGORY_SLUG_KO = {
@@ -152,6 +154,7 @@ export default function Home({ posts }) {
               {/* 계산기 링크: 언어에 따라 텍스트만 바뀌고, 기능은 쿠키 기반 */}
               <Link
                 href="/tools/compound-interest"
+                prefetch={false}
                   className="btn-primary bg-blue-500 hover:bg-blue-600
                              max-[480px]:w-full max-[480px]:px-3 max-[480px]:py-2 max-[480px]:text-[13px]
                              max-[360px]:text-[12px]
@@ -165,6 +168,7 @@ export default function Home({ posts }) {
                   텍스트만 언어별 */}
               <Link
                 href="/category/economicInfo"
+                prefetch={false}
                 className="btn-secondary border-slate-500 text-slate-100 hover:bg-slate-800
                            max-[480px]:w-full max-[480px]:px-3 max-[480px]:py-2 max-[480px]:text-[13px]
                            max-[360px]:text-[12px]
@@ -211,11 +215,24 @@ export default function Home({ posts }) {
             return (
               <article key={`pillar-${postLang}-${p.slug}`} className="card">
                 {p.cover && (
-                  <img src={p.cover} alt={p.title} className="card-thumb" />
+                  <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
+                    <Image
+                      src={cloudinaryThumb(p.cover, { w: 640, h: 360 })}
+                      alt={p.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      priority={false}
+                    />
+                  </div>
                 )}
                 <span className="badge">{p.category}</span>
                 <h3 className="text-base font-semibold">
-                  <Link href={`${postLang === 'en' ? '/en' : ''}/posts/${categorySlug}/${p.slug}`}>
+                  <Link
+                    href={`/posts/${categorySlug}/${p.slug}`}
+                    locale={postLang}
+                    prefetch={false}
+                  >
                     {p.title}
                   </Link>
                 </h3>
@@ -230,7 +247,7 @@ export default function Home({ posts }) {
       <section className="mt-4">
         <h2 className="text-xl font-semibold mb-3">{t.latestHeading}</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {latest.map((p) => {
+          {latest.map((p, idx) => {
             const categorySlug = getCategorySlugFromPost(p);
             const postLang = p.lang || 'ko';
 
@@ -240,11 +257,24 @@ export default function Home({ posts }) {
                 className="card hover:shadow-md transition-shadow"
               >
                 {p.cover && (
-                  <img src={p.cover} alt={p.title} className="card-thumb" />
+                  <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
+                    <Image
+                      src={cloudinaryThumb(p.cover, { w: 720, h: 405 })}
+                      alt={p.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      priority={idx === 0}
+                    />
+                  </div>
                 )}
                 <span className="badge">{p.category}</span>
                 <h3 className="mt-2 text-lg font-semibold">                  
-                  <Link href={`${postLang === 'en' ? '/en' : ''}/posts/${categorySlug}/${p.slug}`}>
+                  <Link
+                    href={`/posts/${categorySlug}/${p.slug}`}
+                    locale={postLang}
+                    prefetch={false}
+                  >
                     {p.title}
                   </Link>
                 </h3>
@@ -280,11 +310,23 @@ export default function Home({ posts }) {
                   className="card hover:shadow-md transition-shadow"
                 >
                   {p.cover && (
-                    <img src={p.cover} alt={p.title} className="card-thumb" />
+                    <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
+                      <Image
+                        src={cloudinaryThumb(p.cover, { w: 640, h: 360 })}
+                        alt={p.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                    </div>
                   )}
                   <span className="badge">{p.category}</span>
                   <h3 className="mt-2 text-base font-semibold">                    
-                    <Link href={`${postLang === 'en' ? '/en' : ''}/posts/${categorySlug}/${p.slug}`}>
+                    <Link
+                      href={`/posts/${categorySlug}/${p.slug}`}
+                      locale={postLang}
+                      prefetch={false}
+                    >
                       {p.title}
                     </Link>
                   </h3>

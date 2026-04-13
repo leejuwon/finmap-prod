@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Image from 'next/image';
 import SeoHead from '../../../_components/SeoHead';
 import AdResponsive from '../../../_components/AdResponsive';
 import AdInArticle from '../../../_components/AdInArticle';
@@ -13,6 +14,7 @@ import {
 } from '../../../lib/posts';
 import parse, { domToReact } from 'html-react-parser';
 import ToolCta from '../../../_components/ToolCta';
+import { cloudinaryThumb } from '../../../lib/cloudinaryUrl';
 
 /* ---------------------- build-time cache ---------------------- */
 // 빌드(SSG) 때 getStaticProps가 포스트 수만큼 반복 호출되므로,
@@ -125,7 +127,11 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
   const canonicalUrl = `${site}${prefix}/posts/${categorySlug}/${slug}`;
 
   const absImage = post.cover
-    ? (String(post.cover).startsWith('http') ? post.cover : `${site}${post.cover}`)
+    ? (
+        String(post.cover).startsWith('http')
+         ? cloudinaryThumb(post.cover, { w: 1200, h: 630 })
+         : `${site}${post.cover}`
+      )
     : undefined;
 
   const jsonld = {
@@ -361,11 +367,13 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
   };
 
   let h2Index = 0;
-  const contentWithInArticleAds = parse(post.contentHtml, {
+  const parserOptions = {
     replace(domNode) {
-      if (domNode.type === 'tag' && domNode.name === 'h2') {
+      if (domNode.type !== 'tag') return undefined;
+
+      if (domNode.name === 'h2') {
         h2Index += 1;
-        const children = domToReact(domNode.children);
+        const children = domToReact(domNode.children, parserOptions);
 
         if (h2Index === 2) {
           return (
@@ -391,9 +399,46 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
 
         return <h2>{children}</h2>;
       }
+
+      if (domNode.name === 'figure') {
+        return (
+          <figure className="my-6">
+            {domToReact(domNode.children, parserOptions)}
+          </figure>
+        );
+      }
+
+      if (domNode.name === 'figcaption') {
+        return (
+          <figcaption className="mt-2 text-sm text-slate-500 text-center">
+            {domToReact(domNode.children, parserOptions)}
+          </figcaption>
+        );
+      }
+
+      if (domNode.name === 'img') {
+        const src = domNode.attribs?.src || '';
+        const alt = domNode.attribs?.alt || '';
+
+        return (
+          <img
+            src={cloudinaryThumb(src, { w: 1200, h: 675 })}
+            alt={alt}
+            width="1200"
+            height="675"
+            loading="lazy"
+            decoding="async"
+            fetchPriority="low"
+            className="w-full h-auto rounded-xl"
+          />
+        );
+      }
+
       return undefined;
     },
-  });
+  };
+
+  const contentWithInArticleAds = parse(post.contentHtml, parserOptions);
 
   const toolList = Array.isArray(post.tools) ? post.tools : Array.isArray(post.tool) ? post.tool : [];
   const TOOL_TYPE_MAP = {
@@ -415,7 +460,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
         title={post.title}
         desc={post.description}
         url={`${prefix}/posts/${categorySlug}/${post.slug}`}
-        image={post.cover}
+        image={post.cover ? cloudinaryThumb(post.cover, { w: 1200, h: 630 }) : undefined}
         locale={lang} // ✅ canonical/hreflang을 컨텐츠 언어에 맞춤
       />
       <JsonLd data={jsonld} />
@@ -439,7 +484,16 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
         </div>
 
         {post.cover && (
-          <img src={post.cover} alt={post.title} className="w-full h-auto rounded-xl mt-4 mb-6" />
+          <div className="relative w-full aspect-[1200/630] rounded-xl mt-4 mb-6 overflow-hidden">
+            <Image
+              src={cloudinaryThumb(post.cover, { w: 1200, h: 630 })}
+              alt={post.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 900px, 1200px"
+              priority
+            />
+          </div>
         )}
 
         <div className="fm-post-body">{contentWithInArticleAds}</div>
@@ -589,14 +643,19 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
               {lang === 'en' ? 'Related posts' : '관련 글'}
             </h2>
             <div className="text-sm mb-3">
-              <Link className="underline" href={`/category/${categorySlug}`} locale={lang}>
+              <Link className="underline" href={`/category/${categorySlug}`} locale={lang} prefetch={false}>
                 {lang === 'en' ? 'Open category' : '카테고리 더 보기'}
               </Link>
             </div>
             <ul className="grid gap-2">
               {relatedPosts.map((rp) => (
                 <li key={`${rp.lang}-${rp.slug}`} className="text-sm">
-                  <Link className="underline" href={`/posts/${categorySlug}/${rp.slug}`} locale={rp.lang}>
+                  <Link
+                    className="underline"
+                    href={`/posts/${categorySlug}/${rp.slug}`}
+                    locale={rp.lang}
+                    prefetch={false}
+                  >
                     {rp.title}
                   </Link>
                   {rp.datePublished ? <span className="text-slate-400"> · {rp.datePublished}</span> : null}

@@ -1,9 +1,11 @@
 // pages/category/[slug].js
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import SeoHead from '../../_components/SeoHead';
 import { getAllPosts, getAllPostsStrict } from '../../lib/posts';
+import { cloudinaryThumb } from '../../lib/cloudinaryUrl';
 
 /* ---------------- 카테고리 이름 ↔ slug 매핑 ---------------- */
 
@@ -200,6 +202,7 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                       key={s}
                       href={`/category/${s}`}
                       locale={locale}
+                      prefetch={false}
                       className={
                         active
                           ? 'inline-flex items-center rounded-full bg-slate-900 px-3 py-1.5 text-sm font-semibold text-white'
@@ -279,6 +282,7 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                   <Link
                     href="/tools"
                     locale={locale}
+                    prefetch={false}
                     className="inline-flex items-center rounded-full border bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100"
                   >
                     {isKo ? '금융 계산기' : 'Tools'}
@@ -319,7 +323,7 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                   </div>
 
                   <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {visibleCards.map((p) => {
+                    {visibleCards.map((p, idx) => {
                       const postLang = p.lang || (isKo ? 'ko' : 'en');
                       return (
                         <li
@@ -328,11 +332,13 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                         >
                           {p.cover ? (
                             <div className="relative w-full aspect-[16/9]">
-                              <img
-                                src={p.cover}
+                              <Image
+                                src={cloudinaryThumb(p.cover, { w: 640, h: 360 })}
                                 alt={p.title}
-                                className="absolute inset-0 w-full h-full object-cover"
-                                loading="lazy"
+                                fill
+                                className="object-cover"
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                priority={idx === 0}
                               />
                               <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                             </div>
@@ -346,6 +352,7 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                               <Link
                                 href={`/posts/${slug}/${p.slug}`}
                                 locale={locale}
+                                prefetch={false}
                                 className="hover:underline underline-offset-4"
                               >
                                 {p.title}
@@ -385,6 +392,7 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                           <Link
                             href={`/posts/${slug}/${p.slug}`}
                             locale={locale} // ✅ 여기서는 locale로 고정 추천
+                            prefetch={false}
                             className="mt-1 block text-sm font-semibold leading-snug text-slate-900 hover:underline underline-offset-4 line-clamp-2"
                           >
                             {p.title}
@@ -426,6 +434,7 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                           <Link
                             href={`/posts/${slug}/${p.slug}`}
                             locale={locale} // ✅ 카테고리 로케일과 동일하게
+                            prefetch={false}
                             className="hover:underline underline-offset-4 line-clamp-2"
                           >
                             {p.title}

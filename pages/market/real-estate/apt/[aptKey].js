@@ -128,6 +128,10 @@ function MiniCard({ title, value, sub }) {
     </div>
   );
 }
+function fmtCount(v) {
+  const n = Number(v);
+  return Number.isFinite(n) ? n.toLocaleString() : '-';
+}
 
 // ✅ 축/라벨 포함 스파크라인
 function Sparkline({ rows, valueKey, valueTransform, fmtY, fmtX }) {
@@ -545,6 +549,11 @@ export default function AptDetailPage() {
               <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">
                 {lang === 'en' ? 'Range' : '추이범위'}: {rangeLabel}
               </span>
+              {(stats?.household_count != null || stats?.dong_count != null) && (
+                <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">
+                  {lang === 'en' ? 'HH/Dong' : '세대/동'}: {fmtCount(stats?.household_count)} / {fmtCount(stats?.dong_count)}
+                </span>
+              )}
               {stats?.tx_count ? (
                 <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">
                   {lang === 'en' ? 'Tx' : '거래'}: {Number(stats.tx_count).toLocaleString()}
@@ -692,7 +701,7 @@ export default function AptDetailPage() {
         ) : null}
 
         {/* KPI 카드 (스냅샷: period 1개) */}
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-6 gap-3">
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-8 gap-3">
           <MiniCard
             title={lang === 'en' ? 'Typical price (median)' : '대표가격(중앙값)'}
             value={fmtEokFromWon(stats?.median_price, lang)}
@@ -712,6 +721,16 @@ export default function AptDetailPage() {
             title={lang === 'en' ? 'Transactions' : '거래량(건)'}
             value={stats?.tx_count != null ? Number(stats.tx_count).toLocaleString() : '-'}
             sub={lang === 'en' ? 'In snapshot period' : '선택기간 내 실거래(취소 제외)'}
+          />
+          <MiniCard
+            title={lang === 'en' ? 'Households' : '세대수'}
+            value={fmtCount(stats?.household_count)}
+            sub={lang === 'en' ? 'Complex basis' : '단지 기본정보 기준'}
+          />
+          <MiniCard
+            title={lang === 'en' ? 'Buildings' : '동수'}
+            value={fmtCount(stats?.dong_count)}
+            sub={lang === 'en' ? 'Complex basis' : '단지 기본정보 기준'}
           />
           <MiniCard
             title={lang === 'en' ? 'Total traded value' : '총 거래금액'}

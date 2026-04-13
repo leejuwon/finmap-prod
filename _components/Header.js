@@ -1,5 +1,6 @@
 // _components/Header.js
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { setLang } from "../lib/lang";
@@ -124,11 +125,14 @@ export default function Header() {
       <nav className="w-full px-3 sm:px-4">
         <div className="w-full max-w-5xl lg:max-w-6xl mx-auto flex items-center gap-3 py-2 sm:py-3">
           {/* ---------------- Logo ---------------- */}
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <img
+          <Link href="/" prefetch={false} className="flex items-center gap-2 shrink-0">
+            <Image
               src="/brand/finmaphub-icon.svg"
               alt="FinMap Logo"
+              width={32}
+              height={32}
               className="h-7 w-7 sm:h-8 sm:w-8"
+              priority
             />
             <div className="leading-tight">
               <span className="block text-sm sm:text-base block text-[14px] sm:text-[16px] font-semibold text-slate-900">
@@ -169,6 +173,7 @@ export default function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
+                    prefetch={false}
                     className={
                       "px-2 sm:px-3 py-1 rounded-full transition-colors " +
                       (active
@@ -208,6 +213,7 @@ export default function Header() {
                       <Link
                         key={b.href}
                         href={b.href}
+                        prefetch={false}
                         className={
                           "block px-3 py-2 rounded-lg text-sm " +
                           (bActive

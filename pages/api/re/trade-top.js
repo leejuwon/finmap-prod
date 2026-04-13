@@ -233,16 +233,12 @@ function buildStatsWhere({ timeframe, period, pyeongBand, sido, lawd, gu, buildF
   return { whereSql: `WHERE ${filters.join('\n  AND ')}`, params, band };
 }
 
-function makeStatsTopSql({ table, whereSql, metricCol, orderDir, priceExpr, priceMinWon, priceMaxWon }) {
-  const priceSelect = priceExpr ? `,\n        (${priceExpr}) AS price_value` : '';
-  const priceWhere =
-    priceExpr
-      ? `\n  AND price_value IS NOT NULL` +
-        (priceMinWon != null ? `\n  AND price_value >= ?` : ``) +
-        (priceMaxWon != null ? `\n  AND price_value <= ?` : ``)
-      : '';
+function makeStatsTopSql({ table, whereSql, metricCol, orderDir, householdWhereSql = '' }) {
+  // re_apt_complex_dim에서 세대수/동수 붙이기 (kapt_name_norm: 공백 정규화 + 소문자)
+  // - stats에는 apt_name_norm이 없어서 SQL에서 동일 규칙으로 생성
+  // - 동일 이름 단지가 여러 개일 수 있어 (sido+lawd+gu+name_norm) 단위로 집계해 1행으로 만든다
   return `
-    WITH base AS (
+    WITH filtered AS (
       SELECT
         s.apt_key,
         s.sido_name,
@@ -270,25 +266,40 @@ function makeStatsTopSql({ table, whereSql, metricCol, orderDir, priceExpr, pric
         s.build_year,
         s.rgst_date,
 
+        -- ✅ 단지(세대수/동수)
+        c.kapt_code,
+        c.household_count,
+        c.dong_count,
+
         ${metricCol} AS value
-        ${priceSelect}
       FROM ${table} s
+      LEFT JOIN (
+        SELECT
+          sido_code,
+          lawd_cd,
+          gu_name,
+          kapt_name_norm,
+          MIN(kapt_code) AS kapt_code,
+          MAX(household_count) AS household_count,
+          MAX(dong_count) AS dong_count
+        FROM re_apt_complex_dim
+        GROUP BY sido_code, lawd_cd, gu_name, kapt_name_norm
+      ) c
+        ON c.sido_code = s.sido_code
+       AND c.lawd_cd = s.lawd_cd
+       AND c.gu_name = s.gu_name
+       AND c.kapt_name_norm = LOWER(TRIM(REGEXP_REPLACE(s.apt_name, '[[:space:]]+', ' ')))
       ${whereSql}
-    ),
-    filtered AS (
-      SELECT *
-      FROM base
-      WHERE value IS NOT NULL
-      ${priceWhere}
     ),
     final AS (
       SELECT
         *,
         ROW_NUMBER() OVER (ORDER BY value ${orderDir}, tx_count DESC) AS rank_no
       FROM filtered
+      WHERE value IS NOT NULL
+        ${householdWhereSql}
     )
-    SELECT *
-    FROM final
+    SELECT * FROM final
     WHERE rank_no <= ?
     ORDER BY rank_no
   `;
@@ -483,13 +494,38 @@ function makeRawTopSql({ whereSql, metricCol, orderDir, withLatest, priceMetric,
       GROUP BY
         lawd_cd, sigungu_name, gu_name, dong_name, apt_name
     ),
+    agg_with_complex AS (
+      SELECT
+        a.*,
+        c.kapt_code,
+        c.household_count,
+        c.dong_count
+      FROM agg a
+      LEFT JOIN (
+        SELECT
+          sido_code,
+          lawd_cd,
+          gu_name,
+          kapt_name_norm,
+          MIN(kapt_code) AS kapt_code,
+          MAX(household_count) AS household_count,
+          MAX(dong_count) AS dong_count
+        FROM re_apt_complex_dim
+        GROUP BY sido_code, lawd_cd, gu_name, kapt_name_norm
+      ) c
+        ON c.sido_code = a.sido_code
+       AND c.lawd_cd = a.lawd_cd
+       AND COALESCE(c.gu_name, '') = COALESCE(a.gu_name, '')
+       AND c.kapt_name_norm = LOWER(TRIM(REGEXP_REPLACE(a.apt_name, '[[:space:]]+', ' ')))
+    ),
     filtered AS (
       SELECT
-        agg.*,
+        agg_with_complex.*,
         ${metricCol} AS value
-      FROM agg
+      FROM agg_with_complex
       WHERE ${metricCol} IS NOT NULL
       ${priceWhere}
+      ${householdWhereSql}
     ),
     final AS (
       SELECT
@@ -550,6 +586,13 @@ export default async function handler(req, res) {
     const buildTo = toIntOrNull(req.query.buildTo === 'all' ? null : req.query.buildTo);
     // ✅ 아파트명 검색
     const apt = normalizeAptQuery(req.query.apt);
+
+    const hh = toIntOrNull(req.query.hh);
+    const hhOp = String(req.query.hhOp || 'gte').toLowerCase() === 'lte' ? 'lte' : 'gte';
+    const householdWhereSql =
+      Number.isFinite(hh) && hh > 0
+        ? `AND COALESCE(household_count, 0) ${hhOp === 'lte' ? '<=' : '>='} ${Math.trunc(hh)}`
+        : '';
 
     // ✅ 금액구간(억 단위)
     const priceMetric = String(req.query.priceMetric || 'none').trim();
@@ -704,7 +747,8 @@ export default async function handler(req, res) {
         withLatest: true,
         priceMetric,
         priceMinWon,
-        priceMaxWon
+        priceMaxWon,
+        householdWhereSql
       }) + `
         WHERE rank_no <= ?
         ORDER BY rank_no
@@ -976,6 +1020,8 @@ export default async function handler(req, res) {
         from,
         to,
         apt: apt || undefined,
+        hh: Number.isFinite(hh) && hh > 0 ? hh : undefined,
+        hhOp: Number.isFinite(hh) && hh > 0 ? hhOp : undefined,
         mom_period: momPeriod,
         yoy_period: yoyPeriod,
         metric,
