@@ -2,9 +2,9 @@
 slug: "geopolitics-oil-fx-dashboard"
 link: "/en/posts/economicInfo/geopolitics-oil-fx-dashboard"
 title: "From Geopolitics to Korea Housing: The 5-Step Transmission Chain (CPI → Rates → Mortgages → Sentiment → Volume)"
-description: "Geopolitics, oil, and FX shocks don’t hit Seoul housing in one jump. Use a 5-step chain—CPI → rates → mortgages → sentiment → volume—to replace fear with observable triggers, and track “volume breaks first vs price distribution shifts later” in /en/market/real-estate."
-datePublished: "2026-01-28"
-dateModified: "2026-01-28"
+description: "Geopolitics, oil, and FX shocks don’t hit Seoul housing in one jump. Use a 5-step chain—CPI → rates → mortgages → sentiment → volume—to replace fear with observable triggers, and track “volume breaks first vs price distribution shifts later” in South Korea Apartment Transaction Dashboard."
+datePublished: "2026-04-14"
+dateModified: "2026-04-14"
 category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["geopolitics","oil","FX","USD/KRW","inflation","rates","mortgages","housing","transaction volume","price distribution","Seoul","Gyeonggi","Incheon"]
@@ -20,23 +20,20 @@ lang: "en"
 - The practical question is not “will prices go up or down,” but <strong>which link in the chain is tightening</strong> and what signal confirms it.  
 - A shock that raises CPI can still lead to weak housing even if nominal prices don’t fall quickly, because <strong>mortgage affordability compresses first</strong>.  
 - The same headline can flip outcomes: when rates peak or FX stabilizes, <strong>volume can recover while prices remain range-bound</strong>.  
-- You can replace doom-scrolling with a <strong>10-minute dashboard routine</strong> using /en/market/real-estate to track volume and distribution.  
+- You can replace doom-scrolling with a <strong>10-minute dashboard routine</strong> using <strong><a href="/en/market/real-estate">South Korea Apartment Transaction Dashboard</a></strong> to track volume and distribution.  
 - This post avoids predictions and recommendations; it provides <strong>observable triggers and response rules</strong> you can apply to any news cycle.
 
 <div class="hero-grid">
   <div class="hero-main">
     <p class="hero-kicker">ECONOMICS · HOUSING TRANSMISSION</p>
-
     <p>“A geopolitical flare-up happened—does that mean Seoul home prices must fall (or must rise)?”</p>
     <p>That shortcut creates whiplash because housing rarely moves on one headline. It usually moves through a chain: <strong>CPI → rates → mortgages → sentiment → volume</strong>, and the first break is often volume, not price.</p>
-    <p>This guide turns news fear into <strong>a transmission map + observable triggers + simple rules</strong>, and shows how to monitor the chain in /en/market/real-estate.</p>
-
+    <p>This guide turns news fear into <strong>a transmission map + observable triggers + simple rules</strong>, and shows how to monitor the chain in South Korea Apartment Transaction Dashboard.</p>
     <ul>
       <li>A 5-step mechanism you can reuse for oil/FX/geopolitics shocks</li>
       <li>How to separate <strong>volume breaks first</strong> from <strong>price distribution shifts later</strong></li>
       <li>A 10-minute dashboard routine you can repeat without forecasting</li>
     </ul>
-
     <p class="text-sm text-slate-500">
       Scope/limits: No price targets, no buy/sell calls, and no market timing advice. This is interpretation + monitoring rules.
     </p>
@@ -101,7 +98,7 @@ Limitation: credit tightening can show up first as fewer transactions, not lower
 
 Housing is a slow market with sticky prices. A buyer can pause instantly, but a seller may not cut the ask price quickly. This is why the first break is often volume.
 
-Use /en/market/real-estate as a monitoring tool to separate two phases:
+Use <strong><a href="/en/market/real-estate">South Korea Apartment Transaction Dashboard</a></strong> as a monitoring tool to separate two phases:
 
 <strong>Phase A: Volume breaks first</strong>  
 What it means: decision deferral is rising. Buyers step back; sellers hold asks.  
@@ -188,7 +185,7 @@ Expected housing sequence in this regime:
 - Distribution shifts appear (fewer high-end transactions; more activity in lower/“affordable” bands).
 
 Dashboard application:
-- In /en/market/real-estate, start with volume: does it drop across Seoul/Gyeonggi/Incheon or only in specific segments?  
+- In <strong><a href="/en/market/real-estate">South Korea Apartment Transaction Dashboard</a></strong>, start with volume: does it drop across Seoul/Gyeonggi/Incheon or only in specific segments?  
 - Then check distribution: does the market narrow into certain price bands, or does participation stay broad?
 
 Practical response rule:
@@ -208,7 +205,7 @@ Expected housing sequence:
 - Price levels may remain range-bound for a while because repricing takes time.
 
 Dashboard application:
-- In /en/market/real-estate, look for volume improvement first.  
+- In <strong><a href="/en/market/real-estate">South Korea Apartment Transaction Dashboard</a></strong>, look for volume improvement first.  
 - Then look for distribution broadening: more segments participating is stronger than a single “average price” tick.
 
 ## What to read next (mid-article internal links that make the chain click)
@@ -235,7 +232,7 @@ Monthly confirmations (slow-moving):
 ### Checklist: a quick “shock-to-housing” triage
 - □ Identify the shock: oil, FX, or rates (or a combo)  
 - □ Label the active link: CPI pressure, rate repricing, mortgage shock, sentiment pause  
-- □ Check volume first in /en/market/real-estate  
+- □ Check volume first in <strong><a href="/en/market/real-estate">South Korea Apartment Transaction Dashboard</a></strong> 
 - □ If volume is down, check distribution next (median vs average, participation breadth)  
 - □ Write one sentence: “The chain is currently at step ___, so I will monitor ___ next.”
 
@@ -243,9 +240,9 @@ Monthly confirmations (slow-moving):
 
 When a scary headline hits, you don’t need a forecast. You need a routine that turns noise into signals.
 
-Use this 10-minute flow with /en/market/real-estate:
+Use this 10-minute flow with <strong><a href="/en/market/real-estate">South Korea Apartment Transaction Dashboard</a></strong>:
 
-- □ Open /en/market/real-estate and select Seoul, Gyeonggi, and Incheon views (one by one, not averaged together).  
+- □ Open <strong><a href="/en/market/real-estate">South Korea Apartment Transaction Dashboard</a></strong> and select Seoul, Gyeonggi, and Incheon views (one by one, not averaged together).  
 - □ Check the last 1–6 months: did <strong>transaction volume</strong> break first (downtrend) or recover first (uptrend)?  
 - □ If volume is down, ask: is it broad-based or limited to certain segments/areas?  
 - □ Then check <strong>price distribution</strong>: are fewer segments trading, is the market narrowing into lower bands, or is participation broadening?  
@@ -299,8 +296,8 @@ Weekly is usually enough because housing responds slowly. Daily checks often inc
   "headline": "From Geopolitics to Korea Housing: The 5-Step Transmission Chain (CPI → Rates → Mortgages → Sentiment → Volume)",
   "description": "Geopolitics, oil, and FX shocks don’t hit Seoul housing in one jump. Use a 5-step chain—CPI → rates → mortgages → sentiment → volume—to replace fear with observable triggers, and track “volume breaks first vs price distribution shifts later” in /en/market/real-estate.",
   "inLanguage": "en-US",
-  "datePublished": "2026-01-28",
-  "dateModified": "2026-01-28",
+  "datePublished": "2026-04-14",
+  "dateModified": "2026-04-14",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://www.finmaphub.com/en/posts/economicInfo/geopolitics-oil-fx-dashboard"
