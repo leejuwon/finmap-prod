@@ -47,7 +47,14 @@ function MyApp({ Component, pageProps }) {
             `}
           </Script>
         </>
-      )}      
+      )}  
+
+      <Script
+        id="adsbygoogle-loader"
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS_CLIENT}`}
+        strategy="lazyOnload"
+        crossOrigin="anonymous"
+      />    
 
       <Layout>
         <Component {...pageProps} />

@@ -132,7 +132,7 @@ export default function Home({ posts }) {
 
       {/*  히어로 섹션 */}
       <section className="mt-6 mb-8">
-        <div className="card flex flex-col md:flex-row gap-6 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white">
+        <div className="card flex flex-col md:flex-row gap-4 md:gap-6 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white max-[480px]:p-4">
           <div className="flex-1">
             <p className="text-xs uppercase tracking-[0.2em] text-blue-300 mb-2">
               PERSONAL FINANCE · INVESTING
@@ -145,7 +145,7 @@ export default function Home({ posts }) {
               <br/>
               <span className="text-blue-300">{t.heroTitleLine2}</span>, FinMap
             </h1>
-            <p className="text-sm md:text-base text-slate-200 mb-4">
+            <p className="text-sm md:text-base text-slate-200 mb-4 max-[480px]:line-clamp-3">              
               {t.heroSub}
             </p>
             {/* ✅ 모바일(<=480)에서는 2열 grid로 고정 → 버튼이 절대 아래로 안 떨어짐 */}
@@ -155,7 +155,7 @@ export default function Home({ posts }) {
               <Link
                 href="/tools/compound-interest"
                 prefetch={false}
-                  className="btn-primary bg-blue-500 hover:bg-blue-600
+                  className="btn-primary bg-blue-700 hover:bg-blue-800
                              max-[480px]:w-full max-[480px]:px-3 max-[480px]:py-2 max-[480px]:text-[13px]
                              max-[360px]:text-[12px]
                              max-[480px]:whitespace-normal max-[480px]:text-center max-[480px]:leading-snug
@@ -180,7 +180,7 @@ export default function Home({ posts }) {
             </div>
           </div>
 
-          <div className="flex-1 flex items-center justify-center">
+          <div className="flex-1 flex items-center justify-center max-[480px]:hidden">
             {/* 간단한 요약 카드 세트 */}
             <div className="home-hero-stats grid grid-cols-2 gap-3 w-full max-w-xs">
               <div className="stat bg-slate-900/60 border border-slate-700">
@@ -209,7 +209,7 @@ export default function Home({ posts }) {
           {lang === 'en' ? 'Start here' : '처음 읽기 좋은 글'}
         </h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {pillars.map((p) => {
+          {pillars.map((p, idx) => {
             const categorySlug = getCategorySlugFromPost(p);
             const postLang = p.lang || 'ko';
             return (
@@ -217,12 +217,16 @@ export default function Home({ posts }) {
                 {p.cover && (
                   <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
                     <Image
-                      src={cloudinaryThumb(p.cover, { w: 640, h: 360 })}
+                      src={cloudinaryThumb(
+                        p.cover,
+                        idx === 0 ? { w: 480, h: 270 } : { w: 400, h: 225 }
+                      )}
                       alt={p.title}
                       fill
                       className="object-cover"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      priority={false}
+                      priority={idx === 0}
+                      fetchPriority={idx === 0 ? "high" : "auto"}
                     />
                   </div>
                 )}
@@ -259,12 +263,16 @@ export default function Home({ posts }) {
                 {p.cover && (
                   <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
                     <Image
-                      src={cloudinaryThumb(p.cover, { w: 720, h: 405 })}
+                      src={cloudinaryThumb(
+                        p.cover,
+                        idx === 0 ? { w: 480, h: 270 } : { w: 400, h: 225 }
+                      )}
                       alt={p.title}
                       fill
                       className="object-cover"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       priority={idx === 0}
+                      fetchPriority={idx === 0 ? "high" : "auto"}
                     />
                   </div>
                 )}
