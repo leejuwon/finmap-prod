@@ -152,6 +152,9 @@ const TEXT = {
       area: '시군구',
       apt: '단지(최근거래)',
       complexScale: '세대/동',
+      complexInfo: '단지정보',
+      parking: '주차',
+      heatingManage: '난방/관리',
       areaM2: '전용(㎡)',
       pyeong: '평형(평)',
       build: '년식',
@@ -228,6 +231,9 @@ const TEXT = {
       area: 'Area',
       apt: 'Complex (latest deal)',
       complexScale: 'HH/Dong',
+      complexInfo: 'Complex info',
+      parking: 'Parking',
+      heatingManage: 'Heating/Manage',
       areaM2: 'Area(㎡)',
       pyeong: 'Pyeong',
       build: 'Build',
@@ -584,6 +590,36 @@ export default function RealEstatePage() {
     return lang === 'en' ? `${h}/${d}` : `${h}/${d}`;
   }
 
+  function renderParking(row) {
+    const total = row?.parking_total;
+    const ground = row?.parking_ground;
+    const underground = row?.parking_underground;
+    if (total == null && ground == null && underground == null) return '-';
+
+    const main = total != null ? Number(total).toLocaleString() : '-';
+    if (ground == null && underground == null) return main;
+
+    const g = ground != null ? Number(ground).toLocaleString() : '-';
+    const u = underground != null ? Number(underground).toLocaleString() : '-';
+    return lang === 'en' ? `${main} (G ${g} / B ${u})` : `${main} (지상 ${g} / 지하 ${u})`;
+  }
+
+  function renderHeatingManage(row) {
+    const heating = row?.heating_type || '-';
+    const manage = row?.manage_type || '-';
+    if (heating === '-' && manage === '-') return '-';
+    return `${heating} / ${manage}`;
+  }
+
+  function renderComplexInfo(row) {
+    const parking = renderParking(row);
+    const heatingManage = renderHeatingManage(row);
+    const parts = [];
+    if (parking !== '-') parts.push(`${t.cols.parking}: ${parking}`);
+    if (heatingManage !== '-') parts.push(`${t.cols.heatingManage}: ${heatingManage}`);
+    return parts.length ? parts.join(' · ') : '-';
+  }
+
   // ✅ 상세페이지 링크 생성 (Top 리스트의 apt_key 그대로 사용)
   function makeAptDetailHref(row) {
     const aptKey = row?.apt_key ? encodeURIComponent(String(row.apt_key)) : '';
@@ -597,7 +633,7 @@ export default function RealEstatePage() {
     return `/market/real-estate/apt/${aptKey}${qs.toString() ? `?${qs.toString()}` : ''}`;
   }
 
-  const tableMinWidth = showAdvanced ? 'min-w-[2500px]' : 'min-w-[1900px]';
+  const tableMinWidth = showAdvanced ? 'min-w-[2700px]' : 'min-w-[1900px]';
 
   // ✅ SEO/검색 유입용 프리셋 랜딩(마용성/강남/서울 Top100) 링크
   // - 현재 선택한 평형(pyeong)을 band로 전달하여 사용자가 "같은 조건"으로 넘어간 느낌을 주도록 구성
@@ -634,7 +670,7 @@ export default function RealEstatePage() {
     return (
       <div className="rounded-xl border border-slate-100 bg-white px-3 py-2">
         <div className="text-[11px] text-slate-500">{label}</div>
-        <div className="mt-0.5 text-sm font-semibold text-slate-900">{value ?? "-"}</div>
+        <div className="mt-0.5 text-sm font-semibold text-slate-900 break-words">{value ?? "-"}</div>
       </div>
     );
   }
@@ -862,6 +898,8 @@ export default function RealEstatePage() {
     const buildY = buildYVal != null ? `${buildYVal}${lang === 'en' ? '' : '년식'}` : '-';
     const dealDate = r.latest_deal_date ? String(r.latest_deal_date).slice(0, 10) : '-';  
     const complexScale = renderHouseholdDong(r);  
+    const parking = renderParking(r);
+    const heatingManage = renderHeatingManage(r);
     
     return (
       <>        
@@ -928,6 +966,8 @@ export default function RealEstatePage() {
             <div className="mt-3 grid grid-cols-2 gap-2">
               <MiniStat label={lang === 'en' ? 'Max deal (×100M)' : '최고 거래(억)'} value={maxEok} />
               <MiniStat label={lang === 'en' ? 'Total value (×100M)' : '총 거래금액(억)'} value={sumEok} />
+              <MiniStat label={t.cols.parking} value={parking} />
+              <MiniStat label={t.cols.heatingManage} value={heatingManage} />
             </div>
           )}
 
@@ -1480,6 +1520,7 @@ export default function RealEstatePage() {
                         <th className="py-3 pr-3">{lang === 'en' ? 'Max (×100M)' : '최고(억)'}</th>
                         <th className="py-3 pr-3">{lang === 'en' ? 'Sum (×100M)' : '총액(억)'}</th>
                         <th className="py-3 pr-3">{t.cols.avgPy}</th>
+                        <th className="py-3 pr-3">{t.cols.complexInfo}</th>
                         <th className="py-3 pr-3">{t.cols.rankMom}</th>
                         <th className="py-3 pr-3">{t.cols.rankYoy}</th>
                         <th className="py-3 pr-3">{t.cols.txMom}</th>
@@ -1542,6 +1583,7 @@ export default function RealEstatePage() {
                           <td className="py-3 pr-3">{fmtEokFromWon(r.max_price, lang)}</td>
                           <td className="py-3 pr-3">{fmtEokFromWon(r.sum_price, lang)}</td>
                           <td className="py-3 pr-3">{fmtManPerPyeongFromWonPerM2(r.avg_price_per_m2, lang)}</td>
+                          <td className="py-3 pr-3">{renderComplexInfo(r)}</td>
                           <td className="py-3 pr-3">{r.mom_rank_delta == null ? '-' : (r.mom_rank_delta > 0 ? `+${r.mom_rank_delta}` : `${r.mom_rank_delta}`)}</td>
                           <td className="py-3 pr-3">{r.yoy_rank_delta == null ? '-' : (r.yoy_rank_delta > 0 ? `+${r.yoy_rank_delta}` : `${r.yoy_rank_delta}`)}</td>
                           <td className="py-3 pr-3">{fmtPct(r.mom_tx_count_pct)}</td>
@@ -1557,7 +1599,7 @@ export default function RealEstatePage() {
 
                   {!rows.length && !loading && (
                     <tr>
-                      <td colSpan={showAdvanced ? 30 : 18} className="py-10 text-center text-slate-500">
+                      <td colSpan={showAdvanced ? 31 : 18} className="py-10 text-center text-slate-500">
                         {lang === 'en' ? 'No data' : '데이터 없음'}
                       </td>
                     </tr>

@@ -184,6 +184,68 @@ function normalizeGu(v) {
   return s;
 }
 
+function complexSelectSql(useMap) {
+  const val = (col) => useMap ? `COALESCE(cm.${col}, c.${col})` : `c.${col}`;
+  return `
+        ${val('kapt_code')} AS kapt_code,
+        ${val('household_count')} AS household_count,
+        ${val('dong_count')} AS dong_count,
+        ${val('parking_total')} AS parking_total,
+        ${val('parking_ground')} AS parking_ground,
+        ${val('parking_underground')} AS parking_underground,
+        ${val('heating_type')} AS heating_type,
+        ${val('manage_type')} AS manage_type,
+        ${val('approval_date')} AS approval_date,
+        ${val('build_year')} AS complex_build_year,
+        ${val('road_addr')} AS road_addr,
+        ${val('jibun')} AS jibun
+  `;
+}
+
+function complexAggSubquerySql() {
+  return `
+        SELECT
+          d.sido_code,
+          d.lawd_cd,
+          COALESCE(d.gu_name, '') AS gu_name,
+          d.kapt_name_norm,
+          MIN(d.kapt_code) AS kapt_code,
+          MAX(d.household_count) AS household_count,
+          MAX(d.dong_count) AS dong_count,
+          MAX(d.parking_total) AS parking_total,
+          MAX(d.parking_ground) AS parking_ground,
+          MAX(d.parking_underground) AS parking_underground,
+          MAX(d.heating_type) AS heating_type,
+          MAX(d.manage_type) AS manage_type,
+          MAX(d.approval_date) AS approval_date,
+          MAX(d.build_year) AS build_year,
+          MAX(d.road_addr) AS road_addr,
+          MAX(d.jibun) AS jibun
+        FROM re_apt_complex_dim d
+        GROUP BY d.sido_code, d.lawd_cd, COALESCE(d.gu_name, ''), d.kapt_name_norm
+  `;
+}
+
+function complexJoinSql({ sourceAlias, useMap }) {
+  const mapJoin = useMap ? `
+      LEFT JOIN re_trade_apt_map m
+        ON m.apt_key = ${sourceAlias}.apt_key
+      LEFT JOIN re_apt_complex_dim cm
+        ON cm.kapt_code = m.kapt_code
+  ` : '';
+
+  return `
+      ${mapJoin}
+      LEFT JOIN (
+${complexAggSubquerySql()}
+      ) c
+        ON c.sido_code = ${sourceAlias}.sido_code
+       AND LEFT(COALESCE(c.lawd_cd, ''), 5) = ${sourceAlias}.lawd_cd
+       AND COALESCE(c.gu_name, '') = COALESCE(${sourceAlias}.gu_name, '')
+       AND c.kapt_name_norm = LOWER(TRIM(REGEXP_REPLACE(${sourceAlias}.apt_name, '[[:space:]]+', ' ')))
+  `;
+}
+
 // -------------------------
 // stats WHERE / SQL
 // -------------------------
@@ -233,7 +295,7 @@ function buildStatsWhere({ timeframe, period, pyeongBand, sido, lawd, gu, buildF
   return { whereSql: `WHERE ${filters.join('\n  AND ')}`, params, band };
 }
 
-function makeStatsTopSql({ table, whereSql, metricCol, orderDir, householdWhereSql = '' }) {
+function makeStatsTopSql({ table, whereSql, metricCol, orderDir, householdWhereSql = '', useMap = false }) {
   // re_apt_complex_dim에서 세대수/동수 붙이기 (kapt_name_norm: 공백 정규화 + 소문자)
   // - stats에는 apt_name_norm이 없어서 SQL에서 동일 규칙으로 생성
   // - 동일 이름 단지가 여러 개일 수 있어 (sido+lawd+gu+name_norm) 단위로 집계해 1행으로 만든다
@@ -266,29 +328,12 @@ function makeStatsTopSql({ table, whereSql, metricCol, orderDir, householdWhereS
         s.build_year,
         s.rgst_date,
 
-        -- ✅ 단지(세대수/동수)
-        c.kapt_code,
-        c.household_count,
-        c.dong_count,
+        -- ✅ 단지(세대수/동수 + 단지 기본정보)
+${complexSelectSql(useMap)},
 
         ${metricCol} AS value
       FROM ${table} s
-      LEFT JOIN (
-        SELECT
-          sido_code,
-          lawd_cd,
-          gu_name,
-          kapt_name_norm,
-          MIN(kapt_code) AS kapt_code,
-          MAX(household_count) AS household_count,
-          MAX(dong_count) AS dong_count
-        FROM re_apt_complex_dim
-        GROUP BY sido_code, lawd_cd, gu_name, kapt_name_norm
-      ) c
-        ON c.sido_code = s.sido_code
-       AND c.lawd_cd = s.lawd_cd
-       AND c.gu_name = s.gu_name
-       AND c.kapt_name_norm = LOWER(TRIM(REGEXP_REPLACE(s.apt_name, '[[:space:]]+', ' ')))
+${complexJoinSql({ sourceAlias: 's', useMap })}
       ${whereSql}
     ),
     final AS (
@@ -396,7 +441,7 @@ function buildRawWhere({ timeframe, period, sido, lawd, gu, pyeong, buildFrom, b
   return { whereSql, params };
 }
 
-function makeRawTopSql({ whereSql, metricCol, orderDir, withLatest, priceMetric, priceMinWon, priceMaxWon }) {
+function makeRawTopSql({ whereSql, metricCol, orderDir, withLatest, priceMetric, priceMinWon, priceMaxWon, householdWhereSql = '', useMap = false }) {
   // priceMetric: none|median_price|avg_price|max_price|sum_price|latest_price
   const PRICE_COL = {
     median_price: 'median_price',
@@ -497,26 +542,9 @@ function makeRawTopSql({ whereSql, metricCol, orderDir, withLatest, priceMetric,
     agg_with_complex AS (
       SELECT
         a.*,
-        c.kapt_code,
-        c.household_count,
-        c.dong_count
+${complexSelectSql(useMap)}
       FROM agg a
-      LEFT JOIN (
-        SELECT
-          sido_code,
-          lawd_cd,
-          gu_name,
-          kapt_name_norm,
-          MIN(kapt_code) AS kapt_code,
-          MAX(household_count) AS household_count,
-          MAX(dong_count) AS dong_count
-        FROM re_apt_complex_dim
-        GROUP BY sido_code, lawd_cd, gu_name, kapt_name_norm
-      ) c
-        ON c.sido_code = a.sido_code
-       AND c.lawd_cd = a.lawd_cd
-       AND COALESCE(c.gu_name, '') = COALESCE(a.gu_name, '')
-       AND c.kapt_name_norm = LOWER(TRIM(REGEXP_REPLACE(a.apt_name, '[[:space:]]+', ' ')))
+${complexJoinSql({ sourceAlias: 'a', useMap })}
     ),
     filtered AS (
       SELECT
@@ -653,7 +681,7 @@ export default async function handler(req, res) {
     // 캐시 (nocache면 내부 캐시도 스킵)
     const cacheKey = JSON.stringify({
       sido, lawd, gu, timeframe, period, from, to, metric, orderDir, topN, pyeong, buildFrom, buildTo, effCompare,
-      priceMetric, priceMinWon, priceMaxWon, apt
+      priceMetric, priceMinWon, priceMaxWon, apt, hh, hhOp
     });
     if (!noCache) {
       const cached = cacheGet(cacheKey);
@@ -685,6 +713,7 @@ export default async function handler(req, res) {
 
     const table = timeframe === 'year' ? 're_trade_apt_stats_y' : 're_trade_apt_stats_m';
     const exists = await tableExists(pool, table);
+    const useMap = await tableExists(pool, 're_trade_apt_map');
 
     let source = 'stats';
     let curRowsRaw = [];
@@ -713,7 +742,9 @@ export default async function handler(req, res) {
         orderDir,
         priceExpr: priceExprStats,
         priceMinWon,
-        priceMaxWon
+        priceMaxWon,
+        householdWhereSql,
+        useMap
       });
       const priceParams = [];
       if (priceExprStats && priceMinWon != null) priceParams.push(priceMinWon);
@@ -748,7 +779,8 @@ export default async function handler(req, res) {
         priceMetric,
         priceMinWon,
         priceMaxWon,
-        householdWhereSql
+        householdWhereSql,
+        useMap
       }) + `
         WHERE rank_no <= ?
         ORDER BY rank_no
@@ -786,7 +818,7 @@ export default async function handler(req, res) {
         const w = buildStatsWhere({
           timeframe, period: momPeriod, pyeongBand: pyeong, sido, lawd, gu, buildFrom, buildTo, apt
         });
-        const sql = makeStatsTopSql({ table, whereSql: w.whereSql, metricCol, orderDir });
+        const sql = makeStatsTopSql({ table, whereSql: w.whereSql, metricCol, orderDir, householdWhereSql, useMap });
         const [rows] = await pool.query(sql, [...w.params, prevTop]);
         momRowsRaw = rows || [];
       }
@@ -794,7 +826,7 @@ export default async function handler(req, res) {
         const w = buildStatsWhere({
           timeframe, period: yoyPeriod, pyeongBand: pyeong, sido, lawd, gu, buildFrom, buildTo, apt
         });
-        const sql = makeStatsTopSql({ table, whereSql: w.whereSql, metricCol, orderDir });
+        const sql = makeStatsTopSql({ table, whereSql: w.whereSql, metricCol, orderDir, householdWhereSql, useMap });
         const [rows] = await pool.query(sql, [...w.params, prevTop]);
         yoyRowsRaw = rows || [];
       }
@@ -813,7 +845,7 @@ export default async function handler(req, res) {
 
       if (wantMoM && timeframe !== 'year' && momPeriod) {
         const w = buildRawWhere({ timeframe, period: momPeriod, sido, lawd, gu, pyeong, buildFrom, buildTo, apt });        
-        const sql = makeRawTopSql({ whereSql: w.whereSql, metricCol, orderDir, withLatest: false }) + `
+        const sql = makeRawTopSql({ whereSql: w.whereSql, metricCol, orderDir, withLatest: false, householdWhereSql, useMap }) + `
           WHERE rank_no <= ?
           ORDER BY rank_no
         `;
@@ -823,7 +855,7 @@ export default async function handler(req, res) {
 
       if (wantYoY && yoyPeriod) {
         const w = buildRawWhere({ timeframe, period: yoyPeriod, sido, lawd, gu, pyeong, buildFrom, buildTo, apt });         
-        const sql = makeRawTopSql({ whereSql: w.whereSql, metricCol, orderDir, withLatest: false }) + `
+        const sql = makeRawTopSql({ whereSql: w.whereSql, metricCol, orderDir, withLatest: false, householdWhereSql, useMap }) + `
           WHERE rank_no <= ?
           ORDER BY rank_no
         `;

@@ -7,6 +7,26 @@ const M2_PER_PYEONG = 3.305785;
 
 const _colCache = globalThis.__re_col_cache || (globalThis.__re_col_cache = new Map());
 
+async function hasTable(tableName) {
+  const key = `table.${tableName}`;
+  if (_colCache.has(key)) return _colCache.get(key);
+
+  const [rows] = await dbPool.execute(
+    `
+    SELECT 1 AS ok
+    FROM information_schema.tables
+    WHERE table_schema = DATABASE()
+      AND table_name = ?
+    LIMIT 1
+    `,
+    [tableName]
+  );
+
+  const yes = !!(rows && rows.length);
+  _colCache.set(key, yes);
+  return yes;
+}
+
 async function hasColumn(tableName, columnName) {
   const key = `${tableName}.${columnName}`;
   if (_colCache.has(key)) return _colCache.get(key);
@@ -59,6 +79,68 @@ function isYear(v) {
 function yearToYmLo(y) { return `${String(y)}01`; }
 function yearToYmHi(y) { return `${String(y)}12`; }
 
+function complexSelectSql(useMap) {
+  const val = (col) => useMap ? `COALESCE(cm.${col}, c.${col})` : `c.${col}`;
+  return `
+        ${val('kapt_code')} AS kapt_code,
+        ${val('household_count')} AS household_count,
+        ${val('dong_count')} AS dong_count,
+        ${val('parking_total')} AS parking_total,
+        ${val('parking_ground')} AS parking_ground,
+        ${val('parking_underground')} AS parking_underground,
+        ${val('heating_type')} AS heating_type,
+        ${val('manage_type')} AS manage_type,
+        ${val('approval_date')} AS approval_date,
+        ${val('build_year')} AS complex_build_year,
+        ${val('road_addr')} AS road_addr,
+        ${val('jibun')} AS jibun
+  `;
+}
+
+function complexAggSubquerySql() {
+  return `
+        SELECT
+          d.sido_code,
+          d.lawd_cd,
+          COALESCE(d.gu_name, '') AS gu_name,
+          d.kapt_name_norm,
+          MIN(d.kapt_code) AS kapt_code,
+          MAX(d.household_count) AS household_count,
+          MAX(d.dong_count) AS dong_count,
+          MAX(d.parking_total) AS parking_total,
+          MAX(d.parking_ground) AS parking_ground,
+          MAX(d.parking_underground) AS parking_underground,
+          MAX(d.heating_type) AS heating_type,
+          MAX(d.manage_type) AS manage_type,
+          MAX(d.approval_date) AS approval_date,
+          MAX(d.build_year) AS build_year,
+          MAX(d.road_addr) AS road_addr,
+          MAX(d.jibun) AS jibun
+        FROM re_apt_complex_dim d
+        GROUP BY d.sido_code, d.lawd_cd, COALESCE(d.gu_name, ''), d.kapt_name_norm
+  `;
+}
+
+function complexJoinSql(useMap) {
+  const mapJoin = useMap ? `
+      LEFT JOIN re_trade_apt_map m
+        ON m.apt_key = s.apt_key
+      LEFT JOIN re_apt_complex_dim cm
+        ON cm.kapt_code = m.kapt_code
+  ` : '';
+
+  return `
+      ${mapJoin}
+      LEFT JOIN (
+${complexAggSubquerySql()}
+      ) c
+        ON c.sido_code = s.sido_code
+       AND LEFT(COALESCE(c.lawd_cd, ''), 5) = s.lawd_cd
+       AND COALESCE(c.gu_name, '') = COALESCE(s.gu_name, '')
+       AND c.kapt_name_norm = LOWER(TRIM(REGEXP_REPLACE(s.apt_name, '[[:space:]]+', ' ')))
+  `;
+}
+
 export default async function handler(req, res) {
   try {
     const q = req.query || {};
@@ -97,6 +179,7 @@ export default async function handler(req, res) {
 
     const hasSum = await hasColumn(statsTable, 'sum_price');
     const hasMax = await hasColumn(statsTable, 'max_price');
+    const useMap = await hasTable('re_trade_apt_map');
 
     const statsSql = `
       SELECT
@@ -111,26 +194,9 @@ export default async function handler(req, res) {
         ${hasSum ? 's.sum_price' : 'NULL AS sum_price'},
         s.latest_deal_date, s.latest_apt_dong, s.latest_floor, s.latest_area_m2, s.latest_deal_amount_man,
         s.build_year, s.rgst_date,
-        c.kapt_code,
-        c.household_count,
-        c.dong_count
+${complexSelectSql(useMap)}
       FROM ${statsTable} s
-      LEFT JOIN (
-        SELECT
-          sido_code,
-          lawd_cd,
-          gu_name,
-          kapt_name_norm,
-          MIN(kapt_code) AS kapt_code,
-          MAX(household_count) AS household_count,
-          MAX(dong_count) AS dong_count
-        FROM re_apt_complex_dim
-        GROUP BY sido_code, lawd_cd, gu_name, kapt_name_norm
-      ) c
-        ON c.sido_code = s.sido_code
-       AND c.lawd_cd = s.lawd_cd
-       AND COALESCE(c.gu_name, '') = COALESCE(s.gu_name, '')
-       AND c.kapt_name_norm = LOWER(TRIM(REGEXP_REPLACE(s.apt_name, '[[:space:]]+', ' ')))
+${complexJoinSql(useMap)}
       WHERE s.${periodCol} = ?
         AND s.pyeong_band = ?
         AND s.apt_key = ?

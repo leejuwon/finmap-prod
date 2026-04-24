@@ -123,7 +123,7 @@ function MiniCard({ title, value, sub }) {
   return (
     <div className="rounded-2xl border border-slate-100 bg-white p-4">
       <div className="text-sm font-semibold text-slate-800">{title}</div>
-      <div className="mt-2 text-xl font-bold text-slate-900">{value}</div>
+      <div className="mt-2 text-lg font-bold leading-snug text-slate-900 break-words">{value}</div>
       {sub ? <div className="mt-1 text-xs text-slate-500">{sub}</div> : null}
     </div>
   );
@@ -131,6 +131,33 @@ function MiniCard({ title, value, sub }) {
 function fmtCount(v) {
   const n = Number(v);
   return Number.isFinite(n) ? n.toLocaleString() : '-';
+}
+function fmtText(v) {
+  const s = String(v == null ? '' : v).trim();
+  return s || '-';
+}
+function fmtDate(v) {
+  const s = String(v == null ? '' : v).trim();
+  return s ? s.slice(0, 10) : '-';
+}
+function fmtParking(row, lang) {
+  const total = row?.parking_total;
+  const ground = row?.parking_ground;
+  const underground = row?.parking_underground;
+  if (total == null && ground == null && underground == null) return '-';
+
+  const main = total != null ? Number(total).toLocaleString() : '-';
+  if (ground == null && underground == null) return main;
+
+  const g = ground != null ? Number(ground).toLocaleString() : '-';
+  const u = underground != null ? Number(underground).toLocaleString() : '-';
+  return lang === 'en' ? `${main} (G ${g} / B ${u})` : `${main} (지상 ${g} / 지하 ${u})`;
+}
+function fmtHeatingManage(row) {
+  const heating = fmtText(row?.heating_type);
+  const manage = fmtText(row?.manage_type);
+  if (heating === '-' && manage === '-') return '-';
+  return `${heating} / ${manage}`;
 }
 
 // ✅ 축/라벨 포함 스파크라인
@@ -730,6 +757,21 @@ export default function AptDetailPage() {
           <MiniCard
             title={lang === 'en' ? 'Buildings' : '동수'}
             value={fmtCount(stats?.dong_count)}
+            sub={lang === 'en' ? 'Complex basis' : '단지 기본정보 기준'}
+          />
+          <MiniCard
+            title={lang === 'en' ? 'Parking' : '주차'}
+            value={fmtParking(stats, lang)}
+            sub={lang === 'en' ? 'Total (ground / basement)' : '전체(지상 / 지하)'}
+          />
+          <MiniCard
+            title={lang === 'en' ? 'Heating / Management' : '난방 / 관리'}
+            value={fmtHeatingManage(stats)}
+            sub={lang === 'en' ? 'Complex basis' : '단지 기본정보 기준'}
+          />
+          <MiniCard
+            title={lang === 'en' ? 'Approval date' : '사용승인일'}
+            value={fmtDate(stats?.approval_date)}
             sub={lang === 'en' ? 'Complex basis' : '단지 기본정보 기준'}
           />
           <MiniCard
