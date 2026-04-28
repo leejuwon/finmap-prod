@@ -1,11 +1,37 @@
 // server/crawler/runner.js
 process.title = "finmap-crawler";
-process.on("uncaughtException", (e) =>
-  console.error("[crawler uncaughtException]", e)
-);
-process.on("unhandledRejection", (e) =>
-  console.error("[crawler unhandledRejection]", e)
-);
+
+let shuttingDown = false;
+
+async function closePuppeteer(reason) {
+  try {
+    const { closeAllBrowsers } = require("./lib/puppeteer/launch");
+    await closeAllBrowsers(reason);
+  } catch (err) {
+    console.error("[crawler shutdown cleanup failed]", err?.message || err);
+  }
+}
+
+async function shutdown(reason, err, exitCode) {
+  if (err) console.error(`[crawler ${reason}]`, err);
+  if (shuttingDown) return;
+  shuttingDown = true;
+
+  const forceExit = setTimeout(() => process.exit(exitCode), 15000);
+  forceExit.unref();
+
+  try {
+    await closePuppeteer(reason);
+  } finally {
+    clearTimeout(forceExit);
+    process.exit(exitCode);
+  }
+}
+
+process.on("SIGINT", () => shutdown("SIGINT", null, 130));
+process.on("SIGTERM", () => shutdown("SIGTERM", null, 143));
+process.on("uncaughtException", (e) => shutdown("uncaughtException", e, 1));
+process.on("unhandledRejection", (e) => shutdown("unhandledRejection", e, 1));
 
 const path = require("path");
 const moment = require("moment-timezone");
@@ -39,6 +65,13 @@ function parseArgs(argv) {
 (async () => {
   // ✅ env 먼저 로드
   loadEnv();
+
+  try {
+    const { cleanupStaleChromiumProfiles } = require("./lib/puppeteer/launch");
+    await cleanupStaleChromiumProfiles();
+  } catch (e) {
+    console.warn("[crawler] puppeteer stale profile cleanup skipped:", e?.message || e);
+  }
 
   const args = parseArgs(process.argv.slice(2));
   const doDate = args.date || moment().tz(process.env.TZ || "Asia/Seoul").format("YYYY-MM-DD");

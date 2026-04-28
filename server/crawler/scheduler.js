@@ -6,7 +6,7 @@ const indicesIfService = require("./lib/services/marketIndicesIFService");
 const afterOpenIfService = require("./lib/services/marketAfterOpenIFService");
 
 // 중복 실행 방지(single-flight)
-function createSingleFlight(name, fn) {
+function createSingleFlightUnused(name, fn) {
   let running = false;
   let pending = false;
 
@@ -28,6 +28,45 @@ function createSingleFlight(name, fn) {
       }
     }
   };
+}
+
+let activeCrawlerRun = null;
+
+function createCrawlerRunGuard(name, fn) {
+  return async (...args) => {
+    const now = Date.now();
+
+    if (activeCrawlerRun) {
+      const ageSec = Math.round((now - activeCrawlerRun.startedAt) / 1000);
+      console.warn(
+        `[crawler] skip ${name}; active=${activeCrawlerRun.name}; activeFor=${ageSec}s`
+      );
+      return { skipped: true, active: activeCrawlerRun.name };
+    }
+
+    activeCrawlerRun = { name, startedAt: now };
+    console.log(`[crawler] start ${name}`, { args });
+
+    try {
+      const result = await fn(...args);
+      console.log(`[crawler] end ${name}; durationMs=${Date.now() - now}`);
+      return result;
+    } catch (err) {
+      console.error(`[crawler] error ${name}; durationMs=${Date.now() - now}`, err?.stack || err);
+      throw err;
+    } finally {
+      console.log(`[crawler] cleanup ${name}`);
+      activeCrawlerRun = null;
+    }
+  };
+}
+
+async function runScheduled(name, fn) {
+  try {
+    await fn();
+  } catch (err) {
+    console.error(`[scheduler] ${name} failed`, err?.stack || err);
+  }
 }
 
 async function getBfIfAll(doDate) {
@@ -60,8 +99,8 @@ function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-const runBfIfAll = createSingleFlight("bfIfAll", getBfIfAll);
-const runAfIfAll = createSingleFlight("afIfAll", getAfIfAll);
+const runBfIfAll = createCrawlerRunGuard("bfIfAll", getBfIfAll);
+const runAfIfAll = createCrawlerRunGuard("afIfAll", getAfIfAll);
 
 function startScheduler() {
   console.log("🗓️ Scheduler started.");
@@ -81,11 +120,11 @@ function startScheduler() {
     const rule = new schedule.RecurrenceRule();
     rule.dayOfWeek = [0, new schedule.Range(1, 5)];
     rule.hour = h; rule.minute = m; rule.second = s;
-    schedule.scheduleJob(rule, async () => {
+    schedule.scheduleJob(rule, async () => runScheduled("bfIfAll", async () => {
       if (!isWeekday()) return;
       const ymd = nowSeoul().format("YYYY-MM-DD");
       await runBfIfAll(ymd);
-    });
+    }));
   });
 
   // 09:05 / 10:00 / 13:20 장중
@@ -98,11 +137,11 @@ function startScheduler() {
     const rule = new schedule.RecurrenceRule();
     rule.dayOfWeek = [0, new schedule.Range(1, 5)];
     rule.hour = h; rule.minute = m; rule.second = s;
-    schedule.scheduleJob(rule, async () => {
+    schedule.scheduleJob(rule, async () => runScheduled("afIfAll-open", async () => {
       if (!isWeekday()) return;
       const ymd = nowSeoul().format("YYYY-MM-DD");
       await runAfIfAll(ymd, false);
-    });
+    }));
   });
 
   // 15:50 / 22:50 장마감(종가)
@@ -114,11 +153,11 @@ function startScheduler() {
     const rule = new schedule.RecurrenceRule();
     rule.dayOfWeek = [0, new schedule.Range(1, 5)];
     rule.hour = h; rule.minute = m; rule.second = s;
-    schedule.scheduleJob(rule, async () => {
+    schedule.scheduleJob(rule, async () => runScheduled("afIfAll-close", async () => {
       if (!isWeekday()) return;
       const ymd = nowSeoul().format("YYYY-MM-DD");
       await runAfIfAll(ymd, true);
-    });
+    }));
   });
 }
 

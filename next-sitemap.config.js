@@ -133,6 +133,7 @@ const STATIC_I18N_BASE_LOCS = new Set([
   '/tools/goal-simulator',
   '/market',
   '/market/real-estate',
+  '/market/indices',
 ]);
 
 function stripEnPrefix(loc) {
@@ -265,6 +266,7 @@ module.exports = {
       "/en/tools/goal-simulator",
       "/en/market",
       "/en/market/real-estate",
+      "/en/market/indices",
     ];
 
     for (const c of categories) {

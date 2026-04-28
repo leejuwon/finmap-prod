@@ -54,7 +54,11 @@ const dayjs = require('dayjs');
 const objUtils = require('../utils/utils'); //{ getSeoulDate, dbQuery, isValidValue }
 // crawler/smbsFetcher.js
 
-const { launchBrowser: launchBrowserCore } = require('../puppeteer/launch');
+const {
+  launchBrowser: launchBrowserCore,
+  closePage,
+  closeBrowser,
+} = require('../puppeteer/launch');
 
 exports.getAfterOpenTypeInfo = async ({pIndicesType, pIfType,pDate, pCloseFlag}) => {
   /********************
@@ -960,6 +964,7 @@ async function fetchIndicesDaumData( pToDate, pBfDate, pXBfDate, pUsHolyFlag, pK
     etfBfDate = indicesBfDate[0].INDEX_DATE;  
 
   let browser;
+  let page;
   try{
       browser = await launchBrowserCore(
         { headless: true,
@@ -970,8 +975,10 @@ async function fetchIndicesDaumData( pToDate, pBfDate, pXBfDate, pUsHolyFlag, pK
             '--disable-gpu',
             '--single-process'         // 여러 프로세스 대신 단일 프로세스 사용
           ]
-        });
-      const page = await browser.newPage();
+      });
+      page = await browser.newPage();
+      page.setDefaultNavigationTimeout(60000);
+      page.setDefaultTimeout(30000);
       const result = [];
 
       // ✅ 더미 페이지로 초기화 유도 (Daum 내 페이지로)
@@ -1242,7 +1249,8 @@ async function fetchIndicesDaumData( pToDate, pBfDate, pXBfDate, pUsHolyFlag, pK
     } catch (err) {
       console.error('❌ 전체 처리 중 오류 발생:', err.message);
     } finally {
-      if (browser) await browser.close();
+      await closePage(page, 'fetchAfterOpenDaumData');
+      await closeBrowser(browser, 'fetchAfterOpenDaumData');
     } 
 }
 

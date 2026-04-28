@@ -52,9 +52,14 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const dayjs = require('dayjs');
 const objUtils = require('../utils/utils'); //{ getSeoulDate, dbQuery, isValidValue }
+const { syncCrawlerFailures } = require('../utils/crawlerFailureTracker');
 // crawler/smbsFetcher.js
 
-const { launchBrowser: launchBrowserCore } = require('../puppeteer/launch');
+const {
+  launchBrowser: launchBrowserCore,
+  closePage,
+  closeBrowser,
+} = require('../puppeteer/launch');
 
 exports.getIndicesTypeInfo = async ({pIndicesType, pIfType,pDate, pCloseFlag}) => {
   /********************
@@ -417,6 +422,7 @@ async function fetchUsdKrwRate(pToDate, pBfDate, pXBfDate, pUsHolyFlag, pKrHolyF
  */
 async function fetchUsdKrwFromSMBS(pToday,  pBfDate, pXBfDate, pUsHolyFlag, pKrHolyFlag) {
   let browser;
+  let page;
   try{
     console.log('fetchUsdKrwFromSMBS 호출!');
     browser = await launchBrowserCore({
@@ -429,7 +435,9 @@ async function fetchUsdKrwFromSMBS(pToday,  pBfDate, pXBfDate, pUsHolyFlag, pKrH
         '--single-process'         // 여러 프로세스 대신 단일 프로세스 사용
       ]
     });
-    const page = await browser.newPage();
+    page = await browser.newPage();
+    page.setDefaultNavigationTimeout(60000);
+    page.setDefaultTimeout(30000);
 
     let pUsIdxData = {},
         yDateYnFlag = false,
@@ -460,8 +468,8 @@ async function fetchUsdKrwFromSMBS(pToday,  pBfDate, pXBfDate, pUsHolyFlag, pKrH
 
 
     // 1) 페이지 이동
-    await page.goto('http://www.smbs.biz/ExRate/StdExRate.jsp', { waitUntil: 'load', timeout: 0 });
-    await page.waitForSelector('.table_type2');
+    await page.goto('http://www.smbs.biz/ExRate/StdExRate.jsp', { waitUntil: 'load', timeout: 60000 });
+    await page.waitForSelector('.table_type2', { timeout: 30000 });
 
     // 2) 테이블 찾기
     const tables = await page.$$('.table_type2');
@@ -554,13 +562,13 @@ async function fetchUsdKrwFromSMBS(pToday,  pBfDate, pXBfDate, pUsHolyFlag, pKrH
                       [ pUsIdxData, pBfDate]);
     }
 
-    //await browser.close(); // 반드시 호출
     return pUsIdxData;
   } catch (err) {
     console.error('USD/KRW 크롤링 중 에러:', err);        
     throw err;
   } finally {
-    if (browser) await browser.close();  // browser가 선언됐을 때만 닫기
+    await closePage(page, 'fetchUsdKrwFromSMBS');
+    await closeBrowser(browser, 'fetchUsdKrwFromSMBS');
   }
 }
 
@@ -1250,7 +1258,7 @@ async function fetchFredData(pToDate, pBfDate, pXBfDate, pUsHolyFlag, pKrHolyFla
   const ACCEPT_LANG = 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7';
 
   async function launchInvestingBrowser() {
-    const b = await launchBrowserCore({ headless: true, args: LAUNCH_ARGS, timeout: 0 });
+    const b = await launchBrowserCore({ headless: true, args: LAUNCH_ARGS });
     return b;
   }
 
@@ -1272,7 +1280,7 @@ async function fetchFredData(pToDate, pBfDate, pXBfDate, pUsHolyFlag, pKrHolyFla
     } catch (e) {
       console.warn('warmUp 실패(무시 가능):', e.message);
     } finally {
-      if (page) await page.close().catch(() => {});
+      await closePage(page, 'fetchUsIdxInvesting warmUp');
     }
   }
 
@@ -1495,20 +1503,20 @@ async function fetchFredData(pToDate, pBfDate, pXBfDate, pUsHolyFlag, pKrHolyFla
         // 브라우저 세션 끊김 or 실패 누적 시 재시작
         if (err.message?.includes('browser has disconnected') || ++failStreak >= 2) {
           console.warn('⚠️ 브라우저 재시작');
-          try { await browser.close(); } catch {}
+          await closeBrowser(browser, 'fetchUsIdxInvesting restart');
           browser = await launchInvestingBrowser();
           await warmUp(browser);
           failStreak = 0;
         }
       } finally {
-        if (page) await page.close().catch(() => {});
+        await closePage(page, `fetchUsIdxInvesting ${sName}`);
         await objUtils.sleep(2500 + Math.floor(Math.random() * 2000));
       }
     }
   } catch (e) {
     console.error('❌ 전체 처리 중 치명적 에러:', e.message);
   } finally {
-    if (browser) await browser.close().catch(() => {});
+    await closeBrowser(browser, 'fetchUsIdxInvesting');
   }
 
   return resultPreAll;
@@ -1945,6 +1953,7 @@ async function fetchFredData(pToDate, pBfDate, pXBfDate, pUsHolyFlag, pKrHolyFla
       etfBfDate = indicesBfDate[0].INDEX_DATE;  
   
     let browser;
+    let page;
     try{
         browser = await launchBrowserCore(
           { headless: true,
@@ -1956,11 +1965,13 @@ async function fetchFredData(pToDate, pBfDate, pXBfDate, pUsHolyFlag, pKrHolyFla
               '--single-process'
             ]
           });
-        const page = await browser.newPage();
+        page = await browser.newPage();
+        page.setDefaultNavigationTimeout(60000);
+        page.setDefaultTimeout(30000);
         const result = [];
   
         // ✅ 더미 페이지로 초기화 유도 (Daum 내 페이지로)
-        await page.goto('https://m.daum.net', { waitUntil: 'domcontentloaded' });
+        await page.goto('https://m.daum.net', { waitUntil: 'domcontentloaded', timeout: 60000 });
         await objUtils.sleep(2000);  // 약간의 대기 추가  
         
         const url = 'https://m.finance.daum.net/domestic/kospi';
@@ -2030,10 +2041,127 @@ async function fetchFredData(pToDate, pBfDate, pXBfDate, pUsHolyFlag, pKrHolyFla
       } catch (err) {
         console.error('❌ 전체 처리 중 오류 발생:', err.message);
       } finally {
-        if (browser) await browser.close();
+        await closePage(page, 'fetchIndicesStdDaumData');
+        await closeBrowser(browser, 'fetchIndicesStdDaumData');
       } 
   }
     
+
+  const FINAL_MARKET_FAILURE_SOURCE = 'SET_KSP_INV';
+  const FINAL_MARKET_CRAWLER = 'marketIndicesIFService.fnSetKspInvestInfo';
+  const FINAL_MARKET_INDICATORS = [
+    {
+      code: 'KSP',
+      name: 'KOSPI',
+      dateKey: 'target',
+      successFlag: 'AF_KSP_OPEN_DO_YN',
+      requiredFields: [
+        'KSP_BEF_CLOSE_PRICE',
+        'KSP_OPEN_PRICE',
+        'KSP_HIGH_PRICE',
+        'KSP_LOW_PRICE',
+        'KSP_CLOSE_PRICE',
+        'KSP_UD_RATE_REAL_BY_CLOSE',
+      ],
+    },
+    {
+      code: 'SNP',
+      name: 'S&P 500',
+      dateKey: 'previous',
+      successFlag: 'SNP_OPEN_DO_YN',
+      requiredFields: ['SNP_STD_PRICE', 'SNP_OPEN_PRICE', 'SNP_END_PRICE', 'SNP_SCORE'],
+    },
+    {
+      code: 'NDQ',
+      name: 'Nasdaq',
+      dateKey: 'previous',
+      successFlag: 'NDQ_OPEN_DO_YN',
+      requiredFields: ['NDQ_STD_PRICE', 'NDQ_OPEN_PRICE', 'NDQ_END_PRICE', 'NDQ_SCORE'],
+    },
+    {
+      code: 'DWJ',
+      name: 'Dow Jones',
+      dateKey: 'previous',
+      successFlag: 'DWJ_OPEN_DO_YN',
+      requiredFields: ['DWJ_STD_PRICE', 'DWJ_OPEN_PRICE', 'DWJ_END_PRICE', 'DWJ_SCORE'],
+    },
+    {
+      code: 'DXY',
+      name: 'Dollar Index',
+      dateKey: 'previous',
+      successFlag: 'DXY_OPEN_DO_YN',
+      requiredFields: ['DXY_STD_PRICE', 'DXY_OPEN_PRICE', 'DXY_END_PRICE', 'DXY_SCORE'],
+    },
+    {
+      code: 'TNX',
+      name: 'U.S. 10Y Treasury Yield',
+      dateKey: 'previous',
+      successFlag: 'TNX_OPEN_DO_YN',
+      requiredFields: ['TNX_STD_PRICE', 'TNX_OPEN_PRICE', 'TNX_END_PRICE', 'TNX_SCORE'],
+    },
+    {
+      code: 'WTI',
+      name: 'WTI Crude Oil',
+      dateKey: 'previous',
+      successFlag: 'WTI_OPEN_DO_YN',
+      requiredFields: ['WTI_STD_PRICE', 'WTI_OPEN_PRICE', 'WTI_END_PRICE', 'WTI_SCORE'],
+    },
+    {
+      code: 'KRW',
+      name: 'USD/KRW',
+      dateKey: 'previous',
+      successFlag: 'KRW_OPEN_DO_YN',
+      requiredFields: ['KRW_STD_PRICE', 'KRW_OPEN_PRICE', 'KRW_END_PRICE', 'KRW_SCORE'],
+    },
+  ];
+
+  function hasFinalValue(value) {
+    return value !== undefined && value !== null && value !== '';
+  }
+
+  function buildFinalMarketFailureSync(stockInvestObj, pToDate, pBfDate) {
+    const failures = [];
+    const successes = [];
+
+    for (const indicator of FINAL_MARKET_INDICATORS) {
+      const missingFields = indicator.requiredFields.filter((field) => !hasFinalValue(stockInvestObj[field]));
+      const isSuccess = stockInvestObj[indicator.successFlag] === 'Y' && missingFields.length === 0;
+      const sourceDate = indicator.dateKey === 'previous' ? pBfDate : pToDate;
+      const base = {
+        targetDate: pToDate,
+        indicatorCode: indicator.code,
+        indicatorName: indicator.name,
+        sourceName: FINAL_MARKET_FAILURE_SOURCE,
+      };
+
+      if (isSuccess) {
+        successes.push(base);
+        continue;
+      }
+
+      failures.push({
+        ...base,
+        crawlerName: FINAL_MARKET_CRAWLER,
+        failureStage: 'FINAL_ROLLUP',
+        failureReason: 'missing_after_fallback',
+        errorMessage: [
+          `indicator=${indicator.code}`,
+          `targetDate=${pToDate}`,
+          `sourceDate=${sourceDate}`,
+          `successFlag=${indicator.successFlag}:${stockInvestObj[indicator.successFlag] || 'N'}`,
+          `missingFields=${missingFields.join(',') || 'none'}`,
+        ].join('; '),
+      });
+    }
+
+    return { failures, successes };
+  }
+
+  async function syncFinalMarketFailureHistory(stockInvestObj, pToDate, pBfDate, pCloseFlag) {
+    if (!pCloseFlag) return;
+    const { failures, successes } = buildFinalMarketFailureSync(stockInvestObj, pToDate, pBfDate);
+    await syncCrawlerFailures(db, { failures, successes });
+  }
 
   async function fnSetKspInvestInfo(pToDate, pBfDate, pXBfDate, pUsHolyFlag, pKrHolyFlag, pCloseFlag) {
         
@@ -2160,7 +2288,7 @@ async function fetchFredData(pToDate, pBfDate, pXBfDate, pUsHolyFlag, pKrHolyFla
                 LIMIT 1`, [pBfDate]          
             );                                  
 
-            if ((snpStock2ndInfo || []).length == 0 || snpStock1stInfo[0].IF_SUCC_YN !== 'Y') {
+            if ((snpStock2ndInfo || []).length == 0 || snpStock2ndInfo[0].IF_SUCC_YN !== 'Y') {
               console.log('SNP500 1, 2순위  데이터 조회 실패!');
             }else{              
               stockInvestObj.SNP_STD_PRICE = snpStock2ndInfo[0].INDEX_MDF_STD_PRICE;
@@ -2574,6 +2702,8 @@ async function fetchFredData(pToDate, pBfDate, pXBfDate, pUsHolyFlag, pKrHolyFla
             [ stockInvestObj, pToDate]);
       }         
       
+      await syncFinalMarketFailureHistory(stockInvestObj, pToDate, pBfDate, pCloseFlag);
+
       await fnCalcGrade(stockInvestObj);
 
       console.log('KSP INVEST 작업 종료!');
