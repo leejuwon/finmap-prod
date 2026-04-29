@@ -75,6 +75,12 @@ const PORT = Number(process.env.PORT || 8002);
   });
 
   // 정적 파일 (선택: /public을 별도 라우트로 노출)
+  app.use('/brand', express.static(path.join(APP_DIR, 'public', 'brand'), {
+    fallthrough: true,
+    immutable: true,
+    maxAge: '365d',
+  }));
+
   app.use('/public', express.static(path.join(APP_DIR, 'public'), { fallthrough: true, maxAge: 0 }));
 
   // ✅ public 폴더를 루트에서 정적 서빙 (favicon.ico 같은 표준 경로 해결)

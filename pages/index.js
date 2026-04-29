@@ -225,8 +225,6 @@ export default function Home({ posts }) {
                       fill
                       className="object-cover"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      priority={idx === 0}
-                      fetchPriority={idx === 0 ? "high" : "auto"}
                     />
                   </div>
                 )}
@@ -375,10 +373,17 @@ export async function getStaticProps({ locale }) {
 
   // ✅ 목록 페이지에는 본문/HTML 등 무거운 필드가 필요 없음 → lite로 축소
   // ✅ locale별로 필요한 언어만 내려서 page-data 크기 절반으로 감소
-  const posts = getAllPostsAllLangs()
+  const allPosts = getAllPostsAllLangs()
     .map(toLitePost)
     .filter((p) => (p.lang || 'ko') === lang)
     .sort((a, b) => dateValue(b.datePublished) - dateValue(a.datePublished));
+
+  const topPosts = allPosts.slice(0, 9);
+  const homeSlugs = new Set([
+    ...(PILLAR_SLUGS[lang] || []),
+    ...topPosts.map((p) => p.slug),
+  ]);
+  const posts = allPosts.filter((p) => homeSlugs.has(p.slug));
 
   return { props: { posts } };
 }

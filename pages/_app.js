@@ -5,17 +5,11 @@ import { useRouter } from 'next/router';
 import Script from 'next/script';
 import Layout from '../_components/Layout';
 import '../styles/globals.css';
-//import "../lib/charts.js";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
   const ADS_CLIENT = 'ca-pub-1869932115288976';
-
-  // ✅ charts helper: client-only (avoid SSR crash when window/document is used)
-  useEffect(() => {
-    import('../lib/charts.js').catch(() => {});
-  }, []);
 
   useEffect(() => {
     if (!GA_ID) return;

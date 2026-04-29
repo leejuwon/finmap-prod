@@ -55,13 +55,11 @@ const TEXT = {
     maxDateHint: "오늘까지 선택 가능",
     selectedDate: "코스피 기준일",
     previousMarketDate: "글로벌 지표 기준일",
-    sourceTable: "데이터 테이블",
     updatedAt: "마지막 갱신",
     score: "점수",
     growthScore: "성장 지표 점수",
     priceScore: "가격·환율 지표 점수",
     grade: "등급",
-    source: "출처",
     success: "적용 완료",
     partial: "일부 값 없음",
     groups: {
@@ -79,7 +77,6 @@ const TEXT = {
       close: "종가/현재가",
       change: "등락률",
       score: "점수",
-      source: "source",
       updatedAt: "갱신시각",
     },
     basis: {
@@ -115,13 +112,11 @@ const TEXT = {
     maxDateHint: "Available up to today",
     selectedDate: "KOSPI date",
     previousMarketDate: "Global indicator date",
-    sourceTable: "Data table",
     updatedAt: "Last updated",
     score: "Score",
     growthScore: "Growth score",
     priceScore: "Price, FX & rates score",
     grade: "Grade",
-    source: "Source",
     success: "Applied",
     partial: "Partial",
     groups: {
@@ -139,7 +134,6 @@ const TEXT = {
       close: "Close / Latest",
       change: "Change",
       score: "Score",
-      source: "source",
       updatedAt: "Updated",
     },
     basis: {
@@ -267,9 +261,9 @@ function IndicatorCard({ item, lang, t }) {
   const displayName = CODE_LABELS[lang]?.[item.code] || item.name || item.code;
   const tone = trendTone(item.trend);
   const basis = t.basis[item.changeRateBasis] || item.changeRateBasis || "";
-  const source = item.sourceTable || item.sourceName || item.source || "-";
   const role = t.dateRole[item.dateRole] || item.dateRole || "";
   const score = numOrNull(item.score);
+  const showHighLow = item.code === "KOSPI";
 
   return (
     <article className="card p-4">
@@ -311,14 +305,15 @@ function IndicatorCard({ item, lang, t }) {
       <div className="mt-4 grid grid-cols-2 gap-2 text-sm">
         <MiniStat label={t.columns.reference} value={fmtPrice(item.referencePrice, item.code, lang)} />
         <MiniStat label={t.columns.open} value={fmtPrice(item.openPrice, item.code, lang)} />
-        <MiniStat label={t.columns.high} value={fmtPrice(item.highPrice, item.code, lang)} />
-        <MiniStat label={t.columns.low} value={fmtPrice(item.lowPrice, item.code, lang)} />
+        {showHighLow && (
+          <>
+            <MiniStat label={t.columns.high} value={fmtPrice(item.highPrice, item.code, lang)} />
+            <MiniStat label={t.columns.low} value={fmtPrice(item.lowPrice, item.code, lang)} />
+          </>
+        )}
       </div>
 
       <div className="mt-4 flex flex-wrap items-center gap-2 text-xs">
-        <span className="rounded-full bg-slate-100 px-2 py-1 text-slate-600">
-          {t.source}: {source}
-        </span>
         <span className={item.isSuccess && hasCoreValue(item) ? "rounded-full bg-emerald-50 px-2 py-1 text-emerald-700" : "rounded-full bg-amber-50 px-2 py-1 text-amber-700"}>
           {item.isSuccess && hasCoreValue(item) ? t.success : t.partial}
         </span>
@@ -506,7 +501,6 @@ export default function MarketIndicesPage() {
         </div>
 
         <div className="mt-3 grid gap-3 md:grid-cols-2">
-          <SummaryBox label={t.sourceTable} value={data?.sourceTable || "STOCK_INVEST_INFO"} />
           <SummaryBox label={t.updatedAt} value={fmtDateTime(data?.updatedAt)} />
         </div>
 
