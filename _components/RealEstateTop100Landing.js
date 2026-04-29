@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import ToolSeo from "./ToolSeo";
 
 const M2_PER_PYEONG = 3.305785;
+const DETAIL_STATE_STORAGE_KEY = "finmap:real-estate:apt-detail-state";
 
 function toNum(v) {
   const n = Number(v);
@@ -242,9 +243,22 @@ export default function RealEstateTop100Landing({
 
   function makeDetailHref(r) {
     const aptKey = encodeURIComponent(String(r?.apt_key || ""));
-    return `/market/real-estate/apt/${aptKey}?timeframe=month&period=${encodeURIComponent(
-      String(period || "")
-    )}&band=${encodeURIComponent(String(effectiveBand || "all"))}&sido=${encodeURIComponent(detailSido)}`;   
+    return `/market/real-estate/apt/${aptKey}`;
+  }
+
+  function rememberDetailState() {
+    if (typeof window === "undefined") return;
+    try {
+      window.sessionStorage.setItem(
+        DETAIL_STATE_STORAGE_KEY,
+        JSON.stringify({
+          timeframe: "month",
+          period: String(period || ""),
+          band: String(effectiveBand || "all"),
+          ts: Date.now(),
+        })
+      );
+    } catch {}
   }
 
   return (
@@ -416,6 +430,7 @@ export default function RealEstateTop100Landing({
                 </div>
                 <Link
                   href={makeDetailHref(r)}
+                  onClick={rememberDetailState}
                   className="mt-0.5 block text-base font-semibold text-slate-900 hover:underline underline-offset-2 truncate"
                   title={r?.apt_name || ""}
                 >
@@ -484,6 +499,7 @@ export default function RealEstateTop100Landing({
                     <td className="px-3 py-3 font-medium">
                       <Link
                         href={makeDetailHref(r)}
+                        onClick={rememberDetailState}
                         className="underline underline-offset-2"
                       >
                         {r?.apt_name || "-"}

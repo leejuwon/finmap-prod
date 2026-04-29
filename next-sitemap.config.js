@@ -117,6 +117,16 @@ const CATEGORY_LASTMOD_MAP = buildCategoryLastmodMap(POSTS_LASTMOD_MAP);
 //           각 ref에 hrefIsAbsolute: true를 넣어 중복 append를 방지합니다.
 // 참고: next-sitemap issue #212 / StackOverflow workaround 패턴과 동일.
 
+const REAL_ESTATE_TOP100_PATHS = [
+  '/market/real-estate/gangnam-top100',
+  '/market/real-estate/gangnam3-top100',
+  '/market/real-estate/magok-top100',
+  '/market/real-estate/mayongseong-top100',
+  '/market/real-estate/seoul-top100',
+  '/market/real-estate/songpa-gangnam-top100',
+  '/market/real-estate/songpa-top100',
+];
+
 const STATIC_I18N_BASE_LOCS = new Set([
   '/',
   '/about',
@@ -134,6 +144,7 @@ const STATIC_I18N_BASE_LOCS = new Set([
   '/market',
   '/market/real-estate',
   '/market/indices',
+  ...REAL_ESTATE_TOP100_PATHS,
 ]);
 
 function stripEnPrefix(loc) {
@@ -196,7 +207,15 @@ module.exports = {
     "/api/*", "/api/**",
     "/admin/*", "/admin/**",
     "/private/*", "/private/**",
+    "/rss.xml",
+    "/robots.txt",
+    "/favicon.ico",
+    "/favicon-16.png",
+    "/favicon-32.png",
+    "/favicon-48.png",
     "/en/en/*", "/en/en/**", "/en/en",
+    "/market/real-estate/apt/*", "/market/real-estate/apt/**",
+    "/en/market/real-estate/apt/*", "/en/market/real-estate/apt/**",
     "/posts/*/en/*", "/posts/*/en/**",
     "/posts/*/ko/*", "/posts/*/ko/**",
     "/en/posts/*/en/*", "/en/posts/*/en/**",
@@ -214,6 +233,11 @@ module.exports = {
     if (loc.includes("//")) return null;
     if (loc === "/en/en" || loc.startsWith("/en/en/")) return null;
     if (loc.includes("?")) return null;
+    if (loc === "/rss.xml" || loc === "/robots.txt" || loc === "/favicon.ico") return null;
+    if (loc.startsWith("/market/real-estate/apt/")) return null;
+    if (loc.startsWith("/en/market/real-estate/apt/")) return null;
+    if (/^\/posts\/[^/]+\/(?:en|ko)\//.test(loc)) return null;
+    if (/^\/en\/posts\/[^/]+\/(?:en|ko)\//.test(loc)) return null;
 
     // ---- posts는 글별 lastmod 적용 ----
     let lastmod = POSTS_LASTMOD_MAP.get(loc);
@@ -267,6 +291,7 @@ module.exports = {
       "/en/market",
       "/en/market/real-estate",
       "/en/market/indices",
+      ...REAL_ESTATE_TOP100_PATHS.map((p) => `/en${p}`),
     ];
 
     for (const c of categories) {

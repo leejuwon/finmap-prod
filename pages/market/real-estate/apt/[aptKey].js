@@ -9,6 +9,7 @@ import { AD_SLOTS } from '../../../../config/adSlots';
 
 const INFEED_SLOT = AD_SLOTS.responsiveBottom;
 const M2_PER_PYEONG = 3.305785;
+const DETAIL_STATE_STORAGE_KEY = 'finmap:real-estate:apt-detail-state';
 
 function numOrNull(x) {
   const n = Number(x);
@@ -128,6 +129,31 @@ function MiniCard({ title, value, sub }) {
     </div>
   );
 }
+
+export async function getServerSideProps(ctx) {
+  const { params = {}, query = {}, res } = ctx;
+
+  if (res) {
+    res.setHeader('X-Robots-Tag', 'noindex, follow');
+  }
+
+  const pick = (value) => {
+    if (Array.isArray(value)) return value[0] || '';
+    return value == null ? '' : String(value);
+  };
+
+  return {
+    props: {
+      initialAptKey: pick(params.aptKey),
+      initialQuery: {
+        timeframe: pick(query.timeframe),
+        period: pick(query.period),
+        band: pick(query.band),
+        range: pick(query.range),
+      },
+    },
+  };
+}
 function fmtCount(v) {
   const n = Number(v);
   return Number.isFinite(n) ? n.toLocaleString() : '-';
@@ -245,17 +271,17 @@ function Sparkline({ rows, valueKey, valueTransform, fmtY, fmtX }) {
 }
 
 
-export default function AptDetailPage() {
+export default function AptDetailPage({ initialAptKey = '', initialQuery = {} }) {
   const router = useRouter();
   const lang = (router.locale || 'ko').startsWith('en') ? 'en' : 'ko';
 
-  const aptKey = router.query.aptKey;
+  const aptKey = router.query.aptKey || initialAptKey;
 
   const qTimeframe =
-    String(router.query.timeframe || 'month').toLowerCase() === 'year' ? 'year' : 'month';
-  const qPeriod = String(router.query.period || '');
-  const qBand = String(router.query.band || 'all').toLowerCase();
-  const qRange = String(router.query.range || '');
+    String(router.query.timeframe || initialQuery.timeframe || 'month').toLowerCase() === 'year' ? 'year' : 'month';
+  const qPeriod = String(router.query.period || initialQuery.period || '');
+  const qBand = String(router.query.band || initialQuery.band || 'all').toLowerCase();
+  const qRange = String(router.query.range || initialQuery.range || '');
 
   const [opt, setOpt] = useState(null);
 
@@ -288,6 +314,7 @@ export default function AptDetailPage() {
   // ✅ "초기 진입/페이지 전환"에서만 오버레이
   const firstFetchRef = useRef(false);
   const [routeLoading, setRouteLoading] = useState(false);
+  const appliedStoredStateRef = useRef(false);
   useEffect(() => {
     if (!router?.events) return;
     const onStart = (url) => {
@@ -305,6 +332,38 @@ export default function AptDetailPage() {
       router.events.off('routeChangeError', onDone);
     };
   }, [router]);
+
+  useEffect(() => {
+    if (appliedStoredStateRef.current) return;
+    if (!router.isReady) return;
+    const hasUrlState = ['timeframe', 'period', 'band', 'range', 'from', 'to'].some(
+      (key) => router.query?.[key] != null
+    );
+    if (hasUrlState) return;
+    appliedStoredStateRef.current = true;
+
+    try {
+      const raw = window.sessionStorage.getItem(DETAIL_STATE_STORAGE_KEY);
+      if (!raw) return;
+      const saved = JSON.parse(raw);
+      if (!saved || Date.now() - Number(saved.ts || 0) > 30 * 60 * 1000) return;
+
+      const nextTimeframe = String(saved.timeframe || 'month').toLowerCase() === 'year' ? 'year' : 'month';
+      const nextRange = sanitizeRangePreset(
+        nextTimeframe,
+        saved.range || defaultRangePreset(nextTimeframe)
+      );
+      const nextPeriod = String(saved.period || '');
+      const nextBand = String(saved.band || 'all').toLowerCase();
+
+      setTimeframe(nextTimeframe);
+      if (nextPeriod) setPeriod(nextPeriod);
+      setBand(nextBand);
+      setRangePreset(nextRange);
+    } catch {
+      // Ignore stale or malformed UI state.
+    }
+  }, [router.isReady, router.query]);
 
   const { dong_name, apt_name } = useMemo(() => parseAptKey(aptKey), [aptKey]);
 
@@ -352,7 +411,9 @@ export default function AptDetailPage() {
         : (opt.periods?.maxYm || opt.periods?.months?.[opt.periods.months.length - 1] || '');
 
     setPeriod(next);
-    syncUrl({ timeframe, period: next, band, rangePreset: sanitizeRangePreset(timeframe, rangePreset) });
+    if (hasDetailQueryParams()) {
+      syncUrl({ timeframe, period: next, band, rangePreset: sanitizeRangePreset(timeframe, rangePreset) });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [opt, timeframe]);
 
@@ -381,6 +442,12 @@ export default function AptDetailPage() {
     if (r.to) qs.set('to', r.to);
 
     router.replace(`${base}?${qs.toString()}`, undefined, { shallow: true });
+  }
+
+  function hasDetailQueryParams() {
+    return ['timeframe', 'period', 'band', 'range', 'from', 'to'].some(
+      (key) => router.query?.[key] != null
+    );
   }
 
   async function fetchAll() {

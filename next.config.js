@@ -87,7 +87,7 @@ module.exports = {
       {
         source: "/posts/economics-inflation-basics",
         destination: "/posts/economicInfo/inflation-basics",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },
       {
@@ -101,7 +101,7 @@ module.exports = {
       {
         source: "/posts/personalFinance/en/personal-finance-3pillars",
         destination: "/en/posts/personalFinance/personal-finance-3pillars",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },
       {
@@ -120,13 +120,13 @@ module.exports = {
       {
         source: "/category/tax",
         destination: "/category/personalFinance",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },
       {
         source: "/en/category/tax",
         destination: "/en/category/personalFinance",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },
       
@@ -134,7 +134,7 @@ module.exports = {
       {
         source: "/posts/usd-krw-weak-won-sector-map-kospi",
         destination: "/posts/investingInfo/usd-krw-weak-won-sector-map-kospi",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },
 
@@ -142,7 +142,7 @@ module.exports = {
       {
         source: "/en/posts/weak-krw-winners-losers-sector-map",
         destination: "/en/posts/investingInfo/usd-krw-weak-won-sector-map-kospi",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },
 
@@ -150,25 +150,25 @@ module.exports = {
       {
         source: "/posts/investingInfo/usdkrw-exchange-rate-and-kospi",
         destination: "/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },
       {
         source: "/en/posts/investingInfo/usdkrw-exchange-rate-and-kospi",
         destination: "/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },      
       {
         source: "/en/posts/investingInfo/usd-krw-exchange-rate-kospi",
         destination: "/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },            
       {
         source: "/posts/investingInfo/usd-krw-exchange-rate-kospi",
         destination: "/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },            
       {
@@ -201,7 +201,7 @@ module.exports = {
       },
       {
         source: "/en/posts/:category/ko/:slug",
-        destination: "/en/posts/:category/:slug",
+        destination: "/posts/:category/:slug",
         permanent: true,
         locale: false,
       }, 
@@ -240,24 +240,24 @@ module.exports = {
       // -------------------------
       // (E) /en/en/... 같은 과거 중복 URL 청소 (혹시 남아있다면)
       // -------------------------
-      { source: "/en/en", destination: "/en", permanent: true, locale: false },
-      { source: "/en/en/:path*", destination: "/en/:path*", permanent: true, locale: false },
+      { source: "/en/en", destination: "/en", statusCode: 301, locale: false },
+      { source: "/en/en/:path*", destination: "/en/:path*", statusCode: 301, locale: false },
       // (추가) /en/ → /en (슬래시 정규화)
       //{ source: "/en/", destination: "/en", permanent: true, locale: false },      
       {
         source: "/en/market/real-estate/apt/[aptKey]",
         destination: "/en/market/real-estate",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/market/real-estate/apt/[aptKey]",
         destination: "/market/real-estate",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/posts/compound-interest",
         destination: "/tools/compound-interest",
-        permanent: true,
+        statusCode: 301,
       },
     ];
     

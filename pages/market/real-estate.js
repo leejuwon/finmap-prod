@@ -7,6 +7,7 @@ import AdSenseUnit from '../../_components/AdSenseUnit'; // 예시
 import { AD_SLOTS } from '../../config/adSlots';
 
 const M2_PER_PYEONG = 3.305785;
+const DETAIL_STATE_STORAGE_KEY = 'finmap:real-estate:apt-detail-state';
 
 const INFEED_SLOT = AD_SLOTS.responsiveBottom;
 
@@ -623,14 +624,27 @@ export default function RealEstatePage() {
   // ✅ 상세페이지 링크 생성 (Top 리스트의 apt_key 그대로 사용)
   function makeAptDetailHref(row) {
     const aptKey = row?.apt_key ? encodeURIComponent(String(row.apt_key)) : '';
-    const qs = new URLSearchParams();
-    if (timeframe) qs.set('timeframe', timeframe);
+    return `/market/real-estate/apt/${aptKey}`;
     // 상세는 기존 period 기반이므로 to 값을 넣어 호환 유지
-    if (periodTo || periodFrom) qs.set('period', String(periodTo || periodFrom));     
     if (pyeong) qs.set('band', pyeong); // 상세에서는 band로 받음
     if (sido) qs.set('sido', sido);
     if (area) qs.set('area', area);
     return `/market/real-estate/apt/${aptKey}${qs.toString() ? `?${qs.toString()}` : ''}`;
+  }
+
+  function rememberAptDetailState() {
+    if (typeof window === 'undefined') return;
+    try {
+      window.sessionStorage.setItem(
+        DETAIL_STATE_STORAGE_KEY,
+        JSON.stringify({
+          timeframe: timeframe || 'month',
+          period: String(periodTo || periodFrom || ''),
+          band: pyeong || 'all',
+          ts: Date.now(),
+        })
+      );
+    } catch {}
   }
 
   const tableMinWidth = showAdvanced ? 'min-w-[2700px]' : 'min-w-[1900px]';
@@ -913,6 +927,7 @@ export default function RealEstatePage() {
               <div className="mt-0.5 flex items-start gap-2">
                 <Link
                   href={makeAptDetailHref(r)}
+                  onClick={rememberAptDetailState}
                   title={aptText}
                   className={`min-w-0 flex-1 text-left text-base font-semibold text-slate-900 hover:underline underline-offset-2 ${
                     expanded ? "whitespace-normal break-words" : "truncate"
@@ -1542,6 +1557,7 @@ export default function RealEstatePage() {
                       <td className="py-3 pr-3 font-medium">
                         <Link
                           href={makeAptDetailHref(r)}
+                          onClick={rememberAptDetailState}
                           className="underline underline-offset-2 hover:text-slate-900"
                           title={renderApt(r)}
                         >

@@ -6,15 +6,30 @@ import Script from 'next/script';
 import Layout from '../_components/Layout';
 import '../styles/globals.css';
 
+const ADSENSE_PATHS = new Set([
+  '/posts/[category]/[slug]',
+  '/tools/fire-calculator',
+  '/market/real-estate',
+]);
+
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
   const ADS_CLIENT = 'ca-pub-1869932115288976';
+  const shouldLoadAdsense =
+    ADSENSE_PATHS.has(router.pathname) ||
+    router.pathname.startsWith('/market/real-estate/apt/');
 
   useEffect(() => {
     if (!GA_ID) return;
     const handleRouteChange = (url) => {
-      window.gtag && window.gtag('config', GA_ID, { page_path: url });
+      window.dataLayer = window.dataLayer || [];
+      window.gtag =
+        window.gtag ||
+        function gtag() {
+          window.dataLayer.push(arguments);
+        };
+      window.gtag('config', GA_ID, { page_path: url });
     };
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => router.events.off('routeChangeComplete', handleRouteChange);
@@ -29,8 +44,9 @@ function MyApp({ Component, pageProps }) {
       {GA_ID && (
         <>
           <Script
+            id="gtag-loader"
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-            strategy="afterInteractive"
+            strategy="lazyOnload"
           />
           <Script id="gtag-init" strategy="afterInteractive">
             {`
@@ -43,12 +59,14 @@ function MyApp({ Component, pageProps }) {
         </>
       )}  
 
-      <Script
-        id="adsbygoogle-loader"
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS_CLIENT}`}
-        strategy="lazyOnload"
-        crossOrigin="anonymous"
-      />    
+      {shouldLoadAdsense && (
+        <Script
+          id="adsbygoogle-loader"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS_CLIENT}`}
+          strategy="lazyOnload"
+          crossOrigin="anonymous"
+        />
+      )}
 
       <Layout>
         <Component {...pageProps} />

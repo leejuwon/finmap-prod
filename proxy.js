@@ -40,6 +40,26 @@ export function proxy(req) {
 
 
   // ✅ 템플릿 문자열 URL 방어: [ ] 및 인코딩(%5B/%5D)까지 바로 404
+  const decodedPath = (() => {
+    try {
+      return decodeURIComponent(path);
+    } catch {
+      return path;
+    }
+  })();
+  if (
+    decodedPath === "/market/real-estate/apt/[aptKey]" ||
+    decodedPath === "/en/market/real-estate/apt/[aptKey]"
+  ) {
+    url.pathname = decodedPath.startsWith("/en/")
+      ? "/en/market/real-estate"
+      : "/market/real-estate";
+    url.search = "";
+    const res = NextResponse.redirect(url, 301);
+    res.headers.set("x-fm-redirect", "middleware");
+    return res;
+  }
+
   if (path.includes("[") || path.includes("]") || /%5b|%5d/i.test(href)) {
     return new NextResponse("Not Found", { status: 404 });
   }  
@@ -179,12 +199,19 @@ export function proxy(req) {
     "/posts/usd-krw-weak-won-sector-map-kospi":
       "/posts/investingInfo/usd-krw-weak-won-sector-map-kospi",
     "/posts/investingInfo/usd-krw-exchange-rate-kospi":
-      "/posts/investingInfo/usd-krw-weak-won-sector-map-kospi",
+      "/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
     "/posts/investingInfo/usdkrw-exchange-rate-and-kospi":
       "/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
+    "/en/posts/investingInfo/usd-krw-exchange-rate-kospi":
+      "/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
+    "/en/posts/weak-krw-winners-losers-sector-map":
+      "/en/posts/investingInfo/usd-krw-weak-won-sector-map-kospi",
+    "/en/posts/investingInfo/usdkrw-exchange-rate-and-kospi":
+      "/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
     "/category/investing": "/category/investingInfo",
     "/category/tax": "/category/personalFinance",
     "/posts/compound-interest": "/tools/compound-interest",
+    "/posts/economics-inflation-basics": "/posts/economicInfo/inflation-basics",
 
     // en 쪽도 혹시 들어오면 같이 정리 (안전빵)
     "/en/category/investing": "/en/category/investingInfo",
