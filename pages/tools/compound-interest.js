@@ -2,27 +2,48 @@
 import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import SeoHead from "../../_components/SeoHead";
 import CTABar from "../../_components/CTABar";
 import CompoundForm from "../../_components/CompoundForm";
 import CompoundChart from "../../_components/CompoundChart";
 import CompoundYearTable from "../../_components/CompoundYearTable";
 import CompoundCTA from "../../_components/CompoundCTA";
-import DragBreakdownChart from "../../_components/DragBreakdownChart";
-import GoalEngineCard from "../../_components/GoalEngineCard";
-import SensitivityPanel from "../../_components/SensitivityPanel";
 import ValueDisplay, { formatMoneyShort } from "../../_components/ValueDisplay";
-import ScenarioPanel from "../../_components/ScenarioPanel";
-import TimelineComparePanel from "../../_components/TimelineComparePanel";
-import CashFlowLayerChart from "../../_components/CashFlowLayerChart";
 import ToolCta from "../../_components/ToolCta";
 import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
+import {
+  buildToolPresetQuery,
+  getToolPresetFromQuery,
+  readToolRecent,
+  replaceUrlQuery,
+  writeToolRecent,
+} from "../../utils/toolPreset";
 
 import {
   calcCompound,
   calcCompoundNoTaxFee,
   calcSimpleLump,
 } from "../../lib/compound";
+
+const ScenarioPanel = dynamic(() => import("../../_components/ScenarioPanel"), {
+  ssr: false,
+});
+const TimelineComparePanel = dynamic(() => import("../../_components/TimelineComparePanel"), {
+  ssr: false,
+});
+const CashFlowLayerChart = dynamic(() => import("../../_components/CashFlowLayerChart"), {
+  ssr: false,
+});
+const DragBreakdownChart = dynamic(() => import("../../_components/DragBreakdownChart"), {
+  ssr: false,
+});
+const GoalEngineCard = dynamic(() => import("../../_components/GoalEngineCard"), {
+  ssr: false,
+});
+const SensitivityPanel = dynamic(() => import("../../_components/SensitivityPanel"), {
+  ssr: false,
+});
 
 // FAQ JSON-LD 출력
 export function JsonLd({ data }) {
@@ -33,6 +54,19 @@ export function JsonLd({ data }) {
     />
   );
 }
+
+const COMPOUND_PRESET_FIELDS = [
+  { query: "principal", state: "principal", type: "number" },
+  { query: "monthly", state: "monthly", type: "number" },
+  { query: "annualRate", state: "annualRate", type: "number" },
+  { query: "years", state: "years", type: "number" },
+  { query: "compounding", state: "compounding", type: "string", allowed: ["monthly", "yearly"] },
+  { query: "taxRatePercent", state: "taxRatePercent", type: "number" },
+  { query: "feeRatePercent", state: "feeRatePercent", type: "number" },
+  { query: "currency", state: "currency", type: "string", allowed: ["KRW", "USD"] },
+];
+
+const COMPOUND_RECENT_KEY = "fm_tool_recent_compound";
 
 export default function CompoundPage() {
   const [isExporting, setIsExporting] = useState(false);
@@ -115,6 +149,7 @@ export default function CompoundPage() {
   const [result, setResult] = useState(null);
   const [idealResult, setIdealResult] = useState(null);
   const [simpleResult, setSimpleResult] = useState(null);
+  const [formInitialValues, setFormInitialValues] = useState(null);
 
   const [taxRatePercentState, setTaxRatePercentState] = useState(15.4);
   const [feeRatePercentState, setFeeRatePercentState] = useState(0.5);
@@ -137,6 +172,26 @@ export default function CompoundPage() {
     setCurrency(router.locale === "en" ? "USD" : "KRW");
   }, [router.isReady, router.locale]);
 
+  const didRestorePreset = useRef(false);
+
+  useEffect(() => {
+    if (!router.isReady || didRestorePreset.current) return;
+    didRestorePreset.current = true;
+
+    const queryPreset = getToolPresetFromQuery(router.query, COMPOUND_PRESET_FIELDS);
+    const preset = queryPreset || readToolRecent(COMPOUND_RECENT_KEY, COMPOUND_PRESET_FIELDS);
+    if (!preset) return;
+
+    if (preset.currency) setCurrency(preset.currency);
+    const { currency: _currency, ...formPreset } = preset;
+    setFormInitialValues(formPreset);
+  }, [router.isReady, router.query]);
+
+  const persistPreset = (preset) => {
+    writeToolRecent(COMPOUND_RECENT_KEY, preset);
+    replaceUrlQuery(buildToolPresetQuery(preset, COMPOUND_PRESET_FIELDS));
+  };
+
   // ----------------------------
   // ✅ SEO 텍스트(Title/Desc) 강화
   // ----------------------------
@@ -144,8 +199,8 @@ export default function CompoundPage() {
     () => ({
       title:
         locale === "ko"
-          ? "복리 계산기 | FinMap"
-          : "Compound Interest Calculator | FinMap",
+          ? "복리 계산기"
+          : "Compound Interest Calculator",
       desc:
         locale === "ko"
           ? "원금·월적립·수익률·기간으로 미래가치(FV)를 계산합니다. 월복리/연복리 비교, 세금·수수료 반영 결과를 연도별 표·차트로 확인하세요."
@@ -351,37 +406,12 @@ export default function CompoundPage() {
   }, [locale]);
 
   // ----------------------------
-  // ✅ Breadcrumb + App schema (구글에 “도구 페이지”로 더 명확히 알림)
+  // ✅ App schema (BreadcrumbList는 breadcrumbJsonLd에서 1회만 출력)
   // ----------------------------
   const extraJsonLd = useMemo(() => {
     const site = "https://www.finmaphub.com";
     const prefix = locale === "en" ? "/en" : "";
     const url = `${site}${prefix}/tools/compound-interest`;
-
-    const breadcrumb = {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: locale === "ko" ? "홈" : "Home",
-          item: `${site}${prefix}/`,
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: locale === "ko" ? "금융 계산기" : "Tools",
-          item: `${site}${prefix}/tools`,
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          name: locale === "ko" ? "복리 계산기" : "Compound Interest",
-          item: url,
-        },
-      ],
-    };
 
     const app = {
       "@context": "https://schema.org",
@@ -400,13 +430,24 @@ export default function CompoundPage() {
       },
     };
 
-    return [breadcrumb, app];
+    return [app];
   }, [locale]);
 
   // ----------------------------
   // 계산 처리
   // ----------------------------
   const onSubmit = (form) => {
+    persistPreset({
+      principal: Number(form.principal) || 0,
+      monthly: Number(form.monthly) || 0,
+      annualRate: Number(form.annualRate) || 0,
+      years: Number(form.years) || 0,
+      compounding: form.compounding === "yearly" ? "yearly" : "monthly",
+      taxRatePercent: Number(form.taxRatePercent ?? 15.4),
+      feeRatePercent: Number(form.feeRatePercent ?? 0.5),
+      currency: form.currency || currency,
+    });
+
     const scale = currency === "KRW" ? 10_000 : 1;
 
     const p = (Number(form.principal) || 0) * scale;
@@ -651,6 +692,7 @@ export default function CompoundPage() {
             locale={locale}
             currency={currency}
             onCurrencyChange={setCurrency}
+            initialValues={formInitialValues}
           />
         </section>
 

@@ -21,6 +21,13 @@ import AdInArticle from "../../_components/AdInArticle";
 // ✅ 추가
 import CompoundCTA from "../../_components/CompoundCTA";
 import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
+import {
+  buildToolPresetQuery,
+  getToolPresetFromQuery,
+  readToolRecent,
+  replaceUrlQuery,
+  writeToolRecent,
+} from "../../utils/toolPreset";
 
 // ✅ Dynamic Imports (차트/무거운 것만)
 const FireChart = dynamic(() => import("../../_components/FireChart"), { ssr: false });
@@ -28,6 +35,55 @@ const FireSummary = dynamic(() => import("../../_components/FireSummary"), { ssr
 const FireYearTable = dynamic(() => import("../../_components/FireYearTable"), { ssr: false });
 const FireReport = dynamic(() => import("../../_components/FireReport"), { ssr: false });
 const FireFaq = dynamic(() => import("../../_components/FireFaq"), { ssr: false });
+
+const FIRE_PRESET_FIELDS = [
+  { query: "currentAsset", state: "currentAsset", type: "number" },
+  { query: "annualSpending", state: "annualSpending", type: "number" },
+  { query: "monthlyContribution", state: "monthlyContribution", type: "number" },
+  { query: "annualContribution", state: "annualContribution", type: "number" },
+  { query: "annualReturnPct", state: "annualReturnPct", type: "number" },
+  { query: "accumulationYears", state: "accumulationYears", type: "number" },
+  { query: "withdrawRatePct", state: "withdrawRatePct", type: "number" },
+  { query: "taxRatePct", state: "taxRatePct", type: "number" },
+  { query: "feeRatePct", state: "feeRatePct", type: "number" },
+  { query: "inflationPct", state: "inflationPct", type: "number" },
+];
+
+function fireScale(lang) {
+  return lang === "ko" ? 10_000 : 1;
+}
+
+function firePresetToPayload(preset, lang) {
+  const scale = fireScale(lang);
+  return {
+    currentAsset: (Number(preset.currentAsset) || 0) * scale,
+    annualSpending: (Number(preset.annualSpending) || 0) * scale,
+    monthlyContribution: (Number(preset.monthlyContribution) || 0) * scale,
+    annualContribution: (Number(preset.annualContribution) || 0) * scale,
+    annualReturnPct: Number(preset.annualReturnPct) || 0,
+    accumulationYears: Number(preset.accumulationYears) || 0,
+    withdrawRatePct: Number(preset.withdrawRatePct) || 0,
+    taxRatePct: Number(preset.taxRatePct) || 0,
+    feeRatePct: Number(preset.feeRatePct) || 0,
+    inflationPct: Number(preset.inflationPct) || 0,
+  };
+}
+
+function firePayloadToPreset(payload, lang) {
+  const scale = fireScale(lang);
+  return {
+    currentAsset: (Number(payload.currentAsset) || 0) / scale,
+    annualSpending: (Number(payload.annualSpending) || 0) / scale,
+    monthlyContribution: (Number(payload.monthlyContribution) || 0) / scale,
+    annualContribution: (Number(payload.annualContribution) || 0) / scale,
+    annualReturnPct: Number(payload.annualReturnPct) || 0,
+    accumulationYears: Number(payload.accumulationYears) || 0,
+    withdrawRatePct: Number(payload.withdrawRatePct) || 0,
+    taxRatePct: Number(payload.taxRatePct) || 0,
+    feeRatePct: Number(payload.feeRatePct) || 0,
+    inflationPct: Number(payload.inflationPct) || 0,
+  };
+}
 
 function JsonLdPack({ lang }) {
   const isKo = lang === "ko";
@@ -102,13 +158,34 @@ export default function FireCalculatorPage() {
 
   const [result, setResult] = useState(null);
   const [params, setParams] = useState(null);
+  const [formInitial, setFormInitial] = useState(null);
 
   const sectionEls = useRef({});
+  const didRestorePreset = useRef(false);
   
   const scrollTo = (id) => {
     const el = sectionEls.current?.[id];
     if (!el) return;
     el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const recentKey = `fm_tool_recent_fire_${lang}`;
+
+  useEffect(() => {
+    if (!router.isReady || didRestorePreset.current) return;
+    didRestorePreset.current = true;
+
+    const queryPreset = getToolPresetFromQuery(router.query, FIRE_PRESET_FIELDS);
+    const preset = queryPreset || readToolRecent(recentKey, FIRE_PRESET_FIELDS);
+    if (!preset) return;
+
+    setFormInitial(firePresetToPayload(preset, lang));
+  }, [router.isReady, router.query, recentKey, lang]);
+
+  const persistPreset = (payload) => {
+    const preset = firePayloadToPreset(payload, lang);
+    writeToolRecent(recentKey, preset);
+    replaceUrlQuery(buildToolPresetQuery(preset, FIRE_PRESET_FIELDS));
   };
 
   const t = useMemo(
@@ -125,6 +202,7 @@ export default function FireCalculatorPage() {
   );
 
   const handleSubmit = (payload) => {
+    persistPreset(payload);
     setParams(payload);
     setResult({ ...runFireSimulation(payload) });
   };
@@ -261,7 +339,7 @@ export default function FireCalculatorPage() {
 
         <FireHero lang={lang} />
         <FireIntro lang={lang} />
-        <FireForm lang={lang} onSubmit={handleSubmit} />
+        <FireForm lang={lang} onSubmit={handleSubmit} initial={formInitial} />
 
         {result && (
           <>            

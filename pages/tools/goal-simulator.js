@@ -11,6 +11,13 @@ import GoalYearTable from '../../_components/GoalYearTable';
 import { numberFmt } from '../../lib/compound';
 import ToolCta from "../../_components/ToolCta";
 import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
+import {
+  buildToolPresetQuery,
+  getToolPresetFromQuery,
+  readToolRecent,
+  replaceUrlQuery,
+  writeToolRecent,
+} from "../../utils/toolPreset";
 
 // ===== JSON-LD 출력용 공통 컴포넌트 =====
 export function JsonLd({ data }) {
@@ -21,6 +28,25 @@ export function JsonLd({ data }) {
     />
   );
 }
+
+const GOAL_PRESET_FIELDS = [
+  { query: "current", state: "current", type: "number" },
+  { query: "monthly", state: "monthly", type: "number" },
+  { query: "annualRate", state: "annualRate", type: "number" },
+  { query: "years", state: "years", type: "number" },
+  { query: "target", state: "target", type: "number" },
+  { query: "compounding", state: "compounding", type: "string", allowed: ["monthly", "yearly"] },
+  { query: "taxRatePercent", state: "taxRatePercent", type: "number" },
+  { query: "feeRatePercent", state: "feeRatePercent", type: "number" },
+  { query: "inflationPercent", state: "inflationPercent", type: "number" },
+  { query: "contribGrowthPercent", state: "contribGrowthPercent", type: "number" },
+  { query: "scenarioSpread", state: "scenarioSpread", type: "number" },
+  { query: "scenarioMode", state: "scenarioMode", type: "string", allowed: ["base", "conservative", "aggressive", "compare"] },
+  { query: "valueMode", state: "valueMode", type: "string", allowed: ["nominal", "real"] },
+  { query: "currency", state: "currency", type: "string", allowed: ["KRW", "USD"] },
+];
+
+const GOAL_RECENT_KEY = "fm_tool_recent_goal";
 
 // ===== 시뮬레이터 계산 로직 =====
 function simulateGoalPath({
@@ -373,6 +399,7 @@ export default function GoalSimulatorPage() {
   const [result, setResult] = useState(null);
   const [target, setTarget] = useState(0);
   const [lastParams, setLastParams] = useState(null); // ✅ Premium: 재계산 기반
+  const [formInitialValues, setFormInitialValues] = useState(null);
 
   // ✅ Premium controls
   const [scenarioMode, setScenarioMode] = useState("base"); // base | conservative | aggressive | compare
@@ -380,6 +407,7 @@ export default function GoalSimulatorPage() {
   const [valueMode, setValueMode] = useState("nominal"); // nominal | real
   const [inflationPercent, setInflationPercent] = useState(locale === "ko" ? 2.5 : 2.0);
   const [contribGrowthPercent, setContribGrowthPercent] = useState(0);
+  const didRestorePreset = useRef(false);
 
   const loc = locale === 'ko' ? 'ko-KR' : 'en-US';
 
@@ -393,6 +421,38 @@ export default function GoalSimulatorPage() {
   useEffect(() => {
     setCurrency(locale === 'ko' ? 'KRW' : 'USD');
   }, [locale]);  
+
+  useEffect(() => {
+    if (!router.isReady || didRestorePreset.current) return;
+    didRestorePreset.current = true;
+
+    const queryPreset = getToolPresetFromQuery(router.query, GOAL_PRESET_FIELDS);
+    const preset = queryPreset || readToolRecent(GOAL_RECENT_KEY, GOAL_PRESET_FIELDS);
+    if (!preset) return;
+
+    if (preset.currency) setCurrency(preset.currency);
+    if (preset.inflationPercent !== undefined) setInflationPercent(preset.inflationPercent);
+    if (preset.contribGrowthPercent !== undefined) setContribGrowthPercent(preset.contribGrowthPercent);
+    if (preset.scenarioSpread !== undefined) setScenarioSpread(preset.scenarioSpread);
+    if (preset.scenarioMode) setScenarioMode(preset.scenarioMode);
+    if (preset.valueMode) setValueMode(preset.valueMode);
+
+    const {
+      currency: _currency,
+      inflationPercent: _inflationPercent,
+      contribGrowthPercent: _contribGrowthPercent,
+      scenarioSpread: _scenarioSpread,
+      scenarioMode: _scenarioMode,
+      valueMode: _valueMode,
+      ...formPreset
+    } = preset;
+    setFormInitialValues(formPreset);
+  }, [router.isReady, router.query]);
+
+  const persistPreset = (preset) => {
+    writeToolRecent(GOAL_RECENT_KEY, preset);
+    replaceUrlQuery(buildToolPresetQuery(preset, GOAL_PRESET_FIELDS));
+  };
 
   // ===== 텍스트 리소스 =====
   const t = useMemo(
@@ -611,6 +671,29 @@ export default function GoalSimulatorPage() {
 
   // ===== Form Submit =====
   const onSubmit = (form) => {
+    persistPreset({
+      current: Number(form.current) || 0,
+      monthly: Number(form.monthly) || 0,
+      annualRate: Number(form.annualRate) || 0,
+      years: Number(form.years) || 0,
+      target: Number(form.target) || 0,
+      compounding: form.compounding === "yearly" ? "yearly" : "monthly",
+      taxRatePercent:
+        form.taxRatePercent !== undefined && form.taxRatePercent !== null && form.taxRatePercent !== ""
+          ? Number(form.taxRatePercent)
+          : 0,
+      feeRatePercent:
+        form.feeRatePercent !== undefined && form.feeRatePercent !== null && form.feeRatePercent !== ""
+          ? Number(form.feeRatePercent)
+          : 0,
+      inflationPercent: Number(inflationPercent) || 0,
+      contribGrowthPercent: Number(contribGrowthPercent) || 0,
+      scenarioSpread: Number(scenarioSpread) || 0,
+      scenarioMode,
+      valueMode,
+      currency: form.currency || currency,
+    });
+
     // 통화 기준 스케일링 (만원 vs 원 / USD 그대로)
     const scale = currency === 'KRW' ? 10_000 : 1;
 
@@ -660,8 +743,40 @@ export default function GoalSimulatorPage() {
       taxRatePercent,
       feeRatePercent,
       target: targetValue,
+      currency: form.currency || currency,
     });
   };  
+
+  useEffect(() => {
+    if (!lastParams) return;
+
+    const presetCurrency = lastParams.currency || currency;
+    const scale = presetCurrency === "KRW" ? 10_000 : 1;
+    persistPreset({
+      current: (Number(lastParams.current) || 0) / scale,
+      monthly: (Number(lastParams.monthly) || 0) / scale,
+      annualRate: Number(lastParams.annualRate) || 0,
+      years: Number(lastParams.years) || 0,
+      target: (Number(lastParams.target) || 0) / scale,
+      compounding: lastParams.compounding === "yearly" ? "yearly" : "monthly",
+      taxRatePercent: Number(lastParams.taxRatePercent) || 0,
+      feeRatePercent: Number(lastParams.feeRatePercent) || 0,
+      inflationPercent: Number(inflationPercent) || 0,
+      contribGrowthPercent: Number(contribGrowthPercent) || 0,
+      scenarioSpread: Number(scenarioSpread) || 0,
+      scenarioMode,
+      valueMode,
+      currency: presetCurrency,
+    });
+  }, [
+    lastParams,
+    inflationPercent,
+    contribGrowthPercent,
+    scenarioSpread,
+    scenarioMode,
+    valueMode,
+    currency,
+  ]);
 
   // ✅ Premium: 옵션 바뀌면 자동 재계산(최근 입력 기준)
   useEffect(() => {
@@ -979,6 +1094,7 @@ export default function GoalSimulatorPage() {
             locale={locale}
             currency={currency}
             onCurrencyChange={setCurrency}
+            initialValues={formInitialValues}
           />
         </div>
 

@@ -1,5 +1,5 @@
 // pages/tools/cagr-calculator.js
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import SeoHead from "../../_components/SeoHead";
@@ -12,6 +12,13 @@ import ToolCta from "../../_components/ToolCta"; // ✅ (기존 파일에서 사
 import { numberFmt } from "../../lib/compound";
 import { calcCagr } from "../../lib/cagr";
 import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
+import {
+  buildToolPresetQuery,
+  getToolPresetFromQuery,
+  readToolRecent,
+  replaceUrlQuery,
+  writeToolRecent,
+} from "../../utils/toolPreset";
 
 // JSON-LD 출력용
 export function JsonLd({ data }) {
@@ -22,6 +29,17 @@ export function JsonLd({ data }) {
     />
   );
 }
+
+const CAGR_PRESET_FIELDS = [
+  { query: "initial", state: "initial", type: "number" },
+  { query: "final", state: "final", type: "number" },
+  { query: "years", state: "years", type: "number" },
+  { query: "taxRate", state: "taxRate", type: "number" },
+  { query: "feeRate", state: "feeRate", type: "number" },
+  { query: "currency", state: "currency", type: "string", allowed: ["KRW", "USD"] },
+];
+
+const CAGR_RECENT_KEY = "fm_tool_recent_cagr";
 
 export default function CagrCalculatorPage() {
   const [isExporting, setIsExporting] = useState(false);
@@ -43,11 +61,32 @@ export default function CagrCalculatorPage() {
   const [initial, setInitial] = useState(0);
   const [finalValue, setFinalValue] = useState(0);
   const [years, setYears] = useState(0);
+  const [formInitialValues, setFormInitialValues] = useState(null);
+  const sectionEls = useRef({});
+  const didRestorePreset = useRef(false);
 
   const scrollTo = (id) => {
     const el = sectionEls.current?.[id];
     if (!el) return;
     el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  useEffect(() => {
+    if (!router.isReady || didRestorePreset.current) return;
+    didRestorePreset.current = true;
+
+    const queryPreset = getToolPresetFromQuery(router.query, CAGR_PRESET_FIELDS);
+    const preset = queryPreset || readToolRecent(CAGR_RECENT_KEY, CAGR_PRESET_FIELDS);
+    if (!preset) return;
+
+    if (preset.currency) setCurrency(preset.currency);
+    const { currency: _currency, ...formPreset } = preset;
+    setFormInitialValues(formPreset);
+  }, [router.isReady, router.query]);
+
+  const persistPreset = (preset) => {
+    writeToolRecent(CAGR_RECENT_KEY, preset);
+    replaceUrlQuery(buildToolPresetQuery(preset, CAGR_PRESET_FIELDS));
   };
 
   // 텍스트 리소스
@@ -324,6 +363,15 @@ export default function CagrCalculatorPage() {
   );
 
   const onSubmit = (form) => {
+    persistPreset({
+      initial: Number(form.initial) || 0,
+      final: Number(form.final) || 0,
+      years: Number(form.years) || 0,
+      taxRate: Number(form.taxRate) || 0,
+      feeRate: Number(form.feeRate) || 0,
+      currency: form.currency || currency,
+    });
+
     const scale = currency === "KRW" ? 10_000 : 1;
     const init = (Number(form.initial) || 0) * scale;
     const fin = (Number(form.final) || 0) * scale;
@@ -460,6 +508,7 @@ export default function CagrCalculatorPage() {
             locale={locale}
             currency={currency}
             onCurrencyChange={setCurrency}
+            initialValues={formInitialValues}
           />
         </div>
 
@@ -468,7 +517,7 @@ export default function CagrCalculatorPage() {
           <>
             {/* ✅ PDF로 저장할 영역 */}
             <div id="pdf-target" className="grid gap-6">
-              <div className="grid gap-4 sm:grid-cols-4">
+              <div ref={(el) => (sectionEls.current.sum = el)} className="grid gap-4 sm:grid-cols-4 scroll-mt-24">
                 <div className="stat">
                   <div className="stat-title">{t.netCagrLabel}</div>
                   <div className="stat-value">{pctFmt(netCagr)}</div>
@@ -487,7 +536,7 @@ export default function CagrCalculatorPage() {
                 </div>
               </div>
 
-              <div className="card">
+              <div ref={(el) => (sectionEls.current.chart = el)} className="card scroll-mt-24">
                 <div className="flex items-center gap-3 mb-2">
                   <h2 className="text-lg font-semibold">{t.chartTitle}</h2>
                   {currency === "KRW" && (
@@ -508,7 +557,7 @@ export default function CagrCalculatorPage() {
                 initial={initial}
               />
 
-              <div className="card w-full">
+              <div ref={(el) => (sectionEls.current.insight = el)} className="card w-full scroll-mt-24">
                 <h2 className="text-lg font-semibold mb-3">{t.faqTitle}</h2>
                 <div className="space-y-3">
                   {faqItems.map((item, idx) => (
@@ -529,15 +578,18 @@ export default function CagrCalculatorPage() {
               </div>
 
               {/* CTA */}
-              <CompoundCTA 
-                locale={locale} 
-                onDownloadPDF={handleDownloadPDF} 
-                shareTitle={locale === "ko" ? "FinMap CAGR 계산 결과" : "FinMap CAGR result"}
-                shareDescription={
-                  locale === "ko"
-                    ? "세전/세후 CAGR, 연도별 자산 경로까지 한 번에 공유해보세요."
-                    : "Share CAGR with gross/net breakdown and the yearly path."
-                } />
+              <div ref={(el) => (sectionEls.current.cta = el)} className="scroll-mt-24">
+                <CompoundCTA
+                  locale={locale}
+                  onDownloadPDF={handleDownloadPDF}
+                  shareTitle={locale === "ko" ? "FinMap CAGR 계산 결과" : "FinMap CAGR result"}
+                  shareDescription={
+                    locale === "ko"
+                      ? "세전/세후 CAGR, 연도별 자산 경로까지 한 번에 공유해보세요."
+                      : "Share CAGR with gross/net breakdown and the yearly path."
+                  }
+                />
+              </div>
             </div>
 
             <div className="tool-cta-section">
@@ -552,7 +604,7 @@ export default function CagrCalculatorPage() {
                 locale={locale}
                 onDownloadPDF={handleDownloadPDF}
                 onShare={handleShare}
-                mode={"basic"}
+                mode={"pro"}
                 alwaysVisible={true}
                 onNavigate={scrollTo}
               />

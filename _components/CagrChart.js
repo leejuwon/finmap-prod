@@ -1,16 +1,14 @@
 // _components/CagrChart.js
 import dynamic from 'next/dynamic';
 import { useMemo } from 'react';
+import { ensureChartJsRegistered } from '../lib/chartjsRegistry';
+
+ensureChartJsRegistered();
 
 const Line = dynamic(
   () => import('react-chartjs-2').then((mod) => mod.Line),
   { ssr: false }
 );
-
-if (typeof window !== 'undefined') {
-  // eslint-disable-next-line global-require
-  require('chart.js/auto');
-}
 
 function formatMoneyAuto(value, currency = 'KRW', locale = 'ko-KR') {
   const v = Number(value) || 0;

@@ -112,7 +112,7 @@ export function proxy(req) {
 
     if (lang === "en") {
       if (path === "/") path = "/en";
-      else if (!path.startsWith("/en")) path = `/en${path}`;
+      else if (!(path === "/en" || path.startsWith("/en/"))) path = `/en${path}`;
     } else {
       // lang === "ko"
       if (path === "/en" || path === "/en/") path = "/";

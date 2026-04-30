@@ -1,13 +1,12 @@
 import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
+import { ensureChartJsRegistered } from "../lib/chartjsRegistry";
+
+ensureChartJsRegistered();
 
 const Line = dynamic(() => import("react-chartjs-2").then((m) => m.Line), {
   ssr: false,
 });
-
-if (typeof window !== "undefined") {
-  require("chart.js/auto");
-}
 
 // --- 자동 단위 포맷 ---
 function formatMoneyAuto(value, currency = "KRW", locale = "ko-KR") {

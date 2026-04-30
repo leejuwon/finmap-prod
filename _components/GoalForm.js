@@ -1,5 +1,5 @@
 // _components/GoalForm.js
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 
 const dict = {
   ko: {
@@ -42,26 +42,33 @@ const dict = {
   },
 };
 
+const DEFAULT_FORM = {
+  current: 2000,
+  monthly: 50,
+  annualRate: 7,
+  years: 15,
+  target: 10000,
+  compounding: 'monthly',
+  taxRatePercent: 15.4,
+  feeRatePercent: 0.5,
+};
+
 export default function GoalForm({
   onSubmit,
   locale = 'ko',
   currency = 'KRW',           // 부모(페이지)에서 내려주는 통화
   onCurrencyChange,           // 부모에서 통화 변경 처리
+  initialValues,
 }) {
   // locale 안전 정규화 (ko / en만 사용)
   const safeLocale = String(locale).startsWith('en') ? 'en' : 'ko';
 
-  const [form, setForm] = useState({
-    current: 2000,   // 만원 또는 USD
-    monthly: 50,     // 만원 또는 USD
-    annualRate: 7,
-    years: 15,
-    target: 10000,   // 만원 또는 USD
-    compounding: 'monthly',
-    // 🔥 세율/수수료율 기본값
-    taxRatePercent: 15.4,
-    feeRatePercent: 0.5,
-  });
+  const [form, setForm] = useState(() => ({ ...DEFAULT_FORM, ...(initialValues || {}) }));
+
+  useEffect(() => {
+    if (!initialValues) return;
+    setForm((prev) => ({ ...prev, ...initialValues }));
+  }, [initialValues]);
 
   const t = useMemo(() => dict[safeLocale] || dict.ko, [safeLocale]);
   const numberLocale = safeLocale === 'ko' ? 'ko-KR' : 'en-US';

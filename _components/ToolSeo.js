@@ -4,11 +4,13 @@ import { useRouter } from "next/router";
 import SeoHead from "./SeoHead";
 
 function buildCanonical(site, asPath, effectiveLocale) {
-  // SeoHead와 동일한 철학: query/hash 제거, /en 중복 제거, 홈(/)만 /en로 통일
+  // SeoHead와 동일한 철학: query/hash 제거, /en 중복 제거, URL path 정규화
   const safeUrl = String(asPath || "/");
   const noQuery = safeUrl.split("?")[0].split("#")[0];
   const rawPath = noQuery.startsWith("/") ? noQuery : `/${noQuery}`;
-  const path = rawPath.replace(/^\/en(?=\/|$)/, "");
+  let path = rawPath.replace(/^\/en(?=\/|$)/, "");
+  path = path.replace(/\/{2,}/g, "/");
+  if (path.length > 1 && path.endsWith("/")) path = path.slice(0, -1);
   const normalizedPath = path || "/";
 
   const prefix = effectiveLocale === "en" ? "/en" : "";

@@ -42,7 +42,7 @@ export default function FireForm({ onSubmit, initial, lang = "ko" }) {
 
   useEffect(() => {
     setForm(toDisplay(initial));
-  }, [lang]);
+  }, [initial, lang]);
 
   // RAW 입력 처리
   const handleRawChange = (key) => (e) => {

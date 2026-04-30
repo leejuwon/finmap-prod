@@ -4,7 +4,6 @@ import {
   ArrowDownTrayIcon as DownloadIcon,
   BellIcon,
 } from "@heroicons/react/24/outline";
-import { useRouter } from "next/router";
 import { shareKakao, shareWeb, copyUrl, shareNaver } from "../utils/share";
 
 export default function CompoundCTA({ 
@@ -12,7 +11,6 @@ export default function CompoundCTA({
   onDownloadPDF,
   shareTitle,
   shareDescription, }) {
-  const router = useRouter();
   const isKo = locale === "ko";
 
   const resolvedTitle =
@@ -61,8 +59,14 @@ export default function CompoundCTA({
         {isKo ? "결과 공유 및 저장" : "Share & Export"}
       </h3>
 
-      {/* ✅ 버튼 4개에 맞게: 모바일 2열, sm 이상 4열 */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <p className="mb-3 text-xs leading-5 text-slate-700">
+        {isKo
+          ? "공유 링크에는 입력값이 포함되어 다시 열면 같은 조건이 복원됩니다."
+          : "Shared links include your inputs, so the same setup is restored when opened."}
+      </p>
+
+      {/* ✅ 버튼 3개에 맞게: 모바일 2열, sm 이상 3열 */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         <button
           type="button"
           className="btn-primary flex gap-2 items-center justify-center"

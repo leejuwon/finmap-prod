@@ -2,16 +2,14 @@
 import dynamic from 'next/dynamic';
 import { useMemo } from 'react';
 import { formatMoneyAuto } from '../lib/money';
+import { ensureChartJsRegistered } from '../lib/chartjsRegistry';
+
+ensureChartJsRegistered();
 
 const Bar = dynamic(
   () => import('react-chartjs-2').then((mod) => mod.Bar),
   { ssr: false }
 );
-
-if (typeof window !== 'undefined') {
-  // eslint-disable-next-line global-require
-  require('chart.js/auto');
-}
 
 export default function DCAChart({
   data,

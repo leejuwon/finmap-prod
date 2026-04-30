@@ -1,5 +1,5 @@
 // _components/CagrForm.js
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 
 const dict = {
   ko: {
@@ -28,21 +28,29 @@ const dict = {
   },
 };
 
+const DEFAULT_FORM = {
+  initial: 1000,
+  final: 2000,
+  years: 10,
+  taxRate: 15.4,
+  feeRate: 0.5,
+};
+
 export default function CagrForm({
   onSubmit,
   locale = 'ko',
   currency = 'KRW',     // 부모 상태
   onCurrencyChange,     // 부모에게 통화 변경 알림
+  initialValues,
 }) {
   const safeLocale = String(locale).startsWith('en') ? 'en' : 'ko';
 
-  const [form, setForm] = useState({
-    initial: 1000,  // 만원 or USD
-    final: 2000,    // 만원 or USD
-    years: 10,
-    taxRate: 15.4,  // 기본 세율(%)
-    feeRate: 0.5,   // 기본 수수료율(%)
-  });
+  const [form, setForm] = useState(() => ({ ...DEFAULT_FORM, ...(initialValues || {}) }));
+
+  useEffect(() => {
+    if (!initialValues) return;
+    setForm((prev) => ({ ...prev, ...initialValues }));
+  }, [initialValues]);
 
   const t = useMemo(() => dict[safeLocale] || dict.ko, [safeLocale]);
   const numberLocale = safeLocale === 'ko' ? 'ko-KR' : 'en-US';

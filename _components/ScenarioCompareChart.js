@@ -2,14 +2,13 @@
 import dynamic from "next/dynamic";
 import { useMemo } from "react";
 import { formatMoneyShort, formatMoneyFull } from "./ValueDisplay";
+import { ensureChartJsRegistered } from "../lib/chartjsRegistry";
+
+ensureChartJsRegistered();
 
 const Line = dynamic(() => import("react-chartjs-2").then((m) => m.Line), {
   ssr: false,
 });
-
-if (typeof window !== "undefined") {
-  require("chart.js/auto");
-}
 
 const PALETTE = [
   "rgba(59,130,246,0.95)",  // blue

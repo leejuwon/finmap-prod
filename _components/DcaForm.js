@@ -1,5 +1,5 @@
 // _components/DCAForm.js
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 
 const dict = {
   ko: {
@@ -38,24 +38,32 @@ const dict = {
   },
 };
 
+const DEFAULT_FORM = {
+  initial: 0,
+  monthly: 50,
+  annualRate: 7,
+  years: 10,
+  annualIncrease: 0,
+  compounding: 'monthly',
+  taxRate: 15.4,
+  feeRate: 0.5,
+};
+
 export default function DCAForm({
   onSubmit,
   locale = 'ko',
   currency = 'KRW',       // 부모에서 내려주는 통화
   onCurrencyChange,       // 부모에서 통화 변경 처리
+  initialValues,
 }) {
   const safeLocale = String(locale).startsWith('en') ? 'en' : 'ko';
 
-  const [form, setForm] = useState({
-    initial: 0,        // 만원 또는 USD
-    monthly: 50,       // 만원 또는 USD
-    annualRate: 7,
-    years: 10,
-    annualIncrease: 0, // %
-    compounding: 'monthly',
-    taxRate: 15.4,     // 세율(%)
-    feeRate: 0.5,      // 수수료율(연 %)
-  });
+  const [form, setForm] = useState(() => ({ ...DEFAULT_FORM, ...(initialValues || {}) }));
+
+  useEffect(() => {
+    if (!initialValues) return;
+    setForm((prev) => ({ ...prev, ...initialValues }));
+  }, [initialValues]);
 
   const t = useMemo(() => dict[safeLocale] || dict.ko, [safeLocale]);
   const numberLocale = safeLocale === 'ko' ? 'ko-KR' : 'en-US';

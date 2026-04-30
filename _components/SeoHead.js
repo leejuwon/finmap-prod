@@ -40,9 +40,6 @@ export default function SeoHead({ title, desc, url = "/", image, locale, type, r
   // ✅ hreflang도 동일 규칙 적용: 홈은 /en
   const hrefEn = normalizedPath === "/" ? `${site}/en` : `${site}/en${normalizedPath}`;
 
-  // ✅ x-default는 홈에서만 유지 (다른 페이지는 제거 권장)
-  const isHome = normalizedPath === "/";
-
   // ✅ OG locale 신호 강화(권장)
   const ogLocale = effectiveLocale === "en" ? "en_US" : "ko_KR";
   const ogAltLocale = effectiveLocale === "en" ? "ko_KR" : "en_US";
@@ -58,7 +55,7 @@ export default function SeoHead({ title, desc, url = "/", image, locale, type, r
       <link rel="canonical" href={canonical} />
       <link rel="alternate" hrefLang="ko" href={hrefKo} />
       <link rel="alternate" hrefLang="en" href={hrefEn} />
-      {isHome && <link rel="alternate" hrefLang="x-default" href={hrefKo} />}
+      <link rel="alternate" hrefLang="x-default" href={hrefKo} />
 
       <meta property="og:title" content={title || "FinMap"} />
       {desc && <meta property="og:description" content={desc} />}

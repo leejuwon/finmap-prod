@@ -1,5 +1,5 @@
 // pages/tools/dca-calculator.js
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState, useEffect, useRef } from 'react';
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import SeoHead from '../../_components/SeoHead';
@@ -11,6 +11,13 @@ import DCAYearTable from '../../_components/DcaYearTable';
 import { formatMoneyAuto } from '../../lib/money';
 import ToolCta from '../../_components/ToolCta';
 import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
+import {
+  buildToolPresetQuery,
+  getToolPresetFromQuery,
+  readToolRecent,
+  replaceUrlQuery,
+  writeToolRecent,
+} from "../../utils/toolPreset";
 
 // JSON-LD 스크립트용 컴포넌트
 export function JsonLd({ data }) {
@@ -131,6 +138,20 @@ const TEXT = {
   },
 };
 
+const DCA_PRESET_FIELDS = [
+  { query: "initial", state: "initial", type: "number" },
+  { query: "monthly", state: "monthly", type: "number" },
+  { query: "annualRate", state: "annualRate", type: "number" },
+  { query: "years", state: "years", type: "number" },
+  { query: "annualIncrease", state: "annualIncrease", type: "number" },
+  { query: "compounding", state: "compounding", type: "string", allowed: ["monthly", "yearly"] },
+  { query: "taxRate", state: "taxRate", type: "number" },
+  { query: "feeRate", state: "feeRate", type: "number" },
+  { query: "currency", state: "currency", type: "string", allowed: ["KRW", "USD"] },
+];
+
+const DCA_RECENT_KEY = "fm_tool_recent_dca";
+
 // FAQ 항목 (UI + JSON-LD 공용)
 function getFaqItems(locale) {
   if (locale === 'ko') {
@@ -195,6 +216,9 @@ export default function DCACalculatorPage() {
   // 언어에 따라 기본 통화 자동 설정
   const [currency, setCurrency] = useState(routeLocale === 'ko' ? 'KRW' : 'USD');
   const [result, setResult] = useState(null);
+  const [formInitialValues, setFormInitialValues] = useState(null);
+  const sectionEls = useRef({});
+  const didRestorePreset = useRef(false);
 
   const scrollTo = (id) => {
     const el = sectionEls.current?.[id];
@@ -206,6 +230,24 @@ export default function DCACalculatorPage() {
   useEffect(() => {
     setCurrency(routeLocale === 'ko' ? 'KRW' : 'USD');
   }, [routeLocale]);
+
+  useEffect(() => {
+    if (!router.isReady || didRestorePreset.current) return;
+    didRestorePreset.current = true;
+
+    const queryPreset = getToolPresetFromQuery(router.query, DCA_PRESET_FIELDS);
+    const preset = queryPreset || readToolRecent(DCA_RECENT_KEY, DCA_PRESET_FIELDS);
+    if (!preset) return;
+
+    if (preset.currency) setCurrency(preset.currency);
+    const { currency: _currency, ...formPreset } = preset;
+    setFormInitialValues(formPreset);
+  }, [router.isReady, router.query]);
+
+  const persistPreset = (preset) => {
+    writeToolRecent(DCA_RECENT_KEY, preset);
+    replaceUrlQuery(buildToolPresetQuery(preset, DCA_PRESET_FIELDS));
+  };
 
   const faqItems = useMemo(() => getFaqItems(routeLocale), [routeLocale]);
 
@@ -336,6 +378,18 @@ export default function DCACalculatorPage() {
   const summaryFmt = (v) => formatMoneyAuto(v || 0, currency, numberLocale);
 
   const handleSubmit = (form) => {
+    persistPreset({
+      initial: Number(form.initial) || 0,
+      monthly: Number(form.monthly) || 0,
+      annualRate: Number(form.annualRate) || 0,
+      years: Number(form.years) || 0,
+      annualIncrease: Number(form.annualIncrease) || 0,
+      compounding: form.compounding === "yearly" ? "yearly" : "monthly",
+      taxRate: Number(form.taxRate) || 0,
+      feeRate: Number(form.feeRate) || 0,
+      currency: form.currency || currency,
+    });
+
     const scale = currency === 'KRW' ? 10_000 : 1;
 
     const initial = (Number(form.initial) || 0) * scale;
@@ -365,9 +419,9 @@ export default function DCACalculatorPage() {
     // 2) Kakao SDK
     if (typeof window !== "undefined" && window?.Kakao) {
       shareKakao({
-        title: locale === "ko" ? "FinMap DCA 시뮬레이터 결과" : "DCA result",
+        title: routeLocale === "ko" ? "FinMap DCA 시뮬레이터 결과" : "DCA result",
         description:
-          locale === "ko"
+          routeLocale === "ko"
             ? "정기 투자(DCA)로 자산이 어떻게 성장하는지 세전/세후 기준으로 시뮬레이션합니다."
             : "Simulate how dollar-cost averaging (DCA) grows your portfolio (gross/net).",
         url: window.location.href,
@@ -378,7 +432,7 @@ export default function DCACalculatorPage() {
     // 3) Naver share
     if (typeof window !== "undefined") {
       shareNaver({
-        title: locale === "ko" ? "FinMap DCA 시뮬레이터 결과" : "DCA Result",
+        title: routeLocale === "ko" ? "FinMap DCA 시뮬레이터 결과" : "DCA Result",
         url: window.location.href,
       });
       return;
@@ -416,6 +470,7 @@ export default function DCACalculatorPage() {
             locale={routeLocale}
             currency={currency}
             onCurrencyChange={setCurrency}
+            initialValues={formInitialValues}
           />
         </div>
 
@@ -424,7 +479,7 @@ export default function DCACalculatorPage() {
           <>
             <div id="pdf-target" className="grid gap-6">
               {/* 상단 Summary */}
-              <div className="grid gap-4 sm:grid-cols-3">
+              <div ref={(el) => (sectionEls.current.sum = el)} className="grid gap-4 sm:grid-cols-3 scroll-mt-24">
                 <div className="stat">
                   <div className="stat-title">{t.fv}</div>
                   <div className="stat-value">{summaryFmt(finalNet)}</div>
@@ -440,7 +495,7 @@ export default function DCACalculatorPage() {
               </div>
 
               {/* 차트 */}
-              <div className="card">
+              <div ref={(el) => (sectionEls.current.chart = el)} className="card scroll-mt-24">
                 <div className="flex items-center gap-3 mb-2">
                   <h2 className="text-lg font-semibold">{t.chartTitle}</h2>
                   {currency === 'KRW' && (
@@ -451,7 +506,9 @@ export default function DCACalculatorPage() {
               </div>
 
               {/* 연간 요약 테이블 */}
-              <DCAYearTable rows={result} locale={numberLocale} currency={currency} title={t.tableTitle} />
+              <div ref={(el) => (sectionEls.current.insight = el)} className="scroll-mt-24">
+                <DCAYearTable rows={result} locale={numberLocale} currency={currency} title={t.tableTitle} />
+              </div>
 
               {/* FAQ 섹션 */}
               <div className="card w-full">
@@ -476,19 +533,22 @@ export default function DCACalculatorPage() {
             </div>
 
             {/* ✅ (추가) 공유 + PDF 다운로드 CTA */}
-            <CompoundCTA 
-              locale={routeLocale} 
-              onDownloadPDF={handleDownloadPDF} 
-              shareTitle={
-                routeLocale === "ko" 
-                  ? "FinMap DCA 시뮬레이션 결과"
-                  : "DCA simulation result"
-              }
-              shareDescription={
-                routeLocale === "ko"
-                  ? ""
-                  : ""
-              } />
+            <div ref={(el) => (sectionEls.current.cta = el)} className="scroll-mt-24">
+              <CompoundCTA
+                locale={routeLocale}
+                onDownloadPDF={handleDownloadPDF}
+                shareTitle={
+                  routeLocale === "ko"
+                    ? "FinMap DCA 시뮬레이션 결과"
+                    : "DCA simulation result"
+                }
+                shareDescription={
+                  routeLocale === "ko"
+                    ? ""
+                    : ""
+                }
+              />
+            </div>
 
             <div className="tool-cta-section">
               {/* DCA 페이지에서는 DCA 외 도구로 자연스러운 내부링크 강화 */}
@@ -504,7 +564,7 @@ export default function DCACalculatorPage() {
                 locale={routeLocale}
                 onDownloadPDF={handleDownloadPDF}
                 onShare={handleShare}
-                mode={"basic"}
+                mode={"pro"}
                 alwaysVisible={true}
                 onNavigate={scrollTo}
               />

@@ -1,5 +1,5 @@
 // _components/CompoundForm.js
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 
 const dict = {
   ko: {
@@ -42,11 +42,22 @@ const dict = {
   },
 };
 
+const DEFAULT_FORM = {
+  principal: 1000,
+  monthly: 30,
+  annualRate: 7,
+  years: 10,
+  compounding: 'monthly',
+  taxRatePercent: 15.4,
+  feeRatePercent: 0.5,
+};
+
 export default function CompoundForm({
   onSubmit,
   locale = 'ko',
   currency = 'KRW',
   onCurrencyChange,
+  initialValues,
 }) {
   const safeLocale = locale === 'en' ? 'en' : 'ko';
   const t = useMemo(() => dict[safeLocale], [safeLocale]);
@@ -57,15 +68,12 @@ export default function CompoundForm({
   const [showCost, setShowCost] = useState(true);
   const [showAdv, setShowAdv] = useState(false);
 
-  const [form, setForm] = useState({
-    principal: 1000,
-    monthly: 30,
-    annualRate: 7,
-    years: 10,
-    compounding: 'monthly',
-    taxRatePercent: 15.4,
-    feeRatePercent: 0.5,
-  });
+  const [form, setForm] = useState(() => ({ ...DEFAULT_FORM, ...(initialValues || {}) }));
+
+  useEffect(() => {
+    if (!initialValues) return;
+    setForm((prev) => ({ ...prev, ...initialValues }));
+  }, [initialValues]);
 
   const fmt = (v) => {
     const n = Number(v) || 0;
@@ -84,9 +92,65 @@ export default function CompoundForm({
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const disabled = form.years <= 0;
+  const validation = useMemo(() => {
+    const errors = {};
+    const warnings = {};
+
+    const principal = Number(form.principal) || 0;
+    const monthly = Number(form.monthly) || 0;
+    const annualRate = Number(form.annualRate) || 0;
+    const years = Number(form.years) || 0;
+    const tax = Number(form.taxRatePercent) || 0;
+    const fee = Number(form.feeRatePercent) || 0;
+
+    if (principal <= 0 && monthly <= 0) {
+      errors.funding =
+        safeLocale === 'ko'
+          ? '원금 또는 월 적립금 중 하나는 0보다 커야 합니다.'
+          : 'Enter either principal or monthly contribution.';
+    }
+
+    if (years <= 0) {
+      errors.years =
+        safeLocale === 'ko'
+          ? '투자 기간은 0보다 커야 합니다.'
+          : 'Years must be greater than 0.';
+    } else if (years > 60) {
+      warnings.years =
+        safeLocale === 'ko'
+          ? '기간이 매우 깁니다. 장기 가정은 세금·수수료 변화에 민감할 수 있습니다.'
+          : 'This is a very long horizon. Long-term assumptions can be sensitive to tax and fee changes.';
+    }
+
+    if (tax < 0) {
+      errors.taxRatePercent =
+        safeLocale === 'ko'
+          ? '세율은 0 이상이어야 합니다.'
+          : 'Tax rate must be 0 or higher.';
+    }
+
+    if (fee < 0) {
+      errors.feeRatePercent =
+        safeLocale === 'ko'
+          ? '수수료율은 0 이상이어야 합니다.'
+          : 'Fee rate must be 0 or higher.';
+    }
+
+    if (annualRate > 30) {
+      warnings.annualRate =
+        safeLocale === 'ko'
+          ? '장기 연 수익률 가정이 높습니다. 보수적으로도 함께 비교해 보세요.'
+          : 'This is a high long-term return assumption. Compare with a conservative scenario.';
+    }
+
+    return { errors, warnings };
+  }, [form, safeLocale]);
+
+  const disabled = Object.keys(validation.errors).length > 0;
+  const disabledReason = Object.values(validation.errors)[0] || '';
 
   const handleSubmit = () => {
+    if (disabled) return;
     onSubmit({
       ...form,
       currency,
@@ -127,6 +191,8 @@ export default function CompoundForm({
                 className="input"
                 value={fmt(form.principal)}
                 onChange={handleMoneyChange}
+                aria-invalid={!!validation.errors.funding}
+                aria-describedby={validation.errors.funding ? 'compound-funding-error' : undefined}
               />
             </label>
 
@@ -139,8 +205,20 @@ export default function CompoundForm({
                 className="input"
                 value={fmt(form.monthly)}
                 onChange={handleMoneyChange}
+                aria-invalid={!!validation.errors.funding}
+                aria-describedby={validation.errors.funding ? 'compound-funding-error' : undefined}
               />
             </label>
+
+            {validation.errors.funding && (
+              <p
+                id="compound-funding-error"
+                role="alert"
+                className="text-xs text-red-600 md:col-span-2"
+              >
+                {validation.errors.funding}
+              </p>
+            )}
 
             <label className="grid gap-1">
               <span className="text-sm">{t.rate}</span>
@@ -151,7 +229,14 @@ export default function CompoundForm({
                 className="input"
                 value={form.annualRate}
                 onChange={handleChange}
+                aria-invalid={false}
+                aria-describedby={validation.warnings.annualRate ? 'compound-rate-warning' : undefined}
               />
+              {validation.warnings.annualRate && (
+                <p id="compound-rate-warning" className="text-xs text-amber-700" aria-live="polite">
+                  {validation.warnings.annualRate}
+                </p>
+              )}
             </label>
 
             <label className="grid gap-1">
@@ -164,7 +249,25 @@ export default function CompoundForm({
                 className="input"
                 value={form.years}
                 onChange={handleChange}
+                aria-invalid={!!validation.errors.years}
+                aria-describedby={
+                  validation.errors.years
+                    ? 'compound-years-error'
+                    : validation.warnings.years
+                      ? 'compound-years-warning'
+                      : undefined
+                }
               />
+              {validation.errors.years && (
+                <p id="compound-years-error" role="alert" className="text-xs text-red-600">
+                  {validation.errors.years}
+                </p>
+              )}
+              {!validation.errors.years && validation.warnings.years && (
+                <p id="compound-years-warning" className="text-xs text-amber-700" aria-live="polite">
+                  {validation.warnings.years}
+                </p>
+              )}
             </label>
           </div>
         )}
@@ -194,7 +297,14 @@ export default function CompoundForm({
                 className="input"
                 value={form.taxRatePercent}
                 onChange={handleChange}
+                aria-invalid={!!validation.errors.taxRatePercent}
+                aria-describedby={validation.errors.taxRatePercent ? 'compound-tax-error' : undefined}
               />
+              {validation.errors.taxRatePercent && (
+                <p id="compound-tax-error" role="alert" className="text-xs text-red-600">
+                  {validation.errors.taxRatePercent}
+                </p>
+              )}
             </label>
 
             <label className="grid gap-1">
@@ -207,7 +317,14 @@ export default function CompoundForm({
                 className="input"
                 value={form.feeRatePercent}
                 onChange={handleChange}
+                aria-invalid={!!validation.errors.feeRatePercent}
+                aria-describedby={validation.errors.feeRatePercent ? 'compound-fee-error' : undefined}
               />
+              {validation.errors.feeRatePercent && (
+                <p id="compound-fee-error" role="alert" className="text-xs text-red-600">
+                  {validation.errors.feeRatePercent}
+                </p>
+              )}
             </label>
           </div>
         )}
@@ -258,7 +375,12 @@ export default function CompoundForm({
       {/* ==============================
           계산 버튼 (항상 맨 아래)
       =============================== */}
-      <div className="flex justify-end">
+      <div className="grid gap-2 justify-items-end">
+        {disabledReason && (
+          <p className="text-xs text-red-600" role="alert">
+            {disabledReason}
+          </p>
+        )}
         <button
           type="button"
           className="btn-primary"

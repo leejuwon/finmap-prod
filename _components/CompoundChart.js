@@ -1,15 +1,14 @@
 // _components/CompoundChart.js
 import dynamic from 'next/dynamic';
 import { useMemo } from 'react';
+import { ensureChartJsRegistered } from '../lib/chartjsRegistry';
+
+ensureChartJsRegistered();
 
 const Bar = dynamic(
   () => import('react-chartjs-2').then((mod) => mod.Bar),
   { ssr: false }
 );
-
-if (typeof window !== 'undefined') {
-  require('chart.js/auto');
-}
 
 // -----------------------------
 // 금액 자동 단위 포맷

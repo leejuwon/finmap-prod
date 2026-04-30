@@ -1,14 +1,13 @@
 // _components/ScenarioChart.js
 import dynamic from "next/dynamic";
 import { useMemo } from "react";
+import { ensureChartJsRegistered } from "../lib/chartjsRegistry";
+
+ensureChartJsRegistered();
 
 const Line = dynamic(() => import("react-chartjs-2").then((m) => m.Line), {
   ssr: false,
 });
-
-if (typeof window !== "undefined") {
-  require("chart.js/auto");
-}
 
 // y축 단위: 만(1자리) / 억(2자리) + 나머지 원
 function formatMoneyAuto(value, currency = "KRW", locale = "ko-KR") {

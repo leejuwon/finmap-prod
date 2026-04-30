@@ -1,6 +1,9 @@
 // _components/DragBreakdownChart.js
 import dynamic from "next/dynamic";
 import { useMemo } from "react";
+import { ensureChartJsRegistered } from "../lib/chartjsRegistry";
+
+ensureChartJsRegistered();
 
 function formatMoneyAuto(value, currency = 'KRW', locale = 'ko-KR') {
   const v = Number(value) || 0;
@@ -44,10 +47,6 @@ const Bar = dynamic(
   () => import("react-chartjs-2").then((mod) => mod.Bar),
   { ssr: false }
 );
-
-if (typeof window !== "undefined") {
-  require("chart.js/auto");
-}
 
 export default function DragBreakdownChart({ data, locale='ko-KR', currency='KRW' }) {
   if (!data) return null;
