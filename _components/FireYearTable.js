@@ -1,7 +1,7 @@
-// _components/FireYearTable.js — CARD EDITION + Sticky Header
+// _components/FireYearTable.js — CARD EDITION + Toggle
 
 import { formatKrwUnit } from "../lib/fire";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 // ----------------------
 // 금액 포맷 공통 처리
@@ -20,33 +20,96 @@ function formatMoney(value, locale = "ko-KR") {
   return sign + "$" + abs.toLocaleString("en-US");
 }
 
+function addRange(years, center, before, after) {
+  if (!center) return;
+  for (let year = center - before; year <= center + after; year++) {
+    if (year > 0) years.add(year);
+  }
+}
+
+function buildCoreTimeline(timeline, { fireYear, retirementStartYear }) {
+  if (!timeline?.length) return [];
+
+  const years = new Set();
+
+  // 초기 흐름, FIRE 도달 시점, 은퇴 전후, 고갈 전후, 마지막 구간만 기본 표시.
+  timeline.slice(0, 3).forEach((row) => years.add(row.year));
+  addRange(years, fireYear, 2, 2);
+  addRange(years, retirementStartYear, 5, 10);
+
+  const depletionYear = timeline.find(
+    (row) => row.phase === "retirement" && Number(row.assetReal) <= 0
+  )?.year;
+  addRange(years, depletionYear, 2, 2);
+
+  timeline.slice(-5).forEach((row) => years.add(row.year));
+
+  return timeline.filter((row) => years.has(row.year));
+}
+
 export default function FireYearTable({ timeline = [], locale = "ko-KR" }) {
   const isKo = locale === "ko-KR";
-  if (!timeline || timeline.length === 0) return null;
+  const safeTimeline = Array.isArray(timeline) ? timeline : [];
+  const [showAll, setShowAll] = useState(false);
 
-  const fireIndex = timeline.findIndex(
+  const fireIndex = safeTimeline.findIndex(
     (d) => d.assetReal >= d.fireTarget && d.phase === "accumulation"
   );
-  const fireYear = fireIndex !== -1 ? timeline[fireIndex].year : null;
+  const fireYear = fireIndex !== -1 ? safeTimeline[fireIndex].year : null;
 
   const retirementStartYear =
-    timeline.find((d) => d.phase === "retirement")?.year || null;
+    safeTimeline.find((d) => d.phase === "retirement")?.year || null;
+
+  const coreTimeline = useMemo(
+    () => buildCoreTimeline(safeTimeline, { fireYear, retirementStartYear }),
+    [safeTimeline, fireYear, retirementStartYear]
+  );
+
+  if (safeTimeline.length === 0) return null;
+
+  const visibleTimeline = showAll ? safeTimeline : coreTimeline;
+  const canToggle = coreTimeline.length < safeTimeline.length;
 
   return (
     <section className="mt-10">
 
       {/* ----------------------------------------------------- */}
-      {/* 🔥 Sticky Header */}
+      {/* 🔥 Header + Toggle */}
       {/* ----------------------------------------------------- */}
-      <div className="sticky top-0 z-10 bg-white/95 backdrop-blur border-b py-3 px-2">
-        <h2 className="text-base font-semibold">
-          {isKo ? "연도별 시뮬레이션 결과" : "Yearly Simulation Overview"}
-        </h2>
-        <p className="text-xs text-slate-500 mt-1">
-          {isKo
-            ? "각 연도에 대한 자산·수익·지출 정보를 카드 형태로 확인하세요."
-            : "Check yearly asset, income, and withdrawal details."}
-        </p>
+      <div className="rounded-xl border border-slate-200 bg-white p-4">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 className="text-base font-semibold">
+              {isKo ? "연도별 시뮬레이션 결과" : "Yearly Simulation Overview"}
+            </h2>
+            <p className="text-xs text-slate-500 mt-1">
+              {showAll
+                ? isKo
+                  ? `전체 ${safeTimeline.length}개 연도를 표시 중입니다.`
+                  : `Showing all ${safeTimeline.length} years.`
+                : isKo
+                ? `핵심 구간 ${visibleTimeline.length}개만 먼저 표시합니다.`
+                : `Showing ${visibleTimeline.length} key years first.`}
+            </p>
+          </div>
+
+          {canToggle && (
+            <button
+              type="button"
+              className="btn-secondary w-full sm:w-auto justify-center"
+              aria-expanded={showAll}
+              onClick={() => setShowAll((prev) => !prev)}
+            >
+              {showAll
+                ? isKo
+                  ? "핵심 구간만 보기"
+                  : "Show key years"
+                : isKo
+                ? "전체 60년 보기"
+                : "Show full 60-year view"}
+            </button>
+          )}
+        </div>
       </div>
 
       {/* ----------------------------------------------------- */}
@@ -54,7 +117,7 @@ export default function FireYearTable({ timeline = [], locale = "ko-KR" }) {
       {/* ----------------------------------------------------- */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
 
-        {timeline.map((row) => {
+        {visibleTimeline.map((row) => {
           const isAcc = row.phase === "accumulation";
           const isRet = row.phase === "retirement";
 

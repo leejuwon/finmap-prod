@@ -45,8 +45,8 @@ export default function FireIntro({ lang = "ko" }) {
 
         <li>
           {isKo
-            ? "🔹 선택 시 MonteCarlo 확률 분석을 통해 리스크까지 함께 확인할 수 있습니다."
-            : "Optionally, MonteCarlo simulation shows risk probabilities."}
+            ? "수익률·물가·출금률을 바꿔 보며 결과가 얼마나 민감하게 달라지는지 점검할 수 있습니다."
+            : "Adjust return, inflation, and withdrawal assumptions to check how sensitive the result is."}
         </li>
       </ul>
     </div>

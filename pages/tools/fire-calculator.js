@@ -12,7 +12,7 @@ import FireIntro from "../../_components/FireIntro";
 import FireForm from "../../_components/FireForm";
 
 import { runFireSimulation } from "../../lib/fire";
-import { getFaqItems } from "../../_components/FireFaq";
+import FireFaq, { getFaqItems } from "../../_components/FireFaq";
 import ToolCta from "../../_components/ToolCta";
 
 import AdResponsive from "../../_components/AdResponsive";
@@ -34,7 +34,6 @@ const FireChart = dynamic(() => import("../../_components/FireChart"), { ssr: fa
 const FireSummary = dynamic(() => import("../../_components/FireSummary"), { ssr: false });
 const FireYearTable = dynamic(() => import("../../_components/FireYearTable"), { ssr: false });
 const FireReport = dynamic(() => import("../../_components/FireReport"), { ssr: false });
-const FireFaq = dynamic(() => import("../../_components/FireFaq"), { ssr: false });
 
 const FIRE_PRESET_FIELDS = [
   { query: "currentAsset", state: "currentAsset", type: "number" },
@@ -143,6 +142,32 @@ function JsonLdPack({ lang }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
     </>
+  );
+}
+
+const ASSUMPTION_BASE_DATE = "2026-04-30";
+
+function AssumptionNotice({ lang }) {
+  const isKo = lang === "ko";
+
+  return (
+    <section className="card mb-6 bg-slate-50 border border-slate-200">
+      <p className="text-sm font-semibold text-slate-900">
+        {isKo
+          ? `계산 가정 기준일: ${ASSUMPTION_BASE_DATE}`
+          : `Assumption base date: ${ASSUMPTION_BASE_DATE}`}
+      </p>
+      <p className="mt-2 text-sm leading-relaxed text-slate-700">
+        {isKo
+          ? "이 시뮬레이션은 사용자가 입력한 현재 자산, 저축액, 수익률, 세금, 수수료, 인플레이션, 출금률을 단순화해 계산합니다. 결과는 투자 조언이나 은퇴 가능성 보장이 아니라 가정 변화에 따른 참고용 추정치입니다."
+          : "This simulation uses your inputs for assets, savings, returns, tax, fees, inflation, and withdrawal rate in a simplified model. Results are estimates for planning, not investment advice or a guarantee of retirement readiness."}
+      </p>
+      <p className="mt-2 text-xs leading-relaxed text-slate-600">
+        {isKo
+          ? "미반영 항목: 국민연금·퇴직연금·IRP 등 연금 현금흐름, 세법 변경, 건강보험료, 의료·부양비, 은퇴 후 지출 증가율."
+          : "Not modeled: pension cash flows, tax-law changes, healthcare costs, medical/family support expenses, and post-retirement spending growth."}
+      </p>
+    </section>
   );
 }
 
@@ -339,6 +364,7 @@ export default function FireCalculatorPage() {
 
         <FireHero lang={lang} />
         <FireIntro lang={lang} />
+        <AssumptionNotice lang={lang} />
         <FireForm lang={lang} onSubmit={handleSubmit} initial={formInitial} />
 
         {result && (
@@ -360,9 +386,6 @@ export default function FireCalculatorPage() {
 
               <FireReport lang={lang} result={result} params={params} />                         
             </div>
-
-            <FireFaq lang={lang} />
-
             {/* ✅ (추가) 공유 + PDF 다운로드 CTA */}
             <CompoundCTA 
               locale={lang} 
@@ -435,6 +458,8 @@ export default function FireCalculatorPage() {
             ))}
           </div>
         </section>
+
+        <FireFaq lang={lang} />
       </div>
     </>
   );

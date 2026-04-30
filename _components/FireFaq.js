@@ -19,7 +19,7 @@ export function getFaqItems(lang = "ko") {
         },
         {
           q: "세금은 어떻게 반영되나요?",
-          a: "세율은 투자 수익에 적용됩니다. 실질 수익률 = (명목 – 수수료 – 물가) × (1 – 세율) 방식으로 반영됩니다.",
+          a: "세율은 투자 수익에 적용됩니다. 이 계산기는 nominalAfterTax = (명목 수익률 - 수수료) × (1 - 세율), 실질 수익률 = (1 + nominalAfterTax) ÷ (1 + 인플레이션) - 1 방식으로 단순화해 반영합니다.",
         },
         {
           q: "수수료는 어떤 의미인가요?",
@@ -31,7 +31,7 @@ export function getFaqItems(lang = "ko") {
         },
         {
           q: "실질 수익률은 어떻게 계산되나요?",
-          a: "실질 수익률 = (명목 수익률 – 수수료 – 인플레이션) × (1 – 세율). 즉, 물가·세금·수수료를 모두 반영한 실제 구매력 기준 투자 수익률입니다.",
+          a: "실질 수익률 = (1 + (명목 수익률 - 수수료) × (1 - 세율)) ÷ (1 + 인플레이션) - 1입니다. 즉, 물가·세금·수수료를 모두 반영한 구매력 기준 투자 수익률입니다.",
         },
         {
           q: "왜 실질 자산과 명목 자산이 다르게 표시되나요?",
@@ -57,7 +57,7 @@ export function getFaqItems(lang = "ko") {
         },
         {
           q: "How is tax applied?",
-          a: "Real return = (Nominal – fee – inflation) × (1 – tax).",
+          a: "Tax is applied to investment returns. This calculator uses nominalAfterTax = (nominal return - fee) × (1 - tax), then real return = (1 + nominalAfterTax) ÷ (1 + inflation) - 1.",
         },
         {
           q: "What does the fee represent?",
@@ -69,7 +69,7 @@ export function getFaqItems(lang = "ko") {
         },
         {
           q: "How is real return calculated?",
-          a: "Real return reflects true purchasing-power growth.",
+          a: "Real return = (1 + (nominal return - fee) × (1 - tax)) ÷ (1 + inflation) - 1. It reflects purchasing-power growth after estimated tax, fees, and inflation.",
         },
         {
           q: "Why show real vs nominal assets?",
