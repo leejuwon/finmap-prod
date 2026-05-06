@@ -36,6 +36,23 @@ SHOW CREATE TABLE STOCK_INVEST_INFO_WEEKLY_STAGE;
 SHOW CREATE TABLE MARKET_WEEKLY_RECHECK_DIFF;
 ```
 
+한글이 깨져 보이면 DB connection, table charset, mysql client charset을 함께 확인합니다.
+
+```sql
+SHOW VARIABLES LIKE 'character_set%';
+SHOW VARIABLES LIKE 'collation%';
+SHOW CREATE TABLE MARKET_WEEKLY_RECHECK_RUN;
+SHOW CREATE TABLE MARKETS_WORLD_INDICES_INFO_WEEKLY_STAGE;
+SHOW CREATE TABLE STOCK_INVEST_INFO_WEEKLY_STAGE;
+SHOW CREATE TABLE MARKET_WEEKLY_RECHECK_DIFF;
+```
+
+mysql client에서만 깨지는 경우 조회 전에 아래를 실행한 뒤 다시 확인합니다.
+
+```sql
+SET NAMES utf8mb4;
+```
+
 ## 3) 수동 실행 명령
 
 dryRun으로 실행 계획만 확인:
@@ -43,6 +60,20 @@ dryRun으로 실행 계획만 확인:
 ```bash
 node server/crawler/scripts/market_weekly_recheck.js --week=today --targets=all --dryRun=1 --debug=1
 ```
+
+한국 휴장일 샘플 dryRun:
+
+```bash
+node server/crawler/scripts/market_weekly_recheck.js --from=2026-05-01 --to=2026-05-01 --targets=all --dryRun=1 --debug=1
+```
+
+한국 휴장일 샘플 stage 수집:
+
+```bash
+node server/crawler/scripts/market_weekly_recheck.js --from=2026-05-01 --to=2026-05-01 --targets=all --debug=1
+```
+
+2026-05-01은 한국 노동절로 KOSPI 휴장 후보입니다. 정상 처리되면 KSP row는 `KR_HOLYDAY_YN='Y'`, `raw_json.reason='KR_MARKET_HOLIDAY'`로 stage에 남고, run `message`에 `holidaySkipped`가 기록되어야 합니다.
 
 하루치 world stage 수집:
 
@@ -191,18 +222,20 @@ LIMIT 200;
 ```bash
 # crontab -e
 # mysql 명령에는 운영 DB 접속 옵션이 필요합니다.
-# 예: mysql -u$DB_USER -p$DB_PASSWORD -h$DB_HOST -D$DB_NAME -N -B -e "..."
+# 예: mysql -u$DB_USER -p$DB_PASSWORD -h$DB_HOST -D$DB_NAME --default-character-set=utf8mb4 -N -B -e "..."
 # 단, 비밀번호를 crontab에 직접 쓰는 것은 권장하지 않습니다.
 # .my.cnf 또는 환경변수 기반 wrapper script를 사용하세요.
 
 30 3 * * 6 cd /path/to/finmap && /usr/bin/node server/crawler/scripts/market_weekly_recheck.js --week=today --targets=all --throttle=500 --debug=1 >> logs/market_weekly_recheck_stage.log 2>&1
-10 4 * * 6 cd /path/to/finmap && RUN_ID=$(mysql -u$DB_USER -p$DB_PASSWORD -h$DB_HOST -D$DB_NAME -N -B -e "SELECT run_id FROM MARKET_WEEKLY_RECHECK_RUN WHERE DATE(created_at) = CURDATE() AND targets LIKE '%world%' ORDER BY run_id DESC LIMIT 1") && /usr/bin/node server/crawler/scripts/market_weekly_recheck.js --compareOnly=1 --runId=$RUN_ID --targets=world --debug=1 >> logs/market_weekly_recheck_compare_world.log 2>&1
-20 4 * * 6 cd /path/to/finmap && RUN_ID=$(mysql -u$DB_USER -p$DB_PASSWORD -h$DB_HOST -D$DB_NAME -N -B -e "SELECT run_id FROM MARKET_WEEKLY_RECHECK_RUN WHERE DATE(created_at) = CURDATE() AND targets LIKE '%world%' ORDER BY run_id DESC LIMIT 1") && /usr/bin/node server/crawler/scripts/market_weekly_recheck.js --compareOnly=1 --runId=$RUN_ID --targets=stock --compareStockValue=0 --debug=1 >> logs/market_weekly_recheck_compare_stock.log 2>&1
+10 4 * * 6 cd /path/to/finmap && RUN_ID=$(mysql -u$DB_USER -p$DB_PASSWORD -h$DB_HOST -D$DB_NAME --default-character-set=utf8mb4 -N -B -e "SELECT run_id FROM MARKET_WEEKLY_RECHECK_RUN WHERE DATE(created_at) = CURDATE() AND targets LIKE '%world%' ORDER BY run_id DESC LIMIT 1") && /usr/bin/node server/crawler/scripts/market_weekly_recheck.js --compareOnly=1 --runId=$RUN_ID --targets=world --debug=1 >> logs/market_weekly_recheck_compare_world.log 2>&1
+20 4 * * 6 cd /path/to/finmap && RUN_ID=$(mysql -u$DB_USER -p$DB_PASSWORD -h$DB_HOST -D$DB_NAME --default-character-set=utf8mb4 -N -B -e "SELECT run_id FROM MARKET_WEEKLY_RECHECK_RUN WHERE DATE(created_at) = CURDATE() AND targets LIKE '%world%' ORDER BY run_id DESC LIMIT 1") && /usr/bin/node server/crawler/scripts/market_weekly_recheck.js --compareOnly=1 --runId=$RUN_ID --targets=stock --compareStockValue=0 --debug=1 >> logs/market_weekly_recheck_compare_stock.log 2>&1
 ```
 
 `run_id` 조회는 단순 `ORDER BY run_id DESC LIMIT 1`만 사용하지 않는 것이 좋습니다. 위 예시는 오늘 생성된 run 중 `targets`에 `world`가 포함된 실행만 가져옵니다. 운영 DB와 서버의 날짜/타임존이 다르면 `DATE(created_at) = CURDATE()` 대신 `started_at >= NOW() - INTERVAL 6 HOUR` 같은 최근 N시간 조건을 사용할 수 있습니다.
 
 권장 운영 방식은 `scripts/run_market_weekly_recheck.sh` 또는 `ops/run_market_weekly_recheck.sh` 같은 wrapper script 하나를 만들고, cron은 이 스크립트 하나만 실행하는 것입니다. 이렇게 하면 stage 수집 완료 후 같은 프로세스에서 방금 생성된 `run_id`를 조회하고 compare를 순서대로 실행할 수 있습니다.
+
+wrapper는 프로젝트 루트의 env 파일을 읽도록 구성합니다. 우선순위는 `ENV_FILE` 환경변수가 있으면 해당 파일, `NODE_ENV=production`이면 `.env.production`, 그 외에는 `.env.local`, `.env.local`이 없으면 `.env_local`입니다. `MYSQL_DEFAULTS_FILE`이 있으면 mysql 접속은 이 파일을 우선 사용하고, 없으면 `DB_HOST/DB_USER/DB_PASSWORD/DB_NAME` 또는 `MYSQL_HOST/MYSQL_USER/MYSQL_PASSWORD/MYSQL_DATABASE`를 사용합니다. 비밀번호는 로그에 출력하지 않습니다.
 
 wrapper script 초안:
 
@@ -217,9 +250,15 @@ LOG_DIR="$APP_DIR/logs"
 cd "$APP_DIR"
 mkdir -p "$LOG_DIR"
 
-# 권장: DB 접속 정보는 .my.cnf 또는 안전한 환경변수/secret manager에서 주입합니다.
-# MYSQL="mysql --defaults-extra-file=/path/to/.my.cnf -N -B"
-MYSQL="mysql -u$DB_USER -p$DB_PASSWORD -h$DB_HOST -D$DB_NAME -N -B"
+# 실제 ops/run_market_weekly_recheck.sh는 APP_DIR 계산 후 ENV_FILE, .env.production, .env.local, .env_local 순서로 env를 로드합니다.
+# 권장: DB 접속 정보는 .my.cnf 또는 env 파일/secret manager에서 주입합니다.
+# .my.cnf에는 default-character-set=utf8mb4를 함께 설정하는 것을 권장합니다.
+# 예:
+# [client]
+# default-character-set=utf8mb4
+# MYSQL="mysql --defaults-extra-file=/path/to/.my.cnf --default-character-set=utf8mb4 -N -B"
+# 또는 DB_HOST/DB_USER/DB_PASSWORD/DB_NAME, MYSQL_HOST/MYSQL_USER/MYSQL_PASSWORD/MYSQL_DATABASE 변수를 사용합니다.
+MYSQL="mysql -u$DB_USER -p$DB_PASSWORD -h$DB_HOST -D$DB_NAME --default-character-set=utf8mb4 -N -B"
 
 STAGE_LOG="$LOG_DIR/market_weekly_recheck_stage_$(date +%Y%m%d).log"
 WORLD_COMPARE_LOG="$LOG_DIR/market_weekly_recheck_compare_world_$(date +%Y%m%d).log"
@@ -290,6 +329,19 @@ stage row가 0건인 경우:
 - stage 수집 명령이 정상 종료됐는지 로그를 확인합니다.
 - `--allowEmptyStage=0` 기본값이면 compareOnly는 diff 대량 생성 없이 실패 또는 부분 실패로 종료됩니다.
 - 잘못된 `runId`를 사용하지 않았는지 최근 run 조회 SQL로 확인합니다.
+
+휴장일 처리 확인:
+
+- `MARKET_HOLYDAY_INFO`에 `HOLYDAY_COUNTRY`, `HOLYDAY_TYPE='ALL'`, `HOLYDAY_DATE`가 등록되어 있는지 확인합니다.
+- KSP/KOSPI는 한국 휴장일이면 `KR_HOLYDAY_YN='Y'`, `raw_json.reason='KR_MARKET_HOLIDAY'`로 stage row가 남아야 합니다.
+- 미국 지표는 미국 휴장일이면 `US_HOLYDAY_YN='Y'`, `raw_json.reason='US_MARKET_HOLIDAY'`로 stage row가 남아야 합니다.
+- 휴장으로 인한 미수집은 run `fail_count`에 포함되지 않고, `message`의 `holidaySkipped`로 확인합니다.
+
+한글 깨짐 확인:
+
+- DB pool은 `utf8mb4`, 신규 검증 테이블은 `DEFAULT CHARSET=utf8mb4` 기준입니다.
+- mysql client 조회에서만 깨지면 `SET NAMES utf8mb4;` 실행 후 다시 조회합니다.
+- wrapper script 또는 `.my.cnf`에 `default-character-set=utf8mb4`가 반영되어 있는지 확인합니다.
 
 Yahoo quote 누락:
 

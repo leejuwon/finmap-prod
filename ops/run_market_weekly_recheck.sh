@@ -3,6 +3,45 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 APP_DIR="${APP_DIR:-$(cd "$SCRIPT_DIR/.." && pwd)}"
+
+resolve_env_file() {
+  if [[ -n "${ENV_FILE:-}" ]]; then
+    echo "$ENV_FILE"
+    return
+  fi
+
+  if [[ "${NODE_ENV:-}" == "production" ]]; then
+    echo "$APP_DIR/.env.production"
+    return
+  fi
+
+  if [[ -f "$APP_DIR/.env.local" ]]; then
+    echo "$APP_DIR/.env.local"
+    return
+  fi
+
+  echo "$APP_DIR/.env_local"
+}
+
+load_env_file() {
+  local resolved_env_file
+  resolved_env_file="$(resolve_env_file)"
+
+  if [[ -f "$resolved_env_file" ]]; then
+    set -a
+    # shellcheck source=/dev/null
+    source "$resolved_env_file"
+    set +a
+    echo "[info] env loaded: $resolved_env_file"
+    return
+  fi
+
+  echo "[warn] env file not found: $resolved_env_file; continuing with current environment or MYSQL_DEFAULTS_FILE" >&2
+}
+
+cd "$APP_DIR"
+load_env_file
+
 NODE_BIN="${NODE_BIN:-node}"
 LOG_DIR="${LOG_DIR:-$APP_DIR/logs}"
 MYSQL_DEFAULTS_FILE="${MYSQL_DEFAULTS_FILE:-}"
@@ -16,8 +55,6 @@ if (( RUN_ID_LOOKBACK_HOURS < 1 )); then
   echo "[error] RUN_ID_LOOKBACK_HOURS must be greater than 0" >&2
   exit 1
 fi
-
-cd "$APP_DIR"
 mkdir -p "$LOG_DIR"
 
 TODAY="$(date +%Y%m%d)"
@@ -35,16 +72,21 @@ build_mysql_command() {
       echo "[error] MYSQL_DEFAULTS_FILE not found: $MYSQL_DEFAULTS_FILE" >&2
       exit 1
     fi
-    MYSQL_CMD=(mysql --defaults-extra-file="$MYSQL_DEFAULTS_FILE" -N -B)
+    MYSQL_CMD=(mysql --defaults-extra-file="$MYSQL_DEFAULTS_FILE" --default-character-set=utf8mb4 -N -B)
     return
   fi
 
-  : "${DB_HOST:?DB_HOST is required when MYSQL_DEFAULTS_FILE is not set}"
-  : "${DB_USER:?DB_USER is required when MYSQL_DEFAULTS_FILE is not set}"
-  : "${DB_PASSWORD:?DB_PASSWORD is required when MYSQL_DEFAULTS_FILE is not set}"
-  : "${DB_NAME:?DB_NAME is required when MYSQL_DEFAULTS_FILE is not set}"
+  local mysql_host="${DB_HOST:-${MYSQL_HOST:-}}"
+  local mysql_user="${DB_USER:-${MYSQL_USER:-}}"
+  local mysql_password="${DB_PASSWORD:-${MYSQL_PASSWORD:-}}"
+  local mysql_database="${DB_NAME:-${MYSQL_DATABASE:-}}"
 
-  MYSQL_CMD=(mysql -h"$DB_HOST" -u"$DB_USER" "-p$DB_PASSWORD" -D"$DB_NAME" -N -B)
+  : "${mysql_host:?DB_HOST or MYSQL_HOST is required when MYSQL_DEFAULTS_FILE is not set}"
+  : "${mysql_user:?DB_USER or MYSQL_USER is required when MYSQL_DEFAULTS_FILE is not set}"
+  : "${mysql_password:?DB_PASSWORD or MYSQL_PASSWORD is required when MYSQL_DEFAULTS_FILE is not set}"
+  : "${mysql_database:?DB_NAME or MYSQL_DATABASE is required when MYSQL_DEFAULTS_FILE is not set}"
+
+  MYSQL_CMD=(mysql -h"$mysql_host" -u"$mysql_user" "-p$mysql_password" -D"$mysql_database" --default-character-set=utf8mb4 -N -B)
 }
 
 fetch_latest_run_id() {

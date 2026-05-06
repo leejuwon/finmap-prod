@@ -19,6 +19,7 @@ const WORLD_STAGE_TABLE = 'MARKETS_WORLD_INDICES_INFO_WEEKLY_STAGE';
 const STOCK_STAGE_TABLE = 'STOCK_INVEST_INFO_WEEKLY_STAGE';
 const RUN_TABLE = 'MARKET_WEEKLY_RECHECK_RUN';
 const DIFF_TABLE = 'MARKET_WEEKLY_RECHECK_DIFF';
+const HOLIDAY_TABLE = 'MARKET_HOLYDAY_INFO';
 const WORLD_MAIN_TABLE = 'MARKETS_WORLD_INDICES_INFO';
 const STOCK_MAIN_TABLE = 'STOCK_INVEST_INFO';
 const STOCK_SANITY_MESSAGE = 'stock stage is yahoo-based sanity snapshot, not production-equivalent rollup';
@@ -188,6 +189,8 @@ const WORLD_SYMBOLS = [
   { id: 'WTI', symbol: 'CL=F', siteId: 'YHF', siteName: 'Yahoo Finance', tz: 'America/New_York', dateRole: 'previous', sourceRunType: 'BF' },
   { id: 'KRW', symbol: 'KRW=X', siteId: 'YHF', siteName: 'Yahoo Finance', tz: 'Asia/Seoul', dateRole: 'previous', sourceRunType: 'BF' },
 ];
+
+const US_MARKET_INDICES = new Set(['SNP', 'NDQ', 'DWJ', 'DXY', 'TNX', 'WTI']);
 
 function quoteColumn(column) {
   return `\`${column}\``;
@@ -627,10 +630,125 @@ async function upsertStageRow(tableName, columns, keyColumns, row) {
   await objUtils.dbQuery(db, sql, params);
 }
 
+async function getHolidayMap(dateKeys) {
+  const dates = uniqueColumns((dateKeys || [])
+    .map((dateKey) => normalizeDateKey(dateKey))
+    .filter(Boolean));
+
+  const map = new Map(dates.map((dateKey) => [dateKey, { krHolidayYn: 'N', usHolidayYn: 'N' }]));
+  if (dates.length === 0) return map;
+
+  const placeholders = dates.map(() => '?').join(', ');
+  const rows = await objUtils.dbQuery(
+    db,
+    `SELECT HOLYDAY_COUNTRY, HOLYDAY_DATE, COUNT(*) AS H_CNT
+     FROM ${HOLIDAY_TABLE}
+     WHERE HOLYDAY_COUNTRY IN ('KR', 'US')
+       AND HOLYDAY_TYPE = 'ALL'
+       AND HOLYDAY_DATE IN (${placeholders})
+     GROUP BY HOLYDAY_COUNTRY, HOLYDAY_DATE`,
+    dates
+  );
+
+  for (const row of rows || []) {
+    const dateKey = normalizeDateKey(row.HOLYDAY_DATE);
+    if (!dateKey || !map.has(dateKey)) continue;
+    const flags = map.get(dateKey);
+    if (row.HOLYDAY_COUNTRY === 'KR' && Number(row.H_CNT) > 0) flags.krHolidayYn = 'Y';
+    if (row.HOLYDAY_COUNTRY === 'US' && Number(row.H_CNT) > 0) flags.usHolidayYn = 'Y';
+  }
+
+  return map;
+}
+
+function getHolidayFlags(dateKey, holidayMap) {
+  const normalized = normalizeDateKey(dateKey);
+  return holidayMap?.get(normalized) || { krHolidayYn: 'N', usHolidayYn: 'N' };
+}
+
+function resolveWorldHoliday(symbolConfig, targetDate, holidayMap) {
+  const dateSet = getCrawlerDateSet(targetDate);
+  const indexDate = symbolConfig.dateRole === 'target' ? dateSet.targetDate : dateSet.previousDate;
+  const stdDate = symbolConfig.dateRole === 'target' ? dateSet.previousDate : dateSet.xPreviousDate;
+  const krFlagDate = targetDate;
+  const usFlagDate = symbolConfig.dateRole === 'target' ? dateSet.previousDate : indexDate;
+  const krHolidayYn = getHolidayFlags(krFlagDate, holidayMap).krHolidayYn;
+  const usHolidayYn = getHolidayFlags(usFlagDate, holidayMap).usHolidayYn;
+  let reason = null;
+
+  if (symbolConfig.id === 'KSP' && krHolidayYn === 'Y') {
+    reason = 'KR_MARKET_HOLIDAY';
+  } else if (US_MARKET_INDICES.has(symbolConfig.id) && usHolidayYn === 'Y') {
+    reason = 'US_MARKET_HOLIDAY';
+  } else if (symbolConfig.id === 'KRW' && krHolidayYn === 'Y') {
+    // KRW source parity is mixed in production; treat KR holiday as the safer skip candidate.
+    reason = 'KR_MARKET_HOLIDAY';
+  }
+
+  return {
+    dateSet,
+    indexDate,
+    stdDate,
+    krFlagDate,
+    usFlagDate,
+    krHolidayYn,
+    usHolidayYn,
+    reason,
+  };
+}
+
+function makeHolidayWorldRow(symbolConfig, targetDate, options, holidayInfo) {
+  const row = {
+    run_id: options.runId,
+    week_start_date: options.weekStart,
+    week_end_date: options.weekEnd,
+    collected_at: new Date(),
+    source_run_type: symbolConfig.sourceRunType,
+    INDEX_DATE: holidayInfo.indexDate,
+    INDEX_ID: symbolConfig.id,
+    INDEX_SITE_ID: symbolConfig.siteId,
+    INDEX_SITE_NAME: symbolConfig.siteName,
+    KSP_STOCK_DATE: targetDate,
+    US_HOLYDAY_YN: holidayInfo.usHolidayYn,
+    KR_HOLYDAY_YN: holidayInfo.krHolidayYn,
+    IF_SUCC_YN: 'N',
+  };
+
+  row.raw_json = safeJson({
+    collector: 'market_weekly_recheck:yahoo',
+    collectorMode: options.collector,
+    compareScope: options.compareScope,
+    targetDate,
+    indexDate: holidayInfo.indexDate,
+    stdDate: holidayInfo.stdDate,
+    symbol: symbolConfig.symbol,
+    siteId: symbolConfig.siteId,
+    id: symbolConfig.id,
+    reason: holidayInfo.reason,
+    holidaySkipped: true,
+    krFlagDate: holidayInfo.krFlagDate,
+    usFlagDate: holidayInfo.usFlagDate,
+    krHolidayYn: holidayInfo.krHolidayYn,
+    usHolidayYn: holidayInfo.usHolidayYn,
+  });
+  row.__holidaySkipped = true;
+  row.__holidayReason = holidayInfo.reason;
+
+  return row;
+}
+
 async function fetchYahooWorldRow(symbolConfig, targetDate, options) {
   const dateSet = getCrawlerDateSet(targetDate);
   const indexDate = symbolConfig.dateRole === 'target' ? dateSet.targetDate : dateSet.previousDate;
   const stdDate = symbolConfig.dateRole === 'target' ? dateSet.previousDate : dateSet.xPreviousDate;
+  const holidayInfo = resolveWorldHoliday(symbolConfig, targetDate, options.holidayMap);
+  if (holidayInfo.reason) {
+    if (options.debug) {
+      console.log(`[world:holiday] ${targetDate} ${symbolConfig.id}/${symbolConfig.siteId} ${holidayInfo.reason}`);
+    }
+    return makeHolidayWorldRow(symbolConfig, targetDate, options, holidayInfo);
+  }
+
   const period1 = addDays(stdDate, -7);
   const period2 = addDays(indexDate, 2);
 
@@ -686,8 +804,8 @@ async function fetchYahooWorldRow(symbolConfig, targetDate, options) {
     INDEX_SITE_ID: symbolConfig.siteId,
     INDEX_SITE_NAME: symbolConfig.siteName,
     KSP_STOCK_DATE: targetDate,
-    US_HOLYDAY_YN: 'N',
-    KR_HOLYDAY_YN: 'N',
+    US_HOLYDAY_YN: holidayInfo.usHolidayYn,
+    KR_HOLYDAY_YN: holidayInfo.krHolidayYn,
     IF_SUCC_YN: success ? 'Y' : 'N',
     INDEX_STD_PRICE: std,
     INDEX_MDF_STD_PRICE: std,
@@ -714,6 +832,10 @@ async function fetchYahooWorldRow(symbolConfig, targetDate, options) {
     symbol: symbolConfig.symbol,
     siteId: symbolConfig.siteId,
     id: symbolConfig.id,
+    krFlagDate: holidayInfo.krFlagDate,
+    usFlagDate: holidayInfo.usFlagDate,
+    krHolidayYn: holidayInfo.krHolidayYn,
+    usHolidayYn: holidayInfo.usHolidayYn,
     quoteDateKey: quoteDateKey(quote, symbolConfig.tz),
     stdQuoteDateKey: quoteDateKey(stdQuote, symbolConfig.tz),
     quote,
@@ -730,11 +852,24 @@ async function fetchYahooWorldRow(symbolConfig, targetDate, options) {
 async function collectWorldRowsForDate(targetDate, options) {
   const rows = [];
   const failures = [];
+  const holidaySkips = [];
+  const dateSet = getCrawlerDateSet(targetDate);
+  const holidayMap = await getHolidayMap([dateSet.targetDate, dateSet.previousDate, dateSet.xPreviousDate]);
+  const runOptions = { ...options, holidayMap };
 
   for (const symbolConfig of WORLD_SYMBOLS) {
     try {
-      const row = await fetchYahooWorldRow(symbolConfig, targetDate, options);
+      const row = await fetchYahooWorldRow(symbolConfig, targetDate, runOptions);
       rows.push(row);
+      if (row.__holidaySkipped) {
+        holidaySkips.push({
+          date: targetDate,
+          indexDate: row.INDEX_DATE,
+          indicator: symbolConfig.id,
+          source: symbolConfig.siteId,
+          reason: row.__holidayReason || 'MARKET_HOLIDAY',
+        });
+      }
     } catch (error) {
       failures.push({
         date: targetDate,
@@ -745,16 +880,17 @@ async function collectWorldRowsForDate(targetDate, options) {
       });
       console.warn(`[world:failed] ${targetDate} ${symbolConfig.id}/${symbolConfig.siteId} ${error.reason || 'FETCH_ERROR'}: ${error.message}`);
     }
-    await sleep(options.throttle);
+    await sleep(runOptions.throttle);
   }
 
-  return { rows, failures };
+  return { rows, failures, holidaySkips };
 }
 
 function mapStockFromWorldRows(targetDate, rows, options) {
   const dateSet = getCrawlerDateSet(targetDate);
   const byId = new Map((rows || []).map((row) => [row.INDEX_ID, row]));
   const ksp = byId.get('KSP');
+  const firstRow = (rows || [])[0];
 
   const stock = {
     run_id: options.runId,
@@ -764,8 +900,8 @@ function mapStockFromWorldRows(targetDate, rows, options) {
     source_run_type: 'ROLLUP',
     KSP_STOCK_DATE: targetDate,
     KSP_BF_STOCK_DATE: dateSet.previousDate,
-    US_HOLYDAY_YN: 'N',
-    KR_HOLYDAY_YN: 'N',
+    US_HOLYDAY_YN: ksp?.US_HOLYDAY_YN || firstRow?.US_HOLYDAY_YN || 'N',
+    KR_HOLYDAY_YN: ksp?.KR_HOLYDAY_YN || firstRow?.KR_HOLYDAY_YN || 'N',
     IF_SUCC_YN: 'N',
   };
 
@@ -781,9 +917,9 @@ function mapStockFromWorldRows(targetDate, rows, options) {
     stock.KSP_UD_RATE_REAL_BY_LOW = ksp.INDEX_UD_RATE_REAL_BY_LOW;
     stock.KSP_UD_RATE_REAL_BY_TODAY = ksp.INDEX_UD_RATE_REAL_BY_TODAY;
     stock.KSP_UD_RATE_REAL_BY_CLOSE = ksp.INDEX_UD_RATE_REAL_BY_CLOSE;
-    stock.BF_KSP_OPEN_DO_YN = 'Y';
-    stock.AF_KSP_OPEN_DO_YN = ksp.IF_SUCC_YN;
-    stock.CLOSE_KSP_OPEN_DO_YN = ksp.IF_SUCC_YN;
+    stock.BF_KSP_OPEN_DO_YN = ksp.__holidaySkipped ? 'N' : 'Y';
+    stock.AF_KSP_OPEN_DO_YN = ksp.__holidaySkipped ? 'N' : ksp.IF_SUCC_YN;
+    stock.CLOSE_KSP_OPEN_DO_YN = ksp.__holidaySkipped ? 'N' : ksp.IF_SUCC_YN;
   }
 
   for (const prefix of PREFIXES) {
@@ -803,9 +939,17 @@ function mapStockFromWorldRows(targetDate, rows, options) {
   Object.assign(stock, calcGrades(stock));
 
   const required = ['KSP', ...PREFIXES];
-  const missingIndicators = required.filter((id) => byId.get(id)?.IF_SUCC_YN !== 'Y');
-  const allSuccess = missingIndicators.length === 0;
+  const holidayIndicators = required.filter((id) => byId.get(id)?.__holidaySkipped);
+  const missingIndicators = required.filter((id) => {
+    const row = byId.get(id);
+    if (!row) return true;
+    if (row.__holidaySkipped) return false;
+    return row.IF_SUCC_YN !== 'Y';
+  });
+  const allSuccess = missingIndicators.length === 0 && holidayIndicators.length === 0;
+  const holidaySkipped = holidayIndicators.length > 0 && missingIndicators.length === 0;
   stock.IF_SUCC_YN = allSuccess ? 'Y' : 'N';
+  stock.__holidaySkipped = holidaySkipped;
   stock.raw_json = safeJson({
     collector: 'market_weekly_recheck:rollup:yahoo_based',
     collectorMode: options.collector,
@@ -813,6 +957,8 @@ function mapStockFromWorldRows(targetDate, rows, options) {
     productionEquivalent: false,
     targetDate,
     allSuccess,
+    holidaySkipped,
+    holidayIndicators,
     missingIndicators,
     worldFailures: options.worldFailures || [],
     worldRows: rows,
@@ -1232,6 +1378,7 @@ async function runWeeklyRecheck(options) {
   let failCount = 0;
   let totalCount = 0;
   let worldFailuresForStock = 0;
+  let holidaySkipped = 0;
 
   try {
     for (const targetDate of options.targetDates) {
@@ -1251,12 +1398,23 @@ async function runWeeklyRecheck(options) {
         await upsertWorldRows(worldResult.rows);
         successCount += worldResult.rows.length;
         failCount += worldResult.failures.length;
+        holidaySkipped += worldResult.holidaySkips.length;
+        for (const holidaySkip of worldResult.holidaySkips) {
+          messages.push(`holidaySkipped ${holidaySkip.date} ${holidaySkip.indicator}/${holidaySkip.source} ${holidaySkip.reason}`);
+        }
         for (const failure of worldResult.failures) {
           messages.push(formatWorldFailure(failure));
         }
       }
 
       if (options.targets.includes('stock')) {
+        if (!options.targets.includes('world') && worldResult.holidaySkips.length > 0) {
+          holidaySkipped += worldResult.holidaySkips.length;
+          for (const holidaySkip of worldResult.holidaySkips) {
+            messages.push(`stockInternalHolidaySkipped ${holidaySkip.date} ${holidaySkip.indicator}/${holidaySkip.source} ${holidaySkip.reason}`);
+          }
+        }
+
         if (!options.targets.includes('world') && worldResult.failures.length > 0) {
           worldFailuresForStock += worldResult.failures.length;
           for (const failure of worldResult.failures) {
@@ -1272,6 +1430,11 @@ async function runWeeklyRecheck(options) {
           });
           await upsertStockRow(stockRow);
           if (stockRow.IF_SUCC_YN === 'Y') successCount += 1;
+          else if (stockRow.__holidaySkipped) {
+            successCount += 1;
+            holidaySkipped += 1;
+            messages.push(`${targetDate} stock rollup holidaySkipped`);
+          }
           else {
             failCount += 1;
             messages.push(`${targetDate} stock rollup incomplete`);
@@ -1300,10 +1463,10 @@ async function runWeeklyRecheck(options) {
       fail_count: failCount,
       diff_count: 0,
       high_diff_count: 0,
-      message: truncateText(`${messages.join(' | ')} | worldFailuresForStock=${worldFailuresForStock}`, 1000),
+      message: truncateText(`${messages.join(' | ')} | holidaySkipped=${holidaySkipped} | worldFailuresForStock=${worldFailuresForStock}`, 1000),
     });
 
-    return { runId, status, totalCount, successCount, failCount, worldFailuresForStock };
+    return { runId, status, totalCount, successCount, failCount, holidaySkipped, worldFailuresForStock };
   } catch (error) {
     await updateRun(runId, {
       status: successCount > 0 ? 'PARTIAL_FAILED' : 'FAILED',
@@ -1322,6 +1485,8 @@ module.exports = {
   compareStockTable,
   compareWeeklyRecheckRun,
   compareWorldTable,
+  getHolidayFlags,
+  getHolidayMap,
   mapStockFromWorldRows,
   runWeeklyRecheck,
 };
