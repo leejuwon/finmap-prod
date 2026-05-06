@@ -79,6 +79,13 @@ function isYear(v) {
 function yearToYmLo(y) { return `${String(y)}01`; }
 function yearToYmHi(y) { return `${String(y)}12`; }
 
+function aptNameNormSql(expr) {
+  const lowered = `LOWER(COALESCE(${expr}, ''))`;
+  const noParen = `REGEXP_REPLACE(${lowered}, '\\\\([^)]*\\\\)|\\\\[[^]]*\\\\]', '')`;
+  const noGenericWords = `REGEXP_REPLACE(${noParen}, 'apt|apartment|주상복합', '')`;
+  return `REGEXP_REPLACE(${noGenericWords}, '[^0-9a-z가-힣]', '')`;
+}
+
 function complexSelectSql(useMap) {
   const val = (col) => useMap ? `COALESCE(cm.${col}, c.${col})` : `c.${col}`;
   return `
@@ -137,7 +144,7 @@ ${complexAggSubquerySql()}
         ON c.sido_code = s.sido_code
        AND LEFT(COALESCE(c.lawd_cd, ''), 5) = s.lawd_cd
        AND COALESCE(c.gu_name, '') = COALESCE(s.gu_name, '')
-       AND c.kapt_name_norm = LOWER(TRIM(REGEXP_REPLACE(s.apt_name, '[[:space:]]+', ' ')))
+       AND c.kapt_name_norm = ${aptNameNormSql('s.apt_name')}
   `;
 }
 

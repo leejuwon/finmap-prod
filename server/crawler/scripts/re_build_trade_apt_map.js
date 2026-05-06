@@ -32,6 +32,14 @@ function normName(s) {
     .replace(/[^\p{L}\p{N}]/gu, '');
 }
 
+function normalizeAptNameKey(s) {
+  return String(s || '')
+    .toLowerCase()
+    .replace(/\([^)]*\)|\[[^\]]*\]/g, '')
+    .replace(/apt|apartment|주상복합/gi, '')
+    .replace(/[^\p{L}\p{N}]/gu, '');
+}
+
 async function tableExists(conn, name) {
   const [rows] = await conn.query(
     `SELECT 1 ok FROM information_schema.tables WHERE table_schema=DATABASE() AND table_name=? LIMIT 1`,
@@ -89,6 +97,8 @@ async function tableExists(conn, name) {
   const dimColSet = new Set(dimCols.map(r => r.column_name));
   const hasLawd = dimColSet.has('lawd_cd');
   const hasBjd = dimColSet.has('bjd_code');
+  const kaptAddrSelect = dimColSet.has('kapt_addr') ? 'kapt_addr' : 'NULL AS kapt_addr';
+  const bjdCodeSelect = dimColSet.has('bjd_code') ? 'bjd_code' : 'NULL AS bjd_code';
   if (!hasLawd && !hasBjd) {
     throw new Error(`${dimTable} needs lawd_cd or bjd_code to match by region`);
   }
@@ -101,7 +111,7 @@ async function tableExists(conn, name) {
     let rows = [];
     if (hasLawd) {
       const [r] = await conn.query(
-        `SELECT kapt_code, kapt_name, kapt_addr, bjd_code, lawd_cd FROM ${dimTable} WHERE lawd_cd=?`,
+        `SELECT kapt_code, kapt_name, ${kaptAddrSelect}, ${bjdCodeSelect}, lawd_cd FROM ${dimTable} WHERE lawd_cd=?`,
         [lawd]
       );
       rows = r || [];
@@ -110,7 +120,7 @@ async function tableExists(conn, name) {
       const from = `${lawd}00000`;
       const to = `${lawd}99999`;
       const [r] = await conn.query(
-        `SELECT kapt_code, kapt_name, kapt_addr, bjd_code FROM ${dimTable} WHERE bjd_code BETWEEN ? AND ?`,
+        `SELECT kapt_code, kapt_name, ${kaptAddrSelect}, bjd_code FROM ${dimTable} WHERE bjd_code BETWEEN ? AND ?`,
         [from, to]
       );
       rows = r || [];
@@ -160,8 +170,8 @@ async function tableExists(conn, name) {
     const complexes = dimByLawd.get(lawd) || [];
     if (!complexes.length) { nohit++; continue; }
 
-    const nApt = normName(aptName);
-    let cands = complexes.filter(c => normName(c.kapt_name) === nApt);
+    const nApt = normalizeAptNameKey(aptName);
+    let cands = complexes.filter(c => normalizeAptNameKey(c.kapt_name) === nApt);
 
     // 동 이름을 주소에 포함하는 단지 우선 (kapt_addr가 있으면)
     if (cands.length > 1 && dong) {

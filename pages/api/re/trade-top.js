@@ -184,6 +184,13 @@ function normalizeGu(v) {
   return s;
 }
 
+function aptNameNormSql(expr) {
+  const lowered = `LOWER(COALESCE(${expr}, ''))`;
+  const noParen = `REGEXP_REPLACE(${lowered}, '\\\\([^)]*\\\\)|\\\\[[^]]*\\\\]', '')`;
+  const noGenericWords = `REGEXP_REPLACE(${noParen}, 'apt|apartment|주상복합', '')`;
+  return `REGEXP_REPLACE(${noGenericWords}, '[^0-9a-z가-힣]', '')`;
+}
+
 function complexSelectSql(useMap) {
   const val = (col) => useMap ? `COALESCE(cm.${col}, c.${col})` : `c.${col}`;
   return `
@@ -242,7 +249,7 @@ ${complexAggSubquerySql()}
         ON c.sido_code = ${sourceAlias}.sido_code
        AND LEFT(COALESCE(c.lawd_cd, ''), 5) = ${sourceAlias}.lawd_cd
        AND COALESCE(c.gu_name, '') = COALESCE(${sourceAlias}.gu_name, '')
-       AND c.kapt_name_norm = LOWER(TRIM(REGEXP_REPLACE(${sourceAlias}.apt_name, '[[:space:]]+', ' ')))
+       AND c.kapt_name_norm = ${aptNameNormSql(`${sourceAlias}.apt_name`)}
   `;
 }
 
