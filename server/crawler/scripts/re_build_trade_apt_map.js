@@ -23,6 +23,18 @@ function arg(name, defVal) {
   return defVal;
 }
 
+function asBool(v, defVal = false) {
+  if (v == null) return defVal;
+  const s = String(v).trim().toLowerCase();
+  if (s === '1' || s === 'true' || s === 'y' || s === 'yes') return true;
+  if (s === '0' || s === 'false' || s === 'n' || s === 'no') return false;
+  return defVal;
+}
+
+function readColumnName(row) {
+  return String(row?.column_name || row?.COLUMN_NAME || row?.Column_name || '').trim().toLowerCase();
+}
+
 function normName(s) {
   return String(s || '')
     .toLowerCase()
@@ -49,6 +61,7 @@ async function tableExists(conn, name) {
 }
 
 (async () => {
+  const debug = asBool(arg('debug', '0'));
   const ym = String(arg('ym', '')).trim(); // 예: 202602
   if (!/^\d{6}$/.test(ym)) throw new Error('--ym=YYYYMM is required');
 
@@ -91,16 +104,17 @@ async function tableExists(conn, name) {
   // 2) 단지 dim을 lawd_cd 단위로 미리 로딩해서 매칭 속도 올리기
   //    (dimTable에 lawd_cd 컬럼이 있으면 최적, 없으면 bjd_code prefix로 fallback)
   const [dimCols] = await conn.query(
-    `SELECT column_name FROM information_schema.columns WHERE table_schema=DATABASE() AND table_name=?`,
+    `SELECT COLUMN_NAME AS column_name FROM information_schema.columns WHERE table_schema=DATABASE() AND table_name=?`,
     [dimTable]
   );
-  const dimColSet = new Set(dimCols.map(r => r.column_name));
+  const dimColSet = new Set(dimCols.map(readColumnName).filter(Boolean));
+  if (debug) console.log('[debug][dim columns]', Array.from(dimColSet).sort().slice(0, 80));
   const hasLawd = dimColSet.has('lawd_cd');
   const hasBjd = dimColSet.has('bjd_code');
   const kaptAddrSelect = dimColSet.has('kapt_addr') ? 'kapt_addr' : 'NULL AS kapt_addr';
   const bjdCodeSelect = dimColSet.has('bjd_code') ? 'bjd_code' : 'NULL AS bjd_code';
   if (!hasLawd && !hasBjd) {
-    throw new Error(`${dimTable} needs lawd_cd or bjd_code to match by region`);
+    throw new Error(`${dimTable} needs lawd_cd or bjd_code to match by region. detected columns=${Array.from(dimColSet).sort().join(', ') || '(none)'}`);
   }
 
   const dimByLawd = new Map(); // lawd_cd -> complexes[]
@@ -132,10 +146,11 @@ async function tableExists(conn, name) {
   // 3) 매칭 & UPSERT
   // mapTable 컬럼은 최소: apt_key, kapt_code
   const [mapCols] = await conn.query(
-    `SELECT column_name FROM information_schema.columns WHERE table_schema=DATABASE() AND table_name=?`,
+    `SELECT COLUMN_NAME AS column_name FROM information_schema.columns WHERE table_schema=DATABASE() AND table_name=?`,
     [mapTable]
   );
-  const mapColSet = new Set(mapCols.map(r => r.column_name));
+  const mapColSet = new Set(mapCols.map(readColumnName).filter(Boolean));
+  if (debug) console.log('[debug][map columns]', Array.from(mapColSet).sort().slice(0, 80));
   if (!mapColSet.has('apt_key') || !mapColSet.has('kapt_code')) {
     throw new Error(`${mapTable} must have apt_key and kapt_code`);
   }
