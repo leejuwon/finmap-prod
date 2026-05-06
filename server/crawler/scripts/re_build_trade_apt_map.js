@@ -146,11 +146,29 @@ async function tableExists(conn, name) {
   // 3) 매칭 & UPSERT
   // mapTable 컬럼은 최소: apt_key, kapt_code
   const [mapCols] = await conn.query(
-    `SELECT COLUMN_NAME AS column_name FROM information_schema.columns WHERE table_schema=DATABASE() AND table_name=?`,
+    `
+    SELECT
+      COLUMN_NAME AS column_name,
+      IS_NULLABLE AS is_nullable,
+      COLUMN_DEFAULT AS column_default,
+      EXTRA AS extra
+    FROM information_schema.columns
+    WHERE table_schema=DATABASE()
+      AND table_name=?
+    `,
     [mapTable]
   );
   const mapColSet = new Set(mapCols.map(readColumnName).filter(Boolean));
   if (debug) console.log('[debug][map columns]', Array.from(mapColSet).sort().slice(0, 80));
+  if (debug) {
+    const requiredNoDefault = mapCols
+      .filter((r) => String(r.is_nullable || r.IS_NULLABLE || '').toUpperCase() === 'NO')
+      .filter((r) => r.column_default == null && r.COLUMN_DEFAULT == null)
+      .filter((r) => !String(r.extra || r.EXTRA || '').toLowerCase().includes('auto_increment'))
+      .map(readColumnName)
+      .filter(Boolean);
+    console.log('[debug][map required no default]', requiredNoDefault);
+  }
   if (!mapColSet.has('apt_key') || !mapColSet.has('kapt_code')) {
     throw new Error(`${mapTable} must have apt_key and kapt_code`);
   }
@@ -163,10 +181,12 @@ async function tableExists(conn, name) {
     'lawd_cd',
     'dong_name',
     'apt_name',
+    'apt_name_norm',
     'gu_name',
     'matched_at',
     'updated_at',
   ].filter(c => mapColSet.has(c));
+  if (debug) console.log('[debug][insert columns]', insCols);
 
   const ph = insCols.map(() => '?').join(', ');
   const updCols = insCols.filter(c => c !== 'apt_key');
@@ -206,6 +226,7 @@ async function tableExists(conn, name) {
       lawd_cd: lawd,
       dong_name: dong,
       apt_name: aptName,
+      apt_name_norm: nApt,
       gu_name: gu,
       matched_at: new Date(),
       updated_at: new Date(),
