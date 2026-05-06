@@ -385,12 +385,15 @@ function mapBasisToRow({ sidoCode, listItem, basisItem, basisMeta }) {
   const approval_date = toDateSafe(pickText(basisItem, ['approvalDate', 'useAprDay', 'aprvDt', 'approval_date'])) || null;
   const build_year = toIntSafe(pickText(basisItem, ['buildYear', 'bldgYear', 'build_year'])) ?? null;
 
-  const dong_count = toIntSafe(pickText(basisItem, ['kaptDongCnt', 'dongCnt', 'dongCo', 'totDongCnt', 'buildingCnt', 'dong_count'])) ?? null;
-  const household_count = toIntSafe(pickText(basisItem, ['kaptTotHsehCnt', 'totHsehCnt', 'hsehCnt', 'hshldCnt', 'householdCnt', 'hshldCo', 'household_count', 'hoCnt'])) ?? null;
+  const dong_count = toIntSafe(pickText(basisItem, ['kaptdDcnt', 'kaptDcnt', 'kaptDongCnt', 'dongCnt', 'dongCo', 'totDongCnt', 'buildingCnt', 'dong_count'])) ?? null;
+  const household_count = toIntSafe(pickText(basisItem, ['kaptdScnt', 'kaptScnt', 'kaptTotHsehCnt', 'totHsehCnt', 'hsehCnt', 'hshldCnt', 'householdCnt', 'hshldCo', 'household_count', 'hoCnt'])) ?? null;
 
-  const parking_total = toIntSafe(pickText(basisItem, ['kaptPcnt', 'parkingTotCnt', 'parkingTotal', 'parkingCnt', 'parking_total', 'parkTotCnt'])) ?? null;
-  const parking_ground = toIntSafe(pickText(basisItem, ['parkingGroundCnt', 'parkingGrnd', 'parking_ground', 'parkGrndCnt'])) ?? null;
-  const parking_underground = toIntSafe(pickText(basisItem, ['parkingUndgrndCnt', 'parkingUnder', 'parking_underground', 'parkUndgrndCnt'])) ?? null;
+  const parking_total = toIntSafe(pickText(basisItem, ['kaptdPcnt', 'kaptPcnt', 'parkingTotCnt', 'parkingTotal', 'parkingCnt', 'parking_total', 'parkTotCnt'])) ?? null;
+  const parking_underground = toIntSafe(pickText(basisItem, ['kaptdPcntu', 'kaptPcntu', 'parkingUndgrndCnt', 'parkingUnder', 'parking_underground', 'parkUndgrndCnt'])) ?? null;
+  const explicitParkingGround = toIntSafe(pickText(basisItem, ['parkingGroundCnt', 'parkingGrnd', 'parking_ground', 'parkGrndCnt'])) ?? null;
+  const parking_ground = explicitParkingGround != null
+    ? explicitParkingGround
+    : (parking_total != null && parking_underground != null ? parking_total - parking_underground : null);
 
   const heating_type = pickText(basisItem, ['heatMthd', 'heatingType', 'heating_type', 'heatSystem']) || null;
   const manage_type = pickText(basisItem, ['manageMthd', 'manageType', 'manage_type', 'mgmtType']) || null;
@@ -706,6 +709,9 @@ function mapBasisToRow({ sidoCode, listItem, basisItem, basisMeta }) {
         }
 
         const row = mapBasisToRow({ sidoCode: sido, listItem: li, basisItem: basisResult.item || {}, basisMeta: basisResult });
+        if (debug) {
+          console.log(`[debug][mapped counts] kapt=${row.kapt_code} household=${row.household_count ?? 'null'} dong=${row.dong_count ?? 'null'} parkingTotal=${row.parking_total ?? 'null'} parkingUnderground=${row.parking_underground ?? 'null'}`);
+        }
 
         if (upsert) {
           await conn.execute(sqlUpsert, [
