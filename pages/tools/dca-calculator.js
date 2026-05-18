@@ -1,5 +1,5 @@
 // pages/tools/dca-calculator.js
-import { useMemo, useState, useEffect, useRef } from 'react';
+import { useCallback, useMemo, useState, useEffect, useRef } from 'react';
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import SeoHead from '../../_components/SeoHead';
@@ -35,12 +35,15 @@ function simulateDCA({
   monthly,
   annualRate,
   years,
+  startDate = '',
+  contributionFrequency = 'monthly',
   annualIncrease = 0, // 연간 적립금 증가율 (%)
   compounding = 'monthly',
   taxRate = 15.4, // 세율(%)
   feeRate = 0.5, // 수수료율(연 %)
 }) {
-  const months = Math.max(1, Math.floor((Number(years) || 0) * 12));
+  const periodsPerYear = contributionFrequency === 'weekly' ? 52 : 12;
+  const periods = Math.max(1, Math.floor((Number(years) || 0) * periodsPerYear));
   const rYear = (Number(annualRate) || 0) / 100;
 
   const tax = (Number(taxRate) || 0) / 100;
@@ -52,33 +55,37 @@ function simulateDCA({
 
   const grossMonth =
     compounding === 'yearly'
-      ? Math.pow(1 + rYear, 1 / 12) - 1
-      : rYear / 12;
+      ? Math.pow(1 + rYear, 1 / periodsPerYear) - 1
+      : rYear / periodsPerYear;
 
   const netMonth =
     compounding === 'yearly'
-      ? Math.pow(1 + netYear, 1 / 12) - 1
-      : netYear / 12;
+      ? Math.pow(1 + netYear, 1 / periodsPerYear) - 1
+      : netYear / periodsPerYear;
 
   let invested = Number(initial) || 0;
   let valueGross = invested;
   let valueNet = invested;
+  let priceProxy = 100;
+  let units = invested > 0 ? invested / priceProxy : 0;
 
-  let monthlyCur = Number(monthly) || 0;
+  let contributionCur = Number(monthly) || 0;
   let investedPrevYear = invested;
   let valueNetPrevYear = valueNet;
 
   const rows = [];
 
-  for (let m = 1; m <= months; m++) {
-    invested += monthlyCur;
+  for (let p = 1; p <= periods; p++) {
+    invested += contributionCur;
+    units += priceProxy > 0 ? contributionCur / priceProxy : 0;
 
-    valueGross = (valueGross + monthlyCur) * (1 + grossMonth);
-    valueNet = (valueNet + monthlyCur) * (1 + netMonth);
+    valueGross = (valueGross + contributionCur) * (1 + grossMonth);
+    valueNet = (valueNet + contributionCur) * (1 + netMonth);
+    priceProxy *= 1 + grossMonth;
 
-    const isYearEnd = m % 12 === 0 || m === months;
+    const isYearEnd = p % periodsPerYear === 0 || p === periods;
     if (isYearEnd) {
-      const year = Math.round(m / 12);
+      const year = Math.round(p / periodsPerYear);
       const contributionYear = invested - investedPrevYear;
       const gainYearNet = valueNet - valueNetPrevYear - contributionYear;
 
@@ -89,7 +96,11 @@ function simulateDCA({
         valueNet,
         contributionYear,
         gainYearNet,
-        monthlyAtEnd: monthlyCur,
+        contributionAtEnd: contributionCur,
+        monthlyAtEnd: contributionFrequency === 'weekly' ? contributionCur * (52 / 12) : contributionCur,
+        averageCost: units > 0 ? invested / units : 0,
+        priceProxy,
+        periodLabel: getDcaPeriodLabel(startDate, year),
       });
 
       investedPrevYear = invested;
@@ -97,11 +108,43 @@ function simulateDCA({
 
       // 연말마다 적립금 증가율 반영
       const inc = Number(annualIncrease) || 0;
-      if (inc !== 0) monthlyCur *= 1 + inc / 100;
+      if (inc !== 0) contributionCur *= 1 + inc / 100;
     }
   }
 
   return rows;
+}
+
+function getDcaPeriodLabel(startDate, year) {
+  if (!startDate || !year) return '';
+  const start = new Date(`${startDate}T00:00:00`);
+  if (Number.isNaN(start.getTime())) return '';
+  const end = new Date(start);
+  end.setFullYear(start.getFullYear() + Number(year));
+  return end.toISOString().slice(0, 7);
+}
+
+function estimateLumpSumNet({
+  amount,
+  annualRate,
+  years,
+  compounding = 'monthly',
+  taxRate = 15.4,
+  feeRate = 0.5,
+}) {
+  const a = Number(amount) || 0;
+  const y = Number(years) || 0;
+  if (a <= 0 || y <= 0) return 0;
+
+  const tax = (Number(taxRate) || 0) / 100;
+  const fee = (Number(feeRate) || 0) / 100;
+  const rYear = (Number(annualRate) || 0) / 100;
+  const netYear = Math.max(-0.99, rYear * (1 - tax) - fee);
+
+  if (compounding === 'yearly') {
+    return a * Math.pow(1 + netYear, y);
+  }
+  return a * Math.pow(1 + netYear / 12, Math.floor(y * 12));
 }
 
 // ===================== 텍스트 리소스 =====================
@@ -117,6 +160,16 @@ const TEXT = {
     contrib: '누적 투자금',
     gain: '세후 수익(누적)',
     unitHint: '단위: 원 / 만원 / 억원 자동',
+    modelNoticeTitle: '이 시뮬레이션의 가정',
+    modelNotice:
+      '이 페이지는 실제 가격 데이터가 아니라 입력한 연 수익률을 일정하게 적용하는 가정 기반 모델입니다. 평균 매수단가와 낙폭은 지수 100 기준의 모델 값이며, 실제 시장 변동성·환율·배당·세금 계산과 다를 수 있습니다.',
+    decisionTitle: '공유하기 좋은 의사결정 요약',
+    modelDrawdown: '연도별 모델 낙폭',
+    averageCost: '평균 매수단가',
+    lumpSumCompare: '일괄투자 비교',
+    shareSetup: '공유용 조건',
+    weekly: '매주',
+    monthly: '매월',
     chartTitle: 'DCA 적립식 자산 성장 경로',
     tableTitle: '연도별 적립식 투자 요약 (DCA)',
     faqTitle: 'DCA 계산기 자주 묻는 질문(FAQ)',
@@ -132,6 +185,16 @@ const TEXT = {
     contrib: 'Total invested',
     gain: 'Net gain (cumulative)',
     unitHint: 'Unit: auto (KRW / 10k / 100M)',
+    modelNoticeTitle: 'Model assumptions',
+    modelNotice:
+      'This simulator is assumption-based. It applies your annual return steadily instead of using live price data. Average cost and drawdown are model values on a price index starting at 100, not real market volatility, FX, dividends, or tax accounting.',
+    decisionTitle: 'Decision summary worth sharing',
+    modelDrawdown: 'Model path drawdown',
+    averageCost: 'Average cost',
+    lumpSumCompare: 'Lump-sum comparison',
+    shareSetup: 'Shareable setup',
+    weekly: 'Weekly',
+    monthly: 'Monthly',
     chartTitle: 'DCA asset growth path',
     tableTitle: 'Yearly summary for DCA investing',
     faqTitle: 'DCA calculator FAQ',
@@ -143,6 +206,8 @@ const DCA_PRESET_FIELDS = [
   { query: "monthly", state: "monthly", type: "number" },
   { query: "annualRate", state: "annualRate", type: "number" },
   { query: "years", state: "years", type: "number" },
+  { query: "startDate", state: "startDate", type: "string" },
+  { query: "frequency", state: "contributionFrequency", type: "string", allowed: ["monthly", "weekly"] },
   { query: "annualIncrease", state: "annualIncrease", type: "number" },
   { query: "compounding", state: "compounding", type: "string", allowed: ["monthly", "yearly"] },
   { query: "taxRate", state: "taxRate", type: "number" },
@@ -159,6 +224,10 @@ function getFaqItems(locale) {
       {
         q: '월 투자금은 어떤 단위로 입력하나요?',
         a: '통화가 원화(KRW)일 때는 만원 단위로 입력합니다. 예를 들어 매월 30만원 투자면 30, 50만원이면 50으로 입력합니다. 통화를 USD로 변경한 경우에는 실제 달러 기준 금액을 그대로 입력하면 됩니다.',
+      },
+      {
+        q: '매주 투자와 매월 투자는 어떻게 다르게 계산되나요?',
+        a: '투자 주기를 매주로 바꾸면 입력한 금액을 주 단위 납입액으로 보고 1년에 52회 납입하는 것으로 계산합니다. 매월은 1년에 12회 납입입니다. 시작일은 결과 링크와 표의 기간 라벨을 맞추는 용도이며, 실제 시장 가격 데이터는 사용하지 않습니다.',
       },
       {
         q: '연 수익률과 연간 적립금 증가율은 어떻게 설정하면 좋나요?',
@@ -183,6 +252,10 @@ function getFaqItems(locale) {
     {
       q: 'In what unit should I enter my monthly investment?',
       a: 'If the currency is KRW, use units of 10,000 KRW. For example, 300,000 KRW per month is 30, and 500,000 KRW is 50. If you switch to USD, enter the actual dollar amount you plan to invest each month.',
+    },
+    {
+      q: 'How do weekly and monthly investing differ in the simulation?',
+      a: 'Weekly mode treats the contribution input as a weekly amount and assumes 52 contributions per year. Monthly mode assumes 12 contributions per year. The start date is used for shareable state and period labels; the model does not use live market price data.',
     },
     {
       q: 'How should I set the annual return and yearly contribution increase?',
@@ -216,6 +289,7 @@ export default function DCACalculatorPage() {
   // 언어에 따라 기본 통화 자동 설정
   const [currency, setCurrency] = useState(routeLocale === 'ko' ? 'KRW' : 'USD');
   const [result, setResult] = useState(null);
+  const [lastParams, setLastParams] = useState(null);
   const [formInitialValues, setFormInitialValues] = useState(null);
   const sectionEls = useRef({});
   const didRestorePreset = useRef(false);
@@ -245,6 +319,7 @@ export default function DCACalculatorPage() {
   }, [router.isReady, router.query]);
 
   const persistPreset = (preset) => {
+    // Query params are shareable state; SeoHead canonical stays queryless to avoid duplicate index URLs.
     writeToolRecent(DCA_RECENT_KEY, preset);
     replaceUrlQuery(buildToolPresetQuery(preset, DCA_PRESET_FIELDS));
   };
@@ -375,7 +450,54 @@ export default function DCACalculatorPage() {
   const totalInvested = last ? last.invested : 0;
   const totalGain = finalNet - totalInvested;
 
-  const summaryFmt = (v) => formatMoneyAuto(v || 0, currency, numberLocale);
+  const summaryFmt = useCallback(
+    (v) => formatMoneyAuto(v || 0, currency, numberLocale),
+    [currency, numberLocale]
+  );
+
+  const resultInsights = useMemo(() => {
+    if (!hasResult || !last || !lastParams) return null;
+
+    let peak = 0;
+    let maxDrawdown = 0;
+    result.forEach((row) => {
+      const value = Number(row.valueNet) || 0;
+      peak = Math.max(peak, value);
+      if (peak > 0) {
+        maxDrawdown = Math.min(maxDrawdown, value / peak - 1);
+      }
+    });
+
+    const taxFeeDrag = Math.max(0, (Number(last.valueGross) || 0) - (Number(last.valueNet) || 0));
+    const cumulativeReturn = totalInvested > 0 ? (finalNet / totalInvested - 1) * 100 : 0;
+    const lumpSumNet = estimateLumpSumNet({
+      amount: totalInvested,
+      annualRate: lastParams.annualRate,
+      years: lastParams.years,
+      compounding: lastParams.compounding,
+      taxRate: lastParams.taxRate,
+      feeRate: lastParams.feeRate,
+    });
+    const contributionLabel =
+      lastParams.contributionFrequency === 'weekly'
+        ? t.weekly
+        : t.monthly;
+
+    return {
+      maxDrawdownPct: Math.abs(maxDrawdown) * 100,
+      averageCost: Number(last.averageCost) || 0,
+      priceProxy: Number(last.priceProxy) || 0,
+      taxFeeDrag,
+      cumulativeReturn,
+      lumpSumNet,
+      lumpSumGap: lumpSumNet - finalNet,
+      setup:
+        routeLocale === 'ko'
+          ? `${contributionLabel} ${summaryFmt(lastParams.periodContribution)} · ${lastParams.years}년 · 연 ${lastParams.annualRate}%`
+          : `${contributionLabel} ${summaryFmt(lastParams.periodContribution)} · ${lastParams.years}y · ${lastParams.annualRate}%/yr`,
+      startLabel: lastParams.startDate || (routeLocale === 'ko' ? '시작일 미지정' : 'No start date'),
+    };
+  }, [hasResult, last, lastParams, result, totalInvested, finalNet, routeLocale, summaryFmt, t.monthly, t.weekly]);
 
   const handleSubmit = (form) => {
     persistPreset({
@@ -383,6 +505,8 @@ export default function DCACalculatorPage() {
       monthly: Number(form.monthly) || 0,
       annualRate: Number(form.annualRate) || 0,
       years: Number(form.years) || 0,
+      startDate: form.startDate || "",
+      contributionFrequency: form.contributionFrequency === "weekly" ? "weekly" : "monthly",
       annualIncrease: Number(form.annualIncrease) || 0,
       compounding: form.compounding === "yearly" ? "yearly" : "monthly",
       taxRate: Number(form.taxRate) || 0,
@@ -397,12 +521,15 @@ export default function DCACalculatorPage() {
     const r = Number(form.annualRate) || 0;
     const y = Number(form.years) || 0;
     const annualIncrease = Number(form.annualIncrease) || 0;
+    const contributionFrequency = form.contributionFrequency === "weekly" ? "weekly" : "monthly";
 
     const rows = simulateDCA({
       initial,
       monthly,
       annualRate: r,
       years: y,
+      startDate: form.startDate || "",
+      contributionFrequency,
       annualIncrease,
       compounding: form.compounding,
       taxRate: form.taxRate,
@@ -410,20 +537,42 @@ export default function DCACalculatorPage() {
     });
 
     setResult(rows);
+    setLastParams({
+      initial,
+      periodContribution: monthly,
+      annualRate: r,
+      years: y,
+      startDate: form.startDate || "",
+      contributionFrequency,
+      annualIncrease,
+      compounding: form.compounding === "yearly" ? "yearly" : "monthly",
+      taxRate: Number(form.taxRate) || 0,
+      feeRate: Number(form.feeRate) || 0,
+    });
   };
 
   const handleShare = async () => {
+    const shareTitle = routeLocale === "ko" ? "FinMap DCA 시뮬레이터 결과" : "FinMap DCA simulation result";
+    const shareDesc =
+      routeLocale === "ko"
+        ? "입력값이 포함된 링크로 DCA 결과를 다시 열고 비교해보세요."
+        : "Reopen and compare this DCA result from a link that includes the inputs.";
+
     // 1) Web Share API
-    if (await shareWeb()) return;
+    if (
+      await shareWeb({
+        title: shareTitle,
+        text: shareDesc,
+        url: window.location.href,
+      })
+    )
+      return;
 
     // 2) Kakao SDK
     if (typeof window !== "undefined" && window?.Kakao) {
       shareKakao({
-        title: routeLocale === "ko" ? "FinMap DCA 시뮬레이터 결과" : "DCA result",
-        description:
-          routeLocale === "ko"
-            ? "정기 투자(DCA)로 자산이 어떻게 성장하는지 세전/세후 기준으로 시뮬레이션합니다."
-            : "Simulate how dollar-cost averaging (DCA) grows your portfolio (gross/net).",
+        title: shareTitle,
+        description: shareDesc,
         url: window.location.href,
       });
       return;
@@ -432,7 +581,7 @@ export default function DCACalculatorPage() {
     // 3) Naver share
     if (typeof window !== "undefined") {
       shareNaver({
-        title: routeLocale === "ko" ? "FinMap DCA 시뮬레이터 결과" : "DCA Result",
+        title: shareTitle,
         url: window.location.href,
       });
       return;
@@ -474,6 +623,11 @@ export default function DCACalculatorPage() {
           />
         </div>
 
+        <section className="card border border-amber-200 bg-amber-50">
+          <h2 className="text-base font-semibold text-slate-900">{t.modelNoticeTitle}</h2>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">{t.modelNotice}</p>
+        </section>
+
         {/* 결과 섹션 */}
         {hasResult && (
           <>
@@ -494,6 +648,77 @@ export default function DCACalculatorPage() {
                 </div>
               </div>
 
+              {resultInsights && (
+                <section className="card scroll-mt-24">
+                  <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                    <h2 className="text-lg font-semibold">{t.decisionTitle}</h2>
+                    <span className="text-xs text-slate-500">
+                      {routeLocale === "ko" ? "공유 링크로 입력값 복원" : "Inputs restore from the shared link"}
+                    </span>
+                  </div>
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                    <div className="rounded-xl border border-slate-200 bg-white p-3">
+                      <div className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                        {t.modelDrawdown}
+                      </div>
+                      <div className="mt-1 text-lg font-semibold text-slate-900">
+                        {resultInsights.maxDrawdownPct.toFixed(2)}%
+                      </div>
+                      <p className="mt-1 text-xs text-slate-500">
+                        {routeLocale === "ko"
+                          ? "연도별 세후 자산 기준의 가정 경로이며 실제 시장 MDD가 아닙니다."
+                          : "Based on yearly net model values, not actual market MDD."}
+                      </p>
+                    </div>
+
+                    <div className="rounded-xl border border-slate-200 bg-white p-3">
+                      <div className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                        {t.averageCost}
+                      </div>
+                      <div className="mt-1 text-lg font-semibold text-slate-900">
+                        {resultInsights.averageCost.toFixed(2)}
+                      </div>
+                      <p className="mt-1 text-xs text-slate-500">
+                        {routeLocale === "ko"
+                          ? `지수 100 기준, 마지막 가격 ${resultInsights.priceProxy.toFixed(2)}`
+                          : `Index starts at 100, final price ${resultInsights.priceProxy.toFixed(2)}`}
+                      </p>
+                    </div>
+
+                    <div className="rounded-xl border border-slate-200 bg-white p-3">
+                      <div className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                        {t.lumpSumCompare}
+                      </div>
+                      <div className="mt-1 text-lg font-semibold text-slate-900">
+                        {summaryFmt(resultInsights.lumpSumGap)}
+                      </div>
+                      <p className="mt-1 text-xs text-slate-500">
+                        {routeLocale === "ko"
+                          ? `미래 납입금을 처음부터 보유했다고 보는 참고 가정: ${summaryFmt(resultInsights.lumpSumNet)}`
+                          : `Reference only: assumes future contributions were available upfront: ${summaryFmt(resultInsights.lumpSumNet)}`}
+                      </p>
+                    </div>
+
+                    <div className="rounded-xl border border-slate-200 bg-white p-3">
+                      <div className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                        {t.shareSetup}
+                      </div>
+                      <div className="mt-1 text-sm font-semibold text-slate-900">
+                        {resultInsights.setup}
+                      </div>
+                      <p className="mt-1 text-xs text-slate-500">
+                        {resultInsights.startLabel}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="mt-3 text-xs text-slate-500">
+                    {routeLocale === "ko"
+                      ? `세후 누적수익률 ${resultInsights.cumulativeReturn.toFixed(2)}%, 세금·수수료 효과 ${summaryFmt(resultInsights.taxFeeDrag)}. 실제 변동성 기반 MDD는 별도 가격 데이터가 필요합니다.`
+                      : `Net cumulative return ${resultInsights.cumulativeReturn.toFixed(2)}%, tax/fee drag ${summaryFmt(resultInsights.taxFeeDrag)}. Market-data drawdown requires a real price path.`}
+                  </p>
+                </section>
+              )}
+
               {/* 차트 */}
               <div ref={(el) => (sectionEls.current.chart = el)} className="card scroll-mt-24">
                 <div className="flex items-center gap-3 mb-2">
@@ -510,26 +735,6 @@ export default function DCACalculatorPage() {
                 <DCAYearTable rows={result} locale={numberLocale} currency={currency} title={t.tableTitle} />
               </div>
 
-              {/* FAQ 섹션 */}
-              <div className="card w-full">
-                <h2 className="text-lg font-semibold mb-3">{t.faqTitle}</h2>
-                <div className="space-y-3">
-                  {faqItems.map((item, idx) => (
-                    <details
-                      key={idx}
-                      className="border border-slate-200 rounded-lg p-3 bg-slate-50"
-                      open={idx === 0}
-                    >
-                      <summary className="cursor-pointer font-medium text-sm">
-                        {item.q}
-                      </summary>
-                      <p className="mt-2 text-sm text-slate-700 whitespace-pre-line">
-                        {item.a}
-                      </p>
-                    </details>
-                  ))}
-                </div>
-              </div>
             </div>
 
             {/* ✅ (추가) 공유 + PDF 다운로드 CTA */}
@@ -544,8 +749,8 @@ export default function DCACalculatorPage() {
                 }
                 shareDescription={
                   routeLocale === "ko"
-                    ? ""
-                    : ""
+                    ? "입력값이 포함된 링크로 DCA 결과를 다시 열고, PDF로 저장해 비교해보세요."
+                    : "Open the same DCA inputs from the shared link, then save or compare the result as a PDF."
                 }
               />
             </div>
@@ -571,6 +776,27 @@ export default function DCACalculatorPage() {
             )}
           </>
         )}
+
+        {/* FAQ 섹션: FAQPage JSON-LD와 같은 faqItems를 사용하고 계산 전에도 노출합니다. */}
+        <section className="card w-full">
+          <h2 className="text-lg font-semibold mb-3">{t.faqTitle}</h2>
+          <div className="space-y-3">
+            {faqItems.map((item, idx) => (
+              <details
+                key={idx}
+                className="border border-slate-200 rounded-lg p-3 bg-slate-50"
+                open={idx === 0}
+              >
+                <summary className="cursor-pointer font-medium text-sm">
+                  {item.q}
+                </summary>
+                <p className="mt-2 text-sm text-slate-700 whitespace-pre-line">
+                  {item.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
 
         {/* ✅ 내부링크: 추천 가이드 글 5개 (SEO + 체류시간 + 내부탐색) */}
         <section className="card">

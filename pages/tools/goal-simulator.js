@@ -42,11 +42,23 @@ const GOAL_PRESET_FIELDS = [
   { query: "contribGrowthPercent", state: "contribGrowthPercent", type: "number" },
   { query: "scenarioSpread", state: "scenarioSpread", type: "number" },
   { query: "scenarioMode", state: "scenarioMode", type: "string", allowed: ["base", "conservative", "aggressive", "compare"] },
+  { query: "solveFocus", state: "solveFocus", type: "string", allowed: ["monthly", "years", "return"] },
   { query: "valueMode", state: "valueMode", type: "string", allowed: ["nominal", "real"] },
   { query: "currency", state: "currency", type: "string", allowed: ["KRW", "USD"] },
 ];
 
 const GOAL_RECENT_KEY = "fm_tool_recent_goal";
+
+function trackToolHubClick({ targetTool, locale, location }) {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+
+  window.gtag("event", "tool_hub_click", {
+    source_tool: "goal",
+    target_tool: targetTool,
+    locale,
+    location,
+  });
+}
 
 // ===== 시뮬레이터 계산 로직 =====
 function simulateGoalPath({
@@ -242,6 +254,59 @@ function solveRequiredYears({
 }
 
 // =========================
+// ✅ Premium: 역산(필요 연 수익률)
+// - 월 적립금/기간은 고정하고 목표 도달에 필요한 연 수익률을 찾음
+// =========================
+function solveRequiredRate({
+  target,
+  current,
+  monthly,
+  years,
+  compounding,
+  taxRatePercent,
+  feeRatePercent,
+  inflationPercent,
+  contribGrowthPercent,
+  valueKey = "valueNet",
+}) {
+  const t = Number(target) || 0;
+  if (t <= 0) return null;
+  if ((Number(current) || 0) >= t) return 0;
+
+  const fv = (annualRate) => {
+    const rows = simulateGoalPath({
+      current,
+      monthly,
+      annualRate,
+      years,
+      compounding,
+      taxRatePercent,
+      feeRatePercent,
+      inflationPercent,
+      contribGrowthPercent,
+    });
+    const last = rows?.[rows.length - 1];
+    return Number(last?.[valueKey]) || 0;
+  };
+
+  let lo = -99;
+  let hi = 20;
+  let guard = 0;
+  while (fv(hi) < t && guard < 30) {
+    hi *= 1.5;
+    guard += 1;
+    if (hi > 500) return null;
+  }
+
+  for (let i = 0; i < 50; i++) {
+    const mid = (lo + hi) / 2;
+    if (fv(mid) >= t) hi = mid;
+    else lo = mid;
+  }
+  return hi;
+}
+
+// =========================
 // ✅ Premium: 목표 도달 시점(월 단위) 찾기
 // - simulateGoalPath와 동일 로직을 월 단위로 돌려서
 // - valueKey(valueNet / valueNetReal 등)가 target을 처음 넘는 month를 반환
@@ -405,9 +470,11 @@ export default function GoalSimulatorPage() {
   const [scenarioMode, setScenarioMode] = useState("base"); // base | conservative | aggressive | compare
   const [scenarioSpread, setScenarioSpread] = useState(2); // 기준 대비 ±%
   const [valueMode, setValueMode] = useState("nominal"); // nominal | real
+  const [solveFocus, setSolveFocus] = useState("monthly"); // monthly | years | return
   const [inflationPercent, setInflationPercent] = useState(locale === "ko" ? 2.5 : 2.0);
   const [contribGrowthPercent, setContribGrowthPercent] = useState(0);
   const didRestorePreset = useRef(false);
+  const latestPresetRef = useRef({});
 
   const loc = locale === 'ko' ? 'ko-KR' : 'en-US';
 
@@ -429,12 +496,14 @@ export default function GoalSimulatorPage() {
     const queryPreset = getToolPresetFromQuery(router.query, GOAL_PRESET_FIELDS);
     const preset = queryPreset || readToolRecent(GOAL_RECENT_KEY, GOAL_PRESET_FIELDS);
     if (!preset) return;
+    latestPresetRef.current = preset;
 
     if (preset.currency) setCurrency(preset.currency);
     if (preset.inflationPercent !== undefined) setInflationPercent(preset.inflationPercent);
     if (preset.contribGrowthPercent !== undefined) setContribGrowthPercent(preset.contribGrowthPercent);
     if (preset.scenarioSpread !== undefined) setScenarioSpread(preset.scenarioSpread);
     if (preset.scenarioMode) setScenarioMode(preset.scenarioMode);
+    if (preset.solveFocus) setSolveFocus(preset.solveFocus);
     if (preset.valueMode) setValueMode(preset.valueMode);
 
     const {
@@ -443,6 +512,7 @@ export default function GoalSimulatorPage() {
       contribGrowthPercent: _contribGrowthPercent,
       scenarioSpread: _scenarioSpread,
       scenarioMode: _scenarioMode,
+      solveFocus: _solveFocus,
       valueMode: _valueMode,
       ...formPreset
     } = preset;
@@ -450,8 +520,18 @@ export default function GoalSimulatorPage() {
   }, [router.isReady, router.query]);
 
   const persistPreset = (preset) => {
+    // Query params are shareable state; SeoHead canonical stays queryless to avoid duplicate index URLs.
+    latestPresetRef.current = preset || {};
     writeToolRecent(GOAL_RECENT_KEY, preset);
     replaceUrlQuery(buildToolPresetQuery(preset, GOAL_PRESET_FIELDS));
+  };
+
+  const updateSolveFocus = (nextFocus) => {
+    setSolveFocus(nextFocus);
+    persistPreset({
+      ...(latestPresetRef.current || {}),
+      solveFocus: nextFocus,
+    });
   };
 
   // ===== 텍스트 리소스 =====
@@ -509,11 +589,71 @@ export default function GoalSimulatorPage() {
         locale === 'ko'
           ? '목표 자산 시뮬레이터 자주 묻는 질문(FAQ)'
           : 'Goal asset simulator FAQ',
+      solveFocusTitle:
+        locale === 'ko'
+          ? '계산 목표 변수'
+          : 'Calculation target',
+      solveFocusLead:
+        locale === 'ko'
+          ? '이번에는 무엇을 조정해서 목표에 맞출지 선택하세요.'
+          : 'Choose which lever you want to adjust for the goal.',
+      solveFocusSetupTitle:
+        locale === 'ko'
+          ? '이번 계산에서 무엇을 풀까요?'
+          : 'What do you want to solve this time?',
+      solveFocusSetupLead:
+        locale === 'ko'
+          ? '입력하기 전에 계산 목표를 먼저 고르면 결과 카드가 그 변수 중심으로 강조됩니다.'
+          : 'Pick the decision variable first, and the result cards will emphasize that lever.',
+      toolHubTitle:
+        locale === 'ko'
+          ? '계획을 더 다듬는 계산기'
+          : 'Refine the plan with related calculators',
+      toolHubLead:
+        locale === 'ko'
+          ? '목표 자산 결과를 월 적립, 복리 효과, 은퇴/FIRE 계획으로 이어서 점검하세요.'
+          : 'Continue from the goal result into DCA, compounding, and retirement planning.',
     }),
     [locale]
   );
 
   const summaryFmt = (v) => numberFmt(loc, currency, v || 0);
+
+  const solveFocusModes = useMemo(
+    () => [
+      {
+        key: "monthly",
+        labelKo: "월 투자액",
+        labelEn: "Monthly",
+        titleKo: "필요 월 투자액 계산",
+        titleEn: "Solve required monthly investment",
+        helpKo: "기간과 수익률은 고정하고 필요한 월 투자액을 봅니다.",
+        helpEn: "Keep the horizon and return fixed, then solve the required monthly investment.",
+      },
+      {
+        key: "years",
+        labelKo: "기간",
+        labelEn: "Time",
+        titleKo: "목표까지 필요한 기간 계산",
+        titleEn: "Solve time needed to reach the goal",
+        helpKo: "월 투자액과 수익률은 고정하고 필요한 기간을 봅니다.",
+        helpEn: "Keep the monthly investment and return fixed, then solve the required time.",
+      },
+      {
+        key: "return",
+        labelKo: "수익률",
+        labelEn: "Return",
+        titleKo: "목표까지 필요한 수익률 계산",
+        titleEn: "Solve required annual return",
+        helpKo: "월 투자액과 기간은 고정하고 필요한 연 수익률을 봅니다.",
+        helpEn: "Keep the monthly investment and horizon fixed, then solve the annual return required.",
+      },
+    ],
+    []
+  );
+
+  const activeSolveFocusMode =
+    solveFocusModes.find((mode) => mode.key === solveFocus) || solveFocusModes[0];
 
   // ===== FAQ 데이터 (UI + JSON-LD 공용) =====
   const faqItems = useMemo(
@@ -659,6 +799,52 @@ export default function GoalSimulatorPage() {
     []
   );
 
+  const relatedTools = useMemo(
+    () => [
+      {
+        href: "/tools/dca-calculator",
+        targetTool: "dca",
+        badgeKo: "적립식 투자",
+        badgeEn: "DCA",
+        titleKo: "DCA 시뮬레이터로 월 납입 경로 다시 보기",
+        titleEn: "Use the DCA simulator for monthly contribution paths",
+        descKo: "월 적립금, 적립금 증가율, 세금·수수료를 바꿔 장기 경로를 더 촘촘히 확인합니다.",
+        descEn: "Test monthly contributions, contribution growth, taxes, and fees in a DCA path.",
+      },
+      {
+        href: "/tools/compound-interest",
+        targetTool: "compound",
+        badgeKo: "복리",
+        badgeEn: "Compound",
+        titleKo: "복리 계산기로 원금·기간·수익률 민감도 보기",
+        titleEn: "Compare principal, horizon, and return in the compound calculator",
+        descKo: "목표 달성에 필요한 수익률이 현실적인지 단순 복리 구조로 다시 확인합니다.",
+        descEn: "Check whether the required return is realistic in a simpler compounding model.",
+      },
+      {
+        href: "/tools/fire-calculator",
+        targetTool: "fire",
+        badgeKo: "은퇴/FIRE",
+        badgeEn: "FIRE",
+        titleKo: "FIRE 계산기로 목표 자산이 은퇴자금으로 충분한지 보기",
+        titleEn: "Check whether the target works as a FIRE number",
+        descKo: "목표 금액이 은퇴 후 지출과 인출률을 버틸 수 있는지 연결해 봅니다.",
+        descEn: "Connect the target amount to spending, withdrawal rate, and retirement runway.",
+      },
+      {
+        href: "/tools/cagr-calculator",
+        targetTool: "cagr",
+        badgeKo: "CAGR",
+        badgeEn: "CAGR",
+        titleKo: "CAGR 계산기로 필요한 연평균 수익률 감각 잡기",
+        titleEn: "Use the CAGR calculator to sense-check annual return",
+        descKo: "목표 달성에 필요한 수익률을 시작·종료 금액 기준의 연평균 수익률로 다시 확인합니다.",
+        descEn: "Translate the required return into a start-to-end annualized return check.",
+      },
+    ],
+    []
+  );
+
   const appJsonLd = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -690,6 +876,7 @@ export default function GoalSimulatorPage() {
       contribGrowthPercent: Number(contribGrowthPercent) || 0,
       scenarioSpread: Number(scenarioSpread) || 0,
       scenarioMode,
+      solveFocus,
       valueMode,
       currency: form.currency || currency,
     });
@@ -765,6 +952,7 @@ export default function GoalSimulatorPage() {
       contribGrowthPercent: Number(contribGrowthPercent) || 0,
       scenarioSpread: Number(scenarioSpread) || 0,
       scenarioMode,
+      solveFocus,
       valueMode,
       currency: presetCurrency,
     });
@@ -774,6 +962,7 @@ export default function GoalSimulatorPage() {
     contribGrowthPercent,
     scenarioSpread,
     scenarioMode,
+    solveFocus,
     valueMode,
     currency,
   ]);
@@ -919,6 +1108,21 @@ export default function GoalSimulatorPage() {
         })
       : null;
 
+    const requiredRate = !achieved
+      ? solveRequiredRate({
+          target: tVal,
+          current: lastParams.current,
+          monthly: lastParams.monthly,
+          years: lastParams.years,
+          compounding: lastParams.compounding,
+          taxRatePercent: lastParams.taxRatePercent,
+          feeRatePercent: lastParams.feeRatePercent,
+          inflationPercent,
+          contribGrowthPercent,
+          valueKey: chartValueKey,
+        })
+      : null;
+
     // ✅ (추가) 필요 월 적립금 증가분(현재 월 적립금 대비 +얼마)
     const currentMonthly = Number(lastParams.monthly) || 0;
     const requiredMonthlyDelta =
@@ -930,6 +1134,21 @@ export default function GoalSimulatorPage() {
         : (locale === "ko"
             ? `현재 월 적립금 대비 +${summaryFmt(requiredMonthlyDelta)}`
             : `+${summaryFmt(requiredMonthlyDelta)} vs current monthly`);
+
+    const requiredMonthlyWarning =
+      !achieved &&
+      requiredMonthly !== null &&
+      currentMonthly > 0 &&
+      Number(requiredMonthly) >= currentMonthly * 2
+        ? (locale === "ko" ? "월 투자액 부담이 큼" : "Monthly contribution burden is high")
+        : null;
+
+    const requiredRateWarning =
+      !achieved && requiredRate !== null && Number(requiredRate) >= 30
+        ? (locale === "ko" ? "현실성 재검토" : "Review realism")
+        : !achieved && requiredRate !== null && Number(requiredRate) >= 15
+          ? (locale === "ko" ? "공격적인 가정" : "Aggressive assumption")
+          : null;
 
     // ✅ (추가) compare 모드: 보수/기준/공격 도달시점(년/개월) 3개를 동시에 계산
     const reachCompare =
@@ -1009,8 +1228,11 @@ export default function GoalSimulatorPage() {
       requiredMonthly,
       requiredMonthlyDelta,
       requiredMonthlyDeltaText,
+      requiredMonthlyWarning,
       requiredYears,
       requiredYearsText,
+      requiredRate,
+      requiredRateWarning,
       reachCompare,
     };
   }, [
@@ -1086,6 +1308,43 @@ export default function GoalSimulatorPage() {
             <li>{t.introBullet3}</li>
           </ul>
         </div>
+
+        <section className="card">
+          <div className="mb-4">
+            <h2 className="text-lg font-semibold mb-1">{t.solveFocusSetupTitle}</h2>
+            <p className="text-sm text-slate-600">{t.solveFocusSetupLead}</p>
+          </div>
+          <div className="grid gap-3 md:grid-cols-3">
+            {solveFocusModes.map((mode) => {
+              const active = solveFocus === mode.key;
+              return (
+                <button
+                  key={mode.key}
+                  type="button"
+                  onClick={() => updateSolveFocus(mode.key)}
+                  className={`text-left rounded-xl border p-4 transition ${
+                    active
+                      ? "border-blue-500 bg-blue-50 shadow-sm ring-2 ring-blue-100"
+                      : "border-slate-200 bg-white hover:border-blue-300 hover:shadow-sm"
+                  }`}
+                >
+                  <div className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                    {locale === "ko" ? mode.labelKo : mode.labelEn}
+                  </div>
+                  <div className="mt-1 text-sm font-semibold text-slate-900">
+                    {locale === "ko" ? mode.titleKo : mode.titleEn}
+                  </div>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-600">
+                    {locale === "ko" ? mode.helpKo : mode.helpEn}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+          <p className="mt-3 text-xs text-slate-500">
+            {locale === "ko" ? activeSolveFocusMode.helpKo : activeSolveFocusMode.helpEn}
+          </p>
+        </section>
 
         {/* 입력 Form */}
         <div className="card" ref={(el) => (sectionEls.current.form = el)}>
@@ -1190,6 +1449,40 @@ export default function GoalSimulatorPage() {
           </div>
         </div>
 
+        <section className="card">
+          <div className="mb-4">
+            <h2 className="text-lg font-semibold mb-1">{t.toolHubTitle}</h2>
+            <p className="text-sm text-slate-600">{t.toolHubLead}</p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {relatedTools.map((tool) => (
+              <Link
+                key={tool.href}
+                href={tool.href}
+                locale={locale}
+                onClick={() =>
+                  trackToolHubClick({
+                    targetTool: tool.targetTool,
+                    locale,
+                    location: "pre_result_hub",
+                  })
+                }
+                className="block rounded-lg border border-slate-200 p-4 hover:border-blue-300 hover:shadow-sm transition"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500 mb-2">
+                  {locale === "ko" ? tool.badgeKo : tool.badgeEn}
+                </p>
+                <h3 className="text-sm font-semibold leading-snug text-slate-900">
+                  {locale === "ko" ? tool.titleKo : tool.titleEn}
+                </h3>
+                <p className="mt-2 text-xs text-slate-600 leading-relaxed">
+                  {locale === "ko" ? tool.descKo : tool.descEn}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         {/* 결과 영역 */}
         {hasResult && (
           <>
@@ -1251,7 +1544,113 @@ export default function GoalSimulatorPage() {
                       </span>
                     </div>
                   )}
-                  
+
+                  <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-3">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                      <div>
+                        <h3 className="text-sm font-semibold">{t.solveFocusTitle}</h3>
+                        <p className="mt-1 text-xs text-slate-600">{t.solveFocusLead}</p>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {solveFocusModes.map((mode) => (
+                          <button
+                            key={mode.key}
+                            type="button"
+                            onClick={() => updateSolveFocus(mode.key)}
+                            className={`px-3 py-2 rounded-full border text-xs font-medium ${
+                              solveFocus === mode.key
+                                ? "bg-blue-600 text-white border-blue-600"
+                                : "bg-white text-slate-700 border-slate-200"
+                            }`}
+                          >
+                            {locale === "ko" ? mode.labelKo : mode.labelEn}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                      {[
+                        {
+                          key: "reach",
+                          label: locale === "ko" ? "언제 달성" : "When reached",
+                          value: diagnosis.reachText || (locale === "ko" ? "기간 내 미도달" : "Not within horizon"),
+                          note: locale === "ko" ? "현재 입력값 기준" : "Based on current inputs",
+                        },
+                        {
+                          key: "monthly",
+                          label: locale === "ko" ? "필요 월 투자액" : "Required monthly",
+                          value: diagnosis.achieved
+                            ? locale === "ko"
+                              ? "현재 조건 충분"
+                              : "Already enough"
+                            : diagnosis.requiredMonthly === null
+                              ? locale === "ko"
+                                ? "계산 범위 초과"
+                                : "Out of range"
+                              : summaryFmt(diagnosis.requiredMonthly),
+                          note: diagnosis.requiredMonthlyDeltaText || (locale === "ko" ? "월 납입 조정" : "Adjust contribution"),
+                          warning: diagnosis.requiredMonthlyWarning,
+                        },
+                        {
+                          key: "years",
+                          label: locale === "ko" ? "필요 기간" : "Required time",
+                          value: diagnosis.achieved
+                            ? diagnosis.reachText || (locale === "ko" ? "현재 조건 충분" : "Already enough")
+                            : diagnosis.requiredYears === null
+                              ? locale === "ko"
+                                ? "계산 범위 초과"
+                                : "Out of range"
+                              : (diagnosis.requiredYearsText ?? `${Number(diagnosis.requiredYears).toFixed(1)}y`),
+                          note: locale === "ko" ? "기간 조정" : "Adjust horizon",
+                          warning: null,
+                        },
+                        {
+                          key: "return",
+                          label: locale === "ko" ? "필요 수익률" : "Required return",
+                          value: diagnosis.achieved
+                            ? locale === "ko"
+                              ? "현재 조건 충분"
+                              : "Already enough"
+                            : diagnosis.requiredRate === null
+                              ? locale === "ko"
+                                ? "계산 범위 초과"
+                                : "Out of range"
+                              : `${Number(diagnosis.requiredRate).toFixed(2)}%`,
+                          note: locale === "ko" ? "수익률 가정 조정" : "Adjust return assumption",
+                          warning: diagnosis.requiredRateWarning,
+                        },
+                      ].map((card) => {
+                        const active = solveFocus === card.key;
+                        return (
+                          <div
+                            key={card.key}
+                            className={`rounded-xl border p-3 ${
+                              active
+                                ? "border-blue-500 bg-blue-50 shadow-sm ring-2 ring-blue-100"
+                                : "border-slate-200 bg-white"
+                            }`}
+                          >
+                            <div className="text-xs font-semibold tracking-[0.14em] text-slate-500 uppercase">
+                              {card.label}
+                            </div>
+                            <div className="mt-1 text-base font-semibold text-slate-900">
+                              {card.value}
+                            </div>
+                            <div className="mt-1 text-xs text-slate-500">
+                              {card.note}
+                            </div>
+                            {card.warning && (
+                              <div className="mt-2 inline-flex rounded-full bg-amber-100 px-2 py-1 text-xs font-semibold text-amber-800">
+                                {card.warning}
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
                   {/* ✅ compare 모드: 3시나리오 도달시점 표시 */}
                   {scenarioMode === "compare" && diagnosis.reachCompare && (
                     <div className="mt-3 flex flex-wrap gap-2 text-xs">
@@ -1271,50 +1670,6 @@ export default function GoalSimulatorPage() {
                     </div>
                   )}
 
-                  {!diagnosis.achieved && (
-                    <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                      <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                        <div className="text-xs font-semibold tracking-[0.14em] text-slate-500 uppercase">
-                          {locale === "ko" ? "필요 월 적립금" : "Required monthly"}
-                        </div>
-                        <div className="mt-1 text-lg font-semibold">
-                          {diagnosis.requiredMonthly === null
-                            ? locale === "ko"
-                              ? "계산 범위를 초과했습니다"
-                              : "Out of range"
-                            : summaryFmt(diagnosis.requiredMonthly)}
-                        </div>
-                        {diagnosis.requiredMonthlyDeltaText && (
-                        <div className="text-xs text-slate-500 mt-1">
-                          {diagnosis.requiredMonthlyDeltaText}
-                        </div>
-                      )}
-                        <div className="text-xs text-slate-500 mt-1">
-                          {locale === "ko"
-                            ? "현재 가정(세금/수수료/인플레/적립증가/기간)은 그대로"
-                            : "Same assumptions (tax/fees/inflation/growth/horizon)"}
-                        </div>
-                      </div>
-
-                      <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                        <div className="text-xs font-semibold tracking-[0.14em] text-slate-500 uppercase">
-                          {locale === "ko" ? "필요 기간" : "Required years"}
-                        </div>
-                        <div className="mt-1 text-lg font-semibold">
-                          {diagnosis.requiredYears === null
-                            ? locale === "ko"
-                              ? "계산 범위를 초과했습니다"
-                              : "Out of range"
-                            : (diagnosis.requiredYearsText ?? `${Number(diagnosis.requiredYears).toFixed(1)}y`)}
-                        </div>
-                        <div className="text-xs text-slate-500 mt-1">
-                          {locale === "ko"
-                            ? "현재 가정(월적립/수익률/세금/수수료/인플레/적립증가)은 그대로"
-                            : "Same assumptions (monthly/return/tax/fees/inflation/growth)"}
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
               )}
 
@@ -1357,28 +1712,6 @@ export default function GoalSimulatorPage() {
                 />
               </div>
 
-              {/* 🔹 FAQ 섹션 */}
-              <div className="card w-full min-w-0 max-w-full" ref={(el) => (sectionEls.current.faq = el)}>
-                <h2 className="text-lg font-semibold mb-3">
-                  {t.faqTitle}
-                </h2>
-                <div className="space-y-3">
-                  {faqItems.map((item, idx) => (
-                    <details
-                      key={idx}
-                      className="border border-slate-200 rounded-lg p-3 bg-slate-50"
-                      open={idx === 0}
-                    >
-                      <summary className="cursor-pointer font-medium text-sm">
-                        {item.q}
-                      </summary>
-                      <p className="mt-2 text-sm text-slate-700 whitespace-pre-line">
-                        {item.a}
-                      </p>
-                    </details>
-                  ))}
-                </div>
-              </div>
             </div>
 
             {/* ✅ (추가) 공유 + PDF 다운로드 CTA */}
@@ -1398,6 +1731,7 @@ export default function GoalSimulatorPage() {
 
 
             <div className="tool-cta-section">
+              {/* TODO: ToolCta 공통 컴포넌트에 클릭 추적 prop이 생기면 location="result_cta"로 tool_hub_click을 연결합니다. */}
               <ToolCta lang={lang} type="fire" />
               <ToolCta lang={lang} type="compound" />
               <ToolCta lang={lang} type="cagr" />
@@ -1417,6 +1751,29 @@ export default function GoalSimulatorPage() {
             )}
           </>
         )}
+
+        {/* 🔹 FAQ 섹션: JSON-LD FAQPage와 같은 faqItems를 사용하고, 계산 전에도 노출합니다. */}
+        <section className="card w-full min-w-0 max-w-full" ref={(el) => (sectionEls.current.faq = el)}>
+          <h2 className="text-lg font-semibold mb-3">
+            {t.faqTitle}
+          </h2>
+          <div className="space-y-3">
+            {faqItems.map((item, idx) => (
+              <details
+                key={idx}
+                className="border border-slate-200 rounded-lg p-3 bg-slate-50"
+                open={idx === 0}
+              >
+                <summary className="cursor-pointer font-medium text-sm">
+                  {item.q}
+                </summary>
+                <p className="mt-2 text-sm text-slate-700 whitespace-pre-line">
+                  {item.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
 
         {/* ✅ 내부링크: 추천 가이드 글 5개 (SEO + 체류시간 + 내부탐색) */}
         <section className="card w-full min-w-0 max-w-full" ref={(el) => (sectionEls.current.guides = el)}>

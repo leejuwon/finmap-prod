@@ -31,6 +31,7 @@ export default function DCAYearTable({
 
     return {
       year: r.year,
+      periodLabel: r.periodLabel || '',
       invested,
       net,
       gross,
@@ -46,6 +47,7 @@ export default function DCAYearTable({
 
     const header = [
       'year',
+      'periodEnd',
       'contributionYear',
       'investedTotal',
       'netAssets',
@@ -59,6 +61,7 @@ export default function DCAYearTable({
       lines.push(
         [
           s.year,
+          s.periodLabel,
           s.contrib,
           s.invested,
           s.net,
@@ -142,7 +145,7 @@ export default function DCAYearTable({
             {stats.map((s) => (
               <tr key={s.year} className="border-t">
                 <td className="px-2 py-1 text-left whitespace-nowrap">
-                  {s.year}
+                  {s.periodLabel ? `${s.year} (${s.periodLabel})` : s.year}
                 </td>
                 <td className="px-2 py-1 text-right whitespace-nowrap">
                   {formatMoneyAuto(s.contrib, currency, locale)}

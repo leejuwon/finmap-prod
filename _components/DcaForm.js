@@ -8,8 +8,14 @@ const dict = {
     initialUsd: '초기 투자금(USD)',
     monthlyWon: '월 적립금(만원)',
     monthlyUsd: '월 적립금(USD)',
+    weeklyWon: '주 투자금(만원)',
+    weeklyUsd: '주 투자금(USD)',
     rate: '연 수익률(%)',
     years: '투자 기간(년)',
+    startDate: '시작일(선택)',
+    contributionFrequency: '투자 주기',
+    frequencyMonthly: '매월',
+    frequencyWeekly: '매주',
     annualIncrease: '연간 적립금 증가율(%)',
     currency: '통화',
     compounding: '복리 주기',
@@ -18,6 +24,12 @@ const dict = {
     tax: '세금(이자소득세 %, 0이면 없음)',
     fee: '수수료(연 %, 0이면 없음)',
     calc: '시뮬레이션 실행',
+    errorYears: '투자 기간은 0보다 커야 합니다.',
+    errorInvestmentRequired: '초기 투자금과 정기 투자금 중 하나는 0보다 커야 합니다.',
+    errorAnnualRate: '연 수익률은 -99%보다 커야 합니다.',
+    errorTaxRate: '세율은 0 이상 100 미만이어야 합니다.',
+    errorFeeRate: '수수료율은 0 이상 100 이하이어야 합니다.',
+    errorStartDate: '시작일 형식이 올바르지 않습니다.',
   },
   en: {
     title: 'ETF/Stock DCA Simulator',
@@ -25,9 +37,15 @@ const dict = {
     initialUsd: 'Initial Investment (USD)',
     monthlyWon: 'Monthly Contribution (×10k KRW)',
     monthlyUsd: 'Monthly Contribution (USD)',
+    weeklyWon: 'Weekly Contribution (×10k KRW)',
+    weeklyUsd: 'Weekly Contribution (USD)',
     rate: 'Annual Return (%)',
     years: 'Years',
-    annualIncrease: 'Annual increase of monthly (%)',
+    startDate: 'Start date (optional)',
+    contributionFrequency: 'Investment frequency',
+    frequencyMonthly: 'Monthly',
+    frequencyWeekly: 'Weekly',
+    annualIncrease: 'Annual contribution increase (%)',
     currency: 'Currency',
     compounding: 'Compounding',
     compoundingMonthly: 'Monthly',
@@ -35,6 +53,12 @@ const dict = {
     tax: 'Tax rate (%; 0 = none)',
     fee: 'Fee per year (%; 0 = none)',
     calc: 'Run simulation',
+    errorYears: 'Years must be greater than 0.',
+    errorInvestmentRequired: 'Initial investment or recurring contribution must be greater than 0.',
+    errorAnnualRate: 'Annual return must be greater than -99%.',
+    errorTaxRate: 'Tax rate must be at least 0 and below 100.',
+    errorFeeRate: 'Fee rate must be between 0 and 100.',
+    errorStartDate: 'Start date format is invalid.',
   },
 };
 
@@ -43,11 +67,27 @@ const DEFAULT_FORM = {
   monthly: 50,
   annualRate: 7,
   years: 10,
+  startDate: '',
+  contributionFrequency: 'monthly',
   annualIncrease: 0,
   compounding: 'monthly',
   taxRate: 15.4,
   feeRate: 0.5,
 };
+
+function isValidDateString(value) {
+  if (!value) return true;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+
+  const [year, month, day] = value.split('-').map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+
+  return (
+    date.getUTCFullYear() === year &&
+    date.getUTCMonth() === month - 1 &&
+    date.getUTCDate() === day
+  );
+}
 
 export default function DCAForm({
   onSubmit,
@@ -86,9 +126,30 @@ export default function DCAForm({
     setForm((prev) => ({ ...prev, [name]: num }));
   };
 
-  const disabled = form.years <= 0;
+  const validationErrors = useMemo(() => {
+    const errors = [];
+    const years = Number(form.years);
+    const initial = Number(form.initial) || 0;
+    const monthly = Number(form.monthly) || 0;
+    const annualRate = Number(form.annualRate);
+    const taxRate = Number(form.taxRate);
+    const feeRate = Number(form.feeRate);
+
+    if (!Number.isFinite(years) || years <= 0) errors.push(t.errorYears);
+    if (initial <= 0 && monthly <= 0) errors.push(t.errorInvestmentRequired);
+    if (!Number.isFinite(annualRate) || annualRate <= -99) errors.push(t.errorAnnualRate);
+    if (!Number.isFinite(taxRate) || taxRate < 0 || taxRate >= 100) errors.push(t.errorTaxRate);
+    if (!Number.isFinite(feeRate) || feeRate < 0 || feeRate > 100) errors.push(t.errorFeeRate);
+    if (!isValidDateString(form.startDate)) errors.push(t.errorStartDate);
+
+    return errors;
+  }, [form, t]);
+
+  const disabled = validationErrors.length > 0;
 
   const handleSubmit = () => {
+    if (disabled) return;
+
     onSubmit({
       ...form,
       currency, // 참고용으로 함께 전달
@@ -97,8 +158,15 @@ export default function DCAForm({
 
   const initialLabel =
     currency === 'KRW' ? t.initialWon : t.initialUsd;
-  const monthlyLabel =
-    currency === 'KRW' ? t.monthlyWon : t.monthlyUsd;
+  const isWeekly = form.contributionFrequency === 'weekly';
+  const contributionLabel = isWeekly
+    ? currency === 'KRW'
+      ? t.weeklyWon
+      : t.weeklyUsd
+    : currency === 'KRW'
+      ? t.monthlyWon
+      : t.monthlyUsd;
+  const startDateInputValue = isValidDateString(form.startDate) ? form.startDate : '';
 
   const fmt = (n) => {
     const v = Number(n) || 0;
@@ -121,7 +189,7 @@ export default function DCAForm({
           />
         </label>
         <label className="grid gap-1">
-          <span className="text-sm">{monthlyLabel}</span>
+          <span className="text-sm">{contributionLabel}</span>
           <input
             name="monthly"
             type="text"
@@ -140,7 +208,7 @@ export default function DCAForm({
             className="input"
             value={form.annualRate}
             onChange={handleNumberChange}
-            min="0"
+            min="-98.99"
             step="0.1"
           />
         </label>
@@ -161,6 +229,30 @@ export default function DCAForm({
 
       {/* 2행: 연간 증가율 + 복리/세금/수수료 */}
       <div className="grid gap-3 md:grid-cols-4">
+        <label className="grid gap-1">
+          <span className="text-sm">{t.contributionFrequency}</span>
+          <select
+            name="contributionFrequency"
+            className="select"
+            value={form.contributionFrequency}
+            onChange={handleChange}
+          >
+            <option value="monthly">{t.frequencyMonthly}</option>
+            <option value="weekly">{t.frequencyWeekly}</option>
+          </select>
+        </label>
+
+        <label className="grid gap-1">
+          <span className="text-sm">{t.startDate}</span>
+          <input
+            name="startDate"
+            type="date"
+            className="input"
+            value={startDateInputValue}
+            onChange={handleChange}
+          />
+        </label>
+
         <label className="grid gap-1">
           <span className="text-sm">{t.annualIncrease}</span>
           <input
@@ -187,6 +279,10 @@ export default function DCAForm({
           </select>
         </label>
 
+      </div>
+
+      {/* 3행: 비용 가정 */}
+      <div className="grid gap-3 md:grid-cols-2">
         <label className="grid gap-1">
           <span className="text-sm">{t.tax}</span>
           <input
@@ -197,6 +293,7 @@ export default function DCAForm({
             value={form.taxRate}
             onChange={handleNumberChange}
             min="0"
+            max="99.99"
             step="0.1"
             placeholder="15.4"
           />
@@ -212,13 +309,27 @@ export default function DCAForm({
             value={form.feeRate}
             onChange={handleNumberChange}
             min="0"
+            max="100"
             step="0.1"
             placeholder="0.5"
           />
         </label>
       </div>
 
-      {/* 3행: 통화 + 버튼 */}
+      {validationErrors.length > 0 && (
+        <div
+          role="alert"
+          className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-900"
+        >
+          <ul className="list-disc pl-5 space-y-1">
+            {validationErrors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* 4행: 통화 + 버튼 */}
       <div className="flex flex-wrap gap-3 justify-between items-center">
         <label className="grid gap-1">
           <span className="text-sm">{t.currency}</span>

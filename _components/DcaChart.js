@@ -21,7 +21,13 @@ export default function DCAChart({
   const labels = useMemo(
     () =>
       rows.map((r) =>
-        locale.startsWith('ko') ? `${r.year}년` : `Year ${r.year}`
+        r.periodLabel
+          ? locale.startsWith('ko')
+            ? `${r.year}년 (${r.periodLabel})`
+            : `Year ${r.year} (${r.periodLabel})`
+          : locale.startsWith('ko')
+            ? `${r.year}년`
+            : `Year ${r.year}`
       ),
     [rows, locale]
   );
@@ -80,13 +86,15 @@ export default function DCAChart({
             afterBody: (items) => {
               if (!items.length || !chartData) return [];
               const idx = items[0].dataIndex;
+              const row = rows[idx] || {};
 
               const invested = chartData._metaInvested[idx] || 0;
               const net = chartData._metaNet[idx] || 0;
               const gain = chartData._metaGain[idx] || 0;
               const returnRate =
                 invested > 0 ? (net / invested) * 100 : 0;
-              const year = idx + 1;
+              const year = row.year || idx + 1;
+              const period = row.periodLabel ? ` (${row.periodLabel})` : '';
 
               const invStr = formatMoneyAuto(
                 invested,
@@ -99,6 +107,7 @@ export default function DCAChart({
               if (locale.startsWith('ko')) {
                 return [
                   `연도: ${year}년`,
+                  ...(period ? [`기간: ${row.periodLabel}`] : []),
                   `누적 투자금: ${invStr}`,
                   `세후 자산: ${netStr}`,
                   `세후 수익: ${gainStr}`,
@@ -108,6 +117,7 @@ export default function DCAChart({
 
               return [
                 `Year: ${year}`,
+                ...(period ? [`Period: ${row.periodLabel}`] : []),
                 `Total invested: ${invStr}`,
                 `Net assets: ${netStr}`,
                 `Net gain: ${gainStr}`,
@@ -128,7 +138,7 @@ export default function DCAChart({
         },
       },
     }),
-    [chartData, currency, locale]
+    [chartData, currency, locale, rows]
   );
 
   if (!chartData) return null;
