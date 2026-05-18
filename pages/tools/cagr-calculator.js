@@ -34,12 +34,25 @@ const CAGR_PRESET_FIELDS = [
   { query: "initial", state: "initial", type: "number" },
   { query: "final", state: "final", type: "number" },
   { query: "years", state: "years", type: "number" },
+  { query: "startDate", state: "startDate", type: "string" },
+  { query: "endDate", state: "endDate", type: "string" },
   { query: "taxRate", state: "taxRate", type: "number" },
   { query: "feeRate", state: "feeRate", type: "number" },
   { query: "currency", state: "currency", type: "string", allowed: ["KRW", "USD"] },
 ];
 
 const CAGR_RECENT_KEY = "fm_tool_recent_cagr";
+
+function trackToolHubClick({ targetTool, locale, location }) {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+
+  window.gtag("event", "tool_hub_click", {
+    source_tool: "cagr",
+    target_tool: targetTool,
+    locale,
+    location,
+  });
+}
 
 export default function CagrCalculatorPage() {
   const [isExporting, setIsExporting] = useState(false);
@@ -148,6 +161,14 @@ export default function CagrCalculatorPage() {
       yearsUnit: locale === "ko" ? "년" : "years",
       chartTitle:
         locale === "ko" ? "세전 vs 세후 자산 경로" : "Gross vs net asset path",
+      resultCautionTitle:
+        locale === "ko"
+          ? "CAGR 숫자만 보고 끝내지 마세요"
+          : "Do not stop at the CAGR number",
+      resultCautionBody:
+        locale === "ko"
+          ? "연복리 수익률이 같아도 변동성, 중간 추가납입, 세금·수수료, 투자 기간이 다르면 실제 체감 성과는 달라집니다. CAGR은 성과를 한 줄로 요약하는 출발점이고, 다음 단계는 적립식 투자·목표 자산·복리 시나리오로 다시 확인하는 것입니다."
+          : "The same CAGR can feel very different when volatility, additional contributions, taxes, fees, or time horizon change. Treat CAGR as a starting point, then test the plan with DCA, goal, and compound-interest scenarios.",
 
       // ✅ 키워드 섹션 타이틀
       explainTitle:
@@ -163,6 +184,14 @@ export default function CagrCalculatorPage() {
         locale === "ko"
           ? "CAGR 계산기 자주 묻는 질문(FAQ)"
           : "CAGR calculator FAQ",
+      toolHubTitle:
+        locale === "ko"
+          ? "CAGR 계산 후 다음 계산기로 이어가기"
+          : "Continue from CAGR into the next calculator",
+      toolHubLead:
+        locale === "ko"
+          ? "CAGR은 과거 성과를 요약하는 도구입니다. 앞으로의 월 납입, 목표 금액, 복리 누적 결과는 아래 계산기로 이어서 확인하세요."
+          : "CAGR summarizes past performance. Use the next tools to test monthly contributions, target amounts, and long-term compounding.",
     }),
     [locale]
   );
@@ -191,6 +220,10 @@ export default function CagrCalculatorPage() {
               q: "세금·수수료는 어떻게 반영하나요?",
               a: "이 계산기는 사용자가 입력한 세율(%)과 연 수수료율(%)을 활용해, 세후 CAGR을 기준으로 세전 CAGR을 단순 모델로 역산합니다. 실제 상품별 과세/보수 구조와 차이가 있을 수 있습니다. 0으로 입력하면 미적용입니다.",
             },
+            {
+              q: "CAGR만 같으면 투자 결과도 비슷한가요?",
+              a: "아닙니다. CAGR은 시작값과 종료값을 연평균 성장률로 요약하지만, 중간 변동성·추가납입·인출·세금·수수료는 체감 결과를 크게 바꿉니다. 적립식 투자라면 DCA 시뮬레이터, 목표 금액 역산은 목표 자산 시뮬레이터로 함께 확인하는 편이 좋습니다.",
+            },
           ]
         : [
             {
@@ -208,6 +241,10 @@ export default function CagrCalculatorPage() {
             {
               q: "How are tax and fees applied?",
               a: "The calculator treats the growth from initial to final as net, then estimates a gross CAGR consistent with your tax/fee inputs. Real-world products can be more complex. Set them to 0 to remove the cost.",
+            },
+            {
+              q: "Does the same CAGR mean the same investing experience?",
+              a: "No. CAGR summarizes the starting and ending values, but volatility, contributions, withdrawals, taxes, and fees can make the real experience very different. Use the DCA, goal, and compound calculators to test the next scenario.",
             },
           ],
     [locale]
@@ -311,22 +348,22 @@ export default function CagrCalculatorPage() {
       {
         slug: "what-is-cagr",
         category: "personalFinance",
-        tagKo: "CAGR란 무엇인가?",
-        tagEn: "About CAGR",
-        titleKo: "ETF·펀드 선택 시 CAGR을 반드시 확인해야 하는 이유",
-        titleEn: "What Is CAGR? Understanding the Difference From Simple Returns",
-        descKo: "ETF·펀드 비교에서 총 수익률만 보면 위험해질 수 있습니다. 이 글에서는 연평균 복리 수익률(CAGR)의 개념부터 ETF 3·5년 CAGR 비교표, 초보자·전문가별 활용법까지 깊이 있게 정리합니다.",
-        descEn: "A complete guide to understanding why CAGR (Compound Annual Growth Rate) matters more than total return when evaluating ETFs and funds. Includes tables, long-term examples, and strategies for beginners and professionals.",
+        tagKo: "CAGR 계산법",
+        tagEn: "CAGR guide",
+        titleKo: "CAGR 계산법: 단순 수익률과 다른 이유와 투자 예시",
+        titleEn: "CAGR Calculator Guide: Formula, Example, and Simple Return Difference",
+        descKo: "CAGR 계산식, 단순 수익률과의 차이, 장기 투자 성과 비교 방법을 예시와 표로 정리합니다.",
+        descEn: "Understand the CAGR formula, compare it with simple return, and use examples to evaluate long-term performance.",
       },
       {
         slug: "cagr-7percent-reality-check",
         category: "investingInfo",
         tagKo: "장기 CAGR",
         tagEn: "long-term CAGR",
-        titleKo: "‘연 7% 복리’에 대하여. CAGR로 현실 체크하기",
-        titleEn: "About ‘7% Annual Return’. A Reality Check Using CAGR",
-        descKo: "많은 투자자가 말하는 ‘연 7% 수익률’은 실제 장기 CAGR과 차이가 있습니다. S&P500 장기 CAGR, 기대수익률 착시, 복리 효과를 현실적으로 이해하고 목표 자산 계획에 적용하는 고급 분석 글입니다.",
-        descEn: "Many investors assume that a 7% annual return is realistic, but the truth depends on the difference between expected returns and actual CAGR. This article analyzes S&P 500 long-term CAGR, return volatility, and how compound-growth assumptions distort expectations.",
+        titleKo: "연 7% 복리 현실 체크: CAGR로 목표 자산 계산하는 법",
+        titleEn: "7% Annual Return Reality Check: CAGR, Volatility, and Compounding",
+        descKo: "연 7% 복리가 실제로 얼마를 의미하는지 변동성, 세금, 물가와 함께 점검합니다.",
+        descEn: "Check what a 7% annual return means once volatility, time horizon, and compounding assumptions enter the plan.",
       },
       {
         slug: "diagnose-investing-skill-with-cagr",
@@ -362,11 +399,49 @@ export default function CagrCalculatorPage() {
     []
   );
 
+  const relatedTools = useMemo(
+    () => [
+      {
+        href: "/tools/dca-calculator",
+        targetTool: "dca",
+        badgeKo: "적립식 투자",
+        badgeEn: "DCA",
+        anchorKo: "DCA 적립식 투자 시뮬레이터로 월 납입 계획 만들기",
+        anchorEn: "Open the DCA simulator for monthly contribution plans",
+        descKo: "CAGR 가정을 월 적립금, 세금, 수수료, 납입 증가율까지 넣어 장기 자산 경로로 바꿔봅니다.",
+        descEn: "Turn a return assumption into a monthly contribution path with taxes, fees, and step-up rules.",
+      },
+      {
+        href: "/tools/goal-simulator",
+        targetTool: "goal",
+        badgeKo: "목표 자산",
+        badgeEn: "Goal",
+        anchorKo: "목표 자산 시뮬레이터로 필요한 월 투자금 계산하기",
+        anchorEn: "Use the goal simulator to find required monthly investment",
+        descKo: "목표 금액과 기간을 정하고, 필요한 월 납입액과 수익률 민감도를 역산합니다.",
+        descEn: "Set a target amount and time horizon, then reverse-calculate the monthly investment needed.",
+      },
+      {
+        href: "/tools/compound-interest",
+        targetTool: "compound",
+        badgeKo: "복리",
+        badgeEn: "Compound",
+        anchorKo: "복리 계산기로 원금·월적립·기간별 미래가치 보기",
+        anchorEn: "Compare future value in the compound interest calculator",
+        descKo: "원금, 월 적립금, 복리 주기, 세금·수수료를 바꿔 미래가치를 비교합니다.",
+        descEn: "Compare future value by changing principal, contributions, compounding frequency, taxes, and fees.",
+      },
+    ],
+    []
+  );
+
   const onSubmit = (form) => {
     persistPreset({
       initial: Number(form.initial) || 0,
       final: Number(form.final) || 0,
       years: Number(form.years) || 0,
+      startDate: form.startDate || "",
+      endDate: form.endDate || "",
       taxRate: Number(form.taxRate) || 0,
       feeRate: Number(form.feeRate) || 0,
       currency: form.currency || currency,
@@ -512,6 +587,40 @@ export default function CagrCalculatorPage() {
           />
         </div>
 
+        <section className="card">
+          <div className="mb-4">
+            <h2 className="text-lg font-semibold mb-1">{t.toolHubTitle}</h2>
+            <p className="text-sm text-slate-600">{t.toolHubLead}</p>
+          </div>
+          <div className="grid gap-3 md:grid-cols-3">
+            {relatedTools.map((tool) => (
+              <Link
+                key={tool.href}
+                href={tool.href}
+                locale={locale}
+                onClick={() =>
+                  trackToolHubClick({
+                    targetTool: tool.targetTool,
+                    locale,
+                    location: "pre_result_hub",
+                  })
+                }
+                className="block rounded-lg border border-slate-200 p-4 hover:border-blue-300 hover:shadow-sm transition"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500 mb-2">
+                  {locale === "ko" ? tool.badgeKo : tool.badgeEn}
+                </p>
+                <h3 className="text-sm font-semibold leading-snug text-slate-900">
+                  {locale === "ko" ? tool.anchorKo : tool.anchorEn}
+                </h3>
+                <p className="mt-2 text-xs text-slate-600 leading-relaxed">
+                  {locale === "ko" ? tool.descKo : tool.descEn}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         {/* 결과 */}
         {hasResult && (
           <>
@@ -536,6 +645,49 @@ export default function CagrCalculatorPage() {
                 </div>
               </div>
 
+              <div className="card border-l-4 border-amber-300 bg-amber-50">
+                <h2 className="text-base font-semibold mb-2 text-slate-900">
+                  {t.resultCautionTitle}
+                </h2>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  {t.resultCautionBody}
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <Link
+                    href="/tools/dca-calculator"
+                    locale={locale}
+                    onClick={() =>
+                      trackToolHubClick({
+                        targetTool: "dca",
+                        locale,
+                        location: "result_caution",
+                      })
+                    }
+                    className="inline-flex items-center rounded-lg border border-amber-200 bg-white px-3 py-2 text-xs font-medium text-slate-800 hover:border-amber-300"
+                  >
+                    {locale === "ko"
+                      ? "DCA 시뮬레이터로 추가납입 반영하기"
+                      : "Model contributions in the DCA simulator"}
+                  </Link>
+                  <Link
+                    href="/tools/goal-simulator"
+                    locale={locale}
+                    onClick={() =>
+                      trackToolHubClick({
+                        targetTool: "goal",
+                        locale,
+                        location: "result_caution",
+                      })
+                    }
+                    className="inline-flex items-center rounded-lg border border-amber-200 bg-white px-3 py-2 text-xs font-medium text-slate-800 hover:border-amber-300"
+                  >
+                    {locale === "ko"
+                      ? "목표 자산 시뮬레이터로 월 투자금 역산하기"
+                      : "Reverse-calc monthly investment in the goal simulator"}
+                  </Link>
+                </div>
+              </div>
+
               <div ref={(el) => (sectionEls.current.chart = el)} className="card scroll-mt-24">
                 <div className="flex items-center gap-3 mb-2">
                   <h2 className="text-lg font-semibold">{t.chartTitle}</h2>
@@ -557,26 +709,6 @@ export default function CagrCalculatorPage() {
                 initial={initial}
               />
 
-              <div ref={(el) => (sectionEls.current.insight = el)} className="card w-full scroll-mt-24">
-                <h2 className="text-lg font-semibold mb-3">{t.faqTitle}</h2>
-                <div className="space-y-3">
-                  {faqItems.map((item, idx) => (
-                    <details
-                      key={idx}
-                      className="border border-slate-200 rounded-lg p-3 bg-slate-50"
-                      open={idx === 0}
-                    >
-                      <summary className="cursor-pointer font-medium text-sm">
-                        {item.q}
-                      </summary>
-                      <p className="mt-2 text-sm text-slate-700 whitespace-pre-line">
-                        {item.a}
-                      </p>
-                    </details>
-                  ))}
-                </div>
-              </div>
-
               {/* CTA */}
               <div ref={(el) => (sectionEls.current.cta = el)} className="scroll-mt-24">
                 <CompoundCTA
@@ -593,6 +725,8 @@ export default function CagrCalculatorPage() {
             </div>
 
             <div className="tool-cta-section">
+              {/* TODO: ToolCta 공통 컴포넌트에 클릭 추적 prop이 생기면 location="result_cta"로 연결합니다. */}
+              <ToolCta lang={locale} type="dca" />
               <ToolCta lang={locale} type="fire" />
               <ToolCta lang={locale} type="compound" />
               <ToolCta lang={locale} type="goal" />
@@ -611,6 +745,25 @@ export default function CagrCalculatorPage() {
             )}
           </>
         )}
+        <section ref={(el) => (sectionEls.current.insight = el)} className="card w-full scroll-mt-24">
+          <h2 className="text-lg font-semibold mb-3">{t.faqTitle}</h2>
+          <div className="space-y-3">
+            {faqItems.map((item, idx) => (
+              <details
+                key={idx}
+                className="border border-slate-200 rounded-lg p-3 bg-slate-50"
+                open={idx === 0}
+              >
+                <summary className="cursor-pointer font-medium text-sm">
+                  {item.q}
+                </summary>
+                <p className="mt-2 text-sm text-slate-700 whitespace-pre-line">
+                  {item.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
         {/* ✅ 내부링크: 추천 가이드 글 5개 (SEO + 체류시간 + 내부탐색) */}
         <section className="card">
           <div className="flex items-center justify-between gap-3 mb-3">
