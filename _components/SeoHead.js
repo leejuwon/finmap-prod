@@ -2,9 +2,32 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-export default function SeoHead({ title, desc, url = "/", image, locale, type, robots }) {
+const SITE_URL = "https://www.finmaphub.com";
+
+function normalizePath(input) {
+  const safeUrl = String(input || "/").trim() || "/";
+  let pathname = safeUrl;
+
+  try {
+    if (/^https?:\/\//i.test(safeUrl)) {
+      const parsed = new URL(safeUrl);
+      pathname = parsed.pathname || "/";
+    } else {
+      pathname = safeUrl.split("?")[0].split("#")[0];
+    }
+  } catch {
+    pathname = "/";
+  }
+
+  const rawPath = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  let path = rawPath.replace(/^\/en(?=\/|$)/, "").replace(/^\/ko(?=\/|$)/, "");
+  path = path.replace(/\/{2,}/g, "/");
+  if (path.length > 1 && path.endsWith("/")) path = path.slice(0, -1);
+  return path || "/";
+}
+
+export default function SeoHead({ title, desc, url = "/", canonical, image, locale, type, robots }) {
   const router = useRouter();
-  const site = "https://www.finmaphub.com";
 
   const effectiveLocale = locale || (router.locale === "en" ? "en" : "ko");
 
@@ -12,33 +35,25 @@ export default function SeoHead({ title, desc, url = "/", image, locale, type, r
   const autoType =
     type || (router?.pathname?.startsWith("/posts") ? "article" : "website");
 
-  // ✅ url에 쿼리/해시가 붙어도 canonical/hreflang이 흔들리지 않도록 제거
-  const safeUrl = String(url || "/");
-  const noQuery = safeUrl.split("?")[0].split("#")[0];
-   const rawPath = noQuery.startsWith("/") ? noQuery : `/${noQuery}`;
-  // url에 실수로 /en 붙여도 제거
-  let path = rawPath.replace(/^\/en(?=\/|$)/, "");
-  // double-slash, trailing-slash 정규화 (canonical 일관성)
-  path = path.replace(/\/{2,}/g, "/");
-  if (path.length > 1 && path.endsWith("/")) path = path.slice(0, -1);
-  const normalizedPath = path || "/";
+  // query/hash, locale prefix, double slash, trailing slash 정규화
+  const normalizedPath = normalizePath(canonical || url);
 
   const prefix = effectiveLocale === "en" ? "/en" : "";
 
   // ✅ 홈(/)일 때만 /en/ -> /en 으로 통일 (리디렉션 포함 페이지 방지)
   const canonicalPath =
     prefix === "/en" && normalizedPath === "/" ? "/en" : `${prefix}${normalizedPath}`;
-  const canonical = `${site}${canonicalPath}`;
+  const canonicalUrl = `${SITE_URL}${canonicalPath}`;
 
   const ogImg = image
     ? (String(image).startsWith("http")
         ? image
-        : `${site}${String(image).startsWith("/") ? image : `/${image}`}`)
-    : `${site}/og-default.png`;
+        : `${SITE_URL}${String(image).startsWith("/") ? image : `/${image}`}`)
+    : `${SITE_URL}/og-default.png`;
 
-  const hrefKo = `${site}${normalizedPath}`;
+  const hrefKo = `${SITE_URL}${normalizedPath}`;
   // ✅ hreflang도 동일 규칙 적용: 홈은 /en
-  const hrefEn = normalizedPath === "/" ? `${site}/en` : `${site}/en${normalizedPath}`;
+  const hrefEn = normalizedPath === "/" ? `${SITE_URL}/en` : `${SITE_URL}/en${normalizedPath}`;
 
   // ✅ OG locale 신호 강화(권장)
   const ogLocale = effectiveLocale === "en" ? "en_US" : "ko_KR";
@@ -52,14 +67,14 @@ export default function SeoHead({ title, desc, url = "/", image, locale, type, r
       {robots && <meta name="robots" content={robots} />}
       {robots && <meta name="googlebot" content={robots} />}
 
-      <link rel="canonical" href={canonical} />
+      <link rel="canonical" href={canonicalUrl} />
       <link rel="alternate" hrefLang="ko" href={hrefKo} />
       <link rel="alternate" hrefLang="en" href={hrefEn} />
       <link rel="alternate" hrefLang="x-default" href={hrefKo} />
 
       <meta property="og:title" content={title || "FinMap"} />
       {desc && <meta property="og:description" content={desc} />}
-      <meta property="og:url" content={canonical} />
+      <meta property="og:url" content={canonicalUrl} />
       <meta property="og:site_name" content="FinMap" />
       <meta property="og:type" content={autoType} />
       <meta property="og:image" content={ogImg} />

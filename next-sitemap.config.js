@@ -86,6 +86,7 @@ function buildPostsLastmodMap() {
 }
 
 const POSTS_LASTMOD_MAP = buildPostsLastmodMap();
+const APT_LASTMOD_MAP = new Map();
 
 function maxIso(a, b) {
   if (!a) return b;
@@ -109,6 +110,72 @@ function buildCategoryLastmodMap(postsMap) {
 }
 
 const CATEGORY_LASTMOD_MAP = buildCategoryLastmodMap(POSTS_LASTMOD_MAP);
+
+function ymToIso(ym) {
+  const s = String(ym || '');
+  if (!/^\d{6}$/.test(s)) return BUILD_TIME_ISO;
+  return `${s.slice(0, 4)}-${s.slice(4, 6)}-01T00:00:00.000Z`;
+}
+
+function clampAptSitemapLimit(v) {
+  const n = Number(v || 500);
+  if (!Number.isFinite(n) || n <= 0) return 0;
+  return Math.min(Math.floor(n), 1500);
+}
+
+async function buildAptDetailPaths() {
+  const limit = clampAptSitemapLimit(process.env.RE_APT_SITEMAP_LIMIT);
+  if (!limit || process.env.RE_APT_SITEMAP === 'false') return [];
+
+  let conn;
+  try {
+    const mysql = require('mysql2/promise');
+    conn = await mysql.createConnection({
+      host: process.env.DB_HOST || '127.0.0.1',
+      port: Number(process.env.DB_PORT || 3306),
+      user: process.env.DB_USER || 'finmap_app',
+      password: process.env.DB_PASSWORD || '',
+      database: process.env.DB_NAME || 'ljw0209',
+      charset: 'utf8mb4',
+      connectTimeout: Number(process.env.DB_CONNECT_TIMEOUT || 3000),
+    });
+
+    const [rows] = await conn.execute(`
+      SELECT
+        s.apt_key,
+        MAX(s.deal_ym) AS latest_ym,
+        SUM(COALESCE(s.tx_count, 0)) AS total_tx
+      FROM re_trade_apt_stats_m s
+      WHERE s.pyeong_band = 'all'
+        AND s.apt_key IS NOT NULL
+        AND s.apt_key <> ''
+        AND COALESCE(s.tx_count, 0) > 0
+      GROUP BY s.apt_key
+      ORDER BY latest_ym DESC, total_tx DESC
+      LIMIT ${limit}
+    `);
+
+    const paths = [];
+    for (const row of rows || []) {
+      const aptKey = String(row?.apt_key || '').trim();
+      if (!aptKey || aptKey.includes('/') || aptKey.includes('[') || aptKey.includes(']')) continue;
+
+      const encodedKey = encodeURIComponent(aptKey);
+      const koPath = `/market/real-estate/apt/${encodedKey}`;
+      const enPath = `/en/market/real-estate/apt/${encodedKey}`;
+      const lastmod = ymToIso(row?.latest_ym);
+      APT_LASTMOD_MAP.set(koPath, lastmod);
+      APT_LASTMOD_MAP.set(enPath, lastmod);
+      paths.push(koPath, enPath);
+    }
+    return paths;
+  } catch (e) {
+    console.warn('[sitemap] apt detail sitemap skipped:', e?.message || e);
+    return [];
+  } finally {
+    if (conn) await conn.end().catch(() => {});
+  }
+}
 
 /* ---------------------- hreflang (xhtml:link) ---------------------- */
 // ⚠️ next-sitemap는 sub-path locale(/en/...) + alternateRefs 조합에서
@@ -160,6 +227,10 @@ function toEnPath(koPath) {
 }
 
 function hasKoEnPairForLoc(koLoc, enLoc) {
+  if (koLoc.startsWith('/market/real-estate/apt/') || enLoc.startsWith('/en/market/real-estate/apt/')) {
+    return true;
+  }
+
   // posts: 양쪽 모두 실제 글이 존재할 때만
   if (koLoc.startsWith('/posts/') || enLoc.startsWith('/en/posts/')) {
     return POSTS_LASTMOD_MAP.has(koLoc) && POSTS_LASTMOD_MAP.has(enLoc);
@@ -214,8 +285,6 @@ module.exports = {
     "/favicon-32.png",
     "/favicon-48.png",
     "/en/en/*", "/en/en/**", "/en/en",
-    "/market/real-estate/apt/*", "/market/real-estate/apt/**",
-    "/en/market/real-estate/apt/*", "/en/market/real-estate/apt/**",
     "/posts/*/en/*", "/posts/*/en/**",
     "/posts/*/ko/*", "/posts/*/ko/**",
     "/en/posts/*/en/*", "/en/posts/*/en/**",
@@ -233,9 +302,8 @@ module.exports = {
     if (loc.includes("//")) return null;
     if (loc === "/en/en" || loc.startsWith("/en/en/")) return null;
     if (loc.includes("?")) return null;
+    if (loc.length > 1 && loc.endsWith("/")) return null;
     if (loc === "/rss.xml" || loc === "/robots.txt" || loc === "/favicon.ico") return null;
-    if (loc.startsWith("/market/real-estate/apt/")) return null;
-    if (loc.startsWith("/en/market/real-estate/apt/")) return null;
     if (/^\/posts\/[^/]+\/(?:en|ko)\//.test(loc)) return null;
     if (/^\/en\/posts\/[^/]+\/(?:en|ko)\//.test(loc)) return null;
 
@@ -244,6 +312,9 @@ module.exports = {
 
     // ---- category hub는 "카테고리 최신 글" lastmod 적용 ----
     if (!lastmod) lastmod = CATEGORY_LASTMOD_MAP.get(loc);
+
+    // ---- apartment details with actual stats data ----
+    if (!lastmod) lastmod = APT_LASTMOD_MAP.get(loc);
 
     // posts인데 맵에 없으면(예: 동적/잘못된) 빌드 시각으로라도 넣기
     if (!lastmod && (loc.startsWith('/posts/') || loc.startsWith('/en/posts/'))) {
@@ -299,8 +370,10 @@ module.exports = {
       extra.push(`/en/category/${c}`);
     }
 
+    const aptDetailPaths = await buildAptDetailPaths();
+
     const res = [];
-    for (const p of extra) {
+    for (const p of [...extra, ...aptDetailPaths]) {
       const out = await config.transform(config, p);
       if (out) res.push(out);
     }

@@ -249,5 +249,5 @@ export function proxy(req) {
 
 // 미들웨어 적용 범위 (전체에 걸되, 위에서 제외 처리함)
 export const config = {
-  matcher: ["/:path*"],
+  matcher: [{ source: "/:path*", locale: false }],
 };

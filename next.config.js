@@ -76,11 +76,11 @@ module.exports = {
       // -------------------------
       // (A) 기존 카테고리 리다이렉트 유지
       // -------------------------
-      { source: '/personalFinance', destination: '/category/personalFinance', permanent: true },
-      { source: '/economicInfo', destination: '/category/economicInfo', permanent: true },
-      { source: '/investingInfo', destination: '/category/investingInfo', permanent: true },
-      { source: '/economics', destination: '/category/economicInfo', permanent: true },
-      { source: '/category/economics', destination: '/category/economicInfo', permanent: true },
+      { source: '/personalFinance', destination: '/category/personalFinance', statusCode: 301 },
+      { source: '/economicInfo', destination: '/category/economicInfo', statusCode: 301 },
+      { source: '/investingInfo', destination: '/category/investingInfo', statusCode: 301 },
+      { source: '/economics', destination: '/category/economicInfo', statusCode: 301 },
+      { source: '/category/economics', destination: '/category/economicInfo', statusCode: 301 },
        // -------------------------
       // (F) Search Console 404로 찍힌 개별 URL 매핑
       // -------------------------
@@ -93,7 +93,7 @@ module.exports = {
       {
         source: "/en/posts/personalFinance/monthly-investment",
         destination: "/en/posts/personalFinance/how-much-per-month-for-100m",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },
 
@@ -107,13 +107,13 @@ module.exports = {
       {
         source: "/category/investing",
         destination: "/category/investingInfo",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },
       {
         source: "/en/category/investing",
         destination: "/en/category/investingInfo",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },
       // tax 카테고리를 지금 안 쓰더라도, 가장 가까운 personalFinance로 정리 (원하면 /category/economicInfo로 바꿔도 됨)
@@ -174,7 +174,7 @@ module.exports = {
       {
         source: "/posts/personalFinance/en/monthly-investment",
         destination: "/en/posts/personalFinance/how-much-per-month-for-100m",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       }, 
       // -------------------------
@@ -184,49 +184,49 @@ module.exports = {
       {
         source: "/posts/:category/ko/:slug",
         destination: "/posts/:category/:slug",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },
       {
         source: "/posts/:category/en/:slug",
         destination: "/en/posts/:category/:slug",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },
       {
         source: "/en/posts/:category/en/:slug",
         destination: "/en/posts/:category/:slug",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },
       {
         source: "/en/posts/:category/ko/:slug",
         destination: "/posts/:category/:slug",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       }, 
       {
         source: "/en/posts/:category/:slug/",
         destination: "/en/posts/:category/:slug",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },        
        {
         source: "/posts/:category/:slug/",
         destination: "/posts/:category/:slug",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },   
       {
         source: "/en/category/:slug/",
         destination: "/en/category/:slug",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },
       {
         source: "/category/:slug/",
         destination: "/category/:slug",
-        permanent: true,
+        statusCode: 301,
         locale: false,
       },
 
@@ -244,16 +244,6 @@ module.exports = {
       { source: "/en/en/:path*", destination: "/en/:path*", statusCode: 301, locale: false },
       // (추가) /en/ → /en (슬래시 정규화)
       //{ source: "/en/", destination: "/en", permanent: true, locale: false },      
-      {
-        source: "/en/market/real-estate/apt/[aptKey]",
-        destination: "/en/market/real-estate",
-        statusCode: 301,
-      },
-      {
-        source: "/market/real-estate/apt/[aptKey]",
-        destination: "/market/real-estate",
-        statusCode: 301,
-      },
       {
         source: "/posts/compound-interest",
         destination: "/tools/compound-interest",

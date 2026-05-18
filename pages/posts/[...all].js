@@ -9,7 +9,7 @@ export async function getServerSideProps({ params }) {
       return {
         redirect: {
           destination: `/en/posts/${category}/${slug}`,
-          permanent: true,
+          statusCode: 301,
         },
       };
     }
@@ -17,7 +17,7 @@ export async function getServerSideProps({ params }) {
       return {
         redirect: {
           destination: `/posts/${category}/${slug}`,
-          permanent: true,
+          statusCode: 301,
         },
       };
     }

@@ -6,9 +6,14 @@ import SeoHead from "./SeoHead";
 function buildCanonical(site, asPath, effectiveLocale) {
   // SeoHead와 동일한 철학: query/hash 제거, /en 중복 제거, URL path 정규화
   const safeUrl = String(asPath || "/");
-  const noQuery = safeUrl.split("?")[0].split("#")[0];
+  let noQuery = safeUrl.split("?")[0].split("#")[0];
+  try {
+    if (/^https?:\/\//i.test(safeUrl)) noQuery = new URL(safeUrl).pathname || "/";
+  } catch {
+    noQuery = "/";
+  }
   const rawPath = noQuery.startsWith("/") ? noQuery : `/${noQuery}`;
-  let path = rawPath.replace(/^\/en(?=\/|$)/, "");
+  let path = rawPath.replace(/^\/en(?=\/|$)/, "").replace(/^\/ko(?=\/|$)/, "");
   path = path.replace(/\/{2,}/g, "/");
   if (path.length > 1 && path.endsWith("/")) path = path.slice(0, -1);
   const normalizedPath = path || "/";
@@ -31,6 +36,9 @@ export default function ToolSeo({
   title,
   desc,
   image,
+  url,
+  canonical,
+  locale,
   robots = "index,follow,max-image-preview:large",
   // JSON-LD 옵션
   appName, // 없으면 title 사용
@@ -42,8 +50,9 @@ export default function ToolSeo({
 }) {
   const router = useRouter();
   const site = "https://www.finmaphub.com";
-  const effectiveLocale = (router.locale === "en" ? "en" : "ko");
-  const canonical = buildCanonical(site, router.asPath, effectiveLocale);
+  const effectiveLocale = locale || (router.locale === "en" ? "en" : "ko");
+  const seoUrl = canonical || url || router.asPath;
+  const canonicalUrl = canonical || buildCanonical(site, seoUrl, effectiveLocale);
   const ogImg = buildOgImage(site, image);
 
   const inLanguage = effectiveLocale === "en" ? "en" : "ko-KR";
@@ -53,7 +62,7 @@ export default function ToolSeo({
     "@type": "WebApplication",
     name: appName || title || "FinMap Tool",
     description: desc || "",
-    url: canonical,
+    url: canonicalUrl,
     image: ogImg,
     applicationCategory: appCategory,
     operatingSystem: "Web",
@@ -83,8 +92,10 @@ export default function ToolSeo({
       <SeoHead
         title={title}
         desc={desc}
-        url={router.asPath}   // ✅ query/hash 있어도 SeoHead가 canonical 안정화
+        url={seoUrl}          // ✅ query/hash 있어도 SeoHead가 canonical 안정화
+        canonical={canonical}
         image={image}
+        locale={effectiveLocale}
         robots={robots}
         type="website"        // ✅ 도구는 article이 아니라 website/WebApp 성격
       />

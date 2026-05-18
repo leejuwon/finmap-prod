@@ -89,6 +89,56 @@ const PORT = Number(process.env.PORT || 8002);
     maxAge: 0,
   }));
 
+  function normalizeSeoRedirectUrl(originalUrl) {
+    const original = String(originalUrl || '/');
+    const qIndex = original.indexOf('?');
+    const rawPath = qIndex >= 0 ? original.slice(0, qIndex) : original;
+    const rawQuery = qIndex >= 0 ? original.slice(qIndex + 1) : '';
+
+    let path = rawPath.replace(/\/{2,}/g, '/');
+    let changed = path !== rawPath;
+
+    if (path.length > 1 && path.endsWith('/')) {
+      path = path.replace(/\/+$/, '') || '/';
+      changed = true;
+    }
+
+    if (path === '/ko') { path = '/'; changed = true; }
+    else if (path.startsWith('/ko/')) { path = path.replace(/^\/ko/, '') || '/'; changed = true; }
+
+    if (path === '/en/en') { path = '/en'; changed = true; }
+    else if (path.startsWith('/en/en/')) { path = path.replace(/^\/en\/en/, '/en'); changed = true; }
+
+    let m = path.match(/^\/posts\/([^/]+)\/ko\/(.+)$/);
+    if (m) { path = `/posts/${m[1]}/${m[2]}`; changed = true; }
+    m = path.match(/^\/posts\/([^/]+)\/en\/(.+)$/);
+    if (m) { path = `/en/posts/${m[1]}/${m[2]}`; changed = true; }
+    m = path.match(/^\/en\/posts\/([^/]+)\/ko\/(.+)$/);
+    if (m) { path = `/posts/${m[1]}/${m[2]}`; changed = true; }
+    m = path.match(/^\/en\/posts\/([^/]+)\/en\/(.+)$/);
+    if (m) { path = `/en/posts/${m[1]}/${m[2]}`; changed = true; }
+
+    const params = new URLSearchParams(rawQuery);
+    const lang = params.get('lang');
+    if (lang === 'en' || lang === 'ko') {
+      params.delete('lang');
+      changed = true;
+
+      if (lang === 'en') {
+        if (path === '/' || path === '/en') path = '/en';
+        else if (path === '/tools') path = '/en/tools';
+        else if (path.startsWith('/tools/')) path = `/en${path}`;
+      } else {
+        if (path === '/en') path = '/';
+        else if (path.startsWith('/en/tools/')) path = path.replace(/^\/en/, '') || '/';
+      }
+    }
+
+    if (!changed) return null;
+    const qs = params.toString();
+    return `${path}${qs ? `?${qs}` : ''}`;
+  }
+
   app.use((req, res, next) => {
     const p = req.path || '';
 
@@ -99,6 +149,13 @@ const PORT = Number(process.env.PORT || 8002);
 
     // (선택) 정적 확장자도 통과
     if (/\.(?:js|css|map|png|jpg|jpeg|webp|svg|ico|txt|xml)$/.test(p)) return next();
+
+    const seoRedirect = normalizeSeoRedirectUrl(req.url);
+    if (seoRedirect && seoRedirect !== req.url) {
+      res.redirect(301, seoRedirect);
+      return;
+    }
+
     // ✅ /ko prefix 정규화: /ko/* -> /* (그리고 끝 슬래시도 제거해서 체인/중복 최소화)
     if (req.url === '/ko' || req.url.startsWith('/ko/')) {
       const original = req.url || '';

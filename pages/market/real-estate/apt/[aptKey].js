@@ -1,6 +1,5 @@
 // pages/market/real-estate/apt/[aptKey].js
 import { useEffect, useMemo, useRef, useState } from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import ToolSeo from '../../../../_components/ToolSeo';
@@ -130,27 +129,107 @@ function MiniCard({ title, value, sub }) {
   );
 }
 
+function isValidAptKey(aptKey) {
+  const { lawd_cd, dong_name, apt_name } = parseAptKey(aptKey);
+  return /^\d{5}$/.test(lawd_cd) && Boolean(dong_name) && Boolean(apt_name);
+}
+
+async function loadAptSeoSummary(aptKey) {
+  const { pool } = require('../../../../lib/db');
+  const [rows] = await pool.execute(
+    `
+    SELECT
+      s.deal_ym AS period,
+      s.deal_ym AS latest_period,
+      s.pyeong_band,
+      s.sido_code,
+      s.sido_name,
+      s.lawd_cd,
+      s.sigungu_name,
+      s.gu_name,
+      s.dong_name,
+      s.apt_name,
+      s.apt_key,
+      s.tx_count,
+      s.avg_price_per_m2,
+      s.median_price_per_m2,
+      s.std_price_per_m2,
+      s.avg_price,
+      s.median_price,
+      NULL AS sum_price,
+      s.latest_deal_date,
+      s.latest_apt_dong,
+      s.latest_floor,
+      s.latest_area_m2,
+      s.latest_deal_amount_man,
+      s.build_year,
+      s.rgst_date
+    FROM re_trade_apt_stats_m s
+    WHERE s.apt_key = ?
+      AND s.pyeong_band = 'all'
+      AND COALESCE(s.tx_count, 0) > 0
+    ORDER BY s.deal_ym DESC
+    LIMIT 1
+    `,
+    [aptKey]
+  );
+  return rows?.[0] || null;
+}
+
 export async function getServerSideProps(ctx) {
   const { params = {}, query = {}, res } = ctx;
-
-  if (res) {
-    res.setHeader('X-Robots-Tag', 'noindex, follow');
-  }
 
   const pick = (value) => {
     if (Array.isArray(value)) return value[0] || '';
     return value == null ? '' : String(value);
   };
 
+  const aptKey = pick(params.aptKey);
+  if (!isValidAptKey(aptKey)) {
+    return { notFound: true };
+  }
+
+  let seoStats = null;
+  let seoRobots = 'index,follow,max-image-preview:large';
+  try {
+    seoStats = await loadAptSeoSummary(aptKey);
+  } catch (e) {
+    console.error('[apt-detail:ssr] seo summary lookup failed:', e?.message || e);
+    seoRobots = 'noindex,follow';
+  }
+
+  if (!seoStats && seoRobots !== 'noindex,follow') {
+    return { notFound: true };
+  }
+
+  if (res && seoRobots.includes('noindex')) {
+    res.setHeader('X-Robots-Tag', seoRobots.replace(',', ', '));
+  }
+
+  const requestedPeriod = pick(query.period);
+  const requestedBand = pick(query.band);
+  const defaultPeriod = seoStats?.latest_period || seoStats?.period || '';
+  const shouldHydrateDetail = !requestedPeriod && !requestedBand && seoStats;
+
   return {
     props: {
-      initialAptKey: pick(params.aptKey),
+      initialAptKey: aptKey,
       initialQuery: {
         timeframe: pick(query.timeframe),
-        period: pick(query.period),
+        period: requestedPeriod || defaultPeriod,
         band: pick(query.band),
         range: pick(query.range),
       },
+      initialSeoStats: seoStats,
+      initialDetail: shouldHydrateDetail
+        ? {
+            ok: true,
+            meta: { apt_key: aptKey, timeframe: 'month', period: defaultPeriod, band: 'all' },
+            stats: seoStats,
+            latest_trades: [],
+          }
+        : null,
+      seoRobots,
     },
   };
 }
@@ -271,7 +350,13 @@ function Sparkline({ rows, valueKey, valueTransform, fmtY, fmtX }) {
 }
 
 
-export default function AptDetailPage({ initialAptKey = '', initialQuery = {} }) {
+export default function AptDetailPage({
+  initialAptKey = '',
+  initialQuery = {},
+  initialSeoStats = null,
+  initialDetail = null,
+  seoRobots,
+}) {
   const router = useRouter();
   const lang = (router.locale || 'ko').startsWith('en') ? 'en' : 'ko';
 
@@ -293,7 +378,7 @@ export default function AptDetailPage({ initialAptKey = '', initialQuery = {} })
     sanitizeRangePreset(qTimeframe, qRange || defaultRangePreset(qTimeframe))
   );
 
-  const [detail, setDetail] = useState(null);
+  const [detail, setDetail] = useState(initialDetail);
   const [series, setSeries] = useState([]);
 
   const [loading, setLoading] = useState(false);
@@ -506,11 +591,16 @@ export default function AptDetailPage({ initialAptKey = '', initialQuery = {} })
 
 
   const stats = detail?.stats;
+  const seoStats = stats || initialSeoStats;
 
-  const seoTitle = apt_name ? `${apt_name} 실거래 상세` : '아파트 상세';
+  const seoTitle = apt_name
+    ? (lang === 'en' ? `${apt_name} Apartment Transaction Detail` : `${apt_name} 실거래 상세`)
+    : (lang === 'en' ? 'Apartment Transaction Detail' : '아파트 상세');
   const seoDesc = apt_name
-    ? `${apt_name} (${dong_name || ''})의 기간별 대표가격·거래량·평단가 추이를 확인하세요.`
-    : '아파트 실거래 상세 페이지';
+    ? (lang === 'en'
+        ? `Check official transaction trends for ${apt_name}${dong_name ? ` in ${dong_name}` : ''}: median price, transaction count, unit price and latest deals.`
+        : `${apt_name} (${dong_name || ''})의 기간별 대표가격·거래량·평단가 추이를 확인하세요.`)
+    : (lang === 'en' ? 'Apartment transaction detail page.' : '아파트 실거래 상세 페이지');
 
   const rangeLabel = useMemo(() => {
     if (!from || !to) return (lang === 'en' ? 'All available' : '전체 기간');
@@ -597,20 +687,6 @@ export default function AptDetailPage({ initialAptKey = '', initialQuery = {} })
 
   return (
     <>
-      <Head>
-        {/* ✅ 인덱스 금지: 상세(무한) 페이지는 검색결과로 안 쌓고, 링크만 따라가게 */}
-        <meta name="robots" content="noindex,follow" />
-
-        {/* ✅ canonical: 쿼리(필터) 섞여도 대표 URL은 “같은 상세”로 고정 */}
-        {aptKey ? (
-          <link
-            rel="canonical"
-            href={`https://www.finmaphub.com${lang === 'en' ? '/en' : ''}/market/real-estate/apt/${encodeURIComponent(
-              String(aptKey)
-            )}`}
-          />
-        ) : null}
-      </Head>
       <BlockingOverlay
         show={blockingBusy}
         text={lang === 'en' ? 'Loading data...' : '데이터 불러오는 중...'}
@@ -623,7 +699,7 @@ export default function AptDetailPage({ initialAptKey = '', initialQuery = {} })
         appCategory="FinanceApplication"
         about={{ "@type": "Place", name: "South Korea" }}
         keywords={lang === "en" ? "Korea apartment transactions, real estate" : "한국 아파트 실거래, 부동산"}
-        robots="noindex,follow"
+        robots={seoRobots || 'index,follow,max-image-preview:large'}
       />
 
       <div className="card">
@@ -635,6 +711,11 @@ export default function AptDetailPage({ initialAptKey = '', initialQuery = {} })
 
             <h1 className="mt-2 text-2xl font-bold text-slate-900">{apt_name || '-'}</h1>
             <div className="mt-1 text-sm text-slate-500">{dong_name || ''}</div>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
+              {lang === 'en'
+                ? `Review the latest official apartment transaction summary${seoStats?.latest_period ? ` for ${ymToLabel(seoStats.latest_period)}` : ''}, including median price, transaction count, unit price trend and recent deals.`
+                : `최근 공식 아파트 실거래 요약${seoStats?.latest_period ? `(${ymToLabel(seoStats.latest_period)})` : ''}을 기준으로 대표가격, 거래량, 평단가 추이와 최근 거래를 함께 확인할 수 있습니다.`}
+            </p>
 
             <div className="mt-3 flex flex-wrap gap-2 text-xs">
               <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">

@@ -731,7 +731,7 @@ export async function getStaticProps({ params, locale }) {
     return {
       redirect: {
         destination: `${prefix}/posts/${categorySlug}/${slug}`,
-        permanent: true,
+        statusCode: 301,
       },
     };
   }
