@@ -79,6 +79,36 @@ function getCategorySlugFromPost(post, lang) {
   return CATEGORY_MAP_EN[key] || key || 'economicInfo';
 }
 
+const TOOL_LABELS = {
+  comp: { ko: '복리 계산기', en: 'Compound calculator' },
+  compound: { ko: '복리 계산기', en: 'Compound calculator' },
+  goal: { ko: '목표 자산', en: 'Goal simulator' },
+  cagr: { ko: 'CAGR 계산기', en: 'CAGR calculator' },
+  dca: { ko: 'DCA 시뮬레이터', en: 'DCA simulator' },
+  fire: { ko: 'FIRE 계산기', en: 'FIRE calculator' },
+};
+
+function getToolLabel(tool, lang) {
+  const item = TOOL_LABELS[tool];
+  if (!item) return String(tool || '').trim();
+  return lang === 'en' ? item.en : item.ko;
+}
+
+function scoreRelatedPost(basePost, candidate, lang) {
+  const baseTags = new Set((basePost?.tags || []).map((t) => String(t).toLowerCase()));
+  const candTags = new Set((candidate?.tags || []).map((t) => String(t).toLowerCase()));
+  const baseTools = new Set((basePost?.tools || []).map((t) => String(t).toLowerCase()));
+  const candTools = new Set((candidate?.tools || []).map((t) => String(t).toLowerCase()));
+  let score = 0;
+
+  for (const tag of candTags) if (baseTags.has(tag)) score += 4;
+  for (const tool of candTools) if (baseTools.has(tool)) score += 5;
+  if (candidate?.category && candidate.category === basePost?.category) score += 2;
+  const year = new Date(candidate?.datePublished || 0).getFullYear();
+  if (Number.isFinite(year)) score += Math.min(2, Math.max(0, year - 2023) * 0.25);
+  return lang === 'en' ? score + 0.1 : score;
+}
+
 /* ---------------------------------------------------------- */
 
 export function JsonLd({ data }) {
@@ -496,6 +526,29 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
           </div>
         )}
 
+        <section className="not-prose my-6 rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:p-5">
+          <div className="flex flex-wrap items-center gap-2 text-xs font-medium text-slate-500">
+            {post.readingTimeMinutes ? (
+              <span>{isKo ? `${post.readingTimeMinutes}분 읽기` : `${post.readingTimeMinutes} min read`}</span>
+            ) : null}
+            {normalizedTools.length > 0 ? (
+              <span>{isKo ? '연결 도구 포함' : 'Includes related tools'}</span>
+            ) : null}
+          </div>
+          {post.description ? (
+            <p className="mt-2 text-sm leading-6 text-slate-700">{post.description}</p>
+          ) : null}
+          {normalizedTools.length > 0 ? (
+            <div className="mt-3 flex flex-wrap gap-2">
+              {normalizedTools.slice(0, 4).map((toolType) => (
+                <span key={`summary-${toolType}`} className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-blue-700 ring-1 ring-blue-100">
+                  {getToolLabel(toolType, lang)}
+                </span>
+              ))}
+            </div>
+          ) : null}
+        </section>
+
         <div className="fm-post-body">{contentWithInArticleAds}</div>
 
         {normalizedTools.length > 0 && (
@@ -647,17 +700,25 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
                 {lang === 'en' ? 'Open category' : '카테고리 더 보기'}
               </Link>
             </div>
-            <ul className="grid gap-2">
+            <ul className="grid gap-3">
               {relatedPosts.map((rp) => (
-                <li key={`${rp.lang}-${rp.slug}`} className="text-sm">
+                <li key={`${rp.lang}-${rp.slug}`} className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm">
                   <Link
-                    className="underline"
+                    className="font-semibold text-slate-900 hover:underline"
                     href={`/posts/${categorySlug}/${rp.slug}`}
                     locale={rp.lang}
                     prefetch={false}
                   >
                     {rp.title}
                   </Link>
+                  {rp.description ? (
+                    <p className="mt-1 text-xs leading-5 text-slate-600">{rp.description}</p>
+                  ) : null}
+                  {rp.readingTimeMinutes ? (
+                    <div className="mt-1 text-xs text-slate-500">
+                      {lang === 'en' ? `${rp.readingTimeMinutes} min read` : `${rp.readingTimeMinutes}분 읽기`}
+                    </div>
+                  ) : null}
                   {rp.datePublished ? <span className="text-slate-400"> · {rp.datePublished}</span> : null}
                 </li>
               ))}
@@ -741,13 +802,19 @@ export async function getStaticProps({ params, locale }) {
   const sameCat = allSameLang
     .filter((p) => p.slug !== slug)
     .filter((p) => getCategorySlugFromPost(p, lang) === categorySlug)
-    .sort((a, b) => new Date(b.datePublished || 0) - new Date(a.datePublished || 0))
+    .sort((a, b) => {
+      const scoreDiff = scoreRelatedPost(post, b, lang) - scoreRelatedPost(post, a, lang);
+      if (scoreDiff) return scoreDiff;
+      return new Date(b.datePublished || 0) - new Date(a.datePublished || 0);
+    })
     .slice(0, 5)
     .map((p) => ({
       lang,
       slug: p.slug,
       title: p.title,
       datePublished: p.datePublished || '',
+      description: p.description || '',
+      readingTimeMinutes: p.readingTimeMinutes || null,
   }));
 
 

@@ -79,6 +79,36 @@ export default function ToolsHome() {
     [isKo]
   );
 
+  const GUIDES = useMemo(
+    () => [
+      {
+        href: '/posts/personalFinance/simple-vs-compound',
+        title: isKo
+          ? '단리 vs 복리 계산: 월 투자 예시로 보는 장기 차이'
+          : 'Simple vs Compound Interest: Monthly Investing Example',
+      },
+      {
+        href: '/posts/personalFinance/how-much-per-month-for-100m',
+        title: isKo
+          ? '목표 금액까지 월 얼마가 필요할까?'
+          : 'Monthly Investment Calculator: How Much to Reach a Goal?',
+      },
+      {
+        href: '/posts/personalFinance/what-is-cagr',
+        title: isKo
+          ? 'CAGR 계산이 왜 중요한가'
+          : 'CAGR Calculator Guide: Compare Long-Term Returns',
+      },
+      {
+        href: '/posts/personalFinance/dca-vs-lumpsum-decision-rules',
+        title: isKo
+          ? '적립식 투자와 일시 투자 판단 기준'
+          : 'DCA vs Lump Sum: Decision Rules',
+      },
+    ],
+    [isKo]
+  );
+
   const itemListJsonLd = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -153,6 +183,31 @@ export default function ToolsHome() {
             </Link>
           ))}
         </div>
+
+        <section className="mt-8 rounded-2xl border bg-white p-5 shadow-card">
+          <h2 className="text-lg font-semibold text-slate-900">
+            {isKo ? '계산 전에 읽으면 좋은 가이드' : 'Guides to read before using the tools'}
+          </h2>
+          <p className="mt-1 text-sm text-slate-600">
+            {isKo
+              ? '계산기 입력값을 정하기 어렵다면, 아래 글에서 기간·수익률·월 납입액 기준을 먼저 잡아보세요.'
+              : 'If you are unsure what assumptions to enter, start with these guides on time horizon, return, and monthly contributions.'}
+          </p>
+          <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+            {GUIDES.map((guide) => (
+              <li key={guide.href} className="rounded-xl bg-slate-50 p-3">
+                <Link
+                  href={guide.href}
+                  locale={lang}
+                  prefetch={false}
+                  className="text-sm font-semibold text-slate-900 hover:underline"
+                >
+                  {guide.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
       </section>
     </>
   );

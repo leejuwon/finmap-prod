@@ -369,6 +369,28 @@ export default function RealEstatePage() {
   const seoTitle = t.title;
   const seoDesc = t.seoDesc;    
 
+  const realEstateGuides = useMemo(
+    () => [
+      {
+        href: '/posts/personalFinance/apt-dashboard-home-goal-roadmap',
+        title: lang === 'en' ? 'Use Apartment Data to Plan a Home Goal' : '아파트 실거래 데이터로 내 집 목표 세우기',
+      },
+      {
+        href: '/posts/personalFinance/mortgage-risk-checklist-dsr-variable',
+        title: lang === 'en' ? 'Mortgage Risk Checklist: DSR and Variable Rates' : '주택담보대출 리스크 체크리스트: DSR·변동금리',
+      },
+      {
+        href: '/posts/personalFinance/rent-jeonse-buy-cashflow-opportunity-cost',
+        title: lang === 'en' ? 'Rent, Jeonse, or Buy: Cash Flow and Opportunity Cost' : '월세·전세·매수 판단: 현금흐름과 기회비용',
+      },
+      {
+        href: '/posts/investingInfo/seoul-gyeonggi-incheon-risk-budget-framework',
+        title: lang === 'en' ? 'Seoul, Gyeonggi, Incheon: Risk and Budget Framework' : '서울·경기·인천 예산과 리스크 비교 기준',
+      },
+    ],
+    [lang]
+  );
+
   // ✅ aptName 디바운스(타이핑마다 과도한 API 호출 방지)
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -1156,6 +1178,26 @@ export default function RealEstatePage() {
                 ? 'Tip: These pages are designed to match search intent and load fast. Use filters for a deeper comparison.'
                 : 'Tip: 검색 의도에 맞춘 빠른 순위 페이지입니다. 더 깊은 비교는 위 필터로 조건을 좁혀보세요.'}
             </div>
+          </div>
+
+          <div className="mt-3 rounded-2xl border bg-white p-4">
+            <div className="text-sm font-semibold text-slate-900">
+              {lang === 'en' ? 'Guides for interpreting apartment data' : '아파트 데이터 해석 가이드'}
+            </div>
+            <p className="mt-1 text-sm text-slate-600">
+              {lang === 'en'
+                ? 'Connect rankings with budget, mortgage risk, and buy-or-rent decisions before comparing individual complexes.'
+                : '순위만 보지 말고 예산, 대출 리스크, 전월세·매수 판단 기준까지 함께 확인해보세요.'}
+            </p>
+            <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+              {realEstateGuides.map((guide) => (
+                <li key={guide.href} className="rounded-xl bg-slate-50 p-3">
+                  <Link href={guide.href} locale={lang} prefetch={false} className="text-sm font-semibold text-slate-900 hover:underline">
+                    {guide.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* (B) legend 박스 */}

@@ -4,6 +4,8 @@ title: "How Much Should You Invest Each Month to Reach $100,000? Practical Plans
 description: "A practical reverse-calculation guide showing how much you need to invest monthly to reach $50,000, $100,000, or $300,000. Includes realistic assumptions using 5–7% annual returns and works best when paired with the FinMap Goal Simulator."
 datePublished: "2025-11-20"
 dateModified: "2025-11-20"
+seoTitle: "Monthly Investment Calculator: How Much to Reach $100,000?"
+seoDescription: "Estimate the monthly investment needed for $50k, $100k, or $300k goals by time horizon and return, then test it in the goal simulator."
 category: "Personal Finance"
 postCategory: "personalFinance"
 tags: ["save 100k", "save 50k", "save 300k", "monthly investment", "investment planning", "target amount", "compound interest", "wealth planning"]

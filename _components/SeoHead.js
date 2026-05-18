@@ -35,9 +35,7 @@ export default function SeoHead({ title, desc, url = "/", canonical, image, loca
   const autoType =
     type || (router?.pathname?.startsWith("/posts") ? "article" : "website");
 
-  // query/hash, locale prefix, double slash, trailing slash 정규화
   const normalizedPath = normalizePath(canonical || url);
-
   const prefix = effectiveLocale === "en" ? "/en" : "";
 
   // ✅ 홈(/)일 때만 /en/ -> /en 으로 통일 (리디렉션 포함 페이지 방지)

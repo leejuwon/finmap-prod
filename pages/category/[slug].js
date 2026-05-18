@@ -110,6 +110,21 @@ function dateValue(s) {
   return Number.isFinite(t) ? t : 0;
 }
 
+const TOOL_LABELS = {
+  comp: { ko: '복리 계산기', en: 'Compound calculator' },
+  compound: { ko: '복리 계산기', en: 'Compound calculator' },
+  goal: { ko: '목표 자산', en: 'Goal simulator' },
+  cagr: { ko: 'CAGR', en: 'CAGR calculator' },
+  dca: { ko: 'DCA', en: 'DCA simulator' },
+  fire: { ko: 'FIRE', en: 'FIRE calculator' },
+};
+
+function getToolLabel(tool, lang) {
+  const item = TOOL_LABELS[tool];
+  if (!item) return String(tool || '').trim();
+  return lang === 'en' ? item.en : item.ko;
+}
+
 function toLitePost(p, forcedLang) {
   const lang = forcedLang || p?.lang || 'ko';
   return {
@@ -120,6 +135,10 @@ function toLitePost(p, forcedLang) {
     description: p?.description || '',
     datePublished: p?.datePublished || '',
     cover: p?.cover || '',
+    tools: Array.isArray(p?.tools) ? p.tools : [],
+    tags: Array.isArray(p?.tags) ? p.tags : [],
+    readingTimeMinutes: p?.readingTimeMinutes || null,
+    wordCount: p?.wordCount || null,
   };
 }
 
@@ -176,12 +195,16 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
 
   const visibleCards = q ? filtered.slice(0, 12) : (tab === 'latest' ? latest : featured);
 
+  const categorySeoDescription = isKo
+    ? `${title} 글을 계산기, 예시, 체크리스트와 함께 모았습니다. 최신 글과 관련 도구를 통해 바로 계산하고 확인해보세요.`
+    : `Browse ${title} guides with calculators, examples, and checklists. Start from featured posts and related FinMap tools.`;
+
 
   return (
     <>
       <SeoHead
-        title={isKo ? `${title} 카테고리` : `${title} Category`}
-        desc={isKo ? `${title} 관련 글 모음` : `Posts related to ${title}`}
+        title={isKo ? `${title} 카테고리` : `${title} Guides`}
+        desc={categorySeoDescription}
         url={`/category/${slug}`}
         locale={locale}
       />
@@ -347,7 +370,12 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                           )}
 
                           <div className="p-4">
-                            <div className="text-xs text-slate-500">{p.datePublished}</div>
+                            <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
+                              <span>{p.datePublished}</span>
+                              {p.readingTimeMinutes ? (
+                                <span>{isKo ? `${p.readingTimeMinutes}분 읽기` : `${p.readingTimeMinutes} min read`}</span>
+                              ) : null}
+                            </div>
                             <h3 className="mt-2 text-base font-semibold leading-snug text-slate-900">
                               <Link
                                 href={`/posts/${slug}/${p.slug}`}
@@ -363,6 +391,15 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                                 {p.description}
                               </p>
                             )}
+                            {Array.isArray(p.tools) && p.tools.length > 0 ? (
+                              <div className="mt-3 flex flex-wrap gap-1.5">
+                                {p.tools.slice(0, 3).map((tool) => (
+                                  <span key={`${p.slug}-${tool}`} className="rounded-full bg-blue-50 px-2 py-1 text-[11px] font-medium text-blue-700">
+                                    {getToolLabel(tool, locale)}
+                                  </span>
+                                ))}
+                              </div>
+                            ) : null}
                           </div>
                         </li>
                       );
@@ -387,7 +424,12 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                           key={`all-${p.slug}`}
                           className="rounded-xl border bg-slate-50/60 p-3 hover:bg-slate-50"
                         >
-                          <div className="text-xs text-slate-500">{p.datePublished}</div>
+                          <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
+                            <span>{p.datePublished}</span>
+                            {p.readingTimeMinutes ? (
+                              <span>{isKo ? `${p.readingTimeMinutes}분 읽기` : `${p.readingTimeMinutes} min read`}</span>
+                            ) : null}
+                          </div>
 
                           <Link
                             href={`/posts/${slug}/${p.slug}`}
@@ -428,7 +470,12 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                         key={`alltab-${p.slug}`}
                         className="rounded-2xl border bg-white shadow-card p-4 hover:shadow-lg transition-shadow"
                       >
-                        <div className="text-xs text-slate-500">{p.datePublished}</div>
+                        <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
+                          <span>{p.datePublished}</span>
+                          {p.readingTimeMinutes ? (
+                            <span>{isKo ? `${p.readingTimeMinutes}분 읽기` : `${p.readingTimeMinutes} min read`}</span>
+                          ) : null}
+                        </div>
 
                         <h3 className="mt-2 text-base font-semibold leading-snug text-slate-900">
                           <Link

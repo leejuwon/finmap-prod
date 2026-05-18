@@ -4,6 +4,8 @@ title: "CAGR이란 무엇인가? 단순 수익률과의 차이 이해하기"
 description: "CAGR은 투자 성과를 연평균 복리 기준으로 측정하는 지표입니다. 단순 수익률과 비교하면 투자 기간 동안 실제 성장 속도를 더 정확하게 보여줍니다."
 datePublished: "2025-11-26"
 dateModified: "2025-11-26"
+seoTitle: "CAGR 계산이 왜 중요한가: 단순 수익률과 다른 점을 예시로 이해하기"
+seoDescription: "CAGR과 단순 수익률의 차이를 예시로 설명하고 장기 투자 성과 비교 기준을 정리합니다. CAGR 계산기로 직접 확인해보세요."
 category: "재테크"
 postCategory: "personalFinance"
 tags: ["CAGR", "수익률", "투자기초", "복리수익률", "연평균수익률", "단순수익률"]

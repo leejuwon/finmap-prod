@@ -4,6 +4,8 @@ title: "연복리 vs 월복리: 목표 도달 기간은 얼마나 달라질까?"
 description: "연복리와 월복리의 차이를 실제 수치와 예시로 설명하고, 목표 금액 도달 속도에 어떤 영향을 미치는지 쉽게 이해할 수 있도록 정리했습니다."
 datePublished: "2025-11-23"
 dateModified: "2025-11-23"
+seoTitle: "연복리 vs 월복리: 목표 달성 기간이 얼마나 달라질까?"
+seoDescription: "연복리와 월복리의 차이를 목표 금액·월 적립 예시로 비교하고 복리 주기 변경 효과를 계산기로 확인합니다."
 category: "재테크"
 postCategory: "personalFinance"
 tags: ["연복리", "월복리", "복리계산", "투자기초", "시간가치"]
