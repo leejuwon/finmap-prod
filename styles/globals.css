@@ -5,7 +5,11 @@
 @layer components {
   /* 카드 공통 스타일 (리스트/박스 등) */
   .card {
-    @apply bg-white border border-slate-100 rounded-2xl shadow p-5 min-w-0;
+    @apply bg-white border border-slate-100 rounded-2xl shadow p-5 min-w-0 max-w-full;
+    overflow-wrap: break-word;
+  }
+  .card > * {
+    min-width: 0;
   }
 
   /* 카테고리 / 태그 뱃지 */
@@ -15,25 +19,36 @@
 
   /* 입력 폼 공통 */
   .input {
-    @apply w-full rounded-lg border border-slate-300 px-3 py-2 text-sm md:text-base
+    @apply w-full max-w-full min-w-0 min-h-[44px] rounded-lg border border-slate-300 px-3 py-2 text-base
       focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
   }
 
   .select {
-    @apply rounded-lg border border-slate-300 px-3 py-2 text-sm md:text-base
+    @apply w-full max-w-full min-w-0 min-h-[44px] rounded-lg border border-slate-300 px-3 py-2 text-base
       focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
   }
 
   /* 버튼 공통 */
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium
+    @apply inline-flex min-w-0 min-h-[44px] items-center justify-center rounded-lg px-4 py-2 text-center text-sm font-medium leading-tight whitespace-normal break-words
       text-white bg-blue-600 hover:bg-blue-700
       disabled:opacity-60 disabled:cursor-not-allowed;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-lg px-3 py-2 border border-slate-300
-      text-sm font-medium text-slate-700 hover:bg-slate-50;
+    @apply inline-flex min-w-0 min-h-[44px] items-center justify-center rounded-lg px-3 py-2 border border-slate-300
+      text-center text-sm font-medium leading-tight whitespace-normal break-words text-slate-700 hover:bg-slate-50;
+  }
+
+  .btn-outline {
+    @apply inline-flex min-w-0 min-h-[44px] items-center justify-center rounded-lg border border-slate-300 px-3 py-2
+      text-center text-sm font-medium leading-tight whitespace-normal break-words text-slate-700 hover:bg-slate-50;
+  }
+
+  .btn-primary svg,
+  .btn-secondary svg,
+  .btn-outline svg {
+    flex-shrink: 0;
   }
 
   /* 통계 카드 */
@@ -56,7 +71,8 @@
      PRO mode (tool UX flow)
   =========================== */
   .fm-safe-bottom {
-    padding-bottom: calc(96px + env(safe-area-inset-bottom)); /* CTABar 같은 하단 고정 UI 대비 */
+    /* Use on pages with a fixed CTABar; do not force this globally. */
+    padding-bottom: calc(88px + env(safe-area-inset-bottom));
   }
 
   .fm-pro-toggle {
@@ -70,7 +86,8 @@
   }
 
   .fm-pro-nav {
-    @apply flex gap-2 overflow-x-auto py-1 -mx-1 px-1;
+    @apply flex min-w-0 gap-2 overflow-x-auto py-1 -mx-1 px-1;
+    -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
@@ -87,6 +104,10 @@
 }
 
 @layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
   /* 모바일 자동 글자 확대 방지 */
   html {
     -webkit-text-size-adjust: 100%;
@@ -112,6 +133,7 @@
     @apply bg-slate-50 text-slate-900;
   }
 
+  /* Root overflow is a guardrail; real fixes should keep inner elements max-width/min-width stable. */
   /* =========================================================
    ✅ 전체 페이지 가로 스크롤 차단 (내부 overflow-x-auto는 허용)
   ========================================================= */
@@ -126,8 +148,17 @@
   }
 
   /* 차트/캔버스/이미지가 뷰포트 밖으로 밀어내는 경우 방어 */
-  img, svg, canvas {
+  img, video, canvas, svg {
     max-width: 100%;
+  }
+
+  img, video {
+    height: auto;
+  }
+
+  input, select, textarea {
+    max-width: 100%;
+    min-width: 0;
   }
 
   a {
@@ -138,6 +169,7 @@
   }
 }
 
+/* Root overflow is a guardrail; real fixes should keep inner elements max-width/min-width stable. */
 /* ✅ 모바일에서 “페이지 자체” 가로 스크롤 방지 */
 html, body {
   width: 100%;
@@ -157,6 +189,46 @@ img, video, canvas, svg {
   max-width: 100%;
 }
 
+img, video {
+  height: auto;
+}
+
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+code {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+pre code {
+  white-space: pre;
+  overflow-wrap: normal;
+}
+
+.fm-scroll-x,
+.fm-table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.fm-table-scroll table {
+  width: max-content;
+  min-width: 100%;
+}
+
+@media (max-width: 767px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
 /* ✅ Recharts(차트)에서 컨테이너가 min-width 때문에 튀는 케이스 방지 */
 .recharts-responsive-container {
   min-width: 0 !important;
@@ -170,8 +242,11 @@ img, video, canvas, svg {
    Header Navigation Scroll / Responsive
 ========================================================= */
 .header-nav {
+  min-width: 0;
+  max-width: 100%;
   overflow-x: auto;
   white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* 메뉴 자체는 줄바꿈 금지 */

@@ -62,11 +62,15 @@ export default function CTABar({
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 border-t bg-white/90 backdrop-blur shadow-lg">
-      <div className="max-w-2xl mx-auto p-2.5">
+    <div className="fixed bottom-0 left-0 right-0 z-50 max-w-full border-t bg-white/90 backdrop-blur shadow-lg">
+      {/* Pages with CTABar should reserve bottom room with .fm-safe-bottom when needed. */}
+      <div
+        className="mx-auto w-full max-w-2xl px-2.5 pt-2.5"
+        style={{ paddingBottom: "calc(0.625rem + env(safe-area-inset-bottom))" }}
+      >
         {/* ✅ PRO: 섹션 네비 (요약→차트→해석→CTA) */}
         {isPro && (
-          <div className="flex items-center gap-2 mb-2">
+          <div className="fm-scroll-x flex min-w-0 items-center gap-2 mb-2 pb-1">
             {navItems.map((it) => {
               const active = localActive === it.key;
               return (
@@ -75,7 +79,7 @@ export default function CTABar({
                   type="button"
                   onClick={() => onClickNav(it.key)}
                   className={[
-                    "flex-1 rounded-lg px-2 py-2 text-xs font-semibold border",
+                    "min-w-[4rem] flex-1 rounded-lg border px-2 py-2 text-center text-xs font-semibold leading-tight",
                     active
                       ? "bg-blue-600 text-white border-blue-600"
                       : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50",
@@ -89,11 +93,11 @@ export default function CTABar({
         )}
 
         {/* Actions */}
-        <div className="flex items-center justify-between gap-2">
+        <div className="grid grid-cols-2 gap-2">
           <button
             type="button"
             onClick={onDownloadPDF}
-            className="btn-primary flex items-center gap-2 flex-1"
+            className="btn-primary flex w-full min-w-0 items-center justify-center gap-1.5"
           >
             <DownloadIcon className="w-5 h-5" />
             {isKo ? "PDF 저장" : "Save PDF"}
@@ -102,7 +106,7 @@ export default function CTABar({
           <button
             type="button"
             onClick={onShare}
-            className="btn-secondary flex items-center gap-2 flex-1"
+            className="btn-secondary flex w-full min-w-0 items-center justify-center gap-1.5"
           >
             <ShareIcon className="w-5 h-5" />
             {isKo ? "공유하기" : "Share"}

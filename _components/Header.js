@@ -121,9 +121,9 @@ export default function Header() {
   const nav = useMemo(() => navItems, []);
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-slate-100">
-      <nav className="w-full px-3 sm:px-4">
-        <div className="w-full max-w-5xl lg:max-w-6xl mx-auto flex items-center gap-3 py-2 sm:py-3">
+    <header className="sticky top-0 z-50 w-full max-w-full backdrop-blur bg-white/80 border-b border-slate-100">
+      <nav className="w-full max-w-full px-3 sm:px-4">
+        <div className="w-full max-w-5xl lg:max-w-6xl mx-auto flex min-w-0 items-center gap-2 sm:gap-3 py-2 sm:py-3">
           {/* ---------------- Logo ---------------- */}
           <Link href="/" prefetch={false} className="flex items-center gap-2 shrink-0">
             <Image
@@ -147,9 +147,9 @@ export default function Header() {
           </Link>
 
           {/* ---------------- Navigation ---------------- */}
-          <div className="flex items-center gap-1 sm:gap-2 ml-2 sm:ml-6">
+          <div className="flex min-w-0 flex-1 items-center gap-1 sm:gap-2 ml-1 sm:ml-6">
             {/* ===== 가로 스크롤 영역 ===== */}
-            <div className="header-nav flex items-center gap-1 sm:gap-2 text-[12px] sm:text-[14px]">
+            <div className="header-nav flex min-w-0 flex-1 items-center gap-1 sm:gap-2 text-[12px] sm:text-[14px]">
               {nav.map((item) => {
                 const active =
                   item.href === "/"
@@ -188,7 +188,7 @@ export default function Header() {
             </div>
 
             {/* ===== Insights dropdown (스크롤 밖) ===== */}
-            <div ref={blogWrapRef} className="relative">
+            <div ref={blogWrapRef} className="relative shrink-0">
               <button
                 type="button"
                 onClick={() => setBlogOpen((v) => !v)}
@@ -233,7 +233,7 @@ export default function Header() {
 
 
           {/* ---------------- Right: Language ---------------- */}
-          <div className="ml-auto flex items-center gap-2 shrink-0">
+          <div className="ml-1 sm:ml-auto flex min-w-0 items-center gap-1 sm:gap-2 shrink-0">
             <div className="flex border border-slate-200 rounded-full text-[9px] sm:text-[11px] md:text-xs overflow-hidden">
               <button
                 type="button"
