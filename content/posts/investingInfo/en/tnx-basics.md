@@ -3,7 +3,9 @@ slug: "tnx-basics"
 title: "TNX Explained: Why the 10-Year Treasury Yield Drives Markets"
 description: "TNX (the U.S. 10-year Treasury yield) is a global pricing anchor. Learn the key channels—valuation, FX, liquidity, and risk sentiment—and how to read TNX without overreacting."
 datePublished: "2025-11-23"
-dateModified: "2026-02-23"
+dateModified: "2026-05-18"
+seoTitle: "10-Year Treasury Yield (TNX): How It Moves Stocks, FX, and Korea"
+seoDescription: "Learn how TNX affects stock valuations, the U.S. dollar, USD/KRW, and Korean equities with a practical market checklist."
 category: "Investing Info"
 postCategory: "investingInfo"
 tags: ["TNX","10-year yield","Treasury yield","interest rates","macro","valuation","USD/KRW","KOSPI"]
@@ -26,6 +28,16 @@ lang: "en"
 
 > **One-paragraph overview**  
 TNX—the U.S. 10-year Treasury yield—acts like a global reference rate. It changes how investors discount future cash flows, how currencies reprice risk, and how liquidity conditions feel across markets. The goal isn’t to “predict TNX,” but to identify *which channel* is active (valuation vs FX vs liquidity) and adjust expectations, risk, and time horizon accordingly.
+
+**What you will get from this guide:** a quick way to decide whether a TNX move is a valuation shock, a dollar/FX shock, or a liquidity shock. You will also get a simple checklist for connecting TNX to the KOSPI, USD/KRW, growth stocks, bond ETFs, and your own investment plan.
+
+| If TNX is moving because... | First market signal to check | Practical response |
+|---|---|---|
+| Growth expectations improve | Cyclicals, earnings revisions, credit spreads | Avoid treating all yield increases as bearish |
+| Inflation or policy fear rises | DXY, USD/KRW, real yields, growth-stock multiples | Reduce headline chasing and watch financial conditions |
+| Liquidity stress appears | VIX, breadth, credit spreads, foreign flows | Prioritize risk sizing and contribution rules |
+
+Related reads: [Yield curve recession signals](/en/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading), [USD/KRW and the KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi), and [Why Korea ETFs are sensitive to TNX](/en/posts/investingInfo/korea-etf-deep-dive-tnx). To turn macro stress into a rules-based plan, test assumptions with the [DCA simulator](/en/tools/dca-calculator) or [CAGR calculator](/en/tools/cagr-calculator).
 
 ![Top image: TNX as a global anchor](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428464/blog/investingInfo/economics-tnx-cover.png)
 
@@ -334,10 +346,10 @@ Start with: (1) driver (inflation vs growth vs policy), (2) speed, (3) USD/KRW, 
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "TNX Explained: Why the 10-Year Treasury Yield Drives Markets",
-  "description": "TNX (the U.S. 10-year Treasury yield) is a global pricing anchor. Learn the key channels—valuation, FX, liquidity, and risk sentiment—and how to read TNX without overreacting.",
+  "headline": "10-Year Treasury Yield (TNX): How It Moves Stocks, FX, and Korea",
+  "description": "Learn how TNX affects stock valuations, the U.S. dollar, USD/KRW, and Korean equities with a practical market checklist.",
   "datePublished": "2025-11-23",
-  "dateModified": "2026-02-23",
+  "dateModified": "2026-05-18",
   "inLanguage": "en",
   "author": { "@type": "Organization", "name": "FinMap" },
   "publisher": {

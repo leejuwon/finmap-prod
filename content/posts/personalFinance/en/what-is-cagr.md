@@ -3,9 +3,9 @@ slug: "what-is-cagr"
 title: "What Is CAGR? Understanding the Difference From Simple Returns"
 description: "CAGR shows the annual compound growth rate of an investment. It reflects the true pace of growth better than simple returns, especially for long-term investments."
 datePublished: "2025-11-26"
-dateModified: "2025-11-26"
-seoTitle: "CAGR Calculator Guide: Compare Long-Term Investment Returns"
-seoDescription: "Learn how CAGR differs from simple return, when to use it, and how to compare investments with the FinMap CAGR calculator."
+dateModified: "2026-05-18"
+seoTitle: "CAGR Calculator Guide: Formula, Example, and Simple Return Difference"
+seoDescription: "Understand the CAGR formula, compare it with simple return, and use examples to evaluate long-term investment performance."
 category: "Personal Finance"
 postCategory: "personalFinance"
 tags: ["CAGR", "investment return", "finance basics", "compound interest", "simple return"]
@@ -28,6 +28,16 @@ lang: "en"
 
 > **One-paragraph summary**  
 CAGR (Compound Annual Growth Rate) measures how much an investment grew each year on average, assuming steady yearly growth. It provides a more accurate long-term performance measure than simple returns, which can be distorted by volatility. Investors use CAGR to compare assets, funds, and investment strategies over different periods.
+
+**What you will get from this guide:** the CAGR formula, a plain-English example, and a clear answer to why simple return can overstate long-term performance. You can also test your own starting value, ending value, and holding period in the [CAGR calculator](/en/tools/cagr-calculator).
+
+| Question | Simple return | CAGR |
+|---|---|---|
+| What does it show? | Total gain from start to end | Average annual compound growth |
+| Best use | Quick headline performance | Comparing investments across different time periods |
+| Main limitation | Ignores time and volatility | Smooths volatility instead of showing the path |
+
+Related guides: [Simple vs compound interest](/en/posts/personalFinance/simple-vs-compound), [Annual vs monthly compounding](/en/posts/personalFinance/annual-vs-monthly-compound), and [Monthly investment calculator guide](/en/posts/personalFinance/how-much-per-month-for-100m).
 
 ![CAGR concept overview](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429447/blog/personalFinance/what-is-cagr-top.png "CAGR concept overview")
 
@@ -222,9 +232,10 @@ However, frequent deposits or withdrawals can make the realized CAGR slightly di
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "What Is CAGR? Understanding the Difference From Simple Returns",
-  "description": "CAGR measures how much an investment grew per year on average. It provides a more accurate long-term performance measure than simple returns, especially when volatility is high.",
+  "headline": "CAGR Calculator Guide: Formula, Example, and Simple Return Difference",
+  "description": "Understand the CAGR formula, compare it with simple return, and use examples to evaluate long-term investment performance.",
   "datePublished": "2025-11-26",
+  "dateModified": "2026-05-18",
   "author": {
     "@type": "Person",
     "name": "FinMap"

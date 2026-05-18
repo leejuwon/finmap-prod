@@ -3,7 +3,9 @@ slug: "cagr-7percent-reality-check"
 title: "‘연 7% 복리’는 실제로 무엇을 의미할까? CAGR로 현실 체크하기"
 description: "많은 투자자가 말하는 ‘연 7% 수익률’은 실제 장기 CAGR과 차이가 있습니다. S&P500 장기 CAGR, 기대수익률 착시, 복리 효과를 현실적으로 이해하고 목표 자산 계획에 적용하는 고급 분석 글입니다."
 datePublished: "2025-11-29"
-dateModified: "2025-11-29"
+dateModified: "2026-05-18"
+seoTitle: "연 7% 복리 현실 체크: CAGR로 목표 자산 계산하는 법"
+seoDescription: "연 7% 복리가 실제로 얼마를 의미하는지 CAGR, 변동성, 세금, 물가를 반영해 목표 자산 계획 기준으로 점검합니다. 복리 계산기와 목표 자산 시뮬레이터로 현실적인 월 투자금을 확인해보세요."
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["CAGR", "복리", "S&P500", "연7%", "투자기초", "재테크전략"]
@@ -26,6 +28,16 @@ lang: "ko"
 
 > **한 문단 요약**  
 많은 투자자가 ‘연 7% 복리면 충분하다’고 말하지만, 이 수치는 단순한 기대치가 아니라 실제 장기 CAGR로 해석해야만 현실에 가깝습니다. S&P500 장기 CAGR은 평균 9\~10% 수준이지만 변동성·세금·물가를 고려하면 체감 수익률은 달라집니다. 이 글은 투자자들이 가장 자주 착각하는 기대수익률의 현실을 데이터 기반으로 분석하고, 목표자산·복리 계산기로 실제 효과를 확인할 수 있도록 구성한 고급 해설입니다.
+
+**이 글에서 바로 얻을 수 있는 답:** “연 7% 복리”가 목표 자산 계획에서 어느 정도 의미가 있는지, 세금·물가·변동성을 빼면 기대와 현실이 얼마나 달라지는지입니다. 단순히 7%라는 숫자를 믿기보다 CAGR 기준으로 계산하고, 내 월 납입액과 기간에 맞춰 다시 점검할 수 있습니다.
+
+| 체크 항목 | 왜 중요한가 |
+|---|---|
+| 세전/세후 수익률 | 실제 계좌에 남는 CAGR은 낮아질 수 있습니다. |
+| 물가 반영 | 명목 7%와 체감 7%는 다릅니다. |
+| 변동성/MDD | 큰 하락은 산술 평균보다 CAGR을 더 많이 깎습니다. |
+
+함께 보면 좋은 글: [CAGR 계산법](/posts/personalFinance/what-is-cagr), [1억 모으기 월 투자금 계산](/posts/personalFinance/how-much-per-month-for-100m), [적립식 투자는 지속성 게임](/posts/investingInfo/dca-consistency-7-fail-patterns). 숫자는 [복리 계산기](/tools/compound-interest)와 [목표 자산 시뮬레이터](/tools/goal-simulator)에서 바로 바꿔볼 수 있습니다.
 
 ![상단 대표 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428393/blog/investingInfo/cagr-7percent-reality-check-cover.png)
 
@@ -255,10 +267,10 @@ A: 변동성을 낮추고 꾸준함을 유지하는 것입니다.
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "‘연 7% 복리’는 실제로 무엇을 의미할까? CAGR로 현실 체크하기",
-  "description": "많은 투자자가 말하는 ‘연 7% 수익률’은 실제 장기 CAGR과 차이가 있습니다. S&P500 장기 CAGR, 기대수익률 착시, 복리 효과를 현실적으로 이해하고 목표 자산 계획에 적용하는 고급 분석 글입니다.",
+  "headline": "연 7% 복리 현실 체크: CAGR로 목표 자산 계산하는 법",
+  "description": "연 7% 복리가 실제로 얼마를 의미하는지 CAGR, 변동성, 세금, 물가를 반영해 목표 자산 계획 기준으로 점검합니다. 복리 계산기와 목표 자산 시뮬레이터로 현실적인 월 투자금을 확인해보세요.",
   "datePublished": "2025-11-29",
-  "dateModified": "2025-11-29",
+  "dateModified": "2026-05-18",
   "author": { "@type": "Person", "name": "FinMap" },
   "publisher": { "@type": "Organization", "name": "FinMap" }
 }

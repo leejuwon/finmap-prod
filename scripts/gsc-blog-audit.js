@@ -19,6 +19,15 @@ const LOW_IMPRESSION_MAX = 50;
 const CTR_REWRITE_IMPRESSIONS = 100;
 const LOW_CTR = 0.02;
 
+const COLUMN_ALIASES = {
+  page: ['인기 페이지', '페이지', 'Page', 'Top pages', 'Pages', 'Landing page', 'URL'],
+  query: ['인기 검색어', '검색어', 'Query', 'Queries', 'Top queries'],
+  clicks: ['클릭수', '클릭 수', 'Clicks'],
+  impressions: ['노출', '노출수', '노출 수', 'Impressions'],
+  ctr: ['CTR'],
+  position: ['게재 순위', '게재순위', '평균 게재순위', '평균 게재 순위', 'Position', 'Average position'],
+};
+
 function readIfExists(file) {
   if (!fs.existsSync(file)) return null;
   return fs.readFileSync(file, 'utf8').replace(/^\uFEFF/, '');
@@ -50,10 +59,15 @@ function parseCsvLine(line) {
 
 function parseCsv(text) {
   if (!text || !text.trim()) return [];
+  return parseCsvDocument(text).rows;
+}
+
+function parseCsvDocument(text) {
+  if (!text || !text.trim()) return { headers: [], rows: [] };
   const lines = text.split(/\r?\n/).filter((line) => line.trim());
-  if (!lines.length) return [];
+  if (!lines.length) return { headers: [], rows: [] };
   const headers = parseCsvLine(lines[0]).map((h) => h.trim().replace(/^\uFEFF/, ''));
-  return lines.slice(1).map((line) => {
+  const rows = lines.slice(1).map((line) => {
     const cells = parseCsvLine(line);
     const row = {};
     headers.forEach((h, i) => {
@@ -61,13 +75,15 @@ function parseCsv(text) {
     });
     return row;
   });
+  return { headers, rows };
 }
 
 function normalizeHeader(s) {
   return String(s || '')
     .toLowerCase()
     .replace(/^\uFEFF/, '')
-    .replace(/\s+/g, ' ')
+    .replace(/\uFEFF/g, '')
+    .replace(/[\s\u00A0]+/g, '')
     .trim();
 }
 
@@ -143,12 +159,12 @@ function classifyPath(pagePath) {
 }
 
 function rowToMetric(row) {
-  const page = pick(row, ['Top pages', 'Page', 'Pages', 'Landing page', 'URL']);
-  const query = pick(row, ['Queries', 'Query', 'Top queries']);
-  const clicks = toNumber(pick(row, ['Clicks']));
-  const impressions = toNumber(pick(row, ['Impressions']));
-  const ctr = toCtr(pick(row, ['CTR']));
-  const position = toNumber(pick(row, ['Position', 'Average position']));
+  const page = pick(row, COLUMN_ALIASES.page);
+  const query = pick(row, COLUMN_ALIASES.query);
+  const clicks = toNumber(pick(row, COLUMN_ALIASES.clicks));
+  const impressions = toNumber(pick(row, COLUMN_ALIASES.impressions));
+  const ctr = toCtr(pick(row, COLUMN_ALIASES.ctr));
+  const position = toNumber(pick(row, COLUMN_ALIASES.position));
   return { page, query, clicks, impressions, ctr, position };
 }
 
@@ -156,10 +172,21 @@ function readMetrics() {
   const rawPages = readIfExists(INPUTS.pages);
   const rawQueries = readIfExists(INPUTS.queries);
   const rawPageQuery = readIfExists(INPUTS.pageQuery);
+  const pagesCsv = rawPages ? parseCsvDocument(rawPages) : { headers: [], rows: [] };
+  const queriesCsv = rawQueries ? parseCsvDocument(rawQueries) : { headers: [], rows: [] };
+  const pageQueryCsv = rawPageQuery ? parseCsvDocument(rawPageQuery) : { headers: [], rows: [] };
   return {
-    pageRows: rawPages ? parseCsv(rawPages).map(rowToMetric) : [],
-    queryRows: rawQueries ? parseCsv(rawQueries).map(rowToMetric) : [],
-    pageQueryRows: rawPageQuery ? parseCsv(rawPageQuery).map(rowToMetric) : [],
+    pageRows: pagesCsv.rows.map(rowToMetric),
+    queryRows: queriesCsv.rows.map(rowToMetric),
+    pageQueryRows: pageQueryCsv.rows.map(rowToMetric),
+    debug: {
+      pagesRowCount: pagesCsv.rows.length,
+      pagesHeaders: pagesCsv.headers,
+      queriesRowCount: queriesCsv.rows.length,
+      queriesHeaders: queriesCsv.headers,
+      pageQueryRowCount: pageQueryCsv.rows.length,
+      pageQueryHeaders: pageQueryCsv.headers,
+    },
     found: {
       pages: Boolean(rawPages),
       queries: Boolean(rawQueries),
@@ -170,11 +197,31 @@ function readMetrics() {
 
 function aggregatePages(pageRows, pageQueryRows) {
   const byPage = new Map();
+  const sourceRows = pageRows.length ? pageRows : pageQueryRows;
+  const debug = {
+    source: pageRows.length ? 'gsc-pages.csv' : (pageQueryRows.length ? 'gsc-page-query.csv' : 'none'),
+    inputRows: sourceRows.length,
+    normalizedBlogPageRowCount: 0,
+    normalizedToolPageRowCount: 0,
+    skippedReasons: {},
+  };
+
+  function skip(reason) {
+    debug.skippedReasons[reason] = (debug.skippedReasons[reason] || 0) + 1;
+  }
 
   function add(row) {
-    if (!row.page) return;
+    if (!row.page) {
+      skip('missing_page_column_or_value');
+      return;
+    }
     const info = classifyPath(row.page);
-    if (info.type !== 'blog' && info.type !== 'tool') return;
+    if (info.type !== 'blog' && info.type !== 'tool') {
+      skip('unsupported_path');
+      return;
+    }
+    if (info.type === 'blog') debug.normalizedBlogPageRowCount += 1;
+    if (info.type === 'tool') debug.normalizedToolPageRowCount += 1;
     const current = byPage.get(info.path) || {
       ...info,
       clicks: 0,
@@ -189,14 +236,15 @@ function aggregatePages(pageRows, pageQueryRows) {
     byPage.set(info.path, current);
   }
 
-  if (pageRows.length) pageRows.forEach(add);
-  else pageQueryRows.forEach(add);
+  sourceRows.forEach(add);
 
-  return Array.from(byPage.values()).map((p) => ({
+  const pages = Array.from(byPage.values()).map((p) => ({
     ...p,
     ctr: p.impressions > 0 ? p.clicks / p.impressions : 0,
     position: p.impressions > 0 ? p.weightedPosition / Math.max(1, p.impressions) : 0,
   }));
+
+  return { pages, debug };
 }
 
 function classifyPerformance(page) {
@@ -364,7 +412,7 @@ function localPriorityFallback(localPosts) {
     .slice(0, 20);
 }
 
-function buildReport({ found, pages, localPosts, pageQueryRows }) {
+function buildReport({ found, pages, localPosts, pageQueryRows, csvDebug, pageDebug }) {
   const hasCsv = found.pages || found.pageQuery || found.queries;
   const now = new Date().toISOString();
   const localByUrl = new Map(localPosts.map((p) => [p.url, p]));
@@ -401,12 +449,44 @@ function buildReport({ found, pages, localPosts, pageQueryRows }) {
   for (const page of pages) {
     for (const group of page.groups) groups.set(group, (groups.get(group) || 0) + 1);
   }
+  const skippedReasonRows = Object.entries(pageDebug?.skippedReasons || {})
+    .sort((a, b) => b[1] - a[1])
+    .map(([reason, count]) => [reason, count]);
 
   const lines = [];
   lines.push('# GSC Blog Audit');
   lines.push('');
   lines.push(`Generated: ${now}`);
   lines.push('');
+  lines.push('## CSV Debug');
+  lines.push('');
+  lines.push(`- pages csv parsed row count: ${csvDebug?.pagesRowCount || 0}`);
+  lines.push(`- pages detected headers: ${(csvDebug?.pagesHeaders || []).join(', ') || '(none)'}`);
+  lines.push(`- queries csv parsed row count: ${csvDebug?.queriesRowCount || 0}`);
+  lines.push(`- queries detected headers: ${(csvDebug?.queriesHeaders || []).join(', ') || '(none)'}`);
+  lines.push(`- normalized blog page row count: ${pageDebug?.normalizedBlogPageRowCount || 0}`);
+  lines.push(`- normalized tool page row count: ${pageDebug?.normalizedToolPageRowCount || 0}`);
+  lines.push(`- skipped row reason count: ${Object.values(pageDebug?.skippedReasons || {}).reduce((sum, n) => sum + n, 0)}`);
+  lines.push('');
+  lines.push(mdTable(['Reason', 'Count'], skippedReasonRows));
+  if (!pages.length) {
+    lines.push('### No Rows Diagnostic');
+    lines.push('');
+    if (!csvDebug?.pagesRowCount && !csvDebug?.pageQueryRowCount) {
+      lines.push('- No page-level CSV rows were available. `gsc-queries.csv` alone has queries but no page URL, so it cannot populate page performance tables.');
+    }
+    if ((csvDebug?.pagesRowCount || csvDebug?.pageQueryRowCount) && !((pageDebug?.normalizedBlogPageRowCount || 0) + (pageDebug?.normalizedToolPageRowCount || 0))) {
+      lines.push('- Page-level rows existed, but none normalized to `/posts/`, `/en/posts/`, `/tools/`, or `/en/tools/`.');
+    }
+    if (pageDebug?.skippedReasons?.missing_page_column_or_value) {
+      lines.push('- Some rows had no detected page value. Check the page column header aliases and blank URL cells.');
+    }
+    if (pageDebug?.skippedReasons?.unsupported_path) {
+      lines.push('- Some rows were skipped because their paths were outside the blog/tool URL patterns.');
+    }
+    lines.push('');
+  }
+
   lines.push('## Input status');
   lines.push('');
   lines.push(`- data/gsc-pages.csv: ${found.pages ? 'found' : 'missing'}`);
@@ -554,12 +634,15 @@ function buildReport({ found, pages, localPosts, pageQueryRows }) {
 function main() {
   const metrics = readMetrics();
   const localPosts = readLocalPosts();
-  const pages = mergeLocal(aggregatePages(metrics.pageRows, metrics.pageQueryRows), localPosts);
+  const aggregated = aggregatePages(metrics.pageRows, metrics.pageQueryRows);
+  const pages = mergeLocal(aggregated.pages, localPosts);
   const report = buildReport({
     found: metrics.found,
     pages,
     localPosts,
     pageQueryRows: metrics.pageQueryRows,
+    csvDebug: metrics.debug,
+    pageDebug: aggregated.debug,
   });
 
   fs.mkdirSync(path.dirname(REPORT_PATH), { recursive: true });
