@@ -85,9 +85,9 @@ export default function DCAYearTable({
 
   if (!stats.length) {
     return (
-      <div className="card">
-        <div className="flex items-center gap-3 mb-2">
-          <h2 className="text-xl font-semibold">{tableTitle}</h2>
+      <div className="card min-w-0 max-w-full">
+        <div className="mb-2 flex min-w-0 flex-wrap items-center gap-3">
+          <h2 className="break-words text-xl font-semibold leading-snug">{tableTitle}</h2>
         </div>
         <p className="text-sm text-slate-500">
           {isKo ? '데이터가 없습니다.' : 'No data.'}
@@ -97,10 +97,10 @@ export default function DCAYearTable({
   }
 
   return (
-    <div className="card">
-      <div className="flex items-center gap-3 mb-2">
-        <h2 className="text-xl font-semibold">{tableTitle}</h2>
-        <span className="text-[11px] sm:text-xs text-slate-500">
+    <div className="card min-w-0 max-w-full">
+      <div className="mb-2 flex min-w-0 flex-wrap items-center gap-3">
+        <h2 className="break-words text-xl font-semibold leading-snug">{tableTitle}</h2>
+        <span className="break-words text-[11px] text-slate-500 sm:text-xs">
           {unitText}
         </span>
         <button
@@ -112,7 +112,7 @@ export default function DCAYearTable({
         </button>
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="w-full min-w-0 max-w-full overflow-x-auto">
         <table className="min-w-[880px] border-t">
           <thead className="bg-slate-50">
             <tr>

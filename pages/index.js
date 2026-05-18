@@ -204,18 +204,18 @@ export default function Home({ posts }) {
         </div>
       </section>
 
-      <section className="mt-4 mb-8">
-        <h2 className="text-xl font-semibold mb-3">
+      <section className="mt-4 mb-8 min-w-0">
+        <h2 className="mb-3 break-words text-xl font-semibold leading-tight">
           {lang === 'en' ? 'Start here' : '처음 읽기 좋은 글'}
         </h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {pillars.map((p, idx) => {
             const categorySlug = getCategorySlugFromPost(p);
             const postLang = p.lang || 'ko';
             return (
-              <article key={`pillar-${postLang}-${p.slug}`} className="card">
+              <article key={`pillar-${postLang}-${p.slug}`} className="card min-w-0 max-w-full overflow-hidden">
                 {p.cover && (
-                  <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
+                  <div className="relative aspect-[16/9] w-full min-w-0 max-w-full overflow-hidden rounded-xl">
                     <Image
                       src={cloudinaryThumb(
                         p.cover,
@@ -228,17 +228,18 @@ export default function Home({ posts }) {
                     />
                   </div>
                 )}
-                <span className="badge">{p.category}</span>
-                <h3 className="text-base font-semibold">
+                <span className="badge max-w-full break-words">{p.category}</span>
+                <h3 className="break-words text-base font-semibold leading-snug">
                   <Link
                     href={`/posts/${categorySlug}/${p.slug}`}
                     locale={postLang}
                     prefetch={false}
+                    className="block break-words"
                   >
                     {p.title}
                   </Link>
                 </h3>
-                {p.description ? <p className="text-sm text-slate-600 mt-1 line-clamp-2">{p.description}</p> : null}
+                {p.description ? <p className="mt-1 break-words text-sm text-slate-600 line-clamp-2">{p.description}</p> : null}
               </article>
             );
           })}
@@ -246,9 +247,9 @@ export default function Home({ posts }) {
       </section>
 
       {/*  최신 글 섹션 */}
-      <section className="mt-4">
-        <h2 className="text-xl font-semibold mb-3">{t.latestHeading}</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="mt-4 min-w-0">
+        <h2 className="mb-3 break-words text-xl font-semibold leading-tight">{t.latestHeading}</h2>
+        <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {latest.map((p, idx) => {
             const categorySlug = getCategorySlugFromPost(p);
             const postLang = p.lang || 'ko';
@@ -256,10 +257,10 @@ export default function Home({ posts }) {
             return (
               <article
                 key={`${postLang}-${p.slug}`}
-                className="card hover:shadow-md transition-shadow"
+                className="card min-w-0 max-w-full overflow-hidden transition-shadow hover:shadow-md"
               >
                 {p.cover && (
-                  <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
+                  <div className="relative aspect-[16/9] w-full min-w-0 max-w-full overflow-hidden rounded-xl">
                     <Image
                       src={cloudinaryThumb(
                         p.cover,
@@ -274,17 +275,18 @@ export default function Home({ posts }) {
                     />
                   </div>
                 )}
-                <span className="badge">{p.category}</span>
-                <h3 className="mt-2 text-lg font-semibold">                  
+                <span className="badge max-w-full break-words">{p.category}</span>
+                <h3 className="mt-2 break-words text-lg font-semibold leading-snug">
                   <Link
                     href={`/posts/${categorySlug}/${p.slug}`}
                     locale={postLang}
                     prefetch={false}
+                    className="block break-words"
                   >
                     {p.title}
                   </Link>
                 </h3>
-                <p className="text-xs text-slate-500 mt-1">
+                <p className="mt-1 break-words text-xs text-slate-500">
                   {p.datePublished}
                 </p>
               </article>
@@ -295,17 +297,17 @@ export default function Home({ posts }) {
 
       {/*  더 많은 글 섹션 */}
       {more.length > 0 && (
-        <section className="mt-10 mb-12">
+        <section className="mt-10 mb-12 min-w-0">
           <div className="flex items-end justify-between mb-3
                           max-[480px]:flex-col max-[480px]:items-start max-[480px]:gap-1">
-            <h2 className="text-lg font-semibold whitespace-nowrap">
+            <h2 className="max-w-full break-words text-lg font-semibold leading-tight">
               {t.moreHeading}
             </h2>
-            <span className="text-xs text-slate-500 break-keep">
+            <span className="max-w-full break-words text-xs text-slate-500">
               {t.moreSub}
             </span>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {more.map((p) => {
               const categorySlug = getCategorySlugFromPost(p);
               const postLang = p.lang || 'ko';
@@ -313,10 +315,10 @@ export default function Home({ posts }) {
               return (
                 <article
                   key={`${postLang}-${p.slug}`}
-                  className="card hover:shadow-md transition-shadow"
+                  className="card min-w-0 max-w-full overflow-hidden transition-shadow hover:shadow-md"
                 >
                   {p.cover && (
-                    <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
+                    <div className="relative aspect-[16/9] w-full min-w-0 max-w-full overflow-hidden rounded-xl">
                       <Image
                         src={cloudinaryThumb(p.cover, { w: 640, h: 360 })}
                         alt={p.title}
@@ -326,17 +328,18 @@ export default function Home({ posts }) {
                       />
                     </div>
                   )}
-                  <span className="badge">{p.category}</span>
-                  <h3 className="mt-2 text-base font-semibold">                    
+                  <span className="badge max-w-full break-words">{p.category}</span>
+                  <h3 className="mt-2 break-words text-base font-semibold leading-snug">
                     <Link
                       href={`/posts/${categorySlug}/${p.slug}`}
                       locale={postLang}
                       prefetch={false}
+                      className="block break-words"
                     >
                       {p.title}
                     </Link>
                   </h3>
-                  <p className="text-xs text-slate-500 mt-1">
+                  <p className="mt-1 break-words text-xs text-slate-500">
                     {p.datePublished}
                   </p>
                 </article>

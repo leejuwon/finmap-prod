@@ -115,6 +115,11 @@
     font-size: 16px; /* 기본 */
   }
 
+  /*
+   * Keep the existing narrow-screen html scaling for now to avoid changing
+   * every page at once. A better long-term fix is to tune specific pressure
+   * points such as header nav, dense tables, stat cards, and post titles.
+   */
   /* ✅ 아주 좁은 폰(<=400px)에서만 전체 타이포 살짝 축소 */
   @media (max-width: 400px) {
     html { font-size: 15px; } /* -6.25% */
@@ -131,29 +136,6 @@
 
   body {
     @apply bg-slate-50 text-slate-900;
-  }
-
-  /* Root overflow is a guardrail; real fixes should keep inner elements max-width/min-width stable. */
-  /* =========================================================
-   ✅ 전체 페이지 가로 스크롤 차단 (내부 overflow-x-auto는 허용)
-  ========================================================= */
-  html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-
-  #__next {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-
-  /* 차트/캔버스/이미지가 뷰포트 밖으로 밀어내는 경우 방어 */
-  img, video, canvas, svg {
-    max-width: 100%;
-  }
-
-  img, video {
-    height: auto;
   }
 
   input, select, textarea {

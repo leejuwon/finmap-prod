@@ -121,10 +121,10 @@ function computeRange(tf, period, preset) {
 
 function MiniCard({ title, value, sub }) {
   return (
-    <div className="rounded-2xl border border-slate-100 bg-white p-4">
-      <div className="text-sm font-semibold text-slate-800">{title}</div>
+    <div className="min-w-0 max-w-full rounded-2xl border border-slate-100 bg-white p-4">
+      <div className="break-words text-sm font-semibold leading-snug text-slate-800">{title}</div>
       <div className="mt-2 text-lg font-bold leading-snug text-slate-900 break-words">{value}</div>
-      {sub ? <div className="mt-1 text-xs text-slate-500">{sub}</div> : null}
+      {sub ? <div className="mt-1 break-words text-xs leading-snug text-slate-500">{sub}</div> : null}
     </div>
   );
 }
@@ -315,33 +315,33 @@ function Sparkline({ rows, valueKey, valueTransform, fmtY, fmtX }) {
   const chgText = chg == null ? '-' : `${chg > 0 ? '+' : ''}${chg.toFixed(2)}%`;
 
   return (
-    <div>
+    <div className="min-w-0 max-w-full overflow-hidden">
       {/* ✅ SVG + Y 라벨 */}
       <div className="relative">
-        <div className="absolute left-0 top-0 text-[11px] text-slate-500">
+        <div className="absolute left-0 top-0 max-w-[45%] break-words text-[11px] leading-tight text-slate-500">
           {fmtYv(model.max)}
         </div>
-        <div className="absolute left-0 bottom-0 text-[11px] text-slate-500">
+        <div className="absolute left-0 bottom-0 max-w-[45%] break-words text-[11px] leading-tight text-slate-500">
           {fmtYv(model.min)}
         </div>
 
-        <svg viewBox={`0 0 ${model.w} ${model.h}`} className="w-full h-[140px] text-slate-900">
+        <svg viewBox={`0 0 ${model.w} ${model.h}`} className="h-[150px] w-full max-w-full text-slate-900 sm:h-[140px]">
           <path d={model.d} fill="none" stroke="currentColor" strokeWidth="2" />
         </svg>
       </div>
 
       {/* ✅ X 라벨은 absolute 제거하고 아래로 내림 (겹침 방지) */}
-      <div className="mt-1 flex items-center justify-between text-[11px] text-slate-500">
-        <span>{fmtXp(model.start.period)}</span>
-        <span>{fmtXp(model.end.period)}</span>
+      <div className="mt-1 flex min-w-0 items-center justify-between gap-2 text-[11px] text-slate-500">
+        <span className="min-w-0 break-words">{fmtXp(model.start.period)}</span>
+        <span className="min-w-0 break-words text-right">{fmtXp(model.end.period)}</span>
       </div>
 
       {/* pills */}
-      <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-slate-600">
-        <span className="rounded-full bg-slate-100 px-2.5 py-1">Start: {fmtYv(model.start.v)}</span>
-        <span className="rounded-full bg-slate-100 px-2.5 py-1">End: {fmtYv(model.end.v)}</span>
-        <span className="rounded-full bg-slate-100 px-2.5 py-1">Change: {chgText}</span>
-        <span className="rounded-full bg-slate-100 px-2.5 py-1">
+      <div className="mt-2 flex min-w-0 flex-wrap gap-2 text-[11px] text-slate-600">
+        <span className="max-w-full rounded-full bg-slate-100 px-2.5 py-1 break-words">Start: {fmtYv(model.start.v)}</span>
+        <span className="max-w-full rounded-full bg-slate-100 px-2.5 py-1 break-words">End: {fmtYv(model.end.v)}</span>
+        <span className="max-w-full rounded-full bg-slate-100 px-2.5 py-1 break-words">Change: {chgText}</span>
+        <span className="max-w-full rounded-full bg-slate-100 px-2.5 py-1 break-words">
           Min/Max: {fmtYv(model.min)} ~ {fmtYv(model.max)}
         </span>
       </div>
@@ -612,32 +612,34 @@ export default function AptDetailPage({
 
   const seriesTableLimit = timeframe === 'month' ? 24 : 10;
   const seriesRows = useMemo(() => (series || []).slice(-seriesTableLimit), [series, seriesTableLimit]);
+  const selectClass = "w-full min-w-0 rounded-lg border bg-white px-3 py-2 text-sm";
+  const fieldClass = "min-w-0";
 
   function SeriesPointCard({ r }) {
     return (
-      <div className="rounded-2xl border border-slate-100 bg-white p-4">
-        <div className="flex items-start justify-between gap-2">
-          <div className="text-sm font-semibold text-slate-900">{fmtXPeriod(r.period)}</div>
-          <div className="text-xs text-slate-500">
+      <div className="min-w-0 max-w-full rounded-2xl border border-slate-100 bg-white p-4">
+        <div className="flex flex-col gap-1 min-[390px]:flex-row min-[390px]:items-start min-[390px]:justify-between">
+          <div className="break-words text-sm font-semibold text-slate-900">{fmtXPeriod(r.period)}</div>
+          <div className="break-words text-xs text-slate-500">
             {lang === 'en' ? 'Tx' : '거래'}: {r.tx_count != null ? Number(r.tx_count).toLocaleString() : '-'}
           </div>
         </div>
-        <div className="mt-3 grid grid-cols-2 gap-2">
-          <div className="rounded-xl border border-slate-100 bg-white px-3 py-2">
-            <div className="text-[11px] text-slate-500">{lang === 'en' ? 'Median (total)' : '중앙값(총액)'}</div>
-            <div className="mt-0.5 text-sm font-semibold text-slate-900">{fmtEokFromWon(r.median_price, lang)}</div>
+        <div className="mt-3 grid grid-cols-1 gap-2 min-[390px]:grid-cols-2">
+          <div className="min-w-0 rounded-xl border border-slate-100 bg-white px-3 py-2">
+            <div className="break-words text-[11px] leading-snug text-slate-500">{lang === 'en' ? 'Median (total)' : '중앙값(총액)'}</div>
+            <div className="mt-0.5 break-words text-sm font-semibold text-slate-900">{fmtEokFromWon(r.median_price, lang)}</div>
           </div>
-          <div className="rounded-xl border border-slate-100 bg-white px-3 py-2">
-            <div className="text-[11px] text-slate-500">{lang === 'en' ? 'Avg (total)' : '평균(총액)'}</div>
-            <div className="mt-0.5 text-sm font-semibold text-slate-900">{fmtEokFromWon(r.avg_price, lang)}</div>
+          <div className="min-w-0 rounded-xl border border-slate-100 bg-white px-3 py-2">
+            <div className="break-words text-[11px] leading-snug text-slate-500">{lang === 'en' ? 'Avg (total)' : '평균(총액)'}</div>
+            <div className="mt-0.5 break-words text-sm font-semibold text-slate-900">{fmtEokFromWon(r.avg_price, lang)}</div>
           </div>
-          <div className="rounded-xl border border-slate-100 bg-white px-3 py-2">
-            <div className="text-[11px] text-slate-500">{lang === 'en' ? 'Median /pyeong' : '중앙값/평'}</div>
-            <div className="mt-0.5 text-sm font-semibold text-slate-900">{fmtManPerPyeongFromWonPerM2(r.median_price_per_m2, lang)}</div>
+          <div className="min-w-0 rounded-xl border border-slate-100 bg-white px-3 py-2">
+            <div className="break-words text-[11px] leading-snug text-slate-500">{lang === 'en' ? 'Median /pyeong' : '중앙값/평'}</div>
+            <div className="mt-0.5 break-words text-sm font-semibold text-slate-900">{fmtManPerPyeongFromWonPerM2(r.median_price_per_m2, lang)}</div>
           </div>
-          <div className="rounded-xl border border-slate-100 bg-white px-3 py-2">
-            <div className="text-[11px] text-slate-500">{lang === 'en' ? 'Sum' : '총액'}</div>
-            <div className="mt-0.5 text-sm font-semibold text-slate-900">{fmtEokFromWon(r.sum_price, lang)}</div>
+          <div className="min-w-0 rounded-xl border border-slate-100 bg-white px-3 py-2">
+            <div className="break-words text-[11px] leading-snug text-slate-500">{lang === 'en' ? 'Sum' : '총액'}</div>
+            <div className="mt-0.5 break-words text-sm font-semibold text-slate-900">{fmtEokFromWon(r.sum_price, lang)}</div>
           </div>
         </div>
       </div>
@@ -646,14 +648,14 @@ export default function AptDetailPage({
 
   function TradeCard({ x }) {
     return (
-      <div className="rounded-2xl border border-slate-100 bg-white p-4">
-        <div className="flex items-start justify-between gap-2">
-          <div className="text-sm font-semibold text-slate-900">
+      <div className="min-w-0 max-w-full rounded-2xl border border-slate-100 bg-white p-4">
+        <div className="flex flex-col gap-1 min-[390px]:flex-row min-[390px]:items-start min-[390px]:justify-between">
+          <div className="break-words text-sm font-semibold text-slate-900">
             {x.deal_date ? String(x.deal_date).slice(0, 10) : '-'}
           </div>
-          <div className="text-sm font-bold text-slate-900">{fmtEokFromMan(x.deal_amount_man, lang)}</div>
+          <div className="break-words text-sm font-bold text-slate-900">{fmtEokFromMan(x.deal_amount_man, lang)}</div>
         </div>
-        <div className="mt-2 text-xs text-slate-500">
+        <div className="mt-2 break-words text-xs leading-relaxed text-slate-500">
           {lang === 'en' ? 'Area' : '전용'}: {x.area_m2 != null ? Number(x.area_m2).toFixed(1) : '-'}㎡
           {' · '}
           {lang === 'en' ? 'Pyeong' : '평'}: {fmtPyeongFromM2(x.area_m2)}
@@ -702,56 +704,56 @@ export default function AptDetailPage({
         robots={seoRobots || 'index,follow,max-image-preview:large'}
       />
 
-      <div className="card">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <Link href="/market/real-estate" className="text-sm text-slate-500 hover:underline">
+      <div className="card min-w-0 max-w-full">
+        <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+          <div className="min-w-0">
+            <Link href="/market/real-estate" className="inline-flex min-h-[44px] items-center text-sm text-slate-500 hover:underline">
               ← {lang === 'en' ? 'Back to list' : '목록으로'}
             </Link>
 
-            <h1 className="mt-2 text-2xl font-bold text-slate-900">{apt_name || '-'}</h1>
-            <div className="mt-1 text-sm text-slate-500">{dong_name || ''}</div>
-            <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
+            <h1 className="mt-2 max-w-full break-words text-xl font-bold leading-tight text-slate-900 sm:text-2xl">{apt_name || '-'}</h1>
+            <div className="mt-1 break-words text-sm text-slate-500">{dong_name || ''}</div>
+            <p className="mt-3 max-w-3xl break-words text-sm leading-6 text-slate-600">
               {lang === 'en'
                 ? `Review the latest official apartment transaction summary${seoStats?.latest_period ? ` for ${ymToLabel(seoStats.latest_period)}` : ''}, including median price, transaction count, unit price trend and recent deals.`
                 : `최근 공식 아파트 실거래 요약${seoStats?.latest_period ? `(${ymToLabel(seoStats.latest_period)})` : ''}을 기준으로 대표가격, 거래량, 평단가 추이와 최근 거래를 함께 확인할 수 있습니다.`}
             </p>
 
-            <div className="mt-3 flex flex-wrap gap-2 text-xs">
-              <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">
+            <div className="mt-3 flex min-w-0 flex-wrap gap-2 text-xs">
+              <span className="max-w-full rounded-full bg-slate-100 px-3 py-1 text-slate-700 break-words">
                 {lang === 'en' ? 'Snapshot' : '스냅샷'}: {timeframe} / {periodLabel} / {band}
               </span>
-              <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">
+              <span className="max-w-full rounded-full bg-slate-100 px-3 py-1 text-slate-700 break-words">
                 {lang === 'en' ? 'Range' : '추이범위'}: {rangeLabel}
               </span>
               {(stats?.household_count != null || stats?.dong_count != null) && (
-                <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">
+                <span className="max-w-full rounded-full bg-slate-100 px-3 py-1 text-slate-700 break-words">
                   {lang === 'en' ? 'HH/Dong' : '세대/동'}: {fmtCount(stats?.household_count)} / {fmtCount(stats?.dong_count)}
                 </span>
               )}
               {stats?.tx_count ? (
-                <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">
+                <span className="max-w-full rounded-full bg-slate-100 px-3 py-1 text-slate-700 break-words">
                   {lang === 'en' ? 'Tx' : '거래'}: {Number(stats.tx_count).toLocaleString()}
                 </span>
               ) : (
-                <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">
+                <span className="max-w-full rounded-full bg-slate-100 px-3 py-1 text-slate-700 break-words">
                   {lang === 'en' ? 'No sample' : '표본 없음'}
                 </span>
               )}
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="grid w-full grid-cols-1 gap-2 min-[390px]:grid-cols-2 md:w-auto md:flex md:items-center">
             {/* ✅ Desktop only: Cards/Table toggle */}
             <div className="hidden md:flex items-center gap-2">
               <button
-                className={`px-3 py-2 rounded-lg border ${desktopView === 'card' ? 'bg-slate-900 text-white border-slate-900' : 'bg-white hover:bg-slate-50'}`}
+                className={`min-h-[44px] px-3 py-2 rounded-lg border ${desktopView === 'card' ? 'bg-slate-900 text-white border-slate-900' : 'bg-white hover:bg-slate-50'}`}
                 onClick={() => setDesktopView('card')}
               >
                 {lang === 'en' ? 'Cards' : '카드'}
               </button>
               <button
-                className={`px-3 py-2 rounded-lg border ${desktopView === 'table' ? 'bg-slate-900 text-white border-slate-900' : 'bg-white hover:bg-slate-50'}`}
+                className={`min-h-[44px] px-3 py-2 rounded-lg border ${desktopView === 'table' ? 'bg-slate-900 text-white border-slate-900' : 'bg-white hover:bg-slate-50'}`}
                 onClick={() => setDesktopView('table')}
               >
                 {lang === 'en' ? 'Table' : '표'}
@@ -759,7 +761,7 @@ export default function AptDetailPage({
             </div>
 
             <button
-              className="px-4 py-2 rounded-lg border bg-white hover:bg-slate-50"
+              className="min-h-[44px] min-w-0 rounded-lg border bg-white px-4 py-2 text-sm hover:bg-slate-50"
               onClick={fetchAll}
             >
               {lang === 'en' ? 'Refresh' : '새로고침'}
@@ -768,11 +770,11 @@ export default function AptDetailPage({
         </div>
 
         {/* 컨트롤 */}
-        <div className="mt-5 grid grid-cols-1 md:grid-cols-4 gap-3">
-          <div>
+        <div className="mt-5 grid grid-cols-1 gap-3 min-[390px]:grid-cols-2 md:grid-cols-4">
+          <div className={fieldClass}>
             <div className="text-sm text-slate-500 mb-1">{lang === 'en' ? 'Timeframe' : '집계'}</div>
             <select
-              className="w-full border rounded-lg px-3 py-2"
+              className={selectClass}
               value={timeframe}
               onChange={(e) => {
                 const v = e.target.value;
@@ -789,10 +791,10 @@ export default function AptDetailPage({
             </select>
           </div>
 
-          <div>
+          <div className={fieldClass}>
             <div className="text-sm text-slate-500 mb-1">{lang === 'en' ? 'Period (snapshot)' : '기간(스냅샷)'}</div>
             <select
-              className="w-full border rounded-lg px-3 py-2"
+              className={selectClass}
               value={period}
               onChange={(e) => {
                 const v = e.target.value;
@@ -814,10 +816,10 @@ export default function AptDetailPage({
             </div>
           </div>
 
-          <div>
+          <div className={fieldClass}>
             <div className="text-sm text-slate-500 mb-1">{lang === 'en' ? 'Trend range (from~to)' : '추이 범위(from~to)'}</div>
             <select
-              className="w-full border rounded-lg px-3 py-2"
+              className={selectClass}
               value={rangePreset}
               onChange={(e) => {
                 const v = sanitizeRangePreset(timeframe, e.target.value);
@@ -847,10 +849,10 @@ export default function AptDetailPage({
             </div>
           </div>
 
-          <div>
+          <div className={fieldClass}>
             <div className="text-sm text-slate-500 mb-1">{lang === 'en' ? 'Band' : '평형'}</div>
             <select
-              className="w-full border rounded-lg px-3 py-2"
+              className={selectClass}
               value={band}
               onChange={(e) => {
                 const v = e.target.value;
@@ -876,7 +878,7 @@ export default function AptDetailPage({
         ) : null}
 
         {/* KPI 카드 (스냅샷: period 1개) */}
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-8 gap-3">
+        <div className="mt-6 grid grid-cols-1 gap-3 min-[390px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           <MiniCard
             title={lang === 'en' ? 'Typical price (median)' : '대표가격(중앙값)'}
             value={fmtEokFromWon(stats?.median_price, lang)}
@@ -935,9 +937,9 @@ export default function AptDetailPage({
         </div>
 
         {/* 차트 (range: from~to) */}
-        <div className="mt-8 rounded-2xl border border-slate-100 bg-white p-5">
-          <div className="text-lg font-bold text-slate-900">{lang === 'en' ? 'Price trend' : '가격 추이'}</div>
-          <div className="mt-1 text-sm text-slate-500">
+        <div className="mt-8 min-w-0 max-w-full rounded-2xl border border-slate-100 bg-white p-4 sm:p-5">
+          <div className="break-words text-lg font-bold text-slate-900">{lang === 'en' ? 'Price trend' : '가격 추이'}</div>
+          <div className="mt-1 break-words text-sm leading-relaxed text-slate-500">
             {lang === 'en'
               ? `Range: ${rangeLabel} · Line: typical unit price (median), converted to 10k KRW per pyeong`
               : `범위: ${rangeLabel} · 선: 대표평단가(중앙값) — 만원/평 기준`}
@@ -946,7 +948,7 @@ export default function AptDetailPage({
           {loading ? (
             <div className="py-10 text-center text-slate-400">{lang === 'en' ? 'Loading...' : '조회 중...'}</div>
           ) : (
-            <div className="mt-3">
+            <div className="mt-3 min-w-0 max-w-full">
               <Sparkline
                 rows={series}
                 valueKey="median_price_per_m2"
@@ -957,14 +959,14 @@ export default function AptDetailPage({
             </div>
           )}
 
-          <div className="mt-3 text-[11px] text-slate-500">
+          <div className="mt-3 break-words text-[11px] text-slate-500">
             {lang === 'en'
               ? `Table shows latest ${seriesTableLimit} points (even if the range has more).`
               : `표는 범위 내에서도 최근 ${seriesTableLimit}개만 표시합니다.`}
           </div>
 
           {/* ✅ 모바일: 카드 고정 / 데스크탑: 토글 */}
-          <div className={`${desktopView === 'card' ? '' : 'md:hidden'} mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3`}>
+          <div className={`${desktopView === 'card' ? '' : 'md:hidden'} mt-4 grid grid-cols-1 gap-3 min-[390px]:grid-cols-2 lg:grid-cols-3`}>
             {seriesRows?.length ? (
               seriesRows.flatMap((r, idx) => {
                 const out = [<SeriesPointCard key={`s-${r.period}`} r={r} />];
@@ -983,14 +985,14 @@ export default function AptDetailPage({
                 return out;
               })
             ) : (
-              <div className="rounded-2xl border border-slate-100 bg-white p-8 text-center text-slate-400 md:col-span-2 lg:col-span-3">
+              <div className="rounded-2xl border border-slate-100 bg-white p-8 text-center text-slate-400 min-[390px]:col-span-2 lg:col-span-3">
                 No series
               </div>
             )}
           </div>
 
           {desktopView === 'table' && (
-            <div className="hidden md:block mt-4 overflow-x-auto">
+            <div className="hidden md:block mt-4 max-w-full overflow-x-auto rounded-2xl border border-slate-100">
               <table className="min-w-[900px] w-full text-sm">
                 <thead>
                   <tr className="border-b text-left">
@@ -1025,18 +1027,18 @@ export default function AptDetailPage({
         </div>
 
         {/* 최신 거래 (range: from~to) */}
-        <div className="mt-8 rounded-2xl border border-slate-100 bg-white p-5">
-          <div className="text-lg font-bold text-slate-900">
+        <div className="mt-8 min-w-0 max-w-full rounded-2xl border border-slate-100 bg-white p-4 sm:p-5">
+          <div className="break-words text-lg font-bold text-slate-900">
             {lang === 'en' ? 'Latest deals in range' : '범위 내 최근 거래'}
           </div>
-          <div className="mt-1 text-sm text-slate-500">
+          <div className="mt-1 break-words text-sm leading-relaxed text-slate-500">
             {lang === 'en'
               ? `Filtered by range: ${rangeLabel} (canceled deals excluded).`
               : `추이 범위(${rangeLabel})로 필터되며, 취소거래는 제외합니다.`}
           </div>
 
           {/* ✅ 모바일: 카드 고정 / 데스크탑: 토글 + 카드 중간 광고 */}
-          <div className={`${desktopView === 'card' ? '' : 'md:hidden'} mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3`}>
+          <div className={`${desktopView === 'card' ? '' : 'md:hidden'} mt-4 grid grid-cols-1 gap-3 min-[390px]:grid-cols-2 lg:grid-cols-3`}>
             {(detail?.latest_trades || []).length ? (
               (detail.latest_trades).flatMap((x, idx) => {
                 const out = [<TradeCard key={`t-${x.deal_date}-${idx}`} x={x} />];
@@ -1055,14 +1057,14 @@ export default function AptDetailPage({
                 return out;
               })
             ) : (
-              <div className="rounded-2xl border border-slate-100 bg-white p-8 text-center text-slate-400 md:col-span-2 lg:col-span-3">
+              <div className="rounded-2xl border border-slate-100 bg-white p-8 text-center text-slate-400 min-[390px]:col-span-2 lg:col-span-3">
                 {lang === 'en' ? 'No trades' : '거래 없음'}
               </div>
             )}
           </div>
 
           {desktopView === 'table' && (
-            <div className="hidden md:block mt-4 overflow-x-auto">
+            <div className="hidden md:block mt-4 max-w-full overflow-x-auto rounded-2xl border border-slate-100">
               <table className="min-w-[900px] w-full text-sm">
                 <thead>
                   <tr className="border-b text-left">
@@ -1099,7 +1101,7 @@ export default function AptDetailPage({
           )}
         </div>
 
-        <div className="mt-8 text-xs text-slate-500">
+        <div className="mt-8 break-words text-xs leading-relaxed text-slate-500">
           {lang === 'en'
             ? 'KPI cards are snapshot-by-period; the trend chart & latest-deals are filtered by the range.'
             : '정리: KPI 카드는 “단일 기간 스냅샷”, 차트/최근거래는 “from~to 범위” 기준입니다.'}

@@ -54,40 +54,40 @@ export default function CompoundCTA({
   };
 
   return (
-    <div className="card mt-4 bg-emerald-50 border border-emerald-200">
-      <h3 className="text-lg font-semibold mb-2">
+    <div className="card mt-4 w-full min-w-0 max-w-full border border-emerald-200 bg-emerald-50">
+      <h3 className="mb-2 break-words text-lg font-semibold leading-snug">
         {isKo ? "결과 공유 및 저장" : "Share & Export"}
       </h3>
 
-      <p className="mb-3 text-xs leading-5 text-slate-700">
+      <p className="mb-3 break-words text-xs leading-5 text-slate-700">
         {isKo
           ? "공유 링크에는 입력값이 포함되어 다시 열면 같은 조건이 복원됩니다."
           : "Shared links include your inputs, so the same setup is restored when opened."}
       </p>
 
-      {/* ✅ 버튼 3개에 맞게: 모바일 2열, sm 이상 3열 */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      {/* Narrow mobile uses one column; wider phones use two, then sm uses three. */}
+      <div className="grid min-w-0 grid-cols-1 gap-3 min-[390px]:grid-cols-2 sm:grid-cols-3">
         <button
           type="button"
-          className="btn-primary flex gap-2 items-center justify-center"
+          className="btn-primary flex w-full min-w-0 items-center justify-center gap-2"
           onClick={onDownloadPDF}
         >
-          <DownloadIcon className="w-5 h-5" />
+          <DownloadIcon className="h-5 w-5 flex-shrink-0" />
           {isKo ? "PDF 다운로드" : "Download PDF"}
         </button>
 
         <button
           type="button"
-          className="btn-secondary flex gap-2 items-center justify-center"
+          className="btn-secondary flex w-full min-w-0 items-center justify-center gap-2"
           onClick={handleShare}
         >
-          <ShareIcon className="w-5 h-5" />
+          <ShareIcon className="h-5 w-5 flex-shrink-0" />
           {isKo ? "공유하기" : "Share"}
         </button>
 
         <button
           type="button"
-          className="btn-outline flex gap-2 items-center justify-center"
+          className="btn-outline flex w-full min-w-0 items-center justify-center gap-2 min-[390px]:col-span-2 sm:col-span-1"
           onClick={() =>
             copyUrl(isKo ? "URL이 복사되었습니다!" : "URL copied!")
           }
@@ -96,8 +96,8 @@ export default function CompoundCTA({
         </button>        
       </div>
 
-      <div className="mt-3 text-xs text-slate-600 flex gap-2 items-center">
-        <BellIcon className="w-4 h-4" />
+      <div className="mt-3 flex min-w-0 items-start gap-2 break-words text-xs text-slate-600">
+        <BellIcon className="h-4 w-4 flex-shrink-0" />
         {isKo
           ? "FinMap 앱 출시 시 계산 기록 연동을 지원할 예정입니다."
           : "FinMap app will support synced simulations at launch."}

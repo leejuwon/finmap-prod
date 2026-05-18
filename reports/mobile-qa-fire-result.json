@@ -1,0 +1,245 @@
+{
+  "generatedAt": "2026-05-18T17:04:24.946Z",
+  "base": "http://127.0.0.1:8036",
+  "results": [
+    {
+      "viewport": "320x720",
+      "label": "fire",
+      "path": "/tools/fire-calculator",
+      "status": 200,
+      "clicked": true,
+      "screenshot": "reports\\mobile-qa-screenshots\\fire-result\\320x720\\fire.png",
+      "hasPageOverflow": false,
+      "pageScrollWidth": 320,
+      "pageClientWidth": 320,
+      "safeBottomPresent": true,
+      "fixedBottom": [
+        {
+          "tag": "div",
+          "className": "fixed bottom-0 left-0 right-0 z-50 max-w-full border-t bg-white/90 backdrop-blur shadow-lg",
+          "text": "PDF 저장 공유하기",
+          "height": 61,
+          "width": 320,
+          "top": 659,
+          "bottom": 720
+        }
+      ],
+      "overflowCandidates": [
+        {
+          "tag": "div",
+          "className": "header-nav flex min-w-0 flex-1 items-center gap-1 sm:gap-2 text-[12px] sm:text-[14px]",
+          "text": "홈 시장정보 금융도구",
+          "clientWidth": 64,
+          "scrollWidth": 113,
+          "right": 163,
+          "allowed": false
+        }
+      ],
+      "alerts": [
+        ""
+      ]
+    },
+    {
+      "viewport": "360x740",
+      "label": "fire",
+      "path": "/tools/fire-calculator",
+      "status": 304,
+      "clicked": true,
+      "screenshot": "reports\\mobile-qa-screenshots\\fire-result\\360x740\\fire.png",
+      "hasPageOverflow": false,
+      "pageScrollWidth": 360,
+      "pageClientWidth": 360,
+      "safeBottomPresent": true,
+      "fixedBottom": [
+        {
+          "tag": "div",
+          "className": "fixed bottom-0 left-0 right-0 z-50 max-w-full border-t bg-white/90 backdrop-blur shadow-lg",
+          "text": "PDF 저장 공유하기",
+          "height": 63,
+          "width": 360,
+          "top": 678,
+          "bottom": 740
+        }
+      ],
+      "overflowCandidates": [
+        {
+          "tag": "div",
+          "className": "header-nav flex min-w-0 flex-1 items-center gap-1 sm:gap-2 text-[12px] sm:text-[14px]",
+          "text": "홈 시장정보 금융도구",
+          "clientWidth": 96,
+          "scrollWidth": 115,
+          "right": 198,
+          "allowed": false
+        }
+      ],
+      "alerts": [
+        ""
+      ]
+    },
+    {
+      "viewport": "375x812",
+      "label": "fire",
+      "path": "/tools/fire-calculator",
+      "status": 304,
+      "clicked": true,
+      "screenshot": "reports\\mobile-qa-screenshots\\fire-result\\375x812\\fire.png",
+      "hasPageOverflow": false,
+      "pageScrollWidth": 375,
+      "pageClientWidth": 375,
+      "safeBottomPresent": true,
+      "fixedBottom": [
+        {
+          "tag": "div",
+          "className": "fixed bottom-0 left-0 right-0 z-50 max-w-full border-t bg-white/90 backdrop-blur shadow-lg",
+          "text": "PDF 저장 공유하기",
+          "height": 64,
+          "width": 375,
+          "top": 748,
+          "bottom": 812
+        }
+      ],
+      "overflowCandidates": [
+        {
+          "tag": "div",
+          "className": "header-nav flex min-w-0 flex-1 items-center gap-1 sm:gap-2 text-[12px] sm:text-[14px]",
+          "text": "홈 시장정보 금융도구",
+          "clientWidth": 103,
+          "scrollWidth": 117,
+          "right": 209,
+          "allowed": false
+        }
+      ],
+      "alerts": [
+        ""
+      ]
+    },
+    {
+      "viewport": "390x844",
+      "label": "fire",
+      "path": "/tools/fire-calculator",
+      "status": 304,
+      "clicked": true,
+      "screenshot": "reports\\mobile-qa-screenshots\\fire-result\\390x844\\fire.png",
+      "hasPageOverflow": false,
+      "pageScrollWidth": 390,
+      "pageClientWidth": 390,
+      "safeBottomPresent": true,
+      "fixedBottom": [
+        {
+          "tag": "div",
+          "className": "fixed bottom-0 left-0 right-0 z-50 max-w-full border-t bg-white/90 backdrop-blur shadow-lg",
+          "text": "PDF 저장 공유하기",
+          "height": 64,
+          "width": 390,
+          "top": 780,
+          "bottom": 844
+        }
+      ],
+      "overflowCandidates": [],
+      "alerts": [
+        ""
+      ]
+    },
+    {
+      "viewport": "412x915",
+      "label": "fire",
+      "path": "/tools/fire-calculator",
+      "status": 304,
+      "clicked": true,
+      "screenshot": "reports\\mobile-qa-screenshots\\fire-result\\412x915\\fire.png",
+      "hasPageOverflow": false,
+      "pageScrollWidth": 412,
+      "pageClientWidth": 412,
+      "safeBottomPresent": true,
+      "fixedBottom": [
+        {
+          "tag": "div",
+          "className": "fixed bottom-0 left-0 right-0 z-50 max-w-full border-t bg-white/90 backdrop-blur shadow-lg",
+          "text": "PDF 저장 공유하기",
+          "height": 65,
+          "width": 412,
+          "top": 850,
+          "bottom": 915
+        }
+      ],
+      "overflowCandidates": [
+        {
+          "tag": "div",
+          "className": "header-nav flex min-w-0 flex-1 items-center gap-1 sm:gap-2 text-[12px] sm:text-[14px]",
+          "text": "홈 시장정보 금융도구",
+          "clientWidth": 132,
+          "scrollWidth": 155,
+          "right": 241,
+          "allowed": false
+        }
+      ],
+      "alerts": [
+        ""
+      ]
+    },
+    {
+      "viewport": "430x932",
+      "label": "fire",
+      "path": "/tools/fire-calculator",
+      "status": 304,
+      "clicked": true,
+      "screenshot": "reports\\mobile-qa-screenshots\\fire-result\\430x932\\fire.png",
+      "hasPageOverflow": false,
+      "pageScrollWidth": 430,
+      "pageClientWidth": 430,
+      "safeBottomPresent": true,
+      "fixedBottom": [
+        {
+          "tag": "div",
+          "className": "fixed bottom-0 left-0 right-0 z-50 max-w-full border-t bg-white/90 backdrop-blur shadow-lg",
+          "text": "PDF 저장 공유하기",
+          "height": 65,
+          "width": 430,
+          "top": 867,
+          "bottom": 932
+        }
+      ],
+      "overflowCandidates": [
+        {
+          "tag": "div",
+          "className": "header-nav flex min-w-0 flex-1 items-center gap-1 sm:gap-2 text-[12px] sm:text-[14px]",
+          "text": "홈 시장정보 금융도구",
+          "clientWidth": 150,
+          "scrollWidth": 155,
+          "right": 259,
+          "allowed": false
+        }
+      ],
+      "alerts": [
+        ""
+      ]
+    },
+    {
+      "viewport": "768x1024",
+      "label": "fire",
+      "path": "/tools/fire-calculator",
+      "status": 304,
+      "clicked": true,
+      "screenshot": "reports\\mobile-qa-screenshots\\fire-result\\768x1024\\fire.png",
+      "hasPageOverflow": false,
+      "pageScrollWidth": 768,
+      "pageClientWidth": 768,
+      "safeBottomPresent": true,
+      "fixedBottom": [
+        {
+          "tag": "div",
+          "className": "fixed bottom-0 left-0 right-0 z-50 max-w-full border-t bg-white/90 backdrop-blur shadow-lg",
+          "text": "PDF 저장 공유하기",
+          "height": 65,
+          "width": 768,
+          "top": 959,
+          "bottom": 1024
+        }
+      ],
+      "overflowCandidates": [],
+      "alerts": [
+        ""
+      ]
+    }
+  ]
+}

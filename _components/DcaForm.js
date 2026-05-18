@@ -174,10 +174,10 @@ export default function DCAForm({
   };
 
   return (
-    <div className="grid gap-4">
+    <div className="grid min-w-0 max-w-full grid-cols-1 gap-4">
       {/* 1행: 금액 입력 */}
-      <div className="grid gap-3 md:grid-cols-4">
-        <label className="grid gap-1">
+      <div className="grid min-w-0 max-w-full grid-cols-1 gap-3 md:grid-cols-4">
+        <label className="grid min-w-0 gap-1">
           <span className="text-sm">{initialLabel}</span>
           <input
             name="initial"
@@ -188,7 +188,7 @@ export default function DCAForm({
             onChange={handleMoneyChange}
           />
         </label>
-        <label className="grid gap-1">
+        <label className="grid min-w-0 gap-1">
           <span className="text-sm">{contributionLabel}</span>
           <input
             name="monthly"
@@ -199,7 +199,7 @@ export default function DCAForm({
             onChange={handleMoneyChange}
           />
         </label>
-        <label className="grid gap-1">
+        <label className="grid min-w-0 gap-1">
           <span className="text-sm">{t.rate}</span>
           <input
             name="annualRate"
@@ -212,7 +212,7 @@ export default function DCAForm({
             step="0.1"
           />
         </label>
-        <label className="grid gap-1">
+        <label className="grid min-w-0 gap-1">
           <span className="text-sm">{t.years}</span>
           <input
             name="years"
@@ -228,8 +228,8 @@ export default function DCAForm({
       </div>
 
       {/* 2행: 연간 증가율 + 복리/세금/수수료 */}
-      <div className="grid gap-3 md:grid-cols-4">
-        <label className="grid gap-1">
+      <div className="grid min-w-0 max-w-full grid-cols-1 gap-3 md:grid-cols-4">
+        <label className="grid min-w-0 gap-1">
           <span className="text-sm">{t.contributionFrequency}</span>
           <select
             name="contributionFrequency"
@@ -242,7 +242,7 @@ export default function DCAForm({
           </select>
         </label>
 
-        <label className="grid gap-1">
+        <label className="grid min-w-0 gap-1">
           <span className="text-sm">{t.startDate}</span>
           <input
             name="startDate"
@@ -253,7 +253,7 @@ export default function DCAForm({
           />
         </label>
 
-        <label className="grid gap-1">
+        <label className="grid min-w-0 gap-1">
           <span className="text-sm">{t.annualIncrease}</span>
           <input
             name="annualIncrease"
@@ -266,7 +266,7 @@ export default function DCAForm({
           />
         </label>
 
-        <label className="grid gap-1">
+        <label className="grid min-w-0 gap-1">
           <span className="text-sm">{t.compounding}</span>
           <select
             name="compounding"
@@ -282,8 +282,8 @@ export default function DCAForm({
       </div>
 
       {/* 3행: 비용 가정 */}
-      <div className="grid gap-3 md:grid-cols-2">
-        <label className="grid gap-1">
+      <div className="grid min-w-0 max-w-full grid-cols-1 gap-3 md:grid-cols-2">
+        <label className="grid min-w-0 gap-1">
           <span className="text-sm">{t.tax}</span>
           <input
             name="taxRate"
@@ -299,7 +299,7 @@ export default function DCAForm({
           />
         </label>
 
-        <label className="grid gap-1">
+        <label className="grid min-w-0 gap-1">
           <span className="text-sm">{t.fee}</span>
           <input
             name="feeRate"
@@ -330,8 +330,8 @@ export default function DCAForm({
       )}
 
       {/* 4행: 통화 + 버튼 */}
-      <div className="flex flex-wrap gap-3 justify-between items-center">
-        <label className="grid gap-1">
+      <div className="flex min-w-0 flex-wrap items-center justify-between gap-3">
+        <label className="grid min-w-0 w-full gap-1 sm:w-auto">
           <span className="text-sm">{t.currency}</span>
           <select
             className="select"
@@ -348,7 +348,7 @@ export default function DCAForm({
 
         <button
           type="button"
-          className="btn-primary ml-auto"
+          className="btn-primary ml-auto w-full sm:w-auto"
           onClick={handleSubmit}
           disabled={disabled}
         >

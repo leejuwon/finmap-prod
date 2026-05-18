@@ -356,7 +356,7 @@ export default function FireCalculatorPage() {
 
       <JsonLdPack lang={lang} />
 
-      <div className="tool-page">
+      <div className={`tool-page ${result ? "fm-safe-bottom" : ""}`}>
         <div className="tool-header">
           <h1>{t.title}</h1>
           <p>{t.desc}</p>
@@ -401,7 +401,7 @@ export default function FireCalculatorPage() {
                   : "Simulated FIRE timing and asset longevity (withdrawal rate & returns)."
               } />
 
-            <div className="tool-cta-section">
+            <div className="tool-cta-section grid min-w-0 gap-4">
               <ToolCta lang={lang} type="compound" />
               <ToolCta lang={lang} type="goal" />
               <ToolCta lang={lang} type="cagr" />
@@ -422,36 +422,36 @@ export default function FireCalculatorPage() {
           </>
         )}
         {/* ✅ 내부링크: 추천 가이드 글 5개 (SEO + 체류시간 + 내부탐색) */}
-        <section className="card">
-          <div className="flex items-center justify-between gap-3 mb-3">
-            <h2 className="text-base font-semibold">
+        <section className="card min-w-0 max-w-full">
+          <div className="mb-3 flex min-w-0 flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+            <h2 className="break-words text-base font-semibold leading-snug">
               {lang === "ko" ? "추천 가이드 글" : "Recommended guides"}
             </h2>
             <Link              
               href={`/category/personalFinance`}
               locale={lang}
-              className="text-sm text-slate-600 hover:underline"
+              className="inline-flex min-h-[44px] items-center break-words text-sm text-slate-600 hover:underline"
             >
               {lang === "ko" ? "전체 글 보기" : "View all posts"}
             </Link>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
             {relatedGuides.map((g) => (
               <Link
                 key={g.slug}
                 href={`/posts/personalFinance/${g.slug}`}
                 locale={lang}
-                className="block border rounded-2xl p-4 hover:shadow-sm transition"
+                className="block min-w-0 rounded-2xl border p-4 transition hover:shadow-sm"
               >
-                <div className="text-xs text-slate-500 mb-1">
+                <div className="mb-1 break-words text-xs text-slate-500">
                   {lang === "ko" ? g.tagKo : g.tagEn}
                 </div>
-                <div className="font-semibold leading-snug">
+                <div className="break-words font-semibold leading-snug">
                   {lang === "ko" ? g.titleKo : g.titleEn}
                 </div>
                 {/* 2단계에서 길이 조정해도 되지만, 기본은 1줄로 고정 */}
-                <div className="text-sm text-slate-600 mt-1 overflow-hidden text-ellipsis whitespace-nowrap">
+                <div className="mt-1 line-clamp-2 break-words text-sm text-slate-600">
                   {lang === "ko" ? g.descKo : g.descEn}
                 </div>
               </Link>

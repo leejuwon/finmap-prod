@@ -144,7 +144,7 @@ export default function DCAChart({
   if (!chartData) return null;
 
   return (
-    <div className="h-72 sm:h-80 lg:h-96">
+    <div className="h-72 min-w-0 max-w-full sm:h-80 lg:h-96">
       <Bar data={chartData} options={options} />
     </div>
   );

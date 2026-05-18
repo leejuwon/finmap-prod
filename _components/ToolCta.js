@@ -82,24 +82,24 @@ export default function ToolCta({ lang = 'ko', type = 'compound' }) {
   const href = config.href;
 
   return (
-    <section className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-5 sm:px-6 sm:py-6 flex flex-col sm:flex-row gap-4 sm:items-center shadow-sm">
-      <div className="flex-1">
-        <p className="text-[11px] font-semibold tracking-[0.16em] text-slate-500 uppercase mb-1">
+    <section className="flex max-w-full min-w-0 flex-col gap-4 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-5 shadow-sm sm:flex-row sm:items-center sm:px-6 sm:py-6">
+      <div className="min-w-0 flex-1">
+        <p className="mb-1 break-words text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
           {isKo ? config.badgeKo : config.badgeEn}
         </p>
-        <h3 className="text-base sm:text-lg font-semibold text-slate-900 mb-1">
+        <h3 className="mb-1 break-words text-base font-semibold leading-snug text-slate-900 sm:text-lg">
           {isKo ? config.titleKo : config.titleEn}
         </h3>
-        <p className="text-xs sm:text-sm text-slate-600">
+        <p className="break-words text-xs leading-5 text-slate-600 sm:text-sm">
           {isKo ? config.descKo : config.descEn}
         </p>
       </div>
 
-      <div className="flex-shrink-0">
+      <div className="w-full flex-shrink-0 sm:w-auto">
         <Link
           href={href}
           locale={lang} // ✅ locale 기반으로 /en 라우팅
-          className="inline-flex items-center px-4 py-2 rounded-full bg-blue-600 text-white text-xs sm:text-sm font-medium hover:bg-blue-700 transition-colors"
+          className="inline-flex min-h-[44px] w-full items-center justify-center whitespace-normal break-words rounded-full bg-blue-600 px-4 py-2 text-center text-xs font-medium leading-tight text-white transition-colors hover:bg-blue-700 sm:w-auto sm:text-sm"
         >
           {isKo ? config.btnKo : config.btnEn}
         </Link>

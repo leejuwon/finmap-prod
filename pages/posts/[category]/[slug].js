@@ -432,7 +432,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
 
       if (domNode.name === 'figure') {
         return (
-          <figure className="my-6">
+          <figure className="my-6 max-w-full overflow-hidden">
             {domToReact(domNode.children, parserOptions)}
           </figure>
         );
@@ -440,7 +440,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
 
       if (domNode.name === 'figcaption') {
         return (
-          <figcaption className="mt-2 text-sm text-slate-500 text-center">
+          <figcaption className="mt-2 break-words text-center text-sm leading-relaxed text-slate-500">
             {domToReact(domNode.children, parserOptions)}
           </figcaption>
         );
@@ -459,8 +459,53 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
             loading="lazy"
             decoding="async"
             fetchPriority="low"
-            className="w-full h-auto rounded-xl"
+            className="h-auto w-full max-w-full rounded-xl object-contain"
           />
+        );
+      }
+
+      if (domNode.name === 'table') {
+        return (
+          <div className="fm-table-scroll my-5 max-w-full">
+            <table className="min-w-[640px] w-full border-collapse text-sm">
+              {domToReact(domNode.children, parserOptions)}
+            </table>
+          </div>
+        );
+      }
+
+      if (domNode.name === 'pre') {
+        return (
+          <pre className="my-5 max-w-full overflow-x-auto rounded-xl bg-slate-950 p-4 text-sm leading-relaxed text-slate-100">
+            {domToReact(domNode.children, parserOptions)}
+          </pre>
+        );
+      }
+
+      if (domNode.name === 'code') {
+        const children = domToReact(domNode.children, parserOptions);
+        const isPreCode = domNode.parent?.name === 'pre';
+
+        if (isPreCode) {
+          return <code className="block min-w-max whitespace-pre bg-transparent p-0 text-inherit">{children}</code>;
+        }
+
+        return <code className="break-words rounded bg-slate-100 px-1 py-0.5 text-[0.9em]">{children}</code>;
+      }
+
+      if (domNode.name === 'details') {
+        return (
+          <details className="my-4 max-w-full rounded-xl border border-slate-200 bg-slate-50 p-3 sm:p-4">
+            {domToReact(domNode.children, parserOptions)}
+          </details>
+        );
+      }
+
+      if (domNode.name === 'summary') {
+        return (
+          <summary className="min-h-[44px] cursor-pointer break-words py-2 text-sm font-semibold leading-snug text-slate-900">
+            {domToReact(domNode.children, parserOptions)}
+          </summary>
         );
       }
 
@@ -496,10 +541,10 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
       <JsonLd data={jsonld} />
       <JsonLd data={breadcrumbJsonLd} />
 
-      <article className="prose prose-slate lg:prose-lg max-w-none bg-white border rounded-2xl shadow-card p-6">
-        <h1 className="fm-post-title fm-post-title--clamp3">{post.title}</h1>
+      <article className="prose prose-slate lg:prose-lg max-w-none min-w-0 overflow-x-hidden rounded-2xl border bg-white p-4 shadow-card sm:p-6">
+        <h1 className="fm-post-title fm-post-title--clamp3 max-w-full break-words leading-tight">{post.title}</h1>
 
-        <div className="text-sm text-slate-500 space-y-1">
+        <div className="min-w-0 space-y-1 break-words text-sm text-slate-500">
           <p>
             {post.category} · {post.datePublished}
             {post.dateModified && post.dateModified !== post.datePublished
@@ -514,7 +559,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
         </div>
 
         {post.cover && (
-          <div className="relative w-full aspect-[1200/630] rounded-xl mt-4 mb-6 overflow-hidden">
+          <div className="relative mt-4 mb-6 aspect-[1200/630] w-full min-w-0 max-w-full overflow-hidden rounded-xl">
             <Image
               src={cloudinaryThumb(post.cover, { w: 1200, h: 630 })}
               alt={post.title}
@@ -526,8 +571,8 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
           </div>
         )}
 
-        <section className="not-prose my-6 rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:p-5">
-          <div className="flex flex-wrap items-center gap-2 text-xs font-medium text-slate-500">
+        <section className="not-prose my-6 max-w-full rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:p-5">
+          <div className="flex min-w-0 flex-wrap items-center gap-2 text-xs font-medium text-slate-500">
             {post.readingTimeMinutes ? (
               <span>{isKo ? `${post.readingTimeMinutes}분 읽기` : `${post.readingTimeMinutes} min read`}</span>
             ) : null}
@@ -536,12 +581,12 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
             ) : null}
           </div>
           {post.description ? (
-            <p className="mt-2 text-sm leading-6 text-slate-700">{post.description}</p>
+            <p className="mt-2 break-words text-sm leading-6 text-slate-700">{post.description}</p>
           ) : null}
           {normalizedTools.length > 0 ? (
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="mt-3 flex min-w-0 flex-wrap gap-2">
               {normalizedTools.slice(0, 4).map((toolType) => (
-                <span key={`summary-${toolType}`} className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-blue-700 ring-1 ring-blue-100">
+                <span key={`summary-${toolType}`} className="max-w-full break-words rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-blue-700 ring-1 ring-blue-100">
                   {getToolLabel(toolType, lang)}
                 </span>
               ))}
@@ -549,10 +594,10 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
           ) : null}
         </section>
 
-        <div className="fm-post-body">{contentWithInArticleAds}</div>
+        <div className="fm-post-body min-w-0 max-w-full break-words">{contentWithInArticleAds}</div>
 
         {normalizedTools.length > 0 && (
-          <div className="mt-8 space-y-4">
+          <div className="mt-8 grid min-w-0 gap-4">
             {normalizedTools.map((toolType) => (
               <ToolCta key={toolType} lang={lang} type={toolType} />
             ))}
@@ -563,7 +608,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
           <AdResponsive key={`post-bot-${lang}-${slug}`} client={AD_CLIENT} slot={AD_SLOTS.responsiveBottom} align="center" />
         </div>
 
-        <div className="mt-4 flex flex-wrap items-center gap-3 border-t pt-4">
+        <div className="not-prose mt-4 grid grid-cols-2 gap-2 border-t pt-4 sm:flex sm:flex-wrap sm:items-center sm:gap-3">
           <button type="button" onClick={handleLike} className="btn-secondary">
             👍 {isKo ? '좋아요' : 'Like'} {likes > 0 ? `(${likes})` : ''}
           </button>
@@ -578,7 +623,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
             )}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-sky-500 underline"
+            className="inline-flex min-h-[44px] items-center justify-center break-words rounded-lg border border-sky-100 px-3 py-2 text-center text-xs text-sky-600 underline"
           >
             X(Twitter)
           </a>
@@ -587,24 +632,24 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
             href={`https://www.facebook.com/sharer.php?u=${encodeURIComponent(shareUrl)}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-blue-600 underline"
+            className="inline-flex min-h-[44px] items-center justify-center break-words rounded-lg border border-blue-100 px-3 py-2 text-center text-xs text-blue-600 underline"
           >
             Facebook
           </a>
         </div>
 
         {/* 댓글 영역 (원본 유지) */}
-        <section className="mt-6 border-t pt-4">
-          <h2 className="text-base md:text-lg font-semibold mb-3">{isKo ? '댓글' : 'Comments'}</h2>
+        <section className="not-prose mt-6 min-w-0 border-t pt-4">
+          <h2 className="mb-3 break-words text-base font-semibold md:text-lg">{isKo ? '댓글' : 'Comments'}</h2>
             <form
-              className="grid gap-2 mb-4"
+              className="mb-4 grid min-w-0 gap-3"
               autoComplete="off"
               onSubmit={(e) => {
                 e.preventDefault();
                 handleCommentSubmit();
               }}
             >
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid min-w-0 grid-cols-1 gap-2 sm:grid-cols-2">
               <input
                 name="nickname"
                 placeholder={isKo ? '닉네임' : 'Nickname'}
@@ -627,48 +672,48 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
             <textarea
               name="content"
               placeholder={isKo ? '댓글을 입력하세요' : 'Write a comment'}
-              className="input min-h-[80px]"
+              className="input min-h-[96px]"
               value={commentForm.content}
               onChange={handleCommentChange}
             />
 
-            <div className="flex justify-end">
-              <button type="submit" className="btn-primary">
+            <div className="grid sm:flex sm:justify-end">
+              <button type="submit" className="btn-primary w-full sm:w-auto">
                 {isKo ? '댓글 등록' : 'Submit comment'}
               </button>
             </div>
           </form>
 
           {comments.length === 0 ? (
-            <p className="text-sm text-slate-500">{isKo ? '아직 댓글이 없습니다.' : 'No comments yet.'}</p>
+            <p className="break-words text-sm text-slate-500">{isKo ? '아직 댓글이 없습니다.' : 'No comments yet.'}</p>
           ) : (
             <ul className="space-y-3">
               {comments.map((c) => (
-                <li key={c.id} className="border rounded-lg px-3 py-2 bg-slate-50">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-semibold">{c.nickname}</span>
-                    <span className="flex items-center gap-2">
+                <li key={c.id} className="min-w-0 rounded-lg border bg-slate-50 px-3 py-2">
+                  <div className="mb-1 flex min-w-0 flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                    <span className="break-words text-sm font-semibold">{c.nickname}</span>
+                    <span className="flex min-w-0 items-center gap-2">
                       {c.created_at && (
-                        <span className="text-[11px] text-slate-400">
+                        <span className="break-words text-[11px] text-slate-400">
                           {new Date(c.created_at).toLocaleString(isKo ? 'ko-KR' : 'en-US')}
                         </span>
                       )}
                     </span>
                   </div>
 
-                  <p className="text-sm whitespace-pre-wrap mb-2">{c.content}</p>
+                  <p className="mb-2 whitespace-pre-wrap break-words text-sm">{c.content}</p>
 
-                  <div className="flex gap-2 justify-end">
+                  <div className="flex flex-wrap justify-end gap-2">
                     <button
                       type="button"
-                      className="text-xs text-slate-500 hover:text-blue-600"
+                      className="min-h-[36px] px-2 text-xs text-slate-500 hover:text-blue-600"
                       onClick={() => handleCommentEdit(c)}
                     >
                       {isKo ? '수정' : 'Edit'}
                     </button>
                     <button
                       type="button"
-                      className="text-xs text-slate-500 hover:text-red-600"
+                      className="min-h-[36px] px-2 text-xs text-slate-500 hover:text-red-600"
                       onClick={() => handleCommentDelete(c)}
                     >
                       {isKo ? '삭제' : 'Delete'}
@@ -681,9 +726,9 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
         </section>
 
         {post.tags?.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-4">
+          <div className="not-prose mt-4 flex min-w-0 flex-wrap gap-2">
             {post.tags.map((tag) => (
-              <span key={tag} className="px-2 py-1 text-xs bg-slate-100 rounded-full">
+              <span key={tag} className="max-w-full break-words rounded-full bg-slate-100 px-2 py-1 text-xs">
                 #{tag}
               </span>
             ))}
@@ -691,20 +736,20 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
         )}
 
         {Array.isArray(relatedPosts) && relatedPosts.length > 0 && (
-          <section className="mt-10 border-t pt-6">
-            <h2 className="text-base md:text-lg font-semibold mb-3">
+          <section className="not-prose mt-10 min-w-0 border-t pt-6">
+            <h2 className="mb-3 break-words text-base font-semibold md:text-lg">
               {lang === 'en' ? 'Related posts' : '관련 글'}
             </h2>
-            <div className="text-sm mb-3">
-              <Link className="underline" href={`/category/${categorySlug}`} locale={lang} prefetch={false}>
+            <div className="mb-3 text-sm">
+              <Link className="inline-flex min-h-[44px] items-center break-words underline" href={`/category/${categorySlug}`} locale={lang} prefetch={false}>
                 {lang === 'en' ? 'Open category' : '카테고리 더 보기'}
               </Link>
             </div>
-            <ul className="grid gap-3">
+            <ul className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
               {relatedPosts.map((rp) => (
-                <li key={`${rp.lang}-${rp.slug}`} className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm">
+                <li key={`${rp.lang}-${rp.slug}`} className="min-w-0 rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm">
                   <Link
-                    className="font-semibold text-slate-900 hover:underline"
+                    className="block break-words font-semibold leading-snug text-slate-900 hover:underline"
                     href={`/posts/${categorySlug}/${rp.slug}`}
                     locale={rp.lang}
                     prefetch={false}
@@ -712,14 +757,14 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
                     {rp.title}
                   </Link>
                   {rp.description ? (
-                    <p className="mt-1 text-xs leading-5 text-slate-600">{rp.description}</p>
+                    <p className="mt-1 break-words text-xs leading-5 text-slate-600">{rp.description}</p>
                   ) : null}
                   {rp.readingTimeMinutes ? (
-                    <div className="mt-1 text-xs text-slate-500">
+                    <div className="mt-1 break-words text-xs text-slate-500">
                       {lang === 'en' ? `${rp.readingTimeMinutes} min read` : `${rp.readingTimeMinutes}분 읽기`}
                     </div>
                   ) : null}
-                  {rp.datePublished ? <span className="text-slate-400"> · {rp.datePublished}</span> : null}
+                  {rp.datePublished ? <span className="break-words text-slate-400"> · {rp.datePublished}</span> : null}
                 </li>
               ))}
             </ul>

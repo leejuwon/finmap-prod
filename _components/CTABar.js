@@ -79,7 +79,7 @@ export default function CTABar({
                   type="button"
                   onClick={() => onClickNav(it.key)}
                   className={[
-                    "min-w-[4rem] flex-1 rounded-lg border px-2 py-2 text-center text-xs font-semibold leading-tight",
+                    "min-w-[4rem] min-h-[38px] flex-1 rounded-lg border px-2 py-2 text-center text-xs font-semibold leading-tight",
                     active
                       ? "bg-blue-600 text-white border-blue-600"
                       : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50",

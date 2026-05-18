@@ -608,7 +608,7 @@ export default function CompoundPage() {
         <JsonLd key={i} data={d} />
       ))}
 
-      <main className="py-6 grid gap-6 fm-mobile-full">
+      <main className={`py-6 grid gap-6 fm-mobile-full ${hasResult ? "fm-safe-bottom" : ""}`}>
         {/* 타이틀 + 모드 토글 */}
         <header className="flex items-start justify-between gap-3">
           <h1 className="text-xl sm:text-2xl font-bold">
@@ -701,7 +701,7 @@ export default function CompoundPage() {
           <>
             <div
               id="pdf-target"
-              className={`grid gap-6 ${isProMobile ? "fm-safe-bottom" : ""}`}
+              className="grid gap-6"
             >
               {/* =========================
                   ✅ PRO Mobile Flow
@@ -1289,7 +1289,7 @@ export default function CompoundPage() {
                     <h3 className="text-sm font-semibold mb-2">
                       {locale === "ko" ? "관련 계산기" : "Related tools"}
                     </h3>                 
-                    <div className="tool-cta-section">
+                    <div className="tool-cta-section grid min-w-0 gap-4">
                       <ToolCta lang={lang} type="fire" />
                       <ToolCta lang={lang} type="goal" />
                       <ToolCta lang={lang} type="cagr" />
@@ -1312,36 +1312,36 @@ export default function CompoundPage() {
         )}
 
         {/* ✅ 내부링크: 추천 가이드 글 5개 (SEO + 체류시간 + 내부탐색) */}
-        <section className="card">
-          <div className="flex items-center justify-between gap-3 mb-3">
-            <h2 className="text-base font-semibold">
+        <section className="card min-w-0 max-w-full">
+          <div className="mb-3 flex min-w-0 flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+            <h2 className="break-words text-base font-semibold leading-snug">
               {locale === "ko" ? "추천 가이드 글" : "Recommended guides"}
             </h2>
             <Link              
               href={`/category/personalFinance`}
               locale={locale}
-              className="text-sm text-slate-600 hover:underline"
+              className="inline-flex min-h-[44px] items-center break-words text-sm text-slate-600 hover:underline"
             >
               {locale === "ko" ? "전체 글 보기" : "View all posts"}
             </Link>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
             {relatedGuides.map((g) => (
               <Link
                 key={g.slug}
                 href={`/posts/personalFinance/${g.slug}`}
                 locale={locale}
-                className="block border rounded-2xl p-4 hover:shadow-sm transition"
+                className="block min-w-0 rounded-2xl border p-4 transition hover:shadow-sm"
               >
-                <div className="text-xs text-slate-500 mb-1">
+                <div className="mb-1 break-words text-xs text-slate-500">
                   {locale === "ko" ? g.tagKo : g.tagEn}
                 </div>
-                <div className="font-semibold leading-snug">
+                <div className="break-words font-semibold leading-snug">
                   {locale === "ko" ? g.titleKo : g.titleEn}
                 </div>
                 {/* 2단계에서 길이 조정해도 되지만, 기본은 1줄로 고정 */}
-                <div className="text-sm text-slate-600 mt-1 overflow-hidden text-ellipsis whitespace-nowrap">
+                <div className="mt-1 line-clamp-2 break-words text-sm text-slate-600">
                   {locale === "ko" ? g.descKo : g.descEn}
                 </div>
               </Link>

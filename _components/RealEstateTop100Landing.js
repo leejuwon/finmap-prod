@@ -36,9 +36,9 @@ function safeJsonLd(obj) {
 
 function MiniStat({ label, value }) {
   return (
-    <div className="rounded-xl border border-slate-100 bg-white px-3 py-2">
-      <div className="text-[11px] text-slate-500">{label}</div>
-      <div className="mt-0.5 text-sm font-semibold text-slate-900">
+    <div className="min-w-0 max-w-full rounded-xl border border-slate-100 bg-white px-3 py-2">
+      <div className="break-words text-[11px] leading-snug text-slate-500">{label}</div>
+      <div className="mt-0.5 break-words text-sm font-semibold text-slate-900">
         {value ?? "-"}
       </div>
     </div>
@@ -48,11 +48,11 @@ function MiniStat({ label, value }) {
 function Badge({ tone, label, value }) {
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium ${tone}`}
+      className={`inline-flex max-w-full items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium leading-tight whitespace-normal break-words ${tone}`}
       title={`${label}: ${value}`}
     >
       <span className="opacity-80">{label}</span>
-      <span className="font-semibold">{value}</span>
+      <span className="font-semibold break-words">{value}</span>
     </span>
   );
 }
@@ -322,60 +322,64 @@ export default function RealEstateTop100Landing({
         </div>
 
         {/* ✅ 기간 선택 (5개) */}
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          <div className="text-xs text-slate-500">
-            {lang === "en" ? "Range:" : "기간:"}
-          </div>
-          <select
-            className="border rounded-lg px-3 py-2 text-sm"
-            value={effectiveRangeKey}
-            onChange={(e) => {
-              const v = e.target.value;
-              // ✅ pm은 range query를 "삭제"해야 다시 선택 가능
-              if (v === "pm") pushQuery(router, {}, ["range"]);
-              else pushQuery(router, { range: v });
-            }}
-          >
-            {rangeOptions.map((o) => (
-              <option key={o.value} value={o.value}>
-                {lang === "en" ? o.labelEn : o.labelKo}
-              </option>
-            ))}
-          </select>
+        <div className="mt-3 grid grid-cols-1 gap-2 min-[390px]:grid-cols-2 md:flex md:flex-wrap md:items-end">
+          <label className="min-w-0">
+            <div className="mb-1 text-xs text-slate-500">
+              {lang === "en" ? "Range" : "기간"}
+            </div>
+            <select
+              className="w-full min-w-0 rounded-lg border bg-white px-3 py-2 text-sm"
+              value={effectiveRangeKey}
+              onChange={(e) => {
+                const v = e.target.value;
+                // ✅ pm은 range query를 "삭제"해야 다시 선택 가능
+                if (v === "pm") pushQuery(router, {}, ["range"]);
+                else pushQuery(router, { range: v });
+              }}
+            >
+              {rangeOptions.map((o) => (
+                <option key={o.value} value={o.value}>
+                  {lang === "en" ? o.labelEn : o.labelKo}
+                </option>
+              ))}
+            </select>
+          </label>
 
           {/* ✅ 평형(band) 선택 */}
-          <div className="ml-2 text-xs text-slate-500">
-            {lang === "en" ? "Size:" : "평형:"}
-          </div>
-          <select
-            className="border rounded-lg px-3 py-2 text-sm"
-            value={String(effectiveBand || "all")}
-            onChange={(e) => {
-              const v = e.target.value;
-              // all은 query에서 제거(깔끔하게)
-              if (v === "all") pushQuery(router, {}, ["band"]);
-              else pushQuery(router, { band: v });
-            }}
-          >
-            {bandOptions.map((o) => (
-              <option key={o.value} value={o.value}>
-                {lang === "en" ? o.labelEn : o.labelKo}
-              </option>
-            ))}
-          </select>
+          <label className="min-w-0">
+            <div className="mb-1 text-xs text-slate-500">
+              {lang === "en" ? "Size" : "평형"}
+            </div>
+            <select
+              className="w-full min-w-0 rounded-lg border bg-white px-3 py-2 text-sm"
+              value={String(effectiveBand || "all")}
+              onChange={(e) => {
+                const v = e.target.value;
+                // all은 query에서 제거(깔끔하게)
+                if (v === "all") pushQuery(router, {}, ["band"]);
+                else pushQuery(router, { band: v });
+              }}
+            >
+              {bandOptions.map((o) => (
+                <option key={o.value} value={o.value}>
+                  {lang === "en" ? o.labelEn : o.labelKo}
+                </option>
+              ))}
+            </select>
+          </label>
         </div>
 
-        <div className="mt-5 flex flex-wrap items-center gap-2 text-sm">
-          <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">
+        <div className="mt-5 flex min-w-0 flex-wrap items-center gap-2 text-sm">
+          <span className="max-w-full rounded-full bg-slate-100 px-3 py-1 text-slate-700 break-words">
             {lang === "en" ? "Scope" : "범위"}: {scopeText}
           </span>
-          <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">
+          <span className="max-w-full rounded-full bg-slate-100 px-3 py-1 text-slate-700 break-words">
             {lang === "en" ? "Rows" : "건수"}: {list.length}
           </span>
         </div>
 
-        <div className="mt-6 flex items-center justify-between gap-3">
-          <h2 className="text-lg font-bold text-slate-900">{t.tableTitle}</h2>
+        <div className="mt-6 flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <h2 className="min-w-0 break-words text-lg font-bold text-slate-900">{t.tableTitle}</h2>
           <div className="hidden md:flex items-center gap-2">
             <button
               className={`px-3 py-2 rounded-lg border ${
@@ -424,21 +428,21 @@ export default function RealEstateTop100Landing({
             const latestVal = fmtEokFromMan(r?.latest_deal_amount_man, lang);
 
             return (
-              <div key={`${r?.apt_key || ""}-${i}`} className="card p-4">
-                <div className="text-xs text-slate-500">
+              <div key={`${r?.apt_key || ""}-${i}`} className="card p-4 min-w-0 max-w-full">
+                <div className="break-words text-xs text-slate-500">
                   {i + 1}. {r?.sigungu_name || "-"}
                 </div>
                 <Link
                   href={makeDetailHref(r)}
                   onClick={rememberDetailState}
-                  className="mt-0.5 block text-base font-semibold text-slate-900 hover:underline underline-offset-2 truncate"
+                  className="mt-0.5 block max-h-[2.75rem] min-w-0 overflow-hidden text-base font-semibold leading-snug text-slate-900 hover:underline underline-offset-2 whitespace-normal break-words"
                   title={r?.apt_name || ""}
                 >
                   {r?.apt_name || "-"}
                 </Link>
 
                 {/* ✅ 평형(단지의 최근거래 전용면적 기반, 없으면 밴드 fallback) */}                 
-                <div className="mt-1 text-xs text-slate-500">
+                <div className="mt-1 break-words text-xs text-slate-500">
                   {sizeColLabel}: <span className="font-semibold text-slate-700">{sizeText}</span>                
                 </div>
 
@@ -461,7 +465,7 @@ export default function RealEstateTop100Landing({
                   />
                 </div>
 
-                <div className="mt-2 grid grid-cols-2 md:grid-cols-3 gap-2">                 
+                <div className="mt-2 grid grid-cols-1 gap-2 min-[390px]:grid-cols-2 md:grid-cols-3">
                   <MiniStat label={t.cols.latestDate} value={latestDate} />
                   <MiniStat label={t.cols.build} value={build} />
                   <MiniStat label={sizeColLabel} value={sizeText} />
@@ -473,7 +477,7 @@ export default function RealEstateTop100Landing({
 
         {/* ✅ Table: 데스크탑 선택 */}
         {desktopView === "table" && (
-          <div className="hidden md:block mt-3 overflow-x-auto rounded-2xl border bg-white">
+          <div className="hidden md:block mt-3 max-w-full overflow-x-auto rounded-2xl border bg-white">
             <table className="min-w-[980px] w-full text-sm">
               <thead>
                 <tr className="border-b bg-slate-50 text-left">
@@ -535,10 +539,10 @@ export default function RealEstateTop100Landing({
         <div className="mt-6 rounded-2xl border bg-white p-4">
           <div className="text-sm font-semibold text-slate-900">{t.ctaTitle}</div>
           <div className="mt-1 text-sm text-slate-600">{t.ctaDesc}</div>
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-3 grid grid-cols-1 gap-2 min-[390px]:grid-cols-2 sm:flex sm:flex-wrap">
             <Link
               href="/market/real-estate"
-              className="inline-flex items-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white"
+              className="inline-flex min-h-[44px] min-w-0 items-center justify-center rounded-xl bg-slate-900 px-4 py-2 text-center text-sm font-semibold text-white"
             >
               {t.ctaBtn}
             </Link>
@@ -546,7 +550,7 @@ export default function RealEstateTop100Landing({
               <Link
                 key={x.href}
                 href={x.href}
-                className="inline-flex items-center rounded-xl border px-4 py-2 text-sm font-semibold hover:bg-slate-50"
+                className="inline-flex min-h-[44px] min-w-0 items-center justify-center rounded-xl border px-4 py-2 text-center text-sm font-semibold hover:bg-slate-50"
               >
                 {lang === "en" ? x.labelEn : x.labelKo}
               </Link>

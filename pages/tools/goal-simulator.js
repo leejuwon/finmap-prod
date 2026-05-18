@@ -1292,7 +1292,7 @@ export default function GoalSimulatorPage() {
       <JsonLd data={faqJsonLd} />
       <JsonLd data={appJsonLd} />
 
-      <main className="py-6 grid gap-6 fm-mobile-full min-w-0 w-full max-w-full">
+      <main className={`py-6 grid gap-6 fm-mobile-full min-w-0 w-full max-w-full ${hasResult ? "fm-safe-bottom" : ""}`}>
         {/* 제목 */}
         <div className="flex items-center gap-3">
           <h1 className="text-xl sm:text-2xl font-bold">{t.title}</h1>
@@ -1449,12 +1449,12 @@ export default function GoalSimulatorPage() {
           </div>
         </div>
 
-        <section className="card">
-          <div className="mb-4">
-            <h2 className="text-lg font-semibold mb-1">{t.toolHubTitle}</h2>
-            <p className="text-sm text-slate-600">{t.toolHubLead}</p>
+        <section className="card min-w-0 max-w-full">
+          <div className="mb-4 min-w-0">
+            <h2 className="mb-1 break-words text-lg font-semibold leading-snug">{t.toolHubTitle}</h2>
+            <p className="break-words text-sm text-slate-600">{t.toolHubLead}</p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid min-w-0 grid-cols-1 gap-3 min-[390px]:grid-cols-2 lg:grid-cols-4">
             {relatedTools.map((tool) => (
               <Link
                 key={tool.href}
@@ -1467,15 +1467,15 @@ export default function GoalSimulatorPage() {
                     location: "pre_result_hub",
                   })
                 }
-                className="block rounded-lg border border-slate-200 p-4 hover:border-blue-300 hover:shadow-sm transition"
+                className="block min-w-0 rounded-lg border border-slate-200 p-4 transition hover:border-blue-300 hover:shadow-sm"
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500 mb-2">
+                <p className="mb-2 break-words text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
                   {locale === "ko" ? tool.badgeKo : tool.badgeEn}
                 </p>
-                <h3 className="text-sm font-semibold leading-snug text-slate-900">
+                <h3 className="break-words text-sm font-semibold leading-snug text-slate-900">
                   {locale === "ko" ? tool.titleKo : tool.titleEn}
                 </h3>
-                <p className="mt-2 text-xs text-slate-600 leading-relaxed">
+                <p className="mt-2 break-words text-xs leading-relaxed text-slate-600">
                   {locale === "ko" ? tool.descKo : tool.descEn}
                 </p>
               </Link>
@@ -1730,7 +1730,7 @@ export default function GoalSimulatorPage() {
               } />
 
 
-            <div className="tool-cta-section">
+            <div className="tool-cta-section grid min-w-0 gap-4">
               {/* TODO: ToolCta 공통 컴포넌트에 클릭 추적 prop이 생기면 location="result_cta"로 tool_hub_click을 연결합니다. */}
               <ToolCta lang={lang} type="fire" />
               <ToolCta lang={lang} type="compound" />
@@ -1777,35 +1777,35 @@ export default function GoalSimulatorPage() {
 
         {/* ✅ 내부링크: 추천 가이드 글 5개 (SEO + 체류시간 + 내부탐색) */}
         <section className="card w-full min-w-0 max-w-full" ref={(el) => (sectionEls.current.guides = el)}>
-          <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between mb-3">
-            <h2 className="text-base font-semibold">
+          <div className="mb-3 flex min-w-0 flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+            <h2 className="break-words text-base font-semibold leading-snug">
               {locale === "ko" ? "추천 가이드 글" : "Recommended guides"}
             </h2>
             <Link
               href="/category/personalFinance"
               locale={locale}
-              className="text-sm text-slate-600 hover:underline self-start sm:self-auto"
+              className="inline-flex min-h-[44px] items-center break-words text-sm text-slate-600 hover:underline self-start sm:self-auto"
             >
               {locale === "ko" ? "전체 글 보기" : "View all posts"}
             </Link>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
             {relatedGuides.map((g) => (
               <Link
                 key={g.slug}
                 href={`/posts/personalFinance/${g.slug}`}
                 locale={locale}
-                className="block border rounded-2xl p-4 hover:shadow-sm transition"
+                className="block min-w-0 rounded-2xl border p-4 transition hover:shadow-sm"
               >
-                <div className="text-xs text-slate-500 mb-1">
+                <div className="mb-1 break-words text-xs text-slate-500">
                   {locale === "ko" ? g.tagKo : g.tagEn}
                 </div>
-                <div className="font-semibold leading-snug">
+                <div className="break-words font-semibold leading-snug">
                   {locale === "ko" ? g.titleKo : g.titleEn}
                 </div>
                 {/* 2단계에서 길이 조정해도 되지만, 기본은 1줄로 고정 */}
-                <div className="text-sm text-slate-600 mt-1 overflow-hidden text-ellipsis whitespace-nowrap">
+                <div className="mt-1 line-clamp-2 break-words text-sm text-slate-600">
                   {locale === "ko" ? g.descKo : g.descEn}
                 </div>
               </Link>

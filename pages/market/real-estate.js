@@ -670,6 +670,9 @@ export default function RealEstatePage() {
   }
 
   const tableMinWidth = showAdvanced ? 'min-w-[2700px]' : 'min-w-[1900px]';
+  const filterFieldClass = "min-w-0";
+  const filterControlClass = "w-full min-w-0 rounded-lg border bg-white px-3 py-2 text-sm";
+  const filterPairClass = "grid grid-cols-1 min-[390px]:grid-cols-2 gap-2";
 
   // ✅ SEO/검색 유입용 프리셋 랜딩(마용성/강남/서울 Top100) 링크
   // - 현재 선택한 평형(pyeong)을 band로 전달하여 사용자가 "같은 조건"으로 넘어간 느낌을 주도록 구성
@@ -704,8 +707,8 @@ export default function RealEstatePage() {
     
   function MiniStat({ label, value }) {
     return (
-      <div className="rounded-xl border border-slate-100 bg-white px-3 py-2">
-        <div className="text-[11px] text-slate-500">{label}</div>
+      <div className="min-w-0 max-w-full rounded-xl border border-slate-100 bg-white px-3 py-2">
+        <div className="break-words text-[11px] leading-snug text-slate-500">{label}</div>
         <div className="mt-0.5 text-sm font-semibold text-slate-900 break-words">{value ?? "-"}</div>
       </div>
     );
@@ -713,7 +716,7 @@ export default function RealEstatePage() {
 
   function Chip({ children, tone }) {
     return (
-      <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-medium ${tone}`}>
+      <span className={`inline-flex max-w-full items-center rounded-full px-2.5 py-1 text-[11px] font-medium leading-tight whitespace-normal break-words ${tone}`}>
         {children}
       </span>
     );
@@ -939,20 +942,20 @@ export default function RealEstatePage() {
     
     return (
       <>        
-        <div className="card p-4">
-          <div className="flex items-start justify-between gap-3">
+        <div className="card p-4 min-w-0 max-w-full">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div className="min-w-0">
-              <div className="text-xs text-slate-500">
+              <div className="break-words text-xs text-slate-500">
                 {idx + 1}. {areaText}
               </div>
               {/* ✅ 아파트명: 상세페이지 링크 + (옵션) 펼침 버튼 */}
-              <div className="mt-0.5 flex items-start gap-2">
+              <div className="mt-0.5 flex min-w-0 items-start gap-2">
                 <Link
                   href={makeAptDetailHref(r)}
                   onClick={rememberAptDetailState}
                   title={aptText}
-                  className={`min-w-0 flex-1 text-left text-base font-semibold text-slate-900 hover:underline underline-offset-2 ${
-                    expanded ? "whitespace-normal break-words" : "truncate"
+                  className={`min-w-0 flex-1 text-left text-base font-semibold leading-snug text-slate-900 hover:underline underline-offset-2 whitespace-normal break-words ${
+                    expanded ? "" : "max-h-[2.75rem] overflow-hidden"
                   }`}
                 >
                   {aptText}
@@ -960,25 +963,25 @@ export default function RealEstatePage() {
                 <button
                   type="button"
                   onClick={() => setExpandedAptKey(expanded ? null : rowKey)}
-                  className="shrink-0 text-xs px-2 py-1 rounded-lg border bg-white hover:bg-slate-50"
+                  className="min-h-[36px] shrink-0 rounded-lg border bg-white px-2 py-1 text-xs hover:bg-slate-50"
                 >
                   {expanded ? (lang === 'en' ? 'Less' : '접기') : (lang === 'en' ? 'More' : '펼침')}
                 </button>
               </div>       
-              <div className="mt-1 text-xs text-slate-500">
+              <div className="mt-1 break-words text-xs leading-relaxed text-slate-500">
                 {sizeM2} · {sizePy} · {buildY} · {t.cols.complexScale}: {complexScale} · {dealDate}
               </div>
             </div>
-            <div className="flex flex-col items-end gap-2 shrink-0">
+            <div className="flex min-w-0 flex-wrap items-center gap-2 sm:shrink-0 sm:flex-col sm:items-end">
               <QualityChip row={r} />
               <HeatChip row={r} />
-              <div className="text-xs text-slate-500">
+              <div className="break-words text-xs text-slate-500">
                 {t.metrics.tx_count}: {r.tx_count?.toLocaleString?.() ?? r.tx_count}
               </div>
             </div>
           </div>
 
-          <div className="mt-3 grid grid-cols-2 gap-2">
+          <div className="mt-3 grid grid-cols-1 gap-2 min-[390px]:grid-cols-2">
             <MiniStat label={t.metrics.median_price} value={medEok} />
             <MiniStat label={t.metrics.avg_price} value={avgEok} />
             <MiniStat label={lang === 'en' ? 'Typical /pyeong' : '대표 평단가'} value={medPyeong} />
@@ -1000,7 +1003,7 @@ export default function RealEstatePage() {
           </div>
 
           {showAdvanced && (
-            <div className="mt-3 grid grid-cols-2 gap-2">
+            <div className="mt-3 grid grid-cols-1 gap-2 min-[390px]:grid-cols-2">
               <MiniStat label={lang === 'en' ? 'Max deal (×100M)' : '최고 거래(억)'} value={maxEok} />
               <MiniStat label={lang === 'en' ? 'Total value (×100M)' : '총 거래금액(억)'} value={sumEok} />
               <MiniStat label={t.cols.parking} value={parking} />
@@ -1208,10 +1211,10 @@ export default function RealEstatePage() {
             </ul>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-3 mt-5">
-            <div className="md:col-span-2">
+          <div className="mt-5 grid grid-cols-1 gap-3 min-[390px]:grid-cols-2 md:grid-cols-12">
+            <div className={`${filterFieldClass} md:col-span-2`}>
               <div className="text-sm text-slate-500 mb-1">{t.sido}</div>
-              <select className="w-full border rounded-lg px-3 py-2" value={sido} onChange={(e) => setSido(e.target.value)}>
+              <select className={filterControlClass} value={sido} onChange={(e) => setSido(e.target.value)}>
                 {sidoOptions.map((x) => (
                   <option key={x.value} value={x.value}>
                     {labelOf(x, true)}
@@ -1220,10 +1223,10 @@ export default function RealEstatePage() {
               </select>
             </div>
 
-            <div className="md:col-span-2">
+            <div className={`${filterFieldClass} md:col-span-2`}>
               <div className="text-sm text-slate-500 mb-1">{t.sigungu}</div>
               <select
-                className="w-full border rounded-lg px-3 py-2"
+                className={filterControlClass}
                 value={area}
                 onChange={(e) => setArea(e.target.value)}
                 disabled={sido === 'all'}
@@ -1236,19 +1239,19 @@ export default function RealEstatePage() {
               </select>
             </div>
 
-            <div className="md:col-span-1">
+            <div className={`${filterFieldClass} md:col-span-1`}>
               <div className="text-sm text-slate-500 mb-1">{t.timeframe}</div>
-              <select className="w-full border rounded-lg px-2 py-2 text-sm" value={timeframe} onChange={(e) => setTimeframe(e.target.value)}>               
+              <select className={filterControlClass} value={timeframe} onChange={(e) => setTimeframe(e.target.value)}>
                 <option value="month">{t.month}</option>
                 <option value="year">{t.year}</option>
               </select>
             </div>
 
-            <div className="md:col-span-3">
+            <div className={`${filterFieldClass} min-[390px]:col-span-2 md:col-span-3`}>
               <div className="text-sm text-slate-500 mb-1">{t.period}</div>
-              <div className="flex gap-2">
+              <div className={filterPairClass}>
                 <select
-                  className="w-full border rounded-lg px-2 py-2 text-sm min-w-[120px]"
+                  className={filterControlClass}
                   value={periodFrom}
                   onChange={(e) => {
                     const v = e.target.value;
@@ -1263,7 +1266,7 @@ export default function RealEstatePage() {
                   ))}
                </select>
                 <select
-                  className="w-full border rounded-lg px-2 py-2 text-sm min-w-[120px]"                   
+                  className={filterControlClass}
                   value={periodTo}
                   onChange={(e) => {
                     const v = e.target.value;
@@ -1280,34 +1283,34 @@ export default function RealEstatePage() {
               </div>
             </div>
 
-            <div className="md:col-span-2">
+            <div className={`${filterFieldClass} min-[390px]:col-span-2 md:col-span-2`}>
               <div className="text-sm text-slate-500 mb-1">{t.topBy}</div>
-              <select className="w-full border rounded-lg px-3 py-2" value={topBy} onChange={(e) => setTopBy(e.target.value)}>
+              <select className={filterControlClass} value={topBy} onChange={(e) => setTopBy(e.target.value)}>
                 {Object.entries(t.metrics).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
               </select>
               <div className="text-[11px] text-slate-400 mt-1">{t.metricHelp}</div>
             </div>
 
-            <div className="md:col-span-2">
+            <div className={`${filterFieldClass} md:col-span-2`}>
               <div className="text-sm text-slate-500 mb-1">{t.sort}</div>
-              <select className="w-full border rounded-lg px-2 py-2 text-sm" value={sort} onChange={(e) => setSort(e.target.value)}>               
+              <select className={filterControlClass} value={sort} onChange={(e) => setSort(e.target.value)}>
                 <option value="desc">{t.desc}</option>
                 <option value="asc">{t.asc}</option>
               </select>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-3 mt-3">
-            <div className="md:col-span-1">
+          <div className="mt-3 grid grid-cols-1 gap-3 min-[390px]:grid-cols-2 md:grid-cols-12">
+            <div className={`${filterFieldClass} md:col-span-1`}>
               <div className="text-sm text-slate-500 mb-1">{t.top}</div>
-              <select className="w-full border rounded-lg px-2 py-2 text-sm" value={top} onChange={(e) => setTop(e.target.value)}>               
-                {['10', '20', '50', '100', '300', '500'].map((v) => <option key={v} value={v}>{v}</option>)}               
+              <select className={filterControlClass} value={top} onChange={(e) => setTop(e.target.value)}>
+                {['10', '20', '50', '100', '300', '500'].map((v) => <option key={v} value={v}>{v}</option>)}
               </select>
             </div>
 
-            <div className="md:col-span-1">
+            <div className={`${filterFieldClass} md:col-span-1`}>
               <div className="text-sm text-slate-500 mb-1">{t.pyeong}</div>
-              <select className="w-full border rounded-lg px-2 py-2 text-sm" value={pyeong} onChange={(e) => setPyeong(e.target.value)}>                
+              <select className={filterControlClass} value={pyeong} onChange={(e) => setPyeong(e.target.value)}>
                 {/* ✅ all 옵션이 없으면 UI는 10처럼 보여도 state는 all로 남아 최초 조회가 틀어질 수 있음 */}
                 <option value="all">{t.all}</option>
                 <option value="10">10</option>
@@ -1317,11 +1320,11 @@ export default function RealEstatePage() {
               </select>
             </div>
 
-            <div className="md:col-span-3">
+            <div className={`${filterFieldClass} min-[390px]:col-span-2 md:col-span-3`}>
               <div className="text-sm text-slate-500 mb-1">{t.buildYear}</div>
-              <div className="flex gap-2">
+              <div className={filterPairClass}>
                 <select
-                  className="w-full border rounded-lg px-2 py-2 text-sm"
+                  className={filterControlClass}
                   value={buildFrom}
                   onChange={(e) => {
                     const v = e.target.value; // 'all' or year
@@ -1353,7 +1356,7 @@ export default function RealEstatePage() {
                 </select>
 
                 <select
-                  className="w-full border rounded-lg px-2 py-2 text-sm"
+                  className={filterControlClass}
                   value={buildTo}
                   onChange={(e) => {
                     const v = e.target.value; // 'all' or year
@@ -1382,11 +1385,11 @@ export default function RealEstatePage() {
             </div>
 
             {/* ✅ 금액 구간 필터 */}
-            <div className="md:col-span-7">
+            <div className={`${filterFieldClass} min-[390px]:col-span-2 md:col-span-7`}>
               <div className="text-sm text-slate-500 mb-1">{lang === 'en' ? 'Price range' : '금액 구간'}</div>
-              <div className="flex gap-2">
+              <div className="grid grid-cols-1 gap-2 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)]">
                 <select
-                  className="w-full border rounded-lg px-3 py-2"
+                  className={filterControlClass}
                   value={priceMetric}
                   onChange={(e) => {
                     const v = e.target.value;
@@ -1400,9 +1403,9 @@ export default function RealEstatePage() {
                     </option>
                   ))}
                 </select>
-                <div className="flex items-center gap-1 w-full">
+                <div className="flex min-w-0 items-center gap-1">
                   <input
-                    className="w-full border rounded-lg px-3 py-2"
+                    className={filterControlClass}
                     type="number"
                     step="0.1"
                     inputMode="decimal"
@@ -1411,11 +1414,11 @@ export default function RealEstatePage() {
                     onChange={(e) => setPriceMin(e.target.value)}
                     disabled={priceMetric === 'none'}
                   />
-                  <span className="text-xs text-slate-400">(억)</span>
+                  <span className="shrink-0 text-xs text-slate-400">(억)</span>
                 </div>
-                <div className="flex items-center gap-1 w-full">
+                <div className="flex min-w-0 items-center gap-1">
                   <input
-                    className="w-full border rounded-lg px-3 py-2"
+                    className={filterControlClass}
                     type="number"
                     step="0.1"
                     inputMode="decimal"
@@ -1424,19 +1427,19 @@ export default function RealEstatePage() {
                     onChange={(e) => setPriceMax(e.target.value)}
                     disabled={priceMetric === 'none'}
                   />
-                  <span className="text-xs text-slate-400">(억)</span>
+                  <span className="shrink-0 text-xs text-slate-400">(억)</span>
                 </div>
               </div>
             </div>
 
             {/* ✅ 세대수 필터 */}
-            <div className="md:col-span-6">
+            <div className={`${filterFieldClass} min-[390px]:col-span-2 md:col-span-6`}>
               <div className="text-sm text-slate-500 mb-1">
                 {lang === 'en' ? 'Households (complex)' : '세대수(단지)'}
               </div>
-              <div className="flex gap-2">
+              <div className="grid grid-cols-1 gap-2 min-[390px]:grid-cols-2 sm:grid-cols-[minmax(5rem,0.8fr)_minmax(0,1fr)_auto]">
                 <select
-                  className="border rounded-lg px-3 py-2 bg-white"
+                  className={filterControlClass}
                   value={hhOp}
                   onChange={(e) => setHhOp(e.target.value === 'lte' ? 'lte' : 'gte')}
                 >
@@ -1446,14 +1449,14 @@ export default function RealEstatePage() {
                 <input
                   type="number"
                   inputMode="numeric"
-                  className="w-full border rounded-lg px-3 py-2"
+                  className={filterControlClass}
                   placeholder={lang === 'en' ? 'e.g. 1000' : '예: 1000'}
                   value={hh}
                   onChange={(e) => setHh(e.target.value)}
                 />
                 <button
                   type="button"
-                  className="border rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-50"
+                  className="min-h-[44px] min-w-0 rounded-lg border px-3 py-2 text-sm text-slate-600 hover:bg-slate-50"
                   onClick={() => setHh('')}
                   title={lang === 'en' ? 'Clear' : '초기화'}
                 >
@@ -1469,11 +1472,11 @@ export default function RealEstatePage() {
           </div>
 
           {/* ✅ 아파트명 검색 */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-3 mt-3">
-            <div className="md:col-span-4">
+          <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-12">
+            <div className={`${filterFieldClass} md:col-span-4`}>
               <div className="text-sm text-slate-500 mb-1">{t.aptName}</div>
               <input
-                className="w-full border rounded-lg px-3 py-2"
+                className={filterControlClass}
                 value={aptName}
                 onChange={(e) => setAptName(e.target.value)}
                 placeholder={t.aptNamePh}
@@ -1485,32 +1488,32 @@ export default function RealEstatePage() {
           <div className="mt-2 text-sm text-slate-500">{t.tip}</div> 
 
           <div className="mt-6">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div className="text-sm text-slate-500">
                 {loading ? (lang === 'en' ? 'Loading...' : '조회 중...') : (lang === 'en' ? `Rows: ${rows.length}` : `건수: ${rows.length}`)}
               </div>
-              <div className="flex items-center gap-2">
+              <div className="grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto sm:items-center">
                 {/* Desktop only: Cards/Table toggle + Advanced */}
                 <div className="hidden md:flex items-center gap-2">
                   <button
-                    className={`px-3 py-2 rounded-lg border ${desktopView === 'card' ? 'bg-slate-900 text-white border-slate-900' : 'bg-white hover:bg-slate-50'}`}
+                    className={`min-h-[44px] px-3 py-2 rounded-lg border ${desktopView === 'card' ? 'bg-slate-900 text-white border-slate-900' : 'bg-white hover:bg-slate-50'}`}
                     onClick={() => setDesktopView('card')}
                   >
                     {lang === 'en' ? 'Cards' : '카드'}
                   </button>
                   <button
-                    className={`px-3 py-2 rounded-lg border ${desktopView === 'table' ? 'bg-slate-900 text-white border-slate-900' : 'bg-white hover:bg-slate-50'}`}
+                    className={`min-h-[44px] px-3 py-2 rounded-lg border ${desktopView === 'table' ? 'bg-slate-900 text-white border-slate-900' : 'bg-white hover:bg-slate-50'}`}
                     onClick={() => setDesktopView('table')}
                   >
                     {lang === 'en' ? 'Table' : '표'}
                   </button>                  
                 </div>
                 {/* Advanced: 모바일/데스크탑 공통 */}
-                <label className="inline-flex items-center gap-2 text-xs text-slate-600">
+                <label className="inline-flex min-h-[44px] min-w-0 items-center justify-center gap-2 rounded-lg border bg-white px-3 py-2 text-xs text-slate-600">
                   <input type="checkbox" checked={showAdvanced} onChange={(e) => setShowAdvanced(e.target.checked)} />
                   {lang === 'en' ? 'Advanced' : '고급'}
                 </label>
-                <button className="px-4 py-2 rounded-lg border bg-white hover:bg-slate-50" onClick={fetchTop}>
+                <button className="min-h-[44px] min-w-0 rounded-lg border bg-white px-4 py-2 text-sm hover:bg-slate-50" onClick={fetchTop}>
                   {lang === 'en' ? 'Refresh' : '새로고침'}
                 </button>
               </div>
@@ -1546,7 +1549,7 @@ export default function RealEstatePage() {
 
             {/* Desktop table */}
             {desktopView === 'table' && (
-              <div className="hidden md:block overflow-x-auto mt-3">
+              <div className="hidden md:block mt-3 max-w-full overflow-x-auto rounded-2xl border bg-white">
                 <table className={`${tableMinWidth} w-full text-sm`}>
                 <thead>
                   <tr className="text-left border-b">

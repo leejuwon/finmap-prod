@@ -122,20 +122,20 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full max-w-full backdrop-blur bg-white/80 border-b border-slate-100">
-      <nav className="w-full max-w-full px-3 sm:px-4">
-        <div className="w-full max-w-5xl lg:max-w-6xl mx-auto flex min-w-0 items-center gap-2 sm:gap-3 py-2 sm:py-3">
+      <nav className="w-full max-w-full px-2 min-[361px]:px-3 sm:px-4">
+        <div className="w-full max-w-5xl lg:max-w-6xl mx-auto flex min-w-0 items-center gap-1.5 sm:gap-3 py-2 sm:py-3">
           {/* ---------------- Logo ---------------- */}
-          <Link href="/" prefetch={false} className="flex items-center gap-2 shrink-0">
+          <Link href="/" prefetch={false} className="flex min-w-0 items-center gap-1.5 shrink-0 max-[360px]:gap-1">
             <Image
               src="/brand/finmaphub-icon.svg"
               alt="FinMap Logo"
               width={32}
               height={32}
-              className="h-7 w-7 sm:h-8 sm:w-8"
+              className="h-7 w-7 max-[360px]:h-6 max-[360px]:w-6 sm:h-8 sm:w-8"
               priority
             />
-            <div className="leading-tight">
-              <span className="block text-sm sm:text-base block text-[14px] sm:text-[16px] font-semibold text-slate-900">
+            <div className="min-w-0 leading-tight">
+              <span className="block text-[14px] font-semibold text-slate-900 max-[360px]:text-[13px] sm:text-[16px]">
                 FinMap
               </span>
               <span className="hidden sm:block text-[11px] text-slate-500">
@@ -147,9 +147,10 @@ export default function Header() {
           </Link>
 
           {/* ---------------- Navigation ---------------- */}
-          <div className="flex min-w-0 flex-1 items-center gap-1 sm:gap-2 ml-1 sm:ml-6">
+          <div className="ml-0.5 flex min-w-0 flex-1 items-center gap-1 sm:ml-6 sm:gap-2">
             {/* ===== 가로 스크롤 영역 ===== */}
-            <div className="header-nav flex min-w-0 flex-1 items-center gap-1 sm:gap-2 text-[12px] sm:text-[14px]">
+            <div className="relative min-w-[100px] max-[340px]:min-w-[88px] flex-1 overflow-hidden">
+              <div className="header-nav flex w-full min-w-0 items-center gap-1 pr-4 sm:gap-2 text-[12px] sm:text-[14px]">
               {nav.map((item) => {
                 const active =
                   item.href === "/"
@@ -162,7 +163,7 @@ export default function Header() {
                   return (
                     <span
                       key={item.href}
-                      className="px-2 sm:px-3 py-1 rounded-full text-slate-400 bg-slate-50 cursor-not-allowed"
+                      className="shrink-0 px-2 sm:px-3 py-1 rounded-full text-slate-400 bg-slate-50 cursor-not-allowed"
                     >
                       {label}
                     </span>
@@ -175,7 +176,7 @@ export default function Header() {
                     href={item.href}
                     prefetch={false}
                     className={
-                      "px-2 sm:px-3 py-1 rounded-full transition-colors " +
+                      "shrink-0 px-2 sm:px-3 py-1 rounded-full transition-colors " +
                       (active
                         ? "bg-blue-50 text-blue-700 font-medium"
                         : "text-slate-600 hover:bg-slate-100 hover:text-slate-900")
@@ -185,6 +186,11 @@ export default function Header() {
                   </Link>
                 );
               })}
+              </div>
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 right-0 w-5 bg-gradient-to-l from-white/90 to-transparent"
+              />
             </div>
 
             {/* ===== Insights dropdown (스크롤 밖) ===== */}
@@ -239,7 +245,7 @@ export default function Header() {
                 type="button"
                 onClick={() => handleLangChange("ko")}
                 className={
-                  "px-1.5 py-0.5 sm:px-2 sm:py-1 " +
+                  "px-1.5 py-0.5 sm:px-2 sm:py-1 max-[360px]:text-[0px] max-[360px]:after:text-[9px] max-[360px]:after:content-['KO'] " +
                   (lang === "ko"
                     ? "bg-slate-900 text-white"
                     : "bg-white text-slate-600")
@@ -267,7 +273,7 @@ export default function Header() {
               </div>
             )}
 
-            <span className="header-domain text-[9px] sm:text-[11px] md:text-sm text-slate-500">
+            <span className="header-domain hidden text-[9px] text-slate-500 sm:text-[11px] md:inline md:text-sm">
               finmaphub.com
             </span>
           </div>

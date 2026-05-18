@@ -209,14 +209,14 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
         locale={locale}
       />
 
-      <div className="w-full bg-slate-50">
-        <div className="w-full max-w-6xl mx-auto px-4 py-8">
+      <div className="w-full min-w-0 bg-slate-50">
+        <div className="mx-auto w-full max-w-6xl min-w-0 px-3 py-6 sm:px-4 sm:py-8">
           {/* 상단 히어로 카드 */}
-          <section className="relative overflow-hidden rounded-3xl border bg-white shadow-card">
+          <section className="relative max-w-full overflow-hidden rounded-2xl border bg-white shadow-card sm:rounded-3xl">
             <div className="absolute inset-0 bg-gradient-to-br from-slate-900/[0.03] via-transparent to-slate-900/[0.02]" />
-            <div className="relative p-6 sm:p-8">
+            <div className="relative min-w-0 p-4 sm:p-8">
               {/* 카테고리 탭(상단) */}
-              <div className="flex flex-wrap items-center gap-2 mb-5">
+              <div className="mb-5 flex min-w-0 flex-wrap items-center gap-2">
                 {CATEGORY_ORDER.map((s) => {
                   const labels = isKo ? CATEGORY_LABELS_KO : CATEGORY_LABELS_EN;
                   const active = s === slug;
@@ -228,8 +228,8 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                       prefetch={false}
                       className={
                         active
-                          ? 'inline-flex items-center rounded-full bg-slate-900 px-3 py-1.5 text-sm font-semibold text-white'
-                          : 'inline-flex items-center rounded-full border bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100'
+                          ? 'inline-flex min-h-[44px] max-w-full items-center justify-center whitespace-normal break-words rounded-full bg-slate-900 px-3 py-1.5 text-center text-sm font-semibold leading-tight text-white'
+                          : 'inline-flex min-h-[44px] max-w-full items-center justify-center whitespace-normal break-words rounded-full border bg-white px-3 py-1.5 text-center text-sm font-medium leading-tight text-slate-700 hover:bg-slate-100'
                       }
                     >
                       {labels[s] || s}
@@ -237,44 +237,44 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                   );
                 })}
 
-                <div className="ml-auto flex items-center gap-2 text-xs text-slate-500">
-                  <span className="inline-flex items-center rounded-full border bg-white px-2 py-1">
+                <div className="flex w-full min-w-0 flex-wrap items-center gap-2 text-xs text-slate-500 sm:ml-auto sm:w-auto">
+                  <span className="inline-flex min-h-[32px] max-w-full items-center break-words rounded-full border bg-white px-2 py-1">
                     {isKo ? `총 ${totalCount}개` : `${totalCount} posts`}
                   </span>
                   {lastUpdated && (
-                    <span className="inline-flex items-center rounded-full border bg-white px-2 py-1">
+                    <span className="inline-flex min-h-[32px] max-w-full items-center break-words rounded-full border bg-white px-2 py-1">
                       {isKo ? `최근 업데이트: ${lastUpdated}` : `Updated: ${lastUpdated}`}
                     </span>
                   )}
                 </div>
               </div>
 
-              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+              <h1 className="max-w-full break-words text-2xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-3xl">
                 {title}
               </h1>
-              <p className="mt-2 text-slate-700">{meta.tagline}</p>
+              <p className="mt-2 max-w-full break-words text-slate-700">{meta.tagline}</p>
 
               {meta.bullets?.length > 0 && (
-                <ul className="mt-4 grid gap-2 text-sm text-slate-600 sm:grid-cols-2">
+                <ul className="mt-4 grid min-w-0 gap-2 text-sm text-slate-600 sm:grid-cols-2">
                   {meta.bullets.map((b, i) => (
-                    <li key={i} className="flex gap-2">
-                      <span className="mt-0.5 inline-block h-1.5 w-1.5 rounded-full bg-slate-400" />
-                      <span>{b}</span>
+                    <li key={i} className="flex min-w-0 gap-2">
+                      <span className="mt-0.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-slate-400" />
+                      <span className="min-w-0 break-words">{b}</span>
                     </li>
                   ))}
                 </ul>
               )}
 
               {/* CTA/탭/검색 */}
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex flex-wrap items-center gap-2">
+              <div className="mt-6 flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex min-w-0 flex-wrap items-center gap-2">
                   <button
                     type="button"
                     onClick={() => setTab('featured')}
                     className={
                       tab === 'featured'
-                        ? 'inline-flex items-center rounded-full bg-blue-600 px-3 py-1.5 text-sm font-semibold text-white'
-                        : 'inline-flex items-center rounded-full border bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100'
+                        ? 'inline-flex min-h-[44px] max-w-full items-center justify-center whitespace-normal break-words rounded-full bg-blue-600 px-3 py-1.5 text-center text-sm font-semibold leading-tight text-white'
+                        : 'inline-flex min-h-[44px] max-w-full items-center justify-center whitespace-normal break-words rounded-full border bg-white px-3 py-1.5 text-center text-sm font-medium leading-tight text-slate-700 hover:bg-slate-100'
                     }
                   >
                     {isKo ? '추천' : 'Featured'}
@@ -284,8 +284,8 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                     onClick={() => setTab('latest')}
                     className={
                       tab === 'latest'
-                        ? 'inline-flex items-center rounded-full bg-blue-600 px-3 py-1.5 text-sm font-semibold text-white'
-                        : 'inline-flex items-center rounded-full border bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100'
+                        ? 'inline-flex min-h-[44px] max-w-full items-center justify-center whitespace-normal break-words rounded-full bg-blue-600 px-3 py-1.5 text-center text-sm font-semibold leading-tight text-white'
+                        : 'inline-flex min-h-[44px] max-w-full items-center justify-center whitespace-normal break-words rounded-full border bg-white px-3 py-1.5 text-center text-sm font-medium leading-tight text-slate-700 hover:bg-slate-100'
                     }
                   >
                     {isKo ? '최신' : 'Latest'}
@@ -295,8 +295,8 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                     onClick={() => setTab('all')}
                     className={
                       tab === 'all'
-                        ? 'inline-flex items-center rounded-full bg-blue-600 px-3 py-1.5 text-sm font-semibold text-white'
-                        : 'inline-flex items-center rounded-full border bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100'
+                        ? 'inline-flex min-h-[44px] max-w-full items-center justify-center whitespace-normal break-words rounded-full bg-blue-600 px-3 py-1.5 text-center text-sm font-semibold leading-tight text-white'
+                        : 'inline-flex min-h-[44px] max-w-full items-center justify-center whitespace-normal break-words rounded-full border bg-white px-3 py-1.5 text-center text-sm font-medium leading-tight text-slate-700 hover:bg-slate-100'
                     }
                   >
                     {isKo ? '전체 목록' : 'All titles'}
@@ -306,18 +306,18 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                     href="/tools"
                     locale={locale}
                     prefetch={false}
-                    className="inline-flex items-center rounded-full border bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100"
+                    className="inline-flex min-h-[44px] max-w-full items-center justify-center whitespace-normal break-words rounded-full border bg-white px-3 py-1.5 text-center text-sm font-medium leading-tight text-slate-700 hover:bg-slate-100"
                   >
                     {isKo ? '금융 계산기' : 'Tools'}
                   </Link>
                 </div>
 
-                <div className="w-full sm:w-[340px]">
+                <div className="w-full min-w-0 sm:w-[340px]">
                   <input
                     value={q}
                     onChange={(e) => setQ(e.target.value)}
                     placeholder={isKo ? '이 카테고리에서 검색…' : 'Search in this category…'}
-                    className="w-full rounded-2xl border bg-white px-4 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                    className="min-h-[44px] w-full min-w-0 rounded-2xl border bg-white px-4 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                   />
                 </div>
               </div>
@@ -326,35 +326,35 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
 
           {/* 내용 */}
           {!postsSorted || postsSorted.length === 0 ? (
-            <p className="mt-8 text-slate-500">
+            <p className="mt-8 break-words text-slate-500">
               {isKo ? '아직 이 카테고리의 글이 없습니다.' : 'No English posts in this category yet.'}
             </p>
           ) : (
             <>
               {/* 카드 섹션 */}
               {tab !== 'all' && (
-                <section className="mt-8">
-                  <div className="flex items-end justify-between gap-4 mb-4">
-                    <h2 className="text-lg sm:text-xl font-bold text-slate-900">
+                <section className="mt-8 min-w-0">
+                  <div className="mb-4 flex min-w-0 flex-col gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
+                    <h2 className="max-w-full break-words text-lg font-bold leading-tight text-slate-900 sm:text-xl">
                       {q
                         ? (isKo ? `검색 결과 (${Math.min(12, filtered.length)}개 표시)` : `Search results (showing ${Math.min(12, filtered.length)})`)
                         : (tab === 'latest' ? (isKo ? '최신 글' : 'Latest posts') : (isKo ? '추천 글' : 'Featured posts'))}
                     </h2>
-                    <div className="text-xs text-slate-500">
+                    <div className="break-words text-xs text-slate-500">
                       {isKo ? '카드는 12개까지 표시합니다.' : 'Cards show up to 12 posts.'}
                     </div>
                   </div>
 
-                  <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <ul className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {visibleCards.map((p, idx) => {
                       const postLang = p.lang || (isKo ? 'ko' : 'en');
                       return (
                         <li
                           key={`${postLang}-${p.slug}`}
-                          className="group rounded-2xl border bg-white shadow-card overflow-hidden hover:shadow-lg transition-shadow"
+                          className="group min-w-0 max-w-full overflow-hidden rounded-2xl border bg-white shadow-card transition-shadow hover:shadow-lg"
                         >
                           {p.cover ? (
-                            <div className="relative w-full aspect-[16/9]">
+                            <div className="relative aspect-[16/9] w-full min-w-0 max-w-full overflow-hidden">
                               <Image
                                 src={cloudinaryThumb(p.cover, { w: 640, h: 360 })}
                                 alt={p.title}
@@ -366,35 +366,35 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                               <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                             </div>
                           ) : (
-                            <div className="h-20 bg-slate-100" />
+                            <div className="h-20 max-w-full bg-slate-100" />
                           )}
 
-                          <div className="p-4">
-                            <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
-                              <span>{p.datePublished}</span>
+                          <div className="min-w-0 p-4">
+                            <div className="flex min-w-0 flex-wrap items-center gap-2 text-xs text-slate-500">
+                              <span className="break-words">{p.datePublished}</span>
                               {p.readingTimeMinutes ? (
-                                <span>{isKo ? `${p.readingTimeMinutes}분 읽기` : `${p.readingTimeMinutes} min read`}</span>
+                                <span className="break-words">{isKo ? `${p.readingTimeMinutes}분 읽기` : `${p.readingTimeMinutes} min read`}</span>
                               ) : null}
                             </div>
-                            <h3 className="mt-2 text-base font-semibold leading-snug text-slate-900">
+                            <h3 className="mt-2 break-words text-base font-semibold leading-snug text-slate-900">
                               <Link
                                 href={`/posts/${slug}/${p.slug}`}
                                 locale={locale}
                                 prefetch={false}
-                                className="hover:underline underline-offset-4"
+                                className="block break-words hover:underline underline-offset-4"
                               >
                                 {p.title}
                               </Link>
                             </h3>
                             {p.description && (
-                              <p className="mt-2 text-sm text-slate-600 line-clamp-2">
+                              <p className="mt-2 break-words text-sm text-slate-600 line-clamp-2">
                                 {p.description}
                               </p>
                             )}
                             {Array.isArray(p.tools) && p.tools.length > 0 ? (
-                              <div className="mt-3 flex flex-wrap gap-1.5">
+                              <div className="mt-3 flex min-w-0 flex-wrap gap-1.5">
                                 {p.tools.slice(0, 3).map((tool) => (
-                                  <span key={`${p.slug}-${tool}`} className="rounded-full bg-blue-50 px-2 py-1 text-[11px] font-medium text-blue-700">
+                                  <span key={`${p.slug}-${tool}`} className="max-w-full break-words rounded-full bg-blue-50 px-2 py-1 text-[11px] font-medium text-blue-700">
                                     {getToolLabel(tool, locale)}
                                   </span>
                                 ))}
@@ -408,26 +408,26 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                 </section>
               )}
 
-              <section className="mt-10" id="all-post-links">
-                <details className="rounded-2xl border bg-white shadow-card overflow-hidden">
-                  <summary className="cursor-pointer select-none px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50">
+              <section className="mt-10 min-w-0" id="all-post-links">
+                <details className="max-w-full overflow-hidden rounded-2xl border bg-white shadow-card">
+                  <summary className="min-h-[44px] cursor-pointer select-none break-words px-4 py-3 text-sm font-semibold leading-snug text-slate-900 hover:bg-slate-50">
                     {isKo ? '전체 글 링크(검색/탭 없이 항상 포함)' : 'All post links (always included)'}
-                    <span className="ml-2 text-xs font-normal text-slate-500">
+                    <span className="ml-2 break-words text-xs font-normal text-slate-500">
                       {isKo ? `(총 ${totalCount}개)` : `(${totalCount} posts)`}
                     </span>
                   </summary>
 
-                  <div className="px-4 pb-4 pt-3">
-                    <ul className="grid gap-3 sm:grid-cols-2">
+                  <div className="min-w-0 px-4 pb-4 pt-3">
+                    <ul className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
                       {postsSorted.map((p) => (
                         <li
                           key={`all-${p.slug}`}
-                          className="rounded-xl border bg-slate-50/60 p-3 hover:bg-slate-50"
+                          className="min-w-0 rounded-xl border bg-slate-50/60 p-3 hover:bg-slate-50"
                         >
-                          <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
-                            <span>{p.datePublished}</span>
+                          <div className="flex min-w-0 flex-wrap items-center gap-2 text-xs text-slate-500">
+                            <span className="break-words">{p.datePublished}</span>
                             {p.readingTimeMinutes ? (
-                              <span>{isKo ? `${p.readingTimeMinutes}분 읽기` : `${p.readingTimeMinutes} min read`}</span>
+                              <span className="break-words">{isKo ? `${p.readingTimeMinutes}분 읽기` : `${p.readingTimeMinutes} min read`}</span>
                             ) : null}
                           </div>
 
@@ -435,13 +435,13 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
                             href={`/posts/${slug}/${p.slug}`}
                             locale={locale} // ✅ 여기서는 locale로 고정 추천
                             prefetch={false}
-                            className="mt-1 block text-sm font-semibold leading-snug text-slate-900 hover:underline underline-offset-4 line-clamp-2"
+                            className="mt-1 block break-words text-sm font-semibold leading-snug text-slate-900 hover:underline underline-offset-4 line-clamp-2"
                           >
                             {p.title}
                           </Link>
 
                           {p.description ? (
-                            <p className="mt-1 text-xs text-slate-600 line-clamp-2">
+                            <p className="mt-1 break-words text-xs text-slate-600 line-clamp-2">
                               {p.description}
                             </p>
                           ) : null}
@@ -454,42 +454,42 @@ export default function CategoryPage({ slug, postsKo, postsEn }) {
 
               {/* 전체 목록(이미지 없는 카드형) */}
               {tab === 'all' && (
-                <section className="mt-8">
-                  <div className="flex items-end justify-between gap-4 mb-3">
-                    <h2 className="text-lg sm:text-xl font-bold text-slate-900">
+                <section className="mt-8 min-w-0">
+                  <div className="mb-3 flex min-w-0 flex-col gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
+                    <h2 className="max-w-full break-words text-lg font-bold leading-tight text-slate-900 sm:text-xl">
                       {isKo ? '전체 목록' : 'All titles'}
                     </h2>
-                    <div className="text-xs text-slate-500">
+                    <div className="break-words text-xs text-slate-500">
                       {isKo ? '제목을 클릭하면 글로 이동합니다.' : 'Click a title to open the post.'}
                     </div>
                   </div>
 
-                  <ul className="grid gap-3 sm:grid-cols-2">
+                  <ul className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
                     {filtered.map((p) => (
                       <li
                         key={`alltab-${p.slug}`}
-                        className="rounded-2xl border bg-white shadow-card p-4 hover:shadow-lg transition-shadow"
+                        className="min-w-0 rounded-2xl border bg-white p-4 shadow-card transition-shadow hover:shadow-lg"
                       >
-                        <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
-                          <span>{p.datePublished}</span>
+                        <div className="flex min-w-0 flex-wrap items-center gap-2 text-xs text-slate-500">
+                          <span className="break-words">{p.datePublished}</span>
                           {p.readingTimeMinutes ? (
-                            <span>{isKo ? `${p.readingTimeMinutes}분 읽기` : `${p.readingTimeMinutes} min read`}</span>
+                            <span className="break-words">{isKo ? `${p.readingTimeMinutes}분 읽기` : `${p.readingTimeMinutes} min read`}</span>
                           ) : null}
                         </div>
 
-                        <h3 className="mt-2 text-base font-semibold leading-snug text-slate-900">
+                        <h3 className="mt-2 break-words text-base font-semibold leading-snug text-slate-900">
                           <Link
                             href={`/posts/${slug}/${p.slug}`}
                             locale={locale} // ✅ 카테고리 로케일과 동일하게
                             prefetch={false}
-                            className="hover:underline underline-offset-4 line-clamp-2"
+                            className="block break-words hover:underline underline-offset-4 line-clamp-2"
                           >
                             {p.title}
                           </Link>
                         </h3>
 
                         {p.description ? (
-                          <p className="mt-2 text-sm text-slate-600 line-clamp-2">
+                          <p className="mt-2 break-words text-sm text-slate-600 line-clamp-2">
                             {p.description}
                           </p>
                         ) : null}

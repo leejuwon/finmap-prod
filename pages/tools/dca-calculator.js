@@ -605,15 +605,15 @@ export default function DCACalculatorPage() {
       <JsonLd data={faqJsonLd} />
       <JsonLd data={webPageJsonLd} />
 
-      <div className="py-6 grid gap-6 fm-mobile-full">
+      <div className={`w-full max-w-full min-w-0 py-6 grid grid-cols-1 gap-6 fm-mobile-full ${hasResult ? "fm-safe-bottom" : ""}`}>
         {/* 헤더 + 설명 */}
-        <div className="flex flex-col gap-2">
-          <h1 className="text-xl sm:text-2xl font-bold">{t.title}</h1>
-          <p className="text-sm text-slate-600">{t.descShort}</p>
+        <div className="flex min-w-0 max-w-full flex-col gap-2 break-words">
+          <h1 className="max-w-full break-words text-xl font-bold leading-tight sm:text-2xl">{t.title}</h1>
+          <p className="max-w-full break-words text-sm leading-relaxed text-slate-600">{t.descShort}</p>
         </div>
 
         {/* 입력 폼 */}
-        <div className="card">
+        <div className="card w-full min-w-0 max-w-full">
           <DCAForm
             onSubmit={handleSubmit}
             locale={routeLocale}
@@ -623,95 +623,95 @@ export default function DCACalculatorPage() {
           />
         </div>
 
-        <section className="card border border-amber-200 bg-amber-50">
-          <h2 className="text-base font-semibold text-slate-900">{t.modelNoticeTitle}</h2>
-          <p className="mt-2 text-sm leading-relaxed text-slate-700">{t.modelNotice}</p>
+        <section className="card min-w-0 max-w-full break-words border border-amber-200 bg-amber-50">
+          <h2 className="break-words text-base font-semibold leading-snug text-slate-900">{t.modelNoticeTitle}</h2>
+          <p className="mt-2 max-w-full break-words text-sm leading-relaxed text-slate-700">{t.modelNotice}</p>
         </section>
 
         {/* 결과 섹션 */}
         {hasResult && (
           <>
-            <div id="pdf-target" className="grid gap-6">
+            <div id="pdf-target" className="grid min-w-0 max-w-full grid-cols-1 gap-6">
               {/* 상단 Summary */}
-              <div ref={(el) => (sectionEls.current.sum = el)} className="grid gap-4 sm:grid-cols-3 scroll-mt-24">
-                <div className="stat">
+              <div ref={(el) => (sectionEls.current.sum = el)} className="grid min-w-0 max-w-full grid-cols-1 gap-4 scroll-mt-24 sm:grid-cols-3">
+                <div className="stat min-w-0 max-w-full">
                   <div className="stat-title">{t.fv}</div>
                   <div className="stat-value">{summaryFmt(finalNet)}</div>
                 </div>
-                <div className="stat">
+                <div className="stat min-w-0 max-w-full">
                   <div className="stat-title">{t.contrib}</div>
                   <div className="stat-value">{summaryFmt(totalInvested)}</div>
                 </div>
-                <div className="stat">
+                <div className="stat min-w-0 max-w-full">
                   <div className="stat-title">{t.gain}</div>
                   <div className="stat-value">{summaryFmt(totalGain)}</div>
                 </div>
               </div>
 
               {resultInsights && (
-                <section className="card scroll-mt-24">
-                  <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-                    <h2 className="text-lg font-semibold">{t.decisionTitle}</h2>
-                    <span className="text-xs text-slate-500">
+                <section className="card min-w-0 max-w-full scroll-mt-24 break-words">
+                  <div className="flex min-w-0 flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                    <h2 className="break-words text-lg font-semibold leading-snug">{t.decisionTitle}</h2>
+                    <span className="break-words text-xs text-slate-500">
                       {routeLocale === "ko" ? "공유 링크로 입력값 복원" : "Inputs restore from the shared link"}
                     </span>
                   </div>
-                  <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                    <div className="rounded-xl border border-slate-200 bg-white p-3">
-                      <div className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                  <div className="mt-4 grid min-w-0 max-w-full grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                    <div className="min-w-0 max-w-full break-words rounded-xl border border-slate-200 bg-white p-3">
+                      <div className="break-words text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
                         {t.modelDrawdown}
                       </div>
-                      <div className="mt-1 text-lg font-semibold text-slate-900">
+                      <div className="mt-1 break-words text-lg font-semibold leading-snug text-slate-900">
                         {resultInsights.maxDrawdownPct.toFixed(2)}%
                       </div>
-                      <p className="mt-1 text-xs text-slate-500">
+                      <p className="mt-1 break-words text-xs leading-relaxed text-slate-500">
                         {routeLocale === "ko"
                           ? "연도별 세후 자산 기준의 가정 경로이며 실제 시장 MDD가 아닙니다."
                           : "Based on yearly net model values, not actual market MDD."}
                       </p>
                     </div>
 
-                    <div className="rounded-xl border border-slate-200 bg-white p-3">
-                      <div className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                    <div className="min-w-0 max-w-full break-words rounded-xl border border-slate-200 bg-white p-3">
+                      <div className="break-words text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
                         {t.averageCost}
                       </div>
-                      <div className="mt-1 text-lg font-semibold text-slate-900">
+                      <div className="mt-1 break-words text-lg font-semibold leading-snug text-slate-900">
                         {resultInsights.averageCost.toFixed(2)}
                       </div>
-                      <p className="mt-1 text-xs text-slate-500">
+                      <p className="mt-1 break-words text-xs leading-relaxed text-slate-500">
                         {routeLocale === "ko"
                           ? `지수 100 기준, 마지막 가격 ${resultInsights.priceProxy.toFixed(2)}`
                           : `Index starts at 100, final price ${resultInsights.priceProxy.toFixed(2)}`}
                       </p>
                     </div>
 
-                    <div className="rounded-xl border border-slate-200 bg-white p-3">
-                      <div className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                    <div className="min-w-0 max-w-full break-words rounded-xl border border-slate-200 bg-white p-3">
+                      <div className="break-words text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
                         {t.lumpSumCompare}
                       </div>
-                      <div className="mt-1 text-lg font-semibold text-slate-900">
+                      <div className="mt-1 break-words text-lg font-semibold leading-snug text-slate-900">
                         {summaryFmt(resultInsights.lumpSumGap)}
                       </div>
-                      <p className="mt-1 text-xs text-slate-500">
+                      <p className="mt-1 break-words text-xs leading-relaxed text-slate-500">
                         {routeLocale === "ko"
                           ? `미래 납입금을 처음부터 보유했다고 보는 참고 가정: ${summaryFmt(resultInsights.lumpSumNet)}`
                           : `Reference only: assumes future contributions were available upfront: ${summaryFmt(resultInsights.lumpSumNet)}`}
                       </p>
                     </div>
 
-                    <div className="rounded-xl border border-slate-200 bg-white p-3">
-                      <div className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                    <div className="min-w-0 max-w-full break-words rounded-xl border border-slate-200 bg-white p-3">
+                      <div className="break-words text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
                         {t.shareSetup}
                       </div>
-                      <div className="mt-1 text-sm font-semibold text-slate-900">
+                      <div className="mt-1 break-words text-sm font-semibold leading-snug text-slate-900">
                         {resultInsights.setup}
                       </div>
-                      <p className="mt-1 text-xs text-slate-500">
+                      <p className="mt-1 break-words text-xs leading-relaxed text-slate-500">
                         {resultInsights.startLabel}
                       </p>
                     </div>
                   </div>
-                  <p className="mt-3 text-xs text-slate-500">
+                  <p className="mt-3 max-w-full break-words text-xs leading-relaxed text-slate-500">
                     {routeLocale === "ko"
                       ? `세후 누적수익률 ${resultInsights.cumulativeReturn.toFixed(2)}%, 세금·수수료 효과 ${summaryFmt(resultInsights.taxFeeDrag)}. 실제 변동성 기반 MDD는 별도 가격 데이터가 필요합니다.`
                       : `Net cumulative return ${resultInsights.cumulativeReturn.toFixed(2)}%, tax/fee drag ${summaryFmt(resultInsights.taxFeeDrag)}. Market-data drawdown requires a real price path.`}
@@ -720,11 +720,11 @@ export default function DCACalculatorPage() {
               )}
 
               {/* 차트 */}
-              <div ref={(el) => (sectionEls.current.chart = el)} className="card scroll-mt-24">
-                <div className="flex items-center gap-3 mb-2">
-                  <h2 className="text-lg font-semibold">{t.chartTitle}</h2>
+              <div ref={(el) => (sectionEls.current.chart = el)} className="card min-w-0 max-w-full scroll-mt-24">
+                <div className="mb-2 flex min-w-0 flex-wrap items-center gap-3">
+                  <h2 className="break-words text-lg font-semibold leading-snug">{t.chartTitle}</h2>
                   {currency === 'KRW' && (
-                    <span className="text-xs text-slate-500">{t.unitHint}</span>
+                    <span className="break-words text-xs text-slate-500">{t.unitHint}</span>
                   )}
                 </div>
                 <DCAChart data={result} locale={numberLocale} currency={currency} />
@@ -738,7 +738,7 @@ export default function DCACalculatorPage() {
             </div>
 
             {/* ✅ (추가) 공유 + PDF 다운로드 CTA */}
-            <div ref={(el) => (sectionEls.current.cta = el)} className="scroll-mt-24">
+            <div ref={(el) => (sectionEls.current.cta = el)} className="min-w-0 max-w-full scroll-mt-24">
               <CompoundCTA
                 locale={routeLocale}
                 onDownloadPDF={handleDownloadPDF}
@@ -755,7 +755,7 @@ export default function DCACalculatorPage() {
               />
             </div>
 
-            <div className="tool-cta-section">
+            <div className="tool-cta-section grid min-w-0 max-w-full grid-cols-1 gap-4">
               {/* DCA 페이지에서는 DCA 외 도구로 자연스러운 내부링크 강화 */}
               <ToolCta lang={routeLocale} type="compound" />
               <ToolCta lang={routeLocale} type="cagr" />
@@ -778,19 +778,19 @@ export default function DCACalculatorPage() {
         )}
 
         {/* FAQ 섹션: FAQPage JSON-LD와 같은 faqItems를 사용하고 계산 전에도 노출합니다. */}
-        <section className="card w-full">
-          <h2 className="text-lg font-semibold mb-3">{t.faqTitle}</h2>
-          <div className="space-y-3">
+        <section className="card w-full min-w-0 max-w-full break-words">
+          <h2 className="mb-3 break-words text-lg font-semibold leading-snug">{t.faqTitle}</h2>
+          <div className="min-w-0 space-y-3">
             {faqItems.map((item, idx) => (
               <details
                 key={idx}
-                className="border border-slate-200 rounded-lg p-3 bg-slate-50"
+                className="min-w-0 max-w-full rounded-lg border border-slate-200 bg-slate-50 p-3"
                 open={idx === 0}
               >
-                <summary className="cursor-pointer font-medium text-sm">
+                <summary className="cursor-pointer break-words text-sm font-medium leading-snug">
                   {item.q}
                 </summary>
-                <p className="mt-2 text-sm text-slate-700 whitespace-pre-line">
+                <p className="mt-2 whitespace-pre-line break-words text-sm leading-relaxed text-slate-700">
                   {item.a}
                 </p>
               </details>
@@ -799,36 +799,36 @@ export default function DCACalculatorPage() {
         </section>
 
         {/* ✅ 내부링크: 추천 가이드 글 5개 (SEO + 체류시간 + 내부탐색) */}
-        <section className="card">
-          <div className="flex items-center justify-between gap-3 mb-3">
-            <h2 className="text-base font-semibold">
+        <section className="card min-w-0 max-w-full">
+          <div className="mb-3 flex min-w-0 flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+            <h2 className="break-words text-base font-semibold leading-snug">
               {routeLocale === "ko" ? "추천 가이드 글" : "Recommended guides"}
             </h2>
             <Link              
               href={`/category/personalFinance`}
               locale={routeLocale}
-              className="text-sm text-slate-600 hover:underline"
+              className="inline-flex min-h-[44px] items-center break-words text-sm text-slate-600 hover:underline"
             >
               {routeLocale === "ko" ? "전체 글 보기" : "View all posts"}
             </Link>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
             {relatedGuides.map((g) => (
               <Link
                 key={g.slug}
                 href={`/posts/${g.category}/${g.slug}`}
                 locale={routeLocale}
-                className="block border rounded-2xl p-4 hover:shadow-sm transition"
+                className="block min-w-0 max-w-full rounded-2xl border p-4 transition hover:shadow-sm"
               >
-                <div className="text-xs text-slate-500 mb-1">
+                <div className="mb-1 break-words text-xs text-slate-500">
                   {routeLocale === "ko" ? g.tagKo : g.tagEn}
                 </div>
-                <div className="font-semibold leading-snug">
+                <div className="line-clamp-3 break-words font-semibold leading-snug">
                   {routeLocale === "ko" ? g.titleKo : g.titleEn}
                 </div>
                 {/* 2단계에서 길이 조정해도 되지만, 기본은 1줄로 고정 */}
-                <div className="text-sm text-slate-600 mt-1 overflow-hidden text-ellipsis whitespace-nowrap">
+                <div className="mt-1 line-clamp-2 break-words text-sm text-slate-600">
                   {routeLocale === "ko" ? g.descKo : g.descEn}
                 </div>
               </Link>

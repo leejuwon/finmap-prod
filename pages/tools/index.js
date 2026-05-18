@@ -135,72 +135,72 @@ export default function ToolsHome() {
 
       <JsonLd data={itemListJsonLd} />
 
-      <section className="mt-6 mb-10">
-        <h1 className="text-2xl font-bold mb-2">
+      <section className="mt-6 mb-10 min-w-0">
+        <h1 className="mb-2 max-w-full break-words text-2xl font-bold leading-tight">
           {isKo ? '금융 계산기 · 도구' : 'Finance tools'}
         </h1>
-        <section className="card mb-6">
-          <h2 className="text-base font-semibold mb-2">
+        <section className="card mb-6 min-w-0 max-w-full">
+          <h2 className="mb-2 break-words text-base font-semibold leading-snug">
             {isKo ? "복리·적립식(DCA)·CAGR·은퇴자금까지 한 번에" : "Compound, DCA, CAGR, and retirement tools"}
           </h2>
-          <p className="text-sm text-slate-600">
+          <p className="break-words text-sm text-slate-600">
             {isKo
               ? "FinMap 금융 계산기 모음입니다. 복리 이자(월복리/연복리)로 미래가치(FV)를 계산하고, 적립식 투자(DCA), CAGR(연평균 수익률), 목표 자산 도달, 은퇴자금(FIRE)까지 연결해서 시뮬레이션할 수 있어요."
               : "A collection of finance calculators. Calculate FV with compound interest, simulate DCA, CAGR, goal targets, and FIRE retirement planning."}
           </p>
         </section>
-        <p className="text-sm text-slate-600 mb-6">
+        <p className="mb-6 break-words text-sm text-slate-600">
           {isKo
             ? '예금·투자·목표 자산 계획을 숫자로 확인해 보세요. 계산기는 계속 추가될 예정입니다.'
             : 'Check your savings, investing and goal plans with numbers. More tools are coming.'}
         </p>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {TOOLS.map((tool) => (
             <Link
               key={tool.href}
               href={tool.href}
               locale={lang} // ✅ (명시) 현재 locale 유지
-              className="card hover:shadow-md transition-shadow flex flex-col justify-between"
+              className="card flex min-w-0 max-w-full flex-col justify-between overflow-hidden transition-shadow hover:shadow-md"
             >
               {tool.image && (
                 <img
                   src={tool.image}
                   alt={tool.title}
-                  className="card-thumb mb-3"
+                  className="card-thumb mb-3 aspect-[16/9] max-h-48 max-w-full object-cover"
                 />
               )}
 
-              <div>
-                <span className="badge mb-2 inline-block">{tool.badge}</span>
-                <h2 className="text-lg font-semibold mb-1">{tool.title}</h2>
-                <p className="text-sm text-slate-600">{tool.desc}</p>
+              <div className="min-w-0">
+                <span className="badge mb-2 inline-block max-w-full break-words">{tool.badge}</span>
+                <h2 className="mb-1 break-words text-lg font-semibold leading-snug">{tool.title}</h2>
+                <p className="break-words text-sm text-slate-600">{tool.desc}</p>
               </div>
 
-              <span className="mt-4 text-xs text-blue-600 font-medium">                
+              <span className="mt-4 inline-flex min-h-[44px] max-w-full items-center break-words text-xs font-medium leading-tight text-blue-600">
                 {isKo ? `${tool.title} 열기 →` : `Open ${tool.title} →`}
               </span>
             </Link>
           ))}
         </div>
 
-        <section className="mt-8 rounded-2xl border bg-white p-5 shadow-card">
-          <h2 className="text-lg font-semibold text-slate-900">
+        <section className="mt-8 max-w-full rounded-2xl border bg-white p-4 shadow-card sm:p-5">
+          <h2 className="break-words text-lg font-semibold leading-snug text-slate-900">
             {isKo ? '계산 전에 읽으면 좋은 가이드' : 'Guides to read before using the tools'}
           </h2>
-          <p className="mt-1 text-sm text-slate-600">
+          <p className="mt-1 break-words text-sm text-slate-600">
             {isKo
               ? '계산기 입력값을 정하기 어렵다면, 아래 글에서 기간·수익률·월 납입액 기준을 먼저 잡아보세요.'
               : 'If you are unsure what assumptions to enter, start with these guides on time horizon, return, and monthly contributions.'}
           </p>
-          <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+          <ul className="mt-4 grid min-w-0 grid-cols-1 gap-2 sm:grid-cols-2">
             {GUIDES.map((guide) => (
-              <li key={guide.href} className="rounded-xl bg-slate-50 p-3">
+              <li key={guide.href} className="min-w-0 rounded-xl bg-slate-50 p-3">
                 <Link
                   href={guide.href}
                   locale={lang}
                   prefetch={false}
-                  className="text-sm font-semibold text-slate-900 hover:underline"
+                  className="block break-words text-sm font-semibold leading-snug text-slate-900 hover:underline"
                 >
                   {guide.title}
                 </Link>
