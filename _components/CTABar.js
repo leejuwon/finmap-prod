@@ -3,6 +3,7 @@ import {
   ShareIcon,
   ArrowDownTrayIcon as DownloadIcon,
 } from "@heroicons/react/24/outline";
+import { getToolFromPath, trackGaEvent } from "../utils/analytics";
 
 export default function CTABar({
   locale = "ko",
@@ -14,6 +15,7 @@ export default function CTABar({
   alwaysVisible = false, // PRO에서는 true 권장
   onNavigate, // (key) => void
   activeKey, // optional: "sum" | "chart" | "insight" | "cta"
+  sourceTool,
 }) {
   const isKo = locale === "ko";
   const isPro = mode === "pro";
@@ -57,8 +59,27 @@ export default function CTABar({
   if (!visible) return null;
 
   const onClickNav = (key) => {
+    const currentSourceTool =
+      sourceTool || (typeof window !== "undefined" ? getToolFromPath(window.location?.pathname || "") : undefined);
+    trackGaEvent("tool_nav_click", {
+      ...(currentSourceTool ? { source_tool: currentSourceTool } : {}),
+      section: key,
+      locale,
+      location: "sticky_cta",
+    });
     setLocalActive(key);
     onNavigate && onNavigate(key);
+  };
+
+  const trackAction = (action) => {
+    const currentSourceTool =
+      sourceTool || (typeof window !== "undefined" ? getToolFromPath(window.location?.pathname || "") : undefined);
+    trackGaEvent("tool_result_action", {
+      ...(currentSourceTool ? { source_tool: currentSourceTool } : {}),
+      action,
+      locale,
+      location: "sticky_cta",
+    });
   };
 
   return (
@@ -96,7 +117,10 @@ export default function CTABar({
         <div className="grid grid-cols-2 gap-2">
           <button
             type="button"
-            onClick={onDownloadPDF}
+            onClick={() => {
+              trackAction("download_pdf");
+              onDownloadPDF?.();
+            }}
             className="btn-primary flex w-full min-w-0 items-center justify-center gap-1.5"
           >
             <DownloadIcon className="w-5 h-5" />
@@ -105,7 +129,10 @@ export default function CTABar({
 
           <button
             type="button"
-            onClick={onShare}
+            onClick={() => {
+              trackAction("share");
+              onShare?.();
+            }}
             className="btn-secondary flex w-full min-w-0 items-center justify-center gap-1.5"
           >
             <ShareIcon className="w-5 h-5" />

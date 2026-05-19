@@ -2,6 +2,7 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { trackGaEvent } from "../../utils/analytics";
 import ToolSeo from "../../_components/ToolSeo";
 import AdSenseUnit from '../../_components/AdSenseUnit'; // 예시
 import { AD_SLOTS } from '../../config/adSlots';
@@ -573,8 +574,26 @@ export default function RealEstatePage() {
       // ✅ 최신 요청만 반영
       if (seq !== reqSeqRef.current) return;
 
-      if (j?.ok && Array.isArray(j.rows)) setRows(j.rows);
-      else setRows([]);
+      if (j?.ok && Array.isArray(j.rows)) {
+        const nextRows = j.rows;
+        setRows(nextRows);
+        trackGaEvent("real_estate_search", {
+          locale: lang,
+          sido,
+          area_type: areaVal === 'all' ? 'all' : gu ? 'gu' : 'lawd',
+          timeframe,
+          period: isRange ? `${from}-${to}` : to,
+          top_by: topBy,
+          sort,
+          top,
+          pyeong,
+          has_build_filter: buildFrom !== 'all' || buildTo !== 'all',
+          result_count: nextRows.length,
+          location: "dashboard_filter",
+        });
+      } else {
+        setRows([]);
+      }
     } catch (e) {
       if (e?.name === 'AbortError') return;
       if (seq !== reqSeqRef.current) return;
@@ -667,6 +686,21 @@ export default function RealEstatePage() {
         })
       );
     } catch {}
+  }
+
+  function handleAptDetailClick(row, idx, location) {
+    rememberAptDetailState();
+    trackGaEvent("real_estate_detail_click", {
+      locale: lang,
+      sido,
+      area,
+      timeframe,
+      period: String(periodTo || periodFrom || ''),
+      top_by: topBy,
+      rank_position: Number(idx) + 1,
+      apt_key_present: !!(row?.apt_key || row?.aptKey),
+      location,
+    });
   }
 
   const tableMinWidth = showAdvanced ? 'min-w-[2700px]' : 'min-w-[1900px]';
@@ -952,7 +986,7 @@ export default function RealEstatePage() {
               <div className="mt-0.5 flex min-w-0 items-start gap-2">
                 <Link
                   href={makeAptDetailHref(r)}
-                  onClick={rememberAptDetailState}
+                  onClick={() => handleAptDetailClick(r, idx, "result_card")}
                   title={aptText}
                   className={`min-w-0 flex-1 text-left text-base font-semibold leading-snug text-slate-900 hover:underline underline-offset-2 whitespace-normal break-words ${
                     expanded ? "" : "max-h-[2.75rem] overflow-hidden"
@@ -1602,7 +1636,7 @@ export default function RealEstatePage() {
                       <td className="py-3 pr-3 font-medium">
                         <Link
                           href={makeAptDetailHref(r)}
-                          onClick={rememberAptDetailState}
+                          onClick={() => handleAptDetailClick(r, idx, "result_table")}
                           className="underline underline-offset-2 hover:text-slate-900"
                           title={renderApt(r)}
                         >

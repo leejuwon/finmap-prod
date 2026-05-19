@@ -28,6 +28,7 @@ import {
   replaceUrlQuery,
   writeToolRecent,
 } from "../../utils/toolPreset";
+import { trackGaEvent } from "../../utils/analytics";
 
 // ✅ Dynamic Imports (차트/무거운 것만)
 const FireChart = dynamic(() => import("../../_components/FireChart"), { ssr: false });
@@ -230,6 +231,13 @@ export default function FireCalculatorPage() {
     persistPreset(payload);
     setParams(payload);
     setResult({ ...runFireSimulation(payload) });
+    trackGaEvent("tool_calculate", {
+      source_tool: "fire",
+      locale: lang,
+      currency,
+      has_result: true,
+      location: "form_submit",
+    });
   };
 
   // ✅ (추가) PDF 다운로드 (복리 계산기와 동일 패턴):contentReference[oaicite:8]{index=8}
@@ -402,10 +410,10 @@ export default function FireCalculatorPage() {
               } />
 
             <div className="tool-cta-section grid min-w-0 gap-4">
-              <ToolCta lang={lang} type="compound" />
-              <ToolCta lang={lang} type="goal" />
-              <ToolCta lang={lang} type="cagr" />
-              <ToolCta lang={lang} type="dca" />
+              <ToolCta lang={lang} type="compound" sourceTool="fire" location="result_cta" />
+              <ToolCta lang={lang} type="goal" sourceTool="fire" location="result_cta" />
+              <ToolCta lang={lang} type="cagr" sourceTool="fire" location="result_cta" />
+              <ToolCta lang={lang} type="dca" sourceTool="fire" location="result_cta" />
             </div> 
 
             {/* 하단 고정 CTA Bar */}

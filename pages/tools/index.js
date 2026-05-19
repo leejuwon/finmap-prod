@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import SeoHead from '../../_components/SeoHead';
+import { getToolFromPath, trackGaEvent } from '../../utils/analytics';
 
 export function JsonLd({ data }) {
   return (
@@ -161,6 +162,14 @@ export default function ToolsHome() {
               key={tool.href}
               href={tool.href}
               locale={lang} // ✅ (명시) 현재 locale 유지
+              onClick={() =>
+                trackGaEvent('tool_hub_click', {
+                  source_tool: 'tools_index',
+                  target_tool: getToolFromPath(tool.href),
+                  locale: lang,
+                  location: 'tools_index_card',
+                })
+              }
               className="card flex min-w-0 max-w-full flex-col justify-between overflow-hidden transition-shadow hover:shadow-md"
             >
               {tool.image && (

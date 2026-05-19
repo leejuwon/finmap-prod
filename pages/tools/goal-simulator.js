@@ -18,6 +18,7 @@ import {
   replaceUrlQuery,
   writeToolRecent,
 } from "../../utils/toolPreset";
+import { trackGaEvent } from "../../utils/analytics";
 
 // ===== JSON-LD 출력용 공통 컴포넌트 =====
 export function JsonLd({ data }) {
@@ -919,6 +920,13 @@ export default function GoalSimulatorPage() {
 
     setTarget(targetValue);
     setResult(rows);
+    trackGaEvent("tool_calculate", {
+      source_tool: "goal",
+      locale,
+      currency: form.currency || currency,
+      has_result: true,
+      location: "form_submit",
+    });
 
     // ✅ Premium: 마지막 입력값 저장(옵션 바꿔도 자동 재계산 가능)
     setLastParams({
@@ -1731,11 +1739,10 @@ export default function GoalSimulatorPage() {
 
 
             <div className="tool-cta-section grid min-w-0 gap-4">
-              {/* TODO: ToolCta 공통 컴포넌트에 클릭 추적 prop이 생기면 location="result_cta"로 tool_hub_click을 연결합니다. */}
-              <ToolCta lang={lang} type="fire" />
-              <ToolCta lang={lang} type="compound" />
-              <ToolCta lang={lang} type="cagr" />
-              <ToolCta lang={lang} type="dca" />
+              <ToolCta lang={lang} type="fire" sourceTool="goal" location="result_cta" />
+              <ToolCta lang={lang} type="compound" sourceTool="goal" location="result_cta" />
+              <ToolCta lang={lang} type="cagr" sourceTool="goal" location="result_cta" />
+              <ToolCta lang={lang} type="dca" sourceTool="goal" location="result_cta" />
             </div>
 
             {/* 하단 고정 CTA Bar */}

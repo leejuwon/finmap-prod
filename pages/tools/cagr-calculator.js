@@ -19,6 +19,7 @@ import {
   replaceUrlQuery,
   writeToolRecent,
 } from "../../utils/toolPreset";
+import { trackGaEvent } from "../../utils/analytics";
 
 // JSON-LD 출력용
 export function JsonLd({ data }) {
@@ -464,6 +465,13 @@ export default function CagrCalculatorPage() {
     setFinalValue(fin);
     setYears(y);
     setResult(r);
+    trackGaEvent("tool_calculate", {
+      source_tool: "cagr",
+      locale,
+      currency: form.currency || currency,
+      has_result: true,
+      location: "form_submit",
+    });
   };
 
   const hasResult = !!result;
@@ -725,11 +733,10 @@ export default function CagrCalculatorPage() {
             </div>
 
             <div className="tool-cta-section grid min-w-0 gap-4">
-              {/* TODO: ToolCta 공통 컴포넌트에 클릭 추적 prop이 생기면 location="result_cta"로 연결합니다. */}
-              <ToolCta lang={locale} type="dca" />
-              <ToolCta lang={locale} type="fire" />
-              <ToolCta lang={locale} type="compound" />
-              <ToolCta lang={locale} type="goal" />
+              <ToolCta lang={locale} type="dca" sourceTool="cagr" location="result_cta" />
+              <ToolCta lang={locale} type="fire" sourceTool="cagr" location="result_cta" />
+              <ToolCta lang={locale} type="compound" sourceTool="cagr" location="result_cta" />
+              <ToolCta lang={locale} type="goal" sourceTool="cagr" location="result_cta" />
             </div>   
 
             {/* 하단 고정 CTA Bar */}

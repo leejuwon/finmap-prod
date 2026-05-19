@@ -5,12 +5,16 @@ import {
   BellIcon,
 } from "@heroicons/react/24/outline";
 import { shareKakao, shareWeb, copyUrl, shareNaver } from "../utils/share";
+import { getToolFromPath, trackGaEvent } from "../utils/analytics";
 
 export default function CompoundCTA({ 
   locale = "ko", 
   onDownloadPDF,
   shareTitle,
-  shareDescription, }) {
+  shareDescription,
+  sourceTool,
+  location = "result_cta",
+}) {
   const isKo = locale === "ko";
 
   const resolvedTitle =
@@ -20,6 +24,17 @@ export default function CompoundCTA({
     (isKo
       ? "세전/세후, 복리·단리 비교까지 자동 생성!"
       : "Full breakdown of compound interest.");
+
+  const trackAction = (action) => {
+    const currentSourceTool =
+      sourceTool || (typeof window !== "undefined" ? getToolFromPath(window.location?.pathname || "") : undefined);
+    trackGaEvent("tool_result_action", {
+      ...(currentSourceTool ? { source_tool: currentSourceTool } : {}),
+      action,
+      locale,
+      location,
+    });
+  };
 
   const handleShare = async () => {
     // 1) Web Share API
@@ -70,7 +85,10 @@ export default function CompoundCTA({
         <button
           type="button"
           className="btn-primary flex w-full min-w-0 items-center justify-center gap-2"
-          onClick={onDownloadPDF}
+          onClick={() => {
+            trackAction("download_pdf");
+            onDownloadPDF?.();
+          }}
         >
           <DownloadIcon className="h-5 w-5 flex-shrink-0" />
           {isKo ? "PDF 다운로드" : "Download PDF"}
@@ -79,7 +97,10 @@ export default function CompoundCTA({
         <button
           type="button"
           className="btn-secondary flex w-full min-w-0 items-center justify-center gap-2"
-          onClick={handleShare}
+          onClick={() => {
+            trackAction("share");
+            handleShare();
+          }}
         >
           <ShareIcon className="h-5 w-5 flex-shrink-0" />
           {isKo ? "공유하기" : "Share"}
@@ -88,9 +109,10 @@ export default function CompoundCTA({
         <button
           type="button"
           className="btn-outline flex w-full min-w-0 items-center justify-center gap-2 min-[390px]:col-span-2 sm:col-span-1"
-          onClick={() =>
-            copyUrl(isKo ? "URL이 복사되었습니다!" : "URL copied!")
-          }
+          onClick={() => {
+            trackAction("copy_url");
+            copyUrl(isKo ? "URL이 복사되었습니다!" : "URL copied!");
+          }}
         >
           🔗 {isKo ? "URL 복사" : "Copy URL"}
         </button>        

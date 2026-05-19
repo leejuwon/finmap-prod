@@ -19,6 +19,7 @@ import {
   replaceUrlQuery,
   writeToolRecent,
 } from "../../utils/toolPreset";
+import { trackGaEvent } from "../../utils/analytics";
 
 import {
   calcCompound,
@@ -506,6 +507,13 @@ export default function CompoundPage() {
 
     setTaxRatePercentState(taxRatePercent);
     setFeeRatePercentState(feeRatePercent);
+    trackGaEvent("tool_calculate", {
+      source_tool: "compound",
+      locale,
+      currency: form.currency || currency,
+      has_result: true,
+      location: "form_submit",
+    });
   };
 
   const hasResult = !!result && !!idealResult;
@@ -1290,10 +1298,10 @@ export default function CompoundPage() {
                       {locale === "ko" ? "관련 계산기" : "Related tools"}
                     </h3>                 
                     <div className="tool-cta-section grid min-w-0 gap-4">
-                      <ToolCta lang={lang} type="fire" />
-                      <ToolCta lang={lang} type="goal" />
-                      <ToolCta lang={lang} type="cagr" />
-                      <ToolCta lang={lang} type="dca" />
+                      <ToolCta lang={lang} type="fire" sourceTool="compound" location="result_cta" />
+                      <ToolCta lang={lang} type="goal" sourceTool="compound" location="result_cta" />
+                      <ToolCta lang={lang} type="cagr" sourceTool="compound" location="result_cta" />
+                      <ToolCta lang={lang} type="dca" sourceTool="compound" location="result_cta" />
                     </div>
                   </section>
 

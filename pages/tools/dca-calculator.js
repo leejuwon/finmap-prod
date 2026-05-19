@@ -18,6 +18,7 @@ import {
   replaceUrlQuery,
   writeToolRecent,
 } from "../../utils/toolPreset";
+import { trackGaEvent } from "../../utils/analytics";
 
 // JSON-LD 스크립트용 컴포넌트
 export function JsonLd({ data }) {
@@ -537,6 +538,13 @@ export default function DCACalculatorPage() {
     });
 
     setResult(rows);
+    trackGaEvent("tool_calculate", {
+      source_tool: "dca",
+      locale: routeLocale,
+      currency: form.currency || currency,
+      has_result: true,
+      location: "form_submit",
+    });
     setLastParams({
       initial,
       periodContribution: monthly,
@@ -757,10 +765,10 @@ export default function DCACalculatorPage() {
 
             <div className="tool-cta-section grid min-w-0 max-w-full grid-cols-1 gap-4">
               {/* DCA 페이지에서는 DCA 외 도구로 자연스러운 내부링크 강화 */}
-              <ToolCta lang={routeLocale} type="compound" />
-              <ToolCta lang={routeLocale} type="cagr" />
-              <ToolCta lang={routeLocale} type="goal" />
-              <ToolCta lang={routeLocale} type="fire" />
+              <ToolCta lang={routeLocale} type="compound" sourceTool="dca" location="result_cta" />
+              <ToolCta lang={routeLocale} type="cagr" sourceTool="dca" location="result_cta" />
+              <ToolCta lang={routeLocale} type="goal" sourceTool="dca" location="result_cta" />
+              <ToolCta lang={routeLocale} type="fire" sourceTool="dca" location="result_cta" />
             </div>
 
             {/* 하단 고정 CTA Bar */}

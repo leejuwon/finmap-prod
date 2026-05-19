@@ -15,6 +15,7 @@ import {
 import parse, { domToReact } from 'html-react-parser';
 import ToolCta from '../../../_components/ToolCta';
 import { cloudinaryContentImage, cloudinaryThumb } from '../../../lib/cloudinaryUrl';
+import { trackGaEvent } from '../../../utils/analytics';
 
 /* ---------------------- build-time cache ---------------------- */
 // 빌드(SSG) 때 getStaticProps가 포스트 수만큼 반복 호출되므로,
@@ -259,6 +260,11 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
       const res = await fetch(`/api/like?${engagementQuery}`, { method: 'POST' });
       const data = await res.json();
       if (data.likes != null) setLikes(data.likes);
+      trackGaEvent('blog_engagement', {
+        action: 'like',
+        locale: lang,
+        category: categorySlug,
+      });
     } catch (e) {
       console.error(e);
     }
@@ -289,6 +295,11 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
 
       await reloadComments();
       setCommentForm({ nickname: '', password: '', content: '' });
+      trackGaEvent('blog_engagement', {
+        action: 'comment_submit',
+        locale: lang,
+        category: categorySlug,
+      });
     } catch (e) {
       console.error(e);
       alert(isKo ? '댓글 등록에 실패했습니다.' : 'Failed to submit comment.');
@@ -391,6 +402,11 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
       } else {
         alert((isKo ? '링크를 직접 복사해주세요:\n' : 'Please copy the link manually:\n') + shareUrl);
       }
+      trackGaEvent('blog_engagement', {
+        action: 'share',
+        locale: lang,
+        category: categorySlug,
+      });
     } catch (e) {
       console.error(e);
     }

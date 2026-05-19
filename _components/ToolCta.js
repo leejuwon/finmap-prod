@@ -1,7 +1,8 @@
 // _components/ToolCta.js
 import Link from 'next/link';
+import { getToolFromPath, trackGaEvent } from '../utils/analytics';
 
-export default function ToolCta({ lang = 'ko', type = 'compound' }) {
+export default function ToolCta({ lang = 'ko', type = 'compound', sourceTool, location = 'tool_cta' }) {
   const isKo = lang === 'ko';
 
   const CONFIGS = {
@@ -99,6 +100,16 @@ export default function ToolCta({ lang = 'ko', type = 'compound' }) {
         <Link
           href={href}
           locale={lang} // ✅ locale 기반으로 /en 라우팅
+          onClick={() => {
+            const currentSourceTool =
+              sourceTool || (typeof window !== 'undefined' ? getToolFromPath(window.location?.pathname || '') : undefined);
+            trackGaEvent('tool_hub_click', {
+              ...(currentSourceTool ? { source_tool: currentSourceTool } : {}),
+              target_tool: type,
+              locale: lang,
+              location,
+            });
+          }}
           className="inline-flex min-h-[44px] w-full items-center justify-center whitespace-normal break-words rounded-full bg-blue-600 px-4 py-2 text-center text-xs font-medium leading-tight text-white transition-colors hover:bg-blue-700 sm:w-auto sm:text-sm"
         >
           {isKo ? config.btnKo : config.btnEn}
