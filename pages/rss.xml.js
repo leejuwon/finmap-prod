@@ -1,6 +1,7 @@
 // pages/rss.xml.js
 import fs from "fs";
 import path from "path";
+import matter from "gray-matter";
 
 export default function Rss() {
   return null;
@@ -30,6 +31,38 @@ function slugToTitleFromUrl(loc) {
   } catch {
     return "FinMap";
   }
+}
+
+function walkDir(dir) {
+  if (!fs.existsSync(dir)) return [];
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  const out = [];
+  for (const entry of entries) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...walkDir(full));
+    else out.push(full);
+  }
+  return out;
+}
+
+function normalizeDate(value, fallbackDate) {
+  const raw = String(value || "").trim();
+  const parsed = raw ? new Date(raw) : null;
+  if (parsed && !Number.isNaN(parsed.getTime())) return parsed.toISOString();
+  return fallbackDate || new Date().toISOString();
+}
+
+function firstText(...values) {
+  for (const value of values) {
+    if (Array.isArray(value)) {
+      const joined = value.filter(Boolean).join(" ").trim();
+      if (joined) return joined;
+      continue;
+    }
+    const text = String(value || "").trim();
+    if (text) return text;
+  }
+  return "";
 }
 
 function buildRss({ siteUrl, items }) {
@@ -64,6 +97,46 @@ function buildRss({ siteUrl, items }) {
 </rss>`;
 }
 
+function getLatestPostsFromContent({ siteUrl, limit = 30 }) {
+  const postsRoot = path.join(process.cwd(), "content", "posts");
+  const mdFiles = walkDir(postsRoot).filter((file) => file.endsWith(".md"));
+
+  return mdFiles
+    .map((fullPath) => {
+      const rel = path.relative(postsRoot, fullPath).replace(/\\/g, "/");
+      const parts = rel.split("/");
+      if (parts.length < 3) return null;
+
+      const category = parts[0];
+      const lang = parts[1];
+      const filename = parts[parts.length - 1];
+      const slug = filename.replace(/\.md$/, "");
+      if (!category || !["ko", "en"].includes(lang) || !slug) return null;
+
+      let raw = "";
+      let data = {};
+      let fallbackDate = new Date().toISOString();
+      try {
+        raw = fs.readFileSync(fullPath, "utf8");
+        data = matter(raw).data || {};
+        fallbackDate = fs.statSync(fullPath).mtime.toISOString();
+      } catch {
+        return null;
+      }
+
+      const prefix = lang === "en" ? "/en" : "";
+      const loc = `${siteUrl}${prefix}/posts/${category}/${slug}`;
+      const date = normalizeDate(data.dateModified || data.datePublished, fallbackDate);
+      const title = firstText(data.title, data.seoTitle, slugToTitleFromUrl(loc));
+      const description = firstText(data.description, data.seoDescription, data.summary);
+
+      return { loc, date, title, description };
+    })
+    .filter(Boolean)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, limit);
+}
+
 /**
  * ✅ next-sitemap이 빌드 후 public/sitemap-0.xml을 생성하므로
  * 그 파일에서 /posts/ URL만 뽑아 RSS 아이템으로 사용
@@ -89,6 +162,9 @@ function parseSitemapUrlset(xml) {
 }
 
 async function getLatestPostsForRss({ siteUrl, limit = 30 }) {
+  const contentItems = getLatestPostsFromContent({ siteUrl, limit });
+  if (contentItems.length) return contentItems;
+
   const cwd = process.cwd();
   const sitemap0 = path.join(cwd, "public", "sitemap-0.xml");
   const sitemapIndex = path.join(cwd, "public", "sitemap.xml");
