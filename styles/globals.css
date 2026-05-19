@@ -438,6 +438,35 @@ pre code {
   line-height: 1.7;
 }
 
+/* Blog body images keep their source ratio; cover/card thumbnails are styled separately. */
+.fm-post-body figure {
+  max-width: 100%;
+  overflow: visible;
+}
+
+.fm-post-body figcaption {
+  overflow-wrap: anywhere;
+}
+
+.fm-post-body img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: contain;
+}
+
+.fm-post-body .fm-post-inline-row-image {
+  flex: 0 0 auto;
+  align-self: center;
+  width: auto;
+  max-width: min(82vw, 360px);
+  height: auto;
+  max-height: 260px;
+}
+
 /* =========================================================
    ✅ 포스트 "실제 제목"이 .fm-post-body h1 로 들어오는 케이스 대응
    - 모바일에서 너무 큰 H1 축소
@@ -718,20 +747,29 @@ pre code {
   display: flex;
   gap: 16px;
   overflow-x: auto;
+  max-width: 100%;
   padding: 10px 0;
+  -webkit-overflow-scrolling: touch;
 }
 
 .img-row figure {
+  flex: 0 0 auto;
+  max-width: min(82vw, 360px);
   margin: 0;
+  overflow: visible;
   text-align: center;
   font-size: 0.8rem;
   color: #6b7280;
 }
 
 .img-row img {
-  height: 180px;
-  border-radius: 8px;
   display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 260px;
+  object-fit: contain;
+  border-radius: 8px;
   margin-bottom: 0.35rem;
 }
 

@@ -14,7 +14,7 @@ import {
 } from '../../../lib/posts';
 import parse, { domToReact } from 'html-react-parser';
 import ToolCta from '../../../_components/ToolCta';
-import { cloudinaryThumb } from '../../../lib/cloudinaryUrl';
+import { cloudinaryContentImage, cloudinaryThumb } from '../../../lib/cloudinaryUrl';
 
 /* ---------------------- build-time cache ---------------------- */
 // 빌드(SSG) 때 getStaticProps가 포스트 수만큼 반복 호출되므로,
@@ -432,7 +432,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
 
       if (domNode.name === 'figure') {
         return (
-          <figure className="my-6 max-w-full overflow-hidden">
+          <figure className="my-6 max-w-full overflow-visible">
             {domToReact(domNode.children, parserOptions)}
           </figure>
         );
@@ -449,17 +449,25 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
       if (domNode.name === 'img') {
         const src = domNode.attribs?.src || '';
         const alt = domNode.attribs?.alt || '';
+        const parentClass = String(domNode.parent?.attribs?.class || domNode.parent?.attribs?.className || '');
+        const parentStyle = String(domNode.parent?.attribs?.style || '');
+        const isInlineImageRow =
+          /\bimg-row\b/.test(parentClass) ||
+          /display\s*:\s*flex/i.test(parentStyle) ||
+          /overflow-x\s*:\s*auto/i.test(parentStyle);
 
         return (
           <img
-            src={cloudinaryThumb(src, { w: 1200, h: 675 })}
+            src={cloudinaryContentImage(src, { w: 1200 })}
             alt={alt}
-            width="1200"
-            height="675"
             loading="lazy"
             decoding="async"
             fetchPriority="low"
-            className="h-auto w-full max-w-full rounded-xl object-contain"
+            className={
+              isInlineImageRow
+                ? 'fm-post-inline-row-image mx-auto block rounded-xl object-contain'
+                : 'mx-auto block h-auto w-full max-w-full rounded-xl object-contain'
+            }
           />
         );
       }
