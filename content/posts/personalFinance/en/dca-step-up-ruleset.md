@@ -300,6 +300,7 @@ Mid-article foundations you can reinforce:
 
 Near-end reinforcement (rules > predictions):
 - [Debt vs investing in a high-rate era: a threshold rule you can actually follow](/en/posts/personalFinance/high-rate-debt-vs-invest-threshold-rule)
+- [Use a $500/month for 10 years example to calibrate contribution, time, and return assumptions](/en/posts/personalFinance/monthly-dca-10-year-result)
 - [Inflation-proof your budget: reduce fixed costs and protect cash flow](/en/posts/personalFinance/inflation-household-survival-strategy)
 - [Reality-check return assumptions: what “7% annual return” can mean in practice](/en/posts/investingInfo/cagr-7percent-reality-check)
 

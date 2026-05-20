@@ -264,6 +264,7 @@ DCA vs 일시금투자는 “누가 더 똑똑한가”의 문제가 아닙니�
 ## 더 깊게 읽고 싶다면(연결해서 보면 선택이 더 쉬워집니다)
 
 - <a href="/posts/personalFinance/annual-vs-monthly-compound">연복리 vs 월복리 차이가 ‘분할·적립’ 의사결정에 주는 영향 정리</a>  
+- <a href="/posts/personalFinance/monthly-dca-10-year-result">월 50만원 적립식 투자 10년 예시로 DCA 기준선 만들기</a>
 - <a href="/posts/personalFinance/what-is-cagr">수익률 논쟁을 끝내는 CAGR 개념(단순수익률과 차이) 빠르게 잡기</a>  
 - <a href="/posts/investingInfo/cagr-7percent-reality-check">‘연 7%’ 기대수익 착시를 CAGR로 현실 체크하는 방법</a>  
 

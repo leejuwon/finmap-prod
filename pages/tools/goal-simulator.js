@@ -779,6 +779,15 @@ export default function GoalSimulatorPage() {
         descEn: "Reverse-calculate monthly contribution from target, years, and expected return.",
       },
       {
+        slug: "monthly-dca-10-year-result",
+        tagKo: "월 납입 예시",
+        tagEn: "Monthly example",
+        titleKo: "월 50만원 적립식 투자, 10년 후 얼마가 될까?",
+        titleEn: "What Happens If You Invest $500 a Month for 10 Years?",
+        descKo: "월 50만원을 10년 넣는 기준 예시로 목표 금액과 월 납입 여력을 함께 점검합니다.",
+        descEn: "Use a $500/month 10-year example to connect monthly affordability with long-term target planning.",
+      },
+      {
         slug: "goal-amount-fast-strategy",
         tagKo: "전략",
         tagEn: "Strategy",

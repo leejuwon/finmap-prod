@@ -391,6 +391,16 @@ export default function DCACalculatorPage() {
   const relatedGuides = useMemo(
     () => [
       {
+        slug: "monthly-dca-10-year-result",
+        tagKo: "대표 예시",
+        tagEn: "Example",
+        category: "personalFinance",
+        titleKo: "월 50만원 적립식 투자, 10년 후 얼마가 될까?",
+        titleEn: "What Happens If You Invest $500 a Month for 10 Years?",
+        descKo: "월 50만원을 10년 동안 적립식으로 넣는 대표 예시로 원금·수익률·기간을 확인하고 DCA 계산기로 내 조건을 바꿔봅니다.",
+        descEn: "A practical $500/month for 10 years DCA example that shows principal, return assumptions, and contribution trade-offs.",
+      },
+      {
         slug: "dca-fx-volatility-decomposition",
         tagKo: "DCA",
         tagEn: "DCA",

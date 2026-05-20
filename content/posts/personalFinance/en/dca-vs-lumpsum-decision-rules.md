@@ -262,6 +262,7 @@ If you want one extra safety layer, calibrate your “expected return” thinkin
 ## Continue with these next pieces (to make the rulebook complete)
 
 - <a href="/en/posts/personalFinance/how-much-per-month-for-100m">Turn “I should invest more” into a monthly number you can actually commit to</a>  
+- <a href="/en/posts/personalFinance/monthly-dca-10-year-result">Use a $500/month for 10 years example as a DCA baseline</a>
 - <a href="/en/posts/personalFinance/goal-amount-fast-strategy">Speed up goals by adjusting the right variable (principal vs return vs time)</a>  
 - <a href="/en/posts/personalFinance/dca-fx-volatility-decomposition">If you invest globally, separate asset return vs currency return to prevent panic pauses</a>  
 

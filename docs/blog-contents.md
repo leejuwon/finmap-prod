@@ -275,6 +275,11 @@ title: "DCA vs 일시금투자: 기대수익이 아니라 ‘후회·중단·변
 description: "DCA(적립식)와 일시금투자는 수익률 논쟁이 아니라 ‘실행 리스크’의 선택입니다. 현금버퍼·부채이자율·심리내성·기간·소득안정성 5조건으로 DCA/혼합/일시를 고르고, 실패 신호까지 포함한 3단계 의사결정 표와 체크리스트를 제공합니다."
 url: /posts/personalFinance/dca-vs-lumpsum-decision-rules
 
+## 21.
+title: "월 50만원 적립식 투자, 10년 후 얼마가 될까?"
+description: "월 50만원을 10년 동안 적립식으로 투자하면 원금 6천만원이 어떤 범위의 결과로 바뀔 수 있는지 단순 예시로 계산하고, DCA 계산기·복리 계산기·목표자산 시뮬레이터로 내 숫자를 확인하는 방법을 정리합니다."
+url: /posts/personalFinance/monthly-dca-10-year-result
+
 
 # 재테크(영어)
 
@@ -377,6 +382,11 @@ url: /en/posts/personalFinance/rent-jeonse-buy-cashflow-opportunity-cost
 title: "DCA vs Lump Sum Without the Debate: A 3-Step Rule Based on Behavior Risk, Cash Buffers, and Time Horizon"
 description: "Stop arguing about theoretical edge. Use a 3-step rule (survival → consistency → optimization) built on cash buffers, debt APR, time horizon, income stability, and behavior tolerance—then stress-test your choice in /en/tools/dca-calculator."
 url: /en/posts/personalFinance/dca-vs-lumpsum-decision-rules
+
+## 21.
+title: "What Happens If You Invest $500 a Month for 10 Years?"
+description: "A practical 10-year dollar-cost averaging example for investing $500 per month. See simple return scenarios, contribution trade-offs, and how to test your own plan with the DCA calculator, compound interest calculator, and goal simulator."
+url: /en/posts/personalFinance/monthly-dca-10-year-result
 
 
 # 투자정보(한글)

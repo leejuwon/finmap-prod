@@ -36,7 +36,7 @@ lang: "ko"
 | 1억 원 | 기간과 수익률을 바꿨을 때 월 투자금 차이 확인 | [복리 계산기](/tools/compound-interest) |
 | 3억 원 | 장기 투자와 월 납입 지속 가능성 점검 | [목표 자산 시뮬레이터](/tools/goal-simulator) |
 
-함께 보면 좋은 글: [목표 금액 빨리 모으는 법](/posts/personalFinance/goal-amount-fast-strategy), [연복리 vs 월복리](/posts/personalFinance/annual-vs-monthly-compound), [CAGR 계산이 왜 중요한가](/posts/personalFinance/what-is-cagr).
+함께 보면 좋은 글: [목표 금액 빨리 모으는 법](/posts/personalFinance/goal-amount-fast-strategy), [월 50만원 적립식 투자 10년 예시](/posts/personalFinance/monthly-dca-10-year-result), [연복리 vs 월복리](/posts/personalFinance/annual-vs-monthly-compound), [CAGR 계산이 왜 중요한가](/posts/personalFinance/what-is-cagr).
 
 ![monthly investment infographic top](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429431/blog/personalFinance/monthly-investment-top.png)
 

@@ -265,6 +265,15 @@ export default function CompoundPage() {
         descEn: "Reverse-calculate monthly contribution from target, years, and expected return.",
       },
       {
+        slug: "monthly-dca-10-year-result",
+        tagKo: "월 적립 예시",
+        tagEn: "Monthly example",
+        titleKo: "월 50만원 적립식 투자, 10년 후 얼마가 될까?",
+        titleEn: "What Happens If You Invest $500 a Month for 10 Years?",
+        descKo: "월 납입액·기간·수익률이 10년 뒤 결과를 어떻게 바꾸는지 복리 예시로 확인합니다.",
+        descEn: "See how monthly contributions, time, and return assumptions shape a 10-year compounding result.",
+      },
+      {
         slug: "goal-amount-fast-strategy",
         tagKo: "전략",
         tagEn: "Strategy",

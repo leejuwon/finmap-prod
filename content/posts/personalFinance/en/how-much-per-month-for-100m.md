@@ -28,7 +28,7 @@ lang: "en"
 
 > The most efficient way to reach a financial goal is to reverse-calculate how much you need to invest each month. This guide provides realistic monthly investment levels for $50,000, $100,000, and $300,000 targets.
 
-Related reads: [Reach your target amount faster](/en/posts/personalFinance/goal-amount-fast-strategy), [Annual vs monthly compounding](/en/posts/personalFinance/annual-vs-monthly-compound), and [CAGR calculator guide](/en/posts/personalFinance/what-is-cagr). Test your own target in the [Goal Simulator](/en/tools/goal-simulator) or compare assumptions in the [Compound Interest Calculator](/en/tools/compound-interest).
+Related reads: [Reach your target amount faster](/en/posts/personalFinance/goal-amount-fast-strategy), [see a $500/month for 10 years DCA example](/en/posts/personalFinance/monthly-dca-10-year-result), [Annual vs monthly compounding](/en/posts/personalFinance/annual-vs-monthly-compound), and [CAGR calculator guide](/en/posts/personalFinance/what-is-cagr). Test your own target in the [Goal Simulator](/en/tools/goal-simulator) or compare assumptions in the [Compound Interest Calculator](/en/tools/compound-interest).
 
 ![Top infographic](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429431/blog/personalFinance/monthly-investment-top.png)
 

@@ -302,6 +302,7 @@ lang: "ko"
 아래 글들을 함께 보면, 규칙이 더 튼튼해집니다(특히 비상금·부채·복리 이해).
 
 - <a href="/posts/personalFinance/high-rate-debt-vs-invest-threshold-rule">고금리 부채 vs 투자, 우선순위를 ‘임계값 룰’로 정리하는 방법</a>  
+- <a href="/posts/personalFinance/monthly-dca-10-year-result">월 50만원 적립식 투자 10년 예시로 납입액·기간·수익률 감각 잡기</a>
 - <a href="/posts/personalFinance/annual-vs-monthly-compound">연복리 vs 월복리 차이가 목표 도달 기간을 얼마나 바꾸는지</a>  
 - <a href="/posts/investingInfo/dca-consistency-7-fail-patterns">적립식이 무너지는 7가지 패턴과 재발 방지 체크리스트</a>  
 
