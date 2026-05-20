@@ -2,12 +2,14 @@
 slug: "korea-etf-deep-dive-tnx"
 title: "왜 한국 ETF는 TNX(미국 10년물 금리)에 가장 민감한가: 구조·환율·유동성 심화 분석"
 description: "한국 ETF가 글로벌 ETF 중에서도 금리·환율·유동성 변화에 가장 크게 흔들리는 이유를 구조적으로 분석한 심화편. TNX·DXY·KRW·성장주 비중·외국인 수급·반도체 사이클·MSCI 비중 등을 종합적으로 해석합니다."
+seoTitle: "한국 ETF가 TNX에 민감한 이유: 환율, 외국인 수급, 반도체 구조"
+seoDescription: "한국 ETF가 미국 금리와 달러, 원달러 환율, 외국인 수급에 크게 흔들리는 구조적 이유를 심화 분석합니다."
 datePublished: "2025-12-01"
 dateModified: "2025-12-01"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["한국ETF", "EWY", "KOSPI", "TNX", "DXY", "KRW", "반도체ETF", "ETF매크로"]
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["cagr","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764561440/blog/investingInfo/korea-etf-deep-dive-tnx-thum.png"
 lang: "ko"
 ---
@@ -204,12 +206,17 @@ lang: "ko"
 
 ## 11. CTA  
 <div class="tool-cta">
-  <h3>한국 ETF 민감도, FinMap 도구로 직접 확인해보세요</h3>
-  <p>복리 계산기 · 목표자산 계산기 · ETF 비교 도구를 통해 금리 변화가 당신의 포트폴리오에 미치는 영향을 직접 계산해볼 수 있습니다.</p>
-  <a class="tool-cta-btn" href="/tools/goal-simulator">
-    목표자산 시뮬레이터 열기
+  <h3>한국 ETF 성과를 CAGR로 비교해보세요</h3>
+  <p>TNX와 환율이 흔드는 구간에서는 단기 등락보다 연평균 성과와 적립식 계획을 함께 보는 편이 안전합니다.</p>
+  <a class="tool-cta-btn" href="/tools/cagr-calculator">
+    CAGR 계산기 열기
   </a>
 </div>
+
+함께 읽으면 좋은 글:
+- [미국 10년물 금리(TNX)는 왜 ETF를 뒤흔드는가?](/posts/investingInfo/etf-impact-of-tnx)
+- [DXY(달러인덱스)란 무엇인가? 투자자가 꼭 알아야 할 의미 정리](/posts/investingInfo/dxy-dollar-index-basics)
+- [원달러 환율이 한국 경제와 코스피에 미치는 영향](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
 
 ---
 

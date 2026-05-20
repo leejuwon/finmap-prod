@@ -8,7 +8,7 @@ postCategory: "investingInfo"
 datePublished: "2026-01-30"
 dateModified: "2026-01-30"
 tags: ["Korea real estate","Seoul apartments","Gyeonggi","Incheon","discount rate","mortgage rates","demand","sentiment","transaction volume","financial conditions","spreads","rules-based investing"]
-tool: ["cagr","dca"]
+tool: ["goal","cagr"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1769832198/blog/insight/rates-discount-mortgage-cover.png"
 lang: "en"
 ---
@@ -206,11 +206,11 @@ If you want faster intuition for why “discount rate” logic matters across as
 
 If you’re allocating between real estate and financial assets, two simple habits reduce regret:
 - Use CAGR to summarize what your alternatives realistically delivered over time.  
-- Use DCA to keep a disciplined plan when you’re waiting for better real estate execution conditions.
+- Use the goal simulator to translate target price bands and payment limits into a safer execution plan.
 
 <ToolCta lang="en" type="cagr" />
 
-<ToolCta lang="en" type="dca" />
+<ToolCta lang="en" type="goal" />
 
 ## Near the end: connect rates → dollar → risk regime (4 links that complete the picture)
 

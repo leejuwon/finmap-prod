@@ -4,11 +4,13 @@ title: "사회초년생을 위한 월급 관리 5단계 가이드"
 description: "사회초년생이 가장 고민하는 월급 관리. 어디서부터 시작해야 할지 막막하다면 이 글에서 소개하는 월급 관리 5단계 가이드로 재테크의 기초를 다져보세요."
 datePublished: "2025-11-17"
 dateModified: "2025-11-17"
+seoTitle: "사회초년생 월급 관리 5단계: 예산·비상금·복리 투자 시작법"
+seoDescription: "사회초년생이 월급을 예산·비상금·저축·복리 투자로 나누는 5단계를 정리하고, 복리 계산기로 장기 효과를 확인합니다."
 category: "재테크"
 postCategory: "personalFinance"
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429439/blog/personalFinance/step5_thum.png"
 tags: ["월급관리", "사회초년생", "예산관리", "재테크기초"]
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["comp","goal"]
 lang: "ko"
 ---
 
@@ -25,6 +27,8 @@ lang: "ko"
 > 10. 월급 관리는 작게 시작해도 꾸준함이 핵심입니다.
 
 > 이제 막 사회생활을 시작한 사람들에게 가장 어려운 과제는 바로 ‘월급 관리’입니다. 첫 월급의 설렘도 잠시, 어디에 얼마나 써야 할지, 매달 어떻게 남겨야 할지 막막해지기 쉽죠. 이 글에서는 **사회초년생이 반드시 알아야 할 월급 관리 5단계**를 체계적으로 정리해 드립니다.
+
+함께 보면 좋은 글: [가계 재무 3대장](/posts/personalFinance/personal-finance-3pillars), [비상금은 리스크로 정한다](/posts/personalFinance/emergency-fund-by-risk), [단리 vs 복리 계산](/posts/personalFinance/simple-vs-compound). 월 저축 목표는 [목표 자산 시뮬레이터](/tools/goal-simulator)로 역산해볼 수 있습니다.
 
 ![사회초년생 월급 관리 상단 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429396/blog/personalFinance/economics-personal-start-5steps-top.png)
 

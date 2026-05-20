@@ -2,12 +2,14 @@
 slug: "inflation-basics"
 title: "Understanding Inflation and Interest Rates: The Core Framework Every Long-Term Investor Must Know"
 description: "Inflation and interest rates form the backbone of the economy. This guide explains how inflation drives rate decisions and how rates affect stocks, ETFs, real estate, and liquidity cycles—all in FinMap's premium layout format."
+seoTitle: "Inflation and Interest Rates: A Long-Term Investor's Core Framework"
+seoDescription: "Learn how inflation moves rates, liquidity, stocks, ETFs, and real estate, then connect the macro cycle to compounding and goal planning."
 datePublished: "2025-12-02"
 dateModified: "2025-12-02"
 category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["Inflation", "Interest Rates", "Macro", "Economy", "Liquidity", "InvestmentBasics"]
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["comp","goal"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764681952/blog/economicInfo/inflation-and-interest-rates-basics-cover.png"
 lang: "en"
 ---
@@ -210,6 +212,11 @@ When it’s low (low rates) → borrowing/spending increase.
 - Rate turning points are the most important macro signals for investors.  
 - Use inflation → rates → liquidity flow to shape long-term strategy.
 
+Useful next reads:
+- [How Interest Rates Work: From Policy Rates to Deposits, Loans, and Bonds](/en/posts/economicInfo/interest-rate-basics)
+- [A Rate Cut Doesn't Guarantee Lower Borrowing Costs: Policy Rates vs Market Rates](/en/posts/economicInfo/policy-rate-cut-market-rates)
+- [Is 7% Compounding Realistic? A CAGR Reality Check](/en/posts/investingInfo/cagr-7percent-reality-check)
+
 ---
 
 ## 11. CTA — Connect to FinMap tools
@@ -219,6 +226,9 @@ When it’s low (low rates) → borrowing/spending increase.
   <p>Use FinMap’s compound interest calculator and goal simulator to understand the long-term effect of different rate environments.</p>
   <a class="tool-cta-btn" href="/en/tools/compound-interest">
     Open Compound Calculator
+  </a>
+  <a class="tool-cta-btn" href="/en/tools/goal-simulator">
+    Open Goal Simulator
   </a>
 </div>
 

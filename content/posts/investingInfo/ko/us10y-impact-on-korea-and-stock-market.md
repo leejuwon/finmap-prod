@@ -2,12 +2,14 @@
 slug: "us10y-impact-on-korea-and-stock-market"
 title: "미국 10년물 국채금리(TNX)가 미국·한국 시장에 미치는 실제 영향"
 description: "미국 10년물 국채금리(TNX)가 미국 경제뿐 아니라 한국 주식시장, 환율, 유동성 흐름에 어떤 영향을 주는지 FinMap 고급 템플릿으로 깊이 있게 정리했습니다."
+seoTitle: "미국 10년물 국채금리 TNX가 한국 주식시장과 환율에 미치는 영향"
+seoDescription: "TNX가 미국 시장, 한국 증시, 원달러 환율, 외국인 수급, 유동성 흐름에 미치는 실제 경로를 정리합니다."
 datePublished: "2025-12-01"
 dateModified: "2025-12-01"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["TNX", "미국10년물", "금리영향", "유동성", "한국증시", "환율", "매크로"]
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["cagr","comp"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764553910/blog/investingInfo/tnx_thum.png"
 lang: "ko"
 ---
@@ -227,11 +229,16 @@ TNX가 올라 달러 강세가 되면
 ## 13. CTA — 금리·환율 기반 투자전략 도구
 
 <div class="tool-cta">
-  <h3>FinMap 복리·목표자산 계산기</h3>
-  <p>TNX 흐름과 나의 실제 투자 수익률을 비교해보고 싶다면 복리 계산기와 목표자산 시뮬레이터를 활용해보세요.</p>
+  <h3>FinMap CAGR·복리 계산기</h3>
+  <p>TNX 흐름과 나의 실제 투자 수익률을 비교해보고 싶다면 CAGR 계산기와 복리 계산기를 함께 활용해보세요.</p>
+  <a class="tool-cta-btn" href="/tools/cagr-calculator">CAGR 계산기 열기</a>
   <a class="tool-cta-btn" href="/tools/compound-interest">복리 계산기 열기</a>
-  <a class="tool-cta-btn" href="/tools/goal-simulator">목표자산 시뮬레이터 열기</a>
 </div>
+
+함께 읽으면 좋은 글:
+- [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)
+- [미국 10년물 금리(TNX)는 왜 ETF를 뒤흔드는가?](/posts/investingInfo/etf-impact-of-tnx)
+- [DXY(달러인덱스)란 무엇인가? 투자자가 꼭 알아야 할 의미 정리](/posts/investingInfo/dxy-dollar-index-basics)
 
 ---
 

@@ -7,7 +7,7 @@ dateModified: "2025-11-23"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["DXY", "달러인덱스", "거시경제", "환율", "미국달러"]
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["dca","cagr"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428438/blog/investingInfo/dxy-thum.png"
 lang: "ko"
 ---
@@ -107,8 +107,13 @@ DXY가 상승하면 원·달러 환율이 오르는 경우가 많습니다.
 환율·금리·지수 변화를 함께 보는 것이 가장 정확합니다.
 
 🔗 관련 도구  
-- **[복리 계산기](/tools/compound-interest)**  
+- **[CAGR 계산기](/tools/cagr-calculator)**
 - **[목표자산 도달 시뮬레이터](/tools/goal-simulator)**  
+
+함께 읽으면 좋은 글:
+- [DXY가 시장을 움직이는 방식: 미국 주식·원달러·코스피 영향](/posts/investingInfo/dxy-market-impact)
+- [원달러 환율이 한국 경제와 코스피에 미치는 영향](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)
 
 ---
 

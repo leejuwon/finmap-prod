@@ -6,6 +6,7 @@ datePublished: "2026-01-14"
 dateModified: "2026-01-14"
 category: "Personal Finance"
 tags: ["emergency fund", "budgeting", "cash flow", "risk management", "household finance", "debt", "interest rates", "financial planning"]
+tool: ["goal","comp"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1768379054/blog/tools/emergency-fund-by-risk-cover.png"
 lang: "en"
 ---
@@ -213,7 +214,7 @@ Advanced improvements:
 
 If your risk is macro-sensitive (rates/FX), add these to your reading list:
 - [Currency Basics: What Really Moves the USD/KRW Exchange Rate](/en/posts/economicInfo/fx-basics)  
-- [USD/KRW and KOSPI: What the Exchange Rate Signals for Foreign Flows and Valuations](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- [USD/KRW and KOSPI: What the Exchange Rate Signals for Foreign Flows and Valuations](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
 
 ## 11) Checklist: Emergency Fund That Actually Works (7+ items)
 
@@ -244,7 +245,7 @@ Use this as a pass/fail checklist:
     Set a target amount and timeline, then reverse-calculate how much to save each month.
     A plan that runs automatically is more powerful than motivation.
   </p>
-  <a class="tool-cta-btn" href="/tools/goal-simulator">
+  <a class="tool-cta-btn" href="/en/tools/goal-simulator">
     Open FinMap Goal Simulator
   </a>
 </div>

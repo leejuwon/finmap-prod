@@ -7,7 +7,7 @@ dateModified: "2025-11-23"
 category: "Investing Info"
 postCategory: "investingInfo"
 tags: ["DXY", "dollar index", "macro indicators", "forex", "USD strength"]
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["dca","cagr"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428438/blog/investingInfo/dxy-thum.png"
 lang: "en"
 ---
@@ -101,8 +101,13 @@ Rate-cut expectations → DXY down
 - Anticipating KOSPI volatility
 
 🔗 Helpful tools:  
-- **[Compound Interest Calculator](/en/tools/compound-interest)**  
+- **[CAGR Calculator](/en/tools/cagr-calculator)**
 - **[Goal Amount Simulator](/en/tools/goal-simulator)**
+
+Useful next reads:
+- [How DXY Moves the Market: Impact on U.S. Stocks, USD/KRW, and KOSPI](/en/posts/investingInfo/dxy-market-impact)
+- [USD/KRW Exchange Rate: What It Means for Korea's Economy and the KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- [TNX Explained: Why the 10-Year Treasury Yield Drives Markets](/en/posts/investingInfo/tnx-basics)
 
 ---
 

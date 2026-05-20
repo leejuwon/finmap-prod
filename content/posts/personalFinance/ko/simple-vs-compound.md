@@ -6,11 +6,11 @@ description: "단리·복리 차이는 공식이 아니라 ‘돈이 불어나�
 datePublished: "2025-11-15"
 dateModified: "2026-03-09"
 seoTitle: "단리 vs 복리 계산: 월 30만원 투자 예시로 보는 장기 차이"
-seoDescription: "단리와 복리의 차이를 월 적립 예시로 비교하고 기간·수익률이 결과를 어떻게 바꾸는지 복리 계산기로 확인합니다."
+seoDescription: "단리와 복리의 차이를 월 적립 예시로 비교하고, 기간·수익률이 장기 결과를 어떻게 바꾸는지 복리 계산기로 확인합니다."
 category: "재테크"
 postCategory: "personalFinance"
 tags: ["단리","복리","복리효과","금융기초","사회초년생","예금","적금","CAGR","적립식","투자습관"]
-tool: ["comp","cagr","goal"]
+tool: ["comp","cagr"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429436/blog/personalFinance/simple-vs-compound-cover.png"
 lang: "ko"
 ---
@@ -253,7 +253,6 @@ lang: "ko"
 
 - <a href="/tools/compound-interest">복리 계산기</a>
 - <a href="/tools/cagr-calculator">CAGR 계산기</a>
-- <a href="/tools/goal-simulator">목표 금액 역산</a>
 
 ## 이어서 읽으면 돈 관리가 더 쉬워지는 글
 

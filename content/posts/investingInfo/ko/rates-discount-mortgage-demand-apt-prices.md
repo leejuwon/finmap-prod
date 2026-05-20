@@ -8,7 +8,7 @@ postCategory: "investingInfo"
 datePublished: "2026-01-30"
 dateModified: "2026-01-30"
 tags: ["금리","할인율","대출금리","주택담보대출","DSR","거래량","금융여건","심리","서울아파트","경기아파트","인천아파트","실거래","대시보드"]
-tool: ["cagr","dca"]
+tool: ["goal","cagr"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1769832198/blog/insight/rates-discount-mortgage-cover.png"
 lang: "ko"
 ---
@@ -197,24 +197,24 @@ lang: "ko"
 ## 중간 연결: 금리를 “대출금리”로 바꾸는 구조를 먼저 잡아두기
 
 금리와 부동산 연결이 헷갈리면, 아래 2개 글을 먼저 보면 오늘 프레임이 더 단단해집니다.  
-- [대출·채권·예금까지 금리 구조를 한 번에 정리](\/posts\/economicInfo\/interest-rate-basics)  
-- [기준금리 vs 시장금리로 “체감 대출금리”가 왜 다르게 움직이는지 이해하기](\/posts\/economicInfo\/policy-rate-cut-market-rates)  
+- [대출·채권·예금까지 금리 구조를 한 번에 정리](/posts/economicInfo/interest-rate-basics)
+- [기준금리 vs 시장금리로 “체감 대출금리”가 왜 다르게 움직이는지 이해하기](/posts/economicInfo/policy-rate-cut-market-rates)
 
 ## 관련 도구로 “내 투자 판단”을 숫자로 고정하기
 
 부동산을 투자 관점에서 보면, 결국 “기회비용”과 “대안 자산”을 같이 봐야 흔들림이 줄어듭니다.  
-<strong>내가 부동산을 기다리는 동안 다른 자산을 적립식으로 유지할지</strong>, 또는 <strong>내 과거 성과를 연평균으로 요약해 비교할지</strong>는 숫자로 고정할수록 좋습니다.
+<strong>내가 부동산을 기다리는 동안 목표 가격대와 월 부담을 어떻게 맞출지</strong>, 또는 <strong>내 과거 성과를 연평균으로 요약해 비교할지</strong>는 숫자로 고정할수록 좋습니다.
 
 <ToolCta lang="ko" type="cagr" />
 
-<ToolCta lang="ko" type="dca" />
+<ToolCta lang="ko" type="goal" />
 
 ## 이어서 읽으면 퍼즐이 맞춰지는 글들(함께 읽으면 좋은 글)
 
 오늘 글을 “부동산 단독 프레임”이 아니라 “금리·달러·리스크온/오프”까지 포함한 투자 프레임으로 확장하고 싶다면, 아래 글들을 순서대로 읽는 것이 좋습니다.  
-- [TNX를 ‘할인율’로 읽으면 부동산·주식 연결이 빨리 보입니다](\/posts\/investingInfo\/tnx-basics)  
-- [DXY가 오를 때 금융여건이 어떻게 조여지는지 한 번에](\/posts\/investingInfo\/dxy-market-impact)  
-- [S&P500 리스크온/오프가 한국 자산에 전이되는 흐름 정리](\/posts\/investingInfo\/sp500-impact-on-korea-kospi)  
+- [TNX를 ‘할인율’로 읽으면 부동산·주식 연결이 빨리 보입니다](/posts/investingInfo/tnx-basics)
+- [DXY가 오를 때 금융여건이 어떻게 조여지는지 한 번에](/posts/investingInfo/dxy-market-impact)
+- [S&P500 리스크온/오프가 한국 자산에 전이되는 흐름 정리](/posts/investingInfo/sp500-impact-on-korea-kospi)
 
 ---
 

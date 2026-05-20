@@ -8,7 +8,7 @@ postCategory: "personalFinance"
 datePublished: "2026-02-01"
 dateModified: "2026-02-03"
 tags: ["Korea housing","rent","jeonse","buy","cash flow","opportunity cost","risk triggers","mortgage","real estate decision"]
-tool: ["cagr"]
+tool: ["goal","comp"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1770083347/blog/insight/rent-jeonse-buy-cashflow-cover.png"
 lang: "en"
 ---
@@ -275,6 +275,8 @@ Near the end (for stress-proofing your plan and comparing trade-offs realistical
 - [Protect your cash flow under inflation (fixed-cost restructuring playbook)](/en/posts/personalFinance/inflation-household-survival-strategy)
 - [Use the interest-rate threshold rule to decide: pay debt first or invest first](/en/posts/personalFinance/high-rate-debt-vs-invest-threshold-rule)
 - [Use CAGR to compare opportunity cost realistically (not with vague “7% per year” talk)](/en/posts/personalFinance/what-is-cagr)
+
+For the actual numbers, use the [Goal Amount Simulator](/en/tools/goal-simulator) to test cash-flow targets and the [Compound Interest Calculator](/en/tools/compound-interest) to estimate deposit opportunity cost.
 
 ---
 

@@ -2,12 +2,14 @@
 slug: "etf-impact-of-tnx"
 title: "미국 10년물 금리(TNX)는 왜 ETF를 뒤흔드는가? 성장·가치·신흥국 ETF까지 모두 설명하는 금리 로직"
 description: "ETF는 금리·달러·유동성의 영향을 강하게 받는다. TNX(미국 10년물 금리)가 어떻게 Growth, Value, Sector, Theme ETF의 수익률을 좌우하는지 FinMap 고급 매크로 구조로 쉽게 설명한다."
+seoTitle: "TNX가 ETF 수익률을 흔드는 이유: 성장주·가치주·신흥국 ETF"
+seoDescription: "미국 10년물 금리가 ETF 성과를 움직이는 경로를 성장주, 가치주, 신흥국, 달러 유동성 관점에서 정리합니다."
 datePublished: "2025-12-01"
 dateModified: "2025-12-01"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["ETF", "TNX", "미국10년물", "금리영향", "성장주ETF", "가치주ETF", "신흥국ETF"]
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["cagr","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764561430/blog/investingInfo/etf-impact-of-tnx-thum.png"
 lang: "ko"
 ---
@@ -200,12 +202,17 @@ ETF를 종목 묶음이라고만 생각하고 금리를 무시하면 실수하�
 ## 10. FinMap 투자 도구 CTA
 
 <div class="tool-cta">
-  <h3>ETF 투자 전, 금리 영향 시뮬레이션을 해보세요</h3>
-  <p>성장·가치·신흥국 ETF가 금리 변화에 얼마나 민감한지 FinMap 도구에서 바로 계산할 수 있습니다.</p>
-  <a class="tool-cta-btn" href="/tools/goal-simulator">
-    금리 반영 ETF 시뮬레이터 열기
+  <h3>ETF 수익률을 CAGR로 비교해보세요</h3>
+  <p>금리 구간별 ETF 성과를 볼 때는 누적 수익률보다 연평균 수익률을 함께 확인하는 편이 더 안정적입니다.</p>
+  <a class="tool-cta-btn" href="/tools/cagr-calculator">
+    CAGR 계산기 열기
   </a>
 </div>
+
+함께 읽으면 좋은 글:
+- [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)
+- [DXY(달러인덱스)란 무엇인가? 투자자가 꼭 알아야 할 의미 정리](/posts/investingInfo/dxy-dollar-index-basics)
+- [왜 한국 ETF는 TNX에 가장 민감한가: 구조·환율·유동성 심화 분석](/posts/investingInfo/korea-etf-deep-dive-tnx)
 
 ---
 

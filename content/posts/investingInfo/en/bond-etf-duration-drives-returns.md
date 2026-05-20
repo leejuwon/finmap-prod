@@ -8,7 +8,7 @@ dateModified: "2026-01-18"
 category: "Investing Info"
 postCategory: "investingInfo"
 tags: ["Bond ETFs","Duration","TNX","Yield Curve","Interest Rates","Rate Risk","Treasury ETFs","Rebalancing Rules","Portfolio Hedging","Term Premium","Volatility Control","Macro Indicators"]
-tool: ["goal","dca","cagr","comp","fire"]
+tool: ["cagr","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1768748268/blog/insight/bond-etf-duration-tnx-cover.png"
 lang: "en"
 ---

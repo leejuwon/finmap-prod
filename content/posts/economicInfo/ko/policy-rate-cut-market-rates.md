@@ -2,10 +2,13 @@
 slug: "policy-rate-cut-market-rates"
 title: "“금리 인하”가 와도 안 오를 수 있다: 시장금리 vs 정책금리 분리해서 읽기"
 description: "기준금리를 내린다는데 왜 대출금리·예금금리는 체감이 없을까? 정책금리(기준금리)와 시장금리(국채·은행채·대출금리)를 분리해 읽는 법, 시장금리를 움직이는 4요소(기대·인플레·기간프리미엄·스프레드), 한국 투자·가계에 적용하는 실전 체크리스트까지 정리합니다."
+seoTitle: "금리 인하에도 대출금리가 안 내려가는 이유: 정책금리 vs 시장금리"
+seoDescription: "기준금리 인하와 체감 대출금리가 다르게 움직이는 이유를 시장금리, 스프레드, TNX, 원달러 환율 관점에서 점검합니다."
 datePublished: "2026-01-12"
 dateModified: "2026-02-24"
 category: "경제정보"
 tags: ["금리인하","기준금리","정책금리","시장금리","국채금리","기간프리미엄","인플레이션기대","스프레드","대출금리","예금금리"]
+tool: ["goal","comp"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1768210075/blog/tools/policy-rate-cut-cover.png"
 lang: "ko"
 ---

@@ -2,11 +2,14 @@
 slug: "interest-rate-basics"
 title: "How Interest Rates Work: From Policy Rates to Deposits, Loans, and Bonds"
 description: "A practical map of interest rates—policy rates → market yields → bank deposit/loan rates—plus the bond price/yield relationship, duration sensitivity, and how to apply rate regimes to real-life cashflow and portfolio decisions."
+seoTitle: "How Interest Rates Work: Policy, Market, Deposit, Loan, and Bond Rates"
+seoDescription: "Map policy rates to market yields, deposits, loans, and bonds, then connect rate regimes to compounding and CAGR-based portfolio decisions."
 datePublished: "2025-11-13"
 dateModified: "2026-01-02"
 category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["interest rates", "policy rate", "bond yields", "deposit rates", "loan rates", "duration", "yield curve", "inflation", "liquidity", "risk premium"]
+tool: ["comp","goal"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767338032/blog/tools/rate-cover.png"
 lang: "en"
 ---

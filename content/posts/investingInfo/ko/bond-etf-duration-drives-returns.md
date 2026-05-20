@@ -8,7 +8,7 @@ dateModified: "2026-01-18"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["채권ETF", "듀레이션", "TNX", "미국10년물", "금리민감도", "컨벡서티", "롤다운", "기간프리미엄", "총수익", "리밸런싱", "현금흐름", "단기채", "장기채", "TIPS"]
-tool: ["cagr","goal","comp","dca","fire"]
+tool: ["cagr","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1768748268/blog/insight/bond-etf-duration-tnx-cover.png"
 lang: "ko"
 ---

@@ -5,11 +5,11 @@ description: "5천만 원, 1억, 3억을 만들기 위해 매월 얼마나 투�
 datePublished: "2025-11-20"
 dateModified: "2026-05-18"
 seoTitle: "1억 모으기 월 투자금 계산: 5년·10년·15년 수익률별 기준"
-seoDescription: "1억원을 만들려면 월 얼마가 필요한지 5년·10년·15년 기간과 수익률별 표로 계산합니다. 목표 자산 시뮬레이터로 내 월 투자금과 기간을 직접 확인해보세요."
+seoDescription: "1억원을 만들려면 월 얼마가 필요한지 5년·10년·15년 기간과 수익률별로 비교하고, 목표 자산 시뮬레이터로 직접 확인해보세요."
 category: "재테크"
 postCategory: "personalFinance"
 tags: ["1억만들기", "5천만들기", "3억만들기", "월투자금", "투자계획", "목표금액", "복리", "자산계획", "목표자산"]
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["goal","comp"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429425/blog/personalFinance/monthly-investment-cover.png"
 lang: "ko"
 ---
@@ -34,9 +34,9 @@ lang: "ko"
 |---|---|---|
 | 5천만 원 | 월 저축만으로도 가능한지 확인 | [목표 자산 시뮬레이터](/tools/goal-simulator) |
 | 1억 원 | 기간과 수익률을 바꿨을 때 월 투자금 차이 확인 | [복리 계산기](/tools/compound-interest) |
-| 3억 원 | 장기 투자와 월 납입 지속 가능성 점검 | [FIRE 계산기](/tools/fire-calculator) |
+| 3억 원 | 장기 투자와 월 납입 지속 가능성 점검 | [목표 자산 시뮬레이터](/tools/goal-simulator) |
 
-함께 보면 좋은 글: [목표 금액 빨리 모으는 법](/posts/personalFinance/goal-amount-fast-strategy), [단리 vs 복리 계산](/posts/personalFinance/simple-vs-compound), [CAGR 계산이 왜 중요한가](/posts/personalFinance/what-is-cagr).
+함께 보면 좋은 글: [목표 금액 빨리 모으는 법](/posts/personalFinance/goal-amount-fast-strategy), [연복리 vs 월복리](/posts/personalFinance/annual-vs-monthly-compound), [CAGR 계산이 왜 중요한가](/posts/personalFinance/what-is-cagr).
 
 ![monthly investment infographic top](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429431/blog/personalFinance/monthly-investment-top.png)
 

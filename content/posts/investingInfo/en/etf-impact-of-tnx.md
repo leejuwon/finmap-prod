@@ -2,12 +2,14 @@
 slug: "etf-impact-of-tnx"
 title: "How U.S. 10Y Yield (TNX) Affects ETFs: Growth, Value, EM, and Korea"
 description: "A full breakdown of how the U.S. 10-year Treasury yield (TNX) influences global ETFs, growth vs. value performance, emerging markets (EWY, EEM), and Korea’s tech-heavy ETF structure."
+seoTitle: "How TNX Affects ETFs: Growth, Value, Emerging Markets, and Korea"
+seoDescription: "See how the U.S. 10-year yield changes ETF performance through valuations, USD liquidity, growth-value rotation, and emerging-market FX risk."
 datePublished: "2025-12-01"
 dateModified: "2025-12-01"
 category: "Investing Info"
 postCategory: "investingInfo"
 tags: ["TNX", "ETF", "EmergingMarkets", "Yield", "EEM", "EWY", "GrowthETF", "ValueETF"]
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["cagr","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764561430/blog/investingInfo/etf-impact-of-tnx-thum.png"
 lang: "en"
 ---
@@ -217,12 +219,17 @@ These are **long-duration, high-growth industries**, making EWY (and Korean ETFs
 
 ## 11. CTA  
 <div class="tool-cta">
-  <h3>Check the Impact with FinMap’s Tools</h3>
-  <p>Use the Compounding Calculator and Goal Simulator to compare realistic return scenarios under different yield environments.</p>
-  <a class="tool-cta-btn" href="/en/tools/compound-interest">
-    Open Compound Calculator
+  <h3>Compare ETF returns with CAGR</h3>
+  <p>When rates change, annualized returns are often more useful than headline cumulative returns.</p>
+  <a class="tool-cta-btn" href="/en/tools/cagr-calculator">
+    Open CAGR Calculator
   </a>
 </div>
+
+Useful next reads:
+- [TNX Explained: Why the 10-Year Treasury Yield Drives Markets](/en/posts/investingInfo/tnx-basics)
+- [What Is DXY? A Beginner-Friendly Explanation for Investors](/en/posts/investingInfo/dxy-dollar-index-basics)
+- [Why Korea ETFs Are the Most Sensitive to TNX](/en/posts/investingInfo/korea-etf-deep-dive-tnx)
 
 ---
 

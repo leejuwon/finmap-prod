@@ -80,6 +80,11 @@ title: "전쟁 테마의 함정: ‘수혜주’가 아니라 ‘가격 사슬(�
 description: "전쟁 이슈에서 ‘어떤 업종이 오른다’보다 먼저 봐야 할 건 가격 사슬입니다. 원가·운임·환율·수요가 기업마진에 어떻게 들어오는지 전이 경로로 정리하고, 테마 과열을 피하는 체크리스트를 제공합니다."
 url: /posts/economicInfo/war-theme-investing-price-chain-not-winners
 
+## 17.
+title: "지정학·유가·환율 충격이 서울·경기·인천 집값에 전이되는 5단 체인"
+description: "지정학·유가·환율 뉴스를 물가→금리→대출→심리→거래량 전이 경로로 해석하고, 부동산 대시보드에서 확인할 트리거를 정리합니다."
+url: /posts/economicInfo/geopolitics-oil-fx-dashboard
+
 # 경제정보(영어)
 
 ## 1. 
@@ -162,6 +167,11 @@ url: /en/posts/economicInfo/war-risk-oil-supply-insurance-shipping
 title: "The War-Theme Trap: Don’t Chase “Winners”—Read the Price Chain (Costs, Freight, FX, Demand)"
 description: "War headlines spark sector narratives. Replace narratives with a price chain: input costs, freight/insurance premia, FX, margins, and demand cycles—plus practical checks to avoid headline-driven mistakes."
 url: /en/posts/economicInfo/war-theme-investing-price-chain-not-winners
+
+## 17.
+title: "From Geopolitics to Korea Housing: The 5-Step Transmission Chain"
+description: "Use a CPI → rates → mortgages → sentiment → volume chain to read how geopolitics, oil, and FX shocks can transmit into Seoul, Gyeonggi, and Incheon housing data."
+url: /en/posts/economicInfo/geopolitics-oil-fx-dashboard
 
 # 재테크(한글)
 

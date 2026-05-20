@@ -2,12 +2,14 @@
 slug: "inflation-basics"
 title: "물가와 금리의 기본 이해: 장기 투자자가 반드시 알아야 할 핵심 구조"
 description: "물가와 금리는 경제의 '뿌리'입니다. 물가 상승이 금리에 어떤 영향을 주고, 금리가 다시 소비·기업·주식·부동산 시장에 어떤 파급을 일으키는지 고급 레이아웃으로 정리했습니다."
+seoTitle: "물가와 금리 기본 구조: 장기 투자자가 봐야 할 인플레이션 흐름"
+seoDescription: "물가 상승이 금리와 유동성, 주식·부동산 시장에 어떤 순서로 전이되는지 장기 투자 관점에서 정리합니다."
 datePublished: "2025-12-01"
 dateModified: "2025-12-01"
 category: "경제정보"
 postCategory: "economicInfo"
 tags: ["물가", "금리", "통화정책", "기준금리", "경제기초", "투자기초", "매크로"]
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["comp","goal"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764681952/blog/economicInfo/inflation-and-interest-rates-basics-cover.png"
 lang: "ko"
 ---
@@ -196,6 +198,11 @@ lang: "ko"
 - 특히 금리의 전환점은 모든 자산의 변곡점이다.  
 - 투자자는 물가→금리→유동성의 흐름을 기준으로 장기 전략을 세워야 한다.
 
+함께 읽으면 좋은 글:
+- [금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해](/posts/economicInfo/interest-rate-basics)
+- [“금리 인하”가 와도 안 오를 수 있다: 시장금리 vs 정책금리 분리해서 읽기](/posts/economicInfo/policy-rate-cut-market-rates)
+- [‘연 7% 복리’는 실제로 무엇을 의미할까? CAGR로 현실 체크하기](/posts/investingInfo/cagr-7percent-reality-check)
+
 ---
 
 ## 11. CTA — FinMap 도구 연결
@@ -205,6 +212,9 @@ lang: "ko"
   <p>물가와 금리는 결국 ‘시간의 힘’을 이해하는 과정입니다. FinMap 복리 계산기로 금리 변화가 장기 수익에 어떤 영향을 주는지 직접 확인해보세요.</p>
   <a class="tool-cta-btn" href="/tools/compound-interest">
     복리 계산기 열기
+  </a>
+  <a class="tool-cta-btn" href="/tools/goal-simulator">
+    목표자산 시뮬레이터 열기
   </a>
 </div>
 

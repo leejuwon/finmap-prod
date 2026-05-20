@@ -2,12 +2,14 @@
 slug: "us10y-impact-on-korea-and-stock-market"
 title: "How the U.S. 10-Year Treasury Yield (TNX) Affects the U.S. Economy, Korea, and Global Stock Markets"
 description: "A comprehensive guide explaining how the U.S. 10-year Treasury yield(TNX) influences the U.S. market, Korea’s economy, foreign investment flows, currency markets, and stock valuations."
+seoTitle: "How TNX Affects Korea Stocks, USD/KRW, and Global Markets"
+seoDescription: "Trace how the U.S. 10-year Treasury yield affects valuations, Korea equities, USD/KRW, foreign flows, and global liquidity."
 datePublished: "2025-12-01"
 dateModified: "2025-12-01"
 category: "Investing Info"
 postCategory: "investingInfo"
 tags: ["TNX", "US10Y", "bond yield", "Korea market", "liquidity", "valuation", "USDKRW"]
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["cagr","comp"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764553910/blog/investingInfo/tnx_thum.png"
 lang: "en"
 ---
@@ -240,13 +242,20 @@ This makes Korea one of the **most sensitive markets to TNX**.
 ## 13. CTA — FinMap Tools
 
 <div class="tool-cta">
-  <h3>FinMap Compound Interest & Goal Simulator</h3>
-  <p>Compare TNX-based real returns with your long-term targets using FinMap's calculators and simulators.</p>
+  <h3>FinMap CAGR & Compound Interest Calculators</h3>
+  <p>Compare TNX-based real returns with your long-term return assumptions using FinMap's calculators.</p>
+  <a class="tool-cta-btn" href="/en/tools/cagr-calculator">
+    Open CAGR Calculator
+  </a>
   <a class="tool-cta-btn" href="/en/tools/compound-interest">
     Open Compound Interest Calculator
   </a>
-  <a class="tool-cta-btn" href="/en/tools/goal-simulator">Open Goal Simulator</a>
 </div>
+
+Useful next reads:
+- [TNX Explained: Why the 10-Year Treasury Yield Drives Markets](/en/posts/investingInfo/tnx-basics)
+- [How U.S. 10Y Yield (TNX) Affects ETFs](/en/posts/investingInfo/etf-impact-of-tnx)
+- [What Is DXY? A Beginner-Friendly Explanation for Investors](/en/posts/investingInfo/dxy-dollar-index-basics)
 
 ---
 

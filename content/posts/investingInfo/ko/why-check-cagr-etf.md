@@ -4,11 +4,13 @@ title: "ETF·펀드 선택 시 CAGR을 반드시 확인해야 하는 이유"
 description: "ETF·펀드 비교에서 총 수익률만 보면 위험해질 수 있습니다. 이 글에서는 연평균 복리 수익률(CAGR)의 개념부터 ETF 3·5년 CAGR 비교표, 초보자·전문가별 활용법까지 깊이 있게 정리합니다."
 datePublished: "2025-11-29"
 dateModified: "2025-11-29"
+seoTitle: "ETF CAGR 확인법: 총수익률보다 연평균 복리수익률이 중요한 이유"
+seoDescription: "ETF·펀드를 고를 때 총수익률만 보면 변동성을 놓칠 수 있습니다. CAGR 계산기로 장기 성과와 성장의 질을 비교해보세요."
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["CAGR", "ETF선택", "펀드고르는법", "연평균복리수익률", "장기투자", "레버리지ETF"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428473/blog/investingInfo/why-cagr-etf-cover.png"
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["cagr","comp"]
 lang: "ko"
 ---
 
@@ -25,6 +27,8 @@ lang: "ko"
 > - 결론적으로, 장기 성과를 좌우하는 것은 “눈에 띄는 수익률”이 아니라 “지속 가능한 CAGR”입니다.
 
 > 요약하면, ETF·펀드 선택 시 총 수익률은 출발점일 뿐이고, 진짜 승패를 가르는 기준은 **연평균 복리 수익률(CAGR)** 을 얼마나 꼼꼼하게 확인하느냐에 달려 있습니다.
+
+함께 보면 좋은 글: [CAGR 계산법](/posts/personalFinance/what-is-cagr), [CAGR로 투자 실력 진단하기](/posts/investingInfo/diagnose-investing-skill-with-cagr), [연 7% 복리 현실 체크](/posts/investingInfo/cagr-7percent-reality-check). 숫자는 [CAGR 계산기](/tools/cagr-calculator)로 직접 비교해보세요.
 
 ![ETF CAGR 개념 요약](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428473/blog/investingInfo/why-cagr-etf-cover.png "ETF·펀드와 CAGR의 관계를 요약한 개념 이미지")
 

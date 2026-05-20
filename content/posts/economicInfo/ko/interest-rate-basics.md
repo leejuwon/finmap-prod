@@ -2,11 +2,14 @@
 slug: "interest-rate-basics"
 title: "금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해"
 description: "기준금리→시장금리→예·적금/대출 금리로 이어지는 전달 경로를 구조적으로 정리합니다. 채권 가격과 금리의 역관계, 만기·기간(듀레이션) 감도까지 한 번에 연결해 이해할 수 있도록 실전 관점으로 설명합니다."
+seoTitle: "금리 구조 한 번에 이해: 기준금리, 시장금리, 예금·대출·채권"
+seoDescription: "기준금리와 시장금리, 예금·대출·채권 금리가 어떻게 연결되는지 구조적으로 정리하고 복리·CAGR 계산으로 이어지는 핵심 개념을 확인합니다."
 datePublished: "2025-11-13"
 dateModified: "2026-01-02"
 category: "경제정보"
 postCategory: "economicInfo"
 tags: ["금리", "기준금리", "시장금리", "예금금리", "대출금리", "채권", "듀레이션", "수익률곡선", "인플레이션", "유동성"]
+tool: ["comp","goal"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427018/blog/economicInfo/rate-cover.png"
 lang: "ko"
 ---

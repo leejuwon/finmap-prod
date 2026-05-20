@@ -4,10 +4,12 @@ title: "Diagnosing Your Investing Skill Using CAGR: Understanding MDD, Volatilit
 description: "CAGR shows how much your portfolio has grown, but it does not capture risk. To evaluate investing skill realistically, you must combine CAGR with MDD, volatility, and the Sharpe ratio. This guide explains each metric and compares two real portfolio scenarios."
 datePublished: "2025-11-29"
 dateModified: "2025-11-29"
+seoTitle: "Diagnose Investing Skill with CAGR, MDD, Volatility, and Sharpe Ratio"
+seoDescription: "CAGR alone can hide risk. Compare CAGR with MDD, volatility, and Sharpe ratio, then use the CAGR calculator to evaluate performance."
 category: "Investing Info"
 postCategory: "investingInfo"
 tags: ["CAGR", "MDD", "Sharpe Ratio", "Volatility", "Portfolio Analysis"]
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["cagr","comp"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428405/blog/investingInfo/diagnose-investing-skill-with-cagr-cover.png"
 lang: "en"
 ---
@@ -26,6 +28,8 @@ lang: "en"
 
 > **One-paragraph summary**  
 CAGR is one of the most important return metrics, but it hides all information about volatility and risk. To understand your true investing performance, you must evaluate CAGR together with MDD, volatility, and the Sharpe ratio. These metrics show how stable your returns were, how deep your losses got, and whether the risks you took were justified. In this article, we explain each metric in simple terms and compare two sample portfolios to illustrate why a stable CAGR is more valuable than a high but unstable one.
+
+Related reads: [CAGR calculator guide](/en/posts/personalFinance/what-is-cagr), [Why ETF investors should check CAGR](/en/posts/investingInfo/why-check-cagr-etf), and [7% annual return reality check](/en/posts/investingInfo/cagr-7percent-reality-check).
 
 ![cover](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428405/blog/investingInfo/diagnose-investing-skill-with-cagr-cover.png)
 
@@ -242,10 +246,10 @@ Characteristics:
 ## 12. FinMap CTA
 
 <div class="tool-cta">
-  <h3>Analyze Your Portfolio with FinMap</h3>
-  <p>Use FinMap's compound calculator and goal simulator to measure CAGR, volatility, and realistic long-term outcomes.</p>
-  <a class="tool-cta-btn" href="/en/tools/compound-interest">
-    Open Compound Interest Calculator
+  <h3>Summarize Your Return with CAGR First</h3>
+  <p>Use FinMap's CAGR calculator to turn starting value, ending value, and holding period into an annualized return.</p>
+  <a class="tool-cta-btn" href="/en/tools/cagr-calculator">
+    Open CAGR Calculator
   </a>
 </div>
 

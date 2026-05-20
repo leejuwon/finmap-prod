@@ -6,6 +6,7 @@ datePublished: "2026-01-14"
 dateModified: "2026-01-14"
 category: "재테크"
 tags: ["비상금","현금흐름","가계부","예산","리스크관리","실직리스크","부채","변동금리","생활비","가계재무"]
+tool: ["goal","comp"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1768379054/blog/tools/emergency-fund-by-risk-cover.png"
 lang: "ko"
 ---
@@ -171,6 +172,10 @@ lang: "ko"
 
 예산과 현금흐름 시스템(고정비/생활비/목표 계좌 분리)은 아래 글에서 더 실전적으로 다룹니다.  
 - [물가 상승 시대의 가계 생존전략: 생활비/고정비 줄이기, 현금흐름 관리(가계부·예산·비상금)](/posts/personalFinance/inflation-household-survival-strategy)
+- [가계 재무 3대장: 예산·비상금·장기투자](/posts/personalFinance/personal-finance-3pillars)
+- [목표 금액 빨리 모으는 법](/posts/personalFinance/goal-amount-fast-strategy)
+
+비상금 목표 금액을 정했다면 [목표 자산 시뮬레이터](/tools/goal-simulator)로 매달 얼마를 모아야 하는지 바로 역산해볼 수 있습니다.
 
 ---
 

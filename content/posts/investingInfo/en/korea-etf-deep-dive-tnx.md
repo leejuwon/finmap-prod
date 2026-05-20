@@ -2,12 +2,14 @@
 slug: "korea-etf-deep-dive-tnx"
 title: "Why Korea ETFs Are the Most Sensitive to TNX: A Deep Structural Analysis"
 description: "A deep-dive into why Korea ETFs react more aggressively to TNX, USD strength, and global liquidity than any other major market. Covers growth-heavy structure, FX exposure, foreign ownership, MSCI EM effects, and semiconductor cycle dependency."
+seoTitle: "Why Korea ETFs Are So Sensitive to TNX, USD, and Foreign Flows"
+seoDescription: "Understand Korea ETF sensitivity through U.S. yields, USD/KRW, foreign ownership, MSCI EM flows, and semiconductor-cycle exposure."
 datePublished: "2025-12-01"
 dateModified: "2025-12-01"
 category: "Investing Info"
 postCategory: "investingInfo"
 tags: ["KoreaETF", "EWY", "KOSPI", "TNX", "USD", "KRW", "SemiconductorETF", "Macro"]
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["cagr","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764561440/blog/investingInfo/korea-etf-deep-dive-tnx-thum.png"
 lang: "en"
 ---
@@ -202,12 +204,17 @@ Therefore, monitoring **TNX + USD/KRW** is essential for any Korea ETF investor.
 
 ## 11. CTA  
 <div class="tool-cta">
-  <h3>Analyze TNX sensitivity with FinMap Tools</h3>
-  <p>Use our compound calculator, goal simulator, and ETF comparison tools to measure how rate changes affect your portfolio.</p>
-  <a class="tool-cta-btn" href="/en/tools/goal-simulator">
-    Open Goal Simulator
+  <h3>Compare Korea ETF performance with CAGR</h3>
+  <p>When TNX and FX drive the cycle, annualized returns and disciplined contributions matter more than one-period gains.</p>
+  <a class="tool-cta-btn" href="/en/tools/cagr-calculator">
+    Open CAGR Calculator
   </a>
 </div>
+
+Useful next reads:
+- [How U.S. 10Y Yield (TNX) Affects ETFs](/en/posts/investingInfo/etf-impact-of-tnx)
+- [What Is DXY? A Beginner-Friendly Explanation for Investors](/en/posts/investingInfo/dxy-dollar-index-basics)
+- [USD/KRW Exchange Rate: What It Means for Korea's Economy and the KOSPI](/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
 
 ---
 

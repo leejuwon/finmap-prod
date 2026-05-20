@@ -4,11 +4,13 @@ title: "Why You Must Check the CAGR When Choosing ETFs and Funds"
 description: "A complete guide to understanding why CAGR (Compound Annual Growth Rate) matters more than total return when evaluating ETFs and funds. Includes tables, long-term examples, and strategies for beginners and professionals."
 datePublished: "2025-11-29"
 dateModified: "2025-11-29"
+seoTitle: "ETF CAGR Guide: Why Annualized Return Beats Total Return"
+seoDescription: "Learn why ETF and fund selection should compare CAGR, not just total return, and use the CAGR calculator to evaluate long-term performance."
 category: "Investing Info"
 postCategory: "investingInfo"
 tags: ["CAGR", "ETF Selection", "Fund Comparison", "Long-term Investing", "Annualized Return"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428473/blog/investingInfo/why-cagr-etf-cover.png"
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["cagr","comp"]
 lang: "en"
 ---
 
@@ -25,6 +27,8 @@ lang: "en"
 > - Ultimately, long-term success depends not on dramatic gains, but on consistent CAGR-driven growth.
 
 > In short: **CAGR reveals the quality of growth, not just the quantity.** It is one of the most important metrics for choosing ETFs wisely.
+
+Related reads: [CAGR calculator guide](/en/posts/personalFinance/what-is-cagr), [Diagnosing investing skill with CAGR](/en/posts/investingInfo/diagnose-investing-skill-with-cagr), and [7% annual return reality check](/en/posts/investingInfo/cagr-7percent-reality-check). Compare your own fund data in the [CAGR Calculator](/en/tools/cagr-calculator).
 
 ![CAGR ETF Concept](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428473/blog/investingInfo/why-cagr-etf-cover.png "Why CAGR matters when choosing ETFs")
 

@@ -5,11 +5,11 @@ description: "많은 투자자가 말하는 ‘연 7% 수익률’은 실제 장
 datePublished: "2025-11-29"
 dateModified: "2026-05-18"
 seoTitle: "연 7% 복리 현실 체크: CAGR로 목표 자산 계산하는 법"
-seoDescription: "연 7% 복리가 실제로 얼마를 의미하는지 CAGR, 변동성, 세금, 물가를 반영해 목표 자산 계획 기준으로 점검합니다. 복리 계산기와 목표 자산 시뮬레이터로 현실적인 월 투자금을 확인해보세요."
+seoDescription: "연 7% 복리가 실제로 얼마를 의미하는지 CAGR·변동성·세금·물가를 반영해 점검하고, CAGR 계산기와 목표 자산 시뮬레이터로 확인해보세요."
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["CAGR", "복리", "S&P500", "연7%", "투자기초", "재테크전략"]
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["cagr","goal"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428393/blog/investingInfo/cagr-7percent-reality-check-cover.png"
 lang: "ko"
 ---
@@ -37,7 +37,7 @@ lang: "ko"
 | 물가 반영 | 명목 7%와 체감 7%는 다릅니다. |
 | 변동성/MDD | 큰 하락은 산술 평균보다 CAGR을 더 많이 깎습니다. |
 
-함께 보면 좋은 글: [CAGR 계산법](/posts/personalFinance/what-is-cagr), [1억 모으기 월 투자금 계산](/posts/personalFinance/how-much-per-month-for-100m), [적립식 투자는 지속성 게임](/posts/investingInfo/dca-consistency-7-fail-patterns). 숫자는 [복리 계산기](/tools/compound-interest)와 [목표 자산 시뮬레이터](/tools/goal-simulator)에서 바로 바꿔볼 수 있습니다.
+함께 보면 좋은 글: [CAGR 계산법](/posts/personalFinance/what-is-cagr), [1억 모으기 월 투자금 계산](/posts/personalFinance/how-much-per-month-for-100m), [적립식 투자는 지속성 게임](/posts/investingInfo/dca-consistency-7-fail-patterns). 숫자는 [CAGR 계산기](/tools/cagr-calculator)와 [목표 자산 시뮬레이터](/tools/goal-simulator)에서 바로 바꿔볼 수 있습니다.
 
 ![상단 대표 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428393/blog/investingInfo/cagr-7percent-reality-check-cover.png)
 

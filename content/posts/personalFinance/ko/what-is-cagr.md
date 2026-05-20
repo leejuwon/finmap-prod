@@ -5,12 +5,12 @@ description: "CAGR은 투자 성과를 연평균 복리 기준으로 측정하�
 datePublished: "2025-11-26"
 dateModified: "2026-05-18"
 seoTitle: "CAGR 계산법: 단순 수익률과 다른 이유와 투자 예시"
-seoDescription: "CAGR 계산식, 단순 수익률과 차이, 장기 투자 성과 비교 방법을 예시와 표로 정리합니다. CAGR 계산기로 내 투자 성과를 입력하고 기간이 다른 자산을 비교해보세요."
+seoDescription: "CAGR 계산식과 단순 수익률의 차이를 예시로 정리합니다. CAGR 계산기로 기간이 다른 투자 성과를 같은 기준에서 비교해보세요."
 category: "재테크"
 postCategory: "personalFinance"
 tags: ["CAGR", "수익률", "투자기초", "복리수익률", "연평균수익률", "단순수익률"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429444/blog/personalFinance/what-is-cagr-cover-ko.png"
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["cagr","comp"]
 lang: "ko"
 ---
 
@@ -37,7 +37,7 @@ CAGR(연평균 복리 수익률)은 특정 기간 동안 투자 가치가 매년
 | 강점 | 계산이 쉽다 | 기간이 다른 투자를 비교하기 좋다 |
 | 주의점 | 기간과 변동성을 놓치기 쉽다 | 중간 변동성 자체를 보여주지는 않는다 |
 
-함께 보면 좋은 글: [단리 vs 복리 계산](/posts/personalFinance/simple-vs-compound), [연 7% 복리 현실 체크](/posts/investingInfo/cagr-7percent-reality-check), [1억 모으기 월 투자금 계산](/posts/personalFinance/how-much-per-month-for-100m).
+함께 보면 좋은 글: [연 7% 복리 현실 체크](/posts/investingInfo/cagr-7percent-reality-check), [CAGR로 투자 실력 진단하기](/posts/investingInfo/diagnose-investing-skill-with-cagr), [ETF·펀드 선택 시 CAGR 확인](/posts/investingInfo/why-check-cagr-etf).
 
 **간단 예시:** 1,000만 원이 5년 뒤 1,500만 원이 되었다면 단순 수익률은 50%입니다. 하지만 이 투자가 매년 50%씩 성장한 것은 아닙니다. CAGR로 바꾸면 매년 약 8.45%씩 복리 성장한 것과 비슷하다고 해석합니다.
 

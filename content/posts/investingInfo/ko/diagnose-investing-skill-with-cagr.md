@@ -4,10 +4,12 @@ title: "CAGR로 투자 실력 진단하기: MDD·변동성·샤프비율과 함�
 description: "CAGR은 결국 ‘돈이 얼마나 늘어났는가’를 보여주는 핵심 지표지만, 단점도 명확합니다. MDD·변동성·샤프비율과 함께 투자 실력을 평가해야 현실적인 결과가 나옵니다. 초보자도 이해할 수 있도록 실제 포트폴리오 비교 사례까지 포함해 자세히 설명합니다."
 datePublished: "2025-11-29"
 dateModified: "2025-11-29"
+seoTitle: "CAGR로 투자 실력 진단하기: MDD·변동성·샤프비율 함께 보기"
+seoDescription: "CAGR만 보면 투자 실력을 오해할 수 있습니다. MDD·변동성·샤프비율과 함께 성과를 점검하고 CAGR 계산기로 수익률을 비교해보세요."
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["CAGR", "MDD", "샤프비율", "변동성", "투자평가", "포트폴리오"]
-tool: ["goal","comp","cagr","fire","dca"]
+tool: ["cagr","comp"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428405/blog/investingInfo/diagnose-investing-skill-with-cagr-cover.png"
 lang: "ko"
 ---
@@ -26,6 +28,8 @@ lang: "ko"
 
 > **한 문단 요약**  
 CAGR은 투자 성과를 판단하는 핵심 지표지만, 변동성과 손실 폭을 반영하지 않는다는 분명한 한계가 있습니다. 실제 투자 실력은 CAGR, MDD, 변동성, 그리고 샤프비율을 함께 평가해야 비로소 정확하게 판단할 수 있습니다. 본문에서는 이 네 가지 지표의 관계를 초보자도 이해할 수 있도록 설명하고, 실제 두 가지 포트폴리오 시나리오를 비교해 어떤 성과가 더 안정적이고 현실적인 투자 실력인지 보여줍니다.
+
+함께 보면 좋은 글: [CAGR 계산법](/posts/personalFinance/what-is-cagr), [ETF·펀드 선택 시 CAGR 확인](/posts/investingInfo/why-check-cagr-etf), [연 7% 복리 현실 체크](/posts/investingInfo/cagr-7percent-reality-check).
 
 ![cover](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428405/blog/investingInfo/diagnose-investing-skill-with-cagr-cover.png)
 
@@ -227,10 +231,10 @@ MDD는 투자 성향, 리스크 허용 범위, 멘탈 강도를 모두 보여주
 ## 12. FinMap CTA
 
 <div class="tool-cta">
-  <h3>MDD·CAGR·변동성을 한 번에 계산해보세요</h3>
-  <p>FinMap 복리 계산기와 목표자산 시뮬레이터로 당신의 투자 실력을 객관적으로 진단할 수 있습니다.</p>
-  <a class="tool-cta-btn" href="/tools/compound-interest">
-    복리 계산기 열기
+  <h3>CAGR로 투자 성과를 먼저 숫자로 정리해보세요</h3>
+  <p>FinMap CAGR 계산기로 시작 금액, 최종 금액, 투자 기간을 입력해 연평균 복리수익률을 확인할 수 있습니다.</p>
+  <a class="tool-cta-btn" href="/tools/cagr-calculator">
+    CAGR 계산기 열기
   </a>
 </div>
 
