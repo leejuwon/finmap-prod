@@ -67,7 +67,7 @@ Before talking about returns, lock in the contribution math.
 That $60,000 is the foundation. If the plan fails after year two or three, the return assumption becomes secondary. DCA works best when the contribution amount fits normal months, not only optimistic months.
 
 <figure>
-  <img src="/images/posts/monthly-dca-10-year-result/img1-en.png" alt="A monthly investing plan starts with 120 repeatable contributions" />
+  <img src="/images/posts/monthly-dca-10-year-result/img2-en.png" alt="A monthly investing plan starts with 120 repeatable contributions" />
   <figcaption>The first question is not “what return?” but “can this survive 120 months?”</figcaption>
 </figure>
 
@@ -108,7 +108,7 @@ If $500 is possible only in perfect months, start lower. A contribution you can 
 If you expect income to rise, write a step-up rule instead of forcing a high contribution today. The framework in [Step-Up DCA contribution rules](/en/posts/personalFinance/dca-step-up-ruleset) is a useful next step.
 
 <figure>
-  <img src="/images/posts/monthly-dca-10-year-result/img2-en.png" alt="Compare 300, 500, and 700 dollar monthly contribution paths over 10 years" />
+  <img src="/images/posts/monthly-dca-10-year-result/img3-en.png" alt="Compare 300, 500, and 700 dollar monthly contribution paths over 10 years" />
   <figcaption>A bigger monthly amount helps only if it does not cause the plan to break</figcaption>
 </figure>
 
@@ -143,7 +143,7 @@ If you have a specific target amount, stop guessing and reverse the problem. The
 If you checked fewer than three boxes, start smaller. If you checked four or five, $500/month may be a reasonable benchmark to test.
 
 <figure>
-  <img src="/images/posts/monthly-dca-10-year-result/img3-en.png" alt="A sustainable DCA plan combines emergency fund, automation, and contribution rules" />
+  <img src="/images/posts/monthly-dca-10-year-result/img1-en.png" alt="A sustainable DCA plan combines emergency fund, automation, and contribution rules" />
   <figcaption>A sustainable DCA plan needs buffers, automation, and rules</figcaption>
 </figure>
 

@@ -68,7 +68,7 @@ lang: "ko"
 적립식 투자는 한 번의 큰 결심보다, 매달 같은 행동이 반복되는 구조에서 힘이 나옵니다.
 
 <figure>
-  <img src="/images/posts/monthly-dca-10-year-result/img1.png" alt="월 50만원 적립식 투자에서 120개월 지속성이 최종 금액의 출발점이다" />
+  <img src="/images/posts/monthly-dca-10-year-result/img2.png" alt="월 50만원 적립식 투자에서 120개월 지속성이 최종 금액의 출발점이다" />
   <figcaption>120개월을 유지할 수 있는 납입액이 계획의 출발점이다</figcaption>
 </figure>
 
@@ -111,7 +111,7 @@ lang: "ko"
 월 30만원으로 시작해 1년 뒤 월 40만원, 3년 뒤 월 50만원으로 올리는 방식도 현실적입니다. 이런 증액 규칙은 [DCA 증액·감액 운영 규칙](/posts/personalFinance/dca-step-up-ruleset)과 함께 보면 더 쉽게 설계할 수 있습니다.
 
 <figure>
-  <img src="/images/posts/monthly-dca-10-year-result/img2.png" alt="월 30만원 50만원 70만원 적립식 투자 결과는 지속 가능성과 함께 비교해야 한다" />
+  <img src="/images/posts/monthly-dca-10-year-result/img3.png" alt="월 30만원 50만원 70만원 적립식 투자 결과는 지속 가능성과 함께 비교해야 한다" />
   <figcaption>월 납입액은 클수록 좋기보다 오래 유지될수록 좋다</figcaption>
 </figure>
 
@@ -146,7 +146,7 @@ lang: "ko"
 체크가 3개 이하라면 월 50만원보다 낮은 금액으로 시작하는 편이 안전합니다. 체크가 4개 이상이면 월 50만원을 기준 계획으로 두고, 매년 한 번 증액 여부를 판단해볼 수 있습니다.
 
 <figure>
-  <img src="/images/posts/monthly-dca-10-year-result/img3.png" alt="월 50만원 적립식 투자는 비상금과 자동이체 규칙이 함께 있어야 오래 유지된다" />
+  <img src="/images/posts/monthly-dca-10-year-result/img1.png" alt="월 50만원 적립식 투자는 비상금과 자동이체 규칙이 함께 있어야 오래 유지된다" />
   <figcaption>투자금보다 먼저 확인할 것은 비상금과 자동화 규칙이다</figcaption>
 </figure>
 
