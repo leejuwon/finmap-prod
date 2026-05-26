@@ -5,8 +5,8 @@ import SeoHead from "../../_components/SeoHead";
 
 const TEXT = {
   ko: {
-    title: "시장정보",
-    desc: "부동산과 주요 시장지표를 한곳에서 확인합니다.",
+    title: "금융·부동산 시장정보",
+    desc: "부동산 실거래 대시보드와 KOSPI·미국 지수·환율·금리·원자재 시장지표를 한곳에서 확인하세요.",
     realEstate: "부동산 대시보드",
     realEstateSub: "서울·경기·인천 아파트 실거래 Top100 / 월간·연간",
     indices: "시장지표 대시보드",
@@ -14,8 +14,8 @@ const TEXT = {
     open: "Open",
   },
   en: {
-    title: "Market Info",
-    desc: "Real estate and market indicators in one place.",
+    title: "Financial and Real Estate Market Data",
+    desc: "Explore Korean apartment transaction dashboards alongside KOSPI, U.S. indexes, FX, rates, and commodity indicators.",
     realEstate: "Real Estate Dashboard",
     realEstateSub: "Seoul, Gyeonggi, and Incheon apartment Top 100 / Monthly & Yearly",
     indices: "Market Indicators Dashboard",

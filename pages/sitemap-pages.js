@@ -7,13 +7,13 @@ import { getAllPostsAllLangs } from '../lib/posts';
 
 const LABELS = {
   ko: {
-    title: '사이트맵',
-    desc: 'FinMap 전체 글/카테고리 링크 모음',
+    title: 'FinMap 사이트맵',
+    desc: 'FinMap 한국어·영어 글, 카테고리, 계산기, 시장정보로 이동하는 전체 링크 모음입니다.',
     cats: { economicInfo: '경제정보', personalFinance: '재테크', investingInfo: '투자정보' },
   },
   en: {
-    title: 'Sitemap',
-    desc: 'All FinMap posts and category links',
+    title: 'FinMap Sitemap',
+    desc: 'Browse FinMap posts, categories, calculators, and market dashboard links in one index.',
     cats: { economicInfo: 'Economic Info', personalFinance: 'Personal Finance', investingInfo: 'Investing Info' },
   },
 };

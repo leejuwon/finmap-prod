@@ -8,8 +8,12 @@ export default function Disclaimer() {
   return (
     <>
       <SeoHead
-        title="Disclaimer"
-        desc={isEn ? 'Legal disclaimer' : '면책 고지'}
+        title={isEn ? 'FinMap Disclaimer' : '투자 정보 면책 고지'}
+        desc={
+          isEn
+            ? 'Important disclaimer for FinMap articles, calculators, market data, and investment-related educational content.'
+            : 'FinMap 글, 계산기, 시장 데이터, 투자 관련 교육 콘텐츠 이용 전 확인해야 할 면책 고지입니다.'
+        }
         url="/disclaimer"
         locale={locale}
       />

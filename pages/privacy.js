@@ -9,7 +9,11 @@ export default function Privacy() {
     <>
       <SeoHead
         title={isEn ? 'Privacy Policy' : '개인정보처리방침'}
-        desc={isEn ? 'FinMap Privacy Policy' : 'FinMap 개인정보처리방침'}
+        desc={
+          isEn
+            ? 'FinMap privacy policy covering access logs, cookies, analytics, inquiry data, and user rights.'
+            : 'FinMap의 접속 로그, 쿠키, 방문 통계, 문의 정보 처리와 이용자 권리를 안내합니다.'
+        }
         url="/privacy"
         locale={locale}
       />

@@ -8,8 +8,12 @@ export default function About() {
   return (
     <>
       <SeoHead
-        title="About"
-        desc={isEn ? 'About FinMap' : 'FinMap 소개'}
+        title={isEn ? 'About FinMap' : 'FinMap 소개'}
+        desc={
+          isEn
+            ? 'Learn how FinMap organizes finance articles, investing basics, calculators, and Korean real estate dashboards.'
+            : 'FinMap이 금융 글, 투자 기초, 계산기, 한국 부동산 대시보드를 어떻게 정리하는지 소개합니다.'
+        }
         url="/about"
         locale={locale}
       />

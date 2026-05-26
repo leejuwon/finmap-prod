@@ -9,7 +9,11 @@ export default function Terms() {
     <>
       <SeoHead
         title={isEn ? 'Terms of Service' : '서비스 이용약관'}
-        desc={isEn ? 'FinMap Terms of Service' : 'FinMap 서비스 이용약관'}
+        desc={
+          isEn
+            ? 'Terms for using FinMap finance articles, calculators, dashboards, comments, and related site features.'
+            : 'FinMap 금융 글, 계산기, 대시보드, 댓글 등 사이트 기능 이용 조건을 안내합니다.'
+        }
         url="/terms"
         locale={locale}
       />

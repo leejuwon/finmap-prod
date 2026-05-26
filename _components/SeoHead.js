@@ -26,7 +26,17 @@ function normalizePath(input) {
   return path || "/";
 }
 
-export default function SeoHead({ title, desc, url = "/", canonical, image, locale, type, robots }) {
+export default function SeoHead({
+  title,
+  desc,
+  url = "/",
+  canonical,
+  image,
+  locale,
+  type,
+  robots,
+  alternateLanguages = true,
+}) {
   const router = useRouter();
 
   const effectiveLocale = locale || (router.locale === "en" ? "en" : "ko");
@@ -66,9 +76,19 @@ export default function SeoHead({ title, desc, url = "/", canonical, image, loca
       {robots && <meta name="googlebot" content={robots} />}
 
       <link rel="canonical" href={canonicalUrl} />
-      <link rel="alternate" hrefLang="ko" href={hrefKo} />
-      <link rel="alternate" hrefLang="en" href={hrefEn} />
-      <link rel="alternate" hrefLang="x-default" href={hrefKo} />
+      {alternateLanguages ? (
+        <>
+          <link rel="alternate" hrefLang="ko" href={hrefKo} />
+          <link rel="alternate" hrefLang="en" href={hrefEn} />
+          <link rel="alternate" hrefLang="x-default" href={hrefKo} />
+        </>
+      ) : (
+        <>
+          <link rel="alternate" hrefLang={effectiveLocale === "en" ? "en" : "ko"} href={canonicalUrl} />
+          <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
+        </>
+      )}
+      <link rel="alternate" type="application/rss+xml" title="FinMap RSS" href={`${SITE_URL}/rss.xml`} />
 
       <meta property="og:title" content={title || "FinMap"} />
       {desc && <meta property="og:description" content={desc} />}
@@ -78,7 +98,7 @@ export default function SeoHead({ title, desc, url = "/", canonical, image, loca
       <meta property="og:image" content={ogImg} />
 
       <meta property="og:locale" content={ogLocale} />
-      <meta property="og:locale:alternate" content={ogAltLocale} />
+      {alternateLanguages && <meta property="og:locale:alternate" content={ogAltLocale} />}
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title || "FinMap"} />

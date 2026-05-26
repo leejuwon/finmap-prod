@@ -35,8 +35,8 @@ function getCategorySlugFromPost(p) {
 
 const TEXT = {
   ko: {
-    seoTitle: '홈',
-    seoDesc: 'FinMap 블로그 · 금융 기초 · 재테크 · 투자 · 계산기',
+    seoTitle: 'FinMap 금융 지도',
+    seoDesc: '경제 기초, 재테크, 투자 정보와 복리·목표자산 계산기를 함께 제공하는 개인 금융 블로그입니다.',
     heroTitleLine1: '당신의 돈 흐름을',
     heroTitleLine2: '지도처럼 한 눈에',
     heroSub:
@@ -56,9 +56,9 @@ const TEXT = {
     moreSub: '경제정보 · 재테크 · 투자정보 카테고리별로 정리되어 있습니다.',
   },
   en: {
-    seoTitle: 'Home',
+    seoTitle: 'FinMap Finance Blog and Calculators',
     seoDesc:
-      'FinMap blog · economics basic · investing info · personal finance · compound interest calculators',
+      'FinMap explains economics, investing, and personal finance with practical calculators for compound interest and long-term planning.',
     heroTitleLine1: 'See your money flows ',
     heroTitleLine2: 'like a map at a glance',
     heroSub:

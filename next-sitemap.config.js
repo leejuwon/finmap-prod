@@ -124,8 +124,10 @@ function clampAptSitemapLimit(v) {
 }
 
 async function buildAptDetailPaths() {
+  if (process.env.RE_APT_SITEMAP !== 'true') return [];
+
   const limit = clampAptSitemapLimit(process.env.RE_APT_SITEMAP_LIMIT);
-  if (!limit || process.env.RE_APT_SITEMAP === 'false') return [];
+  if (!limit) return [];
 
   let conn;
   try {
@@ -206,6 +208,7 @@ const STATIC_I18N_BASE_LOCS = new Set([
   '/tools/cagr-calculator',
   '/tools/compound-interest',
   '/tools/dca-calculator',
+  '/tools/dsr-ltv-calculator',
   '/tools/fire-calculator',
   '/tools/goal-simulator',
   '/market',
@@ -292,6 +295,9 @@ module.exports = {
     "/posts/economics-inflation-basics",
     "/404", "/500",
     "/en/404", "/en/500",
+    "/en/market/real-estate/seoul-apartment-top100",
+    "/en/market/real-estate/gyeonggi-apartment-top100",
+    "/en/market/real-estate/incheon-apartment-top100",
   ],
 
   transform: async (config, loc) => {
@@ -357,6 +363,7 @@ module.exports = {
       "/en/tools/cagr-calculator",
       "/en/tools/compound-interest",
       "/en/tools/dca-calculator",
+      "/en/tools/dsr-ltv-calculator",
       "/en/tools/fire-calculator",
       "/en/tools/goal-simulator",
       "/en/market",

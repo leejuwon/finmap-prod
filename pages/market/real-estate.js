@@ -1206,7 +1206,19 @@ export default function RealEstatePage() {
                   >
                     (현재 평형)
                   </Link>
-                  .
+                  . 설명형 가이드는{" "}
+                  <Link href={canonicalHref('/market/real-estate/seoul-apartment-top100')} className="underline underline-offset-2">
+                    서울 아파트 실거래가 Top100
+                  </Link>
+                  ,{" "}
+                  <Link href={canonicalHref('/market/real-estate/gyeonggi-apartment-top100')} className="underline underline-offset-2">
+                    경기 아파트 실거래가 Top100
+                  </Link>
+                  ,{" "}
+                  <Link href={canonicalHref('/market/real-estate/incheon-apartment-top100')} className="underline underline-offset-2">
+                    인천 아파트 실거래가 Top100
+                  </Link>
+                  에서 확인할 수 있습니다.
                 </>
               )}
             </div>

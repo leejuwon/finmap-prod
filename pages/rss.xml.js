@@ -88,16 +88,17 @@ function buildRss({ siteUrl, items }) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
 <channel>
-  <title>${escapeXml("FinMap")}</title>
+  <title>${escapeXml("FinMap 최신 한국어 글")}</title>
   <link>${escapeXml(siteUrl + "/")}</link>
-  <description>${escapeXml("FinMap latest posts")}</description>
+  <description>${escapeXml("FinMap 경제, 재테크, 투자, 부동산 대시보드 활용 글 모음")}</description>
+  <language>ko-KR</language>
   <lastBuildDate>${escapeXml(now)}</lastBuildDate>
   ${itemXml}
 </channel>
 </rss>`;
 }
 
-function getLatestPostsFromContent({ siteUrl, limit = 30 }) {
+function getLatestPostsFromContent({ siteUrl, limit = 30, language = "ko" }) {
   const postsRoot = path.join(process.cwd(), "content", "posts");
   const mdFiles = walkDir(postsRoot).filter((file) => file.endsWith(".md"));
 
@@ -112,6 +113,7 @@ function getLatestPostsFromContent({ siteUrl, limit = 30 }) {
       const filename = parts[parts.length - 1];
       const slug = filename.replace(/\.md$/, "");
       if (!category || !["ko", "en"].includes(lang) || !slug) return null;
+      if (language && lang !== language) return null;
 
       let raw = "";
       let data = {};
@@ -161,8 +163,8 @@ function parseSitemapUrlset(xml) {
     .filter((x) => x.loc);
 }
 
-async function getLatestPostsForRss({ siteUrl, limit = 30 }) {
-  const contentItems = getLatestPostsFromContent({ siteUrl, limit });
+async function getLatestPostsForRss({ siteUrl, limit = 30, language = "ko" }) {
+  const contentItems = getLatestPostsFromContent({ siteUrl, limit, language });
   if (contentItems.length) return contentItems;
 
   const cwd = process.cwd();
@@ -191,7 +193,12 @@ async function getLatestPostsForRss({ siteUrl, limit = 30 }) {
   const urls = parseSitemapUrlset(xml);
 
   const posts = urls
-    .filter(({ loc }) => loc.startsWith(siteUrl) && loc.includes("/posts/"))
+    .filter(({ loc }) => {
+      if (!loc.startsWith(siteUrl) || !loc.includes("/posts/")) return false;
+      if (language === "ko" && loc.startsWith(`${siteUrl}/en/posts/`)) return false;
+      if (language === "en" && !loc.startsWith(`${siteUrl}/en/posts/`)) return false;
+      return true;
+    })
     .map(({ loc, lastmod }) => ({
       loc,
       date: lastmod || null,
@@ -212,7 +219,7 @@ export async function getServerSideProps({ res }) {
   const siteUrl = "https://www.finmaphub.com";
 
   try {
-    const items = await getLatestPostsForRss({ siteUrl, limit: 30 });
+    const items = await getLatestPostsForRss({ siteUrl, limit: 30, language: "ko" });
     const xml = buildRss({ siteUrl, items });
 
     res.statusCode = 200;
