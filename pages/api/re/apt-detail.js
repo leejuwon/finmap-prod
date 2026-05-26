@@ -86,8 +86,148 @@ function aptNameNormSql(expr) {
   return `REGEXP_REPLACE(${noGenericWords}, '[^0-9a-z가-힣]', '')`;
 }
 
-function complexSelectSql(useMap) {
-  const val = (col) => useMap ? `COALESCE(cm.${col}, c.${col})` : `c.${col}`;
+function complexDimRawValueSql(useMap, col) {
+  const fallback = `CASE WHEN c.complex_candidate_count = 1 THEN c.${col} ELSE NULL END`;
+  if (!useMap) return fallback;
+  return `CASE WHEN cm.kapt_code IS NOT NULL THEN cm.${col} ELSE ${fallback} END`;
+}
+
+function complexDimSuspiciousSql(useMap) {
+  const hh = complexDimRawValueSql(useMap, 'household_count');
+  const dc = complexDimRawValueSql(useMap, 'dong_count');
+  return `(${hh} IS NOT NULL AND ${dc} IS NOT NULL AND ${hh} < 100 AND ${dc} < 100)`;
+}
+
+function complexDimValueSql(useMap, col) {
+  const raw = complexDimRawValueSql(useMap, col);
+  if (col === 'household_count' || col === 'dong_count') {
+    return `CASE WHEN ${complexDimSuspiciousSql(useMap)} THEN NULL ELSE ${raw} END`;
+  }
+  return raw;
+}
+
+function overrideFieldSql({ useOverride, useMap, useMapAptSeq }, col) {
+  if (!useOverride) return 'NULL';
+  const overrideCols = {
+    household_count: 'household_count_verified',
+    dong_count: 'dong_count_verified',
+    parking_total: 'parking_total_verified',
+    heating_type: 'heating_type_verified',
+    manage_type: 'manage_type_verified',
+  };
+  const parts = [];
+  if (col === 'kapt_code') {
+    if (useMap) parts.push('ok.kapt_code');
+    if (useMapAptSeq) parts.push('oa.kapt_code');
+    parts.push('ofk.kapt_code');
+    parts.push(`CASE WHEN ofb.override_candidate_count = 1 THEN ofb.kapt_code ELSE NULL END`);
+  } else if (overrideCols[col]) {
+    if (useMap) parts.push(`ok.${overrideCols[col]}`);
+    if (useMapAptSeq) parts.push(`oa.${overrideCols[col]}`);
+    parts.push(`ofk.${overrideCols[col]}`);
+    parts.push(`CASE WHEN ofb.override_candidate_count = 1 THEN ofb.${overrideCols[col]} ELSE NULL END`);
+  }
+  return parts.length ? `COALESCE(${parts.join(', ')})` : 'NULL';
+}
+
+function overrideAnyValueSql(opts) {
+  if (!opts.useOverride) return 'FALSE';
+  const fields = ['household_count', 'dong_count', 'parking_total', 'heating_type', 'manage_type']
+    .map((col) => `NULLIF(${overrideFieldSql(opts, col)}, '')`);
+  return `COALESCE(${fields.join(', ')}) IS NOT NULL`;
+}
+
+function overrideJoinMethodSql({ useOverride, useMap, useMapAptSeq }) {
+  if (!useOverride) return 'NULL';
+  const cases = [];
+  if (useMap) cases.push(`WHEN ok.id IS NOT NULL THEN 'override:kapt_code'`);
+  if (useMapAptSeq) cases.push(`WHEN oa.id IS NOT NULL THEN 'override:apt_seq'`);
+  cases.push(`WHEN ofk.id IS NOT NULL THEN 'override:fallback_kapt_code'`);
+  cases.push(`WHEN ofb.override_candidate_count = 1 THEN 'override:fallback_region_dong_name'`);
+  return `CASE ${cases.join(' ')} ELSE NULL END`;
+}
+
+function complexValueSql(opts, col) {
+  const overrideValue = overrideFieldSql(opts, col);
+  const dimValue = complexDimValueSql(opts.useMap, col);
+  if (['kapt_code', 'household_count', 'dong_count', 'parking_total', 'heating_type', 'manage_type'].includes(col)) {
+    return `COALESCE(${overrideValue}, ${dimValue})`;
+  }
+  return dimValue;
+}
+
+function complexJoinMethodSql(opts) {
+  const { useMap, useOverride } = opts;
+  const dimSuspicious = complexDimSuspiciousSql(useMap);
+  const overrideAny = overrideAnyValueSql(opts);
+  const overrideMethod = overrideJoinMethodSql(opts);
+  if (!useMap) {
+    return `
+        CASE
+          WHEN ${useOverride ? overrideAny : 'FALSE'} THEN ${overrideMethod}
+          WHEN ${dimSuspicious} THEN 'suspicious:counts_lt_100'
+          WHEN c.complex_candidate_count = 1 THEN 'fallback:region_lawd_gu_name'
+          WHEN c.complex_candidate_count > 1 THEN 'fallback:ambiguous'
+          ELSE 'none'
+        END AS complex_info_join_method,
+        CASE
+          WHEN ${useOverride ? overrideAny : 'FALSE'} THEN 'verified'
+          WHEN ${dimSuspicious} THEN 'low'
+          WHEN c.complex_candidate_count = 1 THEN 'medium'
+          WHEN c.complex_candidate_count > 1 THEN 'low'
+          ELSE 'none'
+        END AS complex_info_confidence,
+        CASE
+          WHEN ${useOverride ? overrideAny : 'FALSE'} THEN 'override'
+          WHEN c.complex_candidate_count = 1 THEN 'fallback'
+          ELSE 'none'
+        END AS complex_info_source,
+        CASE
+          WHEN ${useOverride ? overrideAny : 'FALSE'} AND ${dimSuspicious} THEN 'override_applied; dim_counts_suspicious'
+          WHEN ${dimSuspicious} THEN 'dim_counts_suspicious'
+          WHEN c.complex_candidate_count > 1 THEN 'fallback_ambiguous'
+          ELSE NULL
+        END AS complex_info_warning,
+        ${dimSuspicious} AS complex_info_suspicious_flag,
+        COALESCE(c.complex_candidate_count, 0) AS complex_candidate_count
+    `;
+  }
+  return `
+        CASE
+          WHEN ${useOverride ? overrideAny : 'FALSE'} THEN ${overrideMethod}
+          WHEN ${dimSuspicious} THEN 'suspicious:counts_lt_100'
+          WHEN cm.kapt_code IS NOT NULL THEN 'map:kapt_code'
+          WHEN c.complex_candidate_count = 1 THEN 'fallback:region_lawd_gu_name'
+          WHEN c.complex_candidate_count > 1 THEN 'fallback:ambiguous'
+          ELSE 'none'
+        END AS complex_info_join_method,
+        CASE
+          WHEN ${useOverride ? overrideAny : 'FALSE'} THEN 'verified'
+          WHEN ${dimSuspicious} THEN 'low'
+          WHEN cm.kapt_code IS NOT NULL THEN 'high'
+          WHEN c.complex_candidate_count = 1 THEN 'medium'
+          WHEN c.complex_candidate_count > 1 THEN 'low'
+          ELSE 'none'
+        END AS complex_info_confidence,
+        CASE
+          WHEN ${useOverride ? overrideAny : 'FALSE'} THEN 'override'
+          WHEN cm.kapt_code IS NOT NULL THEN 'map'
+          WHEN c.complex_candidate_count = 1 THEN 'fallback'
+          ELSE 'none'
+        END AS complex_info_source,
+        CASE
+          WHEN ${useOverride ? overrideAny : 'FALSE'} AND ${dimSuspicious} THEN 'override_applied; dim_counts_suspicious'
+          WHEN ${dimSuspicious} THEN 'dim_counts_suspicious'
+          WHEN c.complex_candidate_count > 1 THEN 'fallback_ambiguous'
+          ELSE NULL
+        END AS complex_info_warning,
+        ${dimSuspicious} AS complex_info_suspicious_flag,
+        COALESCE(c.complex_candidate_count, 0) AS complex_candidate_count
+  `;
+}
+
+function complexSelectSql(opts) {
+  const val = (col) => complexValueSql(opts, col);
   return `
         ${val('kapt_code')} AS kapt_code,
         ${val('household_count')} AS household_count,
@@ -100,7 +240,8 @@ function complexSelectSql(useMap) {
         ${val('approval_date')} AS approval_date,
         ${val('build_year')} AS complex_build_year,
         ${val('road_addr')} AS road_addr,
-        ${val('jibun')} AS jibun
+        ${val('jibun')} AS jibun,
+${complexJoinMethodSql(opts)}
   `;
 }
 
@@ -111,6 +252,7 @@ function complexAggSubquerySql() {
           d.lawd_cd,
           COALESCE(d.gu_name, '') AS gu_name,
           d.kapt_name_norm,
+          COUNT(*) AS complex_candidate_count,
           MIN(d.kapt_code) AS kapt_code,
           MAX(d.household_count) AS household_count,
           MAX(d.dong_count) AS dong_count,
@@ -128,12 +270,55 @@ function complexAggSubquerySql() {
   `;
 }
 
-function complexJoinSql(useMap) {
+function overrideFallbackAggSubquerySql() {
+  return `
+        SELECT
+          o.lawd_cd,
+          COALESCE(o.dong_name, '') AS dong_name,
+          o.apt_name_norm,
+          COUNT(*) AS override_candidate_count,
+          MIN(o.id) AS id,
+          MAX(o.kapt_code) AS kapt_code,
+          MAX(o.apt_seq) AS apt_seq,
+          MAX(o.household_count_verified) AS household_count_verified,
+          MAX(o.dong_count_verified) AS dong_count_verified,
+          MAX(o.parking_total_verified) AS parking_total_verified,
+          MAX(o.heating_type_verified) AS heating_type_verified,
+          MAX(o.manage_type_verified) AS manage_type_verified
+        FROM re_apt_complex_override o
+        WHERE o.kapt_code IS NULL
+        GROUP BY o.lawd_cd, COALESCE(o.dong_name, ''), o.apt_name_norm
+  `;
+}
+
+function complexJoinSql({ useMap, useOverride = false, useMapAptSeq = false }) {
   const mapJoin = useMap ? `
       LEFT JOIN re_trade_apt_map m
         ON m.apt_key = s.apt_key
       LEFT JOIN re_apt_complex_dim cm
         ON cm.kapt_code = m.kapt_code
+  ` : '';
+  const overrideJoin = useOverride ? `
+      ${useMap ? `
+      LEFT JOIN re_apt_complex_override ok
+        ON ok.kapt_code IS NOT NULL
+       AND CONVERT(ok.kapt_code USING utf8mb4) COLLATE utf8mb4_unicode_ci = CONVERT(m.kapt_code USING utf8mb4) COLLATE utf8mb4_unicode_ci
+      ` : ''}
+      ${useMapAptSeq ? `
+      LEFT JOIN re_apt_complex_override oa
+        ON oa.apt_seq IS NOT NULL
+       AND CONVERT(oa.apt_seq USING utf8mb4) COLLATE utf8mb4_unicode_ci = CONVERT(m.apt_seq USING utf8mb4) COLLATE utf8mb4_unicode_ci
+      ` : ''}
+      LEFT JOIN re_apt_complex_override ofk
+        ON ofk.kapt_code IS NOT NULL
+       AND c.complex_candidate_count = 1
+       AND CONVERT(ofk.kapt_code USING utf8mb4) COLLATE utf8mb4_unicode_ci = CONVERT(c.kapt_code USING utf8mb4) COLLATE utf8mb4_unicode_ci
+      LEFT JOIN (
+${overrideFallbackAggSubquerySql()}
+      ) ofb
+        ON CONVERT(ofb.lawd_cd USING utf8mb4) COLLATE utf8mb4_unicode_ci = CONVERT(s.lawd_cd USING utf8mb4) COLLATE utf8mb4_unicode_ci
+       AND CONVERT(COALESCE(ofb.dong_name, '') USING utf8mb4) COLLATE utf8mb4_unicode_ci = CONVERT(COALESCE(s.dong_name, '') USING utf8mb4) COLLATE utf8mb4_unicode_ci
+       AND CONVERT(ofb.apt_name_norm USING utf8mb4) COLLATE utf8mb4_unicode_ci = CONVERT(${aptNameNormSql('s.apt_name')} USING utf8mb4) COLLATE utf8mb4_unicode_ci
   ` : '';
 
   return `
@@ -145,6 +330,7 @@ ${complexAggSubquerySql()}
        AND LEFT(COALESCE(c.lawd_cd, ''), 5) = s.lawd_cd
        AND COALESCE(c.gu_name, '') = COALESCE(s.gu_name, '')
        AND c.kapt_name_norm = ${aptNameNormSql('s.apt_name')}
+      ${overrideJoin}
   `;
 }
 
@@ -187,6 +373,9 @@ export default async function handler(req, res) {
     const hasSum = await hasColumn(statsTable, 'sum_price');
     const hasMax = await hasColumn(statsTable, 'max_price');
     const useMap = await hasTable('re_trade_apt_map');
+    const useOverride = await hasTable('re_apt_complex_override');
+    const useMapAptSeq = useMap && await hasColumn('re_trade_apt_map', 'apt_seq');
+    const complexOpts = { useMap, useOverride, useMapAptSeq };
 
     const statsSql = `
       SELECT
@@ -201,9 +390,9 @@ export default async function handler(req, res) {
         ${hasSum ? 's.sum_price' : 'NULL AS sum_price'},
         s.latest_deal_date, s.latest_apt_dong, s.latest_floor, s.latest_area_m2, s.latest_deal_amount_man,
         s.build_year, s.rgst_date,
-${complexSelectSql(useMap)}
+${complexSelectSql(complexOpts)}
       FROM ${statsTable} s
-${complexJoinSql(useMap)}
+${complexJoinSql(complexOpts)}
       WHERE s.${periodCol} = ?
         AND s.pyeong_band = ?
         AND s.apt_key = ?

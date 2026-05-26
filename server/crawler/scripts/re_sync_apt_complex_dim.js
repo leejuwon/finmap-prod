@@ -346,6 +346,77 @@ function safeJsonStringify(value) {
   catch (_) { return null; }
 }
 
+const HOUSEHOLD_COUNT_KEYS = [
+  'kaptTotHsehCnt',
+  'totHsehCnt',
+  'hsehCnt',
+  'hshldCnt',
+  'householdCnt',
+  'hshldCo',
+  'household_count',
+  'hoCnt',
+  'kaptdScnt',
+  'kaptScnt',
+];
+
+const DONG_COUNT_KEYS = [
+  'kaptdDcnt',
+  'kaptDcnt',
+  'kaptDongCnt',
+  'dongCnt',
+  'dongCo',
+  'totDongCnt',
+  'buildingCnt',
+  'dong_count',
+];
+
+const PARKING_TOTAL_KEYS = [
+  'kaptPcnt',
+  'parkingTotCnt',
+  'parkingTotal',
+  'parkingCnt',
+  'parking_total',
+  'parkTotCnt',
+  'kaptdPcnt',
+];
+
+const PARKING_UNDERGROUND_KEYS = [
+  'kaptdPcntu',
+  'kaptPcntu',
+  'parkingUndgrndCnt',
+  'parkingUnder',
+  'parking_underground',
+  'parkUndgrndCnt',
+];
+
+const PARKING_GROUND_KEYS = [
+  'parkingGroundCnt',
+  'parkingGrnd',
+  'parking_ground',
+  'parkGrndCnt',
+];
+
+function pickTextWithKey(obj, keys) {
+  if (!obj || typeof obj !== 'object') return { key: null, value: '' };
+  for (const key of keys) {
+    if (Object.prototype.hasOwnProperty.call(obj, key) && obj[key] != null && String(obj[key]).trim() !== '') {
+      return { key, value: String(obj[key]).trim() };
+    }
+  }
+  return { key: null, value: '' };
+}
+
+function sumNullable(...values) {
+  let hasValue = false;
+  let total = 0;
+  for (const value of values) {
+    if (value == null) continue;
+    hasValue = true;
+    total += Number(value);
+  }
+  return hasValue ? total : null;
+}
+
 function mapBasisToRow({ sidoCode, listItem, basisItem, basisMeta }) {
   const kapt_code = pickText(listItem, ['kaptCode', 'kapt_code', 'kaptcode', 'KAPT_CODE', 'kaptCd', 'kapt_cd']);
   const kapt_name =
@@ -385,15 +456,58 @@ function mapBasisToRow({ sidoCode, listItem, basisItem, basisMeta }) {
   const approval_date = toDateSafe(pickText(basisItem, ['approvalDate', 'useAprDay', 'aprvDt', 'approval_date'])) || null;
   const build_year = toIntSafe(pickText(basisItem, ['buildYear', 'bldgYear', 'build_year'])) ?? null;
 
-  const dong_count = toIntSafe(pickText(basisItem, ['kaptdDcnt', 'kaptDcnt', 'kaptDongCnt', 'dongCnt', 'dongCo', 'totDongCnt', 'buildingCnt', 'dong_count'])) ?? null;
-  const household_count = toIntSafe(pickText(basisItem, ['kaptdScnt', 'kaptScnt', 'kaptTotHsehCnt', 'totHsehCnt', 'hsehCnt', 'hshldCnt', 'householdCnt', 'hshldCo', 'household_count', 'hoCnt'])) ?? null;
+  const householdPick = pickTextWithKey(basisItem, HOUSEHOLD_COUNT_KEYS);
+  const household_count = toIntSafe(householdPick.value) ?? null;
 
-  const parking_total = toIntSafe(pickText(basisItem, ['kaptdPcnt', 'kaptPcnt', 'parkingTotCnt', 'parkingTotal', 'parkingCnt', 'parking_total', 'parkTotCnt'])) ?? null;
-  const parking_underground = toIntSafe(pickText(basisItem, ['kaptdPcntu', 'kaptPcntu', 'parkingUndgrndCnt', 'parkingUnder', 'parking_underground', 'parkUndgrndCnt'])) ?? null;
-  const explicitParkingGround = toIntSafe(pickText(basisItem, ['parkingGroundCnt', 'parkingGrnd', 'parking_ground', 'parkGrndCnt'])) ?? null;
-  const parking_ground = explicitParkingGround != null
-    ? explicitParkingGround
-    : (parking_total != null && parking_underground != null ? parking_total - parking_underground : null);
+  const dongPick = pickTextWithKey(basisItem, DONG_COUNT_KEYS);
+  const dong_count = toIntSafe(dongPick.value) ?? null;
+
+  const parkingTotalPick = pickTextWithKey(basisItem, PARKING_TOTAL_KEYS);
+  const parkingTotalBefore = toIntSafe(parkingTotalPick.value) ?? null;
+  const parkingUndergroundPick = pickTextWithKey(basisItem, PARKING_UNDERGROUND_KEYS);
+  const parking_underground = toIntSafe(parkingUndergroundPick.value) ?? null;
+  const parkingGroundPick = pickTextWithKey(basisItem, PARKING_GROUND_KEYS);
+  const explicitParkingGround = toIntSafe(parkingGroundPick.value) ?? null;
+
+  let parking_ground = explicitParkingGround;
+  let parking_total = parkingTotalBefore;
+  let parkingTotalAdjusted = false;
+
+  if (
+    parking_ground == null &&
+    parkingTotalPick.key === 'kaptdPcnt' &&
+    parkingTotalBefore != null &&
+    parking_underground != null &&
+    parkingTotalBefore < parking_underground
+  ) {
+    parking_ground = parkingTotalBefore;
+  } else if (parking_ground == null && parking_total != null && parking_underground != null && parking_total >= parking_underground) {
+    parking_ground = parking_total - parking_underground;
+  }
+
+  const parkingPartsTotal = sumNullable(parking_ground, parking_underground);
+  if (
+    parkingPartsTotal != null &&
+    parkingPartsTotal > 0 &&
+    (parking_total == null || parking_total <= 0 || (parking_underground != null && parking_total < parking_underground))
+  ) {
+    parking_total = parkingPartsTotal;
+    parkingTotalAdjusted = true;
+  }
+
+  const qualityFlags = [];
+  if (
+    household_count != null &&
+    dong_count != null &&
+    household_count < 100 &&
+    dong_count < 100
+  ) {
+    qualityFlags.push('HOUSEHOLD_AND_DONG_LT_100');
+  }
+  if (parkingTotalAdjusted) qualityFlags.push('PARKING_TOTAL_ADJUSTED_FROM_PARTS');
+  if (parkingTotalBefore === 0 && parking_underground != null && parking_underground > 0) {
+    qualityFlags.push('PARKING_TOTAL_ZERO_WITH_UNDERGROUND');
+  }
 
   const heating_type = pickText(basisItem, ['heatMthd', 'heatingType', 'heating_type', 'heatSystem']) || null;
   const manage_type = pickText(basisItem, ['manageMthd', 'manageType', 'manage_type', 'mgmtType']) || null;
@@ -434,6 +548,18 @@ function mapBasisToRow({ sidoCode, listItem, basisItem, basisMeta }) {
       basisSource: basisMeta?.source || null,
       basisErrorReason: basisMeta?.reason || null,
       basisErrors: basisMeta?.errors || [],
+      household_count_source_key: householdPick.key,
+      household_count_source_value: householdPick.value || null,
+      household_count_before: toIntSafe(pickTextWithKey(basisItem, ['kaptdScnt', 'kaptScnt']).value) ?? null,
+      household_count_after: household_count,
+      dong_count_source_key: dongPick.key,
+      dong_count_source_value: dongPick.value || null,
+      parking_total_source_key: parkingTotalPick.key,
+      parking_total_source_value: parkingTotalPick.value || null,
+      parking_total_before: parkingTotalBefore,
+      parking_total_after: parking_total,
+      parking_total_adjusted: parkingTotalAdjusted,
+      qualityFlags,
       listItem,
       basisItem,
     }),
@@ -450,7 +576,9 @@ function mapBasisToRow({ sidoCode, listItem, basisItem, basisMeta }) {
   const onlyNew = asBool(arg('onlyNew', '0'));
   const requireBasis = asBool(arg('requireBasis', '0')); // ✅ 세대수/동수 꼭 필요하면 1
   const upsert = asBool(arg('upsert', '1'), true);
-  const singleKaptCode = String(arg('kaptCode', arg('aptKey', '')) || '').trim();
+  const singleKaptCode = String(arg('targetKaptCode', arg('kaptCode', arg('aptKey', ''))) || '').trim();
+  const targetName = String(arg('targetName', '') || '').trim();
+  const targetNameNorm = normalizeAptNameKey(targetName);
 
   const parsedSidos = sidosArg.split(',').map((s) => s.trim()).filter(Boolean);
   const sidos = singleKaptCode ? [parsedSidos[0] || ''] : parsedSidos;
@@ -484,6 +612,7 @@ function mapBasisToRow({ sidoCode, listItem, basisItem, basisMeta }) {
   const serviceKeyInfo = getServiceKeyInfo();
   console.log(`[api] serviceKey=${serviceKeyInfo.name || 'missing'} ${serviceKeyInfo.masked || ''}`.trim());
   if (singleKaptCode) console.log(`[single] kaptCode=${singleKaptCode} (aptKey is treated as kaptCode alias)`);
+  if (targetName) console.log(`[targetName] ${targetName}`);
 
   await assertDimTable(conn, { debug });
 
@@ -672,6 +801,14 @@ function mapBasisToRow({ sidoCode, listItem, basisItem, basisMeta }) {
     listed += listRes.totalCount || 0;
 
     let listItems = listRes.items;
+    if (targetNameNorm) {
+      listItems = listItems.filter((it) => {
+        const name = pickText(it, ['kaptName', 'kapt_name', 'kaptNm', 'kapt_nm']);
+        const addr = pickText(it, ['kaptAddr', 'kapt_addr', 'addr', 'address', 'juso']);
+        return normalizeAptNameKey(name).includes(targetNameNorm) || normalizeAptNameKey(addr).includes(targetNameNorm);
+      });
+      console.log(`[targetName] matched=${listItems.length}`);
+    }
     if (limit != null && Number.isFinite(limit) && limit > 0) listItems = listItems.slice(0, limit);
     totalCandidates += listItems.length;
 
@@ -710,7 +847,9 @@ function mapBasisToRow({ sidoCode, listItem, basisItem, basisMeta }) {
 
         const row = mapBasisToRow({ sidoCode: sido, listItem: li, basisItem: basisResult.item || {}, basisMeta: basisResult });
         if (debug) {
-          console.log(`[debug][mapped counts] kapt=${row.kapt_code} household=${row.household_count ?? 'null'} dong=${row.dong_count ?? 'null'} parkingTotal=${row.parking_total ?? 'null'} parkingUnderground=${row.parking_underground ?? 'null'}`);
+          const raw = JSON.parse(row.basis_raw_json || '{}');
+          const flags = Array.isArray(raw.qualityFlags) && raw.qualityFlags.length ? ` flags=${raw.qualityFlags.join(',')}` : '';
+          console.log(`[debug][mapped counts] kapt=${row.kapt_code} household=${row.household_count ?? 'null'} dong=${row.dong_count ?? 'null'} parkingTotal=${row.parking_total ?? 'null'} parkingUnderground=${row.parking_underground ?? 'null'} householdSource=${raw.household_count_source_key || 'null'}${flags}`);
         }
 
         if (upsert) {

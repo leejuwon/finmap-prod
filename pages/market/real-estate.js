@@ -731,33 +731,44 @@ export default function RealEstatePage() {
   }
 
   function renderHouseholdDong(row) {
+    if (!shouldShowComplexCounts(row)) {
+      return lang === 'en' ? 'Checking complex info' : '단지정보 확인 중';
+    }
     const hc = row?.household_count;
     const dc = row?.dong_count;
-    if (hc == null && dc == null) return '-';
-    const h = hc != null ? Number(hc).toLocaleString() : '-';
-    const d = dc != null ? Number(dc).toLocaleString() : '-';
-    return lang === 'en' ? `${h}/${d}` : `${h}/${d}`;
+    const parts = [];
+    if (hc != null && Number.isFinite(Number(hc))) {
+      parts.push(lang === 'en' ? `${Number(hc).toLocaleString()} HH` : `${Number(hc).toLocaleString()}세대`);
+    }
+    if (dc != null && Number.isFinite(Number(dc))) {
+      parts.push(lang === 'en' ? `${Number(dc).toLocaleString()} bldgs` : `${Number(dc).toLocaleString()}개동`);
+    }
+    return parts.length ? parts.join(' · ') : (lang === 'en' ? 'Checking complex info' : '단지정보 확인 중');
   }
 
   function renderParking(row) {
+    if (!shouldShowComplexInfo(row)) return '-';
     const total = row?.parking_total;
     const ground = row?.parking_ground;
     const underground = row?.parking_underground;
     if (total == null && ground == null && underground == null) return '-';
 
     const main = total != null ? Number(total).toLocaleString() : '-';
-    if (ground == null && underground == null) return main;
+    if (ground == null && underground == null) {
+      return lang === 'en' ? `Parking ${main}` : `주차 ${main}대`;
+    }
 
     const g = ground != null ? Number(ground).toLocaleString() : '-';
     const u = underground != null ? Number(underground).toLocaleString() : '-';
-    return lang === 'en' ? `${main} (G ${g} / B ${u})` : `${main} (지상 ${g} / 지하 ${u})`;
+    return lang === 'en' ? `Parking ${main} (G ${g} / B ${u})` : `주차 ${main}대 (지상 ${g} / 지하 ${u})`;
   }
 
   function renderHeatingManage(row) {
+    if (!shouldShowComplexInfo(row)) return '-';
     const heating = row?.heating_type || '-';
     const manage = row?.manage_type || '-';
     if (heating === '-' && manage === '-') return '-';
-    return `${heating} / ${manage}`;
+    return `${shortText(heating)} / ${shortText(manage)}`;
   }
 
   function renderComplexInfo(row) {
@@ -767,6 +778,93 @@ export default function RealEstatePage() {
     if (parking !== '-') parts.push(`${t.cols.parking}: ${parking}`);
     if (heatingManage !== '-') parts.push(`${t.cols.heatingManage}: ${heatingManage}`);
     return parts.length ? parts.join(' · ') : '-';
+  }
+
+  function isVerifiedComplex(row) {
+    return row?.complex_info_source === 'override' || row?.complex_info_confidence === 'verified';
+  }
+
+  function shouldShowComplexInfo(row) {
+    const confidence = String(row?.complex_info_confidence || '');
+    if (isVerifiedComplex(row)) return true;
+    if (confidence === 'high' || confidence === 'medium') return true;
+    if (confidence === 'low' || confidence === 'none') return false;
+    if (row?.complex_info_warning) return false;
+    return row?.household_count != null || row?.dong_count != null || row?.parking_total != null;
+  }
+
+  function shouldShowComplexCounts(row) {
+    if (!shouldShowComplexInfo(row)) return false;
+    return row?.household_count != null || row?.dong_count != null;
+  }
+
+  function shortText(value, max = 18) {
+    const s = String(value == null ? '' : value).trim();
+    if (!s || s === '-') return '-';
+    return s.length > max ? `${s.slice(0, max)}...` : s;
+  }
+
+  function complexConfidenceMeta(row) {
+    const source = String(row?.complex_info_source || '');
+    const confidence = String(row?.complex_info_confidence || 'none');
+    if (source === 'override') {
+      return { label: lang === 'en' ? 'Verified value' : '검증값', tone: 'bg-emerald-50 text-emerald-700' };
+    }
+    if (confidence === 'verified') return { label: lang === 'en' ? 'Verified' : '검증', tone: 'bg-emerald-50 text-emerald-700' };
+    if (confidence === 'high') return { label: lang === 'en' ? 'Matched' : '매칭', tone: 'bg-sky-50 text-sky-700' };
+    if (confidence === 'medium') return { label: lang === 'en' ? 'Estimated' : '추정', tone: 'bg-amber-50 text-amber-700' };
+    if (confidence === 'low') return { label: lang === 'en' ? 'Needs check' : '확인필요', tone: 'bg-rose-50 text-rose-700' };
+    return { label: lang === 'en' ? 'Unknown' : '미확인', tone: 'bg-slate-100 text-slate-700' };
+  }
+
+  function ComplexInfoBadge({ row }) {
+    const meta = complexConfidenceMeta(row);
+    return <Chip tone={meta.tone}>{meta.label}</Chip>;
+  }
+
+  function ComplexWarning({ row }) {
+    const warning = String(row?.complex_info_warning || '').trim();
+    if (!warning) return null;
+    const text = isVerifiedComplex(row)
+      ? (lang === 'en' ? 'Source corrected' : '원천값 보정')
+      : (lang === 'en' ? 'Check needed' : '확인 필요');
+    return (
+      <span
+        className="inline-flex max-w-full items-center rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-medium leading-tight text-slate-600"
+        title={warning}
+      >
+        {text}
+      </span>
+    );
+  }
+
+  function ComplexInfoInline({ row }) {
+    const scale = renderHouseholdDong(row);
+    const parking = renderParking(row);
+    const heatingManage = renderHeatingManage(row);
+    const hasScale = scale && !['-', 'Checking complex info', '단지정보 확인 중'].includes(scale);
+    const hasParking = parking && parking !== '-';
+    const hasHeating = heatingManage && heatingManage !== '-';
+
+    if (!hasScale && !hasParking && !hasHeating) {
+      return (
+        <div className="mt-2 flex min-w-0 flex-wrap items-center gap-2">
+          <ComplexInfoBadge row={row} />
+          <span className="text-xs text-slate-500">{lang === 'en' ? 'Checking complex info' : '단지정보 확인 중'}</span>
+          <ComplexWarning row={row} />
+        </div>
+      );
+    }
+
+    return (
+      <div className="mt-2 flex min-w-0 flex-wrap items-center gap-2 text-xs text-slate-600">
+        <ComplexInfoBadge row={row} />
+        {hasScale && <span className="rounded-full bg-slate-50 px-2.5 py-1">{scale}</span>}
+        {hasParking && <span className="rounded-full bg-slate-50 px-2.5 py-1">{parking}</span>}
+        {hasHeating && <span className="rounded-full bg-slate-50 px-2.5 py-1">{heatingManage}</span>}
+        <ComplexWarning row={row} />
+      </div>
+    );
   }
 
   // ✅ 상세페이지 링크 생성 (Top 리스트의 apt_key 그대로 사용)
@@ -1058,7 +1156,6 @@ export default function RealEstatePage() {
     const buildYVal = (r.latest_build_year ?? r.build_year);
     const buildY = buildYVal != null ? `${buildYVal}${lang === 'en' ? '' : '년식'}` : '-';
     const dealDate = r.latest_deal_date ? String(r.latest_deal_date).slice(0, 10) : '-';  
-    const complexScale = renderHouseholdDong(r);  
     const parking = renderParking(r);
     const heatingManage = renderHeatingManage(r);
     
@@ -1091,8 +1188,9 @@ export default function RealEstatePage() {
                 </button>
               </div>       
               <div className="mt-1 break-words text-xs leading-relaxed text-slate-500">
-                {sizeM2} · {sizePy} · {buildY} · {t.cols.complexScale}: {complexScale} · {dealDate}
+                {sizeM2} · {sizePy} · {buildY} · {dealDate}
               </div>
+              <ComplexInfoInline row={r} />
             </div>
             <div className="flex min-w-0 flex-wrap items-center gap-2 sm:shrink-0 sm:flex-col sm:items-end">
               <QualityChip row={r} />
@@ -1576,7 +1674,7 @@ export default function RealEstatePage() {
             {/* ✅ 세대수 필터 */}
             <div className={`${filterFieldClass} min-[390px]:col-span-2 md:col-span-6`}>
               <div className="text-sm text-slate-500 mb-1">
-                {lang === 'en' ? 'Households (complex)' : '세대수(단지)'}
+                {lang === 'en' ? 'Advanced: households' : '고급 조건: 세대수'}
               </div>
               <div className="grid grid-cols-1 gap-2 min-[390px]:grid-cols-2 sm:grid-cols-[minmax(5rem,0.8fr)_minmax(0,1fr)_auto]">
                 <select
@@ -1590,10 +1688,11 @@ export default function RealEstatePage() {
                 <input
                   type="number"
                   inputMode="numeric"
+                  min="0"
                   className={filterControlClass}
                   placeholder={lang === 'en' ? 'e.g. 1000' : '예: 1000'}
                   value={hh}
-                  onChange={(e) => setHh(e.target.value)}
+                  onChange={(e) => setHh(String(e.target.value || '').replace(/[^\d]/g, ''))}
                 />
                 <button
                   type="button"
@@ -1606,8 +1705,8 @@ export default function RealEstatePage() {
               </div>
               <div className="mt-1 text-[11px] text-slate-400">
                 {lang === 'en'
-                  ? 'Filtered using complex (kapt) data. If basis sync is not complete, some complexes may be missing.'
-                  : '공동주택(단지) 정보로 필터링합니다. 기본정보(Basis) 보충 전엔 일부 단지가 누락될 수 있어요.'}
+                  ? 'Uses verified/matched complex info. Empty input disables this filter.'
+                  : '검증/매칭된 단지정보 기준입니다. 입력값이 없으면 필터를 적용하지 않습니다.'}
               </div>
             </div>
           </div>
@@ -1750,7 +1849,16 @@ export default function RealEstatePage() {
                           {renderApt(r)}
                         </Link>
                       </td>
-                       <td className="py-3 pr-3">{renderHouseholdDong(r)}</td>
+                       <td className="py-3 pr-3">
+                         <div className="flex min-w-[180px] flex-col gap-1">
+                           <div className="font-medium text-slate-800">{renderHouseholdDong(r)}</div>
+                           {renderParking(r) !== '-' && <div className="text-xs text-slate-500">{renderParking(r)}</div>}
+                           <div className="flex flex-wrap gap-1">
+                             <ComplexInfoBadge row={r} />
+                             <ComplexWarning row={r} />
+                           </div>
+                         </div>
+                       </td>
 
                       <td className="py-3 pr-3">{r.latest_area_m2 != null ? Number(r.latest_area_m2).toFixed(2) : '-'}</td>
                       <td className="py-3 pr-3">{fmtPyeongFromM2(r.latest_area_m2)}</td>

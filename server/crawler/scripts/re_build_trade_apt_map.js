@@ -89,14 +89,32 @@ async function tableExists(conn, name) {
   // 1) 전월 stats 기준으로 “미매핑 apt_key”만 뽑기 (대용량 re_trade_apt 전체 스캔 피함)
   const [targets] = await conn.query(
     `
-    SELECT s.apt_key, s.lawd_cd, s.sigungu_name, s.gu_name, s.dong_name, s.apt_name
+    SELECT
+      s.apt_key,
+      s.lawd_cd,
+      s.sigungu_name,
+      s.gu_name,
+      s.dong_name,
+      s.apt_name,
+      r.apt_seq,
+      r.apt_seq_count
     FROM re_trade_apt_stats_m s
+    LEFT JOIN (
+      SELECT
+        CONCAT(lawd_cd,'|',IFNULL(gu_name,''),'|',dong_name,'|',apt_name) AS apt_key,
+        MIN(apt_seq) AS apt_seq,
+        COUNT(DISTINCT apt_seq) AS apt_seq_count
+      FROM re_trade_apt
+      WHERE deal_ym = ?
+      GROUP BY lawd_cd, IFNULL(gu_name,''), dong_name, apt_name
+    ) r
+      ON r.apt_key = s.apt_key
     LEFT JOIN re_trade_apt_map m ON m.apt_key = s.apt_key
     WHERE s.deal_ym = ?
       AND s.pyeong_band = 'all'
       AND m.apt_key IS NULL
     `,
-    [ym]
+    [ym, ym]
   );
 
   console.log(`[target] ym=${ym} unmapped=${targets.length}`);
@@ -183,6 +201,8 @@ async function tableExists(conn, name) {
     'apt_name',
     'apt_name_norm',
     'gu_name',
+    'apt_seq',
+    'apt_seq_count',
     'matched_at',
     'updated_at',
   ].filter(c => mapColSet.has(c));
@@ -209,25 +229,32 @@ async function tableExists(conn, name) {
     let cands = complexes.filter(c => normalizeAptNameKey(c.kapt_name) === nApt);
 
     // 동 이름을 주소에 포함하는 단지 우선 (kapt_addr가 있으면)
+    let usedAddrFilter = false;
     if (cands.length > 1 && dong) {
-      cands = cands.filter(c => String(c.kapt_addr || '').includes(dong)) || cands;
+      const addrFiltered = cands.filter(c => String(c.kapt_addr || '').includes(dong));
+      if (addrFiltered.length > 0) {
+        cands = addrFiltered;
+        usedAddrFilter = true;
+      }
     }
 
     if (!cands.length) { nohit++; continue; }
 
     const best = cands[0];
-    const score = cands.length === 1 ? 95 : 80;
+    const score = cands.length === 1 ? (usedAddrFilter ? 85 : 95) : 50;
 
     const row = {
       apt_key: String(t.apt_key),
       kapt_code: String(best.kapt_code),
-      match_method: cands.length === 1 ? 'NAME_LAWD' : 'NAME_LAWD_ADDR',
+      match_method: cands.length === 1 ? (usedAddrFilter ? 'NAME_LAWD_ADDR' : 'NAME_LAWD') : 'NAME_LAWD_AMBIGUOUS',
       match_score: score,
       lawd_cd: lawd,
       dong_name: dong,
       apt_name: aptName,
       apt_name_norm: nApt,
       gu_name: gu,
+      apt_seq: t.apt_seq || null,
+      apt_seq_count: t.apt_seq_count || null,
       matched_at: new Date(),
       updated_at: new Date(),
     };

@@ -191,8 +191,148 @@ function aptNameNormSql(expr) {
   return `REGEXP_REPLACE(${noGenericWords}, '[^0-9a-z가-힣]', '')`;
 }
 
-function complexSelectSql(useMap) {
-  const val = (col) => useMap ? `COALESCE(cm.${col}, c.${col})` : `c.${col}`;
+function complexDimRawValueSql(useMap, col) {
+  const fallback = `CASE WHEN c.complex_candidate_count = 1 THEN c.${col} ELSE NULL END`;
+  if (!useMap) return fallback;
+  return `CASE WHEN cm.kapt_code IS NOT NULL THEN cm.${col} ELSE ${fallback} END`;
+}
+
+function complexDimSuspiciousSql(useMap) {
+  const hh = complexDimRawValueSql(useMap, 'household_count');
+  const dc = complexDimRawValueSql(useMap, 'dong_count');
+  return `(${hh} IS NOT NULL AND ${dc} IS NOT NULL AND ${hh} < 100 AND ${dc} < 100)`;
+}
+
+function complexDimValueSql(useMap, col) {
+  const raw = complexDimRawValueSql(useMap, col);
+  if (col === 'household_count' || col === 'dong_count') {
+    return `CASE WHEN ${complexDimSuspiciousSql(useMap)} THEN NULL ELSE ${raw} END`;
+  }
+  return raw;
+}
+
+function overrideFieldSql({ useOverride, useMap, useMapAptSeq }, col) {
+  if (!useOverride) return 'NULL';
+  const overrideCols = {
+    household_count: 'household_count_verified',
+    dong_count: 'dong_count_verified',
+    parking_total: 'parking_total_verified',
+    heating_type: 'heating_type_verified',
+    manage_type: 'manage_type_verified',
+  };
+  const parts = [];
+  if (col === 'kapt_code') {
+    if (useMap) parts.push('ok.kapt_code');
+    if (useMapAptSeq) parts.push('oa.kapt_code');
+    parts.push('ofk.kapt_code');
+    parts.push(`CASE WHEN ofb.override_candidate_count = 1 THEN ofb.kapt_code ELSE NULL END`);
+  } else if (overrideCols[col]) {
+    if (useMap) parts.push(`ok.${overrideCols[col]}`);
+    if (useMapAptSeq) parts.push(`oa.${overrideCols[col]}`);
+    parts.push(`ofk.${overrideCols[col]}`);
+    parts.push(`CASE WHEN ofb.override_candidate_count = 1 THEN ofb.${overrideCols[col]} ELSE NULL END`);
+  }
+  return parts.length ? `COALESCE(${parts.join(', ')})` : 'NULL';
+}
+
+function overrideAnyValueSql(opts) {
+  if (!opts.useOverride) return 'FALSE';
+  const fields = ['household_count', 'dong_count', 'parking_total', 'heating_type', 'manage_type']
+    .map((col) => `NULLIF(${overrideFieldSql(opts, col)}, '')`);
+  return `COALESCE(${fields.join(', ')}) IS NOT NULL`;
+}
+
+function overrideJoinMethodSql({ useOverride, useMap, useMapAptSeq }) {
+  if (!useOverride) return 'NULL';
+  const cases = [];
+  if (useMap) cases.push(`WHEN ok.id IS NOT NULL THEN 'override:kapt_code'`);
+  if (useMapAptSeq) cases.push(`WHEN oa.id IS NOT NULL THEN 'override:apt_seq'`);
+  cases.push(`WHEN ofk.id IS NOT NULL THEN 'override:fallback_kapt_code'`);
+  cases.push(`WHEN ofb.override_candidate_count = 1 THEN 'override:fallback_region_dong_name'`);
+  return `CASE ${cases.join(' ')} ELSE NULL END`;
+}
+
+function complexValueSql(opts, col) {
+  const overrideValue = overrideFieldSql(opts, col);
+  const dimValue = complexDimValueSql(opts.useMap, col);
+  if (['kapt_code', 'household_count', 'dong_count', 'parking_total', 'heating_type', 'manage_type'].includes(col)) {
+    return `COALESCE(${overrideValue}, ${dimValue})`;
+  }
+  return dimValue;
+}
+
+function complexJoinMethodSql(opts) {
+  const { useMap, useOverride } = opts;
+  const dimSuspicious = complexDimSuspiciousSql(useMap);
+  const overrideAny = overrideAnyValueSql(opts);
+  const overrideMethod = overrideJoinMethodSql(opts);
+  if (!useMap) {
+    return `
+        CASE
+          WHEN ${useOverride ? overrideAny : 'FALSE'} THEN ${overrideMethod}
+          WHEN ${dimSuspicious} THEN 'suspicious:counts_lt_100'
+          WHEN c.complex_candidate_count = 1 THEN 'fallback:region_lawd_gu_name'
+          WHEN c.complex_candidate_count > 1 THEN 'fallback:ambiguous'
+          ELSE 'none'
+        END AS complex_info_join_method,
+        CASE
+          WHEN ${useOverride ? overrideAny : 'FALSE'} THEN 'verified'
+          WHEN ${dimSuspicious} THEN 'low'
+          WHEN c.complex_candidate_count = 1 THEN 'medium'
+          WHEN c.complex_candidate_count > 1 THEN 'low'
+          ELSE 'none'
+        END AS complex_info_confidence,
+        CASE
+          WHEN ${useOverride ? overrideAny : 'FALSE'} THEN 'override'
+          WHEN c.complex_candidate_count = 1 THEN 'fallback'
+          ELSE 'none'
+        END AS complex_info_source,
+        CASE
+          WHEN ${useOverride ? overrideAny : 'FALSE'} AND ${dimSuspicious} THEN 'override_applied; dim_counts_suspicious'
+          WHEN ${dimSuspicious} THEN 'dim_counts_suspicious'
+          WHEN c.complex_candidate_count > 1 THEN 'fallback_ambiguous'
+          ELSE NULL
+        END AS complex_info_warning,
+        ${dimSuspicious} AS complex_info_suspicious_flag,
+        COALESCE(c.complex_candidate_count, 0) AS complex_candidate_count
+    `;
+  }
+  return `
+        CASE
+          WHEN ${useOverride ? overrideAny : 'FALSE'} THEN ${overrideMethod}
+          WHEN ${dimSuspicious} THEN 'suspicious:counts_lt_100'
+          WHEN cm.kapt_code IS NOT NULL THEN 'map:kapt_code'
+          WHEN c.complex_candidate_count = 1 THEN 'fallback:region_lawd_gu_name'
+          WHEN c.complex_candidate_count > 1 THEN 'fallback:ambiguous'
+          ELSE 'none'
+        END AS complex_info_join_method,
+        CASE
+          WHEN ${useOverride ? overrideAny : 'FALSE'} THEN 'verified'
+          WHEN ${dimSuspicious} THEN 'low'
+          WHEN cm.kapt_code IS NOT NULL THEN 'high'
+          WHEN c.complex_candidate_count = 1 THEN 'medium'
+          WHEN c.complex_candidate_count > 1 THEN 'low'
+          ELSE 'none'
+        END AS complex_info_confidence,
+        CASE
+          WHEN ${useOverride ? overrideAny : 'FALSE'} THEN 'override'
+          WHEN cm.kapt_code IS NOT NULL THEN 'map'
+          WHEN c.complex_candidate_count = 1 THEN 'fallback'
+          ELSE 'none'
+        END AS complex_info_source,
+        CASE
+          WHEN ${useOverride ? overrideAny : 'FALSE'} AND ${dimSuspicious} THEN 'override_applied; dim_counts_suspicious'
+          WHEN ${dimSuspicious} THEN 'dim_counts_suspicious'
+          WHEN c.complex_candidate_count > 1 THEN 'fallback_ambiguous'
+          ELSE NULL
+        END AS complex_info_warning,
+        ${dimSuspicious} AS complex_info_suspicious_flag,
+        COALESCE(c.complex_candidate_count, 0) AS complex_candidate_count
+  `;
+}
+
+function complexSelectSql(opts) {
+  const val = (col) => complexValueSql(opts, col);
   return `
         ${val('kapt_code')} AS kapt_code,
         ${val('household_count')} AS household_count,
@@ -205,7 +345,8 @@ function complexSelectSql(useMap) {
         ${val('approval_date')} AS approval_date,
         ${val('build_year')} AS complex_build_year,
         ${val('road_addr')} AS road_addr,
-        ${val('jibun')} AS jibun
+        ${val('jibun')} AS jibun,
+${complexJoinMethodSql(opts)}
   `;
 }
 
@@ -216,6 +357,7 @@ function complexAggSubquerySql() {
           d.lawd_cd,
           COALESCE(d.gu_name, '') AS gu_name,
           d.kapt_name_norm,
+          COUNT(*) AS complex_candidate_count,
           MIN(d.kapt_code) AS kapt_code,
           MAX(d.household_count) AS household_count,
           MAX(d.dong_count) AS dong_count,
@@ -233,12 +375,55 @@ function complexAggSubquerySql() {
   `;
 }
 
-function complexJoinSql({ sourceAlias, useMap }) {
+function overrideFallbackAggSubquerySql() {
+  return `
+        SELECT
+          o.lawd_cd,
+          COALESCE(o.dong_name, '') AS dong_name,
+          o.apt_name_norm,
+          COUNT(*) AS override_candidate_count,
+          MIN(o.id) AS id,
+          MAX(o.kapt_code) AS kapt_code,
+          MAX(o.apt_seq) AS apt_seq,
+          MAX(o.household_count_verified) AS household_count_verified,
+          MAX(o.dong_count_verified) AS dong_count_verified,
+          MAX(o.parking_total_verified) AS parking_total_verified,
+          MAX(o.heating_type_verified) AS heating_type_verified,
+          MAX(o.manage_type_verified) AS manage_type_verified
+        FROM re_apt_complex_override o
+        WHERE o.kapt_code IS NULL
+        GROUP BY o.lawd_cd, COALESCE(o.dong_name, ''), o.apt_name_norm
+  `;
+}
+
+function complexJoinSql({ sourceAlias, useMap, useOverride = false, useMapAptSeq = false }) {
   const mapJoin = useMap ? `
       LEFT JOIN re_trade_apt_map m
         ON m.apt_key = ${sourceAlias}.apt_key
       LEFT JOIN re_apt_complex_dim cm
         ON cm.kapt_code = m.kapt_code
+  ` : '';
+  const overrideJoin = useOverride ? `
+      ${useMap ? `
+      LEFT JOIN re_apt_complex_override ok
+        ON ok.kapt_code IS NOT NULL
+       AND CONVERT(ok.kapt_code USING utf8mb4) COLLATE utf8mb4_unicode_ci = CONVERT(m.kapt_code USING utf8mb4) COLLATE utf8mb4_unicode_ci
+      ` : ''}
+      ${useMapAptSeq ? `
+      LEFT JOIN re_apt_complex_override oa
+        ON oa.apt_seq IS NOT NULL
+       AND CONVERT(oa.apt_seq USING utf8mb4) COLLATE utf8mb4_unicode_ci = CONVERT(m.apt_seq USING utf8mb4) COLLATE utf8mb4_unicode_ci
+      ` : ''}
+      LEFT JOIN re_apt_complex_override ofk
+        ON ofk.kapt_code IS NOT NULL
+       AND c.complex_candidate_count = 1
+       AND CONVERT(ofk.kapt_code USING utf8mb4) COLLATE utf8mb4_unicode_ci = CONVERT(c.kapt_code USING utf8mb4) COLLATE utf8mb4_unicode_ci
+      LEFT JOIN (
+${overrideFallbackAggSubquerySql()}
+      ) ofb
+        ON CONVERT(ofb.lawd_cd USING utf8mb4) COLLATE utf8mb4_unicode_ci = CONVERT(${sourceAlias}.lawd_cd USING utf8mb4) COLLATE utf8mb4_unicode_ci
+       AND CONVERT(COALESCE(ofb.dong_name, '') USING utf8mb4) COLLATE utf8mb4_unicode_ci = CONVERT(COALESCE(${sourceAlias}.dong_name, '') USING utf8mb4) COLLATE utf8mb4_unicode_ci
+       AND CONVERT(ofb.apt_name_norm USING utf8mb4) COLLATE utf8mb4_unicode_ci = CONVERT(${aptNameNormSql(`${sourceAlias}.apt_name`)} USING utf8mb4) COLLATE utf8mb4_unicode_ci
   ` : '';
 
   return `
@@ -250,6 +435,7 @@ ${complexAggSubquerySql()}
        AND LEFT(COALESCE(c.lawd_cd, ''), 5) = ${sourceAlias}.lawd_cd
        AND COALESCE(c.gu_name, '') = COALESCE(${sourceAlias}.gu_name, '')
        AND c.kapt_name_norm = ${aptNameNormSql(`${sourceAlias}.apt_name`)}
+      ${overrideJoin}
   `;
 }
 
@@ -302,7 +488,12 @@ function buildStatsWhere({ timeframe, period, pyeongBand, sido, lawd, gu, buildF
   return { whereSql: `WHERE ${filters.join('\n  AND ')}`, params, band };
 }
 
-function makeStatsTopSql({ table, whereSql, metricCol, orderDir, householdWhereSql = '', useMap = false }) {
+function makeStatsTopSql({ table, whereSql, metricCol, orderDir, priceExpr = null, priceMinWon = null, priceMaxWon = null, householdWhereSql = '', complexOpts }) {
+  const priceWhere = priceExpr
+    ? `\n        AND ${priceExpr} IS NOT NULL` +
+      (priceMinWon != null ? `\n        AND ${priceExpr} >= ?` : '') +
+      (priceMaxWon != null ? `\n        AND ${priceExpr} <= ?` : '')
+    : '';
   // re_apt_complex_dim에서 세대수/동수 붙이기 (kapt_name_norm: 공백 정규화 + 소문자)
   // - stats에는 apt_name_norm이 없어서 SQL에서 동일 규칙으로 생성
   // - 동일 이름 단지가 여러 개일 수 있어 (sido+lawd+gu+name_norm) 단위로 집계해 1행으로 만든다
@@ -336,12 +527,13 @@ function makeStatsTopSql({ table, whereSql, metricCol, orderDir, householdWhereS
         s.rgst_date,
 
         -- ✅ 단지(세대수/동수 + 단지 기본정보)
-${complexSelectSql(useMap)},
+${complexSelectSql(complexOpts)},
 
         ${metricCol} AS value
       FROM ${table} s
-${complexJoinSql({ sourceAlias: 's', useMap })}
+${complexJoinSql({ sourceAlias: 's', ...complexOpts })}
       ${whereSql}
+      ${priceWhere}
     ),
     final AS (
       SELECT
@@ -367,6 +559,21 @@ async function tableExists(pool, tableName) {
     LIMIT 1
     `,
     [tableName]
+  );
+  return rows && rows.length > 0;
+}
+
+async function columnExists(pool, tableName, columnName) {
+  const [rows] = await pool.query(
+    `
+    SELECT 1 AS ok
+    FROM information_schema.columns
+    WHERE table_schema = DATABASE()
+      AND table_name = ?
+      AND column_name = ?
+    LIMIT 1
+    `,
+    [tableName, columnName]
   );
   return rows && rows.length > 0;
 }
@@ -448,8 +655,9 @@ function buildRawWhere({ timeframe, period, sido, lawd, gu, pyeong, buildFrom, b
   return { whereSql, params };
 }
 
-function makeRawTopSql({ whereSql, metricCol, orderDir, withLatest, priceMetric, priceMinWon, priceMaxWon, householdWhereSql = '', useMap = false }) {
+function makeRawTopSql({ whereSql, metricCol, orderDir, withLatest, priceMetric, priceMinWon, priceMaxWon, householdWhereSql = '', complexOpts }) {
   // priceMetric: none|median_price|avg_price|max_price|sum_price|latest_price
+  const needLatest = withLatest || String(priceMetric || 'none') === 'latest_price';
   const PRICE_COL = {
     median_price: 'median_price',
     avg_price: 'avg_price',
@@ -499,7 +707,7 @@ function makeRawTopSql({ whereSql, metricCol, orderDir, withLatest, priceMetric,
           PARTITION BY lawd_cd, sigungu_name, gu_name, dong_name, apt_name
           ORDER BY ppm2
         ) AS rn_ppm2,
-        ${withLatest ? `
+        ${needLatest ? `
         ROW_NUMBER() OVER (
           PARTITION BY lawd_cd, sigungu_name, gu_name, dong_name, apt_name
           ORDER BY deal_date DESC, price_won DESC
@@ -532,7 +740,7 @@ function makeRawTopSql({ whereSql, metricCol, orderDir, withLatest, priceMetric,
         CAST(ROUND(AVG(CASE WHEN rn_price IN (FLOOR((cnt+1)/2), FLOOR((cnt+2)/2)) THEN price_won END), 0) AS UNSIGNED) AS median_price,
         CAST(MAX(price_won) AS UNSIGNED) AS max_price,
         CAST(SUM(price_won) AS UNSIGNED) AS sum_price
-        ${withLatest ? `,
+        ${needLatest ? `,
         CAST(MAX(CASE WHEN rn_latest=1 THEN price_won END) AS UNSIGNED) AS latest_price,         
         MAX(CASE WHEN rn_latest=1 THEN deal_date END) AS latest_deal_date,
         MAX(CASE WHEN rn_latest=1 THEN apt_dong END) AS latest_apt_dong,
@@ -549,9 +757,9 @@ function makeRawTopSql({ whereSql, metricCol, orderDir, withLatest, priceMetric,
     agg_with_complex AS (
       SELECT
         a.*,
-${complexSelectSql(useMap)}
+${complexSelectSql(complexOpts)}
       FROM agg a
-${complexJoinSql({ sourceAlias: 'a', useMap })}
+${complexJoinSql({ sourceAlias: 'a', ...complexOpts })}
     ),
     filtered AS (
       SELECT
@@ -626,7 +834,7 @@ export default async function handler(req, res) {
     const hhOp = String(req.query.hhOp || 'gte').toLowerCase() === 'lte' ? 'lte' : 'gte';
     const householdWhereSql =
       Number.isFinite(hh) && hh > 0
-        ? `AND COALESCE(household_count, 0) ${hhOp === 'lte' ? '<=' : '>='} ${Math.trunc(hh)}`
+        ? `AND household_count IS NOT NULL AND household_count ${hhOp === 'lte' ? '<=' : '>='} ${Math.trunc(hh)}`
         : '';
 
     // ✅ 금액구간(억 단위)
@@ -721,6 +929,9 @@ export default async function handler(req, res) {
     const table = timeframe === 'year' ? 're_trade_apt_stats_y' : 're_trade_apt_stats_m';
     const exists = await tableExists(pool, table);
     const useMap = await tableExists(pool, 're_trade_apt_map');
+    const useOverride = await tableExists(pool, 're_apt_complex_override');
+    const useMapAptSeq = useMap && await columnExists(pool, 're_trade_apt_map', 'apt_seq');
+    const complexOpts = { useMap, useOverride, useMapAptSeq };
 
     let source = 'stats';
     let curRowsRaw = [];
@@ -751,7 +962,7 @@ export default async function handler(req, res) {
         priceMinWon,
         priceMaxWon,
         householdWhereSql,
-        useMap
+        complexOpts
       });
       const priceParams = [];
       if (priceExprStats && priceMinWon != null) priceParams.push(priceMinWon);
@@ -787,7 +998,7 @@ export default async function handler(req, res) {
         priceMinWon,
         priceMaxWon,
         householdWhereSql,
-        useMap
+        complexOpts
       }) + `
         WHERE rank_no <= ?
         ORDER BY rank_no
@@ -825,16 +1036,22 @@ export default async function handler(req, res) {
         const w = buildStatsWhere({
           timeframe, period: momPeriod, pyeongBand: pyeong, sido, lawd, gu, buildFrom, buildTo, apt
         });
-        const sql = makeStatsTopSql({ table, whereSql: w.whereSql, metricCol, orderDir, householdWhereSql, useMap });
-        const [rows] = await pool.query(sql, [...w.params, prevTop]);
+        const sql = makeStatsTopSql({ table, whereSql: w.whereSql, metricCol, orderDir, priceExpr: priceExprStats, priceMinWon, priceMaxWon, householdWhereSql, complexOpts });
+        const priceParams = [];
+        if (priceExprStats && priceMinWon != null) priceParams.push(priceMinWon);
+        if (priceExprStats && priceMaxWon != null) priceParams.push(priceMaxWon);
+        const [rows] = await pool.query(sql, [...w.params, ...priceParams, prevTop]);
         momRowsRaw = rows || [];
       }
       if (wantYoY && yoyPeriod) {
         const w = buildStatsWhere({
           timeframe, period: yoyPeriod, pyeongBand: pyeong, sido, lawd, gu, buildFrom, buildTo, apt
         });
-        const sql = makeStatsTopSql({ table, whereSql: w.whereSql, metricCol, orderDir, householdWhereSql, useMap });
-        const [rows] = await pool.query(sql, [...w.params, prevTop]);
+        const sql = makeStatsTopSql({ table, whereSql: w.whereSql, metricCol, orderDir, priceExpr: priceExprStats, priceMinWon, priceMaxWon, householdWhereSql, complexOpts });
+        const priceParams = [];
+        if (priceExprStats && priceMinWon != null) priceParams.push(priceMinWon);
+        if (priceExprStats && priceMaxWon != null) priceParams.push(priceMaxWon);
+        const [rows] = await pool.query(sql, [...w.params, ...priceParams, prevTop]);
         yoyRowsRaw = rows || [];
       }
     } else {
@@ -852,21 +1069,29 @@ export default async function handler(req, res) {
 
       if (wantMoM && timeframe !== 'year' && momPeriod) {
         const w = buildRawWhere({ timeframe, period: momPeriod, sido, lawd, gu, pyeong, buildFrom, buildTo, apt });        
-        const sql = makeRawTopSql({ whereSql: w.whereSql, metricCol, orderDir, withLatest: false, householdWhereSql, useMap }) + `
+        const sql = makeRawTopSql({ whereSql: w.whereSql, metricCol, orderDir, withLatest: false, priceMetric, priceMinWon, priceMaxWon, householdWhereSql, complexOpts }) + `
           WHERE rank_no <= ?
           ORDER BY rank_no
         `;
-        const [rows] = await pool.query(sql, [...w.params, prevTop]);
+        const priceParams = [];
+        const pm = String(priceMetric || 'none');
+        if (pm !== 'none' && priceMinWon != null) priceParams.push(priceMinWon);
+        if (pm !== 'none' && priceMaxWon != null) priceParams.push(priceMaxWon);
+        const [rows] = await pool.query(sql, [...w.params, ...priceParams, prevTop]);
         momRowsRaw = rows || [];
       }
 
       if (wantYoY && yoyPeriod) {
         const w = buildRawWhere({ timeframe, period: yoyPeriod, sido, lawd, gu, pyeong, buildFrom, buildTo, apt });         
-        const sql = makeRawTopSql({ whereSql: w.whereSql, metricCol, orderDir, withLatest: false, householdWhereSql, useMap }) + `
+        const sql = makeRawTopSql({ whereSql: w.whereSql, metricCol, orderDir, withLatest: false, priceMetric, priceMinWon, priceMaxWon, householdWhereSql, complexOpts }) + `
           WHERE rank_no <= ?
           ORDER BY rank_no
         `;
-        const [rows] = await pool.query(sql, [...w.params, prevTop]);
+        const priceParams = [];
+        const pm = String(priceMetric || 'none');
+        if (pm !== 'none' && priceMinWon != null) priceParams.push(priceMinWon);
+        if (pm !== 'none' && priceMaxWon != null) priceParams.push(priceMaxWon);
+        const [rows] = await pool.query(sql, [...w.params, ...priceParams, prevTop]);
         yoyRowsRaw = rows || [];
       }
     }
