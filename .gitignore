@@ -10,3 +10,6 @@ yarn-error.log*
 .env.*
 .env*.local
 
+data/private/
+*.xlsx
+*.xls

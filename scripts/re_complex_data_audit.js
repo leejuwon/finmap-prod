@@ -67,7 +67,9 @@ const TARGET_COLUMNS = {
   override: [
     'id', 'kapt_code', 'apt_seq', 'lawd_cd', 'dong_name', 'apt_name', 'apt_name_norm',
     'household_count_verified', 'dong_count_verified', 'parking_total_verified',
-    'heating_type_verified', 'manage_type_verified', 'source_name', 'source_url',
+    'parking_ground_verified', 'parking_underground_verified',
+    'heating_type_verified', 'manage_type_verified', 'approval_date_verified',
+    'source_name', 'source_url', 'source_file', 'source_version',
     'note', 'verified_at', 'updated_at',
   ],
 };
@@ -422,8 +424,11 @@ function overrideHasVerified(row) {
     row.household_count_verified != null ||
     row.dong_count_verified != null ||
     row.parking_total_verified != null ||
+    row.parking_ground_verified != null ||
+    row.parking_underground_verified != null ||
     row.heating_type_verified ||
-    row.manage_type_verified
+    row.manage_type_verified ||
+    row.approval_date_verified
   );
 }
 
@@ -484,6 +489,7 @@ function findComplexInfo({ statsRow, mapRows, dimIndex, overrideIndex, preferred
     parking_total: hasOverride && overrideRow.parking_total_verified != null ? overrideRow.parking_total_verified : dimSafe?.parking_total ?? null,
     heating_type: hasOverride && overrideRow.heating_type_verified ? overrideRow.heating_type_verified : dimSafe?.heating_type ?? null,
     manage_type: hasOverride && overrideRow.manage_type_verified ? overrideRow.manage_type_verified : dimSafe?.manage_type ?? null,
+    approval_date: hasOverride && overrideRow.approval_date_verified ? overrideRow.approval_date_verified : dimSafe?.approval_date ?? null,
   };
 
   let source = 'none';
@@ -568,11 +574,28 @@ async function queryLatestTopCoverage(conn, { sidoCode = null, dimIndex, overrid
   const total = joined.length;
   const matched = joined.filter((r) => r.source !== 'none').length;
   const overrideMatched = joined.filter((r) => r.source === 'override').length;
+  const verifiedSource = joined.filter((r) => r.source === 'override' && r.confidence === 'verified').length;
   const householdNull = joined.filter((r) => r.final.household_count == null).length;
   const dongNull = joined.filter((r) => r.final.dong_count == null).length;
   const householdLt100 = joined.filter((r) => r.final.household_count != null && Number(r.final.household_count) < 100).length;
+  const suspiciousVisible = joined.filter((r) => {
+    const h = asInt(r.final.household_count);
+    const d = asInt(r.final.dong_count);
+    return h != null && d != null && h < 100 && d < 100;
+  }).length;
 
-  return { deal_ym: ym, sidoCode: sidoCode || 'all', total, matched, overrideMatched, householdNull, dongNull, householdLt100 };
+  return {
+    deal_ym: ym,
+    sidoCode: sidoCode || 'all',
+    total,
+    matched,
+    overrideMatched,
+    verifiedSource,
+    householdNull,
+    dongNull,
+    householdLt100,
+    suspiciousVisible,
+  };
 }
 
 function table(headers, rows) {
@@ -650,7 +673,8 @@ function makeDetailSection(summary, data) {
   const overrideRows = data.overrideRows.slice(0, 8).map((r) => [
     r.kapt_code, r.apt_seq, r.lawd_cd, r.dong_name, r.apt_name,
     r.household_count_verified, r.dong_count_verified, r.parking_total_verified,
-    r.source_name, r.source_url, r.note,
+    r.parking_ground_verified, r.parking_underground_verified, r.approval_date_verified,
+    r.source_name, r.source_url, r.source_file, r.source_version, r.note,
   ]);
   const mapRows = data.mapRows.slice(0, 8).map((r) => [
     r.apt_key, r.kapt_code, r.apt_seq, r.match_method, r.match_score, r.household_count, r.dong_count,
@@ -677,7 +701,7 @@ ${table(['kapt_code', 'kapt_name', 'lawd_cd', 'dong', 'jibun', 'household_dim', 
 
 override 후보:
 
-${table(['kapt_code', 'apt_seq', 'lawd_cd', 'dong', 'apt_name', 'household_verified', 'dong_verified', 'parking_verified', 'source', 'source_url', 'note'], overrideRows.length ? overrideRows : [['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-']])}
+${table(['kapt_code', 'apt_seq', 'lawd_cd', 'dong', 'apt_name', 'household_verified', 'dong_verified', 'parking_verified', 'parking_ground', 'parking_underground', 'approval_date', 'source', 'source_url', 'source_file', 'source_version', 'note'], overrideRows.length ? overrideRows : [['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-']])}
 
 apt_key 매핑 후보:
 
@@ -731,9 +755,10 @@ function makeReport({ dbName, targetSummaries, targetData, dimCoverage, topCover
       dimCoverage.total,
       '-',
       '-',
+      '-',
       pct(dimCoverage.household_null, dimCoverage.total),
       pct(dimCoverage.dong_null, dimCoverage.total),
-      dimCoverage.household_lt_100,
+      `전체 이상치 ${dimCoverage.household_lt_100}`,
     ]);
   }
   for (const item of [topCoverageAll, topCoverageSeoul].filter(Boolean)) {
@@ -742,9 +767,10 @@ function makeReport({ dbName, targetSummaries, targetData, dimCoverage, topCover
       item.total,
       `${item.matched}/${item.total} (${pct(item.matched, item.total)})`,
       `${item.overrideMatched}/${item.total} (${pct(item.overrideMatched, item.total)})`,
+      `${item.verifiedSource}/${item.total} (${pct(item.verifiedSource, item.total)})`,
       `${item.householdNull}/${item.total} (${pct(item.householdNull, item.total)})`,
       `${item.dongNull}/${item.total} (${pct(item.dongNull, item.total)})`,
-      item.householdLt100,
+      item.suspiciousVisible === 0 ? 'Y' : `N (${item.suspiciousVisible})`,
     ]);
   }
 
@@ -779,7 +805,7 @@ function makeReport({ dbName, targetSummaries, targetData, dimCoverage, topCover
 - 공공데이터포털의 \`국토교통부_공동주택 단지 기본 정보\` 파일데이터는 단지코드, 단지명, 법정동주소, 도로명주소, 사용승인일, 동수, 세대수, 관리방식, 난방방식, 총주차대수, 지상/지하주차대수를 포함한다. URL: https://www.data.go.kr/data/15073271/fileData.do
 - 같은 페이지는 해당 XLSX가 K-apt에서 매주 금요일 추출된 참조자료이며, 현 시점 정확한 자료는 OpenAPI 활용을 권장한다고 안내한다.
 - 공공데이터포털의 \`전국공동주택표준데이터\` / \`국토교통부_공동주택 기본 정보제공 서비스\`는 동수, 세대수 등 기본정보를 제공하는 JSON OpenAPI 후보로 확인된다. URL: https://www.data.go.kr/data/15096285/standard.do
-- 당장 신규 OpenAPI 파이프라인을 붙이기 전, 공식 XLSX를 CSV로 변환해 \`scripts/re_import_complex_override_csv.js --file=...\`로 import하는 구조를 먼저 만들었다.
+- 당장 신규 OpenAPI 파이프라인을 붙이기 전, 공식 XLSX를 CSV로 변환해 \`scripts/re_import_complex_override_csv.js --file=...\`로 import하는 구조를 먼저 만들었다. import 스크립트는 \`--dryRun=1\`, 컬럼 자동 인식, \`source_file/source_version\` 기록, manual seed 덮어쓰기 로그를 지원한다.
 
 ## 점검 단지 요약
 
@@ -787,7 +813,7 @@ ${table(['점검 단지명', '거래 원천 데이터', '통계 apt_key', 'overr
 
 ## 전체 단지 기본정보 커버리지
 
-${table(['범위', '대상 수', '매칭률', 'override 매칭', 'household_count null', 'dong_count null', 'household_count < 100'], coverageRows)}
+${table(['범위', '대상 수', '매칭률', 'override 매칭', 'verified source', 'household_count null', 'dong_count null', 'suspicious 미노출'], coverageRows)}
 
 ## 컬럼 현황
 
@@ -801,14 +827,15 @@ ${detailSections}
 ## override 테이블/seed 적용 명령
 
 - 마이그레이션 적용: \`mysql --default-character-set=utf8mb4 ... < sql/20260526_create_re_apt_complex_override.sql\`
-- CSV import: \`node scripts/re_import_complex_override_csv.js --file=data/re_apt_complex_override.csv\`
+- CSV dry-run: \`node scripts/re_import_complex_override_csv.js --file=data/re_apt_complex_override.csv --dryRun=1 --sourceVersion=YYYY-MM-DD\`
+- CSV import: \`node scripts/re_import_complex_override_csv.js --file=data/re_apt_complex_override.csv --sourceVersion=YYYY-MM-DD\`
 - 아크로리버파크 단건 재수집: \`node server/crawler/scripts/re_sync_apt_complex_dim.js --targetKaptCode=A10027205 --sidos=11 --requireBasis=1 --upsert=1 --debug=1\`
 - 김포풍무푸르지오 단건 재수집: \`node server/crawler/scripts/re_sync_apt_complex_dim.js --targetKaptCode=A10027488 --sidos=41 --requireBasis=1 --upsert=1 --debug=1\`
 - apt_key-kapt_code 재생성: \`node server/crawler/scripts/re_build_trade_apt_map.js --ym=${topCoverageAll?.deal_ym || 'YYYYMM'} --debug=1\`
 
 ## 남은 과제
 
-1. 운영 반영 전 \`re_apt_complex_override.source_url\`에 공식 확인 URL 또는 파일명/버전을 채운다.
+1. 운영 반영 전 공식 CSV 파일을 UTF-8 CSV로 변환한 뒤 dry-run 결과의 \`kaptCodeMatchedRows\`, \`regionNameFallbackRows\`, skip 샘플을 확인한다.
 2. K-apt 공식 XLSX 또는 표준 OpenAPI에서 \`세대수\`, \`동수\`, \`총주차대수\`, \`난방방식\`을 정기 import하는 배치를 추가한다.
 3. \`re_trade_apt_map\`에 \`apt_seq\` 컬럼이 있다면 apt_seq 기반 매칭률을 별도 지표로 추적한다.
 4. 이름 기반 fallback은 계속 보조 수단으로만 유지하고, 복수 후보는 \`low\` 또는 \`none\`으로 둔다.

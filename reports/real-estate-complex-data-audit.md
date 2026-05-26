@@ -25,33 +25,33 @@
 - 공공데이터포털의 `국토교통부_공동주택 단지 기본 정보` 파일데이터는 단지코드, 단지명, 법정동주소, 도로명주소, 사용승인일, 동수, 세대수, 관리방식, 난방방식, 총주차대수, 지상/지하주차대수를 포함한다. URL: https://www.data.go.kr/data/15073271/fileData.do
 - 같은 페이지는 해당 XLSX가 K-apt에서 매주 금요일 추출된 참조자료이며, 현 시점 정확한 자료는 OpenAPI 활용을 권장한다고 안내한다.
 - 공공데이터포털의 `전국공동주택표준데이터` / `국토교통부_공동주택 기본 정보제공 서비스`는 동수, 세대수 등 기본정보를 제공하는 JSON OpenAPI 후보로 확인된다. URL: https://www.data.go.kr/data/15096285/standard.do
-- 당장 신규 OpenAPI 파이프라인을 붙이기 전, 공식 XLSX를 CSV로 변환해 `scripts/re_import_complex_override_csv.js --file=...`로 import하는 구조를 먼저 만들었다.
+- 당장 신규 OpenAPI 파이프라인을 붙이기 전, 공식 XLSX를 CSV로 변환해 `scripts/re_import_complex_override_csv.js --file=...`로 import하는 구조를 먼저 만들었다. import 스크립트는 `--dryRun=1`, 컬럼 자동 인식, `source_file/source_version` 기록, manual seed 덮어쓰기 로그를 지원한다.
 
 ## 점검 단지 요약
 
 | 점검 단지명 | 거래 원천 데이터 | 통계 apt_key | override_exists | household_count_dim | household_count_override | household_count_final | complex_info_source | complex_info_confidence | 기대값 | 결과 | warning |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 경기도 김포시 풍무동 김포풍무푸르지오 | 있음 (4개 후보) | 2개 후보 (상세 표 참조)<br>202604 | Y | 20 | 2712 | 2712 | override | verified | 2712 | 일치 | override_applied; dim_counts_suspicious |
-| 서울 서초구 반포동 아크로리버파크 | 있음 (2개 후보) | 11650\|\|반포동\|아크로리버파크<br>202604 | Y | 29 | 1612 | 1612 | override | verified | 1612 | 일치 | override_applied; dim_counts_suspicious |
+| 경기도 김포시 풍무동 김포풍무푸르지오 | 있음 (4개 후보) | 2개 후보 (상세 표 참조)<br>202604 | Y | 20 | 24670 | 24670 | override | verified | 2712 | 불일치 | override_applied; dim_counts_suspicious |
+| 서울 서초구 반포동 아크로리버파크 | 있음 (2개 후보) | 11650\|\|반포동\|아크로리버파크<br>202604 | Y | 29 | 16120 | 16120 | override | verified | 1612 | 불일치 | override_applied; dim_counts_suspicious |
 
 ## 전체 단지 기본정보 커버리지
 
-| 범위 | 대상 수 | 매칭률 | override 매칭 | household_count null | dong_count null | household_count < 100 |
-| --- | --- | --- | --- | --- | --- | --- |
-| re_apt_complex_dim 전체 | 10114 | - | - | 11.5% | 6.8% | 8944 |
-| 최근 202604 Top100 (전체) | 100 | 2/100 (2.0%) | 1/100 (1.0%) | 98/100 (98.0%) | 100/100 (100.0%) | 1 |
-| 최근 202604 Top100 (서울) | 100 | 2/100 (2.0%) | 1/100 (1.0%) | 98/100 (98.0%) | 100/100 (100.0%) | 1 |
+| 범위 | 대상 수 | 매칭률 | override 매칭 | verified source | household_count null | dong_count null | suspicious 미노출 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| re_apt_complex_dim 전체 | 10114 | - | - | - | 11.5% | 6.8% | 전체 이상치 8944 |
+| 최근 202604 Top100 (전체) | 100 | 31/100 (31.0%) | 31/100 (31.0%) | 31/100 (31.0%) | 69/100 (69.0%) | 69/100 (69.0%) | Y |
+| 최근 202604 Top100 (서울) | 100 | 32/100 (32.0%) | 32/100 (32.0%) | 32/100 (32.0%) | 68/100 (68.0%) | 68/100 (68.0%) | Y |
 
 ## 컬럼 현황
 
 - `re_apt_complex_dim`: approval_date, basis_error_reason, basis_raw_json, bjd_code, build_year, dong_count, dong_name, gu_name, heating_type, homepage, household_count, jibun, kapt_addr, kapt_code, kapt_name, kapt_name_norm, lawd_cd, manage_type, parking_ground, parking_total, parking_underground, road_addr, road_nm, road_nm_bonbun, road_nm_bubun, sido_code, sigungu_name, source_updated_at, tel, updated_at
-- `re_apt_complex_override`: apt_name, apt_name_norm, apt_seq, created_at, dong_count_verified, dong_name, heating_type_verified, household_count_verified, id, kapt_code, lawd_cd, manage_type_verified, note, parking_total_verified, source_name, source_url, updated_at, verified_at
+- `re_apt_complex_override`: approval_date_verified, apt_name, apt_name_norm, apt_seq, created_at, dong_count_verified, dong_name, heating_type_verified, household_count_verified, id, kapt_code, lawd_cd, manage_type_verified, note, parking_ground_verified, parking_total_verified, parking_underground_verified, source_file, source_name, source_url, source_version, updated_at, verified_at
 
 ## 상세 진단
 
 ### 경기도 김포시 풍무동 김포풍무푸르지오
 
-요약: override verified 값으로 최종 세대수 2712가 기대값과 일치
+요약: 최종 세대수 24670가 기대값 2712와 불일치
 
 거래 원천 후보:
 
@@ -78,9 +78,11 @@
 
 override 후보:
 
-| kapt_code | apt_seq | lawd_cd | dong | apt_name | household_verified | dong_verified | parking_verified | source | source_url | note |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| A10027488 | - | 41570 | 풍무동 | 김포풍무푸르지오 | 2712 | - | - | manual verified / audit seed | - | Temporary verified seed from real-estate complex data audit. Fill source_url before production hardening. |
+| kapt_code | apt_seq | lawd_cd | dong | apt_name | household_verified | dong_verified | parking_verified | parking_ground | parking_underground | approval_date | source | source_url | source_file | source_version | note |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| A10027488 | - | 41570 | 풍무동 | 김포풍무푸르지오 | 27120 | 23 | 3438 | 3438 | - | Fri Jun 24 2016 00:00:00 GMT+0900 (대한민국 표준시) | 국토교통부_공동주택 단지 기본 정보 | https://www.data.go.kr/data/15073271/fileData.do | kapt_complex_basic_20260526_utf8.csv | 2026-05-26 | official csv import 2026-05-26 file=kapt_complex_basic_20260526_utf8.csv |
+| A10026165 | - | - | 풍무동 | 풍무센트럴푸르지오 | 24670 | 22 | 3294 | 27 | 3267 | Fri Jun 22 2018 00:00:00 GMT+0900 (대한민국 표준시) | 국토교통부_공동주택 단지 기본 정보 | https://www.data.go.kr/data/15073271/fileData.do | kapt_complex_basic_20260526_utf8.csv | 2026-05-26 | official csv import 2026-05-26 file=kapt_complex_basic_20260526_utf8.csv |
+| - | 41570-840 | 41570 | 풍무동 | 풍무푸르지오센트레빌 | 2712 | - | - | - | - | - | manual verified / audit seed | - | audit-seed | 2026-05-26 | Alias seed for RTMS trade name related to K-apt 김포풍무푸르지오. Fill source_url before production hardening. |
 
 apt_key 매핑 후보:
 
@@ -94,13 +96,13 @@ apt_key 매핑 후보:
 - household_count_source_value: -
 - household_count_before: 20
 - household_count_dim: 20
-- household_count_override: 2712
-- household_count_final: 2712
+- household_count_override: 24670
+- household_count_final: 24670
 - parking_total_before: 3438
 - parking_total_after: 3438
 - complex_info_source: override
 - complex_info_confidence: verified
-- complex_info_join_method: override:fallback_kapt_code
+- complex_info_join_method: override:kapt_code
 - complex_info_warning: override_applied; dim_counts_suspicious
 
 - household_count: - (-)
@@ -113,7 +115,7 @@ apt_key 매핑 후보:
 
 ### 서울 서초구 반포동 아크로리버파크
 
-요약: override verified 값으로 최종 세대수 1612가 기대값과 일치
+요약: 최종 세대수 16120가 기대값 1612와 불일치
 
 거래 원천 후보:
 
@@ -136,9 +138,9 @@ apt_key 매핑 후보:
 
 override 후보:
 
-| kapt_code | apt_seq | lawd_cd | dong | apt_name | household_verified | dong_verified | parking_verified | source | source_url | note |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| A10027205 | - | 11650 | 반포동 | 아크로리버파크 | 1612 | - | - | manual verified / audit seed | - | Temporary verified seed from real-estate complex data audit. Fill source_url before production hardening. |
+| kapt_code | apt_seq | lawd_cd | dong | apt_name | household_verified | dong_verified | parking_verified | parking_ground | parking_underground | approval_date | source | source_url | source_file | source_version | note |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| A10027205 | - | 11650 | 반포동 | 아크로리버파크 | 16120 | 15 | 2983 | - | 2983 | Tue Aug 30 2016 00:00:00 GMT+0900 (대한민국 표준시) | 국토교통부_공동주택 단지 기본 정보 | https://www.data.go.kr/data/15073271/fileData.do | kapt_complex_basic_20260526_utf8.csv | 2026-05-26 | official csv import 2026-05-26 file=kapt_complex_basic_20260526_utf8.csv |
 
 apt_key 매핑 후보:
 
@@ -152,8 +154,8 @@ apt_key 매핑 후보:
 - household_count_source_value: -
 - household_count_before: 29
 - household_count_dim: 29
-- household_count_override: 1612
-- household_count_final: 1612
+- household_count_override: 16120
+- household_count_final: 16120
 - parking_total_before: 2983
 - parking_total_after: 2983
 - complex_info_source: override
@@ -173,14 +175,15 @@ apt_key 매핑 후보:
 ## override 테이블/seed 적용 명령
 
 - 마이그레이션 적용: `mysql --default-character-set=utf8mb4 ... < sql/20260526_create_re_apt_complex_override.sql`
-- CSV import: `node scripts/re_import_complex_override_csv.js --file=data/re_apt_complex_override.csv`
+- CSV dry-run: `node scripts/re_import_complex_override_csv.js --file=data/re_apt_complex_override.csv --dryRun=1 --sourceVersion=YYYY-MM-DD`
+- CSV import: `node scripts/re_import_complex_override_csv.js --file=data/re_apt_complex_override.csv --sourceVersion=YYYY-MM-DD`
 - 아크로리버파크 단건 재수집: `node server/crawler/scripts/re_sync_apt_complex_dim.js --targetKaptCode=A10027205 --sidos=11 --requireBasis=1 --upsert=1 --debug=1`
 - 김포풍무푸르지오 단건 재수집: `node server/crawler/scripts/re_sync_apt_complex_dim.js --targetKaptCode=A10027488 --sidos=41 --requireBasis=1 --upsert=1 --debug=1`
 - apt_key-kapt_code 재생성: `node server/crawler/scripts/re_build_trade_apt_map.js --ym=202604 --debug=1`
 
 ## 남은 과제
 
-1. 운영 반영 전 `re_apt_complex_override.source_url`에 공식 확인 URL 또는 파일명/버전을 채운다.
+1. 운영 반영 전 공식 CSV 파일을 UTF-8 CSV로 변환한 뒤 dry-run 결과의 `kaptCodeMatchedRows`, `regionNameFallbackRows`, skip 샘플을 확인한다.
 2. K-apt 공식 XLSX 또는 표준 OpenAPI에서 `세대수`, `동수`, `총주차대수`, `난방방식`을 정기 import하는 배치를 추가한다.
 3. `re_trade_apt_map`에 `apt_seq` 컬럼이 있다면 apt_seq 기반 매칭률을 별도 지표로 추적한다.
 4. 이름 기반 fallback은 계속 보조 수단으로만 유지하고, 복수 후보는 `low` 또는 `none`으로 둔다.
