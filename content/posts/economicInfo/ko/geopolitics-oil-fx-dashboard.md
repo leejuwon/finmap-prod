@@ -242,6 +242,12 @@ lang: "ko"
 ### 8) “대응 룰”은 어떤 식으로 만들면 좋나요?
 예측 대신 “관측 → 재점검”으로 만들면 됩니다. 예를 들어 “거래량이 2~3개월 연속 감소하면, 내 대출 부담과 현금버퍼를 먼저 점검한다”처럼 조건과 행동을 한 문장으로 연결하세요. 이렇게 하면 뉴스가 나와도 감정이 아니라 규칙으로 움직일 수 있습니다.
 
+## 함께 보면 좋은 글/도구
+
+- [DSR LTV 계산기로 대출 한도와 주택 가격 범위 점검하기](/tools/dsr-ltv-calculator)
+- [인천 아파트 실거래가 Top100으로 수도권 가격대 확인하기](/market/real-estate/incheon-apartment-top100)
+- [서울·경기·인천 아파트 실거래 대시보드에서 가격 분포 확인하기](/market/real-estate)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

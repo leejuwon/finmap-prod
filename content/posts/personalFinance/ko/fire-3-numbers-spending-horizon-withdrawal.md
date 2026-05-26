@@ -285,6 +285,12 @@ FIRE 목표가 현실적으로 느껴지려면, 연금은 “나중에 받는 �
 ### 8) 계산 결과가 너무 크게 나오면 무엇부터 조정해야 하나요?
 수익률 가정을 높이기보다, 먼저 연지출(특히 주거·고정비), 은퇴기간(은퇴 시점), 유입(확실한 범위의 연금)부터 점검하세요. 그 다음 인출률을 보수적으로 유지한 채 “가능한 구조”를 설계하는 순서가 안전합니다.
 
+## 함께 보면 좋은 글/도구
+
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+- [은퇴 초반 5년 수익률 순서 리스크를 먼저 확인하기](/posts/personalFinance/fire-sequence-risk-first-5-years)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

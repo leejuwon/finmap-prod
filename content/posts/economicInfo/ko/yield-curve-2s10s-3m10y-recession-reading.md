@@ -342,6 +342,12 @@ lang: "ko"
 
 ---
 
+## 함께 보면 좋은 글/도구
+
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+- [기준금리와 시장금리가 예금·대출·채권에 이어지는 구조 이해하기](/posts/economicInfo/interest-rate-basics)
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

@@ -263,6 +263,12 @@ A: 변동성을 낮추고 꾸준함을 유지하는 것입니다.
 
 ---
 
+## 함께 보면 좋은 글/도구
+
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+- [CAGR 뜻과 단순 수익률의 차이 이해하기](/posts/personalFinance/what-is-cagr)
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

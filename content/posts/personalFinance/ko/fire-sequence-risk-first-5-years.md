@@ -275,6 +275,12 @@ FIRE 계산기에서 <strong>연지출</strong>을 10% 올린 버전(건보료/�
 ### 8) 이 글을 읽고 오늘 딱 하나만 한다면 무엇이 좋을까요?
 탄력 지출 5개를 적고, “초반 5년에는 생활비 상향 동결” 문장을 가족과 합의하는 것이 가장 강력합니다. 초반 강세 시나리오까지 방어해주는 규칙이기 때문입니다.
 
+## 함께 보면 좋은 글/도구
+
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+- [FIRE 목표를 지출·기간·인출률 3개 숫자로 점검하기](/posts/personalFinance/fire-3-numbers-spending-horizon-withdrawal)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

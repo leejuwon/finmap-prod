@@ -256,6 +256,12 @@ A: 반드시 그렇지는 않지만, 변동성이 높으면 CAGR이 감소할 �
 
 ---
 
+## 함께 보면 좋은 글/도구
+
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+- [연 7% 복리 가정을 CAGR로 현실 점검하기](/posts/investingInfo/cagr-7percent-reality-check)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

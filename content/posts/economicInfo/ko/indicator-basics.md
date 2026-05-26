@@ -278,9 +278,12 @@ A. 경기 변화의 방향을 가장 빠르게 보여주기 때문입니다.
 **Q3. 실업률은 왜 금리와 연결되나요?**  
 A. 고용은 소비와 물가를 통해 금리 정책에 직접 영향을 줍니다.
 
-<!-- =========================
-     JSON-LD: Article (필수)
-========================= -->
+## 함께 보면 좋은 글/도구
+
+- [시장정보 지표를 투자 판단에 연결하는 방법 보기](/posts/investingInfo/indicator-marketinfo)
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

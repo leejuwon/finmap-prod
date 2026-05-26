@@ -213,6 +213,12 @@ TNX(미 10년물) 프레임이 약하면 DXY를 잘못 해석하는 경우가 �
 
 ---
 
+## 함께 보면 좋은 글/도구
+
+- [DXY 달러인덱스로 글로벌 달러 강세 흐름 읽기](/posts/investingInfo/dxy-dollar-index-basics)
+- [원달러 환율이 한국 경제와 코스피에 미치는 영향 보기](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

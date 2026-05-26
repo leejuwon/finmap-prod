@@ -193,6 +193,12 @@ A2. 가능합니다. 다만 비상금이 먼저 확보되어 있어야 흔들림
 
 ---
 
+## 함께 보면 좋은 글/도구
+
+- [비상금 규모를 직장·가족·대출 리스크로 계산하기](/posts/personalFinance/emergency-fund-by-risk)
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [고금리 부채 상환과 투자의 우선순위 기준 세우기](/posts/personalFinance/high-rate-debt-vs-invest-threshold-rule)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

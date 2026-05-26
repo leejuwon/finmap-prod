@@ -117,6 +117,12 @@ ETF 적립식·연금저축·IRP 등 대부분 월 단위로 운용되므로 월
 
 ---
 
+## 함께 보면 좋은 글/도구
+
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+- [단리와 복리 차이를 실제 숫자로 비교하기](/posts/personalFinance/simple-vs-compound)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

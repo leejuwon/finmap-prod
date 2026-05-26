@@ -190,6 +190,12 @@ DCA 계산기는 매월 납입하는 적립식 흐름을 확인할 때 좋고, �
 ### Q8. 이 글의 계산 결과를 그대로 믿어도 되나요?
 아니요. 이 글의 금액은 계산 감각을 돕는 단순 예시입니다. 실제 판단은 본인의 소득, 비상금, 투자 상품, 세금, 수수료, 위험 감내도에 맞춰 다시 계산해야 합니다.
 
+## 함께 보면 좋은 글/도구
+
+- [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+- [적립식 투자가 무너지는 7가지 패턴과 운영 규칙 점검하기](/posts/investingInfo/dca-consistency-7-fail-patterns)
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

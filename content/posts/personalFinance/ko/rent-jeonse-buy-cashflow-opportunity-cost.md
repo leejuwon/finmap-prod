@@ -263,6 +263,12 @@ lang: "ko"
 ### Q8. 결론을 내렸는데도 계속 흔들립니다. 어떻게 해야 하나요?
 결론을 “선택”이 아니라 “룰”로 바꾸면 흔들림이 줄어듭니다. 예를 들어 “금리 +2%p면 매매 중단, 전세로 전환”처럼 트리거 기반 플랜B를 문장으로 적어두세요. 뉴스는 변해도 룰은 남습니다.
 
+## 함께 보면 좋은 글/도구
+
+- [DSR LTV 계산기로 대출 한도와 주택 가격 범위 점검하기](/tools/dsr-ltv-calculator)
+- [인천 아파트 실거래가 Top100으로 수도권 가격대 확인하기](/market/real-estate/incheon-apartment-top100)
+- [서울·경기·인천 아파트 실거래 대시보드에서 가격 분포 확인하기](/market/real-estate)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

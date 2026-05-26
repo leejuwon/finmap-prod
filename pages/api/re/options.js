@@ -25,6 +25,37 @@ function sidoBilingual(code) {
   return v;
 }
 
+async function loadDealMonths() {
+  try {
+    const [rows] = await pool.execute(`
+      SELECT deal_ym
+      FROM re_trade_deal_ym
+      WHERE deal_ym IS NOT NULL AND deal_ym <> ''
+      ORDER BY deal_ym
+    `);
+    const months = (rows || []).map(r => String(r.deal_ym)).filter(Boolean);
+    if (months.length) return months;
+  } catch (e) {
+    // Auxiliary table may be absent in a local/dev DB; fall back to the source table.
+  }
+
+  const [rows] = await pool.execute(`
+    SELECT DISTINCT deal_ym
+    FROM re_trade_apt
+    WHERE deal_ym IS NOT NULL AND deal_ym <> ''
+    ORDER BY deal_ym
+  `);
+  return (rows || []).map(r => String(r.deal_ym)).filter(Boolean);
+}
+
+function buildYearRange() {
+  const currentYear = new Date().getFullYear();
+  const minY = 1900;
+  const maxY = Math.min(2100, currentYear + 1);
+  const years = Array.from({ length: (maxY - minY + 1) }, (_, i) => String(minY + i));
+  return { min: minY, max: maxY, years };
+}
+
 async function handler(req, res) {
   if (req.method !== 'GET') {
     res.statusCode = 405;
@@ -47,18 +78,8 @@ async function handler(req, res) {
 
   try {    
 
-    // 1) 시도 목록: 실제 데이터에 존재하는 시도만
-    const [sidoRows] = await pool.execute(`
-      SELECT DISTINCT LEFT(lawd_cd, 2) AS sido_code
-      FROM re_trade_apt
-      WHERE lawd_cd IS NOT NULL AND lawd_cd <> ''
-      ORDER BY sido_code
-    `);
-
-    const allow = { '11': true, '28': true, '41': true };
-    const codes = (sidoRows || [])
-      .map(r => String(r.sido_code))
-      .filter(c => allow[c]);
+    // 1) 시도 목록: 초기 옵션 API는 원천 거래 테이블 DISTINCT를 피하고 고정 목록을 반환
+    const codes = ['11', '28', '41'];
 
     // ✅ 통일된 shape: value / label_ko / label_en
     const sidos = [
@@ -69,68 +90,18 @@ async function handler(req, res) {
       }),
     ];
 
-    // 2) 기간(월/년)
-    const [monthRows] = await pool.execute(`
-      SELECT DISTINCT deal_ym
-      FROM re_trade_apt
-      WHERE deal_ym IS NOT NULL AND deal_ym <> ''
-      ORDER BY deal_ym
-    `);
-
-    const months = (monthRows || []).map(r => String(r.deal_ym));
+    // 2) 기간(월/년): 보조 기간 테이블을 우선 사용
+    const months = await loadDealMonths();
     const maxYm = months.length ? months[months.length - 1] : '';
 
     const yearSet = {};
     for (const ym of months) yearSet[ym.slice(0, 4)] = true;
     const years = Object.keys(yearSet).sort();
 
-    // 2-1) build year 범위 (UI에서 년식 From~To 리스트로 사용)
-    const [byRows] = await pool.execute(`
-      SELECT
-        MIN(build_year) AS min_y,
-        MAX(build_year) AS max_y
-      FROM re_trade_apt
-      WHERE build_year IS NOT NULL
-        AND build_year >= 1900
-        AND build_year <= 2100
-    `);
-    const minY = byRows?.[0]?.min_y ? Number(byRows[0].min_y) : null;
-    const maxY = byRows?.[0]?.max_y ? Number(byRows[0].max_y) : null;
-    let buildYears = [];
-    if (Number.isFinite(minY) && Number.isFinite(maxY) && minY <= maxY) {
-      const lo = Math.max(1900, minY);
-      const hi = Math.min(2100, maxY);
-      // 너무 길어지는 것 방지(최대 180개)
-      const capLo = Math.max(lo, hi - 179);
-      buildYears = Array.from({ length: (hi - capLo + 1) }, (_, i) => String(capLo + i));
-    }
-
-    // 3) 시군구 목록(기본 fallback 용) - 여기서는 영문 표기가 없으니 en은 ko를 그대로
-    const sigunguBySido = {};
-    for (const c of codes) {
-      const [gRows] = await pool.execute(
-        `
-        SELECT DISTINCT lawd_cd, sigungu_name
-        FROM re_trade_apt
-        WHERE LEFT(lawd_cd, 2) = ?
-          AND sigungu_name IS NOT NULL AND sigungu_name <> ''
-        ORDER BY sigungu_name, lawd_cd
-        `,
-        [c]
-      );
-
-      sigunguBySido[c] = [
-        { value: 'all', label_ko: '전체', label_en: 'All' },
-        ...(gRows || []).map(r => ({
-          value: String(r.lawd_cd),
-          label_ko: String(r.sigungu_name),
-          label_en: String(r.sigungu_name), // 번역/로마자화는 프리미엄 단계에서
-        })),
-      ];
-    }
+    const buildYears = buildYearRange();
 
     res.statusCode = 200;
-    res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('Cache-Control', 'public, max-age=60, s-maxage=3600, stale-while-revalidate=86400');
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
     res.end(JSON.stringify({
       ok: true,
@@ -146,9 +117,8 @@ async function handler(req, res) {
       },
       // UI 편의 옵션들
       topOptions: ['10','20','50','100','300','500'],
-      buildYears: { min: minY, max: maxY, years: buildYears },
+      buildYears,
       priceMetricOptions: ['none','median_price','avg_price','latest_price','max_price','sum_price'],
-      sigunguBySido,
     }));
   } catch (e) {
     res.statusCode = 500;

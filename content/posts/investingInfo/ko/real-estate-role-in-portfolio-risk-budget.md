@@ -269,6 +269,12 @@ lang: "ko"
 ### 8) 부동산을 역할로 설계한다는 게 결국 무슨 뜻인가요?
 “부동산이 내 삶과 포트폴리오에서 어떤 기능을 맡는지”를 먼저 정하고, 그 역할을 깨뜨리는 트리거(금리/거래량/현금흐름)를 정하는 뜻입니다. 그 다음에야 비중과 실행(리밸런싱/중단)이 현실적으로 정리됩니다.
 
+## 함께 보면 좋은 글/도구
+
+- [DSR LTV 계산기로 대출 한도와 주택 가격 범위 점검하기](/tools/dsr-ltv-calculator)
+- [인천 아파트 실거래가 Top100으로 수도권 가격대 확인하기](/market/real-estate/incheon-apartment-top100)
+- [서울·경기·인천 아파트 실거래 대시보드에서 가격 분포 확인하기](/market/real-estate)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

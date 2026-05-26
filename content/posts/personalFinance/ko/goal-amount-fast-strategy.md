@@ -103,6 +103,12 @@ tool: ["goal","comp"]
 ### 질문 3. 기간을 줄이는 것이 항상 좋은가요?
 기간은 충분히 확보하는 것이 안정적이며 복리 효과를 충분히 누릴 수 있습니다.
 
+## 함께 보면 좋은 글/도구
+
+- [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [월 50만원 적립식 투자 10년 예시로 기준선 잡기](/posts/personalFinance/monthly-dca-10-year-result)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

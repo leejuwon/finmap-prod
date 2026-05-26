@@ -31,6 +31,7 @@ tools: ["goal","compound","fire"]
 <!-- =========================
      JSON-LD (Article + FAQPage)
      ========================= -->
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -397,3 +398,10 @@ tools: ["goal","compound","fire"]
 - [코스피에 가장 큰 영향을 끼치는 글로벌 시장 환경 총정리](/posts/investingInfo/indicator-marketinfo)
 
 ---
+
+## 함께 보면 좋은 글/도구
+
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+- [예산·비상금·장기투자 3단계로 가계 재무 기반 만들기](/posts/personalFinance/personal-finance-3pillars)
+

@@ -354,6 +354,12 @@ lang: "ko"
 
 ---
 
+## 함께 보면 좋은 글/도구
+
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+- [비상금 규모를 직장·가족·대출 리스크로 계산하기](/posts/personalFinance/emergency-fund-by-risk)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

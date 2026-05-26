@@ -232,6 +232,12 @@ A. 금리 하락기에는 오히려 가장 높은 수익을 주는 ETF군입니�
 
 ---
 
+## 함께 보면 좋은 글/도구
+
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [시장정보 지표를 투자 판단에 연결하는 방법 보기](/posts/investingInfo/indicator-marketinfo)
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

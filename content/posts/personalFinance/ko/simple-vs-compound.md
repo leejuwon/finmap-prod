@@ -291,6 +291,12 @@ lang: "ko"
 ### Q8. 계산기는 무엇을 넣어야 하나요?
 복리 계산기에는 보통 원금(혹은 초기 자산), 기간, 수익률을 넣습니다. 적립식이라면 월 납입액과 납입 증가율(스텝업)까지 넣어보면 좋습니다. 세금/수수료 옵션이 있다면 세후 기준으로 한 번 더 계산해보는 것이 현실적입니다.
 
+## 함께 보면 좋은 글/도구
+
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [연복리와 월복리 차이를 장기 투자 관점에서 보기](/posts/personalFinance/annual-vs-monthly-compound)
+- [CAGR 뜻과 단순 수익률의 차이 이해하기](/posts/personalFinance/what-is-cagr)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

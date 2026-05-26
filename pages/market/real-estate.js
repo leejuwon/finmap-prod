@@ -9,9 +9,83 @@ import { AD_SLOTS } from '../../config/adSlots';
 
 const M2_PER_PYEONG = 3.305785;
 const DETAIL_STATE_STORAGE_KEY = 'finmap:real-estate:apt-detail-state';
+const DEFAULT_SIDO = '11';
+const VALID_SIDOS = new Set(['all', '11', '28', '41']);
+const TOP_OPTIONS = ['10', '20', '50', '100', '300', '500'];
+const PYEONG_OPTIONS = ['all', '10', '20', '30', '40'];
+const TOP_METRIC_VALUES = ['tx_count', 'median_price', 'avg_price', 'max_price', 'sum_price', 'median_price_per_m2', 'avg_price_per_m2'];
+const PRICE_METRIC_VALUES = ['none', 'median_price', 'avg_price', 'latest_price', 'max_price', 'sum_price'];
 
 const INFEED_SLOT = AD_SLOTS.responsiveBottom;
 
+
+function pickQueryValue(v) {
+  if (Array.isArray(v)) return v[0] == null ? '' : String(v[0]);
+  return v == null ? '' : String(v);
+}
+
+function cleanQueryText(v, maxLen = 80) {
+  return pickQueryValue(v).trim().slice(0, maxLen);
+}
+
+function sanitizeSidoValue(v) {
+  const s = cleanQueryText(v, 8);
+  return VALID_SIDOS.has(s) ? s : DEFAULT_SIDO;
+}
+
+function sanitizeTimeframeValue(v) {
+  return cleanQueryText(v, 12).toLowerCase() === 'year' ? 'year' : 'month';
+}
+
+function sanitizePeriodValue(v, timeframe) {
+  const s = cleanQueryText(v, 8);
+  if (timeframe === 'year') return /^\d{4}$/.test(s) ? s : '';
+  return /^\d{6}$/.test(s) ? s : '';
+}
+
+function sanitizeAreaQuery(query, sido) {
+  if (sido === 'all') return 'all';
+
+  const area = cleanQueryText(query?.area, 80);
+  if (area === 'all') return 'all';
+  if (/^\d{5}$/.test(area) && area.startsWith(sido)) return area;
+  const pipeMatch = area.match(/^(\d{5})\|(.{1,40})$/);
+  if (pipeMatch && pipeMatch[1].startsWith(sido)) return `${pipeMatch[1]}|${pipeMatch[2].trim()}`;
+
+  const lawd = cleanQueryText(query?.lawd, 8);
+  if (/^\d{5}$/.test(lawd) && lawd.startsWith(sido)) {
+    const gu = cleanQueryText(query?.gu, 40);
+    return sido === '41' && gu ? `${lawd}|${gu}` : lawd;
+  }
+
+  return 'all';
+}
+
+function oneOfQuery(v, allowed, fallback) {
+  const s = cleanQueryText(v, 40);
+  return allowed.includes(s) ? s : fallback;
+}
+
+function yearOrAllQuery(v) {
+  const s = cleanQueryText(v, 8);
+  if (s === 'all' || !s) return 'all';
+  return /^\d{4}$/.test(s) ? s : 'all';
+}
+
+function latestPeriodFromOptions(opt, timeframe) {
+  if (!opt?.periods) return '';
+  if (timeframe === 'year') {
+    return opt.periods.maxY || opt.periods.years?.[opt.periods.years.length - 1] || '';
+  }
+  return opt.periods.maxYm || opt.periods.months?.[opt.periods.months.length - 1] || '';
+}
+
+function isPeriodAllowed(opt, timeframe, value) {
+  const v = String(value || '');
+  if (!v) return false;
+  const values = timeframe === 'year' ? (opt?.periods?.years || []) : (opt?.periods?.months || []);
+  return values.includes(v);
+}
 
 function numOrNull(x) {
   const n = Number(x);
@@ -277,7 +351,7 @@ export default function RealEstatePage() {
   const [areas, setAreas] = useState([]); // trade-areas 결과
 
   // ✅ 초기값: 전체(all) 대신 서울(11)
-  const [sido, setSido] = useState('11');
+  const [sido, setSido] = useState(DEFAULT_SIDO);
   const [area, setArea] = useState('all'); // all | lawd | lawd|gu
   const [timeframe, setTimeframe] = useState('month');
    // ✅ 기간을 From~To로
@@ -300,8 +374,8 @@ export default function RealEstatePage() {
   const [sort, setSort] = useState('desc');
   const [top, setTop] = useState('100');
 
-  // ✅ 평형 기본값: 10평대 (초기 조회에도 반드시 반영되도록)
-  const [pyeong, setPyeong] = useState('10');
+  // ✅ 평형 기본값: 전체. URL의 ?pyeong=10 또는 ?band=10은 query 우선 적용.
+  const [pyeong, setPyeong] = useState('all');
   const [buildFrom, setBuildFrom] = useState('all');
   const [buildTo, setBuildTo] = useState('all');
 
@@ -318,6 +392,8 @@ export default function RealEstatePage() {
   const firstTopFetchedRef = useRef(false);
   const [routeLoading, setRouteLoading] = useState(false);
 
+  const [filtersReady, setFiltersReady] = useState(false);
+  const queryAppliedKeyRef = useRef('');
   const reqSeqRef = useRef(0);
   const abortRef = useRef(null);  
 
@@ -345,6 +421,49 @@ export default function RealEstatePage() {
       try { abortRef.current?.abort?.(); } catch {}
     };
   }, []);
+
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    const key = router.asPath || '';
+    if (queryAppliedKeyRef.current === key) return;
+    queryAppliedKeyRef.current = key;
+
+    const query = router.query || {};
+    const nextSido = sanitizeSidoValue(query.sido);
+    const nextTimeframe = sanitizeTimeframeValue(query.timeframe);
+    const nextPeriod = sanitizePeriodValue(query.period, nextTimeframe);
+    const nextFrom = sanitizePeriodValue(query.from, nextTimeframe) || nextPeriod;
+    const nextTo = sanitizePeriodValue(query.to, nextTimeframe) || nextPeriod || nextFrom;
+
+    try { abortRef.current?.abort?.(); } catch {}
+    reqSeqRef.current += 1;
+    firstTopFetchedRef.current = false;
+
+    setFiltersReady(false);
+    setLoading(false);
+    setRows([]);
+    setAreas([]);
+    setSido(nextSido);
+    setArea(sanitizeAreaQuery(query, nextSido));
+    setTimeframe(nextTimeframe);
+    setPeriodFrom(nextFrom);
+    setPeriodTo(nextTo);
+    setTopBy(oneOfQuery(query.metric || query.topBy, TOP_METRIC_VALUES, 'avg_price'));
+    setSort(oneOfQuery(query.order || query.sort, ['asc', 'desc'], 'desc'));
+    setTop(oneOfQuery(query.top, TOP_OPTIONS, '100'));
+    setPyeong(oneOfQuery(query.pyeong || query.band, PYEONG_OPTIONS, 'all'));
+    setBuildFrom(yearOrAllQuery(query.buildFrom));
+    setBuildTo(yearOrAllQuery(query.buildTo));
+    setPriceMetric(oneOfQuery(query.priceMetric, PRICE_METRIC_VALUES, 'none'));
+    setPriceMin(cleanQueryText(query.priceMin, 20));
+    setPriceMax(cleanQueryText(query.priceMax, 20));
+    setHh(cleanQueryText(query.hh, 20));
+    setHhOp(oneOfQuery(query.hhOp, ['gte', 'lte'], 'gte'));
+    setAptName(cleanQueryText(query.apt, 50));
+    setAptNameDeb(cleanQueryText(query.apt, 50));
+    setFiltersReady(true);
+  }, [router.isReady, router.asPath, router.query]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -400,20 +519,14 @@ export default function RealEstatePage() {
     return () => clearTimeout(timer);
   }, [aptName]);
 
-  // timeframe 변경 시 periodFrom/To 자동 보정
+  // timeframe/options 변경 시 periodFrom/To 자동 보정
   useEffect(() => {
-    if (!opt) return;
-    if (timeframe === 'month') {
-      const v = opt.periods?.maxYm || (opt.periods?.months?.[opt.periods.months.length - 1] || '');
-      setPeriodFrom(v);
-      setPeriodTo(v);
-    } else {
-      const v = opt.periods?.years?.[opt.periods.years.length - 1] || '';
-      setPeriodFrom(v);
-      setPeriodTo(v);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [timeframe, opt]);
+    if (!filtersReady || !opt) return;
+    const latest = latestPeriodFromOptions(opt, timeframe);
+    if (!latest) return;
+    setPeriodFrom((prev) => (isPeriodAllowed(opt, timeframe, prev) ? prev : latest));
+    setPeriodTo((prev) => (isPeriodAllowed(opt, timeframe, prev) ? prev : latest));
+  }, [filtersReady, timeframe, opt, periodFrom, periodTo]);
 
   // (중복 호출 방지) trade-areas 로드는 아래 loadingAreas useEffect에서만 처리
 
@@ -459,15 +572,8 @@ export default function RealEstatePage() {
       return dedupeOptions(base.concat(mapped));
     }
 
-    // fallback: options의 sigunguBySido
-    const arr = opt?.sigunguBySido?.[sido] || [];
-    const mapped = arr.map((x) => ({
-      value: String(x.value ?? x.code ?? ''),
-      label_ko: x.label_ko ?? x.name_ko ?? x.name ?? '',
-      label_en: x.label_en ?? x.name_en ?? x.name ?? x.label_ko ?? x.name_ko ?? '',
-    }));
-    return dedupeOptions(base.concat(mapped));
-  }, [areas, opt, sido, lang, t.all]);
+    return base;
+  }, [areas, t.all]);
 
   const periodOptions = useMemo(() => {
     if (!opt) return [];
@@ -606,10 +712,11 @@ export default function RealEstatePage() {
   }
 
   useEffect(() => {
-    if (!opt || !periodFrom || !periodTo) return;
+    if (!filtersReady || !opt || !periodFrom || !periodTo) return;
+    if (!isPeriodAllowed(opt, timeframe, periodFrom) || !isPeriodAllowed(opt, timeframe, periodTo)) return;
     fetchTop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [opt, timeframe, periodFrom, periodTo, sido, area, topBy, sort, top, pyeong, buildFrom, buildTo, priceMetric, priceMin, priceMax, hh, hhOp, aptNameDeb]);
+  }, [filtersReady, opt, timeframe, periodFrom, periodTo, sido, area, topBy, sort, top, pyeong, buildFrom, buildTo, priceMetric, priceMin, priceMax, hh, hhOp, aptNameDeb]);
 
   function renderArea(row) {
     if (row.sido_name !== '경기도') return row.sigungu_name || '-';
@@ -666,11 +773,6 @@ export default function RealEstatePage() {
   function makeAptDetailHref(row) {
     const aptKey = row?.apt_key ? encodeURIComponent(String(row.apt_key)) : '';
     return `/market/real-estate/apt/${aptKey}`;
-    // 상세는 기존 period 기반이므로 to 값을 넣어 호환 유지
-    if (pyeong) qs.set('band', pyeong); // 상세에서는 band로 받음
-    if (sido) qs.set('sido', sido);
-    if (area) qs.set('area', area);
-    return `/market/real-estate/apt/${aptKey}${qs.toString() ? `?${qs.toString()}` : ''}`;
   }
 
   function rememberAptDetailState() {
@@ -892,24 +994,6 @@ export default function RealEstatePage() {
         if (!alive) return;
         if (j?.ok) {
           setOpt(j);
-
-          // ✅ 안전장치: 만약 sido가 all이면 서울(11)로 기본 세팅
-          // (초기/리로드/언어전환 등에서 상태 꼬임 방지)
-          setSido((prev) => {
-            const p = String(prev || 'all');
-            if (p !== 'all') return p;
-            const has11 = Array.isArray(j.sidos) && j.sidos.some((x) => String(x.value) === '11');
-            return has11 ? '11' : p;
-          });
-
-          // ✅ 초기값: from/to 둘 다 세팅
-          const isMonth = timeframe === 'month';
-          const latest =
-            isMonth
-              ? (j.periods?.maxYm || (j.periods?.months?.[j.periods?.months?.length - 1] || ''))
-              : (j.periods?.years?.[j.periods?.years?.length - 1] || '');
-          if (!periodFrom) setPeriodFrom(latest);
-          if (!periodTo) setPeriodTo(latest);
         }
       } finally {
         if (alive) setLoadingOpt(false);
@@ -920,25 +1004,29 @@ export default function RealEstatePage() {
   }, [lang]); // ✅ lang 바뀌면 다시 로드
 
   useEffect(() => {
-    setArea('all');
+    if (!filtersReady) return;
+    let alive = true;
     (async () => {
       if (!sido || sido === 'all') {
         setAreas([]);
+        setLoadingAreas(false);
         return;
       }
       setLoadingAreas(true);
       try {
         const r = await fetch(`/api/re/trade-areas?sido=${encodeURIComponent(sido)}&lang=${encodeURIComponent(lang)}`);
         const j = await r.json();
+        if (!alive) return;
         if (j?.ok) setAreas(j.areas || j.rows || j.items || []);
         else setAreas([]);
       } catch {
-        setAreas([]);
+        if (alive) setAreas([]);
       } finally {
-        setLoadingAreas(false);
+        if (alive) setLoadingAreas(false);
       }
     })();
-  }, [sido, lang]);
+    return () => { alive = false; };
+  }, [filtersReady, sido, lang]);
 
 
 
@@ -1260,7 +1348,14 @@ export default function RealEstatePage() {
           <div className="mt-5 grid grid-cols-1 gap-3 min-[390px]:grid-cols-2 md:grid-cols-12">
             <div className={`${filterFieldClass} md:col-span-2`}>
               <div className="text-sm text-slate-500 mb-1">{t.sido}</div>
-              <select className={filterControlClass} value={sido} onChange={(e) => setSido(e.target.value)}>
+              <select
+                className={filterControlClass}
+                value={sido}
+                onChange={(e) => {
+                  setSido(e.target.value);
+                  setArea('all');
+                }}
+              >
                 {sidoOptions.map((x) => (
                   <option key={x.value} value={x.value}>
                     {labelOf(x, true)}
@@ -1350,7 +1445,7 @@ export default function RealEstatePage() {
             <div className={`${filterFieldClass} md:col-span-1`}>
               <div className="text-sm text-slate-500 mb-1">{t.top}</div>
               <select className={filterControlClass} value={top} onChange={(e) => setTop(e.target.value)}>
-                {['10', '20', '50', '100', '300', '500'].map((v) => <option key={v} value={v}>{v}</option>)}
+                {TOP_OPTIONS.map((v) => <option key={v} value={v}>{v}</option>)}
               </select>
             </div>
 

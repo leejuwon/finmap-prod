@@ -252,6 +252,12 @@ lang: "ko"
 중요한 것은 환율 방향이 아니라 **업종과 구조**입니다.  
 체크리스트로 분해하면, 시장이 훨씬 덜 복잡해집니다.
 
+## 함께 보면 좋은 글/도구
+
+- [환율의 기초와 원달러 변동 요인 정리하기](/posts/economicInfo/fx-basics)
+- [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

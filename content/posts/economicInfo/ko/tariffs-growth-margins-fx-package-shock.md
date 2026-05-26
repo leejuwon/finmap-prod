@@ -290,6 +290,12 @@ CPI가 조용하다는 건 “충격이 없다”가 아니라 “어딘가가 �
 ### 8) 관세 뉴스를 ‘예측 없이’ 읽는 가장 쉬운 방법은 무엇인가요?
 관세를 4변수(물가·성장·마진·환율)로 분해하고, 3시나리오(Base/Escalation/De-escalation) 표에 넣어보는 겁니다. 그리고 “범위/기간/대응 톤”을 먼저 확인해 어떤 채널이 우세한지 판단하세요. 예측보다 규칙이 흔들림을 줄입니다.
 
+## 함께 보면 좋은 글/도구
+
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

@@ -339,6 +339,12 @@ S&P500와 함께 자주 거론되는 변수가 미국 금리(특히 10년물)입
 ### Q5. 이 프레임은 장기 투자에도 쓸 수 있나요?
 장기 투자에서도 유효합니다. 단, “맞추기”보다 “분할/리밸런싱 규칙”을 세우는 데 활용하는 편이 더 안정적입니다.
 
+## 함께 보면 좋은 글/도구
+
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

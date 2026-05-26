@@ -394,6 +394,12 @@ lang: "ko"
 
 ---
 
+## 함께 보면 좋은 글/도구
+
+- [경제지표를 볼 때 먼저 확인할 핵심 구조 정리하기](/posts/economicInfo/indicator-basics)
+- [시장정보 지표를 투자 판단에 연결하는 방법 보기](/posts/investingInfo/indicator-marketinfo)
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

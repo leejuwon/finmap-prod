@@ -284,6 +284,12 @@ DSR이 낮다는 건 출발점이 좋다는 뜻일 수 있지만, “안전”�
 ### 8) 지금 당장 할 수 있는 가장 중요한 한 가지는 뭔가요?
 오늘은 대시보드에서 매수 후보 가격대 1개를 고르고, <strong>+2%p 스트레스 금리에서 월 상환액과 버퍼</strong>를 적어보세요. 그 한 장이 “불안”을 “규칙”으로 바꿉니다. 그리고 월 버퍼를 자동이체로 분리하면, 계획은 유지됩니다.
 
+## 함께 보면 좋은 글/도구
+
+- [DSR LTV 계산기로 대출 한도와 주택 가격 범위 점검하기](/tools/dsr-ltv-calculator)
+- [인천 아파트 실거래가 Top100으로 수도권 가격대 확인하기](/market/real-estate/incheon-apartment-top100)
+- [서울·경기·인천 아파트 실거래 대시보드에서 가격 분포 확인하기](/market/real-estate)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

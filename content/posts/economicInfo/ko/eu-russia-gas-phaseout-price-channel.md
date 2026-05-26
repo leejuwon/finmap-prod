@@ -266,6 +266,12 @@ EU의 러시아 가스 축소는 하나의 사건처럼 보이지만, 시장은 
 ### 에너지 가격 변동이 커질수록 개인은 무엇을 해야 하나요?
 가격을 맞히려 하기보다, 내 행동을 규칙화하는 게 현실적입니다. 이 글의 체크리스트로 “채널 분해→시나리오 선택→Flip 트리거 1개 지정”만 해도 흔들림이 줄어듭니다. 그리고 장기 계획은 CAGR 같은 기간 기반 지표로 점검해, 단기 소음이 계획을 망치지 않게 만드는 쪽이 유리합니다.
 
+## 함께 보면 좋은 글/도구
+
+- [경제지표를 볼 때 먼저 확인할 핵심 구조 정리하기](/posts/economicInfo/indicator-basics)
+- [시장정보 지표를 투자 판단에 연결하는 방법 보기](/posts/investingInfo/indicator-marketinfo)
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

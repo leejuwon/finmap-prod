@@ -294,6 +294,12 @@ DCA vs 일시금투자는 “누가 더 똑똑한가”의 문제가 아닙니�
 ### 8) DCA 계산기는 DCA만 검증하는 도구인가요?
 DCA뿐 아니라 혼합(분할)과 “사실상 일시” 가정을 비교하는 데도 쓸 수 있습니다. 중단기간(0/3/6개월)과 수익률(보수/기준)을 바꿔가며 “내가 흔들릴 구간”을 숫자로 보는 것이 핵심입니다. 결과 숫자보다 민감도와 실패 구간을 찾는 데 의미가 있습니다.
 
+## 함께 보면 좋은 글/도구
+
+- [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [월 50만원 적립식 투자 10년 예시로 기준선 잡기](/posts/personalFinance/monthly-dca-10-year-result)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

@@ -273,6 +273,12 @@ lang: "ko"
 ### DCA는 이런 지정학 이슈에도 도움이 되나요
 도움이 되는 경우가 많지만 조건이 있습니다. DCA는 타이밍 의존을 줄여주지만, “확인 데이터가 없는 과열”에는 무리하게 따라붙지 않도록 Flip 조건과 결합되어야 합니다. 결국 핵심은 예측이 아니라 규칙입니다.
 
+## 함께 보면 좋은 글/도구
+
+- [시장정보 지표를 투자 판단에 연결하는 방법 보기](/posts/investingInfo/indicator-marketinfo)
+- [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

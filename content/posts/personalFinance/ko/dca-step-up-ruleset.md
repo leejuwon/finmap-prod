@@ -340,6 +340,12 @@ lang: "ko"
 한 번의 숫자보다 “변수 바꾸기”가 핵심입니다.  
 수익률/인플레/세금·수수료/중단기간을 바꿔가며, 내 규칙(증액률·중단 규칙)이 <strong>어느 조건에서 깨지는지</strong>를 확인하면 실전성이 생깁니다.
 
+## 함께 보면 좋은 글/도구
+
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+- [DCA와 일시금 투자를 실행 리스크 기준으로 비교하기](/posts/personalFinance/dca-vs-lumpsum-decision-rules)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

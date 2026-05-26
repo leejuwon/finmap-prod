@@ -2,6 +2,12 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { marked } from "marked";
+
+const SITE_URL = "https://www.finmaphub.com";
+const RSS_ITEM_LIMIT = 50;
+const RSS_MIN_ITEM_COUNT = 30;
+const RSS_MAX_BYTES = 10 * 1024 * 1024;
 
 export default function Rss() {
   return null;
@@ -16,21 +22,12 @@ function escapeXml(s = "") {
     .replace(/'/g, "&apos;");
 }
 
-function cdata(s = "") {
-  return `<![CDATA[${String(s).replace(/]]>/g, "]]]]><![CDATA[>")}]]>`;
+function escapeHtmlAttr(s = "") {
+  return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
 }
 
-function slugToTitleFromUrl(loc) {
-  try {
-    const u = new URL(loc);
-    const parts = u.pathname.split("/").filter(Boolean);
-    const slug = parts[parts.length - 1] || "FinMap";
-    // slug -> "gold-geopolitics-real-rates" => "Gold geopolitics real rates"
-    const t = decodeURIComponent(slug).replace(/[-_]+/g, " ").trim();
-    return t.length ? t : "FinMap";
-  } catch {
-    return "FinMap";
-  }
+function cdata(s = "") {
+  return `<![CDATA[${String(s).replace(/]]>/g, "]]]]><![CDATA[>")}]]>`;
 }
 
 function walkDir(dir) {
@@ -65,40 +62,86 @@ function firstText(...values) {
   return "";
 }
 
-function buildRss({ siteUrl, items }) {
-  const now = new Date().toUTCString();
-
-  const itemXml = (items || [])
-    .map((p) => {
-      const link = p.loc || `${siteUrl}${p.path || "/"}`;
-      const pubDate = new Date(p.date || Date.now()).toUTCString();
-      const title = p.title || slugToTitleFromUrl(link);
-
-      return `
-<item>
-  <title>${escapeXml(title)}</title>
-  <link>${escapeXml(link)}</link>
-  <guid>${escapeXml(link)}</guid>
-  <pubDate>${escapeXml(pubDate)}</pubDate>
-  <description>${cdata(p.description || "")}</description>
-</item>`.trim();
-    })
-    .join("\n");
-
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
-<channel>
-  <title>${escapeXml("FinMap 최신 한국어 글")}</title>
-  <link>${escapeXml(siteUrl + "/")}</link>
-  <description>${escapeXml("FinMap 경제, 재테크, 투자, 부동산 대시보드 활용 글 모음")}</description>
-  <language>ko-KR</language>
-  <lastBuildDate>${escapeXml(now)}</lastBuildDate>
-  ${itemXml}
-</channel>
-</rss>`;
+function normalizeSitePath(pathname) {
+  let p = String(pathname || "/").replace(/\/{2,}/g, "/");
+  if (p === "/ko") p = "/";
+  else if (p.startsWith("/ko/")) p = p.replace(/^\/ko/, "") || "/";
+  if (p.length > 1 && p.endsWith("/")) p = p.slice(0, -1);
+  return p || "/";
 }
 
-function getLatestPostsFromContent({ siteUrl, limit = 30, language = "ko" }) {
+function normalizeSiteUrl(rawUrl) {
+  const raw = String(rawUrl || "").trim();
+  if (
+    !raw ||
+    raw.startsWith("#") ||
+    /^(mailto|tel|javascript|data):/i.test(raw)
+  ) {
+    return "";
+  }
+
+  try {
+    const parsed = new URL(raw, SITE_URL);
+    if (parsed.origin !== SITE_URL) return "";
+    const normalizedPath = normalizeSitePath(parsed.pathname);
+    return `${SITE_URL}${normalizedPath}${parsed.search || ""}${parsed.hash || ""}`;
+  } catch {
+    return "";
+  }
+}
+
+function normalizeSrcset(rawSrcset) {
+  const parts = String(rawSrcset || "")
+    .split(",")
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .map((part) => {
+      const [url, ...descriptor] = part.split(/\s+/);
+      const normalized = normalizeSiteUrl(url);
+      if (!normalized) return "";
+      return [normalized, ...descriptor].join(" ");
+    })
+    .filter(Boolean);
+  return parts.join(", ");
+}
+
+function normalizeContentHtml(html) {
+  let out = String(html || "");
+
+  out = out
+    .replace(/<script\b[\s\S]*?<\/script>/gi, "")
+    .replace(/<style\b[\s\S]*?<\/style>/gi, "")
+    .replace(/<iframe\b[\s\S]*?<\/iframe>/gi, "")
+    .replace(/<object\b[\s\S]*?<\/object>/gi, "")
+    .replace(/<embed\b[\s\S]*?>/gi, "");
+
+  out = out.replace(/<pre><code[\s\S]*?application\/ld\+json[\s\S]*?<\/code><\/pre>/gi, "");
+
+  out = out.replace(/\s(href|src|poster|action)=(["'])([^"']*)\2/gi, (_m, attr, quote, value) => {
+    const normalized = normalizeSiteUrl(value);
+    return normalized ? ` ${attr}=${quote}${escapeHtmlAttr(normalized)}${quote}` : "";
+  });
+
+  out = out.replace(/\s(srcset)=(["'])([^"']*)\2/gi, (_m, attr, quote, value) => {
+    const normalized = normalizeSrcset(value);
+    return normalized ? ` ${attr}=${quote}${escapeHtmlAttr(normalized)}${quote}` : "";
+  });
+
+  out = out.replace(/https?:\/\/(?!www\.finmaphub\.com)[^\s<]+/gi, "");
+
+  return out;
+}
+
+function renderMarkdownToHtml(markdown) {
+  const html = marked.parse(String(markdown || ""), {
+    async: false,
+    mangle: false,
+    headerIds: false,
+  });
+  return normalizeContentHtml(html);
+}
+
+function getLatestKoPostsFromContent({ limit = RSS_ITEM_LIMIT }) {
   const postsRoot = path.join(process.cwd(), "content", "posts");
   const mdFiles = walkDir(postsRoot).filter((file) => file.endsWith(".md"));
 
@@ -111,116 +154,119 @@ function getLatestPostsFromContent({ siteUrl, limit = 30, language = "ko" }) {
       const category = parts[0];
       const lang = parts[1];
       const filename = parts[parts.length - 1];
-      const slug = filename.replace(/\.md$/, "");
-      if (!category || !["ko", "en"].includes(lang) || !slug) return null;
-      if (language && lang !== language) return null;
+      const fileSlug = filename.replace(/\.md$/, "");
+      if (!category || lang !== "ko" || !fileSlug) return null;
 
       let raw = "";
       let data = {};
+      let content = "";
       let fallbackDate = new Date().toISOString();
       try {
         raw = fs.readFileSync(fullPath, "utf8");
-        data = matter(raw).data || {};
+        const parsed = matter(raw);
+        data = parsed.data || {};
+        content = parsed.content || "";
         fallbackDate = fs.statSync(fullPath).mtime.toISOString();
       } catch {
         return null;
       }
 
-      const prefix = lang === "en" ? "/en" : "";
-      const loc = `${siteUrl}${prefix}/posts/${category}/${slug}`;
-      const date = normalizeDate(data.dateModified || data.datePublished, fallbackDate);
-      const title = firstText(data.title, data.seoTitle, slugToTitleFromUrl(loc));
-      const description = firstText(data.description, data.seoDescription, data.summary);
+      if (data.draft === true || data.noindex === true || String(data.robots || "").includes("noindex")) {
+        return null;
+      }
 
-      return { loc, date, title, description };
+      const slug = String(data.slug || fileSlug).trim();
+      const linkPath = `/posts/${category}/${slug}`;
+      const loc = `${SITE_URL}${linkPath}`;
+      const published = normalizeDate(data.datePublished || data.date, fallbackDate);
+      const modified = normalizeDate(data.dateModified || data.datePublished || data.date, fallbackDate);
+      const title = firstText(data.title, data.seoTitle, slug);
+      const description = firstText(data.description, data.seoDescription, data.summary);
+      const contentHtml = renderMarkdownToHtml(content);
+
+      return {
+        loc,
+        published,
+        modified,
+        sortDate: modified || published,
+        title,
+        description,
+        contentHtml,
+      };
     })
     .filter(Boolean)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort((a, b) => new Date(b.sortDate).getTime() - new Date(a.sortDate).getTime())
     .slice(0, limit);
 }
 
-/**
- * ✅ next-sitemap이 빌드 후 public/sitemap-0.xml을 생성하므로
- * 그 파일에서 /posts/ URL만 뽑아 RSS 아이템으로 사용
- */
-function readFileIfExists(p) {
-  try {
-    if (fs.existsSync(p)) return fs.readFileSync(p, "utf8");
-  } catch (e) {
-    console.error("[rss.xml] readFile error:", p, e);
-  }
-  return null;
+function buildRss({ siteUrl, items }) {
+  const now = new Date().toUTCString();
+  const latestDate = items?.[0]?.sortDate ? new Date(items[0].sortDate).toUTCString() : now;
+
+  const itemXml = (items || [])
+    .map((p) => {
+      const pubDate = new Date(p.published || p.sortDate || Date.now()).toUTCString();
+      const title = p.title || "FinMap";
+      const description = p.description || "";
+      const contentEncoded = p.contentHtml
+        ? `\n  <content:encoded>${cdata(p.contentHtml)}</content:encoded>`
+        : "";
+
+      return `
+<item>
+  <title>${escapeXml(title)}</title>
+  <link>${escapeXml(p.loc)}</link>
+  <guid isPermaLink="true">${escapeXml(p.loc)}</guid>
+  <pubDate>${escapeXml(pubDate)}</pubDate>
+  <description>${cdata(description)}</description>${contentEncoded}
+</item>`.trim();
+    })
+    .join("\n");
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>${escapeXml("FinMap 최신 한국어 글")}</title>
+  <link>${escapeXml(siteUrl + "/")}</link>
+  <atom:link href="${escapeXml(siteUrl + "/rss.xml")}" rel="self" type="application/rss+xml" />
+  <description>${escapeXml("FinMap 경제, 재테크, 투자, 부동산 대시보드 활용 글 모음")}</description>
+  <language>ko-KR</language>
+  <lastBuildDate>${escapeXml(now)}</lastBuildDate>
+  <pubDate>${escapeXml(latestDate)}</pubDate>
+  ${itemXml}
+</channel>
+</rss>`;
 }
 
-function parseSitemapUrlset(xml) {
-  const blocks = xml.match(/<url>[\s\S]*?<\/url>/g) || [];
-  return blocks
-    .map((b) => {
-      const loc = (b.match(/<loc>([\s\S]*?)<\/loc>/) || [])[1]?.trim();
-      const lastmod = (b.match(/<lastmod>([\s\S]*?)<\/lastmod>/) || [])[1]?.trim();
-      return { loc, lastmod };
-    })
-    .filter((x) => x.loc);
+function byteLength(s) {
+  return Buffer.byteLength(String(s || ""), "utf8");
 }
 
-async function getLatestPostsForRss({ siteUrl, limit = 30, language = "ko" }) {
-  const contentItems = getLatestPostsFromContent({ siteUrl, limit, language });
-  if (contentItems.length) return contentItems;
+function buildSizeLimitedRss({ siteUrl, items }) {
+  let nextItems = items.slice(0, RSS_ITEM_LIMIT);
+  let xml = buildRss({ siteUrl, items: nextItems });
 
-  const cwd = process.cwd();
-  const sitemap0 = path.join(cwd, "public", "sitemap-0.xml");
-  const sitemapIndex = path.join(cwd, "public", "sitemap.xml");
-
-  let xml = readFileIfExists(sitemap0);
-
-  // sitemap-0.xml이 없으면 sitemap.xml(인덱스)에서 첫 sitemap loc를 읽어보는 fallback
-  if (!xml) {
-    const idx = readFileIfExists(sitemapIndex);
-    if (idx) {
-      const loc = (idx.match(/<loc>([^<]*sitemap-0\.xml)<\/loc>/) || [])[1];
-      if (loc) {
-        // 로컬 파일로 다시 시도
-        xml = readFileIfExists(path.join(cwd, "public", "sitemap-0.xml"));
-      }
-    }
+  while (byteLength(xml) > RSS_MAX_BYTES && nextItems.length > RSS_MIN_ITEM_COUNT) {
+    nextItems = nextItems.slice(0, -1);
+    xml = buildRss({ siteUrl, items: nextItems });
   }
 
-  if (!xml) {
-    console.error("[rss.xml] sitemap file not found (public/sitemap-0.xml)");
-    return [];
+  let stripIndex = nextItems.length - 1;
+  while (byteLength(xml) > RSS_MAX_BYTES && stripIndex >= 0) {
+    nextItems = nextItems.map((item, idx) => (
+      idx === stripIndex ? { ...item, contentHtml: "" } : item
+    ));
+    stripIndex -= 1;
+    xml = buildRss({ siteUrl, items: nextItems });
   }
 
-  const urls = parseSitemapUrlset(xml);
-
-  const posts = urls
-    .filter(({ loc }) => {
-      if (!loc.startsWith(siteUrl) || !loc.includes("/posts/")) return false;
-      if (language === "ko" && loc.startsWith(`${siteUrl}/en/posts/`)) return false;
-      if (language === "en" && !loc.startsWith(`${siteUrl}/en/posts/`)) return false;
-      return true;
-    })
-    .map(({ loc, lastmod }) => ({
-      loc,
-      date: lastmod || null,
-      title: slugToTitleFromUrl(loc),
-      description: "",
-    }))
-    .sort((a, b) => {
-      const da = a.date ? new Date(a.date).getTime() : 0;
-      const db = b.date ? new Date(b.date).getTime() : 0;
-      return db - da;
-    })
-    .slice(0, limit);
-
-  return posts;
+  return { xml, items: nextItems, strippedContentCount: nextItems.filter((x) => !x.contentHtml).length };
 }
 
 export async function getServerSideProps({ res }) {
-  const siteUrl = "https://www.finmaphub.com";
-
   try {
-    const items = await getLatestPostsForRss({ siteUrl, limit: 30, language: "ko" });
-    const xml = buildRss({ siteUrl, items });
+    const items = getLatestKoPostsFromContent({ limit: RSS_ITEM_LIMIT });
+    const { xml } = buildSizeLimitedRss({ siteUrl: SITE_URL, items });
 
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/rss+xml; charset=utf-8");
@@ -232,8 +278,7 @@ export async function getServerSideProps({ res }) {
   } catch (e) {
     console.error("[rss.xml] fatal error:", e);
 
-    // 그래도 500 대신 빈 RSS라도 200으로 반환(로봇/검증 실패 방지)
-    const xml = buildRss({ siteUrl, items: [] });
+    const xml = buildRss({ siteUrl: SITE_URL, items: [] });
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/rss+xml; charset=utf-8");
     res.end(xml);

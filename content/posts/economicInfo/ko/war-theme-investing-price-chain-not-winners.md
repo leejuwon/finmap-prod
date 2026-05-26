@@ -359,6 +359,12 @@ Flip 조건을 미리 정해두면, ‘오를 때는 이유를 붙이고 내릴 
 그럴 때는 “수요(경기) 쪽”을 한 번 더 확인하는 편이 좋습니다.  
 원가·운임이 올라도 수요가 꺾이면 마진이 아니라 물량이 흔들릴 수 있고, 반대로 수요가 버티면 전가가 가능해질 수 있습니다.
 
+## 함께 보면 좋은 글/도구
+
+- [경제지표를 볼 때 먼저 확인할 핵심 구조 정리하기](/posts/economicInfo/indicator-basics)
+- [시장정보 지표를 투자 판단에 연결하는 방법 보기](/posts/investingInfo/indicator-marketinfo)
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

@@ -292,6 +292,12 @@ A4. “무조건 금지”라기보다는, 구조적으로 장기 CAGR이 지수
 
 ---
 
+## 함께 보면 좋은 글/도구
+
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+- [CAGR 뜻과 단순 수익률의 차이 이해하기](/posts/personalFinance/what-is-cagr)
+- [연 7% 복리 가정을 CAGR로 현실 점검하기](/posts/investingInfo/cagr-7percent-reality-check)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

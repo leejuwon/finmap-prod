@@ -333,6 +333,12 @@ TNX 상승이 신용스프레드 확대, 달러 강세, 변동성 상승과 동�
 ### Q5. TNX를 매일 체크해야 하나요?
 매일 맞히려는 목적이라면 피곤해집니다. 대신 “급등/급락” 같은 변곡 구간에서만 체크해도 실수는 크게 줄어듭니다. 포트폴리오가 성장주·장기채 비중이 높다면 체크 빈도를 조금 높이는 정도가 적절합니다.
 
+## 함께 보면 좋은 글/도구
+
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [시장정보 지표를 투자 판단에 연결하는 방법 보기](/posts/investingInfo/indicator-marketinfo)
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

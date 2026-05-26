@@ -268,6 +268,12 @@ KOSPI 및 KOSPI200 추종 ETF 투자에 필요한 기초 데이터를 제공합�
 
 ---
 
+## 함께 보면 좋은 글/도구
+
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

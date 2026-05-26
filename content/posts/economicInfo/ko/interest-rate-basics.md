@@ -407,6 +407,12 @@ FinMap에서는 다음 흐름이 자연스럽습니다.
 
 ---
 
+## 함께 보면 좋은 글/도구
+
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [DSR LTV 계산기로 대출 한도와 주택 가격 범위 점검하기](/tools/dsr-ltv-calculator)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

@@ -244,6 +244,12 @@ lang: "ko"
 ### Q8. 대시보드를 어떤 주기로 보면 좋나요?
 매일 볼 필요는 없습니다. 주 1회 또는 월 1회 정해진 요일에 “분포/추세/거래량”만 같은 방식으로 점검하면 룰 드리프트가 줄어듭니다. 이벤트(금리 발표, 큰 정책 변화)가 있을 때만 추가 확인하는 정도가 현실적입니다.
 
+## 함께 보면 좋은 글/도구
+
+- [서울·경기·인천 아파트 실거래 대시보드에서 가격 분포 확인하기](/market/real-estate)
+- [경기 아파트 실거래가 Top100에서 지역별 가격 흐름 비교하기](/market/real-estate/gyeonggi-apartment-top100)
+- [DSR LTV 계산기로 대출 한도와 주택 가격 범위 점검하기](/tools/dsr-ltv-calculator)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

@@ -241,7 +241,13 @@ CAGR이 높더라도 **변동성이 지나치게 크거나, 일시적인 테마 
 
 ---
 
-## JSON-LD  
+## JSON-LD
+
+## 함께 보면 좋은 글/도구
+
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+- [ETF 성과를 볼 때 CAGR을 먼저 확인해야 하는 이유](/posts/investingInfo/why-check-cagr-etf)
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
 
 <script type="application/ld+json">
 {

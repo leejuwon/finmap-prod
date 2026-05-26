@@ -28,6 +28,7 @@ lang: "ko"
 <!-- =========================
      JSON-LD (Article + FAQPage)
      ========================= -->
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -325,3 +326,10 @@ lang: "ko"
 - [환율의 기초: 원/달러가 움직이는 진짜 이유](/posts/economicInfo/fx-basics)  
 
 ---
+
+## 함께 보면 좋은 글/도구
+
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [고금리 부채 상환과 투자의 우선순위 기준 세우기](/posts/personalFinance/high-rate-debt-vs-invest-threshold-rule)
+- [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+

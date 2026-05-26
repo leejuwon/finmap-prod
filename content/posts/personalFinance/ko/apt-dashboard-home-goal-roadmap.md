@@ -272,6 +272,12 @@ Flip이 없으면, 매번 뉴스가 Flip을 대신하고, 결국 계획은 감�
 
 ---
 
+## 함께 보면 좋은 글/도구
+
+- [DSR LTV 계산기로 대출 한도와 주택 가격 범위 점검하기](/tools/dsr-ltv-calculator)
+- [서울·경기·인천 아파트 실거래 대시보드에서 가격 분포 확인하기](/market/real-estate)
+- [서울 아파트 실거래가 Top100 가이드로 대표가격과 평단가 읽기](/market/real-estate/seoul-apartment-top100)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

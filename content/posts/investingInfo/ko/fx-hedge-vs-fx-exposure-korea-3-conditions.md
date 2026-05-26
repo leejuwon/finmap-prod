@@ -320,7 +320,12 @@ KOSPI가 어떤 힘에 의해 움직이는 모드인지를 뜻합니다. 예를 
 
 ---
 
-<!-- Article JSON-LD -->
+## 함께 보면 좋은 글/도구
+
+- [환율의 기초와 원달러 변동 요인 정리하기](/posts/economicInfo/fx-basics)
+- [원달러 환율이 한국 경제와 코스피에 미치는 영향 보기](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

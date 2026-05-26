@@ -30,6 +30,7 @@ lang: "ko"
 <!-- =========================
      JSON-LD (Article + FAQPage)
      ========================= -->
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -342,3 +343,10 @@ ETF/주식이 금리에 민감하게 흔들리는 구조가 궁금하면 아래 
 - [미국 10년물 금리(TNX)는 왜 ETF를 뒤흔드는가? 성장·가치·신흥국 ETF까지 모두 설명하는 금리 로직](/posts/investingInfo/etf-impact-of-tnx)  
 
 ---
+
+## 함께 보면 좋은 글/도구
+
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [시장정보 지표를 투자 판단에 연결하는 방법 보기](/posts/investingInfo/indicator-marketinfo)
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+

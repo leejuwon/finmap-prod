@@ -289,6 +289,12 @@ Relief 구간에서도 “가격 급등”보다 <strong>거래량 회복이 먼
 예를 들어 “나는 (지역/가격대)을 (거래량 유지 + 하단 방어) 조건에서만 탐색/진입한다”처럼 쓰면 됩니다.  
 핵심은 예측이 아니라 <strong>트리거 기반의 기본값(진입/대기)</strong>을 만드는 것입니다.
 
+## 함께 보면 좋은 글/도구
+
+- [DSR LTV 계산기로 대출 한도와 주택 가격 범위 점검하기](/tools/dsr-ltv-calculator)
+- [서울·경기·인천 아파트 실거래 대시보드에서 가격 분포 확인하기](/market/real-estate)
+- [서울 아파트 실거래가 Top100 가이드로 대표가격과 평단가 읽기](/market/real-estate/seoul-apartment-top100)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

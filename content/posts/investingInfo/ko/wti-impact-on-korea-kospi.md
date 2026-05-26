@@ -31,6 +31,7 @@ lang: "ko"
 <!-- =========================
      JSON-LD (Article + FAQPage)
      ========================= -->
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -393,3 +394,10 @@ lang: "ko"
 
 ### Q5. 개인 투자자는 어떤 지표 조합으로 보면 좋을까요?
 WTI의 방향(그리고 급등/완만), USD/KRW 급등 여부, 물가·금리 프레임(인플레이션/금리), 달러 전반 강세(DXY)를 함께 보는 것이 가장 효율적입니다.
+
+## 함께 보면 좋은 글/도구
+
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+

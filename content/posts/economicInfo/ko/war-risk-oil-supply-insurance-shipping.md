@@ -373,6 +373,12 @@ WTI만 봐도 분위기는 알 수 있지만, 전쟁 리스크를 해석하려�
 
 ---
 
+## 함께 보면 좋은 글/도구
+
+- [시장정보 지표를 투자 판단에 연결하는 방법 보기](/posts/investingInfo/indicator-marketinfo)
+- [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

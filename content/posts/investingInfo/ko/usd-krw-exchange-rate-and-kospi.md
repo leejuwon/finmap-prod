@@ -234,6 +234,12 @@ A. 원달러 환율은 한국 내부 요인도 반영하지만, DXY는 “달러
 
 ---
 
+## 함께 보면 좋은 글/도구
+
+- [DXY 달러인덱스로 글로벌 달러 강세 흐름 읽기](/posts/investingInfo/dxy-dollar-index-basics)
+- [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
+- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
