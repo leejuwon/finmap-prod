@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { AD_CLIENT } from "../config/adSlots";
 
-export default function AdSenseUnit({ slot, className = "", adTest = false }) {
+export default function AdSenseUnit({ slot, className = "", adTest = false, adKey = "" }) {
   const router = useRouter();
   const insRef = useRef(null);
   const [mounted, setMounted] = useState(false);
@@ -64,7 +64,7 @@ export default function AdSenseUnit({ slot, className = "", adTest = false }) {
       cancelled = true;
       io.disconnect();
     };
-  }, [mounted, slot, router.asPath, adTest]);
+  }, [mounted, slot, router.asPath, adTest, adKey]);
 
   if (!slot) return null;
 
@@ -76,7 +76,7 @@ export default function AdSenseUnit({ slot, className = "", adTest = false }) {
   return (
     <div className={className}>
       <ins
-        key={`${slot}-${router.asPath}`} // mounted 이후라 SSR mismatch 없음
+        key={adKey || `${slot}-${router.asPath}`} // mounted 이후라 SSR mismatch 없음
         ref={insRef}
         className="adsbygoogle"
         style={{ display: "block", minHeight: 120 }}

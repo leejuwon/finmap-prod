@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { trackGaEvent } from "../../utils/analytics";
 import ToolSeo from "../../_components/ToolSeo";
-import AdSenseUnit from '../../_components/AdSenseUnit'; // 예시
+import DashboardAdSlot from '../../_components/DashboardAdSlot';
 import { AD_SLOTS } from '../../config/adSlots';
 
 const M2_PER_PYEONG = 3.305785;
@@ -1772,6 +1772,16 @@ export default function RealEstatePage() {
               </div>
             </div>
 
+            {!loading && rows.length > 0 && (
+              <DashboardAdSlot
+                slot={INFEED_SLOT}
+                page="real_estate"
+                position="result_top"
+                minHeight={160}
+                className="mt-5 mb-5"
+              />
+            )}
+
             {/* Cards: always on mobile. On desktop, shown when desktopView === 'card' */}
             <div className={`${desktopView === 'card' ? '' : 'md:hidden'} mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3`}>               
               {!loading && rows?.length === 0 && (
@@ -1781,17 +1791,20 @@ export default function RealEstatePage() {
               )}
 
               {rows.map((r, idx) => {
-                const interval = 6; // 6개마다 1개 광고
-                const shouldInsert = (idx + 1) % interval === 0 && (idx + 1) < rows.length;
+                const interval = 7; // 6~8개 사이 간격 유지
+                const adIndex = Math.floor((idx + 1) / interval);
+                const shouldInsert = (idx + 1) % interval === 0 && (idx + 1) < rows.length && adIndex <= 3;
 
                 return (
                   <Fragment key={r.apt_key || `${r.lawd_cd}-${r.apt_name}-${idx}`}>
                     <ResultCard r={r} idx={idx} />
                     {shouldInsert && (
-                      <AdSenseUnit
+                      <DashboardAdSlot
                         slot={INFEED_SLOT}
-                        className="md:col-span-2 lg:col-span-3" // grid 전체 폭 차지
-                        adTest={false} // 테스트 시 true
+                        page="real_estate"
+                        position="infeed"
+                        minHeight={160}
+                        className="md:col-span-2 lg:col-span-3"
                       />
                     )}
                   </Fragment>
@@ -1930,6 +1943,16 @@ export default function RealEstatePage() {
                 </tbody>
               </table>
             </div>
+            )}
+
+            {!loading && rows.length >= 10 && (
+              <DashboardAdSlot
+                slot={INFEED_SLOT}
+                page="real_estate"
+                position="list_bottom"
+                minHeight={160}
+                className="mt-6"
+              />
             )}
           </div>
         </div>      

@@ -10,7 +10,7 @@ import {
   YAxis,
 } from "recharts";
 import SeoHead from "../../_components/SeoHead";
-import AdSenseUnit from "../../_components/AdSenseUnit";
+import DashboardAdSlot from "../../_components/DashboardAdSlot";
 import { AD_SLOTS } from "../../config/adSlots";
 
 const RANGE_LABELS = {
@@ -192,14 +192,6 @@ function marketStatusText(data) {
   if (data.marketStatus === "open") return "오늘 종가는 아직 확정되지 않았습니다.";
   if (data.marketStatus === "holiday" || data.marketStatus === "no_data") return "휴장 또는 데이터 수집 전입니다.";
   return data.marketStatusLabel || "상태 확인";
-}
-
-function AdBlock({ className = "" }) {
-  return (
-    <div className={`min-h-[140px] rounded-lg border border-slate-100 bg-slate-50/60 p-2 ${className}`}>
-      <AdSenseUnit slot={AD_SLOTS.responsiveBottom} className="min-h-[120px]" />
-    </div>
-  );
 }
 
 function MiniChart({ item }) {
@@ -595,7 +587,12 @@ export default function MarketIndicesPage() {
               </div>
             </section>
 
-            <AdBlock />
+            <DashboardAdSlot
+              slot={AD_SLOTS.responsiveBottom}
+              page="stock_indices"
+              position="section_middle"
+              minHeight={160}
+            />
 
             <section>
               <div className="mb-3 flex items-center justify-between gap-3">
@@ -609,7 +606,12 @@ export default function MarketIndicesPage() {
               </div>
             </section>
 
-            <AdBlock />
+            <DashboardAdSlot
+              slot={AD_SLOTS.responsiveBottom}
+              page="stock_indices"
+              position="infeed"
+              minHeight={160}
+            />
 
             <section className="space-y-4">
               <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
@@ -694,6 +696,12 @@ export default function MarketIndicesPage() {
                 stats={stats}
                 onSelectDate={(date) => updateQuery({ date, limit: 20 })}
                 onMore={() => updateQuery({ limit: Math.min(limit + 20, 100) })}
+              />
+              <DashboardAdSlot
+                slot={AD_SLOTS.responsiveBottom}
+                page="stock_indices"
+                position="list_bottom"
+                minHeight={160}
               />
             </section>
 
