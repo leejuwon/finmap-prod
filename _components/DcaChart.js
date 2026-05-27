@@ -1,4 +1,4 @@
-// _components/DCAChart.js
+// _components/DcaChart.js
 import dynamic from 'next/dynamic';
 import { useMemo } from 'react';
 import { formatMoneyAuto } from '../lib/money';
@@ -92,7 +92,7 @@ export default function DCAChart({
               const net = chartData._metaNet[idx] || 0;
               const gain = chartData._metaGain[idx] || 0;
               const returnRate =
-                invested > 0 ? (net / invested) * 100 : 0;
+                invested > 0 ? (net / invested - 1) * 100 : 0;
               const year = row.year || idx + 1;
               const period = row.periodLabel ? ` (${row.periodLabel})` : '';
 

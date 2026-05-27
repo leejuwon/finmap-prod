@@ -19,6 +19,13 @@ import {
   writeToolRecent,
 } from "../../utils/toolPreset";
 import { trackGaEvent } from "../../utils/analytics";
+const {
+  analyzeDcaResult,
+  buildDcaDrawdownScenarios,
+  buildDcaSensitivity,
+  simulateDcaPlan,
+  solveMonthlyContributionForTarget,
+} = require("../../lib/dcaCore");
 
 // JSON-LD 스크립트용 컴포넌트
 export function JsonLd({ data }) {
@@ -28,124 +35,6 @@ export function JsonLd({ data }) {
       dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
     />
   );
-}
-
-// ===================== 시뮬레이션 로직 =====================
-function simulateDCA({
-  initial,
-  monthly,
-  annualRate,
-  years,
-  startDate = '',
-  contributionFrequency = 'monthly',
-  annualIncrease = 0, // 연간 적립금 증가율 (%)
-  compounding = 'monthly',
-  taxRate = 15.4, // 세율(%)
-  feeRate = 0.5, // 수수료율(연 %)
-}) {
-  const periodsPerYear = contributionFrequency === 'weekly' ? 52 : 12;
-  const periods = Math.max(1, Math.floor((Number(years) || 0) * periodsPerYear));
-  const rYear = (Number(annualRate) || 0) / 100;
-
-  const tax = (Number(taxRate) || 0) / 100;
-  const fee = (Number(feeRate) || 0) / 100;
-
-  // netYear ≈ rYear * (1 - tax) - fee
-  let netYear = rYear * (1 - tax) - fee;
-  if (netYear < -0.99) netYear = -0.99;
-
-  const grossMonth =
-    compounding === 'yearly'
-      ? Math.pow(1 + rYear, 1 / periodsPerYear) - 1
-      : rYear / periodsPerYear;
-
-  const netMonth =
-    compounding === 'yearly'
-      ? Math.pow(1 + netYear, 1 / periodsPerYear) - 1
-      : netYear / periodsPerYear;
-
-  let invested = Number(initial) || 0;
-  let valueGross = invested;
-  let valueNet = invested;
-  let priceProxy = 100;
-  let units = invested > 0 ? invested / priceProxy : 0;
-
-  let contributionCur = Number(monthly) || 0;
-  let investedPrevYear = invested;
-  let valueNetPrevYear = valueNet;
-
-  const rows = [];
-
-  for (let p = 1; p <= periods; p++) {
-    invested += contributionCur;
-    units += priceProxy > 0 ? contributionCur / priceProxy : 0;
-
-    valueGross = (valueGross + contributionCur) * (1 + grossMonth);
-    valueNet = (valueNet + contributionCur) * (1 + netMonth);
-    priceProxy *= 1 + grossMonth;
-
-    const isYearEnd = p % periodsPerYear === 0 || p === periods;
-    if (isYearEnd) {
-      const year = Math.round(p / periodsPerYear);
-      const contributionYear = invested - investedPrevYear;
-      const gainYearNet = valueNet - valueNetPrevYear - contributionYear;
-
-      rows.push({
-        year,
-        invested,
-        valueGross,
-        valueNet,
-        contributionYear,
-        gainYearNet,
-        contributionAtEnd: contributionCur,
-        monthlyAtEnd: contributionFrequency === 'weekly' ? contributionCur * (52 / 12) : contributionCur,
-        averageCost: units > 0 ? invested / units : 0,
-        priceProxy,
-        periodLabel: getDcaPeriodLabel(startDate, year),
-      });
-
-      investedPrevYear = invested;
-      valueNetPrevYear = valueNet;
-
-      // 연말마다 적립금 증가율 반영
-      const inc = Number(annualIncrease) || 0;
-      if (inc !== 0) contributionCur *= 1 + inc / 100;
-    }
-  }
-
-  return rows;
-}
-
-function getDcaPeriodLabel(startDate, year) {
-  if (!startDate || !year) return '';
-  const start = new Date(`${startDate}T00:00:00`);
-  if (Number.isNaN(start.getTime())) return '';
-  const end = new Date(start);
-  end.setFullYear(start.getFullYear() + Number(year));
-  return end.toISOString().slice(0, 7);
-}
-
-function estimateLumpSumNet({
-  amount,
-  annualRate,
-  years,
-  compounding = 'monthly',
-  taxRate = 15.4,
-  feeRate = 0.5,
-}) {
-  const a = Number(amount) || 0;
-  const y = Number(years) || 0;
-  if (a <= 0 || y <= 0) return 0;
-
-  const tax = (Number(taxRate) || 0) / 100;
-  const fee = (Number(feeRate) || 0) / 100;
-  const rYear = (Number(annualRate) || 0) / 100;
-  const netYear = Math.max(-0.99, rYear * (1 - tax) - fee);
-
-  if (compounding === 'yearly') {
-    return a * Math.pow(1 + netYear, y);
-  }
-  return a * Math.pow(1 + netYear / 12, Math.floor(y * 12));
 }
 
 // ===================== 텍스트 리소스 =====================
@@ -163,12 +52,63 @@ const TEXT = {
     unitHint: '단위: 원 / 만원 / 억원 자동',
     modelNoticeTitle: '이 시뮬레이션의 가정',
     modelNotice:
-      '이 페이지는 실제 가격 데이터가 아니라 입력한 연 수익률을 일정하게 적용하는 가정 기반 모델입니다. 평균 매수단가와 낙폭은 지수 100 기준의 모델 값이며, 실제 시장 변동성·환율·배당·세금 계산과 다를 수 있습니다.',
-    decisionTitle: '공유하기 좋은 의사결정 요약',
-    modelDrawdown: '연도별 모델 낙폭',
+      '이 페이지는 실제 가격 데이터가 아니라 입력한 연 수익률을 일정하게 적용하는 가정 기반 모델입니다. 가격은 시작 지수를 100으로 놓고 계산하며, 마지막 가격은 이 지수가 시뮬레이션 종료 시점에 도달한 값입니다. 실제 시장 변동성·환율·배당·상품별 세금 계산과 다를 수 있습니다.',
+    decisionTitle: '결과 해석 요약',
+    modelDrawdown: '단순 모델 낙폭',
     averageCost: '평균 매수단가',
     lumpSumCompare: '일괄투자 비교',
     shareSetup: '공유용 조건',
+    grossAssets: '최종 세전 자산',
+    netAssets: '최종 세후 자산',
+    grossGain: '세전 수익',
+    netGain: '세후 수익',
+    taxAmount: '세금',
+    feeAmount: '수수료',
+    totalReturn: '총 수익률',
+    unitsHeld: '보유 수량',
+    finalPrice: '마지막 가격',
+    taxFeeImpact: '세금·수수료 효과',
+    calculationNotes: '계산 기준 자세히 보기',
+    breakdownTitle: '내 돈과 수익 분해',
+    breakdownHelp: '내가 직접 납입한 돈과 투자 성과로 늘어난 금액을 분리해서 보여줍니다.',
+    principalShare: '원금 비중',
+    gainShare: '수익 비중',
+    lumpSumDetailsTitle: '일괄투자 비교 상세',
+    dcaFinalNet: 'DCA 최종 세후 자산',
+    lumpSumFinalNet: '일괄투자 최종 세후 자산',
+    lumpSumGap: '차이 금액',
+    lumpSumGapPct: '차이율',
+    lumpSumPrincipal: '일괄투자에 사용한 원금',
+    targetAmount: '목표 금액',
+    targetAnalysisTitle: '목표 달성 분석',
+    targetAnalysisHelp: '목표 금액은 최종 세후 자산 기준으로 비교합니다. 필요 월 납입금은 현재 수익률, 기간, 세금, 수수료 조건이 그대로 유지된다고 가정해 역산한 값입니다.',
+    targetPlanningNote: '실제 시장 수익률은 매년 달라질 수 있으므로, 목표 금액 분석은 계획 수립용 참고값으로 활용하세요.',
+    targetProjectedNet: '현재 조건 예상 세후 자산',
+    targetStatus: '목표 달성 여부',
+    targetReached: '달성 가능',
+    targetNotReached: '부족',
+    targetNotSolvable: '계산 확인 필요',
+    targetShortfall: '목표까지 부족한 금액',
+    targetSurplus: '목표 초과 금액',
+    targetAchievementRate: '목표 달성률',
+    currentMonthlyContribution: '현재 월 납입금',
+    requiredMonthlyContribution: '목표 달성 필요 월 납입금',
+    additionalMonthlyContribution: '추가로 필요한 월 납입금',
+    targetSensitivityStatus: '목표 여부',
+    targetSensitivityDelta: '목표 대비 초과/부족',
+    drawdownScenarioTitle: '하락장 시나리오',
+    drawdownScenarioHelp: '하락장 시나리오는 입력한 수익률이 일정하게 적용되는 기본 모델에 단순한 -20% 가격 충격을 추가한 비교입니다. 실제 시장의 변동성과 회복 속도를 예측하는 기능은 아니며, DCA가 하락 시점에 어떤 차이를 만들 수 있는지 이해하기 위한 참고용입니다.',
+    drawdownScenarioMddHelp: '기본 모델은 가격이 일정한 월 수익률로만 움직이기 때문에 MDD가 0으로 나올 수 있습니다. 하락장 시나리오는 가격 충격을 포함하므로 MDD가 하락폭을 반영합니다.',
+    baseModelScenario: '기본 모델',
+    earlyDropScenario: '초반 하락 후 회복',
+    midDropScenario: '중간 하락 후 회복',
+    finalDropScenario: '마지막 해 하락',
+    baseDiff: '기본 대비',
+    scenarioDetails: '세부 값',
+    sensitivityTitle: '조건 민감도',
+    returnSensitivity: '연 수익률 민감도',
+    periodSensitivity: '투자 기간 민감도',
+    interpretationTitle: '이 결과를 어떻게 읽어야 하나요?',
     weekly: '매주',
     monthly: '매월',
     chartTitle: 'DCA 적립식 자산 성장 경로',
@@ -188,12 +128,63 @@ const TEXT = {
     unitHint: 'Unit: auto (KRW / 10k / 100M)',
     modelNoticeTitle: 'Model assumptions',
     modelNotice:
-      'This simulator is assumption-based. It applies your annual return steadily instead of using live price data. Average cost and drawdown are model values on a price index starting at 100, not real market volatility, FX, dividends, or tax accounting.',
-    decisionTitle: 'Decision summary worth sharing',
-    modelDrawdown: 'Model path drawdown',
+      'This simulator is assumption-based. It applies your annual return steadily instead of using live price data. Prices are shown as a relative index starting at 100, and the final price is the ending level of that index. Real market volatility, FX, dividends, and product-level tax rules can differ.',
+    decisionTitle: 'Result interpretation summary',
+    modelDrawdown: 'Simple model drawdown',
     averageCost: 'Average cost',
     lumpSumCompare: 'Lump-sum comparison',
     shareSetup: 'Shareable setup',
+    grossAssets: 'Final gross assets',
+    netAssets: 'Final net assets',
+    grossGain: 'Gross gain',
+    netGain: 'Net gain',
+    taxAmount: 'Tax',
+    feeAmount: 'Fee',
+    totalReturn: 'Total return',
+    unitsHeld: 'Units held',
+    finalPrice: 'Final price',
+    taxFeeImpact: 'Tax/fee drag',
+    calculationNotes: 'View calculation notes',
+    breakdownTitle: 'Principal and return breakdown',
+    breakdownHelp: 'Separates the money you paid in from the amount created by the model return.',
+    principalShare: 'Principal share',
+    gainShare: 'Gain share',
+    lumpSumDetailsTitle: 'Lump-sum comparison details',
+    dcaFinalNet: 'DCA final net assets',
+    lumpSumFinalNet: 'Lump-sum final net assets',
+    lumpSumGap: 'Difference',
+    lumpSumGapPct: 'Difference rate',
+    lumpSumPrincipal: 'Principal used for lump sum',
+    targetAmount: 'Target amount',
+    targetAnalysisTitle: 'Target progress analysis',
+    targetAnalysisHelp: 'The target amount is compared against the final after-tax value. The required monthly contribution is estimated using the same return, period, tax, and fee assumptions.',
+    targetPlanningNote: 'This is a planning estimate, not a forecast.',
+    targetProjectedNet: 'Projected final after-tax value',
+    targetStatus: 'Target status',
+    targetReached: 'On track',
+    targetNotReached: 'Short',
+    targetNotSolvable: 'Check assumptions',
+    targetShortfall: 'Shortfall to target',
+    targetSurplus: 'Surplus over target',
+    targetAchievementRate: 'Achievement rate',
+    currentMonthlyContribution: 'Current monthly contribution',
+    requiredMonthlyContribution: 'Required monthly contribution',
+    additionalMonthlyContribution: 'Additional monthly contribution needed',
+    targetSensitivityStatus: 'Target status',
+    targetSensitivityDelta: 'Surplus/shortfall vs target',
+    drawdownScenarioTitle: 'Bear-market scenarios',
+    drawdownScenarioHelp: 'Bear-market scenarios add a simple -20% price shock to the base model. They are not forecasts. They are intended to help you understand how timing of a drawdown can affect a DCA plan.',
+    drawdownScenarioMddHelp: 'The base model can show 0 MDD because the price only moves by the steady monthly return. Bear-market scenarios include a price shock, so MDD reflects that drop.',
+    baseModelScenario: 'Base model',
+    earlyDropScenario: 'Early drop and recovery',
+    midDropScenario: 'Mid-period drop and recovery',
+    finalDropScenario: 'Final-year drop',
+    baseDiff: 'Vs base',
+    scenarioDetails: 'Details',
+    sensitivityTitle: 'Assumption sensitivity',
+    returnSensitivity: 'Annual return sensitivity',
+    periodSensitivity: 'Investment period sensitivity',
+    interpretationTitle: 'How should I read this result?',
     weekly: 'Weekly',
     monthly: 'Monthly',
     chartTitle: 'DCA asset growth path',
@@ -213,6 +204,7 @@ const DCA_PRESET_FIELDS = [
   { query: "compounding", state: "compounding", type: "string", allowed: ["monthly", "yearly"] },
   { query: "taxRate", state: "taxRate", type: "number" },
   { query: "feeRate", state: "feeRate", type: "number" },
+  { query: "targetAmount", state: "targetAmount", type: "number" },
   { query: "currency", state: "currency", type: "string", allowed: ["KRW", "USD"] },
 ];
 
@@ -240,7 +232,7 @@ function getFaqItems(locale) {
       },
       {
         q: '실제 수익률과 시뮬레이션 결과가 다를 수 있나요?',
-        a: '실제 시장은 매일 변동하고, 환율·세법·상품 구조도 바뀝니다. 이 계산기는 일정한 연 수익률과 단순한 세금·수수료 모델을 전제로 하므로, “계획을 세우는 참고 도구”로 사용하시고 실제 투자는 반드시 추가적인 리스크 검토가 필요합니다.',
+        a: '실제 시장은 매일 변동하고, 환율·세법·상품 구조도 바뀝니다. 이 계산기는 일정한 연 수익률과 단순한 세금·수수료 모델을 전제로 하므로, “계획을 세우는 참고 도구”로 사용하시고 실제 투자는 추가적인 리스크 검토가 필요합니다.',
       },
       {
         q: '세율이나 수수료율을 0으로 두면 어떻게 되나요?',
@@ -469,48 +461,187 @@ export default function DCACalculatorPage() {
   const resultInsights = useMemo(() => {
     if (!hasResult || !last || !lastParams) return null;
 
-    let peak = 0;
-    let maxDrawdown = 0;
-    result.forEach((row) => {
-      const value = Number(row.valueNet) || 0;
-      peak = Math.max(peak, value);
-      if (peak > 0) {
-        maxDrawdown = Math.min(maxDrawdown, value / peak - 1);
-      }
-    });
-
-    const taxFeeDrag = Math.max(0, (Number(last.valueGross) || 0) - (Number(last.valueNet) || 0));
-    const cumulativeReturn = totalInvested > 0 ? (finalNet / totalInvested - 1) * 100 : 0;
-    const lumpSumNet = estimateLumpSumNet({
-      amount: totalInvested,
-      annualRate: lastParams.annualRate,
-      years: lastParams.years,
-      compounding: lastParams.compounding,
-      taxRate: lastParams.taxRate,
-      feeRate: lastParams.feeRate,
-    });
+    const analysis = analyzeDcaResult(result, lastParams);
+    if (!analysis) return null;
     const contributionLabel =
       lastParams.contributionFrequency === 'weekly'
         ? t.weekly
         : t.monthly;
 
     return {
-      maxDrawdownPct: Math.abs(maxDrawdown) * 100,
-      averageCost: Number(last.averageCost) || 0,
-      priceProxy: Number(last.priceProxy) || 0,
-      taxFeeDrag,
-      cumulativeReturn,
-      lumpSumNet,
-      lumpSumGap: lumpSumNet - finalNet,
+      ...analysis,
       setup:
         routeLocale === 'ko'
           ? `${contributionLabel} ${summaryFmt(lastParams.periodContribution)} · ${lastParams.years}년 · 연 ${lastParams.annualRate}%`
           : `${contributionLabel} ${summaryFmt(lastParams.periodContribution)} · ${lastParams.years}y · ${lastParams.annualRate}%/yr`,
       startLabel: lastParams.startDate || (routeLocale === 'ko' ? '시작일 미지정' : 'No start date'),
     };
-  }, [hasResult, last, lastParams, result, totalInvested, finalNet, routeLocale, summaryFmt, t.monthly, t.weekly]);
+  }, [hasResult, last, lastParams, result, routeLocale, summaryFmt, t.monthly, t.weekly]);
+
+  const sensitivity = useMemo(() => {
+    if (!hasResult || !lastParams) return null;
+    return buildDcaSensitivity(lastParams);
+  }, [hasResult, lastParams]);
+
+  const targetAnalysis = useMemo(() => {
+    if (!hasResult || !lastParams || !(Number(lastParams.targetAmount) > 0)) return null;
+    return solveMonthlyContributionForTarget(lastParams);
+  }, [hasResult, lastParams]);
+
+  const drawdownScenarios = useMemo(() => {
+    if (!hasResult || !lastParams) return null;
+    return buildDcaDrawdownScenarios(lastParams);
+  }, [hasResult, lastParams]);
+
+  const drawdownScenarioMaxNet = useMemo(() => {
+    if (!drawdownScenarios?.length) return 0;
+    return drawdownScenarios.reduce((max, row) => Math.max(max, Number(row.finalNet) || 0), 0);
+  }, [drawdownScenarios]);
+
+  const formatTargetDelta = useCallback(
+    (value) => {
+      const amount = Number(value) || 0;
+      const abs = summaryFmt(Math.abs(amount));
+      if (routeLocale === "ko") {
+        return amount >= 0 ? `초과 ${abs}` : `부족 ${abs}`;
+      }
+      return amount >= 0 ? `Surplus ${abs}` : `Short ${abs}`;
+    },
+    [routeLocale, summaryFmt]
+  );
+
+  const getTargetStatusLabel = useCallback(
+    (reached) => {
+      if (reached == null) return t.targetNotSolvable;
+      return reached ? t.targetReached : t.targetNotReached;
+    },
+    [t.targetNotReached, t.targetNotSolvable, t.targetReached]
+  );
+
+  const getDrawdownScenarioLabel = useCallback(
+    (key) => {
+      if (key === "early_drop_recovery") return t.earlyDropScenario;
+      if (key === "mid_drop_recovery") return t.midDropScenario;
+      if (key === "final_year_drop") return t.finalDropScenario;
+      return t.baseModelScenario;
+    },
+    [t.baseModelScenario, t.earlyDropScenario, t.finalDropScenario, t.midDropScenario]
+  );
+
+  const formatScenarioDiff = useCallback(
+    (value, pct) => {
+      const amount = Number(value) || 0;
+      const rate = Number(pct) || 0;
+      if (Math.abs(amount) < 1) {
+        return routeLocale === "ko" ? "기본과 동일" : "Same as base";
+      }
+      const sign = amount > 0 ? "+" : "-";
+      return `${sign}${summaryFmt(Math.abs(amount))} (${sign}${Math.abs(rate).toFixed(2)}%)`;
+    },
+    [routeLocale, summaryFmt]
+  );
+
+  const formatScenarioMdd = useCallback((value) => {
+    const mdd = Number(value) || 0;
+    return mdd > 0 ? `-${mdd.toFixed(2)}%` : "0.00%";
+  }, []);
+
+  const coreMetricCards = useMemo(() => {
+    if (!resultInsights) return [];
+    const numberFmt = (value, digits = 2) =>
+      Number(value || 0).toLocaleString(numberLocale, {
+        maximumFractionDigits: digits,
+      });
+
+    return [
+      {
+        label: t.grossAssets,
+        value: summaryFmt(resultInsights.finalGross),
+        help:
+          routeLocale === "ko"
+            ? "세금·수수료 차감 전 모델 평가금액입니다."
+            : "Model value before tax and fee drag.",
+      },
+      {
+        label: t.netAssets,
+        value: summaryFmt(resultInsights.finalNet),
+        help:
+          routeLocale === "ko"
+            ? "입력한 세율·수수료율을 단순 반영한 최종 자산입니다."
+            : "Final value after the simplified tax/fee assumptions.",
+      },
+      {
+        label: t.totalReturn,
+        value: `${resultInsights.cumulativeReturn.toFixed(2)}%`,
+        help:
+          routeLocale === "ko"
+            ? "세후 자산을 누적 투자금과 비교한 수익률입니다."
+            : "Net assets compared with total invested principal.",
+      },
+      {
+        label: t.unitsHeld,
+        value: numberFmt(resultInsights.totalUnits, 2),
+        help:
+          routeLocale === "ko"
+            ? "지수 가격으로 매수한 모델 수량의 합계입니다."
+            : "Total model units bought at the index price.",
+      },
+      {
+        label: t.averageCost,
+        value: resultInsights.averageCost.toFixed(2),
+        help:
+          routeLocale === "ko"
+            ? "총 투자원금을 총 매수수량으로 나눈 평균 취득 가격입니다."
+            : "Total invested principal divided by total model units.",
+      },
+      {
+        label: t.finalPrice,
+        value: resultInsights.priceProxy.toFixed(2),
+        help:
+          routeLocale === "ko"
+            ? "시작 가격 100이 마지막 시점에 도달한 상대 지수입니다."
+            : "The ending level of the relative price index that starts at 100.",
+      },
+      {
+        label: t.taxFeeImpact,
+        value: summaryFmt(resultInsights.taxFeeDrag),
+        help:
+          routeLocale === "ko"
+            ? "세전 모델과 세후 모델의 차이입니다. 실제 납부 세금 원장과는 다를 수 있습니다."
+            : "Difference between gross and net model values, not a tax ledger.",
+      },
+    ];
+  }, [resultInsights, numberLocale, routeLocale, summaryFmt, t]);
+
+  const moneyBreakdownItems = useMemo(() => {
+    if (!resultInsights) return [];
+    return [
+      { label: t.contrib, value: summaryFmt(resultInsights.totalInvested) },
+      { label: t.grossAssets, value: summaryFmt(resultInsights.finalGross) },
+      { label: t.grossGain, value: summaryFmt(resultInsights.grossGain) },
+      { label: t.taxAmount, value: summaryFmt(resultInsights.taxDragApprox) },
+      { label: t.feeAmount, value: summaryFmt(resultInsights.feeDragApprox) },
+      { label: t.netAssets, value: summaryFmt(resultInsights.finalNet) },
+      { label: t.netGain, value: summaryFmt(resultInsights.totalGain) },
+      { label: t.principalShare, value: `${resultInsights.principalSharePct.toFixed(1)}%` },
+      { label: t.gainShare, value: `${resultInsights.gainSharePct.toFixed(1)}%` },
+    ];
+  }, [resultInsights, summaryFmt, t]);
+
+  const lumpSumItems = useMemo(() => {
+    if (!resultInsights) return [];
+    return [
+      { label: t.dcaFinalNet, value: summaryFmt(resultInsights.finalNet) },
+      { label: t.lumpSumFinalNet, value: summaryFmt(resultInsights.lumpSumNet) },
+      { label: t.lumpSumGap, value: summaryFmt(resultInsights.lumpSumGap) },
+      { label: t.lumpSumGapPct, value: `${resultInsights.lumpSumGapPct.toFixed(2)}%` },
+      { label: t.lumpSumPrincipal, value: summaryFmt(resultInsights.totalInvested) },
+    ];
+  }, [resultInsights, summaryFmt, t]);
 
   const handleSubmit = (form) => {
+    const targetAmount = Number(form.targetAmount) || 0;
+
     persistPreset({
       initial: Number(form.initial) || 0,
       monthly: Number(form.monthly) || 0,
@@ -522,6 +653,7 @@ export default function DCACalculatorPage() {
       compounding: form.compounding === "yearly" ? "yearly" : "monthly",
       taxRate: Number(form.taxRate) || 0,
       feeRate: Number(form.feeRate) || 0,
+      targetAmount: targetAmount > 0 ? targetAmount : "",
       currency: form.currency || currency,
     });
 
@@ -534,7 +666,8 @@ export default function DCACalculatorPage() {
     const annualIncrease = Number(form.annualIncrease) || 0;
     const contributionFrequency = form.contributionFrequency === "weekly" ? "weekly" : "monthly";
 
-    const rows = simulateDCA({
+    const compounding = form.compounding === "yearly" ? "yearly" : "monthly";
+    const simulation = simulateDcaPlan({
       initial,
       monthly,
       annualRate: r,
@@ -542,12 +675,12 @@ export default function DCACalculatorPage() {
       startDate: form.startDate || "",
       contributionFrequency,
       annualIncrease,
-      compounding: form.compounding,
+      compounding,
       taxRate: form.taxRate,
       feeRate: form.feeRate,
     });
 
-    setResult(rows);
+    setResult(simulation.rows);
     trackGaEvent("tool_calculate", {
       source_tool: "dca",
       locale: routeLocale,
@@ -563,9 +696,14 @@ export default function DCACalculatorPage() {
       startDate: form.startDate || "",
       contributionFrequency,
       annualIncrease,
-      compounding: form.compounding === "yearly" ? "yearly" : "monthly",
+      compounding,
       taxRate: Number(form.taxRate) || 0,
       feeRate: Number(form.feeRate) || 0,
+      targetAmount: targetAmount > 0 ? targetAmount : 0,
+      periodsPerYear: simulation.meta.periodsPerYear,
+      grossPeriodReturn: simulation.meta.grossPeriodReturn,
+      netPeriodReturn: simulation.meta.netPeriodReturn,
+      netAnnualReturn: simulation.meta.netAnnualReturn,
     });
   };
 
@@ -666,6 +804,54 @@ export default function DCACalculatorPage() {
                 </div>
               </div>
 
+              {targetAnalysis && (
+                <section className={`card min-w-0 max-w-full scroll-mt-24 break-words border ${targetAnalysis.reached ? "border-emerald-200 bg-emerald-50" : "border-amber-200 bg-amber-50"}`}>
+                  <div className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                    <div className="min-w-0">
+                      <h2 className="break-words text-lg font-semibold leading-snug text-slate-900">{t.targetAnalysisTitle}</h2>
+                      <p className="mt-1 break-words text-sm leading-relaxed text-slate-600">{t.targetAnalysisHelp}</p>
+                    </div>
+                    <span className={`inline-flex w-fit shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${targetAnalysis.reached ? "bg-emerald-100 text-emerald-800" : "bg-amber-100 text-amber-800"}`}>
+                      {getTargetStatusLabel(targetAnalysis.reached)}
+                    </span>
+                  </div>
+
+                  <div className="mt-4 grid min-w-0 grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+                    {[
+                      { label: t.targetAmount, value: summaryFmt(targetAnalysis.targetAmount) },
+                      { label: t.targetProjectedNet, value: summaryFmt(targetAnalysis.projectedNetValue) },
+                      {
+                        label: targetAnalysis.reached ? t.targetSurplus : t.targetShortfall,
+                        value: formatTargetDelta(targetAnalysis.projectedNetValue - targetAnalysis.targetAmount),
+                      },
+                      { label: t.targetAchievementRate, value: `${Math.min(9999, targetAnalysis.achievementRate || 0).toFixed(1)}%` },
+                      { label: t.currentMonthlyContribution, value: summaryFmt(targetAnalysis.currentMonthlyContribution) },
+                      {
+                        label: t.requiredMonthlyContribution,
+                        value:
+                          targetAnalysis.requiredMonthlyContribution == null
+                            ? t.targetNotSolvable
+                            : summaryFmt(targetAnalysis.requiredMonthlyContribution),
+                      },
+                      {
+                        label: t.additionalMonthlyContribution,
+                        value:
+                          targetAnalysis.additionalMonthlyContribution == null
+                            ? t.targetNotSolvable
+                            : summaryFmt(targetAnalysis.additionalMonthlyContribution),
+                      },
+                      { label: t.targetStatus, value: getTargetStatusLabel(targetAnalysis.reached) },
+                    ].map((item) => (
+                      <div key={item.label} className="min-w-0 rounded-lg border border-white/70 bg-white/80 px-3 py-2">
+                        <div className="break-words text-[11px] font-medium text-slate-500">{item.label}</div>
+                        <div className="mt-1 break-words text-sm font-semibold text-slate-900">{item.value}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="mt-3 break-words text-xs leading-relaxed text-slate-600">{t.targetPlanningNote}</p>
+                </section>
+              )}
+
               {resultInsights && (
                 <section className="card min-w-0 max-w-full scroll-mt-24 break-words">
                   <div className="flex min-w-0 flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
@@ -684,8 +870,8 @@ export default function DCACalculatorPage() {
                       </div>
                       <p className="mt-1 break-words text-xs leading-relaxed text-slate-500">
                         {routeLocale === "ko"
-                          ? "연도별 세후 자산 기준의 가정 경로이며 실제 시장 MDD가 아닙니다."
-                          : "Based on yearly net model values, not actual market MDD."}
+                          ? "연도별 세후 자산의 고점 대비 하락률입니다. 실제 가격 데이터 기반 MDD가 아닙니다."
+                          : "Yearly net model drop from the prior peak, not a market-data MDD."}
                       </p>
                     </div>
 
@@ -698,8 +884,8 @@ export default function DCACalculatorPage() {
                       </div>
                       <p className="mt-1 break-words text-xs leading-relaxed text-slate-500">
                         {routeLocale === "ko"
-                          ? `지수 100 기준, 마지막 가격 ${resultInsights.priceProxy.toFixed(2)}`
-                          : `Index starts at 100, final price ${resultInsights.priceProxy.toFixed(2)}`}
+                          ? `총 투자원금 / 총 매수수량. 지수 100 기준 마지막 가격은 ${resultInsights.priceProxy.toFixed(2)}입니다.`
+                          : `Total invested / units. Final price on the 100 index is ${resultInsights.priceProxy.toFixed(2)}.`}
                       </p>
                     </div>
 
@@ -712,8 +898,8 @@ export default function DCACalculatorPage() {
                       </div>
                       <p className="mt-1 break-words text-xs leading-relaxed text-slate-500">
                         {routeLocale === "ko"
-                          ? `미래 납입금을 처음부터 보유했다고 보는 참고 가정: ${summaryFmt(resultInsights.lumpSumNet)}`
-                          : `Reference only: assumes future contributions were available upfront: ${summaryFmt(resultInsights.lumpSumNet)}`}
+                          ? `DCA 총 납입 예정액을 첫 달에 한 번에 투자했다고 가정한 세후 자산: ${summaryFmt(resultInsights.lumpSumNet)}`
+                          : `Assumes the total planned DCA principal was invested upfront: ${summaryFmt(resultInsights.lumpSumNet)}`}
                       </p>
                     </div>
 
@@ -729,6 +915,369 @@ export default function DCACalculatorPage() {
                       </p>
                     </div>
                   </div>
+
+                  <details className="mt-4 min-w-0 rounded-lg border border-slate-200 bg-slate-50 p-3">
+                    <summary className="cursor-pointer break-words text-sm font-semibold text-slate-800">
+                      {t.calculationNotes}
+                    </summary>
+                    <ul className="mt-3 list-disc space-y-2 pl-5 text-xs leading-relaxed text-slate-600 sm:text-sm">
+                      <li>
+                        {routeLocale === "ko"
+                          ? "MDD(Maximum Drawdown)는 특정 기간 중 고점 대비 저점까지 가장 크게 하락한 비율입니다. 예를 들어 자산이 1,000만원에서 800만원까지 내려가면 해당 구간 낙폭은 -20%입니다."
+                          : "MDD (Maximum Drawdown) is the largest drop from a peak to a later low. If assets fall from 10,000 to 8,000, that segment is -20%."}
+                      </li>
+                      <li>
+                        {routeLocale === "ko"
+                          ? "현재 단순 모델 낙폭은 연평균 수익률을 일정하게 적용한 연도별 세후 자산 기준입니다. 양의 수익률과 추가 납입만 있는 단순 경로에서는 0.00%로 표시될 수 있습니다."
+                          : "The simple model drawdown uses yearly net model values from a steady return path. With positive returns and ongoing contributions, it can show 0.00%."}
+                      </li>
+                      <li>
+                        {routeLocale === "ko"
+                          ? `지수 100 기준은 실제 ETF 가격이 아니라 시작 가격을 100으로 둔 상대 가격입니다. 마지막 가격 ${resultInsights.priceProxy.toFixed(2)}는 시작 지수가 약 ${(resultInsights.priceProxy / 100).toFixed(4)}배가 되었다는 뜻입니다.`
+                          : `The 100 index is not a real ETF price. Final price ${resultInsights.priceProxy.toFixed(2)} means the starting index became about ${(resultInsights.priceProxy / 100).toFixed(4)}x.`}
+                      </li>
+                      <li>
+                        {routeLocale === "ko"
+                          ? `수익률은 ${lastParams.compounding === "yearly" ? "연복리 환산식 (1 + 연수익률)^(1/납입주기수) - 1" : "월복리 설정의 단순식 연수익률 / 납입주기수"}로 주기별 수익률을 만들고, 세후 모델은 연 수익률 × (1 - 세율) - 연 수수료율을 같은 방식으로 반영합니다.`
+                          : `The period return uses ${lastParams.compounding === "yearly" ? "(1 + annual return)^(1 / periods per year) - 1" : "annual return / periods per year"}. The net model applies annual return × (1 - tax rate) - annual fee rate in the same mode.`}
+                      </li>
+                      <li>
+                        {routeLocale === "ko"
+                          ? "평균 매수단가는 총 투자원금 / 총 매수수량 기준입니다. 세금은 매도 시점 원장처럼 별도 계산하지 않고 세후 수익률 가정에 반영합니다."
+                          : "Average cost is total invested principal / total units. Tax is included as a return assumption, not as a realized-sale tax ledger."}
+                      </li>
+                    </ul>
+                  </details>
+
+                  <div className="mt-4 grid min-w-0 max-w-full grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                    {coreMetricCards.map((item) => (
+                      <div key={item.label} className="min-w-0 rounded-lg border border-slate-200 bg-white p-3">
+                        <div className="break-words text-xs font-semibold text-slate-500">{item.label}</div>
+                        <div className="mt-1 break-words text-base font-semibold leading-snug text-slate-900">
+                          {item.value}
+                        </div>
+                        <p className="mt-1 break-words text-xs leading-relaxed text-slate-500">{item.help}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-4 min-w-0 rounded-lg border border-slate-200 bg-slate-50 p-3">
+                    <h3 className="break-words text-sm font-semibold text-slate-900">{t.breakdownTitle}</h3>
+                    <p className="mt-1 break-words text-xs leading-relaxed text-slate-500">{t.breakdownHelp}</p>
+                    <div className="mt-3 grid min-w-0 grid-cols-1 gap-2 sm:grid-cols-3">
+                      {moneyBreakdownItems.map((item) => (
+                        <div key={item.label} className="min-w-0 rounded-md border border-slate-200 bg-white px-3 py-2">
+                          <div className="break-words text-[11px] font-medium text-slate-500">{item.label}</div>
+                          <div className="mt-1 break-words text-sm font-semibold text-slate-900">{item.value}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="mt-2 break-words text-[11px] leading-relaxed text-slate-500">
+                      {routeLocale === "ko"
+                        ? "세금과 수수료는 실제 원장값이 아니라 세후 수익률 가정을 기준으로 재시뮬레이션한 추정 효과입니다. 값이 0이면 0으로 표시합니다."
+                        : "Tax and fee are estimated by re-running the simplified net-return model, not by building a realized tax ledger. Zero values are shown as 0."}
+                    </p>
+                  </div>
+
+                  <div className="mt-4 min-w-0 rounded-lg border border-slate-200 bg-white p-3">
+                    <h3 className="break-words text-sm font-semibold text-slate-900">{t.lumpSumDetailsTitle}</h3>
+                    <div className="mt-3 grid min-w-0 grid-cols-1 gap-2 sm:grid-cols-5">
+                      {lumpSumItems.map((item) => (
+                        <div key={item.label} className="min-w-0 rounded-md border border-slate-200 bg-slate-50 px-3 py-2">
+                          <div className="break-words text-[11px] font-medium text-slate-500">{item.label}</div>
+                          <div className="mt-1 break-words text-sm font-semibold text-slate-900">{item.value}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <ul className="mt-3 list-disc space-y-1 pl-5 text-xs leading-relaxed text-slate-600 sm:text-sm">
+                      <li>
+                        {routeLocale === "ko"
+                          ? "상승장이 꾸준히 이어지는 단순 모델에서는 일괄투자가 DCA보다 유리하게 나올 수 있습니다."
+                          : "In a simple model where prices rise steadily, the lump-sum result can be higher than DCA."}
+                      </li>
+                      <li>
+                        {routeLocale === "ko"
+                          ? "DCA는 투자 시점을 나누기 때문에 하락장이나 변동성이 큰 구간에서 평균 매수단가를 낮추는 효과를 기대할 수 있습니다."
+                          : "DCA spreads entry timing, so it can lower average cost in falling or volatile paths."}
+                      </li>
+                      <li>
+                        {routeLocale === "ko"
+                          ? "이 비교는 입력한 수익률이 일정하게 적용된 단순 모델 기준입니다."
+                          : "This comparison uses the same steady-return assumption entered in the form."}
+                      </li>
+                    </ul>
+                  </div>
+
+                  {sensitivity && (
+                    <div className="mt-4 min-w-0 rounded-lg border border-slate-200 bg-white p-3">
+                      <h3 className="break-words text-sm font-semibold text-slate-900">{t.sensitivityTitle}</h3>
+                      <div className="mt-3 grid min-w-0 grid-cols-1 gap-4 lg:grid-cols-2">
+                        <div className="min-w-0">
+                          <div className="mb-2 text-xs font-semibold text-slate-600">{t.returnSensitivity}</div>
+                          <div className="overflow-x-auto">
+                            <table className={targetAnalysis ? "min-w-[960px] text-sm" : "min-w-[760px] text-sm"}>
+                              <thead className="bg-slate-50 text-xs text-slate-500">
+                                <tr>
+                                  <th className="px-2 py-1 text-left">{routeLocale === "ko" ? "조건" : "Scenario"}</th>
+                                  <th className="px-2 py-1 text-right">{routeLocale === "ko" ? "연 수익률" : "Annual return"}</th>
+                                  <th className="px-2 py-1 text-right">{t.netAssets}</th>
+                                  <th className="px-2 py-1 text-right">{t.netGain}</th>
+                                  <th className="px-2 py-1 text-right">{t.totalReturn}</th>
+                                  <th className="px-2 py-1 text-right">{t.finalPrice}</th>
+                                  <th className="px-2 py-1 text-right">{t.averageCost}</th>
+                                  {targetAnalysis && (
+                                    <>
+                                      <th className="px-2 py-1 text-right">{t.targetSensitivityStatus}</th>
+                                      <th className="px-2 py-1 text-right">{t.targetSensitivityDelta}</th>
+                                    </>
+                                  )}
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {sensitivity.returnScenarios.map((row) => (
+                                  <tr key={row.key} className={`border-t ${row.delta === 0 ? "bg-blue-50 font-semibold text-slate-900" : ""}`}>
+                                    <td className="px-2 py-1">
+                                      {routeLocale === "ko"
+                                        ? row.delta === 0
+                                          ? "현재 가정"
+                                          : `수익률 ${row.delta > 0 ? "+" : ""}${row.delta}%p`
+                                        : row.delta === 0
+                                          ? "Current"
+                                          : `${row.delta > 0 ? "+" : ""}${row.delta}pp return`}
+                                    </td>
+                                    <td className="px-2 py-1 text-right">{row.annualRate.toFixed(2)}%</td>
+                                    <td className="px-2 py-1 text-right">{summaryFmt(row.finalNet)}</td>
+                                    <td className="px-2 py-1 text-right">{summaryFmt(row.totalGain)}</td>
+                                    <td className="px-2 py-1 text-right">{row.cumulativeReturn.toFixed(2)}%</td>
+                                    <td className="px-2 py-1 text-right">{row.priceProxy.toFixed(2)}</td>
+                                    <td className="px-2 py-1 text-right">{row.averageCost.toFixed(2)}</td>
+                                    {targetAnalysis && (
+                                      <>
+                                        <td className="px-2 py-1 text-right">{getTargetStatusLabel(row.targetReached)}</td>
+                                        <td className="px-2 py-1 text-right">{formatTargetDelta(row.targetDelta)}</td>
+                                      </>
+                                    )}
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+
+                        <div className="min-w-0">
+                          <div className="mb-2 text-xs font-semibold text-slate-600">{t.periodSensitivity}</div>
+                          <div className="overflow-x-auto">
+                            <table className={targetAnalysis ? "min-w-[820px] text-sm" : "min-w-[620px] text-sm"}>
+                              <thead className="bg-slate-50 text-xs text-slate-500">
+                                <tr>
+                                  <th className="px-2 py-1 text-left">{routeLocale === "ko" ? "조건" : "Scenario"}</th>
+                                  <th className="px-2 py-1 text-right">{routeLocale === "ko" ? "기간" : "Years"}</th>
+                                  <th className="px-2 py-1 text-right">{t.contrib}</th>
+                                  <th className="px-2 py-1 text-right">{t.netAssets}</th>
+                                  <th className="px-2 py-1 text-right">{t.netGain}</th>
+                                  <th className="px-2 py-1 text-right">{t.totalReturn}</th>
+                                  {targetAnalysis && (
+                                    <>
+                                      <th className="px-2 py-1 text-right">{t.targetSensitivityStatus}</th>
+                                      <th className="px-2 py-1 text-right">{t.targetSensitivityDelta}</th>
+                                    </>
+                                  )}
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {sensitivity.periodScenarios.map((row) => (
+                                  <tr key={row.key} className={`border-t ${row.delta === 0 ? "bg-blue-50 font-semibold text-slate-900" : ""}`}>
+                                    <td className="px-2 py-1">
+                                      {routeLocale === "ko"
+                                        ? row.delta === 0
+                                          ? "현재 기간"
+                                          : `+${row.delta}년`
+                                        : row.delta === 0
+                                          ? "Current"
+                                          : `+${row.delta} years`}
+                                    </td>
+                                    <td className="px-2 py-1 text-right">
+                                      {routeLocale === "ko" ? `${row.years}년` : `${row.years}y`}
+                                    </td>
+                                    <td className="px-2 py-1 text-right">{summaryFmt(row.totalInvested)}</td>
+                                    <td className="px-2 py-1 text-right">{summaryFmt(row.finalNet)}</td>
+                                    <td className="px-2 py-1 text-right">{summaryFmt(row.totalGain)}</td>
+                                    <td className="px-2 py-1 text-right">{row.cumulativeReturn.toFixed(2)}%</td>
+                                    {targetAnalysis && (
+                                      <>
+                                        <td className="px-2 py-1 text-right">{getTargetStatusLabel(row.targetReached)}</td>
+                                        <td className="px-2 py-1 text-right">{formatTargetDelta(row.targetDelta)}</td>
+                                      </>
+                                    )}
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {drawdownScenarios && (
+                    <div className="mt-4 min-w-0 rounded-lg border border-slate-200 bg-white p-3">
+                      <div className="flex min-w-0 flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+                        <div className="min-w-0">
+                          <h3 className="break-words text-sm font-semibold text-slate-900">{t.drawdownScenarioTitle}</h3>
+                          <p className="mt-1 break-words text-xs leading-relaxed text-slate-500 sm:text-sm">
+                            {t.drawdownScenarioHelp}
+                          </p>
+                        </div>
+                        <span className="inline-flex w-fit shrink-0 rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
+                          -20%
+                        </span>
+                      </div>
+
+                      <div className="mt-3 grid min-w-0 grid-cols-1 gap-3 lg:grid-cols-4">
+                        {drawdownScenarios.map((row) => {
+                          const barWidth =
+                            drawdownScenarioMaxNet > 0
+                              ? Math.max(4, Math.min(100, ((Number(row.finalNet) || 0) / drawdownScenarioMaxNet) * 100))
+                              : 0;
+                          const diffPositive = (Number(row.baseDiff) || 0) > 0;
+                          const diffNegative = (Number(row.baseDiff) || 0) < 0;
+
+                          return (
+                            <div
+                              key={row.key}
+                              className={`min-w-0 rounded-lg border p-3 ${
+                                row.isBase ? "border-blue-200 bg-blue-50" : "border-slate-200 bg-slate-50"
+                              }`}
+                            >
+                              <div className="flex min-w-0 items-start justify-between gap-2">
+                                <div className="min-w-0 break-words text-sm font-semibold text-slate-900">
+                                  {getDrawdownScenarioLabel(row.key)}
+                                </div>
+                                {row.isBase && (
+                                  <span className="shrink-0 rounded-full bg-blue-100 px-2 py-0.5 text-[11px] font-semibold text-blue-700">
+                                    {routeLocale === "ko" ? "기준" : "Base"}
+                                  </span>
+                                )}
+                              </div>
+
+                              <div className="mt-3">
+                                <div className="break-words text-[11px] font-medium text-slate-500">{t.netAssets}</div>
+                                <div className="mt-1 break-words text-base font-semibold leading-snug text-slate-900">
+                                  {summaryFmt(row.finalNet)}
+                                </div>
+                                <div className="mt-2 h-2 overflow-hidden rounded-full bg-white">
+                                  <div
+                                    className={`h-full rounded-full ${row.isBase ? "bg-blue-500" : "bg-slate-500"}`}
+                                    style={{ width: `${barWidth}%` }}
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
+                                <div className="min-w-0 rounded-md bg-white px-2 py-1.5">
+                                  <div className="text-slate-500">{t.baseDiff}</div>
+                                  <div className={`mt-0.5 break-words font-semibold ${
+                                    diffPositive ? "text-emerald-700" : diffNegative ? "text-rose-700" : "text-slate-700"
+                                  }`}>
+                                    {formatScenarioDiff(row.baseDiff, row.baseDiffPct)}
+                                  </div>
+                                </div>
+                                <div className="min-w-0 rounded-md bg-white px-2 py-1.5">
+                                  <div className="text-slate-500">{routeLocale === "ko" ? "가격 경로 MDD" : "Price path MDD"}</div>
+                                  <div className="mt-0.5 break-words font-semibold text-slate-800">
+                                    {formatScenarioMdd(row.priceMaxDrawdownPct ?? row.maxDrawdownPct)}
+                                  </div>
+                                </div>
+                                {targetAnalysis && (
+                                  <div className="col-span-2 min-w-0 rounded-md bg-white px-2 py-1.5">
+                                    <div className="text-slate-500">{t.targetSensitivityStatus}</div>
+                                    <div className="mt-0.5 break-words font-semibold text-slate-800">
+                                      {getTargetStatusLabel(row.targetReached)} · {formatTargetDelta(row.targetDelta)}
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+
+                              <details className="mt-3 min-w-0">
+                                <summary className="cursor-pointer text-xs font-semibold text-slate-600">
+                                  {t.scenarioDetails}
+                                </summary>
+                                <dl className="mt-2 grid grid-cols-1 gap-1 text-xs text-slate-600">
+                                  <div className="flex justify-between gap-2">
+                                    <dt>{t.contrib}</dt>
+                                    <dd className="text-right font-medium">{summaryFmt(row.totalInvested)}</dd>
+                                  </div>
+                                  <div className="flex justify-between gap-2">
+                                    <dt>{t.netGain}</dt>
+                                    <dd className="text-right font-medium">{summaryFmt(row.totalGain)}</dd>
+                                  </div>
+                                  <div className="flex justify-between gap-2">
+                                    <dt>{t.totalReturn}</dt>
+                                    <dd className="text-right font-medium">{row.cumulativeReturn.toFixed(2)}%</dd>
+                                  </div>
+                                  <div className="flex justify-between gap-2">
+                                    <dt>{t.finalPrice}</dt>
+                                    <dd className="text-right font-medium">{row.priceProxy.toFixed(2)}</dd>
+                                  </div>
+                                  <div className="flex justify-between gap-2">
+                                    <dt>{t.averageCost}</dt>
+                                    <dd className="text-right font-medium">{row.averageCost.toFixed(2)}</dd>
+                                  </div>
+                                  <div className="flex justify-between gap-2">
+                                    <dt>{t.unitsHeld}</dt>
+                                    <dd className="text-right font-medium">
+                                      {(Number(row.totalUnits) || 0).toLocaleString(numberLocale, { maximumFractionDigits: 2 })}
+                                    </dd>
+                                  </div>
+                                </dl>
+                              </details>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      <p className="mt-3 break-words text-xs leading-relaxed text-slate-500">
+                        {t.drawdownScenarioMddHelp}
+                      </p>
+                    </div>
+                  )}
+
+                  <div className="mt-4 min-w-0 rounded-lg border border-blue-100 bg-blue-50 p-3">
+                    <h3 className="break-words text-sm font-semibold text-slate-900">{t.interpretationTitle}</h3>
+                    <ul className="mt-2 list-disc space-y-1 pl-5 text-xs leading-relaxed text-slate-700 sm:text-sm">
+                      <li>
+                        {routeLocale === "ko"
+                          ? "평균 매수단가가 마지막 가격보다 낮으면 이 단순 모델에서는 평가수익 구간입니다."
+                          : "If average cost is below the final price, the simple model is in a gain position."}
+                      </li>
+                      <li>
+                        {routeLocale === "ko"
+                          ? "마지막 가격은 실제 주가가 아니라 시작 가격 100 기준의 상대 지수입니다."
+                          : "The final price is a relative index level, not a real market quote."}
+                      </li>
+                      <li>
+                        {routeLocale === "ko"
+                          ? "DCA는 하락 구간에서 더 많은 수량을 사는 구조가 있지만, 꾸준한 상승 경로에서는 일괄투자 가정이 더 크게 나올 수 있습니다."
+                          : "DCA buys more units in lower-price segments, while a steady rising path can favor the upfront lump-sum assumption."}
+                      </li>
+                      <li>
+                        {routeLocale === "ko"
+                          ? "세금/수수료 설정에 따라 세후 결과가 달라집니다."
+                          : "After-tax results change when tax and fee assumptions change."}
+                      </li>
+                      <li>
+                        {routeLocale === "ko"
+                          ? "MDD는 고점 대비 최대 하락률이며, 현재 단순 모델에서는 하락 경로가 없으면 0으로 표시될 수 있습니다."
+                          : "MDD is the maximum drop from a prior peak; this simple model can show 0 when there is no declining path."}
+                      </li>
+                      <li>
+                        {routeLocale === "ko"
+                          ? "이 화면은 입력값 기반 시뮬레이션이며 특정 투자 판단을 대신하지 않습니다."
+                          : "This is an input-based simulation, not investment advice or a forecast."}
+                      </li>
+                    </ul>
+                  </div>
+
                   <p className="mt-3 max-w-full break-words text-xs leading-relaxed text-slate-500">
                     {routeLocale === "ko"
                       ? `세후 누적수익률 ${resultInsights.cumulativeReturn.toFixed(2)}%, 세금·수수료 효과 ${summaryFmt(resultInsights.taxFeeDrag)}. 실제 변동성 기반 MDD는 별도 가격 데이터가 필요합니다.`

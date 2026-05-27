@@ -1,4 +1,4 @@
-// _components/DCAYearTable.js
+// _components/DcaYearTable.js
 import { formatMoneyAuto } from '../lib/money';
 
 export default function DCAYearTable({
@@ -16,9 +16,10 @@ export default function DCAYearTable({
       : 'Yearly DCA investment summary');
 
   const unitText = isKo
-    ? '단위: 원 / 만원 / 억원 자동'
-    : 'Unit: auto (KRW / 10k / 100M)';
+    ? '단위: 원 / 만원 / 억원 자동 · 가격 지수는 시작 100 기준'
+    : 'Unit: auto (KRW / 10k / 100M) · price index starts at 100';
 
+  let peakNet = 0;
   const stats = rows.map((r) => {
     const invested = Number(r.invested) || 0;
     const net = Number(r.valueNet) || 0;
@@ -27,7 +28,10 @@ export default function DCAYearTable({
 
     const gain = net - invested;             // 세후 수익(누적)
     const taxFeeImpact = gross - net;        // 세금+수수료로 인해 줄어든 자산(가정)
-    const returnRate = invested > 0 ? (net / invested) * 100 : 0;
+    const returnRate = invested > 0 ? (net / invested - 1) * 100 : 0;
+    peakNet = Math.max(peakNet, net);
+    const fallbackDrawdownPct =
+      peakNet > 0 ? Math.abs(Math.min(0, net / peakNet - 1)) * 100 : 0;
 
     return {
       year: r.year,
@@ -39,6 +43,12 @@ export default function DCAYearTable({
       gain,
       taxFeeImpact,
       returnRate,
+      averageCost: Number(r.averageCost) || 0,
+      priceProxy: Number(r.priceProxy) || 0,
+      modelDrawdownPct:
+        r.modelDrawdownPct === undefined || r.modelDrawdownPct === null
+          ? fallbackDrawdownPct
+          : Number(r.modelDrawdownPct) || 0,
     };
   });
 
@@ -54,6 +64,9 @@ export default function DCAYearTable({
       'netGain',
       'taxFeeImpact',
       'returnRate',
+      'averageCost',
+      'priceIndex',
+      'simpleModelDrawdownPct',
     ];
     const lines = [header.join(',')];
 
@@ -68,6 +81,9 @@ export default function DCAYearTable({
           s.gain,
           s.taxFeeImpact,
           s.returnRate,
+          s.averageCost,
+          s.priceProxy,
+          s.modelDrawdownPct,
         ].join(',')
       );
     });
@@ -113,7 +129,7 @@ export default function DCAYearTable({
       </div>
 
       <div className="w-full min-w-0 max-w-full overflow-x-auto">
-        <table className="min-w-[880px] border-t">
+        <table className="min-w-[1120px] border-t">
           <thead className="bg-slate-50">
             <tr>
               <th className="px-2 py-1 text-left whitespace-nowrap">
@@ -138,6 +154,15 @@ export default function DCAYearTable({
                 {isKo
                   ? '누적 수익률(세후)'
                   : 'Cum. return (net)'}
+              </th>
+              <th className="px-2 py-1 text-right whitespace-nowrap">
+                {isKo ? '평균 매수단가' : 'Average cost'}
+              </th>
+              <th className="px-2 py-1 text-right whitespace-nowrap">
+                {isKo ? '가격 지수' : 'Price index'}
+              </th>
+              <th className="px-2 py-1 text-right whitespace-nowrap">
+                {isKo ? '단순 모델 낙폭' : 'Simple model drawdown'}
               </th>
             </tr>
           </thead>
@@ -164,6 +189,15 @@ export default function DCAYearTable({
                 </td>
                 <td className="px-2 py-1 text-right whitespace-nowrap">
                   {s.returnRate.toFixed(2)}%
+                </td>
+                <td className="px-2 py-1 text-right whitespace-nowrap">
+                  {s.averageCost.toFixed(2)}
+                </td>
+                <td className="px-2 py-1 text-right whitespace-nowrap">
+                  {s.priceProxy.toFixed(2)}
+                </td>
+                <td className="px-2 py-1 text-right whitespace-nowrap">
+                  {s.modelDrawdownPct.toFixed(2)}%
                 </td>
               </tr>
             ))}
