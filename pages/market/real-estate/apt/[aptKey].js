@@ -241,18 +241,27 @@ function fmtDate(v) {
   const s = String(v == null ? '' : v).trim();
   return s ? s.slice(0, 10) : '-';
 }
+function nonNegativeNumberOrNull(value) {
+  if (value == null || value === '') return null;
+  const n = Number(value);
+  if (!Number.isFinite(n) || n < 0) return null;
+  return n;
+}
 function fmtParking(row, lang) {
-  const total = row?.parking_total;
-  const ground = row?.parking_ground;
-  const underground = row?.parking_underground;
+  const total = nonNegativeNumberOrNull(row?.parking_total);
+  const ground = nonNegativeNumberOrNull(row?.parking_ground);
+  const underground = nonNegativeNumberOrNull(row?.parking_underground);
   if (total == null && ground == null && underground == null) return '-';
 
-  const main = total != null ? Number(total).toLocaleString() : '-';
-  if (ground == null && underground == null) return main;
+  const main = total != null ? total.toLocaleString() : null;
+  const parts = [];
+  if (ground != null) parts.push(lang === 'en' ? `G ${ground.toLocaleString()}` : `지상 ${ground.toLocaleString()}`);
+  if (underground != null) parts.push(lang === 'en' ? `B ${underground.toLocaleString()}` : `지하 ${underground.toLocaleString()}`);
+  if (total != null && !parts.length) return main;
 
-  const g = ground != null ? Number(ground).toLocaleString() : '-';
-  const u = underground != null ? Number(underground).toLocaleString() : '-';
-  return lang === 'en' ? `${main} (G ${g} / B ${u})` : `${main} (지상 ${g} / 지하 ${u})`;
+  const detail = parts.join(' / ');
+  if (total == null) return detail;
+  return `${main} (${detail})`;
 }
 function fmtHeatingManage(row) {
   const heating = fmtText(row?.heating_type);
@@ -271,7 +280,7 @@ function shouldShowComplexInfo(row) {
   if (confidence === 'high' || confidence === 'medium') return true;
   if (confidence === 'low' || confidence === 'none') return false;
   if (row?.complex_info_warning) return false;
-  return row?.household_count != null || row?.dong_count != null || row?.parking_total != null;
+  return row?.household_count != null || row?.dong_count != null || row?.parking_total != null || row?.parking_ground != null || row?.parking_underground != null;
 }
 
 function shouldShowComplexCounts(row) {
@@ -298,12 +307,27 @@ function fmtDongCount(row, lang) {
 }
 
 function fmtParkingFriendly(row, lang) {
-  if (!shouldShowComplexInfo(row) || row?.parking_total == null) {
+  if (!shouldShowComplexInfo(row)) {
     return lang === 'en' ? 'Checking' : '확인 중';
   }
-  return lang === 'en'
-    ? `Parking ${Number(row.parking_total).toLocaleString()}`
-    : `주차 ${Number(row.parking_total).toLocaleString()}대`;
+  const total = nonNegativeNumberOrNull(row?.parking_total);
+  const ground = nonNegativeNumberOrNull(row?.parking_ground);
+  const underground = nonNegativeNumberOrNull(row?.parking_underground);
+  if (total == null && ground == null && underground == null) {
+    return lang === 'en' ? 'Checking' : '확인 중';
+  }
+  const parts = [];
+  if (ground != null) parts.push(lang === 'en' ? `G ${ground.toLocaleString()}` : `지상 ${ground.toLocaleString()}`);
+  if (underground != null) parts.push(lang === 'en' ? `B ${underground.toLocaleString()}` : `지하 ${underground.toLocaleString()}`);
+  const detail = parts.join(' / ');
+  if (total == null) {
+    return lang === 'en' ? `Parking (${detail})` : `주차 ${detail}`;
+  }
+  const main = total.toLocaleString();
+  if (!detail) {
+    return lang === 'en' ? `Parking ${main}` : `주차 ${main}대`;
+  }
+  return lang === 'en' ? `Parking ${main} (${detail})` : `주차 ${main}대 (${detail})`;
 }
 
 function fmtComplexText(value, lang) {

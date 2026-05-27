@@ -31,8 +31,8 @@
 
 | 점검 단지명 | 거래 원천 데이터 | 통계 apt_key | override_exists | household_count_dim | household_count_override | household_count_final | complex_info_source | complex_info_confidence | 기대값 | 결과 | warning |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 경기도 김포시 풍무동 김포풍무푸르지오 | 있음 (4개 후보) | 2개 후보 (상세 표 참조)<br>202604 | Y | 20 | 24670 | 24670 | override | verified | 2712 | 불일치 | override_applied; dim_counts_suspicious |
-| 서울 서초구 반포동 아크로리버파크 | 있음 (2개 후보) | 11650\|\|반포동\|아크로리버파크<br>202604 | Y | 29 | 16120 | 16120 | override | verified | 1612 | 불일치 | override_applied; dim_counts_suspicious |
+| 경기도 김포시 풍무동 김포풍무푸르지오 | 있음 (4개 후보) | 2개 후보 (상세 표 참조)<br>202604 | Y | 20 | 2712 | 2712 | override | verified | 2712 | 일치 | override_applied; dim_counts_suspicious |
+| 서울 서초구 반포동 아크로리버파크 | 있음 (2개 후보) | 11650\|\|반포동\|아크로리버파크<br>202604 | Y | 29 | 1612 | 1612 | override | verified | 1612 | 일치 | override_applied; dim_counts_suspicious |
 
 ## 전체 단지 기본정보 커버리지
 
@@ -41,6 +41,15 @@
 | re_apt_complex_dim 전체 | 10114 | - | - | - | 11.5% | 6.8% | 전체 이상치 8944 |
 | 최근 202604 Top100 (전체) | 100 | 31/100 (31.0%) | 31/100 (31.0%) | 31/100 (31.0%) | 69/100 (69.0%) | 69/100 (69.0%) | Y |
 | 최근 202604 Top100 (서울) | 100 | 32/100 (32.0%) | 32/100 (32.0%) | 32/100 (32.0%) | 68/100 (68.0%) | 68/100 (68.0%) | Y |
+
+## 주차대수 보정 진단
+
+표기 형식은 `total/ground/underground`이다. `ground=0`은 정상값으로 유지하고, 음수 주차값만 API/UI에서 숨긴다.
+
+| 단지 | override | dim | API final | 기대값 | source | confidence | 음수 미노출 | 결과 | warning |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 더샵포웰시티 | 1366/0/1366 | 0/-1366/1366 | 1366/0/1366 | 1366/0/1366 | override | verified | Y | 일치 | override_applied; dim_counts_suspicious |
+
 
 ## 컬럼 현황
 
@@ -51,7 +60,7 @@
 
 ### 경기도 김포시 풍무동 김포풍무푸르지오
 
-요약: 최종 세대수 24670가 기대값 2712와 불일치
+요약: override verified 값으로 최종 세대수 2712가 기대값과 일치
 
 거래 원천 후보:
 
@@ -80,8 +89,8 @@ override 후보:
 
 | kapt_code | apt_seq | lawd_cd | dong | apt_name | household_verified | dong_verified | parking_verified | parking_ground | parking_underground | approval_date | source | source_url | source_file | source_version | note |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| A10027488 | - | 41570 | 풍무동 | 김포풍무푸르지오 | 27120 | 23 | 3438 | 3438 | - | Fri Jun 24 2016 00:00:00 GMT+0900 (대한민국 표준시) | 국토교통부_공동주택 단지 기본 정보 | https://www.data.go.kr/data/15073271/fileData.do | kapt_complex_basic_20260526_utf8.csv | 2026-05-26 | official csv import 2026-05-26 file=kapt_complex_basic_20260526_utf8.csv |
-| A10026165 | - | - | 풍무동 | 풍무센트럴푸르지오 | 24670 | 22 | 3294 | 27 | 3267 | Fri Jun 22 2018 00:00:00 GMT+0900 (대한민국 표준시) | 국토교통부_공동주택 단지 기본 정보 | https://www.data.go.kr/data/15073271/fileData.do | kapt_complex_basic_20260526_utf8.csv | 2026-05-26 | official csv import 2026-05-26 file=kapt_complex_basic_20260526_utf8.csv |
+| A10027488 | - | 41570 | 풍무동 | 김포풍무푸르지오 | 2712 | 23 | 3438 | 3438 | 0 | Fri Jun 24 2016 00:00:00 GMT+0900 (대한민국 표준시) | 국토교통부_공동주택 단지 기본 정보 | https://www.data.go.kr/data/15073271/fileData.do | kapt_complex_basic_20260526_utf8.csv | 2026-05-26 | official csv import 2026-05-26 file=kapt_complex_basic_20260526_utf8.csv |
+| A10026165 | - | - | 풍무동 | 풍무센트럴푸르지오 | 2467 | 22 | 3294 | 27 | 3267 | Fri Jun 22 2018 00:00:00 GMT+0900 (대한민국 표준시) | 국토교통부_공동주택 단지 기본 정보 | https://www.data.go.kr/data/15073271/fileData.do | kapt_complex_basic_20260526_utf8.csv | 2026-05-26 | official csv import 2026-05-26 file=kapt_complex_basic_20260526_utf8.csv |
 | - | 41570-840 | 41570 | 풍무동 | 풍무푸르지오센트레빌 | 2712 | - | - | - | - | - | manual verified / audit seed | - | audit-seed | 2026-05-26 | Alias seed for RTMS trade name related to K-apt 김포풍무푸르지오. Fill source_url before production hardening. |
 
 apt_key 매핑 후보:
@@ -96,13 +105,13 @@ apt_key 매핑 후보:
 - household_count_source_value: -
 - household_count_before: 20
 - household_count_dim: 20
-- household_count_override: 24670
-- household_count_final: 24670
+- household_count_override: 2712
+- household_count_final: 2712
 - parking_total_before: 3438
 - parking_total_after: 3438
 - complex_info_source: override
 - complex_info_confidence: verified
-- complex_info_join_method: override:kapt_code
+- complex_info_join_method: override:fallback_kapt_code
 - complex_info_warning: override_applied; dim_counts_suspicious
 
 - household_count: - (-)
@@ -115,7 +124,7 @@ apt_key 매핑 후보:
 
 ### 서울 서초구 반포동 아크로리버파크
 
-요약: 최종 세대수 16120가 기대값 1612와 불일치
+요약: override verified 값으로 최종 세대수 1612가 기대값과 일치
 
 거래 원천 후보:
 
@@ -140,7 +149,7 @@ override 후보:
 
 | kapt_code | apt_seq | lawd_cd | dong | apt_name | household_verified | dong_verified | parking_verified | parking_ground | parking_underground | approval_date | source | source_url | source_file | source_version | note |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| A10027205 | - | 11650 | 반포동 | 아크로리버파크 | 16120 | 15 | 2983 | - | 2983 | Tue Aug 30 2016 00:00:00 GMT+0900 (대한민국 표준시) | 국토교통부_공동주택 단지 기본 정보 | https://www.data.go.kr/data/15073271/fileData.do | kapt_complex_basic_20260526_utf8.csv | 2026-05-26 | official csv import 2026-05-26 file=kapt_complex_basic_20260526_utf8.csv |
+| A10027205 | - | 11650 | 반포동 | 아크로리버파크 | 1612 | 15 | 2983 | 0 | 2983 | Tue Aug 30 2016 00:00:00 GMT+0900 (대한민국 표준시) | 국토교통부_공동주택 단지 기본 정보 | https://www.data.go.kr/data/15073271/fileData.do | kapt_complex_basic_20260526_utf8.csv | 2026-05-26 | official csv import 2026-05-26 file=kapt_complex_basic_20260526_utf8.csv |
 
 apt_key 매핑 후보:
 
@@ -154,8 +163,8 @@ apt_key 매핑 후보:
 - household_count_source_value: -
 - household_count_before: 29
 - household_count_dim: 29
-- household_count_override: 16120
-- household_count_final: 16120
+- household_count_override: 1612
+- household_count_final: 1612
 - parking_total_before: 2983
 - parking_total_after: 2983
 - complex_info_source: override

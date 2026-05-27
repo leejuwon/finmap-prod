@@ -27,6 +27,7 @@ const TARGETS = [
     expectedHousehold: 2712,
     preferredKaptCode: 'A10027488',
     preferredName: '김포풍무푸르지오',
+    preferredStatsNames: ['풍무푸르지오센트레빌', '김포풍무푸르지오'],
   },
   {
     id: 'acro-river-park',
@@ -35,6 +36,19 @@ const TARGETS = [
     expectedHousehold: 1612,
     preferredKaptCode: 'A10027205',
     preferredName: '아크로리버파크',
+  },
+];
+
+const PARKING_TARGETS = [
+  {
+    id: 'the-sharp-powell-city',
+    label: '더샵포웰시티',
+    like: '%포웰시티%',
+    preferredKaptCode: 'A10024388',
+    preferredName: '더샵포웰시티',
+    expectedParkingTotal: 1366,
+    expectedParkingGround: 0,
+    expectedParkingUnderground: 1366,
   },
 ];
 
@@ -113,6 +127,11 @@ function asInt(value) {
   if (value == null || value === '') return null;
   const n = Number(String(value).replace(/[^\d-]/g, ''));
   return Number.isFinite(n) ? Math.trunc(n) : null;
+}
+
+function nonNegativeIntOrNull(value) {
+  const n = asInt(value);
+  return n != null && n >= 0 ? n : null;
 }
 
 function normalizeAptNameKey(name) {
@@ -482,11 +501,16 @@ function findComplexInfo({ statsRow, mapRows, dimIndex, overrideIndex, preferred
   const override = pickOverride({ statsRow, mapRow, dimRow, overrideIndex });
   const overrideRow = override.row;
   const hasOverride = overrideHasVerified(overrideRow);
+  const pickOverrideOrDim = (overrideCol, dimCol) => (
+    hasOverride && overrideRow?.[overrideCol] != null ? overrideRow[overrideCol] : dimSafe?.[dimCol] ?? null
+  );
 
   const final = {
     household_count: hasOverride && overrideRow.household_count_verified != null ? overrideRow.household_count_verified : dimSafe?.household_count ?? null,
     dong_count: hasOverride && overrideRow.dong_count_verified != null ? overrideRow.dong_count_verified : dimSafe?.dong_count ?? null,
-    parking_total: hasOverride && overrideRow.parking_total_verified != null ? overrideRow.parking_total_verified : dimSafe?.parking_total ?? null,
+    parking_total: nonNegativeIntOrNull(pickOverrideOrDim('parking_total_verified', 'parking_total')),
+    parking_ground: nonNegativeIntOrNull(pickOverrideOrDim('parking_ground_verified', 'parking_ground')),
+    parking_underground: nonNegativeIntOrNull(pickOverrideOrDim('parking_underground_verified', 'parking_underground')),
     heating_type: hasOverride && overrideRow.heating_type_verified ? overrideRow.heating_type_verified : dimSafe?.heating_type ?? null,
     manage_type: hasOverride && overrideRow.manage_type_verified ? overrideRow.manage_type_verified : dimSafe?.manage_type ?? null,
     approval_date: hasOverride && overrideRow.approval_date_verified ? overrideRow.approval_date_verified : dimSafe?.approval_date ?? null,
@@ -607,7 +631,11 @@ function table(headers, rows) {
 }
 
 function summarizeTarget(target, data) {
-  const statsRow = data.statsM.find((r) => target.preferredName && String(r.apt_name || '').includes(target.preferredName)) || data.statsM[0] || data.statsY[0] || null;
+  const preferredStatsNames = [
+    ...(target.preferredStatsNames || []),
+    target.preferredName,
+  ].filter(Boolean);
+  const statsRow = data.statsM.find((r) => preferredStatsNames.some((name) => String(r.apt_name || '').includes(name))) || data.statsM[0] || data.statsY[0] || null;
   const join = findComplexInfo({
     statsRow,
     mapRows: data.mapRows,
@@ -652,6 +680,91 @@ function summarizeTarget(target, data) {
       : `최종 세대수 ${householdFinal ?? '-'}가 기대값 ${target.expectedHousehold}와 불일치`,
     raw,
   };
+}
+
+function summarizeParkingTarget(target, data) {
+  const preferredNames = [target.preferredName].filter(Boolean);
+  const statsRow =
+    data.statsM.find((r) => preferredNames.some((name) => String(r.apt_name || '').includes(name))) ||
+    data.statsY.find((r) => preferredNames.some((name) => String(r.apt_name || '').includes(name))) ||
+    data.statsM[0] ||
+    data.statsY[0] ||
+    null;
+  const join = statsRow
+    ? findComplexInfo({
+        statsRow,
+        mapRows: data.mapRows,
+        dimIndex: data.dimIndex,
+        overrideIndex: data.overrideIndex,
+      })
+    : null;
+  const overrideRow =
+    data.overrideRows.find((r) => target.preferredKaptCode && String(r.kapt_code || '') === String(target.preferredKaptCode)) ||
+    data.overrideRows.find((r) => preferredNames.some((name) => String(r.apt_name || '').includes(name))) ||
+    data.overrideRows[0] ||
+    null;
+  const dimRow =
+    data.dimRows.find((r) => target.preferredKaptCode && String(r.kapt_code || '') === String(target.preferredKaptCode)) ||
+    data.dimRows.find((r) => preferredNames.some((name) => String(r.kapt_name || '').includes(name))) ||
+    join?.dimRow ||
+    data.dimRows[0] ||
+    null;
+  const final = join?.final || (overrideRow ? {
+    parking_total: nonNegativeIntOrNull(overrideRow.parking_total_verified),
+    parking_ground: nonNegativeIntOrNull(overrideRow.parking_ground_verified),
+    parking_underground: nonNegativeIntOrNull(overrideRow.parking_underground_verified),
+  } : {});
+  const expected = `${target.expectedParkingTotal}/${target.expectedParkingGround}/${target.expectedParkingUnderground}`;
+  const actual = `${final.parking_total ?? '-'}/${final.parking_ground ?? '-'}/${final.parking_underground ?? '-'}`;
+  const hasCandidate = !!(statsRow || overrideRow || dimRow);
+  const ok = hasCandidate &&
+    Number(final.parking_total) === target.expectedParkingTotal &&
+    Number(final.parking_ground) === target.expectedParkingGround &&
+    Number(final.parking_underground) === target.expectedParkingUnderground;
+  const negativeVisible = [final.parking_total, final.parking_ground, final.parking_underground]
+    .some((value) => asInt(value) != null && asInt(value) < 0);
+
+  return {
+    target,
+    hasCandidate,
+    overrideRow,
+    dimRow,
+    statsRow,
+    final,
+    source: join?.source || (overrideRow ? 'override' : 'none'),
+    confidence: join?.confidence || (overrideRow ? 'verified' : 'none'),
+    method: join?.method || (overrideRow ? 'override:kapt_code' : 'none'),
+    warning: join?.warning || null,
+    expected,
+    actual,
+    ok,
+    negativeVisible,
+    result: !hasCandidate
+      ? '로컬 DB 후보 없음'
+      : (ok ? '일치' : '불일치/추가 import 필요'),
+  };
+}
+
+function makeParkingDiagnosticsSection(parkingSummaries) {
+  const rows = parkingSummaries.map((s) => [
+    s.target.label,
+    s.overrideRow ? `${s.overrideRow.parking_total_verified ?? '-'}/${s.overrideRow.parking_ground_verified ?? '-'}/${s.overrideRow.parking_underground_verified ?? '-'}` : '-',
+    s.dimRow ? `${s.dimRow.parking_total ?? '-'}/${s.dimRow.parking_ground ?? '-'}/${s.dimRow.parking_underground ?? '-'}` : '-',
+    s.actual,
+    s.expected,
+    s.source,
+    s.confidence,
+    s.negativeVisible ? 'N' : 'Y',
+    s.result,
+    s.warning || '-',
+  ]);
+
+  return `## 주차대수 보정 진단
+
+표기 형식은 \`total/ground/underground\`이다. \`ground=0\`은 정상값으로 유지하고, 음수 주차값만 API/UI에서 숨긴다.
+
+${table(['단지', 'override', 'dim', 'API final', '기대값', 'source', 'confidence', '음수 미노출', '결과', 'warning'], rows.length ? rows : [['-', '-', '-', '-', '-', '-', '-', '-', '-', '-']])}
+`;
 }
 
 function makeDetailSection(summary, data) {
@@ -732,7 +845,7 @@ ${table(['field', 'value'], fullFieldRows)}` : ''}
 `;
 }
 
-function makeReport({ dbName, targetSummaries, targetData, dimCoverage, topCoverageAll, topCoverageSeoul, tableCols }) {
+function makeReport({ dbName, targetSummaries, targetData, parkingSummaries, dimCoverage, topCoverageAll, topCoverageSeoul, tableCols }) {
   const summaryRows = targetSummaries.map((s) => [
     s.target.label,
     s.tradeExists ? `있음 (${s.tradeCandidates}개 후보)` : '없음',
@@ -775,6 +888,7 @@ function makeReport({ dbName, targetSummaries, targetData, dimCoverage, topCover
   }
 
   const detailSections = targetSummaries.map((s) => makeDetailSection(s, targetData[s.target.id])).join('\n');
+  const parkingDiagnosticsSection = makeParkingDiagnosticsSection(parkingSummaries || []);
   const dimColList = Array.from(tableCols.dim).sort().join(', ');
   const overrideColList = Array.from(tableCols.override).sort().join(', ') || '(table missing)';
 
@@ -814,6 +928,8 @@ ${table(['점검 단지명', '거래 원천 데이터', '통계 apt_key', 'overr
 ## 전체 단지 기본정보 커버리지
 
 ${table(['범위', '대상 수', '매칭률', 'override 매칭', 'verified source', 'household_count null', 'dong_count null', 'suspicious 미노출'], coverageRows)}
+
+${parkingDiagnosticsSection}
 
 ## 컬럼 현황
 
@@ -891,6 +1007,31 @@ ${detailSections}
     targetSummaries.push(summarizeTarget(target, targetData[target.id]));
   }
 
+  const parkingSummaries = [];
+  for (const target of PARKING_TARGETS) {
+    const tradeRows = await queryTradeCandidates(conn, tableCols.trade, target.like);
+    const statsM = await queryStatsLatest(conn, 're_trade_apt_stats_m', tableCols.statsM, target.like);
+    const statsY = await queryStatsLatest(conn, 're_trade_apt_stats_y', tableCols.statsY, target.like);
+    const dimRows = await queryDimCandidates(conn, tableCols.dim, target);
+    const aptKeys = Array.from(new Set([
+      ...statsM,
+      ...statsY,
+      ...tradeRows.map((r) => ({ apt_key: makeAptKey(r) })),
+    ].map((r) => String(r.apt_key || '')).filter(Boolean)));
+    const mapRows = await queryMaps(conn, tableCols.map, aptKeys);
+    const overrideRows = await queryOverrides(conn, tableCols.override, target, aptKeys);
+    parkingSummaries.push(summarizeParkingTarget(target, {
+      tradeRows,
+      statsM,
+      statsY,
+      dimRows,
+      mapRows,
+      overrideRows,
+      dimIndex,
+      overrideIndex,
+    }));
+  }
+
   const dimCoverage = await queryDimCoverage(conn);
   const topCoverageAll = await queryLatestTopCoverage(conn, { sidoCode: null, dimIndex, overrideIndex });
   const topCoverageSeoul = await queryLatestTopCoverage(conn, { sidoCode: '11', dimIndex, overrideIndex });
@@ -901,6 +1042,7 @@ ${detailSections}
     dbName: dbInfo?.db || process.env.DB_NAME,
     targetSummaries,
     targetData,
+    parkingSummaries,
     dimCoverage,
     topCoverageAll,
     topCoverageSeoul,
@@ -921,6 +1063,16 @@ ${detailSections}
       source: s.source,
       confidence: s.confidence,
       ok: s.ok,
+    })),
+    parkingTargets: parkingSummaries.map((s) => ({
+      id: s.target.id,
+      final: s.actual,
+      expected: s.expected,
+      source: s.source,
+      confidence: s.confidence,
+      ok: s.ok,
+      negativeVisible: s.negativeVisible,
+      result: s.result,
     })),
   }, null, 2));
 })().catch((err) => {

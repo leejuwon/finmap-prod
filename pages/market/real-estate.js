@@ -746,21 +746,34 @@ export default function RealEstatePage() {
     return parts.length ? parts.join(' · ') : (lang === 'en' ? 'Checking complex info' : '단지정보 확인 중');
   }
 
+  function nonNegativeNumberOrNull(value) {
+    if (value == null || value === '') return null;
+    const n = Number(value);
+    if (!Number.isFinite(n) || n < 0) return null;
+    return n;
+  }
+
   function renderParking(row) {
     if (!shouldShowComplexInfo(row)) return '-';
-    const total = row?.parking_total;
-    const ground = row?.parking_ground;
-    const underground = row?.parking_underground;
+    const total = nonNegativeNumberOrNull(row?.parking_total);
+    const ground = nonNegativeNumberOrNull(row?.parking_ground);
+    const underground = nonNegativeNumberOrNull(row?.parking_underground);
     if (total == null && ground == null && underground == null) return '-';
 
-    const main = total != null ? Number(total).toLocaleString() : '-';
-    if (ground == null && underground == null) {
+    const main = total != null ? total.toLocaleString() : null;
+    const parts = [];
+    if (ground != null) parts.push(lang === 'en' ? `G ${ground.toLocaleString()}` : `지상 ${ground.toLocaleString()}`);
+    if (underground != null) parts.push(lang === 'en' ? `B ${underground.toLocaleString()}` : `지하 ${underground.toLocaleString()}`);
+
+    if (total != null && !parts.length) {
       return lang === 'en' ? `Parking ${main}` : `주차 ${main}대`;
     }
 
-    const g = ground != null ? Number(ground).toLocaleString() : '-';
-    const u = underground != null ? Number(underground).toLocaleString() : '-';
-    return lang === 'en' ? `Parking ${main} (G ${g} / B ${u})` : `주차 ${main}대 (지상 ${g} / 지하 ${u})`;
+    const detail = parts.join(' / ');
+    if (total == null) {
+      return lang === 'en' ? `Parking (${detail})` : `주차 ${detail}`;
+    }
+    return lang === 'en' ? `Parking ${main} (${detail})` : `주차 ${main}대 (${detail})`;
   }
 
   function renderHeatingManage(row) {
@@ -790,7 +803,7 @@ export default function RealEstatePage() {
     if (confidence === 'high' || confidence === 'medium') return true;
     if (confidence === 'low' || confidence === 'none') return false;
     if (row?.complex_info_warning) return false;
-    return row?.household_count != null || row?.dong_count != null || row?.parking_total != null;
+    return row?.household_count != null || row?.dong_count != null || row?.parking_total != null || row?.parking_ground != null || row?.parking_underground != null;
   }
 
   function shouldShowComplexCounts(row) {

@@ -106,14 +106,21 @@ function complexDimValueSql(useMap, col) {
   return raw;
 }
 
+function nonNegativeSql(expr) {
+  return `CASE WHEN ${expr} IS NULL THEN NULL WHEN ${expr} < 0 THEN NULL ELSE ${expr} END`;
+}
+
 function overrideFieldSql({ useOverride, useMap, useMapAptSeq }, col) {
   if (!useOverride) return 'NULL';
   const overrideCols = {
     household_count: 'household_count_verified',
     dong_count: 'dong_count_verified',
     parking_total: 'parking_total_verified',
+    parking_ground: 'parking_ground_verified',
+    parking_underground: 'parking_underground_verified',
     heating_type: 'heating_type_verified',
     manage_type: 'manage_type_verified',
+    approval_date: 'approval_date_verified',
   };
   const parts = [];
   if (col === 'kapt_code') {
@@ -132,9 +139,15 @@ function overrideFieldSql({ useOverride, useMap, useMapAptSeq }, col) {
 
 function overrideAnyValueSql(opts) {
   if (!opts.useOverride) return 'FALSE';
-  const fields = ['household_count', 'dong_count', 'parking_total', 'heating_type', 'manage_type']
-    .map((col) => `NULLIF(${overrideFieldSql(opts, col)}, '')`);
-  return `COALESCE(${fields.join(', ')}) IS NOT NULL`;
+  const numericFields = ['household_count', 'dong_count', 'parking_total', 'parking_ground', 'parking_underground'];
+  const dateFields = ['approval_date'];
+  const textFields = ['heating_type', 'manage_type'];
+  const fields = [
+    ...numericFields.map((col) => `${overrideFieldSql(opts, col)} IS NOT NULL`),
+    ...dateFields.map((col) => `${overrideFieldSql(opts, col)} IS NOT NULL`),
+    ...textFields.map((col) => `NULLIF(${overrideFieldSql(opts, col)}, '') IS NOT NULL`),
+  ];
+  return `(${fields.join(' OR ')})`;
 }
 
 function overrideJoinMethodSql({ useOverride, useMap, useMapAptSeq }) {
@@ -150,8 +163,12 @@ function overrideJoinMethodSql({ useOverride, useMap, useMapAptSeq }) {
 function complexValueSql(opts, col) {
   const overrideValue = overrideFieldSql(opts, col);
   const dimValue = complexDimValueSql(opts.useMap, col);
-  if (['kapt_code', 'household_count', 'dong_count', 'parking_total', 'heating_type', 'manage_type'].includes(col)) {
-    return `COALESCE(${overrideValue}, ${dimValue})`;
+  if (['kapt_code', 'household_count', 'dong_count', 'parking_total', 'parking_ground', 'parking_underground', 'heating_type', 'manage_type', 'approval_date'].includes(col)) {
+    const value = `COALESCE(${overrideValue}, ${dimValue})`;
+    if (['parking_total', 'parking_ground', 'parking_underground'].includes(col)) {
+      return nonNegativeSql(value);
+    }
+    return value;
   }
   return dimValue;
 }
@@ -283,8 +300,11 @@ function overrideFallbackAggSubquerySql() {
           MAX(o.household_count_verified) AS household_count_verified,
           MAX(o.dong_count_verified) AS dong_count_verified,
           MAX(o.parking_total_verified) AS parking_total_verified,
+          MAX(o.parking_ground_verified) AS parking_ground_verified,
+          MAX(o.parking_underground_verified) AS parking_underground_verified,
           MAX(o.heating_type_verified) AS heating_type_verified,
-          MAX(o.manage_type_verified) AS manage_type_verified
+          MAX(o.manage_type_verified) AS manage_type_verified,
+          MAX(o.approval_date_verified) AS approval_date_verified
         FROM re_apt_complex_override o
         WHERE o.kapt_code IS NULL
         GROUP BY o.lawd_cd, COALESCE(o.dong_name, ''), o.apt_name_norm

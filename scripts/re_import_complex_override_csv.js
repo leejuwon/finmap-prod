@@ -192,11 +192,25 @@ function first(inputRow, field) {
   return '';
 }
 
-function toPositiveIntOrNull(value) {
+function parseIntegerLike(value) {
   if (value == null || String(value).trim() === '') return null;
-  const n = Number(String(value).replace(/[^\d-]/g, ''));
+  const text = String(value).replace(/,/g, '').trim();
+  const matched = text.match(/-?\d+(?:\.\d+)?/);
+  if (!matched) return null;
+  const n = Number(matched[0]);
+  return Number.isFinite(n) ? Math.trunc(n) : null;
+}
+
+function toPositiveIntOrNull(value) {
+  const n = parseIntegerLike(value);
   if (!Number.isFinite(n) || n <= 0) return null;
-  return Math.trunc(n);
+  return n;
+}
+
+function toNonNegativeIntOrNull(value) {
+  const n = parseIntegerLike(value);
+  if (!Number.isFinite(n) || n < 0) return null;
+  return n;
 }
 
 function toDateOrNull(value) {
@@ -273,9 +287,9 @@ function mapRow(inputRow, context) {
   const lawdCd = cleanLawdCd(first(inputRow, 'lawd_cd'));
   const dongName = first(inputRow, 'dong_name') || extractDongName(lawdAddr);
   const aptNameNorm = first(inputRow, 'apt_name_norm') || normalizeAptNameKey(aptName);
-  const parkingGround = toPositiveIntOrNull(first(inputRow, 'parking_ground'));
-  const parkingUnderground = toPositiveIntOrNull(first(inputRow, 'parking_underground'));
-  let parkingTotal = toPositiveIntOrNull(first(inputRow, 'parking_total'));
+  const parkingGround = toNonNegativeIntOrNull(first(inputRow, 'parking_ground'));
+  const parkingUnderground = toNonNegativeIntOrNull(first(inputRow, 'parking_underground'));
+  let parkingTotal = toNonNegativeIntOrNull(first(inputRow, 'parking_total'));
   if (parkingTotal == null && (parkingGround != null || parkingUnderground != null)) {
     parkingTotal = Number(parkingGround || 0) + Number(parkingUnderground || 0);
   }
@@ -568,6 +582,17 @@ function makeDryRunBase(parsed) {
     regionNameFallbackRows: fallbackRows,
     skippedRowCount: parsed.skipped.length,
     skippedSamples: parsed.skipped.slice(0, 20),
+    importableSamples: parsed.importable.slice(0, 5).map((row) => ({
+      apt_name: row.apt_name,
+      kapt_code: row.kapt_code,
+      lawd_cd: row.lawd_cd,
+      dong_name: row.dong_name,
+      household_count_verified: row.household_count_verified,
+      dong_count_verified: row.dong_count_verified,
+      parking_total_verified: row.parking_total_verified,
+      parking_ground_verified: row.parking_ground_verified,
+      parking_underground_verified: row.parking_underground_verified,
+    })),
   };
 }
 
