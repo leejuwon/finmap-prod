@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title--images-posts-is-dca-better-in-bear-market-img1-svg desc--images-posts-is-dca-better-in-bear-market-img1-svg">
+<!-- Finmap DCA article SVG: KO four scenarios -->
+<title id="title--images-posts-is-dca-better-in-bear-market-img1-svg">4가지 시나리오</title>
+<desc id="desc--images-posts-is-dca-better-in-bear-market-img1-svg">기본 · 초반 · 중간 · 마지막</desc>
+<defs>
+<linearGradient id="bg--images-posts-is-dca-better-in-bear-market-img1-svg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7f5ef"/><stop offset="1" stop-color="#fffdf7"/></linearGradient>
+<filter id="cardShadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity="0.12"/></filter>
+<filter id="softShadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.10"/></filter>
+<clipPath id="clip-scenario-0-0"><rect x="120" y="370" width="166" height="104" rx="12"/></clipPath>
+<clipPath id="clip-scenario-1-1"><rect x="398" y="370" width="166" height="104" rx="12"/></clipPath>
+<clipPath id="clip-scenario-2-2"><rect x="676" y="370" width="166" height="104" rx="12"/></clipPath>
+<clipPath id="clip-scenario-3-3"><rect x="954" y="370" width="166" height="104" rx="12"/></clipPath>
+</defs>
+<rect width="1200" height="675" fill="url(#bg--images-posts-is-dca-better-in-bear-market-img1-svg)"/>
+<line x1="70" y1="46" x2="-4" y2="640" stroke="#e5dccb" stroke-width="1" opacity="0.34"/>
+<line x1="202" y1="46" x2="128" y2="640" stroke="#e5dccb" stroke-width="1" opacity="0.34"/>
+<line x1="334" y1="46" x2="260" y2="640" stroke="#e5dccb" stroke-width="1" opacity="0.34"/>
+<line x1="466" y1="46" x2="392" y2="640" stroke="#e5dccb" stroke-width="1" opacity="0.34"/>
+<line x1="598" y1="46" x2="524" y2="640" stroke="#e5dccb" stroke-width="1" opacity="0.34"/>
+<line x1="730" y1="46" x2="656" y2="640" stroke="#e5dccb" stroke-width="1" opacity="0.34"/>
+<line x1="862" y1="46" x2="788" y2="640" stroke="#e5dccb" stroke-width="1" opacity="0.34"/>
+<line x1="994" y1="46" x2="920" y2="640" stroke="#e5dccb" stroke-width="1" opacity="0.34"/>
+<line x1="1126" y1="46" x2="1052" y2="640" stroke="#e5dccb" stroke-width="1" opacity="0.34"/>
+<circle cx="1040" cy="116" r="98" fill="#fee2e2" opacity="0.42"/>
+<circle cx="1060" cy="560" r="138" fill="#dcfce7" opacity="0.32"/>
+<path d="M72 586 C270 520 330 620 536 548 C720 484 846 540 1120 478" fill="none" stroke="#e5dccb" stroke-width="3" opacity="0.38"/>
+<rect x="78" y="58" width="128" height="38" rx="19" fill="#ffffff" stroke="#e5dccb" stroke-width="1" opacity="1" filter="url(#softShadow)"/>
+<circle cx="101" cy="77" r="7" fill="#dc2626"/>
+<text x="118" y="83" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="16" font-weight="700" fill="#6b7280" text-anchor="start" opacity="1" letter-spacing="0">경로 비교</text>
+<text x="78" y="130" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="54" font-weight="800" fill="#1f2937" text-anchor="start" opacity="1" letter-spacing="0">4가지 시나리오</text>
+<text x="82" y="174" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="24" font-weight="600" fill="#6b7280" text-anchor="start" opacity="1" letter-spacing="0">기본 · 초반 · 중간 · 마지막</text>
+<rect x="80" y="205" width="360" height="6" rx="3" fill="#dc2626" stroke="none" stroke-width="1" opacity="0.9"/>
+<rect x="84" y="272" width="238" height="260" rx="28" fill="#ffffff" stroke="#e5edf7" stroke-width="1" opacity="1" filter="url(#cardShadow)"/>
+<text x="112" y="326" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="27" font-weight="800" fill="#1f2937" text-anchor="start" opacity="1" letter-spacing="0">기본</text>
+<g data-chart="line">
+<rect x="110" y="360" width="186" height="124" rx="22" fill="#ffffff" stroke="#e5dccb" stroke-width="1" opacity="1"/>
+<line x1="120" y1="396" x2="286" y2="396" stroke="#e5dccb" stroke-width="1.2" opacity="0.65"/>
+<line x1="120" y1="422" x2="286" y2="422" stroke="#e5dccb" stroke-width="1.2" opacity="0.65"/>
+<line x1="120" y1="448" x2="286" y2="448" stroke="#e5dccb" stroke-width="1.2" opacity="0.65"/>
+<line x1="120" y1="474" x2="286" y2="474" stroke="#e5dccb" stroke-width="2"/>
+<line x1="120" y1="370" x2="120" y2="474" stroke="#e5dccb" stroke-width="2"/>
+<g clip-path="url(#clip-scenario-0-0)"><polyline data-chart-line="1" data-plot="120,370,166,104" points="120,474 161.5,455.1 203,431.5 244.5,403.1 286,370" fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/></g>
+</g>
+<rect x="362" y="272" width="238" height="260" rx="28" fill="#ffffff" stroke="#e5edf7" stroke-width="1" opacity="1" filter="url(#cardShadow)"/>
+<text x="390" y="326" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="27" font-weight="800" fill="#1f2937" text-anchor="start" opacity="1" letter-spacing="0">초반하락</text>
+<g data-chart="line">
+<rect x="388" y="360" width="186" height="124" rx="22" fill="#ffffff" stroke="#e5dccb" stroke-width="1" opacity="1"/>
+<line x1="398" y1="396" x2="564" y2="396" stroke="#e5dccb" stroke-width="1.2" opacity="0.65"/>
+<line x1="398" y1="422" x2="564" y2="422" stroke="#e5dccb" stroke-width="1.2" opacity="0.65"/>
+<line x1="398" y1="448" x2="564" y2="448" stroke="#e5dccb" stroke-width="1.2" opacity="0.65"/>
+<line x1="398" y1="474" x2="564" y2="474" stroke="#e5dccb" stroke-width="2"/>
+<line x1="398" y1="370" x2="398" y2="474" stroke="#e5dccb" stroke-width="2"/>
+<g clip-path="url(#clip-scenario-1-1)"><polyline data-chart-line="1" data-plot="398,370,166,104" points="398,442 439.5,474 481,450 522.5,410 564,370" fill="none" stroke="#dc2626" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/></g>
+</g>
+<rect x="640" y="272" width="238" height="260" rx="28" fill="#ffffff" stroke="#e5edf7" stroke-width="1" opacity="1" filter="url(#cardShadow)"/>
+<text x="668" y="326" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="27" font-weight="800" fill="#1f2937" text-anchor="start" opacity="1" letter-spacing="0">중간하락</text>
+<g data-chart="line">
+<rect x="666" y="360" width="186" height="124" rx="22" fill="#ffffff" stroke="#e5dccb" stroke-width="1" opacity="1"/>
+<line x1="676" y1="396" x2="842" y2="396" stroke="#e5dccb" stroke-width="1.2" opacity="0.65"/>
+<line x1="676" y1="422" x2="842" y2="422" stroke="#e5dccb" stroke-width="1.2" opacity="0.65"/>
+<line x1="676" y1="448" x2="842" y2="448" stroke="#e5dccb" stroke-width="1.2" opacity="0.65"/>
+<line x1="676" y1="474" x2="842" y2="474" stroke="#e5dccb" stroke-width="2"/>
+<line x1="676" y1="370" x2="676" y2="474" stroke="#e5dccb" stroke-width="2"/>
+<g clip-path="url(#clip-scenario-2-2)"><polyline data-chart-line="1" data-plot="676,370,166,104" points="676,443.4 717.5,412.8 759,474 800.5,418.9 842,370" fill="none" stroke="#dc2626" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/></g>
+</g>
+<rect x="918" y="272" width="238" height="260" rx="28" fill="#ffffff" stroke="#e5edf7" stroke-width="1" opacity="1" filter="url(#cardShadow)"/>
+<text x="946" y="326" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="27" font-weight="800" fill="#1f2937" text-anchor="start" opacity="1" letter-spacing="0">마지막하락</text>
+<g data-chart="line">
+<rect x="944" y="360" width="186" height="124" rx="22" fill="#ffffff" stroke="#e5dccb" stroke-width="1" opacity="1"/>
+<line x1="954" y1="396" x2="1120" y2="396" stroke="#e5dccb" stroke-width="1.2" opacity="0.65"/>
+<line x1="954" y1="422" x2="1120" y2="422" stroke="#e5dccb" stroke-width="1.2" opacity="0.65"/>
+<line x1="954" y1="448" x2="1120" y2="448" stroke="#e5dccb" stroke-width="1.2" opacity="0.65"/>
+<line x1="954" y1="474" x2="1120" y2="474" stroke="#e5dccb" stroke-width="2"/>
+<line x1="954" y1="370" x2="954" y2="474" stroke="#e5dccb" stroke-width="2"/>
+<g clip-path="url(#clip-scenario-3-3)"><polyline data-chart-line="1" data-plot="954,370,166,104" points="954,474 995.5,439.3 1037,404.7 1078.5,370 1120,445.1" fill="none" stroke="#dc2626" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/></g>
+</g>
+</svg>

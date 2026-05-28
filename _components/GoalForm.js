@@ -1,44 +1,39 @@
-// _components/GoalForm.js
 import { useState, useMemo, useEffect } from 'react';
 
 const dict = {
   ko: {
-    title: '목표 자산 시뮬레이터',
     currentWon: '현재 자산(만원)',
     currentUsd: '현재 자산(USD)',
-    monthlyWon: '월 적립금(만원)',
-    monthlyUsd: '월 적립금(USD)',
-    rate: '연 수익률(%)',
+    monthlyWon: '월 납입금(만원)',
+    monthlyUsd: '월 납입금(USD)',
+    rate: '연 수익률 가정(%)',
     years: '투자 기간(년)',
     targetWon: '목표 자산(만원)',
     targetUsd: '목표 자산(USD)',
     calc: '시뮬레이션 실행',
     currency: '통화',
-    compounding: '복리 주기',
-    compoundingMonthly: '월복리',
-    compoundingYearly: '연복리',    
-    // 🔥 추가 라벨
-    taxRateLabel: '세율(이자소득세, %)',
-    feeRateLabel: '연 수수료율(연 %, 보수/수수료)',
+    compounding: '수익률 환산 방식',
+    compoundingMonthly: '월 단순 환산',
+    compoundingYearly: '연 복리 환산',
+    taxRateLabel: '세율(수익률 차감, %)',
+    feeRateLabel: '연 수수료율(%, 수익률 차감)',
   },
   en: {
-    title: 'Goal Asset Simulator',
-    currentWon: 'Current Assets (×10k KRW)',
-    currentUsd: 'Current Assets (USD)',
-    monthlyWon: 'Monthly Contribution (×10k KRW)',
-    monthlyUsd: 'Monthly Contribution (USD)',
-    rate: 'Annual Return (%)',
-    years: 'Years',
-    targetWon: 'Target Assets (×10k KRW)',
-    targetUsd: 'Target Assets (USD)',
-    calc: 'Run Simulation',
+    currentWon: 'Current assets (10k KRW)',
+    currentUsd: 'Current assets (USD)',
+    monthlyWon: 'Monthly contribution (10k KRW)',
+    monthlyUsd: 'Monthly contribution (USD)',
+    rate: 'Annual return assumption (%)',
+    years: 'Investment period (years)',
+    targetWon: 'Target assets (10k KRW)',
+    targetUsd: 'Target assets (USD)',
+    calc: 'Run simulation',
     currency: 'Currency',
-    compounding: 'Compounding',
-    compoundingMonthly: 'Monthly',
-    compoundingYearly: 'Yearly',    
-    // 🔥 추가 라벨
-    taxRateLabel: 'Tax rate on interest (%)',
-    feeRateLabel: 'Annual fee rate (%)',
+    compounding: 'Return conversion',
+    compoundingMonthly: 'Simple monthly',
+    compoundingYearly: 'Annual compound',
+    taxRateLabel: 'Tax rate adjustment (%)',
+    feeRateLabel: 'Annual fee adjustment (%)',
   },
 };
 
@@ -56,13 +51,11 @@ const DEFAULT_FORM = {
 export default function GoalForm({
   onSubmit,
   locale = 'ko',
-  currency = 'KRW',           // 부모(페이지)에서 내려주는 통화
-  onCurrencyChange,           // 부모에서 통화 변경 처리
+  currency = 'KRW',
+  onCurrencyChange,
   initialValues,
 }) {
-  // locale 안전 정규화 (ko / en만 사용)
   const safeLocale = String(locale).startsWith('en') ? 'en' : 'ko';
-
   const [form, setForm] = useState(() => ({ ...DEFAULT_FORM, ...(initialValues || {}) }));
 
   useEffect(() => {
@@ -85,21 +78,18 @@ export default function GoalForm({
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const disabled = useMemo(() => form.years <= 0, [form.years]);
+  const disabled = useMemo(() => Number(form.years) <= 0, [form.years]);
 
   const handleSubmit = () => {
     onSubmit({
       ...form,
-      currency, // 참고용으로 함께 전달 (실제 스케일링은 부모에서 currency 사용)
+      currency,
     });
   };
 
-  const currentLabel =
-    currency === 'KRW' ? t.currentWon : t.currentUsd;
-  const monthlyLabel =
-    currency === 'KRW' ? t.monthlyWon : t.monthlyUsd;
-  const targetLabel =
-    currency === 'KRW' ? t.targetWon : t.targetUsd;
+  const currentLabel = currency === 'KRW' ? t.currentWon : t.currentUsd;
+  const monthlyLabel = currency === 'KRW' ? t.monthlyWon : t.monthlyUsd;
+  const targetLabel = currency === 'KRW' ? t.targetWon : t.targetUsd;
 
   const fmt = (n) => {
     const v = Number(n) || 0;
@@ -108,7 +98,6 @@ export default function GoalForm({
 
   return (
     <div className="grid gap-4">
-      {/* 1행: 금액 관련 입력 */}
       <div className="grid gap-3 md:grid-cols-4">
         <label className="grid gap-1">
           <span className="text-sm">{currentLabel}</span>
@@ -141,7 +130,7 @@ export default function GoalForm({
             className="input"
             value={form.annualRate}
             onChange={handleChange}
-            min="0"
+            min="-99"
             step="0.1"
           />
         </label>
@@ -160,7 +149,6 @@ export default function GoalForm({
         </label>
       </div>
 
-      {/* 2행: 목표 금액 + 복리/세금/수수료 모드 */}
       <div className="grid gap-3 md:grid-cols-4">
         <label className="grid gap-1">
           <span className="text-sm">{targetLabel}</span>
@@ -187,9 +175,7 @@ export default function GoalForm({
           </select>
         </label>
         <label className="grid gap-1">
-          <span className="text-sm">
-            {t.taxRateLabel}            
-          </span>
+          <span className="text-sm">{t.taxRateLabel}</span>
           <input
             name="taxRatePercent"
             type="number"
@@ -203,9 +189,7 @@ export default function GoalForm({
         </label>
 
         <label className="grid gap-1">
-          <span className="text-sm">
-            {t.feeRateLabel}            
-          </span>
+          <span className="text-sm">{t.feeRateLabel}</span>
           <input
             name="feeRatePercent"
             type="number"
@@ -217,9 +201,8 @@ export default function GoalForm({
             step="0.1"
           />
         </label>
-                
-      </div>      
-      {/* 3행: 통화 + 버튼 */}
+      </div>
+
       <div className="flex flex-wrap gap-3 justify-between items-center">
         <label className="grid gap-1">
           <span className="text-sm">{t.currency}</span>
@@ -231,7 +214,7 @@ export default function GoalForm({
               if (onCurrencyChange) onCurrencyChange(next);
             }}
           >
-            <option value="KRW">KRW ₩</option>
+            <option value="KRW">KRW 원</option>
             <option value="USD">USD $</option>
           </select>
         </label>

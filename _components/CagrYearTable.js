@@ -1,193 +1,132 @@
-// _components/CagrYearTable.js
-function formatMoneyAuto(value, currency = 'KRW', locale = 'ko-KR') {
+function formatMoneyAuto(value, currency = "KRW", locale = "ko-KR") {
   const v = Number(value) || 0;
-  const isKo = locale.toLowerCase().startsWith('ko');
-  const cur = currency || 'KRW';
+  const isKo = locale.toLowerCase().startsWith("ko");
+  const cur = currency || "KRW";
 
-  if (cur === 'KRW') {
+  if (cur === "KRW") {
     const abs = Math.abs(v);
     let divisor = 1;
-    let suffix = isKo ? '원' : 'KRW';
+    let suffix = isKo ? "원" : "KRW";
 
-    // 억 단위
     if (abs >= 100_000_000) {
       divisor = 100_000_000;
-      suffix = isKo ? '억원' : '×100M KRW';
-    }
-    // 만원 단위
-    else if (abs >= 10_000) {
+      suffix = isKo ? "억원" : "x100M KRW";
+    } else if (abs >= 10_000) {
       divisor = 10_000;
-      suffix = isKo ? '만원' : '×10k KRW';
+      suffix = isKo ? "만원" : "x10k KRW";
     }
 
     const scaled = v / divisor;
-
-    let minimumFractionDigits = 0;
-    let maximumFractionDigits = 0;
-
-    if (divisor === 100_000_000) {
-      // 억 단위: 소수점 최대 2자리
-      maximumFractionDigits = 2;
-      minimumFractionDigits = scaled % 1 === 0 ? 0 : 1;
-    } else if (divisor === 10_000) {
-      // 만원 단위: 소수점 최대 1자리
-      maximumFractionDigits = 1;
-      minimumFractionDigits = scaled % 1 === 0 ? 0 : 1;
-    } else {
-      // 원 단위
-      maximumFractionDigits = 0;
-      minimumFractionDigits = 0;
-    }
-
+    const scaledAbs = Math.abs(scaled);
+    const hasFraction = Math.round(scaledAbs * 10) % 10 !== 0;
+    const maximumFractionDigits = divisor === 1 ? 0 : hasFraction ? 1 : 0;
     const numStr = scaled.toLocaleString(locale, {
-      minimumFractionDigits,
       maximumFractionDigits,
     });
 
     return `${numStr}${suffix}`;
   }
 
-  // 기타 통화 (USD 등)
-  const isValidCurrency =
-    typeof cur === 'string' && /^[A-Z]{3}$/.test(cur);
-
-  if (!isValidCurrency) {
-    return new Intl.NumberFormat(locale).format(v);
-  }
+  const isValidCurrency = typeof cur === "string" && /^[A-Z]{3}$/.test(cur);
+  if (!isValidCurrency) return new Intl.NumberFormat(locale).format(v);
 
   return new Intl.NumberFormat(locale, {
-    style: 'currency',
+    style: "currency",
     currency: cur,
     maximumFractionDigits: 2,
   }).format(v);
 }
 
+function pct(value, digits = 2) {
+  const v = Number(value) || 0;
+  return `${v.toFixed(digits)}%`;
+}
+
 export default function CagrYearTable({
   result,
-  locale = 'ko-KR',
-  currency = 'KRW',
-  initial = 0,
+  locale = "ko-KR",
+  currency = "KRW",
 }) {
   const rows = result?.yearSummary || [];
-  const isKo = locale.startsWith('ko');
+  const isKo = locale.startsWith("ko");
 
   if (!rows.length) {
     return (
       <div className="card">
-        <h2 className="text-xl font-semibold mb-2">
-          {isKo ? '연간 요약 테이블' : 'Yearly Summary'}
+        <h2 className="mb-2 text-xl font-semibold">
+          {isKo ? "연도별 성장 경로" : "Yearly growth path"}
         </h2>
         <p className="text-sm text-slate-500">
-          {isKo ? '데이터가 없습니다.' : 'No data.'}
+          {isKo ? "계산 결과가 없습니다." : "No data."}
         </p>
       </div>
     );
   }
 
   const unitText = isKo
-    ? '단위: 원 / 만원 / 억원 자동'
-    : 'Unit: auto (KRW / 10k / 100M)';
-
-  const safeInitial = Number(initial) || 0;
-  let cumulativeTaxFee = 0;
-
-  // 옵션 B: 진짜 "연간" 효과 + 누적 효과
-  // year N:
-  //   grossGainYear = gross_N - gross_{N-1}
-  //   netGainYear   = net_N   - net_{N-1}
-  //   impactYear    = grossGainYear - netGainYear
-  //
-  // 1년 차의 "이전 값"은 초기투자금(세전/세후 동일)으로 간주
-  const stats = rows.map((r, idx) => {
-    const year = r.year;
-    const gross = Number(r.grossValue) || 0;
-    const net = Number(r.netValue) || 0;
-
-    let prevGross;
-    let prevNet;
-
-    if (idx === 0) {
-      // 1년차: 전년도 자산 = 초기투자금
-      prevGross = safeInitial;
-      prevNet = safeInitial;
-    } else {
-      const prevRow = rows[idx - 1];
-      prevGross = Number(prevRow.grossValue) || 0;
-      prevNet = Number(prevRow.netValue) || 0;
-    }
-
-    const grossGainYear = gross - prevGross;
-    const netGainYear = net - prevNet;
-    const impactYear = grossGainYear - netGainYear; // 연간 세금+수수료 효과
-
-    cumulativeTaxFee += impactYear;
-
-    return {
-      year,
-      gross,
-      net,
-      impactYear,
-      cumulativeTaxFee,
-    };
-  });
+    ? "단위: 원 / 만원 / 억원 자동"
+    : "Unit: auto (KRW / 10k / 100M)";
 
   return (
     <div className="card">
-      <div className="flex items-center gap-3 mb-2">
+      <div className="mb-2 flex flex-wrap items-center gap-3">
         <h2 className="text-xl font-semibold">
-          {isKo ? '연간 자산 경로' : 'Yearly asset path'}
+          {isKo ? "연도별 성장 경로" : "Yearly growth path"}
         </h2>
-        <span className="text-[11px] sm:text-xs text-slate-500">
+        <span className="text-[11px] text-slate-500 sm:text-xs">
           {unitText}
         </span>
       </div>
+      <p className="mb-3 text-sm leading-relaxed text-slate-600">
+        {isKo
+          ? "현재 CAGR이 매년 동일하게 적용된다고 가정했을 때의 단순 성장 경로입니다."
+          : "This table shows a simplified path assuming the current CAGR is applied each year."}
+      </p>
 
       <div className="overflow-x-auto">
-        <table className="min-w-[720px] border-t">
+        <table className="min-w-[880px] border-t text-sm">
           <thead className="bg-slate-50">
             <tr>
-              <th className="px-2 py-1 text-left whitespace-nowrap">
-                {isKo ? '연도' : 'Year'}
+              <th className="px-2 py-2 text-left whitespace-nowrap">
+                {isKo ? "연도" : "Year"}
               </th>
-              <th className="px-2 py-1 text-right whitespace-nowrap">
-                {isKo ? '세전 자산(추정)' : 'Gross (estimated)'}
+              <th className="px-2 py-2 text-right whitespace-nowrap">
+                {isKo ? "예상 금액" : "Projected value"}
               </th>
-              <th className="px-2 py-1 text-right whitespace-nowrap">
-                {isKo ? '세후 자산' : 'Net after tax/fee'}
+              <th className="px-2 py-2 text-right whitespace-nowrap">
+                {isKo ? "시작 대비 증가율" : "Return from start"}
               </th>
-              <th className="px-2 py-1 text-right whitespace-nowrap">
-                {isKo
-                  ? '연간 세금+수수료 효과'
-                  : 'Tax+fee impact (year)'}
+              <th className="px-2 py-2 text-right whitespace-nowrap">
+                {isKo ? "전년 대비 증가액" : "Change from prior"}
               </th>
-              <th className="px-2 py-1 text-right whitespace-nowrap">
-                {isKo
-                  ? '누적 세금+수수료'
-                  : 'Tax+fee (cumulative)'}
+              <th className="px-2 py-2 text-right whitespace-nowrap">
+                {isKo ? "세전 추정 금액" : "Estimated gross"}
+              </th>
+              <th className="px-2 py-2 text-right whitespace-nowrap">
+                {isKo ? "세금/수수료 효과" : "Tax/fee effect"}
               </th>
             </tr>
           </thead>
           <tbody>
-            {stats.map((s) => (
-              <tr key={s.year} className="border-t">
-                <td className="px-2 py-1 text-left whitespace-nowrap">
-                  {s.year}
+            {rows.map((row) => (
+              <tr key={row.yearLabel || row.year} className="border-t">
+                <td className="px-2 py-2 text-left whitespace-nowrap">
+                  {isKo ? `${row.yearLabel ?? row.year}년` : `Year ${row.yearLabel ?? row.year}`}
                 </td>
-                <td className="px-2 py-1 text-right whitespace-nowrap">
-                  {formatMoneyAuto(s.gross, currency, locale)}
+                <td className="px-2 py-2 text-right whitespace-nowrap font-medium">
+                  {formatMoneyAuto(row.netValue, currency, locale)}
                 </td>
-                <td className="px-2 py-1 text-right whitespace-nowrap">
-                  {formatMoneyAuto(s.net, currency, locale)}
+                <td className="px-2 py-2 text-right whitespace-nowrap">
+                  {pct(row.totalReturnPercent)}
                 </td>
-                <td className="px-2 py-1 text-right whitespace-nowrap">
-                  {formatMoneyAuto(s.impactYear, currency, locale)}
+                <td className="px-2 py-2 text-right whitespace-nowrap">
+                  {formatMoneyAuto(row.gainFromPrevious, currency, locale)}
                 </td>
-                <td className="px-2 py-1 text-right whitespace-nowrap">
-                  {formatMoneyAuto(
-                    s.cumulativeTaxFee,
-                    currency,
-                    locale
-                  )}
+                <td className="px-2 py-2 text-right whitespace-nowrap">
+                  {formatMoneyAuto(row.grossValue, currency, locale)}
+                </td>
+                <td className="px-2 py-2 text-right whitespace-nowrap">
+                  {formatMoneyAuto(row.taxFeeImpact, currency, locale)}
                 </td>
               </tr>
             ))}

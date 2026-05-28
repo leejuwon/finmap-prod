@@ -19,6 +19,7 @@ import {
   writeToolRecent,
 } from "../../utils/toolPreset";
 import { trackGaEvent } from "../../utils/analytics";
+const goalCore = require("../../lib/goalSimulator");
 
 // ===== JSON-LD 출력용 공통 컴포넌트 =====
 export function JsonLd({ data }) {
@@ -176,7 +177,7 @@ function solveRequiredMonthly({
   if ((Number(current) || 0) >= t) return 0;
 
   const fv = (m) => {
-    const rows = simulateGoalPath({
+    const rows = goalCore.simulateGoalPath({
       current,
       monthly: m,
       annualRate,
@@ -275,7 +276,7 @@ function solveRequiredRate({
   if ((Number(current) || 0) >= t) return 0;
 
   const fv = (annualRate) => {
-    const rows = simulateGoalPath({
+    const rows = goalCore.simulateGoalPath({
       current,
       monthly,
       annualRate,
@@ -619,6 +620,119 @@ export default function GoalSimulatorPage() {
   );
 
   const summaryFmt = (v) => numberFmt(loc, currency, v || 0);
+  const percentFmt = (v, digits = 1) =>
+    `${(Number(v) || 0).toLocaleString(loc, {
+      minimumFractionDigits: digits,
+      maximumFractionDigits: digits,
+    })}%`;
+  const signedSummaryFmt = (v) => {
+    const n = Number(v) || 0;
+    if (n === 0) return summaryFmt(0);
+    return `${n > 0 ? "+" : "-"}${summaryFmt(Math.abs(n))}`;
+  };
+  const ux = useMemo(
+    () =>
+      locale === "ko"
+        ? {
+            goalAnalysisTitle: "목표 달성 분석",
+            goalAnalysisLead:
+              "목표 자산은 최종 세후 자산 기준으로 비교합니다. 입력한 수익률, 기간, 세금, 수수료가 유지된다는 가정의 시뮬레이션입니다.",
+            targetAsset: "목표 자산",
+            projectedFinal: "예상 최종 자산",
+            status: "목표 상태",
+            progress: "목표 달성률",
+            delta: "초과/부족 금액",
+            reachTime: "목표 도달 예상 기간",
+            requiredMonthly: "필요 월 납입금",
+            additionalMonthly: "추가 필요 월 납입금",
+            reached: "목표 달성",
+            notReached: "목표 미달",
+            alreadyEnough: "추가 납입 불필요",
+            notWithinHorizon: "기간 내 미도달",
+            breakdownTitle: "내 돈과 수익 분해",
+            breakdownLead:
+              "현재 자산, 추가 납입 원금, 투자 성과, 세금/수수료 효과를 분리해서 봅니다.",
+            currentAssets: "현재 자산",
+            addedPrincipal: "추가 납입 원금",
+            totalPrincipal: "총 투입 원금",
+            grossValue: "세전 자산",
+            netGain: "세후 수익",
+            taxFee: "세금/수수료 효과",
+            principalShare: "원금 비중",
+            gainShare: "수익 비중",
+            sensitivityTitle: "고급 해석: 민감도 비교",
+            sensitivityLead:
+              "현재 입력값을 기준으로 수익률, 월 납입금, 기간을 조금씩 바꿨을 때 목표 달성 결과가 어떻게 달라지는지 비교합니다.",
+            returnSensitivity: "수익률 민감도",
+            monthlySensitivity: "월 납입금 민감도",
+            periodSensitivity: "기간 민감도",
+            annualReturn: "연 수익률",
+            monthly: "월 납입금",
+            years: "투자 기간",
+            finalAssets: "예상 최종 자산",
+            requiredMonthlyShort: "필요 월 납입금",
+            totalInvested: "총 납입원금",
+            currentRow: "현재",
+            interpretationTitle: "결과를 어떻게 읽어야 하나요?",
+            interpretationItems: [
+              "목표 달성률이 100% 미만이면 현재 조건으로는 목표 금액에 부족한 상태입니다.",
+              "부족액을 줄이는 방법은 월 납입금 조정, 기간 연장, 수익률 가정 재점검입니다.",
+              "수익률은 고정된 결과가 아니므로 보수적/중립적/높은 가정을 함께 비교해보는 것이 좋습니다.",
+              "세금과 수수료 설정에 따라 최종 세후 자산이 달라질 수 있습니다.",
+              "현재 자산도 입력한 수익률로 함께 운용된다고 가정합니다.",
+            ],
+          }
+        : {
+            goalAnalysisTitle: "Goal achievement analysis",
+            goalAnalysisLead:
+              "The target amount is compared with the final after-tax value. This is a simulation based on the return, period, tax, and fee assumptions you enter.",
+            targetAsset: "Target amount",
+            projectedFinal: "Projected final value",
+            status: "Goal status",
+            progress: "Goal progress",
+            delta: "Surplus / shortfall",
+            reachTime: "Estimated time to target",
+            requiredMonthly: "Required monthly contribution",
+            additionalMonthly: "Additional monthly needed",
+            reached: "Reached",
+            notReached: "Short of target",
+            alreadyEnough: "No extra contribution needed",
+            notWithinHorizon: "Not within horizon",
+            breakdownTitle: "Principal vs gain breakdown",
+            breakdownLead:
+              "Separate current assets, additional contributions, investment gain, and tax/fee drag.",
+            currentAssets: "Current assets",
+            addedPrincipal: "Additional contributions",
+            totalPrincipal: "Total principal",
+            grossValue: "Pre-tax value",
+            netGain: "After-tax gain",
+            taxFee: "Tax/fee effect",
+            principalShare: "Principal share",
+            gainShare: "Gain share",
+            sensitivityTitle: "Advanced view: sensitivity",
+            sensitivityLead:
+              "Compare how the result changes when return, monthly contribution, and period assumptions move around the current input.",
+            returnSensitivity: "Return sensitivity",
+            monthlySensitivity: "Monthly contribution sensitivity",
+            periodSensitivity: "Period sensitivity",
+            annualReturn: "Annual return",
+            monthly: "Monthly contribution",
+            years: "Years",
+            finalAssets: "Projected final value",
+            requiredMonthlyShort: "Required monthly",
+            totalInvested: "Total invested",
+            currentRow: "Current",
+            interpretationTitle: "How should I read this result?",
+            interpretationItems: [
+              "If goal progress is below 100%, the current inputs are short of the target amount.",
+              "You can reduce the shortfall by changing contribution, horizon, or return assumptions.",
+              "Return assumptions are not fixed outcomes, so compare conservative, base, and higher cases.",
+              "Taxes and fees can change the final after-tax result.",
+              "Current assets are assumed to grow under the same return assumption.",
+            ],
+          },
+    [locale]
+  );
 
   const solveFocusModes = useMemo(
     () => [
@@ -667,7 +781,7 @@ export default function GoalSimulatorPage() {
             },
             {
               q: '목표 자산 금액은 세전 기준인가요, 세후 기준인가요?',
-              a: '이 시뮬레이터에서 목표 자산은 “세후 자산 기준”으로 보는 것을 추천합니다. 세금과 수수료 옵션을 켜고, 필요하다면 세율·수수료율(%)을 조정한 뒤 세후 기준 자산 경로를 보는 것이 직관적입니다.',
+              a: '이 시뮬레이터에서 목표 자산은 “세후 자산 기준”으로 보는 것이 직관적입니다. 세금과 수수료 옵션을 켜고, 필요하다면 세율·수수료율(%)을 조정한 뒤 세후 기준 자산 경로를 확인할 수 있습니다.',
             },
             {
               q: '세금·수수료 옵션은 어떻게 적용되나요?',
@@ -915,7 +1029,7 @@ export default function GoalSimulatorPage() {
         ? Number(form.feeRatePercent)
         : 0;//0.5;
 
-    const rows = simulateGoalPath({
+    const rows = goalCore.simulateGoalPath({
       current,
       monthly,
       annualRate: r,
@@ -1010,9 +1124,9 @@ export default function GoalSimulatorPage() {
       contribGrowthPercent,
     };
 
-    const base = simulateGoalPath({ ...common, annualRate: baseRate });
-    const conservative = simulateGoalPath({ ...common, annualRate: consRate });
-    const aggressive = simulateGoalPath({ ...common, annualRate: aggrRate });
+    const base = goalCore.simulateGoalPath({ ...common, annualRate: baseRate });
+    const conservative = goalCore.simulateGoalPath({ ...common, annualRate: consRate });
+    const aggressive = goalCore.simulateGoalPath({ ...common, annualRate: aggrRate });
 
     return { base, conservative, aggressive, baseRate, consRate, aggrRate };
   }, [lastParams, scenarioSpread, inflationPercent, contribGrowthPercent]);
@@ -1078,7 +1192,7 @@ export default function GoalSimulatorPage() {
         ? (scenarioData?.aggrRate ?? lastParams.annualRate)
         : (scenarioData?.baseRate ?? lastParams.annualRate); // base / compare 는 baseRate
 
-    const reachMonth = findFirstReachMonth({
+    const reachMonth = goalCore.findFirstReachMonth({
       target: tVal,
       current: lastParams.current,
       monthly: lastParams.monthly,
@@ -1092,11 +1206,11 @@ export default function GoalSimulatorPage() {
       valueKey: chartValueKey,
     });
 
-    const reachYM = reachMonth == null ? null : reachMonthToYM(reachMonth);
-    const reachText = formatReachText(reachMonth, locale);
+    const reachYM = reachMonth == null ? null : goalCore.reachMonthToYM(reachMonth);
+    const reachText = goalCore.formatReachText(reachMonth, locale);
 
     const requiredMonthly = !achieved
-      ? solveRequiredMonthly({
+      ? goalCore.solveRequiredMonthly({
           target: tVal,
           current: lastParams.current,
           annualRate: viewAnnualRate,
@@ -1111,7 +1225,7 @@ export default function GoalSimulatorPage() {
       : null;
 
     const requiredYears = !achieved
-      ? solveRequiredYears({
+      ? goalCore.solveRequiredYears({
           target: tVal,
           current: lastParams.current,
           monthly: lastParams.monthly,
@@ -1126,7 +1240,7 @@ export default function GoalSimulatorPage() {
       : null;
 
     const requiredRate = !achieved
-      ? solveRequiredRate({
+      ? goalCore.solveRequiredRate({
           target: tVal,
           current: lastParams.current,
           monthly: lastParams.monthly,
@@ -1174,7 +1288,7 @@ export default function GoalSimulatorPage() {
         : {
             conservative: {
               rate: scenarioData.consRate,
-              month: findFirstReachMonth({
+              month: goalCore.findFirstReachMonth({
                 target: tVal,
                 current: lastParams.current,
                 monthly: lastParams.monthly,
@@ -1190,7 +1304,7 @@ export default function GoalSimulatorPage() {
             },
             base: {
               rate: scenarioData.baseRate,
-              month: findFirstReachMonth({
+              month: goalCore.findFirstReachMonth({
                 target: tVal,
                 current: lastParams.current,
                 monthly: lastParams.monthly,
@@ -1206,7 +1320,7 @@ export default function GoalSimulatorPage() {
             },
             aggressive: {
               rate: scenarioData.aggrRate,
-              month: findFirstReachMonth({
+              month: goalCore.findFirstReachMonth({
                 target: tVal,
                 current: lastParams.current,
                 monthly: lastParams.monthly,
@@ -1224,9 +1338,9 @@ export default function GoalSimulatorPage() {
 
     // reachCompare에 text 미리 붙이기
     if (reachCompare) {
-      reachCompare.conservative.text = formatReachText(reachCompare.conservative.month, locale);
-      reachCompare.base.text = formatReachText(reachCompare.base.month, locale);
-      reachCompare.aggressive.text = formatReachText(reachCompare.aggressive.month, locale);
+      reachCompare.conservative.text = goalCore.formatReachText(reachCompare.conservative.month, locale);
+      reachCompare.base.text = goalCore.formatReachText(reachCompare.base.month, locale);
+      reachCompare.aggressive.text = goalCore.formatReachText(reachCompare.aggressive.month, locale);
     }
 
 
@@ -1234,7 +1348,7 @@ export default function GoalSimulatorPage() {
     const requiredYearsText =
       requiredYears === null
         ? null
-        : formatYMText(yearsFloatToYM(requiredYears), locale);
+        : goalCore.formatYMText(goalCore.yearsFloatToYM(requiredYears), locale);
 
     return {
       achieved,
@@ -1265,6 +1379,28 @@ export default function GoalSimulatorPage() {
     scenarioMode,
     scenarioData,
   ]);
+
+  const goalSummary = useMemo(() => {
+    if (!hasResult || !lastParams) return null;
+    return goalCore.summarizeTargetAssetRows(viewRows, {
+      target,
+      current: lastParams.current,
+      valueKey: chartValueKey,
+      grossKey: chartGrossKey,
+      investedKey: chartInvestKey,
+    });
+  }, [hasResult, lastParams, viewRows, target, chartValueKey, chartGrossKey, chartInvestKey]);
+
+  const goalSensitivity = useMemo(() => {
+    if (!lastParams || !(Number(target) > 0)) return null;
+    return goalCore.buildTargetAssetSensitivity({
+      ...lastParams,
+      target,
+      inflationPercent,
+      contribGrowthPercent,
+      valueKey: chartValueKey,
+    });
+  }, [lastParams, target, inflationPercent, contribGrowthPercent, chartValueKey]);
 
   const handleShare = async () => {
     // 1) Web Share API
@@ -1691,6 +1827,172 @@ export default function GoalSimulatorPage() {
               )}
 
               {/* 차트 */}
+              {goalSummary && (
+                <section className="card w-full min-w-0 max-w-full">
+                  <div className="mb-4">
+                    <h2 className="text-lg font-semibold">{ux.goalAnalysisTitle}</h2>
+                    <p className="mt-1 text-sm leading-relaxed text-slate-600">{ux.goalAnalysisLead}</p>
+                  </div>
+
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                    {[
+                      [ux.targetAsset, summaryFmt(goalSummary.target)],
+                      [ux.projectedFinal, summaryFmt(goalSummary.finalNet)],
+                      [ux.status, goalSummary.targetReached ? ux.reached : ux.notReached],
+                      [ux.progress, goalSummary.targetAchievementRate == null ? "-" : percentFmt(goalSummary.targetAchievementRate, 1)],
+                      [ux.delta, goalSummary.targetDelta == null ? "-" : signedSummaryFmt(goalSummary.targetDelta)],
+                      [ux.reachTime, diagnosis?.reachText || (goalSummary.targetReached ? ux.reached : ux.notWithinHorizon)],
+                      [
+                        ux.requiredMonthly,
+                        goalSummary.targetReached
+                          ? summaryFmt(0)
+                          : diagnosis?.requiredMonthly == null
+                            ? "-"
+                            : summaryFmt(diagnosis.requiredMonthly),
+                      ],
+                      [
+                        ux.additionalMonthly,
+                        goalSummary.targetReached
+                          ? ux.alreadyEnough
+                          : diagnosis?.requiredMonthlyDelta == null
+                            ? "-"
+                            : summaryFmt(diagnosis.requiredMonthlyDelta),
+                      ],
+                    ].map(([label, value]) => (
+                      <div key={label} className="rounded-xl border border-slate-200 bg-slate-50 p-3">
+                        <div className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
+                          {label}
+                        </div>
+                        <div className="mt-1 break-words text-base font-semibold text-slate-900">
+                          {value}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <details className="mt-4 rounded-xl border border-slate-200 bg-white p-4" open>
+                    <summary className="cursor-pointer text-sm font-semibold text-slate-900">
+                      {ux.breakdownTitle}
+                    </summary>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{ux.breakdownLead}</p>
+                    <div className="mt-3 overflow-x-auto">
+                      <table className="w-full min-w-[720px] text-sm">
+                        <tbody>
+                          {[
+                            [ux.currentAssets, summaryFmt(goalSummary.currentAssets)],
+                            [ux.addedPrincipal, summaryFmt(goalSummary.addedPrincipal)],
+                            [ux.totalPrincipal, summaryFmt(goalSummary.totalInvested)],
+                            [ux.grossValue, summaryFmt(goalSummary.finalGross)],
+                            [ux.netGain, signedSummaryFmt(goalSummary.netGain)],
+                            [ux.taxFee, summaryFmt(goalSummary.taxFeeDragApprox)],
+                            [ux.projectedFinal, summaryFmt(goalSummary.finalNet)],
+                            [ux.principalShare, percentFmt(goalSummary.principalSharePct, 1)],
+                            [ux.gainShare, percentFmt(goalSummary.gainSharePct, 1)],
+                          ].map(([label, value]) => (
+                            <tr key={label} className="border-t first:border-t-0">
+                              <th className="px-2 py-2 text-left font-medium text-slate-600">{label}</th>
+                              <td className="px-2 py-2 text-right font-semibold text-slate-900">{value}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </details>
+
+                  {goalSensitivity && (
+                    <details className="mt-4 rounded-xl border border-slate-200 bg-white p-4">
+                      <summary className="cursor-pointer text-sm font-semibold text-slate-900">
+                        {ux.sensitivityTitle}
+                      </summary>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-600">{ux.sensitivityLead}</p>
+                      <div className="mt-4 grid gap-4">
+                        <div className="overflow-x-auto">
+                          <h3 className="mb-2 text-sm font-semibold">{ux.returnSensitivity}</h3>
+                          <table className="w-full min-w-[820px] text-sm">
+                            <thead className="bg-slate-50">
+                              <tr>
+                                {[ux.annualReturn, ux.reachTime, ux.finalAssets, ux.progress, ux.delta, ux.requiredMonthlyShort].map((h) => (
+                                  <th key={h} className="px-2 py-2 text-left font-semibold text-slate-600">{h}</th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {goalSensitivity.returnScenarios.map((row) => (
+                                <tr key={row.key} className={`border-t ${row.key === "current" ? "bg-blue-50" : ""}`}>
+                                  <td className="px-2 py-2">{row.key === "current" ? `${ux.currentRow} · ` : ""}{percentFmt(row.annualRate, 1)}</td>
+                                  <td className="px-2 py-2">{(locale === "ko" ? row.reachTextKo : row.reachTextEn) || ux.notWithinHorizon}</td>
+                                  <td className="px-2 py-2 text-right">{summaryFmt(row.finalNet)}</td>
+                                  <td className="px-2 py-2 text-right">{percentFmt(row.targetAchievementRate, 1)}</td>
+                                  <td className="px-2 py-2 text-right">{signedSummaryFmt(row.targetDelta)}</td>
+                                  <td className="px-2 py-2 text-right">{row.requiredMonthly == null ? "-" : summaryFmt(row.requiredMonthly)}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+
+                        <div className="overflow-x-auto">
+                          <h3 className="mb-2 text-sm font-semibold">{ux.monthlySensitivity}</h3>
+                          <table className="w-full min-w-[760px] text-sm">
+                            <thead className="bg-slate-50">
+                              <tr>
+                                {[ux.monthly, ux.reachTime, ux.finalAssets, ux.progress, ux.delta].map((h) => (
+                                  <th key={h} className="px-2 py-2 text-left font-semibold text-slate-600">{h}</th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {goalSensitivity.monthlyScenarios.map((row) => (
+                                <tr key={row.key} className={`border-t ${row.key === "current" ? "bg-blue-50" : ""}`}>
+                                  <td className="px-2 py-2">{row.key === "current" ? `${ux.currentRow} · ` : ""}{summaryFmt(row.monthly)}</td>
+                                  <td className="px-2 py-2">{(locale === "ko" ? row.reachTextKo : row.reachTextEn) || ux.notWithinHorizon}</td>
+                                  <td className="px-2 py-2 text-right">{summaryFmt(row.finalNet)}</td>
+                                  <td className="px-2 py-2 text-right">{percentFmt(row.targetAchievementRate, 1)}</td>
+                                  <td className="px-2 py-2 text-right">{signedSummaryFmt(row.targetDelta)}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+
+                        <div className="overflow-x-auto">
+                          <h3 className="mb-2 text-sm font-semibold">{ux.periodSensitivity}</h3>
+                          <table className="w-full min-w-[760px] text-sm">
+                            <thead className="bg-slate-50">
+                              <tr>
+                                {[ux.years, ux.finalAssets, ux.progress, ux.delta, ux.totalInvested].map((h) => (
+                                  <th key={h} className="px-2 py-2 text-left font-semibold text-slate-600">{h}</th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {goalSensitivity.periodScenarios.map((row) => (
+                                <tr key={row.key} className={`border-t ${row.key === "current" ? "bg-blue-50" : ""}`}>
+                                  <td className="px-2 py-2">{row.key === "current" ? `${ux.currentRow} · ` : ""}{row.years.toLocaleString(loc, { maximumFractionDigits: 1 })}</td>
+                                  <td className="px-2 py-2 text-right">{summaryFmt(row.finalNet)}</td>
+                                  <td className="px-2 py-2 text-right">{percentFmt(row.targetAchievementRate, 1)}</td>
+                                  <td className="px-2 py-2 text-right">{signedSummaryFmt(row.targetDelta)}</td>
+                                  <td className="px-2 py-2 text-right">{summaryFmt(row.totalInvested)}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </details>
+                  )}
+
+                  <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50 p-4">
+                    <h3 className="text-sm font-semibold text-slate-900">{ux.interpretationTitle}</h3>
+                    <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-slate-700">
+                      {ux.interpretationItems.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </section>
+              )}
+
               <div className="card w-full min-w-0 max-w-full" ref={(el) => (sectionEls.current.chart = el)}>
                 <div className="flex items-center gap-3 mb-2 min-w-0">
                   <h2 className="text-lg font-semibold">{t.chartTitle}</h2>

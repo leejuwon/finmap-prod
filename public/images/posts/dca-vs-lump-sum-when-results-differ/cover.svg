@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title--images-posts-dca-vs-lump-sum-when-results-differ-cover-svg desc--images-posts-dca-vs-lump-sum-when-results-differ-cover-svg">
+<!-- Finmap DCA article SVG: KO DCA versus lump sum cover -->
+<title id="title--images-posts-dca-vs-lump-sum-when-results-differ-cover-svg">DCA vs 일괄투자</title>
+<desc id="desc--images-posts-dca-vs-lump-sum-when-results-differ-cover-svg">같은 원금, 다른 시점</desc>
+<defs>
+<linearGradient id="bg--images-posts-dca-vs-lump-sum-when-results-differ-cover-svg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f7fb"/><stop offset="1" stop-color="#fbfcff"/></linearGradient>
+<filter id="cardShadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0f172a" flood-opacity="0.12"/></filter>
+<filter id="softShadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.10"/></filter>
+
+</defs>
+<rect width="1200" height="675" fill="url(#bg--images-posts-dca-vs-lump-sum-when-results-differ-cover-svg)"/>
+<line x1="70" y1="46" x2="-4" y2="640" stroke="#d7dee9" stroke-width="1" opacity="0.34"/>
+<line x1="202" y1="46" x2="128" y2="640" stroke="#d7dee9" stroke-width="1" opacity="0.34"/>
+<line x1="334" y1="46" x2="260" y2="640" stroke="#d7dee9" stroke-width="1" opacity="0.34"/>
+<line x1="466" y1="46" x2="392" y2="640" stroke="#d7dee9" stroke-width="1" opacity="0.34"/>
+<line x1="598" y1="46" x2="524" y2="640" stroke="#d7dee9" stroke-width="1" opacity="0.34"/>
+<line x1="730" y1="46" x2="656" y2="640" stroke="#d7dee9" stroke-width="1" opacity="0.34"/>
+<line x1="862" y1="46" x2="788" y2="640" stroke="#d7dee9" stroke-width="1" opacity="0.34"/>
+<line x1="994" y1="46" x2="920" y2="640" stroke="#d7dee9" stroke-width="1" opacity="0.34"/>
+<line x1="1126" y1="46" x2="1052" y2="640" stroke="#d7dee9" stroke-width="1" opacity="0.34"/>
+<circle cx="1040" cy="116" r="98" fill="#ccfbf1" opacity="0.42"/>
+<circle cx="1060" cy="560" r="138" fill="#dbeafe" opacity="0.32"/>
+<path d="M72 586 C270 520 330 620 536 548 C720 484 846 540 1120 478" fill="none" stroke="#d7dee9" stroke-width="3" opacity="0.38"/>
+<rect x="78" y="58" width="128" height="38" rx="19" fill="#ffffff" stroke="#d7dee9" stroke-width="1" opacity="1" filter="url(#softShadow)"/>
+<circle cx="101" cy="77" r="7" fill="#0f766e"/>
+<text x="118" y="83" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="16" font-weight="700" fill="#64748b" text-anchor="start" opacity="1" letter-spacing="0">비교 계산</text>
+<text x="78" y="130" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="54" font-weight="800" fill="#172033" text-anchor="start" opacity="1" letter-spacing="0">DCA vs 일괄투자</text>
+<text x="82" y="174" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="24" font-weight="600" fill="#64748b" text-anchor="start" opacity="1" letter-spacing="0">같은 원금, 다른 시점</text>
+<rect x="80" y="205" width="360" height="6" rx="3" fill="#0f766e" stroke="none" stroke-width="1" opacity="0.9"/>
+<rect x="628" y="94" width="424" height="364" rx="28" fill="#ffffff" stroke="#e5edf7" stroke-width="1" opacity="1" filter="url(#cardShadow)"/>
+<line x1="840" y1="194" x2="840" y2="388" stroke="#172033" stroke-width="12" stroke-linecap="round"/>
+<line x1="708" y1="232" x2="972" y2="232" stroke="#172033" stroke-width="10" stroke-linecap="round"/>
+<circle cx="840" cy="228" r="20" fill="#0f766e"/>
+<path d="M724 256 L674 354 H774 Z" fill="#ccfbf1" stroke="#0f766e" stroke-width="5"/>
+<path d="M956 256 L906 354 H1006 Z" fill="#dbeafe" stroke="#2563eb" stroke-width="5"/>
+<rect x="786" y="390" width="108" height="24" rx="12" fill="#172033"/>
+<rect x="106" y="292" width="410" height="218" rx="28" fill="#ffffff" stroke="#e5edf7" stroke-width="1" opacity="1" filter="url(#cardShadow)"/>
+<text x="142" y="344" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="20" font-weight="600" fill="#64748b" text-anchor="start" opacity="1" letter-spacing="0">월별 투자</text>
+<circle cx="160" cy="440" r="29" fill="#f59e0b" opacity="1"/>
+<circle cx="160" cy="440" r="23" fill="none" stroke="#fff7d6" stroke-width="3" opacity="0.75"/>
+<circle cx="200" cy="420" r="29" fill="#f59e0b" opacity="1"/>
+<circle cx="200" cy="420" r="23" fill="none" stroke="#fff7d6" stroke-width="3" opacity="0.75"/>
+<circle cx="240" cy="442" r="29" fill="#f59e0b" opacity="1"/>
+<circle cx="240" cy="442" r="23" fill="none" stroke="#fff7d6" stroke-width="3" opacity="0.75"/>
+<circle cx="282" cy="412" r="31" fill="#f59e0b" opacity="1"/>
+<circle cx="282" cy="412" r="25" fill="none" stroke="#fff7d6" stroke-width="3" opacity="0.75"/>
+<circle cx="320" cy="446" r="28" fill="#f59e0b" opacity="1"/>
+<circle cx="320" cy="446" r="22" fill="none" stroke="#fff7d6" stroke-width="3" opacity="0.75"/>
+<g><line x1="310" y1="457" x2="460" y2="457" stroke="#d7dee9" stroke-width="3"/>
+<rect x="310" y="425.6" width="25.5" height="31.4" rx="10" fill="#0f766e" opacity="0.72"/>
+<rect x="351.5" y="412.5" width="25.5" height="44.5" rx="10" fill="#2563eb" opacity="0.94"/>
+<rect x="393" y="402.1" width="25.5" height="54.9" rx="10" fill="#0f766e" opacity="0.94"/>
+<rect x="434.5" y="389" width="25.5" height="68" rx="10" fill="#2563eb" opacity="0.94"/></g>
+<text x="740" y="524" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="20" font-weight="600" fill="#64748b" text-anchor="middle" opacity="1" letter-spacing="0">한 번에 투자</text>
+</svg>

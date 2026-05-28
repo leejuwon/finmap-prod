@@ -64,7 +64,9 @@ export default function CagrChart({
   const labels = useMemo(
     () =>
       rows.map((r) =>
-        locale.startsWith('ko') ? `${r.year}년` : `Year ${r.year}`
+        locale.startsWith('ko')
+          ? `${r.yearLabel ?? r.year}년`
+          : `Year ${r.yearLabel ?? r.year}`
       ),
     [rows, locale]
   );

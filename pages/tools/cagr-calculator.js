@@ -10,7 +10,7 @@ import CagrChart from "../../_components/CagrChart";
 import CagrYearTable from "../../_components/CagrYearTable";
 import ToolCta from "../../_components/ToolCta"; // ✅ (기존 파일에서 사용하지만 import 누락 가능성)
 import { numberFmt } from "../../lib/compound";
-import { calcCagr } from "../../lib/cagr";
+import { calcCagr, formatYearsText } from "../../lib/cagr";
 import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
 import {
   buildToolPresetQuery,
@@ -39,6 +39,9 @@ const CAGR_PRESET_FIELDS = [
   { query: "endDate", state: "endDate", type: "string" },
   { query: "taxRate", state: "taxRate", type: "number" },
   { query: "feeRate", state: "feeRate", type: "number" },
+  { query: "targetCagr", state: "targetCagr", type: "number" },
+  { query: "targetValue", state: "targetValue", type: "number" },
+  { query: "inflationRate", state: "inflationRate", type: "number" },
   { query: "currency", state: "currency", type: "string", allowed: ["KRW", "USD"] },
 ];
 
@@ -199,6 +202,92 @@ export default function CagrCalculatorPage() {
 
   const summaryFmt = (v) => numberFmt(numberLocale, currency, v || 0);
   const pctFmt = (v) => `${((Number(v) || 0) * 100).toFixed(2)}%`;
+  const pctPointFmt = (v, digits = 2) => `${(Number(v) || 0).toFixed(digits)}%`;
+  const signedSummaryFmt = (v) => {
+    const n = Number(v) || 0;
+    if (n === 0) return summaryFmt(0);
+    return `${n > 0 ? "+" : "-"}${summaryFmt(Math.abs(n))}`;
+  };
+  const yearsText = (v) => {
+    if (v == null || !Number.isFinite(Number(v))) return locale === "ko" ? "계산 범위 초과" : "Out of range";
+    return formatYearsText(v, locale) || (locale === "ko" ? "계산 범위 초과" : "Out of range");
+  };
+
+  const cagrUx = useMemo(
+    () =>
+      locale === "ko"
+        ? {
+            summaryTitle: "CAGR 결과 해석",
+            summaryLead:
+              "CAGR은 시작금액과 최종금액을 매년 같은 비율로 성장했다고 가정해 환산한 연평균 복리 성장률입니다.",
+            start: "시작금액",
+            end: "최종금액",
+            period: "기간",
+            totalReturn: "총수익률",
+            cagr: "CAGR",
+            realCagr: "실질 CAGR",
+            targetEnding: "목표 CAGR 기준 최종금액",
+            yearsToTarget: "목표금액 도달 기간",
+            totalVsCagrTitle: "총수익률 vs CAGR",
+            totalVsCagrBody:
+              "총수익률은 전체 기간의 누적 변화이고, CAGR은 그 결과를 연평균 복리 기준으로 환산한 값입니다. 10년 동안 2배가 되면 총수익률은 100%지만 CAGR은 약 7.18%입니다.",
+            sensitivityTitle: "고급 해석: 민감도 비교",
+            sensitivityLead:
+              "CAGR과 기간을 조금씩 바꿨을 때 최종금액과 필요한 CAGR이 어떻게 달라지는지 비교합니다.",
+            cagrSensitivity: "CAGR 민감도",
+            periodSensitivity: "기간 민감도",
+            current: "현재",
+            samePeriodEnd: "같은 기간 후 최종금액",
+            finalDiff: "현재 최종금액 대비 차이",
+            requiredCagr: "필요 CAGR",
+            readingTitle: "결과를 어떻게 읽어야 하나요?",
+            readingItems: [
+              "CAGR은 실제 매년 같은 수익률이 발생했다는 뜻이 아닙니다.",
+              "변동성이 큰 투자도 시작금액과 최종금액만 같으면 같은 CAGR이 나올 수 있습니다.",
+              "총수익률과 CAGR은 함께 봐야 합니다.",
+              "투자 기간이 짧을수록 같은 최종금액에 필요한 CAGR이 크게 보일 수 있습니다.",
+              "물가상승률을 고려하면 실질 성장률은 명목 CAGR보다 낮아질 수 있습니다.",
+            ],
+            nominalRealNote:
+              "실질 CAGR은 명목 CAGR에서 물가상승률 효과를 단순 반영한 구매력 기준 성장률입니다.",
+          }
+        : {
+            summaryTitle: "How to read the CAGR result",
+            summaryLead:
+              "CAGR converts the start-to-end change into a constant annual compound growth rate.",
+            start: "Starting value",
+            end: "Ending value",
+            period: "Period",
+            totalReturn: "Total return",
+            cagr: "CAGR",
+            realCagr: "Real CAGR",
+            targetEnding: "Ending value at target CAGR",
+            yearsToTarget: "Years to target amount",
+            totalVsCagrTitle: "Total return vs CAGR",
+            totalVsCagrBody:
+              "Total return is the cumulative change over the full period. CAGR annualizes that change as a compound rate. Doubling over 10 years is a 100% total return, but about 7.18% CAGR.",
+            sensitivityTitle: "Advanced view: sensitivity",
+            sensitivityLead:
+              "Compare how ending value and required CAGR change when the CAGR or period assumption moves.",
+            cagrSensitivity: "CAGR sensitivity",
+            periodSensitivity: "Period sensitivity",
+            current: "Current",
+            samePeriodEnd: "Ending value over same period",
+            finalDiff: "Difference vs current ending value",
+            requiredCagr: "Required CAGR",
+            readingTitle: "How should I interpret this?",
+            readingItems: [
+              "CAGR does not mean the same return happened every year.",
+              "Volatile paths can share the same CAGR if the starting and ending values match.",
+              "Read total return and CAGR together.",
+              "A shorter period can make the required CAGR look much larger.",
+              "After inflation, real growth can be lower than nominal CAGR.",
+            ],
+            nominalRealNote:
+              "Real CAGR is a simple purchasing-power adjustment using the inflation rate input.",
+          },
+    [locale]
+  );
 
   // FAQ 항목 (UI + JSON-LD 공통)
   const faqItems = useMemo(
@@ -445,12 +534,16 @@ export default function CagrCalculatorPage() {
       endDate: form.endDate || "",
       taxRate: Number(form.taxRate) || 0,
       feeRate: Number(form.feeRate) || 0,
+      targetCagr: Number(form.targetCagr) || 0,
+      targetValue: Number(form.targetValue) || 0,
+      inflationRate: Number(form.inflationRate) || 0,
       currency: form.currency || currency,
     });
 
     const scale = currency === "KRW" ? 10_000 : 1;
     const init = (Number(form.initial) || 0) * scale;
     const fin = (Number(form.final) || 0) * scale;
+    const targetAmount = (Number(form.targetValue) || 0) * scale;
     const y = Number(form.years) || 0;
 
     const r = calcCagr({
@@ -459,6 +552,9 @@ export default function CagrCalculatorPage() {
       years: y,
       taxRate: form.taxRate,
       feeRate: form.feeRate,
+      targetCagr: form.targetCagr,
+      targetValue: targetAmount,
+      inflationRate: form.inflationRate,
     });
 
     setInitial(init);
@@ -652,6 +748,113 @@ export default function CagrCalculatorPage() {
                   <div className="stat-value">{summaryFmt(finalValue)}</div>
                 </div>
               </div>
+
+              <section className="card min-w-0 max-w-full">
+                <div className="mb-4">
+                  <h2 className="text-lg font-semibold">{cagrUx.summaryTitle}</h2>
+                  <p className="mt-1 text-sm leading-relaxed text-slate-600">{cagrUx.summaryLead}</p>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                  {[
+                    [cagrUx.start, summaryFmt(initial)],
+                    [cagrUx.end, summaryFmt(finalValue)],
+                    [cagrUx.period, `${Number(years).toLocaleString(numberLocale, { maximumFractionDigits: 2 })}${locale === "ko" ? "년" : "y"}`],
+                    [cagrUx.totalReturn, pctPointFmt(result.totalReturnPercent)],
+                    [cagrUx.cagr, pctPointFmt(result.netCagrPercent)],
+                    [cagrUx.realCagr, result.realCagrPercent == null ? "-" : pctPointFmt(result.realCagrPercent)],
+                    [cagrUx.targetEnding, result.targetEndingValue == null ? "-" : summaryFmt(result.targetEndingValue)],
+                    [cagrUx.yearsToTarget, result.yearsToTarget == null ? "-" : yearsText(result.yearsToTarget)],
+                  ].map(([label, value]) => (
+                    <div key={label} className="rounded-xl border border-slate-200 bg-slate-50 p-3">
+                      <div className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
+                        {label}
+                      </div>
+                      <div className="mt-1 break-words text-base font-semibold text-slate-900">
+                        {value}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50 p-4">
+                  <h3 className="text-sm font-semibold text-slate-900">{cagrUx.totalVsCagrTitle}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-700">{cagrUx.totalVsCagrBody}</p>
+                </div>
+
+                <details className="mt-4 rounded-xl border border-slate-200 bg-white p-4">
+                  <summary className="cursor-pointer text-sm font-semibold text-slate-900">
+                    {cagrUx.sensitivityTitle}
+                  </summary>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{cagrUx.sensitivityLead}</p>
+
+                  <div className="mt-4 grid gap-4">
+                    <div className="overflow-x-auto">
+                      <h3 className="mb-2 text-sm font-semibold">{cagrUx.cagrSensitivity}</h3>
+                      <table className="w-full min-w-[760px] text-sm">
+                        <thead className="bg-slate-50">
+                          <tr>
+                            {[cagrUx.cagr, cagrUx.samePeriodEnd, cagrUx.totalReturn, cagrUx.finalDiff].map((h) => (
+                              <th key={h} className="px-2 py-2 text-left font-semibold text-slate-600">{h}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {result.sensitivity?.cagrScenarios?.map((row) => (
+                            <tr key={row.key} className={`border-t ${row.key === "current" ? "bg-blue-50" : ""}`}>
+                              <td className="px-2 py-2">
+                                {row.key === "current" ? `${cagrUx.current} · ` : ""}
+                                {pctPointFmt(row.cagrPercent)}
+                              </td>
+                              <td className="px-2 py-2 text-right">{row.endingValue == null ? "-" : summaryFmt(row.endingValue)}</td>
+                              <td className="px-2 py-2 text-right">{row.totalReturnPercent == null ? "-" : pctPointFmt(row.totalReturnPercent)}</td>
+                              <td className="px-2 py-2 text-right">{row.finalDiff == null ? "-" : signedSummaryFmt(row.finalDiff)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div className="overflow-x-auto">
+                      <h3 className="mb-2 text-sm font-semibold">{cagrUx.periodSensitivity}</h3>
+                      <table className="w-full min-w-[640px] text-sm">
+                        <thead className="bg-slate-50">
+                          <tr>
+                            {[cagrUx.period, cagrUx.requiredCagr, cagrUx.totalReturn].map((h) => (
+                              <th key={h} className="px-2 py-2 text-left font-semibold text-slate-600">{h}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {result.sensitivity?.periodScenarios?.map((row) => (
+                            <tr key={`${row.key}-${row.years}`} className={`border-t ${row.key === "current" ? "bg-blue-50" : ""}`}>
+                              <td className="px-2 py-2">
+                                {row.key === "current" ? `${cagrUx.current} · ` : ""}
+                                {Number(row.years).toLocaleString(numberLocale, { maximumFractionDigits: 2 })}
+                                {locale === "ko" ? "년" : "y"}
+                              </td>
+                              <td className="px-2 py-2 text-right">{pctPointFmt(row.cagrPercent)}</td>
+                              <td className="px-2 py-2 text-right">{pctPointFmt(row.totalReturnPercent)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </details>
+
+                <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
+                  <h3 className="text-sm font-semibold text-slate-900">{cagrUx.readingTitle}</h3>
+                  <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-slate-700">
+                    {cagrUx.readingItems.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-500">
+                    {cagrUx.nominalRealNote}
+                  </p>
+                </div>
+              </section>
 
               <div className="card border-l-4 border-amber-300 bg-amber-50">
                 <h2 className="text-base font-semibold mb-2 text-slate-900">
