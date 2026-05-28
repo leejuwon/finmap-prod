@@ -7,6 +7,7 @@ import SeoHead from "../../_components/SeoHead";
 import CTABar from "../../_components/CTABar";
 import CompoundForm from "../../_components/CompoundForm";
 import CompoundChart from "../../_components/CompoundChart";
+import CompoundDetailSummary from "../../_components/CompoundDetailSummary";
 import CompoundYearTable from "../../_components/CompoundYearTable";
 import CompoundCTA from "../../_components/CompoundCTA";
 import ValueDisplay, { formatMoneyShort } from "../../_components/ValueDisplay";
@@ -64,6 +65,7 @@ const COMPOUND_PRESET_FIELDS = [
   { query: "compounding", state: "compounding", type: "string", allowed: ["monthly", "yearly"] },
   { query: "taxRatePercent", state: "taxRatePercent", type: "number" },
   { query: "feeRatePercent", state: "feeRatePercent", type: "number" },
+  { query: "inflationRate", state: "inflationRate", type: "number" },
   { query: "currency", state: "currency", type: "string", allowed: ["KRW", "USD"] },
 ];
 
@@ -204,8 +206,8 @@ export default function CompoundPage() {
           : "Compound Interest Calculator",
       desc:
         locale === "ko"
-          ? "원금·월적립·수익률·기간으로 미래가치(FV)를 계산합니다. 월복리/연복리 비교, 세금·수수료 반영 결과를 연도별 표·차트로 확인하세요."
-          : "Calculate FV from principal, monthly deposits, return and years. Compare monthly vs annual compounding and net vs ideal (tax/fee).",
+          ? "원금·월적립·수익률·기간으로 월복리 기준 미래가치(FV)를 계산합니다. 세금·수수료·물가상승률 반영 결과를 연도별 표·차트로 확인하세요."
+          : "Calculate monthly-compounded future value from principal, monthly deposits, return, and years. Compare net vs ideal after tax, fees, and inflation.",
 
       fv: locale === "ko" ? "세후 총자산" : "Net Future Value",
       fvIdeal: locale === "ko" ? "세전 기준 미래가치" : "Ideal (No Tax/Fee)",
@@ -248,12 +250,12 @@ export default function CompoundPage() {
       },
       {
         slug: "annual-vs-monthly-compound",
-        tagKo: "월복리",
+        tagKo: "복리 기준",
         tagEn: "Compounding",
-        titleKo: "월복리 vs 연복리: 주기 차이가 결과를 바꾸는 이유",
-        titleEn: "Monthly vs Annual Compounding: why it changes",
+        titleKo: "복리 주기 차이 해설: 월복리와 연복리 결과가 달라지는 이유",
+        titleEn: "Compounding frequency: why monthly and annual results differ",
         descKo: "복리 주기(월/연)에 따라 미래가치(FV)가 어떻게 달라지는지 숫자로 확인합니다.",
-        descEn: "See how compounding frequency affects future value (FV) with numbers.",
+        descEn: "See how compounding frequency affects future value (FV) as a separate guide.",
       },
       {
         slug: "how-much-per-month-for-100m",
@@ -320,11 +322,11 @@ export default function CompoundPage() {
         ? [
             {
               q: "복리 이자 계산기는 무엇을 계산하나요?",
-              a: "초기 투자금(원금)과 월 적립금(적립식 투자), 연 수익률, 기간을 입력하면 복리 방식으로 미래가치(FV)를 계산합니다. 월복리/연복리 같은 복리 주기 차이도 비교할 수 있습니다.",
+              a: "초기 투자금(원금)과 월 적립금(적립식 투자), 연 수익률, 기간을 입력하면 월복리 기준으로 미래가치(FV)를 계산합니다. 현재 검증 코어는 월복리 고정이며, 연복리 비교는 후속 검증 대상입니다.",
             },
             {
-              q: "월복리 계산기와 연복리 계산기 결과가 왜 다른가요?",
-              a: "같은 연 수익률이라도 이자가 더 자주 재투자(복리 적용)되면 최종 미래가치가 커집니다. 그래서 일반적으로 월복리가 연복리보다 미래가치가 높게 나옵니다.",
+              q: "이 계산기는 어떤 복리 기준을 사용하나요?",
+              a: "현재 화면과 검증 스크립트는 월복리 기준을 사용합니다. 연 수익률에서 연 수수료율을 뺀 순 연수익률을 12개월로 나누고, 월 납입은 매월 말 납입으로 계산합니다.",
             },
             {
               q: "세전/세후 계산 차이는 무엇인가요?",
@@ -342,11 +344,11 @@ export default function CompoundPage() {
         : [
             {
               q: "What does this compound interest calculator do?",
-              a: "It calculates future value (FV) using principal, monthly contributions (DCA-like deposits), annual return, and time horizon. You can also compare monthly vs annual compounding.",
+              a: "It calculates future value (FV) using principal, monthly contributions, annual return, and time horizon on a fixed monthly-compounding basis.",
             },
             {
-              q: "Why do monthly and annual compounding differ?",
-              a: "More frequent compounding reinvests returns sooner, which typically results in a higher future value than annual compounding with the same annual rate.",
+              q: "What compounding basis does this calculator use?",
+              a: "The current verified calculation uses monthly compounding. It subtracts the annual fee rate from the annual return, divides the net annual return by 12, and treats monthly contributions as end-of-month deposits.",
             },
             {
               q: "What is the difference between net and ideal results?",
@@ -388,14 +390,14 @@ export default function CompoundPage() {
             { "@type": "HowToStep", name: "원금 입력", text: "초기 투자금(원금)을 입력합니다." },
             { "@type": "HowToStep", name: "월 적립금 입력", text: "매월 추가 투자/저축 금액을 입력합니다." },
             { "@type": "HowToStep", name: "수익률·기간 설정", text: "연 수익률과 투자 기간(년)을 설정합니다." },
-            { "@type": "HowToStep", name: "복리 주기 선택", text: "월복리/연복리 등 복리 주기를 선택합니다." },
+            { "@type": "HowToStep", name: "월복리 기준 확인", text: "검증된 계산 기준인 월복리와 월말 납입 가정을 확인합니다." },
             { "@type": "HowToStep", name: "세금·수수료 반영", text: "세금/수수료를 입력해 세후 미래가치를 확인합니다." },
           ]
         : [
             { "@type": "HowToStep", name: "Enter principal", text: "Input your initial investment (principal)." },
             { "@type": "HowToStep", name: "Enter monthly contribution", text: "Add a fixed monthly contribution amount." },
             { "@type": "HowToStep", name: "Set return and years", text: "Set annual return and time horizon." },
-            { "@type": "HowToStep", name: "Choose compounding", text: "Select monthly or annual compounding." },
+            { "@type": "HowToStep", name: "Check the monthly basis", text: "Review the verified monthly-compounding and end-of-month contribution assumptions." },
             { "@type": "HowToStep", name: "Apply tax and fees", text: "Adjust tax/fee settings to see net FV." },
           ],
     };
@@ -452,9 +454,10 @@ export default function CompoundPage() {
       monthly: Number(form.monthly) || 0,
       annualRate: Number(form.annualRate) || 0,
       years: Number(form.years) || 0,
-      compounding: form.compounding === "yearly" ? "yearly" : "monthly",
+      compounding: "monthly",
       taxRatePercent: Number(form.taxRatePercent ?? 15.4),
       feeRatePercent: Number(form.feeRatePercent ?? 0.5),
+      inflationRate: Number(form.inflationRate ?? 0),
       currency: form.currency || currency,
     });
 
@@ -467,6 +470,7 @@ export default function CompoundPage() {
 
     const taxRatePercent = Number(form.taxRatePercent ?? 15.4);
     const feeRatePercent = Number(form.feeRatePercent ?? 0.5);
+    const inflationRate = Number(form.inflationRate ?? 0);
 
     const baseYear = new Date().getFullYear();
 
@@ -475,9 +479,10 @@ export default function CompoundPage() {
       monthly: m,
       years: y,
       annualRate: r,
-      compounding: form.compounding,
+      compounding: "monthly",
       taxRatePercent,
       feeRatePercent,
+      inflationRate,
       baseYear,
     });
 
@@ -486,7 +491,8 @@ export default function CompoundPage() {
       monthly: m,
       years: y,
       annualRate: r,
-      compounding: form.compounding,
+      compounding: "monthly",
+      inflationRate,
       baseYear,
     });
 
@@ -506,7 +512,8 @@ export default function CompoundPage() {
       monthly: m,
       years: y,
       annualRate: r,
-      compounding: form.compounding,
+      compounding: "monthly",
+      inflationRate,
     });
     setResult(compound);
     setIdealResult(ideal);
@@ -654,13 +661,13 @@ export default function CompoundPage() {
         <section className="card w-full">
           <h2 className="text-base font-semibold mb-2">
             {locale === "ko"
-              ? "월복리·연복리, 적립식 투자까지 한 번에 계산"
-              : "Monthly/annual compounding + contributions in one place"}
+              ? "월복리 기준 복리 계산과 적립식 투자 결과 확인"
+              : "Monthly-compounded growth with contributions"}
           </h2>
           <p className="text-sm text-slate-600">
             {locale === "ko"
-              ? "초기 투자금(원금)과 월 적립금(적립식), 연 수익률, 기간을 입력하면 복리 방식으로 미래가치(FV)를 계산합니다. 세전·세후(세금·수수료) 결과를 비교하고, 연도별 표/차트로 자산 성장 경로를 확인할 수 있어요."
-              : "Enter principal, monthly contribution, annual return, and years to calculate FV. Compare ideal vs net (tax/fee) and explore growth with charts and yearly tables."}
+              ? "초기 투자금(원금)과 월 적립금(적립식), 연 수익률, 기간을 입력하면 월복리 기준으로 미래가치(FV)를 계산합니다. 세전·세후(세금·수수료) 결과를 비교하고, 연도별 표/차트로 자산 성장 경로를 확인할 수 있어요."
+              : "Enter principal, monthly contribution, annual return, and years to calculate monthly-compounded FV. Compare ideal vs net (tax/fee) and explore growth with charts and yearly tables."}
           </p>
 
           <div className="mt-3 grid gap-2 md:grid-cols-3 text-sm">
@@ -677,12 +684,12 @@ export default function CompoundPage() {
 
             <div className="border rounded-xl p-3 bg-slate-50">
               <div className="font-semibold mb-1">
-                {locale === "ko" ? "월복리 vs 연복리" : "Monthly vs Annual"}
+                {locale === "ko" ? "월복리 기준" : "Monthly basis"}
               </div>
               <div className="text-slate-600">
                 {locale === "ko"
-                  ? "복리 주기 차이에 따른 결과 비교"
-                  : "Compare compounding frequency"}
+                  ? "검증된 월복리·월말 납입 기준"
+                  : "Verified monthly compounding with end-of-month deposits"}
               </div>
             </div>
 
@@ -728,33 +735,7 @@ export default function CompoundPage() {
                 <>
                   {/* Summary */}
                   <div ref={(el) => (sectionEls.current.sum = el)} className="scroll-mt-24">
-                    <div className="grid gap-4 grid-cols-2 sm:grid-cols-4">
-                      <div className="stat">
-                        <div className="stat-title">{t.fv}</div>
-                        <div className="stat-value">
-                          <ValueDisplay value={summary.fvNet} locale={numberLocale} currency={currency} />
-                        </div>
-                      </div>
-
-                      <div className="stat">
-                        <div className="stat-title">{t.fvIdeal}</div>
-                        <div className="stat-value">
-                          <ValueDisplay value={summary.fvIdeal} locale={numberLocale} currency={currency} />
-                        </div>
-                      </div>
-
-                      <div className="stat">
-                        <div className="stat-title">{t.drag}</div>
-                        <div className="stat-value">
-                          <ValueDisplay value={summary.drag} locale={numberLocale} currency={currency} />
-                        </div>
-                      </div>
-
-                      <div className="stat">
-                        <div className="stat-title">{t.ratio}</div>
-                        <div className="stat-value">{summary.ratio.toFixed(1)}%</div>
-                      </div>
-                    </div>
+                    <CompoundDetailSummary result={result} locale={numberLocale} currency={currency} />
                   </div>
 
                   {/* Chart */}
@@ -979,8 +960,8 @@ export default function CompoundPage() {
 
                         <p className="text-sm text-slate-600 mb-3">
                           {locale === "ko"
-                            ? "수익률·세금·수수료 변동이 미래 자산에 어떤 영향을 주는지 즉시 확인해보세요."
-                            : "See how changes in rate, tax, and fees affect your future value instantly."}
+                            ? "수익률·월납입금·투자기간 변화가 미래 자산에 어떤 영향을 주는지 확인해보세요."
+                            : "See how return, monthly contribution, and time horizon changes affect your future value."}
                         </p>
 
                         <SensitivityPanel
@@ -990,6 +971,7 @@ export default function CompoundPage() {
                           years={invest.years}
                           taxRatePercent={result.taxRate * 100}
                           feeRatePercent={result.feeRate * 100}
+                          inflationRate={invest.inflationRate}
                           locale={numberLocale}
                           currency={currency}
                         />
@@ -1026,33 +1008,7 @@ export default function CompoundPage() {
                 ========================= */
                 <>
                   {/* Summary (확장 버전) */}
-                  <div className="grid gap-4 sm:grid-cols-4">
-                    <div className="stat">
-                      <div className="stat-title">{t.fv}</div>
-                      <div className="stat-value">
-                        <ValueDisplay value={summary.fvNet} locale={numberLocale} currency={currency} />
-                      </div>
-                    </div>
-
-                    <div className="stat">
-                      <div className="stat-title">{t.fvIdeal}</div>
-                      <div className="stat-value">
-                        <ValueDisplay value={summary.fvIdeal} locale={numberLocale} currency={currency} />
-                      </div>
-                    </div>
-
-                    <div className="stat">
-                      <div className="stat-title">{t.drag}</div>
-                      <div className="stat-value">
-                        <ValueDisplay value={summary.drag} locale={numberLocale} currency={currency} />
-                      </div>
-                    </div>
-
-                    <div className="stat">
-                      <div className="stat-title">{t.ratio}</div>
-                      <div className="stat-value">{summary.ratio.toFixed(1)}%</div>
-                    </div>
-                  </div>
+                  <CompoundDetailSummary result={result} locale={numberLocale} currency={currency} />
 
                   {/* Chart */}
                   <div className="card">
@@ -1247,8 +1203,8 @@ export default function CompoundPage() {
 
                     <p className="text-sm text-slate-600 mb-3">
                       {locale === "ko"
-                        ? "수익률·세금·수수료 변동이 미래 자산에 어떤 영향을 주는지 즉시 확인해보세요."
-                        : "See how changes in rate, tax, and fees affect your future value instantly."}
+                        ? "수익률·월납입금·투자기간 변화가 미래 자산에 어떤 영향을 주는지 확인해보세요."
+                        : "See how return, monthly contribution, and time horizon changes affect your future value."}
                     </p>
 
                     <SensitivityPanel
@@ -1258,6 +1214,7 @@ export default function CompoundPage() {
                       years={invest.years}
                       taxRatePercent={result.taxRate * 100}
                       feeRatePercent={result.feeRate * 100}
+                      inflationRate={invest.inflationRate}
                       locale={numberLocale}
                       currency={currency}
                     />
@@ -1294,14 +1251,14 @@ export default function CompoundPage() {
                   <section className="card">
                     <h2 className="text-base font-semibold mb-2">
                       {locale === "ko"
-                        ? "월복리·연복리, 적립식 투자까지 한 번에 계산"
-                        : "Monthly/Annual compounding + contributions in one place"}
+                        ? "월복리 기준 복리 계산과 적립식 투자 결과 확인"
+                        : "Monthly-compounded growth with contributions"}
                     </h2>
 
                     <p className="text-sm text-slate-600">
                       {locale === "ko"
-                        ? "이 복리 계산기는 원금(초기 투자금)과 월 적립금(적립식), 연 수익률, 기간을 입력해 미래가치(FV)를 계산합니다. 월복리/연복리처럼 복리 주기 차이에 따른 결과도 비교할 수 있고, 세금·수수료를 반영해 현실적인 세후 총자산을 확인할 수 있어요."
-                        : "Enter principal, monthly contribution, annual return, and years to calculate FV. Compare monthly vs annual compounding and check net results after tax/fees."}
+                        ? "이 복리 계산기는 원금(초기 투자금)과 월 적립금(적립식), 연 수익률, 기간을 입력해 월복리 기준 미래가치(FV)를 계산합니다. 세금·수수료·물가상승률을 반영해 세후 총자산과 현재가치를 확인할 수 있어요."
+                        : "Enter principal, monthly contribution, annual return, and years to calculate monthly-compounded FV. Check net results and present value after tax, fees, and inflation."}
                     </p>                    
                     <h3 className="text-sm font-semibold mb-2">
                       {locale === "ko" ? "관련 계산기" : "Related tools"}

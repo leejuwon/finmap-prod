@@ -1,65 +1,20 @@
-// _components/GoalEngineCard.js
 import { useMemo, useState } from "react";
 import ValueDisplay from "./ValueDisplay";
-import { calcCompound } from "../lib/compound";
+import {
+  estimateYearsToTarget,
+  solveMonthlyContributionForTarget,
+} from "../lib/compound";
 
-/* -------------------------------------------------------
-   공통: locale 정규화 (ko/en/ko-KR/en-US 모두 대응)
-------------------------------------------------------- */
 function normalizeLocale(locale) {
-  if (!locale) return "ko-KR";
   if (locale === "ko") return "ko-KR";
   if (locale === "en") return "en-US";
-  return locale;
+  return locale || "ko-KR";
 }
 
-// 안전한 숫자 변환
-function num(v, d = 0) {
-  const n = Number(v);
-  return Number.isFinite(n) ? n : d;
-}
-
-/**
- * ✅ 현재 가정(복리주기/세금/수수료 포함)으로 미래가치(Net FV) 계산
- */
-function fvNetByAssumption({
-  principal,
-  monthly,
-  years,
-  annualRate,
-  compounding,
-  taxRatePercent,
-  feeRatePercent,
-  baseYear,
-}) {
-  const out = calcCompound({
-    principal,
-    monthly,
-    years,
-    annualRate,
-    compounding,
-    taxRatePercent,
-    feeRatePercent,
-    baseYear,
-  });
-  return num(out?.futureValueNet, 0);
-}
-
-/**
- * ✅ 이진 탐색 유틸: "목표 FV >= goal"이 되는 최소 x 찾기
- * - fn(x) => fvNet
- */
-function binarySearchMinX({ goal, low, high, fn, iters = 42 }) {
-  let lo = low;
-  let hi = high;
-
-  for (let i = 0; i < iters; i++) {
-    const mid = (lo + hi) / 2;
-    const fv = fn(mid);
-    if (fv >= goal) hi = mid;
-    else lo = mid;
-  }
-  return hi;
+function yearsText(value, isKo) {
+  if (value == null || !Number.isFinite(Number(value))) return isKo ? "계산 어려움" : "N/A";
+  if (Number(value) === 0) return isKo ? "이미 달성" : "Already reached";
+  return isKo ? `${Number(value).toFixed(1)}년` : `${Number(value).toFixed(1)} years`;
 }
 
 export default function GoalEngineCard({
@@ -71,317 +26,111 @@ export default function GoalEngineCard({
   feeRatePercent = 0.5,
 }) {
   const [goalInput, setGoalInput] = useState("");
-
   const isKo = String(locale).startsWith("ko");
   const numberLocale = normalizeLocale(locale);
+  const principal = Number(invest?.principal) || 0;
+  const monthly = Number(invest?.monthly) || 0;
+  const years = Number(invest?.years) || 0;
+  const annualRate = Number(invest?.annualRate ?? result?.annualRate ?? 0);
+  const inflationRatePercent = Number(invest?.inflationRate ?? (Number(result?.inflationRate) || 0) * 100) || 0;
+  const scale = currency === "KRW" ? 10_000 : 1;
+  const goalAmount = (Number(goalInput) || 0) * scale;
+  const currentFinal = Number(result?.afterTaxFinalAmount ?? result?.futureValueNet ?? 0);
 
-  const years = num(invest?.years, 0);
-  const principal = num(invest?.principal, 0);
-  const monthly = num(invest?.monthly, 0);
+  const requiredMonthly = useMemo(() => {
+    if (!goalAmount || !years) return null;
+    return solveMonthlyContributionForTarget({
+      targetAmount: goalAmount,
+      initialAmount: principal,
+      years,
+      annualReturn: annualRate,
+      taxRate: taxRatePercent,
+      feeRate: feeRatePercent,
+      inflationRate: inflationRatePercent,
+    });
+  }, [goalAmount, principal, years, annualRate, taxRatePercent, feeRatePercent, inflationRatePercent]);
 
-  const annualRate = num(result?.annualRate, 0);
-  const compounding = result?.compounding || "monthly";
-  const baseYear = num(result?.baseYear, new Date().getFullYear());
+  const yearsToTarget = useMemo(() => {
+    if (!goalAmount) return null;
+    return estimateYearsToTarget({
+      targetAmount: goalAmount,
+      initialAmount: principal,
+      monthlyContribution: monthly,
+      annualReturn: annualRate,
+      taxRate: taxRatePercent,
+      feeRate: feeRatePercent,
+      inflationRate: inflationRatePercent,
+    });
+  }, [goalAmount, principal, monthly, annualRate, taxRatePercent, feeRatePercent, inflationRatePercent]);
 
-  const annualRateForEngine = Number(invest?.annualRate ?? result?.annualRate ?? 0);
- 
+  const isReached = goalAmount > 0 && currentFinal >= goalAmount;
 
   const handleGoalChange = (e) => {
-    const raw = e.target.value.replace(/[^\d]/g, "");
-    setGoalInput(raw);
+    setGoalInput(e.target.value.replace(/[^\d]/g, ""));
   };
 
   const formattedGoal = goalInput.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-  // ✅ KRW = 만원 단위 입력 → 실제 금액 ×10,000
-  const goalAmount = num(goalInput, 0) * (currency === "KRW" ? 10_000 : 1);
-
   const goalLabel = isKo
-    ? currency === "KRW"
-      ? "목표 자산 (만원)"
-      : "목표 자산"
-    : currency === "KRW"
-      ? "Target Amount (×10k KRW)"
-      : "Target Amount";
-
-  const placeholder = isKo
-    ? currency === "KRW"
-      ? "예: 50,000"
-      : "예: 100,000"
-    : "ex: 50,000";
-
-  // ✅ 현재 조건의 FV(net)
-  const currentFvNet = useMemo(() => {
-    if (!result || years <= 0) return 0;
-    return fvNetByAssumption({
-      principal,
-      monthly,
-      years,
-      annualRate,
-      compounding,
-      taxRatePercent,
-      feeRatePercent,
-      baseYear,
-    });
-  }, [
-    result,
-    years,
-    principal,
-    monthly,
-    annualRate,
-    compounding,
-    taxRatePercent,
-    feeRatePercent,
-    baseYear,
-  ]);
-
-  // =====================================================
-  // 1) 필요한 월 투자금 (세금/수수료 포함 역산)
-  // =====================================================
-  const monthlyNeed = useMemo(() => {
-    if (!result || goalAmount <= 0 || years <= 0) return 0;
-    if (currentFvNet >= goalAmount) return 0;
-
-    // high 자동 확장(필요 월납입이 큰 케이스 대응)
-    let low = 0;
-    let high = Math.max(1, goalAmount / (years * 12)); // 대충 평균 분할
-    const fn = (m) =>
-      fvNetByAssumption({
-        principal,
-        monthly: m,
-        years,
-        annualRate: annualRateForEngine,
-        compounding,
-        taxRatePercent,
-        feeRatePercent,
-        baseYear,
-      });
-
-    // high가 충분할 때까지 2배 확장 (안전 상한)
-    let guard = 0;
-    while (fn(high) < goalAmount && guard < 40) {
-      high *= 2;
-      guard += 1;
-      if (high > goalAmount * 10) break;
-    }
-
-    return Math.max(
-      0,
-      binarySearchMinX({
-        goal: goalAmount,
-        low,
-        high,
-        fn,
-      })
-    );
-  }, [
-    result,
-    goalAmount,
-    years,
-    currentFvNet,
-    principal,
-    annualRate,
-    compounding,
-    taxRatePercent,
-    feeRatePercent,
-    baseYear,
-  ]);
-
-  // =====================================================
-  // 2) 필요한 연 수익률 (세금/수수료 포함 역산)
-  // =====================================================
-  const rateNeed = useMemo(() => {
-    if (!result || goalAmount <= 0 || years <= 0) return 0;
-    if (currentFvNet >= goalAmount) return 0;
-
-    const fn = (ratePct) =>
-      fvNetByAssumption({
-        principal,
-        monthly,
-        years,
-        annualRate: ratePct,
-        compounding,
-        taxRatePercent,
-        feeRatePercent,
-        baseYear,
-      });
-
-    let low = -99;
-    let high = 100;
-
-    // high 확장(고수익률이 필요한 케이스 대비)
-    let guard = 0;
-    while (fn(high) < goalAmount && guard < 30) {
-      high *= 1.5;
-      guard += 1;
-      if (high > 500) break;
-    }
-
-    return binarySearchMinX({
-      goal: goalAmount,
-      low,
-      high,
-      fn,
-    });
-  }, [
-    result,
-    goalAmount,
-    years,
-    currentFvNet,
-    principal,
-    monthly,
-    compounding,
-    taxRatePercent,
-    feeRatePercent,
-    baseYear,
-  ]);
-
-  // =====================================================
-  // 3) 필요한 초기 투자금 (세금/수수료 포함 역산)
-  // =====================================================
-  const principalNeed = useMemo(() => {
-    if (!result || goalAmount <= 0 || years <= 0) return 0;
-    if (currentFvNet >= goalAmount) return 0;
-
-    const fn = (p) =>
-      fvNetByAssumption({
-        principal: p,
-        monthly,
-        years,
-        annualRate: annualRateForEngine,
-        compounding,
-        taxRatePercent,
-        feeRatePercent,
-        baseYear,
-      });
-
-    const low = 0;
-    let high = Math.max(1, goalAmount); // 최악 기준: 원금만으로도 근접
-    let guard = 0;
-    while (fn(high) < goalAmount && guard < 30) {
-      high *= 1.5;
-      guard += 1;
-      if (high > goalAmount * 10) break;
-    }
-
-    return Math.max(
-      0,
-      binarySearchMinX({
-        goal: goalAmount,
-        low,
-        high,
-        fn,
-      })
-    );
-  }, [
-    result,
-    goalAmount,
-    years,
-    currentFvNet,
-    monthly,
-    annualRate,
-    compounding,
-    taxRatePercent,
-    feeRatePercent,
-    baseYear,
-  ]);
-
-  // ✅ KRW 빠른 프리셋(만원 단위)
-  const presets = useMemo(() => {
-    if (currency !== "KRW") return [];
-    return [
-      { label: isKo ? "1억" : "₩100M", valueMan: 10_000 },
-      { label: isKo ? "3억" : "₩300M", valueMan: 30_000 },
-      { label: isKo ? "5억" : "₩500M", valueMan: 50_000 },
-      { label: isKo ? "10억" : "₩1B", valueMan: 100_000 },
-    ];
-  }, [currency, isKo]);
+    ? currency === "KRW" ? "목표금액 (만원)" : "목표금액"
+    : currency === "KRW" ? "Target amount (10k KRW)" : "Target amount";
 
   return (
     <div className="space-y-4">
-      {/* 목표 금액 입력 */}
       <div>
-        <label className="text-sm mb-1 block">{goalLabel}</label>
-
-        <div className="flex gap-2">
-          <input
-            type="text"
-            className="input flex-1"
-            value={formattedGoal}
-            onChange={handleGoalChange}
-            placeholder={placeholder}
-          />
-        </div>
-
-        {/* ✅ KRW 프리셋 */}
-        {presets.length > 0 && (
-          <div className="mt-2 flex flex-wrap gap-2">
-            {presets.map((p) => (
-              <button
-                key={p.valueMan}
-                type="button"
-                className="btn-secondary text-xs"
-                onClick={() => setGoalInput(String(p.valueMan))}
-              >
-                {p.label}
-              </button>
-            ))}
-            <button
-              type="button"
-              className="btn text-xs"
-              onClick={() => setGoalInput("")}
-            >
-              {isKo ? "초기화" : "Clear"}
-            </button>
-          </div>
-        )}
-
-        <p className="text-[11px] text-slate-500 mt-2">
+        <label className="text-sm font-medium text-slate-900" htmlFor="compound-goal-input">
+          {goalLabel}
+        </label>
+        <input
+          id="compound-goal-input"
+          type="text"
+          className="input mt-1"
+          value={formattedGoal}
+          onChange={handleGoalChange}
+          placeholder={isKo ? "예: 50,000" : "ex: 50,000"}
+        />
+        <p className="mt-2 text-xs leading-relaxed text-slate-500">
           {isKo
-            ? "※ 현재 가정(수익률·복리 주기·세금·수수료)을 그대로 적용해 역산합니다."
-            : "※ Reverse-calculates using your current assumptions (rate, compounding, tax, fee)."}
+            ? "목표금액은 세후 최종금액 기준으로 비교합니다. 역산은 월복리·월말 납입·세금·수수료 조건을 그대로 사용합니다."
+            : "The target is compared against after-tax final value. Reverse calculations use the same monthly-compounding, end-of-month contribution, tax, and fee assumptions."}
         </p>
       </div>
 
       {goalAmount > 0 && (
         <>
-          {/* ✅ 목표 달성 여부 안내 */}
-          {currentFvNet >= goalAmount ? (
-            <div className="text-sm text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-xl p-3">
+          {isReached && (
+            <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-800">
               {isKo
-                ? "현재 조건 기준으로 이미 목표 자산에 도달합니다. (필요값은 0으로 표시)"
-                : "With current assumptions, you already reach the goal. (Required values show 0)"}
+                ? "현재 입력값 기준으로 목표금액을 이미 달성하는 시뮬레이션입니다."
+                : "Under the current inputs, the simulation already reaches the target."}
             </div>
-          ) : null}
+          )}
 
           <div className="grid gap-4 md:grid-cols-3">
-            {/* 1) 필요한 월 투자금 */}
-            <div className="border rounded-lg p-4 bg-white shadow-sm">
-              <div className="text-xs text-slate-500 mb-1">
-                {isKo ? "필요 월 투자금" : "Required Monthly Investment"}
-              </div>
-              <div className="font-semibold text-lg flex items-baseline gap-2">
-                <ValueDisplay value={monthlyNeed} locale={numberLocale} currency={currency} />
-                <span className="text-sm text-slate-500">{isKo ? "/월" : "/mo"}</span>
+            <div className="rounded-xl border bg-white p-4">
+              <div className="text-xs text-slate-500">{isKo ? "목표금액" : "Target amount"}</div>
+              <div className="mt-1 text-lg font-semibold">
+                <ValueDisplay value={goalAmount} locale={numberLocale} currency={currency} />
               </div>
             </div>
-
-            {/* 2) 필요한 연 수익률 */}
-            <div className="border rounded-lg p-4 bg-white shadow-sm">
-              <div className="text-xs text-slate-500 mb-1">
-                {isKo ? "필요 수익률" : "Required Annual Return"}
+            <div className="rounded-xl border bg-white p-4">
+              <div className="text-xs text-slate-500">{isKo ? "필요 월납입금" : "Required monthly"}</div>
+              <div className="mt-1 text-lg font-semibold">
+                {requiredMonthly == null ? "-" : (
+                  <ValueDisplay value={requiredMonthly} locale={numberLocale} currency={currency} />
+                )}
               </div>
-              <div className="font-semibold text-lg">{rateNeed.toFixed(2)}%</div>
+              <p className="mt-1 text-xs text-slate-500">
+                {isKo ? "세후 목표 기준" : "After-tax target basis"}
+              </p>
             </div>
-
-            {/* 3) 필요한 초기 투자금 */}
-            <div className="border rounded-lg p-4 bg-white shadow-sm">
-              <div className="text-xs text-slate-500 mb-1">
-                {isKo ? "필요 초기 투자금" : "Required Initial Principal"}
-              </div>
-              <div className="font-semibold text-lg">
-                <ValueDisplay value={principalNeed} locale={numberLocale} currency={currency} />
-              </div>
+            <div className="rounded-xl border bg-white p-4">
+              <div className="text-xs text-slate-500">{isKo ? "현재 월납입 기준 도달 기간" : "Years at current monthly"}</div>
+              <div className="mt-1 text-lg font-semibold">{yearsText(yearsToTarget, isKo)}</div>
+              <p className="mt-1 text-xs text-slate-500">
+                {yearsToTarget == null
+                  ? (isKo ? "100년 안에 도달하지 않는 조건일 수 있습니다." : "The target may not be reached within 100 years.")
+                  : (isKo ? "월복리 고정 기준" : "Monthly-compounding basis")}
+              </p>
             </div>
           </div>
         </>

@@ -1,5 +1,6 @@
 // _components/CompoundForm.js
 import { useState, useMemo, useEffect } from 'react';
+import { COMPOUND_SAMPLE_PRESETS, validateCompoundInputs } from '../lib/compound';
 
 const dict = {
   ko: {
@@ -15,11 +16,14 @@ const dict = {
     years: '투자 기간(년)',
     calc: '계산하기',
     currency: '통화',
-    compounding: '복리 주기',
+    compounding: '계산 기준',
+    compoundingFixed: '월복리 기준',
+    compoundingFixedHelp: '현재 검증된 복리 계산은 월복리 기준으로 고정되어 있습니다. 연복리 비교는 후속 검증 후 별도 기능으로 정리할 예정입니다.',
+    presetTitle: '검증 샘플',
+    presetHelp: 'A~D는 검증 스크립트와 동일한 KRW 기준 샘플입니다. 클릭하면 통화가 KRW로 전환되고 금액은 만원 단위로 입력됩니다.',
     tax: '세율(%, 이자/배당)',
     fee: '연 수수료율(%)',
-    compoundingMonthly: '월복리',
-    compoundingYearly: '연복리',
+    inflation: '물가상승률(%)',
   },
   en: {
     title: 'Compound Interest Calculator',
@@ -34,11 +38,14 @@ const dict = {
     years: 'Years',
     calc: 'Calculate',
     currency: 'Currency',
-    compounding: 'Compounding',
+    compounding: 'Calculation basis',
+    compoundingFixed: 'Monthly compounding',
+    compoundingFixedHelp: 'The verified compound calculation is fixed to monthly compounding. Annual-compounding comparison is reserved for a later verified update.',
+    presetTitle: 'Verified samples',
+    presetHelp: 'A-D are KRW-based samples used by the verification script. Clicking a preset switches the currency to KRW and fills amounts in 10k KRW units.',
     tax: 'Tax rate (%)',
     fee: 'Yearly fee (%)',
-    compoundingMonthly: 'Monthly',
-    compoundingYearly: 'Yearly',
+    inflation: 'Inflation rate (%)',
   },
 };
 
@@ -50,6 +57,7 @@ const DEFAULT_FORM = {
   compounding: 'monthly',
   taxRatePercent: 15.4,
   feeRatePercent: 0.5,
+  inflationRate: 0,
 };
 
 export default function CompoundForm({
@@ -92,6 +100,21 @@ export default function CompoundForm({
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handlePresetClick = (sample) => {
+    onCurrencyChange?.('KRW');
+    setForm((prev) => ({
+      ...prev,
+      principal: Math.round(sample.initialAmount / 10_000),
+      monthly: Math.round(sample.monthlyContribution / 10_000),
+      annualRate: sample.annualReturn,
+      years: sample.years,
+      compounding: 'monthly',
+      taxRatePercent: sample.taxRate,
+      feeRatePercent: sample.feeRate,
+      inflationRate: sample.inflationRate,
+    }));
+  };
+
   const validation = useMemo(() => {
     const errors = {};
     const warnings = {};
@@ -102,6 +125,34 @@ export default function CompoundForm({
     const years = Number(form.years) || 0;
     const tax = Number(form.taxRatePercent) || 0;
     const fee = Number(form.feeRatePercent) || 0;
+    const inflation = Number(form.inflationRate) || 0;
+
+    const coreValidation = validateCompoundInputs({
+      initialAmount: Number(form.principal),
+      monthlyContribution: Number(form.monthly),
+      years: Number(form.years),
+      annualReturn: Number(form.annualRate),
+      taxRate: Number(form.taxRatePercent),
+      feeRate: Number(form.feeRatePercent),
+      inflationRate: Number(form.inflationRate),
+    });
+
+    const fieldMap = {
+      initialAmount: 'principal',
+      monthlyContribution: 'monthly',
+      years: 'years',
+      annualReturn: 'annualRate',
+      taxRate: 'taxRatePercent',
+      feeRate: 'feeRatePercent',
+      inflationRate: 'inflationRate',
+      netAnnualReturn: 'annualRate',
+    };
+
+    coreValidation.errors.forEach((err) => {
+      const field = fieldMap[err.field] || err.field;
+      const message = safeLocale === 'ko' ? err.ko : err.en;
+      errors[field] = errors[field] ? `${errors[field]} ${message}` : message;
+    });
 
     if (principal <= 0 && monthly <= 0) {
       errors.funding =
@@ -143,6 +194,13 @@ export default function CompoundForm({
           : 'This is a high long-term return assumption. Compare with a conservative scenario.';
     }
 
+    if (inflation > 20) {
+      warnings.inflationRate =
+        safeLocale === 'ko'
+          ? '높은 물가상승률 가정입니다. 현재가치 결과가 크게 낮아질 수 있습니다.'
+          : 'This is a high inflation assumption. Present-value results may fall sharply.';
+    }
+
     return { errors, warnings };
   }, [form, safeLocale]);
 
@@ -153,9 +211,11 @@ export default function CompoundForm({
     if (disabled) return;
     onSubmit({
       ...form,
+      compounding: 'monthly',
       currency,
       taxRatePercent: Number(form.taxRatePercent),
       feeRatePercent: Number(form.feeRatePercent),
+      inflationRate: Number(form.inflationRate),
     });
   };
 
@@ -167,6 +227,27 @@ export default function CompoundForm({
 
   return (
     <div className="w-full space-y-4">
+      <div className="rounded-xl border border-slate-200 bg-white p-4">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <div className="text-sm font-semibold text-slate-900">{t.presetTitle}</div>
+            <p className="mt-1 text-xs leading-relaxed text-slate-600">{t.presetHelp}</p>
+          </div>
+        </div>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {Object.entries(COMPOUND_SAMPLE_PRESETS).map(([key, sample]) => (
+            <button
+              key={key}
+              type="button"
+              className="btn-secondary text-xs"
+              title={safeLocale === 'ko' ? sample.labelKo : sample.labelEn}
+              onClick={() => handlePresetClick(sample)}
+            >
+              {safeLocale === 'ko' ? sample.labelKo : sample.labelEn}
+            </button>
+          ))}
+        </div>
+      </div>
 
       {/* ==============================
           섹션 1 — 기본 입력
@@ -229,10 +310,21 @@ export default function CompoundForm({
                 className="input"
                 value={form.annualRate}
                 onChange={handleChange}
-                aria-invalid={false}
-                aria-describedby={validation.warnings.annualRate ? 'compound-rate-warning' : undefined}
+                aria-invalid={!!validation.errors.annualRate}
+                aria-describedby={
+                  validation.errors.annualRate
+                    ? 'compound-rate-error'
+                    : validation.warnings.annualRate
+                      ? 'compound-rate-warning'
+                      : undefined
+                }
               />
-              {validation.warnings.annualRate && (
+              {validation.errors.annualRate && (
+                <p id="compound-rate-error" role="alert" className="text-xs text-red-600">
+                  {validation.errors.annualRate}
+                </p>
+              )}
+              {!validation.errors.annualRate && validation.warnings.annualRate && (
                 <p id="compound-rate-warning" className="text-xs text-amber-700" aria-live="polite">
                   {validation.warnings.annualRate}
                 </p>
@@ -326,6 +418,36 @@ export default function CompoundForm({
                 </p>
               )}
             </label>
+
+            <label className="grid gap-1">
+              <span className="text-sm">{t.inflation}</span>
+              <input
+                name="inflationRate"
+                type="number"
+                step="0.1"
+                className="input"
+                value={form.inflationRate}
+                onChange={handleChange}
+                aria-invalid={!!validation.errors.inflationRate}
+                aria-describedby={
+                  validation.errors.inflationRate
+                    ? 'compound-inflation-error'
+                    : validation.warnings.inflationRate
+                      ? 'compound-inflation-warning'
+                      : undefined
+                }
+              />
+              {validation.errors.inflationRate && (
+                <p id="compound-inflation-error" role="alert" className="text-xs text-red-600">
+                  {validation.errors.inflationRate}
+                </p>
+              )}
+              {!validation.errors.inflationRate && validation.warnings.inflationRate && (
+                <p id="compound-inflation-warning" className="text-xs text-amber-700" aria-live="polite">
+                  {validation.warnings.inflationRate}
+                </p>
+              )}
+            </label>
           </div>
         )}
       </div>
@@ -344,18 +466,11 @@ export default function CompoundForm({
 
         {showAdv && (
           <div className="grid gap-4 md:grid-cols-2">
-            <label className="grid gap-1">
-              <span className="text-sm">{t.compounding}</span>
-              <select
-                name="compounding"
-                className="select"
-                value={form.compounding}
-                onChange={handleChange}
-              >
-                <option value="monthly">{t.compoundingMonthly}</option>
-                <option value="yearly">{t.compoundingYearly}</option>
-              </select>
-            </label>
+            <div className="grid gap-1 rounded-xl border border-blue-100 bg-blue-50 p-3">
+              <span className="text-sm font-medium text-slate-900">{t.compounding}</span>
+              <div className="text-sm font-semibold text-blue-800">{t.compoundingFixed}</div>
+              <p className="text-xs leading-relaxed text-slate-600">{t.compoundingFixedHelp}</p>
+            </div>
 
             <label className="grid gap-1">
               <span className="text-sm">{t.currency}</span>
