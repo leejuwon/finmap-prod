@@ -10,6 +10,7 @@ import CTABar from "../../_components/CTABar";
 import FireHero from "../../_components/FireHero";
 import FireIntro from "../../_components/FireIntro";
 import FireForm from "../../_components/FireForm";
+import RetirementDetailSimulator from "../../_components/RetirementDetailSimulator";
 
 import { runFireSimulation } from "../../lib/fire";
 import FireFaq, { getFaqItems } from "../../_components/FireFaq";
@@ -217,11 +218,11 @@ export default function FireCalculatorPage() {
   const t = useMemo(
     () => ({
       title: isKo
-        ? "은퇴자금(FIRE) 시뮬레이터 | 은퇴자금 계산 · FIRE 계산기 · 조기은퇴 시뮬레이션"
-        : "FIRE Calculator | Retirement Simulation",
+        ? "은퇴자금 계산기 / FIRE 계산기 | 은퇴 생활비·필요자금 시뮬레이션"
+        : "Retirement Fund Calculator / FIRE Calculator | Spending and Required Fund Simulation",
       desc: isKo
-        ? "현재 자산·지출·수익률·출금률을 기반으로 FIRE 가능 시점과 은퇴 후 자산 유지 기간을 계산합니다."
-        : "Simulate FIRE timing and post-retirement asset durability.",
+        ? "현재자산, 월저축, 은퇴나이, 기대수명, 생활비를 입력해 은퇴 시점 예상 자산과 필요 은퇴자금을 비교하고, 기존 FIRE 계산도 함께 확인합니다."
+        : "Compare projected retirement assets with the required retirement fund using assets, savings, retirement age, life expectancy, and spending assumptions. The existing FIRE view remains available.",
       chartTitle: isKo ? "은퇴 전·후 자산 곡선" : "Asset Curve (Before & After FIRE)",
     }),
     [isKo]
@@ -329,9 +330,9 @@ export default function FireCalculatorPage() {
     // 2) Kakao SDK
     if (typeof window !== "undefined" && window?.Kakao) {
        shareKakao({
-        title: locale === "ko" ? "FinMap 은퇴자금(FIRE) 시뮬레이션 결과" : "FIRE retirement simulation result",
+        title: isKo ? "FinMap 은퇴자금(FIRE) 시뮬레이션 결과" : "FIRE retirement simulation result",
         description:
-          locale === "ko"
+          isKo
             ? "출금률·수익률 기준으로 은퇴 가능 시점과 자산 지속 기간을 계산했어요."
             : "Simulated FIRE timing and asset longevity (withdrawal rate & returns).",
         url: window.location.href,
@@ -342,7 +343,7 @@ export default function FireCalculatorPage() {
     // 3) Naver share
     if (typeof window !== "undefined") {
       shareNaver({
-        title: locale === "ko" ? "FinMap 은퇴자금(FIRE) 시뮬레이션 결과" : "FIRE retirement simulation result",
+        title: isKo ? "FinMap 은퇴자금(FIRE) 시뮬레이션 결과" : "FIRE retirement simulation result",
         url: window.location.href,
       });
       return;
@@ -373,6 +374,19 @@ export default function FireCalculatorPage() {
         <FireHero lang={lang} />
         <FireIntro lang={lang} />
         <AssumptionNotice lang={lang} />
+        <RetirementDetailSimulator lang={lang} />
+        <section className="card border border-slate-200 bg-slate-50">
+          <p className="text-sm font-semibold text-slate-900">
+            {isKo
+              ? "간단 FIRE 계산"
+              : "Simple FIRE calculator"}
+          </p>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            {isKo
+              ? "간단 FIRE 계산: 연지출과 출금률 기준으로 목표자산과 자산 지속기간을 빠르게 확인합니다."
+              : "Simple FIRE calculator: estimate target assets and asset longevity using annual spending and withdrawal rate."}
+          </p>
+        </section>
         <FireForm lang={lang} onSubmit={handleSubmit} initial={formInitial} />
 
         {result && (
@@ -399,12 +413,12 @@ export default function FireCalculatorPage() {
               locale={lang} 
               onDownloadPDF={handleDownloadPDF} 
               shareTitle={
-                locale === "ko" 
+                isKo
                   ? "FinMap 은퇴자금(FIRE) 시뮬레이션 결과"
                   : "FIRE retirement simulation result"
               }
               shareDescription={
-                locale === "ko"
+                isKo
                   ? "출금률·수익률 기준으로 은퇴 가능 시점과 자산 지속 기간을 계산했어요."
                   : "Simulated FIRE timing and asset longevity (withdrawal rate & returns)."
               } />
