@@ -15,6 +15,7 @@ import RetirementDetailSimulator from "../../_components/RetirementDetailSimulat
 import { runFireSimulation } from "../../lib/fire";
 import FireFaq, { getFaqItems } from "../../_components/FireFaq";
 import ToolCta from "../../_components/ToolCta";
+import { ToolCitationBox, ToolSharePanel } from "../../_components/ToolBacklinkKit";
 
 import AdResponsive from "../../_components/AdResponsive";
 import AdInArticle from "../../_components/AdInArticle";
@@ -371,6 +372,8 @@ export default function FireCalculatorPage() {
           <p>{t.desc}</p>
         </div>
 
+        <ToolSharePanel toolId="fire" locale={lang} />
+
         <FireHero lang={lang} />
         <FireIntro lang={lang} />
         <AssumptionNotice lang={lang} />
@@ -482,6 +485,7 @@ export default function FireCalculatorPage() {
         </section>
 
         <FireFaq lang={lang} />
+        <ToolCitationBox toolId="fire" locale={lang} />
       </div>
     </>
   );

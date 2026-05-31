@@ -12,6 +12,7 @@ import CompoundYearTable from "../../_components/CompoundYearTable";
 import CompoundCTA from "../../_components/CompoundCTA";
 import ValueDisplay, { formatMoneyShort } from "../../_components/ValueDisplay";
 import ToolCta from "../../_components/ToolCta";
+import { ToolCitationBox, ToolSharePanel } from "../../_components/ToolBacklinkKit";
 import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
 import {
   buildToolPresetQuery,
@@ -656,6 +657,8 @@ export default function CompoundPage() {
             </button>
           </div>
         </header>
+
+        <ToolSharePanel toolId="compound" locale={locale} />
 
         {/* ✅ “설명형 콘텐츠(H2)” 추가: 키워드 자연 삽입 */}
         <section className="card w-full">
@@ -1322,6 +1325,8 @@ export default function CompoundPage() {
             ))}
           </div>
         </section>
+
+        <ToolCitationBox toolId="compound" locale={locale} />
       </main>
     </>
   );

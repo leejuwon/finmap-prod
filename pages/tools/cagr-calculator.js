@@ -9,6 +9,7 @@ import CagrForm from "../../_components/CagrForm";
 import CagrChart from "../../_components/CagrChart";
 import CagrYearTable from "../../_components/CagrYearTable";
 import ToolCta from "../../_components/ToolCta"; // ✅ (기존 파일에서 사용하지만 import 누락 가능성)
+import { ToolCitationBox, ToolSharePanel } from "../../_components/ToolBacklinkKit";
 import { numberFmt } from "../../lib/compound";
 import { calcCagr, formatYearsText } from "../../lib/cagr";
 import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
@@ -663,6 +664,8 @@ export default function CagrCalculatorPage() {
           </div>
         </div>
 
+        <ToolSharePanel toolId="cagr" locale={locale} />
+
         {/* 설명 */}
         <div className="card">
           <h2 className="text-lg font-semibold mb-2">{t.introTitle}</h2>
@@ -1011,6 +1014,7 @@ export default function CagrCalculatorPage() {
             ))}
           </div>
         </section>
+        <ToolCitationBox toolId="cagr" locale={locale} />
       </div>
     </>
   );

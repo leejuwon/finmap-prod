@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import SeoHead from "../../_components/SeoHead";
 import DsrLtvCalculator from "../../_components/DsrLtvCalculator";
+import { ToolCitationBox, ToolSharePanel } from "../../_components/ToolBacklinkKit";
 
 export function JsonLd({ data }) {
   return (
@@ -162,6 +163,7 @@ export default function DsrLtvCalculatorPage() {
         title={t.seoTitle}
         desc={t.seoDesc}
         url={pageUrl}
+        image="https://res.cloudinary.com/dwonflmnn/image/upload/v1769863768/blog/insight/mortgage-risk-checklist-cover.png"
         locale={locale}
       />
       <JsonLd data={faqJsonLd} />
@@ -177,6 +179,8 @@ export default function DsrLtvCalculatorPage() {
           <p>{t.lead}</p>
           <p className="mt-2 text-sm text-slate-500">{t.note}</p>
         </div>
+
+        <ToolSharePanel toolId="dsrLtv" locale={locale} />
 
         <DsrLtvCalculator locale={locale} />
 
@@ -215,6 +219,8 @@ export default function DsrLtvCalculatorPage() {
             ))}
           </div>
         </section>
+
+        <ToolCitationBox toolId="dsrLtv" locale={locale} />
       </main>
     </>
   );

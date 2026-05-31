@@ -13,7 +13,11 @@ import {
   getPostBySlugStrict,  
 } from '../../../lib/posts';
 import parse, { domToReact } from 'html-react-parser';
-import ToolCta from '../../../_components/ToolCta';
+import {
+  RelatedCalculatorCtaGrid,
+  getPostRelatedToolIds,
+  normalizeToolId,
+} from '../../../_components/ToolBacklinkKit';
 import { cloudinaryContentImage, cloudinaryThumb } from '../../../lib/cloudinaryUrl';
 import { trackGaEvent } from '../../../utils/analytics';
 
@@ -87,6 +91,7 @@ const TOOL_LABELS = {
   cagr: { ko: 'CAGR 계산기', en: 'CAGR calculator' },
   dca: { ko: 'DCA 시뮬레이터', en: 'DCA simulator' },
   fire: { ko: 'FIRE 계산기', en: 'FIRE calculator' },
+  dsrLtv: { ko: 'DSR LTV 계산기', en: 'DSR LTV calculator' },
 };
 
 function getToolLabel(tool, lang) {
@@ -540,18 +545,10 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
   const contentWithInArticleAds = parse(post.contentHtml, parserOptions);
 
   const toolList = Array.isArray(post.tools) ? post.tools : Array.isArray(post.tool) ? post.tool : [];
-  const TOOL_TYPE_MAP = {
-    comp: 'compound',
-    goal: 'goal',
-    compound: 'compound',
-    cagr: 'cagr',
-    dca: 'dca',
-    fire: 'fire',
-  };
-
   const normalizedTools = toolList
-    .map((t) => TOOL_TYPE_MAP[t] || t)
+    .map((t) => normalizeToolId(t))
     .filter(Boolean);
+  const relatedCalculatorTools = getPostRelatedToolIds(post, normalizedTools, 3);
 
   return (
     <>
@@ -620,13 +617,12 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
 
         <div className="fm-post-body min-w-0 max-w-full break-words">{contentWithInArticleAds}</div>
 
-        {normalizedTools.length > 0 && (
-          <div className="mt-8 grid min-w-0 gap-4">
-            {normalizedTools.map((toolType) => (
-              <ToolCta key={toolType} lang={lang} type={toolType} />
-            ))}
-          </div>
-        )}
+        <RelatedCalculatorCtaGrid
+          toolIds={relatedCalculatorTools}
+          locale={lang}
+          source="blog_detail"
+          location="post_bottom"
+        />
 
         <div className="mt-8 mb-4">
           <AdResponsive key={`post-bot-${lang}-${slug}`} client={AD_CLIENT} slot={AD_SLOTS.responsiveBottom} align="center" />

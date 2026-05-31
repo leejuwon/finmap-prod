@@ -10,6 +10,7 @@ import GoalChart from '../../_components/GoalChart';
 import GoalYearTable from '../../_components/GoalYearTable';
 import { numberFmt } from '../../lib/compound';
 import ToolCta from "../../_components/ToolCta";
+import { ToolCitationBox, ToolSharePanel } from "../../_components/ToolBacklinkKit";
 import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
 import {
   buildToolPresetQuery,
@@ -1451,6 +1452,8 @@ export default function GoalSimulatorPage() {
           <h1 className="text-xl sm:text-2xl font-bold">{t.title}</h1>
         </div>
 
+        <ToolSharePanel toolId="goal" locale={locale} />
+
         {/* 🔹 상단 설명 카드 */}
         <div className="card" ref={(el) => (sectionEls.current.intro = el)}>
           <h2 className="text-lg font-semibold mb-2">{t.introTitle}</h2>
@@ -2130,6 +2133,7 @@ export default function GoalSimulatorPage() {
             ))}
           </div>
         </section>
+        <ToolCitationBox toolId="goal" locale={locale} />
       </main>
     </>
   );

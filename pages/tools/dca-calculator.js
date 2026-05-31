@@ -10,6 +10,7 @@ import DCAChart from '../../_components/DcaChart';
 import DCAYearTable from '../../_components/DcaYearTable';
 import { formatMoneyAuto } from '../../lib/money';
 import ToolCta from '../../_components/ToolCta';
+import { ToolCitationBox, ToolSharePanel } from "../../_components/ToolBacklinkKit";
 import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
 import {
   buildToolPresetQuery,
@@ -768,6 +769,8 @@ export default function DCACalculatorPage() {
           <p className="max-w-full break-words text-sm leading-relaxed text-slate-600">{t.descShort}</p>
         </div>
 
+        <ToolSharePanel toolId="dca" locale={routeLocale} />
+
         {/* 입력 폼 */}
         <div className="card w-full min-w-0 max-w-full">
           <DCAForm
@@ -1402,6 +1405,7 @@ export default function DCACalculatorPage() {
             ))}
           </div>
         </section>
+        <ToolCitationBox toolId="dca" locale={routeLocale} />
       </div>
     </>
   );
