@@ -208,6 +208,7 @@ async function copyText(value, message) {
   try {
     if (navigator?.clipboard?.writeText) {
       await navigator.clipboard.writeText(value);
+      // TODO: Replace alert copy feedback with a toast when the app-wide toast pattern is ready.
       alert(message);
       return true;
     }
@@ -225,6 +226,7 @@ async function copyText(value, message) {
     textarea.select();
     document.execCommand("copy");
     document.body.removeChild(textarea);
+    // TODO: Replace alert copy feedback with a toast when the app-wide toast pattern is ready.
     alert(message);
     return true;
   } catch {
@@ -234,8 +236,8 @@ async function copyText(value, message) {
 
 function trackToolAction(action, toolId, locale, location) {
   trackGaEvent("tool_backlink_action", {
-    source_tool: normalizeToolId(toolId),
     action,
+    source_tool: normalizeToolId(toolId),
     locale,
     location,
   });
@@ -251,13 +253,14 @@ export function ToolSharePanel({ toolId, locale = "ko", location = "top_share" }
     const text = isKo ? config.shareDescription.ko : config.shareDescription.en;
 
     try {
-      if (navigator?.share) {
+      if (typeof navigator !== "undefined" && navigator?.share) {
         await navigator.share({ title, text, url });
         trackToolAction("share_canonical", toolId, locale, location);
         return;
       }
-    } catch {
-      // Fall through to copy so the action still has a useful result.
+    } catch (error) {
+      if (error?.name === "AbortError") return;
+      // Real share errors fall through to copy so the action still has a useful result.
     }
 
     const copied = await copyText(url, isKo ? "canonical URL이 복사되었습니다." : "Canonical URL copied.");
@@ -461,6 +464,7 @@ export function RelatedCalculatorCtaGrid({
   title,
   description,
   source = "blog_detail",
+  sourcePost,
   location = "post_bottom",
 }) {
   const ids = uniqueToolIds(toolIds || []);
@@ -492,8 +496,10 @@ export function RelatedCalculatorCtaGrid({
               prefetch={false}
               onClick={() =>
                 trackGaEvent("related_calculator_click", {
+                  action: "click_related_calculator",
                   source,
                   target_tool: id,
+                  ...(sourcePost ? { source_post: sourcePost } : {}),
                   locale,
                   location,
                 })

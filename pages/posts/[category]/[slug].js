@@ -621,6 +621,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
           toolIds={relatedCalculatorTools}
           locale={lang}
           source="blog_detail"
+          sourcePost={`${categorySlug}/${slug}`}
           location="post_bottom"
         />
 

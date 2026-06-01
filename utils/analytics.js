@@ -67,13 +67,19 @@ export function getToolFromPath(pathname = "") {
   return TOOL_BY_PATH.find((item) => path === item.match)?.tool;
 }
 
+export function getGaPageContext(pathname = "") {
+  return {
+    page_group: getPageGroup(pathname),
+    source_path: pathname || "/",
+  };
+}
+
 export function trackGaEvent(name, params = {}) {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;
 
   const sourcePath = window.location?.pathname || "";
   window.gtag("event", name, {
-    page_group: getPageGroup(sourcePath),
-    source_path: sourcePath,
+    ...getGaPageContext(sourcePath),
     ...params,
   });
 }
