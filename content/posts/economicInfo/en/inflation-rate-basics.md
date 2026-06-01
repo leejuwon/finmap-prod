@@ -1,9 +1,9 @@
 ---
 slug: "inflation-rate-basics"
 title: "Inflation and Interest Rates Explained: Why Rate Changes Shake Markets"
-description: "A practical guide to understanding inflation and interest rates, and how rate changes impact stocks, ETFs, and currencies from a long-term investor’s perspective."
+description: "A practical guide to inflation, interest rates, and how rate changes affect stocks, ETFs, currencies, and long-term investing decisions."
 datePublished: "2025-11-12"
-dateModified: "2025-11-12"
+dateModified: "2026-06-01"
 category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["inflation","interest rates","rate hikes","monetary policy","market basics"]
@@ -239,7 +239,7 @@ Yes. Rates influence long-term returns more than most headlines suggest.
   "headline": "Inflation and Interest Rates Explained",
   "description": "A structured guide explaining how inflation and interest rates interact and why rate changes impact financial markets.",
   "datePublished": "2025-11-12",
-  "dateModified": "2025-11-12",
+  "dateModified": "2026-06-01",
   "author": { "@type": "Person", "name": "FinMap" },
   "publisher": { "@type": "Organization", "name": "FinMap" }
 }

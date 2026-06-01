@@ -204,11 +204,11 @@ export default function CompoundPage() {
       title:
         locale === "ko"
           ? "복리 계산기"
-          : "Compound Interest Calculator",
+          : "Compound Interest Calculator: Monthly Contributions, Tax & Future Value",
       desc:
         locale === "ko"
           ? "원금·월적립·수익률·기간으로 월복리 기준 미래가치(FV)를 계산합니다. 세금·수수료·물가상승률 반영 결과를 연도별 표·차트로 확인하세요."
-          : "Calculate monthly-compounded future value from principal, monthly deposits, return, and years. Compare net vs ideal after tax, fees, and inflation.",
+          : "Estimate monthly-compounded future value from principal, deposits, return, years, tax, fees, and inflation. Review year-by-year tables, charts, and related compound investing guides.",
 
       fv: locale === "ko" ? "세후 총자산" : "Net Future Value",
       fvIdeal: locale === "ko" ? "세전 기준 미래가치" : "Ideal (No Tax/Fee)",

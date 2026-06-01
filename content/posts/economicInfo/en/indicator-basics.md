@@ -1,9 +1,9 @@
 ---
 slug: "indicator-basics"
-title: "How to Read Economic Indicators: Using GDP, Unemployment, and PMI in Real Investing"
-description: "A practical guide to understanding GDP, unemployment, and PMI—not as abstract numbers, but as tools investors actually use to interpret the economy and markets."
+title: "How to Read Economic Indicators: GDP, Unemployment, PMI and Market Signals"
+description: "Learn how GDP, unemployment, and PMI work together as practical market signals, plus how investors can avoid reading economic headlines in isolation."
 datePublished: "2025-11-13"
-dateModified: "2025-12-29"
+dateModified: "2026-06-01"
 category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["GDP","Unemployment","PMI","Economic Indicators","Macro","Investing"]
@@ -252,7 +252,7 @@ Yes, but as a context tool, not a market signal.
   "headline": "How to Read Economic Indicators: Using GDP, Unemployment, and PMI in Real Investing",
   "description": "A practical guide to understanding GDP, unemployment, and PMI—not as abstract numbers, but as tools investors actually use.",
   "datePublished": "2025-11-30",
-  "dateModified": "2025-11-30",
+  "dateModified": "2026-06-01",
   "author": {
     "@type": "Person",
     "name": "FinMap"

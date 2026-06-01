@@ -190,20 +190,19 @@ export async function getServerSideProps(ctx) {
   }
 
   let seoStats = null;
-  let seoRobots = 'index,follow,max-image-preview:large';
+  const seoRobots = 'noindex,follow';
   try {
     seoStats = await loadAptSeoSummary(aptKey);
   } catch (e) {
     console.error('[apt-detail:ssr] seo summary lookup failed:', e?.message || e);
-    seoRobots = 'noindex,follow';
   }
 
-  if (!seoStats && seoRobots !== 'noindex,follow') {
+  if (!seoStats) {
     return { notFound: true };
   }
 
-  if (res && seoRobots.includes('noindex')) {
-    res.setHeader('X-Robots-Tag', seoRobots.replace(',', ', '));
+  if (res) {
+    res.setHeader('X-Robots-Tag', 'noindex, follow');
   }
 
   const requestedPeriod = pick(query.period);
@@ -544,6 +543,9 @@ export default function AptDetailPage({
   }, [router.isReady, router.query]);
 
   const { dong_name, apt_name } = useMemo(() => parseAptKey(aptKey), [aptKey]);
+  const canonicalPath = aptKey
+    ? `/market/real-estate/apt/${encodeURIComponent(String(aptKey))}`
+    : '/market/real-estate';
 
   const { from, to } = useMemo(() => {
     const rp = sanitizeRangePreset(timeframe, rangePreset || defaultRangePreset(timeframe));
@@ -795,6 +797,7 @@ export default function AptDetailPage({
         about={{ "@type": "Place", name: "South Korea" }}
         keywords={lang === "en" ? "Korea apartment transactions, real estate" : "한국 아파트 실거래, 부동산"}
         robots={seoRobots || 'index,follow,max-image-preview:large'}
+        url={canonicalPath}
       />
 
       <div className="card min-w-0 max-w-full">

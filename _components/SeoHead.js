@@ -62,6 +62,7 @@ export default function SeoHead({
   const hrefKo = `${SITE_URL}${normalizedPath}`;
   // ✅ hreflang도 동일 규칙 적용: 홈은 /en
   const hrefEn = normalizedPath === "/" ? `${SITE_URL}/en` : `${SITE_URL}/en${normalizedPath}`;
+  const shouldEmitXDefault = normalizedPath === "/";
 
   // ✅ OG locale 신호 강화(권장)
   const ogLocale = effectiveLocale === "en" ? "en_US" : "ko_KR";
@@ -80,12 +81,12 @@ export default function SeoHead({
         <>
           <link rel="alternate" hrefLang="ko" href={hrefKo} />
           <link rel="alternate" hrefLang="en" href={hrefEn} />
-          <link rel="alternate" hrefLang="x-default" href={hrefKo} />
+          {shouldEmitXDefault && <link rel="alternate" hrefLang="x-default" href={hrefKo} />}
         </>
       ) : (
         <>
           <link rel="alternate" hrefLang={effectiveLocale === "en" ? "en" : "ko"} href={canonicalUrl} />
-          <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
+          {shouldEmitXDefault && <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />}
         </>
       )}
       <link rel="alternate" type="application/rss+xml" title="FinMap RSS" href={`${SITE_URL}/rss.xml`} />

@@ -116,20 +116,6 @@ module.exports = {
         statusCode: 301,
         locale: false,
       },
-      // tax 카테고리를 지금 안 쓰더라도, 가장 가까운 personalFinance로 정리 (원하면 /category/economicInfo로 바꿔도 됨)
-      {
-        source: "/category/tax",
-        destination: "/category/personalFinance",
-        statusCode: 301,
-        locale: false,
-      },
-      {
-        source: "/en/category/tax",
-        destination: "/en/category/personalFinance",
-        statusCode: 301,
-        locale: false,
-      },
-      
       // slug가 category 없이 있던 과거 URL → investingInfo로 이동 (추정 매핑)
       {
         source: "/posts/usd-krw-weak-won-sector-map-kospi",
@@ -248,6 +234,7 @@ module.exports = {
         source: "/posts/compound-interest",
         destination: "/tools/compound-interest",
         statusCode: 301,
+        locale: false,
       },
     ];
     

@@ -124,59 +124,8 @@ function clampAptSitemapLimit(v) {
 }
 
 async function buildAptDetailPaths() {
-  if (process.env.RE_APT_SITEMAP !== 'true') return [];
-
-  const limit = clampAptSitemapLimit(process.env.RE_APT_SITEMAP_LIMIT);
-  if (!limit) return [];
-
-  let conn;
-  try {
-    const mysql = require('mysql2/promise');
-    conn = await mysql.createConnection({
-      host: process.env.DB_HOST || '127.0.0.1',
-      port: Number(process.env.DB_PORT || 3306),
-      user: process.env.DB_USER || 'finmap_app',
-      password: process.env.DB_PASSWORD || '',
-      database: process.env.DB_NAME || 'ljw0209',
-      charset: 'utf8mb4',
-      connectTimeout: Number(process.env.DB_CONNECT_TIMEOUT || 3000),
-    });
-
-    const [rows] = await conn.execute(`
-      SELECT
-        s.apt_key,
-        MAX(s.deal_ym) AS latest_ym,
-        SUM(COALESCE(s.tx_count, 0)) AS total_tx
-      FROM re_trade_apt_stats_m s
-      WHERE s.pyeong_band = 'all'
-        AND s.apt_key IS NOT NULL
-        AND s.apt_key <> ''
-        AND COALESCE(s.tx_count, 0) > 0
-      GROUP BY s.apt_key
-      ORDER BY latest_ym DESC, total_tx DESC
-      LIMIT ${limit}
-    `);
-
-    const paths = [];
-    for (const row of rows || []) {
-      const aptKey = String(row?.apt_key || '').trim();
-      if (!aptKey || aptKey.includes('/') || aptKey.includes('[') || aptKey.includes(']')) continue;
-
-      const encodedKey = encodeURIComponent(aptKey);
-      const koPath = `/market/real-estate/apt/${encodedKey}`;
-      const enPath = `/en/market/real-estate/apt/${encodedKey}`;
-      const lastmod = ymToIso(row?.latest_ym);
-      APT_LASTMOD_MAP.set(koPath, lastmod);
-      APT_LASTMOD_MAP.set(enPath, lastmod);
-      paths.push(koPath, enPath);
-    }
-    return paths;
-  } catch (e) {
-    console.warn('[sitemap] apt detail sitemap skipped:', e?.message || e);
-    return [];
-  } finally {
-    if (conn) await conn.end().catch(() => {});
-  }
+  // Apartment detail pages are intentionally noindex,follow and must never be in sitemap.
+  return [];
 }
 
 /* ---------------------- hreflang (xhtml:link) ---------------------- */
@@ -256,12 +205,15 @@ function buildAlternateRefs(loc) {
   // ✅ "완성형 absolute href" + hrefIsAbsolute:true 로 중복 append 방지
   const koHref = `${SITE_URL}${koLoc}`;
   const enHref = `${SITE_URL}${enLoc}`;
-
-  return [
+  const refs = [
     { hreflang: 'ko', href: koHref, hrefIsAbsolute: true },
     { hreflang: 'en', href: enHref, hrefIsAbsolute: true },
-    { hreflang: 'x-default', href: koHref, hrefIsAbsolute: true },
   ];
+
+  // Finmap x-default policy: only the home pair points x-default to the Korean home.
+  if (koLoc === '/') refs.push({ hreflang: 'x-default', href: koHref, hrefIsAbsolute: true });
+
+  return refs;
 }
 
 
@@ -288,6 +240,8 @@ module.exports = {
     "/favicon-32.png",
     "/favicon-48.png",
     "/en/en/*", "/en/en/**", "/en/en",
+    "/market/real-estate/apt/*", "/market/real-estate/apt/**",
+    "/en/market/real-estate/apt/*", "/en/market/real-estate/apt/**",
     "/posts/*/en/*", "/posts/*/en/**",
     "/posts/*/ko/*", "/posts/*/ko/**",
     "/en/posts/*/en/*", "/en/posts/*/en/**",
@@ -307,6 +261,8 @@ module.exports = {
     if (loc.includes("[") || loc.includes("]")) return null;
     if (loc.includes("//")) return null;
     if (loc === "/en/en" || loc.startsWith("/en/en/")) return null;
+    if (loc.startsWith("/market/real-estate/apt/")) return null;
+    if (loc.startsWith("/en/market/real-estate/apt/")) return null;
     if (loc.includes("?")) return null;
     if (loc.length > 1 && loc.endsWith("/")) return null;
     if (loc === "/rss.xml" || loc === "/robots.txt" || loc === "/favicon.ico") return null;
