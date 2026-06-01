@@ -23,7 +23,7 @@ const TEXT = {
       "보유자산, 연소득, 기존대출, 금리, 대출기간, LTV, DSR을 직접 입력해 예상 대출 가능액과 아파트 구매 가능 가격대를 계산해보세요. 실제 대출 심사와는 다를 수 있습니다.",
     h1: "DSR/LTV 아파트 구매 가능 금액 계산기",
     lead:
-      "LTV와 DSR을 사용자가 직접 입력해 대략적인 주택담보대출 가능액, 구매 가능 가격 상한, 안전 탐색 가격대를 확인합니다.",
+      "LTV와 DSR을 사용자가 직접 입력해 주택담보대출 가능액, 구매 가능 가격 상한, 후보 집값 판정, 안전 탐색 가격대를 확인합니다.",
     basis: "계산 기준일",
     note:
       "정책 자동 반영 없이 입력값 기준으로만 계산합니다. 실제 대출 심사 결과와 다를 수 있습니다.",
@@ -38,11 +38,11 @@ const TEXT = {
       },
       {
         q: "LTV와 DSR 값은 자동으로 반영되나요?",
-        a: "아니요. 1차 구현 범위에서는 정책 자동 반영을 하지 않습니다. 사용자가 직접 입력한 LTV와 DSR 값을 그대로 사용합니다.",
+        a: "아니요. 현재 계산기는 정책 자동 반영을 하지 않습니다. 사용자가 직접 입력한 LTV와 DSR 값을 그대로 사용합니다.",
       },
       {
         q: "상환 방식은 무엇인가요?",
-        a: "원리금균등 상환만 지원합니다. 원금균등, 만기일시, 혼합형 상환은 1차 범위에 포함하지 않습니다.",
+        a: "원리금균등 상환만 지원합니다. 원금균등, 만기일시, 혼합형 상환은 현재 계산 범위에 포함하지 않습니다.",
       },
       {
         q: "병목 원인은 어떻게 판단하나요?",
@@ -60,7 +60,7 @@ const TEXT = {
       "Estimate mortgage capacity and apartment purchase price using your own assets, income, existing debt, rate, loan term, LTV, and DSR assumptions. Actual lender review may differ.",
     h1: "DSR/LTV Apartment Affordability Calculator",
     lead:
-      "Enter your own LTV and DSR assumptions to estimate mortgage capacity, maximum purchase price, and a safer search range.",
+      "Enter your own LTV and DSR assumptions to estimate mortgage capacity, maximum purchase price, target home feasibility, and a safer search range.",
     basis: "Basis date",
     note:
       "This tool does not automatically apply policy updates. It only uses your inputs and may differ from real lender review.",
@@ -75,11 +75,11 @@ const TEXT = {
       },
       {
         q: "Are LTV and DSR automatically updated?",
-        a: "No. The first version does not automatically apply policy updates. It uses the LTV and DSR values you enter.",
+        a: "No. The current calculator does not automatically apply policy updates. It uses the LTV and DSR values you enter.",
       },
       {
         q: "What repayment method does this support?",
-        a: "Only equal principal-and-interest repayment is supported in this first version.",
+        a: "Only equal principal-and-interest repayment is supported in the current calculation scope.",
       },
       {
         q: "How is the bottleneck determined?",
@@ -163,7 +163,7 @@ export default function DsrLtvCalculatorPage() {
         title={t.seoTitle}
         desc={t.seoDesc}
         url={pageUrl}
-        image="https://res.cloudinary.com/dwonflmnn/image/upload/v1769863768/blog/insight/mortgage-risk-checklist-cover.png"
+        image="https://res.cloudinary.com/dwonflmnn/image/upload/v1780305922/blog/insight/og5utvm2syhksvkr38fg.png"
         locale={locale}
       />
       <JsonLd data={faqJsonLd} />
@@ -190,6 +190,20 @@ export default function DsrLtvCalculatorPage() {
           <div className="mt-4 flex flex-wrap gap-2">
             <Link href="/market/real-estate" locale={locale} className="btn-primary">
               {locale === "ko" ? "부동산 대시보드 열기" : "Open real estate dashboard"}
+            </Link>
+            <Link
+              href="/posts/personalFinance/dsr-40-income-loan-limit-table"
+              locale={locale}
+              className="btn-secondary"
+            >
+              {locale === "ko" ? "DSR 40% 소득별 한도표" : "DSR 40% income table"}
+            </Link>
+            <Link
+              href="/posts/personalFinance/interest-rate-1p-loan-limit-impact"
+              locale={locale}
+              className="btn-secondary"
+            >
+              {locale === "ko" ? "금리 1%p 영향 보기" : "Rate +1pp impact"}
             </Link>
             <Link
               href="/posts/personalFinance/mortgage-risk-checklist-dsr-variable"

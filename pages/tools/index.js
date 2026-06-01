@@ -74,7 +74,7 @@ export default function ToolsHome() {
           ? '보유자산, 연소득, 금리, DSR, LTV로 대출 가능액과 아파트 구매 가능 가격대를 추정합니다.'
           : 'Estimate loan capacity and apartment affordability from assets, income, rate, DSR, and LTV.',
         image:
-          'https://res.cloudinary.com/dwonflmnn/image/upload/v1769863768/blog/insight/mortgage-risk-checklist-cover.png',
+          'https://res.cloudinary.com/dwonflmnn/image/upload/v1780305922/blog/insight/og5utvm2syhksvkr38fg.png',
       },
       {
         href: '/tools/fire-calculator',
