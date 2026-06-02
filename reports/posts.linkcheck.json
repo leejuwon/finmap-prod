@@ -1,14 +1,105 @@
 {
-  "checkedFiles": 112,
-  "checkedPublishedFiles": 99,
+  "checkedFiles": 136,
+  "checkedPublishedFiles": 114,
   "broken": [],
   "suspicious": [],
-  "selfUrlMissing": [],
+  "selfUrlMissing": [
+    {
+      "file": "content\\posts\\personalFinance\\en\\compound-return-3-5-7-10-table.md",
+      "selfUrl": "/en/posts/personalFinance/compound-return-3-5-7-10-table",
+      "meta": {
+        "lang": "en",
+        "postCategory": "personalFinance",
+        "slug": "compound-return-3-5-7-10-table"
+      }
+    },
+    {
+      "file": "content\\posts\\personalFinance\\en\\dca-vs-lump-sum-when-results-differ.md",
+      "selfUrl": "/en/posts/personalFinance/dca-vs-lump-sum-when-results-differ",
+      "meta": {
+        "lang": "en",
+        "postCategory": "personalFinance",
+        "slug": "dca-vs-lump-sum-when-results-differ"
+      }
+    },
+    {
+      "file": "content\\posts\\personalFinance\\en\\how-much-to-invest-monthly-for-target-portfolio.md",
+      "selfUrl": "/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+      "meta": {
+        "lang": "en",
+        "postCategory": "personalFinance",
+        "slug": "how-much-to-invest-monthly-for-target-portfolio"
+      }
+    },
+    {
+      "file": "content\\posts\\personalFinance\\en\\is-dca-better-in-a-bear-market.md",
+      "selfUrl": "/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+      "meta": {
+        "lang": "en",
+        "postCategory": "personalFinance",
+        "slug": "is-dca-better-in-a-bear-market"
+      }
+    },
+    {
+      "file": "content\\posts\\personalFinance\\en\\monthly-investment-for-100m-table.md",
+      "selfUrl": "/en/posts/personalFinance/monthly-investment-for-100m-table",
+      "meta": {
+        "lang": "en",
+        "postCategory": "personalFinance",
+        "slug": "monthly-investment-for-100m-table"
+      }
+    },
+    {
+      "file": "content\\posts\\personalFinance\\ko\\compound-return-3-5-7-10-table.md",
+      "selfUrl": "/posts/personalFinance/compound-return-3-5-7-10-table",
+      "meta": {
+        "lang": "ko",
+        "postCategory": "personalFinance",
+        "slug": "compound-return-3-5-7-10-table"
+      }
+    },
+    {
+      "file": "content\\posts\\personalFinance\\ko\\dca-vs-lump-sum-when-results-differ.md",
+      "selfUrl": "/posts/personalFinance/dca-vs-lump-sum-when-results-differ",
+      "meta": {
+        "lang": "ko",
+        "postCategory": "personalFinance",
+        "slug": "dca-vs-lump-sum-when-results-differ"
+      }
+    },
+    {
+      "file": "content\\posts\\personalFinance\\ko\\how-much-monthly-invest-for-100m.md",
+      "selfUrl": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+      "meta": {
+        "lang": "ko",
+        "postCategory": "personalFinance",
+        "slug": "how-much-monthly-invest-for-100m"
+      }
+    },
+    {
+      "file": "content\\posts\\personalFinance\\ko\\is-dca-better-in-bear-market.md",
+      "selfUrl": "/posts/personalFinance/is-dca-better-in-bear-market",
+      "meta": {
+        "lang": "ko",
+        "postCategory": "personalFinance",
+        "slug": "is-dca-better-in-bear-market"
+      }
+    },
+    {
+      "file": "content\\posts\\personalFinance\\ko\\monthly-investment-for-100m-table.md",
+      "selfUrl": "/posts/personalFinance/monthly-investment-for-100m-table",
+      "meta": {
+        "lang": "ko",
+        "postCategory": "personalFinance",
+        "slug": "monthly-investment-for-100m-table"
+      }
+    }
+  ],
   "summary": {
-    "filesTotal": 112,
-    "filesPublishedChecked": 99,
+    "filesTotal": 136,
+    "filesPublishedChecked": 114,
     "brokenCount": 0,
     "suspiciousCount": 0,
-    "selfUrlMissingCount": 0
+    "selfUrlMissingCount": 10
   }
 }

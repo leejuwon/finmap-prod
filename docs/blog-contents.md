@@ -261,21 +261,41 @@ description: "은퇴 지출을 ‘필수·선택·보험(리스크 비용)’ 3�
 url: /posts/personalFinance/fire-spending-buckets-essential-choice-insurance
 
 ## 18. 
-title: "변동금리·DSR 시대 ‘주택대출 리스크’를 10분 만에 점검하는 체크리스트(서울·경기·인천 대시보드 연동)"
-description: "대출 리스크는 ‘불안’이 아니라 ‘규칙’으로 관리할 수 있습니다. 대시보드 가격대(매수 후보)를 기준으로 예상 대출금·상환액·스트레스 금리(+1%p,+2%p)까지 한 번에 점검하고, 서울/경기/인천 선택을 숫자로 비교하는 실전 체크리스트를 제공합니다."
+title: "아파트 매수 전 대출 리스크 체크리스트: DSR, LTV, 금리, 비상금"
+description: "대출 가능액과 실제 감당 가능액은 다릅니다. DSR/LTV 계산기로 후보 집값을 점검하고, 부동산 대시보드에서 안전 탐색 가격대의 실거래 분포를 확인하는 체크리스트입니다."
 url: /posts/personalFinance/mortgage-risk-checklist-dsr-variable
 
-## 19. 
+## 19.
+title: "DSR 40%면 연소득별 주담대 한도는 얼마나 될까?"
+description: "DSR 40%, 금리 4%, 30년 원리금균등 예시로 연소득별 월 상환 가능액과 주담대 한도를 정리하고 DSR/LTV 계산기와 부동산 대시보드 확인 흐름을 연결합니다."
+url: /posts/personalFinance/dsr-40-income-loan-limit-table
+
+## 20.
+title: "금리 1%p 오르면 내 주담대 한도는 얼마나 줄어들까?"
+description: "같은 소득이라도 금리가 오르면 월상환액과 대출 가능액이 달라집니다. 금리 +1%p, +2%p 민감도와 후보 집값 판정 흐름을 정리합니다."
+url: /posts/personalFinance/interest-rate-1p-loan-limit-impact
+
+## 21.
+title: "보유현금 1억·2억·3억이면 어느 가격대 아파트까지 가능할까?"
+description: "보유현금 1억, 2억, 3억원 기준으로 DSR, LTV, 부대비용이 아파트 구매 가능 금액을 어떻게 제한하는지 시뮬레이션합니다."
+url: /posts/personalFinance/cash-100m-200m-300m-apartment-budget
+
+## 22.
+title: "DSR은 통과했는데 왜 집을 못 살까? LTV·현금·부대비용 병목 이해하기"
+description: "DSR은 통과해도 LTV, 보유현금, 부대비용 때문에 후보 집값이 불가 또는 주의로 나올 수 있습니다. 계산기 샘플 A-D로 병목을 설명합니다."
+url: /posts/personalFinance/dsr-pass-ltv-cash-bottleneck
+
+## 23.
 title: "전세·월세·매매, 무엇이 ‘더 싸다’가 아니라 무엇이 ‘내게 더 안전하다’인가: 현금흐름·기회비용·리스크 3표로 끝내기"
 description: "전세·월세·매매는 ‘최저비용’ 경쟁이 아니라 ‘내 계획이 깨지지 않는 안정성’ 경쟁입니다. 대시보드 가격대를 입력값으로 고정한 뒤, 월 현금흐름·기회비용·리스크 트리거 3표로 내게 더 안전한 선택을 규칙으로 정리합니다."
 url: /posts/personalFinance/rent-jeonse-buy-cashflow-opportunity-cost
 
-## 20.
+## 24.
 title: "DCA vs 일시금투자: 기대수익이 아니라 ‘후회·중단·변동성(실행 리스크)’로 결정하는 3단계 규칙"
 description: "DCA(적립식)와 일시금투자는 수익률 논쟁이 아니라 ‘실행 리스크’의 선택입니다. 현금버퍼·부채이자율·심리내성·기간·소득안정성 5조건으로 DCA/혼합/일시를 고르고, 실패 신호까지 포함한 3단계 의사결정 표와 체크리스트를 제공합니다."
 url: /posts/personalFinance/dca-vs-lumpsum-decision-rules
 
-## 21.
+## 25.
 title: "월 50만원 적립식 투자, 10년 후 얼마가 될까?"
 description: "월 50만원을 10년 동안 적립식으로 투자하면 원금 6천만원이 어떤 범위의 결과로 바뀔 수 있는지 단순 예시로 계산하고, DCA 계산기·복리 계산기·목표자산 시뮬레이터로 내 숫자를 확인하는 방법을 정리합니다."
 url: /posts/personalFinance/monthly-dca-10-year-result
@@ -369,21 +389,41 @@ description: "A stable retirement plan isn’t built from one spending number. S
 url: /en/posts/personalFinance/fire-spending-buckets-essential-choice-insurance
 
 ## 18. 
-title: "A 10-Minute Mortgage Risk Checklist in a DSR + Variable-Rate Era (with the Seoul–Gyeonggi–Incheon Dashboard)"
-description: "Stop turning rate headlines into panic. Use a 10-minute checklist to define your personal fail conditions (cash flow, DSR margin, refinance risk) and connect them to what the Seoul–Gyeonggi–Incheon apartment dashboard shows in real time."
+title: "Mortgage Risk Checklist Before Buying: DSR, LTV, Rates, and Emergency Cash"
+description: "A Korea-focused pre-check for mortgage capacity versus real affordability, connecting the DSR/LTV calculator with Seoul, Gyeonggi, and Incheon transaction data."
 url: /en/posts/personalFinance/mortgage-risk-checklist-dsr-variable
 
-## 19. 
+## 19.
+title: "DSR 40% by Income: How Much Korean Mortgage Principal Can It Support?"
+description: "A KRW reference table estimating mortgage capacity by income under a user-entered 40% DSR, 4.0% annual rate, 30-year equal-payment loan, and no existing debt."
+url: /en/posts/personalFinance/dsr-40-income-loan-limit-table
+
+## 20.
+title: "How Much Can a 1pp Rate Increase Reduce Korean Mortgage Capacity?"
+description: "A Korean mortgage simulation showing how 3%, 4%, 5%, and 6% rates change DSR-based loan capacity, target-home status, and safer search ranges."
+url: /en/posts/personalFinance/interest-rate-1p-loan-limit-impact
+
+## 21.
+title: "Cash KRW 100M, 200M, 300M: What Apartment Budget Can It Support in Korea?"
+description: "A Korean housing affordability simulation showing how KRW 100M, 200M, and 300M of cash interact with DSR, LTV, and transaction costs."
+url: /en/posts/personalFinance/cash-100m-200m-300m-apartment-budget
+
+## 22.
+title: "Passing DSR but Still Blocked? Understanding LTV, Cash, and Cost Bottlenecks"
+description: "Why a Korean apartment target can fail even after DSR passes: LTV, cash on hand, and transaction costs can become the binding constraint."
+url: /en/posts/personalFinance/dsr-pass-ltv-cash-bottleneck
+
+## 23.
 title: "Rent vs Jeonse vs Buy: Not “Cheaper,” but “Safer” — Compare Cash Flow, Opportunity Cost, and Risk Triggers"
 description: "In Korea, the best housing choice is rarely the cheapest on paper—it’s the one that keeps your plan intact when rates, deposits, or prices move. Use a dashboard-anchored price band to compare monthly cash flow, opportunity cost, and risk triggers across rent, jeonse, and buying."
 url: /en/posts/personalFinance/rent-jeonse-buy-cashflow-opportunity-cost
 
-## 20.
+## 24.
 title: "DCA vs Lump Sum Without the Debate: A 3-Step Rule Based on Behavior Risk, Cash Buffers, and Time Horizon"
 description: "Stop arguing about theoretical edge. Use a 3-step rule (survival → consistency → optimization) built on cash buffers, debt APR, time horizon, income stability, and behavior tolerance—then stress-test your choice in /en/tools/dca-calculator."
 url: /en/posts/personalFinance/dca-vs-lumpsum-decision-rules
 
-## 21.
+## 25.
 title: "What Happens If You Invest $500 a Month for 10 Years?"
 description: "A practical 10-year dollar-cost averaging example for investing $500 per month. See simple return scenarios, contribution trade-offs, and how to test your own plan with the DCA calculator, compound interest calculator, and goal simulator."
 url: /en/posts/personalFinance/monthly-dca-10-year-result

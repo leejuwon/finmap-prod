@@ -1,136 +1,145 @@
 ---
 slug: "interest-rate-1p-loan-limit-impact"
 link: "/en/posts/personalFinance/interest-rate-1p-loan-limit-impact"
-title: "How a 1 Percentage Point Rate Change Affects Mortgage Capacity"
-description: "A reference table showing how loan capacity changes at 3%, 4%, 5%, and 6% rates under a KRW 60 million income, 40% DSR, and 30-year equal-payment loan assumption."
+title: "How Much Can a 1pp Rate Increase Reduce Korean Mortgage Capacity?"
+description: "A KRW simulation showing how 3%, 4%, 5%, and 6% mortgage rates change DSR-based loan capacity and target-home feasibility."
 datePublished: "2026-06-01"
-dateModified: "2026-06-01"
-seoTitle: "1 Percentage Point Mortgage Rate Impact | DSR 40% Loan Capacity Table"
-seoDescription: "See how mortgage capacity changes when the interest rate moves from 3% to 4%, 5%, and 6% under a Korean DSR-style affordability model."
+dateModified: "2026-06-02"
+seoTitle: "1pp Rate Increase and Korean Mortgage Capacity | DSR LTV Calculator"
+seoDescription: "See how +1pp and +2pp rate scenarios affect Korean mortgage capacity, target home feasibility, and safer apartment search ranges."
 category: "Personal Finance"
 postCategory: "personalFinance"
-tags: ["mortgage rate", "DSR", "loan capacity", "Korea mortgage", "interest rate sensitivity", "home affordability", "amortization"]
+tags: ["Korea mortgage", "DSR calculator", "LTV calculator", "interest rate", "loan capacity", "KRW housing", "real estate dashboard"]
 tool: ["dsr-ltv"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1780291766/blog/insight/loan_cover-en.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1780291767/blog/insight/loan_cover-en.png"
 lang: "en"
 ---
 
-A one percentage point interest-rate move can sound small in a headline. In a mortgage calculation, it can change both the monthly payment and the principal amount a borrower can support. The effect is especially visible when a loan is constrained by an income-based payment cap such as DSR.
+A one percentage point rate move can look small in a headline. In a Korean mortgage affordability calculation, it can move the loan capacity by tens of millions of KRW.
 
-This article provides a citeable rate-sensitivity table. It uses KRW 60 million of annual income, DSR 40%, no existing debt, and a 30-year equal-payment mortgage. The figures are simulations, not lender approvals.
+This article compares 3%, 4%, 5%, and 6% rates using KRW 60 million of annual income, a user-entered DSR 40%, no existing debt, and a 30-year equal-payment mortgage. To test your own target apartment, use the [DSR/LTV Calculator](/en/tools/dsr-ltv-calculator).
+
+Once you have a safer search range, compare it with actual transaction bands in the [Real Estate Dashboard](/en/market/real-estate). This is a simulation, not policy automation or lender approval.
 
 ## Quick Summary
 
-- Under a KRW 60 million income and 40% DSR assumption, monthly payment capacity is KRW 2 million.
-- At 3%, that payment supports about KRW 474.38 million of loan principal.
-- At 4%, it supports about KRW 418.92 million.
-- Moving from 3% to 4% reduces estimated loan capacity by about KRW 55.46 million.
-- For the same KRW 300 million loan, the monthly payment is about KRW 1.27 million at 3% and KRW 1.80 million at 6%.
-- This is an affordability stress test, not a borrowing recommendation.
+- KRW 60 million of annual income at DSR 40% gives about KRW 2 million of monthly payment capacity.
+- At 3%, that supports about KRW 474.38 million of loan principal.
+- At 4%, it falls to about KRW 418.92 million.
+- A target home that looks close at 4% can become difficult at 5%.
+- The FinMap calculator’s sensitivity table lets you compare base, +1pp, and +2pp scenarios using your inputs.
+- After the calculation, use the [Real Estate Dashboard](/en/market/real-estate) to check whether that safer range exists in real Seoul, Gyeonggi, or Incheon transactions.
 
 ## Assumptions
 
-| Item | Assumption |
+| Item | Input |
 | --- | --- |
-| Annual income | KRW 60 million |
+| Annual income | KRW 60M |
 | DSR | 40% |
 | Existing debt | KRW 0 |
+| Cash example | KRW 200M |
+| Target home example | KRW 600M |
+| LTV / closing cost input | 70% / 5% |
 | Loan term | 30 years |
 | Repayment method | Equal monthly principal-and-interest payment |
-| Rate scenarios | 3%, 4%, 5%, and 6% |
-| Monthly payment capacity | KRW 2 million |
 
-The monthly payment capacity comes from KRW 60 million multiplied by 40%, then divided by 12 months.
+The calculator does not automatically update Korean mortgage policy. It uses the DSR, LTV, rate, term, cash, and target price you enter.
 
-![Rate impact on loan capacity](https://res.cloudinary.com/dwonflmnn/image/upload/v1780291768/blog/insight/loan_img1-en.png)
+## Loan Capacity by Rate
 
-## Core Table. Rate Impact on Loan Capacity
-
-| Interest Rate | Monthly Payment Capacity | Estimated Loan Capacity | Drop vs. Previous Rate | Drop vs. Previous Rate |
+| Rate | Monthly payment capacity | Estimated loan capacity | Drop from prior rate | Drop rate |
 | --- | ---: | ---: | ---: | ---: |
-| 3%/yr | KRW 2.00M | KRW 474.38M | - | - |
-| 4%/yr | KRW 2.00M | KRW 418.92M | KRW 55.46M | 11.7% |
-| 5%/yr | KRW 2.00M | KRW 372.56M | KRW 46.36M | 11.1% |
-| 6%/yr | KRW 2.00M | KRW 333.58M | KRW 38.98M | 10.5% |
+| 3% | KRW 2.00M | KRW 474.38M | - | - |
+| 4% | KRW 2.00M | KRW 418.92M | KRW 55.46M | 11.7% |
+| 5% | KRW 2.00M | KRW 372.56M | KRW 46.36M | 11.1% |
+| 6% | KRW 2.00M | KRW 333.58M | KRW 38.98M | 10.5% |
 
-The 3% to 4% move cuts estimated borrowing capacity by more than KRW 55 million in this scenario. That is why a rate shock can feel larger than the headline number suggests.
+With the same monthly payment capacity, a higher rate leaves less room for principal. That is why rate sensitivity matters before a home search becomes too specific.
 
-![Monthly payment on the same KRW 300 million loan](https://res.cloudinary.com/dwonflmnn/image/upload/v1780291769/blog/insight/loan_img2-en.png)
+## Same KRW 300M Loan, Different Monthly Payments
 
-## Supporting Table. Monthly Payment on the Same KRW 300 Million Loan
-
-| Interest Rate | Monthly Payment | Annual Payment |
+| Rate | Monthly payment | Annual payment |
 | --- | ---: | ---: |
-| 3%/yr | KRW 1.27M | KRW 15.18M |
-| 4%/yr | KRW 1.43M | KRW 17.19M |
-| 5%/yr | KRW 1.61M | KRW 19.33M |
-| 6%/yr | KRW 1.80M | KRW 21.58M |
+| 3% | KRW 1.27M | KRW 15.18M |
+| 4% | KRW 1.43M | KRW 17.19M |
+| 5% | KRW 1.61M | KRW 19.33M |
+| 6% | KRW 1.80M | KRW 21.58M |
 
-For the same KRW 300 million principal, the gap between 3% and 6% is about KRW 530,000 per month. That affects more than the mortgage line. It can change savings capacity, emergency-fund resilience, and whether the household can keep investing.
+The difference between 3% and 6% is about KRW 530,000 per month for the same KRW 300 million loan. That is real household cash flow, not just a spreadsheet detail.
 
-![Mortgage rate stress test](https://res.cloudinary.com/dwonflmnn/image/upload/v1780291771/blog/insight/loan_img3-en.png)
+## Target Home Check: KRW 600M Apartment
 
-## Why 1 Percentage Point Feels Bigger in a Mortgage
+Assume KRW 200 million of cash, 70% LTV, 5% closing costs, and a KRW 600 million target home.
 
-Mortgage principal is large and the term is long. A higher rate does not just add interest for one month. It changes the amortization schedule for the entire loan. With the same payment cap, more of the payment goes toward interest, so less principal can be supported.
+| Rate | DSR loan capacity | Required target loan | LTV max loan | Decision |
+| --- | ---: | ---: | ---: | --- |
+| 3% | KRW 474.38M | KRW 430.00M | KRW 420.00M | Caution |
+| 4% | KRW 418.92M | KRW 430.00M | KRW 420.00M | Caution |
+| 5% | KRW 372.56M | KRW 430.00M | KRW 420.00M | Not possible |
+| 6% | KRW 333.58M | KRW 430.00M | KRW 420.00M | Not possible |
 
-This is why “I can afford KRW 2 million per month” is not enough. At 3%, that payment can support roughly KRW 474 million of principal. At 6%, it supports roughly KRW 334 million.
+At 4%, the case is close but short on DSR, LTV, and cash. At 5%, the DSR shortfall becomes much larger. In the calculator, “Caution” is not a lender signal; it simply means the input-based shortfall is within 5%.
 
-## How Market Rates Reach Real Buyers
+## Misunderstanding Box: Lower Home Prices Do Not Automatically Offset Higher Rates
 
-A central bank policy rate does not map perfectly into your mortgage rate. Bank funding costs, spreads, discounts, fixed vs. variable terms, and execution timing all matter. Still, when market rates rise, new borrowers often feel the pressure through both a higher monthly payment and lower DSR-based capacity.
+> **Misunderstanding:** “If rates rise, home prices may fall, so the payment problem fixes itself.”
 
-For home buyers, the practical move is to build a stress table before negotiating. Test the current rate, +1 percentage point, and +2 percentage points. If the plan breaks under a realistic shock, the purchase price may be too high for the household cash flow.
+Not necessarily. Your borrowing capacity can fall before the market price adjusts enough. Also, cash, LTV, and closing-cost constraints may still block the target home even if the price is slightly lower.
 
-## Calculator Used in This Article
+The safer workflow is to run the [DSR/LTV Calculator](/en/tools/dsr-ltv-calculator) under +1pp and +2pp rate assumptions, then compare the safer price range in the [Real Estate Dashboard](/en/market/real-estate).
 
-Use the [DSR LTV Calculator](/en/tools/dsr-ltv-calculator) to enter income, existing debt, cash, home price, rate, DSR, and LTV. Change the rate one point at a time to see how both loan capacity and home affordability move.
+## Rate Sensitivity Checklist
 
-For local price context, compare your candidate band in the [Real Estate Dashboard](/en/market/real-estate). Related reading: [DSR 40% Mortgage Capacity by Income](/en/posts/personalFinance/dsr-40-income-loan-limit-table) and [A 10-Minute Mortgage Risk Checklist in a DSR + Variable-Rate Era](/en/posts/personalFinance/mortgage-risk-checklist-dsr-variable).
+- Check the base rate, +1pp, and +2pp scenarios.
+- Include existing monthly debt payments.
+- Enter the target home price and read the Possible / Caution / Not possible decision.
+- Compare the 80-90% safer range with real transaction prices.
+- Do not treat DSR approval as household comfort.
+- If the mortgage rate can reset, understand the reset period and discount conditions.
 
-## Interpretation Notes
+## Related Reading
 
-- The table assumes KRW 60 million income, DSR 40%, no existing debt, and a 30-year equal-payment loan.
-- Actual mortgage rates depend on lender, borrower credit, product type, discounts, and timing.
-- Existing debt reduces available payment capacity.
-- Passing a DSR test does not mean the payment is comfortable.
-- This article is educational and does not recommend borrowing.
+- [DSR 40% by Income: Korean Mortgage Capacity Table](/en/posts/personalFinance/dsr-40-income-loan-limit-table)
+- [How to Use the Apartment Dashboard for a Home-Buying Goal](/en/posts/personalFinance/apt-dashboard-home-goal-roadmap)
+- [Cash KRW 100M, 200M, 300M: What Apartment Budget Can It Support?](/en/posts/personalFinance/cash-100m-200m-300m-apartment-budget)
 
-## Citation Note
+## Bottom Line
 
-If you cite this table, cite the assumptions: KRW 60 million income, DSR 40%, no existing debt, 30-year equal-payment loan. A different DSR, term, rate, or existing debt level will change the result.
+A 1pp mortgage rate move can change both loan capacity and target-home feasibility. For DSR-constrained buyers, rate sensitivity is part of the home budget, not a separate macro topic.
+
+Run your assumptions in the [DSR/LTV Calculator](/en/tools/dsr-ltv-calculator), then open the [Real Estate Dashboard](/en/market/real-estate) to see whether your safer range matches real KRW apartment transactions.
 
 ## FAQ
 
-### Why does a 1 percentage point rate increase reduce loan capacity so much?
+### Why does a 1pp rate increase reduce loan capacity?
 
-With the same payment cap, a higher rate means more of each payment goes to interest, so the supported principal amount falls.
+Because the same monthly payment must cover more interest, leaving less room for principal.
 
-### How is the KRW 2 million monthly payment capacity calculated?
+### Does the FinMap sensitivity table apply Korean policy automatically?
 
-KRW 60 million multiplied by 40% equals KRW 24 million per year. Dividing by 12 gives KRW 2 million per month.
+No. It recalculates the same formula from the DSR, LTV, rate, term, cash, and target price you enter.
 
-### What happens if the borrower already has debt?
+### What does Caution mean?
 
-Existing monthly debt payments consume part of the DSR room, so the new mortgage capacity would be lower.
+It means at least one DSR, LTV, or cash check fails, but the maximum shortfall is within 5% in the simulation. It is not a lender approval signal.
 
-### Why include the KRW 300 million monthly payment table?
+### Should a higher rate always lower my search budget?
 
-It shows the household cash-flow impact of rate changes for the same loan amount, not just the maximum capacity.
+Often it does, but the bottleneck can be DSR, LTV, or cash depending on your inputs. Run the calculator instead of assuming one answer.
 
-### Does a fixed-rate mortgage remove rate risk?
+### Why use the dashboard after the calculator?
 
-Not entirely. The answer depends on the fixed period, refinancing risk, maturity, prepayment conditions, and future borrowing needs.
+The calculator gives your budget range. The dashboard shows whether real Seoul, Gyeonggi, or Incheon transactions exist in that range.
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "How a 1 Percentage Point Rate Change Affects Mortgage Capacity",
-  "description": "A reference table showing how loan capacity changes at 3%, 4%, 5%, and 6% rates under a KRW 60 million income, 40% DSR, and 30-year equal-payment loan assumption.",
+  "headline": "How Much Can a 1pp Rate Increase Reduce Korean Mortgage Capacity?",
+  "description": "A KRW simulation showing how 3%, 4%, 5%, and 6% mortgage rates change DSR-based loan capacity and target-home feasibility.",
   "inLanguage": "en",
   "datePublished": "2026-06-01",
-  "dateModified": "2026-06-01",
+  "dateModified": "2026-06-02",
   "author": { "@type": "Organization", "name": "FinMap" },
   "publisher": { "@type": "Organization", "name": "FinMap" },
   "mainEntityOfPage": "https://www.finmaphub.com/en/posts/personalFinance/interest-rate-1p-loan-limit-impact"
@@ -144,28 +153,28 @@ Not entirely. The answer depends on the fixed period, refinancing risk, maturity
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Why does a 1 percentage point rate increase reduce loan capacity so much?",
-      "acceptedAnswer": { "@type": "Answer", "text": "With the same payment cap, a higher rate means more of each payment goes to interest, so the supported principal amount falls." }
+      "name": "Why does a 1pp rate increase reduce loan capacity?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Because the same monthly payment must cover more interest, leaving less room for principal." }
     },
     {
       "@type": "Question",
-      "name": "How is the KRW 2 million monthly payment capacity calculated?",
-      "acceptedAnswer": { "@type": "Answer", "text": "KRW 60 million multiplied by 40% equals KRW 24 million per year. Dividing by 12 gives KRW 2 million per month." }
+      "name": "Does the FinMap sensitivity table apply Korean policy automatically?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. It recalculates the same formula from the DSR, LTV, rate, term, cash, and target price you enter." }
     },
     {
       "@type": "Question",
-      "name": "What happens if the borrower already has debt?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Existing monthly debt payments consume part of the DSR room, so the new mortgage capacity would be lower." }
+      "name": "What does Caution mean?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It means at least one DSR, LTV, or cash check fails, but the maximum shortfall is within 5% in the simulation. It is not a lender approval signal." }
     },
     {
       "@type": "Question",
-      "name": "Why include the KRW 300 million monthly payment table?",
-      "acceptedAnswer": { "@type": "Answer", "text": "It shows the household cash-flow impact of rate changes for the same loan amount, not just the maximum capacity." }
+      "name": "Should a higher rate always lower my search budget?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Often it does, but the bottleneck can be DSR, LTV, or cash depending on your inputs. Run the calculator instead of assuming one answer." }
     },
     {
       "@type": "Question",
-      "name": "Does a fixed-rate mortgage remove rate risk?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Not entirely. The answer depends on the fixed period, refinancing risk, maturity, prepayment conditions, and future borrowing needs." }
+      "name": "Why use the dashboard after the calculator?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The calculator gives your budget range. The dashboard shows whether real Seoul, Gyeonggi, or Incheon transactions exist in that range." }
     }
   ]
 }

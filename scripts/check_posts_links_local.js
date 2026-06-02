@@ -22,6 +22,7 @@ const KNOWN_TOOL_SLUGS = new Set([
   "cagr-calculator",
   "goal-simulator",
   "fire-calculator",
+  "dsr-ltv-calculator",
 ]);
 
 

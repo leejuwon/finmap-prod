@@ -1,52 +1,51 @@
 ---
 slug: "dsr-40-income-loan-limit-table"
 link: "/en/posts/personalFinance/dsr-40-income-loan-limit-table"
-title: "DSR 40% Mortgage Capacity by Income: A Korean Loan Affordability Table"
-description: "A reference table estimating mortgage loan capacity under a 40% DSR, 4.0% annual rate, 30-year amortizing loan, and no existing debt."
+title: "DSR 40% by Income: How Much Korean Mortgage Principal Can It Support?"
+description: "A KRW reference table estimating mortgage capacity by income under a user-entered 40% DSR, 4.0% annual rate, 30-year equal-payment loan, and no existing debt."
 datePublished: "2026-06-01"
-dateModified: "2026-06-01"
-seoTitle: "DSR 40% Loan Capacity by Income | Korea Mortgage Affordability Table"
-seoDescription: "Estimate how much mortgage principal different income levels may support under a 40% DSR, 4% rate, and 30-year equal-payment structure."
+dateModified: "2026-06-02"
+seoTitle: "DSR 40% Loan Capacity by Income | Korea Mortgage Affordability"
+seoDescription: "Estimate Korean mortgage capacity by income using a 40% DSR example, then use the DSR/LTV calculator and real estate dashboard to check a safer KRW price range."
 category: "Personal Finance"
 postCategory: "personalFinance"
-tags: ["DSR", "LTV", "Korea mortgage", "loan capacity", "home affordability", "amortization", "real estate"]
+tags: ["DSR calculator", "LTV calculator", "Korea mortgage", "loan capacity", "KRW housing", "home affordability", "real estate dashboard"]
 tool: ["dsr-ltv"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1780291759/blog/insight/dsr_cover-en.png"
 lang: "en"
 ---
 
-When people ask, “How much can I borrow on this income?” the answer starts with cash flow, not the home price. In Korea, DSR, or debt service ratio, is one of the key constraints: it compares annual debt payments with annual income.
+When a buyer asks, “How much mortgage can this income support?”, the answer starts with monthly repayment capacity, not the apartment price. In a Korean housing context, DSR is one of the key ways to frame that repayment capacity.
 
-This article provides a citeable table for a simple DSR 40% mortgage-capacity scenario. It assumes a 4.0% annual rate, a 30-year equal-payment loan, and no existing debt. The figures are estimates, not bank approvals.
+This article uses a simple user-entered DSR 40% example with a 4.0% annual rate, 30-year equal-payment mortgage, and no existing debt. To test your own cash, LTV, existing debt, and target home price, open the [DSR/LTV Calculator](/en/tools/dsr-ltv-calculator).
+
+After the calculator gives you a safer search range, compare that range with transaction prices in the [Real Estate Dashboard](/en/market/real-estate). The numbers below are simulations, not Korean policy automation or lender approvals.
 
 ## Quick Summary
 
-- DSR 40% means annual debt payments are capped at 40% of annual income in this simplified model.
-- With KRW 60 million of annual income, the annual payment capacity is KRW 24 million.
-- That equals about KRW 2 million per month.
-- At a 4.0% rate over 30 years, that payment supports roughly KRW 418.92 million of loan principal.
-- Existing debt reduces the capacity available for a new mortgage.
-- Real underwriting can differ because banks also consider LTV, collateral value, credit profile, regulations, and stress assumptions.
+- In this example, DSR 40% means annual debt payments are limited to 40% of annual income.
+- KRW 60 million of annual income gives about KRW 2 million of monthly payment capacity.
+- At 4.0% over 30 years, that payment supports about KRW 418.92 million of mortgage principal.
+- Existing monthly debt payments reduce the room available for a new mortgage.
+- Passing DSR does not guarantee that LTV, cash, transaction costs, or lender review will pass.
+- Use the [DSR/LTV Calculator](/en/tools/dsr-ltv-calculator), then check the safer KRW price band in the [Real Estate Dashboard](/en/market/real-estate).
 
 ## Assumptions
 
-| Item | Assumption |
+| Item | Input |
 | --- | --- |
 | DSR | 40% |
 | Existing debt | KRW 0 |
 | Interest rate | 4.0% per year |
 | Loan term | 30 years |
 | Repayment method | Equal monthly principal-and-interest payment |
-| Income points | KRW 30M, 40M, 50M, 60M, 70M, 80M, 100M, 120M |
-| Excluded from table | LTV, available cash, taxes, transaction costs |
+| Excluded from table | LTV, cash on hand, closing costs, credit review, collateral valuation |
 
-This table isolates the DSR side of the problem. A real home purchase also needs an LTV and cash-equity check.
+The FinMap calculator does not automatically apply Korean mortgage policy updates. It uses the DSR and LTV values you enter and calculates an equal-payment loan.
 
-![DSR 40% loan capacity by income](https://res.cloudinary.com/dwonflmnn/image/upload/v1780291761/blog/insight/dsr_img1-en.png)
+## DSR 40% Loan Capacity by Annual Income
 
-## Core Table. Estimated Loan Capacity at DSR 40%
-
-| Annual Income | Annual Payment Capacity | Monthly Payment Capacity | Estimated Loan Capacity |
+| Annual income | Annual payment capacity | Monthly payment capacity | Estimated loan capacity |
 | --- | ---: | ---: | ---: |
 | KRW 30M | KRW 12.00M | KRW 1.00M | KRW 209.46M |
 | KRW 40M | KRW 16.00M | KRW 1.33M | KRW 279.28M |
@@ -57,73 +56,95 @@ This table isolates the DSR side of the problem. A real home purchase also needs
 | KRW 100M | KRW 40.00M | KRW 3.33M | KRW 698.20M |
 | KRW 120M | KRW 48.00M | KRW 4.00M | KRW 837.84M |
 
-Every KRW 10 million increase in annual income adds about KRW 330,000 of monthly payment capacity under a 40% DSR. At the same rate and term, that payment capacity translates into additional borrowing capacity.
+This is the DSR side only. Actual apartment affordability also depends on LTV, available cash, closing costs, and property-specific underwriting.
 
-![Monthly payment room under DSR](https://res.cloudinary.com/dwonflmnn/image/upload/v1780291762/blog/insight/dsr_img2-en.png)
+## What Existing Debt Does
 
-## Existing Debt Changes the Result
+Using KRW 60 million of annual income, DSR 40%, 4.0% rate, and a 30-year term:
 
-The table assumes no existing debt. If a borrower with KRW 60 million of income already pays KRW 500,000 per month on other loans, that payment consumes part of the DSR room. The new mortgage payment capacity would be closer to KRW 1.5 million per month, not KRW 2 million.
+| Existing monthly debt | New mortgage payment room | Estimated new mortgage capacity |
+| ---: | ---: | ---: |
+| KRW 0 | KRW 2.00M | KRW 418.92M |
+| KRW 0.50M | KRW 1.50M | KRW 314.19M |
+| KRW 1.00M | KRW 1.00M | KRW 209.46M |
+| KRW 1.50M | KRW 0.50M | KRW 104.73M |
 
-That is why “income-based borrowing capacity” should always be checked together with existing credit loans, car loans, student loans, and any other amortizing obligations.
+The key point is simple: existing debt consumes DSR room. Credit loans, auto loans, student loans, and other amortizing obligations can all reduce the room for a new Korean mortgage.
 
-![Mortgage underwriting check factors](https://res.cloudinary.com/dwonflmnn/image/upload/v1780291764/blog/insight/dsr_img3-en.png)
+## Example: KRW 60M Income and KRW 200M Cash
 
-## Why Bank Approval Can Differ
+| Item | Result |
+| --- | ---: |
+| Annual income | KRW 60M |
+| Cash on hand | KRW 200M |
+| DSR / LTV inputs | 40% / 70% |
+| Rate / term | 4.0% / 30 years |
+| DSR-based loan capacity | KRW 418.92M |
+| LTV/cash price limit | KRW 571.43M |
+| Safer search range | KRW 457.14M ~ KRW 514.29M |
 
-Banks do not approve loans from DSR alone. They may also consider LTV, property value, location rules, borrower credit, income verification, loan type, stress rates, and maturity structure. A borrower may pass the DSR test but still fail the LTV or cash-equity test.
+In this example, cash, LTV, and closing costs bind before income-based repayment capacity. You can take this safer range to the [Real Estate Dashboard](/en/market/real-estate) and see where actual Seoul, Gyeonggi, and Incheon transactions cluster.
 
-Treat this table as a pre-check before a bank consultation, not as a guaranteed approval schedule.
+## Misunderstanding Box: DSR Capacity Is Not the Home Price
 
-## Calculator Used in This Article
+> **Misunderstanding:** “If DSR supports about KRW 419M of loan principal, a KRW 600M home should be fine.”
 
-Use the [DSR LTV Calculator](/en/tools/dsr-ltv-calculator) to enter your income, cash, existing monthly debt payments, rate, DSR, and LTV. It can estimate both loan capacity and a more realistic home price range.
+Not necessarily. With a KRW 600M target home, 70% LTV, and 5% transaction-cost assumption, the required cash is about KRW 210M. If the buyer has KRW 200M, the cash check is short even before lender-specific review.
 
-For market context, compare your candidate price band with the [Real Estate Dashboard](/en/market/real-estate). Related reading: [A 10-Minute Mortgage Risk Checklist in a DSR + Variable-Rate Era](/en/posts/personalFinance/mortgage-risk-checklist-dsr-variable) and [How to Use the Apartment Dashboard for a Home-Buying Goal](/en/posts/personalFinance/apt-dashboard-home-goal-roadmap).
+Use the [DSR/LTV Calculator](/en/tools/dsr-ltv-calculator) target home field to check DSR, LTV, and cash separately.
 
-## Interpretation Notes
+## Checklist Before Applying the Table
 
-- The table assumes a 4.0% rate, 30-year term, equal payments, and no existing debt.
-- Actual underwriting can differ by lender, collateral, regulation, credit profile, and income recognition.
-- Existing debt reduces available DSR capacity.
-- Passing a DSR test does not mean the payment is comfortable for your household.
-- This article is educational and does not recommend taking a loan.
+- Confirm whether the income amount is the income a lender may recognize.
+- Add all existing monthly debt payments.
+- Enter the DSR and LTV values yourself; do not treat this article as policy automation.
+- Separate cash you can use from cash you want to keep as a reserve.
+- Include a closing-cost assumption.
+- Compare the calculator’s safer search range with actual prices in the [Real Estate Dashboard](/en/market/real-estate).
 
-## Citation Note
+## Related Reading
 
-If you cite the table, cite the assumptions clearly: DSR 40%, 4.0% annual rate, 30-year equal-payment mortgage, no existing debt. Changing any of those inputs changes the loan capacity.
+- [How Much Does a 1pp Rate Move Reduce Mortgage Capacity?](/en/posts/personalFinance/interest-rate-1p-loan-limit-impact)
+- [Mortgage Risk Checklist Before Buying an Apartment](/en/posts/personalFinance/mortgage-risk-checklist-dsr-variable)
+- [Why Passing DSR May Still Not Be Enough](/en/posts/personalFinance/dsr-pass-ltv-cash-bottleneck)
+
+## Bottom Line
+
+The income table is a starting point. Real apartment affordability needs DSR, LTV, available cash, closing costs, and existing debt in the same view.
+
+Use the [DSR/LTV Calculator](/en/tools/dsr-ltv-calculator) for your own assumptions, then open the [Real Estate Dashboard](/en/market/real-estate) to compare your safer search range with real KRW transaction prices.
 
 ## FAQ
 
-### What does DSR 40% mean?
+### Is DSR 40% a live Korean policy setting?
 
-In this simplified model, annual debt payments are capped at 40% of annual income. Existing debt payments count toward that limit.
+This article uses 40% as an example input. FinMap does not automatically apply policy updates. Enter the DSR and LTV assumptions you want to test.
 
-### Is the loan capacity in the table a bank approval amount?
+### Is the table a bank approval schedule?
 
-No. It is a simulation. Actual approval depends on lender underwriting, LTV, collateral value, credit profile, and regulation.
+No. It is a simulation using a 4.0% rate, 30-year equal-payment loan, and no existing debt. Lender review can differ.
 
-### How does existing debt affect the table?
+### How should I enter existing debt?
 
-Existing monthly debt payments reduce the payment room available for a new mortgage, which lowers estimated loan capacity.
-
-### Does a higher interest rate reduce borrowing capacity?
-
-Yes. With the same monthly payment capacity, a higher rate supports a smaller principal amount.
+Add the monthly repayment amounts for existing loans and enter them as existing monthly debt payments in the calculator.
 
 ### Which matters more, DSR or LTV?
 
-Both matter. DSR checks income-based repayment capacity, while LTV checks loan size relative to the property value. Real affordability requires both, plus available cash.
+Both matter. DSR tests income-based repayment capacity; LTV tests loan size relative to property value. Cash and transaction costs can be equally binding.
+
+### What is the safer search range?
+
+It is 80-90% of the estimated maximum affordable purchase price. It is meant as a conservative range before checking real transactions.
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "DSR 40% Mortgage Capacity by Income: A Korean Loan Affordability Table",
-  "description": "A reference table estimating mortgage loan capacity under a 40% DSR, 4.0% annual rate, 30-year amortizing loan, and no existing debt.",
+  "headline": "DSR 40% by Income: How Much Korean Mortgage Principal Can It Support?",
+  "description": "A KRW reference table estimating mortgage capacity by income under a user-entered 40% DSR, 4.0% annual rate, 30-year equal-payment loan, and no existing debt.",
   "inLanguage": "en",
   "datePublished": "2026-06-01",
-  "dateModified": "2026-06-01",
+  "dateModified": "2026-06-02",
   "author": { "@type": "Organization", "name": "FinMap" },
   "publisher": { "@type": "Organization", "name": "FinMap" },
   "mainEntityOfPage": "https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table"
@@ -137,28 +158,28 @@ Both matter. DSR checks income-based repayment capacity, while LTV checks loan s
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What does DSR 40% mean?",
-      "acceptedAnswer": { "@type": "Answer", "text": "In this simplified model, annual debt payments are capped at 40% of annual income. Existing debt payments count toward that limit." }
+      "name": "Is DSR 40% a live Korean policy setting?",
+      "acceptedAnswer": { "@type": "Answer", "text": "This article uses 40% as an example input. FinMap does not automatically apply policy updates. Enter the DSR and LTV assumptions you want to test." }
     },
     {
       "@type": "Question",
-      "name": "Is the loan capacity in the table a bank approval amount?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. It is a simulation. Actual approval depends on lender underwriting, LTV, collateral value, credit profile, and regulation." }
+      "name": "Is the table a bank approval schedule?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. It is a simulation using a 4.0% rate, 30-year equal-payment loan, and no existing debt. Lender review can differ." }
     },
     {
       "@type": "Question",
-      "name": "How does existing debt affect the table?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Existing monthly debt payments reduce the payment room available for a new mortgage, which lowers estimated loan capacity." }
-    },
-    {
-      "@type": "Question",
-      "name": "Does a higher interest rate reduce borrowing capacity?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. With the same monthly payment capacity, a higher rate supports a smaller principal amount." }
+      "name": "How should I enter existing debt?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Add the monthly repayment amounts for existing loans and enter them as existing monthly debt payments in the calculator." }
     },
     {
       "@type": "Question",
       "name": "Which matters more, DSR or LTV?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Both matter. DSR checks income-based repayment capacity, while LTV checks loan size relative to the property value. Real affordability requires both, plus available cash." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Both matter. DSR tests income-based repayment capacity; LTV tests loan size relative to property value. Cash and transaction costs can be equally binding." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the safer search range?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It is 80-90% of the estimated maximum affordable purchase price. It is meant as a conservative range before checking real transactions." }
     }
   ]
 }
