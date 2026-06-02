@@ -39,6 +39,26 @@ const QUALITY_TONE = {
   too_small: "bg-rose-50 text-rose-700",
 };
 
+const ETF_RANGE_LABELS = {
+  near1: "인접 ±1 등급",
+  near2: "인접 ±2 등급",
+  exact: "동일 등급만",
+};
+
+const ETF_INTERPRETATION_LABELS = {
+  INSUFFICIENT_SAMPLE: "표본 부족",
+  MIXED_OBSERVATION: "혼합 관찰",
+  NO_CLEAR_EDGE: "관찰 우위 없음",
+  OBSERVATION_ONLY: "관찰 통계",
+};
+
+const ETF_INTERPRETATION_TONE = {
+  INSUFFICIENT_SAMPLE: "bg-amber-50 text-amber-800 border-amber-100",
+  MIXED_OBSERVATION: "bg-slate-50 text-slate-800 border-slate-100",
+  NO_CLEAR_EDGE: "bg-slate-50 text-slate-800 border-slate-100",
+  OBSERVATION_ONLY: "bg-sky-50 text-sky-800 border-sky-100",
+};
+
 const RELATED_LINKS = [
   {
     href: "/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
@@ -132,6 +152,18 @@ function qualityLabel(value) {
   return QUALITY_LABELS[value] || "표본 확인";
 }
 
+function etfRangeLabel(value) {
+  return ETF_RANGE_LABELS[value] || value || "-";
+}
+
+function etfInterpretationLabel(value) {
+  return ETF_INTERPRETATION_LABELS[value] || "관찰 통계";
+}
+
+function etfInterpretationTone(value) {
+  return ETF_INTERPRETATION_TONE[value] || ETF_INTERPRETATION_TONE.NO_CLEAR_EDGE;
+}
+
 function gradeDisplay(value) {
   const n = Number(value);
   if (!Number.isFinite(n) || n === 0) return "-";
@@ -168,7 +200,7 @@ function rangeRecommendation(rangeSamples = {}) {
       mode: "near1",
       tone: "bg-amber-50 text-amber-800",
       text: "동일 등급 표본이 적어 인접 ±1 등급 포함 통계도 함께 확인해보세요.",
-      actionLabel: "추천: 인접 ±1 보기",
+      actionLabel: "참고: 인접 ±1 보기",
     };
   }
   if (near2 >= 20) {
@@ -407,6 +439,206 @@ function StatePanel({ title, text, actionLabel, onAction }) {
   );
 }
 
+function EtfOffsetDetails({ data }) {
+  const etfs = data?.etfs || [];
+  if (!etfs.length) return null;
+
+  return (
+    <details className="rounded-lg border border-slate-100 bg-slate-50 p-3 text-sm text-slate-600">
+      <summary className="cursor-pointer font-semibold text-slate-800">일봉 저가 충족 offset 시뮬레이션</summary>
+      <div className="mt-3 space-y-4">
+        <p className="rounded-lg bg-white px-3 py-2 text-xs leading-5 text-slate-600">
+          {data.bestEntryOffsetCautionKo || "이 값은 일봉 저가 기준 체결 가정의 과거 시뮬레이션 후보이며 실제 체결을 보장하지 않습니다."}
+        </p>
+        {etfs.map((etf) => (
+          <div key={etf.etfId} className="space-y-2">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+              <div className="font-semibold text-slate-900">{etf.nameKo || etf.etfId}</div>
+              {etf.bestEntryOffset ? (
+                <div className="text-xs text-slate-500">
+                  선별된 offset 후보 {fmtPct(etf.bestEntryOffset.offsetPct)} · 충족 {etf.bestEntryOffset.filledCount}건 · 기대 관찰 {fmtPct(etf.bestEntryOffset.expectedReturnPct)}
+                </div>
+              ) : (
+                <div className="text-xs text-slate-500">선별된 offset 후보 없음</div>
+              )}
+            </div>
+            {etf.bestEntryOffset && (
+              <div className="grid gap-2 text-xs sm:grid-cols-5">
+                <SmallMetric label="시가 대비 offset" value={fmtPct(etf.bestEntryOffset.offsetPct)} />
+                <SmallMetric label="충족 수" value={`${etf.bestEntryOffset.filledCount || 0}건`} />
+                <SmallMetric label="충족률" value={fmtPct(etf.bestEntryOffset.fillRate)} />
+                <SmallMetric label="평균 관찰" value={fmtPct(etf.bestEntryOffset.avgReturnPct)} />
+                <SmallMetric label="중앙값 관찰" value={fmtPct(etf.bestEntryOffset.medianReturnPct)} />
+              </div>
+            )}
+            <div className="overflow-x-auto rounded-lg border border-slate-100 bg-white">
+              <table className="min-w-[680px] text-xs">
+                <thead className="bg-slate-50 text-slate-500">
+                  <tr>
+                    <th className="px-3 py-2 text-left">시가 대비 offset</th>
+                    <th className="px-3 py-2 text-right">충족 수</th>
+                    <th className="px-3 py-2 text-right">충족률</th>
+                    <th className="px-3 py-2 text-right">평균 관찰</th>
+                    <th className="px-3 py-2 text-right">중앙값 관찰</th>
+                    <th className="px-3 py-2 text-right">기대 관찰</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {(etf.entryOffsets || []).map((offset) => (
+                    <tr key={`${etf.etfId}-${offset.offsetPct}`}>
+                      <td className="px-3 py-2 font-medium text-slate-800">{fmtPct(offset.offsetPct)}</td>
+                      <td className="px-3 py-2 text-right">{offset.filledCount || 0}건</td>
+                      <td className="px-3 py-2 text-right">{fmtPct(offset.fillRate)}</td>
+                      <td className={`px-3 py-2 text-right ${pctTone(offset.avgReturnPct)}`}>{fmtPct(offset.avgReturnPct)}</td>
+                      <td className={`px-3 py-2 text-right ${pctTone(offset.medianReturnPct)}`}>{fmtPct(offset.medianReturnPct)}</td>
+                      <td className={`px-3 py-2 text-right ${pctTone(offset.expectedReturnPct)}`}>{fmtPct(offset.expectedReturnPct)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ))}
+      </div>
+    </details>
+  );
+}
+
+function EtfObservationPanel({ data, loading, error, rangeMode, onRangeModeChange }) {
+  const warnings = new Set(data?.warningCodes || []);
+  const hasFreshnessWarning = warnings.has("LEGACY_SOURCE_NOT_LATEST");
+  const sampleEndsBeforeSelected = warnings.has("LEGACY_SAMPLE_ENDS_BEFORE_SELECTED_DATE");
+  const minSamples = Number(data?.minSamples || 20);
+  const matchedDays = Number(data?.matchedDays || 0);
+  const interpretation = data?.interpretationLevel || (matchedDays < minSamples ? "INSUFFICIENT_SAMPLE" : "NO_CLEAR_EDGE");
+  const interpretationText = interpretation === "OBSERVATION_ONLY"
+    ? data?.signal?.labelKo || etfInterpretationLabel(interpretation)
+    : etfInterpretationLabel(interpretation);
+
+  return (
+    <section className="space-y-3">
+      <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+        <div className="min-w-0">
+          <div className="text-xs font-semibold uppercase tracking-wide text-slate-400">Legacy daily ETF OHLC</div>
+          <h2 className="mt-1 text-lg font-semibold text-slate-950">ETF 일봉 관찰 통계</h2>
+          <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-600">
+            현재 가격·성장 등급과 같거나 가까웠던 과거 거래일을 기준으로 KODEX 레버리지와 KODEX 200선물인버스2X의 시가 대비 종가 변화를 비교합니다.
+            이 통계는 과거 데이터 기반 관찰용이며 매수·매도 권유가 아닙니다.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {["near1", "near2", "exact"].map((mode) => (
+            <button
+              key={mode}
+              type="button"
+              onClick={() => onRangeModeChange(mode)}
+              className={`rounded-lg border px-3 py-2 text-xs font-semibold transition ${
+                rangeMode === mode
+                  ? "border-slate-900 bg-slate-900 text-white"
+                  : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
+              }`}
+            >
+              {etfRangeLabel(mode)}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {loading && (
+        <div className="rounded-lg border border-slate-100 bg-white p-4 text-sm text-slate-500">
+          ETF 관찰 통계를 불러오는 중입니다.
+        </div>
+      )}
+
+      {!loading && error && (
+        <div className="rounded-lg border border-slate-100 bg-white p-4 text-sm text-slate-500">
+          ETF 관찰 통계를 불러오지 못했습니다. 기존 지수 통계는 계속 확인할 수 있습니다.
+        </div>
+      )}
+
+      {!loading && !error && data && !data.hasData && (
+        <div className="rounded-lg border border-slate-100 bg-white p-4 text-sm text-slate-500">
+          현재 기준 등급으로 ETF 관찰 통계를 계산할 수 없습니다.
+        </div>
+      )}
+
+      {!loading && !error && data?.hasData && (
+        <div className="space-y-3 rounded-lg border border-slate-100 bg-white p-4 shadow-sm">
+          {(hasFreshnessWarning || sampleEndsBeforeSelected) && (
+            <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm leading-6 text-amber-900">
+              <div className="font-semibold">legacy 데이터 최신성 안내</div>
+              <div>{data.dataFreshnessLabelKo}</div>
+              {sampleEndsBeforeSelected && (
+                <div className="text-xs">표본 최신일 {data.sampleLatestDate || "-"} · 선택 기준일 {data.date || "-"}</div>
+              )}
+            </div>
+          )}
+
+          <div className="grid gap-3 md:grid-cols-3">
+            <div className="rounded-lg border border-slate-100 bg-slate-50 p-3">
+              <div className="text-xs text-slate-500">표본 수</div>
+              <div className="mt-1 text-2xl font-bold text-slate-950">{matchedDays}건</div>
+              <div className="mt-1 text-xs text-slate-500">{etfRangeLabel(data.rangeMode)} · {data.period || "3y"} · {data.sourceDescriptionKo || "legacy 장기 일봉"}</div>
+            </div>
+            <div className={`rounded-lg border p-3 ${etfInterpretationTone(interpretation)}`}>
+              <div className="text-xs opacity-80">관찰 결과</div>
+              <div className="mt-1 text-2xl font-bold">{interpretationText}</div>
+              <div className="mt-1 text-xs">투자 권유 아님 · 수익 보장 아님</div>
+            </div>
+            <div className="rounded-lg border border-slate-100 bg-slate-50 p-3">
+              <div className="text-xs text-slate-500">데이터 최신성</div>
+              <div className="mt-1 text-sm font-semibold leading-5 text-slate-900">{data.dataFreshnessLabelKo || "-"}</div>
+              <div className="mt-1 text-xs text-slate-500">source {data.source || "-"} · 기준 {data.date || "-"}</div>
+            </div>
+          </div>
+
+          <div className="rounded-lg border border-slate-100 bg-rose-50 px-3 py-2 text-sm leading-6 text-rose-900">
+            레버리지·인버스 ETF는 고위험 상품입니다. 이 화면은 과거 일봉 통계이며 매수·매도 권유나 수익 보장이 아닙니다.
+          </div>
+
+          <div className="space-y-2">
+            <h3 className="text-base font-semibold text-slate-950">시가→종가 일봉 통계</h3>
+            <div className="overflow-x-auto rounded-lg border border-slate-100">
+              <table className="min-w-[720px] text-sm">
+                <thead className="bg-slate-50 text-xs text-slate-500">
+                  <tr>
+                    <th className="px-4 py-3 text-left">ETF명</th>
+                    <th className="px-4 py-3 text-right">sampleCount</th>
+                    <th className="px-4 py-3 text-right">avgOpenToClosePct</th>
+                    <th className="px-4 py-3 text-right">medianOpenToClosePct</th>
+                    <th className="px-4 py-3 text-right">winRate</th>
+                    <th className="px-4 py-3 text-right">maxLossPct</th>
+                    <th className="px-4 py-3 text-left">sampleQuality</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 bg-white">
+                  {(data.etfs || []).map((etf) => (
+                    <tr key={etf.etfId}>
+                      <td className="px-4 py-3 font-semibold text-slate-900">{etf.nameKo || etf.etfId}</td>
+                      <td className="px-4 py-3 text-right">{etf.sampleCount || 0}건</td>
+                      <td className={`px-4 py-3 text-right ${pctTone(etf.avgOpenToClosePct)}`}>{fmtPct(etf.avgOpenToClosePct)}</td>
+                      <td className={`px-4 py-3 text-right ${pctTone(etf.medianOpenToClosePct)}`}>{fmtPct(etf.medianOpenToClosePct)}</td>
+                      <td className="px-4 py-3 text-right">{fmtPct(etf.winRate)}</td>
+                      <td className={`px-4 py-3 text-right ${pctTone(etf.maxLossPct)}`}>{fmtPct(etf.maxLossPct)}</td>
+                      <td className="px-4 py-3">
+                        <span className={`rounded-full px-2 py-1 text-xs ${QUALITY_TONE[etf.sampleQuality] || "bg-slate-100 text-slate-700"}`}>
+                          {qualityLabel(etf.sampleQuality)}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <EtfOffsetDetails data={data} />
+        </div>
+      )}
+    </section>
+  );
+}
+
 export default function MarketIndicesPage() {
   const router = useRouter();
   const today = useMemo(() => todayInKst(), []);
@@ -416,9 +648,44 @@ export default function MarketIndicesPage() {
   const [limit, setLimit] = useState(20);
   const [dashboard, setDashboard] = useState(null);
   const [stats, setStats] = useState(null);
+  const [etfRangeMode, setEtfRangeMode] = useState("near1");
+  const [etfStats, setEtfStats] = useState(null);
+  const [etfLoading, setEtfLoading] = useState(false);
+  const [etfError, setEtfError] = useState("");
   const [loading, setLoading] = useState(true);
   const [statsLoading, setStatsLoading] = useState(false);
   const [error, setError] = useState("");
+
+  async function loadEtfStats({ date, nextEtfRangeMode = etfRangeMode } = {}) {
+    const statsDate = isDateString(date) ? date : "";
+    if (!statsDate) {
+      setEtfStats(null);
+      setEtfError("");
+      return;
+    }
+    setEtfLoading(true);
+    setEtfError("");
+    try {
+      const params = new URLSearchParams({
+        source: "legacy",
+        period: "3y",
+        rangeMode: nextEtfRangeMode,
+        minSamples: "20",
+        includeOffsets: "1",
+        limit: "5",
+        date: statsDate,
+      });
+      const res = await fetch(`/api/stock-index/etf-grade-stats?${params.toString()}`);
+      const json = await res.json();
+      if (!res.ok || !json?.ok) throw new Error(json?.error || "etf_grade_stats_failed");
+      setEtfStats(json);
+    } catch (err) {
+      setEtfStats(null);
+      setEtfError(err?.message || "etf_grade_stats_failed");
+    } finally {
+      setEtfLoading(false);
+    }
+  }
 
   async function load({ date, nextPeriod = period, nextRangeMode = rangeMode, nextLimit = limit } = {}) {
     setLoading(true);
@@ -443,9 +710,12 @@ export default function MarketIndicesPage() {
       const statsJson = await statsRes.json();
       if (!statsRes.ok || !statsJson?.ok) throw new Error(statsJson?.error || "grade_stats_failed");
       setStats(statsJson);
+      loadEtfStats({ date: statsDate });
     } catch (err) {
       setDashboard(null);
       setStats(null);
+      setEtfStats(null);
+      setEtfError("");
       setError(err?.message || "market_indices_failed");
     } finally {
       setLoading(false);
@@ -488,6 +758,11 @@ export default function MarketIndicesPage() {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     });
+  }
+
+  function updateEtfRangeMode(nextEtfRangeMode) {
+    setEtfRangeMode(nextEtfRangeMode);
+    loadEtfStats({ date: dashboard?.date || dateInput, nextEtfRangeMode });
   }
 
   const kospi = dashboard?.kospi || {};
@@ -704,6 +979,14 @@ export default function MarketIndicesPage() {
                 minHeight={160}
               />
             </section>
+
+            <EtfObservationPanel
+              data={etfStats}
+              loading={etfLoading}
+              error={etfError}
+              rangeMode={etfRangeMode}
+              onRangeModeChange={updateEtfRangeMode}
+            />
 
             <section className="space-y-3">
               <h2 className="text-lg font-semibold text-slate-950">함께 보면 좋은 글</h2>
