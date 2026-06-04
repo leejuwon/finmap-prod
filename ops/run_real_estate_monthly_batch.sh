@@ -160,6 +160,7 @@ check_ingest_total_errors() {
   local ingest_log="$1"
   local done_line
   local total_errors
+  local total_items
 
   done_line="$(grep -E '\[done\].*totalErrors=[0-9]+' "$ingest_log" | tail -n 1 || true)"
   if [[ -z "$done_line" ]]; then
@@ -178,7 +179,34 @@ check_ingest_total_errors() {
     exit 1
   fi
 
-  log_msg "[ingest:verified] totalErrors=0"
+  total_items="$(sed -nE 's/.*totalItems=([0-9]+).*/\1/p' <<< "$done_line" | tail -n 1)"
+  if [[ -z "$total_items" ]] || (( total_items == 0 )); then
+    log_msg "[ingest:failed] totalItems=${total_items:-missing}; empty data must be retried; log=$ingest_log"
+    exit 1
+  fi
+
+  local sido_code
+  for sido_code in 11 28 41; do
+    local sido_line
+    local sido_items
+    local sido_errors
+
+    sido_line="$(grep -E "\[sido:summary\] code=${sido_code} " "$ingest_log" | tail -n 1 || true)"
+    if [[ -z "$sido_line" ]]; then
+      log_msg "[ingest:failed] sido summary missing code=$sido_code; log=$ingest_log"
+      exit 1
+    fi
+
+    sido_items="$(sed -nE 's/.* items=([0-9]+).*/\1/p' <<< "$sido_line" | tail -n 1)"
+    sido_errors="$(sed -nE 's/.* errors=([0-9]+).*/\1/p' <<< "$sido_line" | tail -n 1)"
+
+    if [[ -z "$sido_items" || -z "$sido_errors" ]] || (( sido_items == 0 || sido_errors != 0 )); then
+      log_msg "[ingest:failed] sido=$sido_code items=${sido_items:-missing} errors=${sido_errors:-missing}; log=$ingest_log"
+      exit 1
+    fi
+  done
+
+  log_msg "[ingest:verified] totalItems=$total_items totalErrors=0 sidos=11,28,41"
 }
 
 COMMON_ENV=(env NODE_ENV=production DOTENV=.env.production TZ="$BATCH_TZ")
@@ -191,7 +219,11 @@ APT_STATS_BOTH_CMD=("${COMMON_ENV[@]}" "$NODE_BIN" server/crawler/scripts/re_bui
 APT_STATS_MONTH_CMD=("${COMMON_ENV[@]}" "$NODE_BIN" server/crawler/scripts/re_build_apt_stats.js --from="$TARGET_YM" --to="$TARGET_YM" --timeframe=month --bands=all)
 APT_STATS_YEAR_CMD=("${COMMON_ENV[@]}" "$NODE_BIN" server/crawler/scripts/re_build_apt_stats.js --from="$TARGET_YM" --to="$TARGET_YM" --timeframe=year --bands=all)
 
-acquire_lock
+if [[ "$DRY_RUN" == "1" ]]; then
+  log_msg "[dryRun] duplicate-run lock skipped"
+else
+  acquire_lock
+fi
 
 log_msg "[batch:start] targetYm=$TARGET_YM dryRun=$DRY_RUN appDir=$APP_DIR log=$BATCH_LOG"
 

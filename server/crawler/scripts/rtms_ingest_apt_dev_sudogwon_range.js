@@ -194,7 +194,10 @@ const AREAS = [
   { sido: '경기도', sigungu: '이천시', gu: null, lawd: '41500' },
   { sido: '경기도', sigungu: '안성시', gu: null, lawd: '41550' },
   { sido: '경기도', sigungu: '김포시', gu: null, lawd: '41570' },
-  { sido: '경기도', sigungu: '화성시', gu: null, lawd: '41590' },
+  { sido: '경기도', sigungu: '화성시', gu: '만세구', lawd: '41591' },
+  { sido: '경기도', sigungu: '화성시', gu: '효행구', lawd: '41593' },
+  { sido: '경기도', sigungu: '화성시', gu: '병점구', lawd: '41595' },
+  { sido: '경기도', sigungu: '화성시', gu: '동탄구', lawd: '41597' },
   { sido: '경기도', sigungu: '광주시', gu: null, lawd: '41610' },
   { sido: '경기도', sigungu: '양주시', gu: null, lawd: '41630' },
   { sido: '경기도', sigungu: '포천시', gu: null, lawd: '41650' },
@@ -228,73 +231,91 @@ function filterAreasByScope(list, scopeObj) {
   const fromYm = arg('from', '202401');
   const toYm = arg('to', '202401');
   const scope = arg('scope', 'all');
+  const lawds = String(arg('lawds', ''))
+    .split(',')
+    .map(x => x.trim())
+    .filter(Boolean);
+  const publishMonth = String(arg('publishMonth', lawds.length ? '0' : '1')) === '1';
   const throttleMs = Number(arg('throttle', '120'));
   const months = buildYmList(fromYm, toYm);
+  const countOnly = String(arg('countOnly', '0')) === '1';
 
   const debugApiTotal = String(arg('apiTotal', '0')) === '1';
 
   if (!process.env.MOLIT_SERVICE_KEY) throw new Error('MOLIT_SERVICE_KEY is missing');
   if (!process.env.MOLIT_APT_TRADE_DETAIL_URL) throw new Error('MOLIT_APT_TRADE_DETAIL_URL is missing');
 
-  ['DB_HOST', 'DB_USER', 'DB_PASSWORD', 'DB_NAME'].forEach(k => {
-    if (!process.env[k]) throw new Error(`${k} is missing`);
-  });
+  let conn = null;
+  if (!countOnly) {
+    ['DB_HOST', 'DB_USER', 'DB_PASSWORD', 'DB_NAME'].forEach(k => {
+      if (!process.env[k]) throw new Error(`${k} is missing`);
+    });
 
-  const conn = await mysql.createConnection({
-    host: process.env.DB_HOST,
-    port: Number(process.env.DB_PORT || 3306),
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    charset: 'utf8mb4',
-  });
+    conn = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      port: Number(process.env.DB_PORT || 3306),
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      charset: 'utf8mb4',
+    });
 
-  await conn.execute(`
-    CREATE TABLE IF NOT EXISTS re_trade_deal_ym (
-      deal_ym CHAR(6) NOT NULL PRIMARY KEY
-    ) ENGINE=InnoDB
-  `);
-  await conn.execute(`
-    CREATE TABLE IF NOT EXISTS re_trade_meta (
-      id TINYINT NOT NULL PRIMARY KEY,
-      min_build_year SMALLINT NULL,
-      max_build_year SMALLINT NULL,
-      updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-    ) ENGINE=InnoDB
-  `);
-  await conn.execute(`INSERT IGNORE INTO re_trade_meta (id) VALUES (1)`);
+    await conn.execute(`
+      CREATE TABLE IF NOT EXISTS re_trade_deal_ym (
+        deal_ym CHAR(6) NOT NULL PRIMARY KEY
+      ) ENGINE=InnoDB
+    `);
+    await conn.execute(`
+      CREATE TABLE IF NOT EXISTS re_trade_meta (
+        id TINYINT NOT NULL PRIMARY KEY,
+        min_build_year SMALLINT NULL,
+        max_build_year SMALLINT NULL,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      ) ENGINE=InnoDB
+    `);
+    await conn.execute(`INSERT IGNORE INTO re_trade_meta (id) VALUES (1)`);
 
-  await conn.execute(`
-    CREATE TABLE IF NOT EXISTS re_trade_area_dim (
-      sido_code CHAR(2) NOT NULL,
-      lawd_cd CHAR(5) NOT NULL,
-      sigungu_name VARCHAR(30) NOT NULL,
-      gu_name VARCHAR(30) NOT NULL DEFAULT '',
-      PRIMARY KEY (sido_code, lawd_cd, gu_name),
-      KEY idx_area_sido (sido_code, sigungu_name, gu_name)
-    ) ENGINE=InnoDB
-  `);
+    await conn.execute(`
+      CREATE TABLE IF NOT EXISTS re_trade_area_dim (
+        sido_code CHAR(2) NOT NULL,
+        lawd_cd CHAR(5) NOT NULL,
+        sigungu_name VARCHAR(30) NOT NULL,
+        gu_name VARCHAR(30) NOT NULL DEFAULT '',
+        PRIMARY KEY (sido_code, lawd_cd, gu_name),
+        KEY idx_area_sido (sido_code, sigungu_name, gu_name)
+      ) ENGINE=InnoDB
+    `);
+  }
 
   const sqlInsYm = `INSERT IGNORE INTO re_trade_deal_ym (deal_ym) VALUES (?)`;
   const sqlInsArea = `INSERT IGNORE INTO re_trade_area_dim (sido_code, lawd_cd, sigungu_name, gu_name) VALUES (?,?,?,?)`;
 
   const scopeObj = parseScope(scope);
-  const areas = filterAreasByScope(AREAS, scopeObj);
+  const scopedAreas = filterAreasByScope(AREAS, scopeObj);
+  const areas = lawds.length
+    ? scopedAreas.filter(a => lawds.includes(String(a.lawd)))
+    : scopedAreas;
+  if (!areas.length) throw new Error(`No areas matched scope=${scope} lawds=${lawds.join(',') || '(all)'}`);
 
-  console.log(`[start] scope=${scope} months=${months.join(',')} areas=${areas.length}`);
-  console.log(`[db] ${process.env.DB_HOST}:${process.env.DB_PORT || 3306} / ${process.env.DB_NAME}`);
+  console.log(`[start] mode=${countOnly ? 'countOnly' : 'upsert'} scope=${scope} lawds=${lawds.join(',') || 'all'} publishMonth=${publishMonth ? '1' : '0'} months=${months.join(',')} areas=${areas.length}`);
+  if (countOnly) {
+    console.log('[db] skipped in countOnly mode');
+  } else {
+    console.log('[db] connected');
+  }
 
   let totalFetch = 0;
   let totalItems = 0;
   let totalUpserted = 0;
   let totalSkipped = 0;
   let totalErrors = 0;
+  const sidoSummary = {};
 
   let minBuildSeen = null;
   let maxBuildSeen = null;
 
   for (const ym of months) {
-    await conn.execute(sqlInsYm, [ym]);
+    const monthUpsertedBefore = totalUpserted;
     console.log(`\n[month] ${ym}`);
 
     for (const a of areas) {
@@ -307,11 +328,24 @@ function filterAreasByScope(list, scopeObj) {
 
       // ✅ 드롭다운/필터용 area_dim은 항상 upsert
       const sidoCode = String(storeLawdCd).slice(0, 2);
-      await conn.execute(sqlInsArea, [sidoCode, storeLawdCd, sigunguName, '']);
-      if (guName) await conn.execute(sqlInsArea, [sidoCode, storeLawdCd, sigunguName, guName]);
+      const summary = sidoSummary[sidoCode] || {
+        sidoCode,
+        sidoName,
+        fetches: 0,
+        items: 0,
+        zeroAreas: 0,
+        errors: 0,
+      };
+      sidoSummary[sidoCode] = summary;
+
+      if (conn) {
+        await conn.execute(sqlInsArea, [sidoCode, storeLawdCd, sigunguName, '']);
+        if (guName) await conn.execute(sqlInsArea, [sidoCode, storeLawdCd, sigunguName, guName]);
+      }
 
       try {
         totalFetch++;
+        summary.fetches++;
 
         if (debugApiTotal) {
           const r = await fetchPage({ lawdCd: reqLawdCd, dealYmd: ym, pageNo: 1, numOfRows: 1 });
@@ -320,9 +354,16 @@ function filterAreasByScope(list, scopeObj) {
 
         const items = await fetchAll({ lawdCd: reqLawdCd, dealYmd: ym });
         totalItems += items.length;
+        summary.items += items.length;
+        if (items.length === 0) summary.zeroAreas++;
 
         const guLabel = guName ? guName : (a.sido === '경기도' ? '전체' : '');
         console.log(`[fetch] ${ym} ${sidoName} ${sigunguName}${guLabel ? ' ' + guLabel : ''} req=${reqLawdCd} store=${storeLawdCd} items=${items.length}`);
+
+        if (countOnly) {
+          await sleep(throttleMs);
+          continue;
+        }
 
         let upserted = 0;
         let skipped = 0;
@@ -474,13 +515,25 @@ function filterAreasByScope(list, scopeObj) {
         await sleep(throttleMs);
       } catch (err) {
         totalErrors++;
+        summary.errors++;
         console.error(`[error] ym=${ym} ${sidoName} ${sigunguName} req=${reqLawdCd} -> ${err.message}`);
         await sleep(Math.max(400, throttleMs));
       }
     }
+
+    if (conn) {
+      const monthRows = totalUpserted - monthUpsertedBefore;
+      if (monthRows > 0 && publishMonth) {
+        await conn.execute(sqlInsYm, [ym]);
+      } else if (monthRows > 0) {
+        console.warn(`[month:partial] ym=${ym} was not added to re_trade_deal_ym; use --publishMonth=1 only after full-month verification`);
+      } else {
+        console.warn(`[month:empty] ym=${ym} was not added to re_trade_deal_ym because no rows were upserted`);
+      }
+    }
   }
 
-  if (minBuildSeen != null || maxBuildSeen != null) {
+  if (conn && (minBuildSeen != null || maxBuildSeen != null)) {
     await conn.execute(
       `
       UPDATE re_trade_meta
@@ -493,8 +546,13 @@ function filterAreasByScope(list, scopeObj) {
     );
   }
 
-  await conn.end();
-  console.log(`\n[done] fetch=${totalFetch} totalItems=${totalItems} totalUpserted=${totalUpserted} totalSkipped=${totalSkipped} totalErrors=${totalErrors}`);
+  for (const code of Object.keys(sidoSummary).sort()) {
+    const s = sidoSummary[code];
+    console.log(`[sido:summary] code=${s.sidoCode} name=${s.sidoName} fetches=${s.fetches} items=${s.items} zeroAreas=${s.zeroAreas} errors=${s.errors}`);
+  }
+
+  if (conn) await conn.end();
+  console.log(`\n[done] mode=${countOnly ? 'countOnly' : 'upsert'} fetch=${totalFetch} totalItems=${totalItems} totalUpserted=${totalUpserted} totalSkipped=${totalSkipped} totalErrors=${totalErrors}`);
 })().catch(e => {
   console.error('[fatal]', e);
   process.exit(1);

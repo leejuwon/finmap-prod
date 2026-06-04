@@ -175,7 +175,8 @@ function getLatestKoPostsFromContent({ limit = RSS_ITEM_LIMIT }) {
         return null;
       }
 
-      const slug = String(data.slug || fileSlug).trim();
+      // Post routes and the XML sitemap use the markdown filename as the canonical slug.
+      const slug = fileSlug;
       const linkPath = `/posts/${category}/${slug}`;
       const loc = `${SITE_URL}${linkPath}`;
       const published = normalizeDate(data.datePublished || data.date, fallbackDate);

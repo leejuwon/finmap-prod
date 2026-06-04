@@ -7,9 +7,6 @@ const matter = require('gray-matter');
 const SITE_URL = "https://www.finmaphub.com";
 const POSTS_ROOT = path.join(process.cwd(), 'content', 'posts');
 
-// 빌드 시각(정적 페이지 lastmod 용)
-const BUILD_TIME_ISO = new Date().toISOString();
-
 function walkDir(dir) {
   if (!fs.existsSync(dir)) return [];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -60,6 +57,10 @@ function buildPostsLastmodMap() {
       fm = {};
     }
 
+    if (fm.draft === true || fm.noindex === true || String(fm.robots || '').includes('noindex')) {
+      continue;
+    }
+
     // 1) dateModified 우선
     let lastmod = normalizeDateToIso(fm.dateModified);
 
@@ -72,14 +73,14 @@ function buildPostsLastmodMap() {
         const st = fs.statSync(fullPath);
         lastmod = new Date(st.mtime).toISOString();
       } catch (e) {
-        lastmod = BUILD_TIME_ISO;
+        lastmod = null;
       }
     }
 
     // loc 만들기 (네 사이트 라우팅 규칙)
     const prefix = lang === 'en' ? '/en' : '';
     const loc = `${prefix}/posts/${categorySlug}/${slug}`;
-    map.set(loc, lastmod);
+    if (lastmod) map.set(loc, lastmod);
   }
 
   return map;
@@ -113,7 +114,7 @@ const CATEGORY_LASTMOD_MAP = buildCategoryLastmodMap(POSTS_LASTMOD_MAP);
 
 function ymToIso(ym) {
   const s = String(ym || '');
-  if (!/^\d{6}$/.test(s)) return BUILD_TIME_ISO;
+  if (!/^\d{6}$/.test(s)) return null;
   return `${s.slice(0, 4)}-${s.slice(4, 6)}-01T00:00:00.000Z`;
 }
 
@@ -222,6 +223,7 @@ module.exports = {
   trailingSlash: false,
   generateIndexSitemap: true,
   sitemapSize: 2000,
+  autoLastmod: false,
   generateRobotsTxt: false, // ✅ robots는 직접 public/robots.txt로 관리
 
   changefreq: "daily",
@@ -278,13 +280,8 @@ module.exports = {
     // ---- apartment details with actual stats data ----
     if (!lastmod) lastmod = APT_LASTMOD_MAP.get(loc);
 
-    // posts인데 맵에 없으면(예: 동적/잘못된) 빌드 시각으로라도 넣기
-    if (!lastmod && (loc.startsWith('/posts/') || loc.startsWith('/en/posts/'))) {
-      lastmod = BUILD_TIME_ISO;
-    }
-
-    // ---- 나머지 페이지는 빌드 시각 사용 ----
-    if (!lastmod) lastmod = BUILD_TIME_ISO;
+    // 콘텐츠 파일과 연결되지 않는 post URL은 canonical sitemap에서 제외
+    if (!lastmod && (loc.startsWith('/posts/') || loc.startsWith('/en/posts/'))) return null;
 
     // ---- hreflang alternateRefs(ko/en) ----
     const alternateRefs = buildAlternateRefs(loc);
@@ -293,7 +290,7 @@ module.exports = {
       loc,
       changefreq: config.changefreq,
       priority: config.priority,
-      lastmod,
+      ...(lastmod ? { lastmod } : {}),
       ...(alternateRefs ? { alternateRefs } : {}),
     };
   },
