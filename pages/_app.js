@@ -9,6 +9,8 @@ import '../styles/globals.css';
 const ADSENSE_PATHS = new Set([
   '/posts/[category]/[slug]',
   '/tools/fire-calculator',
+  '/tools/dsr-ltv-calculator',
+  '/tools/compound-interest',
   '/market/real-estate',
 ]);
 

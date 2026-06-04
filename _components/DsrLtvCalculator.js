@@ -1,6 +1,9 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { calculateDsrLtvAffordability } from "../lib/calculators/dsrLtv";
+import ResultAdSlot from "./ResultAdSlot";
+import { AD_SLOTS } from "../config/adSlots";
+import { trackGaEvent } from "../utils/analytics";
 
 const DEFAULT_FORM = {
   assets: 20000,
@@ -107,6 +110,11 @@ const RELATED_LINKS = [
     ko: "대시보드로 내 예산대 아파트 찾는 방법",
     en: "Find homes with the dashboard",
   },
+  {
+    href: "/posts/personalFinance/cash-100m-200m-300m-apartment-budget",
+    ko: "현금 1억·2억·3억 아파트 예산표",
+    en: "Apartment budgets with KRW 100M, 200M, or 300M cash",
+  },
 ];
 
 const TEXT = {
@@ -154,7 +162,9 @@ const TEXT = {
     dashboardBody:
       "계산된 안전 탐색 가격대는 {safeLow} ~ {safeHigh}입니다. 부동산 대시보드에서 서울·경기·인천 거래량과 가격 분포를 비교해 보세요.",
     dashboardButton: "부동산 대시보드에서 보기",
-    interpretationTitle: "결과 해석",
+    interpretationTitle: "왜 이 금액인가",
+    whyAmountBody:
+      "최종 구매 가능 가격은 DSR 기준 가격 상한과 LTV·자기자금 기준 가격 상한 중 더 낮은 금액으로 계산됩니다.",
     failedItems: "부족 항목",
     sensitivityTitle: "민감도 분석",
     sensitivityDesc: "금리, DSR, 기존 월상환액, LTV를 바꿨을 때 같은 계산 코어로 다시 계산한 결과입니다.",
@@ -233,7 +243,9 @@ const TEXT = {
     dashboardBody:
       "Your safer search range is {safeLow} ~ {safeHigh}. Compare transaction volume and price distribution in the real estate dashboard.",
     dashboardButton: "Open real estate dashboard",
-    interpretationTitle: "How to read this",
+    interpretationTitle: "Why this amount?",
+    whyAmountBody:
+      "The final affordable price is the lower of the DSR-based price limit and the LTV/cash-based price limit.",
     failedItems: "Short items",
     sensitivityTitle: "Sensitivity analysis",
     sensitivityDesc: "The same calculation core recalculates the result after changing rate, DSR, existing monthly debt, and LTV.",
@@ -437,14 +449,36 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
   const lang = locale === "en" ? "en" : "ko";
   const t = TEXT[lang];
   const [form, setForm] = useState(DEFAULT_FORM);
+  const calculationEventTimerRef = useRef(null);
+
+  useEffect(
+    () => () => {
+      if (calculationEventTimerRef.current) clearTimeout(calculationEventTimerRef.current);
+    },
+    []
+  );
+
+  const scheduleCalculationEvent = (interaction) => {
+    if (calculationEventTimerRef.current) clearTimeout(calculationEventTimerRef.current);
+    calculationEventTimerRef.current = setTimeout(() => {
+      trackGaEvent("dsr_ltv_calculate", {
+        source_tool: "dsr_ltv",
+        locale: lang,
+        interaction,
+        has_result: true,
+      });
+    }, 600);
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+    scheduleCalculationEvent("input_change");
   };
 
   const applyPreset = (values) => {
     setForm(values);
+    scheduleCalculationEvent("preset");
   };
 
   const result = useMemo(() => {
@@ -490,6 +524,13 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
           },
         }
       : "/market/real-estate";
+  const handleDashboardClick = (location) => {
+    trackGaEvent("dsr_to_dashboard_click", {
+      source_tool: "dsr_ltv",
+      locale: lang,
+      location,
+    });
+  };
 
   return (
     <div className="grid gap-6">
@@ -551,7 +592,12 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
                 : "Simplified estimate using equal principal-and-interest payments."}
             </p>
           </div>
-          <Link href={dashboardHref} locale={lang} className="btn-secondary inline-flex justify-center">
+          <Link
+            href={dashboardHref}
+            locale={lang}
+            className="btn-secondary inline-flex justify-center"
+            onClick={() => handleDashboardClick("result_header")}
+          >
             {t.dashboardButton}
           </Link>
         </div>
@@ -580,9 +626,10 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
           />
         </div>
 
-        <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4">
+        <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4" data-dsr-section="why-amount">
           <h3 className="break-words text-base font-semibold">{t.interpretationTitle}</h3>
           <div className="mt-2 grid gap-2 text-sm text-slate-700">
+            <p className="break-words">{t.whyAmountBody}</p>
             <p className="break-words">{getBottleneckInterpretation(result, t)}</p>
             <p className="break-words">
               {result.candidateAffordable ? t.candidateAffordableInterpretation : `${t.failedItems}: ${failedCheckLabels.join(" / ") || "-"}`}
@@ -629,7 +676,12 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
               .replace("{safeHigh}", formatKrw(result.safeSearchPriceHigh, lang))}
           </p>
           <div className="mt-4">
-            <Link href={dashboardHref} locale={lang} className="btn-primary inline-flex justify-center">
+            <Link
+              href={dashboardHref}
+              locale={lang}
+              className="btn-primary inline-flex justify-center"
+              onClick={() => handleDashboardClick("result_dashboard_cta")}
+            >
               {t.dashboardButton}
             </Link>
           </div>
@@ -651,6 +703,13 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
           </div>
         </div>
       </section>
+
+      <ResultAdSlot
+        slot={AD_SLOTS.inArticle1}
+        tool="dsr_ltv"
+        position="summary_after"
+        locale={lang}
+      />
 
       <section className="card min-w-0" data-dsr-section="sensitivity">
         <h2 className="break-words text-lg font-semibold">{t.sensitivityTitle}</h2>
@@ -687,6 +746,13 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
           </table>
         </div>
       </section>
+
+      <ResultAdSlot
+        slot={AD_SLOTS.inArticle2}
+        tool="dsr_ltv"
+        position="sensitivity_after"
+        locale={lang}
+      />
 
       <section className="rounded-xl border border-red-100 bg-red-50 p-4 text-sm text-red-950">
         <h2 className="font-semibold">{t.disclaimerTitle}</h2>

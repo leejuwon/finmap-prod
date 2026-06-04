@@ -182,8 +182,8 @@ function dedupeOptions(list) {
 
 const TEXT = {
   ko: {
-    title: '대한민국 아파트 실거래 대시보드',
-    subtitle: '국토부 실거래(아파트 매매) 기반 단지 Top 랭킹 — 조건 필터 → Top 기준으로 랭킹',
+    title: '서울·경기·인천 아파트 실거래 대시보드',
+    subtitle: '서울·경기·인천 국토부 실거래(아파트 매매) 기반 단지 Top 랭킹 — 조건 필터 → Top 기준으로 랭킹',
     sido: '시도',
     sigungu: '시군구',
     timeframe: '집계',
@@ -259,11 +259,11 @@ const TEXT = {
     },
     tip: 'Tip: 경기도는 “수원시 전체 / 수원시 영통구”처럼 구가 있는 도시가 따로 뜹니다.',
     seoDesc:
-      '대한민국 아파트 실거래(국토부) 기반 Top 랭킹 대시보드. 지역/기간/평형/년식 필터로 단지별 거래량·중위·평균·평단가를 비교하세요.',
+      '서울·경기·인천 아파트 실거래(국토부) 기반 Top 랭킹 대시보드. 지역/기간/평형/년식 필터로 단지별 거래량·중위·평균·평단가를 비교하세요.',
   },
   en: {
-    title: 'South Korea Apartment Transaction Dashboard (KRW)',
-    subtitle: 'Official RTMS-based apartment sale data — ranked Top complexes by your metric',
+    title: 'Seoul, Gyeonggi & Incheon Apartment Transaction Dashboard (KRW)',
+    subtitle: 'Official RTMS-based apartment sale data for Seoul, Gyeonggi, and Incheon — ranked by your metric',
     sido: 'Province/Metro',
     sigungu: 'City/District',
     timeframe: 'Timeframe',
@@ -338,7 +338,7 @@ const TEXT = {
     },
     tip: 'Tip: In Gyeonggi, cities with districts show “City All / City District” options.',
     seoDesc:
-      'A KRW-based dashboard for South Korea apartment sale transactions. Filter by region/period/size/build-year and compare transactions, median/average price, and price per pyeong.',
+      'A KRW-based apartment transaction dashboard for Seoul, Gyeonggi, and Incheon. Filter by region/period/size/build-year and compare volume, median/average price, and price per pyeong.',
   },
 };
 
@@ -1277,7 +1277,7 @@ export default function RealEstatePage() {
         image="https://res.cloudinary.com/dwonflmnn/image/upload/v1769749571/blog/insight/apt-dashboard-home-goal-roadmap-kr-img1.png"
         appName={seoTitle}
         appCategory="FinanceApplication"
-        about={{ "@type": "Place", name: "South Korea" }}
+        about={{ "@type": "Place", name: "Seoul Capital Area, South Korea" }}
         keywords={
           lang === "en"
             ? "Seoul apartment prices, Seoul Top 100, Gangnam apartment prices, Mayongseong, Songpa, Magok Korea real estate transactions"
@@ -1793,7 +1793,7 @@ export default function RealEstatePage() {
               {rows.map((r, idx) => {
                 const interval = 7; // 6~8개 사이 간격 유지
                 const adIndex = Math.floor((idx + 1) / interval);
-                const shouldInsert = (idx + 1) % interval === 0 && (idx + 1) < rows.length && adIndex <= 3;
+                const shouldInsert = (idx + 1) % interval === 0 && (idx + 1) < rows.length && adIndex <= 1;
 
                 return (
                   <Fragment key={r.apt_key || `${r.lawd_cd}-${r.apt_name}-${idx}`}>
@@ -1953,6 +1953,36 @@ export default function RealEstatePage() {
                 minHeight={160}
                 className="mt-6"
               />
+            )}
+
+            {!loading && rows.length > 0 && (
+              <section className="mt-10 flex min-w-0 flex-col gap-4 rounded-lg border border-blue-200 bg-blue-50 p-5 sm:flex-row sm:items-center sm:justify-between">
+                <div className="min-w-0">
+                  <h2 className="break-words text-base font-semibold text-blue-950">
+                    {lang === 'en' ? 'Check your budget before comparing complexes' : '단지 비교 전, 내 예산 범위를 먼저 확인하세요'}
+                  </h2>
+                  <p className="mt-1 break-words text-sm text-blue-900">
+                    {lang === 'en'
+                      ? 'Estimate a safer apartment search range with your assets, income, LTV, and DSR assumptions.'
+                      : '보유자산·소득·LTV·DSR 입력값으로 더 보수적인 아파트 탐색 가격대를 계산할 수 있습니다.'}
+                  </p>
+                </div>
+                <Link
+                  href="/tools/dsr-ltv-calculator"
+                  locale={lang}
+                  className="btn-secondary inline-flex shrink-0 justify-center"
+                  onClick={() =>
+                    trackGaEvent("dashboard_to_dsr_click", {
+                      source_page: "real_estate",
+                      locale: lang,
+                      result_count: rows.length,
+                      location: "result_bottom",
+                    })
+                  }
+                >
+                  {lang === 'en' ? 'Open DSR/LTV calculator' : 'DSR/LTV 계산기 열기'}
+                </Link>
+              </section>
             )}
           </div>
         </div>      

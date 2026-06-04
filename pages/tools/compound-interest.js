@@ -13,6 +13,7 @@ import CompoundCTA from "../../_components/CompoundCTA";
 import ValueDisplay, { formatMoneyShort } from "../../_components/ValueDisplay";
 import ToolCta from "../../_components/ToolCta";
 import { ToolCitationBox, ToolSharePanel } from "../../_components/ToolBacklinkKit";
+import ResultAdSlot from "../../_components/ResultAdSlot";
 import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
 import {
   buildToolPresetQuery,
@@ -22,6 +23,7 @@ import {
   writeToolRecent,
 } from "../../utils/toolPreset";
 import { trackGaEvent } from "../../utils/analytics";
+import { AD_SLOTS } from "../../config/adSlots";
 
 import {
   calcCompound,
@@ -203,7 +205,7 @@ export default function CompoundPage() {
     () => ({
       title:
         locale === "ko"
-          ? "복리 계산기"
+          ? "복리 계산기 | 월 적립·세금·수수료 미래가치 계산"
           : "Compound Interest Calculator: Monthly Contributions, Tax & Future Value",
       desc:
         locale === "ko"
@@ -707,6 +709,30 @@ export default function CompoundPage() {
               </div>
             </div>
           </div>
+
+          <div className="mt-4 border-t border-slate-200 pt-4">
+            <h3 className="text-sm font-semibold">
+              {locale === "ko" ? "빠르게 비교해볼 기본 예시" : "Quick starting examples"}
+            </h3>
+            <ul className="mt-2 grid gap-2 text-sm text-slate-600 md:grid-cols-3">
+              {(locale === "ko"
+                ? [
+                    "원금 1,000만원 · 월 30만원 · 연 5% · 10년",
+                    "월 50만원 · 연 7% · 20년",
+                    "원금 5,000만원 · 연 4% · 15년",
+                  ]
+                : [
+                    "$10,000 principal · $300/month · 5% · 10 years",
+                    "$500/month · 7% · 20 years",
+                    "$50,000 principal · 4% · 15 years",
+                  ]
+              ).map((example) => (
+                <li key={example} className="border-l-2 border-blue-200 pl-3">
+                  {example}
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>        
 
         {/* Form */}
@@ -741,6 +767,13 @@ export default function CompoundPage() {
                     <CompoundDetailSummary result={result} locale={numberLocale} currency={currency} />
                   </div>
 
+                  <ResultAdSlot
+                    slot={AD_SLOTS.inArticle1}
+                    tool="compound"
+                    position="summary_after"
+                    locale={locale}
+                  />
+
                   {/* Chart */}
                   <div ref={(el) => (sectionEls.current.chart = el)} className="scroll-mt-24">
                     <div className="card">
@@ -759,6 +792,13 @@ export default function CompoundPage() {
                       />
                     </div>
                   </div>
+
+                  <ResultAdSlot
+                    slot={AD_SLOTS.inArticle2}
+                    tool="compound"
+                    position="chart_after"
+                    locale={locale}
+                  />
 
                   {/* Insights */}
                   <div ref={(el) => (sectionEls.current.insight = el)} className="scroll-mt-24">
@@ -1013,6 +1053,13 @@ export default function CompoundPage() {
                   {/* Summary (확장 버전) */}
                   <CompoundDetailSummary result={result} locale={numberLocale} currency={currency} />
 
+                  <ResultAdSlot
+                    slot={AD_SLOTS.inArticle1}
+                    tool="compound"
+                    position="summary_after"
+                    locale={locale}
+                  />
+
                   {/* Chart */}
                   <div className="card">
                     <div className="flex items-center gap-3 mb-2">
@@ -1029,6 +1076,13 @@ export default function CompoundPage() {
                       monthly={invest.monthly}
                     />
                   </div>
+
+                  <ResultAdSlot
+                    slot={AD_SLOTS.inArticle2}
+                    tool="compound"
+                    position="chart_after"
+                    locale={locale}
+                  />
 
                   {/* ==== 복리 시뮬레이션 (3가지 시나리오) ==== */}
                   <ScenarioPanel

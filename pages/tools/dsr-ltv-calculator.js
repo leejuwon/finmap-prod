@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import SeoHead from "../../_components/SeoHead";
 import DsrLtvCalculator from "../../_components/DsrLtvCalculator";
 import { ToolCitationBox, ToolSharePanel } from "../../_components/ToolBacklinkKit";
+import { trackGaEvent } from "../../utils/analytics";
 
 export function JsonLd({ data }) {
   return (
@@ -188,7 +189,18 @@ export default function DsrLtvCalculatorPage() {
           <h2 className="break-words text-lg font-semibold">{t.relatedTitle}</h2>
           <p className="mt-2 break-words text-sm text-slate-600">{t.relatedLead}</p>
           <div className="mt-4 flex flex-wrap gap-2">
-            <Link href="/market/real-estate" locale={locale} className="btn-primary">
+            <Link
+              href="/market/real-estate"
+              locale={locale}
+              className="btn-primary"
+              onClick={() =>
+                trackGaEvent("dsr_to_dashboard_click", {
+                  source_tool: "dsr_ltv",
+                  locale,
+                  location: "related_section",
+                })
+              }
+            >
               {locale === "ko" ? "부동산 대시보드 열기" : "Open real estate dashboard"}
             </Link>
             <Link
@@ -218,6 +230,13 @@ export default function DsrLtvCalculatorPage() {
               className="btn-secondary"
             >
               {locale === "ko" ? "내 집 마련 목표 로드맵" : "Home-buying roadmap"}
+            </Link>
+            <Link
+              href="/posts/personalFinance/cash-100m-200m-300m-apartment-budget"
+              locale={locale}
+              className="btn-secondary"
+            >
+              {locale === "ko" ? "현금 1억·2억·3억 아파트 예산표" : "Apartment budget by available cash"}
             </Link>
           </div>
         </section>
