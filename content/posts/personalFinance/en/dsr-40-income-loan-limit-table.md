@@ -4,7 +4,7 @@ link: "/en/posts/personalFinance/dsr-40-income-loan-limit-table"
 title: "DSR 40% by Income: How Much Korean Mortgage Principal Can It Support?"
 description: "A KRW reference table estimating mortgage capacity by income under a user-entered 40% DSR, 4.0% annual rate, 30-year equal-payment loan, and no existing debt."
 datePublished: "2026-06-01"
-dateModified: "2026-06-02"
+dateModified: "2026-06-04"
 seoTitle: "DSR 40% Loan Capacity by Income | Korea Mortgage Affordability"
 seoDescription: "Estimate Korean mortgage capacity by income using a 40% DSR example, then use the DSR/LTV calculator and real estate dashboard to check a safer KRW price range."
 category: "Personal Finance"
@@ -16,6 +16,8 @@ lang: "en"
 ---
 
 When a buyer asks, “How much mortgage can this income support?”, the answer starts with monthly repayment capacity, not the apartment price. In a Korean housing context, DSR is one of the key ways to frame that repayment capacity.
+
+**Assumptions used throughout this article:** DSR 40%, a 4.0% annual rate, a 30-year equal monthly principal-and-interest loan, and no existing debt. The figures are quick estimates and may differ from an actual lender review.
 
 This article uses a simple user-entered DSR 40% example with a 4.0% annual rate, 30-year equal-payment mortgage, and no existing debt. To test your own cash, LTV, existing debt, and target home price, open the [DSR/LTV Calculator](/en/tools/dsr-ltv-calculator).
 
@@ -45,6 +47,8 @@ The FinMap calculator does not automatically apply Korean mortgage policy update
 
 ## DSR 40% Loan Capacity by Annual Income
 
+> **Use this table as a quick reference.** To include existing debt, available cash, and LTV, use the [DSR/LTV Calculator](/en/tools/dsr-ltv-calculator).
+
 | Annual income | Annual payment capacity | Monthly payment capacity | Estimated loan capacity |
 | --- | ---: | ---: | ---: |
 | KRW 30M | KRW 12.00M | KRW 1.00M | KRW 209.46M |
@@ -55,6 +59,8 @@ The FinMap calculator does not automatically apply Korean mortgage policy update
 | KRW 80M | KRW 32.00M | KRW 2.67M | KRW 558.56M |
 | KRW 100M | KRW 40.00M | KRW 3.33M | KRW 698.20M |
 | KRW 120M | KRW 48.00M | KRW 4.00M | KRW 837.84M |
+
+> **Calculate with your own constraints:** [Enter income, existing debt, cash, and LTV in the DSR/LTV Calculator](/en/tools/dsr-ltv-calculator).
 
 This is the DSR side only. Actual apartment affordability also depends on LTV, available cash, closing costs, and property-specific underwriting.
 
@@ -83,7 +89,9 @@ The key point is simple: existing debt consumes DSR room. Credit loans, auto loa
 | LTV/cash price limit | KRW 571.43M |
 | Safer search range | KRW 457.14M ~ KRW 514.29M |
 
-In this example, cash, LTV, and closing costs bind before income-based repayment capacity. You can take this safer range to the [Real Estate Dashboard](/en/market/real-estate) and see where actual Seoul, Gyeonggi, and Incheon transactions cluster.
+In this example, cash, LTV, and closing costs bind before income-based repayment capacity. The link below preloads a KRW 457M-KRW 514M median-price filter so you can immediately see where actual Seoul, Gyeonggi, and Incheon transactions cluster.
+
+> **Do not stop at the loan limit. Compare it with actual transaction price ranges:** [Check complexes around KRW 457M-KRW 514M in the Real Estate Dashboard](/en/market/real-estate?sido=all&priceMetric=median_price&priceMin=4.57&priceMax=5.14).
 
 ## Misunderstanding Box: DSR Capacity Is Not the Home Price
 
@@ -116,40 +124,25 @@ Use the [DSR/LTV Calculator](/en/tools/dsr-ltv-calculator) for your own assumpti
 
 ## FAQ
 
-### Is DSR 40% a live Korean policy setting?
+### What does DSR 40% mean?
 
-This article uses 40% as an example input. FinMap does not automatically apply policy updates. Enter the DSR and LTV assumptions you want to test.
+DSR 40% means using 40% of annual income as the annual principal-and-interest payment limit in this example. It is an input assumption, not a promise that the same figure applies to every borrower or lender.
 
-### Is the table a bank approval schedule?
+### Why does the income-based loan limit change with interest rates?
 
-No. It is a simulation using a 4.0% rate, 30-year equal-payment loan, and no existing debt. Lender review can differ.
+At the same monthly payment capacity, a higher interest rate leaves less room for principal. This table assumes 4.0%, so changing the rate changes the estimated loan capacity.
 
-### How should I enter existing debt?
+### What happens if I already have debt?
 
-Add the monthly repayment amounts for existing loans and enter them as existing monthly debt payments in the calculator.
+Existing principal-and-interest payments consume DSR capacity first, reducing the payment room and estimated principal available for a new mortgage. Add those monthly payments in the calculator.
 
 ### Which matters more, DSR or LTV?
 
 Both matter. DSR tests income-based repayment capacity; LTV tests loan size relative to property value. Cash and transaction costs can be equally binding.
 
-### What is the safer search range?
+### Why can the table differ from an actual mortgage review?
 
-It is 80-90% of the estimated maximum affordable purchase price. It is meant as a conservative range before checking real transactions.
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "DSR 40% by Income: How Much Korean Mortgage Principal Can It Support?",
-  "description": "A KRW reference table estimating mortgage capacity by income under a user-entered 40% DSR, 4.0% annual rate, 30-year equal-payment loan, and no existing debt.",
-  "inLanguage": "en",
-  "datePublished": "2026-06-01",
-  "dateModified": "2026-06-02",
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" },
-  "mainEntityOfPage": "https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table"
-}
-</script>
+The table uses a simple 4.0% rate, 30-year equal-payment loan, and no-existing-debt scenario. Actual review may differ because of recognized income, existing debt, credit, collateral valuation, lender rules, and location-specific conditions.
 
 <script type="application/ld+json">
 {
@@ -158,18 +151,18 @@ It is 80-90% of the estimated maximum affordable purchase price. It is meant as 
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is DSR 40% a live Korean policy setting?",
-      "acceptedAnswer": { "@type": "Answer", "text": "This article uses 40% as an example input. FinMap does not automatically apply policy updates. Enter the DSR and LTV assumptions you want to test." }
+      "name": "What does DSR 40% mean?",
+      "acceptedAnswer": { "@type": "Answer", "text": "DSR 40% means using 40% of annual income as the annual principal-and-interest payment limit in this example. It is an input assumption, not a promise that the same figure applies to every borrower or lender." }
     },
     {
       "@type": "Question",
-      "name": "Is the table a bank approval schedule?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. It is a simulation using a 4.0% rate, 30-year equal-payment loan, and no existing debt. Lender review can differ." }
+      "name": "Why does the income-based loan limit change with interest rates?",
+      "acceptedAnswer": { "@type": "Answer", "text": "At the same monthly payment capacity, a higher interest rate leaves less room for principal. This table assumes 4.0%, so changing the rate changes the estimated loan capacity." }
     },
     {
       "@type": "Question",
-      "name": "How should I enter existing debt?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Add the monthly repayment amounts for existing loans and enter them as existing monthly debt payments in the calculator." }
+      "name": "What happens if I already have debt?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Existing principal-and-interest payments consume DSR capacity first, reducing the payment room and estimated principal available for a new mortgage. Add those monthly payments in the calculator." }
     },
     {
       "@type": "Question",
@@ -178,8 +171,8 @@ It is 80-90% of the estimated maximum affordable purchase price. It is meant as 
     },
     {
       "@type": "Question",
-      "name": "What is the safer search range?",
-      "acceptedAnswer": { "@type": "Answer", "text": "It is 80-90% of the estimated maximum affordable purchase price. It is meant as a conservative range before checking real transactions." }
+      "name": "Why can the table differ from an actual mortgage review?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The table uses a simple 4.0% rate, 30-year equal-payment loan, and no-existing-debt scenario. Actual review may differ because of recognized income, existing debt, credit, collateral valuation, lender rules, and location-specific conditions." }
     }
   ]
 }

@@ -11,6 +11,9 @@ const ADSENSE_PATHS = new Set([
   '/tools/fire-calculator',
   '/tools/dsr-ltv-calculator',
   '/tools/compound-interest',
+  '/tools/goal-simulator',
+  '/tools/dca-calculator',
+  '/tools/cagr-calculator',
   '/market/real-estate',
 ]);
 

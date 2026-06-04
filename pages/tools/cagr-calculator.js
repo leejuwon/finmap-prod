@@ -8,8 +8,10 @@ import CompoundCTA from "../../_components/CompoundCTA";
 import CagrForm from "../../_components/CagrForm";
 import CagrChart from "../../_components/CagrChart";
 import CagrYearTable from "../../_components/CagrYearTable";
+import ResultAdSlot from "../../_components/ResultAdSlot";
 import ToolCta from "../../_components/ToolCta"; // ✅ (기존 파일에서 사용하지만 import 누락 가능성)
 import { ToolCitationBox, ToolSharePanel } from "../../_components/ToolBacklinkKit";
+import { AD_SLOTS } from "../../config/adSlots";
 import { numberFmt } from "../../lib/compound";
 import { calcCagr, formatYearsText } from "../../lib/cagr";
 import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
@@ -752,6 +754,13 @@ export default function CagrCalculatorPage() {
                 </div>
               </div>
 
+              <ResultAdSlot
+                slot={AD_SLOTS.inArticle1}
+                tool="cagr"
+                position="summary_after"
+                locale={locale}
+              />
+
               <section className="card min-w-0 max-w-full">
                 <div className="mb-4">
                   <h2 className="text-lg font-semibold">{cagrUx.summaryTitle}</h2>
@@ -915,6 +924,13 @@ export default function CagrCalculatorPage() {
                 </div>
                 <CagrChart result={result} locale={numberLocale} currency={currency} />
               </div>
+
+              <ResultAdSlot
+                slot={AD_SLOTS.inArticle2}
+                tool="cagr"
+                position="chart_after"
+                locale={locale}
+              />
 
               <CagrYearTable
                 result={result}

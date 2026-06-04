@@ -4,7 +4,7 @@ link: "/en/posts/personalFinance/cash-100m-200m-300m-apartment-budget"
 title: "Cash KRW 100M, 200M, 300M: What Apartment Budget Can It Support in Korea?"
 description: "A Korean housing affordability simulation showing how KRW 100M, 200M, and 300M of cash interact with DSR, LTV, and transaction costs."
 datePublished: "2026-06-02"
-dateModified: "2026-06-02"
+dateModified: "2026-06-04"
 seoTitle: "Cash KRW 100M 200M 300M Apartment Budget | Korea DSR LTV"
 seoDescription: "Estimate what apartment budget KRW 100M, 200M, or 300M of cash can support under user-entered Korean DSR/LTV assumptions, then compare real transaction prices."
 category: "Personal Finance"
@@ -16,6 +16,8 @@ lang: "en"
 ---
 
 Mortgage affordability is not only an income question. In the Korean housing market, a buyer can have enough DSR room and still be limited by cash, LTV, and transaction costs.
+
+**Assumptions used throughout this article:** KRW 100M, 200M, and 300M of cash, 70% LTV, and a 5% transaction-cost rate. DSR must be checked separately using income and existing debt, and the estimates may differ from an actual purchase budget.
 
 This article compares KRW 100 million, KRW 200 million, and KRW 300 million of cash using the same DSR/LTV simulation logic used by the [DSR/LTV Calculator](/en/tools/dsr-ltv-calculator). Enter your own cash, reserve cash, LTV, DSR, and target apartment price there before using these numbers as a reference.
 
@@ -46,11 +48,15 @@ FinMap does not automatically apply Korean mortgage policy changes. The calculat
 
 ## Purchase Budget by Cash on Hand
 
-| Cash on hand | Cash/LTV price limit | DSR price limit | Final affordable price | Bottleneck |
+> **Use this as a quick cash-based reference.** To include income, existing debt, and DSR, use the [DSR/LTV Calculator](/en/tools/dsr-ltv-calculator).
+
+| Cash on hand | Cash/LTV price limit | DSR price limit | Estimated price limit | Bottleneck |
 | ---: | ---: | ---: | ---: | --- |
 | KRW 100M | KRW 285.71M | KRW 598.46M | KRW 285.71M | Cash/LTV |
 | KRW 200M | KRW 571.43M | KRW 598.46M | KRW 571.43M | Cash/LTV |
 | KRW 300M | KRW 857.14M | KRW 598.46M | KRW 598.46M | DSR |
+
+> **Recalculate with your own constraints:** [Enter cash, income, existing debt, and LTV in the DSR/LTV Calculator](/en/tools/dsr-ltv-calculator).
 
 The first jump, from KRW 100M to KRW 200M of cash, increases the estimated purchase budget sharply. But the next KRW 100M does not keep adding budget at the same pace, because DSR becomes the binding limit.
 
@@ -61,15 +67,33 @@ The first jump, from KRW 100M to KRW 200M of cash, increases the estimated purch
 
 ## Safer Search Range
 
-The calculator's safer search range is 80-90% of the final affordable price. It is meant to give room for price negotiation, fees, maintenance costs, taxes, and underwriting differences.
+The calculator's safer search range is 80-90% of the estimated price limit. It is meant to give room for price negotiation, fees, maintenance costs, taxes, and underwriting differences.
 
-| Cash on hand | Final affordable price | Safer search range |
+| Cash on hand | Estimated price limit | Safer search range |
 | ---: | ---: | ---: |
 | KRW 100M | KRW 285.71M | KRW 228.57M - KRW 257.14M |
 | KRW 200M | KRW 571.43M | KRW 457.14M - KRW 514.29M |
 | KRW 300M | KRW 598.46M | KRW 478.77M - KRW 538.61M |
 
 After calculating your own range in the [DSR/LTV Calculator](/en/tools/dsr-ltv-calculator), use the [Real Estate Dashboard](/en/market/real-estate) to check whether recent transactions actually cluster inside that range.
+
+### KRW 100M Cash: Check Transactions in the KRW 200M Range
+
+Under this article's assumptions, the safer search range is about KRW 228.57M-KRW 257.14M. Compare that range with actual transactions and transaction volume by area and complex.
+
+> **Check actual apartment transactions in this price range:** [Open the dashboard with a KRW 228M-KRW 257M median-price filter](/en/market/real-estate?sido=all&priceMetric=median_price&priceMin=2.28&priceMax=2.57).
+
+### KRW 200M Cash: Compare Transactions Around KRW 450M-KRW 510M
+
+The safer search range is about KRW 457.14M-KRW 514.29M in this example. Because cash and LTV remain binding, recalculate income and existing debt before comparing real transactions.
+
+> **Check actual apartment transactions in this price range:** [Open the dashboard with a KRW 457M-KRW 514M median-price filter](/en/market/real-estate?sido=all&priceMetric=median_price&priceMin=4.57&priceMax=5.14).
+
+### KRW 300M Cash: Check the DSR Bottleneck First
+
+More cash does not raise the range without limit. In this example, DSR caps the safer search range at about KRW 478.77M-KRW 538.61M, so check DSR before reviewing actual complexes.
+
+> **Check actual apartment transactions in this price range:** [Open the dashboard with a KRW 479M-KRW 539M median-price filter](/en/market/real-estate?sido=all&priceMetric=median_price&priceMin=4.79&priceMax=5.39).
 
 <figure>
   <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1780362435/blog/insight/cash_img2-en.png" alt="Safe search range band for a Korean apartment budget after DSR and LTV calculation" />
@@ -128,25 +152,25 @@ Not necessarily. DSR tests repayment capacity. LTV tests the loan-to-home-price 
 
 ## FAQ
 
-### Is KRW 100M enough cash to buy an apartment in Korea?
+### What apartment price can KRW 100M of cash support?
 
-It depends on the target price, LTV input, transaction costs, income, and existing debt. In this example, KRW 100M supports about KRW 286M of purchase price under 70% LTV and 5% extra costs.
+Under this article's 70% LTV and 5% transaction-cost assumptions, the cash/LTV price limit is about KRW 285.71M. Income, existing debt, DSR, and actual costs still need separate review.
 
-### Why does cash become a bottleneck even when DSR passes?
+### Does a higher LTV always mean I can buy a more expensive apartment?
 
-Because the buyer still needs to cover the part not financed by the mortgage plus transaction costs. If LTV is 70% and costs are 5%, the cash need is about 35% of the purchase price.
+No. A higher LTV does not remove DSR, income, existing debt, cash, collateral, or lender-review constraints. Another condition may become the binding limit.
 
-### Does the FinMap calculator apply current Korean mortgage policy automatically?
+### What happens if I do not pass the DSR check?
 
-No. It uses the DSR and LTV values you enter. Check official rules, lender guidance, and your own documents separately.
+If repayment capacity is insufficient under the DSR input, available cash or LTV room may not support the required mortgage. A lower target price or a review of the actual applicable conditions may be necessary.
 
-### Why use the safer search range instead of the maximum purchase price?
+### Why should transaction costs be calculated separately?
 
-The maximum is a boundary under the inputs. The safer search range leaves room for fees, review differences, price changes, and life after the purchase.
+Acquisition tax, brokerage fees, moving, repairs, and other costs may require cash beyond the purchase price. Ignoring them can understate the cash needed after closing.
 
-### Where should I check real apartment prices after calculating?
+### Why can the table differ from the actual purchase budget?
 
-Use the [Real Estate Dashboard](/en/market/real-estate) to compare Seoul, Gyeonggi, and Incheon transaction prices against your safer search range.
+The table is a simulation using fixed LTV, cost, income, and DSR inputs. Actual affordability can differ because of existing debt, recognized income, rates, collateral valuation, lender review, and actual costs.
 
 ## Bottom Line
 
@@ -155,66 +179,46 @@ Run your own numbers in the [DSR/LTV Calculator](/en/tools/dsr-ltv-calculator), 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Cash KRW 100M, 200M, 300M: What Apartment Budget Can It Support in Korea?",
-  "description": "A Korean housing affordability simulation showing how KRW 100M, 200M, and 300M of cash interact with DSR, LTV, and transaction costs.",
-  "datePublished": "2026-06-02",
-  "dateModified": "2026-06-02",
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "mainEntityOfPage": "https://www.finmaphub.com/en/posts/personalFinance/cash-100m-200m-300m-apartment-budget"
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is KRW 100M enough cash to buy an apartment in Korea?",
+      "name": "What apartment price can KRW 100M of cash support?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "It depends on the target price, LTV input, transaction costs, income, and existing debt. In this example, KRW 100M supports about KRW 286M of purchase price under 70% LTV and 5% extra costs."
+        "text": "Under this article's 70% LTV and 5% transaction-cost assumptions, the cash/LTV price limit is about KRW 285.71M. Income, existing debt, DSR, and actual costs still need separate review."
       }
     },
     {
       "@type": "Question",
-      "name": "Why does cash become a bottleneck even when DSR passes?",
+      "name": "Does a higher LTV always mean I can buy a more expensive apartment?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "DSR tests repayment capacity, while LTV and cash determine whether the buyer can fund the down payment and transaction costs. A purchase needs all three checks to work together."
+        "text": "No. A higher LTV does not remove DSR, income, existing debt, cash, collateral, or lender-review constraints. Another condition may become the binding limit."
       }
     },
     {
       "@type": "Question",
-      "name": "Does the FinMap calculator apply current Korean mortgage policy automatically?",
+      "name": "What happens if I do not pass the DSR check?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. It uses the DSR and LTV values entered by the user and estimates an equal monthly principal-and-interest payment."
+        "text": "If repayment capacity is insufficient under the DSR input, available cash or LTV room may not support the required mortgage. A lower target price or a review of the actual applicable conditions may be necessary."
       }
     },
     {
       "@type": "Question",
-      "name": "Why use the safer search range instead of the maximum purchase price?",
+      "name": "Why should transaction costs be calculated separately?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The safer search range is 80-90% of the calculated maximum purchase price. It leaves room for fees, review differences, market changes, and personal liquidity."
+        "text": "Acquisition tax, brokerage fees, moving, repairs, and other costs may require cash beyond the purchase price. Ignoring them can understate the cash needed after closing."
       }
     },
     {
       "@type": "Question",
-      "name": "Where should I check real apartment prices after calculating?",
+      "name": "Why can the table differ from the actual purchase budget?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Use the FinMap Real Estate Dashboard to compare Seoul, Gyeonggi, and Incheon transaction prices against the safer search range."
+        "text": "The table is a simulation using fixed LTV, cost, income, and DSR inputs. Actual affordability can differ because of existing debt, recognized income, rates, collateral valuation, lender review, and actual costs."
       }
     }
   ]

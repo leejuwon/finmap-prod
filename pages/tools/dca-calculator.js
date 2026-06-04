@@ -8,9 +8,11 @@ import CompoundCTA from "../../_components/CompoundCTA";
 import DCAForm from '../../_components/DcaForm';
 import DCAChart from '../../_components/DcaChart';
 import DCAYearTable from '../../_components/DcaYearTable';
+import ResultAdSlot from "../../_components/ResultAdSlot";
 import { formatMoneyAuto } from '../../lib/money';
 import ToolCta from '../../_components/ToolCta';
 import { ToolCitationBox, ToolSharePanel } from "../../_components/ToolBacklinkKit";
+import { AD_SLOTS } from "../../config/adSlots";
 import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
 import {
   buildToolPresetQuery,
@@ -807,6 +809,13 @@ export default function DCACalculatorPage() {
                 </div>
               </div>
 
+              <ResultAdSlot
+                slot={AD_SLOTS.inArticle1}
+                tool="dca"
+                position="summary_after"
+                locale={routeLocale}
+              />
+
               {targetAnalysis && (
                 <section className={`card min-w-0 max-w-full scroll-mt-24 break-words border ${targetAnalysis.reached ? "border-emerald-200 bg-emerald-50" : "border-amber-200 bg-amber-50"}`}>
                   <div className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
@@ -1299,6 +1308,13 @@ export default function DCACalculatorPage() {
                 </div>
                 <DCAChart data={result} locale={numberLocale} currency={currency} />
               </div>
+
+              <ResultAdSlot
+                slot={AD_SLOTS.inArticle2}
+                tool="dca"
+                position="chart_after"
+                locale={routeLocale}
+              />
 
               {/* 연간 요약 테이블 */}
               <div ref={(el) => (sectionEls.current.insight = el)} className="scroll-mt-24">

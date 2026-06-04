@@ -8,9 +8,11 @@ import CompoundCTA from "../../_components/CompoundCTA";
 import GoalForm from '../../_components/GoalForm';
 import GoalChart from '../../_components/GoalChart';
 import GoalYearTable from '../../_components/GoalYearTable';
+import ResultAdSlot from "../../_components/ResultAdSlot";
 import { numberFmt } from '../../lib/compound';
 import ToolCta from "../../_components/ToolCta";
 import { ToolCitationBox, ToolSharePanel } from "../../_components/ToolBacklinkKit";
+import { AD_SLOTS } from "../../config/adSlots";
 import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
 import {
   buildToolPresetQuery,
@@ -1665,6 +1667,13 @@ export default function GoalSimulatorPage() {
                 </div>
               </div>
 
+              <ResultAdSlot
+                slot={AD_SLOTS.inArticle1}
+                tool="goal"
+                position="summary_after"
+                locale={locale}
+              />
+
               {/* ✅ Premium: 진단 & 제안(역산) */}
               {diagnosis && (
                 <div className="card w-full min-w-0 max-w-full">
@@ -2023,6 +2032,13 @@ export default function GoalSimulatorPage() {
                   </div>
                 </div>
               </div>
+
+              <ResultAdSlot
+                slot={AD_SLOTS.inArticle2}
+                tool="goal"
+                position="chart_after"
+                locale={locale}
+              />
 
               {/* 연간 요약 테이블 */}
               <div ref={(el) => (sectionEls.current.table = el)} className="w-full min-w-0 max-w-full">
