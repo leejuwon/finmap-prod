@@ -641,6 +641,7 @@ function EtfObservationPanel({ data, loading, error, rangeMode, onRangeModeChang
 
 export default function MarketIndicesPage() {
   const router = useRouter();
+  const currentLocale = router.locale === "en" ? "en" : "ko";
   const today = useMemo(() => todayInKst(), []);
   const [dateInput, setDateInput] = useState(today);
   const [period, setPeriod] = useState("3y");
@@ -781,7 +782,7 @@ export default function MarketIndicesPage() {
         title="KOSPI 등급 기반 시장정보 대시보드"
         desc="가격 등급과 성장 등급이 같은 과거 날짜를 기준으로 KOSPI 상승·하락 마감 비율과 유사 사례를 확인합니다."
         url="/market/indices"
-        locale="ko"
+        locale={currentLocale}
       />
 
       <section className="mt-6 space-y-8">
