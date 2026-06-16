@@ -12,7 +12,7 @@ import {
   getAllPostsStrict,
   getPostBySlugStrict,  
 } from '../../../lib/posts';
-import parse, { domToReact } from 'html-react-parser';
+import parse, { attributesToProps, domToReact } from 'html-react-parser';
 import {
   RelatedCalculatorCtaGrid,
   getPostRelatedToolIds,
@@ -421,6 +421,11 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
   const parserOptions = {
     replace(domNode) {
       if (domNode.type !== 'tag') return undefined;
+
+      if (domNode.name === 'h1') {
+        const props = attributesToProps(domNode.attribs || {});
+        return <h2 {...props}>{domToReact(domNode.children, parserOptions)}</h2>;
+      }
 
       if (domNode.name === 'h2') {
         h2Index += 1;
