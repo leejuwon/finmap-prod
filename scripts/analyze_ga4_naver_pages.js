@@ -53,39 +53,27 @@ function parseCsv(text) {
   row.push(cell);
   rows.push(row);
 
-  return rows
-    .map((r) => r.map((v) => String(v || '').replace(/^\uFEFF/, '').trim()))
-    .filter((r) => r.some(Boolean));
-}
-
-function findHeaderIndex(rows) {
-  let best = 0;
-  let bestScore = -1;
-
-  rows.forEach((row, idx) => {
-    const joined = row.join(' ').toLowerCase();
-    let score = 0;
-    if (/조회수|views/.test(joined)) score += 2;
-    if (/활성\s*사용자|active\s*users/.test(joined)) score += 2;
-    if (/이벤트\s*수|event\s*count/.test(joined)) score += 2;
-    if (/페이지|page|landing|경로|path/.test(joined)) score += 2;
-    if (/세션\s*소스|source\s*\/?\s*medium|source\s*medium/.test(joined)) score += 1;
-    if (score > bestScore) {
-      bestScore = score;
-      best = idx;
-    }
-  });
-
-  return bestScore >= 4 ? best : 0;
-}
-
-function findColumn(headers, patterns) {
-  const lower = headers.map((h) => String(h || '').toLowerCase());
-  for (const pattern of patterns) {
-    const idx = lower.findIndex((h) => pattern.test(h));
-    if (idx >= 0) return idx;
+  while (rows.length > 0 && rows[rows.length - 1].every((v) => !String(v || '').trim())) {
+    rows.pop();
   }
-  return -1;
+
+  return rows.map((r) => r.map((v) => String(v || '').replace(/^\uFEFF/, '').trim()));
+}
+
+function isBlankRow(row) {
+  return !row || row.every((v) => !String(v || '').trim());
+}
+
+function firstCell(row) {
+  return String(row?.[0] || '').trim();
+}
+
+function isSectionRow(row) {
+  return firstCell(row).startsWith('#');
+}
+
+function isUrlDataRow(row) {
+  return firstCell(row).startsWith('/');
 }
 
 function parseNumber(value) {
@@ -128,13 +116,106 @@ function groupUrl(urlPath) {
   return 'other';
 }
 
+function findColumn(headers, patterns, fallback) {
+  const lower = headers.map((h) => String(h || '').toLowerCase());
+  for (const pattern of patterns) {
+    const idx = lower.findIndex((h) => pattern.test(h));
+    if (idx >= 0) return idx;
+  }
+  return fallback;
+}
+
+function getColumnMap(headers) {
+  return {
+    page: findColumn(headers, [
+      /page.*path/,
+      /landing.*page/,
+      /path/,
+      /\uD398\uC774\uC9C0.*\uACBD\uB85C/,
+      /\uD654\uBA74.*\uD074\uB798\uC2A4/,
+    ], 0),
+    views: findColumn(headers, [
+      /^views$/,
+      /\bviews\b/,
+      /^\uC870\uD68C\uC218$/,
+    ], 1),
+    activeUsers: findColumn(headers, [
+      /^active\s*users$/,
+      /^\uD65C\uC131\s*\uC0AC\uC6A9\uC790$/,
+    ], 2),
+    eventCount: findColumn(headers, [
+      /^event\s*count$/,
+      /^\uC774\uBCA4\uD2B8\s*\uC218$/,
+    ], 5),
+  };
+}
+
+function findNaverSectionIndex(rows) {
+  return rows.findIndex((row) => (
+    isSectionRow(row) && row.join(' ').toLowerCase().includes('naver')
+  ));
+}
+
+function findHeaderAfterSection(rows, sectionIndex) {
+  for (let i = sectionIndex + 1; i < rows.length; i += 1) {
+    const row = rows[i];
+    if (isBlankRow(row)) continue;
+    if (isSectionRow(row)) continue;
+    if (isUrlDataRow(row)) continue;
+    if (row.length >= 2) return i;
+  }
+  return -1;
+}
+
+function collectSectionDataRows(rows, headerIndex) {
+  const dataRows = [];
+  let candidateRows = 0;
+  let endIndex = rows.length;
+
+  for (let i = headerIndex + 1; i < rows.length; i += 1) {
+    const row = rows[i];
+    if (isBlankRow(row) || isSectionRow(row)) {
+      endIndex = i;
+      break;
+    }
+
+    candidateRows += 1;
+    if (isUrlDataRow(row)) {
+      dataRows.push({ row, line: i + 1 });
+    }
+  }
+
+  return { dataRows, candidateRows, endIndex };
+}
+
+function findFirstDataSection(rows) {
+  for (let i = 0; i < rows.length; i += 1) {
+    const row = rows[i];
+    if (isBlankRow(row) || isSectionRow(row) || isUrlDataRow(row) || row.length < 2) continue;
+
+    const section = collectSectionDataRows(rows, i);
+    if (section.dataRows.length > 0) {
+      return { headerIndex: i, section };
+    }
+  }
+  return null;
+}
+
 function readGa4Csv(filePath) {
   const result = {
     filePath,
     exists: fs.existsSync(filePath),
     filterMode: 'not_read',
+    parseMode: 'not_read',
     totalRows: 0,
     usedRows: 0,
+    csvRows: 0,
+    sectionTitle: '',
+    sectionLine: null,
+    headerLine: null,
+    dataStartLine: null,
+    dataEndLine: null,
+    columnMap: {},
     headers: [],
     rows: new Map(),
     warnings: [],
@@ -147,56 +228,62 @@ function readGa4Csv(filePath) {
 
   const text = fs.readFileSync(filePath, 'utf8');
   const allRows = parseCsv(text);
-  const headerIndex = findHeaderIndex(allRows);
-  const headers = allRows[headerIndex] || [];
-  const dataRows = allRows.slice(headerIndex + 1);
-  result.totalRows = dataRows.length;
-  result.headers = headers;
+  result.csvRows = allRows.length;
 
-  const pageCol = findColumn(headers, [
-    /페이지.*경로/,
-    /page.*path/,
-    /landing.*page/,
-    /페이지/,
-    /path/,
-  ]);
-  const sourceCol = findColumn(headers, [
-    /세션.*소스.*매체/,
-    /session.*source.*medium/,
-    /source.*medium/,
-  ]);
-  const viewsCol = findColumn(headers, [/^조회수$/, /views/]);
-  const usersCol = findColumn(headers, [/활성.*사용자/, /active.*users/]);
-  const eventsCol = findColumn(headers, [/이벤트.*수/, /event.*count/]);
+  const naverSectionIndex = findNaverSectionIndex(allRows);
+  let headerIndex = -1;
+  let section = null;
 
-  if (pageCol < 0) result.warnings.push('Could not detect page URL/path column.');
-  if (viewsCol < 0) result.warnings.push('Could not detect views column.');
-  if (usersCol < 0) result.warnings.push('Could not detect active users column.');
-  if (eventsCol < 0) result.warnings.push('Could not detect event count column.');
-
-  const hasSourceCol = sourceCol >= 0;
-  const rowsWithNaver = dataRows.filter((row) => {
-    if (hasSourceCol) return String(row[sourceCol] || '').toLowerCase().includes('naver');
-    return row.some((cell) => String(cell || '').toLowerCase().includes('naver'));
-  });
-
-  let rowsToUse = rowsWithNaver;
-  if (!rowsToUse.length && !hasSourceCol) {
-    rowsToUse = dataRows;
-    result.filterMode = 'no_source_column_assumed_pre_filtered';
-  } else {
-    result.filterMode = hasSourceCol ? 'source_medium_contains_naver' : 'any_cell_contains_naver';
+  if (naverSectionIndex >= 0) {
+    headerIndex = findHeaderAfterSection(allRows, naverSectionIndex);
+    if (headerIndex >= 0) {
+      section = collectSectionDataRows(allRows, headerIndex);
+      result.filterMode = 'naver_section';
+      result.parseMode = 'section_title_then_header';
+      result.sectionTitle = firstCell(allRows[naverSectionIndex]);
+      result.sectionLine = naverSectionIndex + 1;
+    } else {
+      result.warnings.push(`Found naver section at line ${naverSectionIndex + 1}, but could not find its header row.`);
+    }
   }
 
-  for (const row of rowsToUse) {
-    const rawUrl = pageCol >= 0 ? row[pageCol] : row[0];
+  if (!section) {
+    const firstSection = findFirstDataSection(allRows);
+    if (firstSection) {
+      headerIndex = firstSection.headerIndex;
+      section = firstSection.section;
+      result.filterMode = 'no_naver_section_assumed_pre_filtered';
+      result.parseMode = 'first_data_section_fallback';
+      result.warnings.push('Naver section title was not found; using the first URL data section as pre-filtered input.');
+    }
+  }
+
+  if (!section || headerIndex < 0) {
+    result.filterMode = naverSectionIndex >= 0 ? 'naver_section_without_data' : 'no_data_section_found';
+    result.parseMode = 'failed';
+    result.warnings.push('Could not locate a parsable GA4 URL data section.');
+    return result;
+  }
+
+  const headers = allRows[headerIndex] || [];
+  const dataRows = section.dataRows;
+  result.headers = headers;
+  result.totalRows = section.candidateRows;
+  result.headerLine = headerIndex + 1;
+  result.dataStartLine = dataRows[0]?.line || null;
+  result.dataEndLine = section.endIndex;
+  result.columnMap = getColumnMap(headers);
+
+  for (const item of dataRows) {
+    const row = item.row;
+    const rawUrl = row[result.columnMap.page] || row[0];
     const url = normalizeUrl(rawUrl);
-    if (!url || /^총계$|^total$/i.test(url)) continue;
+    if (!url || !url.startsWith('/')) continue;
 
     const prev = result.rows.get(url) || { url, views: 0, activeUsers: 0, eventCount: 0, group: groupUrl(url) };
-    prev.views += viewsCol >= 0 ? parseNumber(row[viewsCol]) : 0;
-    prev.activeUsers += usersCol >= 0 ? parseNumber(row[usersCol]) : 0;
-    prev.eventCount += eventsCol >= 0 ? parseNumber(row[eventsCol]) : 0;
+    prev.views += parseNumber(row[result.columnMap.views]);
+    prev.activeUsers += parseNumber(row[result.columnMap.activeUsers]);
+    prev.eventCount += parseNumber(row[result.columnMap.eventCount]);
     result.rows.set(url, prev);
     result.usedRows += 1;
   }
@@ -325,6 +412,23 @@ function renderGroupTable(records) {
   return lines.join('\n');
 }
 
+function renderParseDetails(label, result) {
+  const lines = [];
+  lines.push(`### ${label}`);
+  lines.push('');
+  lines.push(`- Parse mode: ${result.parseMode}`);
+  lines.push(`- Filter mode: ${result.filterMode}`);
+  lines.push(`- CSV rows scanned: ${result.csvRows}`);
+  lines.push(`- Section line: ${result.sectionLine || '-'}`);
+  lines.push(`- Section title: ${result.sectionTitle || '-'}`);
+  lines.push(`- Header line: ${result.headerLine || '-'}`);
+  lines.push(`- Data line range: ${result.dataStartLine || '-'} to ${result.dataEndLine || '-'}`);
+  lines.push(`- Rows used: ${result.usedRows} / ${result.totalRows}`);
+  lines.push(`- Column indexes: page=${result.columnMap.page ?? '-'}, views=${result.columnMap.views ?? '-'}, activeUsers=${result.columnMap.activeUsers ?? '-'}, eventCount=${result.columnMap.eventCount ?? '-'}`);
+  lines.push('');
+  return lines.join('\n');
+}
+
 function renderReport({ before, after, records, groups, beforeDays, afterDays }) {
   const total = sumRecords(records);
   const totalBeforeDaily = total.beforeViews / beforeDays;
@@ -343,11 +447,15 @@ function renderReport({ before, after, records, groups, beforeDays, afterDays })
   lines.push(`- After CSV: \`${path.relative(process.cwd(), after.filePath)}\` (${after.exists ? 'found' : 'missing'})`);
   lines.push(`- Before period days: ${beforeDays}`);
   lines.push(`- After period days: ${afterDays}`);
-  lines.push(`- Before filter mode: ${before.filterMode}`);
-  lines.push(`- After filter mode: ${after.filterMode}`);
   lines.push(`- Before rows used: ${before.usedRows} / ${before.totalRows}`);
   lines.push(`- After rows used: ${after.usedRows} / ${after.totalRows}`);
   [...before.warnings, ...after.warnings].forEach((warning) => lines.push(`- Warning: ${warning}`));
+  lines.push('');
+  lines.push('## Parsing Details');
+  lines.push('');
+  lines.push(renderParseDetails('Before CSV', before).trimEnd());
+  lines.push('');
+  lines.push(renderParseDetails('After CSV', after).trimEnd());
   lines.push('');
   lines.push('## Summary');
   lines.push('');
@@ -384,8 +492,11 @@ function renderReport({ before, after, records, groups, beforeDays, afterDays })
   lines.push('');
   lines.push('## Notes');
   lines.push('');
+  lines.push('- The parser first looks for a section title row whose first column starts with `#` and whose row text contains `naver`.');
+  lines.push('- It then skips comment metadata rows, uses the next non-comment row as the header, and reads only rows whose first column starts with `/`.');
+  lines.push('- The section ends at the next blank row, the next `#` row, or end of file.');
+  lines.push('- Metric columns use header names when detected. Fallback indexes are page=0, views=1, activeUsers=2, eventCount=5.');
   lines.push('- Daily change uses 6 days for 2026-06-04 to 2026-06-09 and 5 days for 2026-06-10 to 2026-06-14 by default.');
-  lines.push('- If a GA4 export does not include a source/medium column, the script treats rows as pre-filtered to Naver only.');
   lines.push('- URL groups are based on normalized page paths after removing the Korean `/ko` prefix.');
   lines.push('');
 
@@ -403,6 +514,7 @@ function main() {
   const after = readGa4Csv(afterPath);
   const records = compare(before, after, beforeDays, afterDays);
   const groups = groupRecords(records, beforeDays, afterDays);
+  const total = sumRecords(records);
 
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, renderReport({ before, after, records, groups, beforeDays, afterDays }), 'utf8');
@@ -410,6 +522,7 @@ function main() {
   console.log(`Before CSV: ${before.exists ? 'found' : 'missing'} (${before.usedRows} rows used)`);
   console.log(`After CSV: ${after.exists ? 'found' : 'missing'} (${after.usedRows} rows used)`);
   console.log(`Compared URLs: ${records.length}`);
+  console.log(`Views: ${total.beforeViews} -> ${total.afterViews}`);
   console.log(`Report: ${path.relative(process.cwd(), outPath).replace(/\\/g, '/')}`);
 }
 
