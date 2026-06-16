@@ -1,11 +1,11 @@
 ---
 slug: "usd-krw-weak-won-sector-map-kospi"
-title: "환율 상승(원화 약세) 수혜·피해 섹터 지도: 코스피 업종별 체크리스트"
-description: "원달러 환율 상승(원화 약세)은 모든 주식에 같은 영향을 주지 않습니다. 수출·수입·내수·원자재·2차전지·항공·운송까지, 업종별로 누가 수혜를 보고 누가 부담을 받는지 표와 체크리스트로 정리합니다."
+title: "환율 상승 수혜주·피해주: 원화 약세 때 코스피 업종 정리"
+description: "원달러 환율이 오를 때 어떤 코스피 업종이 유리하고 불리한지 수출주, 내수주, 항공·운송, 원자재, 2차전지 관점에서 정리합니다."
 datePublished: "2025-12-29"
 dateModified: "2026-05-18"
-seoTitle: "원화 약세 수혜주·피해주: 환율 상승 때 코스피 업종별 체크리스트"
-seoDescription: "환율 상승이 수출주, 내수주, 항공·운송, 2차전지에 주는 영향을 업종 구조와 외국인 수급 관점에서 정리합니다. 원화 약세 국면에서 수혜·피해 섹터를 구분하는 체크리스트를 제공합니다."
+seoTitle: "환율 상승 수혜주·피해주 | 원화 약세 코스피 업종 체크"
+seoDescription: "원달러 환율이 오를 때 어떤 코스피 업종이 유리하고 불리한지 수출주, 내수주, 항공·운송, 원자재, 2차전지 관점에서 정리합니다."
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["원달러환율", "원화약세", "환율상승", "수혜주", "피해주", "코스피", "업종분석", "외국인수급"]
@@ -27,7 +27,7 @@ lang: "ko"
 > - 이 글은 환율 상승 국면에서 업종별로 무엇을 점검해야 하는지 정리합니다.
 
 > 한 문단 요약  
-환율 상승(원화 약세)은 “수혜주 vs 피해주”로 단순히 나눌 수 있는 문제가 아닙니다. 같은 원화 약세라도 수출 비중, 수입 원가 구조, 환헤지 여부, 그리고 외국인 수급까지 함께 작용합니다. 이 글은 코스피 주요 업종을 중심으로 환율 상승 국면에서 점검해야 할 포인트를 표와 체크리스트로 정리합니다.
+원달러 환율이 오르면 모든 주식이 같은 방향으로 움직이지 않습니다. 수출 비중이 높은 업종은 환율 상승 수혜주로 묶일 수 있지만, 달러 비용·원자재·항공유 부담이 큰 업종은 오히려 피해를 볼 수 있습니다. 이 글은 원화 약세 국면에서 어떤 코스피 업종이 유리하고 불리한지 구조별로 정리합니다.
 
 **이 글에서 바로 얻을 수 있는 답:** 환율 상승 때 어떤 업종이 수혜를 볼 수 있고, 어떤 업종은 비용 부담이 커지는지 빠르게 구분하는 기준입니다. “수출주=무조건 호재”가 아니라 **달러 매출, 달러 비용, 가격 전가력, 외국인 수급**을 함께 보는 방식으로 정리합니다.
 
@@ -258,32 +258,6 @@ lang: "ko"
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "원화 약세 수혜주·피해주: 환율 상승 때 코스피 업종별 체크리스트",
-  "description": "환율 상승이 수출주, 내수주, 항공·운송, 2차전지에 주는 영향을 업종 구조와 외국인 수급 관점에서 정리합니다. 원화 약세 국면에서 수혜·피해 섹터를 구분하는 체크리스트를 제공합니다.",
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
-    }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/investingInfo/usd-krw-weak-won-sector-map-kospi"
-  },
-  "datePublished": "2025-12-29",
-  "dateModified": "2026-05-18"
-}
-</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

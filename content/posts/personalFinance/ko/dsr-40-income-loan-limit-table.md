@@ -1,12 +1,12 @@
 ---
 slug: "dsr-40-income-loan-limit-table"
 link: "/posts/personalFinance/dsr-40-income-loan-limit-table"
-title: "DSR 40%면 연소득별 주담대 한도는 얼마나 될까?"
-description: "DSR 40%, 금리 연 4.0%, 30년 원리금균등 상환을 가정해 연소득별 월 상환 가능액과 추정 주담대 한도를 정리했습니다."
+title: "DSR 40% 연봉별 대출 가능액 표"
+description: "DSR 40%, 금리 연 4.0%, 30년 원리금균등 상환을 가정해 연봉별 대출 가능액과 월 상환 가능액을 표로 정리했습니다."
 datePublished: "2026-06-01"
 dateModified: "2026-06-04"
-seoTitle: "DSR 40% 연소득별 주담대 한도표 | DSR 계산기·LTV 계산기"
-seoDescription: "연소득별 DSR 40% 주담대 한도를 금리 4%, 30년 원리금균등 기준으로 정리하고 DSR/LTV 계산기와 부동산 실거래 대시보드 활용법을 안내합니다."
+seoTitle: "DSR 40% 연봉별 대출 가능액 표 | 연봉 4천 6천 1억 주담대 한도"
+seoDescription: "DSR 40%, 금리 4%, 30년 원리금균등 기준으로 연봉별 대출 가능액과 월 상환 가능액을 표로 정리합니다. DSR/LTV 계산기로 내 조건의 주담대 한도도 확인해보세요."
 category: "재테크"
 postCategory: "personalFinance"
 tags: ["DSR 계산기", "LTV 계산기", "주담대 한도", "아파트 구매 가능 금액", "대출 가능액", "부동산 실거래", "원리금균등"]
