@@ -144,7 +144,7 @@ lang: "ko"
 “원화 약세 = 무조건 좋은가?” 같은 질문은 결국 **섹터/수급/비용 구조**로 분해해야 답이 나옵니다.
 아래 2개는 실제 투자 판단으로 연결하기 좋은 후속 글입니다.
 - [원/달러 환율이 코스피·외국인 수급과 연결되는 구조](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
-- [원화 약세에서 누가 이기고 지는가: 코스피 섹터 맵](/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
+- [환율 상승 수혜주와 피해주 정리](/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
 
 ---
 

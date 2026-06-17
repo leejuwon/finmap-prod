@@ -108,7 +108,7 @@ DSR만 통과했다고 해서 LTV와 현금 조건이 자동으로 통과되는 
 
 ## 같이 보면 좋은 글
 
-- [DSR 40%면 연소득별 주담대 한도는 얼마나 될까?](/posts/personalFinance/dsr-40-income-loan-limit-table)
+- [DSR 40% 연봉별 주담대 한도표](/posts/personalFinance/dsr-40-income-loan-limit-table)
 - [보유현금 1억·2억·3억이면 어느 가격대 아파트까지 가능할까?](/posts/personalFinance/cash-100m-200m-300m-apartment-budget)
 - [아파트 매수 전 대출 리스크 체크리스트](/posts/personalFinance/mortgage-risk-checklist-dsr-variable)
 

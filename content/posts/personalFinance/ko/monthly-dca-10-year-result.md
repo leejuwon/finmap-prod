@@ -152,7 +152,7 @@ lang: "ko"
 
 ## 이어서 읽으면 계획이 더 단단해지는 글
 
-- [월 얼마를 투자해야 1억을 만들까?](/posts/personalFinance/how-much-per-month-for-100m): 목표 금액을 먼저 정하고 월 납입액을 역산하고 싶을 때
+- [1억 모으려면 월 얼마가 필요한지 보기](/posts/personalFinance/how-much-per-month-for-100m): 목표 금액을 먼저 정하고 월 납입액을 역산하고 싶을 때
 - [목표 금액을 빠르게 모으는 법](/posts/personalFinance/goal-amount-fast-strategy): 원금·수익률·기간 중 무엇을 조정할지 판단할 때
 - [연복리 vs 월복리](/posts/personalFinance/annual-vs-monthly-compound): 같은 수익률이라도 계산 방식이 왜 달라지는지 볼 때
 - [단리와 복리 차이](/posts/personalFinance/simple-vs-compound): 복리 구조를 처음부터 정리하고 싶을 때

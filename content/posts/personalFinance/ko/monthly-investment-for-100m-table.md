@@ -90,7 +90,7 @@ lang: "ko"
 
 이 글의 표는 목표금액, 기간, 수익률을 바탕으로 필요한 월 납입액을 역산하는 방식입니다. 같은 조건을 직접 바꿔보려면 [목표 자산 계산기](/tools/goal-simulator)를 사용하세요. 복리 결과 자체를 보고 싶다면 [복리 계산기](/tools/compound-interest), 월 적립식 경로를 보고 싶다면 [적립식 투자 계산기](/tools/dca-calculator)가 적합합니다.
 
-관련 글로는 [1억 만들려면 매달 얼마를 투자해야 할까?](/posts/personalFinance/how-much-monthly-invest-for-100m)와 [월 50만원 적립식 투자, 10년 뒤 얼마가 될까?](/posts/personalFinance/monthly-dca-10-year-result)를 함께 보면 좋습니다.
+관련 글로는 [1억 모으려면 월 얼마가 필요한지 보기](/posts/personalFinance/how-much-per-month-for-100m)와 [월 50만원 적립식 투자, 10년 뒤 얼마가 될까?](/posts/personalFinance/monthly-dca-10-year-result)를 함께 보면 좋습니다.
 
 ## 해석과 주의사항
 

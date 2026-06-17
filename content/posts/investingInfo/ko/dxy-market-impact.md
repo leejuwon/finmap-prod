@@ -91,7 +91,7 @@ DXY가 오르면 시장은 보통 “안전자산 선호 모드”에 들어갑�
 원화 약세가 나타나면 **외국인 매도세**가 강화됩니다.
 
 원화 약세(USD/KRW 상승)가 “모두에게 호재”가 아닌 이유(업종별 승패)까지 같이 보면 판단이 안정됩니다:
-- 🔗 [원화 약세에서 누가 이기고 지는가: 코스피 섹터 맵](/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
+- 🔗 [환율 오르면 오르는 주식 업종별 보기](/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
 
 ---
 

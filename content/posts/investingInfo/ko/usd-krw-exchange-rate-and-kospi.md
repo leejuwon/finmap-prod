@@ -103,7 +103,7 @@ lang: "ko"
 - [DXY가 시장을 움직이는 방식](/posts/investingInfo/dxy-market-impact)
 
 🔎 “원화 약세에서 누가 이기고 지는지(업종별로)”를 더 실전적으로 보고 싶다면:  
-- 🔗 [환율 상승(원화 약세) 수혜·피해 섹터 지도: 코스피 업종별 체크리스트](/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
+- 🔗 [환율 상승 수혜주와 피해주: 코스피 업종별 정리](/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
 
 🔎 유가·관세 같은 “촉매”가 환율로 번역되는 경로:
 - 🔗 [유가 충격 → 원/달러 → 한국: 전파(전이) 경로](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)

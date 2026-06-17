@@ -323,7 +323,7 @@ lang: "ko"
 
 - [사회초년생을 위한 월급 관리 5단계 가이드](/posts/personalFinance/personal-start-5steps)  
 - [단리 vs 복리 — 초보 투자자가 반드시 알아야 할 최고의 금융 공식](/posts/personalFinance/simple-vs-compound)  
-- [월 얼마를 투자해야 1억을 만들까? 5천·1억·3억 목표별 현실적인 투자 계획](/posts/personalFinance/how-much-per-month-for-100m)  
+- [1억 모으려면 월 얼마가 필요한지 보기](/posts/personalFinance/how-much-per-month-for-100m)
 - [연복리 vs 월복리: 목표 도달 기간은 얼마나 달라질까?](/posts/personalFinance/annual-vs-monthly-compound)  
 - [목표 금액을 빠르게 모으는 법: 원금·수익률·기간의 균형](/posts/personalFinance/goal-amount-fast-strategy)  
 - [CAGR이란 무엇인가? 단순 수익률과의 차이 이해하기](/posts/personalFinance/what-is-cagr)
