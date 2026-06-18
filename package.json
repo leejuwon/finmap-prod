@@ -9,7 +9,7 @@
     "dev": "next dev --webpack -p 8002",
     "build": "next build --webpack",
     "start": "NODE_ENV=production node web.js",
-    "postbuild": "next-sitemap",
+    "postbuild": "next-sitemap && node scripts/generate_channel_sitemaps.js",
     "upload:cloudinary:finmap": "node scripts/upload-cloudinary.js",
     "check:posts-links": "node scripts/check_posts_links_local.js --registry=blog-contents.md --dir=content/posts --ext=md,mdx --out=reports/posts.linkcheck.json"
   },
