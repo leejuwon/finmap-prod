@@ -220,10 +220,10 @@ export default function FireCalculatorPage() {
     () => ({
       title: isKo
         ? "은퇴자금 계산기 / FIRE 계산기 | 은퇴 생활비·필요자금 시뮬레이션"
-        : "Retirement Fund Calculator / FIRE Calculator | Spending and Required Fund Simulation",
+        : "FIRE Calculator: Early Retirement, Withdrawal Rate & Asset Longevity",
       desc: isKo
         ? "현재자산, 월저축, 은퇴나이, 기대수명, 생활비를 입력해 은퇴 시점 예상 자산과 필요 은퇴자금을 비교하고, 기존 FIRE 계산도 함께 확인합니다."
-        : "Compare projected retirement assets with the required retirement fund using assets, savings, retirement age, life expectancy, and spending assumptions. The existing FIRE view remains available.",
+        : "Estimate whether your assets can support early retirement using annual spending, savings, retirement age, life expectancy, withdrawal rate, taxes, fees, inflation, and asset longevity scenarios.",
       chartTitle: isKo ? "은퇴 전·후 자산 곡선" : "Asset Curve (Before & After FIRE)",
     }),
     [isKo]
@@ -387,7 +387,7 @@ export default function FireCalculatorPage() {
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
             {isKo
               ? "간단 FIRE 계산: 연지출과 출금률 기준으로 목표자산과 자산 지속기간을 빠르게 확인합니다."
-              : "Simple FIRE calculator: estimate target assets and asset longevity using annual spending and withdrawal rate."}
+              : "Simple FIRE calculator: estimate the target portfolio, retirement timing, and how long assets may last using annual spending, contributions, expected return, and withdrawal rate."}
           </p>
         </section>
         <FireForm lang={lang} onSubmit={handleSubmit} initial={formInitial} />

@@ -8,16 +8,42 @@ const REPORT_PATH = path.join(ROOT, 'reports', 'seo-channel-split-url-check.md')
 const DEFAULT_PORT = Number(process.env.SEO_VERIFY_PORT || 8017);
 const USE_LOCAL_SERVER = process.argv.includes('--local-server');
 const BASE_URL = (process.env.SEO_VERIFY_BASE_URL || (USE_LOCAL_SERVER ? `http://127.0.0.1:${DEFAULT_PORT}` : SITE_URL)).replace(/\/+$/, '');
+const EN_SITEMAP_PATH = path.join(ROOT, 'public', 'sitemap-en.xml');
+
+const REQUIRED_EN_SITEMAP_PATHS = [
+  '/en',
+  '/en/tools',
+  '/en/tools/compound-interest',
+  '/en/tools/cagr-calculator',
+  '/en/tools/dca-calculator',
+  '/en/tools/dsr-ltv-calculator',
+  '/en/tools/fire-calculator',
+  '/en/tools/goal-simulator',
+  '/en/market',
+  '/en/market/indices',
+  '/en/market/real-estate',
+  '/en/about',
+  '/en/contact',
+  '/en/privacy',
+  '/en/terms',
+  '/en/disclaimer',
+];
 
 const SAMPLES = [
   { path: '/', lang: 'ko', group: 'home' },
   { path: '/en', lang: 'en', group: 'home' },
   { path: '/tools', lang: 'ko', group: 'tools' },
   { path: '/en/tools', lang: 'en', group: 'tools' },
+  { path: '/en/tools/compound-interest', lang: 'en', group: 'tool-detail' },
+  { path: '/en/tools/cagr-calculator', lang: 'en', group: 'tool-detail' },
   { path: '/tools/dca-calculator', lang: 'ko', group: 'tool-detail' },
   { path: '/en/tools/dca-calculator', lang: 'en', group: 'tool-detail' },
+  { path: '/en/tools/dsr-ltv-calculator', lang: 'en', group: 'tool-detail' },
+  { path: '/en/tools/fire-calculator', lang: 'en', group: 'tool-detail' },
+  { path: '/en/tools/goal-simulator', lang: 'en', group: 'tool-detail' },
   { path: '/market/real-estate', lang: 'ko', group: 'market' },
   { path: '/en/market/real-estate', lang: 'en', group: 'market' },
+  { path: '/en/market/indices', lang: 'en', group: 'market' },
   { path: '/posts/personalFinance/dsr-40-income-loan-limit-table', lang: 'ko', group: 'post' },
   { path: '/en/posts/personalFinance/dsr-40-income-loan-limit-table', lang: 'en', group: 'post' },
 ];
@@ -85,6 +111,34 @@ function expectedFor(sample) {
 
 function hasNoindex(...values) {
   return values.join(',').toLowerCase().includes('noindex');
+}
+
+function extractSitemapLocs(xml) {
+  return Array.from(String(xml || '').matchAll(/<loc>([\s\S]*?)<\/loc>/g), (match) => match[1].trim()).filter(Boolean);
+}
+
+function inspectEnSitemapMembership() {
+  const exists = fs.existsSync(EN_SITEMAP_PATH);
+  const locs = exists ? extractSitemapLocs(fs.readFileSync(EN_SITEMAP_PATH, 'utf8')) : [];
+  const locSet = new Set(locs);
+  const required = REQUIRED_EN_SITEMAP_PATHS.map((pathname) => {
+    const loc = `${SITE_URL}${pathname}`;
+    return {
+      path: pathname,
+      loc,
+      present: locSet.has(loc),
+    };
+  });
+  const enHomeLoc = `${SITE_URL}/en`;
+  return {
+    exists,
+    count: locs.length,
+    required,
+    missing: required.filter((item) => !item.present),
+    enHomeLoc,
+    enHomePresent: locSet.has(enHomeLoc),
+    enHomeTrailingSlashOk: locSet.has(enHomeLoc) && !locSet.has(`${SITE_URL}/en/`),
+  };
 }
 
 async function waitForLocalServer(baseUrl) {
@@ -178,7 +232,7 @@ function mdEscape(value) {
   return String(value || '-').replace(/\|/g, '\\|').replace(/\n/g, ' ');
 }
 
-function buildReport(results) {
+function buildReport(results, sitemapCheck) {
   const lines = [];
   lines.push('# SEO Channel Split URL Check');
   lines.push('');
@@ -186,6 +240,8 @@ function buildReport(results) {
   lines.push(`- Fetch base: ${BASE_URL}`);
   lines.push(`- URL samples: ${results.length}`);
   lines.push(`- Failures: ${results.filter((item) => item.result !== 'PASS').length}`);
+  lines.push(`- sitemap-en.xml URL count: ${sitemapCheck.count}`);
+  lines.push(`- sitemap-en.xml required URLs: ${sitemapCheck.required.length - sitemapCheck.missing.length}/${sitemapCheck.required.length}`);
   lines.push('');
   lines.push('| Path | Lang | Status | Canonical | hreflang ko | hreflang en | x-default | Meta robots | X-Robots-Tag | Result | Notes |');
   lines.push('| --- | --- | ---: | --- | --- | --- | --- | --- | --- | --- | --- |');
@@ -205,6 +261,19 @@ function buildReport(results) {
     ].join(' | ').replace(/^/, '| ').replace(/$/, ' |'));
   }
   lines.push('');
+  lines.push('## sitemap-en.xml Required Loc Membership');
+  lines.push('');
+  lines.push(`- File present: ${sitemapCheck.exists ? 'yes' : 'no'}`);
+  lines.push(`- URL count: ${sitemapCheck.count}`);
+  lines.push(`- Required URL membership: ${sitemapCheck.required.length - sitemapCheck.missing.length}/${sitemapCheck.required.length}`);
+  lines.push(`- EN home trailing slash check: ${sitemapCheck.enHomeTrailingSlashOk ? 'PASS' : 'FAIL'} (${sitemapCheck.enHomeLoc})`);
+  lines.push('');
+  lines.push('| Required path | loc | Result |');
+  lines.push('| --- | --- | --- |');
+  for (const item of sitemapCheck.required) {
+    lines.push(`| ${item.path} | ${item.loc} | ${item.present ? 'OK' : 'MISSING'} |`);
+  }
+  lines.push('');
   return lines.join('\n');
 }
 
@@ -217,6 +286,15 @@ async function main() {
       await waitForLocalServer(BASE_URL);
     }
 
+    const sitemapCheck = inspectEnSitemapMembership();
+    console.log(`[sitemap-en] URL count: ${sitemapCheck.count}`);
+    console.log(
+      `[sitemap-en] required URLs: ${sitemapCheck.required.length - sitemapCheck.missing.length}/${sitemapCheck.required.length}`
+    );
+    for (const item of sitemapCheck.required) {
+      console.log(`[sitemap-en]\t${item.present ? 'OK' : 'MISSING'}\t${item.path}`);
+    }
+
     const results = [];
     for (const sample of SAMPLES) {
       const result = await inspectSample(sample);
@@ -224,10 +302,12 @@ async function main() {
       console.log(`${result.result}\t${sample.path}\t${result.canonical || '-'}`);
     }
 
-    fs.writeFileSync(REPORT_PATH, buildReport(results), 'utf8');
+    fs.writeFileSync(REPORT_PATH, buildReport(results, sitemapCheck), 'utf8');
     console.log(`Wrote ${path.relative(ROOT, REPORT_PATH)}`);
 
-    if (results.some((item) => item.result !== 'PASS')) process.exitCode = 1;
+    if (sitemapCheck.missing.length || !sitemapCheck.enHomeTrailingSlashOk || results.some((item) => item.result !== 'PASS')) {
+      process.exitCode = 1;
+    }
   } catch (error) {
     if (server?.getLogs) {
       const logs = server.getLogs();

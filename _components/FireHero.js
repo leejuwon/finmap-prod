@@ -10,10 +10,10 @@ function FireHero({ lang = "ko" }) {
     () => ({
       title: isKo
         ? "FIRE(조기 은퇴)를 향한\n당신의 여정을 설계해보세요"
-        : "Design your journey\ntoward FIRE (Early Retirement)",
+        : "Plan early retirement\nwith FIRE numbers",
       desc: isKo
         ? "FinMap FIRE 시뮬레이터는 ‘실질 수익률’을 기준으로 은퇴 가능 시점과 은퇴 후 자산 지속 기간을 정교하게 분석합니다."
-        : "FinMap FIRE Simulator analyzes your FIRE timing and post-retirement sustainability using real after-tax returns.",
+        : "Estimate your FIRE number, retirement timing, withdrawal rate, and post-retirement asset sustainability using after-tax, fee, and inflation assumptions.",
       sparkTitle: isKo
         ? "FIRE 자산 곡선 예시 (실질 기준)"
         : "Example FIRE curve (real return)",

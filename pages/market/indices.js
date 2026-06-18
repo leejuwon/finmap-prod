@@ -775,12 +775,23 @@ export default function MarketIndicesPage() {
   const gradeSentence = isMissingGrade(grades.priceGrade) || isMissingGrade(grades.growthGrade)
     ? "현재 기준일은 등급 데이터가 아직 준비되지 않았습니다."
     : `현재 기준일은 가격 환경 ${grades.priceGradeLabel}, 성장 환경 ${grades.growthGradeLabel}로 분류되었습니다. 아래 통계는 과거에 같은 등급 조합이 나타난 날들의 KOSPI 움직임을 요약한 것입니다.`;
+  const isEnglish = currentLocale === "en";
+  const seoTitle = isEnglish
+    ? "KOSPI Market Dashboard: Index Grade Signals and Historical Cases"
+    : "KOSPI 등급 기반 시장정보 대시보드";
+  const seoDesc = isEnglish
+    ? "Review KOSPI market grade signals, historical days with similar price and growth conditions, and close-up or close-down statistics for Korean equity market context."
+    : "가격 등급과 성장 등급이 같은 과거 날짜를 기준으로 KOSPI 상승·하락 마감 비율과 유사 사례를 확인합니다.";
+  const pageLead = isEnglish
+    ? "Compare current KOSPI price and growth grades with historical market conditions, then review opening and closing behavior across similar past sessions. This dashboard is a data reference, not investment advice."
+    : "가격 환경 등급과 성장 환경 등급이 비슷했던 과거 사례를 기준으로 KOSPI의 출발과 마감 흐름을 살펴봅니다. 이 화면은 과거 데이터 기준의 참고용 통계이며 투자 권유가 아닙니다.";
+  const marketBackLabel = isEnglish ? "Market data" : "시장정보";
 
   return (
     <>
       <SeoHead
-        title="KOSPI 등급 기반 시장정보 대시보드"
-        desc="가격 등급과 성장 등급이 같은 과거 날짜를 기준으로 KOSPI 상승·하락 마감 비율과 유사 사례를 확인합니다."
+        title={seoTitle}
+        desc={seoDesc}
         url="/market/indices"
         locale={currentLocale}
       />
@@ -789,12 +800,11 @@ export default function MarketIndicesPage() {
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <Link href="/market" className="text-sm font-medium text-slate-500 hover:text-slate-900">
-              &larr; 시장정보 홈
+              &larr; {marketBackLabel}
             </Link>
-            <h1 className="mt-3 text-2xl font-bold text-slate-950 md:text-3xl">KOSPI 등급 기반 시장정보 대시보드</h1>
+            <h1 className="mt-3 text-2xl font-bold text-slate-950 md:text-3xl">{seoTitle}</h1>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-              가격 환경 등급과 성장 환경 등급이 비슷했던 과거 사례를 기준으로 KOSPI의 출발과 마감 흐름을 살펴봅니다.
-              이 화면은 과거 데이터 기준의 참고용 통계이며 투자 권유가 아닙니다.
+              {pageLead}
             </p>
           </div>
 

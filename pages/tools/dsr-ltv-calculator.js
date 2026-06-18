@@ -56,18 +56,18 @@ const TEXT = {
     ],
   },
   en: {
-    seoTitle: "DSR LTV Apartment Affordability Calculator | Loan Capacity & Purchase Price",
+    seoTitle: "Korean Mortgage Affordability Calculator: DSR, LTV & Apartment Budget",
     seoDesc:
-      "Estimate mortgage capacity and apartment purchase price using your own assets, income, existing debt, rate, loan term, LTV, and DSR assumptions. Actual lender review may differ.",
-    h1: "DSR/LTV Apartment Affordability Calculator",
+      "Estimate Korean apartment purchase budget and mortgage capacity with your cash, income, debt, interest rate, term, DSR, and LTV assumptions. Compare safer Seoul, Gyeonggi, and Incheon search ranges.",
+    h1: "Korean Mortgage Affordability Calculator (DSR/LTV)",
     lead:
-      "Enter your own LTV and DSR assumptions to estimate mortgage capacity, maximum purchase price, target home feasibility, and a safer search range.",
+      "Use DSR and LTV assumptions to estimate loan capacity, maximum apartment purchase price, target-home feasibility, and a safer property search range before using the real estate dashboard.",
     basis: "Basis date",
     note:
       "This tool does not automatically apply policy updates. It only uses your inputs and may differ from real lender review.",
     relatedTitle: "Use it with the real estate dashboard",
     relatedLead:
-      "After checking the safer price range, compare Seoul, Gyeonggi, and Incheon transaction distributions in the dashboard.",
+      "After checking the safer price range, compare Seoul, Gyeonggi, and Incheon transaction distributions in the dashboard, then connect the budget to goal and compounding calculators.",
     faqTitle: "DSR/LTV calculator FAQ",
     faqs: [
       {
@@ -203,6 +203,24 @@ export default function DsrLtvCalculatorPage() {
             >
               {locale === "ko" ? "부동산 대시보드 열기" : "Open real estate dashboard"}
             </Link>
+            {locale === "en" && (
+              <>
+                <Link
+                  href="/tools/goal-simulator"
+                  locale={locale}
+                  className="btn-secondary"
+                >
+                  Goal amount calculator
+                </Link>
+                <Link
+                  href="/tools/compound-interest"
+                  locale={locale}
+                  className="btn-secondary"
+                >
+                  Compound interest calculator
+                </Link>
+              </>
+            )}
             <Link
               href="/posts/personalFinance/dsr-40-income-loan-limit-table"
               locale={locale}

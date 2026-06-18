@@ -119,12 +119,12 @@ const TEXT = {
     faqTitle: 'DCA 계산기 자주 묻는 질문(FAQ)',
   },
   en: {
-    seoTitle: 'ETF/Stock DCA Simulator',
+    seoTitle: 'Dollar-Cost Averaging Calculator for ETFs and Stocks',
     seoDesc:
-      'Simulate how your assets grow when you invest a fixed amount into ETFs/stocks every month (DCA), considering tax rate, fee rate and annual contribution increase.',
-    title: 'ETF/Stock DCA Simulator (DCA)',
+      'Use this dollar-cost averaging calculator to simulate monthly or weekly ETF and stock investing with taxes, fees, contribution increases, targets, and bear-market scenarios.',
+    title: 'Dollar-Cost Averaging Calculator (DCA)',
     descShort:
-      'Simulate your DCA (dollar-cost averaging) plan with initial value, monthly contribution, annual return and yearly contribution increase. Tax/fee rates and currency (KRW/USD) are configurable.',
+      'Simulate a dollar-cost averaging plan for ETFs or stocks with current assets, recurring contributions, expected return, yearly contribution increases, tax, fees, and currency settings. Use the target and drawdown views to see whether the plan is on track.',
     fv: 'Final net assets',
     contrib: 'Total invested',
     gain: 'Net gain (cumulative)',

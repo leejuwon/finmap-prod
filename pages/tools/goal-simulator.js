@@ -545,11 +545,11 @@ export default function GoalSimulatorPage() {
       title:
         locale === 'ko'
           ? '목표자산 도달 계산기 | 매달 얼마 투자해야 할까?'
-          : 'Goal Amount Calculator | How Much to Invest Per Month',
+          : 'Investment Goal Calculator: How Much to Invest Per Month',
       desc:
         locale === 'ko'
           ? '현재 자산·월 적립금·수익률·기간·세금·수수료를 반영해 목표 자산까지의 성장 경로를 시뮬레이션합니다. 공유 및 PDF 저장 지원.'
-          : 'Simulate your path to a target amount with monthly contributions, expected return, horizon, tax and fees. Share and export PDF.',
+          : 'Calculate how much to invest per month to reach a target amount. Simulate current assets, contributions, expected return, years, taxes, fees, inflation, and PDF export.',
       chartTitle:
         locale === 'ko'
           ? '목표 자산까지 자산 경로'
@@ -571,15 +571,15 @@ export default function GoalSimulatorPage() {
       introTitle:
         locale === 'ko'
           ? '목표 자산 시뮬레이터로 무엇을 할 수 있나요?'
-          : 'What can this goal simulator do?',
+          : 'How much should I invest per month to reach a goal?',
       introLead:
         locale === 'ko'
           ? '“언제까지 얼마를 모으고 싶은지” 목표를 세우고, 지금 자산·적립액·수익률을 기준으로 경로를 그려볼 수 있습니다.'
-          : 'Set a target amount and deadline, then see how your current assets, monthly savings and expected return could get you there.',
+          : 'Use this investment goal calculator to set a target amount and deadline, then solve the monthly contribution, time horizon, or return needed to get there. It connects goal planning with DCA, compound interest, CAGR, and FIRE calculators.',
       introBullet1:
         locale === 'ko'
           ? '현재 자산 + 매달 적립금 + 예상 수익률·기간을 기반으로 자산 성장 경로를 연도별로 시뮬레이션합니다.'
-          : 'Simulate your asset path year by year based on current assets, monthly contributions, expected return and time horizon.',
+          : 'Simulate your asset path year by year based on current assets, monthly contributions, expected return, inflation, and time horizon.',
       introBullet2:
         locale === 'ko'
           ? '세금·수수료를 적용했을 때와 적용하지 않았을 때의 차이를 세전/세후 자산으로 비교할 수 있습니다.'

@@ -15,7 +15,7 @@ export default function FireIntro({ lang = "ko" }) {
       <p className="text-sm text-slate-700 leading-relaxed mb-3">
         {isKo
           ? "FinMap FIRE 계산기는 ‘실질 세후 수익률’을 기반으로 은퇴 가능 시점과 은퇴 후 자산이 유지되는 기간을 예측합니다."
-          : "FinMap FIRE calculator estimates FIRE timing and post-retirement asset sustainability using real after-tax returns."}
+          : "Use this FIRE calculator to estimate the portfolio size needed for early retirement, then test how spending, saving, withdrawal rate, taxes, fees, inflation, and return assumptions affect asset longevity."}
       </p>
 
       <ul className="list-disc pl-5 text-sm text-slate-700 space-y-2">
@@ -46,7 +46,7 @@ export default function FireIntro({ lang = "ko" }) {
         <li>
           {isKo
             ? "수익률·물가·출금률을 바꿔 보며 결과가 얼마나 민감하게 달라지는지 점검할 수 있습니다."
-            : "Adjust return, inflation, and withdrawal assumptions to check how sensitive the result is."}
+            : "Adjust return, inflation, contribution, and withdrawal assumptions to compare conservative and aggressive retirement scenarios."}
         </li>
       </ul>
     </div>

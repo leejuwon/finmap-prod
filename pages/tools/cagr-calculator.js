@@ -116,20 +116,20 @@ export default function CagrCalculatorPage() {
       title:
         locale === "ko"
           ? "CAGR 계산기 (연평균 수익률·연복리 수익률·연평균 성장률)"
-          : "CAGR Calculator (Annualized Return / Growth Rate)",
+          : "CAGR Calculator: Annualized Return, Growth Rate & Future Value",
       desc:
         locale === "ko"
           ? "초기 자산·최종 자산·기간으로 CAGR(연평균 복리 수익률)을 계산하고, 세금·수수료 반영 전후 차이를 비교해보세요. 주식/ETF/부동산/코인 수익률 분석에 활용할 수 있습니다."
-          : "Calculate CAGR (compound annual growth rate) from initial/final value and time horizon, and compare gross vs net impact of taxes and fees.",
+          : "Calculate compound annual growth rate from starting value, ending value, and years. Compare gross, net, and inflation-adjusted CAGR, then jump to DCA, goal, or compound calculators.",
 
       heroTitle:
         locale === "ko"
           ? "CAGR(연평균 수익률)로\n내 투자 성과를 한 줄 숫자로"
-          : "Summarize your investment\nperformance in one CAGR number",
+          : "CAGR Calculator for\nAnnualized Return",
       heroLead:
         locale === "ko"
           ? "CAGR은 들쭉날쭉한 연 수익률을 “연속된 하나의 연 복리 수익률”로 바꿔 보여주는 지표입니다. 단순 평균이 아니라, 실제 자산이 불어난 속도를 반영합니다."
-          : "CAGR compresses bumpy yearly returns into a single annualized rate that reflects how fast your money actually grew.",
+          : "Turn a start value, end value, and time horizon into an annualized growth rate you can compare across stocks, ETFs, funds, businesses, or portfolios.",
       stat1Title: locale === "ko" ? "초기 → 최종" : "Initial → Final",
       stat1Value: locale === "ko" ? "한 줄 요약" : "One-line summary",
       stat2Title: locale === "ko" ? "세전 vs 세후" : "Gross vs net",
@@ -144,11 +144,11 @@ export default function CagrCalculatorPage() {
       introLead:
         locale === "ko"
           ? "“초기에 얼마를 넣어서, 지금 얼마가 되었는지”만 알아도, 그 사이의 연평균 복리 수익률(CAGR)을 추정할 수 있습니다."
-          : "If you know how much you started with and how much you have now, you can estimate your CAGR in between.",
+          : "Use this CAGR calculator when you know the beginning value, ending value, and holding period, and need one annualized return number for comparison.",
       introBullet1:
         locale === "ko"
           ? "초기 자산(투자 원금)과 최종 자산(현재/목표), 투자 기간(년)을 입력하면 CAGR을 계산합니다."
-          : "Enter initial value, final value, and years to calculate CAGR.",
+          : "Enter starting value, ending value, and years to calculate annualized return.",
       introBullet2:
         locale === "ko"
           ? "세율과 수수료율을 직접 입력해 세전·세후 CAGR 차이(비용 효과)를 비교할 수 있습니다. 0이면 미적용입니다."
@@ -156,7 +156,7 @@ export default function CagrCalculatorPage() {
       introBullet3:
         locale === "ko"
           ? "연도별 자산 경로를 그래프/표로 보면서 CAGR 숫자가 자산 성장과 어떻게 연결되는지 확인합니다."
-          : "A yearly path chart/table helps you connect the CAGR number to the growth timeline.",
+          : "Use the yearly path chart and table to connect the CAGR number to future value and target planning.",
 
       netCagrLabel:
         locale === "ko" ? "세후 CAGR(연평균 수익률)" : "Net CAGR (after costs)",

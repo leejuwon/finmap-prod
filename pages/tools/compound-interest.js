@@ -206,11 +206,11 @@ export default function CompoundPage() {
       title:
         locale === "ko"
           ? "복리 계산기 | 월 적립·세금·수수료 미래가치 계산"
-          : "Compound Interest Calculator: Monthly Contributions, Tax & Future Value",
+          : "Compound Interest Calculator: Future Value, Monthly Contributions & Taxes",
       desc:
         locale === "ko"
           ? "원금·월적립·수익률·기간으로 월복리 기준 미래가치(FV)를 계산합니다. 세금·수수료·물가상승률 반영 결과를 연도별 표·차트로 확인하세요."
-          : "Estimate monthly-compounded future value from principal, deposits, return, years, tax, fees, and inflation. Review year-by-year tables, charts, and related compound investing guides.",
+          : "Calculate future value with principal, monthly or lump-sum contributions, compound frequency, taxes, fees, inflation, charts, and year-by-year tables.",
 
       fv: locale === "ko" ? "세후 총자산" : "Net Future Value",
       fvIdeal: locale === "ko" ? "세전 기준 미래가치" : "Ideal (No Tax/Fee)",
@@ -639,7 +639,7 @@ export default function CompoundPage() {
         {/* 타이틀 + 모드 토글 */}
         <header className="flex items-start justify-between gap-3">
           <h1 className="text-xl sm:text-2xl font-bold">
-            {locale === "ko" ? "복리 이자 계산기" : "Compound Interest Calculator"}
+            {locale === "ko" ? "복리 이자 계산기" : "Compound Interest Calculator for Future Value"}
           </h1>
 
           <div className="fm-pro-toggle shrink-0">
@@ -672,7 +672,7 @@ export default function CompoundPage() {
           <p className="text-sm text-slate-600">
             {locale === "ko"
               ? "초기 투자금(원금)과 월 적립금(적립식), 연 수익률, 기간을 입력하면 월복리 기준으로 미래가치(FV)를 계산합니다. 세전·세후(세금·수수료) 결과를 비교하고, 연도별 표/차트로 자산 성장 경로를 확인할 수 있어요."
-              : "Enter principal, monthly contribution, annual return, and years to calculate monthly-compounded FV. Compare ideal vs net (tax/fee) and explore growth with charts and yearly tables."}
+              : "Use this compound interest calculator to estimate how much an investment could grow over time with monthly contributions, taxes, fees, and inflation. Compare ideal vs net future value, then use charts and yearly tables to test savings growth and long-term investing scenarios."}
           </p>
 
           <div className="mt-3 grid gap-2 md:grid-cols-3 text-sm">
