@@ -9,6 +9,7 @@ const DEFAULT_PORT = Number(process.env.SEO_VERIFY_PORT || 8017);
 const USE_LOCAL_SERVER = process.argv.includes('--local-server');
 const BASE_URL = (process.env.SEO_VERIFY_BASE_URL || (USE_LOCAL_SERVER ? `http://127.0.0.1:${DEFAULT_PORT}` : SITE_URL)).replace(/\/+$/, '');
 const EN_SITEMAP_PATH = path.join(ROOT, 'public', 'sitemap-en.xml');
+const EN_PREFIX_SITEMAP_PATH = path.join(ROOT, 'public', 'en', 'sitemap.xml');
 
 const REQUIRED_EN_SITEMAP_PATHS = [
   '/en',
@@ -119,8 +120,13 @@ function extractSitemapLocs(xml) {
 
 function inspectEnSitemapMembership() {
   const exists = fs.existsSync(EN_SITEMAP_PATH);
-  const locs = exists ? extractSitemapLocs(fs.readFileSync(EN_SITEMAP_PATH, 'utf8')) : [];
+  const xml = exists ? fs.readFileSync(EN_SITEMAP_PATH, 'utf8') : '';
+  const locs = exists ? extractSitemapLocs(xml) : [];
   const locSet = new Set(locs);
+  const prefixExists = fs.existsSync(EN_PREFIX_SITEMAP_PATH);
+  const prefixXml = prefixExists ? fs.readFileSync(EN_PREFIX_SITEMAP_PATH, 'utf8') : '';
+  const prefixLocs = prefixExists ? extractSitemapLocs(prefixXml) : [];
+  const prefixNonEnLocs = prefixLocs.filter((loc) => loc !== `${SITE_URL}/en` && !loc.startsWith(`${SITE_URL}/en/`));
   const required = REQUIRED_EN_SITEMAP_PATHS.map((pathname) => {
     const loc = `${SITE_URL}${pathname}`;
     return {
@@ -138,6 +144,11 @@ function inspectEnSitemapMembership() {
     enHomeLoc,
     enHomePresent: locSet.has(enHomeLoc),
     enHomeTrailingSlashOk: locSet.has(enHomeLoc) && !locSet.has(`${SITE_URL}/en/`),
+    prefixExists,
+    prefixCount: prefixLocs.length,
+    prefixNonEnLocs,
+    prefixEnLocOnly: prefixExists && prefixLocs.length > 0 && prefixNonEnLocs.length === 0,
+    prefixMatchesRootXml: exists && prefixExists && xml === prefixXml,
   };
 }
 
@@ -242,6 +253,9 @@ function buildReport(results, sitemapCheck) {
   lines.push(`- Failures: ${results.filter((item) => item.result !== 'PASS').length}`);
   lines.push(`- sitemap-en.xml URL count: ${sitemapCheck.count}`);
   lines.push(`- sitemap-en.xml required URLs: ${sitemapCheck.required.length - sitemapCheck.missing.length}/${sitemapCheck.required.length}`);
+  lines.push(`- /en/sitemap.xml exists: ${sitemapCheck.prefixExists ? 'yes' : 'no'}`);
+  lines.push(`- /en/sitemap.xml URL count: ${sitemapCheck.prefixCount}`);
+  lines.push(`- /en/sitemap.xml EN-only locs: ${sitemapCheck.prefixEnLocOnly ? 'PASS' : 'FAIL'}`);
   lines.push('');
   lines.push('| Path | Lang | Status | Canonical | hreflang ko | hreflang en | x-default | Meta robots | X-Robots-Tag | Result | Notes |');
   lines.push('| --- | --- | ---: | --- | --- | --- | --- | --- | --- | --- | --- |');
@@ -267,11 +281,27 @@ function buildReport(results, sitemapCheck) {
   lines.push(`- URL count: ${sitemapCheck.count}`);
   lines.push(`- Required URL membership: ${sitemapCheck.required.length - sitemapCheck.missing.length}/${sitemapCheck.required.length}`);
   lines.push(`- EN home trailing slash check: ${sitemapCheck.enHomeTrailingSlashOk ? 'PASS' : 'FAIL'} (${sitemapCheck.enHomeLoc})`);
+  lines.push(`- EN URL-prefix sitemap: ${sitemapCheck.prefixExists ? 'present' : 'missing'} (\`public/en/sitemap.xml\`)`);
+  lines.push(`- EN URL-prefix sitemap URL count: ${sitemapCheck.prefixCount}`);
+  lines.push(`- EN URL-prefix sitemap loc prefix check: ${sitemapCheck.prefixEnLocOnly ? 'PASS' : 'FAIL'}`);
+  lines.push(`- EN URL-prefix sitemap matches \`public/sitemap-en.xml\`: ${sitemapCheck.prefixMatchesRootXml ? 'PASS' : 'FAIL'}`);
   lines.push('');
   lines.push('| Required path | loc | Result |');
   lines.push('| --- | --- | --- |');
   for (const item of sitemapCheck.required) {
     lines.push(`| ${item.path} | ${item.loc} | ${item.present ? 'OK' : 'MISSING'} |`);
+  }
+  lines.push('');
+  lines.push('## /en/sitemap.xml Loc Prefix Check');
+  lines.push('');
+  if (!sitemapCheck.prefixNonEnLocs.length) {
+    lines.push('- All `<loc>` values are under `https://www.finmaphub.com/en`.');
+  } else {
+    lines.push('| Non-EN loc |');
+    lines.push('| --- |');
+    for (const loc of sitemapCheck.prefixNonEnLocs) {
+      lines.push(`| ${loc} |`);
+    }
   }
   lines.push('');
   return lines.join('\n');
@@ -294,6 +324,13 @@ async function main() {
     for (const item of sitemapCheck.required) {
       console.log(`[sitemap-en]\t${item.present ? 'OK' : 'MISSING'}\t${item.path}`);
     }
+    console.log(`[sitemap-en-prefix] file: ${sitemapCheck.prefixExists ? 'present' : 'missing'} public/en/sitemap.xml`);
+    console.log(`[sitemap-en-prefix] URL count: ${sitemapCheck.prefixCount}`);
+    console.log(`[sitemap-en-prefix] EN-only locs: ${sitemapCheck.prefixEnLocOnly ? 'PASS' : 'FAIL'}`);
+    console.log(`[sitemap-en-prefix] matches sitemap-en.xml: ${sitemapCheck.prefixMatchesRootXml ? 'PASS' : 'FAIL'}`);
+    for (const loc of sitemapCheck.prefixNonEnLocs) {
+      console.log(`[sitemap-en-prefix]\tNON_EN_LOC\t${loc}`);
+    }
 
     const results = [];
     for (const sample of SAMPLES) {
@@ -305,7 +342,14 @@ async function main() {
     fs.writeFileSync(REPORT_PATH, buildReport(results, sitemapCheck), 'utf8');
     console.log(`Wrote ${path.relative(ROOT, REPORT_PATH)}`);
 
-    if (sitemapCheck.missing.length || !sitemapCheck.enHomeTrailingSlashOk || results.some((item) => item.result !== 'PASS')) {
+    if (
+      sitemapCheck.missing.length ||
+      !sitemapCheck.enHomeTrailingSlashOk ||
+      !sitemapCheck.prefixExists ||
+      !sitemapCheck.prefixEnLocOnly ||
+      !sitemapCheck.prefixMatchesRootXml ||
+      results.some((item) => item.result !== 'PASS')
+    ) {
       process.exitCode = 1;
     }
   } catch (error) {

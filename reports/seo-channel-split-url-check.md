@@ -1,11 +1,14 @@
 # SEO Channel Split URL Check
 
-- Checked at: 2026-06-18T06:23:38.962Z
+- Checked at: 2026-06-18T06:39:23.065Z
 - Fetch base: http://127.0.0.1:8017
 - URL samples: 16
 - Failures: 0
 - sitemap-en.xml URL count: 98
 - sitemap-en.xml required URLs: 16/16
+- /en/sitemap.xml exists: yes
+- /en/sitemap.xml URL count: 98
+- /en/sitemap.xml EN-only locs: PASS
 
 | Path | Lang | Status | Canonical | hreflang ko | hreflang en | x-default | Meta robots | X-Robots-Tag | Result | Notes |
 | --- | --- | ---: | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -32,6 +35,10 @@
 - URL count: 98
 - Required URL membership: 16/16
 - EN home trailing slash check: PASS (https://www.finmaphub.com/en)
+- EN URL-prefix sitemap: present (`public/en/sitemap.xml`)
+- EN URL-prefix sitemap URL count: 98
+- EN URL-prefix sitemap loc prefix check: PASS
+- EN URL-prefix sitemap matches `public/sitemap-en.xml`: PASS
 
 | Required path | loc | Result |
 | --- | --- | --- |
@@ -51,3 +58,7 @@
 | /en/privacy | https://www.finmaphub.com/en/privacy | OK |
 | /en/terms | https://www.finmaphub.com/en/terms | OK |
 | /en/disclaimer | https://www.finmaphub.com/en/disclaimer | OK |
+
+## /en/sitemap.xml Loc Prefix Check
+
+- All `<loc>` values are under `https://www.finmaphub.com/en`.

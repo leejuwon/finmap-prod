@@ -96,6 +96,7 @@ function buildSitemap(entries) {
 
 function writeSitemap(filename, entries) {
   const target = path.join(PUBLIC_DIR, filename);
+  fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, buildSitemap(entries), 'utf8');
   return { filename, count: entries.length };
 }
@@ -114,6 +115,7 @@ function main() {
   const results = [
     writeSitemap('sitemap-ko.xml', koEntries),
     writeSitemap('sitemap-en.xml', enEntries),
+    writeSitemap(path.join('en', 'sitemap.xml'), enEntries),
   ];
 
   for (const result of results) {

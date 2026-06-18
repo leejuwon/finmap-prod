@@ -86,6 +86,7 @@ const PORT = Number(process.env.PORT || 8002);
   // ✅ public 폴더를 루트에서 정적 서빙 (favicon.ico 같은 표준 경로 해결)
   app.use(express.static(path.join(APP_DIR, 'public'), {
     fallthrough: true,
+    redirect: false,
     maxAge: 0,
   }));
 
