@@ -1,12 +1,12 @@
 ---
 slug: "monthly-investment-for-100m-table"
 link: "/en/posts/personalFinance/monthly-investment-for-100m-table"
-title: "How Much Should You Invest Monthly to Reach a Target Portfolio?"
-description: "Estimate the monthly investment needed to reach a target portfolio using target amount, time horizon, return assumptions, and calculator-style contribution tables."
+title: "Monthly Contribution Table for a $100,000 Target and KRW 100M Goal"
+description: "$100,000 and KRW 100M monthly contribution tables by timeline and return assumption, with a Korea example and calculator links."
 datePublished: "2026-06-01"
 dateModified: "2026-06-19"
-seoTitle: "Monthly Investment Calculator Guide | Target Portfolio Contribution Table"
-seoDescription: "See how much to invest monthly to reach a target portfolio, with $100,000 and KRW 100M examples across return assumptions and timelines."
+seoTitle: "Monthly Contribution Table | $100,000 and KRW 100M Goal Examples"
+seoDescription: "Use monthly contribution tables for a $100,000 target and KRW 100M goal, then compare timelines and return assumptions with FinMap calculators."
 category: "Personal Finance"
 postCategory: "personalFinance"
 tags: ["monthly investment calculator", "target portfolio", "monthly contribution table", "goal calculator", "DCA", "compound interest", "portfolio planning"]
@@ -15,7 +15,7 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1780291772/blog/insig
 lang: "en"
 ---
 
-To reach a target portfolio, the monthly investment depends on four inputs: your target amount, current balance, time horizon, and expected return. For example, reaching $100,000 from zero in 10 years requires about $833 per month at 0% return, about $644 per month at 5%, or about $488 per month at 10%, before taxes and fees.
+This page is a monthly contribution table reference for two example goals: a $100,000 target portfolio and a KRW 100M Korea goal. It shows how the required monthly contribution changes by timeline and return assumption; for the broader after-tax planning workflow, use the [target portfolio monthly investing guide](/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio).
 
 This article is educational. The tables are calculator estimates, not investment advice, return forecasts, or product recommendations.
 
@@ -23,16 +23,16 @@ This article is educational. The tables are calculator estimates, not investment
 
 | Question | Short answer |
 | --- | --- |
-| What drives the monthly amount? | Target amount, starting balance, years, return assumption, taxes, fees, and contribution timing. |
-| What is the safest input to control? | Time horizon and contribution amount are usually more controllable than returns. |
-| Should I use one expected return? | No. Use conservative, base, and optimistic scenarios. |
-| Which FinMap tool should I use? | Use the [Goal Simulator](/en/tools/goal-simulator) for target amounts and the [DCA Calculator](/en/tools/dca-calculator) for monthly investing paths. |
+| What does this page show? | Reference tables for a $100,000 target and a KRW 100M Korea goal. |
+| Is this the general monthly investing guide? | No. For the broad workflow, read the [target portfolio guide](/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio). |
+| What changes the table results? | Timeline, return assumption, starting balance, taxes, fees, inflation, and contribution timing. |
+| Which FinMap tool should I use? | Use the [Goal Simulator](/en/tools/goal-simulator) for target tables and the [DCA Calculator](/en/tools/dca-calculator) for monthly investing paths. |
 
 ![Monthly investment target portfolio](https://res.cloudinary.com/dwonflmnn/image/upload/v1780291774/blog/insight/mon_img1-en.png "Monthly investment target portfolio")
 
-## The Basic Formula Behind a Monthly Investment Goal
+## How to Read the Monthly Contribution Table
 
-A target portfolio calculator usually works backward from the future goal.
+Read the tables as reference grids, not as personalized recommendations. Each row starts with a target amount and works backward to estimate the monthly contribution needed under a specific timeline and return assumption.
 
 ```text
 Target portfolio = future value of current assets + future value of monthly contributions
@@ -125,7 +125,7 @@ Start with:
 
 Useful next reads:
 
-- [How Much Should You Invest Monthly to Reach a Target Portfolio?](/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio)
+- [General target portfolio monthly investing guide](/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio)
 - [What Happens If You Invest $500 a Month for 10 Years?](/en/posts/personalFinance/monthly-dca-10-year-result)
 - [DCA vs Lump Sum: When Results Differ](/en/posts/personalFinance/dca-vs-lump-sum-when-results-differ)
 
@@ -133,13 +133,13 @@ Useful next reads:
 
 ## Bottom Line
 
-The monthly investment needed to reach a target portfolio is not one fixed number. It is a function of target amount, time, starting assets, return assumptions, and costs. Use tables for orientation, then use a calculator to test conservative and optimistic scenarios before treating the result as a real plan.
+This page is a contribution-table reference, not a complete personal plan. Use the $100,000 and KRW 100M rows for orientation, then test your own target, starting balance, taxes, fees, and contribution timing in the Goal Simulator or DCA Calculator before treating the result as a real plan.
 
 ## FAQ
 
-### How much should I invest monthly to reach a target portfolio?
+### What does this monthly contribution table show?
 
-It depends on the target amount, starting balance, time horizon, expected return, taxes, fees, and contribution timing. A calculator is usually better than a single rule of thumb.
+It shows estimated monthly contributions for a $100,000 target and a KRW 100M Korea goal under different timelines and return assumptions. It is a reference table, not a personalized plan.
 
 ### Is a $100,000 target different from a KRW 100M target?
 
@@ -164,8 +164,8 @@ Use the Goal Simulator if you know the target amount. Use the DCA Calculator if 
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How much should I invest monthly to reach a target portfolio?",
-      "acceptedAnswer": { "@type": "Answer", "text": "It depends on the target amount, starting balance, time horizon, expected return, taxes, fees, and contribution timing. A calculator is usually better than a single rule of thumb." }
+      "name": "What does this monthly contribution table show?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It shows estimated monthly contributions for a $100,000 target and a KRW 100M Korea goal under different timelines and return assumptions. It is a reference table, not a personalized plan." }
     },
     {
       "@type": "Question",
