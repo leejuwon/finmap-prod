@@ -1,7 +1,7 @@
 # SEO Channel Split URL Check
 
-- Checked at: 2026-06-19T02:22:34.019Z
-- Fetch base: http://127.0.0.1:8024
+- Checked at: 2026-06-19T06:09:20.208Z
+- Fetch base: http://127.0.0.1:8017
 - URL samples: 16
 - Failures: 0
 - sitemap-0.xml URL count: 199
