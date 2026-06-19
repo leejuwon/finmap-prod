@@ -8,6 +8,8 @@ const REPORT_PATH = path.join(ROOT, 'reports', 'seo-channel-split-url-check.md')
 const DEFAULT_PORT = Number(process.env.SEO_VERIFY_PORT || 8017);
 const USE_LOCAL_SERVER = process.argv.includes('--local-server');
 const BASE_URL = (process.env.SEO_VERIFY_BASE_URL || (USE_LOCAL_SERVER ? `http://127.0.0.1:${DEFAULT_PORT}` : SITE_URL)).replace(/\/+$/, '');
+const MAIN_SITEMAP_PATH = path.join(ROOT, 'public', 'sitemap-0.xml');
+const KO_SITEMAP_PATH = path.join(ROOT, 'public', 'sitemap-ko.xml');
 const EN_SITEMAP_PATH = path.join(ROOT, 'public', 'sitemap-en.xml');
 const EN_PREFIX_SITEMAP_PATH = path.join(ROOT, 'public', 'en', 'sitemap.xml');
 
@@ -118,6 +120,88 @@ function extractSitemapLocs(xml) {
   return Array.from(String(xml || '').matchAll(/<loc>([\s\S]*?)<\/loc>/g), (match) => match[1].trim()).filter(Boolean);
 }
 
+function readSitemapLocs(filePath) {
+  if (!fs.existsSync(filePath)) return [];
+  return extractSitemapLocs(fs.readFileSync(filePath, 'utf8'));
+}
+
+function normalizeLocForMembership(loc) {
+  try {
+    const parsed = new URL(loc);
+    if (parsed.origin === SITE_URL && parsed.pathname === '/' && !parsed.search && !parsed.hash) {
+      return `${SITE_URL}/`;
+    }
+  } catch {
+    // Keep the raw value so the policy check can report invalid URLs separately.
+  }
+  return loc;
+}
+
+function loadSitemapSets() {
+  const mainLocs = readSitemapLocs(MAIN_SITEMAP_PATH);
+  const koLocs = readSitemapLocs(KO_SITEMAP_PATH);
+  const enLocs = readSitemapLocs(EN_SITEMAP_PATH);
+  const enPrefixLocs = readSitemapLocs(EN_PREFIX_SITEMAP_PATH);
+
+  return {
+    mainLocs,
+    koLocs,
+    enLocs,
+    enPrefixLocs,
+    main: new Set(mainLocs.map(normalizeLocForMembership)),
+    ko: new Set(koLocs.map(normalizeLocForMembership)),
+    en: new Set(enLocs.map(normalizeLocForMembership)),
+    enPrefix: new Set(enPrefixLocs.map(normalizeLocForMembership)),
+  };
+}
+
+function isForbiddenSitemapLoc(loc) {
+  let pathname = '';
+  try {
+    pathname = new URL(loc).pathname;
+  } catch {
+    return 'invalid-url';
+  }
+
+  if (loc.includes('?')) return 'query-url';
+  if (pathname === '/ko' || pathname.startsWith('/ko/')) return 'ko-prefix';
+  if (pathname === '/en/en' || pathname.startsWith('/en/en/')) return 'en-en-prefix';
+  if (/^\/(?:en\/)?posts\/[^/]+\/(?:ko|en)\//.test(pathname)) return 'legacy-post-lang-url';
+  if (/^\/(?:en\/)?market\/real-estate\/apt\//.test(pathname)) return 'real-estate-apt-detail-url';
+  return '';
+}
+
+function inspectSitemapPolicy(sitemapSets) {
+  const files = [
+    { name: 'sitemap-0.xml', locs: sitemapSets.mainLocs },
+    { name: 'sitemap-ko.xml', locs: sitemapSets.koLocs },
+    { name: 'sitemap-en.xml', locs: sitemapSets.enLocs },
+    { name: 'en/sitemap.xml', locs: sitemapSets.enPrefixLocs },
+  ];
+  const forbidden = [];
+
+  for (const file of files) {
+    for (const loc of file.locs) {
+      const reason = isForbiddenSitemapLoc(loc);
+      if (reason) forbidden.push({ file: file.name, reason, loc });
+    }
+  }
+
+  const enPrefixNonEnLocs = sitemapSets.enPrefixLocs.filter(
+    (loc) => loc !== `${SITE_URL}/en` && !loc.startsWith(`${SITE_URL}/en/`)
+  );
+
+  return {
+    mainCount: sitemapSets.mainLocs.length,
+    koCount: sitemapSets.koLocs.length,
+    enCount: sitemapSets.enLocs.length,
+    enPrefixCount: sitemapSets.enPrefixLocs.length,
+    forbidden,
+    enPrefixNonEnLocs,
+    enPrefixOnly: sitemapSets.enPrefixLocs.length > 0 && enPrefixNonEnLocs.length === 0,
+  };
+}
+
 function inspectEnSitemapMembership() {
   const exists = fs.existsSync(EN_SITEMAP_PATH);
   const xml = exists ? fs.readFileSync(EN_SITEMAP_PATH, 'utf8') : '';
@@ -196,16 +280,46 @@ function startLocalServer() {
   };
 }
 
-async function inspectSample(sample) {
+function toPublicUrl(fetchUrl) {
+  const parsed = new URL(fetchUrl);
+  const pathname = parsed.pathname === '/' ? '/' : parsed.pathname.replace(/\/+$/, '');
+  return `${SITE_URL}${pathname}${parsed.search}`;
+}
+
+async function fetchFinal(url) {
+  let currentUrl = url;
+  const redirects = [];
+  const headers = {
+    'user-agent': 'Finmap-SEO-Channel-Split-Verify/1.0',
+    accept: 'text/html,application/xhtml+xml',
+  };
+
+  for (let i = 0; i < 8; i += 1) {
+    const res = await fetch(currentUrl, { redirect: 'manual', headers });
+    const location = res.headers.get('location');
+    if (res.status >= 300 && res.status < 400 && location) {
+      const nextUrl = new URL(location, currentUrl).toString();
+      redirects.push(`${res.status} ${toPublicUrl(currentUrl)} -> ${toPublicUrl(nextUrl)}`);
+      currentUrl = nextUrl;
+      continue;
+    }
+
+    return {
+      res,
+      html: await res.text(),
+      finalFetchUrl: currentUrl,
+      finalUrl: toPublicUrl(currentUrl),
+      redirects,
+    };
+  }
+
+  throw new Error(`Too many redirects while checking ${url}`);
+}
+
+async function inspectSample(sample, sitemapSets) {
   const url = `${BASE_URL}${sample.path}`;
-  const res = await fetch(url, {
-    redirect: 'manual',
-    headers: {
-      'user-agent': 'Finmap-SEO-Channel-Split-Verify/1.0',
-      accept: 'text/html,application/xhtml+xml',
-    },
-  });
-  const html = await res.text();
+  const fetched = await fetchFinal(url);
+  const { res, html, finalUrl, redirects } = fetched;
   const canonical = extractCanonical(html);
   const hreflangs = extractHreflangs(html);
   const metaRobots = extractMeta(html, 'robots');
@@ -213,8 +327,12 @@ async function inspectSample(sample) {
   const xRobots = res.headers.get('x-robots-tag') || '';
   const expected = expectedFor(sample);
   const problems = [];
+  const mainSitemapIncluded = sitemapSets.main.has(expected.canonical);
+  const channelSitemapIncluded = sample.lang === 'en' ? sitemapSets.en.has(expected.canonical) : sitemapSets.ko.has(expected.canonical);
+  const enPrefixSitemapIncluded = sitemapSets.enPrefix.has(expected.canonical);
 
   if (res.status !== 200) problems.push(`status ${res.status}`);
+  if (finalUrl !== expected.canonical) problems.push(`finalUrl expected ${expected.canonical}`);
   if (canonical !== expected.canonical) problems.push(`canonical expected ${expected.canonical}`);
   if (hreflangs.ko !== expected.koHref) problems.push(`hreflang ko expected ${expected.koHref}`);
   if (hreflangs.en !== expected.enHref) problems.push(`hreflang en expected ${expected.enHref}`);
@@ -225,15 +343,24 @@ async function inspectSample(sample) {
   }
   if (hreflangs[sample.lang] !== expected.canonical) problems.push('self hreflang does not match canonical');
   if (hasNoindex(metaRobots, metaGooglebot, xRobots)) problems.push('noindex found');
+  if (!mainSitemapIncluded) problems.push('canonical missing from sitemap-0.xml');
+  if (!channelSitemapIncluded) problems.push(`canonical missing from sitemap-${sample.lang}.xml`);
+  if (sample.lang === 'en' && !enPrefixSitemapIncluded) problems.push('canonical missing from /en/sitemap.xml');
+  if (sample.lang !== 'en' && enPrefixSitemapIncluded) problems.push('KO canonical found in /en/sitemap.xml');
 
   return {
     ...sample,
     status: res.status,
+    finalUrl,
     canonical,
     hreflangs,
     metaRobots,
     metaGooglebot,
     xRobots,
+    mainSitemapIncluded,
+    channelSitemapIncluded,
+    enPrefixSitemapIncluded,
+    redirects,
     result: problems.length ? 'FAIL' : 'PASS',
     problems,
   };
@@ -243,7 +370,20 @@ function mdEscape(value) {
   return String(value || '-').replace(/\|/g, '\\|').replace(/\n/g, ' ');
 }
 
-function buildReport(results, sitemapCheck) {
+function formatSitemapMembership(item) {
+  const channel = item.lang === 'en' ? 'en' : 'ko';
+  const parts = [];
+  parts.push(item.mainSitemapIncluded ? 'main:yes' : 'main:no');
+  parts.push(item.channelSitemapIncluded ? `${channel}:yes` : `${channel}:no`);
+  return parts.join(', ');
+}
+
+function formatEnPrefixMembership(item) {
+  if (item.lang === 'en') return item.enPrefixSitemapIncluded ? 'yes' : 'no';
+  return item.enPrefixSitemapIncluded ? 'FAIL: KO included' : 'N/A';
+}
+
+function buildReport(results, sitemapCheck, sitemapPolicy) {
   const lines = [];
   lines.push('# SEO Channel Split URL Check');
   lines.push('');
@@ -251,28 +391,57 @@ function buildReport(results, sitemapCheck) {
   lines.push(`- Fetch base: ${BASE_URL}`);
   lines.push(`- URL samples: ${results.length}`);
   lines.push(`- Failures: ${results.filter((item) => item.result !== 'PASS').length}`);
+  lines.push(`- sitemap-0.xml URL count: ${sitemapPolicy.mainCount}`);
+  lines.push(`- sitemap-ko.xml URL count: ${sitemapPolicy.koCount}`);
   lines.push(`- sitemap-en.xml URL count: ${sitemapCheck.count}`);
   lines.push(`- sitemap-en.xml required URLs: ${sitemapCheck.required.length - sitemapCheck.missing.length}/${sitemapCheck.required.length}`);
   lines.push(`- /en/sitemap.xml exists: ${sitemapCheck.prefixExists ? 'yes' : 'no'}`);
   lines.push(`- /en/sitemap.xml URL count: ${sitemapCheck.prefixCount}`);
   lines.push(`- /en/sitemap.xml EN-only locs: ${sitemapCheck.prefixEnLocOnly ? 'PASS' : 'FAIL'}`);
+  lines.push(`- Forbidden sitemap loc patterns: ${sitemapPolicy.forbidden.length ? 'FAIL' : 'PASS'} (${sitemapPolicy.forbidden.length})`);
+  lines.push('- Sitemap membership normalizes the root host-only loc to `https://www.finmaphub.com/` for canonical comparison.');
   lines.push('');
-  lines.push('| Path | Lang | Status | Canonical | hreflang ko | hreflang en | x-default | Meta robots | X-Robots-Tag | Result | Notes |');
-  lines.push('| --- | --- | ---: | --- | --- | --- | --- | --- | --- | --- | --- |');
+  lines.push('| Path | Lang | Status | Final URL | Canonical | hreflang ko | hreflang en | x-default | Meta robots | X-Robots-Tag | Sitemap | EN prefix sitemap | Result | Notes |');
+  lines.push('| --- | --- | ---: | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |');
   for (const item of results) {
     lines.push([
       item.path,
       item.lang,
       item.status,
+      mdEscape(item.finalUrl),
       mdEscape(item.canonical),
       mdEscape(item.hreflangs.ko),
       mdEscape(item.hreflangs.en),
       mdEscape(item.hreflangs['x-default']),
       mdEscape(item.metaRobots || item.metaGooglebot),
       mdEscape(item.xRobots),
+      formatSitemapMembership(item),
+      formatEnPrefixMembership(item),
       item.result,
-      mdEscape(item.problems.join('; ') || 'OK'),
+      mdEscape(item.problems.join('; ') || (item.redirects.length ? item.redirects.join('; ') : 'OK')),
     ].join(' | ').replace(/^/, '| ').replace(/$/, ' |'));
+  }
+  lines.push('');
+  lines.push('## Sitemap Policy Check');
+  lines.push('');
+  lines.push('| Sitemap | URL count |');
+  lines.push('| --- | ---: |');
+  lines.push(`| sitemap-0.xml | ${sitemapPolicy.mainCount} |`);
+  lines.push(`| sitemap-ko.xml | ${sitemapPolicy.koCount} |`);
+  lines.push(`| sitemap-en.xml | ${sitemapPolicy.enCount} |`);
+  lines.push(`| en/sitemap.xml | ${sitemapPolicy.enPrefixCount} |`);
+  lines.push('');
+  lines.push(`- Forbidden loc pattern check: ${sitemapPolicy.forbidden.length ? 'FAIL' : 'PASS'}`);
+  lines.push(`- /en/sitemap.xml EN-only loc check: ${sitemapPolicy.enPrefixOnly ? 'PASS' : 'FAIL'}`);
+  lines.push('');
+  if (!sitemapPolicy.forbidden.length) {
+    lines.push('- No forbidden sitemap loc patterns found: query URL, `/ko`, `/en/en`, legacy post language URL, or real-estate apt detail URL.');
+  } else {
+    lines.push('| Sitemap | Reason | loc |');
+    lines.push('| --- | --- | --- |');
+    for (const item of sitemapPolicy.forbidden) {
+      lines.push(`| ${item.file} | ${item.reason} | ${item.loc} |`);
+    }
   }
   lines.push('');
   lines.push('## sitemap-en.xml Required Loc Membership');
@@ -316,7 +485,17 @@ async function main() {
       await waitForLocalServer(BASE_URL);
     }
 
+    const sitemapSets = loadSitemapSets();
+    const sitemapPolicy = inspectSitemapPolicy(sitemapSets);
     const sitemapCheck = inspectEnSitemapMembership();
+    console.log(`[sitemap-policy] sitemap-0.xml URL count: ${sitemapPolicy.mainCount}`);
+    console.log(`[sitemap-policy] sitemap-ko.xml URL count: ${sitemapPolicy.koCount}`);
+    console.log(`[sitemap-policy] sitemap-en.xml URL count: ${sitemapPolicy.enCount}`);
+    console.log(`[sitemap-policy] en/sitemap.xml URL count: ${sitemapPolicy.enPrefixCount}`);
+    console.log(`[sitemap-policy] forbidden loc patterns: ${sitemapPolicy.forbidden.length ? 'FAIL' : 'PASS'} (${sitemapPolicy.forbidden.length})`);
+    for (const item of sitemapPolicy.forbidden) {
+      console.log(`[sitemap-policy]\t${item.file}\t${item.reason}\t${item.loc}`);
+    }
     console.log(`[sitemap-en] URL count: ${sitemapCheck.count}`);
     console.log(
       `[sitemap-en] required URLs: ${sitemapCheck.required.length - sitemapCheck.missing.length}/${sitemapCheck.required.length}`
@@ -334,15 +513,17 @@ async function main() {
 
     const results = [];
     for (const sample of SAMPLES) {
-      const result = await inspectSample(sample);
+      const result = await inspectSample(sample, sitemapSets);
       results.push(result);
-      console.log(`${result.result}\t${sample.path}\t${result.canonical || '-'}`);
+      console.log(`${result.result}\t${sample.path}\t${result.status}\t${result.finalUrl}\t${result.canonical || '-'}`);
     }
 
-    fs.writeFileSync(REPORT_PATH, buildReport(results, sitemapCheck), 'utf8');
+    fs.writeFileSync(REPORT_PATH, buildReport(results, sitemapCheck, sitemapPolicy), 'utf8');
     console.log(`Wrote ${path.relative(ROOT, REPORT_PATH)}`);
 
     if (
+      sitemapPolicy.forbidden.length ||
+      !sitemapPolicy.enPrefixOnly ||
       sitemapCheck.missing.length ||
       !sitemapCheck.enHomeTrailingSlashOk ||
       !sitemapCheck.prefixExists ||

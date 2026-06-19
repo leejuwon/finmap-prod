@@ -1,33 +1,51 @@
 # SEO Channel Split URL Check
 
-- Checked at: 2026-06-18T06:39:23.065Z
-- Fetch base: http://127.0.0.1:8017
+- Checked at: 2026-06-19T01:54:34.491Z
+- Fetch base: http://127.0.0.1:8022
 - URL samples: 16
 - Failures: 0
+- sitemap-0.xml URL count: 199
+- sitemap-ko.xml URL count: 101
 - sitemap-en.xml URL count: 98
 - sitemap-en.xml required URLs: 16/16
 - /en/sitemap.xml exists: yes
 - /en/sitemap.xml URL count: 98
 - /en/sitemap.xml EN-only locs: PASS
+- Forbidden sitemap loc patterns: PASS (0)
+- Sitemap membership normalizes the root host-only loc to `https://www.finmaphub.com/` for canonical comparison.
 
-| Path | Lang | Status | Canonical | hreflang ko | hreflang en | x-default | Meta robots | X-Robots-Tag | Result | Notes |
-| --- | --- | ---: | --- | --- | --- | --- | --- | --- | --- | --- |
-| / | ko | 200 | https://www.finmaphub.com/ | https://www.finmaphub.com/ | https://www.finmaphub.com/en | https://www.finmaphub.com/ | - | - | PASS | OK |
-| /en | en | 200 | https://www.finmaphub.com/en | https://www.finmaphub.com/ | https://www.finmaphub.com/en | https://www.finmaphub.com/ | - | - | PASS | OK |
-| /tools | ko | 200 | https://www.finmaphub.com/tools | https://www.finmaphub.com/tools | https://www.finmaphub.com/en/tools | - | - | - | PASS | OK |
-| /en/tools | en | 200 | https://www.finmaphub.com/en/tools | https://www.finmaphub.com/tools | https://www.finmaphub.com/en/tools | - | - | - | PASS | OK |
-| /en/tools/compound-interest | en | 200 | https://www.finmaphub.com/en/tools/compound-interest | https://www.finmaphub.com/tools/compound-interest | https://www.finmaphub.com/en/tools/compound-interest | - | - | - | PASS | OK |
-| /en/tools/cagr-calculator | en | 200 | https://www.finmaphub.com/en/tools/cagr-calculator | https://www.finmaphub.com/tools/cagr-calculator | https://www.finmaphub.com/en/tools/cagr-calculator | - | - | - | PASS | OK |
-| /tools/dca-calculator | ko | 200 | https://www.finmaphub.com/tools/dca-calculator | https://www.finmaphub.com/tools/dca-calculator | https://www.finmaphub.com/en/tools/dca-calculator | - | - | - | PASS | OK |
-| /en/tools/dca-calculator | en | 200 | https://www.finmaphub.com/en/tools/dca-calculator | https://www.finmaphub.com/tools/dca-calculator | https://www.finmaphub.com/en/tools/dca-calculator | - | - | - | PASS | OK |
-| /en/tools/dsr-ltv-calculator | en | 200 | https://www.finmaphub.com/en/tools/dsr-ltv-calculator | https://www.finmaphub.com/tools/dsr-ltv-calculator | https://www.finmaphub.com/en/tools/dsr-ltv-calculator | - | - | - | PASS | OK |
-| /en/tools/fire-calculator | en | 200 | https://www.finmaphub.com/en/tools/fire-calculator | https://www.finmaphub.com/tools/fire-calculator | https://www.finmaphub.com/en/tools/fire-calculator | - | - | - | PASS | OK |
-| /en/tools/goal-simulator | en | 200 | https://www.finmaphub.com/en/tools/goal-simulator | https://www.finmaphub.com/tools/goal-simulator | https://www.finmaphub.com/en/tools/goal-simulator | - | - | - | PASS | OK |
-| /market/real-estate | ko | 200 | https://www.finmaphub.com/market/real-estate | https://www.finmaphub.com/market/real-estate | https://www.finmaphub.com/en/market/real-estate | - | index,follow,max-image-preview:large | - | PASS | OK |
-| /en/market/real-estate | en | 200 | https://www.finmaphub.com/en/market/real-estate | https://www.finmaphub.com/market/real-estate | https://www.finmaphub.com/en/market/real-estate | - | index,follow,max-image-preview:large | - | PASS | OK |
-| /en/market/indices | en | 200 | https://www.finmaphub.com/en/market/indices | https://www.finmaphub.com/market/indices | https://www.finmaphub.com/en/market/indices | - | - | - | PASS | OK |
-| /posts/personalFinance/dsr-40-income-loan-limit-table | ko | 200 | https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table | - | - | - | PASS | OK |
-| /en/posts/personalFinance/dsr-40-income-loan-limit-table | en | 200 | https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table | - | - | - | PASS | OK |
+| Path | Lang | Status | Final URL | Canonical | hreflang ko | hreflang en | x-default | Meta robots | X-Robots-Tag | Sitemap | EN prefix sitemap | Result | Notes |
+| --- | --- | ---: | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| / | ko | 200 | https://www.finmaphub.com/ | https://www.finmaphub.com/ | https://www.finmaphub.com/ | https://www.finmaphub.com/en | https://www.finmaphub.com/ | - | - | main:yes, ko:yes | N/A | PASS | OK |
+| /en | en | 200 | https://www.finmaphub.com/en | https://www.finmaphub.com/en | https://www.finmaphub.com/ | https://www.finmaphub.com/en | https://www.finmaphub.com/ | - | - | main:yes, en:yes | yes | PASS | OK |
+| /tools | ko | 200 | https://www.finmaphub.com/tools | https://www.finmaphub.com/tools | https://www.finmaphub.com/tools | https://www.finmaphub.com/en/tools | - | - | - | main:yes, ko:yes | N/A | PASS | OK |
+| /en/tools | en | 200 | https://www.finmaphub.com/en/tools | https://www.finmaphub.com/en/tools | https://www.finmaphub.com/tools | https://www.finmaphub.com/en/tools | - | - | - | main:yes, en:yes | yes | PASS | OK |
+| /en/tools/compound-interest | en | 200 | https://www.finmaphub.com/en/tools/compound-interest | https://www.finmaphub.com/en/tools/compound-interest | https://www.finmaphub.com/tools/compound-interest | https://www.finmaphub.com/en/tools/compound-interest | - | - | - | main:yes, en:yes | yes | PASS | OK |
+| /en/tools/cagr-calculator | en | 200 | https://www.finmaphub.com/en/tools/cagr-calculator | https://www.finmaphub.com/en/tools/cagr-calculator | https://www.finmaphub.com/tools/cagr-calculator | https://www.finmaphub.com/en/tools/cagr-calculator | - | - | - | main:yes, en:yes | yes | PASS | OK |
+| /tools/dca-calculator | ko | 200 | https://www.finmaphub.com/tools/dca-calculator | https://www.finmaphub.com/tools/dca-calculator | https://www.finmaphub.com/tools/dca-calculator | https://www.finmaphub.com/en/tools/dca-calculator | - | - | - | main:yes, ko:yes | N/A | PASS | OK |
+| /en/tools/dca-calculator | en | 200 | https://www.finmaphub.com/en/tools/dca-calculator | https://www.finmaphub.com/en/tools/dca-calculator | https://www.finmaphub.com/tools/dca-calculator | https://www.finmaphub.com/en/tools/dca-calculator | - | - | - | main:yes, en:yes | yes | PASS | OK |
+| /en/tools/dsr-ltv-calculator | en | 200 | https://www.finmaphub.com/en/tools/dsr-ltv-calculator | https://www.finmaphub.com/en/tools/dsr-ltv-calculator | https://www.finmaphub.com/tools/dsr-ltv-calculator | https://www.finmaphub.com/en/tools/dsr-ltv-calculator | - | - | - | main:yes, en:yes | yes | PASS | OK |
+| /en/tools/fire-calculator | en | 200 | https://www.finmaphub.com/en/tools/fire-calculator | https://www.finmaphub.com/en/tools/fire-calculator | https://www.finmaphub.com/tools/fire-calculator | https://www.finmaphub.com/en/tools/fire-calculator | - | - | - | main:yes, en:yes | yes | PASS | OK |
+| /en/tools/goal-simulator | en | 200 | https://www.finmaphub.com/en/tools/goal-simulator | https://www.finmaphub.com/en/tools/goal-simulator | https://www.finmaphub.com/tools/goal-simulator | https://www.finmaphub.com/en/tools/goal-simulator | - | - | - | main:yes, en:yes | yes | PASS | OK |
+| /market/real-estate | ko | 200 | https://www.finmaphub.com/market/real-estate | https://www.finmaphub.com/market/real-estate | https://www.finmaphub.com/market/real-estate | https://www.finmaphub.com/en/market/real-estate | - | index,follow,max-image-preview:large | - | main:yes, ko:yes | N/A | PASS | OK |
+| /en/market/real-estate | en | 200 | https://www.finmaphub.com/en/market/real-estate | https://www.finmaphub.com/en/market/real-estate | https://www.finmaphub.com/market/real-estate | https://www.finmaphub.com/en/market/real-estate | - | index,follow,max-image-preview:large | - | main:yes, en:yes | yes | PASS | OK |
+| /en/market/indices | en | 200 | https://www.finmaphub.com/en/market/indices | https://www.finmaphub.com/en/market/indices | https://www.finmaphub.com/market/indices | https://www.finmaphub.com/en/market/indices | - | - | - | main:yes, en:yes | yes | PASS | OK |
+| /posts/personalFinance/dsr-40-income-loan-limit-table | ko | 200 | https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table | - | - | - | main:yes, ko:yes | N/A | PASS | OK |
+| /en/posts/personalFinance/dsr-40-income-loan-limit-table | en | 200 | https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table | - | - | - | main:yes, en:yes | yes | PASS | OK |
+
+## Sitemap Policy Check
+
+| Sitemap | URL count |
+| --- | ---: |
+| sitemap-0.xml | 199 |
+| sitemap-ko.xml | 101 |
+| sitemap-en.xml | 98 |
+| en/sitemap.xml | 98 |
+
+- Forbidden loc pattern check: PASS
+- /en/sitemap.xml EN-only loc check: PASS
+
+- No forbidden sitemap loc patterns found: query URL, `/ko`, `/en/en`, legacy post language URL, or real-estate apt detail URL.
 
 ## sitemap-en.xml Required Loc Membership
 
