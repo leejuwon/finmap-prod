@@ -1,143 +1,161 @@
 ---
 slug: "monthly-investment-for-100m-table"
 link: "/en/posts/personalFinance/monthly-investment-for-100m-table"
-title: "How Much to Invest Monthly to Reach KRW 100 Million? A Timeline and Return Table"
-description: "A reference table showing the monthly investment needed to reach KRW 100 million over 5, 10, 15, and 20 years under 3%, 5%, 7%, and 10% return assumptions."
+title: "How Much Should You Invest Monthly to Reach a Target Portfolio?"
+description: "Estimate the monthly investment needed to reach a target portfolio using target amount, time horizon, return assumptions, and calculator-style contribution tables."
 datePublished: "2026-06-01"
-dateModified: "2026-06-01"
-seoTitle: "Monthly Investment Needed for KRW 100 Million | 5, 10, 15, 20 Year Table"
-seoDescription: "Estimate how much you would need to invest each month to reach KRW 100 million across different timelines and annual return assumptions."
+dateModified: "2026-06-19"
+seoTitle: "Monthly Investment Calculator Guide | Target Portfolio Contribution Table"
+seoDescription: "See how much to invest monthly to reach a target portfolio, with $100,000 and KRW 100M examples across return assumptions and timelines."
 category: "Personal Finance"
 postCategory: "personalFinance"
-tags: ["target portfolio", "monthly investment", "KRW 100 million", "goal calculator", "DCA", "compound interest", "reference table"]
+tags: ["monthly investment calculator", "target portfolio", "monthly contribution table", "goal calculator", "DCA", "compound interest", "portfolio planning"]
 tool: ["goal","comp","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1780291772/blog/insight/mon_cover-en.png"
 lang: "en"
 ---
 
-“I want to reach KRW 100 million” sounds like a clear goal. The real planning question is more practical: **how much would you need to invest each month?** The answer changes dramatically depending on whether the timeline is five years or twenty years, and whether the return assumption is conservative or aggressive.
+To reach a target portfolio, the monthly investment depends on four inputs: your target amount, current balance, time horizon, and expected return. For example, reaching $100,000 from zero in 10 years requires about $833 per month at 0% return, about $644 per month at 5%, or about $488 per month at 10%, before taxes and fees.
 
-This article is a citeable reference table for KRW 100 million goal planning. The figures are generated from Finmap’s goal-calculation logic. They are simulations, not investment advice or return forecasts.
+This article is educational. The tables are calculator estimates, not investment advice, return forecasts, or product recommendations.
 
-## Quick Summary
+## Quick Answer
 
-- Target amount: KRW 100 million.
-- Initial assets: KRW 0.
-- At a 5% annual return assumption, the required monthly investment is about KRW 1.46 million for 5 years.
-- At the same 5% assumption, the 20-year monthly amount falls to about KRW 240,000.
-- A longer timeline can reduce the monthly burden more than many people expect.
-- A higher return assumption lowers the required monthly amount in the model, but it also makes the plan more fragile.
-
-## Assumptions
-
-| Item | Assumption |
+| Question | Short answer |
 | --- | --- |
-| Target amount | KRW 100 million |
-| Initial assets | KRW 0 |
-| Timelines | 5, 10, 15, and 20 years |
-| Annual returns | 3%, 5%, 7%, and 10% |
+| What drives the monthly amount? | Target amount, starting balance, years, return assumption, taxes, fees, and contribution timing. |
+| What is the safest input to control? | Time horizon and contribution amount are usually more controllable than returns. |
+| Should I use one expected return? | No. Use conservative, base, and optimistic scenarios. |
+| Which FinMap tool should I use? | Use the [Goal Simulator](/en/tools/goal-simulator) for target amounts and the [DCA Calculator](/en/tools/dca-calculator) for monthly investing paths. |
+
+![Monthly investment target portfolio](https://res.cloudinary.com/dwonflmnn/image/upload/v1780291774/blog/insight/mon_img1-en.png "Monthly investment target portfolio")
+
+## The Basic Formula Behind a Monthly Investment Goal
+
+A target portfolio calculator usually works backward from the future goal.
+
+```text
+Target portfolio = future value of current assets + future value of monthly contributions
+```
+
+If current assets are zero and contributions happen monthly, the required monthly contribution falls as the time horizon gets longer or the assumed return gets higher.
+
+That does not mean a higher return assumption makes the plan safer. It only means the calculator needs less cash flow under that assumption.
+
+## $100,000 Target Portfolio Example
+
+Assumptions:
+
+| Input | Value |
+| --- | --- |
+| Target portfolio | $100,000 |
+| Starting balance | $0 |
 | Contributions | Same amount every month |
-| Compounding | Monthly accumulation |
-| Taxes, fees, inflation | 0% for comparison only |
+| Compounding | Monthly |
+| Taxes, fees, inflation | Excluded for comparison |
 
-KRW 100 million is a common Korean savings milestone. The table is useful even outside Korea because the planning concept is universal: target amount, time, return assumption, and monthly contribution.
+| Years | 0%/yr | 3%/yr | 5%/yr | 7%/yr | 10%/yr |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 5 | $1,667 | $1,547 | $1,470 | $1,397 | $1,291 |
+| 10 | $833 | $716 | $644 | $578 | $488 |
+| 15 | $556 | $441 | $374 | $315 | $241 |
+| 20 | $417 | $305 | $243 | $192 | $132 |
 
-![Monthly amount for a KRW 100 million goal](https://res.cloudinary.com/dwonflmnn/image/upload/v1780291774/blog/insight/mon_img1-en.png)
+The main lesson is not that 10% is "better." The lesson is that the monthly amount is highly sensitive to time and return assumptions.
 
-## Core Table. Monthly Investment Needed for KRW 100 Million
-
-| Timeline | 3%/yr | 5%/yr | 7%/yr | 10%/yr |
-| --- | ---: | ---: | ---: | ---: |
-| 5 years | KRW 1.54M | KRW 1.46M | KRW 1.39M | KRW 1.28M |
-| 10 years | KRW 710K | KRW 640K | KRW 570K | KRW 480K |
-| 15 years | KRW 440K | KRW 370K | KRW 310K | KRW 240K |
-| 20 years | KRW 300K | KRW 240K | KRW 190K | KRW 130K |
-
-The timeline does most of the heavy lifting. At 5% per year, a 5-year target requires about KRW 1.46 million per month. A 20-year target requires about KRW 240,000 per month. The goal is the same, but the cash-flow burden is very different.
-
-![Timeline effect on monthly contribution](https://res.cloudinary.com/dwonflmnn/image/upload/v1780291776/blog/insight/mon_img2-en.png)
-
-## How Much Does a Longer Timeline Help?
-
-Using the 5% annual return assumption as a single comparison line:
-
-| Timeline | Required Monthly Investment | Change vs. 5-Year Plan |
-| --- | ---: | ---: |
-| 5 years | KRW 1.46M | - |
-| 10 years | KRW 640K | about KRW 820K lower |
-| 15 years | KRW 370K | about KRW 1.09M lower |
-| 20 years | KRW 240K | about KRW 1.22M lower |
-
-If a goal looks unrealistic, the first adjustment does not have to be “assume a higher return.” Often, the safer planning move is to adjust the timeline, monthly contribution, or target amount.
-
-![Return assumption sensitivity](https://res.cloudinary.com/dwonflmnn/image/upload/v1780291777/blog/insight/mon_img3-en.png)
+To test your own target, starting balance, and timeline, use the [Goal Simulator](/en/tools/goal-simulator).
 
 ## Return Assumption Sensitivity
 
-For the 10-year row, the required monthly contribution is about KRW 710K at 3% and KRW 480K at 10%. That gap is large enough to affect a household budget. It is also a warning: if your plan only works under a high return assumption, the plan may be more fragile than it looks.
+For a 10-year $100,000 goal, the monthly contribution changes sharply as the assumed return changes.
 
-Use conservative, base, and optimistic scenarios. A single clean return number is convenient, but it can hide the real risk of the plan.
+| Annual return assumption | Required monthly investment | Planning interpretation |
+| ---: | ---: | --- |
+| 0% | $833 | Pure savings path. No market return help. |
+| 3% | $716 | Conservative growth assumption. |
+| 5% | $644 | Moderate long-term assumption. |
+| 7% | $578 | More market-dependent. |
+| 10% | $488 | Aggressive assumption that needs stress testing. |
 
-## What If You Already Have Initial Assets?
+If your plan only works at the highest return assumption, the plan may be fragile. A more resilient plan checks what happens when returns are lower, inflation is higher, or contributions pause for a period.
 
-Initial assets reduce the monthly contribution needed. If you already have KRW 20 million, the problem is no longer the full KRW 100 million gap. But the answer still depends on whether that current amount is invested, held in cash, or earmarked for another near-term need.
+For month-by-month investing paths, see the [DCA Calculator](/en/tools/dca-calculator). For future-value comparisons, use the [Compound Interest Calculator](/en/tools/compound-interest).
 
-To test this directly, use the [Goal Amount Calculator](/en/tools/goal-simulator). For a month-by-month contribution path, use the [DCA Calculator](/en/tools/dca-calculator).
+## KRW 100M Korea Example
 
-## Calculator Used in This Article
+The slug of this article comes from a Korean milestone: KRW 100 million. For English readers, it is best treated as a Korea example of the same target-portfolio problem.
 
-The table reverse-calculates the monthly contribution needed for a target amount. You can change the target, starting assets, return assumption, and timeline in the [Goal Amount Calculator](/en/tools/goal-simulator). For future-value style comparisons, use the [Compound Interest Calculator](/en/tools/compound-interest). For regular monthly investing paths, use the [DCA Calculator](/en/tools/dca-calculator).
+Assumptions: KRW 100M target, KRW 0 starting balance, monthly contributions, no taxes or fees.
 
-Related reading: [How Much Should You Invest Monthly to Reach a Target Portfolio?](/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio) and [What Happens If You Invest $500 a Month for 10 Years?](/en/posts/personalFinance/monthly-dca-10-year-result).
+| Years | 3%/yr | 5%/yr | 7%/yr | 10%/yr |
+| ---: | ---: | ---: | ---: | ---: |
+| 5 | KRW 1.55M | KRW 1.47M | KRW 1.40M | KRW 1.29M |
+| 10 | KRW 716K | KRW 644K | KRW 578K | KRW 488K |
+| 15 | KRW 441K | KRW 374K | KRW 315K | KRW 241K |
+| 20 | KRW 305K | KRW 243K | KRW 192K | KRW 132K |
 
-## Interpretation Notes
+The currency can change, but the planning structure is the same:
 
-- This is a simplified monthly accumulation model.
-- Taxes, fund fees, inflation, exchange rates, and product-level costs are not included.
-- Higher return assumptions reduce the required contribution in the model, but they do not make the plan safer.
-- Short timelines leave less room to recover from market losses.
-- This article is educational and does not recommend any product or strategy.
+1. Define the target.
+2. Choose the timeline.
+3. Enter current assets.
+4. Test multiple return assumptions.
+5. Convert the result into a monthly cash-flow plan.
 
-## Citation Note
+## What Changes the Required Monthly Investment?
 
-If you cite the table, cite it as a KRW 100 million target simulation with initial assets set to KRW 0 and taxes/fees set to 0%. Link back to the article so readers can check the assumptions and calculator.
+| Input | If it increases | Effect on required monthly contribution |
+| --- | --- | --- |
+| Target amount | Goal gets larger | Monthly amount rises. |
+| Starting balance | You begin with more assets | Monthly amount falls. |
+| Time horizon | You have more years | Monthly amount usually falls sharply. |
+| Return assumption | Modeled return rises | Monthly amount falls, but uncertainty rises. |
+| Taxes and fees | Costs increase | Monthly amount should rise. |
+| Inflation | Real target gets larger | Monthly amount should rise. |
+
+This is why a target portfolio calculator is more useful than a single table. The right answer depends on your own target, time horizon, currency, and assumptions.
+
+## Related Reading and Tools
+
+Start with:
+
+- [Goal Simulator](/en/tools/goal-simulator) for target amount planning.
+- [DCA Calculator](/en/tools/dca-calculator) for monthly investing scenarios.
+- [Compound Interest Calculator](/en/tools/compound-interest) for lump-sum and contribution compounding.
+
+Useful next reads:
+
+- [How Much Should You Invest Monthly to Reach a Target Portfolio?](/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio)
+- [What Happens If You Invest $500 a Month for 10 Years?](/en/posts/personalFinance/monthly-dca-10-year-result)
+- [DCA vs Lump Sum: When Results Differ](/en/posts/personalFinance/dca-vs-lump-sum-when-results-differ)
+
+![Target portfolio assumptions](https://res.cloudinary.com/dwonflmnn/image/upload/v1780291777/blog/insight/mon_img3-en.png "Target portfolio assumptions")
+
+## Bottom Line
+
+The monthly investment needed to reach a target portfolio is not one fixed number. It is a function of target amount, time, starting assets, return assumptions, and costs. Use tables for orientation, then use a calculator to test conservative and optimistic scenarios before treating the result as a real plan.
 
 ## FAQ
 
-### Is KRW 100 million a pre-tax or after-tax goal here?
+### How much should I invest monthly to reach a target portfolio?
 
-In this simplified table, taxes and fees are set to zero. In a real plan, it is usually better to define the target as the amount you want after costs.
+It depends on the target amount, starting balance, time horizon, expected return, taxes, fees, and contribution timing. A calculator is usually better than a single rule of thumb.
 
-### Does the model assume the same contribution every month?
+### Is a $100,000 target different from a KRW 100M target?
 
-Yes. The table uses a fixed monthly contribution. If your contribution grows over time, the required starting amount may be different.
+The currency is different, but the planning logic is the same. Define the target, choose a timeline, set assumptions, and calculate the required monthly contribution.
 
-### Is 10% a reasonable planning assumption?
+### Should I use 7% or 10% as my expected return?
 
-It is a scenario, not a forecast. A plan that only works at 10% should be stress-tested with lower return assumptions.
+Use scenarios instead of one number. A plan that only works at 10% may be too fragile, so test lower return assumptions as well.
 
-### How do initial assets change the table?
+### Do taxes and fees matter in a monthly investment calculator?
 
-Initial assets reduce the required monthly investment, but the exact reduction depends on the amount, return assumption, and timeline.
+Yes. Taxes, fund fees, platform costs, and inflation can all raise the required contribution compared with a simplified table.
 
-### Is monthly investing always the right way to reach this goal?
+### Which FinMap calculator should I use first?
 
-Not always. The right structure depends on the timeline, risk tolerance, liquidity needs, and whether the goal is short-term or long-term.
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "How Much to Invest Monthly to Reach KRW 100 Million? A Timeline and Return Table",
-  "description": "A reference table showing the monthly investment needed to reach KRW 100 million over 5, 10, 15, and 20 years under 3%, 5%, 7%, and 10% return assumptions.",
-  "inLanguage": "en",
-  "datePublished": "2026-06-01",
-  "dateModified": "2026-06-01",
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" },
-  "mainEntityOfPage": "https://www.finmaphub.com/en/posts/personalFinance/monthly-investment-for-100m-table"
-}
-</script>
+Use the Goal Simulator if you know the target amount. Use the DCA Calculator if you want to model recurring investments and compare contribution paths.
 
 <script type="application/ld+json">
 {
@@ -146,28 +164,28 @@ Not always. The right structure depends on the timeline, risk tolerance, liquidi
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is KRW 100 million a pre-tax or after-tax goal here?",
-      "acceptedAnswer": { "@type": "Answer", "text": "In this simplified table, taxes and fees are set to zero. In a real plan, it is usually better to define the target as the amount you want after costs." }
+      "name": "How much should I invest monthly to reach a target portfolio?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It depends on the target amount, starting balance, time horizon, expected return, taxes, fees, and contribution timing. A calculator is usually better than a single rule of thumb." }
     },
     {
       "@type": "Question",
-      "name": "Does the model assume the same contribution every month?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The table uses a fixed monthly contribution. If your contribution grows over time, the required starting amount may be different." }
+      "name": "Is a $100,000 target different from a KRW 100M target?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The currency is different, but the planning logic is the same. Define the target, choose a timeline, set assumptions, and calculate the required monthly contribution." }
     },
     {
       "@type": "Question",
-      "name": "Is 10% a reasonable planning assumption?",
-      "acceptedAnswer": { "@type": "Answer", "text": "It is a scenario, not a forecast. A plan that only works at 10% should be stress-tested with lower return assumptions." }
+      "name": "Should I use 7% or 10% as my expected return?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Use scenarios instead of one number. A plan that only works at 10% may be too fragile, so test lower return assumptions as well." }
     },
     {
       "@type": "Question",
-      "name": "How do initial assets change the table?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Initial assets reduce the required monthly investment, but the exact reduction depends on the amount, return assumption, and timeline." }
+      "name": "Do taxes and fees matter in a monthly investment calculator?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Taxes, fund fees, platform costs, and inflation can all raise the required contribution compared with a simplified table." }
     },
     {
       "@type": "Question",
-      "name": "Is monthly investing always the right way to reach this goal?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Not always. The right structure depends on the timeline, risk tolerance, liquidity needs, and whether the goal is short-term or long-term." }
+      "name": "Which FinMap calculator should I use first?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Use the Goal Simulator if you know the target amount. Use the DCA Calculator if you want to model recurring investments and compare contribution paths." }
     }
   ]
 }
