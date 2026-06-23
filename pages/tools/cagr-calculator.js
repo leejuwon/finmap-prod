@@ -4,12 +4,12 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import SeoHead from "../../_components/SeoHead";
 import CTABar from "../../_components/CTABar";
-import CompoundCTA from "../../_components/CompoundCTA";
 import CagrForm from "../../_components/CagrForm";
 import CagrChart from "../../_components/CagrChart";
 import CagrYearTable from "../../_components/CagrYearTable";
 import ResultAdSlot from "../../_components/ResultAdSlot";
 import ToolCta from "../../_components/ToolCta"; // ✅ (기존 파일에서 사용하지만 import 누락 가능성)
+import ToolResultCta from "../../_components/ToolResultCta";
 import { ToolCitationBox, ToolSharePanel } from "../../_components/ToolBacklinkKit";
 import { AD_SLOTS } from "../../config/adSlots";
 import { numberFmt } from "../../lib/compound";
@@ -63,6 +63,7 @@ function trackToolHubClick({ targetTool, locale, location }) {
 
 export default function CagrCalculatorPage() {
   const [isExporting, setIsExporting] = useState(false);
+  const exportLockRef = useRef(false);
   const router = useRouter();
 
   // ✅ URL(/en/...) 기준이 진짜 언어
@@ -412,22 +413,31 @@ export default function CagrCalculatorPage() {
   );
 
   const handleDownloadPDF = async () => {
-    setIsExporting(true);
-    document.body.classList.add("fm-exporting");
+    if (isExporting || exportLockRef.current) return false;
+    exportLockRef.current = true;
+    let details = [];
+    let prevOpen = [];
 
-    const target = document.getElementById("pdf-target");
-    const details = target ? Array.from(target.querySelectorAll("details")) : [];
-    const prevOpen = details.map((d) => d.open);
-    details.forEach((d) => (d.open = true));
+    try {
+      setIsExporting(true);
+      document.body.classList.add("fm-exporting");
 
-    await new Promise((r) => setTimeout(r, 400));
+      const target = document.getElementById("pdf-target");
+      details = target ? Array.from(target.querySelectorAll("details")) : [];
+      prevOpen = details.map((d) => d.open);
+      details.forEach((d) => (d.open = true));
 
-    const { downloadPDF } = await import("../../_components/PDFGenerator");
-    await downloadPDF("pdf-target", "cagr-result.pdf");
+      await new Promise((r) => setTimeout(r, 400));
 
-    details.forEach((d, i) => (d.open = prevOpen[i]));
-    document.body.classList.remove("fm-exporting");
-    setIsExporting(false);
+      const { downloadPDF } = await import("../../_components/PDFGenerator");
+      await downloadPDF("pdf-target", "cagr-result.pdf");
+      return true;
+    } finally {
+      details.forEach((d, i) => (d.open = prevOpen[i]));
+      document.body.classList.remove("fm-exporting");
+      setIsExporting(false);
+      exportLockRef.current = false;
+    }
   };
 
   // ----------------------------
@@ -939,24 +949,19 @@ export default function CagrCalculatorPage() {
                 initial={initial}
               />
 
-              {/* CTA */}
-              <div ref={(el) => (sectionEls.current.cta = el)} className="scroll-mt-24">
-                <CompoundCTA
-                  locale={locale}
-                  onDownloadPDF={handleDownloadPDF}
-                  shareTitle={locale === "ko" ? "FinMap CAGR 계산 결과" : "FinMap CAGR result"}
-                  shareDescription={
-                    locale === "ko"
-                      ? "세전/세후 CAGR, 연도별 자산 경로까지 한 번에 공유해보세요."
-                      : "Share CAGR with gross/net breakdown and the yearly path."
-                  }
-                />
-              </div>
+            </div>
+
+            <div ref={(el) => (sectionEls.current.cta = el)} className="scroll-mt-24">
+              <ToolResultCta
+                locale={locale}
+                sourceTool="cagr"
+                location="result_after"
+                onDownloadPDF={handleDownloadPDF}
+              />
             </div>
 
             <div className="tool-cta-section grid min-w-0 gap-4">
               <ToolCta lang={locale} type="dca" sourceTool="cagr" location="result_cta" />
-              <ToolCta lang={locale} type="fire" sourceTool="cagr" location="result_cta" />
               <ToolCta lang={locale} type="compound" sourceTool="cagr" location="result_cta" />
               <ToolCta lang={locale} type="goal" sourceTool="cagr" location="result_cta" />
             </div>   
@@ -967,6 +972,7 @@ export default function CagrCalculatorPage() {
                 locale={locale}
                 onDownloadPDF={handleDownloadPDF}
                 onShare={handleShare}
+                showDownload={false}
                 mode={"pro"}
                 alwaysVisible={true}
                 onNavigate={scrollTo}

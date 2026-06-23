@@ -4,13 +4,13 @@ import { useRouter } from 'next/router';
 import Link from "next/link";
 import SeoHead from '../../_components/SeoHead';
 import CTABar from "../../_components/CTABar";
-import CompoundCTA from "../../_components/CompoundCTA";
 import GoalForm from '../../_components/GoalForm';
 import GoalChart from '../../_components/GoalChart';
 import GoalYearTable from '../../_components/GoalYearTable';
 import ResultAdSlot from "../../_components/ResultAdSlot";
 import { numberFmt } from '../../lib/compound';
 import ToolCta from "../../_components/ToolCta";
+import ToolResultCta from "../../_components/ToolResultCta";
 import { ToolCitationBox, ToolSharePanel } from "../../_components/ToolBacklinkKit";
 import { AD_SLOTS } from "../../config/adSlots";
 import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
@@ -457,6 +457,7 @@ function formatReachText(reachMonth, locale = "ko") {
 // ===== Page Component =====
 export default function GoalSimulatorPage() {
   const [isExporting, setIsExporting] = useState(false);
+  const exportLockRef = useRef(false);
   const router = useRouter();
   const sectionEls = useRef({});
 
@@ -842,22 +843,31 @@ export default function GoalSimulatorPage() {
   );
 
   const handleDownloadPDF = async () => {
-    setIsExporting(true);
-    document.body.classList.add("fm-exporting");
+    if (isExporting || exportLockRef.current) return false;
+    exportLockRef.current = true;
+    let details = [];
+    let prevOpen = [];
 
-    const target = document.getElementById("pdf-target");
-    const details = target ? Array.from(target.querySelectorAll("details")) : [];
-    const prevOpen = details.map((d) => d.open);
-    details.forEach((d) => (d.open = true));
+    try {
+      setIsExporting(true);
+      document.body.classList.add("fm-exporting");
 
-    await new Promise((r) => setTimeout(r, 400));
+      const target = document.getElementById("pdf-target");
+      details = target ? Array.from(target.querySelectorAll("details")) : [];
+      prevOpen = details.map((d) => d.open);
+      details.forEach((d) => (d.open = true));
 
-    const { downloadPDF } = await import("../../_components/PDFGenerator");
-    await downloadPDF("pdf-target", "goal-result.pdf");
+      await new Promise((r) => setTimeout(r, 400));
 
-    details.forEach((d, i) => (d.open = prevOpen[i]));
-    document.body.classList.remove("fm-exporting");
-    setIsExporting(false);
+      const { downloadPDF } = await import("../../_components/PDFGenerator");
+      await downloadPDF("pdf-target", "goal-result.pdf");
+      return true;
+    } finally {
+      details.forEach((d, i) => (d.open = prevOpen[i]));
+      document.body.classList.remove("fm-exporting");
+      setIsExporting(false);
+      exportLockRef.current = false;
+    }
   };
 
   // ----------------------------
@@ -2052,26 +2062,18 @@ export default function GoalSimulatorPage() {
 
             </div>
 
-            {/* ✅ (추가) 공유 + PDF 다운로드 CTA */}
-            <CompoundCTA 
-              locale={lang} 
-              onDownloadPDF={handleDownloadPDF} 
-              shareTitle={
-                locale === "ko" 
-                  ? "FinMap 목표 자산 시뮬레이션 결과"
-                  : "Goal simulation result"
-              }
-              shareDescription={
-                locale === "ko"
-                  ? "목표 금액·기간·수익률·월 적립금을 입력하면 목표 자산까지의 자산 성장 경로를 시뮬레이션합니다."
-                  : "Enter your target amount, time horizon, expected return, and monthly contribution to simulate your growth path."
-              } />
-
+            <div ref={(el) => (sectionEls.current.cta = el)} className="scroll-mt-24">
+              <ToolResultCta
+                locale={lang}
+                sourceTool="goal"
+                location="result_after"
+                onDownloadPDF={handleDownloadPDF}
+              />
+            </div>
 
             <div className="tool-cta-section grid min-w-0 gap-4">
               <ToolCta lang={lang} type="fire" sourceTool="goal" location="result_cta" />
               <ToolCta lang={lang} type="compound" sourceTool="goal" location="result_cta" />
-              <ToolCta lang={lang} type="cagr" sourceTool="goal" location="result_cta" />
               <ToolCta lang={lang} type="dca" sourceTool="goal" location="result_cta" />
             </div>
 
@@ -2081,6 +2083,7 @@ export default function GoalSimulatorPage() {
                 locale={lang}
                 onDownloadPDF={handleDownloadPDF}
                 onShare={handleShare}
+                showDownload={false}
                 mode={"basic"}
                 alwaysVisible={true}
                 onNavigate={scrollTo}

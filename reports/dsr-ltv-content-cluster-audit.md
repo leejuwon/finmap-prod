@@ -1,115 +1,122 @@
 # DSR/LTV Content Cluster Audit
 
-Date: 2026-06-02
+Checked at: 2026-06-23
 
-## Scope
+## Summary
 
-DSR/LTV calculator improvement 후 검색 유입 글에서 계산기 실행, 안전 탐색 가격대 확인, 부동산 대시보드 실거래 확인으로 이어지는 콘텐츠 클러스터를 작성/보강했다.
+DSR/LTV 계산기 유입을 목표로 KO-only 신규 콘텐츠 5개를 추가했다. 새 글은 모두 `/posts/personalFinance/...` 경로를 사용하며, EN 대응 글은 생성하지 않았다.
 
-## Created Or Updated Files
+이번 작업에서는 콘텐츠 Markdown만 추가했고 canonical, hreflang, robots, sitemap 생성 정책, SeoHead, 라우팅 파일은 수정하지 않았다.
 
-### Updated Posts
+## Created Posts
 
-| Lang | File | Slug | Target keyword |
+| Topic | File | URL | Status |
 | --- | --- | --- | --- |
-| KO | `content/posts/personalFinance/ko/dsr-40-income-loan-limit-table.md` | `/posts/personalFinance/dsr-40-income-loan-limit-table` | DSR 계산기, 주담대 한도, 대출 가능액 |
-| EN | `content/posts/personalFinance/en/dsr-40-income-loan-limit-table.md` | `/en/posts/personalFinance/dsr-40-income-loan-limit-table` | Korea DSR calculator, mortgage capacity by income |
-| KO | `content/posts/personalFinance/ko/interest-rate-1p-loan-limit-impact.md` | `/posts/personalFinance/interest-rate-1p-loan-limit-impact` | 금리 1%p, 주담대 한도, DSR/LTV 계산기 |
-| EN | `content/posts/personalFinance/en/interest-rate-1p-loan-limit-impact.md` | `/en/posts/personalFinance/interest-rate-1p-loan-limit-impact` | Korea mortgage rate sensitivity, 1pp rate impact |
-| KO | `content/posts/personalFinance/ko/mortgage-risk-checklist-dsr-variable.md` | `/posts/personalFinance/mortgage-risk-checklist-dsr-variable` | 주택대출 리스크, DSR LTV, 비상금 |
-| EN | `content/posts/personalFinance/en/mortgage-risk-checklist-dsr-variable.md` | `/en/posts/personalFinance/mortgage-risk-checklist-dsr-variable` | Korean mortgage risk checklist, DSR LTV |
+| 연봉 4000만원 주담대 가능액 계산 | `content/posts/personalFinance/ko/salary-40m-mortgage-limit.md` | `/posts/personalFinance/salary-40m-mortgage-limit` | created |
+| 연봉 5000만원 DSR 40% 대출 가능액 | `content/posts/personalFinance/ko/salary-50m-dsr-40-loan-limit.md` | `/posts/personalFinance/salary-50m-dsr-40-loan-limit` | created |
+| 생애최초 주택 구입 예산 계산 | `content/posts/personalFinance/ko/first-home-buyer-budget-calculation.md` | `/posts/personalFinance/first-home-buyer-budget-calculation` | created |
+| 전세에서 매매로 갈아탈 때 필요한 현금 | `content/posts/personalFinance/ko/jeonse-to-home-purchase-cash-needed.md` | `/posts/personalFinance/jeonse-to-home-purchase-cash-needed` | created |
+| 아파트 매수 전 계산해야 할 비용 5가지 | `content/posts/personalFinance/ko/apartment-buying-costs-before-purchase.md` | `/posts/personalFinance/apartment-buying-costs-before-purchase` | created |
 
-### New Posts
+## Content Requirements Check
 
-| Lang | File | Slug | Target keyword |
-| --- | --- | --- | --- |
-| KO | `content/posts/personalFinance/ko/cash-100m-200m-300m-apartment-budget.md` | `/posts/personalFinance/cash-100m-200m-300m-apartment-budget` | 보유현금 1억 2억 3억, 아파트 구매 가능 금액 |
-| EN | `content/posts/personalFinance/en/cash-100m-200m-300m-apartment-budget.md` | `/en/posts/personalFinance/cash-100m-200m-300m-apartment-budget` | KRW cash apartment budget, Korea housing affordability |
-| KO | `content/posts/personalFinance/ko/dsr-pass-ltv-cash-bottleneck.md` | `/posts/personalFinance/dsr-pass-ltv-cash-bottleneck` | DSR 통과, LTV 현금 병목, 부대비용 |
-| EN | `content/posts/personalFinance/en/dsr-pass-ltv-cash-bottleneck.md` | `/en/posts/personalFinance/dsr-pass-ltv-cash-bottleneck` | DSR pass LTV cash bottleneck, Korea mortgage check |
+| URL | KO only | Quick Answer | Table | DSR/LTV calculator link | Related links | FAQ 5 | FAQPage JSON-LD |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `/posts/personalFinance/salary-40m-mortgage-limit` | yes | yes | yes | yes | yes | yes | pass |
+| `/posts/personalFinance/salary-50m-dsr-40-loan-limit` | yes | yes | yes | yes | yes | yes | pass |
+| `/posts/personalFinance/first-home-buyer-budget-calculation` | yes | yes | yes | yes | yes | yes | pass |
+| `/posts/personalFinance/jeonse-to-home-purchase-cash-needed` | yes | yes | yes | yes | yes | yes | pass |
+| `/posts/personalFinance/apartment-buying-costs-before-purchase` | yes | yes | yes | yes | yes | yes | pass |
 
-### Supporting Updates
+## SEO/Policy Scope
 
-| File | Reason |
-| --- | --- |
-| `docs/blog-contents.md` | 링크 체크 레지스트리에 DSR/LTV 클러스터 URL을 등록하고 mortgage checklist 설명을 최신화했다. |
-| `scripts/check_posts_links_local.js` | 실제 도구 라우트인 `dsr-ltv-calculator`를 허용 목록에 추가했다. |
-| `reports/posts.linkcheck.json` | 레지스트리 기반 링크 체크 결과를 갱신했다. |
-| `public/sitemap-0.xml` | `npm.cmd run build` 후 `postbuild`로 재생성되었다. 신규 4개 URL과 보강 6개 URL의 lastmod 반영이 포함된다. 일반 정적 페이지 lastmod timestamp 변경도 함께 섞여 있다. |
+- `lang: "ko"` only.
+- `tool: ["dsr-ltv"]` applied to the new posts.
+- Required internal calculator link: `/tools/dsr-ltv-calculator`.
+- Related links use existing KO routes and tools.
+- No EN files were created.
+- No canonical, hreflang, robots, sitemap generation, routing, or SeoHead policy files were changed.
+- No bank-specific recommendation or financial product recommendation was added.
+- Loan and housing numbers are framed as educational estimates, not approvals or guarantees.
 
-## Content Coverage
+## Validation
 
-| Topic | KO/EN | Main additions | Calculator links | Dashboard links | JSON-LD |
-| --- | --- | --- | ---: | ---: | --- |
-| DSR 40% income table | Yes | DSR 개념, 연소득별 상환 가능액, 기존부채 영향, 후보 집값 예시 | KO 4 / EN 4 | KO 5 / EN 5 | Article + FAQPage |
-| Rate +1pp impact | Yes | 금리 3-6% 민감도, +1%p/+2%p 한도 감소, 후보 가격 판정 | KO 3 / EN 3 | KO 4 / EN 4 | Article + FAQPage |
-| Cash KRW 100M/200M/300M | Yes | 보유현금별 구매 가능 가격, 안전 탐색 가격대, 6억원 후보 판정 | KO 3 / EN 4 | KO 5 / EN 5 | Article + FAQPage |
-| DSR pass but LTV/cash bottleneck | Yes | DSR/LTV/현금 병목 차이, 후보 판정 조건, 샘플 A-D 해석 | KO 3 / EN 3 | KO 4 / EN 5 | Article + FAQPage |
-| Mortgage risk checklist | Yes | DSR/LTV/금리/기존부채/비상금 체크리스트, 실행 루틴 | KO 4 / EN 4 | KO 5 / EN 5 | Article + FAQPage |
+### FAQ/JSON-LD
 
-All posts include:
+Manual check confirmed that all 5 posts include 5 visible FAQ questions and matching FAQPage JSON-LD question names.
 
-- 정책 자동 반영 없음
-- 사용자가 입력한 DSR/LTV 기준
-- 원리금균등 상환 기준
-- 실제 금융기관 심사와 다를 수 있음
-- 안전 탐색 가격대는 구매 가능 가격 상한의 80-90% 구간
-- DSR/LTV 계산기와 부동산 대시보드 CTA
+```text
+PASS salary-40m-mortgage-limit faq=5 tool=["dsr-ltv"] lang=ko
+PASS salary-50m-dsr-40-loan-limit faq=5 tool=["dsr-ltv"] lang=ko
+PASS first-home-buyer-budget-calculation faq=5 tool=["dsr-ltv"] lang=ko
+PASS jeonse-to-home-purchase-cash-needed faq=5 tool=["dsr-ltv"] lang=ko
+PASS apartment-buying-costs-before-purchase faq=5 tool=["dsr-ltv"] lang=ko
+```
 
-## Internal Links
+### Build
 
-Validated target links:
+`npm.cmd run build` completed successfully.
 
-- `/tools/dsr-ltv-calculator`, `/en/tools/dsr-ltv-calculator`
-- `/market/real-estate`, `/en/market/real-estate`
-- `/posts/personalFinance/dsr-40-income-loan-limit-table`
-- `/posts/personalFinance/interest-rate-1p-loan-limit-impact`
-- `/posts/personalFinance/cash-100m-200m-300m-apartment-budget`
-- `/posts/personalFinance/dsr-pass-ltv-cash-bottleneck`
-- `/posts/personalFinance/mortgage-risk-checklist-dsr-variable`
-- `/posts/personalFinance/apt-dashboard-home-goal-roadmap`
-- English `/en/posts/personalFinance/...` counterparts
+Relevant output:
 
-Targeted file/route validation: PASS for all 10 posts.
+```text
+Static pages: 214
+[channel-sitemap] sitemap-ko.xml: 106 URLs
+[channel-sitemap] sitemap-en.xml: 98 URLs
+[channel-sitemap] en\sitemap.xml: 98 URLs
+```
 
-## Sitemap And Listing
+The generated sitemap files were restored after validation to avoid committing build/postbuild artifacts.
 
-`public/sitemap-0.xml` contains all 10 cluster URLs after build:
+### Post URL Verification
 
-- KO/EN DSR 40 income table
-- KO/EN rate +1pp impact
-- KO/EN cash KRW 100M/200M/300M budget
-- KO/EN DSR pass but LTV/cash bottleneck
-- KO/EN mortgage risk checklist
+`node scripts\verify_post_publish_urls.js --local-server` passed for all 5 new KO URLs.
 
-Decision: sitemap file was not reverted because it includes meaningful new URLs and updated post `lastmod` values. The diff also includes generated timestamp churn for static routes from `next-sitemap`.
+Each checked URL returned:
 
-`docs/blog-contents.md` now includes the cluster URLs used by the local link checker. Link checker still reports 10 self URLs missing in registry, but those are outside this DSR/LTV cluster and are not broken links.
+```text
+HTTP 200
+canonical self: yes
+robots blocked: no
+meta noindex: no
+sitemap main: yes
+sitemap ko: yes
+RSS: yes
+hreflang pair: yes
+PASS
+```
 
-## Verification
+### Channel Split Verification
 
-| Command/check | Result |
-| --- | --- |
-| Target frontmatter/link/JSON-LD Node check | PASS: 10/10 posts have required metadata, `tool: ["dsr-ltv"]`, calculator/dashboard links, Article JSON-LD, FAQPage JSON-LD |
-| Target internal route existence check | PASS: all DSR/LTV cluster links exist as post files or Next i18n routes |
-| `npm.cmd run check:posts-links` | FAIL: script default registry path `blog-contents.md` does not exist |
-| `node scripts/check_posts_links_local.js --registry=docs/blog-contents.md --dir=content/posts --ext=md,mdx --out=reports/posts.linkcheck.json` | PASS: Broken 0, Suspicious 0, Self URL missing 10 |
-| `npm.cmd run build` | PASS: Next build completed, 203 static pages generated, `next-sitemap` completed |
-| Target sitemap URL check | PASS: all 10 cluster URLs are present |
-| `git diff --check` | PASS: no whitespace errors. Windows CRLF warnings only. |
+`node scripts\verify_seo_channel_split.js --local-server` passed.
 
-## Image Needs
+Relevant output:
 
-No new image files were generated in this task. Existing DSR table, rate impact, and mortgage checklist covers were retained. New posts intentionally do not reference missing cover/img paths.
+```text
+sitemap-0.xml URL count: 204
+sitemap-ko.xml URL count: 106
+sitemap-en.xml URL count: 98
+en/sitemap.xml URL count: 98
+required EN static URLs: 16/16
+failures: 0
+```
 
-Needed later:
+### Link Check
 
-| Slug | Needed assets |
-| --- | --- |
-| `cash-100m-200m-300m-apartment-budget` | `cover.png`, `cover-en.png`, `img1.png`, `img1-en.png`, `img2.png`, `img2-en.png`, `img3.png`, `img3-en.png` |
-| `dsr-pass-ltv-cash-bottleneck` | `cover.png`, `cover-en.png`, `img1.png`, `img1-en.png`, `img2.png`, `img2-en.png`, `img3.png`, `img3-en.png` |
+`node scripts\check_posts_links_local.js --registry=docs\blog-contents.md --dir=content/posts --ext=md,mdx --out=reports/posts.linkcheck.json` completed with exit code 0, but reported pre-existing repository issues:
 
-Suggested concepts:
+```text
+Files total: 147
+Published checked: 109
+Broken: 5
+Suspicious: 13
+Self URL missing in registry: 21
+```
 
-- Cash budget article: cash/LTV price limit cards, safer search range band, target apartment pass/near-limit/fail panel
-- Bottleneck article: DSR vs LTV vs cash constraint diagram, sample A-D comparison, target home decision checklist
+The broken examples were in existing posts, not in the 5 new DSR/LTV cluster posts. The new posts are not yet listed in `docs/blog-contents.md`; this can be handled separately if the registry is meant to be exhaustive.
+
+## Remaining Notes
+
+- The 5 new posts reuse the existing DSR/LTV visual asset path in frontmatter. A later image pass can create dedicated thumbnails if needed.
+- Because the posts are KO-only, no EN sitemap membership was added.
+- Search Console/Naver submission should use the generated KO sitemap/RSS after the next normal build/deploy cycle.

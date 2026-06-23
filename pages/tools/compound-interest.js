@@ -9,9 +9,9 @@ import CompoundForm from "../../_components/CompoundForm";
 import CompoundChart from "../../_components/CompoundChart";
 import CompoundDetailSummary from "../../_components/CompoundDetailSummary";
 import CompoundYearTable from "../../_components/CompoundYearTable";
-import CompoundCTA from "../../_components/CompoundCTA";
 import ValueDisplay, { formatMoneyShort } from "../../_components/ValueDisplay";
 import ToolCta from "../../_components/ToolCta";
+import ToolResultCta from "../../_components/ToolResultCta";
 import { ToolCitationBox, ToolSharePanel } from "../../_components/ToolBacklinkKit";
 import ResultAdSlot from "../../_components/ResultAdSlot";
 import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
@@ -76,24 +76,34 @@ const COMPOUND_RECENT_KEY = "fm_tool_recent_compound";
 
 export default function CompoundPage() {
   const [isExporting, setIsExporting] = useState(false);
+  const exportLockRef = useRef(false);
 
   const handleDownloadPDF = async () => {
-    setIsExporting(true);
-    document.body.classList.add("fm-exporting");
+    if (isExporting || exportLockRef.current) return false;
+    exportLockRef.current = true;
+    let details = [];
+    let prevOpen = [];
 
-    const target = document.getElementById("pdf-target");
-    const details = target ? Array.from(target.querySelectorAll("details")) : [];
-    const prevOpen = details.map((d) => d.open);
-    details.forEach((d) => (d.open = true));
+    try {
+      setIsExporting(true);
+      document.body.classList.add("fm-exporting");
 
-    await new Promise((r) => setTimeout(r, 400));
+      const target = document.getElementById("pdf-target");
+      details = target ? Array.from(target.querySelectorAll("details")) : [];
+      prevOpen = details.map((d) => d.open);
+      details.forEach((d) => (d.open = true));
 
-    const { downloadPDF } = await import("../../_components/PDFGenerator");
-    await downloadPDF("pdf-target", "compound-result.pdf");
+      await new Promise((r) => setTimeout(r, 400));
 
-    details.forEach((d, i) => (d.open = prevOpen[i]));
-    document.body.classList.remove("fm-exporting");
-    setIsExporting(false);
+      const { downloadPDF } = await import("../../_components/PDFGenerator");
+      await downloadPDF("pdf-target", "compound-result.pdf");
+      return true;
+    } finally {
+      details.forEach((d, i) => (d.open = prevOpen[i]));
+      document.body.classList.remove("fm-exporting");
+      setIsExporting(false);
+      exportLockRef.current = false;
+    }
   };
 
   // ----------------------------
@@ -815,11 +825,6 @@ export default function CompoundPage() {
                     </div>
                   </div>
 
-                  {/* CTA */}
-                  <div ref={(el) => (sectionEls.current.cta = el)} className="scroll-mt-24">
-                    <CompoundCTA locale={locale} onDownloadPDF={handleDownloadPDF} />
-                  </div>
-
                   {/* Advanced sections (collapsed) */}
                   <details className="card">
                     <summary className="cursor-pointer font-semibold">
@@ -1302,8 +1307,14 @@ export default function CompoundPage() {
                     </div>
                   </div>
 
-                  {/* CTA */}
-                  <CompoundCTA locale={locale} onDownloadPDF={handleDownloadPDF} />
+                  <div ref={(el) => (sectionEls.current.cta = el)} className="scroll-mt-24">
+                    <ToolResultCta
+                      locale={locale}
+                      sourceTool="compound"
+                      location="result_after"
+                      onDownloadPDF={handleDownloadPDF}
+                    />
+                  </div>
 
                   <section className="card">
                     <h2 className="text-base font-semibold mb-2">
@@ -1321,7 +1332,6 @@ export default function CompoundPage() {
                       {locale === "ko" ? "관련 계산기" : "Related tools"}
                     </h3>                 
                     <div className="tool-cta-section grid min-w-0 gap-4">
-                      <ToolCta lang={lang} type="fire" sourceTool="compound" location="result_cta" />
                       <ToolCta lang={lang} type="goal" sourceTool="compound" location="result_cta" />
                       <ToolCta lang={lang} type="cagr" sourceTool="compound" location="result_cta" />
                       <ToolCta lang={lang} type="dca" sourceTool="compound" location="result_cta" />
@@ -1334,6 +1344,7 @@ export default function CompoundPage() {
                 locale={locale}
                 onDownloadPDF={handleDownloadPDF}
                 onShare={handleShare}
+                showDownload={false}
                 mode={isProMobile ? "pro" : "basic"}
                 alwaysVisible={isProMobile}
                 onNavigate={scrollTo}

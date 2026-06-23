@@ -15,13 +15,13 @@ import RetirementDetailSimulator from "../../_components/RetirementDetailSimulat
 import { runFireSimulation } from "../../lib/fire";
 import FireFaq, { getFaqItems } from "../../_components/FireFaq";
 import ToolCta from "../../_components/ToolCta";
+import ToolResultCta from "../../_components/ToolResultCta";
 import { ToolCitationBox, ToolSharePanel } from "../../_components/ToolBacklinkKit";
 
 import AdResponsive from "../../_components/AdResponsive";
 import AdInArticle from "../../_components/AdInArticle";
 
 // ✅ 추가
-import CompoundCTA from "../../_components/CompoundCTA";
 import { shareKakao, shareWeb, shareNaver, copyUrl } from "../../utils/share";
 import {
   buildToolPresetQuery,
@@ -183,6 +183,7 @@ export default function FireCalculatorPage() {
   const currency = isKo ? "KRW" : "USD";
 
   const [isExporting, setIsExporting] = useState(false);
+  const exportLockRef = useRef(false);
 
   const [result, setResult] = useState(null);
   const [params, setParams] = useState(null);
@@ -244,24 +245,31 @@ export default function FireCalculatorPage() {
 
   // ✅ (추가) PDF 다운로드 (복리 계산기와 동일 패턴):contentReference[oaicite:8]{index=8}
   const handleDownloadPDF = async () => {
-    if (isExporting) return;
+    if (isExporting || exportLockRef.current) return false;
+    exportLockRef.current = true;
+    let details = [];
+    let prevOpen = [];
 
-    setIsExporting(true);
-    document.body.classList.add("fm-exporting");
+    try {
+      setIsExporting(true);
+      document.body.classList.add("fm-exporting");
 
-    const target = document.getElementById("pdf-target");
-    const details = target ? Array.from(target.querySelectorAll("details")) : [];
-    const prevOpen = details.map((d) => d.open);
-    details.forEach((d) => (d.open = true));
+      const target = document.getElementById("pdf-target");
+      details = target ? Array.from(target.querySelectorAll("details")) : [];
+      prevOpen = details.map((d) => d.open);
+      details.forEach((d) => (d.open = true));
 
-    await new Promise((r) => setTimeout(r, 400));
+      await new Promise((r) => setTimeout(r, 400));
 
-    const { downloadPDF } = await import("../../_components/PDFGenerator");
-    await downloadPDF("pdf-target", "fire-result.pdf");
-
-    details.forEach((d, i) => (d.open = prevOpen[i]));
-    document.body.classList.remove("fm-exporting");
-    setIsExporting(false);
+      const { downloadPDF } = await import("../../_components/PDFGenerator");
+      await downloadPDF("pdf-target", "fire-result.pdf");
+      return true;
+    } finally {
+      details.forEach((d, i) => (d.open = prevOpen[i]));
+      document.body.classList.remove("fm-exporting");
+      setIsExporting(false);
+      exportLockRef.current = false;
+    }
   };
 
   // ✅ (보강) SeoHead도 언어별 URL 사용
@@ -411,25 +419,18 @@ export default function FireCalculatorPage() {
 
               <FireReport lang={lang} result={result} params={params} />                         
             </div>
-            {/* ✅ (추가) 공유 + PDF 다운로드 CTA */}
-            <CompoundCTA 
-              locale={lang} 
-              onDownloadPDF={handleDownloadPDF} 
-              shareTitle={
-                isKo
-                  ? "FinMap 은퇴자금(FIRE) 시뮬레이션 결과"
-                  : "FIRE retirement simulation result"
-              }
-              shareDescription={
-                isKo
-                  ? "출금률·수익률 기준으로 은퇴 가능 시점과 자산 지속 기간을 계산했어요."
-                  : "Simulated FIRE timing and asset longevity (withdrawal rate & returns)."
-              } />
+            <div ref={(el) => (sectionEls.current.cta = el)} className="scroll-mt-24">
+              <ToolResultCta
+                locale={lang}
+                sourceTool="fire"
+                location="result_after"
+                onDownloadPDF={handleDownloadPDF}
+              />
+            </div>
 
             <div className="tool-cta-section grid min-w-0 gap-4">
               <ToolCta lang={lang} type="compound" sourceTool="fire" location="result_cta" />
               <ToolCta lang={lang} type="goal" sourceTool="fire" location="result_cta" />
-              <ToolCta lang={lang} type="cagr" sourceTool="fire" location="result_cta" />
               <ToolCta lang={lang} type="dca" sourceTool="fire" location="result_cta" />
             </div> 
 
@@ -439,6 +440,7 @@ export default function FireCalculatorPage() {
                 locale={lang}
                 onDownloadPDF={handleDownloadPDF}
                 onShare={handleShare}
+                showDownload={false}
                 mode={"basic"}
                 alwaysVisible={true}
                 onNavigate={scrollTo}

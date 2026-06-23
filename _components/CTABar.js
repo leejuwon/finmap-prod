@@ -9,6 +9,7 @@ export default function CTABar({
   locale = "ko",
   onDownloadPDF,
   onShare,
+  showDownload = true,
 
   // ✅ PRO mode options
   mode = "basic", // "basic" | "pro"
@@ -114,18 +115,20 @@ export default function CTABar({
         )}
 
         {/* Actions */}
-        <div className="grid grid-cols-2 gap-2">
-          <button
-            type="button"
-            onClick={() => {
-              trackAction("download_pdf");
-              onDownloadPDF?.();
-            }}
-            className="btn-primary flex w-full min-w-0 items-center justify-center gap-1.5"
-          >
-            <DownloadIcon className="w-5 h-5" />
-            {isKo ? "PDF 저장" : "Save PDF"}
-          </button>
+        <div className={`grid gap-2 ${showDownload ? "grid-cols-2" : "grid-cols-1"}`}>
+          {showDownload && (
+            <button
+              type="button"
+              onClick={() => {
+                trackAction("download_pdf");
+                onDownloadPDF?.();
+              }}
+              className="btn-primary flex w-full min-w-0 items-center justify-center gap-1.5"
+            >
+              <DownloadIcon className="w-5 h-5" />
+              {isKo ? "PDF 저장" : "Save PDF"}
+            </button>
+          )}
 
           <button
             type="button"

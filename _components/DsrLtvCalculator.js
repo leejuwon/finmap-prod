@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { calculateDsrLtvAffordability } from "../lib/calculators/dsrLtv";
 import ResultAdSlot from "./ResultAdSlot";
+import ToolResultCta from "./ToolResultCta";
 import { AD_SLOTS } from "../config/adSlots";
 import { trackGaEvent } from "../utils/analytics";
 
@@ -449,6 +450,8 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
   const lang = locale === "en" ? "en" : "ko";
   const t = TEXT[lang];
   const [form, setForm] = useState(DEFAULT_FORM);
+  const [isExporting, setIsExporting] = useState(false);
+  const exportLockRef = useRef(false);
   const calculationEventTimerRef = useRef(null);
 
   useEffect(
@@ -532,6 +535,32 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
     });
   };
 
+  const handleDownloadPDF = async () => {
+    if (isExporting || exportLockRef.current) return false;
+    exportLockRef.current = true;
+    let details = [];
+    let prevOpen = [];
+
+    try {
+      setIsExporting(true);
+      document.body.classList.add("fm-exporting");
+
+      const target = document.getElementById("dsr-ltv-result-target");
+      details = target ? Array.from(target.querySelectorAll("details")) : [];
+      prevOpen = details.map((d) => d.open);
+      details.forEach((d) => (d.open = true));
+
+      const { downloadPDF } = await import("./PDFGenerator");
+      await downloadPDF("dsr-ltv-result-target", "dsr-ltv-result.pdf");
+      return true;
+    } finally {
+      details.forEach((d, i) => (d.open = prevOpen[i]));
+      document.body.classList.remove("fm-exporting");
+      setIsExporting(false);
+      exportLockRef.current = false;
+    }
+  };
+
   return (
     <div className="grid gap-6">
       <section className="card min-w-0">
@@ -582,7 +611,7 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
         </div>
       </section>
 
-      <section className="card min-w-0" data-dsr-section="summary">
+      <section id="dsr-ltv-result-target" className="card min-w-0" data-dsr-section="summary">
         <div className="mb-4 flex min-w-0 flex-col gap-2 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="break-words text-lg font-semibold">{t.resultTitle}</h2>
@@ -709,6 +738,13 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
         tool="dsr_ltv"
         position="summary_after"
         locale={lang}
+      />
+
+      <ToolResultCta
+        locale={lang}
+        sourceTool="dsrLtv"
+        location="result_after"
+        onDownloadPDF={handleDownloadPDF}
       />
 
       <section className="card min-w-0" data-dsr-section="sensitivity">
