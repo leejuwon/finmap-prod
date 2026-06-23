@@ -225,7 +225,6 @@ Interpretation:
   <figcaption>A stress test is not one number—it’s a set of shocks applied to the first 5 years.</figcaption>
 </figure>
 
-<ToolCta type="fire" />
 Right after opening the <a href="/en/tools/fire-calculator">FIRE calculator</a>, start with: annual spending (after tax), retirement horizon (years), expected return, and inflation.  
 Then stress-test the first five years by lowering early returns (or applying an early drawdown) and checking whether your plan stays inside your guardrails.
 
@@ -375,7 +374,6 @@ If you want a practical framework for reducing fixed costs and stabilizing cashf
 
 ---
 
-<ToolCta type="fire" />
 In the <a href="/en/tools/fire-calculator">FIRE calculator</a>, enter: annual spending, retirement years, expected return, and inflation—then run two passes: “bad first 5 years” and “good first 5 years.”  
 If your spending rule behaves predictably in both passes (guardrails + tiers), you’ve turned FIRE from a hope into a plan.
 

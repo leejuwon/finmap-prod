@@ -205,9 +205,9 @@ lang: "ko"
 부동산을 투자 관점에서 보면, 결국 “기회비용”과 “대안 자산”을 같이 봐야 흔들림이 줄어듭니다.  
 <strong>내가 부동산을 기다리는 동안 목표 가격대와 월 부담을 어떻게 맞출지</strong>, 또는 <strong>내 과거 성과를 연평균으로 요약해 비교할지</strong>는 숫자로 고정할수록 좋습니다.
 
-<ToolCta lang="ko" type="cagr" />
+<p class="text-sm text-slate-600">관련 계산기: <a href="/tools/cagr-calculator">CAGR 계산기 열기</a></p>
 
-<ToolCta lang="ko" type="goal" />
+<p class="text-sm text-slate-600">관련 계산기: <a href="/tools/goal-simulator">목표자산 계산기 열기</a></p>
 
 ## 이어서 읽으면 퍼즐이 맞춰지는 글들(함께 읽으면 좋은 글)
 

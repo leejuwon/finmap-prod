@@ -175,7 +175,6 @@ Once you adopt decomposition, the next upgrade is to identify **what your plan i
 
 This is where the calculator turns anxiety into clarity.
 
-<ToolCta type="dca" />
 Use <strong><a href="/en/tools/dca-calculator">ETF/Stock DCA Simulator</a></strong> to input <strong>starting amount</strong> and <strong>monthly contribution</strong>, then set a <strong>base annual return</strong> and <strong>inflation</strong> assumption.  
 Next, add <strong>fees</strong> and any <strong>tax/drag assumptions</strong> conceptually, plus an optional <strong>contribution growth rate</strong> if you plan to increase contributions over time.
 
@@ -282,7 +281,6 @@ Here’s a simple break test:
 2) Make it worse on purpose (lower returns, higher inflation, higher fees/drag, slower contribution growth).
 3) Ask: “Do my rules still work? Does my contribution size still feel survivable?”
 
-<ToolCta type="dca" />
 Open <strong><a href="/en/tools/dca-calculator">ETF/Stock DCA Simulator</a></strong> and enter <strong>starting balance</strong>, <strong>monthly contribution</strong>, <strong>expected return</strong>, and <strong>inflation</strong> to create your base plan.  
 Then run sensitivity checks by changing <strong>return / inflation / fees (and optional tax drag) / contribution growth rate</strong> to see what variable breaks your plan first.
 

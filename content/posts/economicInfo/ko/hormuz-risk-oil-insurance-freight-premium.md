@@ -234,7 +234,7 @@ lang: "ko"
 - 변동성이 커질수록, 단발 매수보다 “정해진 간격/조건으로 분할”이 심리와 성과를 같이 보호하는 경우가 많습니다.  
 - 단, DCA도 무조건이 아닙니다. 위의 Flip 조건(프리미엄이 꺾이는 신호)이 나오면 과열 추격을 멈추는 규칙이 함께 있어야 합니다.
 
-<ToolCta lang="ko" type="dca" />
+<p class="text-sm text-slate-600">관련 계산기: <a href="/tools/dca-calculator">DCA 계산기 열기</a></p>
 
 ## 이 퍼즐과 함께 보면 해석이 더 빨라집니다
 

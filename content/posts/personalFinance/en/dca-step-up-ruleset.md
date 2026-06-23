@@ -173,7 +173,6 @@ The “failure signal” column is the point. If you keep hitting it, don’t tr
 
 Before you lock your step-up and pause rules, run a simple sensitivity pass using the DCA calculator: <strong><a href="/en/tools/dca-calculator">ETF/Stock DCA Simulator</a></strong>
 
-<ToolCta type="dca" />
 <p class="text-sm text-slate-600">Validation: Use this calculator to test step-up rate vs. pause windows and see how sensitive your outcome is to returns/inflation changes.</p>
 <p class="text-sm text-slate-600">What to input: starting balance, monthly contribution (base), contribution growth rate, years, return assumption, inflation, and a rough “fees & taxes” friction assumption.</p>
 
@@ -283,7 +282,6 @@ If inflation is distorting your household budget and pushing you toward stress-p
 
 Now do the final pass: open the DCA calculator at <strong><a href="/en/tools/dca-calculator">ETF/Stock DCA Simulator</a></strong> and test whether your rulebook survives realistic friction.
 
-<ToolCta type="dca" />
 <p class="text-sm text-slate-600">Validation: Test how your plan behaves when returns are lower, inflation is higher, or you must pause for a defined period—then choose rules you can keep.</p>
 <p class="text-sm text-slate-600">What to input: starting balance, base contribution, contribution growth rate (step-up), total years, return assumption, inflation, plus a conservative “fees & taxes” friction line.</p>
 

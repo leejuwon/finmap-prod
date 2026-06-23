@@ -204,7 +204,6 @@ If you want a full rulebook for increasing or pausing contributions without brea
 
 At this point you should have a candidate method: DCA, hybrid, or lump sum. Now you test whether it breaks under realistic stress.
 
-<ToolCta type="dca" />
 
 <p class="text-sm text-slate-600">What this validates: compare DCA vs hybrid vs “as-if lump sum” assumptions by adding <strong>bad early years</strong> and <strong>pause periods</strong> to see which plan is most likely to break. Open: <a href="/en/tools/dca-calculator">DCA simulator</a></p>
 <p class="text-sm text-slate-600">What to input: starting balance (windfall or current), monthly contribution (if any), timeline, return assumption (conservative/base), inflation (optional), and fees/taxes as friction (conceptual). Then test pauses (0/3/6 months).</p>
@@ -251,7 +250,6 @@ The rule that prevents timing games:
 
 Before you lock your method, run one more check with worse assumptions than you want to believe. You’re not forecasting; you’re testing plan integrity.
 
-<ToolCta type="dca" />
 
 <p class="text-sm text-slate-600">What this validates: whether your chosen method still survives when you assume <strong>a rough first year</strong>, a <strong>temporary pause</strong>, and a <strong>lower return</strong>—so you minimize failure risk. Open: <a href="/en/tools/dca-calculator">DCA simulator</a></p>
 <p class="text-sm text-slate-600">What to input: same baseline as before, then lower the return, add fees/taxes as friction (conceptual), and test pause lengths. If the plan breaks, downgrade to the method you can keep.</p>

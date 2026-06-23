@@ -218,11 +218,11 @@ You don’t need to stare at charts daily. You need a cadence.
 
 If you’ve defined a band and timeline, the next step is converting it into a monthly goal you can actually execute.
 
-<ToolCta lang="en" type="goal" />
+<p class="text-sm text-slate-600">Related calculator: <a href="/tools/goal-simulator">Open goal simulator</a></p>
 
 If you’re assuming investment returns inside your plan, keep the assumption realistic. A small change in CAGR can make a plan look “easy” on paper—and fragile in real life.
 
-<ToolCta lang="en" type="cagr" />
+<p class="text-sm text-slate-600">Related calculator: <a href="/tools/cagr-calculator">Open CAGR calculator</a></p>
 
 ## Mid-read A good piece of writing to read together: strengthen your rule system
 

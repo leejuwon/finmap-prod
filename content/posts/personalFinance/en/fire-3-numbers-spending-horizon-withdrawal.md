@@ -211,7 +211,6 @@ This is the missing piece most FIRE discussions skip: an “if-then” playbook.
 
 At this point, you have the only inputs that matter. Now validate them with the tool—not to “predict returns,” but to see how sensitive your plan is to each number.
 
-<ToolCta type="fire" />
 In the calculator, start with <strong>annual spending</strong> in today’s dollars and your <strong>retirement horizon</strong> (how many years withdrawals must cover meaningful costs).  
 If the tool asks for return/inflation assumptions, keep them conservative and focus on sensitivity: change <strong>spending / horizon / withdrawal rate</strong> first, then interpret the output (tool: <strong><a href="/en/tools/fire-calculator">Fire Calculator</a></strong>).
 
@@ -302,7 +301,6 @@ The goal is a plan that “still works” under less-friendly conditions.
 
 You’re ready to validate again—this time focusing on your guardrails and sensitivity, not a single-point estimate.
 
-<ToolCta type="fire" />
 Enter (1) your <strong>annual spending</strong> (today’s dollars), (2) your <strong>horizon</strong> (years of reliance on withdrawals), and (3) your withdrawal approach (or conservative proxy).  
 Then run a quick sensitivity pass: change spending by ±10% and horizon by ±5–10 years to see what truly moves the result (tool: <strong><a href="/en/tools/fire-calculator">Fire Calculator</a></strong>).
 

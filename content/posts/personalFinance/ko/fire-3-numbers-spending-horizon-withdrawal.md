@@ -189,7 +189,6 @@ FIRE 목표가 현실적으로 느껴지려면, 연금은 “나중에 받는 �
   <figcaption>FIRE 계산기 입력 순서: 연지출→기간→인출률→인플레/수익률은 보수적으로</figcaption>
 </figure>
 
-<ToolCta type="fire" />
 바로 위 계산기에서 <strong>연지출</strong>에는 은퇴 버전 연간 지출(주거비·건강보험료·부양 포함)을, <strong>은퇴기간</strong>에는 인출이 필요한 총 기간(예: 30년/40년)을 넣어보세요.  
 수익률/인플레이션 입력이 있다면 먼저 보수적으로 넣고(확신 금지), 결과가 과도하면 지출·기간·인출률 중 무엇을 조정할지 확인하면 됩니다(도구: <strong><a href="/tools/fire-calculator">FIRE 계산기</a></strong>).
 
@@ -238,7 +237,6 @@ FIRE 목표가 현실적으로 느껴지려면, 연금은 “나중에 받는 �
 - <strong>60분</strong>: 은퇴기간(30년/40년)과 인출률(4% vs 3%대)을 나눠 3시나리오 표(Base/Escalation/De-escalation)로 내 대응 룰을 적는다  
 - <strong>1주</strong>: 연금 유입(국민연금·퇴직연금·IRP)을 ‘확실한 범위’로 정리하고, 은퇴 초반 버퍼(예: 1~2년치 등)를 현실적으로 설계한다  
 
-<ToolCta type="fire" />
 바로 위 단계에서 만든 <strong>연지출</strong>(은퇴 버전)과 <strong>기간</strong>(인출 기간)을 넣고, 인출률/수익률/인플레이션은 보수적으로 시작해 “부족분”과 “조정 포인트”를 확인하세요.  
 결과가 부담스럽다면 수익률을 올리겠다고 결심하기보다, 먼저 <strong>연지출·기간·인출률</strong> 중 어디를 손대야 현실이 바뀌는지 확인하면 됩니다(도구: <strong><a href="/tools/fire-calculator">FIRE 계산기</a></strong>).
 

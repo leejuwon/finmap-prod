@@ -218,7 +218,6 @@ Interpretation (2–3 lines):
 
 At this point, you have enough to run a useful test. Don’t try to “optimize.” Just validate stability.
 
-<ToolCta type="fire" />
 Go to <strong><a href="/en/tools/fire-calculator">FIRE calculator</a></strong> and start with these inputs:  
 Set **Annual Spending** as (Essential + Lifestyle + Insurance) and set **Inflation** to your planning assumption; then test different horizons and return assumptions to see how sensitive your plan is.
 
@@ -326,7 +325,6 @@ Here’s the cleanest way to use the FIRE calculator without overthinking:
 2) Stress test inflation and return assumptions.  
 3) Observe which bucket would change first under pressure (it should be Lifestyle).
 
-<ToolCta type="fire" />
 Open <strong><a href="/en/tools/fire-calculator">FIRE calculator</a></strong> and input:  
 Use **Annual Spending** (bucket total), **Retirement Horizon** (years), plus **Return** and **Inflation** assumptions; then compare a baseline run vs a “higher inflation / lower return” run to see whether your buffers are thick enough.
 

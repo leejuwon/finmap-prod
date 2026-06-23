@@ -245,7 +245,7 @@ Interpretation:
 
 One common mistake is judging gold by one week of headlines. A better habit is to sanity-check the annualized return over your actual holding window and compare it to your risk-budget expectations for a hedge sleeve.
 
-<ToolCta type="cagr" />
+<p class="text-sm text-slate-600">Related calculator: <a href="/tools/cagr-calculator">Open CAGR calculator</a></p>
 This calculator helps you validate <strong>the annualized return implied by a gold move over a chosen period</strong>, which reduces narrative-driven recency bias.  
 Input: starting value, ending value, and the time span (years/months); use it to compare regimes without needing forecasts.
 

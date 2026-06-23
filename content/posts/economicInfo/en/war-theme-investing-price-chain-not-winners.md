@@ -246,7 +246,7 @@ Theme investing is noisy; your results are measured over years. A simple discipl
 
 That’s why CAGR is useful: it compresses multi-year performance into one comparable number, which helps you stop treating headlines like destiny.
 
-<ToolCta lang="en" type="cagr" />
+<p class="text-sm text-slate-600">Related calculator: <a href="/tools/cagr-calculator">Open CAGR calculator</a></p>
 
 ## If you want the full macro context, read these next (near-end chain builders)
 

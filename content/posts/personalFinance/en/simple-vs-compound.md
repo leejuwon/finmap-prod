@@ -246,11 +246,11 @@ Interpretation:
 
 The point of compounding is not to admire a curve. It is to build a plan that matches your time horizon and monthly capacity.
 
-<ToolCta lang="en" type="compound" />
+<p class="text-sm text-slate-600">Related calculator: <a href="/tools/compound-interest">Open compound interest calculator</a></p>
 This calculator helps you validate <strong>how principal, time, and return assumptions interact</strong> under compounding.  
 Input: starting balance, time horizon, return assumption, and (if relevant) taxes/fees as friction.
 
-<ToolCta lang="en" type="cagr" />
+<p class="text-sm text-slate-600">Related calculator: <a href="/tools/cagr-calculator">Open CAGR calculator</a></p>
 This calculator helps you convert a beginning value, ending value, and holding period into a comparable <strong>annualized return</strong>.
 Input: starting value, ending value, period, and friction assumptions; compare it with simple return so the result is not overstated.
 

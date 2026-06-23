@@ -227,7 +227,6 @@ These are illustrative examples meant to show the mechanism, not provide forecas
 
 ## Mid-point action: run the sensitivity mission with the FIRE calculator
 
-<ToolCta type="fire" />
 Use <a href="/en/tools/fire-calculator">Fire Calculator</a> and enter your baseline inputs first: <strong>annual spending (USD)</strong>, <strong>retirement horizon</strong>, and your baseline <strong>return + inflation</strong>.  
 Then run the sensitivity mission: change <strong>returns (-1% / -2%)</strong>, <strong>inflation (+1%)</strong>, and <strong>savings (-20%)</strong> one at a time and note which change breaks your plan first.
 
@@ -287,7 +286,6 @@ This is how you prevent one bad year from turning into a permanent withdrawal in
 
 You’ve now corrected the model. The final step is to verify that your plan still works when you deliberately “stress” it.
 
-<ToolCta type="fire" />
 Go back to <a href="/en/tools/fire-calculator">Fire Calculator</a> and re-run with your conservative case: use a lower <strong>return</strong>, higher <strong>inflation</strong>, and reduced <strong>savings</strong> (if you’re still accumulating).  
 Mission: compare baseline vs conservative outputs and confirm your rule: <strong>what spending flexes first</strong>, and what buffer you rebuild after a shock year.
 
