@@ -69,7 +69,11 @@ export default function CTABar({
       location: "sticky_cta",
     });
     setLocalActive(key);
-    onNavigate && onNavigate(key);
+    try {
+      onNavigate?.(key);
+    } catch {
+      // Keep the sticky CTA usable even if a page lacks the requested section.
+    }
   };
 
   const trackAction = (action) => {

@@ -35,6 +35,7 @@ export async function downloadPDF(targetId, filename = "compound-result.pdf") {
   const prevScrollY = window.scrollY;
   window.scrollTo(0, 0);
 
+  try {
   // ✅ 핵심: 긴 화면을 페이지 높이씩 잘라서 여러 번 캡처
   let y = 0;
   let pageIndex = 0;
@@ -59,6 +60,19 @@ export async function downloadPDF(targetId, filename = "compound-result.pdf") {
       scrollY: 0,
       windowWidth: document.documentElement.clientWidth,
       windowHeight: document.documentElement.clientHeight,
+      onclone: (clonedDocument) => {
+        const clonedEl = clonedDocument.getElementById(targetId);
+        if (clonedEl?.dataset?.finmapPdfExport === "lead-magnet") {
+          Object.assign(clonedEl.style, {
+            position: "absolute",
+            left: "0",
+            top: "0",
+            transform: "none",
+            zIndex: "0",
+            opacity: "1",
+          });
+        }
+      },
     });
 
     const imgData = canvas.toDataURL("image/png", 1.0);
@@ -83,8 +97,10 @@ export async function downloadPDF(targetId, filename = "compound-result.pdf") {
     pageIndex += 1;
   }
 
-  // 원복
-  window.scrollTo(0, prevScrollY);
-
+  // Save after all slices are added; scroll is restored in finally.
   pdf.save(filename);
+  } finally {
+    // Always restore scroll position after html2canvas work.
+    window.scrollTo(0, prevScrollY);
+  }
 }

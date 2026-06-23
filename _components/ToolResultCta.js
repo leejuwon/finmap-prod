@@ -269,6 +269,18 @@ function isValidEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
 }
 
+function waitForNextPaint() {
+  if (typeof window === "undefined" || typeof window.requestAnimationFrame !== "function") {
+    return Promise.resolve();
+  }
+
+  return new Promise((resolve) => {
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(resolve);
+    });
+  });
+}
+
 async function copyCurrentUrl() {
   if (typeof window === "undefined") return false;
   const value = window.location.href;
@@ -307,10 +319,11 @@ function LeadMagnetPdfTemplate({ id, magnet, locale, sourceLabel }) {
     <div
       id={id}
       aria-hidden="true"
+      data-finmap-pdf-export="lead-magnet"
       style={{
         position: "fixed",
-        left: "-10000px",
-        top: 0,
+        left: 0,
+        top: "calc(100vh + 24px)",
         width: "794px",
         minHeight: "1123px",
         background: "#ffffff",
@@ -319,7 +332,7 @@ function LeadMagnetPdfTemplate({ id, magnet, locale, sourceLabel }) {
         fontFamily:
           "Pretendard, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
         lineHeight: 1.55,
-        zIndex: -1,
+        pointerEvents: "none",
       }}
     >
       <p style={{ margin: "0 0 10px", fontSize: "13px", color: "#2563eb", fontWeight: 700 }}>
@@ -402,8 +415,10 @@ export default function ToolResultCta({
   const relatedConfig = TOOL_CONFIGS[relatedTool] || TOOL_CONFIGS.compound;
   const isKo = locale === "ko";
   const viewedRef = useRef(false);
+  const resultDownloadLockRef = useRef(false);
   const leadDownloadLockRef = useRef(false);
   const [feedback, setFeedback] = useState("");
+  const [resultPdfDownloading, setResultPdfDownloading] = useState(false);
   const defaultLeadId = DEFAULT_LEAD_BY_TOOL[normalizedTool] || "homeBudget";
   const [leadOpen, setLeadOpen] = useState(false);
   const [selectedLeadId, setSelectedLeadId] = useState(defaultLeadId);
@@ -411,6 +426,7 @@ export default function ToolResultCta({
   const [leadConsent, setLeadConsent] = useState(false);
   const [leadFeedback, setLeadFeedback] = useState("");
   const [leadDownloading, setLeadDownloading] = useState(false);
+  const [leadPdfRenderId, setLeadPdfRenderId] = useState(null);
   const selectedLead = LEAD_MAGNETS[selectedLeadId] || LEAD_MAGNETS[defaultLeadId];
   const getLeadPdfId = (leadId) => `lead-magnet-pdf-${normalizedTool}-${leadId}`;
   const pdfAvailable = Boolean(onDownloadPDF || pdfTargetId);
@@ -438,6 +454,9 @@ export default function ToolResultCta({
   };
 
   const handleDownload = async () => {
+    if (resultDownloadLockRef.current || resultPdfDownloading) return;
+    resultDownloadLockRef.current = true;
+    setResultPdfDownloading(true);
     trackClick("save_pdf");
 
     try {
@@ -478,6 +497,9 @@ export default function ToolResultCta({
         location,
         error_reason: "download_failed",
       });
+    } finally {
+      setResultPdfDownloading(false);
+      resultDownloadLockRef.current = false;
     }
   };
 
@@ -513,6 +535,7 @@ export default function ToolResultCta({
   };
 
   const handleLeadOpen = () => {
+    if (leadDownloading || leadDownloadLockRef.current) return;
     setLeadOpen(true);
     setLeadFeedback("");
     trackClick("open_lead_magnet", { lead_magnet_id: selectedLeadId });
@@ -536,7 +559,7 @@ export default function ToolResultCta({
     });
 
     if (!enableLeadCapture) {
-      downloadLeadMagnet(leadId, { emailProvided: false });
+      void downloadLeadMagnet(leadId, { emailProvided: false });
     }
   };
 
@@ -576,8 +599,14 @@ export default function ToolResultCta({
     }
 
     try {
+      const leadPdfId = getLeadPdfId(leadId);
+      setLeadPdfRenderId(leadId);
+      await waitForNextPaint();
+      if (typeof document === "undefined" || !document.getElementById(leadPdfId)) {
+        throw new Error("missing_lead_pdf_template");
+      }
       const { downloadPDF } = await import("./PDFGenerator");
-      await downloadPDF(getLeadPdfId(leadId), magnet.filename);
+      await downloadPDF(leadPdfId, magnet.filename);
       trackGaEvent("lead_magnet_download_success", {
         source_tool: normalizedTool,
         locale,
@@ -611,6 +640,7 @@ export default function ToolResultCta({
           : "Could not generate the download. Please try again."
       );
     } finally {
+      setLeadPdfRenderId(null);
       setLeadDownloading(false);
       leadDownloadLockRef.current = false;
     }
@@ -659,11 +689,23 @@ export default function ToolResultCta({
         {pdfAvailable && (
           <button
             type="button"
-            className="btn-primary inline-flex min-h-[44px] w-full items-center justify-center gap-2"
+            className={`btn-primary inline-flex min-h-[44px] w-full items-center justify-center gap-2 ${
+              resultPdfDownloading ? "cursor-not-allowed opacity-70" : ""
+            }`}
+            disabled={resultPdfDownloading}
+            aria-disabled={resultPdfDownloading}
             onClick={handleDownload}
           >
             <ArrowDownTrayIcon className="h-5 w-5 flex-shrink-0" />
-            <span>{isKo ? "PDF 저장" : "Save PDF"}</span>
+            <span>
+              {resultPdfDownloading
+                ? isKo
+                  ? "PDF 저장 중"
+                  : "Saving PDF"
+                : isKo
+                  ? "PDF 저장"
+                  : "Save PDF"}
+            </span>
           </button>
         )}
 
@@ -715,16 +757,28 @@ export default function ToolResultCta({
           </div>
           <button
             type="button"
-            className="btn-primary inline-flex min-h-[44px] shrink-0 items-center justify-center gap-2"
+            className={`btn-primary inline-flex min-h-[44px] shrink-0 items-center justify-center gap-2 ${
+              leadDownloading ? "cursor-not-allowed opacity-70" : ""
+            }`}
+            disabled={leadDownloading}
+            aria-disabled={leadDownloading}
             onClick={handleLeadOpen}
           >
             <ArrowDownTrayIcon className="h-5 w-5 flex-shrink-0" />
-            <span>{isKo ? "무료 자료 받기" : "Get free file"}</span>
+            <span>
+              {leadDownloading
+                ? isKo
+                  ? "다운로드 준비 중"
+                  : "Preparing download"
+                : isKo
+                  ? "무료 자료 받기"
+                  : "Get free file"}
+            </span>
           </button>
         </div>
 
         {leadOpen && (
-          <form className="mt-4 grid gap-3" onSubmit={handleLeadDownload}>
+          <form className="mt-4 grid gap-3" onSubmit={handleLeadDownload} aria-busy={leadDownloading}>
             {!enableLeadCapture && (
               <p className="break-words text-xs font-medium text-slate-600">
                 {isKo
@@ -825,15 +879,14 @@ export default function ToolResultCta({
         </p>
       )}
 
-      {LEAD_MAGNET_ORDER.map((leadId) => (
+      {leadPdfRenderId && (
         <LeadMagnetPdfTemplate
-          key={leadId}
-          id={getLeadPdfId(leadId)}
-          magnet={LEAD_MAGNETS[leadId]}
+          id={getLeadPdfId(leadPdfRenderId)}
+          magnet={LEAD_MAGNETS[leadPdfRenderId] || selectedLead}
           locale={locale}
           sourceLabel={isKo ? config.label.ko : config.label.en}
         />
-      ))}
+      )}
     </section>
   );
 }

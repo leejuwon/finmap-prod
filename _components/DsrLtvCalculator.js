@@ -470,6 +470,13 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
         interaction,
         has_result: true,
       });
+      trackGaEvent("tool_calculate", {
+        source_tool: "dsrLtv",
+        locale: lang,
+        currency: "KRW",
+        has_result: true,
+        location: "form_submit",
+      });
     }, 600);
   };
 
