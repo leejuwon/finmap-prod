@@ -1,0 +1,31 @@
+{
+  "version": "2026-06-23",
+  "markdownPath": "content/posts/personalFinance/ko/dsr-40-income-loan-limit-table.md",
+  "slug": "dsr-40-income-loan-limit-table",
+  "lang": "ko",
+  "mode": "replace-existing",
+  "dateStamp": "20260623",
+  "createdAt": "2026-06-23T01:58:40.317Z",
+  "slotCount": 1,
+  "replaceableCount": 1,
+  "outputDir": "public/images/posts/dsr-40-income-loan-limit-table/rework-20260623",
+  "cloudinaryFolder": "blog/insight/dsr-40-income-loan-limit-table/rework-20260623",
+  "slots": [
+    {
+      "slotId": "frontmatter-cover",
+      "source": "frontmatter",
+      "fieldName": "cover",
+      "oldUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1780291760/blog/insight/dsr_cover.png",
+      "alt": "",
+      "order": 1,
+      "line": 14,
+      "nearHeading": "frontmatter",
+      "inferredRole": "cover",
+      "shouldReplace": true,
+      "reason": "Existing Markdown image slot eligible for rework replacement.",
+      "recommendedTemplate": "cover",
+      "recommendedNewLocalFile": "slot-001-cover.png"
+    }
+  ],
+  "suggestions": []
+}

@@ -82,20 +82,20 @@ export const TOOL_BACKLINK_CONFIG = {
   dsrLtv: {
     path: "/tools/dsr-ltv-calculator",
     name: {
-      ko: "DSR LTV 계산기",
-      en: "DSR LTV Calculator",
+      ko: "DSR/LTV 계산기",
+      en: "DSR/LTV Calculator",
     },
     shareTitle: {
-      ko: "FinMap DSR LTV 계산기",
-      en: "FinMap DSR LTV Calculator",
+      ko: "FinMap DSR/LTV 계산기",
+      en: "FinMap DSR/LTV Calculator",
     },
     shareDescription: {
       ko: "보유자산, 소득, 금리, DSR, LTV로 대출 가능액과 아파트 구매 가능 가격대를 추정합니다.",
       en: "Estimate loan capacity and apartment affordability from assets, income, rate, DSR, and LTV.",
     },
     anchors: {
-      ko: ["DSR LTV 계산기", "주택담보대출 가능액 계산기", "아파트 구매 가능 금액 계산기", "대출 한도 계산기"],
-      en: ["DSR LTV calculator", "mortgage affordability calculator", "home loan capacity calculator"],
+      ko: ["DSR/LTV 계산기", "주택담보대출 가능액 계산기", "아파트 구매 가능 금액 계산기", "대출 한도 계산기"],
+      en: ["DSR/LTV calculator", "mortgage affordability calculator", "home loan capacity calculator"],
     },
     ctaDescription: {
       ko: "소득·자산·금리 조건에서 감당 가능한 대출액과 주택 가격 범위를 점검합니다.",

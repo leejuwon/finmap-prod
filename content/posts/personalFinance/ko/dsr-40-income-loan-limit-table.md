@@ -11,7 +11,7 @@ category: "재테크"
 postCategory: "personalFinance"
 tags: ["DSR 계산기", "LTV 계산기", "주담대 한도", "아파트 구매 가능 금액", "대출 가능액", "부동산 실거래", "원리금균등"]
 tool: ["dsr-ltv"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1780291760/blog/insight/dsr_cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782180062/blog/insight/dsr-40-income-loan-limit-table/rework-20260623/slot-001-cover.png"
 lang: "ko"
 ---
 

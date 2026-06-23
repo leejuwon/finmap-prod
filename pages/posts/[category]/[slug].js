@@ -91,7 +91,8 @@ const TOOL_LABELS = {
   cagr: { ko: 'CAGR 계산기', en: 'CAGR calculator' },
   dca: { ko: 'DCA 시뮬레이터', en: 'DCA simulator' },
   fire: { ko: 'FIRE 계산기', en: 'FIRE calculator' },
-  dsrLtv: { ko: 'DSR LTV 계산기', en: 'DSR LTV calculator' },
+  dsrLtv: { ko: 'DSR/LTV 계산기', en: 'DSR/LTV Calculator' },
+  'dsr-ltv': { ko: 'DSR/LTV 계산기', en: 'DSR/LTV Calculator' },
 };
 
 function getToolLabel(tool, lang) {

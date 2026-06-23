@@ -1,0 +1,66 @@
+{
+  "version": "2026-06-23",
+  "slug": "monthly-dca-10-year-result",
+  "lang": "ko",
+  "generatedAt": "2026-06-23T01:47:52.168Z",
+  "status": "PASS",
+  "outputDir": "public/images/posts/monthly-dca-10-year-result",
+  "checkedFiles": [
+    "cover.png",
+    "img1.png",
+    "img2.png",
+    "img3.png"
+  ],
+  "images": [
+    {
+      "fileName": "cover.png",
+      "exists": true,
+      "width": 1600,
+      "height": 900,
+      "ratioOk": true,
+      "safeAreaOk": true,
+      "textOk": true,
+      "layoutOk": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "fileName": "img1.png",
+      "exists": true,
+      "width": 1200,
+      "height": 675,
+      "ratioOk": true,
+      "safeAreaOk": true,
+      "textOk": true,
+      "layoutOk": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "fileName": "img2.png",
+      "exists": true,
+      "width": 1200,
+      "height": 675,
+      "ratioOk": true,
+      "safeAreaOk": true,
+      "textOk": true,
+      "layoutOk": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "fileName": "img3.png",
+      "exists": true,
+      "width": 1200,
+      "height": 675,
+      "ratioOk": true,
+      "safeAreaOk": true,
+      "textOk": true,
+      "layoutOk": true,
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

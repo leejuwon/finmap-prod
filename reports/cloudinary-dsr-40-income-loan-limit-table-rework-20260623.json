@@ -1,0 +1,32 @@
+{
+  "localDir": "public/images/posts/dsr-40-income-loan-limit-table/rework-20260623",
+  "localDirAbsolute": "C:/finmap/public/images/posts/dsr-40-income-loan-limit-table/rework-20260623",
+  "cloudinaryFolder": "blog/insight/dsr-40-income-loan-limit-table/rework-20260623",
+  "manifestPath": "reports/cloudinary-dsr-40-income-loan-limit-table-rework-20260623.json",
+  "uploadedAt": "2026-06-23T02:01:01.307Z",
+  "dryRun": false,
+  "candidateCount": 1,
+  "successCount": 1,
+  "failCount": 0,
+  "skippedCount": 1,
+  "images": [
+    {
+      "fileName": "slot-001-cover.png",
+      "localPath": "public/images/posts/dsr-40-income-loan-limit-table/rework-20260623/slot-001-cover.png",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1782180062/blog/insight/dsr-40-income-loan-limit-table/rework-20260623/slot-001-cover.png",
+      "publicId": "blog/insight/dsr-40-income-loan-limit-table/rework-20260623/slot-001-cover",
+      "width": 1600,
+      "height": 900,
+      "bytes": 54152,
+      "format": "png"
+    }
+  ],
+  "skipped": [
+    {
+      "fileName": "image-layout-manifest.json",
+      "reason": "UNSUPPORTED_EXTENSION"
+    }
+  ],
+  "errors": []
+}

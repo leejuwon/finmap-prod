@@ -1,0 +1,60 @@
+{
+  "localDir": "public/images/posts/monthly-dca-10-year-result",
+  "localDirAbsolute": "C:/finmap/public/images/posts/monthly-dca-10-year-result",
+  "cloudinaryFolder": "blog/insight/monthly-dca-10-year-result",
+  "manifestPath": "reports/cloudinary-monthly-dca-10-year-result-ko.json",
+  "uploadedAt": "2026-06-23T01:49:44.121Z",
+  "dryRun": false,
+  "candidateCount": 4,
+  "successCount": 4,
+  "failCount": 0,
+  "skippedCount": 0,
+  "images": [
+    {
+      "fileName": "cover.png",
+      "localPath": "public/images/posts/monthly-dca-10-year-result/cover.png",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1782179385/blog/insight/monthly-dca-10-year-result/cover.png",
+      "publicId": "blog/insight/monthly-dca-10-year-result/cover",
+      "width": 1600,
+      "height": 900,
+      "bytes": 57369,
+      "format": "png"
+    },
+    {
+      "fileName": "img1.png",
+      "localPath": "public/images/posts/monthly-dca-10-year-result/img1.png",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1782179386/blog/insight/monthly-dca-10-year-result/img1.png",
+      "publicId": "blog/insight/monthly-dca-10-year-result/img1",
+      "width": 1200,
+      "height": 675,
+      "bytes": 35282,
+      "format": "png"
+    },
+    {
+      "fileName": "img2.png",
+      "localPath": "public/images/posts/monthly-dca-10-year-result/img2.png",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1782179387/blog/insight/monthly-dca-10-year-result/img2.png",
+      "publicId": "blog/insight/monthly-dca-10-year-result/img2",
+      "width": 1200,
+      "height": 675,
+      "bytes": 44864,
+      "format": "png"
+    },
+    {
+      "fileName": "img3.png",
+      "localPath": "public/images/posts/monthly-dca-10-year-result/img3.png",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1782179388/blog/insight/monthly-dca-10-year-result/img3.png",
+      "publicId": "blog/insight/monthly-dca-10-year-result/img3",
+      "width": 1200,
+      "height": 675,
+      "bytes": 39601,
+      "format": "png"
+    }
+  ],
+  "skipped": [],
+  "errors": []
+}
