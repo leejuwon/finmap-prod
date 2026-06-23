@@ -453,6 +453,7 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
   const [isExporting, setIsExporting] = useState(false);
   const exportLockRef = useRef(false);
   const calculationEventTimerRef = useRef(null);
+  const commonCalculateEventSentRef = useRef(false);
 
   useEffect(
     () => () => {
@@ -470,13 +471,16 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
         interaction,
         has_result: true,
       });
-      trackGaEvent("tool_calculate", {
-        source_tool: "dsrLtv",
-        locale: lang,
-        currency: "KRW",
-        has_result: true,
-        location: "form_submit",
-      });
+      if (!commonCalculateEventSentRef.current) {
+        commonCalculateEventSentRef.current = true;
+        trackGaEvent("tool_calculate", {
+          source_tool: "dsrLtv",
+          locale: lang,
+          currency: "KRW",
+          has_result: true,
+          location: "live_calculator",
+        });
+      }
     }, 600);
   };
 

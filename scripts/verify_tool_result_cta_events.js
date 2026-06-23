@@ -58,6 +58,10 @@ function read(rel) {
   return fs.readFileSync(path.join(ROOT, rel), "utf8");
 }
 
+function toPosixPath(rel) {
+  return String(rel || "").replace(/\\/g, "/");
+}
+
 function findTrackBlocks(source) {
   const blocks = [];
   let index = 0;
@@ -131,8 +135,8 @@ const trackBlocks = sources.flatMap(({ file, source }) =>
 );
 const unsafeEmailBlocks = trackBlocks.filter(({ block }) => /\bleadEmail\b|\bemail\s*:/.test(block));
 
-const toolResultSource = sources.find((item) => item.file === "_components/ToolResultCta.js")?.source || "";
-const dsrLtvSource = sources.find((item) => item.file === "_components\\DsrLtvCalculator.js")?.source || "";
+const toolResultSource = sources.find((item) => toPosixPath(item.file) === "_components/ToolResultCta.js")?.source || "";
+const dsrLtvSource = sources.find((item) => toPosixPath(item.file) === "_components/DsrLtvCalculator.js")?.source || "";
 const payloadMatch = toolResultSource.match(/const payload = \{[\s\S]*?\n\s*\};/);
 const payloadBlock = payloadMatch ? payloadMatch[0] : "";
 const payloadContainsRawEmail = /\bleadEmail\b|\bemail\s*:/.test(payloadBlock);
@@ -140,10 +144,13 @@ const storageOrCustomContainsRawEmail = /localStorage[\s\S]{0,240}\bleadEmail\b|
   toolResultSource
 );
 const dsrLtvCommonCalculateFound =
-  /trackGaEvent\(\s*["']tool_calculate["'][\s\S]*?source_tool\s*:\s*["']dsrLtv["'][\s\S]*?currency\s*:\s*["']KRW["'][\s\S]*?location\s*:\s*["']form_submit["']/.test(
+  /trackGaEvent\(\s*["']tool_calculate["'][\s\S]*?source_tool\s*:\s*["']dsrLtv["'][\s\S]*?currency\s*:\s*["']KRW["'][\s\S]*?location\s*:\s*["']live_calculator["']/.test(
     dsrLtvSource
   );
 const dsrLtvSpecificCalculateKept = /trackGaEvent\(\s*["']dsr_ltv_calculate["']/.test(dsrLtvSource);
+const dsrLtvCommonCalculateGuarded =
+  /commonCalculateEventSentRef\s*=\s*useRef\(\s*false\s*\)/.test(dsrLtvSource) &&
+  /if\s*\(\s*!commonCalculateEventSentRef\.current\s*\)/.test(dsrLtvSource);
 
 console.log("[tool-result-cta-events] required events");
 for (const result of eventResults) {
@@ -165,7 +172,8 @@ console.log(`${!payloadContainsRawEmail ? "PASS" : "FAIL"}\tlocal payload exclud
 console.log(`${!storageOrCustomContainsRawEmail ? "PASS" : "FAIL"}\tlocalStorage/CustomEvent calls exclude raw leadEmail`);
 
 console.log("[tool-result-cta-events] dsr/ltv");
-console.log(`${dsrLtvCommonCalculateFound ? "PASS" : "FAIL"}\tDSR/LTV common tool_calculate uses source_tool=dsrLtv, currency=KRW, location=form_submit`);
+console.log(`${dsrLtvCommonCalculateFound ? "PASS" : "FAIL"}\tDSR/LTV common tool_calculate uses source_tool=dsrLtv, currency=KRW, location=live_calculator`);
+console.log(`${dsrLtvCommonCalculateGuarded ? "PASS" : "FAIL"}\tDSR/LTV common tool_calculate is guarded by commonCalculateEventSentRef`);
 console.log(`${dsrLtvSpecificCalculateKept ? "PASS" : "FAIL"}\texisting dsr_ltv_calculate event is kept`);
 
 const failed =
@@ -175,6 +183,7 @@ const failed =
   payloadContainsRawEmail ||
   storageOrCustomContainsRawEmail ||
   !dsrLtvCommonCalculateFound ||
+  !dsrLtvCommonCalculateGuarded ||
   !dsrLtvSpecificCalculateKept;
 
 if (failed) {
