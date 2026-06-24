@@ -4,7 +4,7 @@ link: "/posts/personalFinance/salary-50m-dsr-40-loan-limit"
 title: "연봉 5000만원 DSR 40% 대출 가능액: 기존부채까지 넣어 계산하기"
 description: "연봉 5000만원 기준 DSR 40%에서 주담대 가능액이 얼마인지, 기존 월상환액이 있을 때 한도가 얼마나 줄어드는지 표로 정리합니다."
 datePublished: "2026-06-23"
-dateModified: "2026-06-23"
+dateModified: "2026-06-24"
 seoTitle: "연봉 5000만원 DSR 40% 대출 가능액 | 주담대 한도표"
 seoDescription: "연봉 5000만원 DSR 40% 기준 월 상환 가능액, 주담대 가능액, 기존부채별 한도 감소를 계산하고 DSR/LTV 계산기로 내 조건을 확인하세요."
 category: "재테크"
@@ -17,7 +17,7 @@ lang: "ko"
 
 연봉 5000만원에서 DSR 40%를 적용하면 연간 원리금 상환 여력은 2000만원, 월 기준으로는 약 167만원입니다. 금리 4.0%, 30년 원리금균등 상환을 단순 적용하면 신규 주담대 가능액은 약 **3억 4900만원**입니다.
 
-문제는 기존부채입니다. 신용대출, 자동차할부, 학자금대출처럼 매달 갚는 금액이 있으면 167만원 전체를 주담대에 쓸 수 없습니다. [DSR/LTV 계산기](/tools/dsr-ltv-calculator)에 기존 월상환액을 같이 넣어야 실제에 가까워집니다.
+문제는 기존부채입니다. 신용대출, 자동차할부, 학자금대출처럼 매달 갚는 금액이 있으면 167만원 전체를 주담대에 쓸 수 없습니다. [DSR 계산기](/tools/dsr-ltv-calculator)에 기존 월상환액을 같이 넣어야 실제에 가까워집니다.
 
 ## Quick Answer
 
@@ -67,7 +67,7 @@ lang: "ko"
 
 ## 계산기 입력 순서
 
-1. [DSR/LTV 계산기](/tools/dsr-ltv-calculator)에 연소득 5000만원을 입력합니다.
+1. [주택담보대출 계산기](/tools/dsr-ltv-calculator)에 연소득 5000만원을 입력합니다.
 2. 기존 대출 월상환액을 빠뜨리지 않습니다.
 3. 후보 집값을 4억 5000만원, 5억원, 5억 5000만원으로 나눠 넣습니다.
 4. 금리 4%, 5%, 6%를 바꿔 민감도를 봅니다.
@@ -75,7 +75,7 @@ lang: "ko"
 
 ## 관련 글/계산기
 
-- [DSR/LTV 계산기에서 연봉 5000만원 조건 입력하기](/tools/dsr-ltv-calculator)
+- [대출 가능액 계산기에서 연봉 5000만원 조건 입력하기](/tools/dsr-ltv-calculator)
 - [DSR 40% 연봉별 대출 가능액 표](/posts/personalFinance/dsr-40-income-loan-limit-table)
 - [보유현금 1억·2억·3억이면 어느 가격대 아파트까지 가능할까?](/posts/personalFinance/cash-100m-200m-300m-apartment-budget)
 - [DSR은 통과했는데 왜 집을 못 살까?](/posts/personalFinance/dsr-pass-ltv-cash-bottleneck)

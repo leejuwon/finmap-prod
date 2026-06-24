@@ -4,7 +4,7 @@ link: "/posts/personalFinance/fire-3-numbers-spending-horizon-withdrawal"
 title: "은퇴자산 목표는 ‘3개 숫자’로 결정된다: 연지출·은퇴기간·인출률(4%룰 오해까지) + FIRE 툴로 10분 계산"
 description: "은퇴 준비는 전망이 아니라 숫자 3개(연지출·은퇴기간·인출률)로 결정된다. 직장인/자영업자 관점에서 주거비(전/월세·대출이자), 건강보험료, 자녀/부양, 국민연금·퇴직연금·IRP까지 반영해 FIRE 목표자산을 10분 안에 계산하는 프레임을 정리한다."
 datePublished: "2026-02-03"
-dateModified: "2026-02-03"
+dateModified: "2026-06-24"
 category: "재테크"
 postCategory: "personalFinance"
 tags: ["은퇴자산", "FIRE", "연지출", "은퇴기간", "인출률", "4%룰", "국민연금", "퇴직연금", "IRP", "건강보험료", "전세", "월세", "대출이자", "인플레이션", "KRW"]
@@ -20,7 +20,7 @@ lang: "ko"
 - 인플레이션은 원화 기준 구매력을 갉아먹기 때문에, <strong>원화 생활비를 유지하려면</strong> 인출 설계에 반드시 반영해야 합니다(정확한 예측은 금지, 시나리오로 점검).  
 - 국민연금·퇴직연금·IRP는 “자산”이 아니라 <strong>은퇴 후 현금유입</strong>으로 넣어, 연지출에서 빼서 필요한 인출액을 줄이는 방식이 실전적입니다.  
 - 같은 소득이어도 직장인/자영업자는 소득 안정성과 보험 구조가 달라 <strong>필요 안전마진</strong>이 달라질 수 있습니다.  
-- 결론은 단순합니다. 숫자 3개를 보수적으로 고정하고, <strong><a href="/tools/fire-calculator">FIRE 계산기</a></strong>로 ‘목표자산·부족분·조정 포인트’를 확인하면 됩니다.  
+- 결론은 단순합니다. 숫자 3개를 보수적으로 고정하고, <strong><a href="/tools/fire-calculator">은퇴자금 계산기</a></strong>로 ‘목표자산·부족분·조정 포인트’를 확인하면 됩니다.
 - 이 글은 특정 투자상품 추천이나 단기 수익률 예측이 아니라, <strong>지표 → 규칙 → 실행</strong>으로 불안을 줄이는 “은퇴 설계”에 집중합니다.  
 
 <div class="hero-grid">
@@ -32,7 +32,7 @@ lang: "ko"
     <ul>
       <li>은퇴 연지출을 “주거·건보·부양”까지 포함해 현실적으로 정하는 방법</li>
       <li>은퇴기간이 길어질수록 4%룰이 왜 불편해지는지(오해 교정 포함)</li>
-      <li><strong><a href="/tools/fire-calculator">FIRE 계산기</a></strong>로 10분 안에 목표자산·부족분을 확정하는 입력 순서</li>
+      <li><strong><a href="/tools/fire-calculator">노후자금 계산기</a></strong>로 10분 안에 목표자산·부족분을 확정하는 입력 순서</li>
     </ul>
     <p class="text-sm text-slate-500">
       범위/한계: 특정 종목·ETF 추천, 단기 예측은 하지 않음. “숫자 설계 → 내 행동 규칙”에 집중.
@@ -190,7 +190,7 @@ FIRE 목표가 현실적으로 느껴지려면, 연금은 “나중에 받는 �
 </figure>
 
 바로 위 계산기에서 <strong>연지출</strong>에는 은퇴 버전 연간 지출(주거비·건강보험료·부양 포함)을, <strong>은퇴기간</strong>에는 인출이 필요한 총 기간(예: 30년/40년)을 넣어보세요.  
-수익률/인플레이션 입력이 있다면 먼저 보수적으로 넣고(확신 금지), 결과가 과도하면 지출·기간·인출률 중 무엇을 조정할지 확인하면 됩니다(도구: <strong><a href="/tools/fire-calculator">FIRE 계산기</a></strong>).
+수익률/인플레이션 입력이 있다면 먼저 보수적으로 넣고(확신 금지), 결과가 과도하면 지출·기간·인출률 중 무엇을 조정할지 확인하면 됩니다(도구: <strong><a href="/tools/fire-calculator">은퇴자금 계산기</a></strong>).
 
 ## 케이스 2개: 직장인 vs 자영업자, 목표가 달라지는 지점
 
@@ -302,7 +302,7 @@ FIRE 목표가 현실적으로 느껴지려면, 연금은 “나중에 받는 �
   },
   "url": "https://www.finmaphub.com/posts/personalFinance/fire-3-numbers-spending-horizon-withdrawal",
   "datePublished": "2026-02-03",
-  "dateModified": "2026-02-03",
+  "dateModified": "2026-06-24",
   "author": {
     "@type": "Organization",
     "name": "FinMap"

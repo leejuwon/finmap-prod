@@ -4,7 +4,7 @@ link: "/posts/personalFinance/salary-40m-mortgage-limit"
 title: "연봉 4000만원 주담대 가능액 계산: DSR 40% 기준으로 어디까지 볼까"
 description: "연봉 4000만원 기준 DSR 40%, 금리 4%, 30년 원리금균등 상환을 가정해 주담대 가능액과 후보 아파트 가격대를 계산합니다."
 datePublished: "2026-06-23"
-dateModified: "2026-06-23"
+dateModified: "2026-06-24"
 seoTitle: "연봉 4000만원 주담대 가능액 계산 | DSR 40% LTV 예산표"
 seoDescription: "연봉 4000만원이면 DSR 40% 기준 주담대 가능액이 얼마인지, 월 상환액·LTV·보유현금·부대비용까지 함께 계산하는 방법을 정리합니다."
 category: "재테크"
@@ -17,7 +17,7 @@ lang: "ko"
 
 연봉 4000만원이면 DSR 40%에서 연간 원리금 상환 한도는 약 1600만원, 월 기준으로는 약 133만원입니다. 금리 4.0%, 30년 원리금균등 상환을 단순 가정하면 주담대 가능액은 약 **2억 7900만원** 수준으로 계산됩니다.
 
-다만 이 숫자는 “대출 가능액”일 뿐입니다. 실제로 볼 수 있는 아파트 가격은 LTV, 보유현금, 취득세·중개보수 같은 부대비용, 기존 대출 월상환액에 따라 더 낮아질 수 있습니다. 내 숫자는 [DSR/LTV 계산기](/tools/dsr-ltv-calculator)에 직접 넣어 확인하세요.
+다만 이 숫자는 “대출 가능액”일 뿐입니다. 실제로 볼 수 있는 아파트 가격은 LTV, 보유현금, 취득세·중개보수 같은 부대비용, 기존 대출 월상환액에 따라 더 낮아질 수 있습니다. 내 숫자는 [DSR 계산기](/tools/dsr-ltv-calculator)에 직접 넣어 확인하세요.
 
 ## Quick Answer
 
@@ -73,7 +73,7 @@ LTV 70%라면 집값의 30%는 자기자본으로 준비해야 합니다. 여기
 
 ## 계산기 입력 순서
 
-1. [DSR/LTV 계산기](/tools/dsr-ltv-calculator)에 연소득 4000만원을 넣습니다.
+1. [주택담보대출 계산기](/tools/dsr-ltv-calculator)에 연소득 4000만원을 넣습니다.
 2. 기존 월상환액이 있으면 신용대출, 자동차할부, 학자금대출까지 월 단위로 더합니다.
 3. 금리 4%, 기간 30년을 기준으로 한 번 계산합니다.
 4. 후보 집값을 3억 5000만원, 4억원, 4억 5000만원처럼 바꿔 봅니다.
@@ -83,7 +83,7 @@ LTV 70%라면 집값의 30%는 자기자본으로 준비해야 합니다. 여기
 
 ## 관련 글/계산기
 
-- [DSR/LTV 계산기에서 내 주담대 한도 계산하기](/tools/dsr-ltv-calculator)
+- [주택담보대출 가능액 계산기에서 내 주담대 한도 계산하기](/tools/dsr-ltv-calculator)
 - [DSR 40% 연봉별 대출 가능액 표](/posts/personalFinance/dsr-40-income-loan-limit-table)
 - [금리 1%p 오르면 내 주담대 한도는 얼마나 줄어들까?](/posts/personalFinance/interest-rate-1p-loan-limit-impact)
 - [DSR은 통과했는데 왜 집을 못 살까?](/posts/personalFinance/dsr-pass-ltv-cash-bottleneck)

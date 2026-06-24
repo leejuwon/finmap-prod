@@ -97,16 +97,23 @@ function JsonLdPack({ lang }) {
 
   const calculator = {
     "@context": "https://schema.org",
-    "@type": "FinancialCalculator",
+    "@type": "WebApplication",
     name: isKo
-      ? "은퇴자금(FIRE) 시뮬레이터 · 은퇴자금 계산기 · 조기은퇴 계산"
+      ? "은퇴자금 계산기 · 노후자금 계산기 · FIRE 계산기"
       : "FIRE Retirement Calculator · Early Retirement Estimator",
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "Web",
     description: isKo
-      ? "은퇴자금 계산, FIRE 시뮬레이션, 조기은퇴 계산, 출금률 기반 은퇴 가능성을 예측하는 전문 계산기입니다."
+      ? "은퇴 생활비, 노후자금, 은퇴자금 목표, 4% 룰, FIRE 가능성을 계산하는 무료 계산기입니다."
       : "A FIRE retirement calculator that simulates asset longevity, withdrawal rates, and early retirement feasibility.",
     url: isKo
       ? "https://www.finmaphub.com/tools/fire-calculator"
       : "https://www.finmaphub.com/en/tools/fire-calculator",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: isKo ? "KRW" : "USD",
+    },
   };
 
   const faqSchema = {
@@ -220,10 +227,10 @@ export default function FireCalculatorPage() {
   const t = useMemo(
     () => ({
       title: isKo
-        ? "은퇴자금 계산기 / FIRE 계산기 | 은퇴 생활비·필요자금 시뮬레이션"
+        ? "은퇴자금 계산기 | 노후자금 계산기·은퇴 생활비·FIRE 계산기"
         : "FIRE Calculator: Early Retirement, Withdrawal Rate & Asset Longevity",
       desc: isKo
-        ? "현재자산, 월저축, 은퇴나이, 기대수명, 생활비를 입력해 은퇴 시점 예상 자산과 필요 은퇴자금을 비교하고, 기존 FIRE 계산도 함께 확인합니다."
+        ? "은퇴자금 계산기와 노후자금 계산기로 월 은퇴 생활비, 필요 은퇴자금, 4% 룰, 국민연금·개인연금 반영 전후 FIRE 가능성을 비교하세요."
         : "Estimate whether your assets can support early retirement using annual spending, savings, retirement age, life expectancy, withdrawal rate, taxes, fees, inflation, and asset longevity scenarios.",
       chartTitle: isKo ? "은퇴 전·후 자산 곡선" : "Asset Curve (Before & After FIRE)",
     }),
@@ -287,7 +294,7 @@ export default function FireCalculatorPage() {
         slug: "fire-3-numbers-spending-horizon-withdrawal",
         tagKo: "은퇴자산",
         tagEn: "retirement planning",
-        titleKo: "은퇴자산 목표는 ‘3개 숫자’로 결정된다: 연지출·은퇴기간·인출률(4%룰 오해까지) + FIRE 툴로 10분 계산",
+        titleKo: "은퇴자금 계산기 입력 전 확인할 3개 숫자: 연지출·은퇴기간·인출률",
         titleEn: "FIRE Is Just 3 Numbers: Annual Spending, Retirement Horizon, and Withdrawal Rate (Then Validate in 10 Minutes)",
         descKo: "은퇴 준비는 전망이 아니라 숫자 3개(연지출·은퇴기간·인출률)로 결정된다. 한국 거주 직장인/자영업자 관점에서 주거비(전/월세·대출이자), 건강보험료, 자녀/부양, 국민연금·퇴직연금·IRP까지 반영해 FIRE 목표자산을 10분 안에 계산하는 프레임을 정리한다.",
         descEn: "FIRE planning becomes simple when you lock in three numbers: annual spending, retirement horizon, and withdrawal rate. This guide gives a rules-based framework (not stock picks) and shows how to validate your target with the FinMap FIRE calculator using 401(k)/IRA/Social Security and inflation-adjusted spending—plus sequence-of-returns guardrails.",
@@ -398,6 +405,72 @@ export default function FireCalculatorPage() {
               : "Simple FIRE calculator: estimate the target portfolio, retirement timing, and how long assets may last using annual spending, contributions, expected return, and withdrawal rate."}
           </p>
         </section>
+        {isKo && (
+          <section className="card border border-slate-200">
+            <h2 className="text-lg font-semibold">은퇴 생활비별 필요자금 표</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700">
+              은퇴자금 계산기는 먼저 월 은퇴 생활비를 연 지출로 바꾼 뒤, 출금률로 나누어
+              필요한 노후자금을 추정합니다. 대표적으로 4% 룰은 연 지출의 25배를 목표자산으로 보는 방식입니다.
+            </p>
+            <div className="mt-4 overflow-x-auto">
+              <table className="w-full min-w-[560px] border-collapse text-sm">
+                <thead>
+                  <tr className="bg-slate-50 text-left">
+                    <th className="border p-2">월 은퇴 생활비</th>
+                    <th className="border p-2">연 지출</th>
+                    <th className="border p-2">4% 룰 필요 은퇴자금</th>
+                    <th className="border p-2">해석</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border p-2">월 200만원</td>
+                    <td className="border p-2">2,400만원</td>
+                    <td className="border p-2">약 6억원</td>
+                    <td className="border p-2">기본 생활비 중심의 노후자금 기준</td>
+                  </tr>
+                  <tr>
+                    <td className="border p-2">월 300만원</td>
+                    <td className="border p-2">3,600만원</td>
+                    <td className="border p-2">약 9억원</td>
+                    <td className="border p-2">주거비와 의료비 여유를 함께 봐야 하는 구간</td>
+                  </tr>
+                  <tr>
+                    <td className="border p-2">월 400만원</td>
+                    <td className="border p-2">4,800만원</td>
+                    <td className="border p-2">약 12억원</td>
+                    <td className="border p-2">부부 생활비·여행·보험료까지 점검 필요</td>
+                  </tr>
+                  <tr>
+                    <td className="border p-2">월 500만원</td>
+                    <td className="border p-2">6,000만원</td>
+                    <td className="border p-2">약 15억원</td>
+                    <td className="border p-2">FIRE 계산기에서 수익률·인플레 민감도 확인</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              <section className="rounded-xl border p-4">
+                <h2 className="text-base font-semibold">4% 룰 기준 필요자금 계산</h2>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700">
+                  4% 룰은 연 지출을 0.04로 나누는 방식입니다. 예를 들어 월 300만원을 쓰면
+                  연 지출은 3,600만원이고, 3,600만원 ÷ 4% = 약 9억원이 기준 목표가 됩니다.
+                  실제 계산에서는 세금, 수수료, 물가상승률, 은퇴기간을 함께 넣어야 합니다.
+                </p>
+              </section>
+              <section className="rounded-xl border p-4">
+                <h2 className="text-base font-semibold">국민연금·개인연금이 있을 때</h2>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700">
+                  국민연금, 퇴직연금, 개인연금처럼 은퇴 후 현금흐름이 있다면 전체 생활비에서
+                  그 금액을 뺀 부족분을 노후자금으로 준비하는 방식이 현실적입니다. 다만 수령 시점,
+                  세금, 물가연동 여부가 다르므로 계산 결과는 보수적으로 해석하세요.
+                </p>
+              </section>
+            </div>
+          </section>
+        )}
         <FireForm lang={lang} onSubmit={handleSubmit} initial={formInitial} />
 
         {result && (
