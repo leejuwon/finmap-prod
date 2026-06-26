@@ -40,6 +40,55 @@ EN:
 - Cloudinary 썸네일/크롭을 고려해 가장자리에는 제목, 핵심 숫자, 단계 라벨을 두지 않는다.
 - 현재 스크립트 기준 safe area는 9%다.
 
+## Text Fit And Wrapping
+
+신규 글 이미지와 기존 이미지 교체 모드 모두 동일한 텍스트 맞춤 규칙을 적용한다.
+
+- 모든 SVG 텍스트는 공통 `fitTextToBox` 결과의 `lines[]`를 `<tspan>`으로 렌더링한다.
+- 먼저 `initialFontSize`에서 한 줄 배치를 시도하고, 들어가지 않으면 `minFontSize`까지 단계적으로 축소한다.
+- 축소 후에도 한 줄에 들어가지 않으면 공백/토큰 단위 줄바꿈을 적용한다.
+- 줄바꿈 후에도 `maxLines`, 부모 박스, safe area, 최소 폰트 기준을 만족하지 못하면 validation FAIL로 처리한다.
+
+한글 줄바꿈 규칙:
+
+- 공백이 있는 문장은 공백 단위로 줄바꿈한다.
+- 단어 내부의 한글 음절을 임의로 쪼개지 않는다.
+- 마지막 줄 또는 중간 줄에 한글 1글자만 남는 orphan line은 FAIL이다.
+- 예: `1~6개월 거래량`은 `1~6개월 거래량` 또는 `1~6개월` / `거래량`만 허용한다.
+- 금지 예: `1~6개월 거래` / `량`, `거래` / `량`, `수익` / `률`.
+
+영문 줄바꿈 규칙:
+
+- 공백 단위로 줄바꿈한다.
+- 긴 단어가 박스를 넘으면 먼저 폰트 크기를 줄인다.
+- `minFontSize`에서도 넘는 긴 단어는 임의 하이픈/문자 분리 없이 validation FAIL로 처리한다.
+
+숫자/기호 포함 토큰:
+
+- `1~6개월`, `10년 후`, `5년 CAGR` 같은 숫자+단위 조합은 가능한 한 한 덩어리로 유지한다.
+- `DSR 40% 기준`은 `DSR 40%` / `기준` 형태를 허용한다.
+
+기본 기준:
+
+- 제목/카드 라벨/step label/panel label/check label: 기본 `maxLines` 2.
+- 보조 chip/keyword/panel note: 기본 `maxLines` 1.
+- cover 주요 제목 최소 폰트: 34px.
+- 본문 카드 라벨 최소 폰트: 22px.
+- 작은 chip/보조 라벨 최소 폰트: 18px.
+
+## Category Palettes
+
+`category` 또는 `postCategory`를 기준으로 배경 톤과 카드 스타일을 고른다. 알 수 없는 분류는 neutral palette를 사용한다.
+
+| postCategory | Label | Palette name | Tone |
+| --- | --- | --- | --- |
+| `economicInfo` | 경제 | `economic-macro` | deep navy, slate blue, cool gray 기반의 거시경제/지표 톤 |
+| `investingInfo` | 투자 | `investing-dashboard` | dark indigo, muted green, teal accent 기반의 시장/포트폴리오 톤 |
+| `personalFinance` | 재테크 | `personal-finance-card` | warm navy, soft emerald, cream accent 기반의 계산기/생활금융 톤 |
+
+각 palette는 최소 `background`, `backgroundAccent`, `cardBackground`, `cardBorder`, `primaryText`, `secondaryText`, `accent`, `mutedAccent` 값을 포함한다.
+Plan과 layout manifest에는 `categoryLabel`, `paletteName`, `textFitPolicy`, `maxLines`, `minFontSize`를 기록한다.
+
 ## Planning Inputs
 
 `scripts/plan_post_images.js`는 아래를 읽는다.
@@ -119,6 +168,9 @@ blog/insight/{slug}/rework-{YYYYMMDD}
 - 텍스트 overflow
 - 텍스트와 도형의 부모 박스 이탈 여부
 - 텍스트 간 겹침
+- 한글 orphan line 여부
+- role별 `maxLines` 초과 여부
+- role별 `minFontSize` 미만 축소 여부
 - 단계형 이미지의 step box 수와 connector 수
 - 비교형 이미지의 panel 수
 - 같은 행의 step center y 편차
@@ -132,12 +184,15 @@ blog/insight/{slug}/rework-{YYYYMMDD}
 - 인접 box 간 최소 간격: `>= 24px`
 - 16:9 ratio 오차: `< 0.002`
 - 텍스트는 부모 box 안쪽 10px 여백 안에 들어와야 한다.
+- 한글 1글자 orphan line은 허용하지 않는다.
+- `1~6개월 거래량`, `복리 수익률`, `DSR 40% 기준` 같은 문구는 단어/토큰 단위로만 줄바꿈한다.
 
 ## Failure Policy
 
 - 검증 실패 시 report JSON에 실패 사유를 남긴다.
-- 현재 공통 렌더러는 줄바꿈과 font-size 축소를 자동 적용한다.
+- 현재 공통 렌더러는 단어/토큰 단위 줄바꿈과 font-size 축소를 자동 적용한다.
 - 그래도 truncation, overflow, overlap이 남으면 FAIL 처리한다.
+- 한글 orphan line, 영문 긴 단어 overflow, `minFontSize` 미만 축소가 남으면 FAIL 처리한다.
 - FAIL인 경우 Cloudinary 업로드와 Markdown 반영을 하지 않는다.
 
 ## Cloudinary Upload

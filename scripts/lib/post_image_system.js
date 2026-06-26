@@ -38,6 +38,106 @@ const COLORS = {
   paleAmber: '#fef3c7',
 };
 
+const CATEGORY_PALETTES = {
+  neutral: {
+    name: 'neutral',
+    categoryLabel: 'unknown',
+    background: '#f6fbff',
+    backgroundAccent: '#eef7ff',
+    cardBackground: '#ffffff',
+    cardBorder: '#d8e4f2',
+    primaryText: '#102a43',
+    secondaryText: '#52647a',
+    mutedText: '#74849a',
+    accent: '#2563eb',
+    mutedAccent: '#38bdf8',
+    secondaryAccent: '#10b981',
+    tertiaryAccent: '#f59e0b',
+    danger: '#ef4444',
+    dot: '#cfe2f3',
+  },
+  economicInfo: {
+    name: 'economic-macro',
+    categoryLabel: '경제',
+    background: '#111827',
+    backgroundAccent: '#1f2a44',
+    cardBackground: '#f8fafc',
+    cardBorder: '#64748b',
+    primaryText: '#f8fafc',
+    secondaryText: '#cbd5e1',
+    mutedText: '#94a3b8',
+    accent: '#60a5fa',
+    mutedAccent: '#38bdf8',
+    secondaryAccent: '#2dd4bf',
+    tertiaryAccent: '#fbbf24',
+    danger: '#fb7185',
+    dot: '#334155',
+  },
+  investingInfo: {
+    name: 'investing-dashboard',
+    categoryLabel: '투자',
+    background: '#172033',
+    backgroundAccent: '#12313a',
+    cardBackground: '#f7fbf8',
+    cardBorder: '#5b7f7a',
+    primaryText: '#f8fafc',
+    secondaryText: '#c8d7d2',
+    mutedText: '#8ea7a1',
+    accent: '#34d399',
+    mutedAccent: '#14b8a6',
+    secondaryAccent: '#60a5fa',
+    tertiaryAccent: '#f59e0b',
+    danger: '#f87171',
+    dot: '#294451',
+  },
+  personalFinance: {
+    name: 'personal-finance-card',
+    categoryLabel: '재테크',
+    background: '#16312f',
+    backgroundAccent: '#f4ead8',
+    cardBackground: '#fffdf7',
+    cardBorder: '#cfe3d3',
+    primaryText: '#f9fafb',
+    secondaryText: '#dce8e3',
+    mutedText: '#8ca39a',
+    accent: '#10b981',
+    mutedAccent: '#d9b46b',
+    secondaryAccent: '#38bdf8',
+    tertiaryAccent: '#f59e0b',
+    danger: '#ef4444',
+    dot: '#31524c',
+  },
+};
+
+const TEXT_FIT_POLICY = {
+  name: 'word-fit-no-korean-orphan-v1',
+  wrapUnit: 'space-or-token',
+  prohibitKoreanSyllableSplit: true,
+  prohibitKoreanOrphanLine: true,
+  defaultMaxLines: 2,
+  defaultMinFontSize: 18,
+  roleMaxLines: {
+    title: 2,
+    subtitle: 2,
+    keyword: 1,
+    'card-label': 2,
+    'step-label': 2,
+    'panel-label': 2,
+    'check-label': 2,
+    'panel-note': 1,
+  },
+  roleMinFontSize: {
+    title: 34,
+    subtitle: 22,
+    keyword: 18,
+    'card-label': 22,
+    'step-label': 22,
+    'panel-label': 22,
+    'check-label': 22,
+    'panel-note': 18,
+  },
+};
+
 function normalizeSlash(value) {
   return String(value || '').replace(/\\/g, '/');
 }
@@ -178,10 +278,54 @@ function truncate(value, maxChars) {
   return `${text.slice(0, Math.max(0, maxChars - 1)).trim()}…`;
 }
 
+function truncateAtWord(value, maxChars) {
+  const text = cleanText(value);
+  if (text.length <= maxChars) return text;
+  const limit = Math.max(1, maxChars - 1);
+  const words = text.split(/\s+/).filter(Boolean);
+  let current = '';
+  for (const word of words) {
+    const next = current ? `${current} ${word}` : word;
+    if (next.length > limit) break;
+    current = next;
+  }
+  if (current && current.length >= Math.max(4, Math.floor(limit * 0.55))) return `${current}…`;
+  return `${text.slice(0, limit).trim()}…`;
+}
+
 function pickKeyword(post) {
   const fromTags = post.tags.slice(0, 3).join(' · ');
   if (fromTags) return truncate(fromTags, post.lang === 'en' ? 58 : 36);
   return post.lang === 'en' ? 'Finance guide' : 'FinMap 가이드';
+}
+
+function categoryKey(category) {
+  const value = String(category || '').trim();
+  const lower = value.toLowerCase();
+  if (lower === 'economicinfo' || value === '경제정보' || value === '경제') return 'economicInfo';
+  if (lower === 'investinginfo' || value === '투자정보' || value === '투자') return 'investingInfo';
+  if (lower === 'personalfinance' || value === '개인재무' || value === '재테크' || value === '생활금융') return 'personalFinance';
+  return 'neutral';
+}
+
+function getCategoryPalette(category) {
+  const key = categoryKey(category);
+  return {
+    ...CATEGORY_PALETTES.neutral,
+    ...(CATEGORY_PALETTES[key] || {}),
+    key,
+  };
+}
+
+function planPresentationMeta(post) {
+  const palette = getCategoryPalette(post.category);
+  return {
+    categoryLabel: palette.categoryLabel,
+    paletteName: palette.name,
+    textFitPolicy: TEXT_FIT_POLICY,
+    maxLines: TEXT_FIT_POLICY.defaultMaxLines,
+    minFontSize: TEXT_FIT_POLICY.defaultMinFontSize,
+  };
 }
 
 function fileNamesForLang(lang) {
@@ -406,9 +550,9 @@ function imageFromSlot(post, slot, index) {
   const headings = post.headings.filter((h) => !/^FAQ\b|자주 묻는 질문/.test(h));
   const baseItems = chooseItems(
     [
-      slot.nearHeading && truncate(slot.nearHeading, isEn ? 28 : 18),
-      slot.alt && truncate(slot.alt, isEn ? 28 : 18),
-      ...headings.slice(index - 1, index + 3).map((h) => truncate(h, isEn ? 28 : 18)),
+      slot.nearHeading && truncateAtWord(slot.nearHeading, isEn ? 28 : 16),
+      slot.alt && truncateAtWord(slot.alt, isEn ? 28 : 16),
+      ...headings.slice(index - 1, index + 3).map((h) => truncateAtWord(h, isEn ? 28 : 16)),
     ],
     isEn ? ['Input', 'Scenario', 'Compare', 'Decision'] : ['입력값', '시나리오', '비교', '판단'],
     4
@@ -447,6 +591,7 @@ function makePlan(mdPath, options = {}) {
   const mode = options.mode || 'auto';
   const inventory = createImageInventory(mdPath, { dateStamp });
   const replaceableSlots = inventory.slots.filter((slot) => slot.shouldReplace);
+  const presentation = planPresentationMeta(post);
 
   if ((mode === 'auto' || mode === 'replace-existing') && replaceableSlots.length > 0) {
     const images = replaceableSlots.map((slot, index) => imageFromSlot(post, slot, index + 1));
@@ -460,6 +605,11 @@ function makePlan(mdPath, options = {}) {
       title: post.title,
       description: post.description,
       category: post.category,
+      categoryLabel: presentation.categoryLabel,
+      paletteName: presentation.paletteName,
+      textFitPolicy: presentation.textFitPolicy,
+      maxLines: presentation.maxLines,
+      minFontSize: presentation.minFontSize,
       tags: post.tags,
       source: {
         headingCount: post.headings.length,
@@ -490,7 +640,7 @@ function makePlan(mdPath, options = {}) {
   const isEn = post.lang === 'en';
   const headings = post.headings.filter((h) => !/^FAQ\b|자주 묻는 질문/.test(h));
   const firstHeadings = chooseItems(
-    headings.slice(0, 4).map((h) => truncate(h, isEn ? 30 : 22)),
+    headings.slice(0, 4).map((h) => truncateAtWord(h, isEn ? 30 : 16)),
     isEn ? ['Inputs', 'Scenario', 'Compare', 'Decision'] : ['입력값', '시나리오', '비교', '판단'],
     4
   );
@@ -499,13 +649,13 @@ function makePlan(mdPath, options = {}) {
         post.tables[0].sample
           .filter((line) => !/^\|\s*-/.test(line))
           .slice(1, 4)
-          .map((line) => truncate(line.split('|').map((v) => v.trim()).filter(Boolean)[0], isEn ? 22 : 16)),
+          .map((line) => truncateAtWord(line.split('|').map((v) => v.trim()).filter(Boolean)[0], isEn ? 22 : 16)),
         isEn ? ['Base case', 'Higher rate', 'Longer horizon'] : ['기준값', '높은 가정', '긴 기간'],
         3
       )
-    : chooseItems(post.tags.map((t) => truncate(t, isEn ? 20 : 12)), isEn ? ['Base', 'Upside', 'Stress'] : ['기준', '상승', '스트레스'], 3);
+    : chooseItems(post.tags.map((t) => truncateAtWord(t, isEn ? 20 : 12)), isEn ? ['Base', 'Upside', 'Stress'] : ['기준', '상승', '스트레스'], 3);
   const faqItems = chooseItems(
-    post.faqs.map((q) => truncate(q.replace(/\?$/, ''), isEn ? 32 : 20)),
+    post.faqs.map((q) => truncateAtWord(q.replace(/\?$/, ''), isEn ? 32 : 18)),
     isEn ? ['Check assumptions', 'Compare scenarios', 'Use calculator'] : ['가정 확인', '시나리오 비교', '계산기 연결'],
     4
   );
@@ -571,6 +721,11 @@ function makePlan(mdPath, options = {}) {
     title: post.title,
     description: post.description,
     category: post.category,
+    categoryLabel: presentation.categoryLabel,
+    paletteName: presentation.paletteName,
+    textFitPolicy: presentation.textFitPolicy,
+    maxLines: presentation.maxLines,
+    minFontSize: presentation.minFontSize,
     tags: post.tags,
     source: {
       headingCount: post.headings.length,
@@ -619,54 +774,163 @@ function approxTextWidth(text, fontSize, lang) {
   return width;
 }
 
-function splitLongWord(word, fontSize, maxWidth, lang) {
-  const out = [];
-  let current = '';
-  for (const ch of word) {
-    if (current && approxTextWidth(current + ch, fontSize, lang) > maxWidth) {
-      out.push(current);
-      current = ch;
-    } else {
-      current += ch;
-    }
-  }
-  if (current) out.push(current);
-  return out;
+function isKoreanOrphanLine(line, lang) {
+  return lang !== 'en' && /^[가-힣]$/.test(String(line || '').trim());
 }
 
-function wrapLines(text, fontSize, maxWidth, maxLines, lang) {
-  const source = cleanText(text);
-  if (!source) return { lines: [''], truncated: false };
-  const words = lang === 'en' ? source.split(/\s+/) : Array.from(source.replace(/\s+/g, ' '));
-  const units = [];
-  for (const word of words) {
-    if (approxTextWidth(word, fontSize, lang) > maxWidth) {
-      units.push(...splitLongWord(word, fontSize, maxWidth, lang));
-    } else {
-      units.push(word);
+function hasKoreanOrphanLine(lines, lang) {
+  if (lang === 'en' || !Array.isArray(lines) || lines.length <= 1) return false;
+  return lines.some((line, index) => index > 0 && isKoreanOrphanLine(line, lang));
+}
+
+function mergeProtectedTokens(tokens) {
+  const merged = [];
+  for (let i = 0; i < tokens.length; i += 1) {
+    const current = tokens[i];
+    const next = tokens[i + 1];
+    if (/^[A-Z]{2,}$/.test(current) && /^[\d,.]+%?$/.test(next || '')) {
+      merged.push(`${current} ${next}`);
+      i += 1;
+      continue;
     }
+    merged.push(current);
   }
+  return merged;
+}
+
+function tokensForWrap(text) {
+  const source = cleanText(text).replace(/\s+/g, ' ').trim();
+  if (!source) return [''];
+  return mergeProtectedTokens(source.split(' ').filter(Boolean));
+}
+
+function minFontSizeForRole(role, fallback = TEXT_FIT_POLICY.defaultMinFontSize) {
+  return TEXT_FIT_POLICY.roleMinFontSize[role] || fallback;
+}
+
+function maxLinesForRole(role, fallback = TEXT_FIT_POLICY.defaultMaxLines) {
+  return TEXT_FIT_POLICY.roleMaxLines[role] || fallback;
+}
+
+function lineHeightForFont(fontSize) {
+  return fontSize * 1.22;
+}
+
+function fitMetrics(lines, fontSize, lang) {
+  const widths = lines.map((line) => approxTextWidth(line, fontSize, lang));
+  return {
+    maxLineWidth: Math.max(...widths, 1),
+    height: lines.length * lineHeightForFont(fontSize),
+  };
+}
+
+function wrapTokens(tokens, fontSize, boxWidth, lang) {
   const lines = [];
   let current = '';
-  const joiner = lang === 'en' ? ' ' : '';
-  for (const unit of units) {
-    const next = current ? `${current}${joiner}${unit}` : unit;
-    if (current && approxTextWidth(next, fontSize, lang) > maxWidth) {
+  let tokenOverflow = false;
+  for (const token of tokens) {
+    if (approxTextWidth(token, fontSize, lang) > boxWidth) {
+      tokenOverflow = true;
+    }
+    const next = current ? `${current} ${token}` : token;
+    if (current && approxTextWidth(next, fontSize, lang) > boxWidth) {
       lines.push(current);
-      current = unit;
+      current = token;
     } else {
       current = next;
     }
   }
   if (current) lines.push(current);
-  let truncated = false;
-  if (lines.length > maxLines) {
-    truncated = true;
-    lines.length = maxLines;
-    const last = lines[maxLines - 1];
-    lines[maxLines - 1] = `${last.slice(0, Math.max(1, last.length - 1)).trim()}…`;
+  return { lines, tokenOverflow };
+}
+
+function fitTextToBox({
+  text,
+  boxWidth,
+  maxLines = TEXT_FIT_POLICY.defaultMaxLines,
+  initialFontSize,
+  minFontSize = TEXT_FIT_POLICY.defaultMinFontSize,
+  lang = 'ko',
+  fontWeight = 700,
+  boxHeight = Infinity,
+}) {
+  const source = cleanText(text);
+  const normalizedLang = String(lang || 'ko').toLowerCase().startsWith('en') ? 'en' : 'ko';
+  const safeInitial = Number(initialFontSize || 24);
+  const safeMin = Math.min(safeInitial, Number(minFontSize || TEXT_FIT_POLICY.defaultMinFontSize));
+  const widthLimit = Math.max(1, Number(boxWidth || 1));
+  const heightLimit = Number.isFinite(boxHeight) ? Math.max(1, Number(boxHeight)) : Infinity;
+  if (!source) {
+    return {
+      lines: [''],
+      fontSize: safeInitial,
+      overflow: false,
+      shrinkApplied: false,
+      wrapApplied: false,
+      orphanLine: false,
+      fontWeight,
+    };
   }
-  return { lines, truncated };
+
+  const step = safeInitial >= 30 ? 2 : 1;
+  for (let fontSize = safeInitial; fontSize >= safeMin; fontSize -= step) {
+    const lines = [source];
+    const metrics = fitMetrics(lines, fontSize, normalizedLang);
+    if (metrics.maxLineWidth <= widthLimit && metrics.height <= heightLimit) {
+      return {
+        lines,
+        fontSize,
+        overflow: false,
+        shrinkApplied: fontSize < safeInitial,
+        wrapApplied: false,
+        orphanLine: false,
+        maxLineWidth: metrics.maxLineWidth,
+        textHeight: metrics.height,
+        fontWeight,
+      };
+    }
+  }
+
+  const tokens = tokensForWrap(source);
+  let best = null;
+  for (let fontSize = safeInitial; fontSize >= safeMin; fontSize -= step) {
+    const wrapped = wrapTokens(tokens, fontSize, widthLimit, normalizedLang);
+    const metrics = fitMetrics(wrapped.lines, fontSize, normalizedLang);
+    const orphanLine = hasKoreanOrphanLine(wrapped.lines, normalizedLang);
+    const overflow = wrapped.tokenOverflow
+      || wrapped.lines.length > maxLines
+      || metrics.maxLineWidth > widthLimit
+      || metrics.height > heightLimit
+      || orphanLine;
+    best = { wrapped, metrics, fontSize, orphanLine, overflow };
+    if (!overflow) {
+      return {
+        lines: wrapped.lines,
+        fontSize,
+        overflow: false,
+        shrinkApplied: fontSize < safeInitial,
+        wrapApplied: wrapped.lines.length > 1,
+        orphanLine: false,
+        maxLineWidth: metrics.maxLineWidth,
+        textHeight: metrics.height,
+        fontWeight,
+      };
+    }
+  }
+
+  const fallbackLines = (best && best.wrapped.lines.length ? best.wrapped.lines : [source]).slice(0, maxLines);
+  const fallbackMetrics = fitMetrics(fallbackLines, safeMin, normalizedLang);
+  return {
+    lines: fallbackLines,
+    fontSize: best ? best.fontSize : safeMin,
+    overflow: true,
+    shrinkApplied: true,
+    wrapApplied: fallbackLines.length > 1,
+    orphanLine: best ? best.orphanLine : hasKoreanOrphanLine(fallbackLines, normalizedLang),
+    maxLineWidth: fallbackMetrics.maxLineWidth,
+    textHeight: fallbackMetrics.height,
+    fontWeight,
+  };
 }
 
 function rectSvg({ x, y, w, h, r = 18, fill = COLORS.panel, stroke = COLORS.line, sw = 2, opacity = 1 }) {
@@ -698,58 +962,74 @@ function addConnector(layout, image, connector) {
 }
 
 function textBlock(layout, image, opts) {
-  let fontSize = opts.size;
-  let wrapped;
-  for (let attempt = 0; attempt < 4; attempt += 1) {
-    wrapped = wrapLines(opts.value, fontSize, opts.maxWidth, opts.maxLines || 2, image.lang || 'ko');
-    const width = Math.max(...wrapped.lines.map((line) => approxTextWidth(line, fontSize, image.lang || 'ko')), 1);
-    const height = wrapped.lines.length * fontSize * 1.22;
-    if (width <= opts.maxWidth && height <= (opts.maxHeight || Infinity) && !wrapped.truncated) break;
-    fontSize = Math.max(16, fontSize - 4);
-  }
-  const lineHeight = fontSize * 1.22;
+  const role = opts.role || 'body';
+  const initialFontSize = opts.size;
+  const maxLines = opts.maxLines || maxLinesForRole(role);
+  const minFontSize = opts.minSize || minFontSizeForRole(role);
+  const fit = fitTextToBox({
+    text: opts.value,
+    boxWidth: opts.maxWidth,
+    maxLines,
+    initialFontSize,
+    minFontSize,
+    lang: image.lang || 'ko',
+    fontWeight: opts.weight || 700,
+    boxHeight: opts.maxHeight || Infinity,
+  });
+  const fontSize = fit.fontSize;
+  const lineHeight = lineHeightForFont(fontSize);
   const anchor = opts.anchor || 'start';
-  const dominant = opts.dominant || 'auto';
   const x = opts.x;
-  const y = opts.y;
-  const lines = wrapped.lines;
+  const lines = fit.lines;
   const maxLineWidth = Math.max(...lines.map((line) => approxTextWidth(line, fontSize, image.lang || 'ko')), 1);
-  const boxX = anchor === 'middle' ? x - maxLineWidth / 2 : anchor === 'end' ? x - maxLineWidth : x;
-  const boxY = y - fontSize;
   const boxH = lines.length * lineHeight;
+  const boxX = anchor === 'middle' ? x - maxLineWidth / 2 : anchor === 'end' ? x - maxLineWidth : x;
+  const verticalAnchor = opts.verticalAnchor || 'baseline';
+  const boxY = verticalAnchor === 'middle' ? opts.y - boxH / 2 : opts.y - fontSize;
+  const firstBaseline = verticalAnchor === 'middle' ? boxY + fontSize : opts.y;
   layout.elements.push({
     image: image.fileName,
     type: 'text',
     text: cleanText(opts.value),
     renderedText: lines.join(' / '),
+    lines,
     x: boxX,
     y: boxY,
     w: maxLineWidth,
     h: boxH,
     parentId: opts.parentId || null,
-    role: opts.role || 'body',
+    role,
     fontSize,
+    initialFontSize,
+    minFontSize,
+    maxLines,
+    boxWidth: opts.maxWidth,
     lineCount: lines.length,
-    truncated: Boolean(wrapped.truncated),
+    overflow: Boolean(fit.overflow),
+    shrinkApplied: Boolean(fit.shrinkApplied),
+    wrapApplied: Boolean(fit.wrapApplied),
+    orphanLine: Boolean(fit.orphanLine),
+    truncated: Boolean(fit.overflow),
   });
   return `
-    <text x="${x}" y="${y}" text-anchor="${anchor}" dominant-baseline="${dominant}" font-family="'Malgun Gothic','Noto Sans KR','Inter','Arial',sans-serif" font-size="${fontSize}" font-weight="${opts.weight || 700}" fill="${opts.fill || COLORS.navy}">
+    <text x="${x}" y="${firstBaseline}" text-anchor="${anchor}" font-family="'Malgun Gothic','Noto Sans KR','Inter','Arial',sans-serif" font-size="${fontSize}" font-weight="${opts.weight || 700}" fill="${opts.fill || COLORS.navy}">
       ${lines.map((line, index) => `<tspan x="${x}" dy="${index === 0 ? 0 : lineHeight}">${esc(line)}</tspan>`).join('')}
     </text>
   `;
 }
 
-function backgroundSvg(w, h) {
+function backgroundSvg(w, h, palette) {
+  const tone = palette || CATEGORY_PALETTES.neutral;
   const dots = [];
   for (let x = 60; x < w; x += 96) {
     for (let y = 60; y < h; y += 96) {
-      dots.push(circleSvg({ cx: x, cy: y, r: 2, fill: '#cfe2f3', opacity: 0.55 }));
+      dots.push(circleSvg({ cx: x, cy: y, r: 2, fill: tone.dot, opacity: 0.55 }));
     }
   }
   return `
-    <rect width="${w}" height="${h}" fill="${COLORS.bg}"/>
+    <rect width="${w}" height="${h}" fill="${tone.background}"/>
     ${dots.join('')}
-    <path d="M 0 ${h * 0.82} C ${w * 0.22} ${h * 0.72}, ${w * 0.34} ${h * 0.92}, ${w * 0.52} ${h * 0.80} S ${w * 0.78} ${h * 0.70}, ${w} ${h * 0.80} L ${w} ${h} L 0 ${h} Z" fill="#eef7ff" opacity="0.95"/>
+    <path d="M 0 ${h * 0.82} C ${w * 0.22} ${h * 0.72}, ${w * 0.34} ${h * 0.92}, ${w * 0.52} ${h * 0.80} S ${w * 0.78} ${h * 0.70}, ${w} ${h * 0.80} L ${w} ${h} L 0 ${h} Z" fill="${tone.backgroundAccent}" opacity="0.72"/>
   `;
 }
 
@@ -757,30 +1037,32 @@ function renderCover(image, layout) {
   const w = image.width;
   const h = image.height;
   const safe = safeArea(w, h);
+  const palette = image.palette || CATEGORY_PALETTES.neutral;
   const panel = { id: 'cover-panel', x: safe.x, y: 230, w: w - safe.x * 2, h: 430 };
   addBox(layout, image, panel);
   const cards = image.cards.slice(0, 3);
   const cardGap = 32;
   const cardW = (panel.w - 88 - cardGap * (cards.length - 1)) / Math.max(1, cards.length);
   return `
-    ${backgroundSvg(w, h)}
-    ${circleSvg({ cx: w - 165, cy: 145, r: 110, fill: COLORS.paleBlue, opacity: 0.68 })}
-    ${circleSvg({ cx: w - 85, cy: 262, r: 52, fill: COLORS.paleGreen, opacity: 0.85 })}
-    ${textBlock(layout, image, { x: safe.x, y: 140, value: image.keyword, size: 32, weight: 900, fill: COLORS.blue, maxWidth: 650, maxLines: 1, role: 'keyword' })}
-    ${textBlock(layout, image, { x: safe.x, y: 222, value: image.title, size: 68, weight: 900, maxWidth: 1040, maxLines: 2, role: 'title' })}
-    ${rectSvg({ ...panel, r: 34, fill: 'rgba(255,255,255,0.82)' })}
-    ${textBlock(layout, image, { x: panel.x + 44, y: panel.y + 192, value: image.subtitle, size: 32, weight: 800, fill: COLORS.slate, maxWidth: panel.w - 88, maxLines: 2, parentId: panel.id, role: 'subtitle' })}
+    ${backgroundSvg(w, h, palette)}
+    ${circleSvg({ cx: w - 165, cy: 145, r: 110, fill: palette.mutedAccent, opacity: 0.18 })}
+    ${circleSvg({ cx: w - 85, cy: 262, r: 52, fill: palette.accent, opacity: 0.22 })}
+    ${textBlock(layout, image, { x: safe.x, y: 140, value: image.keyword, size: 32, weight: 900, fill: palette.accent, maxWidth: 650, maxLines: 1, role: 'keyword' })}
+    ${textBlock(layout, image, { x: safe.x, y: 222, value: image.title, size: 68, weight: 900, fill: palette.primaryText, maxWidth: 1040, maxLines: 2, minSize: 34, role: 'title' })}
+    ${rectSvg({ ...panel, r: 34, fill: palette.cardBackground, stroke: palette.cardBorder, opacity: 0.94 })}
+    ${textBlock(layout, image, { x: panel.x + 44, y: panel.y + 192, value: image.subtitle, size: 32, weight: 800, fill: COLORS.slate, maxWidth: panel.w - 88, maxLines: 2, maxHeight: 86, parentId: panel.id, role: 'subtitle' })}
     ${cards.map((card, index) => {
       const x = panel.x + 44 + index * (cardW + cardGap);
       const y = panel.y + 272;
       const box = { id: `cover-card-${index + 1}`, x, y, w: cardW, h: 108 };
       addBox(layout, image, box);
+      const fill = index === 0 ? palette.accent : index === 1 ? palette.secondaryAccent : palette.tertiaryAccent;
       return `
-        ${rectSvg({ ...box, r: 24, fill: COLORS.panel })}
-        ${textBlock(layout, image, { x: x + 28, y: y + 50, value: card, size: 26, weight: 900, fill: index === 0 ? COLORS.blue : index === 1 ? COLORS.green : COLORS.amber, maxWidth: cardW - 56, maxLines: 2, parentId: box.id, role: 'card-label' })}
+        ${rectSvg({ ...box, r: 24, fill: palette.cardBackground, stroke: palette.cardBorder })}
+        ${textBlock(layout, image, { x: x + 28, y: y + box.h / 2, value: card, size: 26, weight: 900, fill, maxWidth: cardW - 56, maxLines: 2, minSize: 22, maxHeight: box.h - 20, verticalAnchor: 'middle', parentId: box.id, role: 'card-label' })}
       `;
     }).join('')}
-    ${textBlock(layout, image, { x: w - safe.x, y: h - safe.y - 14, value: 'FinMap', size: 28, weight: 900, fill: COLORS.muted, maxWidth: 180, maxLines: 1, anchor: 'end', role: 'brand' })}
+    ${textBlock(layout, image, { x: w - safe.x, y: h - safe.y - 14, value: 'FinMap', size: 28, weight: 900, fill: palette.mutedText, maxWidth: 180, maxLines: 1, anchor: 'end', role: 'brand' })}
   `;
 }
 
@@ -788,28 +1070,30 @@ function renderFlow(image, layout) {
   const w = image.width;
   const h = image.height;
   const safe = safeArea(w, h);
+  const palette = image.palette || CATEGORY_PALETTES.neutral;
   const items = image.items.slice(0, 4);
   const cardW = 220;
   const gap = (w - safe.x * 2 - cardW * items.length) / Math.max(1, items.length - 1);
   return `
-    ${backgroundSvg(w, h)}
-    ${textBlock(layout, image, { x: safe.x, y: 86, value: image.keyword, size: 22, weight: 900, fill: COLORS.blue, maxWidth: 420, maxLines: 1, role: 'keyword' })}
-    ${textBlock(layout, image, { x: safe.x, y: 150, value: image.title, size: 48, weight: 900, maxWidth: 760, maxLines: 1, role: 'title' })}
-    ${textBlock(layout, image, { x: safe.x, y: 202, value: image.subtitle, size: 23, weight: 800, fill: COLORS.slate, maxWidth: 820, maxLines: 2, role: 'subtitle' })}
+    ${backgroundSvg(w, h, palette)}
+    ${textBlock(layout, image, { x: safe.x, y: 86, value: image.keyword, size: 22, weight: 900, fill: palette.accent, maxWidth: 420, maxLines: 1, role: 'keyword' })}
+    ${textBlock(layout, image, { x: safe.x, y: 150, value: image.title, size: 48, weight: 900, fill: palette.primaryText, maxWidth: 760, maxLines: 1, role: 'title' })}
+    ${textBlock(layout, image, { x: safe.x, y: 202, value: image.subtitle, size: 23, weight: 800, fill: palette.secondaryText, maxWidth: 820, maxLines: 2, role: 'subtitle' })}
     ${items.map((item, index) => {
       const x = safe.x + index * (cardW + gap);
       const y = 298;
       const box = { id: `step-${index + 1}`, x, y, w: cardW, h: 210 };
       addBox(layout, image, box);
+      const color = index === 0 ? palette.accent : index === 1 ? palette.secondaryAccent : index === 2 ? palette.tertiaryAccent : palette.mutedAccent;
       if (index < items.length - 1) {
         addConnector(layout, image, { x1: x + cardW + 12, y1: y + 105, x2: x + cardW + gap - 12, y2: y + 105 });
       }
       return `
-        ${rectSvg({ ...box, r: 26, fill: COLORS.panel })}
-        ${circleSvg({ cx: x + cardW / 2, cy: y + 58, r: 34, fill: index === 0 ? COLORS.blue : index === 1 ? COLORS.green : index === 2 ? COLORS.amber : COLORS.cyan })}
-        ${textBlock(layout, image, { x: x + cardW / 2, y: y + 69, value: String(index + 1), size: 28, weight: 900, fill: COLORS.panel, maxWidth: 42, maxLines: 1, anchor: 'middle', parentId: box.id, role: 'step-number' })}
-        ${textBlock(layout, image, { x: x + cardW / 2, y: y + 134, value: item, size: 26, weight: 900, maxWidth: cardW - 34, maxLines: 2, anchor: 'middle', parentId: box.id, role: 'step-label' })}
-        ${index < items.length - 1 ? lineSvg({ x1: x + cardW + 12, y1: y + 105, x2: x + cardW + gap - 12, y2: y + 105, stroke: COLORS.cyan, sw: 8 }) : ''}
+        ${rectSvg({ ...box, r: 26, fill: palette.cardBackground, stroke: palette.cardBorder })}
+        ${circleSvg({ cx: x + cardW / 2, cy: y + 58, r: 34, fill: color })}
+        ${textBlock(layout, image, { x: x + cardW / 2, y: y + 69, value: String(index + 1), size: 28, weight: 900, fill: palette.cardBackground, maxWidth: 42, maxLines: 1, anchor: 'middle', parentId: box.id, role: 'step-number' })}
+        ${textBlock(layout, image, { x: x + cardW / 2, y: y + 148, value: item, size: 26, weight: 900, fill: COLORS.navy, maxWidth: cardW - 34, maxLines: 2, minSize: 22, maxHeight: 78, anchor: 'middle', verticalAnchor: 'middle', parentId: box.id, role: 'step-label' })}
+        ${index < items.length - 1 ? lineSvg({ x1: x + cardW + 12, y1: y + 105, x2: x + cardW + gap - 12, y2: y + 105, stroke: palette.mutedAccent, sw: 8 }) : ''}
       `;
     }).join('')}
   `;
@@ -819,24 +1103,25 @@ function renderComparison(image, layout) {
   const w = image.width;
   const h = image.height;
   const safe = safeArea(w, h);
+  const palette = image.palette || CATEGORY_PALETTES.neutral;
   const items = image.items.slice(0, 3);
   const cardW = (w - safe.x * 2 - 44 * (items.length - 1)) / items.length;
   return `
-    ${backgroundSvg(w, h)}
-    ${textBlock(layout, image, { x: safe.x, y: 86, value: image.keyword, size: 22, weight: 900, fill: COLORS.blue, maxWidth: 500, maxLines: 1, role: 'keyword' })}
-    ${textBlock(layout, image, { x: safe.x, y: 150, value: image.title, size: 48, weight: 900, maxWidth: 790, maxLines: 1, role: 'title' })}
-    ${textBlock(layout, image, { x: safe.x, y: 202, value: image.subtitle, size: 23, weight: 800, fill: COLORS.slate, maxWidth: 820, maxLines: 2, role: 'subtitle' })}
+    ${backgroundSvg(w, h, palette)}
+    ${textBlock(layout, image, { x: safe.x, y: 86, value: image.keyword, size: 22, weight: 900, fill: palette.accent, maxWidth: 500, maxLines: 1, role: 'keyword' })}
+    ${textBlock(layout, image, { x: safe.x, y: 150, value: image.title, size: 48, weight: 900, fill: palette.primaryText, maxWidth: 790, maxLines: 1, role: 'title' })}
+    ${textBlock(layout, image, { x: safe.x, y: 202, value: image.subtitle, size: 23, weight: 800, fill: palette.secondaryText, maxWidth: 820, maxLines: 2, role: 'subtitle' })}
     ${items.map((item, index) => {
       const x = safe.x + index * (cardW + 44);
       const y = 290;
       const box = { id: `panel-${index + 1}`, x, y, w: cardW, h: 260 };
       addBox(layout, image, box);
-      const color = index === 0 ? COLORS.blue : index === 1 ? COLORS.green : COLORS.amber;
+      const color = index === 0 ? palette.accent : index === 1 ? palette.secondaryAccent : palette.tertiaryAccent;
       return `
-        ${rectSvg({ ...box, r: 30, fill: COLORS.panel, stroke: color, sw: 4 })}
+        ${rectSvg({ ...box, r: 30, fill: palette.cardBackground, stroke: color, sw: 4 })}
         ${circleSvg({ cx: x + 62, cy: y + 66, r: 34, fill: color, opacity: 0.95 })}
-        ${textBlock(layout, image, { x: x + 62, y: y + 78, value: String(index + 1), size: 28, weight: 900, fill: COLORS.panel, maxWidth: 42, maxLines: 1, anchor: 'middle', parentId: box.id, role: 'panel-number' })}
-        ${textBlock(layout, image, { x: x + 34, y: y + 145, value: item, size: 34, weight: 900, fill: COLORS.navy, maxWidth: cardW - 68, maxLines: 2, parentId: box.id, role: 'panel-label' })}
+        ${textBlock(layout, image, { x: x + 62, y: y + 78, value: String(index + 1), size: 28, weight: 900, fill: palette.cardBackground, maxWidth: 42, maxLines: 1, anchor: 'middle', parentId: box.id, role: 'panel-number' })}
+        ${textBlock(layout, image, { x: x + 34, y: y + 145, value: item, size: 34, weight: 900, fill: COLORS.navy, maxWidth: cardW - 68, maxLines: 2, minSize: 22, maxHeight: 90, verticalAnchor: 'middle', parentId: box.id, role: 'panel-label' })}
         ${textBlock(layout, image, { x: x + 34, y: y + 212, value: image.lang === 'en' ? 'Compare before action' : '행동 전 비교', size: 22, weight: 800, fill: COLORS.slate, maxWidth: cardW - 68, maxLines: 1, parentId: box.id, role: 'panel-note' })}
       `;
     }).join('')}
@@ -847,24 +1132,25 @@ function renderChecklist(image, layout) {
   const w = image.width;
   const h = image.height;
   const safe = safeArea(w, h);
+  const palette = image.palette || CATEGORY_PALETTES.neutral;
   const items = image.items.slice(0, 4);
   const startY = 268;
   return `
-    ${backgroundSvg(w, h)}
-    ${textBlock(layout, image, { x: safe.x, y: 86, value: image.keyword, size: 22, weight: 900, fill: COLORS.blue, maxWidth: 500, maxLines: 1, role: 'keyword' })}
-    ${textBlock(layout, image, { x: safe.x, y: 150, value: image.title, size: 48, weight: 900, maxWidth: 790, maxLines: 1, role: 'title' })}
-    ${textBlock(layout, image, { x: safe.x, y: 202, value: image.subtitle, size: 23, weight: 800, fill: COLORS.slate, maxWidth: 820, maxLines: 2, role: 'subtitle' })}
+    ${backgroundSvg(w, h, palette)}
+    ${textBlock(layout, image, { x: safe.x, y: 86, value: image.keyword, size: 22, weight: 900, fill: palette.accent, maxWidth: 500, maxLines: 1, role: 'keyword' })}
+    ${textBlock(layout, image, { x: safe.x, y: 150, value: image.title, size: 48, weight: 900, fill: palette.primaryText, maxWidth: 790, maxLines: 1, role: 'title' })}
+    ${textBlock(layout, image, { x: safe.x, y: 202, value: image.subtitle, size: 23, weight: 800, fill: palette.secondaryText, maxWidth: 820, maxLines: 2, role: 'subtitle' })}
     ${items.map((item, index) => {
       const x = safe.x;
       const y = startY + index * 86;
       const box = { id: `check-${index + 1}`, x, y, w: w - safe.x * 2, h: 68 };
       addBox(layout, image, box);
-      const color = index % 2 === 0 ? COLORS.blue : COLORS.green;
+      const color = index % 2 === 0 ? palette.accent : palette.secondaryAccent;
       return `
-        ${rectSvg({ ...box, r: 22, fill: COLORS.panel })}
+        ${rectSvg({ ...box, r: 22, fill: palette.cardBackground, stroke: palette.cardBorder })}
         ${circleSvg({ cx: x + 44, cy: y + 34, r: 24, fill: color })}
-        ${textBlock(layout, image, { x: x + 44, y: y + 43, value: String(index + 1), size: 22, weight: 900, fill: COLORS.panel, maxWidth: 34, maxLines: 1, anchor: 'middle', parentId: box.id, role: 'check-number' })}
-        ${textBlock(layout, image, { x: x + 88, y: y + 43, value: item, size: 30, weight: 900, fill: COLORS.navy, maxWidth: box.w - 120, maxLines: 1, parentId: box.id, role: 'check-label' })}
+        ${textBlock(layout, image, { x: x + 44, y: y + 43, value: String(index + 1), size: 22, weight: 900, fill: palette.cardBackground, maxWidth: 34, maxLines: 1, anchor: 'middle', parentId: box.id, role: 'check-number' })}
+        ${textBlock(layout, image, { x: x + 88, y: y + box.h / 2, value: item, size: 30, weight: 900, fill: COLORS.navy, maxWidth: box.w - 120, maxLines: 2, minSize: 22, maxHeight: box.h - 16, verticalAnchor: 'middle', parentId: box.id, role: 'check-label' })}
       `;
     }).join('')}
   `;
@@ -877,7 +1163,8 @@ function safeArea(width, height) {
 }
 
 function renderSvg(image, layout) {
-  const enriched = { ...image, lang: layout.lang };
+  const palette = layout.palette || getCategoryPalette(layout.category);
+  const enriched = { ...image, lang: layout.lang, category: layout.category, palette };
   const body = image.template === 'cover'
     ? renderCover(enriched, layout)
     : image.template === 'flow'
@@ -891,10 +1178,16 @@ function renderSvg(image, layout) {
 async function generateImages(plan) {
   const outDir = resolveFromCwd(plan.outputDir);
   ensureDir(outDir);
+  const palette = getCategoryPalette(plan.category);
   const layout = {
     version: PLAN_VERSION,
     slug: plan.slug,
     lang: plan.lang,
+    category: plan.category || '',
+    categoryLabel: plan.categoryLabel || palette.categoryLabel,
+    paletteName: plan.paletteName || palette.name,
+    palette,
+    textFitPolicy: plan.textFitPolicy || TEXT_FIT_POLICY,
     outputDir: plan.outputDir,
     generatedAt: new Date().toISOString(),
     images: [],
@@ -983,13 +1276,25 @@ async function validateImages(plan) {
         }
       }
       for (const textEl of textEls) {
-        if (textEl.truncated) {
+        if (textEl.overflow || textEl.truncated) {
           result.textOk = false;
-          result.errors.push(`TEXT_TRUNCATED ${textEl.role}:${textEl.text}`);
+          result.errors.push(`TEXT_FIT_OVERFLOW ${textEl.role}:${textEl.text}`);
         }
-        if (plan.lang === 'ko' && ['title', 'card-label', 'step-label', 'panel-label', 'check-label'].includes(textEl.role) && textEl.lineCount > 2) {
+        if (textEl.lineCount > (textEl.maxLines || maxLinesForRole(textEl.role))) {
           result.textOk = false;
-          result.errors.push(`KO_TEXT_TOO_MANY_LINES ${textEl.role}`);
+          result.errors.push(`TEXT_TOO_MANY_LINES ${textEl.role} lines=${textEl.lineCount} max=${textEl.maxLines || maxLinesForRole(textEl.role)}`);
+        }
+        if (plan.lang === 'ko' && textEl.orphanLine) {
+          result.textOk = false;
+          result.errors.push(`KO_ORPHAN_LINE ${textEl.role}:${textEl.renderedText}`);
+        }
+        if (textEl.fontSize < (textEl.minFontSize || minFontSizeForRole(textEl.role))) {
+          result.textOk = false;
+          result.errors.push(`TEXT_FONT_TOO_SMALL ${textEl.role} font=${textEl.fontSize} min=${textEl.minFontSize || minFontSizeForRole(textEl.role)}`);
+        }
+        if (textEl.boxWidth && textEl.w > textEl.boxWidth + 1) {
+          result.textOk = false;
+          result.errors.push(`TEXT_WIDTH_OVERFLOW ${textEl.role} width=${Math.round(textEl.w)} box=${Math.round(textEl.boxWidth)}`);
         }
         const parent = textEl.parentId ? boxById(elements, textEl.parentId) : null;
         if (parent && (textEl.x < parent.x + 10 || textEl.x + textEl.w > parent.x + parent.w - 10 || textEl.y < parent.y + 8 || textEl.y + textEl.h > parent.y + parent.h - 8)) {
@@ -1192,4 +1497,6 @@ module.exports = {
   validateImages,
   auditMarkdown,
   cleanText,
+  getCategoryPalette,
+  fitTextToBox,
 };

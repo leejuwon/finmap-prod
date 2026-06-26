@@ -25,6 +25,15 @@ node scripts/plan_post_images.js <markdown-path> --mode auto --date YYYYMMDD
 - `reports/post-image-inventory-{slug}.json`
 - `reports/post-image-plan-{slug}-{lang}.json`
 
+Confirm the plan also records:
+
+- `category`
+- `categoryLabel`
+- `paletteName`
+- `textFitPolicy`
+- `maxLines`
+- `minFontSize`
+
 5. If `mode` is `replace-existing`, confirm:
 
 - current image slot count
@@ -62,6 +71,12 @@ node scripts/validate_generated_images.js <markdown-path> --plan reports/post-im
 ```
 
 8. If validation fails, inspect `reports/post-image-validation-{slug}-{lang}.json`, adjust the plan or renderer with the smallest safe change, then regenerate and revalidate.
+   Text validation failures must not be ignored. In particular:
+   - Korean text must wrap by word/token, not by arbitrary syllable.
+   - Orphan Korean one-syllable lines such as `량`, `률`, `액`, `값` are failures unless the label is intentionally one character.
+   - `1~6개월 거래량` may render as one line or as `1~6개월` / `거래량`, but not as `1~6개월 거래` / `량`.
+   - English long words should shrink first; if they still overflow, use a shorter plan phrase instead of splitting the word.
+   - Title/card/step/panel/check labels should stay within the role maxLines and minFontSize policy.
 9. Upload only after validation passes and Cloudinary credentials are available.
 
 KO new:
@@ -122,8 +137,13 @@ node scripts/audit_post_images.js <markdown-path>
 - Do not apply a manifest with missing `secureUrl`, `dryRun: true`, `failCount > 0`, or unexpected `successCount`.
 - Existing-image replacement must use the inventory and replacement manifest. Do not infer slots from `img1.png`, `img2.png`, or fixed counts.
 - Existing Cloudinary public IDs should not be overwritten. Use a new `rework-{YYYYMMDD}` folder and replace Markdown URLs.
+- New and replacement modes both use the same text fit policy.
+- Category palette must come from `category` or `postCategory`:
+  - `economicInfo`: `economic-macro`
+  - `investingInfo`: `investing-dashboard`
+  - `personalFinance`: `personal-finance-card`
+- If category is unknown, use the neutral palette and note it in the report.
 
 ## Short User Prompt For Next Runs
 
 `Finmap 이미지 워크플로 문서(docs/codex-prompts/finmap-post-image-workflow.md)를 따라 <markdown-path>의 현재 이미지 슬롯을 먼저 inventory로 분석하고, 기존 이미지 개수/위치를 보존해 rework 이미지를 생성·검증한 뒤 Cloudinary replacement manifest 기준으로 Markdown에 반영해줘. SEO 구조는 수정하지 마.`
-

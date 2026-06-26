@@ -9,7 +9,7 @@ datePublished: "2026-02-03"
 dateModified: "2026-02-03"
 tags: ["리스크예산","자산배분","현대형60/40","부동산역할","서울경기인천","거래량","유동성","할인율","금리민감도","리밸런싱","중단조건","가계포트폴리오"]
 tool: ["comp","cagr","dca"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1770092902/blog/insight/real-estate-role-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782454539/blog/insight/real-estate-role-in-portfolio-risk-budget/rework-20260626/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -49,7 +49,7 @@ lang: "ko"
   </aside>
 </div>
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770092902/blog/insight/real-estate-role-cover.png" alt="부동산은 ‘비중’이 아니라 ‘역할’로 설계할 때 포트폴리오가 안정된다." /><figcaption>부동산은 ‘비중’이 아니라 ‘역할’로 설계할 때 포트폴리오가 안정된다.</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782454540/blog/insight/real-estate-role-in-portfolio-risk-budget/rework-20260626/slot-002-cover.png" alt="부동산은 ‘비중’이 아니라 ‘역할’로 설계할 때 포트폴리오가 안정된다." /><figcaption>부동산은 ‘비중’이 아니라 ‘역할’로 설계할 때 포트폴리오가 안정된다.</figcaption></figure>
 
 가계 자산배분에서 부동산이 큰 건 사실입니다. 하지만 그래서 더더욱 <strong>“몇 %냐”보다 “무슨 역할이냐”</strong>가 먼저입니다.  
 역할이 정해지면 비중은 “결과”로 따라오고, 역할이 없으면 비중은 “불안”만 키웁니다.
@@ -85,7 +85,7 @@ lang: "ko"
 현대형 60/40을 “리스크 예산”으로 다시 보는 관점이 필요하다면, 먼저 이 글의 프레임을 참고해두면 연결이 빨라집니다:  
 [수익률 예측 대신 리스크 예산으로 포트폴리오를 설계하는 방법](/posts/investingInfo/modern-6040-risk-budget)
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770092906/blog/insight/real-estate-role-kr-img1.png" alt="부동산 역할을 정하려면 금리·유동성·현금흐름을 먼저 분리해 봐야 한다." /><figcaption>부동산 역할을 정하려면 금리·유동성·현금흐름을 먼저 분리해 봐야 한다.</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782454541/blog/insight/real-estate-role-in-portfolio-risk-budget/rework-20260626/slot-003-flow.png" alt="부동산 역할을 정하려면 금리·유동성·현금흐름을 먼저 분리해 봐야 한다." /><figcaption>부동산 역할을 정하려면 금리·유동성·현금흐름을 먼저 분리해 봐야 한다.</figcaption></figure>
 
 ---
 
@@ -141,7 +141,7 @@ lang: "ko"
 금리·할인율(특히 미국 금리)이 왜 자산 전반에 영향을 주는지 더 깊게 잡고 싶다면, 이 글을 중간에 함께 보면 프레임이 단단해집니다:  
 [미 10년물(TNX)을 할인율로 읽는 기초: 자산 가격의 중력 이해하기](/posts/investingInfo/tnx-basics)
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770092907/blog/insight/real-estate-role-kr-img2.png" alt="리밸런싱은 가격이 아니라 상태(금융여건·유동성·현금흐름)로 실행해야 한다." /><figcaption>리밸런싱은 가격이 아니라 상태(금융여건·유동성·현금흐름)로 실행해야 한다.</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782454541/blog/insight/real-estate-role-in-portfolio-risk-budget/rework-20260626/slot-004-flow.png" alt="리밸런싱은 가격이 아니라 상태(금융여건·유동성·현금흐름)로 실행해야 한다." /><figcaption>리밸런싱은 가격이 아니라 상태(금융여건·유동성·현금흐름)로 실행해야 한다.</figcaption></figure>
 
 ---
 
@@ -207,7 +207,7 @@ lang: "ko"
 2) 케이스 1의 “방어”는 자산이 아니라 <strong>현금흐름</strong>에서 나옵니다.  
 3) 케이스 2는 금융자산이 운영 가능한 만큼, 리밸런싱 규칙을 더 엄격히 두는 게 오히려 성과와 안정성을 함께 올립니다.
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770092908/blog/insight/real-estate-role-kr-img3.png" alt="가장 흔한 실패는 예측 실패가 아니라 ‘중단 조건 부재’다." /><figcaption>가장 흔한 실패는 예측 실패가 아니라 ‘중단 조건 부재’다.</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782454542/blog/insight/real-estate-role-in-portfolio-risk-budget/rework-20260626/slot-005-comparison.png" alt="가장 흔한 실패는 예측 실패가 아니라 ‘중단 조건 부재’다." /><figcaption>가장 흔한 실패는 예측 실패가 아니라 ‘중단 조건 부재’다.</figcaption></figure>
 
 ---
 
@@ -298,10 +298,10 @@ lang: "ko"
   },
   "keywords": ["리스크예산","자산배분","현대형60/40","부동산역할","서울경기인천","거래량","유동성","할인율","금리민감도","리밸런싱","중단조건","가계포트폴리오"],
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770092902/blog/insight/real-estate-role-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770092906/blog/insight/real-estate-role-kr-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770092907/blog/insight/real-estate-role-kr-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770092908/blog/insight/real-estate-role-kr-img3.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782454539/blog/insight/real-estate-role-in-portfolio-risk-budget/rework-20260626/slot-001-cover.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782454541/blog/insight/real-estate-role-in-portfolio-risk-budget/rework-20260626/slot-003-flow.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782454541/blog/insight/real-estate-role-in-portfolio-risk-budget/rework-20260626/slot-004-flow.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782454542/blog/insight/real-estate-role-in-portfolio-risk-budget/rework-20260626/slot-005-comparison.png"
   ]
 }
 </script>
