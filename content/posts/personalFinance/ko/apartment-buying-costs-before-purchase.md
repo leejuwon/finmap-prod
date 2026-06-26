@@ -11,7 +11,7 @@ category: "재테크"
 postCategory: "personalFinance"
 tags: ["아파트 매수 비용", "부대비용", "취득세", "중개보수", "DSR", "LTV", "주택 구입 예산"]
 tool: ["dsr-ltv"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1769863768/blog/insight/mortgage-risk-checklist-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782451409/blog/insight/apartment-buying-costs-before-purchase/rework-20260626/slot-001-cover.png"
 lang: "ko"
 ---
 

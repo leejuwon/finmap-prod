@@ -9,7 +9,7 @@ category: "경제정보"
 postCategory: "economicInfo"
 tags: ["지정학","유가","환율","원달러","물가","금리","대출금리","주택시장","거래량","가격분포","서울","경기","인천","전이경로","대시보드"]
 tool: ["dsrLtv"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1776180805/blog/insight/geopolitics-oil-fx-dashboard-kr-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782452144/blog/insight/geopolitics-oil-fx-dashboard/rework-20260626/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -49,7 +49,7 @@ lang: "ko"
   </aside>
 </div>
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1776180805/blog/insight/geopolitics-oil-fx-dashboard-kr-cover.png" alt="지정학·유가·환율 충격은 물가→금리→대출→심리→거래량 체인으로 주거시장에 전이된다." /><figcaption>지정학·유가·환율 충격은 물가→금리→대출→심리→거래량 체인으로 주거시장에 전이된다</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782452145/blog/insight/geopolitics-oil-fx-dashboard/rework-20260626/slot-002-cover.png" alt="지정학·유가·환율 충격은 물가→금리→대출→심리→거래량 체인으로 주거시장에 전이된다." /><figcaption>지정학·유가·환율 충격은 물가→금리→대출→심리→거래량 체인으로 주거시장에 전이된다</figcaption></figure>
 
 뉴스를 볼 때 가장 흔한 실수는 “전쟁/지정학=집값 무조건 하락(또는 상승)”처럼 단일 결론을 만드는 것입니다.  
 하지만 서울·경기·인천 주거시장은 보통 다음의 현실 변수에 의해 움직입니다.
@@ -74,7 +74,7 @@ lang: "ko"
 
 이 체인에서 먼저 고정할 지점은 5번입니다. 주거시장은 가격이 끈끈하기 때문에(호가/매도자 저항/대출 구조) <strong>거래량이 선행</strong>하는 경우가 많습니다.
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1776180806/blog/insight/geopolitics-oil-fx-dashboard-kr-img1.png" alt="주거시장은 가격보다 거래량이 먼저 반응하고, 이후 가격은 분포로 변하는 경향이 있다." /><figcaption>주거시장은 가격보다 거래량이 먼저 반응하고, 이후 가격은 분포로 변하는 경향이 있다</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782452146/blog/insight/geopolitics-oil-fx-dashboard/rework-20260626/slot-003-chart.png" alt="주거시장은 가격보다 거래량이 먼저 반응하고, 이후 가격은 분포로 변하는 경향이 있다." /><figcaption>주거시장은 가격보다 거래량이 먼저 반응하고, 이후 가격은 분포로 변하는 경향이 있다</figcaption></figure>
 
 <div class="callout-tip"><strong>관측 순서:</strong> 집값을 보기 전에 먼저 <strong>거래량</strong>을 보고, 거래량 다음에 <strong>가격 분포</strong>를 본다.</div>
 
@@ -166,7 +166,7 @@ lang: "ko"
 - 분포가 넓어지는지(다양한 가격대가 거래되는지) 확인한다  
 - 가격보다 먼저 “거래의 폭”이 넓어지면, 그때부터 다음 단계 관측을 강화한다
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1776180807/blog/insight/geopolitics-oil-fx-dashboard-kr-img2.png" alt="거래량 선행 신호와 가격 분포 신호를 대시보드에서 분리해 보면 공포가 줄어든다." /><figcaption>거래량 선행 신호와 가격 분포 신호를 분리해 보면 공포가 ‘관측’으로 바뀐다</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782452147/blog/insight/geopolitics-oil-fx-dashboard/rework-20260626/slot-004-chart.png" alt="거래량 선행 신호와 가격 분포 신호를 대시보드에서 분리해 보면 공포가 줄어든다." /><figcaption>거래량 선행 신호와 가격 분포 신호를 분리해 보면 공포가 ‘관측’으로 바뀐다</figcaption></figure>
 
 ## 대시보드로 보는 핵심: ‘선행 신호’ 2개만 고정하자
 
@@ -179,7 +179,7 @@ lang: "ko"
 이 두 가지를 분리하면 “공포”가 줄어드는 이유는 간단합니다.  
 가격은 느리고 끈끈하지만, 거래량과 분포는 심리/대출 부담을 먼저 드러내는 경우가 많기 때문입니다.
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1776180808/blog/insight/geopolitics-oil-fx-dashboard-kr-img3.png" alt="가격보다 먼저 거래량이 움직이고, 그 다음 가격은 분포 형태로 변하는 경우가 많다." /><figcaption>가격보다 먼저 거래량이 움직이고, 그 다음 가격은 분포 형태로 변하는 경우가 많다</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782452148/blog/insight/geopolitics-oil-fx-dashboard/rework-20260626/slot-005-chart.png" alt="가격보다 먼저 거래량이 움직이고, 그 다음 가격은 분포 형태로 변하는 경우가 많다." /><figcaption>가격보다 먼저 거래량이 움직이고, 그 다음 가격은 분포 형태로 변하는 경우가 많다</figcaption></figure>
 
 ## 뉴스 공포를 줄이는 “관측 트리거” 5개
 
@@ -262,10 +262,10 @@ lang: "ko"
     "@id": "https://www.finmaphub.com/posts/economicInfo/geopolitics-oil-fx-dashboard"
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1776180805/blog/insight/geopolitics-oil-fx-dashboard-kr-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1776180806/blog/insight/geopolitics-oil-fx-dashboard-kr-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1776180807/blog/insight/geopolitics-oil-fx-dashboard-kr-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1776180808/blog/insight/geopolitics-oil-fx-dashboard-kr-img3.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782452144/blog/insight/geopolitics-oil-fx-dashboard/rework-20260626/slot-001-cover.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782452146/blog/insight/geopolitics-oil-fx-dashboard/rework-20260626/slot-003-chart.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782452147/blog/insight/geopolitics-oil-fx-dashboard/rework-20260626/slot-004-chart.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782452148/blog/insight/geopolitics-oil-fx-dashboard/rework-20260626/slot-005-chart.png"
   ],
   "author": {
     "@type": "Organization",
