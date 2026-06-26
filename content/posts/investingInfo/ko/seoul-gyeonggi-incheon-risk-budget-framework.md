@@ -8,7 +8,7 @@ datePublished: "2026-02-02"
 dateModified: "2026-06-19"
 tags: ["서울","경기","인천","부동산투자","리스크예산","변동성","유동성","회복탄력","거래량","하방방어","자산배분"]
 tool: ["dsrLtv"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1770087533/blog/insight/seoul-gyeonggi-incheon-risk-budget-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782455401/blog/insight/seoul-gyeonggi-incheon-risk-budget-framework/rework-20260626/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -22,7 +22,7 @@ lang: "ko"
 - 결과적으로 서울/경기/인천을 ‘우열’이 아니라 ‘포트폴리오 역할’로 보게 됩니다.
 - 마지막에는 내 상황에 맞춰 “지금은 관망/탐색/진입/보수적 전환”을 결정하는 체크리스트를 드립니다.
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770087533/blog/insight/seoul-gyeonggi-incheon-risk-budget-cover.png" alt="지역 선택은 취향이 아니라 내 리스크 예산을 어디에 배정할지의 문제다." /><figcaption>지역 선택은 취향이 아니라 내 리스크 예산을 어디에 배정할지의 문제다.</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782455402/blog/insight/seoul-gyeonggi-incheon-risk-budget-framework/rework-20260626/slot-002-cover.png" alt="지역 선택은 취향이 아니라 내 리스크 예산을 어디에 배정할지의 문제다." /><figcaption>지역 선택은 취향이 아니라 내 리스크 예산을 어디에 배정할지의 문제다.</figcaption></figure>
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -98,7 +98,7 @@ lang: "ko"
 - □ <strong>회복 신호</strong>: 조정 후 거래량이 돌아오며 가격이 ‘버티는 구간’을 만들었나
 - □ <strong>하방 방어(분포)</strong>: 중앙값만이 아니라 하단(하위 구간)이 유지되는가, 무너지는가
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770087538/blog/insight/seoul-gyeonggi-incheon-risk-budget-kr-img1.png" alt="가격보다 거래량과 분포를 먼저 보면 ‘버팀’과 ‘깨짐’이 분리된다." /><figcaption>가격보다 거래량과 분포를 먼저 보면 ‘버팀’과 ‘깨짐’이 분리된다.</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782455403/blog/insight/seoul-gyeonggi-incheon-risk-budget-framework/rework-20260626/slot-003-chart.png" alt="가격보다 거래량과 분포를 먼저 보면 ‘버팀’과 ‘깨짐’이 분리된다." /><figcaption>가격보다 거래량과 분포를 먼저 보면 ‘버팀’과 ‘깨짐’이 분리된다.</figcaption></figure>
 
 가격은 결과입니다.
 반면 거래량·회복·하방 방어는 “과정”이고, 과정은 <strong>리스크 예산 초과 여부</strong>를 더 빨리 보여줍니다.
@@ -172,7 +172,7 @@ lang: "ko"
 경기는 “중간 역할”이 가능하지만, <strong>지역 내부 분산</strong>이 커서 대시보드로 가격대별 체결과 분포를 더 꼼꼼히 봐야 합니다.
 인천은 “진입 난이도” 장점이 있지만, 거래량이 꺼지는 국면에서 <strong>유동성 예산</strong>이 핵심 리스크로 올라옵니다.
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770087540/blog/insight/seoul-gyeonggi-incheon-risk-budget-kr-img2.png" alt="지역은 우열이 아니라 포트폴리오에서 맡을 역할로 구분해야 한다." /><figcaption>지역은 우열이 아니라 포트폴리오에서 맡을 역할로 구분해야 한다.</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782455404/blog/insight/seoul-gyeonggi-incheon-risk-budget-framework/rework-20260626/slot-004-body.png" alt="지역은 우열이 아니라 포트폴리오에서 맡을 역할로 구분해야 한다." /><figcaption>지역은 우열이 아니라 포트폴리오에서 맡을 역할로 구분해야 한다.</figcaption></figure>
 
 ## 오해 박스: “서울은 무조건 안전, 외곽은 무조건 위험”이 아니다
 
@@ -235,7 +235,7 @@ Relief 구간에서도 “가격 급등”보다 <strong>거래량 회복이 먼
 - □ 내 포트폴리오에서 부동산 비중이 이미 크면, 회복탄력보다 유동성 예산을 더 엄격히 잡는다
 - □ 결론을 한 줄로 적는다: “나는 (지역/가격대)을 (조건)에서만 본다”
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770087541/blog/insight/seoul-gyeonggi-incheon-risk-budget-kr-img3.png" alt="리스크 예산은 느낌이 아니라 거래량·분포·회복 신호로 관리하는 규칙이다." /><figcaption>리스크 예산은 느낌이 아니라 거래량·분포·회복 신호로 관리하는 규칙이다.</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782455405/blog/insight/seoul-gyeonggi-incheon-risk-budget-framework/rework-20260626/slot-005-chart.png" alt="리스크 예산은 느낌이 아니라 거래량·분포·회복 신호로 관리하는 규칙이다." /><figcaption>리스크 예산은 느낌이 아니라 거래량·분포·회복 신호로 관리하는 규칙이다.</figcaption></figure>
 
 ## 대시보드로 ‘내 지역 밴드’를 만들고, 트리거를 기록하는 방법
 
@@ -329,10 +329,10 @@ Relief 구간에서도 “가격 급등”보다 <strong>거래량 회복이 먼
     }
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770087533/blog/insight/seoul-gyeonggi-incheon-risk-budget-cover.png",
-    " https://res.cloudinary.com/dwonflmnn/image/upload/v1770087538/blog/insight/seoul-gyeonggi-incheon-risk-budget-kr-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770087540/blog/insight/seoul-gyeonggi-incheon-risk-budget-kr-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770087541/blog/insight/seoul-gyeonggi-incheon-risk-budget-kr-img3.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782455401/blog/insight/seoul-gyeonggi-incheon-risk-budget-framework/rework-20260626/slot-001-cover.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782455403/blog/insight/seoul-gyeonggi-incheon-risk-budget-framework/rework-20260626/slot-003-chart.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782455404/blog/insight/seoul-gyeonggi-incheon-risk-budget-framework/rework-20260626/slot-004-body.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782455405/blog/insight/seoul-gyeonggi-incheon-risk-budget-framework/rework-20260626/slot-005-chart.png"
   ],
   "keywords": ["서울","경기","인천","부동산투자","리스크예산","변동성","유동성","회복탄력","거래량","하방방어","자산배분"]
 }
