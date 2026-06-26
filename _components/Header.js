@@ -97,6 +97,29 @@ export default function Header() {
       ? "이 글은 번역 버전이 아니라 별도 글로 운영됩니다."
       : "This post is managed as a separate article, not a language version.";
   const isLanguageDisabled = (target) => isHreflangOptOutPost && target !== lang;
+  const mappedLanguagePath = (target) => {
+    const raw = postAvailability?.hreflangAlternates?.[target];
+    if (typeof raw !== "string") return "";
+    const trimmed = raw.trim();
+    if (!trimmed) return "";
+
+    try {
+      const parsed = new URL(trimmed, "https://www.finmaphub.com");
+      if (parsed.origin !== "https://www.finmaphub.com") return "";
+
+      let path = parsed.pathname || "/";
+      if (path === "/ko") path = "/";
+      else if (path.startsWith("/ko/")) path = path.replace(/^\/ko/, "") || "/";
+      if (path === "/en/en") path = "/en";
+      else if (path.startsWith("/en/en/")) path = path.replace(/^\/en\/en/, "/en");
+      path = path.replace(/\/{2,}/g, "/");
+      if (path.length > 1 && path.endsWith("/")) path = path.slice(0, -1);
+
+      return `${path || "/"}${parsed.search || ""}${parsed.hash || ""}`;
+    } catch {
+      return "";
+    }
+  };
 
   const handleLangChange = async (next) => {
     if (!router.isReady) return;
@@ -109,6 +132,13 @@ export default function Header() {
 
     // 포스트 상세: 번역 없으면 차단
     if (isPostDetail) {
+      const mappedPath = mappedLanguagePath(next);
+      if (mappedPath) {
+        setLang(next);
+        await router.push(mappedPath, undefined, { locale: false });
+        return;
+      }
+
       const available = postAvailRef.current?.available?.[next];
       if (!available) {
         setLangBlockMsg(

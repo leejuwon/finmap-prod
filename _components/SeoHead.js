@@ -26,6 +26,28 @@ function normalizePath(input) {
   return path || "/";
 }
 
+function normalizeAlternateHref(input) {
+  const raw = String(input || "").trim();
+  if (!raw) return "";
+
+  try {
+    const parsed = new URL(raw, SITE_URL);
+    if (parsed.origin !== SITE_URL) return "";
+
+    let path = parsed.pathname || "/";
+    if (path === "/ko") path = "/";
+    else if (path.startsWith("/ko/")) path = path.replace(/^\/ko/, "") || "/";
+    if (path === "/en/en") path = "/en";
+    else if (path.startsWith("/en/en/")) path = path.replace(/^\/en\/en/, "/en");
+    path = path.replace(/\/{2,}/g, "/");
+    if (path.length > 1 && path.endsWith("/")) path = path.slice(0, -1);
+
+    return `${SITE_URL}${path || "/"}${parsed.search || ""}${parsed.hash || ""}`;
+  } catch {
+    return "";
+  }
+}
+
 export default function SeoHead({
   title,
   desc,
@@ -36,6 +58,7 @@ export default function SeoHead({
   type,
   robots,
   alternateLanguages = true,
+  hreflangAlternates,
 }) {
   const router = useRouter();
 
@@ -59,9 +82,14 @@ export default function SeoHead({
         : `${SITE_URL}${String(image).startsWith("/") ? image : `/${image}`}`)
     : `${SITE_URL}/og-default.png`;
 
-  const hrefKo = `${SITE_URL}${normalizedPath}`;
+  const inferredHrefKo = `${SITE_URL}${normalizedPath}`;
   // ✅ hreflang도 동일 규칙 적용: 홈은 /en
-  const hrefEn = normalizedPath === "/" ? `${SITE_URL}/en` : `${SITE_URL}/en${normalizedPath}`;
+  const inferredHrefEn = normalizedPath === "/" ? `${SITE_URL}/en` : `${SITE_URL}/en${normalizedPath}`;
+  const explicitHrefKo = normalizeAlternateHref(hreflangAlternates?.ko);
+  const explicitHrefEn = normalizeAlternateHref(hreflangAlternates?.en);
+  const hasExplicitAlternates = Boolean(explicitHrefKo && explicitHrefEn);
+  const hrefKo = alternateLanguages && hasExplicitAlternates ? explicitHrefKo : inferredHrefKo;
+  const hrefEn = alternateLanguages && hasExplicitAlternates ? explicitHrefEn : inferredHrefEn;
   const shouldEmitXDefault = normalizedPath === "/";
 
   // ✅ OG locale 신호 강화(권장)

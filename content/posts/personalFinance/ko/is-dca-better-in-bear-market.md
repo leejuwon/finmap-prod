@@ -13,6 +13,9 @@ tags: ["하락장", "적립식 투자", "DCA", "MDD", "하락장 시나리오", 
 tool: ["dca","goal"]
 cover: "/images/posts/is-dca-better-in-bear-market/cover.svg"
 lang: "ko"
+hreflangAlternates:
+  ko: "/posts/personalFinance/is-dca-better-in-bear-market"
+  en: "/en/posts/personalFinance/is-dca-better-in-a-bear-market"
 ---
 
 - 적립식 투자는 가격이 낮을 때 같은 금액으로 더 많은 수량을 확보하는 구조입니다.

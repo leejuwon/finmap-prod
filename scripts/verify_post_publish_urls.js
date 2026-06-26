@@ -97,6 +97,77 @@ function buildHreflangOptOutUrlSet() {
   return urls;
 }
 
+function normalizeHreflangAlternatePath(rawPath) {
+  if (typeof rawPath !== 'string') return '';
+  const trimmed = rawPath.trim();
+  if (!trimmed) return '';
+
+  try {
+    const parsed = new URL(trimmed, SITE_URL);
+    if (parsed.origin !== SITE_URL) return '';
+
+    let pathname = parsed.pathname || '/';
+    if (pathname === '/ko') pathname = '/';
+    else if (pathname.startsWith('/ko/')) pathname = pathname.replace(/^\/ko/, '') || '/';
+    if (pathname === '/en/en') pathname = '/en';
+    else if (pathname.startsWith('/en/en/')) pathname = pathname.replace(/^\/en\/en/, '/en');
+    pathname = pathname.replace(/\/{2,}/g, '/');
+    if (pathname.length > 1 && pathname.endsWith('/')) pathname = pathname.slice(0, -1);
+
+    return `${pathname || '/'}${parsed.search || ''}`;
+  } catch {
+    return '';
+  }
+}
+
+function buildHreflangAlternateUrlIndex() {
+  const urlMap = new Map();
+  const staleSameSlugUrls = new Set();
+
+  for (const fullPath of walkDir(POSTS_ROOT).filter((file) => file.endsWith('.md'))) {
+    const rel = path.relative(POSTS_ROOT, fullPath).replace(/\\/g, '/');
+    const parts = rel.split('/');
+    if (parts.length < 3) continue;
+
+    const category = parts[0];
+    const lang = parts[1];
+    const slug = parts[parts.length - 1].replace(/\.md$/, '');
+    if (!category || !['ko', 'en'].includes(lang) || !slug) continue;
+
+    let data = {};
+    try {
+      data = matter(fs.readFileSync(fullPath, 'utf8')).data || {};
+    } catch {
+      data = {};
+    }
+    if (isNoindex(data) || data.hreflangEquivalent === false) continue;
+
+    const koPath = normalizeHreflangAlternatePath(data.hreflangAlternates?.ko);
+    const enPath = normalizeHreflangAlternatePath(data.hreflangAlternates?.en);
+    if (!koPath || !enPath) continue;
+
+    const prefix = lang === 'en' ? '/en' : '';
+    const currentPath = `${prefix}/posts/${category}/${slug}`;
+    const currentUrl = `${SITE_URL}${currentPath}`;
+    const expected = {
+      ko: `${SITE_URL}${koPath}`,
+      en: `${SITE_URL}${enPath}`,
+      mode: 'explicit',
+    };
+    urlMap.set(currentUrl, expected);
+
+    const inferredEnUrl = `${SITE_URL}${toEnPath(koPath)}`;
+    const inferredKoUrl = `${SITE_URL}${stripEnPrefix(enPath)}`;
+    if (inferredEnUrl !== expected.en) staleSameSlugUrls.add(inferredEnUrl);
+    if (inferredKoUrl !== expected.ko) staleSameSlugUrls.add(inferredKoUrl);
+  }
+
+  return {
+    hreflangAlternateUrlMap: urlMap,
+    staleExplicitAlternateUrls: staleSameSlugUrls,
+  };
+}
+
 function recentPostUrls(limit) {
   return walkDir(POSTS_ROOT)
     .filter((file) => file.endsWith('.md'))
@@ -238,20 +309,30 @@ function stripEnPrefix(pathname) {
   return pathname || '/';
 }
 
-function expectedHreflangs(publicUrl, hreflangOptOut = false) {
+function toEnPath(koPath) {
+  if (!koPath || koPath === '/') return '/en';
+  if (koPath.startsWith('/en')) return koPath;
+  return `/en${koPath}`;
+}
+
+function expectedHreflangs(publicUrl, hreflangOptOut = false, explicitAlternateUrlMap = new Map()) {
   const parsed = new URL(publicUrl);
   const koPath = stripEnPrefix(parsed.pathname);
-  const enPath = koPath === '/' ? '/en' : `/en${koPath}`;
+  const enPath = toEnPath(koPath);
   if (hreflangOptOut) {
     const isEn = parsed.pathname === '/en' || parsed.pathname.startsWith('/en/');
     return {
       ko: isEn ? '' : `${SITE_URL}${koPath}`,
       en: isEn ? `${SITE_URL}${enPath}` : '',
+      mode: 'self-only',
     };
   }
+  const explicit = explicitAlternateUrlMap.get(publicUrl);
+  if (explicit?.ko && explicit?.en) return explicit;
   return {
     ko: `${SITE_URL}${koPath}`,
     en: `${SITE_URL}${enPath}`,
+    mode: 'pair',
   };
 }
 
@@ -335,6 +416,30 @@ function collectInputUrls() {
   return Array.from(new Set(urls.map(publicUrlFromInput).filter(Boolean)));
 }
 
+async function validateExplicitHreflangTargets(expectedHref, currentUrl) {
+  if (expectedHref.mode !== 'explicit') return [];
+
+  const problems = [];
+  const targets = [
+    ['ko', expectedHref.ko],
+    ['en', expectedHref.en],
+  ];
+  for (const [hreflang, targetUrl] of targets) {
+    if (!targetUrl || targetUrl === currentUrl) continue;
+
+    const fetched = await fetchFinal(fetchUrlForPublicUrl(targetUrl));
+    const canonical = extractCanonical(fetched.html);
+    const metaRobots = extractMeta(fetched.html, 'robots');
+    const metaGooglebot = extractMeta(fetched.html, 'googlebot');
+    const xRobots = fetched.res.headers.get('x-robots-tag') || '';
+    if (fetched.res.status !== 200) problems.push(`hreflang ${hreflang} target status ${fetched.res.status}`);
+    if (fetched.finalUrl !== targetUrl) problems.push(`hreflang ${hreflang} target finalUrl expected ${targetUrl}`);
+    if (canonical !== targetUrl) problems.push(`hreflang ${hreflang} target canonical expected ${targetUrl}`);
+    if (hasNoindex(metaRobots, metaGooglebot, xRobots)) problems.push(`hreflang ${hreflang} target noindex found`);
+  }
+  return problems;
+}
+
 async function inspectUrl(publicUrl, context) {
   const lang = new URL(publicUrl).pathname.startsWith('/en/') || new URL(publicUrl).pathname === '/en' ? 'en' : 'ko';
   const fetched = await fetchFinal(fetchUrlForPublicUrl(publicUrl));
@@ -344,7 +449,7 @@ async function inspectUrl(publicUrl, context) {
   const metaGooglebot = extractMeta(fetched.html, 'googlebot');
   const xRobots = fetched.res.headers.get('x-robots-tag') || '';
   const hreflangOptOut = context.hreflangOptOutUrls.has(publicUrl);
-  const expectedHref = expectedHreflangs(publicUrl, hreflangOptOut);
+  const expectedHref = expectedHreflangs(publicUrl, hreflangOptOut, context.hreflangAlternateUrlMap);
   const pathname = new URL(publicUrl).pathname;
   const problems = [];
   const sitemap = {
@@ -354,6 +459,29 @@ async function inspectUrl(publicUrl, context) {
   };
   const rssIncluded = lang === 'ko' ? context.rss.set.has(publicUrl) : false;
   const robotsTxtBlocked = isRobotsTxtBlocked(pathname, context.robotsDisallow);
+  const expectedStaleSameSlug404 = context.staleExplicitAlternateUrls.has(publicUrl);
+
+  if (expectedStaleSameSlug404) {
+    if (fetched.res.status !== 404) problems.push(`expected stale same-slug alternate to return 404, got ${fetched.res.status}`);
+    if (sitemap.main || sitemap.channel || sitemap.enPrefix) problems.push('stale same-slug alternate should not be in sitemap');
+    return {
+      url: publicUrl,
+      lang,
+      status: fetched.res.status,
+      finalUrl: fetched.finalUrl,
+      canonical,
+      metaRobots: metaRobots || metaGooglebot || '',
+      xRobots,
+      robotsTxtBlocked,
+      sitemap,
+      rssIncluded,
+      hreflangKo: hreflangs.ko || '',
+      hreflangEn: hreflangs.en || '',
+      hreflangMode: 'expected-404',
+      result: problems.length ? 'FAIL' : 'PASS',
+      problems,
+    };
+  }
 
   if (fetched.res.status !== 200) problems.push(`status ${fetched.res.status}`);
   if (fetched.finalUrl !== publicUrl) problems.push(`finalUrl expected ${publicUrl}`);
@@ -374,6 +502,7 @@ async function inspectUrl(publicUrl, context) {
   } else if (hreflangs.en) {
     problems.push('hreflang en should be omitted by opt-out');
   }
+  problems.push(...await validateExplicitHreflangTargets(expectedHref, publicUrl));
 
   return {
     url: publicUrl,
@@ -388,7 +517,7 @@ async function inspectUrl(publicUrl, context) {
     rssIncluded,
     hreflangKo: hreflangs.ko || '',
     hreflangEn: hreflangs.en || '',
-    hreflangMode: hreflangOptOut ? 'self-only' : 'pair',
+    hreflangMode: expectedHref.mode,
     result: problems.length ? 'FAIL' : 'PASS',
     problems,
   };
@@ -408,7 +537,9 @@ function printResults(results, rssStatus) {
       item.lang === 'en' ? (item.sitemap.enPrefix ? 'enPrefix:yes' : 'enPrefix:no') : 'enPrefix:N/A',
     ].join(', ');
     const rss = item.lang === 'ko' ? (item.rssIncluded ? 'yes' : 'no') : 'N/A';
-    const hreflangPair = item.hreflangMode === 'self-only' ? 'self-only' : item.hreflangKo && item.hreflangEn ? 'yes' : 'no';
+    const hreflangPair = ['self-only', 'explicit', 'expected-404'].includes(item.hreflangMode)
+      ? item.hreflangMode
+      : item.hreflangKo && item.hreflangEn ? 'yes' : 'no';
     console.log(`| ${item.url} | ${item.lang} | ${item.status} | ${item.finalUrl} | ${canonicalSelf} | ${item.robotsTxtBlocked ? 'yes' : 'no'} | ${metaNoindex} | ${sitemap} | ${rss} | ${hreflangPair} | ${item.result} | ${item.problems.join('; ') || 'OK'} |`);
   }
 }
@@ -431,6 +562,7 @@ async function main() {
       robotsDisallow: parseRobotsTxt(),
       rss: await fetchRssSet(),
       hreflangOptOutUrls: buildHreflangOptOutUrlSet(),
+      ...buildHreflangAlternateUrlIndex(),
     };
     const results = [];
     for (const url of urls) {

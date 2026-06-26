@@ -1,8 +1,8 @@
 # SEO Channel Split URL Check
 
-- Checked at: 2026-06-26T00:49:41.888Z
+- Checked at: 2026-06-26T01:31:04.710Z
 - Fetch base: http://127.0.0.1:8017
-- URL samples: 20
+- URL samples: 22
 - Failures: 0
 - sitemap-0.xml URL count: 204
 - sitemap-ko.xml URL count: 106
@@ -32,6 +32,8 @@
 | /en/market/indices | en | 200 | https://www.finmaphub.com/en/market/indices | https://www.finmaphub.com/en/market/indices | https://www.finmaphub.com/market/indices | https://www.finmaphub.com/en/market/indices | - | - | - | main:yes, en:yes | yes | PASS | OK |
 | /posts/personalFinance/dsr-40-income-loan-limit-table | ko | 200 | https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table | - | - | - | main:yes, ko:yes | N/A | PASS | OK |
 | /en/posts/personalFinance/dsr-40-income-loan-limit-table | en | 200 | https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table | - | - | - | main:yes, en:yes | yes | PASS | OK |
+| /posts/personalFinance/is-dca-better-in-bear-market | ko | 200 | https://www.finmaphub.com/posts/personalFinance/is-dca-better-in-bear-market | https://www.finmaphub.com/posts/personalFinance/is-dca-better-in-bear-market | https://www.finmaphub.com/posts/personalFinance/is-dca-better-in-bear-market | https://www.finmaphub.com/en/posts/personalFinance/is-dca-better-in-a-bear-market | - | - | - | main:yes, ko:yes | N/A | PASS | OK |
+| /en/posts/personalFinance/is-dca-better-in-a-bear-market | en | 200 | https://www.finmaphub.com/en/posts/personalFinance/is-dca-better-in-a-bear-market | https://www.finmaphub.com/en/posts/personalFinance/is-dca-better-in-a-bear-market | https://www.finmaphub.com/posts/personalFinance/is-dca-better-in-bear-market | https://www.finmaphub.com/en/posts/personalFinance/is-dca-better-in-a-bear-market | - | - | - | main:yes, en:yes | yes | PASS | OK |
 | /posts/personalFinance/how-much-per-month-for-100m | ko | 200 | https://www.finmaphub.com/posts/personalFinance/how-much-per-month-for-100m | https://www.finmaphub.com/posts/personalFinance/how-much-per-month-for-100m | https://www.finmaphub.com/posts/personalFinance/how-much-per-month-for-100m | - | - | - | - | main:yes, ko:yes | N/A | PASS | OK |
 | /en/posts/personalFinance/how-much-per-month-for-100m | en | 200 | https://www.finmaphub.com/en/posts/personalFinance/how-much-per-month-for-100m | https://www.finmaphub.com/en/posts/personalFinance/how-much-per-month-for-100m | - | https://www.finmaphub.com/en/posts/personalFinance/how-much-per-month-for-100m | - | - | - | main:yes, en:yes | yes | PASS | OK |
 | /posts/personalFinance/what-is-cagr | ko | 200 | https://www.finmaphub.com/posts/personalFinance/what-is-cagr | https://www.finmaphub.com/posts/personalFinance/what-is-cagr | https://www.finmaphub.com/posts/personalFinance/what-is-cagr | https://www.finmaphub.com/en/posts/personalFinance/what-is-cagr | - | - | - | main:yes, ko:yes | N/A | PASS | OK |

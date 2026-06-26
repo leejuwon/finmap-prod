@@ -13,6 +13,9 @@ tags: ["dca", "bear market", "dollar cost averaging", "drawdown", "monthly inves
 tool: ["dca","goal"]
 cover: "/images/posts/is-dca-better-in-a-bear-market/cover.svg"
 lang: "en"
+hreflangAlternates:
+  ko: "/posts/personalFinance/is-dca-better-in-bear-market"
+  en: "/en/posts/personalFinance/is-dca-better-in-a-bear-market"
 ---
 
 - DCA can buy more units when prices are lower because the contribution amount stays constant.

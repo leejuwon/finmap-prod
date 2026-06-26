@@ -7,6 +7,7 @@ const matter = require('gray-matter');
 const SITE_URL = "https://www.finmaphub.com";
 const POSTS_ROOT = path.join(process.cwd(), 'content', 'posts');
 const POST_HREFLANG_EQUIVALENT_MAP = new Map();
+const POST_HREFLANG_ALTERNATES_MAP = new Map();
 
 function walkDir(dir) {
   if (!fs.existsSync(dir)) return [];
@@ -29,6 +30,22 @@ function normalizeDateToIso(v) {
   const d = new Date(s);
   if (Number.isNaN(d.getTime())) return null;
   return d.toISOString();
+}
+
+function normalizeHreflangAlternates(rawAlternates) {
+  if (!rawAlternates || typeof rawAlternates !== 'object' || Array.isArray(rawAlternates)) {
+    return null;
+  }
+
+  const alternates = {};
+  for (const lang of ['ko', 'en']) {
+    const value = rawAlternates[lang];
+    if (typeof value !== 'string') continue;
+    const trimmed = value.trim();
+    if (trimmed.startsWith('/')) alternates[lang] = trimmed.replace(/\/{2,}/g, '/').replace(/\/+$/, '') || '/';
+  }
+
+  return alternates.ko && alternates.en ? alternates : null;
 }
 
 // posts의 lastmod 맵 생성: loc -> ISO
@@ -82,6 +99,8 @@ function buildPostsLastmodMap() {
     const prefix = lang === 'en' ? '/en' : '';
     const loc = `${prefix}/posts/${categorySlug}/${slug}`;
     POST_HREFLANG_EQUIVALENT_MAP.set(loc, fm.hreflangEquivalent === false ? false : true);
+    const hreflangAlternates = normalizeHreflangAlternates(fm.hreflangAlternates);
+    if (hreflangAlternates) POST_HREFLANG_ALTERNATES_MAP.set(loc, hreflangAlternates);
     if (lastmod) map.set(loc, lastmod);
   }
 
@@ -217,6 +236,21 @@ function buildSelfAlternateRefs(loc, koLoc, enLoc) {
   ];
 }
 
+function buildExplicitAlternateRefs(loc) {
+  const alternates = POST_HREFLANG_ALTERNATES_MAP.get(loc);
+  if (!alternates?.ko || !alternates?.en) return null;
+  if (!POSTS_LASTMOD_MAP.has(alternates.ko) || !POSTS_LASTMOD_MAP.has(alternates.en)) return null;
+
+  if (hasPostHreflangOptOut(alternates.ko, alternates.en)) {
+    return buildSelfAlternateRefs(loc, alternates.ko, alternates.en);
+  }
+
+  return [
+    { hreflang: 'ko', href: `${SITE_URL}${alternates.ko}`, hrefIsAbsolute: true },
+    { hreflang: 'en', href: `${SITE_URL}${alternates.en}`, hrefIsAbsolute: true },
+  ];
+}
+
 function buildAlternateRefs(loc) {
   // loc이 '/en/...'인 경우도 KO 기준 path로 정규화
   const koLoc = stripEnPrefix(loc);
@@ -225,6 +259,9 @@ function buildAlternateRefs(loc) {
   if (hasPostHreflangOptOut(koLoc, enLoc)) {
     return buildSelfAlternateRefs(loc, koLoc, enLoc);
   }
+
+  const explicitRefs = buildExplicitAlternateRefs(loc);
+  if (explicitRefs) return explicitRefs;
 
   if (!hasKoEnPairForLoc(koLoc, enLoc)) return null;
 

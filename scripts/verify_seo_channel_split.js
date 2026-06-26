@@ -51,6 +51,8 @@ const SAMPLES = [
   { path: '/en/market/indices', lang: 'en', group: 'market' },
   { path: '/posts/personalFinance/dsr-40-income-loan-limit-table', lang: 'ko', group: 'post' },
   { path: '/en/posts/personalFinance/dsr-40-income-loan-limit-table', lang: 'en', group: 'post' },
+  { path: '/posts/personalFinance/is-dca-better-in-bear-market', lang: 'ko', group: 'post-explicit-map' },
+  { path: '/en/posts/personalFinance/is-dca-better-in-a-bear-market', lang: 'en', group: 'post-explicit-map' },
   { path: '/posts/personalFinance/how-much-per-month-for-100m', lang: 'ko', group: 'post-opt-out' },
   { path: '/en/posts/personalFinance/how-much-per-month-for-100m', lang: 'en', group: 'post-opt-out' },
   { path: '/posts/personalFinance/what-is-cagr', lang: 'ko', group: 'post-pair' },
@@ -100,6 +102,61 @@ function buildHreflangOptOutPathSet() {
 }
 
 const HREFLANG_OPT_OUT_PATHS = buildHreflangOptOutPathSet();
+
+function normalizeHreflangAlternatePath(rawPath) {
+  if (typeof rawPath !== 'string') return '';
+  const trimmed = rawPath.trim();
+  if (!trimmed) return '';
+
+  try {
+    const parsed = new URL(trimmed, SITE_URL);
+    if (parsed.origin !== SITE_URL) return '';
+
+    let pathname = parsed.pathname || '/';
+    if (pathname === '/ko') pathname = '/';
+    else if (pathname.startsWith('/ko/')) pathname = pathname.replace(/^\/ko/, '') || '/';
+    if (pathname === '/en/en') pathname = '/en';
+    else if (pathname.startsWith('/en/en/')) pathname = pathname.replace(/^\/en\/en/, '/en');
+    pathname = pathname.replace(/\/{2,}/g, '/');
+    if (pathname.length > 1 && pathname.endsWith('/')) pathname = pathname.slice(0, -1);
+
+    return `${pathname || '/'}${parsed.search || ''}`;
+  } catch {
+    return '';
+  }
+}
+
+function buildHreflangAlternatePathMap() {
+  const map = new Map();
+  for (const fullPath of walkDir(POSTS_ROOT).filter((file) => file.endsWith('.md'))) {
+    const rel = path.relative(POSTS_ROOT, fullPath).replace(/\\/g, '/');
+    const parts = rel.split('/');
+    if (parts.length < 3) continue;
+
+    const category = parts[0];
+    const lang = parts[1];
+    const slug = parts[parts.length - 1].replace(/\.md$/, '');
+    if (!category || !['ko', 'en'].includes(lang) || !slug) continue;
+
+    let data = {};
+    try {
+      data = matter(fs.readFileSync(fullPath, 'utf8')).data || {};
+    } catch {
+      data = {};
+    }
+    if (isNoindex(data) || data.hreflangEquivalent === false) continue;
+
+    const koPath = normalizeHreflangAlternatePath(data.hreflangAlternates?.ko);
+    const enPath = normalizeHreflangAlternatePath(data.hreflangAlternates?.en);
+    if (!koPath || !enPath) continue;
+
+    const prefix = lang === 'en' ? '/en' : '';
+    map.set(`${prefix}/posts/${category}/${slug}`, { koPath, enPath });
+  }
+  return map;
+}
+
+const HREFLANG_ALTERNATE_PATHS = buildHreflangAlternatePathMap();
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -163,6 +220,18 @@ function expectedFor(sample) {
       enHref: sample.lang === 'en' ? `${SITE_URL}${enPath}` : '',
       xDefault: '',
       hreflangOptOut,
+      hreflangMode: 'self-only',
+    };
+  }
+  const explicit = HREFLANG_ALTERNATE_PATHS.get(sample.path);
+  if (explicit?.koPath && explicit?.enPath) {
+    return {
+      canonical,
+      koHref: `${SITE_URL}${explicit.koPath}`,
+      enHref: `${SITE_URL}${explicit.enPath}`,
+      xDefault: '',
+      hreflangOptOut,
+      hreflangMode: 'explicit',
     };
   }
   return {
@@ -171,6 +240,7 @@ function expectedFor(sample) {
     enHref: `${SITE_URL}${enPath}`,
     xDefault: koPath === '/' ? `${SITE_URL}/` : '',
     hreflangOptOut,
+    hreflangMode: 'pair',
   };
 }
 
