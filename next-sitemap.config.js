@@ -6,6 +6,7 @@ const matter = require('gray-matter');
 
 const SITE_URL = "https://www.finmaphub.com";
 const POSTS_ROOT = path.join(process.cwd(), 'content', 'posts');
+const POST_HREFLANG_EQUIVALENT_MAP = new Map();
 
 function walkDir(dir) {
   if (!fs.existsSync(dir)) return [];
@@ -80,6 +81,7 @@ function buildPostsLastmodMap() {
     // loc 만들기 (네 사이트 라우팅 규칙)
     const prefix = lang === 'en' ? '/en' : '';
     const loc = `${prefix}/posts/${categorySlug}/${slug}`;
+    POST_HREFLANG_EQUIVALENT_MAP.set(loc, fm.hreflangEquivalent === false ? false : true);
     if (lastmod) map.set(loc, lastmod);
   }
 
@@ -196,10 +198,33 @@ function hasKoEnPairForLoc(koLoc, enLoc) {
   return STATIC_I18N_BASE_LOCS.has(koLoc);
 }
 
+function hasPostHreflangOptOut(koLoc, enLoc) {
+  return (
+    POST_HREFLANG_EQUIVALENT_MAP.get(koLoc) === false ||
+    POST_HREFLANG_EQUIVALENT_MAP.get(enLoc) === false
+  );
+}
+
+function buildSelfAlternateRefs(loc, koLoc, enLoc) {
+  const isEn = loc === enLoc || loc.startsWith('/en/');
+  const selfLoc = isEn ? enLoc : koLoc;
+  return [
+    {
+      hreflang: isEn ? 'en' : 'ko',
+      href: `${SITE_URL}${selfLoc}`,
+      hrefIsAbsolute: true,
+    },
+  ];
+}
+
 function buildAlternateRefs(loc) {
   // loc이 '/en/...'인 경우도 KO 기준 path로 정규화
   const koLoc = stripEnPrefix(loc);
   const enLoc = toEnPath(koLoc);
+
+  if (hasPostHreflangOptOut(koLoc, enLoc)) {
+    return buildSelfAlternateRefs(loc, koLoc, enLoc);
+  }
 
   if (!hasKoEnPairForLoc(koLoc, enLoc)) return null;
 

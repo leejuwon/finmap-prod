@@ -12,6 +12,7 @@ tags: ["save 100k", "monthly investment", "financial goal", "goal calculator", "
 tool: ["goal","comp","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429425/blog/personalFinance/monthly-investment-cover.png"
 lang: "en"
+hreflangEquivalent: false
 ---
 
 **Here is the short answer:** starting from $0, reaching $100,000 would require about $1,470 per month over 5 years, $644 over 10 years, or $374 over 15 years if you assume a 5% annual return. Returns are never guaranteed, so the strongest plan starts with a contribution you can sustain and adjusts the timeline from there.

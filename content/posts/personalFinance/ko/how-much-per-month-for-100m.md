@@ -12,6 +12,7 @@ tags: ["1억 모으기", "월 투자금", "목표 자산", "재테크 계획", "
 tool: ["goal","comp","dca"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429425/blog/personalFinance/monthly-investment-cover.png"
 lang: "ko"
+hreflangEquivalent: false
 ---
 
 **정답부터 말하면**, “1억 모으려면 월 얼마가 필요할까?”의 기준 답은 초기자산 0원, 연 5% 가정 시 5년 월 약 147만원, 10년 약 64만원, 15년 약 37만원입니다. 1억 모으는 기간은 수익률보다 월 저축·투자금을 얼마나 꾸준히 유지할 수 있는지에 더 크게 좌우됩니다. 다만 수익률은 보장되지 않으므로, 먼저 내가 꾸준히 납입할 수 있는 금액을 정한 뒤 기간을 조정하는 편이 현실적입니다.

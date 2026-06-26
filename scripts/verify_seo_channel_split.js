@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');
+const matter = require('gray-matter');
 
 const SITE_URL = 'https://www.finmaphub.com';
 const ROOT = process.cwd();
@@ -12,6 +13,7 @@ const MAIN_SITEMAP_PATH = path.join(ROOT, 'public', 'sitemap-0.xml');
 const KO_SITEMAP_PATH = path.join(ROOT, 'public', 'sitemap-ko.xml');
 const EN_SITEMAP_PATH = path.join(ROOT, 'public', 'sitemap-en.xml');
 const EN_PREFIX_SITEMAP_PATH = path.join(ROOT, 'public', 'en', 'sitemap.xml');
+const POSTS_ROOT = path.join(ROOT, 'content', 'posts');
 
 const REQUIRED_EN_SITEMAP_PATHS = [
   '/en',
@@ -49,7 +51,55 @@ const SAMPLES = [
   { path: '/en/market/indices', lang: 'en', group: 'market' },
   { path: '/posts/personalFinance/dsr-40-income-loan-limit-table', lang: 'ko', group: 'post' },
   { path: '/en/posts/personalFinance/dsr-40-income-loan-limit-table', lang: 'en', group: 'post' },
+  { path: '/posts/personalFinance/how-much-per-month-for-100m', lang: 'ko', group: 'post-opt-out' },
+  { path: '/en/posts/personalFinance/how-much-per-month-for-100m', lang: 'en', group: 'post-opt-out' },
+  { path: '/posts/personalFinance/what-is-cagr', lang: 'ko', group: 'post-pair' },
+  { path: '/en/posts/personalFinance/what-is-cagr', lang: 'en', group: 'post-pair' },
 ];
+
+function walkDir(dir) {
+  if (!fs.existsSync(dir)) return [];
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  const out = [];
+  for (const entry of entries) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...walkDir(full));
+    else if (entry.isFile()) out.push(full);
+  }
+  return out;
+}
+
+function isNoindex(data) {
+  return data?.draft === true || data?.noindex === true || String(data?.robots || '').toLowerCase().includes('noindex');
+}
+
+function buildHreflangOptOutPathSet() {
+  const paths = new Set();
+  for (const fullPath of walkDir(POSTS_ROOT).filter((file) => file.endsWith('.md'))) {
+    const rel = path.relative(POSTS_ROOT, fullPath).replace(/\\/g, '/');
+    const parts = rel.split('/');
+    if (parts.length < 3) continue;
+
+    const category = parts[0];
+    const lang = parts[1];
+    const slug = parts[parts.length - 1].replace(/\.md$/, '');
+    if (!category || !['ko', 'en'].includes(lang) || !slug) continue;
+
+    let data = {};
+    try {
+      data = matter(fs.readFileSync(fullPath, 'utf8')).data || {};
+    } catch {
+      data = {};
+    }
+    if (isNoindex(data) || data.hreflangEquivalent !== false) continue;
+
+    const prefix = lang === 'en' ? '/en' : '';
+    paths.add(`${prefix}/posts/${category}/${slug}`);
+  }
+  return paths;
+}
+
+const HREFLANG_OPT_OUT_PATHS = buildHreflangOptOutPathSet();
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -104,11 +154,23 @@ function toEnPath(koPath) {
 function expectedFor(sample) {
   const koPath = stripEnPrefix(sample.path);
   const enPath = toEnPath(koPath);
+  const canonical = `${SITE_URL}${sample.path === '/' ? '/' : sample.path}`;
+  const hreflangOptOut = HREFLANG_OPT_OUT_PATHS.has(sample.path);
+  if (hreflangOptOut) {
+    return {
+      canonical,
+      koHref: sample.lang === 'ko' ? `${SITE_URL}${koPath}` : '',
+      enHref: sample.lang === 'en' ? `${SITE_URL}${enPath}` : '',
+      xDefault: '',
+      hreflangOptOut,
+    };
+  }
   return {
-    canonical: `${SITE_URL}${sample.path === '/' ? '/' : sample.path}`,
+    canonical,
     koHref: `${SITE_URL}${koPath}`,
     enHref: `${SITE_URL}${enPath}`,
     xDefault: koPath === '/' ? `${SITE_URL}/` : '',
+    hreflangOptOut,
   };
 }
 
@@ -334,8 +396,16 @@ async function inspectSample(sample, sitemapSets) {
   if (res.status !== 200) problems.push(`status ${res.status}`);
   if (finalUrl !== expected.canonical) problems.push(`finalUrl expected ${expected.canonical}`);
   if (canonical !== expected.canonical) problems.push(`canonical expected ${expected.canonical}`);
-  if (hreflangs.ko !== expected.koHref) problems.push(`hreflang ko expected ${expected.koHref}`);
-  if (hreflangs.en !== expected.enHref) problems.push(`hreflang en expected ${expected.enHref}`);
+  if (expected.koHref) {
+    if (hreflangs.ko !== expected.koHref) problems.push(`hreflang ko expected ${expected.koHref}`);
+  } else if (hreflangs.ko) {
+    problems.push('hreflang ko should be omitted by opt-out');
+  }
+  if (expected.enHref) {
+    if (hreflangs.en !== expected.enHref) problems.push(`hreflang en expected ${expected.enHref}`);
+  } else if (hreflangs.en) {
+    problems.push('hreflang en should be omitted by opt-out');
+  }
   if (expected.xDefault) {
     if (hreflangs['x-default'] !== expected.xDefault) problems.push(`x-default expected ${expected.xDefault}`);
   } else if (hreflangs['x-default']) {

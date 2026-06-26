@@ -46,11 +46,14 @@ export default function Header() {
      포스트 번역 가용성 이벤트
   -------------------------------- */
   const postAvailRef = useRef(null);
+  const [postAvailability, setPostAvailability] = useState(null);
   const [langBlockMsg, setLangBlockMsg] = useState("");
 
   useEffect(() => {
     const onAvail = (e) => {
-      postAvailRef.current = e?.detail || null;
+      const detail = e?.detail || null;
+      postAvailRef.current = detail;
+      setPostAvailability(detail);
     };
     window.addEventListener("fm_post_availability", onAvail);
     return () => window.removeEventListener("fm_post_availability", onAvail);
@@ -86,11 +89,23 @@ export default function Header() {
   /* ------------------------------
      언어 변경 핸들러
   -------------------------------- */
+  const isPostDetail = router.pathname === "/posts/[category]/[slug]";
+  const isHreflangOptOutPost =
+    isPostDetail && postAvailability?.hreflangEquivalent === false;
+  const languageOptOutMessage =
+    lang === "ko"
+      ? "이 글은 번역 버전이 아니라 별도 글로 운영됩니다."
+      : "This post is managed as a separate article, not a language version.";
+  const isLanguageDisabled = (target) => isHreflangOptOutPost && target !== lang;
+
   const handleLangChange = async (next) => {
     if (!router.isReady) return;
     if (next === lang) return;
 
-    const isPostDetail = router.pathname === "/posts/[category]/[slug]";
+    if (isLanguageDisabled(next)) {
+      setLangBlockMsg(languageOptOutMessage);
+      return;
+    }
 
     // 포스트 상세: 번역 없으면 차단
     if (isPostDetail) {
@@ -119,6 +134,8 @@ export default function Header() {
   };
 
   const nav = useMemo(() => navItems, []);
+  const koLanguageDisabled = isLanguageDisabled("ko");
+  const enLanguageDisabled = isLanguageDisabled("en");
 
   return (
     <header className="sticky top-0 z-50 w-full max-w-full backdrop-blur bg-white/80 border-b border-slate-100">
@@ -244,9 +261,13 @@ export default function Header() {
               <button
                 type="button"
                 onClick={() => handleLangChange("ko")}
+                disabled={koLanguageDisabled}
+                title={koLanguageDisabled ? languageOptOutMessage : undefined}
                 className={
                   "px-1.5 py-0.5 sm:px-2 sm:py-1 max-[360px]:text-[0px] max-[360px]:after:text-[9px] max-[360px]:after:content-['KO'] " +
-                  (lang === "ko"
+                  (koLanguageDisabled
+                    ? "bg-white text-slate-400 cursor-not-allowed opacity-50"
+                    : lang === "ko"
                     ? "bg-slate-900 text-white"
                     : "bg-white text-slate-600")
                 }
@@ -256,9 +277,13 @@ export default function Header() {
               <button
                 type="button"
                 onClick={() => handleLangChange("en")}
+                disabled={enLanguageDisabled}
+                title={enLanguageDisabled ? languageOptOutMessage : undefined}
                 className={
                   "px-1.5 py-0.5 sm:px-2 sm:py-1 " +
-                  (lang === "en"
+                  (enLanguageDisabled
+                    ? "bg-white text-slate-400 cursor-not-allowed opacity-50"
+                    : lang === "en"
                     ? "bg-slate-900 text-white"
                     : "bg-white text-slate-600")
                 }

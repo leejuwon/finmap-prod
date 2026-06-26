@@ -141,6 +141,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
       type: 'post',
       slug,
       category: categorySlug,
+      hreflangEquivalent: post.hreflangEquivalent !== false,
       available: {
         [lang]: true,
         [otherLang]: !!otherLangAvailable,
@@ -152,7 +153,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
     return () => {
       window.dispatchEvent(new CustomEvent('fm_post_availability', { detail: null }));
     };
-  }, [lang, otherLangAvailable, slug, categorySlug]);
+  }, [lang, otherLangAvailable, slug, categorySlug, post.hreflangEquivalent]);
 
   // ✅ UI 언어는 무조건 Next i18n locale 기준
   const locale = router?.locale === 'en' ? 'en' : 'ko';
@@ -564,6 +565,7 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
         url={`${prefix}/posts/${categorySlug}/${post.slug}`}
         image={post.cover ? cloudinaryThumb(post.cover, { w: 1200, h: 630 }) : undefined}
         locale={lang} // ✅ canonical/hreflang을 컨텐츠 언어에 맞춤
+        alternateLanguages={post.hreflangEquivalent !== false}
       />
       <JsonLd data={jsonld} />
       <JsonLd data={breadcrumbJsonLd} />

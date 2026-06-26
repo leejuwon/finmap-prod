@@ -1,11 +1,11 @@
 # SEO Channel Split URL Check
 
-- Checked at: 2026-06-19T06:09:20.208Z
+- Checked at: 2026-06-26T00:49:41.888Z
 - Fetch base: http://127.0.0.1:8017
-- URL samples: 16
+- URL samples: 20
 - Failures: 0
-- sitemap-0.xml URL count: 199
-- sitemap-ko.xml URL count: 101
+- sitemap-0.xml URL count: 204
+- sitemap-ko.xml URL count: 106
 - sitemap-en.xml URL count: 98
 - sitemap-en.xml required URLs: 16/16
 - /en/sitemap.xml exists: yes
@@ -32,13 +32,17 @@
 | /en/market/indices | en | 200 | https://www.finmaphub.com/en/market/indices | https://www.finmaphub.com/en/market/indices | https://www.finmaphub.com/market/indices | https://www.finmaphub.com/en/market/indices | - | - | - | main:yes, en:yes | yes | PASS | OK |
 | /posts/personalFinance/dsr-40-income-loan-limit-table | ko | 200 | https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table | - | - | - | main:yes, ko:yes | N/A | PASS | OK |
 | /en/posts/personalFinance/dsr-40-income-loan-limit-table | en | 200 | https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table | https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table | - | - | - | main:yes, en:yes | yes | PASS | OK |
+| /posts/personalFinance/how-much-per-month-for-100m | ko | 200 | https://www.finmaphub.com/posts/personalFinance/how-much-per-month-for-100m | https://www.finmaphub.com/posts/personalFinance/how-much-per-month-for-100m | https://www.finmaphub.com/posts/personalFinance/how-much-per-month-for-100m | - | - | - | - | main:yes, ko:yes | N/A | PASS | OK |
+| /en/posts/personalFinance/how-much-per-month-for-100m | en | 200 | https://www.finmaphub.com/en/posts/personalFinance/how-much-per-month-for-100m | https://www.finmaphub.com/en/posts/personalFinance/how-much-per-month-for-100m | - | https://www.finmaphub.com/en/posts/personalFinance/how-much-per-month-for-100m | - | - | - | main:yes, en:yes | yes | PASS | OK |
+| /posts/personalFinance/what-is-cagr | ko | 200 | https://www.finmaphub.com/posts/personalFinance/what-is-cagr | https://www.finmaphub.com/posts/personalFinance/what-is-cagr | https://www.finmaphub.com/posts/personalFinance/what-is-cagr | https://www.finmaphub.com/en/posts/personalFinance/what-is-cagr | - | - | - | main:yes, ko:yes | N/A | PASS | OK |
+| /en/posts/personalFinance/what-is-cagr | en | 200 | https://www.finmaphub.com/en/posts/personalFinance/what-is-cagr | https://www.finmaphub.com/en/posts/personalFinance/what-is-cagr | https://www.finmaphub.com/posts/personalFinance/what-is-cagr | https://www.finmaphub.com/en/posts/personalFinance/what-is-cagr | - | - | - | main:yes, en:yes | yes | PASS | OK |
 
 ## Sitemap Policy Check
 
 | Sitemap | URL count |
 | --- | ---: |
-| sitemap-0.xml | 199 |
-| sitemap-ko.xml | 101 |
+| sitemap-0.xml | 204 |
+| sitemap-ko.xml | 106 |
 | sitemap-en.xml | 98 |
 | en/sitemap.xml | 98 |
 
