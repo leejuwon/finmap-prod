@@ -60,6 +60,115 @@ export function JsonLd({ data }) {
   );
 }
 
+function CompoundSupportContent({ locale }) {
+  return (
+    <>
+      {locale === "ko" && (
+        <section className="card w-full">
+          <h2 className="mb-2 text-lg font-semibold">복리 계산기 사용법</h2>
+          <p className="text-sm leading-6 text-slate-600">
+            원금, 월 적립금, 연 수익률, 투자 기간을 입력하면 월복리 기준 미래가치를 계산합니다.
+            세금, 수수료, 물가상승률을 함께 넣으면 세후 금액과 현재가치까지 비교할 수 있어
+            저축·적립식 투자 계획을 세울 때 숫자를 더 현실적으로 볼 수 있습니다.
+          </p>
+
+          <div className="mt-5 grid gap-4 md:grid-cols-2">
+            <section className="rounded-xl border p-4">
+              <h2 className="text-base font-semibold">복리 계산 공식</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                일시금 복리는 <strong>미래가치 = 원금 × (1 + 기간별 수익률) ^ 기간 수</strong>로 계산합니다.
+                적립식 복리 계산은 매월 납입한 금액을 각각 남은 기간만큼 불린 뒤 모두 합산하는 방식입니다.
+              </p>
+            </section>
+            <section className="rounded-xl border p-4">
+              <h2 className="text-base font-semibold">월복리와 연복리 차이</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                월복리는 수익이 매월 반영되고, 연복리는 1년에 한 번 반영된다고 가정합니다.
+                현재 FinMap 복리 계산기는 검증된 월복리 기준으로 계산하며, 연복리는 개념 비교용으로만
+                설명합니다. 연복리 직접 비교 기능은 후속 검증 후 별도 기능으로 정리할 예정입니다.
+              </p>
+            </section>
+          </div>
+
+          <section className="mt-5">
+            <h2 className="text-base font-semibold">적립식 복리 계산 예시</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-600">
+              아래 표는 원금 0원, 연 5%, 10년, 세금·수수료 미반영이라는 단순 가정입니다.
+              실제 계획은 계산기에서 세금, 수수료, 물가상승률을 함께 넣어 다시 비교하세요.
+            </p>
+            <div className="mt-3 overflow-x-auto">
+              <table className="w-full min-w-[560px] border-collapse text-sm">
+                <thead>
+                  <tr className="bg-slate-50 text-left">
+                    <th className="border p-2">월 적립금</th>
+                    <th className="border p-2">10년 총 납입액</th>
+                    <th className="border p-2">연 5% 월복리 단순 예시</th>
+                    <th className="border p-2">확인 포인트</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border p-2">30만원</td>
+                    <td className="border p-2">3,600만원</td>
+                    <td className="border p-2">약 4,660만원</td>
+                    <td className="border p-2">소액 장기 적립의 기준선</td>
+                  </tr>
+                  <tr>
+                    <td className="border p-2">50만원</td>
+                    <td className="border p-2">6,000만원</td>
+                    <td className="border p-2">약 7,760만원</td>
+                    <td className="border p-2">월 납입액 변화의 체감 폭</td>
+                  </tr>
+                  <tr>
+                    <td className="border p-2">100만원</td>
+                    <td className="border p-2">1억 2,000만원</td>
+                    <td className="border p-2">약 1억 5,530만원</td>
+                    <td className="border p-2">목표 금액 도달 기간 비교</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section className="mt-5">
+            <h2 className="text-base font-semibold">세금·수수료·물가상승률을 반영해야 하는 이유</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-600">
+              장기 복리에서는 연 0.5% 수수료나 세금 차이도 결과에 누적됩니다. 또 물가가 오르면
+              미래 금액의 구매력이 낮아질 수 있으므로, 단순 미래가치와 현재가치를 함께 보는 편이 안전합니다.
+            </p>
+          </section>
+        </section>
+      )}
+
+      <section className="card w-full">
+        <h2 className="text-base font-semibold">
+          {locale === "ko" ? "빠르게 비교해볼 기본 예시" : "Quick starting examples"}
+        </h2>
+        <ul className="mt-3 grid gap-2 text-sm text-slate-600 md:grid-cols-3">
+          {(locale === "ko"
+            ? [
+                "원금 1,000만원 · 월 30만원 · 연 5% · 10년",
+                "월 50만원 · 연 7% · 20년",
+                "원금 5,000만원 · 연 4% · 15년",
+              ]
+            : [
+                "$10,000 principal · $300/month · 5% · 10 years",
+                "$500/month · 7% · 20 years",
+                "$50,000 principal · 4% · 15 years",
+              ]
+          ).map((example) => (
+            <li key={example} className="border-l-2 border-blue-200 pl-3">
+              {example}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <ToolSharePanel toolId="compound" locale={locale} />
+    </>
+  );
+}
+
 const COMPOUND_PRESET_FIELDS = [
   { query: "principal", state: "principal", type: "number" },
   { query: "monthly", state: "monthly", type: "number" },
@@ -68,6 +177,8 @@ const COMPOUND_PRESET_FIELDS = [
   { query: "compounding", state: "compounding", type: "string", allowed: ["monthly", "yearly"] },
   { query: "taxRatePercent", state: "taxRatePercent", type: "number" },
   { query: "feeRatePercent", state: "feeRatePercent", type: "number" },
+  { query: "applyTax", state: "applyTax", type: "string", allowed: ["true", "false"] },
+  { query: "applyFee", state: "applyFee", type: "string", allowed: ["true", "false"] },
   { query: "inflationRate", state: "inflationRate", type: "number" },
   { query: "currency", state: "currency", type: "string", allowed: ["KRW", "USD"] },
 ];
@@ -215,12 +326,12 @@ export default function CompoundPage() {
     () => ({
       title:
         locale === "ko"
-          ? "복리 계산기 | 월복리·연복리·적립식 투자 미래가치 계산"
+          ? "복리 계산기 | 월복리·적립식 투자 미래가치 계산"
           : "Compound Interest Calculator: Future Value, Monthly Contributions & Taxes",
       desc:
         locale === "ko"
-          ? "복리 계산기로 원금, 월 적립금, 연 수익률, 기간, 세금, 수수료, 물가상승률을 반영해 월복리·적립식 투자 미래가치와 현재가치를 계산합니다."
-          : "Calculate future value with principal, monthly or lump-sum contributions, compound frequency, taxes, fees, inflation, charts, and year-by-year tables.",
+          ? "원금, 월 적립금, 연 수익률, 투자 기간으로 월복리 기준 미래가치를 계산합니다. 세금, 수수료, 물가상승률을 반영한 세후 금액과 현재가치를 표와 차트로 확인하세요."
+          : "Calculate future value with principal, monthly contributions, annual return and years using monthly compounding. Review taxes, fees, inflation, charts and year-by-year tables.",
 
       fv: locale === "ko" ? "세후 총자산" : "Net Future Value",
       fvIdeal: locale === "ko" ? "세전 기준 미래가치" : "Ideal (No Tax/Fee)",
@@ -267,8 +378,8 @@ export default function CompoundPage() {
         tagEn: "Compounding",
         titleKo: "복리 주기 차이 해설: 월복리와 연복리 결과가 달라지는 이유",
         titleEn: "Compounding frequency: why monthly and annual results differ",
-        descKo: "복리 주기(월/연)에 따라 미래가치(FV)가 어떻게 달라지는지 숫자로 확인합니다.",
-        descEn: "See how compounding frequency affects future value (FV) as a separate guide.",
+        descKo: "현재 계산기는 월복리 기준이며, 월복리와 연복리의 개념 차이는 별도 가이드에서 확인합니다.",
+        descEn: "This calculator uses monthly compounding; compare monthly and annual concepts in the separate guide.",
       },
       {
         slug: "how-much-per-month-for-100m",
@@ -335,39 +446,99 @@ export default function CompoundPage() {
         ? [
             {
               q: "복리 계산기는 무엇을 계산하나요?",
-              a: "원금, 월 적립금, 연 수익률, 투자 기간을 입력해 미래가치를 계산합니다. FinMap 복리 계산기는 세금, 수수료, 물가상승률까지 넣어 세전 결과와 세후·현재가치 기준 결과를 함께 보여줍니다.",
+              a: "원금, 월 적립금, 연 수익률, 투자 기간으로 월복리 기준 미래가치를 계산합니다. 세금, 수수료, 물가상승률을 반영한 세후 금액과 현재가치도 함께 보여줍니다.",
             },
             {
-              q: "월복리 계산기는 연복리와 무엇이 다른가요?",
-              a: "월복리는 연 수익률을 월 단위로 나눠 매월 복리 효과가 붙는 방식이고, 연복리는 1년에 한 번 수익이 반영되는 방식입니다. 같은 연 수익률이라도 기간이 길수록 월복리 결과가 조금 더 커질 수 있습니다.",
+              q: "이 계산기는 월복리 기준인가요?",
+              a: "네. 현재 검증된 계산은 월복리와 매월 말 납입 기준으로 고정되어 있습니다. 연복리 직접 비교는 제공하지 않습니다.",
+            },
+            {
+              q: "월복리와 연복리는 무엇이 다른가요?",
+              a: "월복리는 수익을 매월 반영하고 연복리는 1년에 한 번 반영한다고 가정합니다. 이 계산기의 결과는 월복리 기준이며 연복리는 별도 가이드에서 개념만 비교합니다.",
             },
             {
               q: "적립식 복리 계산은 어떻게 하나요?",
-              a: "초기 원금이 없어도 월 적립금을 입력하면 됩니다. 예를 들어 월 50만원을 10년 동안 넣고 연 5%를 가정하면, 매달 납입한 금액이 시간이 지나며 복리로 쌓이는 경로를 볼 수 있습니다.",
+              a: "초기 투자금과 매월 납입할 금액, 연 수익률, 기간을 입력하면 됩니다. KRW는 만원 단위, USD는 실제 달러 금액으로 입력합니다.",
+            },
+            {
+              q: "월 10만 원을 10년 투자하면 얼마가 되나요?",
+              a: "원금 0원, 연 5%, 10년, 세금·수수료 미반영 가정이면 약 1,550만 원입니다. 실제 결과는 입력 조건과 시장 수익률에 따라 달라집니다.",
+            },
+            {
+              q: "월 30만 원을 10년 투자하면 얼마가 되나요?",
+              a: "원금 0원, 연 5%, 10년, 세금·수수료 미반영 가정이면 약 4,660만 원입니다. 계산기에서 비용과 물가 조건을 바꿔 다시 확인할 수 있습니다.",
+            },
+            {
+              q: "월 50만 원을 10년 투자하면 얼마가 되나요?",
+              a: "원금 0원, 연 5%, 10년, 세금·수수료 미반영 가정이면 약 7,760만 원입니다. 일정한 수익률이 유지된다는 시뮬레이션 값입니다.",
+            },
+            {
+              q: "월 100만 원을 10년 투자하면 얼마가 되나요?",
+              a: "원금 0원, 연 5%, 10년, 세금·수수료 미반영 가정이면 약 1억 5,530만 원입니다. 세금과 수수료를 반영하면 금액은 낮아질 수 있습니다.",
+            },
+            {
+              q: "1억을 만들려면 매달 얼마를 넣어야 하나요?",
+              a: "필요한 월 적립금은 현재 원금, 목표 기간, 예상 수익률, 세금과 수수료에 따라 달라집니다. 목표 달성 엔진이나 목표자산 계산기에서 같은 조건으로 역산할 수 있습니다.",
+            },
+            {
+              q: "목표금액을 정하고 월 적립금을 역산할 수 있나요?",
+              a: "네. 계산 결과의 목표 달성 엔진에서 목표금액을 입력하면 현재 기간과 수익률 가정을 기준으로 필요한 월 적립금을 추정합니다.",
             },
             {
               q: "복리 계산 공식은 무엇인가요?",
-              a: "일시금은 미래가치 = 원금 × (1 + 기간별 수익률) ^ 기간 수로 계산합니다. 월 적립식은 매월 납입액을 각각 남은 기간만큼 복리로 불리는 방식으로 합산합니다.",
+              a: "일시금은 미래가치 = 원금 × (1 + 기간별 수익률) ^ 기간 수로 계산합니다. 월 적립금은 각 납입액을 남은 기간만큼 복리로 계산해 합산합니다.",
             },
             {
-              q: "세전/세후 계산 차이는 무엇인가요?",
-              a: "세전 계산은 세금과 수수료가 없다고 가정한 이상적인 미래가치이고, 세후 계산은 입력한 세율과 수수료를 반영한 결과입니다. 장기 투자일수록 작은 비용 차이도 결과에 크게 누적될 수 있습니다.",
+              q: "세전 계산과 세후 계산은 무엇이 다른가요?",
+              a: "세전 금액은 세금을 차감하기 전 결과이고 세후 금액은 입력한 세율을 반영한 결과입니다. 수수료는 연 수익률에서 차감해 계산합니다.",
             },
             {
-              q: "물가상승률은 왜 넣나요?",
-              a: "미래의 1억원과 현재의 1억원은 구매력이 다를 수 있습니다. 물가상승률을 넣으면 미래 금액을 현재가치 기준으로 함께 볼 수 있어 목표 금액을 더 현실적으로 판단할 수 있습니다.",
+              q: "세금은 언제 반영되나요?",
+              a: "이 계산기는 최종 시점의 양수인 세전 투자수익에 입력 세율을 한 번 적용합니다. 실제 상품별 과세 시점과 방식은 다를 수 있습니다.",
             },
             {
-              q: "월 30만원, 50만원, 100만원을 비교할 수 있나요?",
-              a: "네. 월 적립금을 바꿔 입력하면 같은 수익률과 기간에서 결과가 어떻게 달라지는지 비교할 수 있습니다. 계산 전 기본 예시표도 월 납입액별 차이를 빠르게 보여줍니다.",
+              q: "수수료는 복리 결과에 얼마나 영향을 주나요?",
+              a: "작은 연 수수료율도 장기간 누적되면 최종금액 차이가 커질 수 있습니다. 수수료 반영 checkbox를 켜고 끄면 같은 조건의 차이를 확인할 수 있습니다.",
             },
             {
-              q: "계산 금액 단위는 어떻게 입력하나요?",
-              a: "KRW를 선택하면 만원 단위로 입력하고, USD는 실제 달러 금액으로 입력합니다. 예를 들어 500은 원화 기준 500만원, 달러 기준 500달러로 해석됩니다.",
+              q: "물가상승률은 왜 입력하나요?",
+              a: "미래 금액의 구매력은 현재와 다를 수 있기 때문입니다. 물가상승률을 입력하면 명목 세후 금액과 함께 현재가치 기준 결과를 볼 수 있습니다.",
             },
             {
-              q: "복리 계산 결과를 투자 수익 보장으로 봐도 되나요?",
-              a: "아니요. 계산 결과는 입력한 수익률과 비용 가정을 바탕으로 한 교육용 추정입니다. 실제 투자 결과는 시장 변동, 세금, 수수료, 환율, 납입 중단 여부에 따라 달라질 수 있습니다.",
+              q: "물가 반영 현재가치는 무엇인가요?",
+              a: "예상 세후 최종금액을 입력한 물가상승률로 할인해 현재 구매력에 가깝게 환산한 값입니다. 물가 가정이 높을수록 현재가치는 낮아집니다.",
+            },
+            {
+              q: "수익률 3%, 5%, 7% 차이는 장기적으로 큰가요?",
+              a: "기간이 길수록 수익률 차이가 반복해서 누적되므로 최종금액 차이도 커질 수 있습니다. 민감도 분석에서 여러 수익률 가정을 함께 비교하세요.",
+            },
+            {
+              q: "투자 기간이 길수록 복리 효과가 커지는 이유는 무엇인가요?",
+              a: "기존 원금뿐 아니라 앞서 발생한 수익에도 다시 수익이 붙는 기간이 늘어나기 때문입니다. 다만 실제 연도별 수익률은 일정하지 않습니다.",
+            },
+            {
+              q: "원금과 월 적립금 중 무엇이 더 중요한가요?",
+              a: "초기에는 원금과 꾸준한 납입의 영향이 크고 기간이 길어질수록 수익률과 시간의 영향도 커집니다. 어느 하나가 항상 더 중요하다고 단정할 수는 없습니다.",
+            },
+            {
+              q: "배당 재투자도 복리로 볼 수 있나요?",
+              a: "배당을 다시 투자해 추가 수익이 발생한다면 복리 효과로 볼 수 있습니다. 이 계산기에서는 배당 재투자를 포함한 총수익률 가정으로 간접 반영할 수 있습니다.",
+            },
+            {
+              q: "ETF 장기투자도 복리 계산이 가능한가요?",
+              a: "가능하지만 ETF의 실제 수익률, 분배금, 세금, 수수료는 매년 달라질 수 있습니다. 입력한 평균 수익률이 유지된다는 가정의 계획용 시뮬레이션으로 보세요.",
+            },
+            {
+              q: "복리 계산기와 CAGR 계산기는 무엇이 다른가요?",
+              a: "복리 계산기는 원금과 월 적립금으로 미래가치를 추정합니다. CAGR 계산기는 시작금액과 최종금액, 기간으로 과거 또는 목표 연평균 수익률을 계산합니다.",
+            },
+            {
+              q: "복리 계산기와 DCA 계산기는 무엇이 다른가요?",
+              a: "복리 계산기는 고정 수익률 기반의 미래가치에 집중합니다. DCA 계산기는 적립금 증가율 등 정기 납입 시나리오를 더 세부적으로 비교합니다.",
+            },
+            {
+              q: "복리 계산 결과를 실제 투자 수익으로 봐도 되나요?",
+              a: "아니요. 입력한 수익률과 기간이 유지된다는 가정의 교육용 시뮬레이션입니다. 실제 결과는 시장 변동, 세금, 수수료, 환율, 납입 중단 여부에 따라 달라질 수 있습니다.",
             },
           ]
         : [
@@ -376,20 +547,32 @@ export default function CompoundPage() {
               a: "It calculates future value (FV) using principal, monthly contributions, annual return, and time horizon on a fixed monthly-compounding basis.",
             },
             {
-              q: "What compounding basis does this calculator use?",
-              a: "The current verified calculation uses monthly compounding. It subtracts the annual fee rate from the annual return, divides the net annual return by 12, and treats monthly contributions as end-of-month deposits.",
+              q: "Is this calculator monthly or annual compounding?",
+              a: "It uses verified monthly compounding with end-of-month contributions. Annual compounding is explained separately and is not a selectable calculation mode here.",
+            },
+            {
+              q: "How are monthly contributions calculated?",
+              a: "Each end-of-month contribution compounds for its remaining months and is added to the future value of the initial principal.",
             },
             {
               q: "What is the difference between net and ideal results?",
               a: "Ideal results ignore taxes and fees, while net results reflect performance after tax and fee deductions.",
             },
             {
-              q: "How should I input amounts?",
-              a: "KRW inputs use 10,000 KRW units, while USD uses real dollar values.",
+              q: "How are taxes and fees applied?",
+              a: "The annual fee is deducted from the assumed annual return, and the entered tax rate is applied to positive pretax investment gains at the final point in this simulation.",
             },
             {
-              q: "How are taxes and fees applied?",
-              a: "Defaults include 15.4% tax on interest and 0.5% annual fee, and you can customize them.",
+              q: "How is the inflation-adjusted value calculated?",
+              a: "The after-tax final value is discounted by the entered annual inflation rate over the selected time horizon to estimate present value.",
+            },
+            {
+              q: "Can I use this calculator for ETF investing?",
+              a: "Yes, as a planning scenario based on an assumed average return. Actual ETF returns, distributions, taxes, fees, and currency effects can vary.",
+            },
+            {
+              q: "Does the result guarantee future investment returns?",
+              a: "No. It is an educational simulation based on fixed assumptions, not a forecast or investment recommendation.",
             },
           ],
     [locale]
@@ -478,14 +661,25 @@ export default function CompoundPage() {
   // 계산 처리
   // ----------------------------
   const onSubmit = (form) => {
+    const configuredTaxRatePercent = Number(
+      form.configuredTaxRatePercent ?? form.taxRatePercent ?? 15.4
+    );
+    const configuredFeeRatePercent = Number(
+      form.configuredFeeRatePercent ?? form.feeRatePercent ?? 0.5
+    );
+    const applyTax = form.applyTax !== false;
+    const applyFee = form.applyFee !== false;
+
     persistPreset({
       principal: Number(form.principal) || 0,
       monthly: Number(form.monthly) || 0,
       annualRate: Number(form.annualRate) || 0,
       years: Number(form.years) || 0,
       compounding: "monthly",
-      taxRatePercent: Number(form.taxRatePercent ?? 15.4),
-      feeRatePercent: Number(form.feeRatePercent ?? 0.5),
+      taxRatePercent: configuredTaxRatePercent,
+      feeRatePercent: configuredFeeRatePercent,
+      applyTax: String(applyTax),
+      applyFee: String(applyFee),
       inflationRate: Number(form.inflationRate ?? 0),
       currency: form.currency || currency,
     });
@@ -557,6 +751,9 @@ export default function CompoundPage() {
       locale,
       currency: form.currency || currency,
       has_result: true,
+      has_tax: taxRatePercent > 0,
+      has_fee: feeRatePercent > 0,
+      has_inflation: inflationRate !== 0,
       location: "form_submit",
     });
   };
@@ -686,8 +883,6 @@ export default function CompoundPage() {
           </div>
         </header>
 
-        <ToolSharePanel toolId="compound" locale={locale} />
-
         {/* ✅ “설명형 콘텐츠(H2)” 추가: 키워드 자연 삽입 */}
         <section className="card w-full">
           <h2 className="text-base font-semibold mb-2">
@@ -736,106 +931,7 @@ export default function CompoundPage() {
             </div>
           </div>
 
-          <div className="mt-4 border-t border-slate-200 pt-4">
-            <h3 className="text-sm font-semibold">
-              {locale === "ko" ? "빠르게 비교해볼 기본 예시" : "Quick starting examples"}
-            </h3>
-            <ul className="mt-2 grid gap-2 text-sm text-slate-600 md:grid-cols-3">
-              {(locale === "ko"
-                ? [
-                    "원금 1,000만원 · 월 30만원 · 연 5% · 10년",
-                    "월 50만원 · 연 7% · 20년",
-                    "원금 5,000만원 · 연 4% · 15년",
-                  ]
-                : [
-                    "$10,000 principal · $300/month · 5% · 10 years",
-                    "$500/month · 7% · 20 years",
-                    "$50,000 principal · 4% · 15 years",
-                  ]
-              ).map((example) => (
-                <li key={example} className="border-l-2 border-blue-200 pl-3">
-                  {example}
-                </li>
-              ))}
-            </ul>
-          </div>
         </section>        
-
-        {locale === "ko" && (
-          <section className="card w-full">
-            <h2 className="mb-2 text-lg font-semibold">복리 계산기 사용법</h2>
-            <p className="text-sm leading-6 text-slate-600">
-              원금, 월 적립금, 연 수익률, 투자 기간을 입력하면 월복리 기준 미래가치를 계산합니다.
-              세금, 수수료, 물가상승률을 함께 넣으면 세후 금액과 현재가치까지 비교할 수 있어
-              저축·적립식 투자 계획을 세울 때 숫자를 더 현실적으로 볼 수 있습니다.
-            </p>
-
-            <div className="mt-5 grid gap-4 md:grid-cols-2">
-              <section className="rounded-xl border p-4">
-                <h2 className="text-base font-semibold">복리 계산 공식</h2>
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-                  일시금 복리는 <strong>미래가치 = 원금 × (1 + 기간별 수익률) ^ 기간 수</strong>로 계산합니다.
-                  적립식 복리 계산은 매월 납입한 금액을 각각 남은 기간만큼 불린 뒤 모두 합산하는 방식입니다.
-                </p>
-              </section>
-              <section className="rounded-xl border p-4">
-                <h2 className="text-base font-semibold">월복리와 연복리 차이</h2>
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-                  월복리는 수익이 매월 반영되고, 연복리는 1년에 한 번 반영된다고 가정합니다.
-                  같은 연 수익률이라도 기간이 길고 원금이 클수록 복리 주기 차이가 조금씩 커질 수 있습니다.
-                </p>
-              </section>
-            </div>
-
-            <section className="mt-5">
-              <h2 className="text-base font-semibold">적립식 복리 계산 예시</h2>
-              <p className="mt-2 text-sm leading-6 text-slate-600">
-                아래 표는 원금 0원, 연 5%, 10년, 세금·수수료 미반영이라는 단순 가정입니다.
-                실제 계획은 계산기에서 세금, 수수료, 물가상승률을 함께 넣어 다시 비교하세요.
-              </p>
-              <div className="mt-3 overflow-x-auto">
-                <table className="w-full min-w-[560px] border-collapse text-sm">
-                  <thead>
-                    <tr className="bg-slate-50 text-left">
-                      <th className="border p-2">월 적립금</th>
-                      <th className="border p-2">10년 총 납입액</th>
-                      <th className="border p-2">연 5% 월복리 단순 예시</th>
-                      <th className="border p-2">확인 포인트</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="border p-2">30만원</td>
-                      <td className="border p-2">3,600만원</td>
-                      <td className="border p-2">약 4,660만원</td>
-                      <td className="border p-2">소액 장기 적립의 기준선</td>
-                    </tr>
-                    <tr>
-                      <td className="border p-2">50만원</td>
-                      <td className="border p-2">6,000만원</td>
-                      <td className="border p-2">약 7,760만원</td>
-                      <td className="border p-2">월 납입액 변화의 체감 폭</td>
-                    </tr>
-                    <tr>
-                      <td className="border p-2">100만원</td>
-                      <td className="border p-2">1억 2,000만원</td>
-                      <td className="border p-2">약 1억 5,530만원</td>
-                      <td className="border p-2">목표 금액 도달 기간 비교</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </section>
-
-            <section className="mt-5">
-              <h2 className="text-base font-semibold">세금·수수료·물가상승률을 반영해야 하는 이유</h2>
-              <p className="mt-2 text-sm leading-6 text-slate-600">
-                장기 복리에서는 연 0.5% 수수료나 세금 차이도 결과에 누적됩니다. 또 물가가 오르면
-                미래 금액의 구매력이 낮아질 수 있으므로, 단순 미래가치와 현재가치를 함께 보는 편이 안전합니다.
-              </p>
-            </section>
-          </section>
-        )}
 
         {/* Form */}
         <section className="card">
@@ -866,7 +962,12 @@ export default function CompoundPage() {
                 <>
                   {/* Summary */}
                   <div ref={(el) => (sectionEls.current.sum = el)} className="scroll-mt-24">
-                    <CompoundDetailSummary result={result} locale={numberLocale} currency={currency} />
+                    <CompoundDetailSummary
+                      result={result}
+                      locale={numberLocale}
+                      currency={currency}
+                      compact
+                    />
                   </div>
 
                   <ResultAdSlot
@@ -1356,28 +1457,6 @@ export default function CompoundPage() {
               )}
             </div>
 
-            {/* FAQ */}
-                  <div className="card">
-                    <h2 className="text-lg font-semibold mb-3">{t.faqTitle}</h2>
-
-                    <div className="space-y-3">
-                      {faqItems.map((item, idx) => (
-                        <details
-                          key={idx}
-                          className="border border-slate-200 rounded-lg p-3 bg-slate-50"
-                          open={idx === 0}
-                        >
-                          <summary className="cursor-pointer font-medium text-sm">
-                            {item.q}
-                          </summary>
-                          <p className="mt-2 text-sm text-slate-700 whitespace-pre-line">
-                            {item.a}
-                          </p>
-                        </details>
-                      ))}
-                    </div>
-                  </div>
-
                   <div ref={(el) => (sectionEls.current.cta = el)} className="scroll-mt-24">
                     <ToolResultCta
                       locale={locale}
@@ -1404,10 +1483,33 @@ export default function CompoundPage() {
                     </h3>                 
                     <div className="tool-cta-section grid min-w-0 gap-4">
                       <ToolCta lang={lang} type="goal" sourceTool="compound" location="result_cta" />
-                      <ToolCta lang={lang} type="cagr" sourceTool="compound" location="result_cta" />
                       <ToolCta lang={lang} type="dca" sourceTool="compound" location="result_cta" />
+                      <ToolCta lang={lang} type="cagr" sourceTool="compound" location="result_cta" />
+                      <ToolCta lang={lang} type="fire" sourceTool="compound" location="result_cta" />
                     </div>
                   </section>
+
+                  {/* FAQ */}
+                  <div className="card">
+                    <h2 className="text-lg font-semibold mb-3">{t.faqTitle}</h2>
+
+                    <div className="space-y-3">
+                      {faqItems.map((item, idx) => (
+                        <details
+                          key={idx}
+                          className="border border-slate-200 rounded-lg p-3 bg-slate-50"
+                          open={idx === 0}
+                        >
+                          <summary className="cursor-pointer font-medium text-sm">
+                            {item.q}
+                          </summary>
+                          <p className="mt-2 text-sm text-slate-700 whitespace-pre-line">
+                            {item.a}
+                          </p>
+                        </details>
+                      ))}
+                    </div>
+                  </div>
 
             {/* 하단 고정 CTA Bar */}
             {!isExporting && (
@@ -1423,6 +1525,8 @@ export default function CompoundPage() {
             )}
           </>
         )}
+
+        <CompoundSupportContent locale={locale} />
 
         {!hasResult && (
           <section className="card">

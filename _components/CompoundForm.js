@@ -6,7 +6,7 @@ const dict = {
   ko: {
     title: '복리 계산기',
     secBasic: '기본 입력',
-    secCost: '세금 · 수수료 옵션',
+    secCost: '비용 · 물가 옵션',
     secAdvanced: '고급 옵션',
     principalWon: '초기 투자금(만원)',
     principalUsd: '초기 투자금(USD)',
@@ -21,6 +21,12 @@ const dict = {
     compoundingFixedHelp: '현재 검증된 복리 계산은 월복리 기준으로 고정되어 있습니다. 연복리 비교는 후속 검증 후 별도 기능으로 정리할 예정입니다.',
     presetTitle: '검증 샘플',
     presetHelp: 'A~D는 검증 스크립트와 동일한 KRW 기준 샘플입니다. 클릭하면 통화가 KRW로 전환되고 금액은 만원 단위로 입력됩니다.',
+    taxApply: '세금 반영',
+    taxApplyHelp: '세금 제외 시 입력한 세율은 보존되지만 계산에는 반영하지 않습니다.',
+    feeApply: '수수료 반영',
+    feeApplyHelp: '수수료 제외 시 입력한 연 수수료율은 보존되지만 계산에는 반영하지 않습니다.',
+    on: 'ON',
+    off: 'OFF',
     tax: '세율(%, 이자/배당)',
     fee: '연 수수료율(%)',
     inflation: '물가상승률(%)',
@@ -28,7 +34,7 @@ const dict = {
   en: {
     title: 'Compound Interest Calculator',
     secBasic: 'Basic Inputs',
-    secCost: 'Tax & Fee Options',
+    secCost: 'Cost & Inflation Options',
     secAdvanced: 'Advanced',
     principalWon: 'Initial Principal (×10k KRW)',
     principalUsd: 'Initial Principal (USD)',
@@ -43,6 +49,12 @@ const dict = {
     compoundingFixedHelp: 'The verified compound calculation is fixed to monthly compounding. Annual-compounding comparison is reserved for a later verified update.',
     presetTitle: 'Verified samples',
     presetHelp: 'A-D are KRW-based samples used by the verification script. Clicking a preset switches the currency to KRW and fills amounts in 10k KRW units.',
+    taxApply: 'Apply tax',
+    taxApplyHelp: 'When tax is off, the entered rate is preserved but excluded from the calculation.',
+    feeApply: 'Apply fees',
+    feeApplyHelp: 'When fees are off, the entered annual fee rate is preserved but excluded from the calculation.',
+    on: 'ON',
+    off: 'OFF',
     tax: 'Tax rate (%)',
     fee: 'Yearly fee (%)',
     inflation: 'Inflation rate (%)',
@@ -60,6 +72,13 @@ const DEFAULT_FORM = {
   inflationRate: 0,
 };
 
+function resolveToggleValue(value, rate, fallback = true) {
+  if (value === true || value === 'true') return true;
+  if (value === false || value === 'false') return false;
+  if (rate !== undefined && rate !== null && rate !== '') return Number(rate) !== 0;
+  return fallback;
+}
+
 export default function CompoundForm({
   onSubmit,
   locale = 'ko',
@@ -72,15 +91,19 @@ export default function CompoundForm({
 
   const numberLocale = safeLocale === 'ko' ? 'ko-KR' : 'en-US';
 
-  const [showBasic, setShowBasic] = useState(true);
-  const [showCost, setShowCost] = useState(true);
-  const [showAdv, setShowAdv] = useState(false);
-
   const [form, setForm] = useState(() => ({ ...DEFAULT_FORM, ...(initialValues || {}) }));
+  const [applyTax, setApplyTax] = useState(() =>
+    resolveToggleValue(initialValues?.applyTax, initialValues?.taxRatePercent, true)
+  );
+  const [applyFee, setApplyFee] = useState(() =>
+    resolveToggleValue(initialValues?.applyFee, initialValues?.feeRatePercent, true)
+  );
 
   useEffect(() => {
     if (!initialValues) return;
     setForm((prev) => ({ ...prev, ...initialValues }));
+    setApplyTax(resolveToggleValue(initialValues.applyTax, initialValues.taxRatePercent, true));
+    setApplyFee(resolveToggleValue(initialValues.applyFee, initialValues.feeRatePercent, true));
   }, [initialValues]);
 
   const fmt = (v) => {
@@ -102,6 +125,8 @@ export default function CompoundForm({
 
   const handlePresetClick = (sample) => {
     onCurrencyChange?.('KRW');
+    setApplyTax(Number(sample.taxRate) !== 0);
+    setApplyFee(Number(sample.feeRate) !== 0);
     setForm((prev) => ({
       ...prev,
       principal: Math.round(sample.initialAmount / 10_000),
@@ -123,8 +148,8 @@ export default function CompoundForm({
     const monthly = Number(form.monthly) || 0;
     const annualRate = Number(form.annualRate) || 0;
     const years = Number(form.years) || 0;
-    const tax = Number(form.taxRatePercent) || 0;
-    const fee = Number(form.feeRatePercent) || 0;
+    const tax = applyTax ? Number(form.taxRatePercent) : 0;
+    const fee = applyFee ? Number(form.feeRatePercent) : 0;
     const inflation = Number(form.inflationRate) || 0;
 
     const coreValidation = validateCompoundInputs({
@@ -132,8 +157,8 @@ export default function CompoundForm({
       monthlyContribution: Number(form.monthly),
       years: Number(form.years),
       annualReturn: Number(form.annualRate),
-      taxRate: Number(form.taxRatePercent),
-      feeRate: Number(form.feeRatePercent),
+      taxRate: tax,
+      feeRate: fee,
       inflationRate: Number(form.inflationRate),
     });
 
@@ -173,14 +198,14 @@ export default function CompoundForm({
           : 'This is a very long horizon. Long-term assumptions can be sensitive to tax and fee changes.';
     }
 
-    if (tax < 0) {
+    if (applyTax && tax < 0) {
       errors.taxRatePercent =
         safeLocale === 'ko'
           ? '세율은 0 이상이어야 합니다.'
           : 'Tax rate must be 0 or higher.';
     }
 
-    if (fee < 0) {
+    if (applyFee && fee < 0) {
       errors.feeRatePercent =
         safeLocale === 'ko'
           ? '수수료율은 0 이상이어야 합니다.'
@@ -202,19 +227,25 @@ export default function CompoundForm({
     }
 
     return { errors, warnings };
-  }, [form, safeLocale]);
+  }, [applyFee, applyTax, form, safeLocale]);
 
   const disabled = Object.keys(validation.errors).length > 0;
   const disabledReason = Object.values(validation.errors)[0] || '';
 
   const handleSubmit = () => {
     if (disabled) return;
+    const configuredTaxRatePercent = Number(form.taxRatePercent);
+    const configuredFeeRatePercent = Number(form.feeRatePercent);
     onSubmit({
       ...form,
       compounding: 'monthly',
       currency,
-      taxRatePercent: Number(form.taxRatePercent),
-      feeRatePercent: Number(form.feeRatePercent),
+      applyTax,
+      applyFee,
+      configuredTaxRatePercent,
+      configuredFeeRatePercent,
+      taxRatePercent: applyTax ? configuredTaxRatePercent : 0,
+      feeRatePercent: applyFee ? configuredFeeRatePercent : 0,
       inflationRate: Number(form.inflationRate),
     });
   };
@@ -227,42 +258,13 @@ export default function CompoundForm({
 
   return (
     <div className="w-full space-y-4">
-      <div className="rounded-xl border border-slate-200 bg-white p-4">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <div>
-            <div className="text-sm font-semibold text-slate-900">{t.presetTitle}</div>
-            <p className="mt-1 text-xs leading-relaxed text-slate-600">{t.presetHelp}</p>
-          </div>
-        </div>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {Object.entries(COMPOUND_SAMPLE_PRESETS).map(([key, sample]) => (
-            <button
-              key={key}
-              type="button"
-              className="btn-secondary text-xs"
-              title={safeLocale === 'ko' ? sample.labelKo : sample.labelEn}
-              onClick={() => handlePresetClick(sample)}
-            >
-              {safeLocale === 'ko' ? sample.labelKo : sample.labelEn}
-            </button>
-          ))}
-        </div>
-      </div>
-
       {/* ==============================
           섹션 1 — 기본 입력
       =============================== */}
       <div className="border rounded-xl p-4 bg-slate-50">
-        <button
-          type="button"
-          className="w-full text-left font-semibold mb-2"
-          onClick={() => setShowBasic((v) => !v)}
-        >
-          {t.secBasic}
-        </button>
+        <div className="mb-3 font-semibold">{t.secBasic}</div>
 
-        {showBasic && (
-          <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-2">
             <label className="grid gap-1">
               <span className="text-sm">{principalLabel}</span>
               <input
@@ -361,24 +363,74 @@ export default function CompoundForm({
                 </p>
               )}
             </label>
-          </div>
-        )}
+        </div>
+
+        <div className="mt-4 grid gap-2 justify-items-end">
+          {disabledReason && (
+            <p className="text-xs text-red-600" role="alert">
+              {disabledReason}
+            </p>
+          )}
+          <button
+            type="button"
+            className="btn-primary w-full sm:w-auto"
+            data-testid="compound-calculate"
+            disabled={disabled}
+            onClick={handleSubmit}
+          >
+            {t.calc}
+          </button>
+        </div>
       </div>
+
+      <details className="rounded-xl border border-slate-200 bg-white p-4">
+        <summary className="cursor-pointer font-semibold">{t.presetTitle}</summary>
+        <div className="mt-3">
+          <p className="text-xs leading-relaxed text-slate-600">{t.presetHelp}</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {Object.entries(COMPOUND_SAMPLE_PRESETS).map(([key, sample]) => (
+              <button
+                key={key}
+                type="button"
+                className="btn-secondary text-xs"
+                title={safeLocale === 'ko' ? sample.labelKo : sample.labelEn}
+                onClick={() => handlePresetClick(sample)}
+              >
+                {safeLocale === 'ko' ? sample.labelKo : sample.labelEn}
+              </button>
+            ))}
+          </div>
+        </div>
+      </details>
 
       {/* ==============================
           섹션 2 — 세금 · 수수료 옵션
       =============================== */}
-      <div className="border rounded-xl p-4 bg-slate-50">
-        <button
-          type="button"
-          className="w-full text-left font-semibold mb-2"
-          onClick={() => setShowCost((v) => !v)}
-        >
-          {t.secCost}
-        </button>
+      <details className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+        <summary className="cursor-pointer font-semibold">
+          <span>{t.secCost}</span>
+          <span className="ml-2 text-xs font-normal text-slate-500">
+            {t.taxApply} {applyTax ? t.on : t.off} · {t.feeApply} {applyFee ? t.on : t.off}
+          </span>
+        </summary>
 
-        {showCost && (
-          <div className="grid gap-4 md:grid-cols-2">
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          <div className="grid gap-3 rounded-xl border border-slate-200 bg-white p-3">
+            <label className="flex items-start justify-between gap-3">
+              <span>
+                <span className="block text-sm font-medium text-slate-900">{t.taxApply}</span>
+                <span className="mt-1 block text-xs leading-relaxed text-slate-500">{t.taxApplyHelp}</span>
+              </span>
+              <input
+                name="applyTax"
+                type="checkbox"
+                className="mt-1 h-5 w-5 shrink-0 accent-blue-600"
+                data-testid="compound-tax-toggle"
+                checked={applyTax}
+                onChange={(e) => setApplyTax(e.target.checked)}
+              />
+            </label>
+
             <label className="grid gap-1">
               <span className="text-sm">{t.tax}</span>
               <input
@@ -386,8 +438,9 @@ export default function CompoundForm({
                 type="number"
                 step="0.1"
                 min="0"
-                className="input"
+                className="input disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-500"
                 value={form.taxRatePercent}
+                disabled={!applyTax}
                 onChange={handleChange}
                 aria-invalid={!!validation.errors.taxRatePercent}
                 aria-describedby={validation.errors.taxRatePercent ? 'compound-tax-error' : undefined}
@@ -398,6 +451,23 @@ export default function CompoundForm({
                 </p>
               )}
             </label>
+          </div>
+
+          <div className="grid gap-3 rounded-xl border border-slate-200 bg-white p-3">
+            <label className="flex items-start justify-between gap-3">
+              <span>
+                <span className="block text-sm font-medium text-slate-900">{t.feeApply}</span>
+                <span className="mt-1 block text-xs leading-relaxed text-slate-500">{t.feeApplyHelp}</span>
+              </span>
+              <input
+                name="applyFee"
+                type="checkbox"
+                className="mt-1 h-5 w-5 shrink-0 accent-blue-600"
+                data-testid="compound-fee-toggle"
+                checked={applyFee}
+                onChange={(e) => setApplyFee(e.target.checked)}
+              />
+            </label>
 
             <label className="grid gap-1">
               <span className="text-sm">{t.fee}</span>
@@ -406,8 +476,9 @@ export default function CompoundForm({
                 type="number"
                 step="0.1"
                 min="0"
-                className="input"
+                className="input disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-500"
                 value={form.feeRatePercent}
+                disabled={!applyFee}
                 onChange={handleChange}
                 aria-invalid={!!validation.errors.feeRatePercent}
                 aria-describedby={validation.errors.feeRatePercent ? 'compound-fee-error' : undefined}
@@ -418,54 +489,47 @@ export default function CompoundForm({
                 </p>
               )}
             </label>
-
-            <label className="grid gap-1">
-              <span className="text-sm">{t.inflation}</span>
-              <input
-                name="inflationRate"
-                type="number"
-                step="0.1"
-                className="input"
-                value={form.inflationRate}
-                onChange={handleChange}
-                aria-invalid={!!validation.errors.inflationRate}
-                aria-describedby={
-                  validation.errors.inflationRate
-                    ? 'compound-inflation-error'
-                    : validation.warnings.inflationRate
-                      ? 'compound-inflation-warning'
-                      : undefined
-                }
-              />
-              {validation.errors.inflationRate && (
-                <p id="compound-inflation-error" role="alert" className="text-xs text-red-600">
-                  {validation.errors.inflationRate}
-                </p>
-              )}
-              {!validation.errors.inflationRate && validation.warnings.inflationRate && (
-                <p id="compound-inflation-warning" className="text-xs text-amber-700" aria-live="polite">
-                  {validation.warnings.inflationRate}
-                </p>
-              )}
-            </label>
           </div>
-        )}
-      </div>
+
+          <label className="grid gap-1 md:col-span-2">
+            <span className="text-sm">{t.inflation}</span>
+            <input
+              name="inflationRate"
+              type="number"
+              step="0.1"
+              className="input"
+              value={form.inflationRate}
+              onChange={handleChange}
+              aria-invalid={!!validation.errors.inflationRate}
+              aria-describedby={
+                validation.errors.inflationRate
+                  ? 'compound-inflation-error'
+                  : validation.warnings.inflationRate
+                    ? 'compound-inflation-warning'
+                    : undefined
+              }
+            />
+            {validation.errors.inflationRate && (
+              <p id="compound-inflation-error" role="alert" className="text-xs text-red-600">
+                {validation.errors.inflationRate}
+              </p>
+            )}
+            {!validation.errors.inflationRate && validation.warnings.inflationRate && (
+              <p id="compound-inflation-warning" className="text-xs text-amber-700" aria-live="polite">
+                {validation.warnings.inflationRate}
+              </p>
+            )}
+          </label>
+        </div>
+      </details>
 
       {/* ==============================
           섹션 3 — 고급 옵션
       =============================== */}
-      <div className="border rounded-xl p-4 bg-slate-50">
-        <button
-          type="button"
-          className="w-full text-left font-semibold mb-2"
-          onClick={() => setShowAdv((v) => !v)}
-        >
-          {t.secAdvanced}
-        </button>
+      <details className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+        <summary className="cursor-pointer font-semibold">{t.secAdvanced}</summary>
 
-        {showAdv && (
-          <div className="grid gap-4 md:grid-cols-2">
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
             <div className="grid gap-1 rounded-xl border border-blue-100 bg-blue-50 p-3">
               <span className="text-sm font-medium text-slate-900">{t.compounding}</span>
               <div className="text-sm font-semibold text-blue-800">{t.compoundingFixed}</div>
@@ -483,28 +547,8 @@ export default function CompoundForm({
                 <option value="USD">USD $</option>
               </select>
             </label>
-          </div>
-        )}
-      </div>
-
-      {/* ==============================
-          계산 버튼 (항상 맨 아래)
-      =============================== */}
-      <div className="grid gap-2 justify-items-end">
-        {disabledReason && (
-          <p className="text-xs text-red-600" role="alert">
-            {disabledReason}
-          </p>
-        )}
-        <button
-          type="button"
-          className="btn-primary"
-          disabled={disabled}
-          onClick={handleSubmit} 
-        >
-          {t.calc}
-        </button>
-      </div>
+        </div>
+      </details>
     </div>
   );
 }
