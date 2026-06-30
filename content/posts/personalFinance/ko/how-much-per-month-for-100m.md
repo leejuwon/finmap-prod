@@ -10,7 +10,7 @@ category: "재테크"
 postCategory: "personalFinance"
 tags: ["1억 모으기", "월 투자금", "목표 자산", "재테크 계획", "복리", "적립식 투자", "목표자산 계산기", "DCA"]
 tool: ["goal","comp","dca"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429425/blog/personalFinance/monthly-investment-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782832896/blog/insight/how-much-per-month-for-100m/rework-20260701/slot-001-cover.png"
 lang: "ko"
 hreflangEquivalent: false
 ---

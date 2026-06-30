@@ -269,6 +269,46 @@ function updateHtmlImageSlots(raw, slots, changes) {
   });
 }
 
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function updateExistingArticleJsonLdImages(raw, slots, changes) {
+  const mappings = [];
+  for (const slot of slots) {
+    if (!mappings.some((item) => item.oldUrl === slot.oldUrl && item.newCloudinaryUrl === slot.newCloudinaryUrl)) {
+      mappings.push(slot);
+    }
+  }
+  return raw.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi, (scriptBlock) => {
+    if (!/"@type"\s*:\s*"(?:Article|BlogPosting)"/i.test(scriptBlock)) return scriptBlock;
+    const replaceImageValue = (imageValue) => {
+      let nextValue = imageValue;
+      for (const slot of mappings) {
+        const oldUrlPattern = new RegExp(escapeRegExp(slot.oldUrl), 'g');
+        if (!oldUrlPattern.test(nextValue)) continue;
+        oldUrlPattern.lastIndex = 0;
+        nextValue = nextValue.replace(oldUrlPattern, slot.newCloudinaryUrl);
+        changes.push({
+          type: 'json-ld-image',
+          slotId: slot.slotId,
+          before: slot.oldUrl,
+          after: slot.newCloudinaryUrl,
+          line: null,
+        });
+      }
+      return nextValue;
+    };
+    let nextBlock = scriptBlock.replace(/("image"\s*:\s*\[)([\s\S]*?)(\])/g, (full, prefix, imageValues, suffix) => (
+      `${prefix}${replaceImageValue(imageValues)}${suffix}`
+    ));
+    nextBlock = nextBlock.replace(/("image"\s*:\s*")([^"]*)(")/g, (full, prefix, imageValue, suffix) => (
+      `${prefix}${replaceImageValue(imageValue)}${suffix}`
+    ));
+    return nextBlock;
+  });
+}
+
 function defaultReplacementMarkdownReportPath(manifest) {
   return path.join('reports', `post-image-cloudinary-replace-${manifest.slug}-${manifest.dateStamp}.md`);
 }
@@ -371,6 +411,7 @@ function applyReplacementManifest(post, manifest, args) {
   }
   nextRaw = updateMarkdownSlots(nextRaw, slots, report.changes);
   nextRaw = updateHtmlImageSlots(nextRaw, slots, report.changes);
+  nextRaw = updateExistingArticleJsonLdImages(nextRaw, slots, report.changes);
 
   report.remainingOldUrls = slots
     .filter((slot) => nextRaw.includes(slot.oldUrl))

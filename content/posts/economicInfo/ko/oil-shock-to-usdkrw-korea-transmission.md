@@ -9,7 +9,7 @@ category: "경제정보"
 postCategory: "economicInfo"
 tags: ["원달러","USD/KRW","유가","무역수지","수입물가","인플레이션","외국인수급","리스크오프","환율전이","시나리오"]
 tool: ["dca"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673768/blog/insight/oil-shock-to-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782832235/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260701/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -50,7 +50,7 @@ lang: "ko"
 </div>
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769673768/blog/insight/oil-shock-to-cover.png" alt="유가 급등은 무역수지·물가·수급 3경로로 원/달러에 번진다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782832236/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260701/slot-002-cover.png" alt="유가 급등은 무역수지·물가·수급 3경로로 원/달러에 번진다" />
   <figcaption>유가 급등은 무역수지·물가·수급 3경로로 원/달러에 번진다</figcaption>
 </figure>
 
@@ -92,7 +92,7 @@ lang: "ko"
 - <strong>한계:</strong> 스트레스가 “국지적”이면 달러 강세가 제한될 수 있고, 한국 고유 요인(수출, 정책, 수급)으로 반전이 나오기도 합니다.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769673773/blog/insight/oil-shock-to-kr-img1.png" alt="유가 충격은 무역수지·물가 기대·리스크오프 수급을 통해 원/달러로 전이된다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782832238/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260701/slot-003-flow.png" alt="유가 충격은 무역수지·물가 기대·리스크오프 수급을 통해 원/달러로 전이된다" />
   <figcaption>유가 충격은 무역수지·물가 기대·리스크오프 수급을 통해 원/달러로 전이된다</figcaption>
 </figure>
 
@@ -151,7 +151,7 @@ lang: "ko"
 기업은 원가가 오를 때 가격 전가를 고민하고, 가계는 체감물가가 오를 때 심리를 바꾸며, 시장은 그 과정이 정책 반응을 바꿀지(혹은 금리의 경로를 바꿀지)를 먼저 가격에 반영합니다.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769673774/blog/insight/oil-shock-to-kr-img2.png" alt="수입물가와 금리 기대가 움직이면 환율이 CPI보다 먼저 반응할 수 있다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782832240/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260701/slot-004-chart.png" alt="수입물가와 금리 기대가 움직이면 환율이 CPI보다 먼저 반응할 수 있다" />
   <figcaption>수입물가와 금리 기대가 움직이면 환율이 CPI보다 먼저 반응할 수 있다</figcaption>
 </figure>
 
@@ -208,7 +208,7 @@ lang: "ko"
 아래 표는 유가 급등 국면을 3개 상태로 단순화하고, 각 상태가 바뀌는 <strong>관측 가능한 Flip 조건</strong>을 넣었습니다.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769673775/blog/insight/oil-shock-to-kr-img3.png" alt="프리미엄과 공급 쇼크를 구분하고 Flip 조건을 정하면 환율 대응이 과열되지 않는다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782832241/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260701/slot-005-comparison.png" alt="프리미엄과 공급 쇼크를 구분하고 Flip 조건을 정하면 환율 대응이 과열되지 않는다" />
   <figcaption>프리미엄과 공급 쇼크를 구분하고 Flip 조건을 정하면 환율 대응이 과열되지 않는다</figcaption>
 </figure>
 
@@ -328,10 +328,10 @@ lang: "ko"
     "@id": "https://www.finmaphub.com/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission"
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673768/blog/insight/oil-shock-to-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673773/blog/insight/oil-shock-to-kr-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673774/blog/insight/oil-shock-to-kr-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673775/blog/insight/oil-shock-to-kr-img3.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782832235/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260701/slot-001-cover.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782832238/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260701/slot-003-flow.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782832240/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260701/slot-004-chart.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782832241/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260701/slot-005-comparison.png"
   ]
 }
 </script>

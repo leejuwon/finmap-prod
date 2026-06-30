@@ -9,7 +9,7 @@ category: "경제정보"
 postCategory: "economicInfo"
 tags: ["호르무즈해협","중동리스크","유가","보험료","운임","리스크프리미엄","공급충격","WTI","인플레이션","원달러","시나리오"]
 tool: ["dca"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673760/blog/insight/hormuz-risk-oil-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782831674/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260630/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -50,7 +50,7 @@ lang: "ko"
 </div>
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769673760/blog/insight/hormuz-risk-oil-cover.png" alt="호르무즈 리스크는 봉쇄보다 보험료·운임 프리미엄이 먼저 유가에 반영되는 경우가 많다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782831675/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260630/slot-002-cover.png" alt="호르무즈 리스크는 봉쇄보다 보험료·운임 프리미엄이 먼저 유가에 반영되는 경우가 많다" />
   <figcaption>호르무즈 리스크는 봉쇄보다 보험료·운임 프리미엄이 먼저 유가에 반영되는 경우가 많다</figcaption>
 </figure>
 
@@ -93,7 +93,7 @@ lang: "ko"
 - 한계: 환헤지/수출입 구조에 따라 체감 충격이 달라서, “국가/업종/기업별”로 분해가 필요합니다
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769673765/blog/insight/hormuz-risk-oil-kr-img1.png" alt="호르무즈 리스크는 보험료·운임·환율 3변수가 합쳐져 유가 프리미엄으로 번역된다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782831676/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260630/slot-003-body.png" alt="호르무즈 리스크는 보험료·운임·환율 3변수가 합쳐져 유가 프리미엄으로 번역된다" />
   <figcaption>호르무즈 리스크는 보험료·운임·환율 3변수가 합쳐져 유가 프리미엄으로 번역된다</figcaption>
 </figure>
 
@@ -121,7 +121,7 @@ lang: "ko"
 </div>
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769673766/blog/insight/hormuz-risk-oil-kr-img2.png" alt="공급 쇼크와 프리미엄은 확인 데이터가 다르며 Flip 조건으로 구분할 수 있다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782831677/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260630/slot-004-body.png" alt="공급 쇼크와 프리미엄은 확인 데이터가 다르며 Flip 조건으로 구분할 수 있다" />
   <figcaption>공급 쇼크와 프리미엄은 확인 데이터가 다르며 Flip 조건으로 구분할 수 있다</figcaption>
 </figure>
 
@@ -195,7 +195,7 @@ lang: "ko"
 - [원/달러 환율을 구조로 읽는 기초](/posts/economicInfo/fx-basics)  
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769673767/blog/insight/hormuz-risk-oil-kr-img3.png" alt="호르무즈 이슈는 봉쇄보다 프리미엄을 먼저 보고 Flip 조건으로 과열을 피한다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782831678/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260630/slot-005-chart.png" alt="호르무즈 이슈는 봉쇄보다 프리미엄을 먼저 보고 Flip 조건으로 과열을 피한다" />
   <figcaption>호르무즈 이슈는 봉쇄보다 프리미엄을 먼저 보고 Flip 조건으로 과열을 피한다</figcaption>
 </figure>
 
@@ -281,10 +281,10 @@ lang: "ko"
   "articleSection": "경제정보",
   "keywords": ["호르무즈해협","중동리스크","유가","보험료","운임","리스크프리미엄","공급충격","WTI","인플레이션","원달러","시나리오"],
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673760/blog/insight/hormuz-risk-oil-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673765/blog/insight/hormuz-risk-oil-kr-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673766/blog/insight/hormuz-risk-oil-kr-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673767/blog/insight/hormuz-risk-oil-kr-img3.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782831674/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260630/slot-001-cover.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782831676/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260630/slot-003-body.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782831677/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260630/slot-004-body.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782831678/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260630/slot-005-chart.png"
   ],
   "mainEntityOfPage": {
     "@type": "WebPage",

@@ -11,7 +11,7 @@ category: "재테크"
 postCategory: "personalFinance"
 tags: ["주택대출", "DSR 계산기", "LTV 계산기", "주담대 한도", "대출 리스크", "비상금", "부동산 실거래", "아파트 구매 가능 금액"]
 tool: ["dsr-ltv"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1769863768/blog/insight/mortgage-risk-checklist-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782831052/blog/insight/mortgage-risk-checklist-dsr-variable/rework-20260630/slot-001-cover.png"
 lang: "ko"
 ---
 

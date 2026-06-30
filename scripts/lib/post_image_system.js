@@ -1033,7 +1033,210 @@ function backgroundSvg(w, h, palette) {
   `;
 }
 
+function renderMarketMapCover(image, layout) {
+  const w = image.width;
+  const h = image.height;
+  const safe = safeArea(w, h);
+  const palette = image.palette || CATEGORY_PALETTES.neutral;
+  const panel = { id: 'cover-panel', x: safe.x, y: 340, w: w - safe.x * 2, h: 390 };
+  const chart = { id: 'cover-chart', x: panel.x + 46, y: panel.y + 56, w: 330, h: 264 };
+  const impactX = panel.x + panel.w - 376;
+  const impactW = 330;
+  const impactH = 76;
+  const cards = image.cards.slice(0, 3);
+  addBox(layout, image, panel);
+  addBox(layout, image, chart);
+
+  return `
+    ${backgroundSvg(w, h, palette)}
+    ${circleSvg({ cx: w - 178, cy: 142, r: 112, fill: palette.mutedAccent, opacity: 0.16 })}
+    ${circleSvg({ cx: w - 104, cy: 248, r: 48, fill: palette.accent, opacity: 0.20 })}
+    ${textBlock(layout, image, { x: safe.x, y: 128, value: image.keyword, size: 28, weight: 900, fill: palette.accent, maxWidth: 650, maxLines: 1, role: 'keyword' })}
+    ${textBlock(layout, image, { x: safe.x, y: 222, value: image.title, size: 68, weight: 900, fill: palette.primaryText, maxWidth: 1120, maxLines: 2, minSize: 34, role: 'title' })}
+    ${textBlock(layout, image, { x: safe.x, y: 291, value: image.subtitle, size: 28, weight: 800, fill: palette.secondaryText, maxWidth: 1020, maxLines: 1, role: 'subtitle' })}
+    ${rectSvg({ ...panel, r: 34, fill: '#203247', stroke: palette.cardBorder, opacity: 0.96 })}
+    ${rectSvg({ ...chart, r: 28, fill: palette.cardBackground, stroke: palette.cardBorder })}
+    ${textBlock(layout, image, { x: chart.x + 30, y: chart.y + 55, value: 'USD/KRW', size: 30, weight: 900, fill: COLORS.navy, maxWidth: chart.w - 60, maxLines: 1, parentId: chart.id, role: 'card-label' })}
+    ${textBlock(layout, image, { x: chart.x + 30, y: chart.y + 98, value: image.chartLabel || '원화 약세 신호', size: 22, weight: 800, fill: COLORS.slate, maxWidth: chart.w - 60, maxLines: 1, parentId: chart.id, role: 'panel-note' })}
+    <path d="M ${chart.x + 34} ${chart.y + 218} C ${chart.x + 92} ${chart.y + 210}, ${chart.x + 105} ${chart.y + 168}, ${chart.x + 150} ${chart.y + 176} S ${chart.x + 236} ${chart.y + 98}, ${chart.x + 292} ${chart.y + 116}" fill="none" stroke="${palette.accent}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M ${chart.x + 278} ${chart.y + 96} L ${chart.x + 302} ${chart.y + 114} L ${chart.x + 274} ${chart.y + 126}" fill="${palette.accent}"/>
+    ${circleSvg({ cx: panel.x + 548, cy: panel.y + 190, r: 78, fill: palette.secondaryAccent, opacity: 0.95 })}
+    ${circleSvg({ cx: panel.x + 738, cy: panel.y + 190, r: 78, fill: palette.accent, opacity: 0.95 })}
+    ${textBlock(layout, image, { x: panel.x + 548, y: panel.y + 202, value: 'USD', size: 34, weight: 900, fill: '#ffffff', maxWidth: 116, maxLines: 1, anchor: 'middle', role: 'card-label' })}
+    ${textBlock(layout, image, { x: panel.x + 738, y: panel.y + 202, value: 'KRW', size: 34, weight: 900, fill: '#ffffff', maxWidth: 116, maxLines: 1, anchor: 'middle', role: 'card-label' })}
+    ${lineSvg({ x1: panel.x + 626, y1: panel.y + 162, x2: panel.x + 660, y2: panel.y + 162, stroke: palette.tertiaryAccent, sw: 7 })}
+    <path d="M ${panel.x + 656} ${panel.y + 148} L ${panel.x + 678} ${panel.y + 162} L ${panel.x + 656} ${panel.y + 176}" fill="${palette.tertiaryAccent}"/>
+    ${lineSvg({ x1: panel.x + 660, y1: panel.y + 218, x2: panel.x + 626, y2: panel.y + 218, stroke: palette.mutedAccent, sw: 7 })}
+    <path d="M ${panel.x + 630} ${panel.y + 204} L ${panel.x + 608} ${panel.y + 218} L ${panel.x + 630} ${panel.y + 232}" fill="${palette.mutedAccent}"/>
+    ${textBlock(layout, image, { x: panel.x + 643, y: panel.y + 305, value: image.hubLabel || '환율 변화', size: 27, weight: 900, fill: palette.primaryText, maxWidth: 240, maxLines: 1, anchor: 'middle', role: 'card-label' })}
+    ${cards.map((card, index) => {
+      const y = panel.y + 46 + index * 108;
+      const box = { id: `cover-card-${index + 1}`, x: impactX, y, w: impactW, h: impactH };
+      addBox(layout, image, box);
+      const color = index === 0 ? palette.accent : index === 1 ? palette.secondaryAccent : palette.tertiaryAccent;
+      addConnector(layout, image, { x1: panel.x + 820, y1: panel.y + 190, x2: box.x - 20, y2: y + impactH / 2 });
+      return `
+        ${lineSvg({ x1: panel.x + 820, y1: panel.y + 190, x2: box.x - 20, y2: y + impactH / 2, stroke: color, sw: 4, opacity: 0.78 })}
+        ${circleSvg({ cx: box.x - 20, cy: y + impactH / 2, r: 8, fill: color })}
+        ${rectSvg({ ...box, r: 22, fill: palette.cardBackground, stroke: color, sw: 3 })}
+        ${textBlock(layout, image, { x: box.x + 28, y: y + impactH / 2, value: card, size: 27, weight: 900, fill: COLORS.navy, maxWidth: box.w - 56, maxLines: 2, minSize: 22, maxHeight: box.h - 16, verticalAnchor: 'middle', parentId: box.id, role: 'card-label' })}
+      `;
+    }).join('')}
+    ${textBlock(layout, image, { x: w - safe.x, y: h - safe.y - 14, value: 'FinMap', size: 28, weight: 900, fill: palette.mutedText, maxWidth: 180, maxLines: 1, anchor: 'end', role: 'brand' })}
+  `;
+}
+
+function renderMortgageRiskCover(image, layout) {
+  const w = image.width;
+  const h = image.height;
+  const safe = safeArea(w, h);
+  const palette = image.palette || CATEGORY_PALETTES.neutral;
+  const panel = { id: 'cover-panel', x: safe.x, y: 340, w: w - safe.x * 2, h: 390 };
+  const houseCard = { id: 'cover-house', x: panel.x + 46, y: panel.y + 56, w: 350, h: 264 };
+  const impactX = panel.x + panel.w - 376;
+  const impactW = 330;
+  const impactH = 76;
+  const cards = image.cards.slice(0, 3);
+  addBox(layout, image, panel);
+  addBox(layout, image, houseCard);
+
+  return `
+    ${backgroundSvg(w, h, palette)}
+    ${circleSvg({ cx: w - 178, cy: 142, r: 112, fill: palette.mutedAccent, opacity: 0.16 })}
+    ${circleSvg({ cx: w - 104, cy: 248, r: 48, fill: palette.accent, opacity: 0.20 })}
+    ${textBlock(layout, image, { x: safe.x, y: 128, value: image.keyword, size: 28, weight: 900, fill: palette.accent, maxWidth: 680, maxLines: 1, role: 'keyword' })}
+    ${textBlock(layout, image, { x: safe.x, y: 222, value: image.title, size: 68, weight: 900, fill: palette.primaryText, maxWidth: 1120, maxLines: 2, minSize: 34, role: 'title' })}
+    ${textBlock(layout, image, { x: safe.x, y: 291, value: image.subtitle, size: 28, weight: 800, fill: palette.secondaryText, maxWidth: 1020, maxLines: 1, role: 'subtitle' })}
+    ${rectSvg({ ...panel, r: 34, fill: '#23403d', stroke: palette.cardBorder, opacity: 0.96 })}
+    ${rectSvg({ ...houseCard, r: 28, fill: palette.cardBackground, stroke: palette.cardBorder })}
+    ${textBlock(layout, image, { x: houseCard.x + 30, y: houseCard.y + 55, value: image.houseLabel || '후보 집값', size: 27, weight: 900, fill: COLORS.navy, maxWidth: houseCard.w - 60, maxLines: 1, parentId: houseCard.id, role: 'card-label' })}
+    <path d="M ${houseCard.x + 72} ${houseCard.y + 160} L ${houseCard.x + 175} ${houseCard.y + 82} L ${houseCard.x + 278} ${houseCard.y + 160}" fill="none" stroke="${palette.accent}" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M ${houseCard.x + 100} ${houseCard.y + 151} V ${houseCard.y + 230} H ${houseCard.x + 250} V ${houseCard.y + 151}" fill="${palette.mutedAccent}" opacity="0.22" stroke="${palette.accent}" stroke-width="8" stroke-linejoin="round"/>
+    <rect x="${houseCard.x + 158}" y="${houseCard.y + 181}" width="42" height="49" rx="8" fill="${palette.accent}" opacity="0.9"/>
+    <path d="M ${panel.x + 528} ${panel.y + 92} L ${panel.x + 638} ${panel.y + 58} L ${panel.x + 748} ${panel.y + 92} V ${panel.y + 190} C ${panel.x + 748} ${panel.y + 268}, ${panel.x + 687} ${panel.y + 318}, ${panel.x + 638} ${panel.y + 340} C ${panel.x + 589} ${panel.y + 318}, ${panel.x + 528} ${panel.y + 268}, ${panel.x + 528} ${panel.y + 190} Z" fill="${palette.accent}" opacity="0.96"/>
+    <path d="M ${panel.x + 580} ${panel.y + 184} L ${panel.x + 622} ${panel.y + 226} L ${panel.x + 700} ${panel.y + 142}" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    ${textBlock(layout, image, { x: panel.x + 638, y: panel.y + 292, value: image.hubLabel || '안전 버퍼', size: 29, weight: 900, fill: '#ffffff', maxWidth: 190, maxLines: 1, anchor: 'middle', role: 'card-label' })}
+    ${cards.map((card, index) => {
+      const y = panel.y + 46 + index * 108;
+      const box = { id: `cover-card-${index + 1}`, x: impactX, y, w: impactW, h: impactH };
+      addBox(layout, image, box);
+      const color = index === 0 ? palette.accent : index === 1 ? palette.secondaryAccent : palette.tertiaryAccent;
+      addConnector(layout, image, { x1: panel.x + 770, y1: panel.y + 190, x2: box.x - 20, y2: y + impactH / 2 });
+      return `
+        ${lineSvg({ x1: panel.x + 770, y1: panel.y + 190, x2: box.x - 20, y2: y + impactH / 2, stroke: color, sw: 4, opacity: 0.78 })}
+        ${circleSvg({ cx: box.x - 20, cy: y + impactH / 2, r: 8, fill: color })}
+        ${rectSvg({ ...box, r: 22, fill: palette.cardBackground, stroke: color, sw: 3 })}
+        ${textBlock(layout, image, { x: box.x + 28, y: y + impactH / 2, value: card, size: 27, weight: 900, fill: COLORS.navy, maxWidth: box.w - 56, maxLines: 2, minSize: 22, maxHeight: box.h - 16, verticalAnchor: 'middle', parentId: box.id, role: 'card-label' })}
+      `;
+    }).join('')}
+    ${textBlock(layout, image, { x: w - safe.x, y: h - safe.y - 14, value: 'FinMap', size: 28, weight: 900, fill: palette.mutedText, maxWidth: 180, maxLines: 1, anchor: 'end', role: 'brand' })}
+  `;
+}
+
+function renderOilRiskCover(image, layout) {
+  const w = image.width;
+  const h = image.height;
+  const safe = safeArea(w, h);
+  const palette = image.palette || CATEGORY_PALETTES.neutral;
+  const panel = { id: 'cover-panel', x: safe.x, y: 340, w: w - safe.x * 2, h: 390 };
+  const routeCard = { id: 'cover-route', x: panel.x + 46, y: panel.y + 56, w: 350, h: 264 };
+  const impactX = panel.x + panel.w - 376;
+  const impactW = 330;
+  const impactH = 76;
+  const cards = image.cards.slice(0, 3);
+  addBox(layout, image, panel);
+  addBox(layout, image, routeCard);
+
+  return `
+    ${backgroundSvg(w, h, palette)}
+    ${circleSvg({ cx: w - 178, cy: 142, r: 112, fill: palette.mutedAccent, opacity: 0.16 })}
+    ${circleSvg({ cx: w - 104, cy: 248, r: 48, fill: palette.accent, opacity: 0.20 })}
+    ${textBlock(layout, image, { x: safe.x, y: 128, value: image.keyword, size: 28, weight: 900, fill: palette.accent, maxWidth: 680, maxLines: 1, role: 'keyword' })}
+    ${textBlock(layout, image, { x: safe.x, y: 222, value: image.title, size: 68, weight: 900, fill: palette.primaryText, maxWidth: 1120, maxLines: 2, minSize: 34, role: 'title' })}
+    ${textBlock(layout, image, { x: safe.x, y: 291, value: image.subtitle, size: 28, weight: 800, fill: palette.secondaryText, maxWidth: 1060, maxLines: 1, role: 'subtitle' })}
+    ${rectSvg({ ...panel, r: 34, fill: '#1d2f49', stroke: palette.cardBorder, opacity: 0.97 })}
+    ${rectSvg({ ...routeCard, r: 28, fill: palette.cardBackground, stroke: palette.cardBorder })}
+    ${textBlock(layout, image, { x: routeCard.x + 30, y: routeCard.y + 55, value: image.routeLabel || '원유 수송로', size: 27, weight: 900, fill: COLORS.navy, maxWidth: routeCard.w - 60, maxLines: 1, parentId: routeCard.id, role: 'card-label' })}
+    <path d="M ${routeCard.x + 30} ${routeCard.y + 218} C ${routeCard.x + 98} ${routeCard.y + 194}, ${routeCard.x + 194} ${routeCard.y + 244}, ${routeCard.x + 320} ${routeCard.y + 205}" fill="none" stroke="${palette.mutedAccent}" stroke-width="10" stroke-linecap="round" opacity="0.72"/>
+    <path d="M ${routeCard.x + 68} ${routeCard.y + 152} H ${routeCard.x + 246} L ${routeCard.x + 286} ${routeCard.y + 190} H ${routeCard.x + 98} Z" fill="${palette.accent}" opacity="0.94"/>
+    <rect x="${routeCard.x + 112}" y="${routeCard.y + 118}" width="92" height="36" rx="8" fill="${palette.secondaryAccent}"/>
+    <rect x="${routeCard.x + 130}" y="${routeCard.y + 91}" width="12" height="29" rx="4" fill="${palette.tertiaryAccent}"/>
+    <rect x="${routeCard.x + 153}" y="${routeCard.y + 91}" width="12" height="29" rx="4" fill="${palette.tertiaryAccent}"/>
+    <rect x="${routeCard.x + 176}" y="${routeCard.y + 91}" width="12" height="29" rx="4" fill="${palette.tertiaryAccent}"/>
+    <path d="M ${panel.x + 642} ${panel.y + 56} C ${panel.x + 606} ${panel.y + 120}, ${panel.x + 548} ${panel.y + 186}, ${panel.x + 548} ${panel.y + 242} C ${panel.x + 548} ${panel.y + 306}, ${panel.x + 590} ${panel.y + 344}, ${panel.x + 642} ${panel.y + 344} C ${panel.x + 694} ${panel.y + 344}, ${panel.x + 736} ${panel.y + 306}, ${panel.x + 736} ${panel.y + 242} C ${panel.x + 736} ${panel.y + 186}, ${panel.x + 678} ${panel.y + 120}, ${panel.x + 642} ${panel.y + 56} Z" fill="${palette.tertiaryAccent}" opacity="0.96"/>
+    ${textBlock(layout, image, { x: panel.x + 642, y: panel.y + 258, value: image.hubLabel || '도착 비용', size: 29, weight: 900, fill: '#172033', maxWidth: 190, maxLines: 1, anchor: 'middle', role: 'card-label' })}
+    ${cards.map((card, index) => {
+      const y = panel.y + 46 + index * 108;
+      const box = { id: `cover-card-${index + 1}`, x: impactX, y, w: impactW, h: impactH };
+      addBox(layout, image, box);
+      const color = index === 0 ? palette.accent : index === 1 ? palette.secondaryAccent : palette.tertiaryAccent;
+      addConnector(layout, image, { x1: panel.x + 758, y1: panel.y + 202, x2: box.x - 20, y2: y + impactH / 2 });
+      return `
+        ${lineSvg({ x1: panel.x + 758, y1: panel.y + 202, x2: box.x - 20, y2: y + impactH / 2, stroke: color, sw: 4, opacity: 0.80 })}
+        ${circleSvg({ cx: box.x - 20, cy: y + impactH / 2, r: 8, fill: color })}
+        ${rectSvg({ ...box, r: 22, fill: palette.cardBackground, stroke: color, sw: 3 })}
+        ${textBlock(layout, image, { x: box.x + 28, y: y + impactH / 2, value: card, size: 27, weight: 900, fill: COLORS.navy, maxWidth: box.w - 56, maxLines: 2, minSize: 22, maxHeight: box.h - 16, verticalAnchor: 'middle', parentId: box.id, role: 'card-label' })}
+      `;
+    }).join('')}
+    ${textBlock(layout, image, { x: w - safe.x, y: h - safe.y - 14, value: 'FinMap', size: 28, weight: 900, fill: palette.mutedText, maxWidth: 180, maxLines: 1, anchor: 'end', role: 'brand' })}
+  `;
+}
+
+function renderSavingsGoalCover(image, layout) {
+  const w = image.width;
+  const h = image.height;
+  const safe = safeArea(w, h);
+  const palette = image.palette || CATEGORY_PALETTES.neutral;
+  const panel = { id: 'cover-panel', x: safe.x, y: 340, w: w - safe.x * 2, h: 390 };
+  const goalCard = { id: 'cover-goal', x: panel.x + 46, y: panel.y + 56, w: 350, h: 264 };
+  const impactX = panel.x + panel.w - 376;
+  const impactW = 330;
+  const impactH = 76;
+  const cards = image.cards.slice(0, 3);
+  addBox(layout, image, panel);
+  addBox(layout, image, goalCard);
+
+  return `
+    ${backgroundSvg(w, h, palette)}
+    ${circleSvg({ cx: w - 178, cy: 142, r: 112, fill: palette.mutedAccent, opacity: 0.16 })}
+    ${circleSvg({ cx: w - 104, cy: 248, r: 48, fill: palette.accent, opacity: 0.20 })}
+    ${textBlock(layout, image, { x: safe.x, y: 128, value: image.keyword, size: 28, weight: 900, fill: palette.accent, maxWidth: 680, maxLines: 1, role: 'keyword' })}
+    ${textBlock(layout, image, { x: safe.x, y: 222, value: image.title, size: 68, weight: 900, fill: palette.primaryText, maxWidth: 1120, maxLines: 2, minSize: 34, role: 'title' })}
+    ${textBlock(layout, image, { x: safe.x, y: 291, value: image.subtitle, size: 28, weight: 800, fill: palette.secondaryText, maxWidth: 1060, maxLines: 1, role: 'subtitle' })}
+    ${rectSvg({ ...panel, r: 34, fill: '#23403d', stroke: palette.cardBorder, opacity: 0.96 })}
+    ${rectSvg({ ...goalCard, r: 28, fill: palette.cardBackground, stroke: palette.cardBorder })}
+    ${textBlock(layout, image, { x: goalCard.x + 30, y: goalCard.y + 55, value: image.goalLabel || '월 적립 성장', size: 27, weight: 900, fill: COLORS.navy, maxWidth: goalCard.w - 60, maxLines: 1, parentId: goalCard.id, role: 'card-label' })}
+    <rect x="${goalCard.x + 54}" y="${goalCard.y + 174}" width="54" height="62" rx="14" fill="${palette.mutedAccent}" opacity="0.78"/>
+    <rect x="${goalCard.x + 135}" y="${goalCard.y + 138}" width="54" height="98" rx="14" fill="${palette.secondaryAccent}" opacity="0.86"/>
+    <rect x="${goalCard.x + 216}" y="${goalCard.y + 96}" width="54" height="140" rx="14" fill="${palette.accent}" opacity="0.94"/>
+    <path d="M ${goalCard.x + 50} ${goalCard.y + 182} C ${goalCard.x + 118} ${goalCard.y + 174}, ${goalCard.x + 176} ${goalCard.y + 126}, ${goalCard.x + 280} ${goalCard.y + 78}" fill="none" stroke="${palette.tertiaryAccent}" stroke-width="10" stroke-linecap="round"/>
+    <path d="M ${goalCard.x + 264} ${goalCard.y + 68} L ${goalCard.x + 292} ${goalCard.y + 72} L ${goalCard.x + 276} ${goalCard.y + 95}" fill="${palette.tertiaryAccent}"/>
+    ${circleSvg({ cx: panel.x + 642, cy: panel.y + 190, r: 118, fill: palette.mutedAccent, opacity: 0.22 })}
+    <circle cx="${panel.x + 642}" cy="${panel.y + 190}" r="92" fill="${palette.accent}" stroke="${palette.cardBackground}" stroke-width="10"/>
+    ${textBlock(layout, image, { x: panel.x + 642, y: panel.y + 203, value: image.hubLabel || '1억원', size: 42, weight: 900, fill: '#ffffff', maxWidth: 170, maxLines: 1, anchor: 'middle', role: 'card-label' })}
+    ${textBlock(layout, image, { x: panel.x + 642, y: panel.y + 330, value: image.assumptionLabel || '연 5% 가정', size: 24, weight: 900, fill: palette.primaryText, maxWidth: 220, maxLines: 1, anchor: 'middle', role: 'panel-note' })}
+    ${cards.map((card, index) => {
+      const y = panel.y + 46 + index * 108;
+      const box = { id: `cover-card-${index + 1}`, x: impactX, y, w: impactW, h: impactH };
+      addBox(layout, image, box);
+      const color = index === 0 ? palette.accent : index === 1 ? palette.secondaryAccent : palette.tertiaryAccent;
+      addConnector(layout, image, { x1: panel.x + 780, y1: panel.y + 190, x2: box.x - 20, y2: y + impactH / 2 });
+      return `
+        ${lineSvg({ x1: panel.x + 780, y1: panel.y + 190, x2: box.x - 20, y2: y + impactH / 2, stroke: color, sw: 4, opacity: 0.78 })}
+        ${circleSvg({ cx: box.x - 20, cy: y + impactH / 2, r: 8, fill: color })}
+        ${rectSvg({ ...box, r: 22, fill: palette.cardBackground, stroke: color, sw: 3 })}
+        ${textBlock(layout, image, { x: box.x + 28, y: y + impactH / 2, value: card, size: 27, weight: 900, fill: COLORS.navy, maxWidth: box.w - 56, maxLines: 2, minSize: 22, maxHeight: box.h - 16, verticalAnchor: 'middle', parentId: box.id, role: 'card-label' })}
+      `;
+    }).join('')}
+    ${textBlock(layout, image, { x: w - safe.x, y: h - safe.y - 14, value: 'FinMap', size: 28, weight: 900, fill: palette.mutedText, maxWidth: 180, maxLines: 1, anchor: 'end', role: 'brand' })}
+  `;
+}
+
 function renderCover(image, layout) {
+  if (image.visualStyle === 'market-map') return renderMarketMapCover(image, layout);
+  if (image.visualStyle === 'mortgage-risk') return renderMortgageRiskCover(image, layout);
+  if (image.visualStyle === 'oil-risk') return renderOilRiskCover(image, layout);
+  if (image.visualStyle === 'savings-goal') return renderSavingsGoalCover(image, layout);
   const w = image.width;
   const h = image.height;
   const safe = safeArea(w, h);
@@ -1126,7 +1329,7 @@ function renderComparison(image, layout) {
         ${circleSvg({ cx: x + 62, cy: y + 66, r: 34, fill: color, opacity: 0.95 })}
         ${textBlock(layout, image, { x: x + 62, y: y + 78, value: String(index + 1), size: 28, weight: 900, fill: palette.cardBackground, maxWidth: 42, maxLines: 1, anchor: 'middle', parentId: box.id, role: 'panel-number' })}
         ${textBlock(layout, image, { x: x + 34, y: y + 145, value: item, size: 34, weight: 900, fill: COLORS.navy, maxWidth: cardW - 68, maxLines: 2, minSize: 22, maxHeight: 90, verticalAnchor: 'middle', parentId: box.id, role: 'panel-label' })}
-        ${textBlock(layout, image, { x: x + 34, y: y + 212, value: image.lang === 'en' ? 'Compare before action' : '행동 전 비교', size: 22, weight: 800, fill: COLORS.slate, maxWidth: cardW - 68, maxLines: 1, parentId: box.id, role: 'panel-note' })}
+        ${textBlock(layout, image, { x: x + 34, y: y + 212, value: (image.panelNotes || [])[index] || (image.lang === 'en' ? 'Compare before action' : '행동 전 비교'), size: 22, weight: 800, fill: COLORS.slate, maxWidth: cardW - 68, maxLines: 1, parentId: box.id, role: 'panel-note' })}
       `;
     }).join('')}
   `;
