@@ -1,0 +1,76 @@
+{
+  "localDir": "public/images/posts/tariffs-growth-margins-fx-package-shock/rework-20260630",
+  "localDirAbsolute": "C:/finmap/public/images/posts/tariffs-growth-margins-fx-package-shock/rework-20260630",
+  "cloudinaryFolder": "blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630",
+  "manifestPath": "reports/cloudinary-tariffs-growth-margins-fx-package-shock-rework-20260630.json",
+  "uploadedAt": "2026-06-30T06:41:06.481Z",
+  "dryRun": false,
+  "candidateCount": 5,
+  "successCount": 5,
+  "failCount": 0,
+  "skippedCount": 1,
+  "images": [
+    {
+      "fileName": "slot-001-cover.png",
+      "localPath": "public/images/posts/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-001-cover.png",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1782801667/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-001-cover.png",
+      "publicId": "blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-001-cover",
+      "width": 1600,
+      "height": 900,
+      "bytes": 51487,
+      "format": "png"
+    },
+    {
+      "fileName": "slot-002-cover.png",
+      "localPath": "public/images/posts/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-002-cover.png",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1782801668/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-002-cover.png",
+      "publicId": "blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-002-cover",
+      "width": 1600,
+      "height": 900,
+      "bytes": 50065,
+      "format": "png"
+    },
+    {
+      "fileName": "slot-003-body.png",
+      "localPath": "public/images/posts/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-003-body.png",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1782801669/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-003-body.png",
+      "publicId": "blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-003-body",
+      "width": 1200,
+      "height": 675,
+      "bytes": 40746,
+      "format": "png"
+    },
+    {
+      "fileName": "slot-004-comparison.png",
+      "localPath": "public/images/posts/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-004-comparison.png",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1782801670/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-004-comparison.png",
+      "publicId": "blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-004-comparison",
+      "width": 1200,
+      "height": 675,
+      "bytes": 42530,
+      "format": "png"
+    },
+    {
+      "fileName": "slot-005-comparison.png",
+      "localPath": "public/images/posts/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-005-comparison.png",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1782801671/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-005-comparison.png",
+      "publicId": "blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-005-comparison",
+      "width": 1200,
+      "height": 675,
+      "bytes": 43659,
+      "format": "png"
+    }
+  ],
+  "skipped": [
+    {
+      "fileName": "image-layout-manifest.json",
+      "reason": "UNSUPPORTED_EXTENSION"
+    }
+  ],
+  "errors": []
+}

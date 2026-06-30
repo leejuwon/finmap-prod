@@ -9,7 +9,7 @@ category: "경제정보"
 postCategory: "economicInfo"
 tags: ["관세","무역전쟁","교역","성장","기업마진","가격전가","환율","원달러","인플레이션","TNX","리스크오프"]
 tool: ["dca","cagr"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345901/blog/insight/tariffs-growth-margins-kr-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782801667/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -50,7 +50,7 @@ lang: "ko"
 </div>
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770345901/blog/insight/tariffs-growth-margins-kr-cover.png" alt="관세는 물가·성장·마진·환율을 동시에 흔드는 패키지 충격이다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782801668/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-002-cover.png" alt="관세는 물가·성장·마진·환율을 동시에 흔드는 패키지 충격이다" />
   <figcaption>관세는 ‘물가’만이 아니라 성장·마진·환율을 묶어서 흔드는 패키지 충격이다</figcaption>
 </figure>
 
@@ -94,7 +94,7 @@ lang: "ko"
 이 3개만 잡아도 관세 기사는 “CPI가 오를까?”가 아니라 “전가 vs 마진 / 거래량 / 리스크”로 분해되어 읽힙니다.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770345903/blog/insight/tariffs-growth-margins-kr-img1.png" alt="관세 충격은 물가·마진·성장·환율로 전이되는 경로를 가진다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782801669/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-003-body.png" alt="관세 충격은 물가·마진·성장·환율로 전이되는 경로를 가진다" />
   <figcaption>관세는 ‘한 줄 뉴스’가 아니라 ‘전이 경로’를 가진 충격이다</figcaption>
 </figure>
 
@@ -164,7 +164,7 @@ lang: "ko"
 같은 원화 약세라도, 어떤 때는 “리스크오프”이고 어떤 때는 “성장 둔화/정책 기대”일 수 있습니다.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770345904/blog/insight/tariffs-growth-margins-kr-img2.png" alt="관세 충격은 리스크 프리미엄과 정책 기대를 통해 원/달러로 전이된다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782801670/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-004-comparison.png" alt="관세 충격은 리스크 프리미엄과 정책 기대를 통해 원/달러로 전이된다" />
   <figcaption>원/달러는 관세 충격의 ‘리스크/정책’ 두 채널을 동시에 반영한다</figcaption>
 </figure>
 
@@ -189,7 +189,7 @@ lang: "ko"
 - Base에서도 관세는 기업의 가격·공급망 결정을 바꾸므로, 마진/전가 지표를 놓치면 뒤늦게 흔들릴 수 있습니다.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770345905/blog/insight/tariffs-growth-margins-kr-img3.png" alt="관세 뉴스를 CPI만으로 해석하면 마진·성장·환율 전이를 놓친다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782801671/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-005-comparison.png" alt="관세 뉴스를 CPI만으로 해석하면 마진·성장·환율 전이를 놓친다" />
   <figcaption>CPI만 보면 ‘마진·성장·환율’로 번지는 전이를 놓치기 쉽다</figcaption>
 </figure>
 
@@ -318,10 +318,10 @@ CPI가 조용하다는 건 “충격이 없다”가 아니라 “어딘가가 �
     "@id": "https://www.finmaphub.com/posts/economicInfo/tariffs-growth-margins-fx-package-shock"
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345901/blog/insight/tariffs-growth-margins-kr-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345903/blog/insight/tariffs-growth-margins-kr-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345904/blog/insight/tariffs-growth-margins-kr-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345905/blog/insight/tariffs-growth-margins-kr-img3.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782801667/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-001-cover.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782801669/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-003-body.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782801670/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-004-comparison.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782801671/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-005-comparison.png"
   ],
   "author": {
     "@type": "Organization",

@@ -9,7 +9,7 @@ datePublished: "2026-01-30"
 dateModified: "2026-06-23"
 tags: ["금리","할인율","대출금리","주택담보대출","DSR","거래량","금융여건","심리","서울아파트","경기아파트","인천아파트","실거래","대시보드"]
 tool: ["goal","cagr"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1769832198/blog/insight/rates-discount-mortgage-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782800835/blog/insight/rates-discount-mortgage-demand-apt-prices/rework-20260630/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -49,7 +49,7 @@ lang: "ko"
   </aside>
 </div>
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769832198/blog/insight/rates-discount-mortgage-cover.png" alt="금리의 영향은 ‘한 방’이 아니라 3채널이 번갈아 주도권을 잡는 과정이다" /><figcaption>금리의 영향은 ‘한 방’이 아니라 3채널이 번갈아 주도권을 잡는 과정이다</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782800836/blog/insight/rates-discount-mortgage-demand-apt-prices/rework-20260630/slot-002-cover.png" alt="금리의 영향은 ‘한 방’이 아니라 3채널이 번갈아 주도권을 잡는 과정이다" /><figcaption>금리의 영향은 ‘한 방’이 아니라 3채널이 번갈아 주도권을 잡는 과정이다</figcaption></figure>
 
 ## 먼저 대시보드로 “버티는 구간/깨지는 구간”을 눈에 익히기
 
@@ -86,7 +86,7 @@ lang: "ko"
 - 관측: 거래량, 호가-실거래 괴리, 금융 스트레스(스프레드/리스크오프), 환율·달러 강세 구간  
 - 한계: 심리는 빠르게 바뀌지만, 실거래는 느리게 찍힌다(지표의 시차를 인정해야 한다)  
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769832203/blog/insight/rates-discount-mortgage-kr-img1.png" alt="같은 금리라도 3채널 중 무엇이 ‘주도’하느냐에 따라 가격 반응이 달라진다" /><figcaption>같은 금리라도 3채널 중 무엇이 ‘주도’하느냐에 따라 가격 반응이 달라진다</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782800837/blog/insight/rates-discount-mortgage-demand-apt-prices/rework-20260630/slot-003-chart.png" alt="같은 금리라도 3채널 중 무엇이 ‘주도’하느냐에 따라 가격 반응이 달라진다" /><figcaption>같은 금리라도 3채널 중 무엇이 ‘주도’하느냐에 따라 가격 반응이 달라진다</figcaption></figure>
 
 ## 3채널을 한 장 표로 합치면 “단정”이 줄어든다
 
@@ -282,8 +282,8 @@ lang: "ko"
     "name": "FinMap"
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769832198/blog/insight/rates-discount-mortgage-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769832203/blog/insight/rates-discount-mortgage-kr-img1.png"    
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782800835/blog/insight/rates-discount-mortgage-demand-apt-prices/rework-20260630/slot-001-cover.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782800837/blog/insight/rates-discount-mortgage-demand-apt-prices/rework-20260630/slot-003-chart.png"
   ],
   "articleSection": "투자정보",
   "keywords": ["금리","할인율","대출금리","주택담보대출","DSR","거래량","금융여건","서울아파트","경기아파트","인천아파트","실거래","대시보드"]
