@@ -11,7 +11,7 @@ category: "재테크"
 postCategory: "personalFinance"
 tags: ["생애최초 주택 구입", "내집마련 예산", "DSR", "LTV", "주담대 한도", "부대비용", "아파트 예산"]
 tool: ["dsr-ltv"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1780362430/blog/insight/cash_cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782814239/blog/insight/first-home-buyer-budget-calculation/rework-20260630/slot-001-cover.png"
 lang: "ko"
 ---
 

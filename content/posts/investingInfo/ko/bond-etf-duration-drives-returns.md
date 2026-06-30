@@ -9,7 +9,7 @@ category: "투자정보"
 postCategory: "investingInfo"
 tags: ["채권ETF", "듀레이션", "TNX", "미국10년물", "금리민감도", "컨벡서티", "롤다운", "기간프리미엄", "총수익", "리밸런싱", "현금흐름", "단기채", "장기채", "TIPS"]
 tool: ["cagr","dca"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1768748268/blog/insight/bond-etf-duration-tnx-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782812793/blog/insight/bond-etf-duration-drives-returns/rework-20260630/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -45,7 +45,7 @@ lang: "ko"
 </div>
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1768748268/blog/insight/bond-etf-duration-tnx-cover.png" alt="채권 ETF 수익률은 금리 방향보다 듀레이션이 좌우한다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782812794/blog/insight/bond-etf-duration-drives-returns/rework-20260630/slot-002-cover.png" alt="채권 ETF 수익률은 금리 방향보다 듀레이션이 좌우한다" />
   <figcaption>채권 ETF는 “금리 예측”이 아니라 “듀레이션 설계” 게임이다</figcaption>
 </figure>
 
@@ -127,7 +127,7 @@ TNX(미국 10년물 금리)는 채권 그 자체이기도 하지만, 시장에�
 그래서 채권 ETF는 “금리 방향”보다 **어느 만기대(듀레이션)에 올라탈지**가 먼저입니다.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1768748274/blog/insight/bond-etf-duration-tnx-kr-img1.png" alt="듀레이션이 커질수록 같은 금리 변화에도 가격 변동이 커진다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782812795/blog/insight/bond-etf-duration-drives-returns/rework-20260630/slot-003-chart.png" alt="듀레이션이 커질수록 같은 금리 변화에도 가격 변동이 커진다" />
   <figcaption>듀레이션이 커지면 수익도 커지지만 손실 폭도 함께 커진다</figcaption>
 </figure>
 
@@ -198,7 +198,7 @@ TNX(미국 10년물 금리)는 채권 그 자체이기도 하지만, 시장에�
 - 이런 기준이 생기면 ‘듀레이션 선택’이 감정이 아니라 규칙이 됩니다.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1768748275/blog/insight/bond-etf-duration-tnx-kr-img2.png" alt="금리 충격을 가정하고 듀레이션으로 예상 손실을 계산하면 투자 규칙이 생긴다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782812796/blog/insight/bond-etf-duration-drives-returns/rework-20260630/slot-004-chart.png" alt="금리 충격을 가정하고 듀레이션으로 예상 손실을 계산하면 투자 규칙이 생긴다" />
   <figcaption>듀레이션을 숫자로 쓰면 “불안”이 “규칙”으로 바뀐다</figcaption>
 </figure>
 
@@ -264,7 +264,7 @@ TNX를 볼 때 많은 사람이 “오르냐 내리냐”만 보지만,
 <strong>미리 정한 조건에 걸렸을 때만 움직이는 것</strong>입니다.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1768748277/blog/insight/bond-etf-duration-tnx-kr-img3.png" alt="채권 ETF 리밸런싱은 수익 극대화가 아니라 역할을 유지하기 위한 규칙이다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782812797/blog/insight/bond-etf-duration-drives-returns/rework-20260630/slot-005-body.png" alt="채권 ETF 리밸런싱은 수익 극대화가 아니라 역할을 유지하기 위한 규칙이다" />
   <figcaption>채권 리밸런싱은 ‘역할 유지’가 목표일 때 가장 잘 작동한다</figcaption>
 </figure>
 
@@ -283,7 +283,7 @@ TNX를 볼 때 많은 사람이 “오르냐 내리냐”만 보지만,
 - “내 포트의 일부만 흔들린다”로 바뀝니다.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1768748278/blog/insight/bond-etf-duration-tnx-kr-img4.png" alt="단기·중기·장기 듀레이션을 나눠 담으면 금리 레짐 변화에 더 견고해진다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782812798/blog/insight/bond-etf-duration-drives-returns/rework-20260630/slot-006-chart.png" alt="단기·중기·장기 듀레이션을 나눠 담으면 금리 레짐 변화에 더 견고해진다" />
   <figcaption>듀레이션을 분산하면 금리 레짐이 바뀌어도 운영이 쉬워진다</figcaption>
 </figure>
 
@@ -374,7 +374,7 @@ TNX를 볼 때 많은 사람이 “오르냐 내리냐”만 보지만,
     }
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768748268/blog/insight/bond-etf-duration-tnx-cover.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782812793/blog/insight/bond-etf-duration-drives-returns/rework-20260630/slot-001-cover.png"
   ]
 }
 </script>

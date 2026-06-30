@@ -1074,14 +1074,18 @@ function renderFlow(image, layout) {
   const items = image.items.slice(0, 4);
   const cardW = 220;
   const gap = (w - safe.x * 2 - cardW * items.length) / Math.max(1, items.length - 1);
+  const keywordY = safe.y + 27;
+  const titleY = safe.y + 100;
+  const subtitleY = safe.y + 160;
+  const cardsY = safe.y + 260;
   return `
     ${backgroundSvg(w, h, palette)}
-    ${textBlock(layout, image, { x: safe.x, y: 86, value: image.keyword, size: 22, weight: 900, fill: palette.accent, maxWidth: 420, maxLines: 1, role: 'keyword' })}
-    ${textBlock(layout, image, { x: safe.x, y: 150, value: image.title, size: 48, weight: 900, fill: palette.primaryText, maxWidth: 760, maxLines: 1, role: 'title' })}
-    ${textBlock(layout, image, { x: safe.x, y: 202, value: image.subtitle, size: 23, weight: 800, fill: palette.secondaryText, maxWidth: 820, maxLines: 2, role: 'subtitle' })}
+    ${textBlock(layout, image, { x: safe.x, y: keywordY, value: image.keyword, size: 22, weight: 900, fill: palette.accent, maxWidth: 420, maxLines: 1, role: 'keyword' })}
+    ${textBlock(layout, image, { x: safe.x, y: titleY, value: image.title, size: 48, weight: 900, fill: palette.primaryText, maxWidth: 760, maxLines: 1, role: 'title' })}
+    ${textBlock(layout, image, { x: safe.x, y: subtitleY, value: image.subtitle, size: 23, weight: 800, fill: palette.secondaryText, maxWidth: 820, maxLines: 2, role: 'subtitle' })}
     ${items.map((item, index) => {
       const x = safe.x + index * (cardW + gap);
-      const y = 298;
+      const y = cardsY;
       const box = { id: `step-${index + 1}`, x, y, w: cardW, h: 210 };
       addBox(layout, image, box);
       const color = index === 0 ? palette.accent : index === 1 ? palette.secondaryAccent : index === 2 ? palette.tertiaryAccent : palette.mutedAccent;

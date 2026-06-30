@@ -11,7 +11,7 @@ category: "재테크"
 postCategory: "personalFinance"
 tags: ["전세에서 매매", "갈아타기", "필요한 현금", "전세보증금", "DSR", "LTV", "아파트 매수"]
 tool: ["dsr-ltv"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1780362430/blog/insight/cash_cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782814761/blog/insight/jeonse-to-home-purchase-cash-needed/rework-20260630/slot-001-cover.png"
 lang: "ko"
 ---
 
