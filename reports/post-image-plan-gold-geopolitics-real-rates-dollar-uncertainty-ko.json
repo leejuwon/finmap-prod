@@ -1,0 +1,357 @@
+{
+  "version": "2026-06-23",
+  "markdownPath": "content/posts/economicInfo/ko/gold-geopolitics-real-rates-dollar-uncertainty.md",
+  "slug": "gold-geopolitics-real-rates-dollar-uncertainty",
+  "lang": "ko",
+  "mode": "replace-existing",
+  "dateStamp": "20260630",
+  "title": "중동 리스크에서 금이 강한 이유: ‘전쟁’이 아니라 실질금리·달러·불확실성의 합",
+  "description": "금은 ‘공포’만으로 오르지 않습니다. 실질금리·달러·불확실성 3변수가 어떤 조합일 때 금이 강해지는지 표로 정리하고, 반례(금이 안 오르는 국면)까지 포함해 해석 프레임을 제공합니다.",
+  "category": "economicInfo",
+  "categoryLabel": "경제",
+  "paletteName": "economic-macro",
+  "textFitPolicy": {
+    "name": "word-fit-no-korean-orphan-v1",
+    "wrapUnit": "space-or-token",
+    "prohibitKoreanSyllableSplit": true,
+    "prohibitKoreanOrphanLine": true,
+    "defaultMaxLines": 2,
+    "defaultMinFontSize": 18,
+    "roleMaxLines": {
+      "title": 2,
+      "subtitle": 2,
+      "keyword": 1,
+      "card-label": 2,
+      "step-label": 2,
+      "panel-label": 2,
+      "check-label": 2,
+      "panel-note": 1
+    },
+    "roleMinFontSize": {
+      "title": 34,
+      "subtitle": 22,
+      "keyword": 18,
+      "card-label": 22,
+      "step-label": 22,
+      "panel-label": 22,
+      "check-label": 22,
+      "panel-note": 18
+    }
+  },
+  "maxLines": 2,
+  "minFontSize": 18,
+  "tags": [
+    "금",
+    "골드",
+    "실질금리",
+    "달러",
+    "DXY",
+    "불확실성",
+    "헤지",
+    "지정학",
+    "인플레이션",
+    "금리",
+    "오해교정"
+  ],
+  "source": {
+    "headingCount": 18,
+    "tableCount": 3,
+    "faqCount": 8,
+    "imageCount": 3,
+    "imageSlotCount": 4,
+    "replaceableSlotCount": 4,
+    "headings": [
+      "금을 움직이는 핵심 변수 3개만 정의하면 뉴스가 단순해진다",
+      "1) 실질금리(Real Rates)",
+      "2) 달러(USD, DXY)",
+      "3) 불확실성(Geopolitics / Policy / Liquidity)",
+      "“전쟁=금 상승”이 자주 틀리는 이유: 금은 ‘이자 없는 자산’이다",
+      "표로 끝내는 해석: 3변수 조합이 금을 ‘강하게’ 만드는 조건",
+      "3시나리오로 정리하는 “금 레짐”: Base / Stress / Liquidity",
+      "오해 박스: “금은 인플레이션만 오르면 무조건 오른다?”",
+      "중간 퍼즐 2개: 금리 구조와 달러 기초를 잡으면 ‘반례’가 사라진다",
+      "케이스 스터디 1: 지정학 뉴스가 큰데도 금이 조용한 날(달러·실질금리의 역풍)",
+      "케이스 스터디 2: 금이 강하게 반응하는 날(불확실성↑ + 실질금리 부담 완화)",
+      "원화 기준 금 체감은 “달러 금 × 원/달러”로 달라진다"
+    ],
+    "faqs": [
+      "1) 전쟁이나 지정학 리스크가 생기면 금은 항상 오르나요?",
+      "2) 금이 실질금리에 민감한 이유는 뭔가요?",
+      "3) 달러(DXY)가 강하면 금은 무조건 약한가요?",
+      "4) “금=인플레이션 헤지”는 맞는 말인가요?",
+      "5) 대한민국에서 금 가격이 유난히 크게 느껴질 때가 있는데 왜 그런가요?",
+      "6) 지정학 뉴스가 커졌는데도 금이 안 오르면 그건 이상 신호인가요?",
+      "7) 유동성 위기 때 금도 빠질 수 있나요?",
+      "8) 오늘부터 금 관련 뉴스를 가장 간단하게 읽는 방법은 무엇인가요?"
+    ],
+    "existingImages": [
+      {
+        "type": "html",
+        "alt": "금의 강세는 전쟁 자체보다 실질금리·달러·불확실성 조합에서 나온다",
+        "src": "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345894/blog/insight/gold-geopolitics-kr-cover.png"
+      },
+      {
+        "type": "html",
+        "alt": "금은 불확실성만이 아니라 실질금리(기회비용)에 크게 반응한다",
+        "src": "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345895/blog/insight/gold-geopolitics-kr-img1.png"
+      },
+      {
+        "type": "html",
+        "alt": "국내에서는 원화 기준 금이 국제 금과 원/달러의 곱으로 체감된다",
+        "src": "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345896/blog/insight/gold-geopolitics-kr-img2.png"
+      }
+    ]
+  },
+  "inventory": {
+    "version": "2026-06-23",
+    "markdownPath": "content/posts/economicInfo/ko/gold-geopolitics-real-rates-dollar-uncertainty.md",
+    "slug": "gold-geopolitics-real-rates-dollar-uncertainty",
+    "lang": "ko",
+    "mode": "replace-existing",
+    "dateStamp": "20260630",
+    "createdAt": "2026-06-30T06:02:10.894Z",
+    "slotCount": 4,
+    "replaceableCount": 4,
+    "outputDir": "public/images/posts/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630",
+    "cloudinaryFolder": "blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630",
+    "slots": [
+      {
+        "slotId": "frontmatter-cover",
+        "source": "frontmatter",
+        "fieldName": "cover",
+        "oldUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345894/blog/insight/gold-geopolitics-kr-cover.png",
+        "alt": "",
+        "order": 1,
+        "line": 12,
+        "nearHeading": "frontmatter",
+        "inferredRole": "cover",
+        "shouldReplace": true,
+        "reason": "Existing Markdown image slot eligible for rework replacement.",
+        "recommendedTemplate": "cover",
+        "recommendedNewLocalFile": "slot-001-cover.png"
+      },
+      {
+        "slotId": "html-001",
+        "source": "html-img",
+        "fieldName": null,
+        "oldUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345894/blog/insight/gold-geopolitics-kr-cover.png",
+        "alt": "금의 강세는 전쟁 자체보다 실질금리·달러·불확실성 조합에서 나온다",
+        "order": 2,
+        "line": 52,
+        "nearHeading": "",
+        "inferredRole": "cover",
+        "shouldReplace": true,
+        "reason": "Existing Markdown image slot eligible for rework replacement.",
+        "recommendedTemplate": "cover",
+        "recommendedNewLocalFile": "slot-002-cover.png"
+      },
+      {
+        "slotId": "html-002",
+        "source": "html-img",
+        "fieldName": null,
+        "oldUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345895/blog/insight/gold-geopolitics-kr-img1.png",
+        "alt": "금은 불확실성만이 아니라 실질금리(기회비용)에 크게 반응한다",
+        "order": 3,
+        "line": 88,
+        "nearHeading": "“전쟁=금 상승”이 자주 틀리는 이유: 금은 ‘이자 없는 자산’이다",
+        "inferredRole": "chart",
+        "shouldReplace": true,
+        "reason": "Existing Markdown image slot eligible for rework replacement.",
+        "recommendedTemplate": "chart-summary",
+        "recommendedNewLocalFile": "slot-003-chart.png"
+      },
+      {
+        "slotId": "html-003",
+        "source": "html-img",
+        "fieldName": null,
+        "oldUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345896/blog/insight/gold-geopolitics-kr-img2.png",
+        "alt": "국내에서는 원화 기준 금이 국제 금과 원/달러의 곱으로 체감된다",
+        "order": 4,
+        "line": 192,
+        "nearHeading": "원화 기준 금 체감은 “달러 금 × 원/달러”로 달라진다",
+        "inferredRole": "body-explanation",
+        "shouldReplace": true,
+        "reason": "Existing Markdown image slot eligible for rework replacement.",
+        "recommendedTemplate": "body-summary",
+        "recommendedNewLocalFile": "slot-004-body.png"
+      }
+    ],
+    "suggestions": []
+  },
+  "outputDir": "public/images/posts/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630",
+  "cloudinaryFolder": "blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630",
+  "expectedFiles": [
+    "slot-001-cover.png",
+    "slot-002-cover.png",
+    "slot-003-chart.png",
+    "slot-004-body.png"
+  ],
+  "generatedAt": "2026-06-30T06:02:10.896Z",
+  "images": [
+    {
+      "slot": "frontmatter-cover",
+      "sourceSlot": {
+        "slotId": "frontmatter-cover",
+        "source": "frontmatter",
+        "fieldName": "cover",
+        "oldUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345894/blog/insight/gold-geopolitics-kr-cover.png",
+        "alt": "",
+        "order": 1,
+        "line": 12,
+        "nearHeading": "frontmatter",
+        "inferredRole": "cover",
+        "shouldReplace": true,
+        "reason": "Existing Markdown image slot eligible for rework replacement.",
+        "recommendedTemplate": "cover",
+        "recommendedNewLocalFile": "slot-001-cover.png"
+      },
+      "fileName": "slot-001-cover.png",
+      "width": 1600,
+      "height": 900,
+      "template": "cover",
+      "title": "금 가격의 세 변수",
+      "subtitle": "실질금리 · 달러 · 불확실성",
+      "keyword": "경제 · GOLD REGIME",
+      "cards": [
+        "실질금리",
+        "달러 DXY",
+        "불확실성"
+      ],
+      "items": [
+        "실질금리",
+        "달러 DXY",
+        "불확실성"
+      ],
+      "expected": {
+        "kind": "cover",
+        "stepCount": 3,
+        "boxCount": 3,
+        "connectorCount": 0
+      }
+    },
+    {
+      "slot": "html-001",
+      "sourceSlot": {
+        "slotId": "html-001",
+        "source": "html-img",
+        "fieldName": null,
+        "oldUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345894/blog/insight/gold-geopolitics-kr-cover.png",
+        "alt": "금의 강세는 전쟁 자체보다 실질금리·달러·불확실성 조합에서 나온다",
+        "order": 2,
+        "line": 52,
+        "nearHeading": "",
+        "inferredRole": "cover",
+        "shouldReplace": true,
+        "reason": "Existing Markdown image slot eligible for rework replacement.",
+        "recommendedTemplate": "cover",
+        "recommendedNewLocalFile": "slot-002-cover.png"
+      },
+      "fileName": "slot-002-cover.png",
+      "width": 1600,
+      "height": 900,
+      "template": "cover",
+      "title": "금 강세의 조건",
+      "subtitle": "전쟁보다 중요한 세 변수의 조합",
+      "keyword": "MACRO CHECK",
+      "cards": [
+        "실질금리 부담 완화",
+        "달러 강세 제한",
+        "불확실성 확대"
+      ],
+      "items": [
+        "실질금리 부담 완화",
+        "달러 강세 제한",
+        "불확실성 확대"
+      ],
+      "expected": {
+        "kind": "cover",
+        "stepCount": 3,
+        "boxCount": 3,
+        "connectorCount": 0
+      }
+    },
+    {
+      "slot": "html-002",
+      "sourceSlot": {
+        "slotId": "html-002",
+        "source": "html-img",
+        "fieldName": null,
+        "oldUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345895/blog/insight/gold-geopolitics-kr-img1.png",
+        "alt": "금은 불확실성만이 아니라 실질금리(기회비용)에 크게 반응한다",
+        "order": 3,
+        "line": 88,
+        "nearHeading": "“전쟁=금 상승”이 자주 틀리는 이유: 금은 ‘이자 없는 자산’이다",
+        "inferredRole": "chart",
+        "shouldReplace": true,
+        "reason": "Existing Markdown image slot eligible for rework replacement.",
+        "recommendedTemplate": "chart-summary",
+        "recommendedNewLocalFile": "slot-003-chart.png"
+      },
+      "fileName": "slot-003-chart.png",
+      "width": 1200,
+      "height": 675,
+      "template": "chart-summary",
+      "title": "금과 실질금리",
+      "subtitle": "기회비용이 낮을수록 금의 매력은 커진다",
+      "keyword": "REAL RATE",
+      "cards": [
+        "실질금리 하락",
+        "기회비용 완화",
+        "금 수요 강화"
+      ],
+      "items": [
+        "실질금리 하락",
+        "기회비용 완화",
+        "금 수요 강화"
+      ],
+      "expected": {
+        "kind": "comparison",
+        "panelCount": 3,
+        "boxCount": 3,
+        "connectorCount": 0
+      }
+    },
+    {
+      "slot": "html-003",
+      "sourceSlot": {
+        "slotId": "html-003",
+        "source": "html-img",
+        "fieldName": null,
+        "oldUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345896/blog/insight/gold-geopolitics-kr-img2.png",
+        "alt": "국내에서는 원화 기준 금이 국제 금과 원/달러의 곱으로 체감된다",
+        "order": 4,
+        "line": 192,
+        "nearHeading": "원화 기준 금 체감은 “달러 금 × 원/달러”로 달라진다",
+        "inferredRole": "body-explanation",
+        "shouldReplace": true,
+        "reason": "Existing Markdown image slot eligible for rework replacement.",
+        "recommendedTemplate": "body-summary",
+        "recommendedNewLocalFile": "slot-004-body.png"
+      },
+      "fileName": "slot-004-body.png",
+      "width": 1200,
+      "height": 675,
+      "template": "body-summary",
+      "title": "원화 금 가격의 구조",
+      "subtitle": "국제 금 × 원/달러",
+      "keyword": "KRW GOLD",
+      "cards": [
+        "국제 금 확인",
+        "원/달러 확인",
+        "원화 금 해석"
+      ],
+      "items": [
+        "국제 금 확인",
+        "원/달러 확인",
+        "원화 금 해석",
+        "두 변수를 분리해 확인"
+      ],
+      "expected": {
+        "kind": "checklist",
+        "stepCount": 4,
+        "boxCount": 4,
+        "connectorCount": 0
+      }
+    }
+  ]
+}

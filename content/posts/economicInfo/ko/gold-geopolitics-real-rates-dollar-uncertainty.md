@@ -9,7 +9,7 @@ category: "경제정보"
 postCategory: "economicInfo"
 tags: ["금","골드","실질금리","달러","DXY","불확실성","헤지","지정학","인플레이션","금리","오해교정"]
 tool: ["cagr"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345894/blog/insight/gold-geopolitics-kr-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782799684/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -49,7 +49,7 @@ lang: "ko"
   </aside>
 </div>
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770345894/blog/insight/gold-geopolitics-kr-cover.png" alt="금의 강세는 전쟁 자체보다 실질금리·달러·불확실성 조합에서 나온다" /><figcaption>금의 강세는 ‘전쟁’ 자체가 아니라 실질금리·달러·불확실성의 조합에서 나온다</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782799684/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-002-cover.png" alt="금의 강세는 전쟁 자체보다 실질금리·달러·불확실성 조합에서 나온다" /><figcaption>금의 강세는 ‘전쟁’ 자체가 아니라 실질금리·달러·불확실성의 조합에서 나온다</figcaption></figure>
 
 금은 뉴스에서 자주 “공포의 대피처”로 설명됩니다. 하지만 시장에서 실제로는 훨씬 냉정합니다.  
 금은 현금흐름(이자/배당)이 없기 때문에, 많은 국면에서 금의 가격은 “안전”보다 <strong>기회비용</strong>(특히 실질금리)과 <strong>달러</strong>, 그리고 <strong>불확실성의 종류</strong>에 의해 좌우됩니다.
@@ -85,7 +85,7 @@ lang: "ko"
 
 반대로 실질금리가 내려가거나, 금리가 내려가는 속도가 빨라질 때(즉 기회비용이 완화될 때) 불확실성이 겹치면 금은 “안전”의 상징이라기보다 <strong>기회비용이 낮아진 상태에서의 선호 자산</strong>처럼 강해질 수 있습니다.
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770345895/blog/insight/gold-geopolitics-kr-img1.png" alt="금은 불확실성만이 아니라 실질금리(기회비용)에 크게 반응한다" /><figcaption>금은 ‘공포’만이 아니라 실질금리(기회비용) 변화에 크게 반응한다</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782799685/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-003-chart.png" alt="금은 불확실성만이 아니라 실질금리(기회비용)에 크게 반응한다" /><figcaption>금은 ‘공포’만이 아니라 실질금리(기회비용) 변화에 크게 반응한다</figcaption></figure>
 
 ## 표로 끝내는 해석: 3변수 조합이 금을 ‘강하게’ 만드는 조건
 
@@ -189,7 +189,7 @@ lang: "ko"
 - 지정학 뉴스가 달러 강세를 동반하면, 원화 기준 금은 더 강하게 체감될 수 있습니다(국제 금이 강하지 않아도).  
 - 그래서 금을 해석할 때는 “금 자체”보다 <strong>달러/금리/환율</strong>을 묶어서 보는 편이 실전적입니다.
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770345896/blog/insight/gold-geopolitics-kr-img2.png" alt="국내에서는 원화 기준 금이 국제 금과 원/달러의 곱으로 체감된다" /><figcaption>원화 기준 금 체감은 ‘국제 금(달러) × 원/달러’로 달라진다</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782799686/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-004-body.png" alt="국내에서는 원화 기준 금이 국제 금과 원/달러의 곱으로 체감된다" /><figcaption>원화 기준 금 체감은 ‘국제 금(달러) × 원/달러’로 달라진다</figcaption></figure>
 
 ## 실전 체크리스트: 중동 리스크 기사 1개를 읽고 흔들리지 않는 법
 
@@ -275,9 +275,9 @@ lang: "ko"
     "@id": "https://www.finmaphub.com/posts/economicInfo/gold-geopolitics-real-rates-dollar-uncertainty"
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345894/blog/insight/gold-geopolitics-kr-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345895/blog/insight/gold-geopolitics-kr-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345896/blog/insight/gold-geopolitics-kr-img2.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782799684/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-001-cover.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782799685/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-003-chart.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782799686/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-004-body.png"
   ],
   "author": {
     "@type": "Organization",

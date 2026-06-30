@@ -1,0 +1,65 @@
+{
+  "localDir": "public/images/posts/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630",
+  "localDirAbsolute": "C:/finmap/public/images/posts/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630",
+  "cloudinaryFolder": "blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630",
+  "manifestPath": "reports/cloudinary-gold-geopolitics-real-rates-dollar-uncertainty-rework-20260630.json",
+  "uploadedAt": "2026-06-30T06:08:02.959Z",
+  "dryRun": false,
+  "candidateCount": 4,
+  "successCount": 4,
+  "failCount": 0,
+  "skippedCount": 1,
+  "images": [
+    {
+      "fileName": "slot-001-cover.png",
+      "localPath": "public/images/posts/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-001-cover.png",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1782799684/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-001-cover.png",
+      "publicId": "blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-001-cover",
+      "width": 1600,
+      "height": 900,
+      "bytes": 46403,
+      "format": "png"
+    },
+    {
+      "fileName": "slot-002-cover.png",
+      "localPath": "public/images/posts/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-002-cover.png",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1782799684/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-002-cover.png",
+      "publicId": "blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-002-cover",
+      "width": 1600,
+      "height": 900,
+      "bytes": 50314,
+      "format": "png"
+    },
+    {
+      "fileName": "slot-003-chart.png",
+      "localPath": "public/images/posts/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-003-chart.png",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1782799685/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-003-chart.png",
+      "publicId": "blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-003-chart",
+      "width": 1200,
+      "height": 675,
+      "bytes": 40790,
+      "format": "png"
+    },
+    {
+      "fileName": "slot-004-body.png",
+      "localPath": "public/images/posts/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-004-body.png",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/dwonflmnn/image/upload/v1782799686/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-004-body.png",
+      "publicId": "blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-004-body",
+      "width": 1200,
+      "height": 675,
+      "bytes": 36808,
+      "format": "png"
+    }
+  ],
+  "skipped": [
+    {
+      "fileName": "image-layout-manifest.json",
+      "reason": "UNSUPPORTED_EXTENSION"
+    }
+  ],
+  "errors": []
+}
