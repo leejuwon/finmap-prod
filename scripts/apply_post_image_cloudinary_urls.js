@@ -239,16 +239,19 @@ function updateMarkdownSlots(raw, slots, changes) {
     const slot = queue.find((item) => !item.used && item.oldUrl === src);
     if (!slot) return full;
     slot.used = true;
+    const titleMatch = src.match(/^(\S+)(\s+(?:"[^"]*"|'[^']*'|\([^)]*\)))$/);
+    const titleSuffix = titleMatch ? titleMatch[2] : '';
+    const nextSrc = `${slot.newCloudinaryUrl}${titleSuffix}`;
     changes.push({
       type: 'markdown-image',
       slotId: slot.slotId,
       before: src,
-      after: slot.newCloudinaryUrl,
+      after: nextSrc,
       altBefore: alt,
       altAfter: alt,
       line: slot.line || null,
     });
-    return `![${alt}](${slot.newCloudinaryUrl})`;
+    return `![${alt}](${nextSrc})`;
   });
 }
 

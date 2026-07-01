@@ -8,7 +8,7 @@ category: "경제정보"
 postCategory: "economicInfo"
 tags: ["환율", "원달러", "금리", "자본이동", "외환시장", "거시경제"]
 tool: ["goal","comp","cagr","fire","dca"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427009/blog/economicInfo/fx-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782905900/blog/insight/fx-basics/rework-20260701/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -33,7 +33,7 @@ lang: "ko"
 그리고 달러 강세 뉴스가 많은 시기라면, “달러 유동성” 관점도 같이 보세요.
 - [지정학이 ‘달러 강세’로 번역되는 순간: 달러 유동성으로 읽기](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
 
-![환율 개념 상단 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764427009/blog/economicInfo/fx-cover.png)
+![환율 개념 상단 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1782905901/blog/insight/fx-basics/rework-20260701/slot-002-cover.png)
 
 ---
 
@@ -174,15 +174,15 @@ lang: "ko"
 
 <div class="img-row">
   <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1767091170/blog/tools/fx-img1.png" alt="금리 차이와 환율" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782905902/blog/insight/fx-basics/rework-20260701/slot-003-chart.png" alt="금리 차이와 환율" />
     <figcaption>금리 차이가 환율을 움직이는 구조</figcaption>
   </figure>
   <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1767091171/blog/tools/fx-img2.png" alt="글로벌 자본 이동" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782905903/blog/insight/fx-basics/rework-20260701/slot-004-body.png" alt="글로벌 자본 이동" />
     <figcaption>위험 회피 시 달러 강세</figcaption>
   </figure>
   <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1767091172/blog/tools/fx-img3.png" alt="한국 환율 구조" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782905904/blog/insight/fx-basics/rework-20260701/slot-005-body.png" alt="한국 환율 구조" />
     <figcaption>수출 국가의 환율 민감도</figcaption>
   </figure>
 </div>

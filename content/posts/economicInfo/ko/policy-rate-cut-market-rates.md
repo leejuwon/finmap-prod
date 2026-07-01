@@ -9,7 +9,7 @@ dateModified: "2026-02-24"
 category: "경제정보"
 tags: ["금리인하","기준금리","정책금리","시장금리","국채금리","기간프리미엄","인플레이션기대","스프레드","대출금리","예금금리"]
 tool: ["goal","comp"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1768210075/blog/tools/policy-rate-cut-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782905280/blog/insight/policy-rate-cut-market-rates/rework-20260701/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -25,7 +25,7 @@ lang: "ko"
 > - 예금은 “금리 인하”보다 은행의 자금조달 사정(경쟁·규제·예대마진)이 반영돼 하락 속도가 다를 수 있습니다.  
 > - 이 글은 ‘금리 인하 뉴스를 봐도 흔들리지 않는’ 시장금리 독해법을 체크리스트로 제공합니다.
 
-![Cover](https://res.cloudinary.com/dwonflmnn/image/upload/v1768210075/blog/tools/policy-rate-cut-cover.png)
+![Cover](https://res.cloudinary.com/dwonflmnn/image/upload/v1782905281/blog/insight/policy-rate-cut-market-rates/rework-20260701/slot-002-cover.png)
 
 <!-- =========================
      JSON-LD (Article + FAQPage)
@@ -45,7 +45,7 @@ lang: "ko"
     "@id": "https://www.finmaphub.com/posts/economicInfo/policy-rate-cut-market-rates"
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768210075/blog/tools/policy-rate-cut-cover.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782905280/blog/insight/policy-rate-cut-market-rates/rework-20260701/slot-001-cover.png"
   ],
   "author": { "@type": "Organization", "name": "FinMap" },
   "publisher": {

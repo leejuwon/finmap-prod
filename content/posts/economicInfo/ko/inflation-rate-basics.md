@@ -8,7 +8,7 @@ category: "경제정보"
 postCategory: "economicInfo"
 tags: ["물가","금리","인플레이션","기준금리","통화정책","경제기초"]
 tool: ["goal","comp","cagr","fire","dca"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767095271/blog/tools/inflation-rate-basics-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782907879/blog/insight/inflation-rate-basics/rework-20260701/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -27,7 +27,7 @@ lang: "ko"
 > 물가와 금리는 경제의 온도계이자 브레이크입니다.  
 > 이 글에서는 물가와 금리가 어떻게 연결되고, 그 변화가 금융시장에 어떤 영향을 주는지를 구조적으로 정리합니다.
 
-![물가와 금리 개념](https://res.cloudinary.com/dwonflmnn/image/upload/v1767095271/blog/tools/inflation-rate-basics-cover.png "물가와 금리의 기본 구조")
+![물가와 금리 개념](https://res.cloudinary.com/dwonflmnn/image/upload/v1782907880/blog/insight/inflation-rate-basics/rework-20260701/slot-002-cover.png "물가와 금리의 기본 구조")
 
 ---
 
@@ -141,15 +141,15 @@ lang: "ko"
 
 <div class="img-row">
   <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1767095272/blog/tools/inflation-rate-basics-img1.png" alt="Inflation to interest rate path" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782907881/blog/insight/inflation-rate-basics/rework-20260701/slot-003-chart.png" alt="Inflation to interest rate path" />
     <figcaption>Inflation ↑ → Rate hikes</figcaption>
   </figure>
   <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1767095273/blog/tools/inflation-rate-basics-img2.png" alt="Rates vs growth stocks" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782907882/blog/insight/inflation-rate-basics/rework-20260701/slot-004-comparison.png" alt="Rates vs growth stocks" />
     <figcaption>Rate hikes compress growth valuations</figcaption>
   </figure>
   <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1767095274/blog/tools/inflation-rate-basics-img3.png" alt="Rate cuts and liquidity" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782907883/blog/insight/inflation-rate-basics/rework-20260701/slot-005-chart.png" alt="Rate cuts and liquidity" />
     <figcaption>Rate cuts inject liquidity</figcaption>
   </figure>
 </div>

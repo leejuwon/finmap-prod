@@ -9,7 +9,7 @@ category: "경제정보"
 postCategory: "economicInfo"
 tags: ["유럽가스","천연가스","에너지","저장률","장기계약","LNG","대체조달","인플레이션","제조업","유럽경기","지정학"]
 tool: ["cagr"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1769592006/blog/insight/eu-russia-gas-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782878263/blog/insight/eu-russia-gas-phaseout-price-channel/rework-20260701/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -50,7 +50,7 @@ EU가 러시아 가스를 줄인다는 뉴스는 “공급량 감소” 한 줄�
 </div>
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769592006/blog/insight/eu-russia-gas-cover.png" alt="가스 가격은 물량보다 계약·저장·대체비용이 먼저 흔든다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782878264/blog/insight/eu-russia-gas-phaseout-price-channel/rework-20260701/slot-002-cover.png" alt="가스 가격은 물량보다 계약·저장·대체비용이 먼저 흔든다" />
   <figcaption>가스 가격은 물량보다 계약·저장·대체비용이 먼저 흔든다</figcaption>
 </figure>
 
@@ -109,7 +109,7 @@ EU의 러시아 가스 축소는 하나의 사건처럼 보이지만, 시장은 
 3) <strong>LNG(한계비용) 채널</strong>: 러시아 물량 공백을 메우는 비용이 상승하면, 가격은 “일시적 급등”이 아니라 “바닥이 올라가는” 형태로 반응합니다.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769592011/blog/insight/eu-russia-gas-kr-img1.png" alt="가스 가격은 계약 기대→저장 완충→LNG 한계비용으로 전이된다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782878265/blog/insight/eu-russia-gas-phaseout-price-channel/rework-20260701/slot-003-flow.png" alt="가스 가격은 계약 기대→저장 완충→LNG 한계비용으로 전이된다" />
   <figcaption>가스 가격은 계약 기대→저장 완충→LNG 한계비용으로 전이된다</figcaption>
 </figure>
 
@@ -134,7 +134,7 @@ EU의 러시아 가스 축소는 하나의 사건처럼 보이지만, 시장은 
 겨울에는 논리가 단순해집니다. “버틸 수 있나(저장)”와 “메울 수 있나(LNG)”가 가장 큰 축이 되고, 계약 구조는 “반응 속도”를 결정합니다.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769592013/blog/insight/eu-russia-gas-kr-img2.png" alt="겨울엔 저장률과 LNG 대체비용이 시나리오를 뒤집는 스위치다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782878266/blog/insight/eu-russia-gas-phaseout-price-channel/rework-20260701/slot-004-comparison.png" alt="겨울엔 저장률과 LNG 대체비용이 시나리오를 뒤집는 스위치다" />
   <figcaption>겨울엔 저장률과 LNG 대체비용이 시나리오를 뒤집는 스위치다</figcaption>
 </figure>
 
@@ -202,7 +202,7 @@ EU의 러시아 가스 축소는 하나의 사건처럼 보이지만, 시장은 
 > - □ LNG 대체비용이 내려오는지(완화) vs 바닥이 올라가는지(지속 압력)로 방향을 잡는다.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769592015/blog/insight/eu-russia-gas-kr-img3.png" alt="가스 뉴스의 함정은 ‘물량’만 보고 계약·저장·대체비용을 놓치는 것이다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782878267/blog/insight/eu-russia-gas-phaseout-price-channel/rework-20260701/slot-005-chart.png" alt="가스 뉴스의 함정은 ‘물량’만 보고 계약·저장·대체비용을 놓치는 것이다" />
   <figcaption>가스 뉴스의 함정은 ‘물량’만 보고 계약·저장·대체비용을 놓치는 것이다</figcaption>
 </figure>
 
@@ -296,7 +296,7 @@ EU의 러시아 가스 축소는 하나의 사건처럼 보이지만, 시장은 
   },
   "url": "https://www.finmaphub.com/posts/economicInfo/eu-russia-gas-phaseout-price-channel",
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769592006/blog/insight/eu-russia-gas-cover.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782878263/blog/insight/eu-russia-gas-phaseout-price-channel/rework-20260701/slot-001-cover.png"
   ],
   "author": {
     "@type": "Organization",

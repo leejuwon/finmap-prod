@@ -9,7 +9,7 @@ category: "경제정보"
 postCategory: "economicInfo"
 tags: ["달러","DXY","달러유동성","리스크오프","환율","원달러","헤지수요","외국인수급","금리","스프레드","지정학"]
 tool: ["dca"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1769611276/blog/insight/geopolitics-to-usd-liquidity-fx-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782866485/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260701/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -49,7 +49,7 @@ lang: "ko"
   </aside>
 </div>
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769611276/blog/insight/geopolitics-to-usd-liquidity-fx-cover.png" alt="전쟁 뉴스의 달러 강세는 ‘안전자산’보다 ‘달러 유동성’ 경로가 먼저다" /><figcaption>전쟁 뉴스의 달러 강세는 ‘안전자산’보다 ‘달러 유동성’ 경로가 먼저다</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782866486/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260701/slot-002-cover.png" alt="전쟁 뉴스의 달러 강세는 ‘안전자산’보다 ‘달러 유동성’ 경로가 먼저다" /><figcaption>전쟁 뉴스의 달러 강세는 ‘안전자산’보다 ‘달러 유동성’ 경로가 먼저다</figcaption></figure>
 
 ## “안전자산이라서 달러가 오른다”는 설명이 위험해지는 지점
 
@@ -120,7 +120,7 @@ lang: "ko"
 
 전이(Transmission)는 보통 이렇게 흘러갑니다.
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769611282/blog/insight/geopolitics-to-usd-liquidity-fx-kr-img1.png" alt="전쟁 뉴스의 달러 강세는 ‘안전자산’보다 ‘달러 유동성’ 경로가 먼저다" /><figcaption>리스크오프는 ‘포지션 청산→달러 조달→환율’ 순서로 번역될 때가 많다</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782866487/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260701/slot-003-body.png" alt="전쟁 뉴스의 달러 강세는 ‘안전자산’보다 ‘달러 유동성’ 경로가 먼저다" /><figcaption>리스크오프는 ‘포지션 청산→달러 조달→환율’ 순서로 번역될 때가 많다</figcaption></figure>
 
 1) **사건(전쟁/확전) → 변동성 상승**
 - 시장의 첫 반응은 ‘서사’가 아니라 ‘가격 변동’입니다. 변동성이 뛰면 위험관리 시스템이 자동으로 레버리지를 줄이기 시작합니다.
@@ -186,7 +186,7 @@ lang: "ko"
 
 한국 맥락에서는 USD/KRW가 단순한 “달러 강세” 이상으로 반응할 때가 있습니다. 이유는 보통 세 가지가 겹치기 때문입니다.
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769611284/blog/insight/geopolitics-to-usd-liquidity-fx-kr-img2.png" alt="한국의 USD/KRW는 수입결제·헤지·외국인 수급이 겹칠수록 민감도가 커진다" /><figcaption>한국의 USD/KRW는 수입결제·헤지·외국인 수급이 겹칠수록 민감도가 커진다</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782866488/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260701/slot-004-body.png" alt="한국의 USD/KRW는 수입결제·헤지·외국인 수급이 겹칠수록 민감도가 커진다" /><figcaption>한국의 USD/KRW는 수입결제·헤지·외국인 수급이 겹칠수록 민감도가 커진다</figcaption></figure>
 
 - **결제(실수요)**: 에너지·원자재 등 달러 결제 수요가 특정 시점에 몰리면 환율의 ‘탄성’이 커집니다.  
 - **헤지(금융수요)**: 변동성이 커질수록 헤지 비용과 마진이 올라가고, 달러 수요가 방어적으로 늘어날 수 있습니다.  
@@ -217,7 +217,7 @@ lang: "ko"
 
 이제 “해석 프레임”을 “행동 규칙”으로 바꿔보겠습니다. 3시나리오와 Flip 조건(관측 가능한 전환 트리거)을 미리 정하면, 뉴스 문장이 바뀌어도 확인 순서가 흔들리지 않습니다.
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769611285/blog/insight/geopolitics-to-usd-liquidity-fx-kr-img3.png" alt="3시나리오와 Flip 조건을 고정하면 뉴스가 바뀌어도 행동이 흔들리지 않는다" /><figcaption>3시나리오와 Flip 조건을 고정하면 뉴스가 바뀌어도 행동이 흔들리지 않는다</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782866489/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260701/slot-005-comparison.png" alt="3시나리오와 Flip 조건을 고정하면 뉴스가 바뀌어도 행동이 흔들리지 않는다" /><figcaption>3시나리오와 Flip 조건을 고정하면 뉴스가 바뀌어도 행동이 흔들리지 않는다</figcaption></figure>
 
 | 시나리오 | 시장이 주로 쓰는 번역기 | 가격에서 먼저 보이는 것 | Flip 조건(전환 트리거) | 내가 할 일(규칙) |
 |---|---|---|---|---|
@@ -314,10 +314,10 @@ lang: "ko"
     "@id": "https://www.finmaphub.com/posts/economicInfo/geopolitics-to-usd-liquidity-fx"
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769611276/blog/insight/geopolitics-to-usd-liquidity-fx-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769611282/blog/insight/geopolitics-to-usd-liquidity-fx-kr-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769611284/blog/insight/geopolitics-to-usd-liquidity-fx-kr-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769611285/blog/insight/geopolitics-to-usd-liquidity-fx-kr-img3.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782866485/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260701/slot-001-cover.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782866487/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260701/slot-003-body.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782866488/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260701/slot-004-body.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782866489/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260701/slot-005-comparison.png"
   ]
 }
 </script>

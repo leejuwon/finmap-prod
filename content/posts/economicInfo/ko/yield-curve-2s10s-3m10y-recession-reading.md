@@ -9,7 +9,7 @@ category: "경제정보"
 postCategory: "economicInfo"
 tags: ["수익률곡선", "2y~10y", "3m~10y", "침체", "경기침체", "장단기금리차", "기준금리", "시장금리", "연준", "금리기대", "텀프리미엄", "크레딧스프레드", "금융여건", "USD/KRW", "TNX"]
 tool: ["dca","goal","cagr","fire","comp"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1768526388/blog/tools/yield-curve-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782897965/blog/insight/yield-curve-2s10s-3m10y-recession-reading/rework-20260701/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -48,7 +48,7 @@ lang: "ko"
 </div>
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1768526388/blog/tools/yield-curve-cover.png" alt="2y~10y과 3m~10y는 같은 침체 신호가 아니라 서로 다른 질문에 답한다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782897966/blog/insight/yield-curve-2s10s-3m10y-recession-reading/rework-20260701/slot-002-cover.png" alt="2y~10y과 3m~10y는 같은 침체 신호가 아니라 서로 다른 질문에 답한다" />
   <figcaption>둘 다 ‘금리차’지만, 반영하는 현실이 달라서 결론이 달라질 수 있다</figcaption>
 </figure>
 
@@ -79,7 +79,7 @@ lang: "ko"
 - 3m~10y가 여전히 역전: “하지만 단기 정책금리/금융여건은 아직 ‘꽉 조여져’ 있다”
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1768526393/blog/tools/yield-curve-kr-img1.png" alt="2y~10y은 장기 내러티브, 3m~10y는 정책 경로를 더 직접 반영한다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782897967/blog/insight/yield-curve-2s10s-3m10y-recession-reading/rework-20260701/slot-003-chart.png" alt="2y~10y은 장기 내러티브, 3m~10y는 정책 경로를 더 직접 반영한다" />
   <figcaption>같은 금리차가 아니라 ‘질문’이 달라서, 신호가 엇갈릴 수 있다</figcaption>
 </figure>
 
@@ -150,7 +150,7 @@ lang: "ko"
 - **해석**: *정책의 문제보다 ‘성장/재정/리스크’의 문제로 중심이 이동하는 장면*
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1768526394/blog/tools/yield-curve-kr-img2.png" alt="둘이 엇갈릴 땐 정책 압박과 장기 프리미엄을 분리해 해석해야 한다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782897968/blog/insight/yield-curve-2s10s-3m10y-recession-reading/rework-20260701/slot-004-comparison.png" alt="둘이 엇갈릴 땐 정책 압박과 장기 프리미엄을 분리해 해석해야 한다" />
   <figcaption>엇갈림은 모순이 아니라 ‘두 현실의 동시 존재’일 수 있다</figcaption>
 </figure>
 
@@ -209,7 +209,7 @@ lang: "ko"
 예: 비상금 확충, 레버리지 축소, 적립식(DCA) 지속성 점검 같은 형태로.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1768526395/blog/tools/yield-curve-kr-img3.png" alt="수익률곡선은 타이밍이 아니라 금융여건의 압박을 읽는 지도다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782897969/blog/insight/yield-curve-2s10s-3m10y-recession-reading/rework-20260701/slot-005-chart.png" alt="수익률곡선은 타이밍이 아니라 금융여건의 압박을 읽는 지도다" />
   <figcaption>역전은 날짜표가 아니라 ‘조건’ 신호로 써야 실전에서 흔들리지 않는다</figcaption>
 </figure>
 
@@ -383,7 +383,7 @@ lang: "ko"
     }
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768526388/blog/tools/yield-curve-cover.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782897965/blog/insight/yield-curve-2s10s-3m10y-recession-reading/rework-20260701/slot-001-cover.png"
   ]
 }
 </script>

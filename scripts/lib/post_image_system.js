@@ -1056,14 +1056,14 @@ function renderMarketMapCover(image, layout) {
     ${textBlock(layout, image, { x: safe.x, y: 291, value: image.subtitle, size: 28, weight: 800, fill: palette.secondaryText, maxWidth: 1020, maxLines: 1, role: 'subtitle' })}
     ${rectSvg({ ...panel, r: 34, fill: '#203247', stroke: palette.cardBorder, opacity: 0.96 })}
     ${rectSvg({ ...chart, r: 28, fill: palette.cardBackground, stroke: palette.cardBorder })}
-    ${textBlock(layout, image, { x: chart.x + 30, y: chart.y + 55, value: 'USD/KRW', size: 30, weight: 900, fill: COLORS.navy, maxWidth: chart.w - 60, maxLines: 1, parentId: chart.id, role: 'card-label' })}
+    ${textBlock(layout, image, { x: chart.x + 30, y: chart.y + 55, value: image.chartTitle || 'USD/KRW', size: 30, weight: 900, fill: COLORS.navy, maxWidth: chart.w - 60, maxLines: 1, parentId: chart.id, role: 'card-label' })}
     ${textBlock(layout, image, { x: chart.x + 30, y: chart.y + 98, value: image.chartLabel || '원화 약세 신호', size: 22, weight: 800, fill: COLORS.slate, maxWidth: chart.w - 60, maxLines: 1, parentId: chart.id, role: 'panel-note' })}
     <path d="M ${chart.x + 34} ${chart.y + 218} C ${chart.x + 92} ${chart.y + 210}, ${chart.x + 105} ${chart.y + 168}, ${chart.x + 150} ${chart.y + 176} S ${chart.x + 236} ${chart.y + 98}, ${chart.x + 292} ${chart.y + 116}" fill="none" stroke="${palette.accent}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M ${chart.x + 278} ${chart.y + 96} L ${chart.x + 302} ${chart.y + 114} L ${chart.x + 274} ${chart.y + 126}" fill="${palette.accent}"/>
     ${circleSvg({ cx: panel.x + 548, cy: panel.y + 190, r: 78, fill: palette.secondaryAccent, opacity: 0.95 })}
     ${circleSvg({ cx: panel.x + 738, cy: panel.y + 190, r: 78, fill: palette.accent, opacity: 0.95 })}
-    ${textBlock(layout, image, { x: panel.x + 548, y: panel.y + 202, value: 'USD', size: 34, weight: 900, fill: '#ffffff', maxWidth: 116, maxLines: 1, anchor: 'middle', role: 'card-label' })}
-    ${textBlock(layout, image, { x: panel.x + 738, y: panel.y + 202, value: 'KRW', size: 34, weight: 900, fill: '#ffffff', maxWidth: 116, maxLines: 1, anchor: 'middle', role: 'card-label' })}
+    ${textBlock(layout, image, { x: panel.x + 548, y: panel.y + 202, value: image.leftNodeLabel || 'USD', size: 34, weight: 900, fill: '#ffffff', maxWidth: 116, maxLines: 1, anchor: 'middle', role: 'card-label' })}
+    ${textBlock(layout, image, { x: panel.x + 738, y: panel.y + 202, value: image.rightNodeLabel || 'KRW', size: 34, weight: 900, fill: '#ffffff', maxWidth: 116, maxLines: 1, anchor: 'middle', role: 'card-label' })}
     ${lineSvg({ x1: panel.x + 626, y1: panel.y + 162, x2: panel.x + 660, y2: panel.y + 162, stroke: palette.tertiaryAccent, sw: 7 })}
     <path d="M ${panel.x + 656} ${panel.y + 148} L ${panel.x + 678} ${panel.y + 162} L ${panel.x + 656} ${panel.y + 176}" fill="${palette.tertiaryAccent}"/>
     ${lineSvg({ x1: panel.x + 660, y1: panel.y + 218, x2: panel.x + 626, y2: panel.y + 218, stroke: palette.mutedAccent, sw: 7 })}

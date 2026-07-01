@@ -10,7 +10,7 @@ category: "경제정보"
 postCategory: "economicInfo"
 tags: ["물가", "금리", "통화정책", "기준금리", "경제기초", "투자기초", "매크로"]
 tool: ["comp","goal"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764681952/blog/economicInfo/inflation-and-interest-rates-basics-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782905589/blog/insight/inflation-basics/rework-20260701/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -29,7 +29,7 @@ lang: "ko"
 > **한 문단 요약**  
 물가와 금리는 단순한 경제 지표가 아니라 “투자 성과를 결정하는 시스템”입니다. 물가 상승 → 금리 인상 → 경제 둔화 과정과 반대 사이클을 이해하면 ETF·주식·부동산 등 모든 투자 판단의 속도가 빨라집니다. 이 글은 물가와 금리의 작동 구조를 현실적인 사례와 함께 정리하여, 앞으로의 투자 전략에 직접 활용할 수 있도록 구성했습니다.
 
-![상단 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764682480/blog/economicInfo/inflation-and-interest-rates-basics-top.png)
+![상단 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1782905590/blog/insight/inflation-basics/rework-20260701/slot-002-body.png)
 
 ---
 
@@ -149,15 +149,15 @@ lang: "ko"
 
 <div class="img-row">
   <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764681955/blog/economicInfo/inflation-and-interest-rates-basics-img1.png" alt="물가와 금리 상승 구조" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782905591/blog/insight/inflation-basics/rework-20260701/slot-003-chart.png" alt="물가와 금리 상승 구조" />
     <figcaption>물가 상승 → 금리 인상 구조</figcaption>
   </figure>
   <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764681960/blog/economicInfo/inflation-and-interest-rates-basics-img2.png" alt="금리와 성장주 관계" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782905592/blog/insight/inflation-basics/rework-20260701/slot-004-chart.png" alt="금리와 성장주 관계" />
     <figcaption>금리 인상기 → 성장주 압박</figcaption>
   </figure>
   <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1764681964/blog/economicInfo/inflation-and-interest-rates-basics-img3.png" alt="금리 인하와 유동성" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782905593/blog/insight/inflation-basics/rework-20260701/slot-005-chart.png" alt="금리 인하와 유동성" />
     <figcaption>금리 인하기 → 유동성 확대</figcaption>
   </figure>
 </div>

@@ -9,7 +9,7 @@ category: "경제정보"
 postCategory: "economicInfo"
 tags: ["유가","WTI","지정학리스크","리스크프리미엄","공급충격","해운운임","보험료","인플레이션","수입물가","원달러","무역수지","리스크오프","에너지"]
 tool: ["dca","cagr"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1769587421/blog/insight/war-risk-oil-supply-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782879059/blog/insight/war-risk-oil-supply-insurance-shipping/rework-20260701/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -24,7 +24,7 @@ lang: "ko"
 - 유가의 ‘리스크 프리미엄’은 한 줄이 아니라 **공급 + 운송비 + 기대**가 합쳐진 “3줄 합산”으로 읽어야 합니다.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769587421/blog/insight/war-risk-oil-supply-cover.png" alt="전쟁 뉴스는 공급·보험·운송·기대를 거치며 유가에 ‘프리미엄’을 붙인다." />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782879062/blog/insight/war-risk-oil-supply-insurance-shipping/rework-20260701/slot-002-cover.png" alt="전쟁 뉴스는 공급·보험·운송·기대를 거치며 유가에 ‘프리미엄’을 붙인다." />
   <figcaption>전쟁 뉴스는 공급·보험·운송·기대를 거치며 유가에 ‘프리미엄’을 붙인다.</figcaption>
 </figure>
 
@@ -109,7 +109,7 @@ lang: "ko"
 그래서 “유가는 크게 안 올랐는데 체감 물가가 올라요” 같은 현상이 나타나기도 합니다.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769587429/blog/insight/war-risk-oil-supply-kr-img1.png" alt="유가 충격은 공급뿐 아니라 보험·운임·우회비용이 ‘도착 비용’을 키우며 커진다." />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782879063/blog/insight/war-risk-oil-supply-insurance-shipping/rework-20260701/slot-003-body.png" alt="유가 충격은 공급뿐 아니라 보험·운임·우회비용이 ‘도착 비용’을 키우며 커진다." />
   <figcaption>유가 충격은 공급뿐 아니라 보험·운임·우회비용이 ‘도착 비용’을 키우며 커진다.</figcaption>
 </figure>
 
@@ -283,7 +283,7 @@ A는 느리지만 오래 갈 수 있고, B는 빠르고 스파이크가 잘 나�
 - 대신 위에서 정리한 **Flip 조건(항로/보험료/운임/재고)로** 시나리오를 바꾸면 흔들림이 줄어듭니다.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769587431/blog/insight/war-risk-oil-supply-kr-img2.png" alt="유가 뉴스 대응은 예측이 아니라 트리거·체크리스트·리스크 예산으로 안정된다." />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782879064/blog/insight/war-risk-oil-supply-insurance-shipping/rework-20260701/slot-004-comparison.png" alt="유가 뉴스 대응은 예측이 아니라 트리거·체크리스트·리스크 예산으로 안정된다." />
   <figcaption>유가 뉴스 대응은 예측이 아니라 트리거·체크리스트·리스크 예산으로 안정된다.</figcaption>
 </figure>
 
@@ -308,7 +308,7 @@ A는 느리지만 오래 갈 수 있고, B는 빠르고 스파이크가 잘 나�
 ---
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769587433/blog/insight/war-risk-oil-supply-kr-img3.png" alt="전쟁 뉴스 대응은 ‘유가 예측’이 아니라 ‘체감 충격 경로’를 점검하는 게임이다." />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782879066/blog/insight/war-risk-oil-supply-insurance-shipping/rework-20260701/slot-005-chart.png" alt="전쟁 뉴스 대응은 ‘유가 예측’이 아니라 ‘체감 충격 경로’를 점검하는 게임이다." />
   <figcaption>전쟁 뉴스 대응은 ‘유가 예측’이 아니라 ‘체감 충격 경로’를 점검하는 게임이다.</figcaption>
 </figure>
 
@@ -384,10 +384,10 @@ WTI만 봐도 분위기는 알 수 있지만, 전쟁 리스크를 해석하려�
     "@id": "https://www.finmaphub.com/posts/economicInfo/war-risk-oil-supply-insurance-shipping"
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769587421/blog/insight/war-risk-oil-supply-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769587429/blog/insight/war-risk-oil-supply-kr-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769587431/blog/insight/war-risk-oil-supply-kr-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769587433/blog/insight/war-risk-oil-supply-kr-img3.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782879059/blog/insight/war-risk-oil-supply-insurance-shipping/rework-20260701/slot-001-cover.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782879063/blog/insight/war-risk-oil-supply-insurance-shipping/rework-20260701/slot-003-body.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782879064/blog/insight/war-risk-oil-supply-insurance-shipping/rework-20260701/slot-004-comparison.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782879066/blog/insight/war-risk-oil-supply-insurance-shipping/rework-20260701/slot-005-chart.png"
   ],
   "keywords": ["유가","WTI","지정학리스크","리스크프리미엄","공급충격","해운운임","보험료","인플레이션","수입물가","원달러","무역수지","리스크오프","에너지"]
 }

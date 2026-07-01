@@ -9,7 +9,7 @@ category: "경제정보"
 postCategory: "economicInfo"
 tags: ["실질금리", "기대인플레이션", "브레이크이븐", "명목금리", "금리해석", "채권", "주식밸류에이션", "달러", "금", "거시경제"]
 tool: ["goal","comp","cagr","dca","fire"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1768833306/blog/insight/real-rates-and-breakevens-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782886276/blog/insight/real-rates-and-breakevens/rework-20260701/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -46,7 +46,7 @@ lang: "ko"
 </div>
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1768833306/blog/insight/real-rates-and-breakevens-cover.png" alt="금리는 실질금리와 기대인플레로 분해하면 자산반응이 선명해진다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782886278/blog/insight/real-rates-and-breakevens/rework-20260701/slot-002-cover.png" alt="금리는 실질금리와 기대인플레로 분해하면 자산반응이 선명해진다" />
   <figcaption>명목금리를 ‘분해’하면 시장의 반응이 빠르게 이해된다</figcaption>
 </figure>
 
@@ -97,7 +97,7 @@ lang: "ko"
 ## 금리의 전이 경로: 실질과 기대인플레는 자산에 ‘다른 문’으로 들어온다
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1768833307/blog/insight/real-rates-and-breakevens-img1.png" alt="실질금리와 기대인플레는 자산가격에 다른 경로로 영향을 준다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782886279/blog/insight/real-rates-and-breakevens/rework-20260701/slot-003-chart.png" alt="실질금리와 기대인플레는 자산가격에 다른 경로로 영향을 준다" />
   <figcaption>실질은 할인율, 기대인플레는 레짐과 섹터를 흔든다</figcaption>
 </figure>
 
@@ -156,7 +156,7 @@ lang: "ko"
 ## 한국 오버레이: TNX와 USD/KRW를 같이 보면 “체감금리”가 빨리 보인다
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1768833309/blog/insight/real-rates-and-breakevens-img2.png" alt="한국에서는 TNX와 원달러가 함께 움직이며 체감금리를 만든다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782886280/blog/insight/real-rates-and-breakevens/rework-20260701/slot-004-chart.png" alt="한국에서는 TNX와 원달러가 함께 움직이며 체감금리를 만든다" />
   <figcaption>TNX·USD/KRW는 국내 심리와 자금흐름의 바로미터가 된다</figcaption>
 </figure>
 
@@ -242,7 +242,7 @@ lang: "ko"
 ## 금·달러·주식·채권을 한 번에 묶는 “온도계 표”를 만들자
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1768833311/blog/insight/real-rates-and-breakevens-img3.png" alt="실질과 기대인플레는 자산별 온도계를 다르게 흔든다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782886281/blog/insight/real-rates-and-breakevens/rework-20260701/slot-005-chart.png" alt="실질과 기대인플레는 자산별 온도계를 다르게 흔든다" />
   <figcaption>같은 금리 뉴스도 자산별 ‘민감도’가 다르다</figcaption>
 </figure>
 
@@ -280,7 +280,7 @@ lang: "ko"
 ## (선택) 한 장 더: “실질과 기대”가 동시에 흔들릴 때의 우선순위
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1768833681/blog/insight/real-rates-and-breakevens-img4.png" alt="실질과 기대가 동시에 움직이면 먼저 실질로 방향을 잡는다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782886282/blog/insight/real-rates-and-breakevens/rework-20260701/slot-006-body.png" alt="실질과 기대가 동시에 움직이면 먼저 실질로 방향을 잡는다" />
   <figcaption>혼란할수록 실질→기대 순으로 분해하면 판단이 빨라진다</figcaption>
 </figure>
 
@@ -374,11 +374,11 @@ lang: "ko"
     }
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768833306/blog/insight/real-rates-and-breakevens-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768833307/blog/insight/real-rates-and-breakevens-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768833309/blog/insight/real-rates-and-breakevens-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768833311/blog/insight/real-rates-and-breakevens-img3.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768833681/blog/insight/real-rates-and-breakevens-img4.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782886276/blog/insight/real-rates-and-breakevens/rework-20260701/slot-001-cover.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782886279/blog/insight/real-rates-and-breakevens/rework-20260701/slot-003-chart.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782886280/blog/insight/real-rates-and-breakevens/rework-20260701/slot-004-chart.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782886281/blog/insight/real-rates-and-breakevens/rework-20260701/slot-005-chart.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782886282/blog/insight/real-rates-and-breakevens/rework-20260701/slot-006-body.png"
   ]
 }
 </script>

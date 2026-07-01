@@ -10,7 +10,7 @@ category: "경제정보"
 postCategory: "economicInfo"
 tags: ["금리", "기준금리", "시장금리", "예금금리", "대출금리", "채권", "듀레이션", "수익률곡선", "인플레이션", "유동성"]
 tool: ["comp","goal"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427018/blog/economicInfo/rate-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782906729/blog/insight/interest-rate-basics/rework-20260701/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -30,7 +30,7 @@ lang: "ko"
 > 기준금리, 시장금리, 예·적금/대출 금리, 채권 수익률을 **하나의 지도로 연결**하면
 > 대출자는 월 상환액을, 예금자는 세후 이자를, 투자자는 할인율과 듀레이션을 따로 판단할 수 있습니다.
 
-![금리 구조 대표 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764427018/blog/economicInfo/rate-cover.png)
+![금리 구조 대표 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1782906730/blog/insight/interest-rate-basics/rework-20260701/slot-002-cover.png)
 
 ---
 
@@ -240,15 +240,15 @@ lang: "ko"
 
 <div class="img-row">
   <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1767338033/blog/tools/rate-img1.png" alt="Policy rate to market rate transmission" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782906731/blog/insight/interest-rate-basics/rework-20260701/slot-003-chart.png" alt="Policy rate to market rate transmission" />
     <figcaption>Policy rate → money market → bank funding → deposits/loans</figcaption>
   </figure>
   <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1767338034/blog/tools/rate-img2.png" alt="Bond price moves inversely to yield" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782906733/blog/insight/interest-rate-basics/rework-20260701/slot-004-chart.png" alt="Bond price moves inversely to yield" />
     <figcaption>Yield ↑ → Bond price ↓ (duration amplifies sensitivity)</figcaption>
   </figure>
   <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1767338035/blog/tools/rate-img3.png" alt="Yield curve and economic expectations" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782906734/blog/insight/interest-rate-basics/rework-20260701/slot-005-chart.png" alt="Yield curve and economic expectations" />
     <figcaption>Yield curve reflects growth, inflation, and recession expectations</figcaption>
   </figure>
 </div>

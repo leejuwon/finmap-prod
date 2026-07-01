@@ -9,7 +9,7 @@ category: "경제정보"
 postCategory: "economicInfo"
 tags: ["전쟁테마","방산","원자재","해운","운임","환율","마진","수요","리스크프리미엄","오해교정","시나리오"]
 tool: ["cagr"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1769649166/blog/insight/war-theme-investing-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782871497/blog/insight/war-theme-investing-price-chain-not-winners/rework-20260701/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -44,7 +44,7 @@ lang: "ko"
 </div>
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769649166/blog/insight/war-theme-investing-cover.png" alt="전쟁 테마는 수혜주가 아니라 원가·운임·환율의 가격 사슬로 읽어야 과열을 피할 수 있다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782871499/blog/insight/war-theme-investing-price-chain-not-winners/rework-20260701/slot-002-cover.png" alt="전쟁 테마는 수혜주가 아니라 원가·운임·환율의 가격 사슬로 읽어야 과열을 피할 수 있다" />
   <figcaption>전쟁 테마는 수혜주가 아니라 원가·운임·환율의 가격 사슬로 읽어야 과열을 피할 수 있다</figcaption>
 </figure>
 
@@ -108,7 +108,7 @@ lang: "ko"
 즉, 테마의 승패는 업종명이 아니라 **전가(누가 비용을 떠안는가)에서** 갈립니다.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769649168/blog/insight/war-theme-investing-kr-img1.png" alt="전쟁 뉴스는 원가·운임·환율의 3고리를 거쳐 기업 마진으로 번역된다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782871499/blog/insight/war-theme-investing-price-chain-not-winners/rework-20260701/slot-003-chart.png" alt="전쟁 뉴스는 원가·운임·환율의 3고리를 거쳐 기업 마진으로 번역된다" />
   <figcaption>전쟁 뉴스는 원가·운임·환율의 3고리를 거쳐 기업 마진으로 번역된다</figcaption>
 </figure>
 
@@ -173,7 +173,7 @@ lang: "ko"
 [원/달러가 ‘업종별’로 다르게 작동하는 이유](/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769649170/blog/insight/war-theme-investing-kr-img2.png" alt="한국에서는 운임·원가 충격이 USD/KRW를 통해 마진에 증폭될 수 있다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782871500/blog/insight/war-theme-investing-price-chain-not-winners/rework-20260701/slot-004-body.png" alt="한국에서는 운임·원가 충격이 USD/KRW를 통해 마진에 증폭될 수 있다" />
   <figcaption>한국에서는 운임·원가 충격이 USD/KRW를 통해 마진에 증폭될 수 있다</figcaption>
 </figure>
 
@@ -247,7 +247,7 @@ lang: "ko"
 [유가가 기업이익/환율/금리에 전이되는 5단 연결](/posts/investingInfo/wti-impact-on-korea-kospi)
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769649172/blog/insight/war-theme-investing-kr-img3.png" alt="방산과 해운·원자재는 같은 전쟁 뉴스에도 ‘마진이 바뀌는 경로’가 다르다" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782871501/blog/insight/war-theme-investing-price-chain-not-winners/rework-20260701/slot-005-body.png" alt="방산과 해운·원자재는 같은 전쟁 뉴스에도 ‘마진이 바뀌는 경로’가 다르다" />
   <figcaption>방산과 해운·원자재는 같은 전쟁 뉴스에도 ‘마진이 바뀌는 경로’가 다르다</figcaption>
 </figure>
 
@@ -367,7 +367,7 @@ Flip 조건을 미리 정해두면, ‘오를 때는 이유를 붙이고 내릴 
   "inLanguage": "ko",
   "articleSection": "경제정보",
   "keywords": ["전쟁테마","방산","원자재","해운","운임","환율","마진","수요","리스크프리미엄","오해교정","시나리오"],
-  "image": ["https://res.cloudinary.com/dwonflmnn/image/upload/v1769649166/blog/insight/war-theme-investing-cover.png"],
+  "image": ["https://res.cloudinary.com/dwonflmnn/image/upload/v1782871497/blog/insight/war-theme-investing-price-chain-not-winners/rework-20260701/slot-001-cover.png"],
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://www.finmaphub.com/posts/economicInfo/war-theme-investing-price-chain-not-winners"

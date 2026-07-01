@@ -9,7 +9,7 @@ category: "경제정보"
 postCategory: "economicInfo"
 tags: ["경제지표","GDP","실업률","PMI","매크로","경기판단"]
 tool: ["goal","comp","cagr","fire","dca"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764427012/blog/economicInfo/indicator-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782906255/blog/insight/indicator-basics/rework-20260701/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -28,7 +28,7 @@ lang: "ko"
 > 경제지표는 암기 대상이 아니라 **의사결정 도구**입니다.  
 > GDP·실업률·PMI를 “어디에, 언제, 어떻게” 써야 하는지가 핵심입니다.
 
-![경제지표 구조 개념](https://res.cloudinary.com/dwonflmnn/image/upload/v1764427012/blog/economicInfo/indicator-cover.png)
+![경제지표 구조 개념](https://res.cloudinary.com/dwonflmnn/image/upload/v1782906256/blog/insight/indicator-basics/rework-20260701/slot-002-cover.png)
 
 ---
 
@@ -196,15 +196,15 @@ PMI는 **방향성 지표**입니다.
 
 <div class="img-row">
   <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1767101699/blog/tools/indicator-basics-img1.png" alt="PMI leading signal" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782906257/blog/insight/indicator-basics/rework-20260701/slot-003-flow.png" alt="PMI leading signal" />
     <figcaption>PMI는 경기 변화를 가장 먼저 반영</figcaption>
   </figure>
   <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1767101700/blog/tools/indicator-basics-img2.png" alt="Unemployment and rates" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782906258/blog/insight/indicator-basics/rework-20260701/slot-004-flow.png" alt="Unemployment and rates" />
     <figcaption>실업률은 금리 판단의 핵심 변수</figcaption>
   </figure>
   <figure>
-    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1767101701/blog/tools/indicator-basics-img3.png" alt="GDP lagging indicator" />
+    <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782906259/blog/insight/indicator-basics/rework-20260701/slot-005-flow.png" alt="GDP lagging indicator" />
     <figcaption>GDP는 결과 확인용 지표</figcaption>
   </figure>
 </div>
