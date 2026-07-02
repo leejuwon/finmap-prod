@@ -9,7 +9,7 @@ category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["USD/KRW","Korea","oil shock","trade balance","import inflation","FX","flows","macro"]
 tool: ["dca"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673768/blog/insight/oil-shock-to-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782953943/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260702/slot-001-cover-en.png"
 lang: "en"
 ---
 
@@ -50,7 +50,7 @@ lang: "en"
 </div>
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769673768/blog/insight/oil-shock-to-cover.png" alt="USD/KRW reacts to oil through trade balance, import inflation expectations, and flows" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782953944/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260702/slot-002-cover-en.png" alt="USD/KRW reacts to oil through trade balance, import inflation expectations, and flows" />
   <figcaption>USD/KRW reacts to oil through trade balance, import inflation expectations, and flows</figcaption>
 </figure>
 
@@ -92,7 +92,7 @@ Below are the three variables you want to define early. Each comes with a <stron
 - <strong>Limitation:</strong> Flow-driven moves can reverse fast if stress fades; fundamentals may look “unchanged” while price still whipsaws.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769673769/blog/insight/oil-shock-to-en-img1.png" alt="Oil shock → trade bill, import inflation expectations, and risk-off flows → USD/KRW" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782953946/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260702/slot-003-flow-en.png" alt="Oil shock → trade bill, import inflation expectations, and risk-off flows → USD/KRW" />
   <figcaption>Oil shock → trade bill, import inflation expectations, and risk-off flows → USD/KRW</figcaption>
 </figure>
 
@@ -207,7 +207,7 @@ Predictions are fragile. A regime map is durable.
 Use the table below like a state machine: you stay in a regime until <strong>observable triggers</strong> flip you to the next one.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769673771/blog/insight/oil-shock-to-en-img2.png" alt="Use flip triggers to move between Base, Stress, and Relief instead of predicting prices" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782953946/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260702/slot-004-body-en.png" alt="Use flip triggers to move between Base, Stress, and Relief instead of predicting prices" />
   <figcaption>Use flip triggers to move between Base, Stress, and Relief instead of predicting prices</figcaption>
 </figure>
 
@@ -225,7 +225,7 @@ Interpretation (2–3 lines):
 - This framework reduces the two classic errors: chasing a spike and panicking at the bottom.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769674467/blog/insight/oil-shock-to-en-img3.png" alt="Most FX mistakes come from reacting to headlines without identifying the dominant channel" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782953947/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260702/slot-005-chart-en.png" alt="Most FX mistakes come from reacting to headlines without identifying the dominant channel" />
   <figcaption>Most FX mistakes come from reacting to headlines without identifying the dominant channel</figcaption>
 </figure>
 
@@ -332,10 +332,10 @@ Classify the dominant channel first. If you can’t name it, you’re probably t
     "@id": "https://www.finmaphub.com/en/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission"
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673768/blog/insight/oil-shock-to-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673769/blog/insight/oil-shock-to-en-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673771/blog/insight/oil-shock-to-en-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769674467/blog/insight/oil-shock-to-en-img3.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782953943/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260702/slot-001-cover-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782953946/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260702/slot-003-flow-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782953946/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260702/slot-004-body-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782953947/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260702/slot-005-chart-en.png"
   ]
 }
 </script>

@@ -9,7 +9,7 @@ category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["Hormuz","oil","risk premium","insurance","freight","inflation","USD/KRW","macro"]
 tool: ["dca"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673760/blog/insight/hormuz-risk-oil-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782951796/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260702/slot-001-cover-en.png"
 lang: "en"
 ---
 
@@ -44,7 +44,7 @@ lang: "en"
 </div>
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769673760/blog/insight/hormuz-risk-oil-cover.png" alt="Oil can price delivery-risk premia before any confirmed physical disruption" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782951797/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260702/slot-002-cover-en.png" alt="Oil can price delivery-risk premia before any confirmed physical disruption" />
   <figcaption>Oil can price delivery-risk premia before any confirmed physical disruption</figcaption>
 </figure>
 
@@ -94,7 +94,7 @@ You do not need ten indicators. You need three variables that stay stable across
 - <strong>Limit:</strong> Firm-level hedges can flip the exposure; map USD revenues versus USD costs.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769673761/blog/insight/hormuz-risk-oil-en-img1.png" alt="Insurance, freight, detours, and FX can lead the oil move before quantity constraints show up" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782951798/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260702/slot-003-body-en.png" alt="Insurance, freight, detours, and FX can lead the oil move before quantity constraints show up" />
   <figcaption>Insurance, freight, detours, and FX can lead the oil move before quantity constraints show up</figcaption>
 </figure>
 
@@ -147,7 +147,7 @@ Interpretation (2–3 lines):
 ## Scenario table: a state machine, not a forecast
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769673762/blog/insight/hormuz-risk-oil-en-img2.png" alt="Use scenarios and flip triggers to change actions only when the underlying regime changes" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782951799/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260702/slot-004-comparison-en.png" alt="Use scenarios and flip triggers to change actions only when the underlying regime changes" />
   <figcaption>Use scenarios and flip triggers to change actions only when the underlying regime changes</figcaption>
 </figure>
 
@@ -190,7 +190,7 @@ Interpretation (2–3 lines):
 - Your plan improves when you separate macro stress from company exposure mapping.
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769673764/blog/insight/hormuz-risk-oil-en-img3.png" alt="In Korea, oil stress is often multiplied by USD/KRW, so classification and exposure mapping beat headline trading" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782951799/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260702/slot-005-chart-en.png" alt="In Korea, oil stress is often multiplied by USD/KRW, so classification and exposure mapping beat headline trading" />
   <figcaption>In Korea, oil stress is often multiplied by USD/KRW, so classification and exposure mapping beat headline trading</figcaption>
 </figure>
 
@@ -281,10 +281,10 @@ DXY and TNX shape financial conditions and risk appetite, which can amplify or d
     "@id": "https://www.finmaphub.com/en/posts/economicInfo/hormuz-risk-oil-insurance-freight-premium"
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673760/blog/insight/hormuz-risk-oil-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673761/blog/insight/hormuz-risk-oil-en-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673762/blog/insight/hormuz-risk-oil-en-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769673764/blog/insight/hormuz-risk-oil-en-img3.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782951796/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260702/slot-001-cover-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782951798/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260702/slot-003-body-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782951799/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260702/slot-004-comparison-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782951799/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260702/slot-005-chart-en.png"
   ]
 }
 </script>

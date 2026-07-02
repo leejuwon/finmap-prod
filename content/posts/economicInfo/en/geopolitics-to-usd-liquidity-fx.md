@@ -9,7 +9,7 @@ category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["USD","DXY","liquidity","funding stress","FX","USD/KRW","macro"]
 tool: ["dca"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1769611276/blog/insight/geopolitics-to-usd-liquidity-fx-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782954682/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260702/slot-001-cover-en.png"
 lang: "en"
 ---
 
@@ -49,7 +49,7 @@ lang: "en"
   </aside>
 </div>
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769611276/blog/insight/geopolitics-to-usd-liquidity-fx-cover.png" alt="Dollar strength in shocks is often a funding constraint, not just a fear trade" /><figcaption>Dollar strength in shocks is often a funding constraint, not just a fear trade</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782954683/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260702/slot-002-cover-en.png" alt="Dollar strength in shocks is often a funding constraint, not just a fear trade" /><figcaption>Dollar strength in shocks is often a funding constraint, not just a fear trade</figcaption></figure>
 
 ## The moment the story changes: from “safe haven” to “USD funding constraint”
 
@@ -76,7 +76,7 @@ This one shift changes your checklist and your timing. Sentiment is slow to meas
 
 Here’s the most useful “translation pipeline” for shock → USD strength:
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769611277/blog/insight/geopolitics-to-usd-liquidity-fx-en-img1.png" alt="In stress, USD demand often travels collateral → margin → funding, then hits FX first" /><figcaption>In stress, USD demand often travels collateral → margin → funding, then hits FX first</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782954684/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260702/slot-003-flow-en.png" alt="In stress, USD demand often travels collateral → margin → funding, then hits FX first" /><figcaption>In stress, USD demand often travels collateral → margin → funding, then hits FX first</figcaption></figure>
 
 1) **Collateral sensitivity rises**  
    Risk management tightens. Assets previously treated as “good enough” collateral get larger haircuts. The system implicitly asks for higher-quality collateral and more cash-like buffers.
@@ -132,7 +132,7 @@ USD/KRW can react sharply in stress because multiple USD needs can hit at once:
 
 This doesn’t require “panic.” It requires coincidence: the same day, the same direction, the same currency.
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769611278/blog/insight/geopolitics-to-usd-liquidity-fx-en-img2.png" alt="USD/KRW sensitivity rises when settlement, hedging, and foreign flows stack together" /><figcaption>USD/KRW sensitivity rises when settlement, hedging, and foreign flows stack together</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782954685/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260702/slot-004-flow-en.png" alt="USD/KRW sensitivity rises when settlement, hedging, and foreign flows stack together" /><figcaption>USD/KRW sensitivity rises when settlement, hedging, and foreign flows stack together</figcaption></figure>
 
 ### Table 2 — The “stacking” checklist for USD/KRW sensitivity
 
@@ -154,7 +154,7 @@ Interpretation (2–3 lines):
 
 You don’t need a prediction to act. You need a “state machine” you can update.
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1769611280/blog/insight/geopolitics-to-usd-liquidity-fx-en-img3.png" alt="A scenario table with flip triggers keeps your decisions stable under headline noise" /><figcaption>A scenario table with flip triggers keeps your decisions stable under headline noise</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782954686/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260702/slot-005-comparison-en.png" alt="A scenario table with flip triggers keeps your decisions stable under headline noise" /><figcaption>A scenario table with flip triggers keeps your decisions stable under headline noise</figcaption></figure>
 
 ### Table 3 — Regime states and flip rules you can apply today
 
@@ -267,10 +267,10 @@ When geopolitics hits, don’t read USD as fear first—read it as **USD liquidi
     "@id": "https://www.finmaphub.com/en/posts/economicInfo/geopolitics-to-usd-liquidity-fx"
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769611276/blog/insight/geopolitics-to-usd-liquidity-fx-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769611277/blog/insight/geopolitics-to-usd-liquidity-fx-en-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769611278/blog/insight/geopolitics-to-usd-liquidity-fx-en-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769611280/blog/insight/geopolitics-to-usd-liquidity-fx-en-img3.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782954682/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260702/slot-001-cover-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782954684/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260702/slot-003-flow-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782954685/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260702/slot-004-flow-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782954686/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260702/slot-005-comparison-en.png"
   ]
 }
 </script>

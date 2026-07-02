@@ -9,7 +9,7 @@ category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["tariffs","trade","growth","margins","FX","inflation","macro","USD/KRW"]
 tool: ["dca","cagr"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345898/blog/insight/tariffs-growth-margins-en-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782950196/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260702/slot-001-cover-en.png"
 lang: "en"
 ---
 
@@ -48,7 +48,7 @@ lang: "en"
   </aside>
 </div>
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770345898/blog/insight/tariffs-growth-margins-en-cover.png" alt="Tariffs behave like a package shock: growth, margins, FX, and inflation move together." /><figcaption>Tariffs behave like a package shock: growth, margins, FX, and inflation move together.</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782950197/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260702/slot-002-cover-en.png" alt="Tariffs behave like a package shock: growth, margins, FX, and inflation move together." /><figcaption>Tariffs behave like a package shock: growth, margins, FX, and inflation move together.</figcaption></figure>
 
 Tariffs are easy to misunderstand because they look like a clean policy lever: “tax imports → prices go up.”  
 In reality, tariffs are less like a single lever and more like a **bundle of forces** that can hit different parts of the economy at different speeds.
@@ -81,7 +81,7 @@ Interpretation (how to use it):
 - If FX jumps (USD strengthens) and spreads widen, the tariff story may be trading as **risk and tightening**, not just inflation.  
 - The scoreboard is not a forecast; it’s a **diagnosis tool** that tells you what channel to monitor next.
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770345899/blog/insight/tariffs-growth-margins-en-img1.png" alt="A four-variable scoreboard prevents tariff headlines from being reduced to a single CPI storyline." /><figcaption>A four-variable scoreboard prevents tariff headlines from being reduced to a single CPI storyline.</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782950199/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260702/slot-003-body-en.png" alt="A four-variable scoreboard prevents tariff headlines from being reduced to a single CPI storyline." /><figcaption>A four-variable scoreboard prevents tariff headlines from being reduced to a single CPI storyline.</figcaption></figure>
 
 <div class="callout-tip"><strong>One-line takeaway:</strong> A tariff headline is not “one number”; it’s a bundle—track which channel is leading (inflation, margins, growth, or FX).</div>
 
@@ -147,7 +147,7 @@ Tariffs are cross-border by definition, so FX is not a side story—it’s an am
 
 This is especially visible when USD strengthens and local currencies weaken. Even if the tariff doesn’t change, a currency move can create the same lived experience: higher imported input costs and reduced purchasing power.
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770345900/blog/insight/tariffs-growth-margins-en-img2.png" alt="FX can amplify tariff shocks: currency moves can change import costs and financial conditions before CPI responds." /><figcaption>FX can amplify tariff shocks: currency moves can change import costs and financial conditions before CPI responds.</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782950199/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260702/slot-004-body-en.png" alt="FX can amplify tariff shocks: currency moves can change import costs and financial conditions before CPI responds." /><figcaption>FX can amplify tariff shocks: currency moves can change import costs and financial conditions before CPI responds.</figcaption></figure>
 
 At this point in the article, if you want to read FX as a mechanism (not a guess), use these two guides:
 
@@ -281,9 +281,9 @@ Don’t plug a single tariff-driven inflation number into a plan. Use scenario r
     "@id": "https://www.finmaphub.com/en/posts/economicInfo/tariffs-growth-margins-fx-package-shock"
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345898/blog/insight/tariffs-growth-margins-en-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345899/blog/insight/tariffs-growth-margins-en-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345900/blog/insight/tariffs-growth-margins-en-img2.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782950196/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260702/slot-001-cover-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782950199/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260702/slot-003-body-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782950199/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260702/slot-004-body-en.png"
   ],
   "author": {
     "@type": "Organization",

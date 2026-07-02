@@ -9,7 +9,7 @@ category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["gold","real rates","USD","DXY","uncertainty","hedge","macro"]
 tool: ["cagr"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345889/blog/insight/gold-geopolitics-en-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782949571/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260702/slot-001-cover-en.png"
 lang: "en"
 ---
 
@@ -49,7 +49,7 @@ lang: "en"
   </aside>
 </div>
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770345889/blog/insight/gold-geopolitics-en-cover.png" alt="Gold moves with a package: real rates, USD, and uncertainty regimes." /><figcaption>Gold moves with a package: real rates, USD, and uncertainty regimes.</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782949573/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260702/slot-002-cover-en.png" alt="Gold moves with a package: real rates, USD, and uncertainty regimes." /><figcaption>Gold moves with a package: real rates, USD, and uncertainty regimes.</figcaption></figure>
 
 Most people learn one story about gold: “When the world feels unsafe, gold goes up.”  
 That story sometimes works—and then fails in the most confusing moments: the headlines are terrifying, but gold is flat (or down). The missing piece is that gold is not priced by emotion alone. It is priced by a macro bundle that changes from regime to regime.
@@ -97,7 +97,7 @@ A simplified transmission chain looks like this:
 
 The key nuance: CPI and PCE are both inflation measures, but markets often react to the <strong>policy function</strong> embedded in inflation expectations. If the shock makes investors think policy must stay tighter, real yields can rise—an unfavorable condition for gold—even as inflation risk is discussed.
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770345890/blog/insight/gold-geopolitics-en-img1.png" alt="Transmission map: geopolitics can become an inflation scare or a funding squeeze, changing gold’s response." /><figcaption>Transmission map: the same shock can become an inflation scare or a funding squeeze, changing gold’s response.</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782949574/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260702/slot-003-body-en.png" alt="Transmission map: geopolitics can become an inflation scare or a funding squeeze, changing gold’s response." /><figcaption>Transmission map: the same shock can become an inflation scare or a funding squeeze, changing gold’s response.</figcaption></figure>
 
 Here is a practical “channel table” you can use when reading headlines:
 
@@ -133,7 +133,7 @@ Interpretation:
 - If gold is up while DXY is also up, don’t force a contradiction; check whether real yields are falling and whether uncertainty is hedge-type rather than cash-type.  
 - The most common reason for disappointment is simple: <strong>real yields up</strong> while the narrative says “fear up.”
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770345891/blog/insight/gold-geopolitics-en-img2.png" alt="Matrix thinking: gold is supported when real-rate headwinds are absent, and disappoints when real yields and USD tighten conditions." /><figcaption>Matrix thinking: gold is supported when real-rate headwinds are absent, and disappoints when real yields and USD tighten conditions.</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782949575/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260702/slot-004-comparison-en.png" alt="Matrix thinking: gold is supported when real-rate headwinds are absent, and disappoints when real yields and USD tighten conditions." /><figcaption>Matrix thinking: gold is supported when real-rate headwinds are absent, and disappoints when real yields and USD tighten conditions.</figcaption></figure>
 
 ## Misconception box: “Fear is enough” (when gold disappoints)
 
@@ -197,7 +197,7 @@ Interpretation:
 - A move from “funding stress” to “base uncertainty” often shows up as <strong>USD momentum breaking</strong> and <strong>spreads stabilizing</strong>.  
 - A move into “inflation scare” often shows up as <strong>real yields rising</strong> alongside policy-path repricing.
 
-<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1770345892/blog/insight/gold-geopolitics-en-img3.png" alt="Gold disappoints most often when real yields rise or when markets prioritize cash over hedges." /><figcaption>Gold disappoints most often when real yields rise or when markets prioritize cash over hedges.</figcaption></figure>
+<figure><img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782949576/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260702/slot-005-comparison-en.png" alt="Gold disappoints most often when real yields rise or when markets prioritize cash over hedges." /><figcaption>Gold disappoints most often when real yields rise or when markets prioritize cash over hedges.</figcaption></figure>
 
 ## Mid-article essentials: two short primers that prevent most interpretation errors
 
@@ -295,10 +295,10 @@ Treat it as a regime-labeling tool and a monitoring routine. Decide which signal
     "@id": "https://www.finmaphub.com/en/posts/economicInfo/gold-geopolitics-real-rates-dollar-uncertainty"
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345889/blog/insight/gold-geopolitics-en-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345890/blog/insight/gold-geopolitics-en-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345891/blog/insight/gold-geopolitics-en-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770345892/blog/insight/gold-geopolitics-en-img3.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782949571/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260702/slot-001-cover-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782949574/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260702/slot-003-body-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782949575/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260702/slot-004-comparison-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782949576/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260702/slot-005-comparison-en.png"
   ],
   "author": {
     "@type": "Organization",

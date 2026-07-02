@@ -1274,8 +1274,8 @@ function renderFlow(image, layout) {
   const h = image.height;
   const safe = safeArea(w, h);
   const palette = image.palette || CATEGORY_PALETTES.neutral;
-  const items = image.items.slice(0, 4);
-  const cardW = 220;
+  const items = image.items.slice(0, 5);
+  const cardW = Math.min(220, (w - safe.x * 2 - 25 * Math.max(0, items.length - 1)) / items.length);
   const gap = (w - safe.x * 2 - cardW * items.length) / Math.max(1, items.length - 1);
   const keywordY = safe.y + 27;
   const titleY = safe.y + 100;

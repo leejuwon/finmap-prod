@@ -9,7 +9,7 @@ category: "Economic Info"
 postCategory: "economicInfo"
 tags: ["geopolitics","oil","FX","USD/KRW","inflation","rates","mortgages","housing","transaction volume","price distribution","Seoul","Gyeonggi","Incheon"]
 tool: ["cagr"]
-cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1776180803/blog/insight/geopolitics-oil-fx-dashboard-en-cover.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782908562/blog/insight/geopolitics-oil-fx-dashboard/rework-20260701/slot-001-cover-en.png"
 lang: "en"
 ---
 
@@ -50,7 +50,7 @@ lang: "en"
 </div>
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1776180803/blog/insight/geopolitics-oil-fx-dashboard-en-cover.png" alt="Korea housing reacts through a chain: CPI to rates to mortgages to sentiment to volume." />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782908563/blog/insight/geopolitics-oil-fx-dashboard/rework-20260701/slot-002-cover-en.png" alt="Korea housing reacts through a chain: CPI to rates to mortgages to sentiment to volume." />
   <figcaption>Korea housing rarely moves on headlines; it transmits through CPI → rates → mortgages → sentiment → volume.</figcaption>
 </figure>
 
@@ -69,7 +69,7 @@ A geopolitical event becomes a housing event through intermediate prices and pol
 5) <strong>Volume channel</strong>: transactions decline or recover first; prices follow later, often as distribution shifts
 
 <figure>
-  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1776180804/blog/insight/geopolitics-oil-fx-dashboard-en-img1.png" alt="Transmission infographic: oil and FX shocks flow into CPI, rates, mortgages, sentiment, then volume." />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1782908564/blog/insight/geopolitics-oil-fx-dashboard/rework-20260701/slot-003-flow-en.png" alt="Transmission infographic: oil and FX shocks flow into CPI, rates, mortgages, sentiment, then volume." />
   <figcaption>Use the chain to locate the “active link” before you look at prices.</figcaption>
 </figure>
 
@@ -303,8 +303,8 @@ Weekly is usually enough because housing responds slowly. Daily checks often inc
     "@id": "https://www.finmaphub.com/en/posts/economicInfo/geopolitics-oil-fx-dashboard"
   },
   "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1776180803/blog/insight/geopolitics-oil-fx-dashboard-en-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1776180804/blog/insight/geopolitics-oil-fx-dashboard-en-img1.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782908562/blog/insight/geopolitics-oil-fx-dashboard/rework-20260701/slot-001-cover-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782908564/blog/insight/geopolitics-oil-fx-dashboard/rework-20260701/slot-003-flow-en.png"
   ],
   "author": {
     "@type": "Organization",
