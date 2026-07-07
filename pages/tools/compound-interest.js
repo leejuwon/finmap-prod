@@ -9,6 +9,7 @@ import CompoundForm from "../../_components/CompoundForm";
 import CompoundChart from "../../_components/CompoundChart";
 import CompoundDetailSummary from "../../_components/CompoundDetailSummary";
 import CompoundQuickComparePanel from "../../_components/CompoundQuickComparePanel";
+import CompoundFrequencyComparePanel from "../../_components/CompoundFrequencyComparePanel";
 import CompoundYearTable from "../../_components/CompoundYearTable";
 import ValueDisplay, { formatMoneyShort } from "../../_components/ValueDisplay";
 import ToolCta from "../../_components/ToolCta";
@@ -31,6 +32,7 @@ import {
   calcCompoundNoTaxFee,
   calcSimpleLump,
 } from "../../lib/compound";
+import { calcAnnualCompoundForComparison } from "../../lib/compoundFrequencyCompare";
 
 const ScenarioPanel = dynamic(() => import("../../_components/ScenarioPanel"), {
   ssr: false,
@@ -799,6 +801,32 @@ export default function CompoundPage() {
 
   const hasResult = !!result && !!idealResult;
 
+  const annualFrequencyResult = useMemo(() => {
+    if (!hasResult) return null;
+    return calcAnnualCompoundForComparison({
+      principal: invest.principal,
+      monthly: invest.monthly,
+      annualRate: invest.annualRate,
+      years: invest.years,
+      taxRatePercent: taxRatePercentState,
+      feeRatePercent: feeRatePercentState,
+      inflationRate: invest.inflationRate,
+      currency,
+      baseYear: result.baseYear,
+    });
+  }, [
+    currency,
+    feeRatePercentState,
+    hasResult,
+    invest.annualRate,
+    invest.inflationRate,
+    invest.monthly,
+    invest.principal,
+    invest.years,
+    result?.baseYear,
+    taxRatePercentState,
+  ]);
+
   const insights = useMemo(() => {
     if (!hasResult) return [];
     const fmt = (v) => formatMoneyShort(Number(v) || 0, numberLocale);
@@ -1068,6 +1096,14 @@ export default function CompoundPage() {
                     baseYear={result.baseYear}
                   />
 
+                  <CompoundFrequencyComparePanel
+                    locale={locale}
+                    numberLocale={numberLocale}
+                    currency={currency}
+                    monthlyResult={result}
+                    annualResult={annualFrequencyResult}
+                  />
+
                   <CompoundResultActions
                     locale={locale}
                     lang={lang}
@@ -1327,6 +1363,14 @@ export default function CompoundPage() {
                     feeRatePercent={feeRatePercentState}
                     inflationRate={invest.inflationRate}
                     baseYear={result.baseYear}
+                  />
+
+                  <CompoundFrequencyComparePanel
+                    locale={locale}
+                    numberLocale={numberLocale}
+                    currency={currency}
+                    monthlyResult={result}
+                    annualResult={annualFrequencyResult}
                   />
 
                   <CompoundResultActions

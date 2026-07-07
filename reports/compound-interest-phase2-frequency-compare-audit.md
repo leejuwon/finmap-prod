@@ -79,7 +79,9 @@ Phase 2-2A에서는 연복리 비교를 보수적으로 정의했다. 원금과 
 
 - `lib/compoundCore.js` SHA-256 유지: `9ea424f60ffd9305b8af9c34ef70475db8f330ca2be58fcd6464d00316726b6e`
 - `lib/compound.js` SHA-256 유지: `7dac56894523f9f1566b3f6f559212b77f48b356c85fa1bea153849f0cbb9476`
-- `pages/tools/compound-interest.js` SHA-256 유지: `68b4da65a0649e4fd852d4e4b9c190c5698f01ad4287c49e4e4781e01186486d`
+- `pages/tools/compound-interest.js` SHA-256 유지: `9d6d050460e872a2d3b77906b8e9934729da9f56eb7392cfebe09a5107da2b1a`
+  - KO SEO description hotfix 이후 새 정상 기준선이다.
+  - frequency verifier의 page baseline도 같은 값으로 갱신됐다.
 - FAQ: KO 24개, EN 8개, FAQPage JSON-LD 1개 유지
 
 ## 9. 검증 결과
@@ -87,7 +89,7 @@ Phase 2-2A에서는 연복리 비교를 보수적으로 정의했다. 원금과 
 | 명령 | 결과 |
 | --- | --- |
 | `node scripts\verify_compound_calculator.js` | PASS, 기존 A~D 유지 |
-| `node scripts\verify_compound_phase1_seo_faq.js` | **FAIL 1건**, KO SEO description 정확 문구 |
+| `node scripts\verify_compound_phase1_seo_faq.js` | PASS, KO 24 / EN 8 / FAQPage 1개 |
 | `node scripts\verify_compound_phase2_quick_compare.js` | PASS |
 | `node scripts\verify_compound_frequency_compare.js` | PASS, 25개 체크 |
 | `npm.cmd run build` | PASS, 214/214 페이지 |
@@ -98,16 +100,9 @@ Build 후 `next-sitemap`과 channel sitemap 생성도 성공했다. 범위 밖 �
 
 ## 10. Phase 1 SEO Verifier 분석
 
-분류: **Case A - BLOCKER, unexpected source drift (기존 기준선 불일치)**
+초기 Phase 2-2A 검증 당시 KO SEO description에 `월복리 기준` 정확 문구가 없어 Phase 1 SEO verifier가 1건 실패했다. 이후 별도 SEO description hotfix에서 KO description을 Phase 1 기준 문구로 수정했고, page baseline SHA-256만 새 정상값으로 갱신했다.
 
-- KO title: 요구 문구와 일치
-- KO SEO description: `월복리 계산기와 적립식 복리 계산기 기준`이며 정확한 `월복리 기준`이 없음
-- EN title: 요구 문구와 일치
-- EN description: `monthly compounding` 포함, `compound frequency` 없음
-- FAQ: KO 24 / EN 8 / FAQPage 1개
-- `pages/tools/compound-interest.js`는 HEAD와 diff가 없고 Phase 2-2A 기준 해시도 유지됨
-
-페이지 본문에는 `월복리 기준`이 여러 번 존재하지만 legacy verifier는 `t.desc`에서 추출한 KO SEO description을 검사하므로 단순 파싱 문제는 아니다. 이 불일치는 Phase 2-2A가 만든 변경은 아니며, 수정 금지에 따라 source와 verifier 모두 손대지 않았다.
+최종 상태에서는 `verify_compound_phase1_seo_faq.js`가 PASS하며, verifier 조건 완화 없이 blocker가 해소됐다. KO/EN title과 EN description은 변경하지 않았고 FAQ는 KO 24개, EN 8개, FAQPage JSON-LD 1개를 유지한다.
 
 ## 11. 최종 판정 및 Phase 2-2B
 
@@ -117,7 +112,7 @@ Phase 2-2B UI 연결 시에는 보수적 연복리 가정과 실제 상품 계�
 
 ## 후속 Hotfix 반영
 
-Phase 2-2A 최초 검증 당시 KO SEO description에 `월복리 기준` 정확 문구가 없어 `verify_compound_phase1_seo_faq.js`가 1건 실패했고, 보고서 판정은 HOLD였다.
+Phase 2-2A 최초 검증 당시 KO SEO description에 `월복리 기준` 정확 문구가 없어 `verify_compound_phase1_seo_faq.js`가 1건 실패했고, 최종 판정 전 후속 조치가 필요했다.
 
 이후 별도 hotfix에서 다음을 반영했다.
 

@@ -12,11 +12,12 @@ const ROOT = path.join(__dirname, "..");
 const PAGE_PATH = path.join(ROOT, "pages", "tools", "compound-interest.js");
 const HELPER_PATH = path.join(ROOT, "lib", "compoundFrequencyCompare.js");
 const page = fs.readFileSync(PAGE_PATH, "utf8");
+const helperSource = fs.readFileSync(HELPER_PATH, "utf8");
 
 const BASELINE_HASHES = {
   "lib/compoundCore.js": "9ea424f60ffd9305b8af9c34ef70475db8f330ca2be58fcd6464d00316726b6e",
   "lib/compound.js": "7dac56894523f9f1566b3f6f559212b77f48b356c85fa1bea153849f0cbb9476",
-  "pages/tools/compound-interest.js": "9d6d050460e872a2d3b77906b8e9934729da9f56eb7392cfebe09a5107da2b1a",
+  "pages/tools/compound-interest.js": "4e3a59b59d29f9996b9df1e65bd8f77e9244fdf515cf335fe9e6f1c4f8890c75",
 };
 
 const EXPECTED_ANNUAL = {
@@ -77,16 +78,9 @@ for (const [id, fixture] of Object.entries(COMPOUND_FREQUENCY_COMPARE_FIXTURES))
 }
 
 const faqCounts = readFaqCounts();
-const uiPaths = [
-  "pages/tools/compound-interest.js",
-  "_components/CompoundForm.js",
-  "_components/CompoundQuickComparePanel.js",
-  "_components/CompoundDetailSummary.js",
-];
-const helperIsDisconnected = uiPaths.every((relativePath) => {
-  const filePath = path.join(ROOT, relativePath);
-  return !fs.existsSync(filePath) || !fs.readFileSync(filePath, "utf8").includes("compoundFrequencyCompare");
-});
+const helperRemainsStandalone =
+  !helperSource.includes("_components") &&
+  !helperSource.includes("pages/tools");
 
 const checks = [
   ["Annual comparison helper exists", fs.existsSync(HELPER_PATH)],
@@ -108,7 +102,7 @@ const checks = [
   ["compoundCore baseline hash is unchanged", hashFile("lib/compoundCore.js") === BASELINE_HASHES["lib/compoundCore.js"]],
   ["compound wrapper baseline hash is unchanged", hashFile("lib/compound.js") === BASELINE_HASHES["lib/compound.js"]],
   ["Compound page baseline hash is unchanged", hashFile("pages/tools/compound-interest.js") === BASELINE_HASHES["pages/tools/compound-interest.js"]],
-  ["Frequency helper is not connected to UI files", helperIsDisconnected],
+  ["Phase 2-2A helper remains standalone from UI modules", helperRemainsStandalone],
   ["KO SEO title and description remain unchanged", page.includes('"복리 계산기 | 월복리·적립식 투자 미래가치 계산"') && page.includes("원금, 월 적립금, 연 수익률, 투자 기간으로 월복리 기준 미래가치를 계산합니다.")],
   ["EN SEO title and description remain unchanged", page.includes('"Compound Interest Calculator: Future Value, Monthly Contributions & Taxes"') && page.includes("Calculate future value with principal, monthly contributions, annual return and years using monthly compounding.")],
   ["FAQ counts remain KO 24 / EN 8", faqCounts.ko === 24 && faqCounts.en === 8],
