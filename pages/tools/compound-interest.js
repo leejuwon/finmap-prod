@@ -369,7 +369,7 @@ export default function CompoundPage() {
           : "Compound Interest Calculator: Future Value, Monthly Contributions & Taxes",
       desc:
         locale === "ko"
-          ? "원금, 월 적립금, 연 수익률, 투자 기간으로 월복리 기준 미래가치를 계산합니다. 세금, 수수료, 물가상승률을 반영한 세후 금액과 현재가치를 표와 차트로 확인하세요."
+          ? "복리 계산기에서 원금, 월 적립금, 연 수익률, 투자 기간을 입력해 월복리 계산기와 적립식 복리 계산기 기준의 미래가치를 확인하세요. 세금, 수수료, 물가상승률 반영 결과도 함께 비교할 수 있습니다."
           : "Calculate future value with principal, monthly contributions, annual return and years using monthly compounding. Review taxes, fees, inflation, charts and year-by-year tables.",
 
       fv: locale === "ko" ? "세후 총자산" : "Net Future Value",
