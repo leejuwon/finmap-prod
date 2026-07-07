@@ -918,6 +918,7 @@ pre code {
 body.fm-exporting .fixed { display: none !important; }           /* CTABar 같은 고정요소 제거 */
 body.fm-exporting .overflow-x-auto { overflow: visible !important; } /* 가로 스크롤로 인한 캡처 끊김 방지 */
 body.fm-exporting summary { display: none !important; }          /* details summary UI 제거(선택) */
+body.fm-exporting .fm-export-exclude { display: none !important; }
 
 /* =========================================================
    Home Hero stats(입문자용/실전연결/헷갈림정리/숫자로확인)

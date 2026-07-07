@@ -8,6 +8,7 @@ import CTABar from "../../_components/CTABar";
 import CompoundForm from "../../_components/CompoundForm";
 import CompoundChart from "../../_components/CompoundChart";
 import CompoundDetailSummary from "../../_components/CompoundDetailSummary";
+import CompoundQuickComparePanel from "../../_components/CompoundQuickComparePanel";
 import CompoundYearTable from "../../_components/CompoundYearTable";
 import ValueDisplay, { formatMoneyShort } from "../../_components/ValueDisplay";
 import ToolCta from "../../_components/ToolCta";
@@ -166,6 +167,44 @@ function CompoundSupportContent({ locale }) {
 
       <ToolSharePanel toolId="compound" locale={locale} />
     </>
+  );
+}
+
+function CompoundResultActions({ locale, lang, onDownloadPDF, sectionRef }) {
+  return (
+    <div className="fm-export-exclude grid gap-6" data-html2canvas-ignore="true" data-testid="compound-result-actions">
+      <div ref={sectionRef} className="scroll-mt-24">
+        <ToolResultCta
+          locale={locale}
+          sourceTool="compound"
+          location="result_after"
+          onDownloadPDF={onDownloadPDF}
+        />
+      </div>
+
+      <section className="card">
+        <h2 className="mb-2 text-base font-semibold">
+          {locale === "ko"
+            ? "월복리 기준 복리 계산과 적립식 투자 결과 확인"
+            : "Monthly-compounded growth with contributions"}
+        </h2>
+
+        <p className="text-sm text-slate-600">
+          {locale === "ko"
+            ? "이 복리 계산기는 원금(초기 투자금)과 월 적립금(적립식), 연 수익률, 기간을 입력해 월복리 기준 미래가치(FV)를 계산합니다. 세금·수수료·물가상승률을 반영해 세후 총자산과 현재가치를 확인할 수 있어요."
+            : "Enter principal, monthly contribution, annual return, and years to calculate monthly-compounded FV. Check net results and present value after tax, fees, and inflation."}
+        </p>
+        <h3 className="mb-2 text-sm font-semibold">
+          {locale === "ko" ? "관련 계산기" : "Related tools"}
+        </h3>
+        <div className="tool-cta-section grid min-w-0 gap-4">
+          <ToolCta lang={lang} type="goal" sourceTool="compound" location="result_cta" />
+          <ToolCta lang={lang} type="dca" sourceTool="compound" location="result_cta" />
+          <ToolCta lang={lang} type="cagr" sourceTool="compound" location="result_cta" />
+          <ToolCta lang={lang} type="fire" sourceTool="compound" location="result_cta" />
+        </div>
+      </section>
+    </div>
   );
 }
 
@@ -1018,6 +1057,24 @@ export default function CompoundPage() {
                     </div>
                   </div>
 
+                  <CompoundQuickComparePanel
+                    locale={locale}
+                    numberLocale={numberLocale}
+                    currency={currency}
+                    invest={invest}
+                    taxRatePercent={taxRatePercentState}
+                    feeRatePercent={feeRatePercentState}
+                    inflationRate={invest.inflationRate}
+                    baseYear={result.baseYear}
+                  />
+
+                  <CompoundResultActions
+                    locale={locale}
+                    lang={lang}
+                    onDownloadPDF={handleDownloadPDF}
+                    sectionRef={(el) => (sectionEls.current.cta = el)}
+                  />
+
                   {/* Advanced sections (collapsed) */}
                   <details className="card">
                     <summary className="cursor-pointer font-semibold">
@@ -1261,6 +1318,24 @@ export default function CompoundPage() {
                     locale={locale}
                   />
 
+                  <CompoundQuickComparePanel
+                    locale={locale}
+                    numberLocale={numberLocale}
+                    currency={currency}
+                    invest={invest}
+                    taxRatePercent={taxRatePercentState}
+                    feeRatePercent={feeRatePercentState}
+                    inflationRate={invest.inflationRate}
+                    baseYear={result.baseYear}
+                  />
+
+                  <CompoundResultActions
+                    locale={locale}
+                    lang={lang}
+                    onDownloadPDF={handleDownloadPDF}
+                    sectionRef={(el) => (sectionEls.current.cta = el)}
+                  />
+
                   {/* ==== 복리 시뮬레이션 (3가지 시나리오) ==== */}
                   <ScenarioPanel
                     principal={invest.principal}
@@ -1456,38 +1531,6 @@ export default function CompoundPage() {
                 </>
               )}
             </div>
-
-                  <div ref={(el) => (sectionEls.current.cta = el)} className="scroll-mt-24">
-                    <ToolResultCta
-                      locale={locale}
-                      sourceTool="compound"
-                      location="result_after"
-                      onDownloadPDF={handleDownloadPDF}
-                    />
-                  </div>
-
-                  <section className="card">
-                    <h2 className="text-base font-semibold mb-2">
-                      {locale === "ko"
-                        ? "월복리 기준 복리 계산과 적립식 투자 결과 확인"
-                        : "Monthly-compounded growth with contributions"}
-                    </h2>
-
-                    <p className="text-sm text-slate-600">
-                      {locale === "ko"
-                        ? "이 복리 계산기는 원금(초기 투자금)과 월 적립금(적립식), 연 수익률, 기간을 입력해 월복리 기준 미래가치(FV)를 계산합니다. 세금·수수료·물가상승률을 반영해 세후 총자산과 현재가치를 확인할 수 있어요."
-                        : "Enter principal, monthly contribution, annual return, and years to calculate monthly-compounded FV. Check net results and present value after tax, fees, and inflation."}
-                    </p>                    
-                    <h3 className="text-sm font-semibold mb-2">
-                      {locale === "ko" ? "관련 계산기" : "Related tools"}
-                    </h3>                 
-                    <div className="tool-cta-section grid min-w-0 gap-4">
-                      <ToolCta lang={lang} type="goal" sourceTool="compound" location="result_cta" />
-                      <ToolCta lang={lang} type="dca" sourceTool="compound" location="result_cta" />
-                      <ToolCta lang={lang} type="cagr" sourceTool="compound" location="result_cta" />
-                      <ToolCta lang={lang} type="fire" sourceTool="compound" location="result_cta" />
-                    </div>
-                  </section>
 
                   {/* FAQ */}
                   <div className="card">
