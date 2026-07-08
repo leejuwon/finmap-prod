@@ -1,11 +1,11 @@
 # SEO Channel Split URL Check
 
-- Checked at: 2026-07-07T05:45:17.763Z
+- Checked at: 2026-07-08T15:06:50.281Z
 - Fetch base: http://127.0.0.1:8017
 - URL samples: 22
 - Failures: 0
-- sitemap-0.xml URL count: 204
-- sitemap-ko.xml URL count: 106
+- sitemap-0.xml URL count: 205
+- sitemap-ko.xml URL count: 107
 - sitemap-en.xml URL count: 98
 - sitemap-en.xml required URLs: 16/16
 - /en/sitemap.xml exists: yes
@@ -43,8 +43,8 @@
 
 | Sitemap | URL count |
 | --- | ---: |
-| sitemap-0.xml | 204 |
-| sitemap-ko.xml | 106 |
+| sitemap-0.xml | 205 |
+| sitemap-ko.xml | 107 |
 | sitemap-en.xml | 98 |
 | en/sitemap.xml | 98 |
 

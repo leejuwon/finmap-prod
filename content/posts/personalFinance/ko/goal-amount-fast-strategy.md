@@ -3,7 +3,7 @@ slug: "goal-amount-fast-strategy"
 title: "목표 금액을 빠르게 모으는 법: 원금·수익률·기간의 균형"
 description: "목표 자산을 빠르게 만들기 위해서는 원금·수익률·기간의 균형이 핵심입니다. 제한된 소득 안에서 어떻게 목표 금액을 앞당길 수 있는지 실전 관점에서 정리했습니다."
 datePublished: "2025-11-19"
-dateModified: "2025-11-19"
+dateModified: "2026-07-08"
 seoTitle: "목표 금액 빨리 모으는 법: 원금·수익률·기간 중 무엇을 바꿀까?"
 seoDescription: "목표 자산을 앞당기려면 월 납입액·기간·수익률 중 무엇을 조정해야 할까요? 목표 자산 시뮬레이터로 필요한 월 투자금을 확인해보세요."
 category: "재테크"
@@ -106,7 +106,7 @@ tool: ["goal","comp"]
 ## 함께 보면 좋은 글/도구
 
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
-- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [복리 계산기](/tools/compound-interest)로 저축·투자 기간별 미래가치 계산하기
 - [월 50만원 적립식 투자 10년 예시로 기준선 잡기](/posts/personalFinance/monthly-dca-10-year-result)
 
 <script type="application/ld+json">
@@ -116,6 +116,7 @@ tool: ["goal","comp"]
   "headline": "목표 금액을 빠르게 모으는 법: 원금·수익률·기간의 균형",
   "description": "목표 자산을 빠르게 만들기 위해서는 원금·수익률·기간의 균형이 핵심입니다. 제한된 소득 안에서 어떻게 목표 금액을 앞당길 수 있는지 실전 관점에서 정리했습니다.",
   "datePublished": "2025-11-19",
+  "dateModified": "2026-07-08",
   "author": {
     "@type": "Person",
     "name": "FinMap"

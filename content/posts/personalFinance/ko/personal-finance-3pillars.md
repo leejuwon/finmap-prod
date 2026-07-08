@@ -3,7 +3,7 @@ slug: "personal-finance-3pillars"
 title: "가계 재무 3대장: 예산·비상금·장기투자를 먼저 세팅하라"
 description: "월소득을 예산, 비상금, 장기투자로 나누는 가계 재무 3단계입니다. 월급일 D+1/D+3/D+7 실행 흐름과 예시 예산표로 현금흐름을 정리합니다."
 datePublished: "2025-11-13"
-dateModified: "2026-06-23"
+dateModified: "2026-07-08"
 category: "재테크"
 postCategory: "personalFinance"
 tags: ["가계재무","예산","비상금","장기투자","현금흐름","재테크기초","체크리스트"]
@@ -353,7 +353,7 @@ lang: "ko"
 
 ## 함께 보면 좋은 글/도구
 
-- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [투자 복리 계산기로 장기투자 미래가치 확인하기](/tools/compound-interest)
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
 - [비상금 규모를 직장·가족·대출 리스크로 계산하기](/posts/personalFinance/emergency-fund-by-risk)
 
@@ -364,7 +364,7 @@ lang: "ko"
   "headline": "가계 재무 3대장: 예산·비상금·장기투자를 먼저 세팅하라",
   "description": "월소득을 예산, 비상금, 장기투자로 나누는 가계 재무 3단계입니다. 월급일 D+1/D+3/D+7 실행 흐름과 예시 예산표로 현금흐름을 정리합니다.",
   "datePublished": "2025-11-13",
-  "dateModified": "2026-06-23",
+  "dateModified": "2026-07-08",
   "author": { "@type": "Person", "name": "FinMap" },
   "publisher": { "@type": "Organization", "name": "FinMap" },
   "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.finmaphub.com/posts/personalFinance/personal-finance-3pillars" }

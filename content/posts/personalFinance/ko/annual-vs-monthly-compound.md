@@ -3,7 +3,7 @@ slug: "annual-vs-monthly-compound"
 title: "연복리 vs 월복리: 목표 도달 기간은 얼마나 달라질까?"
 description: "연복리와 월복리의 차이를 실제 수치와 예시로 설명하고, 목표 금액 도달 속도에 어떤 영향을 미치는지 쉽게 이해할 수 있도록 정리했습니다."
 datePublished: "2025-11-23"
-dateModified: "2026-06-24"
+dateModified: "2026-07-08"
 seoTitle: "연복리 vs 월복리: 목표 달성 기간이 얼마나 달라질까?"
 seoDescription: "연복리와 월복리 차이를 목표 금액·월 적립 예시로 비교하고, 복리 계산기와 목표 자산 시뮬레이터로 결과를 확인합니다."
 category: "재테크"
@@ -76,7 +76,7 @@ lang: "ko"
 **→ 작은 차이 같지만 장기 투자는 1년 이상 차이가 나기도 합니다.**
 
 👉 더 자세히 계산해보고 싶다면?
-- **[월복리 계산기](/tools/compound-interest)**
+- **[복리 계산 공식과 월복리 결과 비교하기](/tools/compound-interest)**
 - **[목표자산 도달 시뮬레이터](/tools/goal-simulator)**  
 
 ---
@@ -130,7 +130,7 @@ ETF 적립식·연금저축·IRP 등 대부분 월 단위로 운용되므로 월
   "headline": "연복리 vs 월복리: 목표 도달 기간은 얼마나 달라질까?",
   "description": "연복리와 월복리의 차이를 실제 계산 예시와 함께 설명하여 장기 투자에서 어떤 방식이 더 유리한지 정리했습니다.",
   "datePublished": "2025-11-23",
-  "dateModified": "2026-06-24",
+  "dateModified": "2026-07-08",
   "author": {
     "@type": "Person",
     "name": "FinMap"

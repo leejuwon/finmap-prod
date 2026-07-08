@@ -3,7 +3,7 @@ slug: "how-much-per-month-for-100m"
 title: "1억 모으려면 월 얼마? 5년·10년·15년 필요 투자금"
 description: "1억 모으려면 연 5% 가정 시 5년 월 약 147만원, 10년 약 64만원, 15년 약 37만원이 필요합니다. 수익률별 표와 목표자산 계산기로 내 계획을 확인하세요."
 datePublished: "2025-11-20"
-dateModified: "2026-06-04"
+dateModified: "2026-07-08"
 seoTitle: "1억 모으려면 월 얼마? 5년·10년·15년 필요 투자금"
 seoDescription: "1억 모으려면 연 5% 가정 시 5년, 10년, 15년 기준으로 월 약 147만원, 64만원, 37만원이 필요합니다. 1억 모으는 기간과 월 필요금액을 표와 계산기로 확인하세요."
 category: "재테크"
@@ -91,7 +91,7 @@ hreflangEquivalent: false
 
 ### 3) 수익률별 결과를 비교한다
 
-연 0%, 보수적 가정, 기대 가정을 함께 비교하면 계획의 민감도를 볼 수 있습니다. [복리 계산기](/tools/compound-interest)는 초기자산, 월 적립금, 세금과 수수료 조건을 바꿔 결과를 비교할 때 유용합니다.
+연 0%, 보수적 가정, 기대 가정을 함께 비교하면 계획의 민감도를 볼 수 있습니다. [투자 복리 계산기](/tools/compound-interest)는 초기자산, 월 적립금, 세금과 수수료 조건을 바꿔 결과를 비교할 때 유용합니다.
 
 ### 4) 적립식 투자 방식까지 점검한다
 
@@ -136,7 +136,7 @@ hreflangEquivalent: false
 ## 관련 계산기와 글
 
 - [목표자산 계산기로 1억 도달 계획 확인하기](/tools/goal-simulator)
-- [복리 계산기로 수익률·세금·수수료 비교하기](/tools/compound-interest)
+- [복리 계산기 사용법으로 수익률·세금·수수료 결과 읽기](/posts/personalFinance/compound-calculator-guide)
 - [DCA 계산기로 정기 납입 시나리오 확인하기](/tools/dca-calculator)
 - [1억 만들기 월 투자금 표 보기](/posts/personalFinance/monthly-investment-for-100m-table)
 - [적립식과 일시금 투자 판단 기준 보기](/posts/personalFinance/dca-vs-lumpsum-decision-rules)

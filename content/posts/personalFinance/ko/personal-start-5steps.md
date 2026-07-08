@@ -3,7 +3,7 @@ slug: "personal-start-5steps"
 title: "사회초년생을 위한 월급 관리 5단계 가이드"
 description: "사회초년생이 가장 고민하는 월급 관리. 어디서부터 시작해야 할지 막막하다면 이 글에서 소개하는 월급 관리 5단계 가이드로 재테크의 기초를 다져보세요."
 datePublished: "2025-11-17"
-dateModified: "2025-11-17"
+dateModified: "2026-07-08"
 seoTitle: "사회초년생 월급 관리 5단계: 예산·비상금·복리 투자 시작법"
 seoDescription: "사회초년생이 월급을 예산·비상금·저축·복리 투자로 나누는 5단계를 정리하고, 복리 계산기로 장기 효과를 확인합니다."
 category: "재테크"
@@ -171,7 +171,7 @@ lang: "ko"
 ### 6-2. 복리 계산 체험 (CTA)
 
 👉 직접 숫자를 바꿔보면서 복리 효과를 체험해보세요.  
-[FinMap 복리 계산기](https://www.finmaphub.com/tools/compound-interest)
+[복리 계산기](/tools/compound-interest)에서 원금, 월 납입액, 기간을 바꿔 미래가치를 비교할 수 있습니다.
 
 ---
 
@@ -196,7 +196,7 @@ A2. 가능합니다. 다만 비상금이 먼저 확보되어 있어야 흔들림
 ## 함께 보면 좋은 글/도구
 
 - [비상금 규모를 직장·가족·대출 리스크로 계산하기](/posts/personalFinance/emergency-fund-by-risk)
-- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [복리 계산기 사용법으로 월복리·적립식 결과 읽는 순서 보기](/posts/personalFinance/compound-calculator-guide)
 - [고금리 부채 상환과 투자의 우선순위 기준 세우기](/posts/personalFinance/high-rate-debt-vs-invest-threshold-rule)
 
 <script type="application/ld+json">
@@ -206,6 +206,7 @@ A2. 가능합니다. 다만 비상금이 먼저 확보되어 있어야 흔들림
   "headline": "사회초년생을 위한 월급 관리 5단계 가이드",
   "description": "사회초년생이 가장 고민하는 월급 관리. 어디서부터 시작해야 할지 막막하다면 이 글에서 소개하는 월급 관리 5단계 가이드로 재테크의 기초를 다져보세요.",
   "datePublished": "2025-11-17",
+  "dateModified": "2026-07-08",
   "author": {
     "@type": "Person",
     "name": "FinMap"

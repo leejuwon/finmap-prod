@@ -4,7 +4,7 @@ link: "/posts/personalFinance/high-rate-debt-vs-invest-threshold-rule"
 title: "고금리 시대: 빚부터 갚을까, 투자부터 할까? (이자율 ‘임계값’ 룰)"
 description: "고금리 구간에서는 ‘무조건 빚 먼저’도, ‘무조건 투자 먼저’도 정답이 아닙니다. 핵심은 내 부채 이자율을 ‘확정 수익률’로 환산하고, 투자 기대수익률은 ‘리스크·세금·중단 위험’까지 반영해 비교하는 것입니다. 이 글은 이자율 임계값 룰(3%·6%·9% 구간)로 월급의 우선순위를 규칙화해 불안을 줄이고 실행을 남깁니다."
 datePublished: "2026-01-15"
-dateModified: "2026-01-15"
+dateModified: "2026-07-08"
 category: "재테크"
 postCategory: "personalFinance"
 tags: ["고금리", "빚갚기", "투자우선순위", "이자율임계값", "현금흐름", "부채관리", "리스크관리", "비상금", "DCA", "복리"]
@@ -247,7 +247,7 @@ lang: "ko"
 룰은 숫자로 완성됩니다. 특히 “복리”나 “목표 금액”을 한 번만 계산해도,
 내가 감당할 수 있는 투자액이 현실적으로 잡혀요.
 
-- 👉 [복리 계산기](/tools/compound-interest)  
+- 👉 [투자 복리 계산기](/tools/compound-interest)
 - 👉 [목표 자산 시뮬레이터](/tools/goal-simulator)  
 - 👉 [적립식(DCA) 계산기](/tools/dca-calculator)
 
@@ -304,7 +304,7 @@ lang: "ko"
   "description": "고금리 구간에서는 ‘무조건 빚 먼저’도, ‘무조건 투자 먼저’도 정답이 아닙니다. 핵심은 내 부채 이자율을 ‘확정 수익률’로 환산하고, 투자 기대수익률은 ‘리스크·세금·중단 위험’까지 반영해 비교하는 것입니다. 이 글은 이자율 임계값 룰(3%·6%·9% 구간)로 월급의 우선순위를 규칙화해 불안을 줄이고 실행을 남깁니다.",
   "inLanguage": "ko",
   "datePublished": "2026-01-15",
-  "dateModified": "2026-01-15",
+  "dateModified": "2026-07-08",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://www.finmaphub.com/posts/personalFinance/high-rate-debt-vs-invest-threshold-rule"

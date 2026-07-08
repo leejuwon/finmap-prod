@@ -4,7 +4,7 @@ link: "/posts/personalFinance/simple-vs-compound"
 title: "단리 vs 복리: 월 30만원 예시로 보는 장기 자산 차이"
 description: "단리·복리 차이는 공식이 아니라 ‘돈이 불어나는 경로’에서 벌어집니다. 예금·적금·투자에서 복리의 작동 지점을 표로 정리하고, 계산기로 직접 확인합니다."
 datePublished: "2025-11-15"
-dateModified: "2026-06-19"
+dateModified: "2026-07-08"
 seoTitle: "단리 vs 복리 계산: 월 30만원 투자 예시로 보는 장기 차이"
 seoDescription: "단리와 복리의 차이를 월 적립 예시로 비교하고, 기간·수익률이 장기 결과를 어떻게 바꾸는지 복리 계산기로 확인합니다."
 category: "재테크"
@@ -293,7 +293,7 @@ lang: "ko"
 
 ## 함께 보면 좋은 글/도구
 
-- [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
+- [투자 복리 계산기로 기간별 미래가치 계산하기](/tools/compound-interest)
 - [연복리와 월복리 차이를 장기 투자 관점에서 보기](/posts/personalFinance/annual-vs-monthly-compound)
 - [CAGR 뜻과 단순 수익률의 차이 이해하기](/posts/personalFinance/what-is-cagr)
 
@@ -305,7 +305,7 @@ lang: "ko"
   "description": "단리·복리 차이는 공식이 아니라 ‘돈이 불어나는 경로’에서 벌어집니다. 예금·적금·투자에서 복리의 작동 지점을 표로 정리하고, 계산기로 직접 확인합니다.",
   "inLanguage": "ko-KR",
   "datePublished": "2025-11-15",
-  "dateModified": "2026-06-19",
+  "dateModified": "2026-07-08",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://www.finmaphub.com/posts/personalFinance/simple-vs-compound"
