@@ -10,6 +10,7 @@ import CompoundChart from "../../_components/CompoundChart";
 import CompoundDetailSummary from "../../_components/CompoundDetailSummary";
 import CompoundQuickComparePanel from "../../_components/CompoundQuickComparePanel";
 import CompoundFrequencyComparePanel from "../../_components/CompoundFrequencyComparePanel";
+import CompoundContributionScenarioPanel from "../../_components/CompoundContributionScenarioPanel";
 import CompoundYearTable from "../../_components/CompoundYearTable";
 import ValueDisplay, { formatMoneyShort } from "../../_components/ValueDisplay";
 import ToolCta from "../../_components/ToolCta";
@@ -1104,6 +1105,18 @@ export default function CompoundPage() {
                     annualResult={annualFrequencyResult}
                   />
 
+                  <CompoundContributionScenarioPanel
+                    locale={locale}
+                    numberLocale={numberLocale}
+                    currency={currency}
+                    baseResult={result}
+                    invest={invest}
+                    taxRatePercent={taxRatePercentState}
+                    feeRatePercent={feeRatePercentState}
+                    inflationRate={invest.inflationRate}
+                    baseYear={result.baseYear}
+                  />
+
                   <CompoundResultActions
                     locale={locale}
                     lang={lang}
@@ -1371,6 +1384,18 @@ export default function CompoundPage() {
                     currency={currency}
                     monthlyResult={result}
                     annualResult={annualFrequencyResult}
+                  />
+
+                  <CompoundContributionScenarioPanel
+                    locale={locale}
+                    numberLocale={numberLocale}
+                    currency={currency}
+                    baseResult={result}
+                    invest={invest}
+                    taxRatePercent={taxRatePercentState}
+                    feeRatePercent={feeRatePercentState}
+                    inflationRate={invest.inflationRate}
+                    baseYear={result.baseYear}
                   />
 
                   <CompoundResultActions

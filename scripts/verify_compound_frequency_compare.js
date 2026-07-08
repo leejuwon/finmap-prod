@@ -17,7 +17,7 @@ const helperSource = fs.readFileSync(HELPER_PATH, "utf8");
 const BASELINE_HASHES = {
   "lib/compoundCore.js": "9ea424f60ffd9305b8af9c34ef70475db8f330ca2be58fcd6464d00316726b6e",
   "lib/compound.js": "7dac56894523f9f1566b3f6f559212b77f48b356c85fa1bea153849f0cbb9476",
-  "pages/tools/compound-interest.js": "4e3a59b59d29f9996b9df1e65bd8f77e9244fdf515cf335fe9e6f1c4f8890c75",
+  "pages/tools/compound-interest.js": "1cb38b68fbca29a65ce10221116f907ca665cf7b487ca7c3dde56ac2486c3483",
 };
 
 const EXPECTED_ANNUAL = {
