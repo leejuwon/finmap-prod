@@ -11,7 +11,7 @@ category: "Personal Finance"
 postCategory: "personalFinance"
 tags: ["dca", "lump sum investing", "dollar cost averaging", "monthly investing", "after tax value", "investment simulator"]
 tool: ["dca","comp"]
-cover: "/images/posts/dca-vs-lump-sum-when-results-differ/cover-en.svg"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1783585378/blog/insight/dca-vs-lump-sum-when-results-differ/rework-20260709/slot-001-cover-en.png"
 lang: "en"
 ---
 
@@ -44,7 +44,7 @@ lang: "en"
   </div>
 </div>
 
-![DCA versus lump-sum investing comparison](/images/posts/dca-vs-lump-sum-when-results-differ/cover-en.svg)
+![DCA versus lump-sum investing comparison](https://res.cloudinary.com/dwonflmnn/image/upload/v1783585379/blog/insight/dca-vs-lump-sum-when-results-differ/rework-20260709/slot-002-cover-en.png)
 
 ## The Basic Difference
 
@@ -59,7 +59,7 @@ DCA invests gradually. Lump-sum investing invests the comparison amount at the b
 
 This makes the comparison easier to read: the principal is the same, but the exposure timing is different.
 
-![Same planned principal comparison](/images/posts/dca-vs-lump-sum-when-results-differ/img1-en.svg)
+![Same planned principal comparison](https://res.cloudinary.com/dwonflmnn/image/upload/v1783585380/blog/insight/dca-vs-lump-sum-when-results-differ/rework-20260709/slot-003-comparison-en.png)
 
 ## Why the Market Path Matters
 
@@ -88,7 +88,7 @@ Suppose you plan to invest 500 per month for 10 years. The planned principal is 
 
 If you want a broader decision framework, see [DCA vs Lump Sum Decision Rules](/en/posts/personalFinance/dca-vs-lumpsum-decision-rules). For a simple monthly example, see [What Happens If You Invest $500 a Month for 10 Years?](/en/posts/personalFinance/monthly-dca-10-year-result). To isolate the compounding assumption, compare it with the [Compound Interest Calculator](/en/tools/compound-interest).
 
-![How to read the DCA and lump-sum result difference](/images/posts/dca-vs-lump-sum-when-results-differ/img2-en.svg)
+![How to read the DCA and lump-sum result difference](https://res.cloudinary.com/dwonflmnn/image/upload/v1783585381/blog/insight/dca-vs-lump-sum-when-results-differ/rework-20260709/slot-004-comparison-en.png)
 
 <div class="callout-warning">
   <strong>Common misunderstanding</strong>
@@ -105,7 +105,7 @@ If you want a broader decision framework, see [DCA vs Lump Sum Decision Rules](/
 | Average cost and final price | Helps explain why DCA behaved differently. |
 | Bear-market scenarios | Shows how timing of a drawdown can change the comparison. |
 
-![Calculator fields for DCA versus lump sum](/images/posts/dca-vs-lump-sum-when-results-differ/img3-en.svg)
+![Calculator fields for DCA versus lump sum](https://res.cloudinary.com/dwonflmnn/image/upload/v1783585382/blog/insight/dca-vs-lump-sum-when-results-differ/rework-20260709/slot-005-comparison-en.png)
 
 ## FAQ
 

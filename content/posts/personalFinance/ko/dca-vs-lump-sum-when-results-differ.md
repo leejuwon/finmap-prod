@@ -11,7 +11,7 @@ category: "재테크"
 postCategory: "personalFinance"
 tags: ["적립식 투자", "일괄투자", "DCA", "투자 시뮬레이션", "평균 매수단가", "세후 자산"]
 tool: ["dca","comp"]
-cover: "/images/posts/dca-vs-lump-sum-when-results-differ/cover.svg"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1783584891/blog/insight/dca-vs-lump-sum-when-results-differ/rework-20260709/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -44,7 +44,7 @@ lang: "ko"
   </div>
 </div>
 
-![적립식 투자와 일괄투자 비교](/images/posts/dca-vs-lump-sum-when-results-differ/cover.svg)
+![적립식 투자와 일괄투자 비교](https://res.cloudinary.com/dwonflmnn/image/upload/v1783584892/blog/insight/dca-vs-lump-sum-when-results-differ/rework-20260709/slot-002-cover.png)
 
 ## 적립식 투자와 일괄투자의 기본 차이
 
@@ -59,7 +59,7 @@ lang: "ko"
 
 Finmap의 [DCA 계산기](/tools/dca-calculator)는 적립식 결과와 함께 같은 총 예정 납입원금을 처음에 넣었다고 가정한 일괄투자 결과를 보여줍니다.
 
-![총 예정 납입원금 기준 일괄투자 비교](/images/posts/dca-vs-lump-sum-when-results-differ/img1.svg)
+![총 예정 납입원금 기준 일괄투자 비교](https://res.cloudinary.com/dwonflmnn/image/upload/v1783584893/blog/insight/dca-vs-lump-sum-when-results-differ/rework-20260709/slot-003-comparison.png)
 
 ## 시장 흐름에 따라 결과가 달라지는 이유
 
@@ -88,7 +88,7 @@ Finmap의 [DCA 계산기](/tools/dca-calculator)는 적립식 결과와 함께 �
 
 중요한 점은 “일괄투자 결과가 더 높다” 또는 “적립식 결과가 더 높다”만 보는 것이 아닙니다. 그 결과가 어떤 경로와 가정에서 나온 값인지 읽어야 합니다.
 
-![적립식과 일괄투자 결과 차이 해석](/images/posts/dca-vs-lump-sum-when-results-differ/img2.svg)
+![적립식과 일괄투자 결과 차이 해석](https://res.cloudinary.com/dwonflmnn/image/upload/v1783584894/blog/insight/dca-vs-lump-sum-when-results-differ/rework-20260709/slot-004-comparison.png)
 
 <div class="callout-warning">
   <strong>오해 방지</strong>
@@ -106,7 +106,7 @@ Finmap의 [DCA 계산기](/tools/dca-calculator)는 적립식 결과와 함께 �
 
 더 넓은 의사결정 기준은 [적립식 투자와 일괄투자 선택 기준](/posts/personalFinance/dca-vs-lumpsum-decision-rules) 글에서 볼 수 있습니다. 월 납입금 예시가 필요하다면 [월 50만원 적립식 투자, 10년 후 얼마가 될까?](/posts/personalFinance/monthly-dca-10-year-result)도 함께 참고할 수 있습니다. 같은 수익률 가정을 복리 관점으로 단순 확인하려면 [복리 계산기](/tools/compound-interest)를 연결해서 볼 수 있습니다.
 
-![DCA 계산기에서 비교해야 할 핵심 결과](/images/posts/dca-vs-lump-sum-when-results-differ/img3.svg)
+![DCA 계산기에서 비교해야 할 핵심 결과](https://res.cloudinary.com/dwonflmnn/image/upload/v1783584894/blog/insight/dca-vs-lump-sum-when-results-differ/rework-20260709/slot-005-comparison.png)
 
 ## FAQ
 
