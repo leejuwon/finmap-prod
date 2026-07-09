@@ -8,3 +8,4 @@ Disallow: /cdn-cgi/
 
 # Sitemaps
 Sitemap: https://www.finmaphub.com/sitemap.xml
+Sitemap: https://www.finmaphub.com/sitemap-ko.xml
