@@ -19,12 +19,12 @@ const BASIS_DATE = "2026-05-21";
 
 const TEXT = {
   ko: {
-    seoTitle: "DSR 계산기 | 주택담보대출 가능액·LTV·아파트 구매가격 계산",
+    seoTitle: "DSR·LTV 계산기 | 주담대 원리금·아파트 담보대출 가능액 계산",
     seoDesc:
-      "연소득, 기존대출 월상환액, 주택담보대출 금리·기간으로 DSR과 대출 가능액을 계산하고 LTV·보유현금까지 반영해 아파트 구매가격을 점검하세요.",
-    h1: "DSR 계산기: 연소득·기존대출·주택담보대출 가능액 계산",
+      "연소득, 기존 대출, 금리, 대출기간, 아파트 가격을 입력해 DSR·LTV 기준 주택담보대출 가능액과 월 원리금 상환액, 아파트 구매 가능 금액을 계산합니다.",
+    h1: "DSR·LTV 계산기: 주담대 원리금과 아파트 담보대출 가능액 계산",
     lead:
-      "연소득, 기존대출 월상환액, 주택담보대출 금리와 기간을 입력해 DSR 기준 대출 가능액을 계산하고, LTV와 보유현금까지 함께 넣어 아파트 구매 가능 가격대를 확인합니다.",
+      "연소득, 기존대출 월상환액, 주담대 금리와 기간을 입력해 월 원리금과 DSR 기준 대출 가능액을 계산하고, LTV와 보유현금까지 함께 넣어 아파트 구매 가능 가격대를 확인합니다.",
     basis: "계산 기준일",
     note:
       "정책 자동 반영 없이 입력값 기준으로만 계산합니다. 실제 대출 심사 결과와 다를 수 있습니다.",
@@ -46,11 +46,11 @@ const TEXT = {
         a: "일반적으로 신용대출, 자동차 할부, 학자금대출처럼 매달 갚는 부채의 원리금은 DSR에 영향을 줍니다. 이 계산기에서는 기존대출 월상환액을 한 칸에 합산해 입력하는 방식으로 반영합니다.",
       },
       {
-        q: "주택담보대출 월상환액은 어떻게 계산하나요?",
-        a: "입력한 대출금리와 대출기간을 기준으로 원리금균등 상환 월상환액을 추정합니다. 원금균등, 만기일시, 거치식 상환은 현재 계산 범위에 포함하지 않습니다.",
+        q: "주담대 원리금 계산기는 무엇을 확인하나요?",
+        a: "대출금, 금리, 기간을 기준으로 매달 갚아야 할 원리금균등 상환액을 확인합니다. DSR 계산에서는 이 월 원리금이 소득 대비 상환 부담으로 반영됩니다.",
       },
       {
-        q: "LTV와 DSR은 무엇이 다른가요?",
+        q: "DSR 계산기와 LTV 계산기는 무엇이 다른가요?",
         a: "LTV는 집값 대비 대출 비율이고, DSR은 소득 대비 원리금 상환 부담입니다. LTV를 통과해도 소득이나 기존부채 때문에 DSR에서 막힐 수 있고, 반대로 DSR은 여유가 있어도 보유현금과 LTV 때문에 구매 가능 가격이 낮아질 수 있습니다.",
       },
       {
@@ -62,8 +62,12 @@ const TEXT = {
         a: "아니요. 현재 계산기는 정책 자동 반영을 하지 않습니다. 사용자가 직접 확인한 LTV와 DSR 값을 입력하면 그 값을 그대로 사용합니다.",
       },
       {
-        q: "대출 가능액 계산기는 어떤 순서로 쓰면 되나요?",
-        a: "먼저 연소득과 기존대출 월상환액을 넣어 DSR 여력을 확인하고, 다음으로 보유현금·최소 남길 현금·LTV·부대비용률을 넣어 실제로 볼 수 있는 아파트 가격대를 좁히는 순서가 좋습니다.",
+        q: "아파트 담보대출 계산기는 어떤 순서로 봐야 하나요?",
+        a: "먼저 아파트 가격과 보유현금을 입력하고, LTV 기준 대출 가능액을 확인한 뒤, 금리와 대출기간을 넣어 월 원리금과 DSR 부담을 함께 봅니다.",
+      },
+      {
+        q: "아파트 구매 계산기로도 사용할 수 있나요?",
+        a: "대출 가능액, 보유현금, 월 상환 부담을 함께 확인할 수 있어 아파트 구매 예산을 가늠하는 데 활용할 수 있습니다. 다만 취득세, 중개보수, 이사비 등 부대비용은 별도로 고려해야 합니다.",
       },
       {
         q: "안전 탐색 가격대는 무엇인가요?",
@@ -201,29 +205,30 @@ export default function DsrLtvCalculatorPage() {
 
         {locale === "ko" && (
           <section className="card min-w-0">
-            <h2 className="break-words text-lg font-semibold">DSR만 빠르게 계산</h2>
+            <h2 className="break-words text-lg font-semibold">주담대 원리금·DSR·LTV를 함께 보는 이유</h2>
             <p className="mt-2 break-words text-sm leading-6 text-slate-600">
-              DSR만 먼저 보려면 연소득, 기존대출 월상환액, 주택담보대출 금리, 대출기간,
-              DSR 한도를 입력하세요. 계산기는 연소득에서 허용되는 연간 원리금 한도를 구한 뒤,
-              기존대출 상환액을 빼고 남은 월상환 여력으로 신규 주택담보대출 가능액을 추정합니다.
+              주담대 한도는 DSR만으로 결정되지 않습니다. LTV는 아파트 가격 대비 대출 가능 비율을 보고,
+              DSR은 소득 대비 연간 원리금 상환 부담을 봅니다. 월 원리금은 실제로 매달 버틸 수 있는
+              상환액을 확인하는 기준입니다. 그래서 아파트 구매 전에는 DSR, LTV, 월 원리금, 보유현금을
+              함께 계산해야 합니다.
             </p>
             <div className="mt-4 grid gap-3 md:grid-cols-3">
               <div className="rounded-xl border bg-slate-50 p-3">
-                <h3 className="text-sm font-semibold">1. 소득 기준 한도</h3>
+                <h3 className="text-sm font-semibold">1. DSR 기준 월 원리금</h3>
                 <p className="mt-1 text-sm leading-6 text-slate-600">
-                  연소득 × DSR 한도율로 1년 원리금 상환 가능액을 계산합니다.
+                  연소득과 기존 월상환액을 기준으로 신규 주담대에 쓸 수 있는 월 원리금 여력을 계산합니다.
                 </p>
               </div>
               <div className="rounded-xl border bg-slate-50 p-3">
-                <h3 className="text-sm font-semibold">2. 기존대출 차감</h3>
+                <h3 className="text-sm font-semibold">2. LTV 기준 대출 한도</h3>
                 <p className="mt-1 text-sm leading-6 text-slate-600">
-                  신용대출·자동차 할부 등 기존 월상환액을 먼저 빼야 신규 주담대 여력이 보입니다.
+                  아파트 가격과 LTV를 함께 넣어 담보가치 기준으로 가능한 대출 범위를 확인합니다.
                 </p>
               </div>
               <div className="rounded-xl border bg-slate-50 p-3">
-                <h3 className="text-sm font-semibold">3. 주담대 가능액</h3>
+                <h3 className="text-sm font-semibold">3. 아파트 구매 가능 금액</h3>
                 <p className="mt-1 text-sm leading-6 text-slate-600">
-                  남은 월상환액을 금리·기간 기준 원리금균등 공식으로 대출원금으로 환산합니다.
+                  보유현금과 부대비용까지 반영해 실제로 볼 수 있는 아파트 구매 가능 금액을 좁힙니다.
                 </p>
               </div>
             </div>
@@ -365,6 +370,20 @@ export default function DsrLtvCalculatorPage() {
               className="btn-secondary"
             >
               {locale === "ko" ? "내 집 마련 목표 로드맵" : "Home-buying roadmap"}
+            </Link>
+            <Link
+              href="/posts/personalFinance/dsr-pass-ltv-cash-bottleneck"
+              locale={locale}
+              className="btn-secondary"
+            >
+              {locale === "ko" ? "DSR은 통과했는데 집을 못 사는 이유" : "DSR, LTV, and cash bottlenecks"}
+            </Link>
+            <Link
+              href="/posts/personalFinance/apartment-buying-costs-before-purchase"
+              locale={locale}
+              className="btn-secondary"
+            >
+              {locale === "ko" ? "아파트 구매 전 부대비용 확인" : "Apartment buying costs"}
             </Link>
             <Link
               href="/posts/personalFinance/cash-100m-200m-300m-apartment-budget"
