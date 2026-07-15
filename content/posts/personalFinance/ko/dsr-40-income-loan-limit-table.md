@@ -23,6 +23,13 @@ DSR 40% 기준에서 연봉별 대출 가능액은 연봉이 4,000만원인지, 
 
 계산기에서 안전 탐색 가격대가 나오면 그 범위를 [부동산 대시보드](/market/real-estate)에서 서울·경기·인천 실거래 가격 분포와 거래량으로 다시 확인하는 흐름이 좋습니다. 이 글의 숫자는 정책 자동 반영이 아니라 입력값 기준 시뮬레이션이며, 실제 금융기관 심사와 다를 수 있습니다.
 
+<div class="tool-cta">
+  <h3>내 조건으로 바로 계산해보기</h3>
+  <p>연봉별 표는 출발점입니다. 보유 현금, 기존 대출, 후보 집값까지 넣어 주담대 한도와 아파트 구매 가능액을 다시 확인하세요.</p>
+  <a class="tool-cta-btn" href="/tools/dsr-ltv-calculator" data-ga-event="post_to_dsr_ltv_click" data-source-post="dsr-40-income-loan-limit-table" data-cta-position="upper" data-source-tool="blogPost">LTV/DSR 계산기 열기</a>
+  <a class="tool-cta-btn" href="/tools/home-buying-budget-calculator" data-ga-event="post_to_dsr_ltv_click" data-source-post="dsr-40-income-loan-limit-table" data-cta-position="upper" data-source-tool="blogPost">아파트 구매 가능액 계산하기</a>
+</div>
+
 ## 한눈에 보는 요약
 
 - DSR 40%는 단순히 보면 연소득의 40%를 연간 원리금 상환 한도로 보는 방식입니다.

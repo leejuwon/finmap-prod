@@ -13,6 +13,7 @@ const REQUIRED_EN_STATIC_PATHS = [
   '/en/tools/cagr-calculator',
   '/en/tools/dca-calculator',
   '/en/tools/dsr-ltv-calculator',
+  '/en/tools/home-buying-budget-calculator',
   '/en/tools/fire-calculator',
   '/en/tools/goal-simulator',
   '/en/market',

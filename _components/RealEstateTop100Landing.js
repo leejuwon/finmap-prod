@@ -3,9 +3,16 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
 import ToolSeo from "./ToolSeo";
+import { trackGaEvent } from "../utils/analytics";
 
 const M2_PER_PYEONG = 3.305785;
 const DETAIL_STATE_STORAGE_KEY = "finmap:real-estate:apt-detail-state";
+const REAL_ESTATE_TO_DSR_REGIONS = {
+  "seoul-top100": "seoul",
+  "magok-top100": "magok",
+  "songpa-top100": "songpa",
+  "gangnam3-top100": "gangnam3",
+};
 
 function toNum(v) {
   const n = Number(v);
@@ -54,6 +61,43 @@ function Badge({ tone, label, value }) {
       <span className="opacity-80">{label}</span>
       <span className="font-semibold break-words">{value}</span>
     </span>
+  );
+}
+
+function DsrLtvFunnelCta({ regionKey, sourcePage, lang }) {
+  if (!regionKey) return null;
+
+  const href = `/tools/dsr-ltv-calculator?region=${encodeURIComponent(regionKey)}`;
+  const title =
+    lang === "en"
+      ? "Can I buy in this area with my income?"
+      : "이 지역 아파트, 내 연봉으로 살 수 있을까?";
+  const desc =
+    lang === "en"
+      ? "Use a representative regional price assumption to estimate LTV, DSR, and monthly mortgage payment."
+      : "지역 대표 가격 기준으로 LTV·DSR·월상환액을 계산해보세요.";
+  const button = lang === "en" ? "Calculate affordability" : "내 구매 가능액 계산하기";
+
+  return (
+    <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
+      <div className="text-sm font-semibold text-emerald-950">{title}</div>
+      <p className="mt-1 break-words text-sm leading-6 text-emerald-900">{desc}</p>
+      <div className="mt-3">
+        <Link
+          href={href}
+          className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-emerald-700 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-emerald-800"
+          onClick={() =>
+            trackGaEvent("real_estate_to_dsr_click", {
+              region: regionKey,
+              source_page: sourcePage,
+              source_tool: "realEstateDashboard",
+            })
+          }
+        >
+          {button}
+        </Link>
+      </div>
+    </div>
   );
 }
 
@@ -184,6 +228,7 @@ export default function RealEstateTop100Landing({
 
   const scopeText =
     lang === "en" ? region?.nameEn || "" : region?.nameKo || region?.nameEn || "";
+  const dsrRegionKey = REAL_ESTATE_TO_DSR_REGIONS[region?.slug || ""];
 
   // JSON-LD
   const breadcrumbsLd = useMemo(() => {
@@ -377,6 +422,12 @@ export default function RealEstateTop100Landing({
             {lang === "en" ? "Rows" : "건수"}: {list.length}
           </span>
         </div>
+
+        <DsrLtvFunnelCta
+          regionKey={dsrRegionKey}
+          sourcePage={basePath}
+          lang={lang}
+        />
 
         <div className="mt-6 flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="min-w-0 break-words text-lg font-bold text-slate-900">{t.tableTitle}</h2>

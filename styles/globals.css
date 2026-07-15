@@ -794,7 +794,11 @@ pre code {
 }
 
 .tool-cta-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin: 0 0.5rem 0.5rem 0;
   padding: 0.6rem 1.2rem;
   border-radius: 9999px;
   background: #22c55e;

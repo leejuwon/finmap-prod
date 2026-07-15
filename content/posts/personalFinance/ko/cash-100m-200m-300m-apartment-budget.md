@@ -23,6 +23,13 @@ lang: "ko"
 
 계산 결과의 안전 탐색 가격대는 [부동산 대시보드](/market/real-estate)에서 서울·경기·인천 실거래 가격 분포와 거래량으로 확인하세요. 이 글은 정책 자동 반영이 아니라 입력값 기준 시뮬레이션이며, 실제 심사와 다를 수 있습니다.
 
+<div class="tool-cta">
+  <h3>내 조건으로 바로 계산해보기</h3>
+  <p>보유현금별 표를 보기 전에 내 연소득, 기존부채, 후보 집값을 넣어 DSR·LTV·월상환액 기준의 구매 가능액을 확인하세요.</p>
+  <a class="tool-cta-btn" href="/tools/dsr-ltv-calculator" data-ga-event="post_to_dsr_ltv_click" data-source-post="cash-100m-200m-300m-apartment-budget" data-cta-position="upper" data-source-tool="blogPost">LTV/DSR 계산기 열기</a>
+  <a class="tool-cta-btn" href="/tools/home-buying-budget-calculator" data-ga-event="post_to_dsr_ltv_click" data-source-post="cash-100m-200m-300m-apartment-budget" data-cta-position="upper" data-source-tool="blogPost">아파트 구매 가능액 계산하기</a>
+</div>
+
 ## 한눈에 보는 요약
 
 - DSR을 통과해도 현금/LTV/부대비용 조건 때문에 매수 가능 가격이 낮아질 수 있습니다.

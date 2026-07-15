@@ -426,6 +426,28 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
     replace(domNode) {
       if (domNode.type !== 'tag') return undefined;
 
+      if (domNode.name === 'a') {
+        const attrs = domNode.attribs || {};
+        const gaEvent = attrs['data-ga-event'];
+        if (gaEvent) {
+          const props = attributesToProps(attrs);
+          return (
+            <a
+              {...props}
+              onClick={() =>
+                trackGaEvent(gaEvent, {
+                  source_post: attrs['data-source-post'] || `${categorySlug}/${slug}`,
+                  cta_position: attrs['data-cta-position'] || 'upper',
+                  source_tool: attrs['data-source-tool'] || 'blogPost',
+                })
+              }
+            >
+              {domToReact(domNode.children, parserOptions)}
+            </a>
+          );
+        }
+      }
+
       if (domNode.name === 'h1') {
         const props = attributesToProps(domNode.attribs || {});
         return <h2 {...props}>{domToReact(domNode.children, parserOptions)}</h2>;

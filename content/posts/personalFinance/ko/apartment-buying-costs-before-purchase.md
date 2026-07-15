@@ -19,6 +19,13 @@ lang: "ko"
 
 정확한 세율과 비용은 가격, 주택 수, 지역, 계약 조건에 따라 달라질 수 있습니다. 이 글은 특정 세금·상품을 확정하지 않고, [DSR/LTV 계산기](/tools/dsr-ltv-calculator)에 넣기 전 필요한 현금 항목을 빠뜨리지 않기 위한 점검표입니다.
 
+<div class="tool-cta">
+  <h3>내 조건으로 바로 계산해보기</h3>
+  <p>매수 비용을 보기 전에 집값, 보유 현금, 부대비용률, LTV, DSR을 함께 넣어 월상환액과 필요 현금을 확인하세요.</p>
+  <a class="tool-cta-btn" href="/tools/dsr-ltv-calculator" data-ga-event="post_to_dsr_ltv_click" data-source-post="apartment-buying-costs-before-purchase" data-cta-position="upper" data-source-tool="blogPost">LTV/DSR 계산기 열기</a>
+  <a class="tool-cta-btn" href="/tools/home-buying-budget-calculator" data-ga-event="post_to_dsr_ltv_click" data-source-post="apartment-buying-costs-before-purchase" data-cta-position="upper" data-source-tool="blogPost">아파트 구매 가능액 계산하기</a>
+</div>
+
 ## Quick Answer
 
 - 아파트 매수 전에는 대출 가능액보다 필요한 현금을 먼저 계산해야 합니다.

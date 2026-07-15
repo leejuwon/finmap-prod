@@ -90,6 +90,115 @@ const PRESETS = [
   },
 ];
 
+const NAVER_P0_PRESETS = [
+  {
+    key: "income_40m_home_500m",
+    ko: "연봉 4천 / 집값 5억",
+    en: "Income 40M / Home 500M",
+    values: {
+      annualIncome: 4000,
+      assets: 15000,
+      reserveCash: 2000,
+      existingMonthlyPayment: 0,
+      annualRate: 4.3,
+      loanYears: 30,
+      ltvPercent: 70,
+      dsrPercent: 40,
+      costRatePercent: 5,
+      targetHomePrice: 50000,
+    },
+  },
+  {
+    key: "income_50m_home_700m",
+    ko: "연봉 5천 / 집값 7억",
+    en: "Income 50M / Home 700M",
+    values: {
+      annualIncome: 5000,
+      assets: 22000,
+      reserveCash: 2000,
+      existingMonthlyPayment: 20,
+      annualRate: 4.3,
+      loanYears: 30,
+      ltvPercent: 70,
+      dsrPercent: 40,
+      costRatePercent: 5,
+      targetHomePrice: 70000,
+    },
+  },
+  {
+    key: "income_70m_home_1000m",
+    ko: "연봉 7천 / 집값 10억",
+    en: "Income 70M / Home 1B",
+    values: {
+      annualIncome: 7000,
+      assets: 32000,
+      reserveCash: 3000,
+      existingMonthlyPayment: 30,
+      annualRate: 4.3,
+      loanYears: 30,
+      ltvPercent: 70,
+      dsrPercent: 40,
+      costRatePercent: 5,
+      targetHomePrice: 100000,
+    },
+  },
+  {
+    key: "first_home_600m",
+    ko: "생애최초 6억",
+    en: "First home 600M",
+    values: {
+      annualIncome: 6000,
+      assets: 17000,
+      reserveCash: 2000,
+      existingMonthlyPayment: 0,
+      annualRate: 4.3,
+      loanYears: 30,
+      ltvPercent: 80,
+      dsrPercent: 40,
+      costRatePercent: 5,
+      targetHomePrice: 60000,
+    },
+  },
+  {
+    key: "magok_800m",
+    ko: "마곡 8억",
+    en: "Magok 800M",
+    values: {
+      annualIncome: 7000,
+      assets: 26000,
+      reserveCash: 3000,
+      existingMonthlyPayment: 30,
+      annualRate: 4.3,
+      loanYears: 30,
+      ltvPercent: 70,
+      dsrPercent: 40,
+      costRatePercent: 5,
+      targetHomePrice: 80000,
+    },
+  },
+  {
+    key: "gangnam_1500m",
+    ko: "강남 15억",
+    en: "Gangnam 1.5B",
+    values: {
+      annualIncome: 12000,
+      assets: 55000,
+      reserveCash: 5000,
+      existingMonthlyPayment: 50,
+      annualRate: 4.3,
+      loanYears: 30,
+      ltvPercent: 50,
+      dsrPercent: 40,
+      costRatePercent: 5,
+      targetHomePrice: 150000,
+    },
+  },
+];
+
+function findPresetByKey(key) {
+  return [...NAVER_P0_PRESETS, ...PRESETS].find((preset) => preset.key === key);
+}
+
 const RELATED_LINKS = [
   {
     href: "/posts/personalFinance/dsr-40-income-loan-limit-table",
@@ -446,7 +555,14 @@ function DetailTile({ label, value, hint }) {
   );
 }
 
-export default function DsrLtvCalculator({ locale = "ko" }) {
+export default function DsrLtvCalculator({
+  locale = "ko",
+  initialPresetKey = "",
+  calculateEventName = "dsr_ltv_calculate",
+  calculateSourceTool = "dsr_ltv",
+  commonSourceTool = "dsrLtv",
+  presetSourceTool = "dsrLtv",
+}) {
   const lang = locale === "en" ? "en" : "ko";
   const t = TEXT[lang];
   const [form, setForm] = useState(DEFAULT_FORM);
@@ -454,6 +570,7 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
   const exportLockRef = useRef(false);
   const calculationEventTimerRef = useRef(null);
   const commonCalculateEventSentRef = useRef(false);
+  const initialPresetAppliedRef = useRef(false);
 
   useEffect(
     () => () => {
@@ -462,24 +579,48 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
     []
   );
 
+  useEffect(() => {
+    if (initialPresetAppliedRef.current || !initialPresetKey) return;
+    const preset = findPresetByKey(initialPresetKey);
+    if (!preset) return;
+    initialPresetAppliedRef.current = true;
+    setForm(preset.values);
+  }, [initialPresetKey]);
+
   const scheduleCalculationEvent = (interaction) => {
     if (calculationEventTimerRef.current) clearTimeout(calculationEventTimerRef.current);
     calculationEventTimerRef.current = setTimeout(() => {
-      trackGaEvent("dsr_ltv_calculate", {
-        source_tool: "dsr_ltv",
+      const calculateEventParams = {
+        source_tool: calculateSourceTool,
         locale: lang,
         interaction,
         has_result: true,
-      });
+      };
+      if (calculateEventName === "dsr_ltv_calculate") {
+        trackGaEvent("dsr_ltv_calculate", calculateEventParams);
+      } else {
+        trackGaEvent(calculateEventName, calculateEventParams);
+      }
       if (!commonCalculateEventSentRef.current) {
         commonCalculateEventSentRef.current = true;
-        trackGaEvent("tool_calculate", {
-          source_tool: "dsrLtv",
+        const commonCalculateParams = {
+          source_tool: commonSourceTool,
           locale: lang,
           currency: "KRW",
           has_result: true,
           location: "live_calculator",
-        });
+        };
+        if (commonSourceTool === "dsrLtv") {
+          trackGaEvent("tool_calculate", {
+            source_tool: "dsrLtv",
+            locale: lang,
+            currency: "KRW",
+            has_result: true,
+            location: "live_calculator",
+          });
+        } else {
+          trackGaEvent("tool_calculate", commonCalculateParams);
+        }
       }
     }, 600);
   };
@@ -490,8 +631,14 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
     scheduleCalculationEvent("input_change");
   };
 
-  const applyPreset = (values) => {
-    setForm(values);
+  const applyPreset = (preset, presetGroup = "verified") => {
+    setForm(preset.values);
+    trackGaEvent("dsr_ltv_preset_click", {
+      source_tool: presetSourceTool,
+      locale: lang,
+      preset_name: preset.key,
+      preset_group: presetGroup,
+    });
     scheduleCalculationEvent("preset");
   };
 
@@ -544,6 +691,11 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
       locale: lang,
       location,
     });
+    trackGaEvent("dsr_to_real_estate_click", {
+      source_tool: commonSourceTool,
+      locale: lang,
+      location,
+    });
   };
 
   const handleDownloadPDF = async () => {
@@ -586,7 +738,35 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
           </p>
         </div>
 
-        <div className="rounded-xl border border-blue-100 bg-blue-50 p-3">
+        <div className="rounded-xl border border-emerald-100 bg-emerald-50 p-3">
+          <div className="flex min-w-0 flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h3 className="break-words text-sm font-semibold text-emerald-950">
+                {lang === "ko" ? "네이버 유입 빠른 프리셋" : "Quick search-intent presets"}
+              </h3>
+              <p className="mt-1 break-words text-xs text-emerald-800">
+                {lang === "ko"
+                  ? "연봉, 집값, 보유 현금 조건을 한 번에 넣고 주담대 한도와 아파트 구매 가능액을 바로 확인합니다."
+                  : "Load income, home price, cash, DSR, and LTV assumptions in one tap."}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {NAVER_P0_PRESETS.map((preset) => (
+                <button
+                  key={preset.key}
+                  type="button"
+                  data-dsr-preset={preset.key}
+                  className="min-h-[44px] rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-semibold text-emerald-950 hover:bg-emerald-100"
+                  onClick={() => applyPreset(preset, "naver_p0")}
+                >
+                  {preset[lang]}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-3 rounded-xl border border-blue-100 bg-blue-50 p-3">
           <div className="flex min-w-0 flex-col gap-2 md:flex-row md:items-center md:justify-between">
             <div>
               <h3 className="break-words text-sm font-semibold text-blue-950">{t.presetTitle}</h3>
@@ -598,8 +778,8 @@ export default function DsrLtvCalculator({ locale = "ko" }) {
                   key={preset.key}
                   type="button"
                   data-dsr-preset={preset.key}
-                  className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-semibold text-blue-900 hover:bg-blue-100"
-                  onClick={() => applyPreset(preset.values)}
+                  className="min-h-[44px] rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-semibold text-blue-900 hover:bg-blue-100"
+                  onClick={() => applyPreset(preset, "verified")}
                 >
                   {preset[lang]}
                 </button>

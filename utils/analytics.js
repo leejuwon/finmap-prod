@@ -5,6 +5,7 @@ const TOOL_BY_PATH = [
   { match: "/tools/goal-simulator", tool: "goal" },
   { match: "/tools/dca-calculator", tool: "dca" },
   { match: "/tools/dsr-ltv-calculator", tool: "dsrLtv" },
+  { match: "/tools/home-buying-budget-calculator", tool: "homeBuying" },
 ];
 
 const STATIC_INFO_PATHS = new Set([

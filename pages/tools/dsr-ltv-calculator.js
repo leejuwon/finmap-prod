@@ -19,12 +19,12 @@ const BASIS_DATE = "2026-05-21";
 
 const TEXT = {
   ko: {
-    seoTitle: "DSR·LTV 계산기 | 주담대 원리금·아파트 담보대출 가능액 계산",
+    seoTitle: "LTV DSR 계산기 - 주택담보대출 한도와 아파트 구매 가능액 계산",
     seoDesc:
-      "연소득, 기존 대출, 금리, 대출기간, 아파트 가격을 입력해 DSR·LTV 기준 주택담보대출 가능액과 월 원리금 상환액, 아파트 구매 가능 금액을 계산합니다.",
-    h1: "DSR·LTV 계산기: 주담대 원리금과 아파트 담보대출 가능액 계산",
+      "연소득, 기존대출 월상환액, 주택담보대출 금리, 대출기간, 아파트 가격, 보유 현금을 입력해 LTV·DSR 기준 주담대 한도, 대출 가능액, 원리금 월상환액, 아파트 구매 가능액을 계산합니다.",
+    h1: "LTV DSR 계산기: 주담대 한도와 아파트 구매 가능액 계산",
     lead:
-      "연소득, 기존대출 월상환액, 주담대 금리와 기간을 입력해 월 원리금과 DSR 기준 대출 가능액을 계산하고, LTV와 보유현금까지 함께 넣어 아파트 구매 가능 가격대를 확인합니다.",
+      "주담대 한도, 아파트 구매 가능액, 월상환액, 보유 현금을 한 화면에서 계산합니다. 연소득, 기존대출 월상환액, 금리, 대출기간, LTV, DSR, 후보 아파트 가격을 넣어 매수 가능 여부를 먼저 점검하세요.",
     basis: "계산 기준일",
     note:
       "정책 자동 반영 없이 입력값 기준으로만 계산합니다. 실제 대출 심사 결과와 다를 수 있습니다.",
@@ -114,11 +114,20 @@ const TEXT = {
   },
 };
 
+const REGION_PRESET_MAP = {
+  seoul: "income_70m_home_1000m",
+  magok: "magok_800m",
+  songpa: "income_70m_home_1000m",
+  gangnam3: "gangnam_1500m",
+};
+
 export default function DsrLtvCalculatorPage() {
   const router = useRouter();
   const locale = router.locale === "en" ? "en" : "ko";
   const t = TEXT[locale];
   const pageUrl = "/tools/dsr-ltv-calculator";
+  const regionQuery = String(router.query?.region || "").trim();
+  const initialPresetKey = REGION_PRESET_MAP[regionQuery] || "";
 
   const faqJsonLd = useMemo(
     () => ({
@@ -203,6 +212,8 @@ export default function DsrLtvCalculatorPage() {
 
         <ToolSharePanel toolId="dsrLtv" locale={locale} />
 
+        <DsrLtvCalculator locale={locale} initialPresetKey={initialPresetKey} />
+
         {locale === "ko" && (
           <section className="card min-w-0">
             <h2 className="break-words text-lg font-semibold">주담대 원리금·DSR·LTV를 함께 보는 이유</h2>
@@ -234,8 +245,6 @@ export default function DsrLtvCalculatorPage() {
             </div>
           </section>
         )}
-
-        <DsrLtvCalculator locale={locale} />
 
         {locale === "ko" && (
           <section className="card min-w-0">
@@ -343,6 +352,13 @@ export default function DsrLtvCalculatorPage() {
                 </Link>
               </>
             )}
+            <Link
+              href="/tools/home-buying-budget-calculator"
+              locale={locale}
+              className="btn-secondary"
+            >
+              {locale === "ko" ? "아파트 구매 계산기" : "Home buying budget calculator"}
+            </Link>
             <Link
               href="/posts/personalFinance/dsr-40-income-loan-limit-table"
               locale={locale}
