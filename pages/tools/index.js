@@ -71,8 +71,18 @@ export default function ToolsHome() {
         title: isKo ? 'DSR LTV 계산기' : 'DSR LTV Calculator',
         badge: isKo ? '주택대출' : 'Mortgage',
         desc: isKo
-          ? '보유자산, 연소득, 금리, DSR, LTV로 대출 가능액과 아파트 구매 가능 가격대를 추정합니다.'
-          : 'Estimate loan capacity and apartment affordability from assets, income, rate, DSR, and LTV.',
+          ? 'LTV·DSR 기준 주담대 한도와 월상환액을 계산합니다.'
+          : 'Estimate mortgage loan capacity and monthly payments from LTV, DSR, income, rate, and term.',
+        image:
+          'https://res.cloudinary.com/dwonflmnn/image/upload/v1780305922/blog/insight/og5utvm2syhksvkr38fg.png',
+      },
+      {
+        href: '/tools/home-buying-budget-calculator',
+        title: isKo ? '아파트 구매 계산기' : 'Home Buying Budget Calculator',
+        badge: isKo ? '부동산·주담대' : 'Real Estate',
+        desc: isKo
+          ? '집값, 보유 현금, 연소득, 금리, 대출기간을 입력해 아파트 구매 가능액과 월상환액, 필요 현금을 계산합니다.'
+          : 'Estimate apartment affordability, monthly payments, and required cash from home price, cash, income, rate, and loan term.',
         image:
           'https://res.cloudinary.com/dwonflmnn/image/upload/v1780305922/blog/insight/og5utvm2syhksvkr38fg.png',
       },

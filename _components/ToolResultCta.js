@@ -61,7 +61,16 @@ const TOOL_CONFIGS = {
       ko: "주택대출 리스크 체크리스트",
       en: "Mortgage risk checklist",
     },
-    relatedTool: "goal",
+    relatedTool: "homeBuying",
+  },
+  homeBuying: {
+    label: { ko: "아파트 구매 계산기", en: "Home buying budget calculator" },
+    checklistHref: "/posts/personalFinance/apartment-buying-calculator-guide",
+    checklistLabel: {
+      ko: "아파트 구매 계산 순서",
+      en: "Home buying budget guide",
+    },
+    relatedTool: "dsrLtv",
   },
 };
 
@@ -72,6 +81,7 @@ const TOOL_PATHS = {
   cagr: "/tools/cagr-calculator",
   dca: "/tools/dca-calculator",
   dsrLtv: "/tools/dsr-ltv-calculator",
+  homeBuying: "/tools/home-buying-budget-calculator",
 };
 
 const LEAD_MAGNETS = {
@@ -255,11 +265,18 @@ const DEFAULT_LEAD_BY_TOOL = {
   cagr: "dcaPlan",
   dca: "dcaPlan",
   dsrLtv: "homeBudget",
+  homeBuying: "homeBudget",
 };
 
 function normalizeToolId(toolId) {
   const raw = String(toolId || "").trim();
   if (raw === "dsr-ltv" || raw === "dsr_ltv") return "dsrLtv";
+  if (
+    raw === "home-buying" ||
+    raw === "home_buying" ||
+    raw === "home-buying-budget" ||
+    raw === "home-buying-budget-calculator"
+  ) return "homeBuying";
   if (raw === "goal-calculator") return "goal";
   if (raw === "compound-interest") return "compound";
   return raw;

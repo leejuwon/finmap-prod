@@ -102,6 +102,29 @@ export const TOOL_BACKLINK_CONFIG = {
       en: "Estimate a safer home price range from income, assets, rate, DSR, and LTV inputs.",
     },
   },
+  homeBuying: {
+    path: "/tools/home-buying-budget-calculator",
+    name: {
+      ko: "아파트 구매 계산기",
+      en: "Home Buying Budget Calculator",
+    },
+    shareTitle: {
+      ko: "FinMap 아파트 구매 계산기",
+      en: "FinMap Home Buying Budget Calculator",
+    },
+    shareDescription: {
+      ko: "집값, 보유 현금, 연소득, 금리, 대출기간으로 아파트 구매 가능액과 월상환액, 필요 현금을 계산합니다.",
+      en: "Estimate home affordability, monthly payments, and required cash from price, cash, income, rate, and loan term.",
+    },
+    anchors: {
+      ko: ["아파트 구매 계산기", "아파트 구매 가능액 계산기", "주담대 월상환액 계산기", "필요 현금 계산기"],
+      en: ["home buying budget calculator", "home affordability calculator", "mortgage payment and cash calculator"],
+    },
+    ctaDescription: {
+      ko: "집값과 보유 현금까지 함께 넣어 아파트 구매 가능액, 부족 현금, 월상환액을 확인합니다.",
+      en: "Check home affordability, cash shortfall, and monthly payment with price and cash assumptions.",
+    },
+  },
   goal: {
     path: "/tools/goal-simulator",
     name: {
@@ -164,6 +187,13 @@ const TOOL_ALIASES = {
   dsrLtv: "dsrLtv",
   "dsr-ltv": "dsrLtv",
   "dsr-ltv-calculator": "dsrLtv",
+  homeBuying: "homeBuying",
+  homebuying: "homeBuying",
+  "home-buying": "homeBuying",
+  "home-buying-budget": "homeBuying",
+  "home-buying-budget-calculator": "homeBuying",
+  "apartment-buying": "homeBuying",
+  "apartment-buying-calculator": "homeBuying",
 };
 
 export function normalizeToolId(toolId) {
@@ -416,6 +446,9 @@ export function inferPostToolIds(post) {
   const text = getPostSearchText(post);
   const matches = [];
 
+  if (/아파트\s*구매|구매\s*가능|필요\s*현금|보유\s*현금|home[-\s]?buy|home affordability|apartment affordability|required cash/.test(text)) {
+    matches.push("homeBuying");
+  }
   if (/\bdsr\b|\bltv\b|주택대출|주택담보|대출|아파트|내\s*집|내집|mortgage|home[-\s]?buy|apartment|loan/.test(text)) {
     matches.push("dsrLtv");
   }
@@ -448,7 +481,11 @@ function fallbackToolsForPost(post) {
 export function getPostRelatedToolIds(post, explicitTools = [], limit = 3) {
   const normalizedExplicit = uniqueToolIds(explicitTools);
   const inferred = inferPostToolIds(post);
-  const priority = inferred.includes("dsrLtv") ? ["dsrLtv"] : [];
+  const priority = inferred.includes("homeBuying")
+    ? ["homeBuying", "dsrLtv"]
+    : inferred.includes("dsrLtv")
+      ? ["dsrLtv"]
+      : [];
 
   return uniqueToolIds([
     ...priority,

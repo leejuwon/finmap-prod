@@ -23,6 +23,7 @@ const KNOWN_TOOL_SLUGS = new Set([
   "goal-simulator",
   "fire-calculator",
   "dsr-ltv-calculator",
+  "home-buying-budget-calculator",
 ]);
 
 
