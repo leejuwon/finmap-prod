@@ -79,6 +79,38 @@ export const TOOL_BACKLINK_CONFIG = {
       en: "Check pre-tax and after-tax paths for a monthly investing plan.",
     },
   },
+  mortgageLoan: {
+    path: "/tools/mortgage-loan-calculator",
+    name: {
+      ko: "주담대 원리금 계산기",
+      en: "Mortgage Payment Calculator",
+    },
+    shareTitle: {
+      ko: "FinMap 주담대 원리금 계산기",
+      en: "FinMap Mortgage Payment Calculator",
+    },
+    shareDescription: {
+      ko: "대출금액, 금리, 기간, 상환방식으로 주택담보대출 월상환액과 총이자를 계산합니다.",
+      en: "Calculate mortgage monthly payment and total interest from loan amount, rate, term, and repayment type.",
+    },
+    anchors: {
+      ko: [
+        "주담대 원리금 계산기",
+        "아파트 담보대출 계산기",
+        "주택담보대출 월상환액 계산기",
+        "아파트 대출 원리금 계산기",
+      ],
+      en: [
+        "mortgage payment calculator",
+        "Korean apartment mortgage calculator",
+        "home loan payment calculator",
+      ],
+    },
+    ctaDescription: {
+      ko: "대출금액, 금리, 기간, 상환방식으로 월상환액, 총이자, 금리 민감도를 확인합니다.",
+      en: "Check payment, total interest, and rate sensitivity from mortgage amount and terms.",
+    },
+  },
   dsrLtv: {
     path: "/tools/dsr-ltv-calculator",
     name: {
@@ -187,6 +219,13 @@ const TOOL_ALIASES = {
   dsrLtv: "dsrLtv",
   "dsr-ltv": "dsrLtv",
   "dsr-ltv-calculator": "dsrLtv",
+  mortgageLoan: "mortgageLoan",
+  mortgageloan: "mortgageLoan",
+  "mortgage-loan": "mortgageLoan",
+  "mortgage-loan-calculator": "mortgageLoan",
+  "mortgage-payment": "mortgageLoan",
+  "mortgage-payment-calculator": "mortgageLoan",
+  "home-loan-payment": "mortgageLoan",
   homeBuying: "homeBuying",
   homebuying: "homeBuying",
   "home-buying": "homeBuying",
@@ -449,6 +488,9 @@ export function inferPostToolIds(post) {
   if (/아파트\s*구매|구매\s*가능|필요\s*현금|보유\s*현금|home[-\s]?buy|home affordability|apartment affordability|required cash/.test(text)) {
     matches.push("homeBuying");
   }
+  if (/주담대|원리금|월상환|담보대출|mortgage payment|mortgage calculator|home loan payment/.test(text)) {
+    matches.push("mortgageLoan");
+  }
   if (/\bdsr\b|\bltv\b|주택대출|주택담보|대출|아파트|내\s*집|내집|mortgage|home[-\s]?buy|apartment|loan/.test(text)) {
     matches.push("dsrLtv");
   }
@@ -481,11 +523,13 @@ function fallbackToolsForPost(post) {
 export function getPostRelatedToolIds(post, explicitTools = [], limit = 3) {
   const normalizedExplicit = uniqueToolIds(explicitTools);
   const inferred = inferPostToolIds(post);
-  const priority = inferred.includes("homeBuying")
-    ? ["homeBuying", "dsrLtv"]
-    : inferred.includes("dsrLtv")
-      ? ["dsrLtv"]
-      : [];
+  const priority = inferred.includes("mortgageLoan")
+    ? ["mortgageLoan", "dsrLtv", "homeBuying"]
+    : inferred.includes("homeBuying")
+      ? ["homeBuying", "dsrLtv"]
+      : inferred.includes("dsrLtv")
+        ? ["dsrLtv"]
+        : [];
 
   return uniqueToolIds([
     ...priority,

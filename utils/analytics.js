@@ -4,6 +4,7 @@ const TOOL_BY_PATH = [
   { match: "/tools/cagr-calculator", tool: "cagr" },
   { match: "/tools/goal-simulator", tool: "goal" },
   { match: "/tools/dca-calculator", tool: "dca" },
+  { match: "/tools/mortgage-loan-calculator", tool: "mortgageLoan" },
   { match: "/tools/dsr-ltv-calculator", tool: "dsrLtv" },
   { match: "/tools/home-buying-budget-calculator", tool: "homeBuying" },
 ];

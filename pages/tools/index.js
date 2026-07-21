@@ -77,6 +77,17 @@ export default function ToolsHome() {
           'https://res.cloudinary.com/dwonflmnn/image/upload/v1780305922/blog/insight/og5utvm2syhksvkr38fg.png',
       },
       {
+        href: '/tools/mortgage-loan-calculator',
+        title: isKo ? '주담대 원리금 계산기' : 'Mortgage Payment Calculator',
+        badge: isKo ? '주담대·월상환액' : 'Mortgage payment',
+        desc: isKo
+          ? '대출금액, 금리, 기간, 상환방식으로 주택담보대출 월상환액과 총이자를 계산합니다.'
+          : 'Calculate monthly mortgage payment and total interest from loan amount, rate, term, and repayment type.',
+        buttonText: isKo ? '월상환액 계산하기' : 'Calculate payment',
+        image:
+          'https://res.cloudinary.com/dwonflmnn/image/upload/v1780305922/blog/insight/og5utvm2syhksvkr38fg.png',
+      },
+      {
         href: '/tools/home-buying-budget-calculator',
         title: isKo ? '아파트 구매 계산기' : 'Home Buying Budget Calculator',
         badge: isKo ? '부동산·주담대' : 'Real Estate',
@@ -207,7 +218,7 @@ export default function ToolsHome() {
               </div>
 
               <span className="mt-4 inline-flex min-h-[44px] max-w-full items-center break-words text-xs font-medium leading-tight text-blue-600">
-                {isKo ? `${tool.title} 열기 →` : `Open ${tool.title} →`}
+                {tool.buttonText || (isKo ? `${tool.title} 열기 →` : `Open ${tool.title} →`)}
               </span>
             </Link>
           ))}

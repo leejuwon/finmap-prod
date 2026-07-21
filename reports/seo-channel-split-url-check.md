@@ -1,15 +1,15 @@
 # SEO Channel Split URL Check
 
-- Checked at: 2026-07-08T15:06:50.281Z
+- Checked at: 2026-07-21T14:54:22.414Z
 - Fetch base: http://127.0.0.1:8017
-- URL samples: 22
+- URL samples: 25
 - Failures: 0
-- sitemap-0.xml URL count: 205
-- sitemap-ko.xml URL count: 107
-- sitemap-en.xml URL count: 98
-- sitemap-en.xml required URLs: 16/16
+- sitemap-0.xml URL count: 211
+- sitemap-ko.xml URL count: 111
+- sitemap-en.xml URL count: 100
+- sitemap-en.xml required URLs: 18/18
 - /en/sitemap.xml exists: yes
-- /en/sitemap.xml URL count: 98
+- /en/sitemap.xml URL count: 100
 - /en/sitemap.xml EN-only locs: PASS
 - Forbidden sitemap loc patterns: PASS (0)
 - Sitemap membership normalizes the root host-only loc to `https://www.finmaphub.com/` for canonical comparison.
@@ -25,6 +25,9 @@
 | /tools/dca-calculator | ko | 200 | https://www.finmaphub.com/tools/dca-calculator | https://www.finmaphub.com/tools/dca-calculator | https://www.finmaphub.com/tools/dca-calculator | https://www.finmaphub.com/en/tools/dca-calculator | - | - | - | main:yes, ko:yes | N/A | PASS | OK |
 | /en/tools/dca-calculator | en | 200 | https://www.finmaphub.com/en/tools/dca-calculator | https://www.finmaphub.com/en/tools/dca-calculator | https://www.finmaphub.com/tools/dca-calculator | https://www.finmaphub.com/en/tools/dca-calculator | - | - | - | main:yes, en:yes | yes | PASS | OK |
 | /en/tools/dsr-ltv-calculator | en | 200 | https://www.finmaphub.com/en/tools/dsr-ltv-calculator | https://www.finmaphub.com/en/tools/dsr-ltv-calculator | https://www.finmaphub.com/tools/dsr-ltv-calculator | https://www.finmaphub.com/en/tools/dsr-ltv-calculator | - | - | - | main:yes, en:yes | yes | PASS | OK |
+| /tools/mortgage-loan-calculator | ko | 200 | https://www.finmaphub.com/tools/mortgage-loan-calculator | https://www.finmaphub.com/tools/mortgage-loan-calculator | https://www.finmaphub.com/tools/mortgage-loan-calculator | https://www.finmaphub.com/en/tools/mortgage-loan-calculator | - | - | - | main:yes, ko:yes | N/A | PASS | OK |
+| /en/tools/mortgage-loan-calculator | en | 200 | https://www.finmaphub.com/en/tools/mortgage-loan-calculator | https://www.finmaphub.com/en/tools/mortgage-loan-calculator | https://www.finmaphub.com/tools/mortgage-loan-calculator | https://www.finmaphub.com/en/tools/mortgage-loan-calculator | - | - | - | main:yes, en:yes | yes | PASS | OK |
+| /en/tools/home-buying-budget-calculator | en | 200 | https://www.finmaphub.com/en/tools/home-buying-budget-calculator | https://www.finmaphub.com/en/tools/home-buying-budget-calculator | https://www.finmaphub.com/tools/home-buying-budget-calculator | https://www.finmaphub.com/en/tools/home-buying-budget-calculator | - | - | - | main:yes, en:yes | yes | PASS | OK |
 | /en/tools/fire-calculator | en | 200 | https://www.finmaphub.com/en/tools/fire-calculator | https://www.finmaphub.com/en/tools/fire-calculator | https://www.finmaphub.com/tools/fire-calculator | https://www.finmaphub.com/en/tools/fire-calculator | - | - | - | main:yes, en:yes | yes | PASS | OK |
 | /en/tools/goal-simulator | en | 200 | https://www.finmaphub.com/en/tools/goal-simulator | https://www.finmaphub.com/en/tools/goal-simulator | https://www.finmaphub.com/tools/goal-simulator | https://www.finmaphub.com/en/tools/goal-simulator | - | - | - | main:yes, en:yes | yes | PASS | OK |
 | /market/real-estate | ko | 200 | https://www.finmaphub.com/market/real-estate | https://www.finmaphub.com/market/real-estate | https://www.finmaphub.com/market/real-estate | https://www.finmaphub.com/en/market/real-estate | - | index,follow,max-image-preview:large | - | main:yes, ko:yes | N/A | PASS | OK |
@@ -43,10 +46,10 @@
 
 | Sitemap | URL count |
 | --- | ---: |
-| sitemap-0.xml | 205 |
-| sitemap-ko.xml | 107 |
-| sitemap-en.xml | 98 |
-| en/sitemap.xml | 98 |
+| sitemap-0.xml | 211 |
+| sitemap-ko.xml | 111 |
+| sitemap-en.xml | 100 |
+| en/sitemap.xml | 100 |
 
 - Forbidden loc pattern check: PASS
 - /en/sitemap.xml EN-only loc check: PASS
@@ -56,11 +59,11 @@
 ## sitemap-en.xml Required Loc Membership
 
 - File present: yes
-- URL count: 98
-- Required URL membership: 16/16
+- URL count: 100
+- Required URL membership: 18/18
 - EN home trailing slash check: PASS (https://www.finmaphub.com/en)
 - EN URL-prefix sitemap: present (`public/en/sitemap.xml`)
-- EN URL-prefix sitemap URL count: 98
+- EN URL-prefix sitemap URL count: 100
 - EN URL-prefix sitemap loc prefix check: PASS
 - EN URL-prefix sitemap matches `public/sitemap-en.xml`: PASS
 
@@ -72,6 +75,8 @@
 | /en/tools/cagr-calculator | https://www.finmaphub.com/en/tools/cagr-calculator | OK |
 | /en/tools/dca-calculator | https://www.finmaphub.com/en/tools/dca-calculator | OK |
 | /en/tools/dsr-ltv-calculator | https://www.finmaphub.com/en/tools/dsr-ltv-calculator | OK |
+| /en/tools/mortgage-loan-calculator | https://www.finmaphub.com/en/tools/mortgage-loan-calculator | OK |
+| /en/tools/home-buying-budget-calculator | https://www.finmaphub.com/en/tools/home-buying-budget-calculator | OK |
 | /en/tools/fire-calculator | https://www.finmaphub.com/en/tools/fire-calculator | OK |
 | /en/tools/goal-simulator | https://www.finmaphub.com/en/tools/goal-simulator | OK |
 | /en/market | https://www.finmaphub.com/en/market | OK |

@@ -353,6 +353,13 @@ export default function DsrLtvCalculatorPage() {
               </>
             )}
             <Link
+              href="/tools/mortgage-loan-calculator"
+              locale={locale}
+              className="btn-secondary"
+            >
+              {locale === "ko" ? "주담대 원리금 계산기" : "Mortgage payment calculator"}
+            </Link>
+            <Link
               href="/tools/home-buying-budget-calculator"
               locale={locale}
               className="btn-secondary"

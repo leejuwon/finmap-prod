@@ -54,6 +54,15 @@ const TOOL_CONFIGS = {
     },
     relatedTool: "goal",
   },
+  mortgageLoan: {
+    label: { ko: "주담대 원리금 계산기", en: "Mortgage payment calculator" },
+    checklistHref: "/posts/personalFinance/mortgage-risk-checklist-dsr-variable",
+    checklistLabel: {
+      ko: "주담대 리스크 체크리스트",
+      en: "Mortgage risk checklist",
+    },
+    relatedTool: "dsrLtv",
+  },
   dsrLtv: {
     label: { ko: "DSR/LTV 계산기", en: "DSR/LTV calculator" },
     checklistHref: "/posts/personalFinance/mortgage-risk-checklist-dsr-variable",
@@ -80,6 +89,7 @@ const TOOL_PATHS = {
   fire: "/tools/fire-calculator",
   cagr: "/tools/cagr-calculator",
   dca: "/tools/dca-calculator",
+  mortgageLoan: "/tools/mortgage-loan-calculator",
   dsrLtv: "/tools/dsr-ltv-calculator",
   homeBuying: "/tools/home-buying-budget-calculator",
 };
@@ -264,6 +274,7 @@ const DEFAULT_LEAD_BY_TOOL = {
   fire: "retirementChecklist",
   cagr: "dcaPlan",
   dca: "dcaPlan",
+  mortgageLoan: "homeBudget",
   dsrLtv: "homeBudget",
   homeBuying: "homeBudget",
 };
@@ -277,6 +288,12 @@ function normalizeToolId(toolId) {
     raw === "home-buying-budget" ||
     raw === "home-buying-budget-calculator"
   ) return "homeBuying";
+  if (
+    raw === "mortgage-loan" ||
+    raw === "mortgage_loan" ||
+    raw === "mortgage-loan-calculator" ||
+    raw === "mortgage-payment-calculator"
+  ) return "mortgageLoan";
   if (raw === "goal-calculator") return "goal";
   if (raw === "compound-interest") return "compound";
   return raw;
