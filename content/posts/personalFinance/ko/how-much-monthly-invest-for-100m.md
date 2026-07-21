@@ -11,7 +11,7 @@ category: "재테크"
 postCategory: "personalFinance"
 tags: ["1억원 만들기", "목표 금액", "적립식 투자", "DCA", "월 납입금", "세후 자산", "투자 시뮬레이션"]
 tool: ["dca","goal","comp"]
-cover: "/images/posts/how-much-monthly-invest-for-100m/cover.svg"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1784650537/blog/insight/how-much-monthly-invest-for-100m/rework-20260722/slot-001-cover.png"
 lang: "ko"
 ---
 
@@ -44,7 +44,7 @@ lang: "ko"
   </div>
 </div>
 
-![1억원 목표 적립식 투자 계산 예시](/images/posts/how-much-monthly-invest-for-100m/cover.svg)
+![1억원 목표 적립식 투자 계산 예시](https://res.cloudinary.com/dwonflmnn/image/upload/v1784650538/blog/insight/how-much-monthly-invest-for-100m/rework-20260722/slot-002-cover.png)
 
 ## 1억원 목표는 “세후 최종 자산”으로 봐야 한다
 
@@ -54,7 +54,7 @@ lang: "ko"
 
 계산하려면 [Finmap DCA 계산기](/tools/dca-calculator)를 열고 목표 금액에 100,000,000원을 입력합니다. 그다음 월 납입금, 투자 기간, 연 수익률, 세금, 수수료를 바꾸며 현재 조건의 목표 달성률과 필요한 월 납입금을 비교합니다.
 
-![목표 금액 입력과 필요 월 납입금 역산 화면 예시](/images/posts/how-much-monthly-invest-for-100m/img1.svg)
+![목표 금액 입력과 필요 월 납입금 역산 화면 예시](https://res.cloudinary.com/dwonflmnn/image/upload/v1784650539/blog/insight/how-much-monthly-invest-for-100m/rework-20260722/slot-003-chart.png)
 
 ## 기간별 1억원 목표 필요 월 납입금 예시
 
@@ -94,7 +94,7 @@ lang: "ko"
 
 목표 금액 분석 카드에서는 현재 조건의 예상 세후 자산, 목표 대비 부족액, 목표 달성률, 필요한 월 납입금, 추가로 필요한 월 납입금을 함께 보여줍니다.
 
-![월 납입금별 목표 달성률 비교](/images/posts/how-much-monthly-invest-for-100m/img2.svg)
+![월 납입금별 목표 달성률 비교](https://res.cloudinary.com/dwonflmnn/image/upload/v1784650540/blog/insight/how-much-monthly-invest-for-100m/rework-20260722/slot-004-comparison.png)
 
 <div class="callout-warning">
   <strong>오해 방지</strong>
@@ -111,7 +111,7 @@ lang: "ko"
 
 복리 효과만 따로 분리하고 싶다면 [복리 계산기](/tools/compound-interest)에 원금, 월 납입금, 기간을 넣어 미래가치를 봅니다. 목표 금액 중심으로 역산하고 싶다면 [목표자산 시뮬레이터](/tools/goal-simulator)에서 목표액과 기간을 먼저 고정합니다. 월 50만원 기준의 10년 예시는 [월 50만원 적립식 투자, 10년 후 얼마가 될까?](/posts/personalFinance/monthly-dca-10-year-result)에서 이어서 비교할 수 있습니다.
 
-![DCA 목표 분석 결과를 해석하는 방법](/images/posts/how-much-monthly-invest-for-100m/img3.svg)
+![DCA 목표 분석 결과를 해석하는 방법](https://res.cloudinary.com/dwonflmnn/image/upload/v1784650542/blog/insight/how-much-monthly-invest-for-100m/rework-20260722/slot-005-flow.png)
 
 ## FAQ
 

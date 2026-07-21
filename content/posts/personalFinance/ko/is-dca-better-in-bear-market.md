@@ -11,7 +11,7 @@ category: "재테크"
 postCategory: "personalFinance"
 tags: ["하락장", "적립식 투자", "DCA", "MDD", "하락장 시나리오", "평균 매수단가", "투자 시뮬레이션"]
 tool: ["dca","goal"]
-cover: "/images/posts/is-dca-better-in-bear-market/cover.svg"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1784649537/blog/insight/is-dca-better-in-bear-market/rework-20260722/slot-001-cover.png"
 lang: "ko"
 hreflangAlternates:
   ko: "/posts/personalFinance/is-dca-better-in-bear-market"
@@ -47,7 +47,7 @@ hreflangAlternates:
   </div>
 </div>
 
-![하락장 시나리오로 보는 적립식 투자](/images/posts/is-dca-better-in-bear-market/cover.svg)
+![하락장 시나리오로 보는 적립식 투자](https://res.cloudinary.com/dwonflmnn/image/upload/v1784649538/blog/insight/is-dca-better-in-bear-market/rework-20260722/slot-002-cover.png)
 
 ## DCA가 하락장에서 다르게 보이는 이유
 
@@ -57,7 +57,7 @@ hreflangAlternates:
 
 [Finmap DCA 계산기](/tools/dca-calculator)의 하락장 시나리오는 이 차이를 기본 모델과 나란히 보여줍니다.
 
-![초반 하락과 마지막 해 하락 비교](/images/posts/is-dca-better-in-bear-market/img1.svg)
+![초반 하락과 마지막 해 하락 비교](https://res.cloudinary.com/dwonflmnn/image/upload/v1784649539/blog/insight/is-dca-better-in-bear-market/rework-20260722/slot-003-comparison.png)
 
 ## 하락 시점별 DCA 영향
 
@@ -83,7 +83,7 @@ hreflangAlternates:
 
 이 예시는 “초반 하락이 항상 더 좋다”는 결론을 위한 표가 아닙니다. 입력한 수익률, 기간, 세금, 수수료, 하락률, 목표 금액에 따라 결과는 달라질 수 있습니다.
 
-![하락장 시나리오별 최종 세후 자산 비교](/images/posts/is-dca-better-in-bear-market/img2.svg)
+![하락장 시나리오별 최종 세후 자산 비교](https://res.cloudinary.com/dwonflmnn/image/upload/v1784649540/blog/insight/is-dca-better-in-bear-market/rework-20260722/slot-004-comparison.png)
 
 ## MDD와 최종 자산을 함께 봐야 하는 이유
 
@@ -113,7 +113,7 @@ MDD는 Maximum Drawdown의 약자로, 고점 대비 저점까지의 최대 하�
 
 적립식과 일괄투자의 차이도 함께 보고 싶다면 [적립식 투자와 일괄투자, 언제 결과가 달라질까?](/posts/personalFinance/dca-vs-lump-sum-when-results-differ)에서 같은 하락 경로를 비교합니다. 월 50만원 사례는 [월 50만원 적립식 투자, 10년 후 얼마가 될까?](/posts/personalFinance/monthly-dca-10-year-result)에서 납입액 기준으로 이어 보고, 목표 금액 중심의 단순 역산은 [목표자산 시뮬레이터](/tools/goal-simulator)에 목표액과 기간을 먼저 넣어 비교합니다.
 
-![하락장 시나리오 결과를 읽는 방법](/images/posts/is-dca-better-in-bear-market/img3.svg)
+![하락장 시나리오 결과를 읽는 방법](https://res.cloudinary.com/dwonflmnn/image/upload/v1784649541/blog/insight/is-dca-better-in-bear-market/rework-20260722/slot-005-comparison.png)
 
 ## FAQ
 

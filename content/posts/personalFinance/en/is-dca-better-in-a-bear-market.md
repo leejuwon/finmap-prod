@@ -11,7 +11,7 @@ category: "Personal Finance"
 postCategory: "personalFinance"
 tags: ["dca", "bear market", "dollar cost averaging", "drawdown", "monthly investing", "target portfolio", "investment simulator"]
 tool: ["dca","goal"]
-cover: "/images/posts/is-dca-better-in-a-bear-market/cover.svg"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1784648402/blog/insight/is-dca-better-in-a-bear-market/rework-20260722/slot-001-cover-en.png"
 lang: "en"
 hreflangAlternates:
   ko: "/posts/personalFinance/is-dca-better-in-bear-market"
@@ -47,7 +47,7 @@ hreflangAlternates:
   </div>
 </div>
 
-![Dollar-cost averaging bear-market scenario comparison](/images/posts/is-dca-better-in-a-bear-market/cover.svg)
+![Dollar-cost averaging bear-market scenario comparison](https://res.cloudinary.com/dwonflmnn/image/upload/v1784648403/blog/insight/is-dca-better-in-a-bear-market/rework-20260722/slot-002-cover-en.png)
 
 ## Why DCA Can Look Different in a Bear Market
 
@@ -57,7 +57,7 @@ But the outcome is not only about the size of the decline. It also depends on wh
 
 You can test this directly in the [Finmap DCA Calculator](/en/tools/dca-calculator).
 
-![Early drawdown versus final-year drawdown](/images/posts/is-dca-better-in-a-bear-market/img1.svg)
+![Early drawdown versus final-year drawdown](https://res.cloudinary.com/dwonflmnn/image/upload/v1784648404/blog/insight/is-dca-better-in-a-bear-market/rework-20260722/slot-003-comparison-en.png)
 
 ## Four Scenarios to Compare
 
@@ -83,7 +83,7 @@ The table below summarizes a simple verification example with 500 monthly contri
 
 These numbers depend on the simulator assumptions. Change the tax rate, fee rate, timeline, contribution amount, target amount, or return assumption and the comparison can change.
 
-![Scenario final after-tax value comparison](/images/posts/is-dca-better-in-a-bear-market/img2.svg)
+![Scenario final after-tax value comparison](https://res.cloudinary.com/dwonflmnn/image/upload/v1784648556/blog/insight/is-dca-better-in-a-bear-market/rework-20260722/slot-004-comparison-en.png)
 
 ## Read MDD With Final Value
 
@@ -113,7 +113,7 @@ The base model can show 0% MDD when prices only move along a smooth monthly retu
 
 For the lump-sum comparison angle, read [DCA vs Lump Sum: When Do the Results Differ?](/en/posts/personalFinance/dca-vs-lump-sum-when-results-differ). For a simple monthly investing example, see [What Happens If You Invest $500 a Month for 10 Years?](/en/posts/personalFinance/monthly-dca-10-year-result). If you want a goal-first reverse calculation, compare the plan with the [Goal Simulator](/en/tools/goal-simulator).
 
-![How to read DCA bear-market scenario results](/images/posts/is-dca-better-in-a-bear-market/img3.svg)
+![How to read DCA bear-market scenario results](https://res.cloudinary.com/dwonflmnn/image/upload/v1784648557/blog/insight/is-dca-better-in-a-bear-market/rework-20260722/slot-005-comparison-en.png)
 
 ## FAQ
 

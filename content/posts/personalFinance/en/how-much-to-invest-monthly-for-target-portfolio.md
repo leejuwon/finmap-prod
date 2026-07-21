@@ -11,7 +11,7 @@ category: "Personal Finance"
 postCategory: "personalFinance"
 tags: ["target portfolio", "monthly investing", "dca", "dollar cost averaging", "after tax value", "investment simulator", "goal planning"]
 tool: ["dca","goal","comp"]
-cover: "/images/posts/how-much-to-invest-monthly-for-target-portfolio/cover.svg"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1784648058/blog/insight/how-much-to-invest-monthly-for-target-portfolio/rework-20260722/slot-001-cover-en.png"
 lang: "en"
 ---
 
@@ -44,7 +44,7 @@ lang: "en"
   </div>
 </div>
 
-![Target portfolio monthly investing simulation](/images/posts/how-much-to-invest-monthly-for-target-portfolio/cover.svg)
+![Target portfolio monthly investing simulation](https://res.cloudinary.com/dwonflmnn/image/upload/v1784648060/blog/insight/how-much-to-invest-monthly-for-target-portfolio/rework-20260722/slot-002-cover-en.png)
 
 ## Start With the After-Tax Target
 
@@ -52,7 +52,7 @@ Most investors do not think of a goal as a pre-tax spreadsheet number. They usua
 
 If you enter a target of 100,000, the calculator checks whether the current monthly contribution, timeline, return assumption, fees, and taxes are enough to reach that final after-tax value. It also estimates the monthly contribution that would be needed under the same assumptions.
 
-![DCA target amount input and required monthly contribution](/images/posts/how-much-to-invest-monthly-for-target-portfolio/img1.svg)
+![DCA target amount input and required monthly contribution](https://res.cloudinary.com/dwonflmnn/image/upload/v1784648061/blog/insight/how-much-to-invest-monthly-for-target-portfolio/rework-20260722/slot-003-body-en.png)
 
 ## Timeline Changes the Monthly Contribution
 
@@ -92,7 +92,7 @@ A target analysis is most useful when it compares the plan you can actually foll
 
 The calculator’s target card shows projected after-tax value, shortfall or surplus, achievement rate, required monthly contribution, and additional monthly contribution needed.
 
-![Monthly contribution target progress examples](/images/posts/how-much-to-invest-monthly-for-target-portfolio/img2.svg)
+![Monthly contribution target progress examples](https://res.cloudinary.com/dwonflmnn/image/upload/v1784648062/blog/insight/how-much-to-invest-monthly-for-target-portfolio/rework-20260722/slot-004-body-en.png)
 
 <div class="callout-warning">
   <strong>Common misunderstanding</strong>
@@ -109,7 +109,7 @@ The calculator’s target card shows projected after-tax value, shortfall or sur
 
 For a simpler compounding view, compare the same assumptions in the [Compound Interest Calculator](/en/tools/compound-interest). If you want a goal-first planning view, the [Goal Simulator](/en/tools/goal-simulator) can also help you compare contribution needs. For a related monthly-investing example, see [What Happens If You Invest $500 a Month for 10 Years?](/en/posts/personalFinance/monthly-dca-10-year-result).
 
-![How to read target contribution results](/images/posts/how-much-to-invest-monthly-for-target-portfolio/img3.svg)
+![How to read target contribution results](https://res.cloudinary.com/dwonflmnn/image/upload/v1784648063/blog/insight/how-much-to-invest-monthly-for-target-portfolio/rework-20260722/slot-005-body-en.png)
 
 ## FAQ
 

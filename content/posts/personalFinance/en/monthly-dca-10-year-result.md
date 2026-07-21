@@ -11,7 +11,7 @@ category: "Personal Finance"
 postCategory: "personalFinance"
 tags: ["500 monthly investment", "dca", "dollar cost averaging", "compound interest", "10 year investing", "monthly contribution", "goal planning"]
 tool: ["dca","comp"]
-cover: "/images/posts/monthly-dca-10-year-result/cover-en.png"
+cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1784650137/blog/insight/monthly-dca-10-year-result/rework-20260722/slot-001-cover-en.png"
 lang: "en"
 ---
 
@@ -50,7 +50,7 @@ lang: "en"
 </div>
 
 <figure>
-  <img src="/images/posts/monthly-dca-10-year-result/cover-en.png" alt="A 10-year DCA plan depends on contribution, time, return assumptions, and staying power" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1784650138/blog/insight/monthly-dca-10-year-result/rework-20260722/slot-002-cover-en.png" alt="A 10-year DCA plan depends on contribution, time, return assumptions, and staying power" />
   <figcaption>A 10-year DCA plan is not just math; it is a contribution system</figcaption>
 </figure>
 
@@ -67,7 +67,7 @@ Before talking about returns, lock in the contribution math.
 That $60,000 is the foundation. If the plan fails after year two or three, the return assumption becomes secondary. DCA works best when the contribution amount fits normal months, not only optimistic months.
 
 <figure>
-  <img src="/images/posts/monthly-dca-10-year-result/img2-en.png" alt="A monthly investing plan starts with 120 repeatable contributions" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1784650139/blog/insight/monthly-dca-10-year-result/rework-20260722/slot-003-chart-en.png" alt="A monthly investing plan starts with 120 repeatable contributions" />
   <figcaption>The first question is not “what return?” but “can this survive 120 months?”</figcaption>
 </figure>
 
@@ -108,7 +108,7 @@ If $500 is possible only in perfect months, start lower. A contribution you can 
 If you expect income to rise, write a step-up rule instead of forcing a high contribution today. The framework in [Step-Up DCA contribution rules](/en/posts/personalFinance/dca-step-up-ruleset) is a useful next step.
 
 <figure>
-  <img src="/images/posts/monthly-dca-10-year-result/img3-en.png" alt="Compare 300, 500, and 700 dollar monthly contribution paths over 10 years" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1784650141/blog/insight/monthly-dca-10-year-result/rework-20260722/slot-004-comparison-en.png" alt="Compare 300, 500, and 700 dollar monthly contribution paths over 10 years" />
   <figcaption>A bigger monthly amount helps only if it does not cause the plan to break</figcaption>
 </figure>
 
@@ -143,7 +143,7 @@ If you have a specific target amount, stop guessing and reverse the problem. The
 If you checked fewer than three boxes, start smaller. If you checked four or five, $500/month may be a reasonable benchmark to test.
 
 <figure>
-  <img src="/images/posts/monthly-dca-10-year-result/img1-en.png" alt="A sustainable DCA plan combines emergency fund, automation, and contribution rules" />
+  <img src="https://res.cloudinary.com/dwonflmnn/image/upload/v1784650142/blog/insight/monthly-dca-10-year-result/rework-20260722/slot-005-summary-en.png" alt="A sustainable DCA plan combines emergency fund, automation, and contribution rules" />
   <figcaption>A sustainable DCA plan needs buffers, automation, and rules</figcaption>
 </figure>
 
@@ -198,10 +198,10 @@ No. This is a planning example. Your actual plan should reflect income, expenses
   "author": { "@type": "Person", "name": "FinMap" },
   "publisher": { "@type": "Organization", "name": "FinMap" },
   "image": [
-    "/images/posts/monthly-dca-10-year-result/cover-en.png",
-    "/images/posts/monthly-dca-10-year-result/img1-en.png",
-    "/images/posts/monthly-dca-10-year-result/img2-en.png",
-    "/images/posts/monthly-dca-10-year-result/img3-en.png"
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1784650137/blog/insight/monthly-dca-10-year-result/rework-20260722/slot-001-cover-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1784650142/blog/insight/monthly-dca-10-year-result/rework-20260722/slot-005-summary-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1784650139/blog/insight/monthly-dca-10-year-result/rework-20260722/slot-003-chart-en.png",
+    "https://res.cloudinary.com/dwonflmnn/image/upload/v1784650141/blog/insight/monthly-dca-10-year-result/rework-20260722/slot-004-comparison-en.png"
   ],
   "articleSection": "Personal Finance",
   "keywords": ["500 monthly investment", "DCA", "dollar-cost averaging", "compound interest", "10 year investing"]
