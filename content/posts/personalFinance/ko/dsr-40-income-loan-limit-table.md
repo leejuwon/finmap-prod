@@ -4,7 +4,7 @@ link: "/posts/personalFinance/dsr-40-income-loan-limit-table"
 title: "DSR 40% 연봉별 대출 가능액 표"
 description: "DSR 40%, 금리 연 4.0%, 30년 원리금균등 상환을 가정해 연봉별 대출 가능액과 월 상환 가능액을 표로 정리했습니다."
 datePublished: "2026-06-01"
-dateModified: "2026-06-24"
+dateModified: "2026-07-22"
 seoTitle: "DSR 40% 연봉별 대출 한도표 | 연봉별 주담대 한도·대출 가능액"
 seoDescription: "DSR 40%, 금리 4%, 30년 원리금균등 기준으로 연봉 3000만원, 5000만원, 1억원의 연봉별 대출 가능액과 월 상환 가능액을 표로 정리합니다. DSR/LTV 계산기로 내 조건의 주담대 한도도 확인해보세요."
 category: "재테크"
@@ -27,6 +27,7 @@ DSR 40% 기준에서 연봉별 대출 가능액은 연봉이 4,000만원인지, 
   <h3>내 조건으로 바로 계산해보기</h3>
   <p>연봉별 표는 출발점입니다. 보유 현금, 기존 대출, 후보 집값까지 넣어 주담대 한도와 아파트 구매 가능액을 다시 확인하세요.</p>
   <a class="tool-cta-btn" href="/tools/dsr-ltv-calculator" data-ga-event="post_to_dsr_ltv_click" data-source-post="dsr-40-income-loan-limit-table" data-cta-position="upper" data-source-tool="blogPost">LTV/DSR 계산기 열기</a>
+  <a class="tool-cta-btn" href="/tools/mortgage-loan-calculator" data-ga-event="related_calculator_click" data-source-post="dsr-40-income-loan-limit-table" data-cta-position="upper" data-source-tool="blogPost">대출금액별 월상환액 계산하기</a>
   <a class="tool-cta-btn" href="/tools/home-buying-budget-calculator" data-ga-event="post_to_dsr_ltv_click" data-source-post="dsr-40-income-loan-limit-table" data-cta-position="upper" data-source-tool="blogPost">아파트 구매 가능액 계산하기</a>
 </div>
 
@@ -37,7 +38,8 @@ DSR 40% 기준에서 연봉별 대출 가능액은 연봉이 4,000만원인지, 
 - 금리 4%, 30년 원리금균등 기준 월 200만원은 약 4억 1,892만원의 대출 가능액으로 환산됩니다.
 - 기존 대출 월상환액이 있으면 신규 주담대에 쓸 수 있는 월 상환 여력이 줄어듭니다.
 - DSR을 통과해도 LTV, 보유 현금, 취득세·중개보수 같은 부대비용 때문에 아파트 구매 가능 금액은 더 낮아질 수 있습니다.
-- 최종 가격대는 [주택담보대출 가능액 계산기](/tools/dsr-ltv-calculator)로 확인하고, 후보 지역은 [부동산 대시보드](/market/real-estate)에서 실거래로 비교하세요.
+- 최종 가격대는 [주택담보대출 가능액 계산기](/tools/dsr-ltv-calculator)로 확인하고, 대출금액이 정해지면 [대출금액별 월상환액과 총이자 계산하기](/tools/mortgage-loan-calculator)로 상환 부담을 따로 보세요.
+- 후보 지역은 [부동산 대시보드](/market/real-estate)에서 실거래 가격대와 거래량으로 비교하세요.
 
 ## 계산 가정
 
@@ -70,6 +72,8 @@ DSR/LTV 계산기는 정책 자동 반영을 하지 않습니다. 사용자가 �
 > **내 한도로 다시 계산하기:** [DSR/LTV 계산기에서 연소득·기존부채·현금·LTV를 함께 입력하기](/tools/dsr-ltv-calculator)
 
 표는 “DSR만 봤을 때의 대출 가능액”입니다. 실제 아파트 구매 가능 금액은 여기에서 끝나지 않습니다. LTV가 70%라면 집값 대비 대출액 상한이 따로 있고, 보유 현금은 매매가의 자기자본 부분과 부대비용까지 감당해야 합니다.
+
+대출 가능액과 월상환액도 구분해야 합니다. 이 표의 추정 주담대 한도는 “얼마까지 빌릴 수 있는가”에 가까운 값이고, 실제 매달 낼 원리금은 대출금액·금리·기간·상환방식에 따라 달라집니다. 월상환액과 총이자는 [주담대 원리금 계산기](/tools/mortgage-loan-calculator)에서 별도로 확인하세요.
 
 ## 기존부채가 있으면 한도는 얼마나 줄어들까?
 
@@ -129,6 +133,8 @@ DSR은 소득 대비 상환 능력을 보는 축입니다. 하지만 실제 매�
 
 따라서 이 표로 대략적인 주담대 한도를 확인한 뒤, [DSR/LTV 계산기](/tools/dsr-ltv-calculator)에 내 연소득·보유 현금·기존부채·후보 집값을 입력해 보세요. 계산 결과의 안전 탐색 가격대는 [부동산 대시보드](/market/real-estate)에서 서울·경기·인천 실거래 가격 분포와 함께 비교하면 더 실전적입니다.
 
+대출금액 후보가 좁혀졌다면 마지막으로 [주담대 원리금 계산기](/tools/mortgage-loan-calculator)에 대출금액, 금리, 기간, 상환방식을 입력해 월상환액과 총이자를 확인하세요. DSR 한도는 대출 가능 범위의 출발점이고, 월상환액은 매달 현금흐름을 버틸 수 있는지 보는 별도 점검입니다.
+
 ## FAQ
 
 ### DSR 40%란 무엇인가요?
@@ -150,6 +156,10 @@ DSR 40%는 연간 소득의 40%를 연간 원리금 상환액 기준으로 보�
 ### 표와 실제 대출 심사가 다른 이유는 무엇인가요?
 
 표는 금리 4%, 30년 원리금균등, 기존부채 없음이라는 단순 가정을 사용합니다. 실제 심사는 소득 인정 방식, 기존부채, 신용도, 담보가치, 금융기관 기준과 지역별 조건 등에 따라 달라질 수 있습니다.
+
+### 주담대 월상환액은 어디서 확인하나요?
+
+이 표는 연소득별 대출 가능액을 빠르게 비교하기 위한 자료입니다. 실제 대출금액, 금리, 기간, 상환방식별 월상환액과 총이자는 [주담대 원리금 계산기](/tools/mortgage-loan-calculator)에서 따로 확인하세요.
 
 <script type="application/ld+json">
 {
@@ -180,6 +190,11 @@ DSR 40%는 연간 소득의 40%를 연간 원리금 상환액 기준으로 보�
       "@type": "Question",
       "name": "표와 실제 대출 심사가 다른 이유는 무엇인가요?",
       "acceptedAnswer": { "@type": "Answer", "text": "표는 금리 4%, 30년 원리금균등, 기존부채 없음이라는 단순 가정을 사용합니다. 실제 심사는 소득 인정 방식, 기존부채, 신용도, 담보가치, 금융기관 기준과 지역별 조건 등에 따라 달라질 수 있습니다." }
+    },
+    {
+      "@type": "Question",
+      "name": "주담대 월상환액은 어디서 확인하나요?",
+      "acceptedAnswer": { "@type": "Answer", "text": "이 표는 연소득별 대출 가능액을 빠르게 비교하기 위한 자료입니다. 실제 대출금액, 금리, 기간, 상환방식별 월상환액과 총이자는 주담대 원리금 계산기에서 따로 확인하세요." }
     }
   ]
 }

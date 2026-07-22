@@ -4,9 +4,9 @@ link: "/en/posts/personalFinance/is-dca-better-in-a-bear-market"
 title: "Is Dollar-Cost Averaging Better in a Bear Market?"
 description: "Explore how dollar-cost averaging behaves in bear-market scenarios. Compare early, mid-period, and final-year drawdowns using a simple DCA simulation framework."
 datePublished: "2026-05-28"
-dateModified: "2026-05-28"
+dateModified: "2026-07-22"
 seoTitle: "Is Dollar-Cost Averaging Better in a Bear Market?"
-seoDescription: "Explore how dollar-cost averaging behaves in bear-market scenarios. Compare early, mid-period, and final-year drawdowns using a simple DCA simulation framework."
+seoDescription: "DCA is not automatically better in every bear market. Compare when dollar-cost averaging can reduce timing risk, when lump-sum investing can recover faster, and how drawdown timing changes the result."
 category: "Personal Finance"
 postCategory: "personalFinance"
 tags: ["dca", "bear market", "dollar cost averaging", "drawdown", "monthly investing", "target portfolio", "investment simulator"]
@@ -18,6 +18,8 @@ hreflangAlternates:
   en: "/en/posts/personalFinance/is-dca-better-in-a-bear-market"
 ---
 
+DCA is not automatically better in every bear market. It can reduce timing risk when prices keep falling, while lump-sum investing can outperform when the market recovers early; the right comparison depends on whether your cash is already available or arrives over time.
+
 - DCA can buy more units when prices are lower because the contribution amount stays constant.
 - That can help the average cost in some early-decline-and-recovery scenarios.
 - The timing of the drawdown matters more than the slogan.
@@ -26,6 +28,12 @@ hreflangAlternates:
 - The Finmap DCA Calculator compares a base model with early, mid-period, and final-year drawdown scenarios.
 - If you enter a target amount, the calculator can also show whether each scenario reaches that target.
 - The examples below are simplified simulations, not market forecasts.
+
+<div class="tool-cta">
+  <h3>Test bear-market DCA paths</h3>
+  <p>Compare base, early-drop, mid-period, and final-year drawdown paths using your monthly contribution and return assumptions.</p>
+  <a class="tool-cta-btn" href="/en/tools/dca-calculator" data-ga-event="related_calculator_click" data-source-post="is-dca-better-in-a-bear-market" data-cta-position="upper" data-source-tool="blogPost">Compare DCA and lump-sum scenarios</a>
+</div>
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -136,27 +144,6 @@ No. They are simple simulation paths that add a price shock to the base model.
 ### Why add a target amount to the scenario?
 
 It lets you see whether each scenario reaches the same final after-tax target or how large the shortfall may be.
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Is Dollar-Cost Averaging Better in a Bear Market?",
-  "description": "Explore how dollar-cost averaging behaves in bear-market scenarios.",
-  "datePublished": "2026-05-28",
-  "dateModified": "2026-05-28",
-  "author": {
-    "@type": "Organization",
-    "name": "Finmap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Finmap"
-  },
-  "inLanguage": "en",
-  "mainEntityOfPage": "https://www.finmaphub.com/en/posts/personalFinance/is-dca-better-in-a-bear-market"
-}
-</script>
 
 <script type="application/ld+json">
 {

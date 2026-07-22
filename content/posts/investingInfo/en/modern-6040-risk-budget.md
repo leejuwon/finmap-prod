@@ -393,9 +393,9 @@ If your risk budget is written, the next step is sizing: “How much do I invest
 
 You can sanity-check with FinMap tools:
 
-<p class="text-sm text-slate-600">Related calculator: <a href="/tools/goal-simulator">Open goal simulator</a></p>
-<p class="text-sm text-slate-600">Related calculator: <a href="/tools/dca-calculator">Open DCA calculator</a></p>
-<p class="text-sm text-slate-600">Related calculator: <a href="/tools/cagr-calculator">Open CAGR calculator</a></p>
+<p class="text-sm text-slate-600">Related calculator: <a href="/en/tools/goal-simulator">Open goal simulator</a></p>
+<p class="text-sm text-slate-600">Related calculator: <a href="/en/tools/dca-calculator">Open DCA calculator</a></p>
+<p class="text-sm text-slate-600">Related calculator: <a href="/en/tools/cagr-calculator">Open CAGR calculator</a></p>
 
 ---
 

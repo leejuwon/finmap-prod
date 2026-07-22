@@ -1,0 +1,55 @@
+{
+  "generatedFor": "search-growth-90d-p0-2b-internal-link-integrity",
+  "linkFixTargets": [
+    {
+      "type": "suspicious_fixed",
+      "beforeHref": "/tools/cagr-calculator",
+      "afterHref": "/en/tools/cagr-calculator",
+      "reason": "EN post related-calculator link should use EN canonical tool route."
+    },
+    {
+      "type": "suspicious_fixed",
+      "beforeHref": "/tools/dca-calculator",
+      "afterHref": "/en/tools/dca-calculator",
+      "reason": "EN post related-calculator link should use EN canonical tool route."
+    },
+    {
+      "type": "suspicious_fixed",
+      "beforeHref": "/tools/goal-simulator",
+      "afterHref": "/en/tools/goal-simulator",
+      "reason": "EN post related-calculator link should use EN canonical tool route."
+    },
+    {
+      "type": "suspicious_fixed",
+      "beforeHref": "/tools/compound-interest",
+      "afterHref": "/en/tools/compound-interest",
+      "reason": "EN post related-calculator link should use EN canonical tool route."
+    }
+  ],
+  "registryAdditions": [
+    "/posts/personalFinance/apartment-buying-calculator-guide",
+    "/posts/personalFinance/apartment-buying-costs-before-purchase",
+    "/posts/personalFinance/apartment-transaction-volume-decline-meaning",
+    "/posts/personalFinance/compound-calculator-guide",
+    "/posts/personalFinance/compound-return-3-5-7-10-table",
+    "/posts/personalFinance/dca-vs-lump-sum-when-results-differ",
+    "/posts/personalFinance/first-home-buyer-budget-calculation",
+    "/posts/personalFinance/how-much-monthly-invest-for-100m",
+    "/posts/personalFinance/how-to-read-apartment-transaction-prices",
+    "/posts/personalFinance/is-dca-better-in-bear-market",
+    "/posts/personalFinance/jeonse-to-home-purchase-cash-needed",
+    "/posts/personalFinance/large-apartment-complex-households-price-stability",
+    "/posts/personalFinance/ltv-dsr-calculator-guide",
+    "/posts/personalFinance/monthly-investment-for-100m-table",
+    "/posts/personalFinance/salary-40m-mortgage-limit",
+    "/posts/personalFinance/salary-50m-dsr-40-loan-limit",
+    "/en/posts/personalFinance/apartment-transaction-volume-decline-meaning",
+    "/en/posts/personalFinance/compound-return-3-5-7-10-table",
+    "/en/posts/personalFinance/dca-vs-lump-sum-when-results-differ",
+    "/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+    "/en/posts/personalFinance/how-to-read-apartment-transaction-prices",
+    "/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+    "/en/posts/personalFinance/large-apartment-complex-households-price-stability",
+    "/en/posts/personalFinance/monthly-investment-for-100m-table"
+  ]
+}

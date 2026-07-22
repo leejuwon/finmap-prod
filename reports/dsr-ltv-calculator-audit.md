@@ -1,6 +1,6 @@
 # DSR/LTV Calculator Audit
 
-Generated: 2026-06-01T09:55:56.435Z
+Generated: 2026-07-22T13:42:32.731Z
 Overall sample verification: PASS
 
 ## Changed Files
@@ -277,11 +277,4 @@ Extended sensitivity rows: 13 / 13 (PASS)
 
 ## Build Result
 
-- `node --check lib/calculators/dsrLtv.js`: PASS
-- `node --check scripts/verify_dsr_ltv_calculator.js`: PASS
-- `node --check pages/tools/dsr-ltv-calculator.js`: PASS
-- `node --check _components/DsrLtvCalculator.js`: PASS
-- `node scripts/verify_dsr_ltv_calculator.js`: PASS
-- `npm.cmd run build`: PASS
-- 390px mobile QA: PASS. Preset D sets `targetHomePrice=70000`, summary/candidate/sensitivity/dashboard CTA sections render, sensitivity rows = 13, candidate status = `PASS`, page horizontal scroll width = 390px.
-- Note: `npm.cmd run build` also ran the configured `postbuild` (`next-sitemap`) lifecycle script.
+- `npm.cmd run build`: pending after this script; update this section after build validation.

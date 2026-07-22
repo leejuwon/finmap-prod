@@ -1,0 +1,30 @@
+File,Category,Recommendation,Reason
+reports/local-dev-p1-1b-1.err.log,E_LOCAL_ONLY_TEMP,EXCLUDE_FROM_DEPLOY,Local server log; exclude from deploy.
+reports/local-dev-p1-1b-1.out.log,E_LOCAL_ONLY_TEMP,EXCLUDE_FROM_DEPLOY,Local server log; exclude from deploy.
+reports/local-dev-p1-1c-2-cmdnext.err.log,E_LOCAL_ONLY_TEMP,EXCLUDE_FROM_DEPLOY,Local server log; exclude from deploy.
+reports/local-dev-p1-1c-2-cmdnext.out.log,E_LOCAL_ONLY_TEMP,EXCLUDE_FROM_DEPLOY,Local server log; exclude from deploy.
+reports/local-dev-p1-1c-2-next.err.log,E_LOCAL_ONLY_TEMP,EXCLUDE_FROM_DEPLOY,Local server log; exclude from deploy.
+reports/local-dev-p1-1c-2-next.out.log,E_LOCAL_ONLY_TEMP,EXCLUDE_FROM_DEPLOY,Local server log; exclude from deploy.
+reports/local-dev-p1-1c-2-nextdirect-dbskip.err.log,E_LOCAL_ONLY_TEMP,EXCLUDE_FROM_DEPLOY,Local server log; exclude from deploy.
+reports/local-dev-p1-1c-2-nextdirect-dbskip.out.log,E_LOCAL_ONLY_TEMP,EXCLUDE_FROM_DEPLOY,Local server log; exclude from deploy.
+reports/local-dev-p1-1c-2-nextdirect.err.log,E_LOCAL_ONLY_TEMP,EXCLUDE_FROM_DEPLOY,Local server log; exclude from deploy.
+reports/local-dev-p1-1c-2-nextdirect.out.log,E_LOCAL_ONLY_TEMP,EXCLUDE_FROM_DEPLOY,Local server log; exclude from deploy.
+reports/local-dev-p1-1c-2.err.log,E_LOCAL_ONLY_TEMP,EXCLUDE_FROM_DEPLOY,Local server log; exclude from deploy.
+reports/local-dev-p1-1c-2.out.log,E_LOCAL_ONLY_TEMP,EXCLUDE_FROM_DEPLOY,Local server log; exclude from deploy.
+reports/search-performance-input/bing-daily-2026-04-23_2026-07-19.csv,D_SEARCH_PERFORMANCE_INPUT,LOCAL_ONLY_RECOMMENDED_OR_POLICY_REVIEW,Search performance source data for reproducible analysis; not runtime-required.
+reports/search-performance-input/bing-pages-2026-04-23_2026-07-19.csv,D_SEARCH_PERFORMANCE_INPUT,LOCAL_ONLY_RECOMMENDED_OR_POLICY_REVIEW,Search performance source data for reproducible analysis; not runtime-required.
+reports/search-performance-input/bing-pages-template.csv,D_SEARCH_PERFORMANCE_INPUT,LOCAL_ONLY_RECOMMENDED_OR_POLICY_REVIEW,Search performance source data for reproducible analysis; not runtime-required.
+reports/search-performance-input/bing-queries-2026-04-23_2026-07-19.csv,D_SEARCH_PERFORMANCE_INPUT,LOCAL_ONLY_RECOMMENDED_OR_POLICY_REVIEW,Search performance source data for reproducible analysis; not runtime-required.
+reports/search-performance-input/bing-queries-template.csv,D_SEARCH_PERFORMANCE_INPUT,LOCAL_ONLY_RECOMMENDED_OR_POLICY_REVIEW,Search performance source data for reproducible analysis; not runtime-required.
+reports/search-performance-input/gsc-daily-2026-04-23_2026-07-19.csv,D_SEARCH_PERFORMANCE_INPUT,LOCAL_ONLY_RECOMMENDED_OR_POLICY_REVIEW,Search performance source data for reproducible analysis; not runtime-required.
+reports/search-performance-input/gsc-filter-2026-04-23_2026-07-19.csv,D_SEARCH_PERFORMANCE_INPUT,LOCAL_ONLY_RECOMMENDED_OR_POLICY_REVIEW,Search performance source data for reproducible analysis; not runtime-required.
+reports/search-performance-input/gsc-pages-2026-04-23_2026-07-19.csv,D_SEARCH_PERFORMANCE_INPUT,LOCAL_ONLY_RECOMMENDED_OR_POLICY_REVIEW,Search performance source data for reproducible analysis; not runtime-required.
+reports/search-performance-input/gsc-pages-template.csv,D_SEARCH_PERFORMANCE_INPUT,LOCAL_ONLY_RECOMMENDED_OR_POLICY_REVIEW,Search performance source data for reproducible analysis; not runtime-required.
+reports/search-performance-input/gsc-queries-2026-04-23_2026-07-19.csv,D_SEARCH_PERFORMANCE_INPUT,LOCAL_ONLY_RECOMMENDED_OR_POLICY_REVIEW,Search performance source data for reproducible analysis; not runtime-required.
+reports/search-performance-input/gsc-queries-template.csv,D_SEARCH_PERFORMANCE_INPUT,LOCAL_ONLY_RECOMMENDED_OR_POLICY_REVIEW,Search performance source data for reproducible analysis; not runtime-required.
+reports/search-performance-input/naver-daily-2026-04-23_2026-07-19.csv,D_SEARCH_PERFORMANCE_INPUT,LOCAL_ONLY_RECOMMENDED_OR_POLICY_REVIEW,Search performance source data for reproducible analysis; not runtime-required.
+reports/search-performance-input/naver-pages-template.csv,D_SEARCH_PERFORMANCE_INPUT,LOCAL_ONLY_RECOMMENDED_OR_POLICY_REVIEW,Search performance source data for reproducible analysis; not runtime-required.
+reports/search-performance-input/naver-pages-top30-2026-04-23_2026-07-19.csv,D_SEARCH_PERFORMANCE_INPUT,LOCAL_ONLY_RECOMMENDED_OR_POLICY_REVIEW,Search performance source data for reproducible analysis; not runtime-required.
+reports/search-performance-input/naver-queries-template.csv,D_SEARCH_PERFORMANCE_INPUT,LOCAL_ONLY_RECOMMENDED_OR_POLICY_REVIEW,Search performance source data for reproducible analysis; not runtime-required.
+reports/search-performance-input/naver-queries-top30-2026-04-23_2026-07-19.csv,D_SEARCH_PERFORMANCE_INPUT,LOCAL_ONLY_RECOMMENDED_OR_POLICY_REVIEW,Search performance source data for reproducible analysis; not runtime-required.
+reports/search-performance-input/README.md,D_SEARCH_PERFORMANCE_INPUT,LOCAL_ONLY_RECOMMENDED_OR_POLICY_REVIEW,Search performance source data for reproducible analysis; not runtime-required.

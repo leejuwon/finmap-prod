@@ -1,0 +1,328 @@
+{
+  "generatedAt": "2026-07-22T14:04:14.862Z",
+  "trackA_enExperiment": [
+    {
+      "url": "/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+      "current_title": "Monthly Investment Needed to Reach a Target Portfolio",
+      "current_h1": "Monthly Investment Needed to Reach a Target Portfolio",
+      "bing": {
+        "clicks": 0,
+        "impressions": 399,
+        "ctr": "0",
+        "position": "5.35"
+      },
+      "gsc": {
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": "0",
+        "position": "29"
+      },
+      "query_evidence": {
+        "queries": [
+          "how much should i invest monthly for a regular investment plan?",
+          "compounding monthly vs annually",
+          "how much should i invest monthly for long-term regular investing?",
+          "how much should i invest monthly for regular contributions?",
+          "compounded monthly vs annually"
+        ],
+        "clicks": 0,
+        "impressions": 143,
+        "position": 6.755524475524475,
+        "status": "HEURISTIC_QUERY_MATCH"
+      },
+      "sample_grade": "SUFFICIENT",
+      "source_file": "content/posts/personalFinance/en/how-much-to-invest-monthly-for-target-portfolio.md",
+      "date_modified": "2026-07-22",
+      "inbound_internal_links": "2",
+      "outbound_internal_links": "4",
+      "change_value": "HIGH",
+      "reason": "Non-Naver impressions and first-page/near-first-page Bing or GSC position support a limited EN experiment.",
+      "recommended_scope": [
+        "title",
+        "description",
+        "first paragraph",
+        "answer summary"
+      ],
+      "risk": "LOW_TO_MEDIUM",
+      "observation_period": "28 days minimum, preferably 6 weeks"
+    },
+    {
+      "url": "/en/posts/personalFinance/annual-vs-monthly-compound",
+      "current_title": "Annual vs Monthly Compounding: Which Grows Faster?",
+      "current_h1": "Annual vs Monthly Compounding: Which Grows Faster?",
+      "bing": {
+        "clicks": 0,
+        "impressions": 145,
+        "ctr": "0",
+        "position": "8.61"
+      },
+      "gsc": {
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": "0",
+        "position": "9.6"
+      },
+      "query_evidence": {
+        "queries": [
+          "compounding monthly vs annually",
+          "annual compounding vs monthly",
+          "compounded monthly vs annually",
+          "is compounding interest annually the same as compounding monthly",
+          "dxy meaning in finance"
+        ],
+        "clicks": 0,
+        "impressions": 93,
+        "position": 9.644731182795699,
+        "status": "HEURISTIC_QUERY_MATCH"
+      },
+      "sample_grade": "SUFFICIENT",
+      "source_file": "content/posts/personalFinance/en/annual-vs-monthly-compound.md",
+      "date_modified": "2026-07-22",
+      "inbound_internal_links": "5",
+      "outbound_internal_links": "5",
+      "change_value": "HIGH",
+      "reason": "Non-Naver impressions and first-page/near-first-page Bing or GSC position support a limited EN experiment.",
+      "recommended_scope": [
+        "title",
+        "description",
+        "first paragraph",
+        "answer summary"
+      ],
+      "risk": "LOW_TO_MEDIUM",
+      "observation_period": "28 days minimum, preferably 6 weeks"
+    },
+    {
+      "url": "/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+      "current_title": "Is Dollar-Cost Averaging Better in a Bear Market?",
+      "current_h1": "Is Dollar-Cost Averaging Better in a Bear Market?",
+      "bing": {
+        "clicks": 0,
+        "impressions": 349,
+        "ctr": "0",
+        "position": "3.88"
+      },
+      "gsc": {
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": "0",
+        "position": "4.67"
+      },
+      "query_evidence": {
+        "queries": [
+          "dollar cost averaging etf allocation monthly 2026",
+          "should i continue dollar-cost averaging or hold onto the investment after a 15% loss?",
+          "why cagr better than simple average",
+          "is dollar-cost averaging suitable for big market declines?",
+          "semiconductor etf dollar-cost averaging price"
+        ],
+        "clicks": 0,
+        "impressions": 41,
+        "position": 4.682926829268292,
+        "status": "HEURISTIC_QUERY_MATCH"
+      },
+      "sample_grade": "SUFFICIENT",
+      "source_file": "content/posts/personalFinance/en/is-dca-better-in-a-bear-market.md",
+      "date_modified": "2026-07-22",
+      "inbound_internal_links": "0",
+      "outbound_internal_links": "4",
+      "change_value": "MEDIUM",
+      "reason": "Non-Naver impressions and first-page/near-first-page Bing or GSC position support a limited EN experiment.",
+      "recommended_scope": [
+        "title",
+        "description",
+        "first paragraph",
+        "answer summary"
+      ],
+      "risk": "LOW_TO_MEDIUM",
+      "observation_period": "28 days minimum, preferably 6 weeks"
+    }
+  ],
+  "trackB_koNaverExpansion": [
+    {
+      "url": "/posts/personalFinance/what-is-cagr",
+      "current_title": "CAGR 계산법: 단순 수익률과 다른 이유와 투자 예시",
+      "current_h1": "CAGR 계산법: 단순 수익률과 다른 이유와 투자 예시",
+      "naver_class": "NAVER_LOW_RISK_EXPAND",
+      "naver_rank": 3,
+      "clicks": 53,
+      "impressions": 5084,
+      "ctr": "0.01",
+      "query_cluster": "CAGR",
+      "protect_elements": "preserve title/H1 and current ranking intent",
+      "low_risk_scope": "preserve title/H1; consider answer summary, concrete examples, calculator CTA, and lower-risk internal support",
+      "related_calculator": "/tools/cagr-calculator",
+      "source_file": "content/posts/personalFinance/ko/what-is-cagr.md",
+      "date_modified": "2026-07-22",
+      "observation_period": "28 days minimum, preferably 6 weeks"
+    },
+    {
+      "url": "/tools/home-buying-budget-calculator",
+      "current_title": "아파트 구매 계산기 - 보유 현금·주담대 한도·DSR LTV 예산 계산",
+      "current_h1": "아파트 구매 계산기",
+      "naver_class": "NAVER_ADJACENT_OPPORTUNITY",
+      "naver_rank": "",
+      "clicks": 33,
+      "impressions": 2209,
+      "ctr": "0.0149",
+      "query_cluster": "주담대",
+      "protect_elements": "no current Naver page winner to rewrite; keep target URL role clear",
+      "low_risk_scope": "align answer summary, calculator CTA, and supporting examples without keyword repetition",
+      "related_calculator": "/tools/mortgage-loan-calculator",
+      "source_file": "pages/tools/home-buying-budget-calculator.js",
+      "date_modified": "",
+      "observation_period": "28 days minimum, preferably 6 weeks"
+    },
+    {
+      "url": "/posts/personalFinance/dsr-40-income-loan-limit-table",
+      "current_title": "DSR 40% 연봉별 대출 한도표 | 연봉별 주담대 한도·대출 가능액",
+      "current_h1": "DSR 40% 연봉별 대출 한도표 | 연봉별 주담대 한도·대출 가능액",
+      "naver_class": "NAVER_LOW_RISK_EXPAND",
+      "naver_rank": 12,
+      "clicks": 18,
+      "impressions": 538,
+      "ctr": "0.033",
+      "query_cluster": "주담대",
+      "protect_elements": "preserve title/H1 and current ranking intent",
+      "low_risk_scope": "preserve title/H1; consider answer summary, concrete examples, calculator CTA, and lower-risk internal support",
+      "related_calculator": "/tools/mortgage-loan-calculator",
+      "source_file": "content/posts/personalFinance/ko/dsr-40-income-loan-limit-table.md",
+      "date_modified": "2026-07-22",
+      "observation_period": "28 days minimum, preferably 6 weeks"
+    }
+  ],
+  "hold": [
+    {
+      "url": "/tools/dsr-ltv-calculator",
+      "naver_class": "NAVER_PROTECT",
+      "clicks": 118,
+      "impressions": 34584,
+      "reason": "avoid broad copy changes; monitor current winner"
+    },
+    {
+      "url": "/tools/cagr-calculator",
+      "naver_class": "NAVER_PROTECT",
+      "clicks": 95,
+      "impressions": 16270,
+      "reason": "avoid broad copy changes; monitor current winner"
+    },
+    {
+      "url": "/market/real-estate/seoul-top100",
+      "naver_class": "NAVER_PROTECT",
+      "clicks": 43,
+      "impressions": 2837,
+      "reason": "avoid broad copy changes; monitor current winner"
+    },
+    {
+      "url": "/posts/investingInfo/usd-krw-weak-won-sector-map-kospi",
+      "naver_class": "HOLD",
+      "clicks": 40,
+      "impressions": 1365,
+      "reason": "observe only"
+    },
+    {
+      "url": "/market/real-estate/magok-top100",
+      "naver_class": "NAVER_PROTECT",
+      "clicks": 40,
+      "impressions": 1282,
+      "reason": "avoid broad copy changes; monitor current winner"
+    },
+    {
+      "url": "/market/real-estate/songpa-top100",
+      "naver_class": "NAVER_PROTECT",
+      "clicks": 35,
+      "impressions": 2302,
+      "reason": "avoid broad copy changes; monitor current winner"
+    },
+    {
+      "url": "/market/real-estate/gangnam3-top100",
+      "naver_class": "NAVER_PROTECT",
+      "clicks": 31,
+      "impressions": 471,
+      "reason": "avoid broad copy changes; monitor current winner"
+    },
+    {
+      "url": "/tools/dca-calculator",
+      "naver_class": "NAVER_PROTECT",
+      "clicks": 22,
+      "impressions": 630,
+      "reason": "avoid broad copy changes; monitor current winner"
+    },
+    {
+      "url": "/posts/economicInfo/inflation-rate-basics",
+      "naver_class": "HOLD",
+      "clicks": 21,
+      "impressions": 2331,
+      "reason": "observe only"
+    },
+    {
+      "url": "/tools/compound-interest",
+      "naver_class": "NAVER_PROTECT",
+      "clicks": 20,
+      "impressions": 5298,
+      "reason": "avoid broad copy changes; monitor current winner"
+    },
+    {
+      "url": "/market/real-estate/gangnam-top100",
+      "naver_class": "NAVER_PROTECT",
+      "clicks": 11,
+      "impressions": 887,
+      "reason": "avoid broad copy changes; monitor current winner"
+    },
+    {
+      "url": "/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
+      "naver_class": "HOLD",
+      "clicks": 7,
+      "impressions": 2985,
+      "reason": "observe only"
+    },
+    {
+      "url": "/tools/fire-calculator",
+      "naver_class": "HOLD",
+      "clicks": 6,
+      "impressions": 118,
+      "reason": "observe only"
+    },
+    {
+      "url": "/posts/investingInfo/wti-impact-on-korea-kospi",
+      "naver_class": "HOLD",
+      "clicks": 6,
+      "impressions": 100,
+      "reason": "observe only"
+    },
+    {
+      "url": "/posts/investingInfo/dxy-dollar-index-basics",
+      "naver_class": "HOLD",
+      "clicks": 5,
+      "impressions": 2575,
+      "reason": "observe only"
+    },
+    {
+      "url": "/tools",
+      "naver_class": "HOLD",
+      "clicks": 4,
+      "impressions": 142,
+      "reason": "observe only"
+    },
+    {
+      "url": "/posts/investingInfo/why-check-cagr-etf",
+      "naver_class": "HOLD",
+      "clicks": 2,
+      "impressions": 1283,
+      "reason": "observe only"
+    }
+  ],
+  "noAction": [
+    {
+      "url": "/en/posts/investingInfo/dxy-dollar-index-basics",
+      "reason": "Track A limited to max 3"
+    },
+    {
+      "url": "/en/posts/investingInfo/tnx-basics",
+      "reason": "Track A limited to max 3"
+    },
+    {
+      "url": "/en/posts/personalFinance/dca-vs-lump-sum-when-results-differ",
+      "reason": "Track A limited to max 3"
+    }
+  ]
+}

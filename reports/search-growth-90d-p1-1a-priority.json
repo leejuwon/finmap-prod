@@ -1,0 +1,574 @@
+{
+  "generatedAt": "2026-07-22T14:04:14.845Z",
+  "localOnly": true,
+  "inputFiles": [
+    {
+      "file": "reports\\search-performance-input\\bing-daily-2026-04-23_2026-07-19.csv",
+      "platform": "bing",
+      "type": "daily",
+      "encoding": "utf-8",
+      "delimiter": ",",
+      "requested_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range_source": "row_dates",
+      "rows": 88,
+      "status": "PASS",
+      "warnings": []
+    },
+    {
+      "file": "reports\\search-performance-input\\bing-pages-2026-04-23_2026-07-19.csv",
+      "platform": "bing",
+      "type": "pages",
+      "encoding": "utf-8",
+      "delimiter": ",",
+      "requested_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range_source": "file_name",
+      "rows": 86,
+      "status": "PASS",
+      "warnings": [
+        "FILE_LEVEL_RANGE_ONLY"
+      ]
+    },
+    {
+      "file": "reports\\search-performance-input\\bing-queries-2026-04-23_2026-07-19.csv",
+      "platform": "bing",
+      "type": "queries",
+      "encoding": "euc-kr",
+      "delimiter": ",",
+      "requested_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range_source": "file_name",
+      "rows": 569,
+      "status": "PASS",
+      "warnings": [
+        "FILE_LEVEL_RANGE_ONLY"
+      ]
+    },
+    {
+      "file": "reports\\search-performance-input\\gsc-daily-2026-04-23_2026-07-19.csv",
+      "platform": "gsc",
+      "type": "daily",
+      "encoding": "utf-8",
+      "delimiter": ",",
+      "requested_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range": {
+        "start": "2026-06-17",
+        "end": "2026-07-19"
+      },
+      "actual_range_source": "row_dates",
+      "rows": 33,
+      "status": "PASS",
+      "warnings": []
+    },
+    {
+      "file": "reports\\search-performance-input\\gsc-filter-2026-04-23_2026-07-19.csv",
+      "platform": "gsc",
+      "type": "filter",
+      "encoding": "utf-8",
+      "delimiter": ",",
+      "requested_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range_source": "filter_file",
+      "rows": 2,
+      "status": "PASS",
+      "warnings": []
+    },
+    {
+      "file": "reports\\search-performance-input\\gsc-pages-2026-04-23_2026-07-19.csv",
+      "platform": "gsc",
+      "type": "pages",
+      "encoding": "utf-8",
+      "delimiter": ",",
+      "requested_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range_source": "file_name",
+      "rows": 33,
+      "status": "PASS",
+      "warnings": [
+        "FILE_LEVEL_RANGE_ONLY"
+      ]
+    },
+    {
+      "file": "reports\\search-performance-input\\gsc-queries-2026-04-23_2026-07-19.csv",
+      "platform": "gsc",
+      "type": "queries",
+      "encoding": "utf-8",
+      "delimiter": ",",
+      "requested_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range_source": "file_name",
+      "rows": 5,
+      "status": "PASS",
+      "warnings": [
+        "FILE_LEVEL_RANGE_ONLY"
+      ]
+    },
+    {
+      "file": "reports\\search-performance-input\\naver-daily-2026-04-23_2026-07-19.csv",
+      "platform": "naver",
+      "type": "daily",
+      "encoding": "euc-kr",
+      "delimiter": ",",
+      "requested_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range_source": "row_dates",
+      "rows": 2,
+      "status": "PASS",
+      "warnings": []
+    },
+    {
+      "file": "reports\\search-performance-input\\naver-pages-top30-2026-04-23_2026-07-19.csv",
+      "platform": "naver",
+      "type": "pages",
+      "encoding": "euc-kr",
+      "delimiter": ",",
+      "requested_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range_source": "file_name",
+      "rows": 30,
+      "status": "PASS",
+      "warnings": [
+        "FILE_LEVEL_RANGE_ONLY"
+      ]
+    },
+    {
+      "file": "reports\\search-performance-input\\naver-queries-top30-2026-04-23_2026-07-19.csv",
+      "platform": "naver",
+      "type": "queries",
+      "encoding": "euc-kr",
+      "delimiter": ",",
+      "requested_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range": {
+        "start": "2026-04-23",
+        "end": "2026-07-19"
+      },
+      "actual_range_source": "file_name",
+      "rows": 30,
+      "status": "PASS",
+      "warnings": [
+        "FILE_LEVEL_RANGE_ONLY"
+      ]
+    }
+  ],
+  "summary": {
+    "inputFileCount": 10,
+    "inventoryUrls": 192,
+    "mergedUrlsWithObservedData": 100,
+    "unmatchedInputUrls": 13,
+    "priorityCandidateCount": 6,
+    "observationCount": 10,
+    "dailyRows": 88,
+    "pageQueryStatus": "LIMITED_DATA"
+  },
+  "priorityUrlsForP1_1B": [
+    {
+      "url": "/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+      "locale": "en",
+      "content_type": "post",
+      "current_title": "Is Dollar-Cost Averaging Better in a Bear Market?",
+      "current_h1": "Is Dollar-Cost Averaging Better in a Bear Market?",
+      "platforms": {
+        "gsc": {
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": "0",
+          "position": "4.67"
+        },
+        "bing": {
+          "clicks": 0,
+          "impressions": 349,
+          "ctr": "0",
+          "position": "3.88"
+        },
+        "naver_top30": {
+          "is_top30": "false",
+          "rank": "",
+          "clicks": "",
+          "impressions": "",
+          "coverage_type": ""
+        }
+      },
+      "target_query_candidates": [],
+      "target_query_evidence": "No page-query dataset; use platform query exports and visible URL/title/H1 only.",
+      "known_clicks": 0,
+      "known_impressions": 352,
+      "opportunity_type": "QUICK_WIN",
+      "data_confidence": "SUFFICIENT",
+      "selection_reason": "P1-1B title/description/intro SERP alignment review",
+      "recommended_p1_1b_scope": [
+        "title",
+        "description",
+        "H1",
+        "first paragraph",
+        "answer summary"
+      ],
+      "change_risk": "LOW_TO_MEDIUM",
+      "minimum_observation_period_after_change": "14-28 days after recrawl"
+    },
+    {
+      "url": "/en/posts/personalFinance/annual-vs-monthly-compound",
+      "locale": "en",
+      "content_type": "post",
+      "current_title": "Annual vs Monthly Compounding: Which Grows Faster?",
+      "current_h1": "Annual vs Monthly Compounding: Which Grows Faster?",
+      "platforms": {
+        "gsc": {
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": "0",
+          "position": "9.6"
+        },
+        "bing": {
+          "clicks": 0,
+          "impressions": 145,
+          "ctr": "0",
+          "position": "8.61"
+        },
+        "naver_top30": {
+          "is_top30": "false",
+          "rank": "",
+          "clicks": "",
+          "impressions": "",
+          "coverage_type": ""
+        }
+      },
+      "target_query_candidates": [],
+      "target_query_evidence": "No page-query dataset; use platform query exports and visible URL/title/H1 only.",
+      "known_clicks": 0,
+      "known_impressions": 150,
+      "opportunity_type": "QUICK_WIN",
+      "data_confidence": "SUFFICIENT",
+      "selection_reason": "P1-1B title/description/intro SERP alignment review",
+      "recommended_p1_1b_scope": [
+        "title",
+        "description",
+        "H1",
+        "first paragraph",
+        "answer summary"
+      ],
+      "change_risk": "LOW_TO_MEDIUM",
+      "minimum_observation_period_after_change": "14-28 days after recrawl"
+    },
+    {
+      "url": "/en/posts/investingInfo/dxy-dollar-index-basics",
+      "locale": "en",
+      "content_type": "post",
+      "current_title": "What Is DXY? Dollar Index, USD/KRW, and KOSPI Explained",
+      "current_h1": "What Is DXY? Dollar Index, USD/KRW, and KOSPI Explained",
+      "platforms": {
+        "gsc": {
+          "clicks": "",
+          "impressions": "",
+          "ctr": "",
+          "position": ""
+        },
+        "bing": {
+          "clicks": 0,
+          "impressions": 300,
+          "ctr": "0",
+          "position": "8.32"
+        },
+        "naver_top30": {
+          "is_top30": "false",
+          "rank": "",
+          "clicks": "",
+          "impressions": "",
+          "coverage_type": ""
+        }
+      },
+      "target_query_candidates": [],
+      "target_query_evidence": "No page-query dataset; use platform query exports and visible URL/title/H1 only.",
+      "known_clicks": 0,
+      "known_impressions": 300,
+      "opportunity_type": "QUICK_WIN",
+      "data_confidence": "SUFFICIENT",
+      "selection_reason": "P1-1B title/description/intro SERP alignment review",
+      "recommended_p1_1b_scope": [
+        "title",
+        "description",
+        "H1",
+        "first paragraph",
+        "answer summary"
+      ],
+      "change_risk": "LOW_TO_MEDIUM",
+      "minimum_observation_period_after_change": "14-28 days after recrawl"
+    },
+    {
+      "url": "/en/posts/investingInfo/tnx-basics",
+      "locale": "en",
+      "content_type": "post",
+      "current_title": "10-Year Treasury Yield (TNX): How It Moves Stocks, FX, and Korea",
+      "current_h1": "10-Year Treasury Yield (TNX): How It Moves Stocks, FX, and Korea",
+      "platforms": {
+        "gsc": {
+          "clicks": 0,
+          "impressions": 32,
+          "ctr": "0",
+          "position": "9.84"
+        },
+        "bing": {
+          "clicks": 2,
+          "impressions": 121,
+          "ctr": "0.0165",
+          "position": "4.92"
+        },
+        "naver_top30": {
+          "is_top30": "false",
+          "rank": "",
+          "clicks": "",
+          "impressions": "",
+          "coverage_type": ""
+        }
+      },
+      "target_query_candidates": [],
+      "target_query_evidence": "No page-query dataset; use platform query exports and visible URL/title/H1 only.",
+      "known_clicks": 2,
+      "known_impressions": 153,
+      "opportunity_type": "QUICK_WIN",
+      "data_confidence": "SUFFICIENT",
+      "selection_reason": "P1-1B title/description/intro SERP alignment review",
+      "recommended_p1_1b_scope": [
+        "title",
+        "description",
+        "H1",
+        "first paragraph",
+        "answer summary"
+      ],
+      "change_risk": "LOW_TO_MEDIUM",
+      "minimum_observation_period_after_change": "14-28 days after recrawl"
+    },
+    {
+      "url": "/en/posts/personalFinance/dca-vs-lump-sum-when-results-differ",
+      "locale": "en",
+      "content_type": "post",
+      "current_title": "DCA vs Lump Sum: When Do the Results Differ?",
+      "current_h1": "DCA vs Lump Sum: When Do the Results Differ?",
+      "platforms": {
+        "gsc": {
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": "0",
+          "position": "9"
+        },
+        "bing": {
+          "clicks": 0,
+          "impressions": 40,
+          "ctr": "0",
+          "position": "5.97"
+        },
+        "naver_top30": {
+          "is_top30": "false",
+          "rank": "",
+          "clicks": "",
+          "impressions": "",
+          "coverage_type": ""
+        }
+      },
+      "target_query_candidates": [],
+      "target_query_evidence": "No page-query dataset; use platform query exports and visible URL/title/H1 only.",
+      "known_clicks": 0,
+      "known_impressions": 41,
+      "opportunity_type": "QUICK_WIN",
+      "data_confidence": "SUFFICIENT",
+      "selection_reason": "P1-1B title/description/intro SERP alignment review",
+      "recommended_p1_1b_scope": [
+        "title",
+        "description",
+        "H1",
+        "first paragraph",
+        "answer summary"
+      ],
+      "change_risk": "LOW_TO_MEDIUM",
+      "minimum_observation_period_after_change": "14-28 days after recrawl"
+    },
+    {
+      "url": "/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+      "locale": "en",
+      "content_type": "post",
+      "current_title": "Monthly Investment Needed to Reach a Target Portfolio",
+      "current_h1": "Monthly Investment Needed to Reach a Target Portfolio",
+      "platforms": {
+        "gsc": {
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": "0",
+          "position": "29"
+        },
+        "bing": {
+          "clicks": 0,
+          "impressions": 399,
+          "ctr": "0",
+          "position": "5.35"
+        },
+        "naver_top30": {
+          "is_top30": "false",
+          "rank": "",
+          "clicks": "",
+          "impressions": "",
+          "coverage_type": ""
+        }
+      },
+      "target_query_candidates": [],
+      "target_query_evidence": "No page-query dataset; use platform query exports and visible URL/title/H1 only.",
+      "known_clicks": 0,
+      "known_impressions": 400,
+      "opportunity_type": "PAGE_ONE_CANDIDATE",
+      "data_confidence": "SUFFICIENT",
+      "selection_reason": "P1-1B metadata and answer-summary scope review",
+      "recommended_p1_1b_scope": [
+        "title",
+        "description",
+        "H1",
+        "first paragraph",
+        "answer summary"
+      ],
+      "change_risk": "LOW_TO_MEDIUM",
+      "minimum_observation_period_after_change": "14-28 days after recrawl"
+    }
+  ],
+  "observationUrls": [
+    {
+      "url": "/posts/economicInfo/inflation-rate-basics",
+      "opportunity_type": "NAVER_WINNER",
+      "reason": "Observed Naver top30 clicks; hold or low-risk refresh.",
+      "known_clicks": 21,
+      "known_impressions": 2362,
+      "data_confidence": "SUFFICIENT"
+    },
+    {
+      "url": "/tools/cagr-calculator",
+      "opportunity_type": "NAVER_WINNER",
+      "reason": "Observed Naver top30 clicks; hold or low-risk refresh.",
+      "known_clicks": 95,
+      "known_impressions": 16277,
+      "data_confidence": "LIMITED"
+    },
+    {
+      "url": "/market/real-estate/magok-top100",
+      "opportunity_type": "NAVER_WINNER",
+      "reason": "Observed Naver top30 clicks; hold or low-risk refresh.",
+      "known_clicks": 40,
+      "known_impressions": 1289,
+      "data_confidence": "LIMITED"
+    },
+    {
+      "url": "/posts/personalFinance/annual-vs-monthly-compound",
+      "opportunity_type": "NAVER_WINNER",
+      "reason": "Observed Naver top30 clicks; hold or low-risk refresh.",
+      "known_clicks": 9,
+      "known_impressions": 334,
+      "data_confidence": "LIMITED"
+    },
+    {
+      "url": "/market/real-estate/songpa-top100",
+      "opportunity_type": "NAVER_WINNER",
+      "reason": "Observed Naver top30 clicks; hold or low-risk refresh.",
+      "known_clicks": 37,
+      "known_impressions": 2313,
+      "data_confidence": "LIMITED"
+    },
+    {
+      "url": "/tools/dsr-ltv-calculator",
+      "opportunity_type": "NAVER_WINNER",
+      "reason": "Observed Naver top30 clicks; hold or low-risk refresh.",
+      "known_clicks": 118,
+      "known_impressions": 34585,
+      "data_confidence": "LIMITED"
+    },
+    {
+      "url": "/market/real-estate/seoul-top100",
+      "opportunity_type": "NAVER_WINNER",
+      "reason": "Observed Naver top30 clicks; hold or low-risk refresh.",
+      "known_clicks": 44,
+      "known_impressions": 2850,
+      "data_confidence": "LIMITED"
+    },
+    {
+      "url": "/posts/personalFinance/dsr-40-income-loan-limit-table",
+      "opportunity_type": "NAVER_WINNER",
+      "reason": "Observed Naver top30 clicks; hold or low-risk refresh.",
+      "known_clicks": 18,
+      "known_impressions": 541,
+      "data_confidence": "LIMITED"
+    },
+    {
+      "url": "/market/real-estate/gangnam-top100",
+      "opportunity_type": "NAVER_WINNER",
+      "reason": "Observed Naver top30 clicks; hold or low-risk refresh.",
+      "known_clicks": 11,
+      "known_impressions": 890,
+      "data_confidence": "LIMITED"
+    },
+    {
+      "url": "/market/real-estate",
+      "opportunity_type": "NAVER_WINNER",
+      "reason": "Observed Naver top30 clicks; hold or low-risk refresh.",
+      "known_clicks": 4,
+      "known_impressions": 64,
+      "data_confidence": "LIMITED"
+    }
+  ],
+  "dataLimitations": [
+    "GSC and Bing page/query files are separate; there is no page-query dataset.",
+    "Naver query/page files are click top30 only and are not complete datasets.",
+    "Naver daily totals, query top30, and page top30 are not force-reconciled.",
+    "Missing platform values remain blank and are not treated as zero.",
+    "Possible cannibalization is limited to URL/title/H1/query-string overlap heuristics."
+  ],
+  "noContentChanges": true
+}

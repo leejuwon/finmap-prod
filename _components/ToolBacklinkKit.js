@@ -343,7 +343,11 @@ export function ToolSharePanel({ toolId, locale = "ko", location = "top_share" }
   };
 
   return (
-    <section className="card border-blue-100 bg-blue-50">
+    <section
+      className="card border-blue-100 bg-blue-50"
+      data-nosnippet
+      data-snippet-region="tool-share"
+    >
       <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0">
           <p className="mb-1 break-words text-xs font-semibold uppercase tracking-[0.16em] text-blue-700">

@@ -1,12 +1,12 @@
 ---
 slug: "how-much-to-invest-monthly-for-target-portfolio"
 link: "/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio"
-title: "How Much Should You Invest Monthly to Reach a Target Portfolio?"
-description: "Learn how monthly contributions, return assumptions, fees, and taxes affect your target portfolio goal."
+title: "Monthly Investment Needed to Reach a Target Portfolio"
+description: "The monthly investment needed depends on your current balance, target amount, timeline, expected return, fees, and taxes."
 datePublished: "2026-05-28"
-dateModified: "2026-05-28"
-seoTitle: "How Much Should You Invest Monthly to Reach a Target Portfolio?"
-seoDescription: "Learn how monthly contributions, return assumptions, fees, and taxes affect your target portfolio goal. Use the DCA calculator to estimate the monthly investment needed to reach your target."
+dateModified: "2026-07-22"
+seoTitle: "Monthly Investment Needed to Reach a Target Portfolio"
+seoDescription: "The monthly investment needed depends on your current balance, target amount, timeline, expected return, fees, and taxes. Use the goal simulator to compare required contributions without treating the result as a guaranteed return."
 category: "Personal Finance"
 postCategory: "personalFinance"
 tags: ["target portfolio", "monthly investing", "dca", "dollar cost averaging", "after tax value", "investment simulator", "goal planning"]
@@ -15,14 +15,22 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1784648058/blog/insig
 lang: "en"
 ---
 
+The monthly investment needed for a target portfolio depends on your current balance, target amount, time horizon, expected return, fees, and taxes. A shorter timeline or lower return assumption usually raises the required contribution, and every result here is a planning estimate, not a promised return.
+
 - A target portfolio is easier to plan when you define it as a final after-tax value.
 - The monthly contribution depends on the timeline, return assumption, fees, taxes, and any initial investment.
 - A shorter timeline relies more heavily on contributions; a longer timeline gives compounding more room to work.
 - Higher return assumptions reduce the required monthly contribution in a model, but they also make the plan more sensitive to reality.
 - Taxes and fees can create a meaningful gap between pre-tax value and final after-tax value.
-- The Finmap DCA Calculator can reverse-calculate the monthly contribution needed for a target amount.
+- The Finmap Goal Simulator can estimate the monthly contribution needed for a target amount.
 - The examples below are simulations based on simplified assumptions, not forecasts.
 - Use several return assumptions instead of relying on one number.
+
+<div class="tool-cta">
+  <h3>Estimate the monthly investment for your goal</h3>
+  <p>Enter your current balance, target amount, years, and expected return to compare the monthly contribution needed under different assumptions.</p>
+  <a class="tool-cta-btn" href="/en/tools/goal-simulator" data-ga-event="related_calculator_click" data-source-post="how-much-to-invest-monthly-for-target-portfolio" data-cta-position="upper" data-source-tool="blogPost">Calculate the monthly investment for your goal</a>
+</div>
 
 <div class="hero-grid">
   <div class="hero-main">
@@ -132,27 +140,6 @@ Yes. Fees and taxes can reduce the final after-tax value, which can increase the
 ### Is the required monthly contribution a forecast?
 
 No. It is a planning estimate based on the assumptions you enter.
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "How Much Should You Invest Monthly to Reach a Target Portfolio?",
-  "description": "Learn how monthly contributions, return assumptions, fees, and taxes affect your target portfolio goal.",
-  "datePublished": "2026-05-28",
-  "dateModified": "2026-05-28",
-  "author": {
-    "@type": "Organization",
-    "name": "Finmap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Finmap"
-  },
-  "inLanguage": "en",
-  "mainEntityOfPage": "https://www.finmaphub.com/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio"
-}
-</script>
 
 <script type="application/ld+json">
 {

@@ -20,7 +20,11 @@ const TARGETS = [
     path: "/tools/compound-interest",
     file: ".next/server/pages/ko/tools/compound-interest.html",
     titleKeywords: ["복리 계산기", "월복리", "적립식 투자"],
-    descKeywords: ["복리 계산기", "원금", "월 적립금", "연 수익률", "세금", "수수료", "물가상승률"],
+    descKeywords: ["원금", "월 적립금", "연 수익률", "세금", "수수료", "물가상승률"],
+    descKeywordGroups: [
+      { label: "복리 의미", any: ["복리 계산기", "복리", "월복리"] },
+      { label: "계산 목적", any: ["계산", "미래가치"] },
+    ],
     anchorKeywords: ["복리 계산기", "월복리", "적립식"],
     bodyKeywords: ["복리 계산기", "월복리 계산기", "적립식 복리 계산기"],
     maxKeywordCount: 32,
@@ -46,6 +50,23 @@ function includesAll(text, keywords) {
     keyword,
     found: haystack.includes(keyword),
   }));
+}
+
+function includesKeywordGroups(text, groups = []) {
+  const haystack = normalizeText(text);
+  return groups.map((group) => {
+    const any = Array.isArray(group.any) ? group.any : [];
+    const all = Array.isArray(group.all) ? group.all : [];
+    const anyFound = any.length === 0 || any.some((keyword) => haystack.includes(keyword));
+    const allFound = all.every((keyword) => haystack.includes(keyword));
+
+    return {
+      label: group.label || [...all, ...any].join(" / "),
+      found: anyFound && allFound,
+      matched: any.filter((keyword) => haystack.includes(keyword)),
+      required: all.filter((keyword) => haystack.includes(keyword)),
+    };
+  });
 }
 
 function countOccurrences(text, keyword) {
@@ -155,6 +176,7 @@ function checkTarget(target, loaded) {
 
   const titleResults = includesAll(title, target.titleKeywords);
   const descResults = includesAll(description, target.descKeywords);
+  const descGroupResults = includesKeywordGroups(description, target.descKeywordGroups);
   const anchorResults = target.anchorKeywords.map((keyword) => ({
     keyword,
     found: anchorTexts.some((text) => text.includes(keyword)),
@@ -172,7 +194,10 @@ function checkTarget(target, loaded) {
     ["meta robots noindex 없음", !/noindex/i.test(metaRobots)],
     ["X-Robots-Tag noindex 없음", !/noindex/i.test(loaded.xRobotsTag)],
     ["title 목표 키워드", titleResults.every((item) => item.found)],
-    ["description 목표 키워드", descResults.every((item) => item.found)],
+    [
+      "description 목표 키워드",
+      descResults.every((item) => item.found) && descGroupResults.every((item) => item.found),
+    ],
     ["H1 1개", h1Texts.length === 1],
     ["FAQPage JSON-LD", faqPages.length > 0],
     ["FAQ visible 문구 정합", faqSync],
@@ -193,6 +218,7 @@ function checkTarget(target, loaded) {
     visibleFaqQuestions,
     titleResults,
     descResults,
+    descGroupResults,
     anchorResults,
     keywordCounts,
     keywordOveruse,

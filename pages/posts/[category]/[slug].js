@@ -605,7 +605,11 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
               ? ` · ${isKo ? '수정' : 'Updated'}: ${post.dateModified}`
               : ''}
           </p>
-          <p>👁️ {isKo ? '조회수' : 'Views'} {views.toLocaleString()}</p>
+          {Number.isFinite(Number(views)) && Number(views) > 0 ? (
+            <p data-nosnippet data-snippet-region="post-views">
+              👁️ {isKo ? '조회수' : 'Views'} {Number(views).toLocaleString()}
+            </p>
+          ) : null}
         </div>
 
         <div className="my-4">
@@ -662,7 +666,11 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
           <AdResponsive key={`post-bot-${lang}-${slug}`} client={AD_CLIENT} slot={AD_SLOTS.responsiveBottom} align="center" />
         </div>
 
-        <div className="not-prose mt-4 grid grid-cols-2 gap-2 border-t pt-4 sm:flex sm:flex-wrap sm:items-center sm:gap-3">
+        <div
+          className="not-prose mt-4 grid grid-cols-2 gap-2 border-t pt-4 sm:flex sm:flex-wrap sm:items-center sm:gap-3"
+          data-nosnippet
+          data-snippet-region="post-share"
+        >
           <button type="button" onClick={handleLike} className="btn-secondary">
             👍 {isKo ? '좋아요' : 'Like'} {likes > 0 ? `(${likes})` : ''}
           </button>
@@ -693,7 +701,11 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
         </div>
 
         {/* 댓글 영역 (원본 유지) */}
-        <section className="not-prose mt-6 min-w-0 border-t pt-4">
+        <section
+          className="not-prose mt-6 min-w-0 border-t pt-4"
+          data-nosnippet
+          data-snippet-region="post-comments"
+        >
           <h2 className="mb-3 break-words text-base font-semibold md:text-lg">{isKo ? '댓글' : 'Comments'}</h2>
             <form
               className="mb-4 grid min-w-0 gap-3"

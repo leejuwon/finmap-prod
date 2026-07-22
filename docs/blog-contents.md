@@ -642,3 +642,127 @@ url: /en/posts/investingInfo/real-estate-role-in-portfolio-risk-budget
 title: "Seoul vs Gyeonggi vs Incheon as a Risk-Budget Problem: Volatility, Liquidity, Recovery Resilience"
 description: "Stop choosing regions by preference. Use a risk-budget lens—volatility, liquidity, and recovery resilience—then anchor your rules to observable dashboard signals (volume, recovery, downside defense)."
 url: /en/posts/investingInfo/seoul-gyeonggi-incheon-risk-budget-framework
+
+# P0-2B registry additions - Personal Finance KO
+
+## 1.
+title: "아파트 구매 계산기: 집값·현금·대출·월상환액 한 번에 보는 법"
+description: "아파트 구매 계산기는 집값만 보는 도구가 아닙니다. 보유 현금, 대출 가능액, 필요 현금, 월상환액을 함께 계산해 내 조건에서 무리 없는 매수 범위를 점검하는 순서를 정리합니다."
+url: /posts/personalFinance/apartment-buying-calculator-guide
+
+## 2.
+title: "아파트 매수 전 계산해야 할 비용 5가지: 대출 한도보다 먼저 볼 현금표"
+description: "아파트 매수 전 자기자본, 취득 관련 세금, 중개보수, 대출·등기 비용, 이사·수리비를 계산하는 방법을 정리합니다."
+url: /posts/personalFinance/apartment-buying-costs-before-purchase
+
+## 3.
+title: "아파트 거래량 감소는 집값 하락 신호일까? 실거래 데이터로 보는 4가지 해석"
+description: "아파트 거래량 감소를 가격 하락 확정 신호가 아니라 유동성, 관망, 표본수, 지역별 차이로 해석하는 방법을 정리합니다. FinMap 부동산 대시보드에서 거래량과 가격분포를 함께 확인하는 순서를 안내합니다."
+url: /posts/personalFinance/apartment-transaction-volume-decline-meaning
+
+## 4.
+title: "복리 계산기 사용법: 월복리·연복리·적립식 결과 보는 법"
+description: "복리 계산기로 원금, 월 적립금, 수익률, 기간을 입력해 월복리·연복리·적립식 투자 결과를 비교하는 방법을 정리합니다. 세금, 수수료, 물가상승률과 추가 납입 시나리오를 해석하는 순서도 함께 확인하세요."
+url: /posts/personalFinance/compound-calculator-guide
+
+## 5.
+title: "연 3%·5%·7%·10% 복리 차이, 10년·20년·30년 뒤 얼마일까?"
+description: "초기 1,000만원 일시 투자와 월 30만원 적립을 기준으로 연 3%, 5%, 7%, 10% 복리 결과를 10년·20년·30년 표로 비교합니다."
+url: /posts/personalFinance/compound-return-3-5-7-10-table
+
+## 6.
+title: "적립식 투자와 일괄투자, 언제 결과가 달라질까?"
+description: "적립식 투자와 일괄투자는 시장 흐름에 따라 결과가 달라집니다. 상승장, 하락장, 횡보장에서 어떤 차이가 생기는지 DCA 계산기로 비교하는 방법을 설명합니다."
+url: /posts/personalFinance/dca-vs-lump-sum-when-results-differ
+
+## 7.
+title: "생애최초 주택 구입 예산 계산: 집값보다 먼저 볼 6개 숫자"
+description: "생애최초 주택 구입을 준비할 때 집값, 보유현금, DSR, LTV, 부대비용, 비상금을 어떤 순서로 계산해야 하는지 정리합니다."
+url: /posts/personalFinance/first-home-buyer-budget-calculation
+
+## 8.
+title: "1억원 만들려면 매달 얼마를 투자해야 할까?"
+description: "1억원을 만들기 위해 매달 얼마를 투자해야 하는지 기간, 수익률, 세금, 수수료 조건별로 계산하는 방법을 설명합니다."
+url: /posts/personalFinance/how-much-monthly-invest-for-100m
+
+## 9.
+title: "아파트 실거래가 보는 법: 평균가·중앙값·평단가·거래량을 함께 읽어야 하는 이유"
+description: "아파트 실거래가를 볼 때 평균가, 중앙값, 평단가, 거래량을 어떻게 함께 해석해야 하는지 정리합니다. FinMap 부동산 대시보드에서 대표가격, 평균, 대표평단가, 거래량을 확인하는 순서까지 안내합니다."
+url: /posts/personalFinance/how-to-read-apartment-transaction-prices
+
+## 10.
+title: "하락장에서 적립식 투자가 유리하다는 말은 진짜일까?"
+description: "적립식 투자가 하락장에서 평균 매수단가를 낮출 수 있는 이유와 한계를 설명합니다. 초반 하락, 중간 하락, 마지막 해 하락 시나리오로 DCA 결과를 비교해보세요."
+url: /posts/personalFinance/is-dca-better-in-bear-market
+
+## 11.
+title: "전세에서 매매로 갈아탈 때 필요한 현금 계산: 보증금 타이밍까지 보기"
+description: "전세에서 매매로 갈아탈 때 필요한 현금을 자기자본, 부대비용, 비상금, 전세보증금 반환 시점으로 나눠 계산합니다."
+url: /posts/personalFinance/jeonse-to-home-purchase-cash-needed
+
+## 12.
+title: "세대수 많은 대단지 아파트가 더 안정적일까? 거래량·평단가·가격분포로 확인하는 법"
+description: "세대수 많은 대단지 아파트가 가격 안정성에 어떤 영향을 줄 수 있는지 거래량, 평단가, 가격분포 관점에서 정리합니다. FinMap 부동산 대시보드의 세대수 필터와 거래량을 함께 보는 법을 안내합니다."
+url: /posts/personalFinance/large-apartment-complex-households-price-stability
+
+## 13.
+title: "LTV DSR 계산기 사용법: 주담대 한도 계산 순서"
+description: "LTV DSR 계산기는 주담대 한도를 단순히 많이 나오는 금액으로 보는 도구가 아닙니다. 집값, 연소득, 기존 대출, 월상환액, 보유 현금을 순서대로 넣어 주택담보대출 가능 범위를 점검하는 법을 정리합니다."
+url: /posts/personalFinance/ltv-dsr-calculator-guide
+
+## 14.
+title: "1억 만들려면 월 얼마씩 투자해야 할까? 기간·수익률별 월 투자금 표"
+description: "목표금액 1억원을 기준으로 5년·10년·15년·20년 동안 연 3%, 5%, 7%, 10% 수익률을 가정했을 때 필요한 월 투자금을 표로 정리했습니다."
+url: /posts/personalFinance/monthly-investment-for-100m-table
+
+## 15.
+title: "연봉 4000만원 주담대 가능액 계산: DSR 40% 기준으로 어디까지 볼까"
+description: "연봉 4000만원 기준 DSR 40%, 금리 4%, 30년 원리금균등 상환을 가정해 주담대 가능액과 후보 아파트 가격대를 계산합니다."
+url: /posts/personalFinance/salary-40m-mortgage-limit
+
+## 16.
+title: "연봉 5000만원 DSR 40% 대출 가능액: 기존부채까지 넣어 계산하기"
+description: "연봉 5000만원 기준 DSR 40%에서 주담대 가능액이 얼마인지, 기존 월상환액이 있을 때 한도가 얼마나 줄어드는지 표로 정리합니다."
+url: /posts/personalFinance/salary-50m-dsr-40-loan-limit
+
+# P0-2B registry additions - Personal Finance EN
+
+## 1.
+title: "What Falling Apartment Transaction Volume Means in Korea: 4 Ways to Read the Signal"
+description: "A practical guide to interpreting falling Korean apartment transaction volume as a liquidity, confidence, and sample-size signal, not a guaranteed price forecast."
+url: /en/posts/personalFinance/apartment-transaction-volume-decline-meaning
+
+## 2.
+title: "Compound Growth at 3%, 5%, 7%, and 10%: 10-, 20-, and 30-Year Tables"
+description: "A reference table comparing 3%, 5%, 7%, and 10% compound growth for a KRW 10 million lump sum and KRW 300,000 monthly contributions."
+url: /en/posts/personalFinance/compound-return-3-5-7-10-table
+
+## 3.
+title: "DCA vs Lump Sum: When Do the Results Differ?"
+description: "Compare dollar-cost averaging and lump-sum investing under different return assumptions. Learn why rising markets, volatile markets, and timing can change the outcome."
+url: /en/posts/personalFinance/dca-vs-lump-sum-when-results-differ
+
+## 4.
+title: "How Much Should You Invest Monthly to Reach a Target Portfolio?"
+description: "Learn how monthly contributions, return assumptions, fees, and taxes affect your target portfolio goal."
+url: /en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio
+
+## 5.
+title: "How to Read Korean Apartment Transaction Prices: Median, Average, Unit Price, and Volume"
+description: "A practical guide to reading Korean apartment transaction data with median price, average price, unit price, and transaction volume before using the FinMap real estate dashboard."
+url: /en/posts/personalFinance/how-to-read-apartment-transaction-prices
+
+## 6.
+title: "Is Dollar-Cost Averaging Better in a Bear Market?"
+description: "Explore how dollar-cost averaging behaves in bear-market scenarios. Compare early, mid-period, and final-year drawdowns using a simple DCA simulation framework."
+url: /en/posts/personalFinance/is-dca-better-in-a-bear-market
+
+## 7.
+title: "Are Large Apartment Complexes More Stable? Reading Households, Volume, and Unit Prices in Korea"
+description: "A practical guide to reading large Korean apartment complexes using household count, transaction volume, unit price, and price distribution in the FinMap real estate dashboard."
+url: /en/posts/personalFinance/large-apartment-complex-households-price-stability
+
+## 8.
+title: "Monthly Contribution Table for a $100,000 Target and KRW 100M Goal"
+description: "$100,000 and KRW 100M monthly contribution tables by timeline and return assumption, with a Korea example and calculator links."
+url: /en/posts/personalFinance/monthly-investment-for-100m-table

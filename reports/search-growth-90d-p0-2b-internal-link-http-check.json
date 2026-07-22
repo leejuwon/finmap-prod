@@ -1,0 +1,703 @@
+{
+  "generatedAt": "2026-07-22T14:07:48.103Z",
+  "baseUrl": "http://127.0.0.1:8002",
+  "reportPath": "reports\\posts.linkcheck.json",
+  "targetsPath": "reports\\search-growth-90d-p0-2b-internal-link-targets.json",
+  "summary": {
+    "reportChecksPass": true,
+    "targets": 28,
+    "targetPass": 0,
+    "targetFail": 28
+  },
+  "reportChecks": [
+    {
+      "name": "broken_zero",
+      "pass": true,
+      "details": "0"
+    },
+    {
+      "name": "suspicious_zero",
+      "pass": true,
+      "details": "0"
+    },
+    {
+      "name": "self_missing_zero",
+      "pass": true,
+      "details": "0"
+    }
+  ],
+  "httpResults": [
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/en/posts/personalFinance/apartment-transaction-volume-decline-meaning",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/apartment-transaction-volume-decline-meaning",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/en/posts/personalFinance/compound-return-3-5-7-10-table",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/compound-return-3-5-7-10-table",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/en/posts/personalFinance/dca-vs-lump-sum-when-results-differ",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/dca-vs-lump-sum-when-results-differ",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/en/posts/personalFinance/how-to-read-apartment-transaction-prices",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/how-to-read-apartment-transaction-prices",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/en/posts/personalFinance/large-apartment-complex-households-price-stability",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/large-apartment-complex-households-price-stability",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/en/posts/personalFinance/monthly-investment-for-100m-table",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/monthly-investment-for-100m-table",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "linkFixTargets",
+      "type": "suspicious_fixed",
+      "path": "/en/tools/cagr-calculator",
+      "beforeHref": "/tools/cagr-calculator",
+      "reason": "EN post related-calculator link should use EN canonical tool route.",
+      "sources": [
+        "linkFixTargets"
+      ],
+      "reasons": [
+        "EN post related-calculator link should use EN canonical tool route."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/en/tools/cagr-calculator",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "linkFixTargets",
+      "type": "suspicious_fixed",
+      "path": "/en/tools/compound-interest",
+      "beforeHref": "/tools/compound-interest",
+      "reason": "EN post related-calculator link should use EN canonical tool route.",
+      "sources": [
+        "linkFixTargets"
+      ],
+      "reasons": [
+        "EN post related-calculator link should use EN canonical tool route."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/en/tools/compound-interest",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "linkFixTargets",
+      "type": "suspicious_fixed",
+      "path": "/en/tools/dca-calculator",
+      "beforeHref": "/tools/dca-calculator",
+      "reason": "EN post related-calculator link should use EN canonical tool route.",
+      "sources": [
+        "linkFixTargets"
+      ],
+      "reasons": [
+        "EN post related-calculator link should use EN canonical tool route."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/en/tools/dca-calculator",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "linkFixTargets",
+      "type": "suspicious_fixed",
+      "path": "/en/tools/goal-simulator",
+      "beforeHref": "/tools/goal-simulator",
+      "reason": "EN post related-calculator link should use EN canonical tool route.",
+      "sources": [
+        "linkFixTargets"
+      ],
+      "reasons": [
+        "EN post related-calculator link should use EN canonical tool route."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/en/tools/goal-simulator",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/posts/personalFinance/apartment-buying-calculator-guide",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/apartment-buying-calculator-guide",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/posts/personalFinance/apartment-buying-costs-before-purchase",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/apartment-buying-costs-before-purchase",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/posts/personalFinance/apartment-transaction-volume-decline-meaning",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/apartment-transaction-volume-decline-meaning",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/posts/personalFinance/compound-calculator-guide",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/compound-calculator-guide",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/posts/personalFinance/compound-return-3-5-7-10-table",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/compound-return-3-5-7-10-table",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/posts/personalFinance/dca-vs-lump-sum-when-results-differ",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/dca-vs-lump-sum-when-results-differ",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/posts/personalFinance/first-home-buyer-budget-calculation",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/first-home-buyer-budget-calculation",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/how-much-monthly-invest-for-100m",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/posts/personalFinance/how-to-read-apartment-transaction-prices",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/how-to-read-apartment-transaction-prices",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/posts/personalFinance/is-dca-better-in-bear-market",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/is-dca-better-in-bear-market",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/posts/personalFinance/jeonse-to-home-purchase-cash-needed",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/jeonse-to-home-purchase-cash-needed",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/posts/personalFinance/large-apartment-complex-households-price-stability",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/large-apartment-complex-households-price-stability",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/posts/personalFinance/ltv-dsr-calculator-guide",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/ltv-dsr-calculator-guide",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/posts/personalFinance/monthly-investment-for-100m-table",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/monthly-investment-for-100m-table",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/posts/personalFinance/salary-40m-mortgage-limit",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/salary-40m-mortgage-limit",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "registryAdditions",
+      "type": "registry_addition",
+      "path": "/posts/personalFinance/salary-50m-dsr-40-loan-limit",
+      "beforeHref": "",
+      "reason": "Added to docs/blog-contents.md after file, sitemap, and route existence checks.",
+      "sources": [
+        "registryAdditions"
+      ],
+      "reasons": [
+        "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
+      ],
+      "status": 0,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/salary-50m-dsr-40-loan-limit",
+      "checks": [
+        {
+          "name": "fetch",
+          "pass": false,
+          "details": "fetch failed"
+        }
+      ],
+      "pass": false,
+      "error": "fetch failed"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "generatedAt": "2026-07-22",
+  "project": "FinMap",
+  "stage": "P1-1C-2 final deploy decision",
+  "overallVerdict": "CONDITIONAL_PASS",
+  "deployBlockers": 0,
+  "remainingManualChecks": [
+    {
+      "id": "local-http-verification-rerun",
+      "status": "MANUAL_RERUN_RECOMMENDED",
+      "reason": "The local HTTP server printed Ready but exited immediately in this environment, so base-url validators could not be rerun after the verifier-only patch. P1-1C had already passed local HTTP checks before this patch, and the P1-1C-2 runtime bundle has no new runtime/content change."
+    }
+  ],
+  "reviewResolutions": [
+    {
+      "id": "top100-db-backed-routes",
+      "previousStatus": "REVIEW_REQUIRED",
+      "finalStatus": "PASS",
+      "evidence": [
+        "https://www.finmaphub.com/market/real-estate/seoul-top100 status 200, final URL unchanged, self canonical, robots index/follow, H1 present",
+        "https://www.finmaphub.com/market/real-estate/magok-top100 status 200, final URL unchanged, self canonical, robots index/follow, H1 present",
+        "https://www.finmaphub.com/market/real-estate/gangnam3-top100 status 200, final URL unchanged, self canonical, robots index/follow, H1 present"
+      ]
+    },
+    {
+      "id": "search-performance-input-git-policy",
+      "previousStatus": "REVIEW_REQUIRED",
+      "finalStatus": "LOCAL_ANALYSIS_INPUT_EXCLUDE_FROM_DEPLOY",
+      "evidence": [
+        "reports/search-performance-input is untracked",
+        "files are small CSV/README inputs used for analysis reproducibility",
+        "no token, password, API key, cookie, authorization, email pattern match was found by local scan",
+        "not required for production runtime"
+      ]
+    },
+    {
+      "id": "reports-git-policy",
+      "previousStatus": "REVIEW_REQUIRED",
+      "finalStatus": "COMMIT_FINAL_REPORTS_RECOMMENDED",
+      "evidence": [
+        "git ls-files reports returned many tracked reports",
+        "git log -- reports shows reports are historically versioned in this project",
+        "final audit reports and manifests are listed in stage-files.txt",
+        "intermediate CSV/diagnostics are listed in optional-files.txt"
+      ]
+    },
+    {
+      "id": "generated-sitemap-policy",
+      "previousStatus": "REVIEW_REQUIRED",
+      "finalStatus": "COMMIT_TRACKED_SITEMAPS_RECOMMENDED",
+      "evidence": [
+        "public/sitemap-0.xml is tracked",
+        "public/sitemap-ko.xml is tracked",
+        "public/sitemap-en.xml is tracked",
+        "public/en/sitemap.xml is tracked",
+        "latest build generated sitemap counts: sitemap-0 211, KO 111, EN 100, public/en 100"
+      ]
+    },
+    {
+      "id": "optional-naver-calculator-seo",
+      "previousStatus": "REVIEW_REQUIRED",
+      "finalStatus": "VERIFIER_FALSE_POSITIVE_FIXED",
+      "modifiedFile": "scripts/verify_naver_calculator_seo.js",
+      "contentChanged": false,
+      "actualCompoundMetadata": {
+        "title": "복리 계산기 | 월복리·적립식 투자 미래가치 계산 | FinMap",
+        "description": "원금, 월 적립금, 연 수익률, 투자 기간으로 월복리 기준 미래가치를 계산합니다. 세금, 수수료, 물가상승률을 반영한 세후 금액과 현재가치를 표와 차트로 확인하세요.",
+        "h1": "복리 계산기",
+        "canonical": "https://www.finmaphub.com/tools/compound-interest",
+        "robots": "",
+        "jsonLdDescription": ""
+      },
+      "evidence": [
+        "actual description is non-empty and describes principal, monthly contribution, annual return, years, monthly compounding, tax, fees, inflation, net amount, present value, table and chart",
+        "previous verifier required exact phrase '복리 계산기' in description",
+        "description already contains 복리 meaning and calculation purpose via 월복리 and 계산합니다",
+        "verifier now checks semantic groups for 복리 meaning and calculation purpose instead of one exact phrase",
+        "node scripts\\verify_naver_calculator_seo.js PASS"
+      ]
+    },
+    {
+      "id": "module-type-warning",
+      "previousStatus": "REVIEW_REQUIRED",
+      "finalStatus": "FOLLOW_UP_TECH_DEBT",
+      "evidence": [
+        "MODULE_TYPELESS_PACKAGE_JSON warning appears when Node loads ESM-style calculator modules",
+        "build passed",
+        "calculator sample verification passed",
+        "package type was not changed because it could affect CommonJS scripts"
+      ]
+    }
+  ],
+  "stageFiles": "reports/search-growth-90d-p1-1c-2-stage-files.txt",
+  "excludeFiles": "reports/search-growth-90d-p1-1c-2-exclude-files.txt",
+  "optionalFiles": "reports/search-growth-90d-p1-1c-2-optional-files.txt",
+  "commands": {
+    "syntaxChecks": "PASS",
+    "analyzeSearchPerformanceInputs": "PASS",
+    "checkPostsLinks": "PASS",
+    "verifyToolResultCtaEvents": "PASS",
+    "verifyNaverCalculatorSeo": "PASS",
+    "build": "PASS",
+    "gitDiffCheck": "PASS with CRLF normalization warnings only",
+    "localServerChecks": "BLOCKED_BY_LOCAL_SERVER_EXIT"
+  },
+  "scopeConfirmation": {
+    "newPosts": false,
+    "contentImprovementAdded": false,
+    "calculatorLogicChanged": false,
+    "ga4Changed": false,
+    "adsChanged": false,
+    "canonicalPolicyChanged": false,
+    "hreflangPolicyChanged": false,
+    "robotsChanged": false,
+    "dependencyInstalled": false,
+    "commit": false,
+    "push": false,
+    "deploy": false
+  }
+}

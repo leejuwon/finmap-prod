@@ -1,6 +1,6 @@
 # SEO Channel Split URL Check
 
-- Checked at: 2026-07-21T14:54:22.414Z
+- Checked at: 2026-07-22T13:46:18.802Z
 - Fetch base: http://127.0.0.1:8017
 - URL samples: 25
 - Failures: 0

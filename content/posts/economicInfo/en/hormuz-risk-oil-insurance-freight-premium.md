@@ -215,7 +215,7 @@ Interpretation (2–3 lines):
 Geopolitical stress is high-volatility information. A common failure mode is forcing a one-shot timing decision on noisy signals.  
 A rules-based approach is often more durable: <strong>pre-define cadence and size</strong>, and change the rules only when flip triggers appear.
 
-<p class="text-sm text-slate-600">Related calculator: <a href="/tools/dca-calculator">Open DCA calculator</a></p>
+<p class="text-sm text-slate-600">Related calculator: <a href="/en/tools/dca-calculator">Open DCA calculator</a></p>
 
 ## If you want the bigger macro map, read these next
 

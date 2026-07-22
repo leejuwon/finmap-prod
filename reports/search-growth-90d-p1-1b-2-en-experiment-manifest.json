@@ -1,0 +1,172 @@
+{
+  "generatedAt": "2026-07-22",
+  "deploymentGroup": "p1-1b-2-en-google-bing-snippet-experiment",
+  "baselineDateStart": "2026-04-23",
+  "baselineDateEnd": "2026-07-19",
+  "dataNotes": [
+    "GSC page metrics in the merged baseline use the available actual GSC page range, 2026-06-17 to 2026-07-19.",
+    "Bing page and query exports cover 2026-04-23 to 2026-07-19.",
+    "Query-to-URL relationships are inferred from title, slug, and possible-overlap exports; page-query confirmation is not available."
+  ],
+  "experiments": [
+    {
+      "url": "/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+      "sourceFile": "content/posts/personalFinance/en/how-much-to-invest-monthly-for-target-portfolio.md",
+      "deploymentGroup": "p1-1b-2-en-google-bing-snippet-experiment",
+      "baselineDateStart": "2026-04-23",
+      "baselineDateEnd": "2026-07-19",
+      "gscBaseline": {
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": "0",
+        "averagePosition": "29"
+      },
+      "bingBaseline": {
+        "clicks": 0,
+        "impressions": 399,
+        "ctr": "0",
+        "averagePosition": "5.35"
+      },
+      "queryEvidence": {
+        "status": "HEURISTIC_QUERY_MATCH",
+        "clicks": 0,
+        "impressions": 139,
+        "averagePosition": 6.791654676258992,
+        "queries": [
+          "how much should i invest monthly for a regular investment plan?",
+          "compounding monthly vs annually",
+          "how much should i invest monthly for long-term regular investing?",
+          "how much should i invest monthly for regular contributions?",
+          "compounded monthly vs annually"
+        ]
+      },
+      "sampleGrade": "SUFFICIENT",
+      "previousTitle": "How Much Should You Invest Monthly to Reach a Target Portfolio?",
+      "newTitle": "Monthly Investment Needed to Reach a Target Portfolio",
+      "previousDescription": "Learn how monthly contributions, return assumptions, fees, and taxes affect your target portfolio goal. Use the DCA calculator to estimate the monthly investment needed to reach your target.",
+      "newDescription": "The monthly investment needed depends on your current balance, target amount, timeline, expected return, fees, and taxes. Use the goal simulator to compare required contributions without treating the result as a guaranteed return.",
+      "previousH1": "How Much Should You Invest Monthly to Reach a Target Portfolio?",
+      "newH1": "Monthly Investment Needed to Reach a Target Portfolio",
+      "firstParagraphChanged": true,
+      "ctaChanged": true,
+      "dateModifiedBefore": "2026-05-28",
+      "dateModifiedAfter": "2026-07-22",
+      "changeRisk": "LOW_TO_MEDIUM",
+      "observationDays": {
+        "minimum": 28,
+        "recommended": 42
+      },
+      "excludedRelatedChanges": [
+        "EN HomeBuying is not part of this experiment group.",
+        "The EN HomeBuying change belongs to P1-1B-1 and must not be used as a Track A control or experiment URL.",
+        "No additional HomeBuying source change was made for P1-1B-2."
+      ]
+    },
+    {
+      "url": "/en/posts/personalFinance/annual-vs-monthly-compound",
+      "sourceFile": "content/posts/personalFinance/en/annual-vs-monthly-compound.md",
+      "deploymentGroup": "p1-1b-2-en-google-bing-snippet-experiment",
+      "baselineDateStart": "2026-04-23",
+      "baselineDateEnd": "2026-07-19",
+      "gscBaseline": {
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": "0",
+        "averagePosition": "9.6"
+      },
+      "bingBaseline": {
+        "clicks": 0,
+        "impressions": 145,
+        "ctr": "0",
+        "averagePosition": "8.61"
+      },
+      "queryEvidence": {
+        "status": "HEURISTIC_QUERY_MATCH",
+        "clicks": 0,
+        "impressions": 94,
+        "averagePosition": 9.648510638297873,
+        "queries": [
+          "compounding monthly vs annually",
+          "annual compounding vs monthly",
+          "compounded monthly vs annually",
+          "is compounding interest annually the same as compounding monthly",
+          "dxy meaning in finance"
+        ]
+      },
+      "sampleGrade": "SUFFICIENT",
+      "previousTitle": "Annual vs Monthly Compounding: Monthly Compound Interest Examples",
+      "newTitle": "Annual vs Monthly Compounding: Which Grows Faster?",
+      "previousDescription": "Learn how annual and monthly compounding differ, compare the results in a table, and use the compound interest calculator to test your own assumptions.",
+      "newDescription": "Monthly compounding can grow slightly faster than annual compounding at the same nominal rate. Compare examples by rate, time horizon, and contributions, and avoid double-counting APY or effective annual rates.",
+      "previousH1": "Annual vs Monthly Compounding: Monthly Compound Interest Examples",
+      "newH1": "Annual vs Monthly Compounding: Which Grows Faster?",
+      "firstParagraphChanged": true,
+      "ctaChanged": true,
+      "dateModifiedBefore": "2026-06-19",
+      "dateModifiedAfter": "2026-07-22",
+      "changeRisk": "LOW_TO_MEDIUM",
+      "observationDays": {
+        "minimum": 28,
+        "recommended": 42
+      },
+      "excludedRelatedChanges": [
+        "EN HomeBuying is not part of this experiment group.",
+        "The EN HomeBuying change belongs to P1-1B-1 and must not be used as a Track A control or experiment URL.",
+        "No additional HomeBuying source change was made for P1-1B-2."
+      ]
+    },
+    {
+      "url": "/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+      "sourceFile": "content/posts/personalFinance/en/is-dca-better-in-a-bear-market.md",
+      "deploymentGroup": "p1-1b-2-en-google-bing-snippet-experiment",
+      "baselineDateStart": "2026-04-23",
+      "baselineDateEnd": "2026-07-19",
+      "gscBaseline": {
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": "0",
+        "averagePosition": "4.67"
+      },
+      "bingBaseline": {
+        "clicks": 0,
+        "impressions": 349,
+        "ctr": "0",
+        "averagePosition": "3.88"
+      },
+      "queryEvidence": {
+        "status": "HEURISTIC_QUERY_MATCH",
+        "clicks": 0,
+        "impressions": 40,
+        "averagePosition": 4.6,
+        "queries": [
+          "dollar cost averaging etf allocation monthly 2026",
+          "should i continue dollar-cost averaging or hold onto the investment after a 15% loss?",
+          "why cagr better than simple average",
+          "is dollar-cost averaging suitable for big market declines?",
+          "semiconductor etf dollar-cost averaging price"
+        ]
+      },
+      "sampleGrade": "SUFFICIENT",
+      "previousTitle": "Is Dollar-Cost Averaging Better in a Bear Market?",
+      "newTitle": "Is Dollar-Cost Averaging Better in a Bear Market?",
+      "previousDescription": "Explore how dollar-cost averaging behaves in bear-market scenarios. Compare early, mid-period, and final-year drawdowns using a simple DCA simulation framework.",
+      "newDescription": "DCA is not automatically better in every bear market. Compare when dollar-cost averaging can reduce timing risk, when lump-sum investing can recover faster, and how drawdown timing changes the result.",
+      "previousH1": "Is Dollar-Cost Averaging Better in a Bear Market?",
+      "newH1": "Is Dollar-Cost Averaging Better in a Bear Market?",
+      "firstParagraphChanged": true,
+      "ctaChanged": true,
+      "dateModifiedBefore": "2026-05-28",
+      "dateModifiedAfter": "2026-07-22",
+      "changeRisk": "LOW_TO_MEDIUM",
+      "observationDays": {
+        "minimum": 28,
+        "recommended": 42
+      },
+      "excludedRelatedChanges": [
+        "EN HomeBuying is not part of this experiment group.",
+        "The EN HomeBuying change belongs to P1-1B-1 and must not be used as a Track A control or experiment URL.",
+        "No additional HomeBuying source change was made for P1-1B-2."
+      ]
+    }
+  ]
+}

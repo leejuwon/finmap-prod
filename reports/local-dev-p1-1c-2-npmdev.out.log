@@ -1,0 +1,10 @@
+
+> finmap@0.2.0 dev
+> next dev --webpack -p 8002
+
+▲ Next.js 16.2.10 (webpack)
+- Local:         http://localhost:8002
+- Network:       http://192.168.35.241:8002
+- Environments: .env.local
+✓ Ready in 471ms
+

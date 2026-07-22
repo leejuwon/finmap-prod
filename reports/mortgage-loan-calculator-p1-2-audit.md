@@ -1,6 +1,6 @@
 # Mortgage Loan Calculator P1-2 Audit
 
-- Generated: 2026-07-21T14:54:12.468Z
+- Generated: 2026-07-22T13:42:32.701Z
 - Overall: PASS (22/22)
 
 ## Changed Files
@@ -89,40 +89,3 @@
 - Actual lending terms still require financial-institution review and may differ by credit profile, income recognition, regulations, stress DSR, collateral value, and guarantee conditions.
 - The calculator does not automatically apply policy updates or bank-specific fee/rate rules.
 - 320px/390px layout is designed to put the input card near the first viewport, but final visual QA should still be done in a browser.
-
-## Final Predeploy Verification
-
-- Checked at: 2026-07-21 KST
-- Scope: verification and report update only; no feature or calculation logic changes after the final verification request.
-- `git status --short`: confirmed the expected P1-2 working tree changes, including the new calculator files, sitemap outputs, and this audit report.
-- Report existence: `reports/mortgage-loan-calculator-p1-2-audit.md` exists.
-
-| Check | Result | Detail |
-| --- | --- | --- |
-| KO calculator URL | PASS | `/tools/mortgage-loan-calculator` returned 200, self canonical `https://www.finmaphub.com/tools/mortgage-loan-calculator`, no `noindex`, sitemap main/ko included |
-| EN calculator URL | PASS | `/en/tools/mortgage-loan-calculator` returned 200, self canonical `https://www.finmaphub.com/en/tools/mortgage-loan-calculator`, no `noindex`, sitemap main/en/en-prefix included |
-| KO tools hub card | PASS | `/tools` includes the `주담대 원리금 계산기` card and `/tools/mortgage-loan-calculator` href |
-| EN tools hub card | PASS | `/en/tools` includes the `Mortgage Payment Calculator` card and `/en/tools/mortgage-loan-calculator` href |
-| DSR/LTV result flow | PASS | `/tools/dsr-ltv-calculator` shows one mortgage calculator link; no duplicate or broken mortgageLoan link found |
-| mortgageLoan result flow | PASS | mortgageLoan result area links to DSR/LTV and homeBuying; ToolResultCta related tool resolves to DSR/LTV |
-| Mobile 320px | PASS | document/body scroll width stayed at 320px; input card top 230px; presets visible; result card and schedule section rendered; wide schedule table remained inside its scroll container |
-| Mobile 390px | PASS | document/body scroll width stayed at 390px; input card top 245px; presets visible; result card and schedule section rendered; wide schedule table remained inside its scroll container |
-| `git diff --check` | PASS | exit code 0; only CRLF conversion warnings were printed, no whitespace errors |
-
-## Final Commands Run
-
-| Command | Result | Notes |
-| --- | --- | --- |
-| `git status --short` | PASS | Expected modified/new files from P1-2 worktree confirmed |
-| `node scripts\verify_mortgage_loan_calculator.js` | PASS | 22/22 checks passed; Node printed a non-fatal ES module reparsing warning |
-| `node scripts\verify_tool_result_cta_events.js` | PASS | Required CTA and common analytics events passed |
-| `node scripts\verify_seo_channel_split.js --local-server` | PASS | New KO/EN calculator URLs passed 200/canonical/noindex/sitemap checks |
-| `node scripts\verify_post_publish_urls.js --local-server https://www.finmaphub.com/tools/mortgage-loan-calculator https://www.finmaphub.com/en/tools/mortgage-loan-calculator https://www.finmaphub.com/tools` | PASS | All three URLs passed |
-| `npm.cmd run build` | PASS | Next build compiled successfully; postbuild generated sitemap/channel sitemap outputs |
-| `git diff --check` | PASS | No whitespace errors |
-
-## Final Deployment Readiness
-
-- Verdict: PASS for deployment readiness.
-- No failing verification item required a code or calculation fix.
-- Manual post-deploy check still recommended after production deploy: request the two new URLs and `/tools` in the live environment, then submit/recheck in Naver Search Advisor if needed.

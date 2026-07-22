@@ -1,0 +1,10 @@
+────────────────────────────────────────────
+🚀 Booting finmap server
+📌 CWD         : C:\finmap
+📌 NODE_ENV    : production
+📌 PORT        : 8002
+📌 .next exists: true
+────────────────────────────────────────────
+🧩 Next prepared (prod).
+📌 .next/static exists: true C:\finmap\.next\static
+✅ Server listening → 0.0.0.0:8002

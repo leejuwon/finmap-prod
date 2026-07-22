@@ -1,0 +1,1915 @@
+{
+  "summary": {
+    "generatedAt": "2026-07-22T13:45:35.698Z",
+    "baseUrl": "http://127.0.0.1:8002",
+    "rendered_total": 16,
+    "rendered_pass": 16,
+    "rendered_fail": 0,
+    "browser_status": "RUN",
+    "browser_console_warning_pages": 15,
+    "browser_pass": 15,
+    "browser_fail": 0
+  },
+  "rendered": [
+    {
+      "path": "/posts/investingInfo/rates-discount-mortgage-demand-apt-prices",
+      "type": "post",
+      "locale": "ko",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/posts/investingInfo/rates-discount-mortgage-demand-apt-prices",
+      "title": "금리(할인율)는 어떻게 서울·경기·인천 아파트 가격을 흔드는가: 대출금리·수요·심리 3채널로 분해하기 | FinMap",
+      "description": "금리와 아파트 가격을 대출금리, 월 상환액, 거래량, 구매력, 금융여건 트리거로 나눠 읽는 글입니다. 서울·경기·인천 실거래 대시보드와 DSR/LTV 계산 연결까지 정리합니다.",
+      "canonical": "https://www.finmaphub.com/posts/investingInfo/rates-discount-mortgage-demand-apt-prices",
+      "robots": "",
+      "h1_count": 1,
+      "h1_texts": [
+        "금리(할인율)는 어떻게 서울·경기·인천 아파트 가격을 흔드는가: 대출금리·수요·심리 3채널로 분해하기"
+      ],
+      "first_body_text": "부동산 가격은 “금리 1개 변수”로 움직이지 않고, 대출금리·수요·심리 3채널이 번갈아 주도권을 잡습니다. 같은 금리 수준이어도 거래량이 살아있으면 ‘버티는 시장’이고, 거래량이 꺾이면 ‘깨지는 시장’으로 체감이 급변합니다. “금리 인하=집값 상승”은 자주 틀리며, 스프레드·대출심사·DSR 같은 금융여건이 더 먼저 움직일 때가 많습니다. 서울·경기·인천은 한 덩어리처럼 보이지만, 분포(중앙값·상/하단)와 거래량 패턴이 다르면 같은 금리에서도 반응이 달라집니다. 할인율 채널은 “현재의 주거/임대 편",
+      "unprotected_hits": [],
+      "protected_regions": {
+        "post_views": {
+          "exists": false,
+          "protected": false
+        },
+        "post_comments": {
+          "exists": true,
+          "protected": true
+        },
+        "post_share": {
+          "exists": true,
+          "protected": true
+        },
+        "tool_share": {
+          "exists": false,
+          "protected": false
+        }
+      },
+      "checks": [
+        {
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "금리(할인율)는 어떻게 서울·경기·인천 아파트 가격을 흔드는가: 대출금리·수요·심리 3채널로 분해하기 | FinMap"
+        },
+        {
+          "name": "description_exists",
+          "pass": true,
+          "details": "금리와 아파트 가격을 대출금리, 월 상환액, 거래량, 구매력, 금융여건 트리거로 나눠 읽는 글입니다. 서울·경기·인천 실거래 대시보드와 DSR/LTV 계산 연결까지 정리합니다."
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/investingInfo/rates-discount-mortgage-demand-apt-prices"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "h1_exactly_one",
+          "pass": true,
+          "details": "금리(할인율)는 어떻게 서울·경기·인천 아파트 가격을 흔드는가: 대출금리·수요·심리 3채널로 분해하기"
+        },
+        {
+          "name": "h1_not_nosnippet",
+          "pass": true,
+          "details": "금리(할인율)는 어떻게 서울·경기·인천 아파트 가격을 흔드는가: 대출금리·수요·심리 3채널로 분해하기"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/investingInfo/rates-discount-mortgage-demand-apt-prices"
+        },
+        {
+          "name": "no_unprotected_global_bad_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "no_unprotected_post_ui_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "comments_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "share_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "article_body_not_nosnippet",
+          "pass": true,
+          "details": "부동산 가격은 “금리 1개 변수”로 움직이지 않고, 대출금리·수요·심리 3채널이 번갈아 주도권을 잡습니다. 같은 금리 수준이어도 거래량이 살아있으면 ‘버티는 시장’이고, 거래량이 꺾이면 ‘깨지는 시장’으로 체감이 급변합니다. “금리 인하=집값 상승”은 자주 틀리며, 스프레드·대출심사·DSR 같은 금융여건이 더 먼저 움직일 때가 많습니다. 서울·경기·인천은 한 덩어리처럼 보이지만, 분포(중앙값·상/하단)와 거래량 패턴이 다르면 같은 금리에서도 반응이 달라집니다. 할인율 채널은 “현재의 주거/임대 편"
+        },
+        {
+          "name": "article_body_text_exists",
+          "pass": true,
+          "details": "부동산 가격은 “금리 1개 변수”로 움직이지 않고, 대출금리·수요·심리 3채널이 번갈아 주도권을 잡습니다. 같은 금리 수준이어도 거래량이 살아있으면 ‘버티는 시장’이고, 거래량이 꺾이면 ‘깨지는 시장’으로 체감이 급변합니다. “금리 인하=집값 상승”은 자주 틀리며, 스프레드·대출심사·DSR 같은 금융여건이 더 먼저 움직일 때가 많습니다. 서울·경기·인천은 한 덩어리처럼 보이지만, 분포(중앙값·상/하단)와 거래량 패턴이 다르면 같은 금리에서도 반응이 달라집니다. 할인율 채널은 “현재의 주거/임대 편"
+        },
+        {
+          "name": "views_zero_not_rendered",
+          "pass": true,
+          "details": "no view region rendered"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/posts/personalFinance/apartment-buying-calculator-guide",
+      "type": "post",
+      "locale": "ko",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/apartment-buying-calculator-guide",
+      "title": "아파트 구매 계산기: 집값·현금·대출·월상환액 한 번에 보는 법 | FinMap",
+      "description": "아파트 구매 계산기로 집값, 보유 현금, 주담대 한도, 월상환액, 필요 현금을 함께 확인하세요. 내 연봉으로 살 수 있는 아파트를 볼 때 DSR, LTV, 부대비용을 함께 점검하는 순서를 정리합니다.",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/apartment-buying-calculator-guide",
+      "robots": "",
+      "h1_count": 1,
+      "h1_texts": [
+        "아파트 구매 계산기: 집값·현금·대출·월상환액 한 번에 보는 법"
+      ],
+      "first_body_text": "아파트를 살 때 집값만 먼저 보면 계산이 쉽게 흔들립니다. 7억짜리 집이 보이면 \"내 현금과 대출로 살 수 있을까?\"를 떠올리지만, 실제로는 보유 현금, LTV, DSR, 월상환액, 취득세와 중개보수 같은 부대비용이 함께 움직입니다. 그래서 아파트 구매 계산은 \"집값을 정하고 대출을 맞추는 방식\"보다 \"내 현금과 월상환 여력으로 감당 가능한 집값 범위를 찾는 방식\"이 더 안전합니다. 계산 결과는 대출 승인이나 매수 가능성을 보장하지 않고, 실제 대출 가능 여부는 금융기관 심사, 신용점수, 규제지역",
+      "unprotected_hits": [],
+      "protected_regions": {
+        "post_views": {
+          "exists": false,
+          "protected": false
+        },
+        "post_comments": {
+          "exists": true,
+          "protected": true
+        },
+        "post_share": {
+          "exists": true,
+          "protected": true
+        },
+        "tool_share": {
+          "exists": false,
+          "protected": false
+        }
+      },
+      "checks": [
+        {
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "아파트 구매 계산기: 집값·현금·대출·월상환액 한 번에 보는 법 | FinMap"
+        },
+        {
+          "name": "description_exists",
+          "pass": true,
+          "details": "아파트 구매 계산기로 집값, 보유 현금, 주담대 한도, 월상환액, 필요 현금을 함께 확인하세요. 내 연봉으로 살 수 있는 아파트를 볼 때 DSR, LTV, 부대비용을 함께 점검하는 순서를 정리합니다."
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/apartment-buying-calculator-guide"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "h1_exactly_one",
+          "pass": true,
+          "details": "아파트 구매 계산기: 집값·현금·대출·월상환액 한 번에 보는 법"
+        },
+        {
+          "name": "h1_not_nosnippet",
+          "pass": true,
+          "details": "아파트 구매 계산기: 집값·현금·대출·월상환액 한 번에 보는 법"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/apartment-buying-calculator-guide"
+        },
+        {
+          "name": "no_unprotected_global_bad_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "no_unprotected_post_ui_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "comments_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "share_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "article_body_not_nosnippet",
+          "pass": true,
+          "details": "아파트를 살 때 집값만 먼저 보면 계산이 쉽게 흔들립니다. 7억짜리 집이 보이면 \"내 현금과 대출로 살 수 있을까?\"를 떠올리지만, 실제로는 보유 현금, LTV, DSR, 월상환액, 취득세와 중개보수 같은 부대비용이 함께 움직입니다. 그래서 아파트 구매 계산은 \"집값을 정하고 대출을 맞추는 방식\"보다 \"내 현금과 월상환 여력으로 감당 가능한 집값 범위를 찾는 방식\"이 더 안전합니다. 계산 결과는 대출 승인이나 매수 가능성을 보장하지 않고, 실제 대출 가능 여부는 금융기관 심사, 신용점수, 규제지역"
+        },
+        {
+          "name": "article_body_text_exists",
+          "pass": true,
+          "details": "아파트를 살 때 집값만 먼저 보면 계산이 쉽게 흔들립니다. 7억짜리 집이 보이면 \"내 현금과 대출로 살 수 있을까?\"를 떠올리지만, 실제로는 보유 현금, LTV, DSR, 월상환액, 취득세와 중개보수 같은 부대비용이 함께 움직입니다. 그래서 아파트 구매 계산은 \"집값을 정하고 대출을 맞추는 방식\"보다 \"내 현금과 월상환 여력으로 감당 가능한 집값 범위를 찾는 방식\"이 더 안전합니다. 계산 결과는 대출 승인이나 매수 가능성을 보장하지 않고, 실제 대출 가능 여부는 금융기관 심사, 신용점수, 규제지역"
+        },
+        {
+          "name": "views_zero_not_rendered",
+          "pass": true,
+          "details": "no view region rendered"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/posts/personalFinance/ltv-dsr-calculator-guide",
+      "type": "post",
+      "locale": "ko",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/ltv-dsr-calculator-guide",
+      "title": "LTV DSR 계산기 사용법: 주담대 한도 계산 순서 | FinMap",
+      "description": "LTV DSR 계산기로 주택담보대출 DSR 계산, 주담대 한도 계산, 아파트 담보대출 계산 순서를 확인하세요. DSR 40% 계산과 LTV, 보유 현금, 월상환액을 함께 보는 방법을 정리합니다.",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/ltv-dsr-calculator-guide",
+      "robots": "",
+      "h1_count": 1,
+      "h1_texts": [
+        "LTV DSR 계산기 사용법: 주담대 한도 계산 순서"
+      ],
+      "first_body_text": "주담대 한도 계산을 할 때 집값만 보면 답이 잘못 나올 수 있습니다. 같은 7억 아파트라도 연소득, 기존 대출 월상환액, 보유 현금, 적용 LTV, 금리와 대출 기간에 따라 실제 부담은 완전히 달라집니다. LTV DSR 계산기는 \"얼마까지 대출이 가능한가\"를 단정하는 도구가 아니라, 집값 기준 한도와 소득 기준 상환 여력 중 어디가 병목인지 확인하는 도구로 쓰는 편이 안전합니다. 실제 대출 가능 여부는 금융기관 심사, 신용점수, 규제지역 여부, 주택보유수, 스트레스 DSR, 소득 인정 방식에 따라",
+      "unprotected_hits": [],
+      "protected_regions": {
+        "post_views": {
+          "exists": false,
+          "protected": false
+        },
+        "post_comments": {
+          "exists": true,
+          "protected": true
+        },
+        "post_share": {
+          "exists": true,
+          "protected": true
+        },
+        "tool_share": {
+          "exists": false,
+          "protected": false
+        }
+      },
+      "checks": [
+        {
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "LTV DSR 계산기 사용법: 주담대 한도 계산 순서 | FinMap"
+        },
+        {
+          "name": "description_exists",
+          "pass": true,
+          "details": "LTV DSR 계산기로 주택담보대출 DSR 계산, 주담대 한도 계산, 아파트 담보대출 계산 순서를 확인하세요. DSR 40% 계산과 LTV, 보유 현금, 월상환액을 함께 보는 방법을 정리합니다."
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/ltv-dsr-calculator-guide"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "h1_exactly_one",
+          "pass": true,
+          "details": "LTV DSR 계산기 사용법: 주담대 한도 계산 순서"
+        },
+        {
+          "name": "h1_not_nosnippet",
+          "pass": true,
+          "details": "LTV DSR 계산기 사용법: 주담대 한도 계산 순서"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/ltv-dsr-calculator-guide"
+        },
+        {
+          "name": "no_unprotected_global_bad_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "no_unprotected_post_ui_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "comments_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "share_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "article_body_not_nosnippet",
+          "pass": true,
+          "details": "주담대 한도 계산을 할 때 집값만 보면 답이 잘못 나올 수 있습니다. 같은 7억 아파트라도 연소득, 기존 대출 월상환액, 보유 현금, 적용 LTV, 금리와 대출 기간에 따라 실제 부담은 완전히 달라집니다. LTV DSR 계산기는 \"얼마까지 대출이 가능한가\"를 단정하는 도구가 아니라, 집값 기준 한도와 소득 기준 상환 여력 중 어디가 병목인지 확인하는 도구로 쓰는 편이 안전합니다. 실제 대출 가능 여부는 금융기관 심사, 신용점수, 규제지역 여부, 주택보유수, 스트레스 DSR, 소득 인정 방식에 따라"
+        },
+        {
+          "name": "article_body_text_exists",
+          "pass": true,
+          "details": "주담대 한도 계산을 할 때 집값만 보면 답이 잘못 나올 수 있습니다. 같은 7억 아파트라도 연소득, 기존 대출 월상환액, 보유 현금, 적용 LTV, 금리와 대출 기간에 따라 실제 부담은 완전히 달라집니다. LTV DSR 계산기는 \"얼마까지 대출이 가능한가\"를 단정하는 도구가 아니라, 집값 기준 한도와 소득 기준 상환 여력 중 어디가 병목인지 확인하는 도구로 쓰는 편이 안전합니다. 실제 대출 가능 여부는 금융기관 심사, 신용점수, 규제지역 여부, 주택보유수, 스트레스 DSR, 소득 인정 방식에 따라"
+        },
+        {
+          "name": "views_zero_not_rendered",
+          "pass": true,
+          "details": "no view region rendered"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/posts/personalFinance/salary-40m-mortgage-limit",
+      "type": "post",
+      "locale": "ko",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/salary-40m-mortgage-limit",
+      "title": "연봉 4000만원 주담대 가능액 계산 | DSR 40% LTV 예산표 | FinMap",
+      "description": "연봉 4000만원이면 DSR 40% 기준 주담대 가능액이 얼마인지, 월 상환액·LTV·보유현금·부대비용까지 함께 계산하는 방법을 정리합니다.",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/salary-40m-mortgage-limit",
+      "robots": "",
+      "h1_count": 1,
+      "h1_texts": [
+        "연봉 4000만원 주담대 가능액 계산 | DSR 40% LTV 예산표"
+      ],
+      "first_body_text": "연봉 4000만원이면 DSR 40%에서 연간 원리금 상환 한도는 약 1600만원, 월 기준으로는 약 133만원입니다. 금리 4.0%, 30년 원리금균등 상환을 단순 가정하면 주담대 가능액은 약 2억 7900만원 수준으로 계산됩니다. 다만 이 숫자는 “대출 가능액”일 뿐입니다. 실제로 볼 수 있는 아파트 가격은 LTV, 보유현금, 취득세·중개보수 같은 부대비용, 기존 대출 월상환액에 따라 더 낮아질 수 있습니다. 내 숫자는 DSR 계산기에 직접 넣어 확인하세요. Quick Answer 연봉 4000",
+      "unprotected_hits": [],
+      "protected_regions": {
+        "post_views": {
+          "exists": false,
+          "protected": false
+        },
+        "post_comments": {
+          "exists": true,
+          "protected": true
+        },
+        "post_share": {
+          "exists": true,
+          "protected": true
+        },
+        "tool_share": {
+          "exists": false,
+          "protected": false
+        }
+      },
+      "checks": [
+        {
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "연봉 4000만원 주담대 가능액 계산 | DSR 40% LTV 예산표 | FinMap"
+        },
+        {
+          "name": "description_exists",
+          "pass": true,
+          "details": "연봉 4000만원이면 DSR 40% 기준 주담대 가능액이 얼마인지, 월 상환액·LTV·보유현금·부대비용까지 함께 계산하는 방법을 정리합니다."
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/salary-40m-mortgage-limit"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "h1_exactly_one",
+          "pass": true,
+          "details": "연봉 4000만원 주담대 가능액 계산 | DSR 40% LTV 예산표"
+        },
+        {
+          "name": "h1_not_nosnippet",
+          "pass": true,
+          "details": "연봉 4000만원 주담대 가능액 계산 | DSR 40% LTV 예산표"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/salary-40m-mortgage-limit"
+        },
+        {
+          "name": "no_unprotected_global_bad_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "no_unprotected_post_ui_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "comments_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "share_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "article_body_not_nosnippet",
+          "pass": true,
+          "details": "연봉 4000만원이면 DSR 40%에서 연간 원리금 상환 한도는 약 1600만원, 월 기준으로는 약 133만원입니다. 금리 4.0%, 30년 원리금균등 상환을 단순 가정하면 주담대 가능액은 약 2억 7900만원 수준으로 계산됩니다. 다만 이 숫자는 “대출 가능액”일 뿐입니다. 실제로 볼 수 있는 아파트 가격은 LTV, 보유현금, 취득세·중개보수 같은 부대비용, 기존 대출 월상환액에 따라 더 낮아질 수 있습니다. 내 숫자는 DSR 계산기에 직접 넣어 확인하세요. Quick Answer 연봉 4000"
+        },
+        {
+          "name": "article_body_text_exists",
+          "pass": true,
+          "details": "연봉 4000만원이면 DSR 40%에서 연간 원리금 상환 한도는 약 1600만원, 월 기준으로는 약 133만원입니다. 금리 4.0%, 30년 원리금균등 상환을 단순 가정하면 주담대 가능액은 약 2억 7900만원 수준으로 계산됩니다. 다만 이 숫자는 “대출 가능액”일 뿐입니다. 실제로 볼 수 있는 아파트 가격은 LTV, 보유현금, 취득세·중개보수 같은 부대비용, 기존 대출 월상환액에 따라 더 낮아질 수 있습니다. 내 숫자는 DSR 계산기에 직접 넣어 확인하세요. Quick Answer 연봉 4000"
+        },
+        {
+          "name": "views_zero_not_rendered",
+          "pass": true,
+          "details": "no view region rendered"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/posts/economicInfo/interest-rate-basics",
+      "type": "post",
+      "locale": "ko",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/posts/economicInfo/interest-rate-basics",
+      "title": "금리 구조 한 번에 이해: 기준금리, 시장금리, 예금·대출·채권 | FinMap",
+      "description": "기준금리와 시장금리, 예금·대출·채권 금리가 어떻게 연결되는지 구조적으로 정리하고 복리·CAGR 계산으로 이어지는 핵심 개념을 확인합니다.",
+      "canonical": "https://www.finmaphub.com/posts/economicInfo/interest-rate-basics",
+      "robots": "",
+      "h1_count": 1,
+      "h1_texts": [
+        "금리 구조 한 번에 이해: 기준금리, 시장금리, 예금·대출·채권"
+      ],
+      "first_body_text": "요약 (10문장) 금리는 “하나의 숫자”가 아니라 기준금리(정책)→시장금리→상품금리로 이어지는 구조입니다. 기준금리는 중앙은행의 방향표이고, 시장금리는 채권·머니마켓에서 먼저 반응합니다. 은행 예금·대출 금리는 시장금리와 신용·경쟁·규제·조달비용이 합쳐져 결정됩니다. 금리가 오를 때 ‘대출만’ 힘들어지는 게 아니라, 채권 가격·주식 밸류에이션·환율·유동성까지 함께 흔들립니다. 특히 채권은 금리↑ → 가격↓가 기본이며, 이 감도는 “듀레이션(기간)”이 좌우합니다. 단기 금리(1년 이하)와 장기 금리",
+      "unprotected_hits": [],
+      "protected_regions": {
+        "post_views": {
+          "exists": false,
+          "protected": false
+        },
+        "post_comments": {
+          "exists": true,
+          "protected": true
+        },
+        "post_share": {
+          "exists": true,
+          "protected": true
+        },
+        "tool_share": {
+          "exists": false,
+          "protected": false
+        }
+      },
+      "checks": [
+        {
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "금리 구조 한 번에 이해: 기준금리, 시장금리, 예금·대출·채권 | FinMap"
+        },
+        {
+          "name": "description_exists",
+          "pass": true,
+          "details": "기준금리와 시장금리, 예금·대출·채권 금리가 어떻게 연결되는지 구조적으로 정리하고 복리·CAGR 계산으로 이어지는 핵심 개념을 확인합니다."
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/economicInfo/interest-rate-basics"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "h1_exactly_one",
+          "pass": true,
+          "details": "금리 구조 한 번에 이해: 기준금리, 시장금리, 예금·대출·채권"
+        },
+        {
+          "name": "h1_not_nosnippet",
+          "pass": true,
+          "details": "금리 구조 한 번에 이해: 기준금리, 시장금리, 예금·대출·채권"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/economicInfo/interest-rate-basics"
+        },
+        {
+          "name": "no_unprotected_global_bad_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "no_unprotected_post_ui_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "comments_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "share_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "article_body_not_nosnippet",
+          "pass": true,
+          "details": "요약 (10문장) 금리는 “하나의 숫자”가 아니라 기준금리(정책)→시장금리→상품금리로 이어지는 구조입니다. 기준금리는 중앙은행의 방향표이고, 시장금리는 채권·머니마켓에서 먼저 반응합니다. 은행 예금·대출 금리는 시장금리와 신용·경쟁·규제·조달비용이 합쳐져 결정됩니다. 금리가 오를 때 ‘대출만’ 힘들어지는 게 아니라, 채권 가격·주식 밸류에이션·환율·유동성까지 함께 흔들립니다. 특히 채권은 금리↑ → 가격↓가 기본이며, 이 감도는 “듀레이션(기간)”이 좌우합니다. 단기 금리(1년 이하)와 장기 금리"
+        },
+        {
+          "name": "article_body_text_exists",
+          "pass": true,
+          "details": "요약 (10문장) 금리는 “하나의 숫자”가 아니라 기준금리(정책)→시장금리→상품금리로 이어지는 구조입니다. 기준금리는 중앙은행의 방향표이고, 시장금리는 채권·머니마켓에서 먼저 반응합니다. 은행 예금·대출 금리는 시장금리와 신용·경쟁·규제·조달비용이 합쳐져 결정됩니다. 금리가 오를 때 ‘대출만’ 힘들어지는 게 아니라, 채권 가격·주식 밸류에이션·환율·유동성까지 함께 흔들립니다. 특히 채권은 금리↑ → 가격↓가 기본이며, 이 감도는 “듀레이션(기간)”이 좌우합니다. 단기 금리(1년 이하)와 장기 금리"
+        },
+        {
+          "name": "views_zero_not_rendered",
+          "pass": true,
+          "details": "no view region rendered"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/en/posts/personalFinance/dsr-40-income-loan-limit-table",
+      "type": "post",
+      "locale": "en",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/dsr-40-income-loan-limit-table",
+      "title": "Korea DSR 40% Rule Explained | Mortgage Borrowing Limit by Income | FinMap",
+      "description": "Learn how Korea's DSR 40% rule can limit mortgage borrowing capacity by income, interest rate, term, existing debt, and LTV.",
+      "canonical": "https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table",
+      "robots": "",
+      "h1_count": 1,
+      "h1_texts": [
+        "Korea DSR 40% Rule Explained | Mortgage Borrowing Limit by Income"
+      ],
+      "first_body_text": "Korea's DSR rule limits mortgage borrowing capacity by looking at how much annual income can safely support annual debt payments. In a simple DSR 40% example, annual principal-and-interest payments are capped at 40% of recognized annual income, so higher income, lower existing de",
+      "unprotected_hits": [],
+      "protected_regions": {
+        "post_views": {
+          "exists": false,
+          "protected": false
+        },
+        "post_comments": {
+          "exists": true,
+          "protected": true
+        },
+        "post_share": {
+          "exists": true,
+          "protected": true
+        },
+        "tool_share": {
+          "exists": false,
+          "protected": false
+        }
+      },
+      "checks": [
+        {
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "Korea DSR 40% Rule Explained | Mortgage Borrowing Limit by Income | FinMap"
+        },
+        {
+          "name": "description_exists",
+          "pass": true,
+          "details": "Learn how Korea's DSR 40% rule can limit mortgage borrowing capacity by income, interest rate, term, existing debt, and LTV."
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "h1_exactly_one",
+          "pass": true,
+          "details": "Korea DSR 40% Rule Explained | Mortgage Borrowing Limit by Income"
+        },
+        {
+          "name": "h1_not_nosnippet",
+          "pass": true,
+          "details": "Korea DSR 40% Rule Explained | Mortgage Borrowing Limit by Income"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table"
+        },
+        {
+          "name": "no_unprotected_global_bad_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "no_unprotected_post_ui_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "comments_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "share_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "article_body_not_nosnippet",
+          "pass": true,
+          "details": "Korea's DSR rule limits mortgage borrowing capacity by looking at how much annual income can safely support annual debt payments. In a simple DSR 40% example, annual principal-and-interest payments are capped at 40% of recognized annual income, so higher income, lower existing de"
+        },
+        {
+          "name": "article_body_text_exists",
+          "pass": true,
+          "details": "Korea's DSR rule limits mortgage borrowing capacity by looking at how much annual income can safely support annual debt payments. In a simple DSR 40% example, annual principal-and-interest payments are capped at 40% of recognized annual income, so higher income, lower existing de"
+        },
+        {
+          "name": "views_zero_not_rendered",
+          "pass": true,
+          "details": "no view region rendered"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/tools/compound-interest",
+      "type": "tool",
+      "locale": "ko",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/tools/compound-interest",
+      "title": "복리 계산기 | 월복리·적립식 투자 미래가치 계산 | FinMap",
+      "description": "원금, 월 적립금, 연 수익률, 투자 기간으로 월복리 기준 미래가치를 계산합니다. 세금, 수수료, 물가상승률을 반영한 세후 금액과 현재가치를 표와 차트로 확인하세요.",
+      "canonical": "https://www.finmaphub.com/tools/compound-interest",
+      "robots": "",
+      "h1_count": 1,
+      "h1_texts": [
+        "복리 계산기"
+      ],
+      "first_body_text": "FinMap 금융 기초 · 투자계획 지도 홈 시장정보 금융도구 인사이트 ▾ 한국어 EN finmaphub.com 복리 계산기 기본 PRO 월복리 기준 복리 계산과 적립식 투자 결과 확인 초기 투자금(원금)과 월 적립금(적립식), 연 수익률, 기간을 입력하면 월복리 기준으로 미래가치(FV)를 계산합니다. 세전·세후(세금·수수료) 결과를 비교하고, 연도별 표/차트로 자산 성장 경로를 확인할 수 있어요. 복리 미래가치(FV) 복리 이자 효과로 자산이 얼마나 늘어나는지 월복리 기준 검증된 월복리·월말 납",
+      "unprotected_hits": [],
+      "protected_regions": {
+        "post_views": {
+          "exists": false,
+          "protected": false
+        },
+        "post_comments": {
+          "exists": false,
+          "protected": false
+        },
+        "post_share": {
+          "exists": false,
+          "protected": false
+        },
+        "tool_share": {
+          "exists": true,
+          "protected": true
+        }
+      },
+      "checks": [
+        {
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "복리 계산기 | 월복리·적립식 투자 미래가치 계산 | FinMap"
+        },
+        {
+          "name": "description_exists",
+          "pass": true,
+          "details": "원금, 월 적립금, 연 수익률, 투자 기간으로 월복리 기준 미래가치를 계산합니다. 세금, 수수료, 물가상승률을 반영한 세후 금액과 현재가치를 표와 차트로 확인하세요."
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/tools/compound-interest"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "h1_exactly_one",
+          "pass": true,
+          "details": "복리 계산기"
+        },
+        {
+          "name": "h1_not_nosnippet",
+          "pass": true,
+          "details": "복리 계산기"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/tools/compound-interest"
+        },
+        {
+          "name": "no_unprotected_global_bad_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "no_unprotected_tool_share_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "tool_share_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "tool_intro_text_exists",
+          "pass": true,
+          "details": "FinMap 금융 기초 · 투자계획 지도 홈 시장정보 금융도구 인사이트 ▾ 한국어 EN finmaphub.com 복리 계산기 기본 PRO 월복리 기준 복리 계산과 적립식 투자 결과 확인 초기 투자금(원금)과 월 적립금(적립식), 연 수익률, 기간을 입력하면 월복리 기준으로 미래가치(FV)를 계산합니다. 세전·세후(세금·수수료) 결과를 비교하고, 연도별 표/차트로 자산 성장 경로를 확인할 수 있어요. 복리 미래가치(FV) 복리 이자 효과로 자산이 얼마나 늘어나는지 월복리 기준 검증된 월복리·월말 납"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/tools/goal-simulator",
+      "type": "tool",
+      "locale": "ko",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/tools/goal-simulator",
+      "title": "목표자산 도달 계산기 | 매달 얼마 투자해야 할까? | FinMap",
+      "description": "현재 자산·월 적립금·수익률·기간·세금·수수료를 반영해 목표 자산까지의 성장 경로를 시뮬레이션합니다. 공유 및 PDF 저장 지원.",
+      "canonical": "https://www.finmaphub.com/tools/goal-simulator",
+      "robots": "",
+      "h1_count": 1,
+      "h1_texts": [
+        "목표자산 도달 계산기 | 매달 얼마 투자해야 할까?"
+      ],
+      "first_body_text": "FinMap 금융 기초 · 투자계획 지도 홈 시장정보 금융도구 인사이트 ▾ 한국어 EN finmaphub.com 목표자산 도달 계산기 | 매달 얼마 투자해야 할까? 목표 자산 시뮬레이터로 무엇을 할 수 있나요? “언제까지 얼마를 모으고 싶은지” 목표를 세우고, 지금 자산·적립액·수익률을 기준으로 경로를 그려볼 수 있습니다. 현재 자산 + 매달 적립금 + 예상 수익률·기간을 기반으로 자산 성장 경로를 연도별로 시뮬레이션합니다. 세금·수수료를 적용했을 때와 적용하지 않았을 때의 차이를 세전/세후 자산",
+      "unprotected_hits": [],
+      "protected_regions": {
+        "post_views": {
+          "exists": false,
+          "protected": false
+        },
+        "post_comments": {
+          "exists": false,
+          "protected": false
+        },
+        "post_share": {
+          "exists": false,
+          "protected": false
+        },
+        "tool_share": {
+          "exists": true,
+          "protected": true
+        }
+      },
+      "checks": [
+        {
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "목표자산 도달 계산기 | 매달 얼마 투자해야 할까? | FinMap"
+        },
+        {
+          "name": "description_exists",
+          "pass": true,
+          "details": "현재 자산·월 적립금·수익률·기간·세금·수수료를 반영해 목표 자산까지의 성장 경로를 시뮬레이션합니다. 공유 및 PDF 저장 지원."
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/tools/goal-simulator"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "h1_exactly_one",
+          "pass": true,
+          "details": "목표자산 도달 계산기 | 매달 얼마 투자해야 할까?"
+        },
+        {
+          "name": "h1_not_nosnippet",
+          "pass": true,
+          "details": "목표자산 도달 계산기 | 매달 얼마 투자해야 할까?"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/tools/goal-simulator"
+        },
+        {
+          "name": "no_unprotected_global_bad_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "no_unprotected_tool_share_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "tool_share_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "tool_intro_text_exists",
+          "pass": true,
+          "details": "FinMap 금융 기초 · 투자계획 지도 홈 시장정보 금융도구 인사이트 ▾ 한국어 EN finmaphub.com 목표자산 도달 계산기 | 매달 얼마 투자해야 할까? 목표 자산 시뮬레이터로 무엇을 할 수 있나요? “언제까지 얼마를 모으고 싶은지” 목표를 세우고, 지금 자산·적립액·수익률을 기준으로 경로를 그려볼 수 있습니다. 현재 자산 + 매달 적립금 + 예상 수익률·기간을 기반으로 자산 성장 경로를 연도별로 시뮬레이션합니다. 세금·수수료를 적용했을 때와 적용하지 않았을 때의 차이를 세전/세후 자산"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/tools/cagr-calculator",
+      "type": "tool",
+      "locale": "ko",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/tools/cagr-calculator",
+      "title": "CAGR 계산기 (연평균 수익률·연복리 수익률·연평균 성장률) | FinMap",
+      "description": "초기 자산·최종 자산·기간으로 CAGR(연평균 복리 수익률)을 계산하고, 세금·수수료 반영 전후 차이를 비교해보세요. 주식/ETF/부동산/코인 수익률 분석에 활용할 수 있습니다.",
+      "canonical": "https://www.finmaphub.com/tools/cagr-calculator",
+      "robots": "",
+      "h1_count": 1,
+      "h1_texts": [
+        "CAGR(연평균 수익률)로 내 투자 성과를 한 줄 숫자로"
+      ],
+      "first_body_text": "FinMap 금융 기초 · 투자계획 지도 홈 시장정보 금융도구 인사이트 ▾ 한국어 EN finmaphub.com CAGR(연평균 수익률)로 내 투자 성과를 한 줄 숫자로 CAGR은 들쭉날쭉한 연 수익률을 “연속된 하나의 연 복리 수익률”로 바꿔 보여주는 지표입니다. 단순 평균이 아니라, 실제 자산이 불어난 속도를 반영합니다. CAGR · COMPOUND ANNUAL GROWTH RATE 초기 → 최종 한 줄 요약 세전 vs 세후 비용 반영 연도별 경로 그래프·표 CAGR 계산기는 이렇게 활용해 보",
+      "unprotected_hits": [],
+      "protected_regions": {
+        "post_views": {
+          "exists": false,
+          "protected": false
+        },
+        "post_comments": {
+          "exists": false,
+          "protected": false
+        },
+        "post_share": {
+          "exists": false,
+          "protected": false
+        },
+        "tool_share": {
+          "exists": true,
+          "protected": true
+        }
+      },
+      "checks": [
+        {
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "CAGR 계산기 (연평균 수익률·연복리 수익률·연평균 성장률) | FinMap"
+        },
+        {
+          "name": "description_exists",
+          "pass": true,
+          "details": "초기 자산·최종 자산·기간으로 CAGR(연평균 복리 수익률)을 계산하고, 세금·수수료 반영 전후 차이를 비교해보세요. 주식/ETF/부동산/코인 수익률 분석에 활용할 수 있습니다."
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/tools/cagr-calculator"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "h1_exactly_one",
+          "pass": true,
+          "details": "CAGR(연평균 수익률)로 내 투자 성과를 한 줄 숫자로"
+        },
+        {
+          "name": "h1_not_nosnippet",
+          "pass": true,
+          "details": "CAGR(연평균 수익률)로 내 투자 성과를 한 줄 숫자로"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/tools/cagr-calculator"
+        },
+        {
+          "name": "no_unprotected_global_bad_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "no_unprotected_tool_share_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "tool_share_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "tool_intro_text_exists",
+          "pass": true,
+          "details": "FinMap 금융 기초 · 투자계획 지도 홈 시장정보 금융도구 인사이트 ▾ 한국어 EN finmaphub.com CAGR(연평균 수익률)로 내 투자 성과를 한 줄 숫자로 CAGR은 들쭉날쭉한 연 수익률을 “연속된 하나의 연 복리 수익률”로 바꿔 보여주는 지표입니다. 단순 평균이 아니라, 실제 자산이 불어난 속도를 반영합니다. CAGR · COMPOUND ANNUAL GROWTH RATE 초기 → 최종 한 줄 요약 세전 vs 세후 비용 반영 연도별 경로 그래프·표 CAGR 계산기는 이렇게 활용해 보"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/tools/dsr-ltv-calculator",
+      "type": "tool",
+      "locale": "ko",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/tools/dsr-ltv-calculator",
+      "title": "LTV DSR 계산기 - 주택담보대출 한도와 아파트 구매 가능액 계산 | FinMap",
+      "description": "연소득, 기존대출 월상환액, 주택담보대출 금리, 대출기간, 아파트 가격, 보유 현금을 입력해 LTV·DSR 기준 주담대 한도, 대출 가능액, 원리금 월상환액, 아파트 구매 가능액을 계산합니다.",
+      "canonical": "https://www.finmaphub.com/tools/dsr-ltv-calculator",
+      "robots": "",
+      "h1_count": 1,
+      "h1_texts": [
+        "LTV DSR 계산기: 주담대 한도와 아파트 구매 가능액 계산"
+      ],
+      "first_body_text": "FinMap 금융 기초 · 투자계획 지도 홈 시장정보 금융도구 인사이트 ▾ 한국어 EN finmaphub.com 계산 기준일 : 2026-05-21 LTV DSR 계산기: 주담대 한도와 아파트 구매 가능액 계산 주담대 한도, 아파트 구매 가능액, 월상환액, 보유 현금을 한 화면에서 계산합니다. 연소득, 기존대출 월상환액, 금리, 대출기간, LTV, DSR, 후보 아파트 가격을 넣어 매수 가능 여부를 먼저 점검하세요. 정책 자동 반영 없이 입력값 기준으로만 계산합니다. 실제 대출 심사 결과와 다를 ",
+      "unprotected_hits": [],
+      "protected_regions": {
+        "post_views": {
+          "exists": false,
+          "protected": false
+        },
+        "post_comments": {
+          "exists": false,
+          "protected": false
+        },
+        "post_share": {
+          "exists": false,
+          "protected": false
+        },
+        "tool_share": {
+          "exists": true,
+          "protected": true
+        }
+      },
+      "checks": [
+        {
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "LTV DSR 계산기 - 주택담보대출 한도와 아파트 구매 가능액 계산 | FinMap"
+        },
+        {
+          "name": "description_exists",
+          "pass": true,
+          "details": "연소득, 기존대출 월상환액, 주택담보대출 금리, 대출기간, 아파트 가격, 보유 현금을 입력해 LTV·DSR 기준 주담대 한도, 대출 가능액, 원리금 월상환액, 아파트 구매 가능액을 계산합니다."
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/tools/dsr-ltv-calculator"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "h1_exactly_one",
+          "pass": true,
+          "details": "LTV DSR 계산기: 주담대 한도와 아파트 구매 가능액 계산"
+        },
+        {
+          "name": "h1_not_nosnippet",
+          "pass": true,
+          "details": "LTV DSR 계산기: 주담대 한도와 아파트 구매 가능액 계산"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/tools/dsr-ltv-calculator"
+        },
+        {
+          "name": "no_unprotected_global_bad_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "no_unprotected_tool_share_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "tool_share_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "tool_intro_text_exists",
+          "pass": true,
+          "details": "FinMap 금융 기초 · 투자계획 지도 홈 시장정보 금융도구 인사이트 ▾ 한국어 EN finmaphub.com 계산 기준일 : 2026-05-21 LTV DSR 계산기: 주담대 한도와 아파트 구매 가능액 계산 주담대 한도, 아파트 구매 가능액, 월상환액, 보유 현금을 한 화면에서 계산합니다. 연소득, 기존대출 월상환액, 금리, 대출기간, LTV, DSR, 후보 아파트 가격을 넣어 매수 가능 여부를 먼저 점검하세요. 정책 자동 반영 없이 입력값 기준으로만 계산합니다. 실제 대출 심사 결과와 다를 "
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/tools/home-buying-budget-calculator",
+      "type": "tool",
+      "locale": "ko",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/tools/home-buying-budget-calculator",
+      "title": "아파트 구매 계산기 - 보유 현금·주담대 한도·DSR LTV 예산 계산 | FinMap",
+      "description": "집값, 보유 현금, 연소득, 기존 대출, 금리, 대출기간을 입력해 아파트 구매 가능 여부, 필요 현금, 주담대 한도, DSR, LTV, 월상환액을 계산합니다.",
+      "canonical": "https://www.finmaphub.com/tools/home-buying-budget-calculator",
+      "robots": "",
+      "h1_count": 1,
+      "h1_texts": [
+        "아파트 구매 계산기"
+      ],
+      "first_body_text": "FinMap 금융 기초 · 투자계획 지도 홈 시장정보 금융도구 인사이트 ▾ 한국어 EN finmaphub.com 부동산 구매 예산 아파트 구매 계산기 아파트 가격을 보기 전에 보유 현금, 부대비용, 주담대 한도, DSR, LTV를 한 번에 점검하세요. 이 계산기는 보유 현금 기준 구매 가능성을 먼저 보고, 월상환액은 주담대 원리금 계산기로 이어서 확인하도록 돕습니다. 정책 자동 반영 도구가 아니라 사용자가 입력한 LTV, DSR, 금리, 기간을 기준으로 한 사전 점검입니다. 입력값 금액은 만원 단",
+      "unprotected_hits": [],
+      "protected_regions": {
+        "post_views": {
+          "exists": false,
+          "protected": false
+        },
+        "post_comments": {
+          "exists": false,
+          "protected": false
+        },
+        "post_share": {
+          "exists": false,
+          "protected": false
+        },
+        "tool_share": {
+          "exists": false,
+          "protected": false
+        }
+      },
+      "checks": [
+        {
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "아파트 구매 계산기 - 보유 현금·주담대 한도·DSR LTV 예산 계산 | FinMap"
+        },
+        {
+          "name": "description_exists",
+          "pass": true,
+          "details": "집값, 보유 현금, 연소득, 기존 대출, 금리, 대출기간을 입력해 아파트 구매 가능 여부, 필요 현금, 주담대 한도, DSR, LTV, 월상환액을 계산합니다."
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/tools/home-buying-budget-calculator"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "h1_exactly_one",
+          "pass": true,
+          "details": "아파트 구매 계산기"
+        },
+        {
+          "name": "h1_not_nosnippet",
+          "pass": true,
+          "details": "아파트 구매 계산기"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/tools/home-buying-budget-calculator"
+        },
+        {
+          "name": "no_unprotected_global_bad_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "no_unprotected_tool_share_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "tool_intro_text_exists",
+          "pass": true,
+          "details": "FinMap 금융 기초 · 투자계획 지도 홈 시장정보 금융도구 인사이트 ▾ 한국어 EN finmaphub.com 부동산 구매 예산 아파트 구매 계산기 아파트 가격을 보기 전에 보유 현금, 부대비용, 주담대 한도, DSR, LTV를 한 번에 점검하세요. 이 계산기는 보유 현금 기준 구매 가능성을 먼저 보고, 월상환액은 주담대 원리금 계산기로 이어서 확인하도록 돕습니다. 정책 자동 반영 도구가 아니라 사용자가 입력한 LTV, DSR, 금리, 기간을 기준으로 한 사전 점검입니다. 입력값 금액은 만원 단"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/tools/mortgage-loan-calculator",
+      "type": "tool",
+      "locale": "ko",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "title": "주담대 원리금 계산기 - 아파트 담보대출 월상환액 계산 | FinMap",
+      "description": "대출금액, 금리, 대출기간, 상환방식을 입력해 주택담보대출 원리금 월상환액, 총이자, 총상환액을 계산하고 DSR/LTV 계산기로 대출 가능성을 함께 확인합니다.",
+      "canonical": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "robots": "",
+      "h1_count": 1,
+      "h1_texts": [
+        "주담대 원리금 계산기: 아파트 담보대출 월상환액 계산"
+      ],
+      "first_body_text": "FinMap 금융 기초 · 투자계획 지도 홈 시장정보 금융도구 인사이트 ▾ 한국어 EN finmaphub.com 주담대·월상환액 주담대 원리금 계산기: 아파트 담보대출 월상환액 계산 대출금액을 먼저 정해 놓고 월상환액, 총이자, 첫 달과 마지막 달 상환액을 확인하는 계산기입니다. 소득과 집값 기준의 한도 판단은 DSR/LTV 계산기에서 따로 점검하세요. 입력값 금액은 만원 단위로 입력합니다. 이 계산기는 대출금액 기준 월상환액과 총이자를 보는 도구입니다. 빠른 프리셋 3억 대출 / 4.0% / 3",
+      "unprotected_hits": [],
+      "protected_regions": {
+        "post_views": {
+          "exists": false,
+          "protected": false
+        },
+        "post_comments": {
+          "exists": false,
+          "protected": false
+        },
+        "post_share": {
+          "exists": false,
+          "protected": false
+        },
+        "tool_share": {
+          "exists": true,
+          "protected": true
+        }
+      },
+      "checks": [
+        {
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "주담대 원리금 계산기 - 아파트 담보대출 월상환액 계산 | FinMap"
+        },
+        {
+          "name": "description_exists",
+          "pass": true,
+          "details": "대출금액, 금리, 대출기간, 상환방식을 입력해 주택담보대출 원리금 월상환액, 총이자, 총상환액을 계산하고 DSR/LTV 계산기로 대출 가능성을 함께 확인합니다."
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/tools/mortgage-loan-calculator"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "h1_exactly_one",
+          "pass": true,
+          "details": "주담대 원리금 계산기: 아파트 담보대출 월상환액 계산"
+        },
+        {
+          "name": "h1_not_nosnippet",
+          "pass": true,
+          "details": "주담대 원리금 계산기: 아파트 담보대출 월상환액 계산"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/tools/mortgage-loan-calculator"
+        },
+        {
+          "name": "no_unprotected_global_bad_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "no_unprotected_tool_share_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "tool_share_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "tool_intro_text_exists",
+          "pass": true,
+          "details": "FinMap 금융 기초 · 투자계획 지도 홈 시장정보 금융도구 인사이트 ▾ 한국어 EN finmaphub.com 주담대·월상환액 주담대 원리금 계산기: 아파트 담보대출 월상환액 계산 대출금액을 먼저 정해 놓고 월상환액, 총이자, 첫 달과 마지막 달 상환액을 확인하는 계산기입니다. 소득과 집값 기준의 한도 판단은 DSR/LTV 계산기에서 따로 점검하세요. 입력값 금액은 만원 단위로 입력합니다. 이 계산기는 대출금액 기준 월상환액과 총이자를 보는 도구입니다. 빠른 프리셋 3억 대출 / 4.0% / 3"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/market/real-estate/gyeonggi-apartment-top100",
+      "type": "market",
+      "locale": "ko",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/market/real-estate/gyeonggi-apartment-top100",
+      "title": "경기 아파트 실거래가 Top100 보는 법 | FinMap",
+      "description": "경기 아파트 실거래가 Top100을 도시별 차이, 대표가격, 평단가, 거래량 기준으로 해석하고 대시보드에서 비교하는 방법을 안내합니다.",
+      "canonical": "https://www.finmaphub.com/market/real-estate/gyeonggi-apartment-top100",
+      "robots": "",
+      "h1_count": 1,
+      "h1_texts": [
+        "경기 아파트 실거래가 Top100 가이드"
+      ],
+      "first_body_text": "FinMap 금융 기초 · 투자계획 지도 홈 시장정보 금융도구 인사이트 ▾ 한국어 EN finmaphub.com 부동산 실거래 랜딩 경기 아파트 실거래가 Top100 가이드 경기도 아파트 시장은 수원, 성남, 용인, 고양, 화성, 과천처럼 도시별 성격이 크게 다릅니다. 이 페이지는 경기 아파트 Top100을 볼 때 지역 범위와 가격 지표를 어떻게 분리해서 해석할지 정리합니다. 경기도 아파트 실거래가 Top100 도시별 비교 거래량 1. 이 페이지에서 확인할 수 있는 것 경기 아파트 Top100에서",
+      "unprotected_hits": [],
+      "protected_regions": {
+        "post_views": {
+          "exists": false,
+          "protected": false
+        },
+        "post_comments": {
+          "exists": false,
+          "protected": false
+        },
+        "post_share": {
+          "exists": false,
+          "protected": false
+        },
+        "tool_share": {
+          "exists": false,
+          "protected": false
+        }
+      },
+      "checks": [
+        {
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "경기 아파트 실거래가 Top100 보는 법 | FinMap"
+        },
+        {
+          "name": "description_exists",
+          "pass": true,
+          "details": "경기 아파트 실거래가 Top100을 도시별 차이, 대표가격, 평단가, 거래량 기준으로 해석하고 대시보드에서 비교하는 방법을 안내합니다."
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/market/real-estate/gyeonggi-apartment-top100"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "h1_exactly_one",
+          "pass": true,
+          "details": "경기 아파트 실거래가 Top100 가이드"
+        },
+        {
+          "name": "h1_not_nosnippet",
+          "pass": true,
+          "details": "경기 아파트 실거래가 Top100 가이드"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/market/real-estate/gyeonggi-apartment-top100"
+        },
+        {
+          "name": "no_unprotected_global_bad_text",
+          "pass": true,
+          "details": "none"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/en/tools/compound-interest",
+      "type": "tool",
+      "locale": "en",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/en/tools/compound-interest",
+      "title": "Compound Interest Calculator: Future Value, Monthly Contributions & Taxes | FinMap",
+      "description": "Calculate future value with principal, monthly contributions, annual return and years using monthly compounding. Review taxes, fees, inflation, charts and year-by-year tables.",
+      "canonical": "https://www.finmaphub.com/en/tools/compound-interest",
+      "robots": "",
+      "h1_count": 1,
+      "h1_texts": [
+        "Compound Interest Calculator for Future Value"
+      ],
+      "first_body_text": "FinMap Personal Finance · Investing Map Home Market Info Finance Tools Insights ▾ 한국어 EN finmaphub.com Compound Interest Calculator for Future Value Basic PRO Monthly-compounded growth with contributions Use this compound interest calculator to estimate how much an investment cou",
+      "unprotected_hits": [],
+      "protected_regions": {
+        "post_views": {
+          "exists": false,
+          "protected": false
+        },
+        "post_comments": {
+          "exists": false,
+          "protected": false
+        },
+        "post_share": {
+          "exists": false,
+          "protected": false
+        },
+        "tool_share": {
+          "exists": true,
+          "protected": true
+        }
+      },
+      "checks": [
+        {
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "Compound Interest Calculator: Future Value, Monthly Contributions & Taxes | FinMap"
+        },
+        {
+          "name": "description_exists",
+          "pass": true,
+          "details": "Calculate future value with principal, monthly contributions, annual return and years using monthly compounding. Review taxes, fees, inflation, charts and year-by-year tables."
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/tools/compound-interest"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "h1_exactly_one",
+          "pass": true,
+          "details": "Compound Interest Calculator for Future Value"
+        },
+        {
+          "name": "h1_not_nosnippet",
+          "pass": true,
+          "details": "Compound Interest Calculator for Future Value"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/tools/compound-interest"
+        },
+        {
+          "name": "no_unprotected_global_bad_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "no_unprotected_tool_share_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "tool_share_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "tool_intro_text_exists",
+          "pass": true,
+          "details": "FinMap Personal Finance · Investing Map Home Market Info Finance Tools Insights ▾ 한국어 EN finmaphub.com Compound Interest Calculator for Future Value Basic PRO Monthly-compounded growth with contributions Use this compound interest calculator to estimate how much an investment cou"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/en/tools/goal-simulator",
+      "type": "tool",
+      "locale": "en",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/en/tools/goal-simulator",
+      "title": "Investment Goal Calculator: How Much to Invest Per Month | FinMap",
+      "description": "Calculate how much to invest per month to reach a target amount. Simulate current assets, contributions, expected return, years, taxes, fees, inflation, and PDF export.",
+      "canonical": "https://www.finmaphub.com/en/tools/goal-simulator",
+      "robots": "",
+      "h1_count": 1,
+      "h1_texts": [
+        "Investment Goal Calculator: How Much to Invest Per Month"
+      ],
+      "first_body_text": "FinMap Personal Finance · Investing Map Home Market Info Finance Tools Insights ▾ 한국어 EN finmaphub.com Investment Goal Calculator: How Much to Invest Per Month How much should I invest per month to reach a goal? Use this investment goal calculator to set a target amount and deadl",
+      "unprotected_hits": [],
+      "protected_regions": {
+        "post_views": {
+          "exists": false,
+          "protected": false
+        },
+        "post_comments": {
+          "exists": false,
+          "protected": false
+        },
+        "post_share": {
+          "exists": false,
+          "protected": false
+        },
+        "tool_share": {
+          "exists": true,
+          "protected": true
+        }
+      },
+      "checks": [
+        {
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "Investment Goal Calculator: How Much to Invest Per Month | FinMap"
+        },
+        {
+          "name": "description_exists",
+          "pass": true,
+          "details": "Calculate how much to invest per month to reach a target amount. Simulate current assets, contributions, expected return, years, taxes, fees, inflation, and PDF export."
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/tools/goal-simulator"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "h1_exactly_one",
+          "pass": true,
+          "details": "Investment Goal Calculator: How Much to Invest Per Month"
+        },
+        {
+          "name": "h1_not_nosnippet",
+          "pass": true,
+          "details": "Investment Goal Calculator: How Much to Invest Per Month"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/tools/goal-simulator"
+        },
+        {
+          "name": "no_unprotected_global_bad_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "no_unprotected_tool_share_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "tool_share_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "tool_intro_text_exists",
+          "pass": true,
+          "details": "FinMap Personal Finance · Investing Map Home Market Info Finance Tools Insights ▾ 한국어 EN finmaphub.com Investment Goal Calculator: How Much to Invest Per Month How much should I invest per month to reach a goal? Use this investment goal calculator to set a target amount and deadl"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/en/tools/cagr-calculator",
+      "type": "tool",
+      "locale": "en",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/en/tools/cagr-calculator",
+      "title": "CAGR Calculator: Annualized Return, Growth Rate & Future Value | FinMap",
+      "description": "Calculate compound annual growth rate from starting value, ending value, and years. Compare gross, net, and inflation-adjusted CAGR, then jump to DCA, goal, or compound calculators.",
+      "canonical": "https://www.finmaphub.com/en/tools/cagr-calculator",
+      "robots": "",
+      "h1_count": 1,
+      "h1_texts": [
+        "CAGR Calculator for Annualized Return"
+      ],
+      "first_body_text": "FinMap Personal Finance · Investing Map Home Market Info Finance Tools Insights ▾ 한국어 EN finmaphub.com CAGR Calculator for Annualized Return Turn a start value, end value, and time horizon into an annualized growth rate you can compare across stocks, ETFs, funds, businesses, or p",
+      "unprotected_hits": [],
+      "protected_regions": {
+        "post_views": {
+          "exists": false,
+          "protected": false
+        },
+        "post_comments": {
+          "exists": false,
+          "protected": false
+        },
+        "post_share": {
+          "exists": false,
+          "protected": false
+        },
+        "tool_share": {
+          "exists": true,
+          "protected": true
+        }
+      },
+      "checks": [
+        {
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "CAGR Calculator: Annualized Return, Growth Rate & Future Value | FinMap"
+        },
+        {
+          "name": "description_exists",
+          "pass": true,
+          "details": "Calculate compound annual growth rate from starting value, ending value, and years. Compare gross, net, and inflation-adjusted CAGR, then jump to DCA, goal, or compound calculators."
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/tools/cagr-calculator"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "h1_exactly_one",
+          "pass": true,
+          "details": "CAGR Calculator for Annualized Return"
+        },
+        {
+          "name": "h1_not_nosnippet",
+          "pass": true,
+          "details": "CAGR Calculator for Annualized Return"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/tools/cagr-calculator"
+        },
+        {
+          "name": "no_unprotected_global_bad_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "no_unprotected_tool_share_text",
+          "pass": true,
+          "details": "none"
+        },
+        {
+          "name": "tool_share_region_protected",
+          "pass": true,
+          "details": "{\"exists\":true,\"protected\":true}"
+        },
+        {
+          "name": "tool_intro_text_exists",
+          "pass": true,
+          "details": "FinMap Personal Finance · Investing Map Home Market Info Finance Tools Insights ▾ 한국어 EN finmaphub.com CAGR Calculator for Annualized Return Turn a start value, end value, and time horizon into an annualized growth rate you can compare across stocks, ETFs, funds, businesses, or p"
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "browser": {
+    "status": "RUN",
+    "executablePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "results": [
+      {
+        "path": "/posts/investingInfo/rates-discount-mortgage-demand-apt-prices",
+        "viewport": "320x900",
+        "horizontal_overflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "console_status": "WARN",
+        "console_error_count": 8,
+        "page_error_count": 0,
+        "hydration_error_count": 0,
+        "sample_console_errors": [
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "view api failed: 500 {\"error\":\"server error\"}"
+        ],
+        "pass": true
+      },
+      {
+        "path": "/posts/personalFinance/apartment-buying-calculator-guide",
+        "viewport": "320x900",
+        "horizontal_overflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "console_status": "WARN",
+        "console_error_count": 7,
+        "page_error_count": 0,
+        "hydration_error_count": 0,
+        "sample_console_errors": [
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "view api failed: 500 {\"error\":\"server error\"}"
+        ],
+        "pass": true
+      },
+      {
+        "path": "/posts/personalFinance/ltv-dsr-calculator-guide",
+        "viewport": "320x900",
+        "horizontal_overflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "console_status": "WARN",
+        "console_error_count": 7,
+        "page_error_count": 0,
+        "hydration_error_count": 0,
+        "sample_console_errors": [
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "view api failed: 500 {\"error\":\"server error\"}",
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+        ],
+        "pass": true
+      },
+      {
+        "path": "/posts/personalFinance/salary-40m-mortgage-limit",
+        "viewport": "320x900",
+        "horizontal_overflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "console_status": "WARN",
+        "console_error_count": 7,
+        "page_error_count": 0,
+        "hydration_error_count": 0,
+        "sample_console_errors": [
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "view api failed: 500 {\"error\":\"server error\"}",
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+        ],
+        "pass": true
+      },
+      {
+        "path": "/posts/economicInfo/interest-rate-basics",
+        "viewport": "320x900",
+        "horizontal_overflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "console_status": "WARN",
+        "console_error_count": 8,
+        "page_error_count": 0,
+        "hydration_error_count": 0,
+        "sample_console_errors": [
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+        ],
+        "pass": true
+      },
+      {
+        "path": "/en/posts/personalFinance/dsr-40-income-loan-limit-table",
+        "viewport": "320x900",
+        "horizontal_overflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "console_status": "WARN",
+        "console_error_count": 7,
+        "page_error_count": 0,
+        "hydration_error_count": 0,
+        "sample_console_errors": [
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "view api failed: 500 {\"error\":\"server error\"}"
+        ],
+        "pass": true
+      },
+      {
+        "path": "/tools/compound-interest",
+        "viewport": "320x900",
+        "horizontal_overflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "console_status": "WARN",
+        "console_error_count": 2,
+        "page_error_count": 0,
+        "hydration_error_count": 0,
+        "sample_console_errors": [
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+        ],
+        "pass": true
+      },
+      {
+        "path": "/tools/goal-simulator",
+        "viewport": "320x900",
+        "horizontal_overflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "console_status": "WARN",
+        "console_error_count": 2,
+        "page_error_count": 0,
+        "hydration_error_count": 0,
+        "sample_console_errors": [
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+        ],
+        "pass": true
+      },
+      {
+        "path": "/tools/cagr-calculator",
+        "viewport": "320x900",
+        "horizontal_overflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "console_status": "WARN",
+        "console_error_count": 2,
+        "page_error_count": 0,
+        "hydration_error_count": 0,
+        "sample_console_errors": [
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+        ],
+        "pass": true
+      },
+      {
+        "path": "/tools/dsr-ltv-calculator",
+        "viewport": "320x900",
+        "horizontal_overflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "console_status": "WARN",
+        "console_error_count": 2,
+        "page_error_count": 0,
+        "hydration_error_count": 0,
+        "sample_console_errors": [
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+        ],
+        "pass": true
+      },
+      {
+        "path": "/tools/home-buying-budget-calculator",
+        "viewport": "320x900",
+        "horizontal_overflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "console_status": "WARN",
+        "console_error_count": 1,
+        "page_error_count": 0,
+        "hydration_error_count": 0,
+        "sample_console_errors": [
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+        ],
+        "pass": true
+      },
+      {
+        "path": "/tools/mortgage-loan-calculator",
+        "viewport": "320x900",
+        "horizontal_overflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "console_status": "WARN",
+        "console_error_count": 1,
+        "page_error_count": 0,
+        "hydration_error_count": 0,
+        "sample_console_errors": [
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+        ],
+        "pass": true
+      },
+      {
+        "path": "/en/tools/compound-interest",
+        "viewport": "320x900",
+        "horizontal_overflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "console_status": "WARN",
+        "console_error_count": 2,
+        "page_error_count": 0,
+        "hydration_error_count": 0,
+        "sample_console_errors": [
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+        ],
+        "pass": true
+      },
+      {
+        "path": "/en/tools/goal-simulator",
+        "viewport": "320x900",
+        "horizontal_overflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "console_status": "WARN",
+        "console_error_count": 2,
+        "page_error_count": 0,
+        "hydration_error_count": 0,
+        "sample_console_errors": [
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+        ],
+        "pass": true
+      },
+      {
+        "path": "/en/tools/cagr-calculator",
+        "viewport": "320x900",
+        "horizontal_overflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "console_status": "WARN",
+        "console_error_count": 2,
+        "page_error_count": 0,
+        "hydration_error_count": 0,
+        "sample_console_errors": [
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+        ],
+        "pass": true
+      }
+    ]
+  }
+}

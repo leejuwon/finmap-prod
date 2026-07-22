@@ -256,7 +256,7 @@ The goal is speed with discipline: <strong>classify the channel</strong>, then <
 In volatile macro regimes, the most common failure is not “being wrong once”—it’s <strong>stopping or overreacting</strong>.  
 A simple way to reduce timing stress is to follow a contribution rule and adjust only when regime triggers flip.
 
-<p class="text-sm text-slate-600">Related calculator: <a href="/tools/dca-calculator">Open DCA calculator</a></p>
+<p class="text-sm text-slate-600">Related calculator: <a href="/en/tools/dca-calculator">Open DCA calculator</a></p>
 
 ## Continue the macro chain (near the end)
 

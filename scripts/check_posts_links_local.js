@@ -1,9 +1,9 @@
 // scripts/check_posts_links_local.js
 // Local link checker for content/posts markdown files.
-// Validates internal links against blog-contents.md registry (published routes).
+// Validates internal links against docs/blog-contents.md registry (published routes).
 //
 // Usage:
-// node scripts/check_posts_links_local.js --registry=blog-contents.md --dir=content/posts --ext=md,mdx --out=reports/posts.linkcheck.json
+// node scripts/check_posts_links_local.js --registry=docs/blog-contents.md --dir=content/posts --ext=md,mdx --out=reports/posts.linkcheck.json
 //
 // Optional:
 // --domain=https://www.finmaphub.com  (treat absolute URLs on this domain as internal)
@@ -205,7 +205,7 @@ function listFiles(dirAbs, extsCsv) {
   const onlyPublished = (arg("only_published", "true") || "true").toLowerCase() === "true";
 
   if (!registryPath || !dirArg) {
-    console.error("Usage: node scripts/check_posts_links_local.js --registry=blog-contents.md --dir=content/posts --ext=md,mdx --out=reports/posts.linkcheck.json");
+    console.error("Usage: node scripts/check_posts_links_local.js --registry=docs/blog-contents.md --dir=content/posts --ext=md,mdx --out=reports/posts.linkcheck.json");
     process.exit(1);
   }
 

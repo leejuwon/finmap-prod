@@ -1,6 +1,6 @@
 # 복리 계산기 검증 보고서
 
-생성일: 2026-05-28T09:48:27.712Z
+생성일: 2026-07-22T13:42:32.689Z
 
 ## 변경 파일 목록
 
@@ -169,7 +169,7 @@ node scripts/verify_compound_calculator.js
 
 ## build 결과
 
-npm.cmd run build 성공 (Next.js build 및 next-sitemap 완료)
+아직 실행 전
 
 ## 남은 TODO
 

@@ -1,0 +1,263 @@
+{
+  "generatedAt": "2026-07-22",
+  "project": "FinMap",
+  "projectStage": "P1-1C predeploy integrated audit",
+  "overallStatus": "CONDITIONAL_PASS",
+  "deployBlockerCount": 0,
+  "reviewRequiredCount": 6,
+  "requiredInputs": [
+    {
+      "file": "reports/search-growth-90d-p0-1-baseline-audit.md",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/search-growth-90d-p0-2a-snippet-hygiene.md",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/search-growth-90d-p0-2b-internal-link-integrity.md",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/search-growth-90d-p1-1a-data-readiness.md",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/search-growth-90d-p1-1a-search-performance-audit.md",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/search-growth-90d-p1-1a-2-priority-calibration.md",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/search-growth-90d-p1-1b-1-ko-naver-low-risk-expansion.md",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/search-growth-90d-p1-1b-2-en-search-experiment.md",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/search-growth-90d-audit-data.json",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/search-growth-90d-url-inventory.csv",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/search-growth-90d-p1-1a-performance-merged.csv",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/search-growth-90d-p1-1a-query-map.csv",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/search-growth-90d-p1-1a-daily-merged.csv",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/search-growth-90d-p1-1a-priority.json",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/search-growth-90d-p1-1a-input-diagnostics.json",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/search-growth-90d-p1-1a-2-priority-calibration.json",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/search-growth-90d-p1-1a-2-execution-targets.json",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/search-growth-90d-p1-1b-2-en-experiment-manifest.json",
+      "status": "PRESENT",
+      "tracked": false
+    },
+    {
+      "file": "reports/posts.linkcheck.json",
+      "status": "PRESENT",
+      "tracked": true
+    },
+    {
+      "file": "reports/seo-channel-split-url-check.md",
+      "status": "PRESENT",
+      "tracked": true
+    }
+  ],
+  "commands": [
+    {
+      "command": "node --check scripts\\audit_search_growth_baseline.js",
+      "result": "PASS",
+      "notes": "syntax"
+    },
+    {
+      "command": "node --check scripts\\verify_search_snippet_hygiene.js",
+      "result": "PASS",
+      "notes": "syntax"
+    },
+    {
+      "command": "node --check scripts\\verify_internal_link_integrity.js",
+      "result": "PASS",
+      "notes": "syntax"
+    },
+    {
+      "command": "node --check scripts\\analyze_search_performance_inputs.js",
+      "result": "PASS",
+      "notes": "syntax"
+    },
+    {
+      "command": "node --check scripts\\verify_search_growth_p1_1b_ko_expansion.js",
+      "result": "PASS",
+      "notes": "syntax"
+    },
+    {
+      "command": "node --check scripts\\verify_search_growth_p1_1b_en_experiment.js",
+      "result": "PASS",
+      "notes": "syntax"
+    },
+    {
+      "command": "node scripts\\analyze_search_performance_inputs.js",
+      "result": "PASS",
+      "notes": "10 input files, 192 inventory URLs, 13 unmatched input URLs"
+    },
+    {
+      "command": "npm.cmd run check:posts-links",
+      "result": "PASS",
+      "notes": "Broken 0, Suspicious 0, self URL missing 0"
+    },
+    {
+      "command": "node scripts\\verify_tool_result_cta_events.js",
+      "result": "PASS",
+      "notes": "required events and params present"
+    },
+    {
+      "command": "node scripts\\verify_cagr_calculator.js",
+      "result": "PASS",
+      "notes": "sample calculations passed"
+    },
+    {
+      "command": "node scripts\\verify_dsr_ltv_calculator.js",
+      "result": "PASS",
+      "notes": "sample calculations passed; MODULE_TYPELESS_PACKAGE_JSON warning observed"
+    },
+    {
+      "command": "node scripts\\verify_mortgage_loan_calculator.js",
+      "result": "PASS",
+      "notes": "mortgage payment samples and registrations passed; MODULE_TYPELESS_PACKAGE_JSON warning observed"
+    },
+    {
+      "command": "node scripts\\verify_compound_calculator.js",
+      "result": "PASS",
+      "notes": "sample calculations passed"
+    },
+    {
+      "command": "node scripts\\verify_dca_simulator.js",
+      "result": "PASS",
+      "notes": "sample calculations passed"
+    },
+    {
+      "command": "node scripts\\verify_naver_calculator_seo.js",
+      "result": "REVIEW_REQUIRED",
+      "notes": "optional check failed one compound description keyword assertion"
+    },
+    {
+      "command": "npm.cmd run build",
+      "result": "PASS",
+      "notes": "223 static pages; sitemap-0 211, sitemap-ko 111, sitemap-en 100, en/sitemap 100"
+    },
+    {
+      "command": "node scripts\\verify_search_snippet_hygiene.js --base-url=http://127.0.0.1:8002",
+      "result": "PASS",
+      "notes": "rendered sample set passed"
+    },
+    {
+      "command": "node scripts\\verify_internal_link_integrity.js --base-url=http://127.0.0.1:8002",
+      "result": "PASS",
+      "notes": "broken 0, suspicious 0, checked P0-2B targets"
+    },
+    {
+      "command": "node scripts\\verify_search_growth_p1_1b_ko_expansion.js --base-url=http://127.0.0.1:8002",
+      "result": "PASS",
+      "notes": "134/134 checks passed"
+    },
+    {
+      "command": "node scripts\\verify_search_growth_p1_1b_en_experiment.js --base-url=http://127.0.0.1:8002",
+      "result": "PASS",
+      "notes": "170/170 checks passed"
+    },
+    {
+      "command": "node scripts\\verify_seo_channel_split.js --local-server",
+      "result": "PASS",
+      "notes": "canonical, hreflang, sitemaps passed for samples"
+    },
+    {
+      "command": "node scripts\\audit_search_growth_baseline.js",
+      "result": "PASS",
+      "notes": "192 URLs audited"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS",
+      "notes": "exit 0; CRLF normalization warnings only"
+    },
+    {
+      "command": "git status --short --untracked-files=all",
+      "result": "PASS",
+      "notes": "dirty worktree inventoried"
+    },
+    {
+      "command": "git diff --name-status",
+      "result": "PASS",
+      "notes": "unstaged changes inventoried"
+    },
+    {
+      "command": "git diff --stat",
+      "result": "PASS",
+      "notes": "diff summary inventoried"
+    }
+  ],
+  "changedFileCounts": {
+    "A_RUNTIME_CODE": 4,
+    "A_CONTENT": 13,
+    "A_REGISTRY_DOC": 1,
+    "B_GENERATED_SITEMAP": 4,
+    "C_AUDIT_REPORT": 36,
+    "E_LOCAL_ONLY_TEMP": 12,
+    "D_SEARCH_PERFORMANCE_INPUT": 17,
+    "A_SCRIPT": 9
+  },
+  "sitemapCounts": {
+    "public/sitemap-0.xml": 211,
+    "public/sitemap-ko.xml": 111,
+    "public/sitemap-en.xml": 100,
+    "public/en/sitemap.xml": 100
+  },
+  "knownWarnings": [
+    "MODULE_TYPELESS_PACKAGE_JSON warnings observed for ESM calculator modules during Node sample verification.",
+    "CRLF normalization warnings observed in git diff commands; git diff --check exit code was 0.",
+    "Search input and some reports are untracked; policy decision required before deploy bundle selection."
+  ]
+}

@@ -208,9 +208,9 @@ If you’re allocating between real estate and financial assets, two simple habi
 - Use CAGR to summarize what your alternatives realistically delivered over time.  
 - Use the goal simulator to translate target price bands and payment limits into a safer execution plan.
 
-<p class="text-sm text-slate-600">Related calculator: <a href="/tools/cagr-calculator">Open CAGR calculator</a></p>
+<p class="text-sm text-slate-600">Related calculator: <a href="/en/tools/cagr-calculator">Open CAGR calculator</a></p>
 
-<p class="text-sm text-slate-600">Related calculator: <a href="/tools/goal-simulator">Open goal simulator</a></p>
+<p class="text-sm text-slate-600">Related calculator: <a href="/en/tools/goal-simulator">Open goal simulator</a></p>
 
 ## Near the end: connect rates → dollar → risk regime (4 links that complete the picture)
 

@@ -1,0 +1,273 @@
+{
+  "generatedAt": "2026-07-22",
+  "project": "FinMap",
+  "projectStage": "P1-1C predeploy integrated audit",
+  "deployDate": "DEPLOY_DATE_PENDING",
+  "observationTargets": [
+    {
+      "group": "KO Track B",
+      "url": "/posts/personalFinance/what-is-cagr",
+      "baselinePeriod": "2026-04-23 to 2026-07-19",
+      "baselinePlatform": "Naver",
+      "clicks": 53,
+      "impressions": 5084,
+      "ctr": "1.00%",
+      "position": 3,
+      "sampleConfidence": "CLICK_TOP_30 / NAVER_WINNER",
+      "experimentType": "KO low-risk expansion",
+      "changedElements": [
+        "upper explanation",
+        "calculator CTA",
+        "dateModified",
+        "manual Article JSON-LD removal"
+      ],
+      "protectedElements": [
+        "title",
+        "H1",
+        "slug",
+        "canonical",
+        "hreflang",
+        "calculation logic"
+      ],
+      "deployDate": "DEPLOY_DATE_PENDING",
+      "check28Day": "DEPLOY_DATE_PLUS_28_DAYS_PENDING",
+      "check6Week": "DEPLOY_DATE_PLUS_42_DAYS_PENDING",
+      "rollbackConditions": [
+        "material impression decline",
+        "persistent average position decline",
+        "existing query cluster loss",
+        "CTR and impressions decline together",
+        "wrong-intent exposure",
+        "canonical or hreflang error",
+        "CTA duplicate event",
+        "mobile layout regression"
+      ]
+    },
+    {
+      "group": "KO Track B",
+      "url": "/tools/home-buying-budget-calculator",
+      "baselinePeriod": "2026-04-23 to 2026-07-19",
+      "baselinePlatform": "Naver",
+      "clicks": 33,
+      "impressions": 2209,
+      "ctr": "1.49%",
+      "position": null,
+      "sampleConfidence": "NAVER_ADJACENT_OPPORTUNITY",
+      "experimentType": "tool role separation",
+      "changedElements": [
+        "lead copy",
+        "result-reading flow",
+        "mortgage calculator CTA"
+      ],
+      "protectedElements": [
+        "title",
+        "H1",
+        "slug",
+        "canonical",
+        "hreflang",
+        "calculation logic"
+      ],
+      "deployDate": "DEPLOY_DATE_PENDING",
+      "check28Day": "DEPLOY_DATE_PLUS_28_DAYS_PENDING",
+      "check6Week": "DEPLOY_DATE_PLUS_42_DAYS_PENDING",
+      "rollbackConditions": [
+        "material impression decline",
+        "persistent average position decline",
+        "existing query cluster loss",
+        "CTR and impressions decline together",
+        "wrong-intent exposure",
+        "canonical or hreflang error",
+        "CTA duplicate event",
+        "mobile layout regression"
+      ]
+    },
+    {
+      "group": "KO Track B",
+      "url": "/posts/personalFinance/dsr-40-income-loan-limit-table",
+      "baselinePeriod": "2026-04-23 to 2026-07-19",
+      "baselinePlatform": "Naver",
+      "clicks": 18,
+      "impressions": 538,
+      "ctr": "3.30%",
+      "position": 12,
+      "sampleConfidence": "CLICK_TOP_30 / NAVER_WINNER",
+      "experimentType": "KO low-risk expansion",
+      "changedElements": [
+        "upper mortgage payment CTA",
+        "supporting explanation",
+        "FAQ sync",
+        "dateModified"
+      ],
+      "protectedElements": [
+        "title",
+        "H1",
+        "slug",
+        "canonical",
+        "hreflang",
+        "table assumptions",
+        "calculation logic"
+      ],
+      "deployDate": "DEPLOY_DATE_PENDING",
+      "check28Day": "DEPLOY_DATE_PLUS_28_DAYS_PENDING",
+      "check6Week": "DEPLOY_DATE_PLUS_42_DAYS_PENDING",
+      "rollbackConditions": [
+        "material impression decline",
+        "persistent average position decline",
+        "existing query cluster loss",
+        "CTR and impressions decline together",
+        "wrong-intent exposure",
+        "canonical or hreflang error",
+        "CTA duplicate event",
+        "mobile layout regression"
+      ]
+    },
+    {
+      "group": "EN Track A",
+      "url": "/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+      "baselinePeriod": "2026-04-23 to 2026-07-19",
+      "baselinePlatform": "Google/Bing",
+      "gsc": {
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": "0",
+        "position": "29"
+      },
+      "bing": {
+        "clicks": 0,
+        "impressions": 399,
+        "ctr": "0",
+        "position": "5.35"
+      },
+      "sampleConfidence": "SUFFICIENT",
+      "experimentType": "EN snippet and first-answer experiment",
+      "changedElements": [
+        "title",
+        "description",
+        "H1",
+        "first paragraph",
+        "upper Goal Simulator CTA",
+        "dateModified"
+      ],
+      "protectedElements": [
+        "slug",
+        "canonical",
+        "robots",
+        "sitemap policy",
+        "calculator logic",
+        "GA4 event names"
+      ],
+      "deployDate": "DEPLOY_DATE_PENDING",
+      "check28Day": "DEPLOY_DATE_PLUS_28_DAYS_PENDING",
+      "check6Week": "DEPLOY_DATE_PLUS_42_DAYS_PENDING",
+      "rollbackConditions": [
+        "material impression decline",
+        "persistent average position decline",
+        "existing query cluster loss",
+        "CTR and impressions decline together",
+        "wrong-intent exposure",
+        "canonical or hreflang error",
+        "CTA duplicate event",
+        "mobile layout regression"
+      ]
+    },
+    {
+      "group": "EN Track A",
+      "url": "/en/posts/personalFinance/annual-vs-monthly-compound",
+      "baselinePeriod": "2026-04-23 to 2026-07-19",
+      "baselinePlatform": "Google/Bing",
+      "gsc": {
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": "0",
+        "position": "9.6"
+      },
+      "bing": {
+        "clicks": 0,
+        "impressions": 145,
+        "ctr": "0",
+        "position": "8.61"
+      },
+      "sampleConfidence": "SUFFICIENT",
+      "experimentType": "EN snippet and first-answer experiment",
+      "changedElements": [
+        "title",
+        "description",
+        "H1",
+        "first paragraph",
+        "upper Compound CTA",
+        "dateModified"
+      ],
+      "protectedElements": [
+        "slug",
+        "canonical",
+        "hreflang",
+        "robots",
+        "sitemap policy",
+        "calculator logic",
+        "GA4 event names"
+      ],
+      "deployDate": "DEPLOY_DATE_PENDING",
+      "check28Day": "DEPLOY_DATE_PLUS_28_DAYS_PENDING",
+      "check6Week": "DEPLOY_DATE_PLUS_42_DAYS_PENDING",
+      "rollbackConditions": [
+        "material impression decline",
+        "persistent average position decline",
+        "existing query cluster loss",
+        "CTR and impressions decline together",
+        "wrong-intent exposure",
+        "canonical or hreflang error",
+        "CTA duplicate event",
+        "mobile layout regression"
+      ]
+    },
+    {
+      "group": "EN Track A",
+      "url": "/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+      "baselinePeriod": "2026-04-23 to 2026-07-19",
+      "baselinePlatform": "Google/Bing",
+      "gsc": {
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": "0",
+        "position": "4.67"
+      },
+      "bing": {
+        "clicks": 0,
+        "impressions": 349,
+        "ctr": "0",
+        "position": "3.88"
+      },
+      "sampleConfidence": "SUFFICIENT",
+      "experimentType": "EN snippet and first-answer experiment",
+      "changedElements": [
+        "description",
+        "first paragraph",
+        "upper DCA CTA",
+        "dateModified"
+      ],
+      "protectedElements": [
+        "title",
+        "H1",
+        "slug",
+        "canonical",
+        "explicit hreflang",
+        "robots",
+        "calculator logic",
+        "GA4 event names"
+      ],
+      "deployDate": "DEPLOY_DATE_PENDING",
+      "check28Day": "DEPLOY_DATE_PLUS_28_DAYS_PENDING",
+      "check6Week": "DEPLOY_DATE_PLUS_42_DAYS_PENDING",
+      "rollbackConditions": [
+        "material impression decline",
+        "persistent average position decline",
+        "existing query cluster loss",
+        "CTR and impressions decline together",
+        "wrong-intent exposure",
+        "canonical or hreflang error",
+        "CTA duplicate event",
+        "mobile layout regression"
+      ]
+    }
+  ]
+}
