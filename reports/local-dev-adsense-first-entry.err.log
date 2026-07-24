@@ -1,0 +1,66 @@
+⨯ TypeError: fetch failed
+    at ignore-listed frames {
+  [cause]: Error: connect EACCES 23.60.184.45:443
+      at <unknown> (Error: connect EACCES 23.60.184.45:443) {
+    errno: -4092,
+    code: 'EACCES',
+    syscall: 'connect',
+    address: '23.60.184.45',
+    port: 443
+  }
+}
+⨯ TypeError: fetch failed
+    at ignore-listed frames {
+  [cause]: Error: connect EACCES 23.60.184.45:443
+      at <unknown> (Error: connect EACCES 23.60.184.45:443) {
+    errno: -4092,
+    code: 'EACCES',
+    syscall: 'connect',
+    address: '23.60.184.45',
+    port: 443
+  }
+}
+⨯ TypeError: fetch failed
+    at ignore-listed frames {
+  [cause]: Error: connect EACCES 23.60.184.45:443
+      at <unknown> (Error: connect EACCES 23.60.184.45:443) {
+    errno: -4092,
+    code: 'EACCES',
+    syscall: 'connect',
+    address: '23.60.184.45',
+    port: 443
+  }
+}
+⨯ TypeError: fetch failed
+    at ignore-listed frames {
+  [cause]: Error: connect EACCES 23.60.184.45:443
+      at <unknown> (Error: connect EACCES 23.60.184.45:443) {
+    errno: -4092,
+    code: 'EACCES',
+    syscall: 'connect',
+    address: '23.60.184.45',
+    port: 443
+  }
+}
+⨯ TypeError: fetch failed
+    at ignore-listed frames {
+  [cause]: Error: connect EACCES 23.60.184.45:443
+      at <unknown> (Error: connect EACCES 23.60.184.45:443) {
+    errno: -4092,
+    code: 'EACCES',
+    syscall: 'connect',
+    address: '23.60.184.45',
+    port: 443
+  }
+}
+⨯ TypeError: fetch failed
+    at ignore-listed frames {
+  [cause]: Error: connect EACCES 23.60.184.45:443
+      at <unknown> (Error: connect EACCES 23.60.184.45:443) {
+    errno: -4092,
+    code: 'EACCES',
+    syscall: 'connect',
+    address: '23.60.184.45',
+    port: 443
+  }
+}

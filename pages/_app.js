@@ -6,24 +6,9 @@ import Script from 'next/script';
 import Layout from '../_components/Layout';
 import '../styles/globals.css';
 
-const ADSENSE_PATHS = new Set([
-  '/posts/[category]/[slug]',
-  '/tools/fire-calculator',
-  '/tools/dsr-ltv-calculator',
-  '/tools/compound-interest',
-  '/tools/goal-simulator',
-  '/tools/dca-calculator',
-  '/tools/cagr-calculator',
-  '/market/real-estate',
-]);
-
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
-  const ADS_CLIENT = 'ca-pub-1869932115288976';
-  const shouldLoadAdsense =
-    ADSENSE_PATHS.has(router.pathname) ||
-    router.pathname.startsWith('/market/real-estate/apt/');
 
   useEffect(() => {
     if (!GA_ID) return;
@@ -63,15 +48,6 @@ function MyApp({ Component, pageProps }) {
           </Script>
         </>
       )}  
-
-      {shouldLoadAdsense && (
-        <Script
-          id="adsbygoogle-loader"
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS_CLIENT}`}
-          strategy="lazyOnload"
-          crossOrigin="anonymous"
-        />
-      )}
 
       <Layout>
         <Component {...pageProps} />

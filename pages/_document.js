@@ -31,7 +31,12 @@ class MyDocument extends Document {
           <meta
             name="google-adsense-account"
             content="ca-pub-1869932115288976"
-          />          
+          />
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976"
+            crossOrigin="anonymous"
+          />
           <meta
             name="google-site-verification"
             content="8FhqQNDjbZ-QpdePXdPiCR_VJwQstaK-tbuYIlXxs_A"

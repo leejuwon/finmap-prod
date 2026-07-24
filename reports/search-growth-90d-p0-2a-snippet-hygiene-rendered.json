@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-07-22T13:45:35.698Z",
+    "generatedAt": "2026-07-24T08:03:02.455Z",
     "baseUrl": "http://127.0.0.1:8002",
     "rendered_total": 16,
     "rendered_pass": 16,
@@ -1661,15 +1661,14 @@
         "scrollWidth": 320,
         "clientWidth": 320,
         "console_status": "WARN",
-        "console_error_count": 8,
+        "console_error_count": 4,
         "page_error_count": 0,
         "hydration_error_count": 0,
         "sample_console_errors": [
           "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
-          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
-          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
-          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
-          "view api failed: 500 {\"error\":\"server error\"}"
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
         ],
         "pass": true
       },
@@ -1680,15 +1679,13 @@
         "scrollWidth": 320,
         "clientWidth": 320,
         "console_status": "WARN",
-        "console_error_count": 7,
+        "console_error_count": 3,
         "page_error_count": 0,
         "hydration_error_count": 0,
         "sample_console_errors": [
-          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
-          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
           "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
           "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
-          "view api failed: 500 {\"error\":\"server error\"}"
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
         ],
         "pass": true
       },
@@ -1699,14 +1696,12 @@
         "scrollWidth": 320,
         "clientWidth": 320,
         "console_status": "WARN",
-        "console_error_count": 7,
+        "console_error_count": 3,
         "page_error_count": 0,
         "hydration_error_count": 0,
         "sample_console_errors": [
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
           "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
-          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
-          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
-          "view api failed: 500 {\"error\":\"server error\"}",
           "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
         ],
         "pass": true
@@ -1718,15 +1713,13 @@
         "scrollWidth": 320,
         "clientWidth": 320,
         "console_status": "WARN",
-        "console_error_count": 7,
+        "console_error_count": 3,
         "page_error_count": 0,
         "hydration_error_count": 0,
         "sample_console_errors": [
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
           "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
-          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
-          "view api failed: 500 {\"error\":\"server error\"}",
-          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
-          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
         ],
         "pass": true
       },
@@ -1737,15 +1730,14 @@
         "scrollWidth": 320,
         "clientWidth": 320,
         "console_status": "WARN",
-        "console_error_count": 8,
+        "console_error_count": 4,
         "page_error_count": 0,
         "hydration_error_count": 0,
         "sample_console_errors": [
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
           "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
           "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
-          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
-          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
-          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
         ],
         "pass": true
       },
@@ -1756,15 +1748,13 @@
         "scrollWidth": 320,
         "clientWidth": 320,
         "console_status": "WARN",
-        "console_error_count": 7,
+        "console_error_count": 3,
         "page_error_count": 0,
         "hydration_error_count": 0,
         "sample_console_errors": [
-          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
-          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
           "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
           "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
-          "view api failed: 500 {\"error\":\"server error\"}"
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
         ],
         "pass": true
       },
@@ -1839,10 +1829,11 @@
         "scrollWidth": 320,
         "clientWidth": 320,
         "console_status": "WARN",
-        "console_error_count": 1,
+        "console_error_count": 2,
         "page_error_count": 0,
         "hydration_error_count": 0,
         "sample_console_errors": [
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
           "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
         ],
         "pass": true
@@ -1854,10 +1845,11 @@
         "scrollWidth": 320,
         "clientWidth": 320,
         "console_status": "WARN",
-        "console_error_count": 1,
+        "console_error_count": 2,
         "page_error_count": 0,
         "hydration_error_count": 0,
         "sample_console_errors": [
+          "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
           "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
         ],
         "pass": true
