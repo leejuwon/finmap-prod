@@ -1,0 +1,356 @@
+{
+  "generatedAt": "2026-07-29",
+  "inputDir": "reports/search-weekly-input/2026-07-22_2026-07-28",
+  "requiredFilesAvailable": true,
+  "freshnessStatus": "RECENT_GSC_DATA_MAY_BE_PROVISIONAL",
+  "expectedReportTotals": {
+    "recent": {
+      "clicks": 0,
+      "impressions": 30
+    },
+    "previous": {
+      "clicks": 2,
+      "impressions": 414
+    }
+  },
+  "files": {
+    "recentPages": {
+      "fileName": "gsc-recent-pages.csv",
+      "path": "reports\\search-weekly-input\\2026-07-22_2026-07-28\\gsc-recent-pages.csv",
+      "status": "PASS",
+      "bytes": 4630,
+      "encoding": "utf-8",
+      "delimiter": ",",
+      "header": [
+        "인기 페이지",
+        "클릭수",
+        "노출",
+        "ctr",
+        "게재 순위"
+      ],
+      "rowCount": 59,
+      "firstRow": {
+        "인기 페이지": "https://www.finmaphub.com/posts/personalFinance/how-much-per-month-for-100m",
+        "클릭수": "0",
+        "노출": "11",
+        "ctr": "0%",
+        "게재 순위": "18.64"
+      },
+      "lastRow": {
+        "인기 페이지": "https://www.finmaphub.com/market/real-estate/apt/11320||창동|창동주공3단지(해등마을)",
+        "클릭수": "0",
+        "노출": "1",
+        "ctr": "0%",
+        "게재 순위": "57"
+      },
+      "totals": {
+        "clicks": 0,
+        "impressions": 232,
+        "ctr": 0,
+        "weightedPosition": 16.806422413793104
+      },
+      "ctrHandling": "Use exported CTR when present; otherwise calculate clicks / impressions for display.",
+      "positionHandling": "Weighted by impressions when aggregating; lower number is better.",
+      "duplicateRows": 0,
+      "parsingFailures": 0
+    },
+    "previousPages": {
+      "fileName": "gsc-previous-pages.csv",
+      "path": "reports\\search-weekly-input\\2026-07-22_2026-07-28\\gsc-previous-pages.csv",
+      "status": "PASS",
+      "bytes": 5212,
+      "encoding": "utf-8",
+      "delimiter": ",",
+      "header": [
+        "인기 페이지",
+        "클릭수",
+        "노출",
+        "ctr",
+        "게재 순위"
+      ],
+      "rowCount": 67,
+      "firstRow": {
+        "인기 페이지": "https://www.finmaphub.com/tools/goal-simulator",
+        "클릭수": "1",
+        "노출": "16",
+        "ctr": "6.25%",
+        "게재 순위": "7"
+      },
+      "lastRow": {
+        "인기 페이지": "https://www.finmaphub.com/posts/economicInfo/tariffs-growth-margins-fx-package-shock",
+        "클릭수": "0",
+        "노출": "1",
+        "ctr": "0%",
+        "게재 순위": "12"
+      },
+      "totals": {
+        "clicks": 2,
+        "impressions": 550,
+        "ctr": 0.0036363636363636364,
+        "weightedPosition": 8.879254545454545
+      },
+      "ctrHandling": "Use exported CTR when present; otherwise calculate clicks / impressions for display.",
+      "positionHandling": "Weighted by impressions when aggregating; lower number is better.",
+      "duplicateRows": 0,
+      "parsingFailures": 0
+    },
+    "recentQueries": {
+      "fileName": "gsc-recent-queries.csv",
+      "path": "reports\\search-weekly-input\\2026-07-22_2026-07-28\\gsc-recent-queries.csv",
+      "status": "PASS",
+      "bytes": 124,
+      "encoding": "utf-8",
+      "delimiter": ",",
+      "header": [
+        "인기 검색어",
+        "클릭수",
+        "노출",
+        "ctr",
+        "게재 순위"
+      ],
+      "rowCount": 2,
+      "firstRow": {
+        "인기 검색어": "site:www.finmaphub.com",
+        "클릭수": "0",
+        "노출": "11",
+        "ctr": "0%",
+        "게재 순위": "16.45"
+      },
+      "lastRow": {
+        "인기 검색어": "\"guarantee mortgage\"",
+        "클릭수": "0",
+        "노출": "1",
+        "ctr": "0%",
+        "게재 순위": "101"
+      },
+      "totals": {
+        "clicks": 0,
+        "impressions": 12,
+        "ctr": 0,
+        "weightedPosition": 23.495833333333334
+      },
+      "ctrHandling": "Use exported CTR when present; otherwise calculate clicks / impressions for display.",
+      "positionHandling": "Weighted by impressions when aggregating; lower number is better.",
+      "duplicateRows": 0,
+      "parsingFailures": 0
+    },
+    "previousQueries": {
+      "fileName": "gsc-previous-queries.csv",
+      "path": "reports\\search-weekly-input\\2026-07-22_2026-07-28\\gsc-previous-queries.csv",
+      "status": "PASS",
+      "bytes": 926,
+      "encoding": "utf-8",
+      "delimiter": ",",
+      "header": [
+        "인기 검색어",
+        "클릭수",
+        "노출",
+        "ctr",
+        "게재 순위"
+      ],
+      "rowCount": 25,
+      "firstRow": {
+        "인기 검색어": "cagr 계산기",
+        "클릭수": "0",
+        "노출": "19",
+        "ctr": "0%",
+        "게재 순위": "9.84"
+      },
+      "lastRow": {
+        "인기 검색어": "원베일리 가격",
+        "클릭수": "0",
+        "노출": "1",
+        "ctr": "0%",
+        "게재 순위": "43"
+      },
+      "totals": {
+        "clicks": 0,
+        "impressions": 89,
+        "ctr": 0,
+        "weightedPosition": 15.909438202247191
+      },
+      "ctrHandling": "Use exported CTR when present; otherwise calculate clicks / impressions for display.",
+      "positionHandling": "Weighted by impressions when aggregating; lower number is better.",
+      "duplicateRows": 0,
+      "parsingFailures": 0
+    },
+    "recentCountries": {
+      "fileName": "gsc-recent-countries.csv",
+      "path": "reports\\search-weekly-input\\2026-07-22_2026-07-28\\gsc-recent-countries.csv",
+      "status": "MISSING",
+      "bytes": 0,
+      "encoding": null,
+      "delimiter": null,
+      "header": [],
+      "rowCount": 0,
+      "firstRow": null,
+      "lastRow": null,
+      "totals": {
+        "clicks": null,
+        "impressions": null,
+        "ctr": null,
+        "weightedPosition": null
+      },
+      "ctrHandling": "not parsed",
+      "positionHandling": "not parsed",
+      "duplicateRows": 0,
+      "parsingFailures": 0
+    },
+    "previousCountries": {
+      "fileName": "gsc-previous-countries.csv",
+      "path": "reports\\search-weekly-input\\2026-07-22_2026-07-28\\gsc-previous-countries.csv",
+      "status": "MISSING",
+      "bytes": 0,
+      "encoding": null,
+      "delimiter": null,
+      "header": [],
+      "rowCount": 0,
+      "firstRow": null,
+      "lastRow": null,
+      "totals": {
+        "clicks": null,
+        "impressions": null,
+        "ctr": null,
+        "weightedPosition": null
+      },
+      "ctrHandling": "not parsed",
+      "positionHandling": "not parsed",
+      "duplicateRows": 0,
+      "parsingFailures": 0
+    },
+    "recentDevices": {
+      "fileName": "gsc-recent-devices.csv",
+      "path": "reports\\search-weekly-input\\2026-07-22_2026-07-28\\gsc-recent-devices.csv",
+      "status": "MISSING",
+      "bytes": 0,
+      "encoding": null,
+      "delimiter": null,
+      "header": [],
+      "rowCount": 0,
+      "firstRow": null,
+      "lastRow": null,
+      "totals": {
+        "clicks": null,
+        "impressions": null,
+        "ctr": null,
+        "weightedPosition": null
+      },
+      "ctrHandling": "not parsed",
+      "positionHandling": "not parsed",
+      "duplicateRows": 0,
+      "parsingFailures": 0
+    },
+    "previousDevices": {
+      "fileName": "gsc-previous-devices.csv",
+      "path": "reports\\search-weekly-input\\2026-07-22_2026-07-28\\gsc-previous-devices.csv",
+      "status": "MISSING",
+      "bytes": 0,
+      "encoding": null,
+      "delimiter": null,
+      "header": [],
+      "rowCount": 0,
+      "firstRow": null,
+      "lastRow": null,
+      "totals": {
+        "clicks": null,
+        "impressions": null,
+        "ctr": null,
+        "weightedPosition": null
+      },
+      "ctrHandling": "not parsed",
+      "positionHandling": "not parsed",
+      "duplicateRows": 0,
+      "parsingFailures": 0
+    },
+    "recentSearchAppearance": {
+      "fileName": "gsc-recent-search-appearance.csv",
+      "path": "reports\\search-weekly-input\\2026-07-22_2026-07-28\\gsc-recent-search-appearance.csv",
+      "status": "MISSING",
+      "bytes": 0,
+      "encoding": null,
+      "delimiter": null,
+      "header": [],
+      "rowCount": 0,
+      "firstRow": null,
+      "lastRow": null,
+      "totals": {
+        "clicks": null,
+        "impressions": null,
+        "ctr": null,
+        "weightedPosition": null
+      },
+      "ctrHandling": "not parsed",
+      "positionHandling": "not parsed",
+      "duplicateRows": 0,
+      "parsingFailures": 0
+    },
+    "previousSearchAppearance": {
+      "fileName": "gsc-previous-search-appearance.csv",
+      "path": "reports\\search-weekly-input\\2026-07-22_2026-07-28\\gsc-previous-search-appearance.csv",
+      "status": "MISSING",
+      "bytes": 0,
+      "encoding": null,
+      "delimiter": null,
+      "header": [],
+      "rowCount": 0,
+      "firstRow": null,
+      "lastRow": null,
+      "totals": {
+        "clicks": null,
+        "impressions": null,
+        "ctr": null,
+        "weightedPosition": null
+      },
+      "ctrHandling": "not parsed",
+      "positionHandling": "not parsed",
+      "duplicateRows": 0,
+      "parsingFailures": 0
+    }
+  },
+  "totals": {
+    "report": {
+      "recent": {
+        "clicks": 0,
+        "impressions": 30
+      },
+      "previous": {
+        "clicks": 2,
+        "impressions": 414
+      }
+    },
+    "pageTable": {
+      "recent": {
+        "clicks": 0,
+        "impressions": 232,
+        "ctr": 0,
+        "weightedPosition": 16.806422413793104
+      },
+      "previous": {
+        "clicks": 2,
+        "impressions": 550,
+        "ctr": 0.0036363636363636364,
+        "weightedPosition": 8.879254545454545
+      }
+    },
+    "queryTable": {
+      "recent": {
+        "clicks": 0,
+        "impressions": 12,
+        "ctr": 0,
+        "weightedPosition": 23.495833333333334
+      },
+      "previous": {
+        "clicks": 0,
+        "impressions": 89,
+        "ctr": 0,
+        "weightedPosition": 15.909438202247191
+      }
+    }
+  },
+  "unexplainedOrAnonymizedDifference": {
+    "pageRecentImpressions": -202,
+    "pagePreviousImpressions": -136,
+    "queryRecentImpressions": 18,
+    "queryPreviousImpressions": 325
+  }
+}

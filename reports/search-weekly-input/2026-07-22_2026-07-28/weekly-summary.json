@@ -1,0 +1,126 @@
+{
+  "generatedAt": "2026-07-29",
+  "source": "user-provided manual weekly baselines from GSC, Bing Webmaster Tools, Naver Search Advisor, and GA4 screens",
+  "periods": {
+    "recent": {
+      "start": "2026-07-22",
+      "end": "2026-07-28",
+      "days": 7
+    },
+    "previous": {
+      "start": "2026-07-15",
+      "end": "2026-07-21",
+      "days": 7
+    },
+    "overlap": false
+  },
+  "channels": {
+    "gsc": {
+      "recent": {
+        "clicks": 0,
+        "impressions": 30,
+        "ctr": 0,
+        "averagePosition": 15,
+        "topQuery": "site:www.finmaphub.com",
+        "topPage": "/posts/personalFinance/how-much-per-month-for-100m"
+      },
+      "previous": {
+        "clicks": 2,
+        "impressions": 414,
+        "ctr": 0.005,
+        "averagePosition": 9.9,
+        "topQuery": "cagr 계산기",
+        "topPage": "/tools/compound-interest"
+      },
+      "notes": [
+        "GSC last-day data can be preliminary; verify 2026-07-28 completeness in GSC before final root-cause decisions.",
+        "Detailed page/query/country/device/search appearance exports were not provided in this summary."
+      ]
+    },
+    "bing": {
+      "recent": {
+        "clicks": 4,
+        "impressions": 178,
+        "ctr": 0.0225,
+        "position": null,
+        "topQuery": "kospi factors affecting market",
+        "topPage": "/market/real-estate/seoul-top100"
+      },
+      "previous": {
+        "clicks": 3,
+        "impressions": 134,
+        "ctr": 0.0224,
+        "position": null,
+        "topQuery": "kospi factors affecting market",
+        "topPage": "/en/posts/personalFinance/annual-vs-monthly-compound"
+      },
+      "notes": [
+        "Bing position was unavailable in the provided weekly summary.",
+        "The sample is small and should not be over-weighted."
+      ]
+    },
+    "naver": {
+      "recent": {
+        "clicks": 92,
+        "impressions": 15108,
+        "ctr": null,
+        "topQueryChange": "주담대 원리금 계산기",
+        "topPageChange": "/tools/dsr-ltv-calculator"
+      },
+      "previous": {
+        "clicks": 74,
+        "impressions": 15844,
+        "ctr": null,
+        "topQueryChange": "없음",
+        "topPageChange": "없음"
+      },
+      "notes": [
+        "Naver CTR is calculated from clicks divided by impressions.",
+        "Naver calculator SERP ranks must be checked manually; no automatic SERP crawling is allowed."
+      ]
+    }
+  },
+  "ga4AllTraffic": {
+    "recent": {
+      "sessions": 432,
+      "activeUsers": 405,
+      "newUsers": 396,
+      "averageEngagementTimeNote": "screen showed about 11 seconds",
+      "keyEvents": 0
+    },
+    "previous": {
+      "sessions": 632,
+      "activeUsers": 613,
+      "newUsers": 607,
+      "averageEngagementTimeNote": "screen showed about 11 seconds",
+      "keyEvents": 0
+    },
+    "landingPages": [
+      {
+        "path": "/tools/dsr-ltv-calculator",
+        "recentSessions": 31,
+        "previousSessions": 42
+      },
+      {
+        "path": "/tools/compound-interest",
+        "recentSessions": 16,
+        "previousSessions": 26
+      },
+      {
+        "path": "(not set)",
+        "recentSessions": 15,
+        "previousSessions": 4
+      },
+      {
+        "path": "/",
+        "recentSessions": 12,
+        "previousSessions": 12
+      }
+    ],
+    "notes": [
+      "The provided GA4 screen is all traffic, not filtered to google / organic, naver / organic, or bing / organic.",
+      "Key events = 0 on that landing page screen is not treated as event collection = 0.",
+      "Calculator event collection must be checked in Events or Explore."
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-07-29",
+  "status": "READY",
+  "targets": [
+    {
+      "priority": 1,
+      "target": "/tools/compound-interest",
+      "type": "URL_INSPECTION_RECHECK",
+      "reason": "130 impression loss; share 32.2%.",
+      "queryCaveat": "Page-query mapping is not confirmed without a page-query export."
+    },
+    {
+      "priority": 2,
+      "target": "/tools/cagr-calculator",
+      "type": "URL_INSPECTION_RECHECK",
+      "reason": "44 impression loss; share 10.9%.",
+      "queryCaveat": "Page-query mapping is not confirmed without a page-query export."
+    },
+    {
+      "priority": 3,
+      "target": "/tools/dca-calculator",
+      "type": "NO_CHANGE_OBSERVE",
+      "reason": "16 impression loss; share 4.0%.",
+      "queryCaveat": "Page-query mapping is not confirmed without a page-query export."
+    },
+    {
+      "priority": 4,
+      "target": "/posts/personalFinance/how-much-per-month-for-100m",
+      "type": "URL_INSPECTION_RECHECK",
+      "reason": "10 impression loss; share 2.5%.",
+      "queryCaveat": "Page-query mapping is not confirmed without a page-query export."
+    },
+    {
+      "priority": 5,
+      "target": "/market/real-estate",
+      "type": "NO_CHANGE_OBSERVE",
+      "reason": "9 impression loss; share 2.2%.",
+      "queryCaveat": "Page-query mapping is not confirmed without a page-query export."
+    }
+  ]
+}

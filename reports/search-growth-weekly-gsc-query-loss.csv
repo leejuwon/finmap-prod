@@ -1,0 +1,28 @@
+status,query,normalized_query,query_family,locale,is_branded,previous_clicks,recent_clicks,click_delta,previous_impressions,recent_impressions,impression_delta,loss_share,lost_impression_share,previous_ctr,recent_ctr,ctr_pp_delta,previous_position,recent_position,position_delta,likely_intent,likely_target_url,target_confidence,query_url_confidence,diagnosis
+LOW_SAMPLE,cagr 계산기,cagr 계산기,CAGR,ko,no,0,0,0,19,0,-19,0.213483,0.213483,0,,,9.84,,,calculator,/tools/cagr-calculator,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,적립식 복리계산기,적립식 복리계산기,compound,ko,no,0,0,0,11,0,-11,0.123596,0.123596,0,,,17.09,,,calculator,/tools/compound-interest,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,적립식 복리 계산기,적립식 복리 계산기,compound,ko,no,0,0,0,9,0,-9,0.101124,0.101124,0,,,24.44,,,calculator,/tools/compound-interest,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,적립식 계산기,적립식 계산기,DCA,ko,no,0,0,0,7,0,-7,0.078652,0.078652,0,,,22.86,,,calculator,/tools/dca-calculator,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,적립식 투자 계산기,적립식 투자 계산기,DCA,ko,no,0,0,0,6,0,-6,0.067416,0.067416,0,,,22.17,,,calculator,/tools/dca-calculator,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,연평균 수익률 계산기,연평균 수익률 계산기,CAGR,ko,no,0,0,0,5,0,-5,0.05618,0.05618,0,,,3.2,,,calculator,/tools/cagr-calculator,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,적립식복리계산기,적립식복리계산기,compound,ko,no,0,0,0,4,0,-4,0.044944,0.044944,0,,,7.5,,,calculator,/tools/compound-interest,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,복리계산,복리계산,compound,ko,no,0,0,0,4,0,-4,0.044944,0.044944,0,,,27,,,calculator,/tools/compound-interest,POSSIBLE_TARGET,POSSIBLE_TARGET,LOW_SAMPLE
+LOW_SAMPLE,cagr계산기,cagr계산기,CAGR,ko,no,0,0,0,3,0,-3,0.033708,0.033708,0,,,9,,,calculator,/tools/cagr-calculator,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,etf 시뮬레이션,etf 시뮬레이션,other,ko,no,0,0,0,3,0,-3,0.033708,0.033708,0,,,9.33,,,unknown,,QUERY_URL_NOT_CONFIRMED,QUERY_URL_NOT_CONFIRMED,LOW_SAMPLE
+LOW_SAMPLE,연평균 증가율 계산기,연평균 증가율 계산기,CAGR,ko,no,0,0,0,2,0,-2,0.022472,0.022472,0,,,9,,,calculator,/tools/cagr-calculator,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,월복리계산기,월복리계산기,compound,ko,no,0,0,0,2,0,-2,0.022472,0.022472,0,,,14.5,,,calculator,/tools/compound-interest,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,fire 계산기,fire 계산기,FIRE,ko,no,0,0,0,2,0,-2,0.022472,0.022472,0,,,44.5,,,calculator,/tools/fire-calculator,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,월복리 계산기,월복리 계산기,compound,ko,no,0,0,0,1,0,-1,0.011236,0.011236,0,,,5,,,calculator,/tools/compound-interest,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,연평균 계산기,연평균 계산기,CAGR,ko,no,0,0,0,1,0,-1,0.011236,0.011236,0,,,8,,,calculator,/tools/cagr-calculator,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,월적립 복리 계산기,월적립 복리 계산기,compound,ko,no,0,0,0,1,0,-1,0.011236,0.011236,0,,,9,,,calculator,/tools/compound-interest,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,"""대림주택a동"" ""38.97"" ""2024-09-06""","""대림주택a동"" ""38.97"" ""2024-09-06""",other,en_or_unknown,no,0,0,0,1,0,-1,0.011236,0.011236,0,,,10,,,unknown,,QUERY_URL_NOT_CONFIRMED,QUERY_URL_NOT_CONFIRMED,LOW_SAMPLE
+LOW_SAMPLE,자산 계산기,자산 계산기,other,ko,no,0,0,0,1,0,-1,0.011236,0.011236,0,,,10,,,unknown,,QUERY_URL_NOT_CONFIRMED,QUERY_URL_NOT_CONFIRMED,LOW_SAMPLE
+LOW_SAMPLE,연평균 성장률 계산기,연평균 성장률 계산기,CAGR,ko,no,0,0,0,1,0,-1,0.011236,0.011236,0,,,11,,,calculator,/tools/cagr-calculator,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,복리 계산기 적립식,복리 계산기 적립식,compound,ko,no,0,0,0,1,0,-1,0.011236,0.011236,0,,,13,,,calculator,/tools/compound-interest,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,cagr 뜻,cagr 뜻,CAGR,ko,no,0,0,0,1,0,-1,0.011236,0.011236,0,,,16,,,calculator,/tools/cagr-calculator,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,복리계산기 적립식,복리계산기 적립식,compound,ko,no,0,0,0,1,0,-1,0.011236,0.011236,0,,,16,,,calculator,/tools/compound-interest,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,etf 적립식 투자 계산기,etf 적립식 투자 계산기,DCA,ko,no,0,0,0,1,0,-1,0.011236,0.011236,0,,,20,,,calculator,/tools/dca-calculator,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,적립식투자 계산기,적립식투자 계산기,DCA,ko,no,0,0,0,1,0,-1,0.011236,0.011236,0,,,22,,,calculator,/tools/dca-calculator,INFERRED_FROM_TITLE_SLUG,INFERRED_FROM_TITLE_SLUG,LOW_SAMPLE
+LOW_SAMPLE,원베일리 가격,원베일리 가격,other,ko,no,0,0,0,1,0,-1,0.011236,0.011236,0,,,43,,,unknown,,QUERY_URL_NOT_CONFIRMED,QUERY_URL_NOT_CONFIRMED,LOW_SAMPLE
+SITE_OPERATOR_QUERY,site:www.finmaphub.com,site:www.finmaphub.com,site operator,en_or_unknown,yes,0,0,0,0,11,11,0,0,,0,,,16.45,,site_operator_check,,QUERY_URL_NOT_CONFIRMED,QUERY_URL_NOT_CONFIRMED,SITE_OPERATOR_QUERY
+LOW_SAMPLE,"""guarantee mortgage""","""guarantee mortgage""",mortgage,en_or_unknown,no,0,0,0,0,1,1,0,0,,0,,,101,,calculator,,QUERY_URL_NOT_CONFIRMED,QUERY_URL_NOT_CONFIRMED,LOW_SAMPLE

@@ -1,0 +1,8 @@
+query_family,previous_impressions,recent_impressions,loss,loss_share,previous_weighted_position,recent_weighted_position,position_delta,query_count_before,query_count_after,disappeared_query_count
+compound,34,0,34,0.382022,18.18,,,9,0,9
+CAGR,32,0,32,0.359551,8.84,,,7,0,7
+DCA,15,0,15,0.168539,22.34,,,4,0,4
+other,6,0,6,0.067416,15.17,,,4,0,4
+FIRE,2,0,2,0.022472,44.5,,,1,0,1
+site operator,0,11,0,0,,16.45,,0,1,0
+mortgage,0,1,0,0,,101,,0,1,0

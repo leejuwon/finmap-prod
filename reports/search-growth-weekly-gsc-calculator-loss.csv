@@ -1,0 +1,17 @@
+calculator_url,previous_impressions,recent_impressions,previous_clicks,recent_clicks,previous_position,recent_position,disappeared,naver_current_performance_reference,bing_current_performance_reference,content_or_technical_change,google_loss_diagnosis
+/tools/compound-interest,139,9,0,0,12.32,10.44,no,Naver clicks 74 -> 92; CTR 0.47% -> 0.61%,Bing clicks 3 -> 4; impressions 134 -> 178,not modified by P1-2B,MAJOR_IMPRESSION_LOSS
+/tools/goal-simulator,16,10,1,0,7,11.4,no,Naver clicks 74 -> 92; CTR 0.47% -> 0.61%,Bing clicks 3 -> 4; impressions 134 -> 178,not modified by P1-2B,LOW_SAMPLE
+/tools/fire-calculator,8,2,0,0,20.25,15,no,Naver clicks 74 -> 92; CTR 0.47% -> 0.61%,Bing clicks 3 -> 4; impressions 134 -> 178,not modified by P1-2B,LOW_SAMPLE
+/tools/cagr-calculator,47,3,0,0,8.53,11.33,no,Naver clicks 74 -> 92; CTR 0.47% -> 0.61%,Bing clicks 3 -> 4; impressions 134 -> 178,not modified by P1-2B,MAJOR_IMPRESSION_LOSS
+/tools/dca-calculator,18,2,0,0,8.17,14,no,Naver clicks 74 -> 92; CTR 0.47% -> 0.61%,Bing clicks 3 -> 4; impressions 134 -> 178,not modified by P1-2B,LOW_SAMPLE
+/tools/dsr-ltv-calculator,5,2,0,0,13,19,no,Naver clicks 74 -> 92; CTR 0.47% -> 0.61%,Bing clicks 3 -> 4; impressions 134 -> 178,not modified by P1-2B,LOW_SAMPLE
+/tools/home-buying-budget-calculator,0,0,0,0,,,no_data_in_page_export,see weekly-summary naver aggregate,see weekly-summary bing aggregate,not modified by P1-2B,NO_PAGE_EXPORT_ROW
+/tools/mortgage-loan-calculator,0,10,0,0,,13.2,no,Naver clicks 74 -> 92; CTR 0.47% -> 0.61%,Bing clicks 3 -> 4; impressions 134 -> 178,not modified by P1-2B,NEWLY_APPEARED
+/en/tools/compound-interest,0,0,0,0,,,no_data_in_page_export,see weekly-summary naver aggregate,see weekly-summary bing aggregate,not modified by P1-2B,NO_PAGE_EXPORT_ROW
+/en/tools/goal-simulator,0,0,0,0,,,no_data_in_page_export,see weekly-summary naver aggregate,see weekly-summary bing aggregate,not modified by P1-2B,NO_PAGE_EXPORT_ROW
+/en/tools/fire-calculator,0,0,0,0,,,no_data_in_page_export,see weekly-summary naver aggregate,see weekly-summary bing aggregate,not modified by P1-2B,NO_PAGE_EXPORT_ROW
+/en/tools/cagr-calculator,0,0,0,0,,,no_data_in_page_export,see weekly-summary naver aggregate,see weekly-summary bing aggregate,not modified by P1-2B,NO_PAGE_EXPORT_ROW
+/en/tools/dca-calculator,0,0,0,0,,,no_data_in_page_export,see weekly-summary naver aggregate,see weekly-summary bing aggregate,not modified by P1-2B,NO_PAGE_EXPORT_ROW
+/en/tools/dsr-ltv-calculator,3,0,0,0,1.67,,yes,Naver clicks 74 -> 92; CTR 0.47% -> 0.61%,Bing clicks 3 -> 4; impressions 134 -> 178,not modified by P1-2B,DISAPPEARED_FROM_REPORT
+/en/tools/home-buying-budget-calculator,0,0,0,0,,,no_data_in_page_export,see weekly-summary naver aggregate,see weekly-summary bing aggregate,not modified by P1-2B,NO_PAGE_EXPORT_ROW
+/en/tools/mortgage-loan-calculator,0,11,0,0,,22.82,no,Naver clicks 74 -> 92; CTR 0.47% -> 0.61%,Bing clicks 3 -> 4; impressions 134 -> 178,not modified by P1-2B,NEWLY_APPEARED

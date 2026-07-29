@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-07-29",
+  "verdict": "MIXED_WITH_CRITICAL_GOOGLE_ANOMALY",
+  "actions": [
+    {
+      "priority": 1,
+      "action": "Export GSC page/query CSVs for both 7-day periods and populate the loss map.",
+      "reason": "Google impressions fell by 384, but page/query contribution is unavailable without exports.",
+      "forbiddenUntilComplete": [
+        "title changes",
+        "description changes",
+        "Google-targeted content edits"
+      ]
+    },
+    {
+      "priority": 2,
+      "action": "Create GA4 channel-specific landing page and calculator event views.",
+      "reason": "The provided GA4 landing page screen is all-traffic and cannot attribute decline to organic Google.",
+      "forbiddenUntilComplete": [
+        "event name changes",
+        "event parameter changes"
+      ]
+    },
+    {
+      "priority": 3,
+      "action": "Fill the Naver calculator SERP baseline manually.",
+      "reason": "Naver clicks and CTR improved, so calculator SERP positions should be observed before any metadata edits.",
+      "forbiddenUntilComplete": [
+        "Naver automated crawling",
+        "calculator title/description edits"
+      ]
+    }
+  ]
+}

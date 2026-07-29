@@ -1,0 +1,10 @@
+{
+  "generatedAt": "2026-07-29",
+  "decision": "DEPLOY_WITH_GOOGLE_OBSERVATION_FLAG",
+  "recommendation": "Deployment may be considered separately, but record a 28-day Google observation flag and avoid meta rewrites during the observation period.",
+  "reason": "No technical indexing failure is confirmed locally; the Google drop appears to be ranking/relevance or concentration-related.",
+  "deployDateFromObservationBaseline": "DEPLOY_DATE_PENDING",
+  "deploymentPerformed": false,
+  "commitPerformed": false,
+  "pushPerformed": false
+}

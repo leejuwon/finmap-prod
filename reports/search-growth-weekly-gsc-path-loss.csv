@@ -1,0 +1,9 @@
+path_group,previous_clicks,recent_clicks,previous_impressions,recent_impressions,impression_delta,loss_share,lost_impression_contribution,previous_weighted_position,recent_weighted_position,previous_position,recent_position,position_delta,page_count_before,page_count_after,disappeared_page_count
+/tools/,1,0,233,38,-195,0.59816,0.59816,11.16,12.37,11.16,12.37,1.21,6,7,0
+/market/real-estate/,0,0,119,42,-77,0.236196,0.236196,9.47,37.12,9.47,37.12,27.65,18,26,11
+/posts/,0,0,73,47,-26,0.079755,0.079755,7.62,20.81,7.62,20.81,13.19,15,9,6
+other,0,0,89,75,-14,0.042945,0.042945,4.82,5.65,4.82,5.65,0.83,16,11,7
+/en/posts/,0,0,18,7,-11,0.033742,0.033742,6.33,25.57,6.33,25.57,19.24,9,3,7
+/market/,0,0,5,2,-3,0.009202,0.009202,7.8,11,7.8,11,3.2,1,1,0
+/en/tools/,0,0,3,11,8,0,0,1.67,22.82,1.67,22.82,21.15,1,1,1
+/,1,0,10,10,0,0,0,1.4,1.6,1.4,1.6,0.2,1,1,0
