@@ -1,8 +1,8 @@
 {
   "generatedAt": "2026-07-22",
   "project": "FinMap",
-  "projectStage": "P1-1C predeploy integrated audit",
-  "deployDate": "DEPLOY_DATE_PENDING",
+  "projectStage": "P1-2C postdeploy observation baseline",
+  "deployDate": "MANUAL_INPUT_REQUIRED",
   "observationTargets": [
     {
       "group": "KO Track B",
@@ -29,9 +29,9 @@
         "hreflang",
         "calculation logic"
       ],
-      "deployDate": "DEPLOY_DATE_PENDING",
-      "check28Day": "DEPLOY_DATE_PLUS_28_DAYS_PENDING",
-      "check6Week": "DEPLOY_DATE_PLUS_42_DAYS_PENDING",
+      "deployDate": "MANUAL_INPUT_REQUIRED",
+      "check28Day": "MANUAL_INPUT_REQUIRED",
+      "check6Week": "MANUAL_INPUT_REQUIRED",
       "rollbackConditions": [
         "material impression decline",
         "persistent average position decline",
@@ -41,7 +41,9 @@
         "canonical or hreflang error",
         "CTA duplicate event",
         "mobile layout regression"
-      ]
+      ],
+      "check72Hours": "MANUAL_INPUT_REQUIRED",
+      "check7Day": "MANUAL_INPUT_REQUIRED"
     },
     {
       "group": "KO Track B",
@@ -67,9 +69,9 @@
         "hreflang",
         "calculation logic"
       ],
-      "deployDate": "DEPLOY_DATE_PENDING",
-      "check28Day": "DEPLOY_DATE_PLUS_28_DAYS_PENDING",
-      "check6Week": "DEPLOY_DATE_PLUS_42_DAYS_PENDING",
+      "deployDate": "MANUAL_INPUT_REQUIRED",
+      "check28Day": "MANUAL_INPUT_REQUIRED",
+      "check6Week": "MANUAL_INPUT_REQUIRED",
       "rollbackConditions": [
         "material impression decline",
         "persistent average position decline",
@@ -79,7 +81,9 @@
         "canonical or hreflang error",
         "CTA duplicate event",
         "mobile layout regression"
-      ]
+      ],
+      "check72Hours": "MANUAL_INPUT_REQUIRED",
+      "check7Day": "MANUAL_INPUT_REQUIRED"
     },
     {
       "group": "KO Track B",
@@ -107,9 +111,9 @@
         "table assumptions",
         "calculation logic"
       ],
-      "deployDate": "DEPLOY_DATE_PENDING",
-      "check28Day": "DEPLOY_DATE_PLUS_28_DAYS_PENDING",
-      "check6Week": "DEPLOY_DATE_PLUS_42_DAYS_PENDING",
+      "deployDate": "MANUAL_INPUT_REQUIRED",
+      "check28Day": "MANUAL_INPUT_REQUIRED",
+      "check6Week": "MANUAL_INPUT_REQUIRED",
       "rollbackConditions": [
         "material impression decline",
         "persistent average position decline",
@@ -119,7 +123,9 @@
         "canonical or hreflang error",
         "CTA duplicate event",
         "mobile layout regression"
-      ]
+      ],
+      "check72Hours": "MANUAL_INPUT_REQUIRED",
+      "check7Day": "MANUAL_INPUT_REQUIRED"
     },
     {
       "group": "EN Track A",
@@ -156,9 +162,9 @@
         "calculator logic",
         "GA4 event names"
       ],
-      "deployDate": "DEPLOY_DATE_PENDING",
-      "check28Day": "DEPLOY_DATE_PLUS_28_DAYS_PENDING",
-      "check6Week": "DEPLOY_DATE_PLUS_42_DAYS_PENDING",
+      "deployDate": "MANUAL_INPUT_REQUIRED",
+      "check28Day": "MANUAL_INPUT_REQUIRED",
+      "check6Week": "MANUAL_INPUT_REQUIRED",
       "rollbackConditions": [
         "material impression decline",
         "persistent average position decline",
@@ -168,7 +174,9 @@
         "canonical or hreflang error",
         "CTA duplicate event",
         "mobile layout regression"
-      ]
+      ],
+      "check72Hours": "MANUAL_INPUT_REQUIRED",
+      "check7Day": "MANUAL_INPUT_REQUIRED"
     },
     {
       "group": "EN Track A",
@@ -206,9 +214,9 @@
         "calculator logic",
         "GA4 event names"
       ],
-      "deployDate": "DEPLOY_DATE_PENDING",
-      "check28Day": "DEPLOY_DATE_PLUS_28_DAYS_PENDING",
-      "check6Week": "DEPLOY_DATE_PLUS_42_DAYS_PENDING",
+      "deployDate": "MANUAL_INPUT_REQUIRED",
+      "check28Day": "MANUAL_INPUT_REQUIRED",
+      "check6Week": "MANUAL_INPUT_REQUIRED",
       "rollbackConditions": [
         "material impression decline",
         "persistent average position decline",
@@ -218,7 +226,9 @@
         "canonical or hreflang error",
         "CTA duplicate event",
         "mobile layout regression"
-      ]
+      ],
+      "check72Hours": "MANUAL_INPUT_REQUIRED",
+      "check7Day": "MANUAL_INPUT_REQUIRED"
     },
     {
       "group": "EN Track A",
@@ -255,9 +265,9 @@
         "calculator logic",
         "GA4 event names"
       ],
-      "deployDate": "DEPLOY_DATE_PENDING",
-      "check28Day": "DEPLOY_DATE_PLUS_28_DAYS_PENDING",
-      "check6Week": "DEPLOY_DATE_PLUS_42_DAYS_PENDING",
+      "deployDate": "MANUAL_INPUT_REQUIRED",
+      "check28Day": "MANUAL_INPUT_REQUIRED",
+      "check6Week": "MANUAL_INPUT_REQUIRED",
       "rollbackConditions": [
         "material impression decline",
         "persistent average position decline",
@@ -267,7 +277,98 @@
         "canonical or hreflang error",
         "CTA duplicate event",
         "mobile layout regression"
+      ],
+      "check72Hours": "MANUAL_INPUT_REQUIRED",
+      "check7Day": "MANUAL_INPUT_REQUIRED"
+    }
+  ],
+  "deploymentInfo": {
+    "deployDate": "MANUAL_INPUT_REQUIRED",
+    "deployTime": "MANUAL_INPUT_REQUIRED",
+    "timezone": "Asia/Seoul",
+    "deployedCommitHash": "c10f6802211c3f1b837fe134827141147869686c",
+    "deployedBranch": "master",
+    "deploymentCommandOrMethod": "MANUAL_INPUT_REQUIRED",
+    "pm2ProcessName": "MANUAL_INPUT_REQUIRED",
+    "buildResult": "MANUAL_INPUT_REQUIRED",
+    "commitDate": "2026-07-29T22:23:30+09:00",
+    "commitSubject": "Update: Finmap 성능향상1"
+  },
+  "observationCalendar": {
+    "generatedAt": "2026-07-29",
+    "timezone": "Asia/Seoul",
+    "deployDate": "MANUAL_INPUT_REQUIRED",
+    "deployTime": "MANUAL_INPUT_REQUIRED",
+    "deployPlus72Hours": "MANUAL_INPUT_REQUIRED",
+    "deployPlus7Days": "MANUAL_INPUT_REQUIRED",
+    "deployPlus28Days": "MANUAL_INPUT_REQUIRED",
+    "deployPlus42Days": "MANUAL_INPUT_REQUIRED",
+    "checks": {
+      "72h": [
+        "HTTP",
+        "canonical",
+        "noindex",
+        "sitemap",
+        "calculator function",
+        "GA4"
+      ],
+      "7d": [
+        "Naver clicks/impressions",
+        "Bing clicks/impressions",
+        "provisional GSC impressions",
+        "GA4 calculate events"
+      ],
+      "28d": [
+        "KO Track B performance",
+        "EN Track A performance",
+        "calculator Google impressions",
+        "Naver calculator rank",
+        "CTA conversion"
+      ],
+      "42d": [
+        "keep",
+        "partial rollback",
+        "additional improvement decision"
       ]
     }
-  ]
+  },
+  "p1_2bWeeklyBaseline": {
+    "googleReportTotal": {
+      "clicks": "2 -> 0",
+      "impressions": "414 -> 30",
+      "position": "9.9 -> 15.0"
+    },
+    "calculatorPageTable": {
+      "compound": "139 -> 9",
+      "CAGR": "47 -> 3",
+      "DCA": "18 -> 2",
+      "goal": "16 -> 10",
+      "mortgageKo": "0 -> 10",
+      "mortgageEn": "0 -> 11"
+    },
+    "naver": {
+      "clicks": "74 -> 92",
+      "impressions": "15844 -> 15108",
+      "ctr": "about 0.47% -> about 0.61%"
+    },
+    "bing": {
+      "clicks": "3 -> 4",
+      "impressions": "134 -> 178"
+    }
+  },
+  "p1_2cPostdeployVerification": {
+    "generatedAt": "2026-07-29",
+    "verdict": "FAIL",
+    "blockers": [
+      "https://www.finmaphub.com/tools/mortgage-loan-calculator: mobile 320px browser check failed (Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.)"
+    ],
+    "manualChecks": [
+      "deploy date/time",
+      "GA4 DebugView",
+      "GSC sitemap submission screen",
+      "representative calculator input GA4 receipt"
+    ],
+    "productionUrlCount": 16,
+    "mobileBrowserStatus": "FAIL"
+  }
 }

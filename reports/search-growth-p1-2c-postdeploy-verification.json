@@ -1,0 +1,2536 @@
+{
+  "generatedAt": "2026-07-29",
+  "baseUrl": "http://127.0.0.1:8002",
+  "deploymentInfo": {
+    "deployDate": "MANUAL_INPUT_REQUIRED",
+    "deployTime": "MANUAL_INPUT_REQUIRED",
+    "timezone": "Asia/Seoul",
+    "deployedCommitHash": "c10f6802211c3f1b837fe134827141147869686c",
+    "deployedBranch": "master",
+    "deploymentCommandOrMethod": "MANUAL_INPUT_REQUIRED",
+    "pm2ProcessName": "MANUAL_INPUT_REQUIRED",
+    "buildResult": "MANUAL_INPUT_REQUIRED",
+    "commitDate": "2026-07-29T22:23:30+09:00",
+    "commitSubject": "Update: Finmap 성능향상1"
+  },
+  "urlResults": [
+    {
+      "group": "KO Track B",
+      "url": "https://www.finmaphub.com/posts/personalFinance/what-is-cagr",
+      "locale": "ko",
+      "type": "post",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/what-is-cagr",
+      "redirects": [],
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/what-is-cagr",
+      "metaRobots": "",
+      "xRobots": "",
+      "h1Count": 1,
+      "h1": "CAGR 계산법: 단순 수익률과 다른 이유와 투자 예시",
+      "title": "CAGR 계산법: 단순 수익률과 다른 이유와 투자 예시 | FinMap",
+      "description": "CAGR 계산식과 단순 수익률의 차이를 예시로 정리합니다. CAGR 계산기로 기간이 다른 투자 성과를 같은 기준에서 비교해보세요.",
+      "htmlLang": "ko",
+      "alternates": [
+        {
+          "hreflang": "ko",
+          "href": "https://www.finmaphub.com/posts/personalFinance/what-is-cagr"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://www.finmaphub.com/en/posts/personalFinance/what-is-cagr"
+        }
+      ],
+      "jsonLdTypes": [
+        "BlogPosting",
+        "BreadcrumbList"
+      ],
+      "jsonLdErrors": [],
+      "articleCount": 1,
+      "faq": {
+        "status": "NOT_APPLICABLE",
+        "details": "No FAQPage JSON-LD"
+      },
+      "ctaTargets": [
+        {
+          "text": "FinMap금융 기초 · 투자계획 지도",
+          "href": "https://www.finmaphub.com/",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "시작금액과 최종금액으로 CAGR 계산하기",
+          "href": "https://www.finmaphub.com/tools/cagr-calculator",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "연 7% 복리 현실 체크",
+          "href": "https://www.finmaphub.com/posts/investingInfo/cagr-7percent-reality-check",
+          "status": 200,
+          "pass": true
+        }
+      ],
+      "snippet": {
+        "viewZeroUnprotected": false,
+        "commentUnprotected": false,
+        "shareUnprotected": false,
+        "loadingEarly": false,
+        "h1SnippetAvailable": true,
+        "bodySnippetAvailable": true,
+        "firstMeaningfulBad": false,
+        "pass": true
+      },
+      "calculator": {
+        "status": "NOT_APPLICABLE",
+        "pass": true
+      },
+      "ga4": {
+        "gtagLoaderPresent": false,
+        "gtagConfigPresent": false,
+        "debugViewStatus": "GA4_DEBUGVIEW_MANUAL_CHECK_REQUIRED"
+      },
+      "checks": {
+        "http200": true,
+        "unexpectedRedirect": true,
+        "selfCanonical": true,
+        "noMetaNoindex": true,
+        "noXRobotsNoindex": true,
+        "h1ExactlyOne": true,
+        "titlePresent": true,
+        "descriptionPresent": true,
+        "titleNotSlugFallback": true,
+        "descriptionNotSlugFallback": true,
+        "sitemapMembership": true,
+        "expectedLocale": true,
+        "hreflangPresent": true,
+        "jsonLdParse": true,
+        "articleNotDuplicate": true,
+        "faqConsistency": true,
+        "ctaTarget200": true,
+        "notErrorScreen": true,
+        "snippetHygiene": true,
+        "calculatorStatic": true,
+        "ga4LoaderPresent": false
+      },
+      "pass": true
+    },
+    {
+      "group": "KO Track B",
+      "url": "https://www.finmaphub.com/tools/home-buying-budget-calculator",
+      "locale": "ko",
+      "type": "tool",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/tools/home-buying-budget-calculator",
+      "redirects": [],
+      "canonical": "https://www.finmaphub.com/tools/home-buying-budget-calculator",
+      "metaRobots": "",
+      "xRobots": "",
+      "h1Count": 1,
+      "h1": "아파트 구매 계산기",
+      "title": "아파트 구매 계산기 - 보유 현금·주담대 한도·DSR LTV 예산 계산 | FinMap",
+      "description": "집값, 보유 현금, 연소득, 기존 대출, 금리, 대출기간을 입력해 아파트 구매 가능 여부, 필요 현금, 주담대 한도, DSR, LTV, 월상환액을 계산합니다.",
+      "htmlLang": "ko",
+      "alternates": [
+        {
+          "hreflang": "ko",
+          "href": "https://www.finmaphub.com/tools/home-buying-budget-calculator"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://www.finmaphub.com/en/tools/home-buying-budget-calculator"
+        }
+      ],
+      "jsonLdTypes": [
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "jsonLdErrors": [],
+      "articleCount": 0,
+      "faq": {
+        "status": "NOT_APPLICABLE",
+        "details": "No FAQPage JSON-LD"
+      },
+      "ctaTargets": [
+        {
+          "text": "FinMap금융 기초 · 투자계획 지도",
+          "href": "https://www.finmaphub.com/",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "부동산 대시보드에서 보기",
+          "href": "https://www.finmaphub.com/market/real-estate",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "DSR 40% 소득별 한도표",
+          "href": "https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table",
+          "status": 200,
+          "pass": true
+        }
+      ],
+      "snippet": {
+        "viewZeroUnprotected": false,
+        "commentUnprotected": false,
+        "shareUnprotected": false,
+        "loadingEarly": false,
+        "h1SnippetAvailable": true,
+        "bodySnippetAvailable": true,
+        "firstMeaningfulBad": false,
+        "pass": true
+      },
+      "calculator": {
+        "status": "STATIC_HTML_PASS_BROWSER_MANUAL_RECOMMENDED",
+        "inputs": 26,
+        "buttons": 16,
+        "resultText": true,
+        "ctaLike": true,
+        "pass": true
+      },
+      "ga4": {
+        "gtagLoaderPresent": false,
+        "gtagConfigPresent": false,
+        "debugViewStatus": "GA4_DEBUGVIEW_MANUAL_CHECK_REQUIRED"
+      },
+      "checks": {
+        "http200": true,
+        "unexpectedRedirect": true,
+        "selfCanonical": true,
+        "noMetaNoindex": true,
+        "noXRobotsNoindex": true,
+        "h1ExactlyOne": true,
+        "titlePresent": true,
+        "descriptionPresent": true,
+        "titleNotSlugFallback": true,
+        "descriptionNotSlugFallback": true,
+        "sitemapMembership": true,
+        "expectedLocale": true,
+        "hreflangPresent": true,
+        "jsonLdParse": true,
+        "articleNotDuplicate": true,
+        "faqConsistency": true,
+        "ctaTarget200": true,
+        "notErrorScreen": true,
+        "snippetHygiene": true,
+        "calculatorStatic": true,
+        "ga4LoaderPresent": false
+      },
+      "pass": true
+    },
+    {
+      "group": "KO Track B",
+      "url": "https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table",
+      "locale": "ko",
+      "type": "post",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/dsr-40-income-loan-limit-table",
+      "redirects": [],
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table",
+      "metaRobots": "",
+      "xRobots": "",
+      "h1Count": 1,
+      "h1": "DSR 40% 연봉별 대출 한도표 | 연봉별 주담대 한도·대출 가능액",
+      "title": "DSR 40% 연봉별 대출 한도표 | 연봉별 주담대 한도·대출 가능액 | FinMap",
+      "description": "DSR 40%, 금리 4%, 30년 원리금균등 기준으로 연봉 3000만원, 5000만원, 1억원의 연봉별 대출 가능액과 월 상환 가능액을 표로 정리합니다. DSR/LTV 계산기로 내 조건의 주담대 한도도 확인해보세요.",
+      "htmlLang": "ko",
+      "alternates": [
+        {
+          "hreflang": "ko",
+          "href": "https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://www.finmaphub.com/en/posts/personalFinance/dsr-40-income-loan-limit-table"
+        }
+      ],
+      "jsonLdTypes": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonLdErrors": [],
+      "articleCount": 1,
+      "faq": {
+        "status": "PASS",
+        "details": "questions=6; visibleMatched=6"
+      },
+      "ctaTargets": [
+        {
+          "text": "FinMap금융 기초 · 투자계획 지도",
+          "href": "https://www.finmaphub.com/",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "DSR 계산기",
+          "href": "https://www.finmaphub.com/tools/dsr-ltv-calculator",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "부동산 대시보드",
+          "href": "https://www.finmaphub.com/market/real-estate",
+          "status": 200,
+          "pass": true
+        }
+      ],
+      "snippet": {
+        "viewZeroUnprotected": false,
+        "commentUnprotected": false,
+        "shareUnprotected": false,
+        "loadingEarly": false,
+        "h1SnippetAvailable": true,
+        "bodySnippetAvailable": true,
+        "firstMeaningfulBad": false,
+        "pass": true
+      },
+      "calculator": {
+        "status": "NOT_APPLICABLE",
+        "pass": true
+      },
+      "ga4": {
+        "gtagLoaderPresent": false,
+        "gtagConfigPresent": false,
+        "debugViewStatus": "GA4_DEBUGVIEW_MANUAL_CHECK_REQUIRED"
+      },
+      "checks": {
+        "http200": true,
+        "unexpectedRedirect": true,
+        "selfCanonical": true,
+        "noMetaNoindex": true,
+        "noXRobotsNoindex": true,
+        "h1ExactlyOne": true,
+        "titlePresent": true,
+        "descriptionPresent": true,
+        "titleNotSlugFallback": true,
+        "descriptionNotSlugFallback": true,
+        "sitemapMembership": true,
+        "expectedLocale": true,
+        "hreflangPresent": true,
+        "jsonLdParse": true,
+        "articleNotDuplicate": true,
+        "faqConsistency": true,
+        "ctaTarget200": true,
+        "notErrorScreen": true,
+        "snippetHygiene": true,
+        "calculatorStatic": true,
+        "ga4LoaderPresent": false
+      },
+      "pass": true
+    },
+    {
+      "group": "EN Track A",
+      "url": "https://www.finmaphub.com/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+      "locale": "en",
+      "type": "post",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+      "redirects": [],
+      "canonical": "https://www.finmaphub.com/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+      "metaRobots": "",
+      "xRobots": "",
+      "h1Count": 1,
+      "h1": "Monthly Investment Needed to Reach a Target Portfolio",
+      "title": "Monthly Investment Needed to Reach a Target Portfolio | FinMap",
+      "description": "The monthly investment needed depends on your current balance, target amount, timeline, expected return, fees, and taxes. Use the goal simulator to compare required contributions without treating the result as a guaranteed return.",
+      "htmlLang": "en",
+      "alternates": [
+        {
+          "hreflang": "ko",
+          "href": "https://www.finmaphub.com/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://www.finmaphub.com/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio"
+        }
+      ],
+      "jsonLdTypes": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonLdErrors": [],
+      "articleCount": 1,
+      "faq": {
+        "status": "PASS",
+        "details": "questions=5; visibleMatched=5"
+      },
+      "ctaTargets": [
+        {
+          "text": "Finance Tools",
+          "href": "https://www.finmaphub.com/en/tools",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "Calculate the monthly investment for your goal",
+          "href": "https://www.finmaphub.com/en/tools/goal-simulator",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "Finmap DCA Calculator",
+          "href": "https://www.finmaphub.com/en/tools/dca-calculator",
+          "status": 200,
+          "pass": true
+        }
+      ],
+      "snippet": {
+        "viewZeroUnprotected": false,
+        "commentUnprotected": false,
+        "shareUnprotected": false,
+        "loadingEarly": false,
+        "h1SnippetAvailable": true,
+        "bodySnippetAvailable": true,
+        "firstMeaningfulBad": false,
+        "pass": true
+      },
+      "calculator": {
+        "status": "NOT_APPLICABLE",
+        "pass": true
+      },
+      "ga4": {
+        "gtagLoaderPresent": false,
+        "gtagConfigPresent": false,
+        "debugViewStatus": "GA4_DEBUGVIEW_MANUAL_CHECK_REQUIRED"
+      },
+      "checks": {
+        "http200": true,
+        "unexpectedRedirect": true,
+        "selfCanonical": true,
+        "noMetaNoindex": true,
+        "noXRobotsNoindex": true,
+        "h1ExactlyOne": true,
+        "titlePresent": true,
+        "descriptionPresent": true,
+        "titleNotSlugFallback": true,
+        "descriptionNotSlugFallback": true,
+        "sitemapMembership": true,
+        "expectedLocale": true,
+        "hreflangPresent": true,
+        "jsonLdParse": true,
+        "articleNotDuplicate": true,
+        "faqConsistency": true,
+        "ctaTarget200": true,
+        "notErrorScreen": true,
+        "snippetHygiene": true,
+        "calculatorStatic": true,
+        "ga4LoaderPresent": false
+      },
+      "pass": true
+    },
+    {
+      "group": "EN Track A",
+      "url": "https://www.finmaphub.com/en/posts/personalFinance/annual-vs-monthly-compound",
+      "locale": "en",
+      "type": "post",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/annual-vs-monthly-compound",
+      "redirects": [],
+      "canonical": "https://www.finmaphub.com/en/posts/personalFinance/annual-vs-monthly-compound",
+      "metaRobots": "",
+      "xRobots": "",
+      "h1Count": 1,
+      "h1": "Annual vs Monthly Compounding: Which Grows Faster?",
+      "title": "Annual vs Monthly Compounding: Which Grows Faster? | FinMap",
+      "description": "Monthly compounding can grow slightly faster than annual compounding at the same nominal rate. Compare examples by rate, time horizon, and contributions, and avoid double-counting APY or effective annual rates.",
+      "htmlLang": "en",
+      "alternates": [
+        {
+          "hreflang": "ko",
+          "href": "https://www.finmaphub.com/posts/personalFinance/annual-vs-monthly-compound"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://www.finmaphub.com/en/posts/personalFinance/annual-vs-monthly-compound"
+        }
+      ],
+      "jsonLdTypes": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonLdErrors": [],
+      "articleCount": 1,
+      "faq": {
+        "status": "PASS",
+        "details": "questions=5; visibleMatched=5"
+      },
+      "ctaTargets": [
+        {
+          "text": "Finance Tools",
+          "href": "https://www.finmaphub.com/en/tools",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "Compare annual and monthly compounding",
+          "href": "https://www.finmaphub.com/en/tools/compound-interest",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "Goal Simulator",
+          "href": "https://www.finmaphub.com/en/tools/goal-simulator",
+          "status": 200,
+          "pass": true
+        }
+      ],
+      "snippet": {
+        "viewZeroUnprotected": false,
+        "commentUnprotected": false,
+        "shareUnprotected": false,
+        "loadingEarly": false,
+        "h1SnippetAvailable": true,
+        "bodySnippetAvailable": true,
+        "firstMeaningfulBad": false,
+        "pass": true
+      },
+      "calculator": {
+        "status": "NOT_APPLICABLE",
+        "pass": true
+      },
+      "ga4": {
+        "gtagLoaderPresent": false,
+        "gtagConfigPresent": false,
+        "debugViewStatus": "GA4_DEBUGVIEW_MANUAL_CHECK_REQUIRED"
+      },
+      "checks": {
+        "http200": true,
+        "unexpectedRedirect": true,
+        "selfCanonical": true,
+        "noMetaNoindex": true,
+        "noXRobotsNoindex": true,
+        "h1ExactlyOne": true,
+        "titlePresent": true,
+        "descriptionPresent": true,
+        "titleNotSlugFallback": true,
+        "descriptionNotSlugFallback": true,
+        "sitemapMembership": true,
+        "expectedLocale": true,
+        "hreflangPresent": true,
+        "jsonLdParse": true,
+        "articleNotDuplicate": true,
+        "faqConsistency": true,
+        "ctaTarget200": true,
+        "notErrorScreen": true,
+        "snippetHygiene": true,
+        "calculatorStatic": true,
+        "ga4LoaderPresent": false
+      },
+      "pass": true
+    },
+    {
+      "group": "EN Track A",
+      "url": "https://www.finmaphub.com/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+      "locale": "en",
+      "type": "post",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+      "redirects": [],
+      "canonical": "https://www.finmaphub.com/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+      "metaRobots": "",
+      "xRobots": "",
+      "h1Count": 1,
+      "h1": "Is Dollar-Cost Averaging Better in a Bear Market?",
+      "title": "Is Dollar-Cost Averaging Better in a Bear Market? | FinMap",
+      "description": "DCA is not automatically better in every bear market. Compare when dollar-cost averaging can reduce timing risk, when lump-sum investing can recover faster, and how drawdown timing changes the result.",
+      "htmlLang": "en",
+      "alternates": [
+        {
+          "hreflang": "ko",
+          "href": "https://www.finmaphub.com/posts/personalFinance/is-dca-better-in-bear-market"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://www.finmaphub.com/en/posts/personalFinance/is-dca-better-in-a-bear-market"
+        }
+      ],
+      "jsonLdTypes": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonLdErrors": [],
+      "articleCount": 1,
+      "faq": {
+        "status": "PASS",
+        "details": "questions=5; visibleMatched=5"
+      },
+      "ctaTargets": [
+        {
+          "text": "Finance Tools",
+          "href": "https://www.finmaphub.com/en/tools",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "Compare DCA and lump-sum scenarios",
+          "href": "https://www.finmaphub.com/en/tools/dca-calculator",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "Goal Simulator",
+          "href": "https://www.finmaphub.com/en/tools/goal-simulator",
+          "status": 200,
+          "pass": true
+        }
+      ],
+      "snippet": {
+        "viewZeroUnprotected": false,
+        "commentUnprotected": false,
+        "shareUnprotected": false,
+        "loadingEarly": false,
+        "h1SnippetAvailable": true,
+        "bodySnippetAvailable": true,
+        "firstMeaningfulBad": false,
+        "pass": true
+      },
+      "calculator": {
+        "status": "NOT_APPLICABLE",
+        "pass": true
+      },
+      "ga4": {
+        "gtagLoaderPresent": false,
+        "gtagConfigPresent": false,
+        "debugViewStatus": "GA4_DEBUGVIEW_MANUAL_CHECK_REQUIRED"
+      },
+      "checks": {
+        "http200": true,
+        "unexpectedRedirect": true,
+        "selfCanonical": true,
+        "noMetaNoindex": true,
+        "noXRobotsNoindex": true,
+        "h1ExactlyOne": true,
+        "titlePresent": true,
+        "descriptionPresent": true,
+        "titleNotSlugFallback": true,
+        "descriptionNotSlugFallback": true,
+        "sitemapMembership": true,
+        "expectedLocale": true,
+        "hreflangPresent": true,
+        "jsonLdParse": true,
+        "articleNotDuplicate": true,
+        "faqConsistency": true,
+        "ctaTarget200": true,
+        "notErrorScreen": true,
+        "snippetHygiene": true,
+        "calculatorStatic": true,
+        "ga4LoaderPresent": false
+      },
+      "pass": true
+    },
+    {
+      "group": "Google top loss calculator",
+      "url": "https://www.finmaphub.com/tools/compound-interest",
+      "locale": "ko",
+      "type": "tool",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/tools/compound-interest",
+      "redirects": [],
+      "canonical": "https://www.finmaphub.com/tools/compound-interest",
+      "metaRobots": "",
+      "xRobots": "",
+      "h1Count": 1,
+      "h1": "복리 계산기",
+      "title": "복리 계산기 | 월복리·적립식 투자 미래가치 계산 | FinMap",
+      "description": "원금, 월 적립금, 연 수익률, 투자 기간으로 월복리 기준 미래가치를 계산합니다. 세금, 수수료, 물가상승률을 반영한 세후 금액과 현재가치를 표와 차트로 확인하세요.",
+      "htmlLang": "ko",
+      "alternates": [
+        {
+          "hreflang": "ko",
+          "href": "https://www.finmaphub.com/tools/compound-interest"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://www.finmaphub.com/en/tools/compound-interest"
+        }
+      ],
+      "jsonLdTypes": [
+        "FAQPage",
+        "HowTo",
+        "BreadcrumbList",
+        "SoftwareApplication"
+      ],
+      "jsonLdErrors": [],
+      "articleCount": 0,
+      "faq": {
+        "status": "PASS",
+        "details": "questions=24; visibleMatched=24"
+      },
+      "ctaTargets": [
+        {
+          "text": "FinMap금융 기초 · 투자계획 지도",
+          "href": "https://www.finmaphub.com/",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "전체 글 보기",
+          "href": "https://www.finmaphub.com/category/personalFinance",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "기초 개념단리 vs 복리: 차이와 공식 한 번에 정리단리·복리의 구조/공식/예시를 빠르게 이해하고, 복리 계산기로 바로 테스트해보세요.",
+          "href": "https://www.finmaphub.com/posts/personalFinance/simple-vs-compound",
+          "status": 200,
+          "pass": true
+        }
+      ],
+      "snippet": {
+        "viewZeroUnprotected": false,
+        "commentUnprotected": false,
+        "shareUnprotected": false,
+        "loadingEarly": false,
+        "h1SnippetAvailable": true,
+        "bodySnippetAvailable": true,
+        "firstMeaningfulBad": false,
+        "pass": true
+      },
+      "calculator": {
+        "status": "STATIC_HTML_PASS_BROWSER_MANUAL_RECOMMENDED",
+        "inputs": 23,
+        "buttons": 13,
+        "resultText": true,
+        "ctaLike": true,
+        "pass": true
+      },
+      "ga4": {
+        "gtagLoaderPresent": false,
+        "gtagConfigPresent": false,
+        "debugViewStatus": "GA4_DEBUGVIEW_MANUAL_CHECK_REQUIRED"
+      },
+      "checks": {
+        "http200": true,
+        "unexpectedRedirect": true,
+        "selfCanonical": true,
+        "noMetaNoindex": true,
+        "noXRobotsNoindex": true,
+        "h1ExactlyOne": true,
+        "titlePresent": true,
+        "descriptionPresent": true,
+        "titleNotSlugFallback": true,
+        "descriptionNotSlugFallback": true,
+        "sitemapMembership": true,
+        "expectedLocale": true,
+        "hreflangPresent": true,
+        "jsonLdParse": true,
+        "articleNotDuplicate": true,
+        "faqConsistency": true,
+        "ctaTarget200": true,
+        "notErrorScreen": true,
+        "snippetHygiene": true,
+        "calculatorStatic": true,
+        "ga4LoaderPresent": false
+      },
+      "pass": true
+    },
+    {
+      "group": "Google top loss calculator",
+      "url": "https://www.finmaphub.com/tools/cagr-calculator",
+      "locale": "ko",
+      "type": "tool",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/tools/cagr-calculator",
+      "redirects": [],
+      "canonical": "https://www.finmaphub.com/tools/cagr-calculator",
+      "metaRobots": "",
+      "xRobots": "",
+      "h1Count": 1,
+      "h1": "CAGR(연평균 수익률)로 내 투자 성과를 한 줄 숫자로",
+      "title": "CAGR 계산기 (연평균 수익률·연복리 수익률·연평균 성장률) | FinMap",
+      "description": "초기 자산·최종 자산·기간으로 CAGR(연평균 복리 수익률)을 계산하고, 세금·수수료 반영 전후 차이를 비교해보세요. 주식/ETF/부동산/코인 수익률 분석에 활용할 수 있습니다.",
+      "htmlLang": "ko",
+      "alternates": [
+        {
+          "hreflang": "ko",
+          "href": "https://www.finmaphub.com/tools/cagr-calculator"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://www.finmaphub.com/en/tools/cagr-calculator"
+        }
+      ],
+      "jsonLdTypes": [
+        "FAQPage",
+        "BreadcrumbList",
+        "SoftwareApplication"
+      ],
+      "jsonLdErrors": [],
+      "articleCount": 0,
+      "faq": {
+        "status": "PASS",
+        "details": "questions=5; visibleMatched=5"
+      },
+      "ctaTargets": [
+        {
+          "text": "FinMap금융 기초 · 투자계획 지도",
+          "href": "https://www.finmaphub.com/",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "적립식 투자DCA 적립식 투자 시뮬레이터로 월 납입 계획 만들기CAGR 가정을 월 적립금, 세금, 수수료, 납입 증가율까지 넣어 장기 자산 경로로 바꿔봅니다.",
+          "href": "https://www.finmaphub.com/tools/dca-calculator",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "목표 자산목표 자산 시뮬레이터로 필요한 월 투자금 계산하기목표 금액과 기간을 정하고, 필요한 월 납입액과 수익률 민감도를 역산합니다.",
+          "href": "https://www.finmaphub.com/tools/goal-simulator",
+          "status": 200,
+          "pass": true
+        }
+      ],
+      "snippet": {
+        "viewZeroUnprotected": false,
+        "commentUnprotected": false,
+        "shareUnprotected": false,
+        "loadingEarly": false,
+        "h1SnippetAvailable": true,
+        "bodySnippetAvailable": true,
+        "firstMeaningfulBad": false,
+        "pass": true
+      },
+      "calculator": {
+        "status": "STATIC_HTML_PASS_BROWSER_MANUAL_RECOMMENDED",
+        "inputs": 18,
+        "buttons": 7,
+        "resultText": true,
+        "ctaLike": true,
+        "pass": true
+      },
+      "ga4": {
+        "gtagLoaderPresent": false,
+        "gtagConfigPresent": false,
+        "debugViewStatus": "GA4_DEBUGVIEW_MANUAL_CHECK_REQUIRED"
+      },
+      "checks": {
+        "http200": true,
+        "unexpectedRedirect": true,
+        "selfCanonical": true,
+        "noMetaNoindex": true,
+        "noXRobotsNoindex": true,
+        "h1ExactlyOne": true,
+        "titlePresent": true,
+        "descriptionPresent": true,
+        "titleNotSlugFallback": true,
+        "descriptionNotSlugFallback": true,
+        "sitemapMembership": true,
+        "expectedLocale": true,
+        "hreflangPresent": true,
+        "jsonLdParse": true,
+        "articleNotDuplicate": true,
+        "faqConsistency": true,
+        "ctaTarget200": true,
+        "notErrorScreen": true,
+        "snippetHygiene": true,
+        "calculatorStatic": true,
+        "ga4LoaderPresent": false
+      },
+      "pass": true
+    },
+    {
+      "group": "Google top loss calculator",
+      "url": "https://www.finmaphub.com/tools/dca-calculator",
+      "locale": "ko",
+      "type": "tool",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/tools/dca-calculator",
+      "redirects": [],
+      "canonical": "https://www.finmaphub.com/tools/dca-calculator",
+      "metaRobots": "",
+      "xRobots": "",
+      "h1Count": 1,
+      "h1": "ETF·주식 자동 적립식 시뮬레이터 (DCA)",
+      "title": "ETF·주식 자동 적립식 시뮬레이터 (DCA) | FinMap",
+      "description": "매월 일정 금액을 ETF·주식에 적립 투자했을 때 자산 성장 경로를 시뮬레이션합니다. 세율, 수수료율, 연간 적립금 증가율까지 반영해 보세요.",
+      "htmlLang": "ko",
+      "alternates": [
+        {
+          "hreflang": "ko",
+          "href": "https://www.finmaphub.com/tools/dca-calculator"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://www.finmaphub.com/en/tools/dca-calculator"
+        }
+      ],
+      "jsonLdTypes": [
+        "FAQPage",
+        "WebPage"
+      ],
+      "jsonLdErrors": [],
+      "articleCount": 0,
+      "faq": {
+        "status": "PASS",
+        "details": "questions=6; visibleMatched=6"
+      },
+      "ctaTargets": [
+        {
+          "text": "FinMap금융 기초 · 투자계획 지도",
+          "href": "https://www.finmaphub.com/",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "전체 글 보기",
+          "href": "https://www.finmaphub.com/category/personalFinance",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "대표 예시월 50만원 적립식 투자, 10년 후 얼마가 될까?월 50만원을 10년 동안 적립식으로 넣는 대표 예시로 원금·수익률·기간을 확인하고 DCA 계산기로 내 조건을 바꿔봅니다.",
+          "href": "https://www.finmaphub.com/posts/personalFinance/monthly-dca-10-year-result",
+          "status": 200,
+          "pass": true
+        }
+      ],
+      "snippet": {
+        "viewZeroUnprotected": false,
+        "commentUnprotected": false,
+        "shareUnprotected": false,
+        "loadingEarly": false,
+        "h1SnippetAvailable": true,
+        "bodySnippetAvailable": true,
+        "firstMeaningfulBad": false,
+        "pass": true
+      },
+      "calculator": {
+        "status": "STATIC_HTML_PASS_BROWSER_MANUAL_RECOMMENDED",
+        "inputs": 19,
+        "buttons": 7,
+        "resultText": true,
+        "ctaLike": true,
+        "pass": true
+      },
+      "ga4": {
+        "gtagLoaderPresent": false,
+        "gtagConfigPresent": false,
+        "debugViewStatus": "GA4_DEBUGVIEW_MANUAL_CHECK_REQUIRED"
+      },
+      "checks": {
+        "http200": true,
+        "unexpectedRedirect": true,
+        "selfCanonical": true,
+        "noMetaNoindex": true,
+        "noXRobotsNoindex": true,
+        "h1ExactlyOne": true,
+        "titlePresent": true,
+        "descriptionPresent": true,
+        "titleNotSlugFallback": true,
+        "descriptionNotSlugFallback": true,
+        "sitemapMembership": true,
+        "expectedLocale": true,
+        "hreflangPresent": true,
+        "jsonLdParse": true,
+        "articleNotDuplicate": true,
+        "faqConsistency": true,
+        "ctaTarget200": true,
+        "notErrorScreen": true,
+        "snippetHygiene": true,
+        "calculatorStatic": true,
+        "ga4LoaderPresent": false
+      },
+      "pass": true
+    },
+    {
+      "group": "Google top loss calculator",
+      "url": "https://www.finmaphub.com/tools/goal-simulator",
+      "locale": "ko",
+      "type": "tool",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/tools/goal-simulator",
+      "redirects": [],
+      "canonical": "https://www.finmaphub.com/tools/goal-simulator",
+      "metaRobots": "",
+      "xRobots": "",
+      "h1Count": 1,
+      "h1": "목표자산 도달 계산기 | 매달 얼마 투자해야 할까?",
+      "title": "목표자산 도달 계산기 | 매달 얼마 투자해야 할까? | FinMap",
+      "description": "현재 자산·월 적립금·수익률·기간·세금·수수료를 반영해 목표 자산까지의 성장 경로를 시뮬레이션합니다. 공유 및 PDF 저장 지원.",
+      "htmlLang": "ko",
+      "alternates": [
+        {
+          "hreflang": "ko",
+          "href": "https://www.finmaphub.com/tools/goal-simulator"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://www.finmaphub.com/en/tools/goal-simulator"
+        }
+      ],
+      "jsonLdTypes": [
+        "FAQPage",
+        "SoftwareApplication"
+      ],
+      "jsonLdErrors": [],
+      "articleCount": 0,
+      "faq": {
+        "status": "PASS",
+        "details": "questions=5; visibleMatched=5"
+      },
+      "ctaTargets": [
+        {
+          "text": "FinMap금융 기초 · 투자계획 지도",
+          "href": "https://www.finmaphub.com/",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "적립식 투자DCA 시뮬레이터로 월 납입 경로 다시 보기월 적립금, 적립금 증가율, 세금·수수료를 바꿔 장기 경로를 더 촘촘히 확인합니다.",
+          "href": "https://www.finmaphub.com/tools/dca-calculator",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "복리복리 계산기로 원금·기간·수익률 민감도 보기목표 달성에 필요한 수익률이 현실적인지 단순 복리 구조로 다시 확인합니다.",
+          "href": "https://www.finmaphub.com/tools/compound-interest",
+          "status": 200,
+          "pass": true
+        }
+      ],
+      "snippet": {
+        "viewZeroUnprotected": false,
+        "commentUnprotected": false,
+        "shareUnprotected": false,
+        "loadingEarly": false,
+        "h1SnippetAvailable": true,
+        "bodySnippetAvailable": true,
+        "firstMeaningfulBad": false,
+        "pass": true
+      },
+      "calculator": {
+        "status": "STATIC_HTML_PASS_BROWSER_MANUAL_RECOMMENDED",
+        "inputs": 28,
+        "buttons": 16,
+        "resultText": true,
+        "ctaLike": true,
+        "pass": true
+      },
+      "ga4": {
+        "gtagLoaderPresent": false,
+        "gtagConfigPresent": false,
+        "debugViewStatus": "GA4_DEBUGVIEW_MANUAL_CHECK_REQUIRED"
+      },
+      "checks": {
+        "http200": true,
+        "unexpectedRedirect": true,
+        "selfCanonical": true,
+        "noMetaNoindex": true,
+        "noXRobotsNoindex": true,
+        "h1ExactlyOne": true,
+        "titlePresent": true,
+        "descriptionPresent": true,
+        "titleNotSlugFallback": true,
+        "descriptionNotSlugFallback": true,
+        "sitemapMembership": true,
+        "expectedLocale": true,
+        "hreflangPresent": true,
+        "jsonLdParse": true,
+        "articleNotDuplicate": true,
+        "faqConsistency": true,
+        "ctaTarget200": true,
+        "notErrorScreen": true,
+        "snippetHygiene": true,
+        "calculatorStatic": true,
+        "ga4LoaderPresent": false
+      },
+      "pass": true
+    },
+    {
+      "group": "New Google calculator",
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "locale": "ko",
+      "type": "tool",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "redirects": [],
+      "canonical": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "metaRobots": "",
+      "xRobots": "",
+      "h1Count": 1,
+      "h1": "주담대 원리금 계산기: 아파트 담보대출 월상환액 계산",
+      "title": "주담대 원리금 계산기 - 아파트 담보대출 월상환액 계산 | FinMap",
+      "description": "대출금액, 금리, 대출기간, 상환방식을 입력해 주택담보대출 원리금 월상환액, 총이자, 총상환액을 계산하고 DSR/LTV 계산기로 대출 가능성을 함께 확인합니다.",
+      "htmlLang": "ko",
+      "alternates": [
+        {
+          "hreflang": "ko",
+          "href": "https://www.finmaphub.com/tools/mortgage-loan-calculator"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator"
+        }
+      ],
+      "jsonLdTypes": [
+        "WebApplication",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonLdErrors": [],
+      "articleCount": 0,
+      "faq": {
+        "status": "PASS",
+        "details": "questions=4; visibleMatched=4"
+      },
+      "ctaTargets": [
+        {
+          "text": "FinMap금융 기초 · 투자계획 지도",
+          "href": "https://www.finmaphub.com/",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "DSR/LTV 계산기로 대출 가능성 확인",
+          "href": "https://www.finmaphub.com/tools/dsr-ltv-calculator",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "아파트 구매 계산기로 현금 기준 점검",
+          "href": "https://www.finmaphub.com/tools/home-buying-budget-calculator",
+          "status": 200,
+          "pass": true
+        }
+      ],
+      "snippet": {
+        "viewZeroUnprotected": false,
+        "commentUnprotected": false,
+        "shareUnprotected": false,
+        "loadingEarly": false,
+        "h1SnippetAvailable": true,
+        "bodySnippetAvailable": true,
+        "firstMeaningfulBad": false,
+        "pass": true
+      },
+      "calculator": {
+        "status": "STATIC_HTML_PASS_BROWSER_MANUAL_RECOMMENDED",
+        "inputs": 24,
+        "buttons": 18,
+        "resultText": true,
+        "ctaLike": true,
+        "pass": true
+      },
+      "ga4": {
+        "gtagLoaderPresent": false,
+        "gtagConfigPresent": false,
+        "debugViewStatus": "GA4_DEBUGVIEW_MANUAL_CHECK_REQUIRED"
+      },
+      "checks": {
+        "http200": true,
+        "unexpectedRedirect": true,
+        "selfCanonical": true,
+        "noMetaNoindex": true,
+        "noXRobotsNoindex": true,
+        "h1ExactlyOne": true,
+        "titlePresent": true,
+        "descriptionPresent": true,
+        "titleNotSlugFallback": true,
+        "descriptionNotSlugFallback": true,
+        "sitemapMembership": true,
+        "expectedLocale": true,
+        "hreflangPresent": true,
+        "jsonLdParse": true,
+        "articleNotDuplicate": true,
+        "faqConsistency": true,
+        "ctaTarget200": true,
+        "notErrorScreen": true,
+        "snippetHygiene": true,
+        "calculatorStatic": true,
+        "ga4LoaderPresent": false
+      },
+      "pass": true
+    },
+    {
+      "group": "New Google calculator",
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "locale": "en",
+      "type": "tool",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "redirects": [],
+      "canonical": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "metaRobots": "",
+      "xRobots": "",
+      "h1Count": 1,
+      "h1": "Mortgage Payment Calculator",
+      "title": "Mortgage Payment Calculator - Monthly Korean Apartment Loan Payment | FinMap",
+      "description": "Calculate estimated monthly mortgage payment, total interest, total repayment, first and last payment, and rate sensitivity from loan amount, rate, term, and repayment type.",
+      "htmlLang": "en",
+      "alternates": [
+        {
+          "hreflang": "ko",
+          "href": "https://www.finmaphub.com/tools/mortgage-loan-calculator"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator"
+        }
+      ],
+      "jsonLdTypes": [
+        "WebApplication",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonLdErrors": [],
+      "articleCount": 0,
+      "faq": {
+        "status": "PASS",
+        "details": "questions=4; visibleMatched=4"
+      },
+      "ctaTargets": [
+        {
+          "text": "Finance Tools",
+          "href": "https://www.finmaphub.com/en/tools",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "Check DSR/LTV affordability",
+          "href": "https://www.finmaphub.com/en/tools/dsr-ltv-calculator",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "Check cash with home buying budget",
+          "href": "https://www.finmaphub.com/en/tools/home-buying-budget-calculator",
+          "status": 200,
+          "pass": true
+        }
+      ],
+      "snippet": {
+        "viewZeroUnprotected": false,
+        "commentUnprotected": false,
+        "shareUnprotected": false,
+        "loadingEarly": false,
+        "h1SnippetAvailable": true,
+        "bodySnippetAvailable": true,
+        "firstMeaningfulBad": false,
+        "pass": true
+      },
+      "calculator": {
+        "status": "STATIC_HTML_PASS_BROWSER_MANUAL_RECOMMENDED",
+        "inputs": 24,
+        "buttons": 18,
+        "resultText": true,
+        "ctaLike": true,
+        "pass": true
+      },
+      "ga4": {
+        "gtagLoaderPresent": false,
+        "gtagConfigPresent": false,
+        "debugViewStatus": "GA4_DEBUGVIEW_MANUAL_CHECK_REQUIRED"
+      },
+      "checks": {
+        "http200": true,
+        "unexpectedRedirect": true,
+        "selfCanonical": true,
+        "noMetaNoindex": true,
+        "noXRobotsNoindex": true,
+        "h1ExactlyOne": true,
+        "titlePresent": true,
+        "descriptionPresent": true,
+        "titleNotSlugFallback": true,
+        "descriptionNotSlugFallback": true,
+        "sitemapMembership": true,
+        "expectedLocale": true,
+        "hreflangPresent": true,
+        "jsonLdParse": true,
+        "articleNotDuplicate": true,
+        "faqConsistency": true,
+        "ctaTarget200": true,
+        "notErrorScreen": true,
+        "snippetHygiene": true,
+        "calculatorStatic": true,
+        "ga4LoaderPresent": false
+      },
+      "pass": true
+    },
+    {
+      "group": "Real estate",
+      "url": "https://www.finmaphub.com/market/real-estate",
+      "locale": "ko",
+      "type": "market",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/market/real-estate",
+      "redirects": [],
+      "canonical": "https://www.finmaphub.com/market/real-estate",
+      "metaRobots": "index,follow,max-image-preview:large",
+      "xRobots": "",
+      "h1Count": 1,
+      "h1": "서울·경기·인천 아파트 실거래 대시보드",
+      "title": "서울·경기·인천 아파트 실거래 대시보드 | FinMap",
+      "description": "서울·경기·인천 아파트 실거래(국토부) 기반 Top 랭킹 대시보드. 지역/기간/평형/년식 필터로 단지별 거래량·중위·평균·평단가를 비교하세요.",
+      "htmlLang": "ko",
+      "alternates": [
+        {
+          "hreflang": "ko",
+          "href": "https://www.finmaphub.com/market/real-estate"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://www.finmaphub.com/en/market/real-estate"
+        }
+      ],
+      "jsonLdTypes": [
+        "WebApplication"
+      ],
+      "jsonLdErrors": [],
+      "articleCount": 0,
+      "faq": {
+        "status": "NOT_APPLICABLE",
+        "details": "No FAQPage JSON-LD"
+      },
+      "ctaTargets": [
+        {
+          "text": "FinMap금융 기초 · 투자계획 지도",
+          "href": "https://www.finmaphub.com/",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "마용성 Top100",
+          "href": "https://www.finmaphub.com/market/real-estate/mayongseong-top100",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "강남 Top100",
+          "href": "https://www.finmaphub.com/market/real-estate/gangnam-top100",
+          "status": 200,
+          "pass": true
+        }
+      ],
+      "snippet": {
+        "viewZeroUnprotected": false,
+        "commentUnprotected": false,
+        "shareUnprotected": false,
+        "loadingEarly": true,
+        "h1SnippetAvailable": true,
+        "bodySnippetAvailable": true,
+        "firstMeaningfulBad": false,
+        "pass": false
+      },
+      "calculator": {
+        "status": "NOT_APPLICABLE",
+        "pass": true
+      },
+      "ga4": {
+        "gtagLoaderPresent": false,
+        "gtagConfigPresent": false,
+        "debugViewStatus": "GA4_DEBUGVIEW_MANUAL_CHECK_REQUIRED"
+      },
+      "checks": {
+        "http200": true,
+        "unexpectedRedirect": true,
+        "selfCanonical": true,
+        "noMetaNoindex": true,
+        "noXRobotsNoindex": true,
+        "h1ExactlyOne": true,
+        "titlePresent": true,
+        "descriptionPresent": true,
+        "titleNotSlugFallback": true,
+        "descriptionNotSlugFallback": true,
+        "sitemapMembership": true,
+        "expectedLocale": true,
+        "hreflangPresent": true,
+        "jsonLdParse": true,
+        "articleNotDuplicate": true,
+        "faqConsistency": true,
+        "ctaTarget200": true,
+        "notErrorScreen": true,
+        "snippetHygiene": false,
+        "calculatorStatic": true,
+        "ga4LoaderPresent": false
+      },
+      "pass": true
+    },
+    {
+      "group": "Real estate",
+      "url": "https://www.finmaphub.com/market/real-estate/seoul-top100",
+      "locale": "ko",
+      "type": "market",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/market/real-estate/seoul-top100",
+      "redirects": [],
+      "canonical": "https://www.finmaphub.com/market/real-estate/seoul-top100",
+      "metaRobots": "index,follow,max-image-preview:large",
+      "xRobots": "",
+      "h1Count": 1,
+      "h1": "서울 아파트 집값 TOP 100",
+      "title": "서울 아파트 집값 Top 100 | 서울 실거래 순위 | FinMap",
+      "description": "서울 아파트 실거래 집계 데이터를 기반으로, 대표가격(중앙값) 기준 TOP 100 순위를 제공합니다. 최신 거래월 기준으로 확인하세요.",
+      "htmlLang": "ko",
+      "alternates": [
+        {
+          "hreflang": "ko",
+          "href": "https://www.finmaphub.com/market/real-estate/seoul-top100"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://www.finmaphub.com/en/market/real-estate/seoul-top100"
+        }
+      ],
+      "jsonLdTypes": [
+        "WebApplication",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonLdErrors": [],
+      "articleCount": 0,
+      "faq": {
+        "status": "PASS",
+        "details": "questions=5; visibleMatched=5"
+      },
+      "ctaTargets": [
+        {
+          "text": "FinMap금융 기초 · 투자계획 지도",
+          "href": "https://www.finmaphub.com/",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "내 구매 가능액 계산하기",
+          "href": "https://www.finmaphub.com/tools/dsr-ltv-calculator",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "나인원한남",
+          "href": "https://www.finmaphub.com/market/real-estate/apt/11170%7C%7C%ED%95%9C%EB%82%A8%EB%8F%99%7C%EB%82%98%EC%9D%B8%EC%9B%90%ED%95%9C%EB%82%A8",
+          "status": 200,
+          "pass": true
+        }
+      ],
+      "snippet": {
+        "viewZeroUnprotected": false,
+        "commentUnprotected": false,
+        "shareUnprotected": false,
+        "loadingEarly": false,
+        "h1SnippetAvailable": true,
+        "bodySnippetAvailable": true,
+        "firstMeaningfulBad": false,
+        "pass": true
+      },
+      "calculator": {
+        "status": "NOT_APPLICABLE",
+        "pass": true
+      },
+      "ga4": {
+        "gtagLoaderPresent": false,
+        "gtagConfigPresent": false,
+        "debugViewStatus": "GA4_DEBUGVIEW_MANUAL_CHECK_REQUIRED"
+      },
+      "checks": {
+        "http200": true,
+        "unexpectedRedirect": true,
+        "selfCanonical": true,
+        "noMetaNoindex": true,
+        "noXRobotsNoindex": true,
+        "h1ExactlyOne": true,
+        "titlePresent": true,
+        "descriptionPresent": true,
+        "titleNotSlugFallback": true,
+        "descriptionNotSlugFallback": true,
+        "sitemapMembership": true,
+        "expectedLocale": true,
+        "hreflangPresent": true,
+        "jsonLdParse": true,
+        "articleNotDuplicate": true,
+        "faqConsistency": true,
+        "ctaTarget200": true,
+        "notErrorScreen": true,
+        "snippetHygiene": true,
+        "calculatorStatic": true,
+        "ga4LoaderPresent": false
+      },
+      "pass": true
+    },
+    {
+      "group": "Real estate",
+      "url": "https://www.finmaphub.com/market/real-estate/magok-top100",
+      "locale": "ko",
+      "type": "market",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/market/real-estate/magok-top100",
+      "redirects": [],
+      "canonical": "https://www.finmaphub.com/market/real-estate/magok-top100",
+      "metaRobots": "index,follow,max-image-preview:large",
+      "xRobots": "",
+      "h1Count": 1,
+      "h1": "마곡 아파트 집값 TOP 100",
+      "title": "마곡 아파트 집값 TOP 100 | 강서구 마곡동 실거래 순위 | FinMap",
+      "description": "마곡(강서구 마곡동) 아파트 실거래 집계 데이터를 기반으로, 대표가격(중앙값) 기준 TOP 100 순위를 제공합니다. 최신 거래월 기준으로 확인하세요.",
+      "htmlLang": "ko",
+      "alternates": [
+        {
+          "hreflang": "ko",
+          "href": "https://www.finmaphub.com/market/real-estate/magok-top100"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://www.finmaphub.com/en/market/real-estate/magok-top100"
+        }
+      ],
+      "jsonLdTypes": [
+        "WebApplication",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonLdErrors": [],
+      "articleCount": 0,
+      "faq": {
+        "status": "PASS",
+        "details": "questions=4; visibleMatched=4"
+      },
+      "ctaTargets": [
+        {
+          "text": "FinMap금융 기초 · 투자계획 지도",
+          "href": "https://www.finmaphub.com/",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "내 구매 가능액 계산하기",
+          "href": "https://www.finmaphub.com/tools/dsr-ltv-calculator",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "마곡엠밸리7단지",
+          "href": "https://www.finmaphub.com/market/real-estate/apt/11500%7C%7C%EB%A7%88%EA%B3%A1%EB%8F%99%7C%EB%A7%88%EA%B3%A1%EC%97%A0%EB%B0%B8%EB%A6%AC7%EB%8B%A8%EC%A7%80",
+          "status": 200,
+          "pass": true
+        }
+      ],
+      "snippet": {
+        "viewZeroUnprotected": false,
+        "commentUnprotected": false,
+        "shareUnprotected": false,
+        "loadingEarly": false,
+        "h1SnippetAvailable": true,
+        "bodySnippetAvailable": true,
+        "firstMeaningfulBad": false,
+        "pass": true
+      },
+      "calculator": {
+        "status": "NOT_APPLICABLE",
+        "pass": true
+      },
+      "ga4": {
+        "gtagLoaderPresent": false,
+        "gtagConfigPresent": false,
+        "debugViewStatus": "GA4_DEBUGVIEW_MANUAL_CHECK_REQUIRED"
+      },
+      "checks": {
+        "http200": true,
+        "unexpectedRedirect": true,
+        "selfCanonical": true,
+        "noMetaNoindex": true,
+        "noXRobotsNoindex": true,
+        "h1ExactlyOne": true,
+        "titlePresent": true,
+        "descriptionPresent": true,
+        "titleNotSlugFallback": true,
+        "descriptionNotSlugFallback": true,
+        "sitemapMembership": true,
+        "expectedLocale": true,
+        "hreflangPresent": true,
+        "jsonLdParse": true,
+        "articleNotDuplicate": true,
+        "faqConsistency": true,
+        "ctaTarget200": true,
+        "notErrorScreen": true,
+        "snippetHygiene": true,
+        "calculatorStatic": true,
+        "ga4LoaderPresent": false
+      },
+      "pass": true
+    },
+    {
+      "group": "Real estate",
+      "url": "https://www.finmaphub.com/market/real-estate/gangnam3-top100",
+      "locale": "ko",
+      "type": "market",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8002/market/real-estate/gangnam3-top100",
+      "redirects": [],
+      "canonical": "https://www.finmaphub.com/market/real-estate/gangnam3-top100",
+      "metaRobots": "index,follow,max-image-preview:large",
+      "xRobots": "",
+      "h1Count": 1,
+      "h1": "강남3구 아파트 집값 TOP 100",
+      "title": "강남3구 아파트 집값 TOP 100 | 강남·서초·송파 실거래 순위 | FinMap",
+      "description": "강남3구(강남·서초·송파) 아파트 실거래 집계 데이터를 기반으로, 대표가격(중앙값) 기준 TOP 100 순위를 제공합니다. 최신 거래월 기준으로 빠르게 확인하세요.",
+      "htmlLang": "ko",
+      "alternates": [
+        {
+          "hreflang": "ko",
+          "href": "https://www.finmaphub.com/market/real-estate/gangnam3-top100"
+        },
+        {
+          "hreflang": "en",
+          "href": "https://www.finmaphub.com/en/market/real-estate/gangnam3-top100"
+        }
+      ],
+      "jsonLdTypes": [
+        "WebApplication",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonLdErrors": [],
+      "articleCount": 0,
+      "faq": {
+        "status": "PASS",
+        "details": "questions=4; visibleMatched=4"
+      },
+      "ctaTargets": [
+        {
+          "text": "FinMap금융 기초 · 투자계획 지도",
+          "href": "https://www.finmaphub.com/",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "내 구매 가능액 계산하기",
+          "href": "https://www.finmaphub.com/tools/dsr-ltv-calculator",
+          "status": 200,
+          "pass": true
+        },
+        {
+          "text": "신현대11차",
+          "href": "https://www.finmaphub.com/market/real-estate/apt/11680%7C%7C%EC%95%95%EA%B5%AC%EC%A0%95%EB%8F%99%7C%EC%8B%A0%ED%98%84%EB%8C%8011%EC%B0%A8",
+          "status": 200,
+          "pass": true
+        }
+      ],
+      "snippet": {
+        "viewZeroUnprotected": false,
+        "commentUnprotected": false,
+        "shareUnprotected": false,
+        "loadingEarly": false,
+        "h1SnippetAvailable": true,
+        "bodySnippetAvailable": true,
+        "firstMeaningfulBad": false,
+        "pass": true
+      },
+      "calculator": {
+        "status": "NOT_APPLICABLE",
+        "pass": true
+      },
+      "ga4": {
+        "gtagLoaderPresent": false,
+        "gtagConfigPresent": false,
+        "debugViewStatus": "GA4_DEBUGVIEW_MANUAL_CHECK_REQUIRED"
+      },
+      "checks": {
+        "http200": true,
+        "unexpectedRedirect": true,
+        "selfCanonical": true,
+        "noMetaNoindex": true,
+        "noXRobotsNoindex": true,
+        "h1ExactlyOne": true,
+        "titlePresent": true,
+        "descriptionPresent": true,
+        "titleNotSlugFallback": true,
+        "descriptionNotSlugFallback": true,
+        "sitemapMembership": true,
+        "expectedLocale": true,
+        "hreflangPresent": true,
+        "jsonLdParse": true,
+        "articleNotDuplicate": true,
+        "faqConsistency": true,
+        "ctaTarget200": true,
+        "notErrorScreen": true,
+        "snippetHygiene": true,
+        "calculatorStatic": true,
+        "ga4LoaderPresent": false
+      },
+      "pass": true
+    }
+  ],
+  "browser": {
+    "status": "PASS",
+    "reason": "",
+    "widths": [
+      320,
+      390
+    ],
+    "results": [
+      {
+        "url": "http://127.0.0.1:8002/posts/personalFinance/what-is-cagr",
+        "group": "KO Track B",
+        "width": 320,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "firstInteractiveTop": 7,
+        "tableOverflowCount": 2,
+        "tableCount": 2,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/posts/personalFinance/what-is-cagr",
+        "group": "KO Track B",
+        "width": 390,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "firstInteractiveTop": 8,
+        "tableOverflowCount": 2,
+        "tableCount": 2,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 1,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/tools/home-buying-budget-calculator",
+        "group": "KO Track B",
+        "width": 320,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "firstInteractiveTop": 7,
+        "tableOverflowCount": 0,
+        "tableCount": 1,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 1,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/tools/home-buying-budget-calculator",
+        "group": "KO Track B",
+        "width": 390,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "firstInteractiveTop": 8,
+        "tableOverflowCount": 0,
+        "tableCount": 1,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/posts/personalFinance/dsr-40-income-loan-limit-table",
+        "group": "KO Track B",
+        "width": 320,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "firstInteractiveTop": 7,
+        "tableOverflowCount": 4,
+        "tableCount": 4,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 3,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/posts/personalFinance/dsr-40-income-loan-limit-table",
+        "group": "KO Track B",
+        "width": 390,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "firstInteractiveTop": 8,
+        "tableOverflowCount": 4,
+        "tableCount": 4,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 3,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+        "group": "EN Track A",
+        "width": 320,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "firstInteractiveTop": 7,
+        "tableOverflowCount": 3,
+        "tableCount": 3,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 4,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+        "group": "EN Track A",
+        "width": 390,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "firstInteractiveTop": 8,
+        "tableOverflowCount": 3,
+        "tableCount": 3,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 3,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/en/posts/personalFinance/annual-vs-monthly-compound",
+        "group": "EN Track A",
+        "width": 320,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "firstInteractiveTop": 7,
+        "tableOverflowCount": 3,
+        "tableCount": 3,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 4,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/en/posts/personalFinance/annual-vs-monthly-compound",
+        "group": "EN Track A",
+        "width": 390,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "firstInteractiveTop": 8,
+        "tableOverflowCount": 3,
+        "tableCount": 3,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 4,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+        "group": "EN Track A",
+        "width": 320,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "firstInteractiveTop": 7,
+        "tableOverflowCount": 3,
+        "tableCount": 3,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 4,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+        "group": "EN Track A",
+        "width": 390,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "firstInteractiveTop": 8,
+        "tableOverflowCount": 3,
+        "tableCount": 3,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 3,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/tools/compound-interest",
+        "group": "Google top loss calculator",
+        "width": 320,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "firstInteractiveTop": 7,
+        "tableOverflowCount": 0,
+        "tableCount": 1,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/tools/compound-interest",
+        "group": "Google top loss calculator",
+        "width": 390,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "firstInteractiveTop": 8,
+        "tableOverflowCount": 0,
+        "tableCount": 1,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/tools/cagr-calculator",
+        "group": "Google top loss calculator",
+        "width": 320,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "firstInteractiveTop": 7,
+        "tableOverflowCount": 0,
+        "tableCount": 0,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/tools/cagr-calculator",
+        "group": "Google top loss calculator",
+        "width": 390,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "firstInteractiveTop": 8,
+        "tableOverflowCount": 0,
+        "tableCount": 0,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/tools/dca-calculator",
+        "group": "Google top loss calculator",
+        "width": 320,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "firstInteractiveTop": 7,
+        "tableOverflowCount": 0,
+        "tableCount": 0,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/tools/dca-calculator",
+        "group": "Google top loss calculator",
+        "width": 390,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "firstInteractiveTop": 8,
+        "tableOverflowCount": 0,
+        "tableCount": 0,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/tools/goal-simulator",
+        "group": "Google top loss calculator",
+        "width": 320,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "firstInteractiveTop": 7,
+        "tableOverflowCount": 0,
+        "tableCount": 0,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/tools/goal-simulator",
+        "group": "Google top loss calculator",
+        "width": 390,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "firstInteractiveTop": 8,
+        "tableOverflowCount": 0,
+        "tableCount": 0,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "group": "New Google calculator",
+        "width": 320,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "firstInteractiveTop": 7,
+        "tableOverflowCount": 0,
+        "tableCount": 2,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "group": "New Google calculator",
+        "width": 390,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "firstInteractiveTop": 8,
+        "tableOverflowCount": 0,
+        "tableCount": 2,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "group": "New Google calculator",
+        "width": 320,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "firstInteractiveTop": 7,
+        "tableOverflowCount": 0,
+        "tableCount": 2,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "group": "New Google calculator",
+        "width": 390,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "firstInteractiveTop": 8,
+        "tableOverflowCount": 0,
+        "tableCount": 2,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/market/real-estate",
+        "group": "Real estate",
+        "width": 320,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "firstInteractiveTop": 7,
+        "tableOverflowCount": 0,
+        "tableCount": 0,
+        "bodyHasResultText": false,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/market/real-estate",
+        "group": "Real estate",
+        "width": 390,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "firstInteractiveTop": 8,
+        "tableOverflowCount": 0,
+        "tableCount": 0,
+        "bodyHasResultText": false,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/market/real-estate/seoul-top100",
+        "group": "Real estate",
+        "width": 320,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "firstInteractiveTop": 7,
+        "tableOverflowCount": 0,
+        "tableCount": 0,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/market/real-estate/seoul-top100",
+        "group": "Real estate",
+        "width": 390,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "firstInteractiveTop": 8,
+        "tableOverflowCount": 0,
+        "tableCount": 0,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/market/real-estate/magok-top100",
+        "group": "Real estate",
+        "width": 320,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "firstInteractiveTop": 7,
+        "tableOverflowCount": 0,
+        "tableCount": 0,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/market/real-estate/magok-top100",
+        "group": "Real estate",
+        "width": 390,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "firstInteractiveTop": 8,
+        "tableOverflowCount": 0,
+        "tableCount": 0,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/market/real-estate/gangnam3-top100",
+        "group": "Real estate",
+        "width": 320,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "firstInteractiveTop": 7,
+        "tableOverflowCount": 0,
+        "tableCount": 0,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      },
+      {
+        "url": "http://127.0.0.1:8002/market/real-estate/gangnam3-top100",
+        "group": "Real estate",
+        "width": 390,
+        "pass": true,
+        "navigationError": "",
+        "horizontalOverflow": false,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "firstInteractiveTop": 8,
+        "tableOverflowCount": 0,
+        "tableCount": 0,
+        "bodyHasResultText": true,
+        "consoleErrorCount": 2,
+        "pageErrorCount": 0,
+        "hydrationErrorCount": 0,
+        "fatalConsoleErrorCount": 0,
+        "pageErrors": [],
+        "hydrationErrors": [],
+        "fatalConsoleErrors": []
+      }
+    ]
+  },
+  "sitemaps": {
+    "sitemapResults": [
+      {
+        "url": "http://127.0.0.1:8002/sitemap.xml",
+        "status": 200,
+        "xmlParse": true,
+        "locCount": 1,
+        "containsDcaExplicitAlternate": false,
+        "pass": true
+      },
+      {
+        "url": "http://127.0.0.1:8002/sitemap-ko.xml",
+        "status": 200,
+        "xmlParse": true,
+        "locCount": 111,
+        "containsDcaExplicitAlternate": true,
+        "pass": true
+      },
+      {
+        "url": "http://127.0.0.1:8002/sitemap-en.xml",
+        "status": 200,
+        "xmlParse": true,
+        "locCount": 100,
+        "containsDcaExplicitAlternate": true,
+        "pass": true
+      },
+      {
+        "url": "http://127.0.0.1:8002/en/sitemap.xml",
+        "status": 200,
+        "xmlParse": true,
+        "locCount": 100,
+        "containsDcaExplicitAlternate": true,
+        "pass": true
+      }
+    ],
+    "robots": {
+      "url": "http://127.0.0.1:8002/robots.txt",
+      "status": 200,
+      "sitemapRefs": [
+        "https://www.finmaphub.com/sitemap.xml",
+        "https://www.finmaphub.com/sitemap-ko.xml"
+      ],
+      "disallowBlocksCore": false,
+      "pass": true
+    },
+    "targetMembership": [
+      {
+        "url": "https://www.finmaphub.com/posts/personalFinance/what-is-cagr",
+        "inSitemap": true
+      },
+      {
+        "url": "https://www.finmaphub.com/tools/home-buying-budget-calculator",
+        "inSitemap": true
+      },
+      {
+        "url": "https://www.finmaphub.com/posts/personalFinance/dsr-40-income-loan-limit-table",
+        "inSitemap": true
+      },
+      {
+        "url": "https://www.finmaphub.com/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+        "inSitemap": true
+      },
+      {
+        "url": "https://www.finmaphub.com/en/posts/personalFinance/annual-vs-monthly-compound",
+        "inSitemap": true
+      },
+      {
+        "url": "https://www.finmaphub.com/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+        "inSitemap": true
+      },
+      {
+        "url": "https://www.finmaphub.com/tools/compound-interest",
+        "inSitemap": true
+      },
+      {
+        "url": "https://www.finmaphub.com/tools/cagr-calculator",
+        "inSitemap": true
+      },
+      {
+        "url": "https://www.finmaphub.com/tools/dca-calculator",
+        "inSitemap": true
+      },
+      {
+        "url": "https://www.finmaphub.com/tools/goal-simulator",
+        "inSitemap": true
+      },
+      {
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "inSitemap": true
+      },
+      {
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "inSitemap": true
+      },
+      {
+        "url": "https://www.finmaphub.com/market/real-estate",
+        "inSitemap": true
+      },
+      {
+        "url": "https://www.finmaphub.com/market/real-estate/seoul-top100",
+        "inSitemap": true
+      },
+      {
+        "url": "https://www.finmaphub.com/market/real-estate/magok-top100",
+        "inSitemap": true
+      },
+      {
+        "url": "https://www.finmaphub.com/market/real-estate/gangnam3-top100",
+        "inSitemap": true
+      }
+    ]
+  },
+  "calendar": {
+    "generatedAt": "2026-07-29",
+    "timezone": "Asia/Seoul",
+    "deployDate": "MANUAL_INPUT_REQUIRED",
+    "deployTime": "MANUAL_INPUT_REQUIRED",
+    "deployPlus72Hours": "MANUAL_INPUT_REQUIRED",
+    "deployPlus7Days": "MANUAL_INPUT_REQUIRED",
+    "deployPlus28Days": "MANUAL_INPUT_REQUIRED",
+    "deployPlus42Days": "MANUAL_INPUT_REQUIRED",
+    "checks": {
+      "72h": [
+        "HTTP",
+        "canonical",
+        "noindex",
+        "sitemap",
+        "calculator function",
+        "GA4"
+      ],
+      "7d": [
+        "Naver clicks/impressions",
+        "Bing clicks/impressions",
+        "provisional GSC impressions",
+        "GA4 calculate events"
+      ],
+      "28d": [
+        "KO Track B performance",
+        "EN Track A performance",
+        "calculator Google impressions",
+        "Naver calculator rank",
+        "CTA conversion"
+      ],
+      "42d": [
+        "keep",
+        "partial rollback",
+        "additional improvement decision"
+      ]
+    }
+  },
+  "verdict": {
+    "status": "CONDITIONAL_PASS",
+    "blockers": [],
+    "manualChecks": [
+      "deploy date/time",
+      "GA4 DebugView",
+      "GSC sitemap submission screen",
+      "representative calculator input GA4 receipt"
+    ]
+  },
+  "observationBaselineUpdate": {
+    "updated": false,
+    "reason": "Skipped for non-production baseUrl",
+    "baseUrl": "http://127.0.0.1:8002"
+  }
+}

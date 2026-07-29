@@ -1,0 +1,223 @@
+FinMap
+Home
+Market Info
+Finance Tools
+Insights▾
+한국어
+EN
+
+Mortgage payment
+
+Mortgage Payment Calculator
+
+Start with a loan amount and estimate monthly payment, total interest, first and last payment, and +1pp rate sensitivity. Use the DSR/LTV calculator separately for income and home-price affordability.
+
+Inputs
+
+Money inputs use KRW 10k units. This calculator focuses on payment and interest from a loan amount.
+
+Quick presets
+KRW 300M / 4.0% / 30y
+KRW 500M / 4.0% / 30y
+KRW 700M / 4.5% / 30y
+Magok 800M candidate
+Gangnam 1.5B candidate
+Loan amount
+KRW 10k
+Annual rate
+%
+Loan term
+years
+Repayment type
+Equal payment
+Monthly payment stays nearly constant.
+Equal principal
+Starts higher and gradually declines.
+Advanced options
+Calculate payment
+Estimated payment result
+
+This is a simplified estimate from your inputs. Actual lender review and final rates can differ.
+
+Estimated monthly payment
+KRW 1,432,246
+Total interest
+KRW 215,608,519
+Total repayment
+KRW 515,608,519
+First-month payment
+KRW 1,432,246
+Last-month payment
+KRW 1,432,246
+Monthly change at rate +1pp
++KRW 178,219
+KRW 1,610,465 / 5.0%
+DSR reference
+
+Enter income to show
+
+-
+Repayment schedule
+
+First 12 months
+
+1
+KRW 1,432,246
+Principal
+KRW 432,246
+Interest
+KRW 1,000,000
+Balance
+KRW 299,567,754
+2
+KRW 1,432,246
+Principal
+KRW 433,687
+Interest
+KRW 998,559
+Balance
+KRW 299,134,067
+3
+KRW 1,432,246
+Principal
+KRW 435,132
+Interest
+KRW 997,114
+Balance
+KRW 298,698,935
+4
+KRW 1,432,246
+Principal
+KRW 436,583
+Interest
+KRW 995,663
+Balance
+KRW 298,262,352
+5
+KRW 1,432,246
+Principal
+KRW 438,038
+Interest
+KRW 994,208
+Balance
+KRW 297,824,314
+6
+KRW 1,432,246
+Principal
+KRW 439,498
+Interest
+KRW 992,748
+Balance
+KRW 297,384,816
+7
+KRW 1,432,246
+Principal
+KRW 440,963
+Interest
+KRW 991,283
+Balance
+KRW 296,943,853
+8
+KRW 1,432,246
+Principal
+KRW 442,433
+Interest
+KRW 989,813
+Balance
+KRW 296,501,420
+9
+KRW 1,432,246
+Principal
+KRW 443,908
+Interest
+KRW 988,338
+Balance
+KRW 296,057,512
+10
+KRW 1,432,246
+Principal
+KRW 445,388
+Interest
+KRW 986,858
+Balance
+KRW 295,612,125
+11
+KRW 1,432,246
+Principal
+KRW 446,872
+Interest
+KRW 985,374
+Balance
+KRW 295,165,252
+12
+KRW 1,432,246
+Principal
+KRW 448,362
+Interest
+KRW 983,884
+Balance
+KRW 294,716,891
+View yearly summary
+Continue the purchase funnel
+
+After checking the monthly payment, review affordability by income, home price, and cash on hand separately.
+
+Check DSR/LTV affordability
+Check cash with home buying budget
+View Seoul Top 100
+View Magok Top 100
+
+NEXT STEPS
+
+Save this Mortgage payment calculator result and continue planning
+
+Save a PDF, copy the result URL, then use a related guide and calculator to review the assumptions.
+
+Save PDF
+Copy result URL
+View checklist
+DSR/LTV calculator
+
+Get a free checklist/PDF
+
+Download a home, salary, DCA, or retirement planning file without entering an email.
+
+Get free file
+Important notice
+
+This calculator is a planning estimate based on your inputs. Actual mortgage terms may vary by lender review, final rate, credit profile, recognized income, collateral value, regulated area, stress DSR, and guarantee conditions. The result does not guarantee approval or a borrowing amount.
+
+SHARE & CITE
+
+Share this calculator
+
+Use the query-free canonical URL when citing this calculator from articles or communities.
+
+Share calculator
+Copy canonical URL
+Mortgage payment calculator FAQ
+How is this different from the DSR/LTV calculator?
+Which repayment method should I use?
+What does the +1pp rate result mean?
+Does this result guarantee mortgage approval?
+
+CITATION
+
+How to cite this calculator
+
+When referencing the method or examples, cite the canonical page with a simple HTML link.
+
+Copy HTML
+HTML
+<a href="https://www.finmaphub.com/en/tools/mortgage-loan-calculator">mortgage payment calculator</a>
+Recommended anchor text
+mortgage payment calculator
+Korean apartment mortgage calculator
+home loan payment calculator
+About
+Contact
+Privacy
+TOS
+Disclaimer
+Sitemap
+© 2026 FinMap

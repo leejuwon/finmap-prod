@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-07-29",
+  "timezone": "Asia/Seoul",
+  "deployDate": "MANUAL_INPUT_REQUIRED",
+  "deployTime": "MANUAL_INPUT_REQUIRED",
+  "deployPlus72Hours": "MANUAL_INPUT_REQUIRED",
+  "deployPlus7Days": "MANUAL_INPUT_REQUIRED",
+  "deployPlus28Days": "MANUAL_INPUT_REQUIRED",
+  "deployPlus42Days": "MANUAL_INPUT_REQUIRED",
+  "checks": {
+    "72h": [
+      "HTTP",
+      "canonical",
+      "noindex",
+      "sitemap",
+      "calculator function",
+      "GA4"
+    ],
+    "7d": [
+      "Naver clicks/impressions",
+      "Bing clicks/impressions",
+      "provisional GSC impressions",
+      "GA4 calculate events"
+    ],
+    "28d": [
+      "KO Track B performance",
+      "EN Track A performance",
+      "calculator Google impressions",
+      "Naver calculator rank",
+      "CTA conversion"
+    ],
+    "42d": [
+      "keep",
+      "partial rollback",
+      "additional improvement decision"
+    ]
+  }
+}

@@ -123,10 +123,12 @@ function inspectBootstrap(html) {
   const $ = cheerio.load(html || "");
   const tags = $(`script[src*="${ADS_SRC}"]`).toArray();
   const headTags = $(`head script[src*="${ADS_SRC}"]`).toArray();
+  const hydrationSafeTags = $(`body script[data-finmap-adsense-bootstrap="after-next-script"][src*="${ADS_SRC}"]`).toArray();
   const attrs = tags.map(scriptTagAttrs);
   return {
     count: tags.length,
     headCount: headTags.length,
+    hydrationSafeBodyCount: hydrationSafeTags.length,
     hasClient: attrs.some((item) => item.includes(ADS_CLIENT)),
     hasDataNscript: attrs.some((item) => /data-nscript/i.test(item)),
     attrs,
@@ -142,6 +144,9 @@ function sourceBootstrapCheck() {
     documentHasClient: documentSource.includes(ADS_CLIENT),
     documentUsesNextScriptForAds: /<Script\b[\s\S]+pagead2\.googlesyndication/.test(documentSource),
     documentUsesPlainScript: /<script[\s\S]+pagead2\.googlesyndication/i.test(documentSource),
+    documentUsesHydrationSafeBodyScript:
+      documentSource.includes('data-finmap-adsense-bootstrap="after-next-script"') &&
+      documentSource.indexOf("<NextScript />") < documentSource.indexOf("pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"),
   };
 }
 
@@ -233,7 +238,8 @@ async function main() {
     sourceBootstrap.documentHasPagead2 &&
     sourceBootstrap.documentHasClient &&
     sourceBootstrap.documentUsesPlainScript &&
-    !sourceBootstrap.documentUsesNextScriptForAds;
+    !sourceBootstrap.documentUsesNextScriptForAds &&
+    sourceBootstrap.documentUsesHydrationSafeBodyScript;
 
   passLine(sourceBootstrapPass, "source bootstrap", JSON.stringify(sourceBootstrap));
 
@@ -251,7 +257,7 @@ async function main() {
       loaded.mode === "source-fallback"
         ? sourceBootstrapPass
         : bootstrap.count === 1 &&
-          bootstrap.headCount === 1 &&
+          (bootstrap.headCount === 1 || bootstrap.hydrationSafeBodyCount === 1) &&
           bootstrap.hasClient &&
           !bootstrap.hasDataNscript;
 

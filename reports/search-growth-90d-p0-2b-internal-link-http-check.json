@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-22T14:07:48.103Z",
-  "baseUrl": "http://127.0.0.1:8002",
+  "generatedAt": "2026-07-29T13:35:09.110Z",
+  "baseUrl": "https://www.finmaphub.com",
   "reportPath": "reports\\posts.linkcheck.json",
   "targetsPath": "reports\\search-growth-90d-p0-2b-internal-link-targets.json",
   "summary": {
     "reportChecksPass": true,
     "targets": 28,
-    "targetPass": 0,
-    "targetFail": 28
+    "targetPass": 28,
+    "targetFail": 0
   },
   "reportChecks": [
     {
@@ -39,17 +39,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/apartment-transaction-volume-decline-meaning",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/en/posts/personalFinance/apartment-transaction-volume-decline-meaning",
+      "canonical": "https://www.finmaphub.com/en/posts/personalFinance/apartment-transaction-volume-decline-meaning",
+      "robots": "",
+      "title": "What Falling Korean Apartment Transaction Volume Means | FinMap",
+      "h1": "What Falling Korean Apartment Transaction Volume Means",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/apartment-transaction-volume-decline-meaning"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/apartment-transaction-volume-decline-meaning"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "What Falling Korean Apartment Transaction Volume Means"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "What Falling Korean Apartment Transaction Volume Means | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -63,17 +91,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/compound-return-3-5-7-10-table",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/en/posts/personalFinance/compound-return-3-5-7-10-table",
+      "canonical": "https://www.finmaphub.com/en/posts/personalFinance/compound-return-3-5-7-10-table",
+      "robots": "",
+      "title": "Compound Interest Table: 3%, 5%, 7%, 10% Over 10, 20, and 30 Years | FinMap",
+      "h1": "Compound Interest Table: 3%, 5%, 7%, 10% Over 10, 20, and 30 Years",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/compound-return-3-5-7-10-table"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/compound-return-3-5-7-10-table"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "Compound Interest Table: 3%, 5%, 7%, 10% Over 10, 20, and 30 Years"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "Compound Interest Table: 3%, 5%, 7%, 10% Over 10, 20, and 30 Years | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -87,17 +143,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/dca-vs-lump-sum-when-results-differ",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/en/posts/personalFinance/dca-vs-lump-sum-when-results-differ",
+      "canonical": "https://www.finmaphub.com/en/posts/personalFinance/dca-vs-lump-sum-when-results-differ",
+      "robots": "",
+      "title": "DCA vs Lump Sum: When Do the Results Differ? | FinMap",
+      "h1": "DCA vs Lump Sum: When Do the Results Differ?",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/dca-vs-lump-sum-when-results-differ"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/dca-vs-lump-sum-when-results-differ"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "DCA vs Lump Sum: When Do the Results Differ?"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "DCA vs Lump Sum: When Do the Results Differ? | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -111,17 +195,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+      "canonical": "https://www.finmaphub.com/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+      "robots": "",
+      "title": "Monthly Investment Needed to Reach a Target Portfolio | FinMap",
+      "h1": "Monthly Investment Needed to Reach a Target Portfolio",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "Monthly Investment Needed to Reach a Target Portfolio"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "Monthly Investment Needed to Reach a Target Portfolio | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -135,17 +247,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/how-to-read-apartment-transaction-prices",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/en/posts/personalFinance/how-to-read-apartment-transaction-prices",
+      "canonical": "https://www.finmaphub.com/en/posts/personalFinance/how-to-read-apartment-transaction-prices",
+      "robots": "",
+      "title": "How to Read Korean Apartment Transaction Prices | Median Average Unit Price | FinMap",
+      "h1": "How to Read Korean Apartment Transaction Prices | Median Average Unit Price",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/how-to-read-apartment-transaction-prices"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/how-to-read-apartment-transaction-prices"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "How to Read Korean Apartment Transaction Prices | Median Average Unit Price"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "How to Read Korean Apartment Transaction Prices | Median Average Unit Price | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -159,17 +299,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+      "canonical": "https://www.finmaphub.com/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+      "robots": "",
+      "title": "Is Dollar-Cost Averaging Better in a Bear Market? | FinMap",
+      "h1": "Is Dollar-Cost Averaging Better in a Bear Market?",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/is-dca-better-in-a-bear-market"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/is-dca-better-in-a-bear-market"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "Is Dollar-Cost Averaging Better in a Bear Market?"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "Is Dollar-Cost Averaging Better in a Bear Market? | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -183,17 +351,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/large-apartment-complex-households-price-stability",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/en/posts/personalFinance/large-apartment-complex-households-price-stability",
+      "canonical": "https://www.finmaphub.com/en/posts/personalFinance/large-apartment-complex-households-price-stability",
+      "robots": "",
+      "title": "Large Apartment Complexes in Korea | Household Count Volume Unit Price | FinMap",
+      "h1": "Large Apartment Complexes in Korea | Household Count Volume Unit Price",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/large-apartment-complex-households-price-stability"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/large-apartment-complex-households-price-stability"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "Large Apartment Complexes in Korea | Household Count Volume Unit Price"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "Large Apartment Complexes in Korea | Household Count Volume Unit Price | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -207,17 +403,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/en/posts/personalFinance/monthly-investment-for-100m-table",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/en/posts/personalFinance/monthly-investment-for-100m-table",
+      "canonical": "https://www.finmaphub.com/en/posts/personalFinance/monthly-investment-for-100m-table",
+      "robots": "",
+      "title": "Monthly Contribution Table | $100,000 and KRW 100M Goal Examples | FinMap",
+      "h1": "Monthly Contribution Table | $100,000 and KRW 100M Goal Examples",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/monthly-investment-for-100m-table"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/posts/personalFinance/monthly-investment-for-100m-table"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "Monthly Contribution Table | $100,000 and KRW 100M Goal Examples"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "Monthly Contribution Table | $100,000 and KRW 100M Goal Examples | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "linkFixTargets",
@@ -231,17 +455,45 @@
       "reasons": [
         "EN post related-calculator link should use EN canonical tool route."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/en/tools/cagr-calculator",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/en/tools/cagr-calculator",
+      "canonical": "https://www.finmaphub.com/en/tools/cagr-calculator",
+      "robots": "",
+      "title": "CAGR Calculator: Annualized Return, Growth Rate & Future Value | FinMap",
+      "h1": "CAGR Calculator for Annualized Return",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/tools/cagr-calculator"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/tools/cagr-calculator"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "CAGR Calculator for Annualized Return"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "CAGR Calculator: Annualized Return, Growth Rate & Future Value | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "linkFixTargets",
@@ -255,17 +507,45 @@
       "reasons": [
         "EN post related-calculator link should use EN canonical tool route."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/en/tools/compound-interest",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/en/tools/compound-interest",
+      "canonical": "https://www.finmaphub.com/en/tools/compound-interest",
+      "robots": "",
+      "title": "Compound Interest Calculator: Future Value, Monthly Contributions & Taxes | FinMap",
+      "h1": "Compound Interest Calculator for Future Value",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/tools/compound-interest"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/tools/compound-interest"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "Compound Interest Calculator for Future Value"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "Compound Interest Calculator: Future Value, Monthly Contributions & Taxes | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "linkFixTargets",
@@ -279,17 +559,45 @@
       "reasons": [
         "EN post related-calculator link should use EN canonical tool route."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/en/tools/dca-calculator",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/en/tools/dca-calculator",
+      "canonical": "https://www.finmaphub.com/en/tools/dca-calculator",
+      "robots": "",
+      "title": "Dollar-Cost Averaging Calculator for ETFs and Stocks | FinMap",
+      "h1": "Dollar-Cost Averaging Calculator (DCA)",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/tools/dca-calculator"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/tools/dca-calculator"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "Dollar-Cost Averaging Calculator (DCA)"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "Dollar-Cost Averaging Calculator for ETFs and Stocks | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "linkFixTargets",
@@ -303,17 +611,45 @@
       "reasons": [
         "EN post related-calculator link should use EN canonical tool route."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/en/tools/goal-simulator",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/en/tools/goal-simulator",
+      "canonical": "https://www.finmaphub.com/en/tools/goal-simulator",
+      "robots": "",
+      "title": "Investment Goal Calculator: How Much to Invest Per Month | FinMap",
+      "h1": "Investment Goal Calculator: How Much to Invest Per Month",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/tools/goal-simulator"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/en/tools/goal-simulator"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "Investment Goal Calculator: How Much to Invest Per Month"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "Investment Goal Calculator: How Much to Invest Per Month | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -327,17 +663,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/apartment-buying-calculator-guide",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/posts/personalFinance/apartment-buying-calculator-guide",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/apartment-buying-calculator-guide",
+      "robots": "",
+      "title": "아파트 구매 계산기: 집값·현금·대출·월상환액 한 번에 보는 법 | FinMap",
+      "h1": "아파트 구매 계산기: 집값·현금·대출·월상환액 한 번에 보는 법",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/apartment-buying-calculator-guide"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/apartment-buying-calculator-guide"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "아파트 구매 계산기: 집값·현금·대출·월상환액 한 번에 보는 법"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "아파트 구매 계산기: 집값·현금·대출·월상환액 한 번에 보는 법 | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -351,17 +715,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/apartment-buying-costs-before-purchase",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/posts/personalFinance/apartment-buying-costs-before-purchase",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/apartment-buying-costs-before-purchase",
+      "robots": "",
+      "title": "아파트 매수 전 계산해야 할 비용 5가지 | DSR LTV 현금표 | FinMap",
+      "h1": "아파트 매수 전 계산해야 할 비용 5가지 | DSR LTV 현금표",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/apartment-buying-costs-before-purchase"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/apartment-buying-costs-before-purchase"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "아파트 매수 전 계산해야 할 비용 5가지 | DSR LTV 현금표"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "아파트 매수 전 계산해야 할 비용 5가지 | DSR LTV 현금표 | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -375,17 +767,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/apartment-transaction-volume-decline-meaning",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/posts/personalFinance/apartment-transaction-volume-decline-meaning",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/apartment-transaction-volume-decline-meaning",
+      "robots": "",
+      "title": "아파트 거래량 감소 의미 | 거래량 줄면 집값은 어떻게 봐야 할까 | FinMap",
+      "h1": "아파트 거래량 감소 의미 | 거래량 줄면 집값은 어떻게 봐야 할까",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/apartment-transaction-volume-decline-meaning"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/apartment-transaction-volume-decline-meaning"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "아파트 거래량 감소 의미 | 거래량 줄면 집값은 어떻게 봐야 할까"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "아파트 거래량 감소 의미 | 거래량 줄면 집값은 어떻게 봐야 할까 | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -399,17 +819,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/compound-calculator-guide",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/posts/personalFinance/compound-calculator-guide",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/compound-calculator-guide",
+      "robots": "",
+      "title": "복리 계산기 사용법: 월복리·연복리·적립식 결과 보는 법 | FinMap",
+      "h1": "복리 계산기 사용법: 월복리·연복리·적립식 결과 보는 법",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/compound-calculator-guide"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/compound-calculator-guide"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "복리 계산기 사용법: 월복리·연복리·적립식 결과 보는 법"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "복리 계산기 사용법: 월복리·연복리·적립식 결과 보는 법 | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -423,17 +871,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/compound-return-3-5-7-10-table",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/posts/personalFinance/compound-return-3-5-7-10-table",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/compound-return-3-5-7-10-table",
+      "robots": "",
+      "title": "연 3% 5% 7% 10% 복리 결과 비교표 | 10년 20년 30년 | FinMap",
+      "h1": "연 3% 5% 7% 10% 복리 결과 비교표 | 10년 20년 30년",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/compound-return-3-5-7-10-table"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/compound-return-3-5-7-10-table"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "연 3% 5% 7% 10% 복리 결과 비교표 | 10년 20년 30년"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "연 3% 5% 7% 10% 복리 결과 비교표 | 10년 20년 30년 | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -447,17 +923,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/dca-vs-lump-sum-when-results-differ",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/posts/personalFinance/dca-vs-lump-sum-when-results-differ",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/dca-vs-lump-sum-when-results-differ",
+      "robots": "",
+      "title": "적립식 투자와 일괄투자, 언제 결과가 달라질까? DCA 비교 계산법 | FinMap",
+      "h1": "적립식 투자와 일괄투자, 언제 결과가 달라질까? DCA 비교 계산법",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/dca-vs-lump-sum-when-results-differ"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/dca-vs-lump-sum-when-results-differ"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "적립식 투자와 일괄투자, 언제 결과가 달라질까? DCA 비교 계산법"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "적립식 투자와 일괄투자, 언제 결과가 달라질까? DCA 비교 계산법 | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -471,17 +975,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/first-home-buyer-budget-calculation",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/posts/personalFinance/first-home-buyer-budget-calculation",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/first-home-buyer-budget-calculation",
+      "robots": "",
+      "title": "생애최초 주택 구입 예산 계산 | DSR LTV 현금흐름 체크 | FinMap",
+      "h1": "생애최초 주택 구입 예산 계산 | DSR LTV 현금흐름 체크",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/first-home-buyer-budget-calculation"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/first-home-buyer-budget-calculation"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "생애최초 주택 구입 예산 계산 | DSR LTV 현금흐름 체크"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "생애최초 주택 구입 예산 계산 | DSR LTV 현금흐름 체크 | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -495,17 +1027,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/how-much-monthly-invest-for-100m",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/posts/personalFinance/how-much-monthly-invest-for-100m",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/how-much-monthly-invest-for-100m",
+      "robots": "",
+      "title": "1억원 만들려면 매달 얼마를 투자해야 할까? 목표금액별 적립식 투자 계산 | FinMap",
+      "h1": "1억원 만들려면 매달 얼마를 투자해야 할까? 목표금액별 적립식 투자 계산",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/how-much-monthly-invest-for-100m"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/how-much-monthly-invest-for-100m"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "1억원 만들려면 매달 얼마를 투자해야 할까? 목표금액별 적립식 투자 계산"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "1억원 만들려면 매달 얼마를 투자해야 할까? 목표금액별 적립식 투자 계산 | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -519,17 +1079,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/how-to-read-apartment-transaction-prices",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/posts/personalFinance/how-to-read-apartment-transaction-prices",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/how-to-read-apartment-transaction-prices",
+      "robots": "",
+      "title": "아파트 실거래가 보는 법 | 평균가 중앙값 평단가 거래량 | FinMap",
+      "h1": "아파트 실거래가 보는 법 | 평균가 중앙값 평단가 거래량",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/how-to-read-apartment-transaction-prices"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/how-to-read-apartment-transaction-prices"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "아파트 실거래가 보는 법 | 평균가 중앙값 평단가 거래량"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "아파트 실거래가 보는 법 | 평균가 중앙값 평단가 거래량 | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -543,17 +1131,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/is-dca-better-in-bear-market",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/posts/personalFinance/is-dca-better-in-bear-market",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/is-dca-better-in-bear-market",
+      "robots": "",
+      "title": "하락장에서 적립식 투자가 유리하다는 말은 진짜일까? DCA 시나리오로 보기 | FinMap",
+      "h1": "하락장에서 적립식 투자가 유리하다는 말은 진짜일까? DCA 시나리오로 보기",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/is-dca-better-in-bear-market"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/is-dca-better-in-bear-market"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "하락장에서 적립식 투자가 유리하다는 말은 진짜일까? DCA 시나리오로 보기"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "하락장에서 적립식 투자가 유리하다는 말은 진짜일까? DCA 시나리오로 보기 | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -567,17 +1183,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/jeonse-to-home-purchase-cash-needed",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/posts/personalFinance/jeonse-to-home-purchase-cash-needed",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/jeonse-to-home-purchase-cash-needed",
+      "robots": "",
+      "title": "전세에서 매매 갈아타기 필요한 현금 | DSR LTV 계산 | FinMap",
+      "h1": "전세에서 매매 갈아타기 필요한 현금 | DSR LTV 계산",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/jeonse-to-home-purchase-cash-needed"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/jeonse-to-home-purchase-cash-needed"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "전세에서 매매 갈아타기 필요한 현금 | DSR LTV 계산"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "전세에서 매매 갈아타기 필요한 현금 | DSR LTV 계산 | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -591,17 +1235,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/large-apartment-complex-households-price-stability",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/posts/personalFinance/large-apartment-complex-households-price-stability",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/large-apartment-complex-households-price-stability",
+      "robots": "",
+      "title": "대단지 아파트 가격 안정성 | 세대수 거래량 평단가 보는 법 | FinMap",
+      "h1": "대단지 아파트 가격 안정성 | 세대수 거래량 평단가 보는 법",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/large-apartment-complex-households-price-stability"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/large-apartment-complex-households-price-stability"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "대단지 아파트 가격 안정성 | 세대수 거래량 평단가 보는 법"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "대단지 아파트 가격 안정성 | 세대수 거래량 평단가 보는 법 | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -615,17 +1287,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/ltv-dsr-calculator-guide",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/posts/personalFinance/ltv-dsr-calculator-guide",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/ltv-dsr-calculator-guide",
+      "robots": "",
+      "title": "LTV DSR 계산기 사용법: 주담대 한도 계산 순서 | FinMap",
+      "h1": "LTV DSR 계산기 사용법: 주담대 한도 계산 순서",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/ltv-dsr-calculator-guide"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/ltv-dsr-calculator-guide"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "LTV DSR 계산기 사용법: 주담대 한도 계산 순서"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "LTV DSR 계산기 사용법: 주담대 한도 계산 순서 | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -639,17 +1339,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/monthly-investment-for-100m-table",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/posts/personalFinance/monthly-investment-for-100m-table",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/monthly-investment-for-100m-table",
+      "robots": "",
+      "title": "1억 만들기 월 투자금 표 | 5년 10년 15년 20년 수익률별 계산 | FinMap",
+      "h1": "1억 만들기 월 투자금 표 | 5년 10년 15년 20년 수익률별 계산",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/monthly-investment-for-100m-table"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/monthly-investment-for-100m-table"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "1억 만들기 월 투자금 표 | 5년 10년 15년 20년 수익률별 계산"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "1억 만들기 월 투자금 표 | 5년 10년 15년 20년 수익률별 계산 | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -663,17 +1391,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/salary-40m-mortgage-limit",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/posts/personalFinance/salary-40m-mortgage-limit",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/salary-40m-mortgage-limit",
+      "robots": "",
+      "title": "연봉 4000만원 주담대 가능액 계산 | DSR 40% LTV 예산표 | FinMap",
+      "h1": "연봉 4000만원 주담대 가능액 계산 | DSR 40% LTV 예산표",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/salary-40m-mortgage-limit"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/salary-40m-mortgage-limit"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "연봉 4000만원 주담대 가능액 계산 | DSR 40% LTV 예산표"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "연봉 4000만원 주담대 가능액 계산 | DSR 40% LTV 예산표 | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     },
     {
       "source": "registryAdditions",
@@ -687,17 +1443,45 @@
       "reasons": [
         "Added to docs/blog-contents.md after file, sitemap, and route existence checks."
       ],
-      "status": 0,
-      "finalUrl": "http://127.0.0.1:8002/posts/personalFinance/salary-50m-dsr-40-loan-limit",
+      "status": 200,
+      "finalUrl": "https://www.finmaphub.com/posts/personalFinance/salary-50m-dsr-40-loan-limit",
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/salary-50m-dsr-40-loan-limit",
+      "robots": "",
+      "title": "연봉 5000만원 DSR 40% 대출 가능액 | 주담대 한도표 | FinMap",
+      "h1": "연봉 5000만원 DSR 40% 대출 가능액 | 주담대 한도표",
       "checks": [
         {
-          "name": "fetch",
-          "pass": false,
-          "details": "fetch failed"
+          "name": "http_200",
+          "pass": true,
+          "details": "200"
+        },
+        {
+          "name": "self_canonical",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/salary-50m-dsr-40-loan-limit"
+        },
+        {
+          "name": "no_noindex",
+          "pass": true,
+          "details": "(none)"
+        },
+        {
+          "name": "sitemap_membership",
+          "pass": true,
+          "details": "https://www.finmaphub.com/posts/personalFinance/salary-50m-dsr-40-loan-limit"
+        },
+        {
+          "name": "h1_exists",
+          "pass": true,
+          "details": "연봉 5000만원 DSR 40% 대출 가능액 | 주담대 한도표"
+        },
+        {
+          "name": "title_exists",
+          "pass": true,
+          "details": "연봉 5000만원 DSR 40% 대출 가능액 | 주담대 한도표 | FinMap"
         }
       ],
-      "pass": false,
-      "error": "fetch failed"
+      "pass": true
     }
   ]
 }

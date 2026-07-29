@@ -1,0 +1,2150 @@
+{
+  "generatedAt": "2026-07-29T15:33:58.497Z",
+  "baseUrl": "http://127.0.0.1:8002",
+  "runs": 5,
+  "blockMode": "none",
+  "outputMode": "regression",
+  "status": "PASS",
+  "summary": {
+    "total": 42,
+    "pass": 42,
+    "fail": 0,
+    "hydrationFail": 0,
+    "pageErrorFail": 0,
+    "networkOnlyFail": 0,
+    "reactErrorCodes": [],
+    "failedCombos": []
+  },
+  "results": [
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:16.933Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:18.988Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 3,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:21.043Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 4,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:23.099Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 5,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:25.160Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "360",
+      "width": 360,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:27.210Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "360",
+      "width": 360,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:29.261Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "390",
+      "width": 390,
+      "height": 844,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:31.310Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "390",
+      "width": 390,
+      "height": 844,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:33.362Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "390",
+      "width": 390,
+      "height": 844,
+      "navigation": "hard_load",
+      "run": 3,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:35.415Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "768",
+      "width": 768,
+      "height": 1024,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:37.472Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "768",
+      "width": 768,
+      "height": 1024,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:39.520Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "1280",
+      "width": 1280,
+      "height": 900,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:41.566Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "1280",
+      "width": 1280,
+      "height": 900,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:43.620Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "1280",
+      "width": 1280,
+      "height": 900,
+      "navigation": "hard_load",
+      "run": 3,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:45.683Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:47.746Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:49.794Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 3,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:51.840Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 4,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:53.886Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 5,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:55.939Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "360",
+      "width": 360,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:32:57.986Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "360",
+      "width": 360,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:00.032Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "390",
+      "width": 390,
+      "height": 844,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:02.090Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "390",
+      "width": 390,
+      "height": 844,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:04.138Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "390",
+      "width": 390,
+      "height": 844,
+      "navigation": "hard_load",
+      "run": 3,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:06.197Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "768",
+      "width": 768,
+      "height": 1024,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:08.258Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "768",
+      "width": 768,
+      "height": 1024,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:10.321Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "1280",
+      "width": 1280,
+      "height": 900,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:12.380Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "1280",
+      "width": 1280,
+      "height": 900,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:14.441Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "1280",
+      "width": 1280,
+      "height": 900,
+      "navigation": "hard_load",
+      "run": 3,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:23.501Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "cache_disabled_reload",
+      "run": 1,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:26.571Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        },
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "cache_disabled_reload",
+      "run": 2,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:29.636Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        },
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "cache_disabled_reload",
+      "run": 3,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:32.701Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        },
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "cache_disabled_reload",
+      "run": 1,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:35.764Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        },
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "cache_disabled_reload",
+      "run": 2,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:38.826Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        },
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "cache_disabled_reload",
+      "run": 3,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:41.887Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        },
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "client_navigation",
+      "run": 1,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:44.635Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/static/chunks/pages/tools/fire-calculator-d770fafbcfddb64e.js",
+          "method": "GET",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "other"
+        },
+        {
+          "url": "http://127.0.0.1:8002/_next/static/chunks/pages/tools/dca-calculator-ac1116df502b01ae.js",
+          "method": "GET",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "other"
+        }
+      ]
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "client_navigation",
+      "run": 2,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:47.395Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": []
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "client_navigation",
+      "run": 3,
+      "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:50.166Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/ko/tools/dsr-ltv-calculator.json",
+          "method": "GET",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/ko/tools/home-buying-budget-calculator.json",
+          "method": "GET",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/ko/tools/fire-calculator.json",
+          "method": "GET",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/ko/tools/dca-calculator.json",
+          "method": "GET",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "client_navigation",
+      "run": 1,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:52.897Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "client_navigation",
+      "run": 2,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:55.596Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "client_navigation",
+      "run": 3,
+      "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:33:58.332Z",
+      "responses": [
+        {
+          "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+          "status": 304,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "http://127.0.0.1:8002/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 3
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+        "error: Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+      ],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "http://127.0.0.1:8002/_next/data/14JtgBILrPE3Slgs2Eu3w/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    }
+  ]
+}

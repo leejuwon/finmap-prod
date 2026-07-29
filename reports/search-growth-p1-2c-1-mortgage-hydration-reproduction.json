@@ -1,0 +1,3066 @@
+{
+  "generatedAt": "2026-07-29T15:25:50.102Z",
+  "baseUrl": "https://www.finmaphub.com",
+  "runs": 5,
+  "blockMode": "none",
+  "outputMode": "reproduction",
+  "status": "FAIL",
+  "summary": {
+    "total": 42,
+    "pass": 26,
+    "fail": 16,
+    "hydrationFail": 16,
+    "pageErrorFail": 16,
+    "networkOnlyFail": 0,
+    "reactErrorCodes": [
+      "418"
+    ],
+    "failedCombos": [
+      {
+        "locale": "ko",
+        "path": "/tools/mortgage-loan-calculator",
+        "viewport": "320",
+        "navigation": "hard_load",
+        "run": 1,
+        "hydrationMessages": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "error": "",
+        "artifacts": {
+          "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-1.png",
+          "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-1-client-dom.html",
+          "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-1-visible-text.txt"
+        }
+      },
+      {
+        "locale": "ko",
+        "path": "/tools/mortgage-loan-calculator",
+        "viewport": "320",
+        "navigation": "hard_load",
+        "run": 3,
+        "hydrationMessages": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "error": "",
+        "artifacts": {
+          "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-3.png",
+          "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-3-client-dom.html",
+          "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-3-visible-text.txt"
+        }
+      },
+      {
+        "locale": "ko",
+        "path": "/tools/mortgage-loan-calculator",
+        "viewport": "390",
+        "navigation": "hard_load",
+        "run": 1,
+        "hydrationMessages": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "error": "",
+        "artifacts": {
+          "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-1.png",
+          "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-1-client-dom.html",
+          "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-1-visible-text.txt"
+        }
+      },
+      {
+        "locale": "ko",
+        "path": "/tools/mortgage-loan-calculator",
+        "viewport": "390",
+        "navigation": "hard_load",
+        "run": 3,
+        "hydrationMessages": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "error": "",
+        "artifacts": {
+          "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-3.png",
+          "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-3-client-dom.html",
+          "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-3-visible-text.txt"
+        }
+      },
+      {
+        "locale": "ko",
+        "path": "/tools/mortgage-loan-calculator",
+        "viewport": "1280",
+        "navigation": "hard_load",
+        "run": 1,
+        "hydrationMessages": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "error": "",
+        "artifacts": {
+          "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-1280-hard_load-1.png",
+          "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-1280-hard_load-1-client-dom.html",
+          "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-1280-hard_load-1-visible-text.txt"
+        }
+      },
+      {
+        "locale": "en",
+        "path": "/en/tools/mortgage-loan-calculator",
+        "viewport": "768",
+        "navigation": "hard_load",
+        "run": 2,
+        "hydrationMessages": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "error": "",
+        "artifacts": {
+          "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-768-hard_load-2.png",
+          "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-768-hard_load-2-client-dom.html",
+          "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-768-hard_load-2-visible-text.txt"
+        }
+      },
+      {
+        "locale": "en",
+        "path": "/en/tools/mortgage-loan-calculator",
+        "viewport": "1280",
+        "navigation": "hard_load",
+        "run": 3,
+        "hydrationMessages": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "error": "",
+        "artifacts": {
+          "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-1280-hard_load-3.png",
+          "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-1280-hard_load-3-client-dom.html",
+          "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-1280-hard_load-3-visible-text.txt"
+        }
+      },
+      {
+        "locale": "en",
+        "path": "/en/tools/mortgage-loan-calculator",
+        "viewport": "320",
+        "navigation": "cache_disabled_reload",
+        "run": 1,
+        "hydrationMessages": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "error": "",
+        "artifacts": {
+          "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-1.png",
+          "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-1-client-dom.html",
+          "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-1-visible-text.txt"
+        }
+      },
+      {
+        "locale": "en",
+        "path": "/en/tools/mortgage-loan-calculator",
+        "viewport": "320",
+        "navigation": "cache_disabled_reload",
+        "run": 2,
+        "hydrationMessages": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "error": "",
+        "artifacts": {
+          "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-2.png",
+          "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-2-client-dom.html",
+          "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-2-visible-text.txt"
+        }
+      },
+      {
+        "locale": "en",
+        "path": "/en/tools/mortgage-loan-calculator",
+        "viewport": "320",
+        "navigation": "cache_disabled_reload",
+        "run": 3,
+        "hydrationMessages": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "error": "",
+        "artifacts": {
+          "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-3.png",
+          "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-3-client-dom.html",
+          "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-3-visible-text.txt"
+        }
+      },
+      {
+        "locale": "ko",
+        "path": "/tools/mortgage-loan-calculator",
+        "viewport": "320",
+        "navigation": "client_navigation",
+        "run": 1,
+        "hydrationMessages": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "error": "",
+        "artifacts": {
+          "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-1.png",
+          "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-1-client-dom.html",
+          "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-1-visible-text.txt"
+        }
+      },
+      {
+        "locale": "ko",
+        "path": "/tools/mortgage-loan-calculator",
+        "viewport": "320",
+        "navigation": "client_navigation",
+        "run": 2,
+        "hydrationMessages": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "error": "",
+        "artifacts": {
+          "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-2.png",
+          "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-2-client-dom.html",
+          "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-2-visible-text.txt"
+        }
+      },
+      {
+        "locale": "ko",
+        "path": "/tools/mortgage-loan-calculator",
+        "viewport": "320",
+        "navigation": "client_navigation",
+        "run": 3,
+        "hydrationMessages": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "error": "",
+        "artifacts": {
+          "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-3.png",
+          "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-3-client-dom.html",
+          "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-3-visible-text.txt"
+        }
+      },
+      {
+        "locale": "en",
+        "path": "/en/tools/mortgage-loan-calculator",
+        "viewport": "320",
+        "navigation": "client_navigation",
+        "run": 1,
+        "hydrationMessages": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "error": "",
+        "artifacts": {
+          "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-1.png",
+          "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-1-client-dom.html",
+          "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-1-visible-text.txt"
+        }
+      },
+      {
+        "locale": "en",
+        "path": "/en/tools/mortgage-loan-calculator",
+        "viewport": "320",
+        "navigation": "client_navigation",
+        "run": 2,
+        "hydrationMessages": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "error": "",
+        "artifacts": {
+          "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-2.png",
+          "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-2-client-dom.html",
+          "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-2-visible-text.txt"
+        }
+      },
+      {
+        "locale": "en",
+        "path": "/en/tools/mortgage-loan-calculator",
+        "viewport": "320",
+        "navigation": "client_navigation",
+        "run": 3,
+        "hydrationMessages": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "error": "",
+        "artifacts": {
+          "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-3.png",
+          "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-3-client-dom.html",
+          "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-3-visible-text.txt"
+        }
+      }
+    ]
+  },
+  "results": [
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": false,
+      "timestamp": "2026-07-29T15:23:36.063Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Error: no_div"
+      ],
+      "pageErrors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "hydrationMessages": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "reactErrorCodes": [
+        "418"
+      ],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338612036&_gaz=1&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGA&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=15&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938468~118897920~118897930~119404702~119896803&sid=1785338612&sct=1&seg=0&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&gap.gtb=1&tfd=732",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ],
+      "artifacts": {
+        "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-1.png",
+        "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-1-client-dom.html",
+        "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-1-visible-text.txt"
+      }
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:23:38.986Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338616446&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=2&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616986~115938466~115938469~118897920~118897930~119527019~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=393",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 3,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": false,
+      "timestamp": "2026-07-29T15:23:41.443Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Error: no_div"
+      ],
+      "pageErrors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "hydrationMessages": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "reactErrorCodes": [
+        "418"
+      ],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338619159&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=10&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938466~115938469~118897920~118897930~119896802~120084215&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=337",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ],
+      "artifacts": {
+        "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-3.png",
+        "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-3-client-dom.html",
+        "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-3-visible-text.txt"
+      }
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 4,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:23:44.152Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338621762&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=10&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938466~115938468~118395334~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=258",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 5,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:23:46.733Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338624329&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=7&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616986~115938466~115938469~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=271",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "360",
+      "width": 360,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:23:49.317Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338626904&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=10&sr=360x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938466~115938468~118395333~118897920~118897930~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=273",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "360",
+      "width": 360,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:23:51.909Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338629490&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=7&sr=360x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938468~118897920~118897930~119527019~119896803~120084214&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=258",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "390",
+      "width": 390,
+      "height": 844,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": false,
+      "timestamp": "2026-07-29T15:23:54.505Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Error: no_div"
+      ],
+      "pageErrors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "hydrationMessages": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "reactErrorCodes": [
+        "418"
+      ],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338632085&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=3&sr=390x844&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938468~118897920~118897930~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=290",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ],
+      "artifacts": {
+        "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-1.png",
+        "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-1-client-dom.html",
+        "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-1-visible-text.txt"
+      }
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "390",
+      "width": 390,
+      "height": 844,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:23:57.277Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338634849&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=3&sr=390x844&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616985~115938465~115938469~118897920~118897930~119527020~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=282",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "390",
+      "width": 390,
+      "height": 844,
+      "navigation": "hard_load",
+      "run": 3,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": false,
+      "timestamp": "2026-07-29T15:23:59.868Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Error: no_div"
+      ],
+      "pageErrors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "hydrationMessages": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "reactErrorCodes": [
+        "418"
+      ],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338637448&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=11&sr=390x844&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616986~115938466~115938468~118897920~118897930~119259606~119896802~120125304&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=320",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ],
+      "artifacts": {
+        "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-3.png",
+        "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-3-client-dom.html",
+        "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-3-visible-text.txt"
+      }
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "768",
+      "width": 768,
+      "height": 1024,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:02.644Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338640202&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=2&sr=800x600&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938469~118897920~118897930~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=293",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "768",
+      "width": 768,
+      "height": 1024,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:05.295Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338642842&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=7&sr=800x600&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616986~115938466~115938469~118897920~118897930~119527020~119791749~119896803~120084214&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=307",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "1280",
+      "width": 1280,
+      "height": 900,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": false,
+      "timestamp": "2026-07-29T15:24:07.890Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Error: no_div"
+      ],
+      "pageErrors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "hydrationMessages": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "reactErrorCodes": [
+        "418"
+      ],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338645467&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=13&sr=800x600&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938466~115938468~118897920~118897930~119896802~120084215&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=305",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ],
+      "artifacts": {
+        "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-1280-hard_load-1.png",
+        "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-1280-hard_load-1-client-dom.html",
+        "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-1280-hard_load-1-visible-text.txt"
+      }
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "1280",
+      "width": 1280,
+      "height": 900,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:10.729Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338648297&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=5&sr=800x600&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938468~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=266",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "1280",
+      "width": 1280,
+      "height": 900,
+      "navigation": "hard_load",
+      "run": 3,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:13.339Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338650909&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=9&sr=800x600&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616986~115938465~115938469~118897920~118897930~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=296",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:15.893Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338653517&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=17&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938469~118395334~118897920~118897930~119527019~119896803~120084215&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=245",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:18.646Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338656266&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=19&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938468~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=442",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 3,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:21.221Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338658823&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=3&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938469~118897920~118897930~119791748~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=250",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 4,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:23.827Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338661407&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=13&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938468~118897920~118897930~119527019~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=260",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 5,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:26.342Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338664006&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=8&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616985~115938466~115938468~118897920~118897930~119896802~120084215&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=240",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "360",
+      "width": 360,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:28.862Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338666526&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=12&sr=360x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938466~115938468~118395335~118897920~118897930~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=240",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "360",
+      "width": 360,
+      "height": 800,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:31.452Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 360,
+        "clientWidth": 360,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338669047&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=16&sr=360x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938468~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=245",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "390",
+      "width": 390,
+      "height": 844,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:34.046Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338671637&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=3&sr=390x844&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616985~115938465~115938469~118897920~118897930~119896802~120084214&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=243",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "390",
+      "width": 390,
+      "height": 844,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:36.612Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338674248&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=15&sr=390x844&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938466~115938469~118395334~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=268",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "390",
+      "width": 390,
+      "height": 844,
+      "navigation": "hard_load",
+      "run": 3,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:39.182Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338676790&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=6&sr=390x844&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938469~118897920~118897930~119896803~120084214&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=241",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "768",
+      "width": 768,
+      "height": 1024,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:41.777Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338679350&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=14&sr=800x600&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616985~115938465~115938468~118897920~118897930~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=248",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "768",
+      "width": 768,
+      "height": 1024,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": false,
+      "timestamp": "2026-07-29T15:24:44.323Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Error: no_div"
+      ],
+      "pageErrors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "hydrationMessages": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "reactErrorCodes": [
+        "418"
+      ],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338681947&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=5&sr=800x600&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616986~115938466~115938469~118897920~118897930~119793973~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=268",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ],
+      "artifacts": {
+        "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-768-hard_load-2.png",
+        "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-768-hard_load-2-client-dom.html",
+        "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-768-hard_load-2-visible-text.txt"
+      }
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "1280",
+      "width": 1280,
+      "height": 900,
+      "navigation": "hard_load",
+      "run": 1,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:47.308Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338684686&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=10&sr=800x600&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616985~115938466~115938468~118395334~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=248",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "1280",
+      "width": 1280,
+      "height": 900,
+      "navigation": "hard_load",
+      "run": 2,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:49.834Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338687475&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=14&sr=800x600&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938468~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=250",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "1280",
+      "width": 1280,
+      "height": 900,
+      "navigation": "hard_load",
+      "run": 3,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": false,
+      "timestamp": "2026-07-29T15:24:52.399Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Error: no_div"
+      ],
+      "pageErrors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "hydrationMessages": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "reactErrorCodes": [
+        "418"
+      ],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338689999&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=0&sr=800x600&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938466~115938469~118897920~118897930~119527020~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=281",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ],
+      "artifacts": {
+        "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-1280-hard_load-3.png",
+        "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-1280-hard_load-3-client-dom.html",
+        "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-1280-hard_load-3-visible-text.txt"
+      }
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "cache_disabled_reload",
+      "run": 1,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:24:58.908Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        },
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338692759&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=1&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938469~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=411",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "ping"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338692759&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&tcfd=10000&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=1&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=3&tag_exp=115938465~115938469~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=user_engagement&gap.gtb=2&_et=2593&tfd=3014",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338692759&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=1&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=2&tag_exp=115938465~115938469~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=tool_result_cta_view&_ee=1&gap.gtb=2&ep.page_group=tool_detail&ep.source_path=%2Ftools%2Fmortgage-loan-calculator&ep.source_tool=mortgageLoan&ep.locale=ko&ep.location=result_after&ep.checklist_url=%2Fposts%2FpersonalFinance%2Fmortgage-risk-checklist-dsr-variable&ep.related_tool=dsrLtv&_et=3&tfd=3013",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338695673&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=6&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938466~115938469~118897920~118897930~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=283",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "cache_disabled_reload",
+      "run": 2,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:25:04.777Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        },
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338699080&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=9&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938469~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=422",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338699080&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=9&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=2&tag_exp=115938465~115938469~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=tool_result_cta_view&_ee=1&gap.gtb=2&ep.page_group=tool_detail&ep.source_path=%2Ftools%2Fmortgage-loan-calculator&ep.source_tool=mortgageLoan&ep.locale=ko&ep.location=result_after&ep.checklist_url=%2Fposts%2FpersonalFinance%2Fmortgage-risk-checklist-dsr-variable&ep.related_tool=dsrLtv&_et=4&tfd=2084",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "ping"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338699080&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&tcfd=10000&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=9&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=3&tag_exp=115938465~115938469~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=user_engagement&gap.gtb=2&_et=1655&tfd=2085",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338701062&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=11&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938468~118897920~118897930~119259605~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=277",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.google.com/ads/measurement/l?ebcid=ALh7CaSyTVABr_SDtpJkWXtDi9XIwiPFlatl-dmqQf4zchR0tv2u2S8edXm0M8UqWUp3ro2rDF1fOaAYTElr5DSS_CqVjgu9sw",
+          "method": "GET",
+          "errorText": "net::ERR_BLOCKED_BY_ORB",
+          "resourceType": "image"
+        }
+      ]
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "cache_disabled_reload",
+      "run": 3,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": true,
+      "timestamp": "2026-07-29T15:25:09.511Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        },
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [],
+      "pageErrors": [],
+      "hydrationMessages": [],
+      "reactErrorCodes": [],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338704960&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=8&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616985~115938466~115938468~118897920~118897930~119724321~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=429",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338704960&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=8&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=2&tag_exp=115616985~115938466~115938468~118897920~118897930~119724321~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=tool_result_cta_view&_ee=1&gap.gtb=2&ep.page_group=tool_detail&ep.source_path=%2Ftools%2Fmortgage-loan-calculator&ep.source_tool=mortgageLoan&ep.locale=ko&ep.location=result_after&ep.checklist_url=%2Fposts%2FpersonalFinance%2Fmortgage-risk-checklist-dsr-variable&ep.related_tool=dsrLtv&_et=3&tfd=1980",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338704960&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&tcfd=10000&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=8&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=3&tag_exp=115616985~115938466~115938468~118897920~118897930~119724321~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=user_engagement&gap.gtb=2&_et=1543&tfd=1980",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "ping"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67s0h2v9234897695za200zd9234897695&_p=1785338706832&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=12&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616986~115938465~115938468~118897920~118897930~119896802~120084215&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=332",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "cache_disabled_reload",
+      "run": 1,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": false,
+      "timestamp": "2026-07-29T15:25:13.895Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        },
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Error: no_div"
+      ],
+      "pageErrors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "hydrationMessages": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "reactErrorCodes": [
+        "418"
+      ],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2h1v9234897695za204zd9234897695&_p=1785338709683&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=13&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938466~115938469~118897920~118897930~119896802~120084214&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=379",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2h1v9234897695za204zd9234897695&_p=1785338709683&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=13&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=2&tag_exp=115938466~115938469~118897920~118897930~119896802~120084214&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=tool_result_cta_view&_ee=1&gap.gtb=2&ep.page_group=tool_detail&ep.source_path=%2Fen%2Ftools%2Fmortgage-loan-calculator&ep.source_tool=mortgageLoan&ep.locale=en&ep.location=result_after&ep.checklist_url=%2Fposts%2FpersonalFinance%2Fmortgage-risk-checklist-dsr-variable&ep.related_tool=dsrLtv&_et=3&tfd=1720",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "ping"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2h1v9234897695za204zd9234897695&_p=1785338709683&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&tcfd=10000&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=13&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=3&tag_exp=115938466~115938469~118897920~118897930~119896802~120084214&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=user_engagement&gap.gtb=2&_et=1333&tfd=1720",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338711304&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=18&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938468~118897920~118897930~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=307",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ],
+      "artifacts": {
+        "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-1.png",
+        "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-1-client-dom.html",
+        "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-1-visible-text.txt"
+      }
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "cache_disabled_reload",
+      "run": 2,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": false,
+      "timestamp": "2026-07-29T15:25:18.937Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        },
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Error: no_div"
+      ],
+      "pageErrors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "hydrationMessages": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "reactErrorCodes": [
+        "418"
+      ],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338714329&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=5&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616985~115938466~115938469~118395334~118897920~118897930~119527019~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=689",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338714329&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=5&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=2&tag_exp=115616985~115938466~115938469~118395334~118897920~118897930~119527019~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=tool_result_cta_view&_ee=1&gap.gtb=2&ep.page_group=tool_detail&ep.source_path=%2Fen%2Ftools%2Fmortgage-loan-calculator&ep.source_tool=mortgageLoan&ep.locale=en&ep.location=result_after&ep.checklist_url=%2Fposts%2FpersonalFinance%2Fmortgage-risk-checklist-dsr-variable&ep.related_tool=dsrLtv&_et=3&tfd=2244",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338714329&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&tcfd=10000&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=5&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=3&tag_exp=115616985~115938466~115938469~118395334~118897920~118897930~119527019~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=user_engagement&gap.gtb=2&_et=1548&tfd=2244",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "ping"
+        },
+        {
+          "url": "https://ep1.adtrafficquality.google/pagead/sodar?id=sodar2&v=255&t=2&li=gda_r20260721&jk=8148387042283573&bg=!ammlaQvNAAaHuSoKp7k7AEcBe5WfOGRZPfoGjXDvdaDDsejlbAdfFTWPu7z1l4cNnFW57w7fPUpXbvvbmDwz-c3WJxxWlacx1d3K73tTnSvezQ9Zdq8fGwIAAABmUgAAAAZoAQd-ADYHr-8Aq4UZfZTZqh_O2-eH2w1Vm8gpH-lmNJRnt2s6g9I6EQ6ywSmvvFb3YdraUO0B0arnt4SZAoSQ40X5FLww38rwnk5Q5d6Rz83mSvSOsGpnN_9DgoF1ri32_FcVBhKcvJ1m16I0LfGgUBs3U3cXi1bCfNAlDSZjCTwoIrLARhRY1HNGD07S1c5vGz5urJchqbiRuz6TFJtlz7K2OiPBxZEjOu3tOwNMzJiZMLeYTZTWUgM4EmFSvfZwPh7rwDIZ75mgDGMIEv-62JQbWeoza08X1bnII0QZqpt0oPPNpLARgdmxpervqlP12hU0PysOTnbN0eXLt_YunPWJ_gDTuDpk4kDpsDF3r4wUyYEwxk062ak77pnpl87iancann2nzvMwRkBuVFIg1vmDt_T7OGOceRTc-dYWYyIVLa5KktNalp1GeI6M4MMoAwPiWZykBju8Pg1XLivb04abUY4Mb0uQmgCB6vzdU_aT2i3QNzYEmbMrCJnAzWAsWKCQplPNlO8uPv75JlJz7R6iFPIUu-ba0PQ7ewBG76QQgNsyk1c-gBRUfYB-tCS560LXIvMa5wqzmnwlhIZY5nOdZJpb4DgMv457b1uAQ-8rHvdjkRiHO1k7xwQ8CG35mrSl-bJE321PPAVbaQ2JKR8zI-rVAD4d4Oi4CwP2-bUeVO3kB3aC-OFRih1nnS_AU1kf-ir8_vQZj0LUNiKkNzHB6PZ9nkaUxYLirMfpGfY55SdOCIC29Km343oI2WNsAhbGJdbqqN8ofYUWaS-_y3oYNPWQ1_RFTY1SYoeJY8DxmaL1Bh0idcQyXxVnhli-eCt1oVCu6rLRx4uBeGlhx9dQpD79e991inneoOdBNnwUhPfS0AXXQJPSpzILrhUhT8kXp3Nx_UcJkf1gOoZboXGRFapt7IhdOf13Q9FhdeIMYw",
+          "method": "GET",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "image"
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338716326&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=12&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938468~118395333~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=286",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ],
+      "artifacts": {
+        "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-2.png",
+        "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-2-client-dom.html",
+        "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-2-visible-text.txt"
+      }
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "cache_disabled_reload",
+      "run": 3,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": false,
+      "timestamp": "2026-07-29T15:25:23.731Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        },
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Error: no_div",
+        "error: Error: no_div"
+      ],
+      "pageErrors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "hydrationMessages": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "reactErrorCodes": [
+        "418"
+      ],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338719235&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=13&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938465~115938468~118897920~118897930~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=397",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338719235&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&tcfd=10000&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=13&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=3&tag_exp=115938465~115938468~118897920~118897930~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=user_engagement&gap.gtb=2&_et=1626&tfd=2031",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2v9234897695za204zd9234897695&_p=1785338719235&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=13&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=2&tag_exp=115938465~115938468~118897920~118897930~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=tool_result_cta_view&_ee=1&gap.gtb=2&ep.page_group=tool_detail&ep.source_path=%2Fen%2Ftools%2Fmortgage-loan-calculator&ep.source_tool=mortgageLoan&ep.locale=en&ep.location=result_after&ep.checklist_url=%2Fposts%2FpersonalFinance%2Fmortgage-risk-checklist-dsr-variable&ep.related_tool=dsrLtv&_et=3&tfd=2031",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "ping"
+        },
+        {
+          "url": "https://ep1.adtrafficquality.google/pagead/sodar?id=sodar2&v=255&t=2&li=gda_r20260721&jk=2410846026730694&bg=!fX6lfhzNAAaHuSoKp7k7AEcBe5WfOESwYkRCF-HCN1Vc72_Exl-8_OVnp46-2l-tmpjd1-3J4aNJy0ST4an2QEIrX0pO4IAcLqDRtNhyjNqQER0iZfX3LQIAAABVUgAAAAdoAQd-ADZxZT8A9dprF3ToS7TDK0CjuoR96tobC74yC13skcKRsyLIN5gH9E9c1KsQCq7MgRmB66eeql0KADYmdySshyX-oA4VCgZHd-K_5ffTkJKuY2QSnRVKR1aBlZ-vod3jx9cRFy5kZlBfn0GIbqhM7uyZAnuO9N6k18QgjjyM3QlYZOxHJ0M13wusEZhL9Z55OrjaUa9DkwzMi76x72V0h2N_LW9S36tlxAz5y2eIpCAbzZclJfWiw_xIb6kPNLHL6g3-1M8Ky_LYYGy5w431V_QNnSJFytOiCt1ykZZPJ-RbauHdB4S2k_MhDMvS5_d2mEuFd0uo-lU7sQV4RV12rASkHPSUKAQJ6MtG10fm2oYNeT3zwzDwClwdiy2XBOgupy3K-MDokFxsTbd21T7j_KMETJ4P3h7P7cCOvSqxPsCVTJQz7bN3p1BluORdNdK5qEME8OfB5xgMioBwZW9KYT9nFctsf6i7ZPVgV9cXmml6YZ8GD-HRPMYAna1xftQ3XgiFsQzl_TGDFeBuXLG4MBFLubuOw7_O4U50r9Z2lKz5MKcHUVQMKw4ELK37om4vx9IVDtXOUk2UKhVKescFnhMBdoVPtkZwwx15Fq7FaF-GUkitewj42CAKWPn8MKFVATZzyxWViz3k1XI9YxVV94wldwj6wltyyHuAQANTN7yIheCGKLkm6FsJK2T9Ht3-oxL51WhfX_NONGrRssA8-ZFjSI5Wmim8ofWBG3UudivUU2xkCgOrCesB3NmYFAHMcFmTQAYJIwwgsXrBDAz9padWJ70eIJoDD1doacbuxlY-X6KQF7Z7pgDcZFpEkJFJSLnd9lxJYGm5W4VYrgnreehRZE5y_7bH1ZUXItE-l4qG-Wah5KmAmez1xW5xsh4S9ZTARRhXTih71U-QKRUZlyRSIz2WyaYojr8I_S4v7lpLfo7c-O-3oZqKgQ9uGuBNotP5fCwsrJLbpsRhOi_25jV9HnTYgcxP2Ey4wrVu8A",
+          "method": "GET",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "image"
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2h1v9234897695za204zd9234897695&_p=1785338721163&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=16&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938466~115938469~118395335~118897920~118897930~119896803~120084215&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=372",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ],
+      "artifacts": {
+        "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-3.png",
+        "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-3-client-dom.html",
+        "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-3-visible-text.txt"
+      }
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "client_navigation",
+      "run": 1,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": false,
+      "timestamp": "2026-07-29T15:25:28.146Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Error: no_div"
+      ],
+      "pageErrors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "hydrationMessages": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "reactErrorCodes": [
+        "418"
+      ],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2h1v9234897695za204zd9234897695&_p=1785338724032&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&tcfd=10000&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=5&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&tag_exp=115938465~115938469~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools&dt=%EA%B8%88%EC%9C%B5%20%EA%B3%84%EC%82%B0%EA%B8%B0%20%EB%AA%A8%EC%9D%8C%20%7C%20FinMap&_s=2&tfd=1867",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "xhr"
+        },
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "ping"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2h1v9234897695za204zd9234897695&_p=1785338725788&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=4&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616985~115938465~115938469~118395334~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=148",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ],
+      "artifacts": {
+        "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-1.png",
+        "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-1-client-dom.html",
+        "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-1-visible-text.txt"
+      }
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "client_navigation",
+      "run": 2,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": false,
+      "timestamp": "2026-07-29T15:25:31.996Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Error: no_div"
+      ],
+      "pageErrors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "hydrationMessages": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "reactErrorCodes": [
+        "418"
+      ],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "ping"
+        },
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "xhr"
+        },
+        {
+          "url": "https://fundingchoicesmessages.google.com/el/AGSKWxU31vjC4cU7v6uMfx0LJ6sqZyy5127mFNi0ZjZ_RcQh_HFfUZVvKh-erbOTmkd5ukoeY9MYzrRodJwrSV3BQ0P3CDLXXxZn3uKq2PfSZ2rfd44cJY9DOjQCk0wtPUcl2xQWjgrhxg==",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "xhr"
+        },
+        {
+          "url": "https://fundingchoicesmessages.google.com/el/AGSKWxXXuvJ0TIs2PqVBfTByOo9fgbk2ujIK1eHAhOkyqmJqFO6vlvoGxisVbAQR22KHU8EVWfglANMOdkTKADhC7KZOqB51fiuj9b0qtj8RLTecgT_t7e4j8jRyTh8hg05x8YEjUjkJeQ==",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "xhr"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2h1v9234897695za204zd9234897695&_p=1785338728461&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&tcfd=10000&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=8&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&tag_exp=115616986~115938466~115938469~118395334~118897920~118897930~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools&dt=%EA%B8%88%EC%9C%B5%20%EA%B3%84%EC%82%B0%EA%B8%B0%20%EB%AA%A8%EC%9D%8C%20%7C%20FinMap&_s=2&tfd=1697",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2h1v9234897695za204zd9234897695&_p=1785338730046&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=2&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616986~115938465~115938469~118897920~118897930~119896802~120084215&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=156",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ],
+      "artifacts": {
+        "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-2.png",
+        "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-2-client-dom.html",
+        "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-2-visible-text.txt"
+      }
+    },
+    {
+      "locale": "ko",
+      "path": "/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "client_navigation",
+      "run": 3,
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "pass": false,
+      "timestamp": "2026-07-29T15:25:36.545Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Error: no_div"
+      ],
+      "pageErrors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "hydrationMessages": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "reactErrorCodes": [
+        "418"
+      ],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2h1v9234897695za204zd9234897695&_p=1785338732299&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&tcfd=10000&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=1&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&tag_exp=115938465~115938469~118897920~118897930~119259606~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools&dt=%EA%B8%88%EC%9C%B5%20%EA%B3%84%EC%82%B0%EA%B8%B0%20%EB%AA%A8%EC%9D%8C%20%7C%20FinMap&_s=2&tfd=2172",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "ping"
+        },
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "xhr"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2h1v9234897695za204zd9234897695&_p=1785338734370&_gaz=1&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=12&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938466~115938468~118897920~118897930~119896803&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Ftools%2Fmortgage-loan-calculator&dt=%EC%A3%BC%EB%8B%B4%EB%8C%80%20%EC%9B%90%EB%A6%AC%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%8B%B4%EB%B3%B4%EB%8C%80%EC%B6%9C%20%EC%9B%94%EC%83%81%ED%99%98%EC%95%A1%20%EA%B3%84%EC%82%B0%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=147",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ],
+      "artifacts": {
+        "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-3.png",
+        "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-3-client-dom.html",
+        "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-3-visible-text.txt"
+      }
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "client_navigation",
+      "run": 1,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": false,
+      "timestamp": "2026-07-29T15:25:40.528Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Error: no_div"
+      ],
+      "pageErrors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "hydrationMessages": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "reactErrorCodes": [
+        "418"
+      ],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2h1v9234897695za204zd9234897695&_p=1785338736840&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&tcfd=10000&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=18&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&tag_exp=115938466~115938468~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools&dt=Finance%20Tools%20%7C%20FinMap&_s=2&tfd=1652",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://fundingchoicesmessages.google.com/el/AGSKWxVNnJMXJNE1PV2Pe3JPpRp7E7xvxYUCb_JU6cmVrJjZKEng1KqJ0L6mG_iZEQSDanXD1Mm02mbFuiSzCpJmahBJiXy84OqjsNd3nnLqWB1wC4r7usKmAmYhkZfzbfABP_XMpSjxkg==",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "xhr"
+        },
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "xhr"
+        },
+        {
+          "url": "https://fundingchoicesmessages.google.com/el/AGSKWxW4fAeCJGAtKpXUqwCJBzqQhuId1_GusR1e5sUCqN-G5uSoTI5JJ6pkHlrZUk4cYxhwshgqmHUepyPLJ_PbZbrhs9s5qK68otJMkJqX-1rnyO9qFeWuaqALUoHtdXqRNy0cSTilZA==",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "xhr"
+        },
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "ping"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2h1v9234897695za204zd9234897695&_p=1785338738397&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=12&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616985~115938466~115938469~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=148",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ],
+      "artifacts": {
+        "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-1.png",
+        "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-1-client-dom.html",
+        "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-1-visible-text.txt"
+      }
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "client_navigation",
+      "run": 2,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": false,
+      "timestamp": "2026-07-29T15:25:45.534Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Error: no_div"
+      ],
+      "pageErrors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "hydrationMessages": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "reactErrorCodes": [
+        "418"
+      ],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "ping"
+        },
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "xhr"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2h1v9234897695za204zd9234897695&_p=1785338740813&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&tcfd=10000&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=0&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&tag_exp=115938466~115938469~118897920~118897930~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools&dt=Finance%20Tools%20%7C%20FinMap&_s=2&tfd=2474",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2h1v9234897695za204zd9234897695&_p=1785338743216&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=11&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115616985~115938466~115938468~118395335~118897920~118897930~119527019~119896802~120084215&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=296",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ],
+      "artifacts": {
+        "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-2.png",
+        "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-2-client-dom.html",
+        "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-2-visible-text.txt"
+      }
+    },
+    {
+      "locale": "en",
+      "path": "/en/tools/mortgage-loan-calculator",
+      "viewport": "320",
+      "width": 320,
+      "height": 800,
+      "navigation": "client_navigation",
+      "run": 3,
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "pass": false,
+      "timestamp": "2026-07-29T15:25:49.748Z",
+      "responses": [
+        {
+          "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+          "status": 200,
+          "fromCache": false
+        }
+      ],
+      "hasOkDocumentResponse": true,
+      "layout": {
+        "readyState": "complete",
+        "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36",
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "h1Count": 1,
+        "inputCount": 6,
+        "buttonCount": 18,
+        "ctaCount": 5,
+        "tableCount": 2,
+        "tableOverflowCount": 0,
+        "resultTextPresent": true,
+        "activeElementTag": "BODY",
+        "rootChildCount": 4
+      },
+      "horizontalOverflow": false,
+      "consoleMessages": [
+        "error: Error: no_div"
+      ],
+      "pageErrors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "hydrationMessages": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ],
+      "reactErrorCodes": [
+        "418"
+      ],
+      "requestFailures": [
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2h1v9234897695za204zd9234897695&_p=1785338745839&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&tcfd=10000&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&fp=1&frm=0&pscdl=noapi&rcb=19&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&tag_exp=115616985~115938466~115938468~118897920~118897930~119896803~120084215&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools&dt=Finance%20Tools%20%7C%20FinMap&_s=2&tfd=1749",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "xhr"
+        },
+        {
+          "url": "https://www.finmaphub.com/cdn-cgi/rum?",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "ping"
+        },
+        {
+          "url": "https://www.finmaphub.com/pnoo/ag/g/c?v=2&tid=G-HYS82YP0CH&gtm=45g92e67r2h1v9234897695za204zd9234897695&_p=1785338747494&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&ecid=1649202341&_eu=AAAAAGQ&_uip=%3A%3A&are=1&cid=232181821.1785338612&ec_mode=a&fp=1&frm=0&pscdl=noapi&rcb=7&sr=320x800&uaa=x86&uab=64&uafvl=Not%253BA%253DBrand%3B8.0.0.0%7CChromium%3B150.0.7871.127%7CGoogle%2520Chrome%3B150.0.7871.127&uam=&uamb=0&uap=Windows&uapv=19.0.0&uaw=0&ul=ko-kr&ur=KR-43&_gsid=NJnzEwAicvBylyeqXDyLzDcsi43NAp0bWA&gaf=2&_s=1&tag_exp=115938466~115938469~118897920~118897930~119527019~119896802&sid=1785338612&sct=1&seg=1&dl=https%3A%2F%2Fwww.finmaphub.com%2Fen%2Ftools%2Fmortgage-loan-calculator&dt=Mortgage%20Payment%20Calculator%20-%20Monthly%20Korean%20Apartment%20Loan%20Payment%20%7C%20FinMap&en=page_view&_ee=1&gap.gtb=2&tfd=184",
+          "method": "POST",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/data/eCM5-G8x30As71T5VGTUi/en/tools/mortgage-loan-calculator.json",
+          "method": "HEAD",
+          "errorText": "net::ERR_ABORTED",
+          "resourceType": "fetch"
+        }
+      ],
+      "artifacts": {
+        "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-3.png",
+        "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-3-client-dom.html",
+        "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-3-visible-text.txt"
+      }
+    }
+  ]
+}
