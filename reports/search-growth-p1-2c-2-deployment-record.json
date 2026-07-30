@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-07-30T01:14:07+09:00",
+  "timezone": "Asia/Seoul",
+  "searchExperimentDeployDate": "MANUAL_INPUT_REQUIRED",
+  "hydrationHotfixDeployDate": "MANUAL_INPUT_REQUIRED",
+  "hydrationHotfixDeployTime": "MANUAL_INPUT_REQUIRED",
+  "hydrationHotfixVerificationDate": "2026-07-30",
+  "hydrationHotfixVerificationTime": "01:14:07",
+  "hotfixCommitHash": "cf136f1400edab381c2219e8775b4bfd53788d99",
+  "deployedBranch": "master",
+  "pm2Process": "MANUAL_INPUT_REQUIRED",
+  "pm2ListCommandOutput": "NO_OUTPUT_OR_NOT_AVAILABLE_IN_CODEX_SESSION",
+  "buildResult": "MANUAL_INPUT_REQUIRED",
+  "restartResult": "MANUAL_INPUT_REQUIRED",
+  "observationWindowPolicy": "Do not reset the 28-day or 6-week search experiment window from the hydration hotfix date."
+}

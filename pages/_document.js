@@ -49,12 +49,6 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script
-            defer
-            data-finmap-adsense-bootstrap="after-next-script"
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976"
-            crossOrigin="anonymous"
-          />
         </body>
       </Html>
     );

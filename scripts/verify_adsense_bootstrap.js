@@ -124,11 +124,13 @@ function inspectBootstrap(html) {
   const tags = $(`script[src*="${ADS_SRC}"]`).toArray();
   const headTags = $(`head script[src*="${ADS_SRC}"]`).toArray();
   const hydrationSafeTags = $(`body script[data-finmap-adsense-bootstrap="after-next-script"][src*="${ADS_SRC}"]`).toArray();
+  const postHydrationTags = $(`script[data-finmap-adsense-bootstrap="post-hydration-singleton"][src*="${ADS_SRC}"]`).toArray();
   const attrs = tags.map(scriptTagAttrs);
   return {
     count: tags.length,
     headCount: headTags.length,
     hydrationSafeBodyCount: hydrationSafeTags.length,
+    postHydrationSingletonCount: postHydrationTags.length,
     hasClient: attrs.some((item) => item.includes(ADS_CLIENT)),
     hasDataNscript: attrs.some((item) => /data-nscript/i.test(item)),
     attrs,
@@ -138,15 +140,31 @@ function inspectBootstrap(html) {
 function sourceBootstrapCheck() {
   const appSource = fs.readFileSync(rel("pages", "_app.js"), "utf8");
   const documentSource = fs.readFileSync(rel("pages", "_document.js"), "utf8");
+  const bootstrapSource = fs.readFileSync(rel("_components", "AdSenseBootstrap.js"), "utf8");
+  const hookSource = fs.readFileSync(rel("_components", "useAdSenseSlot.js"), "utf8");
   return {
     appHasPagead2: appSource.includes(ADS_SRC),
     documentHasPagead2: documentSource.includes(ADS_SRC),
     documentHasClient: documentSource.includes(ADS_CLIENT),
+    documentKeepsAdsenseMeta:
+      documentSource.includes('name="google-adsense-account"') && documentSource.includes(ADS_CLIENT),
     documentUsesNextScriptForAds: /<Script\b[\s\S]+pagead2\.googlesyndication/.test(documentSource),
     documentUsesPlainScript: /<script[\s\S]+pagead2\.googlesyndication/i.test(documentSource),
     documentUsesHydrationSafeBodyScript:
       documentSource.includes('data-finmap-adsense-bootstrap="after-next-script"') &&
       documentSource.indexOf("<NextScript />") < documentSource.indexOf("pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"),
+    appUsesPostHydrationBootstrap:
+      appSource.includes("AdSenseBootstrap") && appSource.includes("<AdSenseBootstrap />"),
+    singletonHasPagead2: bootstrapSource.includes(ADS_SRC),
+    singletonHasClient: bootstrapSource.includes(ADS_CLIENT),
+    singletonCreatesPlainScript:
+      bootstrapSource.includes('document.createElement("script")') &&
+      bootstrapSource.includes("document.head.appendChild(script)"),
+    singletonUsesPostHydrationMarker: bootstrapSource.includes(
+      'data-finmap-adsense-bootstrap", "post-hydration-singleton"'
+    ),
+    singletonAvoidsNextScript: !bootstrapSource.includes("next/script"),
+    slotHookEnsuresBootstrap: hookSource.includes("ensureAdSenseBootstrap"),
   };
 }
 
@@ -190,6 +208,8 @@ function inspectSlots(html, target) {
 
 function pushRuntimeCheck() {
   const hookPath = rel("_components", "useAdSenseSlot.js");
+  const bootstrapPath = rel("_components", "AdSenseBootstrap.js");
+  const appPath = rel("pages", "_app.js");
   const unitPath = rel("_components", "AdSenseUnit.js");
   const responsivePath = rel("_components", "AdResponsive.js");
   const inArticlePath = rel("_components", "AdInArticle.js");
@@ -197,6 +217,8 @@ function pushRuntimeCheck() {
   const dashboardPath = rel("_components", "DashboardAdSlot.js");
 
   const hook = fs.readFileSync(hookPath, "utf8");
+  const bootstrap = fs.readFileSync(bootstrapPath, "utf8");
+  const app = fs.readFileSync(appPath, "utf8");
   const unit = fs.readFileSync(unitPath, "utf8");
   const responsive = fs.readFileSync(responsivePath, "utf8");
   const inArticle = fs.readFileSync(inArticlePath, "utf8");
@@ -205,6 +227,13 @@ function pushRuntimeCheck() {
 
   const checks = [
     ["helper exists", fs.existsSync(hookPath)],
+    ["post-hydration singleton exists", fs.existsSync(bootstrapPath)],
+    ["singleton uses createElement script", bootstrap.includes('document.createElement("script")')],
+    ["singleton appends to document.head", bootstrap.includes("document.head.appendChild(script)")],
+    ["singleton marker", bootstrap.includes("post-hydration-singleton")],
+    ["singleton avoids next/script", !bootstrap.includes("next/script")],
+    ["_app renders singleton", app.includes("<AdSenseBootstrap />")],
+    ["slot hook ensures singleton", hook.includes("ensureAdSenseBootstrap")],
     ["max attempts 5", hook.includes("DEFAULT_MAX_ATTEMPTS = 5")],
     ["retry interval 500ms", hook.includes("DEFAULT_RETRY_MS = 500")],
     ["checks data-adsbygoogle-status", hook.includes("data-adsbygoogle-status")],
@@ -235,11 +264,18 @@ async function main() {
   const sourceBootstrap = sourceBootstrapCheck();
   const sourceBootstrapPass =
     !sourceBootstrap.appHasPagead2 &&
-    sourceBootstrap.documentHasPagead2 &&
-    sourceBootstrap.documentHasClient &&
-    sourceBootstrap.documentUsesPlainScript &&
+    !sourceBootstrap.documentHasPagead2 &&
+    sourceBootstrap.documentKeepsAdsenseMeta &&
+    sourceBootstrap.appUsesPostHydrationBootstrap &&
+    sourceBootstrap.singletonHasPagead2 &&
+    sourceBootstrap.singletonHasClient &&
+    sourceBootstrap.singletonCreatesPlainScript &&
+    sourceBootstrap.singletonUsesPostHydrationMarker &&
+    sourceBootstrap.singletonAvoidsNextScript &&
+    sourceBootstrap.slotHookEnsuresBootstrap &&
+    !sourceBootstrap.documentUsesPlainScript &&
     !sourceBootstrap.documentUsesNextScriptForAds &&
-    sourceBootstrap.documentUsesHydrationSafeBodyScript;
+    !sourceBootstrap.documentUsesHydrationSafeBodyScript;
 
   passLine(sourceBootstrapPass, "source bootstrap", JSON.stringify(sourceBootstrap));
 
@@ -256,9 +292,11 @@ async function main() {
     const bootstrapPass =
       loaded.mode === "source-fallback"
         ? sourceBootstrapPass
-        : bootstrap.count === 1 &&
-          (bootstrap.headCount === 1 || bootstrap.hydrationSafeBodyCount === 1) &&
-          bootstrap.hasClient &&
+        : sourceBootstrapPass &&
+          bootstrap.count === 0 &&
+          bootstrap.headCount === 0 &&
+          bootstrap.hydrationSafeBodyCount === 0 &&
+          bootstrap.postHydrationSingletonCount === 0 &&
           !bootstrap.hasDataNscript;
 
     const pass = bootstrapPass && slots.pass;

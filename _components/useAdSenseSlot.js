@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { ensureAdSenseBootstrap } from "./AdSenseBootstrap";
 
 const DEFAULT_MAX_ATTEMPTS = 5;
 const DEFAULT_RETRY_MS = 500;
@@ -49,6 +50,7 @@ export function useAdSenseSlot({
     pushedRef.current = false;
     attemptsRef.current = 0;
     clearTimer();
+    ensureAdSenseBootstrap()?.catch(() => {});
 
     let cancelled = false;
     let observer = null;
@@ -87,6 +89,7 @@ export function useAdSenseSlot({
       attemptsRef.current += 1;
       ins.setAttribute("data-fm-ads-push-pending", "1");
       ins.setAttribute("data-fm-ads-push-attempts", String(attemptsRef.current));
+      ensureAdSenseBootstrap()?.catch(() => {});
 
       if (!window.adsbygoogle || typeof window.adsbygoogle.push !== "function") {
         if (!scheduleRetry(attemptsRef.current)) markFailed(ins, "script-not-ready");

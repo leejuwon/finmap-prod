@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
+import AdSenseBootstrap from '../_components/AdSenseBootstrap';
 import Layout from '../_components/Layout';
 import '../styles/globals.css';
 
@@ -47,7 +48,9 @@ function MyApp({ Component, pageProps }) {
             `}
           </Script>
         </>
-      )}  
+      )}
+
+      <AdSenseBootstrap />
 
       <Layout>
         <Component {...pageProps} />

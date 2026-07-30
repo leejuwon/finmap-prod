@@ -1,0 +1,914 @@
+{
+  "generatedAt": "2026-07-30T00:17:13.186Z",
+  "buildIds": [
+    "EH0IyY6JnzVJFzswcpSZ6"
+  ],
+  "mixedBuildIds": false,
+  "htmlHashes": [
+    "e4063374a39580dfffe2553d2f59ea47f06fc335cc74d9a69672e1c6a2b50ac5",
+    "dfa217fa063829b0fd5fe1d4f76fea86cb8c03c247a3c3bc6a6f10caafe09732",
+    "d0b29718fb233fcbabed5bd785958abd149a8f992f4fe024f5d107755edaf4a7",
+    "9e34ef51a30c235dd45a619e156f76bf7313a34c427a590d90537341a493880c",
+    "930cf811a4654fda3360935b87c887077381a2e80eca43e47aa0f2d5ecb869fc",
+    "f6e5fbd087b1673001d7c5346063e6c6acdfcb825b0887ddc514b6fbd12f75a4"
+  ],
+  "chunk404Count": 0,
+  "buildManifestMismatch": false,
+  "snapshots": [
+    {
+      "url": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "finalUrl": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+      "status": 200,
+      "headers": {
+        "cacheControl": "",
+        "contentEncoding": "br",
+        "contentType": "text/html; charset=utf-8",
+        "age": "",
+        "etag": "",
+        "server": "cloudflare",
+        "xVercelCache": "",
+        "cfCacheStatus": "DYNAMIC"
+      },
+      "htmlHash": "e4063374a39580dfffe2553d2f59ea47f06fc335cc74d9a69672e1c6a2b50ac5",
+      "htmlLength": 46797,
+      "buildId": "EH0IyY6JnzVJFzswcpSZ6",
+      "page": "/tools/mortgage-loan-calculator",
+      "scriptUrls": [
+        "https://www.finmaphub.com/_next/static/chunks/polyfills-42372ed130431b0a.js",
+        "https://www.finmaphub.com/_next/static/chunks/webpack-eb5ec6f6a1ace65f.js",
+        "https://www.finmaphub.com/_next/static/chunks/framework-711ef29bc66f648c.js",
+        "https://www.finmaphub.com/_next/static/chunks/main-44da4396e293aa9d.js",
+        "https://www.finmaphub.com/_next/static/chunks/pages/_app-2a3140707e09f763.js",
+        "https://www.finmaphub.com/_next/static/chunks/4337-aa890f5a9d1b3311.js",
+        "https://www.finmaphub.com/_next/static/chunks/8739-4a7cdd45b07728e1.js",
+        "https://www.finmaphub.com/_next/static/chunks/6997-e744c865e88ef2ef.js",
+        "https://www.finmaphub.com/_next/static/chunks/pages/tools/mortgage-loan-calculator-eb65ebb5352d861e.js",
+        "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_buildManifest.js",
+        "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_ssgManifest.js"
+      ],
+      "manifest": {
+        "url": "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_buildManifest.js",
+        "status": 200,
+        "headers": {
+          "accept-ranges": "bytes",
+          "age": "30364",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "public, max-age=31536000, immutable",
+          "cf-cache-status": "HIT",
+          "cf-ray": "a2302dbcccacda22-NRT",
+          "connection": "keep-alive",
+          "content-encoding": "br",
+          "content-type": "application/javascript; charset=UTF-8",
+          "date": "Thu, 30 Jul 2026 00:17:08 GMT",
+          "etag": "W/\"14e7-19fae8bbfb5\"",
+          "last-modified": "Wed, 29 Jul 2026 15:43:42 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=yvR2flazlpa1OFyy8679jp0j8SOFZl069lDchlNUS4ERERYtO5IadDNscGjqCR8%2BGXUSdEC3XgJM%2BeU292sI7Rx3HHGW484QHVSI8nSm70FCPnopWpcNY3DsK8zImocFdfCOEQ%3D%3D\"}]}",
+          "server": "cloudflare",
+          "transfer-encoding": "chunked",
+          "vary": "Accept-Encoding"
+        },
+        "hash": "85a4c251380e6f7bf23de3f3714e2ddb7fc3485693220a3d7fc7919b7603a2fd",
+        "length": 5351
+      },
+      "chunkStatuses": [
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/polyfills-42372ed130431b0a.js",
+          "status": 200,
+          "hash": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+          "length": 112541,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"1b7d2-19fae8bbfb1\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/webpack-eb5ec6f6a1ace65f.js",
+          "status": 200,
+          "hash": "91f47c70b237b4be1ce2c9f1ecaff77211d30aaa568c4473622404fb4e9395c1",
+          "length": 4011,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"fab-19f932c4ff8\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/framework-711ef29bc66f648c.js",
+          "status": 200,
+          "hash": "2b57ac8bf01d71df18482b732e6f255969510dd939a1f39f0a670d0be60d2e1f",
+          "length": 189700,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"2e504-19f932c5000\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/main-44da4396e293aa9d.js",
+          "status": 200,
+          "hash": "1f182ca3da3336c8477b603dd30983f1f833ce0b05212c412572634ec9441215",
+          "length": 140447,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"224a3-19f932c4fec\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/pages/_app-2a3140707e09f763.js",
+          "status": 200,
+          "hash": "407cd0b8de8b827b81e8879171ebd0b7a916709af559bbe9bc3206d93ba018d3",
+          "length": 27162,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"6aaa-19fae0d0c79\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/4337-aa890f5a9d1b3311.js",
+          "status": 200,
+          "hash": "45480688f6b3a85407d4cfcd35dd97ed034697c3e09f5eee86c255b2e0d63306",
+          "length": 23417,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"6525-19fae0d0ca1\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/8739-4a7cdd45b07728e1.js",
+          "status": 200,
+          "hash": "d09e750080b12e25dfdeb2f9d83255f1c12e83c4c091464fc76fb5c96c238c38",
+          "length": 14380,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"40a6-19fae0d0ca1\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/6997-e744c865e88ef2ef.js",
+          "status": 200,
+          "hash": "292d5ed9742d8e2b779bbe7c49df4cb8f5aa36885cef0ba5741b2992bee17182",
+          "length": 10556,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"2986-19f932c5008\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/pages/tools/mortgage-loan-calculator-eb65ebb5352d861e.js",
+          "status": 200,
+          "hash": "b43fd738cd2022218de631af063ca1376f564ed2af5463528b9b590f848cd38e",
+          "length": 28270,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"76f6-19fae0d0c81\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_buildManifest.js",
+          "status": 200,
+          "hash": "85a4c251380e6f7bf23de3f3714e2ddb7fc3485693220a3d7fc7919b7603a2fd",
+          "length": 5351,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"14e7-19fae8bbfb5\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_ssgManifest.js",
+          "status": 200,
+          "hash": "8289f3861406433f6e6ca5026282ec0161a09c3acab5c49519d795e576e4125e",
+          "length": 366,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"16e-19fae8c5464\""
+        }
+      ]
+    },
+    {
+      "url": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "finalUrl": "https://www.finmaphub.com/en/tools/mortgage-loan-calculator",
+      "status": 200,
+      "headers": {
+        "cacheControl": "",
+        "contentEncoding": "br",
+        "contentType": "text/html; charset=utf-8",
+        "age": "",
+        "etag": "",
+        "server": "cloudflare",
+        "xVercelCache": "",
+        "cfCacheStatus": "DYNAMIC"
+      },
+      "htmlHash": "dfa217fa063829b0fd5fe1d4f76fea86cb8c03c247a3c3bc6a6f10caafe09732",
+      "htmlLength": 51072,
+      "buildId": "EH0IyY6JnzVJFzswcpSZ6",
+      "page": "/tools/mortgage-loan-calculator",
+      "scriptUrls": [
+        "https://www.finmaphub.com/_next/static/chunks/polyfills-42372ed130431b0a.js",
+        "https://www.finmaphub.com/_next/static/chunks/webpack-eb5ec6f6a1ace65f.js",
+        "https://www.finmaphub.com/_next/static/chunks/framework-711ef29bc66f648c.js",
+        "https://www.finmaphub.com/_next/static/chunks/main-44da4396e293aa9d.js",
+        "https://www.finmaphub.com/_next/static/chunks/pages/_app-2a3140707e09f763.js",
+        "https://www.finmaphub.com/_next/static/chunks/4337-aa890f5a9d1b3311.js",
+        "https://www.finmaphub.com/_next/static/chunks/8739-4a7cdd45b07728e1.js",
+        "https://www.finmaphub.com/_next/static/chunks/6997-e744c865e88ef2ef.js",
+        "https://www.finmaphub.com/_next/static/chunks/pages/tools/mortgage-loan-calculator-eb65ebb5352d861e.js",
+        "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_buildManifest.js",
+        "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_ssgManifest.js"
+      ],
+      "manifest": {
+        "url": "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_buildManifest.js",
+        "status": 200,
+        "headers": {
+          "accept-ranges": "bytes",
+          "age": "30366",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "public, max-age=31536000, immutable",
+          "cf-cache-status": "HIT",
+          "cf-ray": "a2302dc38f65da22-NRT",
+          "connection": "keep-alive",
+          "content-encoding": "br",
+          "content-type": "application/javascript; charset=UTF-8",
+          "date": "Thu, 30 Jul 2026 00:17:09 GMT",
+          "etag": "W/\"14e7-19fae8bbfb5\"",
+          "last-modified": "Wed, 29 Jul 2026 15:43:42 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Vv1QT2s%2BaqzKabmz%2FLC9SyrYWrv9bG0VO3o9BDGwYgugjy9vAdr8G0t26Fg%2FoX%2BpxXDqW7DdAbJlrQN3UJWUyPw4kCVh7CRLF5V5UM25phaKWy%2B2hNDWleDpidjICP2%2Fd6Cd6Q%3D%3D\"}]}",
+          "server": "cloudflare",
+          "transfer-encoding": "chunked",
+          "vary": "Accept-Encoding"
+        },
+        "hash": "85a4c251380e6f7bf23de3f3714e2ddb7fc3485693220a3d7fc7919b7603a2fd",
+        "length": 5351
+      },
+      "chunkStatuses": [
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/polyfills-42372ed130431b0a.js",
+          "status": 200,
+          "hash": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+          "length": 112541,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"1b7d2-19fae8bbfb1\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/webpack-eb5ec6f6a1ace65f.js",
+          "status": 200,
+          "hash": "91f47c70b237b4be1ce2c9f1ecaff77211d30aaa568c4473622404fb4e9395c1",
+          "length": 4011,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"fab-19f932c4ff8\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/framework-711ef29bc66f648c.js",
+          "status": 200,
+          "hash": "2b57ac8bf01d71df18482b732e6f255969510dd939a1f39f0a670d0be60d2e1f",
+          "length": 189700,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"2e504-19f932c5000\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/main-44da4396e293aa9d.js",
+          "status": 200,
+          "hash": "1f182ca3da3336c8477b603dd30983f1f833ce0b05212c412572634ec9441215",
+          "length": 140447,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"224a3-19f932c4fec\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/pages/_app-2a3140707e09f763.js",
+          "status": 200,
+          "hash": "407cd0b8de8b827b81e8879171ebd0b7a916709af559bbe9bc3206d93ba018d3",
+          "length": 27162,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"6aaa-19fae0d0c79\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/4337-aa890f5a9d1b3311.js",
+          "status": 200,
+          "hash": "45480688f6b3a85407d4cfcd35dd97ed034697c3e09f5eee86c255b2e0d63306",
+          "length": 23417,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"6525-19fae0d0ca1\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/8739-4a7cdd45b07728e1.js",
+          "status": 200,
+          "hash": "d09e750080b12e25dfdeb2f9d83255f1c12e83c4c091464fc76fb5c96c238c38",
+          "length": 14380,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"40a6-19fae0d0ca1\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/6997-e744c865e88ef2ef.js",
+          "status": 200,
+          "hash": "292d5ed9742d8e2b779bbe7c49df4cb8f5aa36885cef0ba5741b2992bee17182",
+          "length": 10556,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"2986-19f932c5008\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/pages/tools/mortgage-loan-calculator-eb65ebb5352d861e.js",
+          "status": 200,
+          "hash": "b43fd738cd2022218de631af063ca1376f564ed2af5463528b9b590f848cd38e",
+          "length": 28270,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"76f6-19fae0d0c81\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_buildManifest.js",
+          "status": 200,
+          "hash": "85a4c251380e6f7bf23de3f3714e2ddb7fc3485693220a3d7fc7919b7603a2fd",
+          "length": 5351,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"14e7-19fae8bbfb5\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_ssgManifest.js",
+          "status": 200,
+          "hash": "8289f3861406433f6e6ca5026282ec0161a09c3acab5c49519d795e576e4125e",
+          "length": 366,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"16e-19fae8c5464\""
+        }
+      ]
+    },
+    {
+      "url": "https://www.finmaphub.com/tools/compound-interest",
+      "finalUrl": "https://www.finmaphub.com/tools/compound-interest",
+      "status": 200,
+      "headers": {
+        "cacheControl": "",
+        "contentEncoding": "br",
+        "contentType": "text/html; charset=utf-8",
+        "age": "",
+        "etag": "",
+        "server": "cloudflare",
+        "xVercelCache": "",
+        "cfCacheStatus": "DYNAMIC"
+      },
+      "htmlHash": "d0b29718fb233fcbabed5bd785958abd149a8f992f4fe024f5d107755edaf4a7",
+      "htmlLength": 36792,
+      "buildId": "EH0IyY6JnzVJFzswcpSZ6",
+      "page": "/tools/compound-interest",
+      "scriptUrls": [
+        "https://www.finmaphub.com/_next/static/chunks/polyfills-42372ed130431b0a.js",
+        "https://www.finmaphub.com/_next/static/chunks/webpack-eb5ec6f6a1ace65f.js",
+        "https://www.finmaphub.com/_next/static/chunks/framework-711ef29bc66f648c.js",
+        "https://www.finmaphub.com/_next/static/chunks/main-44da4396e293aa9d.js",
+        "https://www.finmaphub.com/_next/static/chunks/pages/_app-2a3140707e09f763.js",
+        "https://www.finmaphub.com/_next/static/chunks/6d2b60a9-b36be8dc005f5d7d.js",
+        "https://www.finmaphub.com/_next/static/chunks/4913-c9a2ce25c10cce79.js",
+        "https://www.finmaphub.com/_next/static/chunks/2601-6e110e50ef8ffe16.js",
+        "https://www.finmaphub.com/_next/static/chunks/9893-febe9a1eec51efcb.js",
+        "https://www.finmaphub.com/_next/static/chunks/4337-aa890f5a9d1b3311.js",
+        "https://www.finmaphub.com/_next/static/chunks/8739-4a7cdd45b07728e1.js",
+        "https://www.finmaphub.com/_next/static/chunks/5639-c17776d508750387.js",
+        "https://www.finmaphub.com/_next/static/chunks/5236-4a8fd938ff9a90ce.js",
+        "https://www.finmaphub.com/_next/static/chunks/pages/tools/compound-interest-628207510ae79c21.js",
+        "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_buildManifest.js",
+        "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_ssgManifest.js"
+      ],
+      "manifest": {
+        "url": "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_buildManifest.js",
+        "status": 200,
+        "headers": {
+          "accept-ranges": "bytes",
+          "age": "30366",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "public, max-age=31536000, immutable",
+          "cf-cache-status": "HIT",
+          "cf-ray": "a2302dc7fc18da22-NRT",
+          "connection": "keep-alive",
+          "content-encoding": "br",
+          "content-type": "application/javascript; charset=UTF-8",
+          "date": "Thu, 30 Jul 2026 00:17:10 GMT",
+          "etag": "W/\"14e7-19fae8bbfb5\"",
+          "last-modified": "Wed, 29 Jul 2026 15:43:42 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=w1mx07QCkL4DBNTf0UTQdF3qehEQSAaDKFMCPMn5gBOe5BojbCXE3b9BvkDCG6O%2FF0MwPitaDd%2F5puOMkz8xLT6Hsiu2ORBGd%2BSBcny9X1QBWeyxkoVZikisHVdJeYlpqfOseQ%3D%3D\"}]}",
+          "server": "cloudflare",
+          "transfer-encoding": "chunked",
+          "vary": "Accept-Encoding"
+        },
+        "hash": "85a4c251380e6f7bf23de3f3714e2ddb7fc3485693220a3d7fc7919b7603a2fd",
+        "length": 5351
+      },
+      "chunkStatuses": [
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/polyfills-42372ed130431b0a.js",
+          "status": 200,
+          "hash": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+          "length": 112541,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"1b7d2-19fae8bbfb1\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/webpack-eb5ec6f6a1ace65f.js",
+          "status": 200,
+          "hash": "91f47c70b237b4be1ce2c9f1ecaff77211d30aaa568c4473622404fb4e9395c1",
+          "length": 4011,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"fab-19f932c4ff8\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/framework-711ef29bc66f648c.js",
+          "status": 200,
+          "hash": "2b57ac8bf01d71df18482b732e6f255969510dd939a1f39f0a670d0be60d2e1f",
+          "length": 189700,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"2e504-19f932c5000\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/main-44da4396e293aa9d.js",
+          "status": 200,
+          "hash": "1f182ca3da3336c8477b603dd30983f1f833ce0b05212c412572634ec9441215",
+          "length": 140447,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"224a3-19f932c4fec\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/pages/_app-2a3140707e09f763.js",
+          "status": 200,
+          "hash": "407cd0b8de8b827b81e8879171ebd0b7a916709af559bbe9bc3206d93ba018d3",
+          "length": 27162,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"6aaa-19fae0d0c79\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/6d2b60a9-b36be8dc005f5d7d.js",
+          "status": 200,
+          "hash": "053778429e927935a6bcc33626e76e940b16d917a55678fe94715f30f2987032",
+          "length": 161018,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"274fa-19f932c5004\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/4913-c9a2ce25c10cce79.js",
+          "status": 200,
+          "hash": "ca4c8a69dbb7cc25aea012f28dcef0539e84edf571fc2ad43a2d35239e9fc5ab",
+          "length": 9408,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"24c0-19f932c5004\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/2601-6e110e50ef8ffe16.js",
+          "status": 200,
+          "hash": "616c316a1b9527cf332783784424c3bf079600def56abfc0bb0fd42575ca9ebe",
+          "length": 39117,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"98cd-19f932c5008\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/9893-febe9a1eec51efcb.js",
+          "status": 200,
+          "hash": "144ff2d1dc54b1b50c4db162d02296fdf571cb3aec8a030dbc7c0c3e6b4fda77",
+          "length": 37161,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"9129-19f932c5008\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/4337-aa890f5a9d1b3311.js",
+          "status": 200,
+          "hash": "45480688f6b3a85407d4cfcd35dd97ed034697c3e09f5eee86c255b2e0d63306",
+          "length": 23417,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"6525-19fae0d0ca1\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/8739-4a7cdd45b07728e1.js",
+          "status": 200,
+          "hash": "d09e750080b12e25dfdeb2f9d83255f1c12e83c4c091464fc76fb5c96c238c38",
+          "length": 14380,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"40a6-19fae0d0ca1\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/5639-c17776d508750387.js",
+          "status": 200,
+          "hash": "3f479e1afe44cecab09c5f438c0d419435ecb9a1bb30873fa87be6b6e61cfa61",
+          "length": 11370,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"2f5a-19f932c5008\""
+        }
+      ]
+    },
+    {
+      "url": "https://www.finmaphub.com/tools/home-buying-budget-calculator",
+      "finalUrl": "https://www.finmaphub.com/tools/home-buying-budget-calculator",
+      "status": 200,
+      "headers": {
+        "cacheControl": "",
+        "contentEncoding": "br",
+        "contentType": "text/html; charset=utf-8",
+        "age": "",
+        "etag": "",
+        "server": "cloudflare",
+        "xVercelCache": "",
+        "cfCacheStatus": "DYNAMIC"
+      },
+      "htmlHash": "9e34ef51a30c235dd45a619e156f76bf7313a34c427a590d90537341a493880c",
+      "htmlLength": 37315,
+      "buildId": "EH0IyY6JnzVJFzswcpSZ6",
+      "page": "/tools/home-buying-budget-calculator",
+      "scriptUrls": [
+        "https://www.finmaphub.com/_next/static/chunks/polyfills-42372ed130431b0a.js",
+        "https://www.finmaphub.com/_next/static/chunks/webpack-eb5ec6f6a1ace65f.js",
+        "https://www.finmaphub.com/_next/static/chunks/framework-711ef29bc66f648c.js",
+        "https://www.finmaphub.com/_next/static/chunks/main-44da4396e293aa9d.js",
+        "https://www.finmaphub.com/_next/static/chunks/pages/_app-2a3140707e09f763.js",
+        "https://www.finmaphub.com/_next/static/chunks/4337-aa890f5a9d1b3311.js",
+        "https://www.finmaphub.com/_next/static/chunks/6997-e744c865e88ef2ef.js",
+        "https://www.finmaphub.com/_next/static/chunks/9501-5277c714a35092d8.js",
+        "https://www.finmaphub.com/_next/static/chunks/pages/tools/home-buying-budget-calculator-f260247c8de5973e.js",
+        "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_buildManifest.js",
+        "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_ssgManifest.js"
+      ],
+      "manifest": {
+        "url": "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_buildManifest.js",
+        "status": 200,
+        "headers": {
+          "accept-ranges": "bytes",
+          "age": "30367",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "public, max-age=31536000, immutable",
+          "cf-cache-status": "HIT",
+          "cf-ray": "a2302dcccb0bda22-NRT",
+          "connection": "keep-alive",
+          "content-encoding": "br",
+          "content-type": "application/javascript; charset=UTF-8",
+          "date": "Thu, 30 Jul 2026 00:17:11 GMT",
+          "etag": "W/\"14e7-19fae8bbfb5\"",
+          "last-modified": "Wed, 29 Jul 2026 15:43:42 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=fePRCHIRKygiUeo82%2FLbUpW3zJ61oM4Hum8BZAAxdS6%2BgFIA7UAmiUfKdn7Qe2kCtZUmzlmBW2xWNxGR4PIclrpyUK%2FQPHNAF6YMmA5%2B7mqsDc5NAqoHcQVrP3EXLVL2WOiNRQ%3D%3D\"}]}",
+          "server": "cloudflare",
+          "transfer-encoding": "chunked",
+          "vary": "Accept-Encoding"
+        },
+        "hash": "85a4c251380e6f7bf23de3f3714e2ddb7fc3485693220a3d7fc7919b7603a2fd",
+        "length": 5351
+      },
+      "chunkStatuses": [
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/polyfills-42372ed130431b0a.js",
+          "status": 200,
+          "hash": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+          "length": 112541,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"1b7d2-19fae8bbfb1\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/webpack-eb5ec6f6a1ace65f.js",
+          "status": 200,
+          "hash": "91f47c70b237b4be1ce2c9f1ecaff77211d30aaa568c4473622404fb4e9395c1",
+          "length": 4011,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"fab-19f932c4ff8\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/framework-711ef29bc66f648c.js",
+          "status": 200,
+          "hash": "2b57ac8bf01d71df18482b732e6f255969510dd939a1f39f0a670d0be60d2e1f",
+          "length": 189700,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"2e504-19f932c5000\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/main-44da4396e293aa9d.js",
+          "status": 200,
+          "hash": "1f182ca3da3336c8477b603dd30983f1f833ce0b05212c412572634ec9441215",
+          "length": 140447,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"224a3-19f932c4fec\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/pages/_app-2a3140707e09f763.js",
+          "status": 200,
+          "hash": "407cd0b8de8b827b81e8879171ebd0b7a916709af559bbe9bc3206d93ba018d3",
+          "length": 27162,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"6aaa-19fae0d0c79\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/4337-aa890f5a9d1b3311.js",
+          "status": 200,
+          "hash": "45480688f6b3a85407d4cfcd35dd97ed034697c3e09f5eee86c255b2e0d63306",
+          "length": 23417,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"6525-19fae0d0ca1\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/6997-e744c865e88ef2ef.js",
+          "status": 200,
+          "hash": "292d5ed9742d8e2b779bbe7c49df4cb8f5aa36885cef0ba5741b2992bee17182",
+          "length": 10556,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"2986-19f932c5008\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/9501-5277c714a35092d8.js",
+          "status": 200,
+          "hash": "c14cff4a20f46578254f4bac8339fb3826261691e2af3222e3589f6bc35a50f0",
+          "length": 30586,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"80a4-19f932c5008\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/pages/tools/home-buying-budget-calculator-f260247c8de5973e.js",
+          "status": 200,
+          "hash": "e0daeb5e2f6dbe90a7755d9a322e02c458ea49fc5af3dc55e29553e4a2b1de4f",
+          "length": 6281,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"1cb1-19f932c4ff4\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_buildManifest.js",
+          "status": 200,
+          "hash": "85a4c251380e6f7bf23de3f3714e2ddb7fc3485693220a3d7fc7919b7603a2fd",
+          "length": 5351,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"14e7-19fae8bbfb5\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_ssgManifest.js",
+          "status": 200,
+          "hash": "8289f3861406433f6e6ca5026282ec0161a09c3acab5c49519d795e576e4125e",
+          "length": 366,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"16e-19fae8c5464\""
+        }
+      ]
+    },
+    {
+      "url": "https://www.finmaphub.com/tools/dsr-ltv-calculator",
+      "finalUrl": "https://www.finmaphub.com/tools/dsr-ltv-calculator",
+      "status": 200,
+      "headers": {
+        "cacheControl": "",
+        "contentEncoding": "br",
+        "contentType": "text/html; charset=utf-8",
+        "age": "",
+        "etag": "",
+        "server": "cloudflare",
+        "xVercelCache": "",
+        "cfCacheStatus": "DYNAMIC"
+      },
+      "htmlHash": "930cf811a4654fda3360935b87c887077381a2e80eca43e47aa0f2d5ecb869fc",
+      "htmlLength": 49376,
+      "buildId": "EH0IyY6JnzVJFzswcpSZ6",
+      "page": "/tools/dsr-ltv-calculator",
+      "scriptUrls": [
+        "https://www.finmaphub.com/_next/static/chunks/polyfills-42372ed130431b0a.js",
+        "https://www.finmaphub.com/_next/static/chunks/webpack-eb5ec6f6a1ace65f.js",
+        "https://www.finmaphub.com/_next/static/chunks/framework-711ef29bc66f648c.js",
+        "https://www.finmaphub.com/_next/static/chunks/main-44da4396e293aa9d.js",
+        "https://www.finmaphub.com/_next/static/chunks/pages/_app-2a3140707e09f763.js",
+        "https://www.finmaphub.com/_next/static/chunks/4337-aa890f5a9d1b3311.js",
+        "https://www.finmaphub.com/_next/static/chunks/8739-4a7cdd45b07728e1.js",
+        "https://www.finmaphub.com/_next/static/chunks/6997-e744c865e88ef2ef.js",
+        "https://www.finmaphub.com/_next/static/chunks/9501-5277c714a35092d8.js",
+        "https://www.finmaphub.com/_next/static/chunks/pages/tools/dsr-ltv-calculator-0ea30d2157ad5a23.js",
+        "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_buildManifest.js",
+        "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_ssgManifest.js"
+      ],
+      "manifest": {
+        "url": "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_buildManifest.js",
+        "status": 200,
+        "headers": {
+          "accept-ranges": "bytes",
+          "age": "30368",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "public, max-age=31536000, immutable",
+          "cf-cache-status": "HIT",
+          "cf-ray": "a2302dd148a0da22-NRT",
+          "connection": "keep-alive",
+          "content-encoding": "br",
+          "content-type": "application/javascript; charset=UTF-8",
+          "date": "Thu, 30 Jul 2026 00:17:11 GMT",
+          "etag": "W/\"14e7-19fae8bbfb5\"",
+          "last-modified": "Wed, 29 Jul 2026 15:43:42 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=1odGQJwS4u%2FZLn8FxDnvhdGFlnhkZcblepF%2BCdz965SD%2FbHB28SuUq8Calwuq7tzUrc7xIWHiWdZYS6IVnKK2TF7jwtMM9sXXG8FUvQz74XRqr8D7CdNxklZZirNEb5eKL9P2g%3D%3D\"}]}",
+          "server": "cloudflare",
+          "transfer-encoding": "chunked",
+          "vary": "Accept-Encoding"
+        },
+        "hash": "85a4c251380e6f7bf23de3f3714e2ddb7fc3485693220a3d7fc7919b7603a2fd",
+        "length": 5351
+      },
+      "chunkStatuses": [
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/polyfills-42372ed130431b0a.js",
+          "status": 200,
+          "hash": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+          "length": 112541,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"1b7d2-19fae8bbfb1\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/webpack-eb5ec6f6a1ace65f.js",
+          "status": 200,
+          "hash": "91f47c70b237b4be1ce2c9f1ecaff77211d30aaa568c4473622404fb4e9395c1",
+          "length": 4011,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"fab-19f932c4ff8\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/framework-711ef29bc66f648c.js",
+          "status": 200,
+          "hash": "2b57ac8bf01d71df18482b732e6f255969510dd939a1f39f0a670d0be60d2e1f",
+          "length": 189700,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"2e504-19f932c5000\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/main-44da4396e293aa9d.js",
+          "status": 200,
+          "hash": "1f182ca3da3336c8477b603dd30983f1f833ce0b05212c412572634ec9441215",
+          "length": 140447,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"224a3-19f932c4fec\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/pages/_app-2a3140707e09f763.js",
+          "status": 200,
+          "hash": "407cd0b8de8b827b81e8879171ebd0b7a916709af559bbe9bc3206d93ba018d3",
+          "length": 27162,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"6aaa-19fae0d0c79\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/4337-aa890f5a9d1b3311.js",
+          "status": 200,
+          "hash": "45480688f6b3a85407d4cfcd35dd97ed034697c3e09f5eee86c255b2e0d63306",
+          "length": 23417,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"6525-19fae0d0ca1\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/8739-4a7cdd45b07728e1.js",
+          "status": 200,
+          "hash": "d09e750080b12e25dfdeb2f9d83255f1c12e83c4c091464fc76fb5c96c238c38",
+          "length": 14380,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"40a6-19fae0d0ca1\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/6997-e744c865e88ef2ef.js",
+          "status": 200,
+          "hash": "292d5ed9742d8e2b779bbe7c49df4cb8f5aa36885cef0ba5741b2992bee17182",
+          "length": 10556,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"2986-19f932c5008\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/9501-5277c714a35092d8.js",
+          "status": 200,
+          "hash": "c14cff4a20f46578254f4bac8339fb3826261691e2af3222e3589f6bc35a50f0",
+          "length": 30586,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"80a4-19f932c5008\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/pages/tools/dsr-ltv-calculator-0ea30d2157ad5a23.js",
+          "status": 200,
+          "hash": "da3a389dce6e15899383f7c7a36e74e7127413d0c84a1e690d8029c40dfb6f05",
+          "length": 15329,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"4a59-19fae8bbfb5\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_buildManifest.js",
+          "status": 200,
+          "hash": "85a4c251380e6f7bf23de3f3714e2ddb7fc3485693220a3d7fc7919b7603a2fd",
+          "length": 5351,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"14e7-19fae8bbfb5\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_ssgManifest.js",
+          "status": 200,
+          "hash": "8289f3861406433f6e6ca5026282ec0161a09c3acab5c49519d795e576e4125e",
+          "length": 366,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"16e-19fae8c5464\""
+        }
+      ]
+    },
+    {
+      "url": "https://www.finmaphub.com/posts/personalFinance/what-is-cagr",
+      "finalUrl": "https://www.finmaphub.com/posts/personalFinance/what-is-cagr",
+      "status": 200,
+      "headers": {
+        "cacheControl": "s-maxage=31536000",
+        "contentEncoding": "br",
+        "contentType": "text/html; charset=utf-8",
+        "age": "",
+        "etag": "",
+        "server": "cloudflare",
+        "xVercelCache": "",
+        "cfCacheStatus": "DYNAMIC"
+      },
+      "htmlHash": "f6e5fbd087b1673001d7c5346063e6c6acdfcb825b0887ddc514b6fbd12f75a4",
+      "htmlLength": 53832,
+      "buildId": "EH0IyY6JnzVJFzswcpSZ6",
+      "page": "/posts/[category]/[slug]",
+      "scriptUrls": [
+        "https://www.finmaphub.com/_next/static/chunks/polyfills-42372ed130431b0a.js",
+        "https://www.finmaphub.com/_next/static/chunks/webpack-eb5ec6f6a1ace65f.js",
+        "https://www.finmaphub.com/_next/static/chunks/framework-711ef29bc66f648c.js",
+        "https://www.finmaphub.com/_next/static/chunks/main-44da4396e293aa9d.js",
+        "https://www.finmaphub.com/_next/static/chunks/pages/_app-2a3140707e09f763.js",
+        "https://www.finmaphub.com/_next/static/chunks/6862-5b8ae7bfff52f3ad.js",
+        "https://www.finmaphub.com/_next/static/chunks/8739-4a7cdd45b07728e1.js",
+        "https://www.finmaphub.com/_next/static/chunks/pages/posts/%5Bcategory%5D/%5Bslug%5D-a0ea07b9f0fa5814.js",
+        "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_buildManifest.js",
+        "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_ssgManifest.js"
+      ],
+      "manifest": {
+        "url": "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_buildManifest.js",
+        "status": 200,
+        "headers": {
+          "accept-ranges": "bytes",
+          "age": "30369",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "public, max-age=31536000, immutable",
+          "cf-cache-status": "HIT",
+          "cf-ray": "a2302dd67846da22-NRT",
+          "connection": "keep-alive",
+          "content-encoding": "br",
+          "content-type": "application/javascript; charset=UTF-8",
+          "date": "Thu, 30 Jul 2026 00:17:12 GMT",
+          "etag": "W/\"14e7-19fae8bbfb5\"",
+          "last-modified": "Wed, 29 Jul 2026 15:43:42 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=c40NT8vjTExqJU369KzwyqrecAI9P4y82fnN4f3swnkgS8Q%2FoK8jb0C9io14XoXCzqcfxuj%2BDVO6V%2FuYyO3e6rjGN0jBmeBM%2FGfXX%2BhMaWZ2f5OM8ldxCaCkfhExLahYfxbnpg%3D%3D\"}]}",
+          "server": "cloudflare",
+          "transfer-encoding": "chunked",
+          "vary": "Accept-Encoding"
+        },
+        "hash": "85a4c251380e6f7bf23de3f3714e2ddb7fc3485693220a3d7fc7919b7603a2fd",
+        "length": 5351
+      },
+      "chunkStatuses": [
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/polyfills-42372ed130431b0a.js",
+          "status": 200,
+          "hash": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+          "length": 112541,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"1b7d2-19fae8bbfb1\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/webpack-eb5ec6f6a1ace65f.js",
+          "status": 200,
+          "hash": "91f47c70b237b4be1ce2c9f1ecaff77211d30aaa568c4473622404fb4e9395c1",
+          "length": 4011,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"fab-19f932c4ff8\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/framework-711ef29bc66f648c.js",
+          "status": 200,
+          "hash": "2b57ac8bf01d71df18482b732e6f255969510dd939a1f39f0a670d0be60d2e1f",
+          "length": 189700,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"2e504-19f932c5000\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/main-44da4396e293aa9d.js",
+          "status": 200,
+          "hash": "1f182ca3da3336c8477b603dd30983f1f833ce0b05212c412572634ec9441215",
+          "length": 140447,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"224a3-19f932c4fec\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/pages/_app-2a3140707e09f763.js",
+          "status": 200,
+          "hash": "407cd0b8de8b827b81e8879171ebd0b7a916709af559bbe9bc3206d93ba018d3",
+          "length": 27162,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"6aaa-19fae0d0c79\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/6862-5b8ae7bfff52f3ad.js",
+          "status": 200,
+          "hash": "e8120dfc813d584522fa9d6a6982ede386fe29d25ab2f8746dd96cbff1af22dd",
+          "length": 35513,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"8ab9-19f932c5008\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/8739-4a7cdd45b07728e1.js",
+          "status": 200,
+          "hash": "d09e750080b12e25dfdeb2f9d83255f1c12e83c4c091464fc76fb5c96c238c38",
+          "length": 14380,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"40a6-19fae0d0ca1\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/chunks/pages/posts/%5Bcategory%5D/%5Bslug%5D-a0ea07b9f0fa5814.js",
+          "status": 200,
+          "hash": "914fcdea144ecdd986cb799981ff143659a936f6faca0a367d02143cd54ab14f",
+          "length": 24650,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"629e-19fae0d0c85\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_buildManifest.js",
+          "status": 200,
+          "hash": "85a4c251380e6f7bf23de3f3714e2ddb7fc3485693220a3d7fc7919b7603a2fd",
+          "length": 5351,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"14e7-19fae8bbfb5\""
+        },
+        {
+          "url": "https://www.finmaphub.com/_next/static/EH0IyY6JnzVJFzswcpSZ6/_ssgManifest.js",
+          "status": 200,
+          "hash": "8289f3861406433f6e6ca5026282ec0161a09c3acab5c49519d795e576e4125e",
+          "length": 366,
+          "cacheControl": "public, max-age=31536000, immutable",
+          "etag": "W/\"16e-19fae8c5464\""
+        }
+      ]
+    }
+  ]
+}

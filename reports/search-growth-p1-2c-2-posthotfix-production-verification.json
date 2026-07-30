@@ -1,0 +1,1219 @@
+{
+  "generatedAt": "2026-07-30T01:14:07+09:00",
+  "baseUrl": "https://www.finmaphub.com",
+  "verdict": "FAIL",
+  "deploymentRecord": {
+    "generatedAt": "2026-07-30T01:14:07+09:00",
+    "timezone": "Asia/Seoul",
+    "searchExperimentDeployDate": "MANUAL_INPUT_REQUIRED",
+    "hydrationHotfixDeployDate": "MANUAL_INPUT_REQUIRED",
+    "hydrationHotfixDeployTime": "MANUAL_INPUT_REQUIRED",
+    "hydrationHotfixVerificationDate": "2026-07-30",
+    "hydrationHotfixVerificationTime": "01:14:07",
+    "hotfixCommitHash": "cf136f1400edab381c2219e8775b4bfd53788d99",
+    "deployedBranch": "master",
+    "pm2Process": "MANUAL_INPUT_REQUIRED",
+    "pm2ListCommandOutput": "NO_OUTPUT_OR_NOT_AVAILABLE_IN_CODEX_SESSION",
+    "buildResult": "MANUAL_INPUT_REQUIRED",
+    "restartResult": "MANUAL_INPUT_REQUIRED",
+    "observationWindowPolicy": "Do not reset the 28-day or 6-week search experiment window from the hydration hotfix date."
+  },
+  "mortgageHydration": {
+    "status": "FAIL",
+    "summary": {
+      "total": 42,
+      "pass": 0,
+      "fail": 42,
+      "hydrationFail": 42,
+      "pageErrorFail": 42,
+      "networkOnlyFail": 0,
+      "reactErrorCodes": [
+        "418"
+      ],
+      "failedCombos": [
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "hard_load",
+          "run": 1,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-1.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-1-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-1-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "hard_load",
+          "run": 2,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-2.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-2-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-2-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "hard_load",
+          "run": 3,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-3.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-3-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-3-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "hard_load",
+          "run": 4,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-4.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-4-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-4-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "hard_load",
+          "run": 5,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-5.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-5-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-hard_load-5-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "360",
+          "navigation": "hard_load",
+          "run": 1,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-360-hard_load-1.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-360-hard_load-1-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-360-hard_load-1-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "360",
+          "navigation": "hard_load",
+          "run": 2,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-360-hard_load-2.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-360-hard_load-2-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-360-hard_load-2-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "390",
+          "navigation": "hard_load",
+          "run": 1,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-1.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-1-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-1-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "390",
+          "navigation": "hard_load",
+          "run": 2,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-2.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-2-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-2-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "390",
+          "navigation": "hard_load",
+          "run": 3,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-3.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-3-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-390-hard_load-3-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "768",
+          "navigation": "hard_load",
+          "run": 1,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-768-hard_load-1.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-768-hard_load-1-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-768-hard_load-1-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "768",
+          "navigation": "hard_load",
+          "run": 2,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-768-hard_load-2.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-768-hard_load-2-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-768-hard_load-2-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "1280",
+          "navigation": "hard_load",
+          "run": 1,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-1280-hard_load-1.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-1280-hard_load-1-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-1280-hard_load-1-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "1280",
+          "navigation": "hard_load",
+          "run": 2,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-1280-hard_load-2.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-1280-hard_load-2-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-1280-hard_load-2-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "1280",
+          "navigation": "hard_load",
+          "run": 3,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-1280-hard_load-3.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-1280-hard_load-3-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-1280-hard_load-3-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "hard_load",
+          "run": 1,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-hard_load-1.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-hard_load-1-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-hard_load-1-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "hard_load",
+          "run": 2,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-hard_load-2.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-hard_load-2-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-hard_load-2-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "hard_load",
+          "run": 3,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-hard_load-3.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-hard_load-3-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-hard_load-3-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "hard_load",
+          "run": 4,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-hard_load-4.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-hard_load-4-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-hard_load-4-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "hard_load",
+          "run": 5,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-hard_load-5.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-hard_load-5-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-hard_load-5-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "360",
+          "navigation": "hard_load",
+          "run": 1,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-360-hard_load-1.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-360-hard_load-1-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-360-hard_load-1-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "360",
+          "navigation": "hard_load",
+          "run": 2,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-360-hard_load-2.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-360-hard_load-2-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-360-hard_load-2-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "390",
+          "navigation": "hard_load",
+          "run": 1,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-390-hard_load-1.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-390-hard_load-1-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-390-hard_load-1-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "390",
+          "navigation": "hard_load",
+          "run": 2,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-390-hard_load-2.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-390-hard_load-2-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-390-hard_load-2-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "390",
+          "navigation": "hard_load",
+          "run": 3,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-390-hard_load-3.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-390-hard_load-3-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-390-hard_load-3-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "768",
+          "navigation": "hard_load",
+          "run": 1,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-768-hard_load-1.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-768-hard_load-1-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-768-hard_load-1-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "768",
+          "navigation": "hard_load",
+          "run": 2,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-768-hard_load-2.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-768-hard_load-2-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-768-hard_load-2-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "1280",
+          "navigation": "hard_load",
+          "run": 1,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-1280-hard_load-1.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-1280-hard_load-1-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-1280-hard_load-1-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "1280",
+          "navigation": "hard_load",
+          "run": 2,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-1280-hard_load-2.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-1280-hard_load-2-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-1280-hard_load-2-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "1280",
+          "navigation": "hard_load",
+          "run": 3,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-1280-hard_load-3.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-1280-hard_load-3-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-1280-hard_load-3-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "cache_disabled_reload",
+          "run": 1,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-cache_disabled_reload-1.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-cache_disabled_reload-1-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-cache_disabled_reload-1-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "cache_disabled_reload",
+          "run": 2,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-cache_disabled_reload-2.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-cache_disabled_reload-2-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-cache_disabled_reload-2-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "cache_disabled_reload",
+          "run": 3,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-cache_disabled_reload-3.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-cache_disabled_reload-3-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-cache_disabled_reload-3-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "cache_disabled_reload",
+          "run": 1,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-1.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-1-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-1-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "cache_disabled_reload",
+          "run": 2,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-2.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-2-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-2-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "cache_disabled_reload",
+          "run": 3,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-3.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-3-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-cache_disabled_reload-3-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "client_navigation",
+          "run": 1,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-1.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-1-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-1-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "client_navigation",
+          "run": 2,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-2.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-2-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-2-visible-text.txt"
+          }
+        },
+        {
+          "locale": "ko",
+          "path": "/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "client_navigation",
+          "run": 3,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-3.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-3-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\ko-320-client_navigation-3-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "client_navigation",
+          "run": 1,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-1.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-1-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-1-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "client_navigation",
+          "run": 2,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-2.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-2-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-2-visible-text.txt"
+          }
+        },
+        {
+          "locale": "en",
+          "path": "/en/tools/mortgage-loan-calculator",
+          "viewport": "320",
+          "navigation": "client_navigation",
+          "run": 3,
+          "hydrationMessages": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "pageErrors": [
+            "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "error": "",
+          "artifacts": {
+            "screenshotPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-3.png",
+            "clientDomPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-3-client-dom.html",
+            "visibleTextPath": "reports\\search-growth-p1-2c-1-hydration-artifacts\\en-320-client_navigation-3-visible-text.txt"
+          }
+        }
+      ]
+    }
+  },
+  "globalHydration": {
+    "summary": {
+      "total": 49,
+      "pass": 38,
+      "fail": 11
+    },
+    "failedRows": [
+      {
+        "path": "/tools/dsr-ltv-calculator",
+        "width": 320,
+        "run": 1,
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "consoleErrors": [
+          "error: Error: no_div"
+        ]
+      },
+      {
+        "path": "/tools/dsr-ltv-calculator",
+        "width": 320,
+        "run": 2,
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "consoleErrors": [
+          "error: Error: no_div"
+        ]
+      },
+      {
+        "path": "/tools/dsr-ltv-calculator",
+        "width": 320,
+        "run": 3,
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "consoleErrors": [
+          "error: Error: no_div"
+        ]
+      },
+      {
+        "path": "/tools/dsr-ltv-calculator",
+        "width": 390,
+        "run": 1,
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "consoleErrors": [
+          "error: Error: no_div"
+        ]
+      },
+      {
+        "path": "/tools/dsr-ltv-calculator",
+        "width": 390,
+        "run": 2,
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "consoleErrors": [
+          "error: Error: no_div"
+        ]
+      },
+      {
+        "path": "/tools/dsr-ltv-calculator",
+        "width": 1280,
+        "run": 1,
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "consoleErrors": [
+          "error: Error: no_div"
+        ]
+      },
+      {
+        "path": "/tools/home-buying-budget-calculator",
+        "width": 320,
+        "run": 1,
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "consoleErrors": [
+          "error: Error: no_div"
+        ]
+      },
+      {
+        "path": "/tools/home-buying-budget-calculator",
+        "width": 320,
+        "run": 2,
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "consoleErrors": [
+          "error: Error: no_div"
+        ]
+      },
+      {
+        "path": "/tools/home-buying-budget-calculator",
+        "width": 320,
+        "run": 3,
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "consoleErrors": [
+          "error: Error: no_div"
+        ]
+      },
+      {
+        "path": "/tools/home-buying-budget-calculator",
+        "width": 390,
+        "run": 1,
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "consoleErrors": [
+          "error: Error: no_div"
+        ]
+      },
+      {
+        "path": "/tools/home-buying-budget-calculator",
+        "width": 1280,
+        "run": 2,
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "consoleErrors": [
+          "error: Error: no_div"
+        ]
+      }
+    ]
+  },
+  "adsenseBootstrapVerifier": {
+    "command": "node scripts\\verify_adsense_bootstrap.js --base-url=https://www.finmaphub.com",
+    "result": "PASS",
+    "notes": [
+      "Production HTML contains exactly one raw adsbygoogle.js bootstrap script.",
+      "data-nscript is absent.",
+      "defer, crossorigin=anonymous, publisher client id, and hydration-safe body marker are present."
+    ]
+  },
+  "adsenseFirstEntry": {
+    "summary": {
+      "total": 21,
+      "pass": 12,
+      "fail": 9
+    },
+    "bootstrap": {
+      "checkedFromFirstEntryRows": true,
+      "referrerSimulation": "Naver referrer simulation returned ERR_BLOCKED_BY_CLIENT in headless Chrome, so direct clean-context hard loads were used.",
+      "allRowsHaveSingleBootstrapScript": true,
+      "allRowsHaveBootstrapRequest": true,
+      "allRowsDataNscriptAbsent": true,
+      "allRowsDefer": true,
+      "allRowsCrossoriginOk": true,
+      "allRowsPublisherClientOk": true,
+      "rowsAfterNextScripts": 20,
+      "totalRows": 21,
+      "categories": {
+        "AD_REQUEST_SENT_NO_FILL": 1,
+        "AD_REQUEST_SENT_FILLED": 11,
+        "SLOT_PUSH_FAILED": 9
+      }
+    },
+    "failedRows": [
+      {
+        "path": "/tools/dsr-ltv-calculator",
+        "width": 320,
+        "pass": false,
+        "category": "SLOT_PUSH_FAILED",
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "slotCount": 9,
+        "adRequestCount": 73,
+        "consoleErrors": [
+          "error: Error: no_div"
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "navigationError": ""
+      },
+      {
+        "path": "/tools/dsr-ltv-calculator",
+        "width": 390,
+        "pass": false,
+        "category": "SLOT_PUSH_FAILED",
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "slotCount": 9,
+        "adRequestCount": 74,
+        "consoleErrors": [
+          "error: Error: no_div"
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "navigationError": ""
+      },
+      {
+        "path": "/tools/dsr-ltv-calculator",
+        "width": 1280,
+        "pass": false,
+        "category": "SLOT_PUSH_FAILED",
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "slotCount": 8,
+        "adRequestCount": 68,
+        "consoleErrors": [
+          "error: Error: no_div"
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "navigationError": ""
+      },
+      {
+        "path": "/tools/home-buying-budget-calculator",
+        "width": 320,
+        "pass": false,
+        "category": "SLOT_PUSH_FAILED",
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "slotCount": 9,
+        "adRequestCount": 56,
+        "consoleErrors": [
+          "error: Error: no_div"
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "navigationError": ""
+      },
+      {
+        "path": "/tools/home-buying-budget-calculator",
+        "width": 390,
+        "pass": false,
+        "category": "SLOT_PUSH_FAILED",
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "slotCount": 9,
+        "adRequestCount": 51,
+        "consoleErrors": [
+          "error: Error: no_div"
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "navigationError": ""
+      },
+      {
+        "path": "/tools/home-buying-budget-calculator",
+        "width": 1280,
+        "pass": false,
+        "category": "SLOT_PUSH_FAILED",
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "slotCount": 8,
+        "adRequestCount": 72,
+        "consoleErrors": [
+          "error: Error: no_div",
+          "error: Framing 'https://www.google.com/' violates the following report-only Content Security Policy directive: \"frame-ancestors 'self'\". The violation has been logged, but no further action has been taken.\n"
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "navigationError": ""
+      },
+      {
+        "path": "/tools/mortgage-loan-calculator",
+        "width": 320,
+        "pass": false,
+        "category": "SLOT_PUSH_FAILED",
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "slotCount": 4,
+        "adRequestCount": 37,
+        "consoleErrors": [
+          "error: Error: no_div"
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "navigationError": ""
+      },
+      {
+        "path": "/tools/mortgage-loan-calculator",
+        "width": 390,
+        "pass": false,
+        "category": "SLOT_PUSH_FAILED",
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "slotCount": 4,
+        "adRequestCount": 36,
+        "consoleErrors": [
+          "error: Error: no_div"
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "navigationError": ""
+      },
+      {
+        "path": "/tools/mortgage-loan-calculator",
+        "width": 1280,
+        "pass": false,
+        "category": "SLOT_PUSH_FAILED",
+        "hydrationErrorCount": 1,
+        "reactErrorCodes": "418",
+        "slotCount": 3,
+        "adRequestCount": 23,
+        "consoleErrors": [
+          "error: Error: no_div"
+        ],
+        "pageErrors": [
+          "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        ],
+        "navigationError": ""
+      }
+    ]
+  },
+  "p1cVerifier": {
+    "status": "FAIL",
+    "blockers": [
+      "https://www.finmaphub.com/tools/home-buying-budget-calculator: mobile 320px browser check failed (Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.)",
+      "https://www.finmaphub.com/tools/home-buying-budget-calculator: mobile 390px browser check failed (Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.)",
+      "https://www.finmaphub.com/tools/mortgage-loan-calculator: mobile 320px browser check failed (Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.)",
+      "https://www.finmaphub.com/tools/mortgage-loan-calculator: mobile 390px browser check failed (Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.)",
+      "https://www.finmaphub.com/en/tools/mortgage-loan-calculator: mobile 320px browser check failed (Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.)",
+      "https://www.finmaphub.com/en/tools/mortgage-loan-calculator: mobile 390px browser check failed (Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.)"
+    ],
+    "manualChecks": [
+      "deploy date/time",
+      "GA4 DebugView",
+      "GSC sitemap submission screen",
+      "representative calculator input GA4 receipt"
+    ]
+  },
+  "calculatorRegression": {
+    "mortgageCalculator": "PASS 22/22 from node scripts\\verify_mortgage_loan_calculator.js",
+    "toolResultCtaEvents": "PASS from node scripts\\verify_tool_result_cta_events.js",
+    "naverCalculatorSeo": "PASS from node scripts\\verify_naver_calculator_seo.js"
+  },
+  "technicalBlockers": [
+    "Mortgage hydration matrix failed: 42/42, React codes=418",
+    "Global hydration matrix failed: 11/49",
+    "Existing P1-2C verifier failed with 6 blockers"
+  ],
+  "filesCreated": [
+    "reports\\search-growth-p1-2c-2-posthotfix-production-verification.md",
+    "reports\\search-growth-p1-2c-2-posthotfix-production-verification.json",
+    "reports\\search-growth-p1-2c-2-production-hydration-matrix.csv",
+    "reports\\search-growth-p1-2c-2-adsense-first-entry-check.csv",
+    "reports\\search-growth-p1-2c-2-deployment-record.json"
+  ],
+  "noAdditionalRuntimeChanges": true
+}
