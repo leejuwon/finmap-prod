@@ -5,7 +5,11 @@ import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 import SeoHead from '../_components/SeoHead';
 import { getAllPostsAllLangs } from '../lib/posts';
-import { cloudinaryThumb } from '../lib/cloudinaryUrl';
+import { cloudinaryFillLoader } from '../lib/cloudinaryUrl';
+
+const HOME_CARD_IMAGE_SIZES =
+  '(max-width: 640px) calc(100vw - 3.875rem), (max-width: 1023px) calc(50vw - 4rem), 333px';
+const homeCardImageLoader = cloudinaryFillLoader({ aspectW: 16, aspectH: 9 });
 
 /* ✅ 카테고리 이름 → slug 매핑 (frontmatter 기준) */
 const CATEGORY_SLUG_KO = {
@@ -212,19 +216,20 @@ export default function Home({ posts }) {
           {pillars.map((p, idx) => {
             const categorySlug = getCategorySlugFromPost(p);
             const postLang = p.lang || 'ko';
+            const isLcpImage = idx === 0;
             return (
               <article key={`pillar-${postLang}-${p.slug}`} className="card min-w-0 max-w-full overflow-hidden">
                 {p.cover && (
                   <div className="relative aspect-[16/9] w-full min-w-0 max-w-full overflow-hidden rounded-xl">
                     <Image
-                      src={cloudinaryThumb(
-                        p.cover,
-                        idx === 0 ? { w: 480, h: 270 } : { w: 400, h: 225 }
-                      )}
+                      src={p.cover}
                       alt={p.title}
                       fill
+                      loader={homeCardImageLoader}
                       className="object-cover"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      sizes={HOME_CARD_IMAGE_SIZES}
+                      priority={isLcpImage}
+                      fetchPriority={isLcpImage ? "high" : "auto"}
                     />
                   </div>
                 )}
@@ -253,6 +258,7 @@ export default function Home({ posts }) {
           {latest.map((p, idx) => {
             const categorySlug = getCategorySlugFromPost(p);
             const postLang = p.lang || 'ko';
+            const shouldPrioritize = pillars.length === 0 && idx === 0;
 
             return (
               <article
@@ -262,16 +268,14 @@ export default function Home({ posts }) {
                 {p.cover && (
                   <div className="relative aspect-[16/9] w-full min-w-0 max-w-full overflow-hidden rounded-xl">
                     <Image
-                      src={cloudinaryThumb(
-                        p.cover,
-                        idx === 0 ? { w: 480, h: 270 } : { w: 400, h: 225 }
-                      )}
+                      src={p.cover}
                       alt={p.title}
                       fill
+                      loader={homeCardImageLoader}
                       className="object-cover"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      priority={idx === 0}
-                      fetchPriority={idx === 0 ? "high" : "auto"}
+                      sizes={HOME_CARD_IMAGE_SIZES}
+                      priority={shouldPrioritize}
+                      fetchPriority={shouldPrioritize ? "high" : "auto"}
                     />
                   </div>
                 )}
@@ -320,11 +324,12 @@ export default function Home({ posts }) {
                   {p.cover && (
                     <div className="relative aspect-[16/9] w-full min-w-0 max-w-full overflow-hidden rounded-xl">
                       <Image
-                        src={cloudinaryThumb(p.cover, { w: 640, h: 360 })}
+                        src={p.cover}
                         alt={p.title}
                         fill
+                        loader={homeCardImageLoader}
                         className="object-cover"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        sizes={HOME_CARD_IMAGE_SIZES}
                       />
                     </div>
                   )}
