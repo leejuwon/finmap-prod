@@ -1,0 +1,5 @@
+platform,property,dataset,date,page,query,country,device,sourceMedium,channel,clicks,impressions,ctr,position,sessions,engagedSessions,users,eventName,eventCount,dataFreshness,fetchedAt,sourceTimezone
+ga4,properties/123456789,event_pages,,/tools/compound-interest,,,,,,,,,,,,3,tool_calculate,4,COMPLETE_RANGE,2026-08-06T08:33:02.450Z,Asia/Seoul
+ga4,properties/123456789,event_pages,,/tools/compound-interest,,,,,,,,,,,,3,tool_result_cta_view,3,COMPLETE_RANGE,2026-08-06T08:33:02.450Z,Asia/Seoul
+ga4,properties/123456789,event_pages,,/tools/compound-interest,,,,,,,,,,,,1,tool_result_cta_click,1,COMPLETE_RANGE,2026-08-06T08:33:02.450Z,Asia/Seoul
+ga4,properties/123456789,event_pages,,/tools/cagr-calculator,,,,,,,,,,,,1,tool_result_cta_click,1,COMPLETE_RANGE,2026-08-06T08:33:02.450Z,Asia/Seoul

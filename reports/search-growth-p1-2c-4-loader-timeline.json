@@ -1,0 +1,5241 @@
+{
+  "generatedAt": "2026-07-30T00:54:18.709Z",
+  "baseUrl": "https://www.finmaphub.com",
+  "note": "Observed with evaluateOnNewDocument probes in clean Chromium contexts. React useEffect timing is inferred from post-hydration script insertion by AdSenseBootstrap.",
+  "serverHtml": [
+    {
+      "path": "/",
+      "status": 200,
+      "executableAdsenseScriptCount": 0,
+      "dataNscriptCount": 0,
+      "hasAdsenseAccountMeta": true,
+      "hasPublisherId": true,
+      "buildId": "HPOU2C5yRTCjs8-zBCyPJ",
+      "noindex": false,
+      "canonicalCount": 1
+    },
+    {
+      "path": "/tools/mortgage-loan-calculator",
+      "status": 200,
+      "executableAdsenseScriptCount": 0,
+      "dataNscriptCount": 0,
+      "hasAdsenseAccountMeta": true,
+      "hasPublisherId": true,
+      "buildId": "HPOU2C5yRTCjs8-zBCyPJ",
+      "noindex": false,
+      "canonicalCount": 1
+    },
+    {
+      "path": "/en/tools/mortgage-loan-calculator",
+      "status": 200,
+      "executableAdsenseScriptCount": 0,
+      "dataNscriptCount": 0,
+      "hasAdsenseAccountMeta": true,
+      "hasPublisherId": true,
+      "buildId": "HPOU2C5yRTCjs8-zBCyPJ",
+      "noindex": false,
+      "canonicalCount": 1
+    },
+    {
+      "path": "/tools/home-buying-budget-calculator",
+      "status": 200,
+      "executableAdsenseScriptCount": 0,
+      "dataNscriptCount": 0,
+      "hasAdsenseAccountMeta": true,
+      "hasPublisherId": true,
+      "buildId": "HPOU2C5yRTCjs8-zBCyPJ",
+      "noindex": false,
+      "canonicalCount": 1
+    },
+    {
+      "path": "/tools/dsr-ltv-calculator",
+      "status": 200,
+      "executableAdsenseScriptCount": 0,
+      "dataNscriptCount": 0,
+      "hasAdsenseAccountMeta": true,
+      "hasPublisherId": true,
+      "buildId": "HPOU2C5yRTCjs8-zBCyPJ",
+      "noindex": false,
+      "canonicalCount": 1
+    }
+  ],
+  "routeNavigation": {
+    "rows": [
+      {
+        "step": 1,
+        "path": "/",
+        "finalUrl": "https://www.finmaphub.com/",
+        "usedAnchorClick": false,
+        "scriptCount": 1,
+        "loaderReady": true,
+        "slotCount": 3,
+        "slotPushedCount": 3,
+        "slotFailedCount": 0,
+        "duplicatePushedCount": 0,
+        "h1Count": 1,
+        "hydrationErrorCount": 0,
+        "react418": 0,
+        "pass": true
+      },
+      {
+        "step": 2,
+        "path": "/tools",
+        "finalUrl": "https://www.finmaphub.com/tools",
+        "scriptCount": 1,
+        "loaderReady": true,
+        "slotCount": 3,
+        "slotPushedCount": 3,
+        "slotFailedCount": 0,
+        "duplicatePushedCount": 0,
+        "h1Count": 1,
+        "hydrationErrorCount": 0,
+        "react418": 0,
+        "pass": true
+      },
+      {
+        "step": 3,
+        "path": "/tools/mortgage-loan-calculator",
+        "finalUrl": "https://www.finmaphub.com/tools/mortgage-loan-calculator",
+        "scriptCount": 1,
+        "loaderReady": true,
+        "slotCount": 3,
+        "slotPushedCount": 3,
+        "slotFailedCount": 0,
+        "duplicatePushedCount": 0,
+        "h1Count": 1,
+        "hydrationErrorCount": 0,
+        "react418": 0,
+        "pass": true
+      },
+      {
+        "step": 4,
+        "path": "/tools/compound-interest",
+        "finalUrl": "https://www.finmaphub.com/tools/compound-interest",
+        "scriptCount": 1,
+        "loaderReady": true,
+        "slotCount": 2,
+        "slotPushedCount": 2,
+        "slotFailedCount": 0,
+        "duplicatePushedCount": 0,
+        "h1Count": 1,
+        "hydrationErrorCount": 0,
+        "react418": 0,
+        "pass": true
+      },
+      {
+        "step": 5,
+        "path": "/posts/personalFinance/what-is-cagr",
+        "finalUrl": "https://www.finmaphub.com/posts/personalFinance/what-is-cagr",
+        "scriptCount": 1,
+        "loaderReady": true,
+        "slotCount": 7,
+        "slotPushedCount": 4,
+        "slotFailedCount": 0,
+        "duplicatePushedCount": 0,
+        "h1Count": 1,
+        "hydrationErrorCount": 0,
+        "react418": 0,
+        "pass": true
+      }
+    ],
+    "timeline": [
+      {
+        "atMs": 156,
+        "readyState": "loading",
+        "type": "probe_installed"
+      },
+      {
+        "atMs": 274,
+        "readyState": "interactive",
+        "type": "DOMContentLoaded"
+      },
+      {
+        "atMs": 276,
+        "readyState": "complete",
+        "type": "window_load"
+      },
+      {
+        "atMs": 287,
+        "readyState": "complete",
+        "type": "adsbygoogle_set",
+        "typeOfValue": "object",
+        "hasPush": true
+      },
+      {
+        "atMs": 287,
+        "readyState": "complete",
+        "type": "adsense_script_marker_set",
+        "value": "post-hydration-singleton"
+      },
+      {
+        "atMs": 287,
+        "readyState": "complete",
+        "type": "adsense_script_insert",
+        "method": "appendChild",
+        "parentTag": "HEAD",
+        "inHead": true,
+        "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976",
+        "async": true,
+        "crossOrigin": "anonymous",
+        "marker": "post-hydration-singleton"
+      },
+      {
+        "atMs": 287,
+        "readyState": "complete",
+        "type": "adsbygoogle_set",
+        "typeOfValue": "object",
+        "hasPush": true
+      },
+      {
+        "atMs": 287,
+        "readyState": "complete",
+        "type": "adsbygoogle_set",
+        "typeOfValue": "object",
+        "hasPush": true
+      },
+      {
+        "atMs": 287,
+        "readyState": "complete",
+        "type": "adsbygoogle_set",
+        "typeOfValue": "object",
+        "hasPush": true
+      },
+      {
+        "atMs": 287,
+        "readyState": "complete",
+        "type": "adsbygoogle_set",
+        "typeOfValue": "object",
+        "hasPush": true
+      },
+      {
+        "atMs": 294,
+        "readyState": "complete",
+        "type": "adsbygoogle_set",
+        "typeOfValue": "object",
+        "hasPush": true
+      },
+      {
+        "atMs": 294,
+        "readyState": "complete",
+        "type": "adsense_script_load",
+        "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976"
+      },
+      {
+        "atMs": 308,
+        "readyState": "complete",
+        "type": "adsbygoogle_set",
+        "typeOfValue": "object",
+        "hasPush": true
+      },
+      {
+        "atMs": 308,
+        "readyState": "complete",
+        "type": "adsbygoogle_push_attempt",
+        "argsLength": 1,
+        "scriptReady": true
+      },
+      {
+        "atMs": 309,
+        "readyState": "complete",
+        "type": "adsbygoogle_push_success",
+        "scriptReady": true
+      },
+      {
+        "atMs": 453,
+        "readyState": "complete",
+        "type": "adsbygoogle_set",
+        "typeOfValue": "object",
+        "hasPush": true
+      },
+      {
+        "atMs": 453,
+        "readyState": "complete",
+        "type": "adsbygoogle_push_attempt",
+        "argsLength": 1,
+        "scriptReady": true
+      },
+      {
+        "atMs": 455,
+        "readyState": "complete",
+        "type": "adsbygoogle_push_success",
+        "scriptReady": true
+      },
+      {
+        "atMs": 456,
+        "readyState": "complete",
+        "type": "adsbygoogle_set",
+        "typeOfValue": "object",
+        "hasPush": true
+      },
+      {
+        "atMs": 456,
+        "readyState": "complete",
+        "type": "adsbygoogle_push_attempt",
+        "argsLength": 1,
+        "scriptReady": true
+      },
+      {
+        "atMs": 457,
+        "readyState": "complete",
+        "type": "adsbygoogle_push_success",
+        "scriptReady": true
+      },
+      {
+        "atMs": 458,
+        "readyState": "complete",
+        "type": "google_auto_placed_inserted",
+        "target": "DIV",
+        "className": "google-auto-placed"
+      },
+      {
+        "atMs": 458,
+        "readyState": "complete",
+        "type": "google_auto_placed_inserted",
+        "target": "BODY",
+        "className": "google-auto-placed"
+      },
+      {
+        "atMs": 458,
+        "readyState": "complete",
+        "type": "google_auto_placed_inserted",
+        "target": "DIV",
+        "className": "google-auto-placed"
+      },
+      {
+        "atMs": 458,
+        "readyState": "complete",
+        "type": "google_auto_placed_inserted",
+        "target": "BODY",
+        "className": "google-auto-placed"
+      },
+      {
+        "atMs": 458,
+        "readyState": "complete",
+        "type": "google_auto_placed_inserted",
+        "target": "DIV",
+        "className": "google-auto-placed"
+      },
+      {
+        "atMs": 458,
+        "readyState": "complete",
+        "type": "google_auto_placed_inserted",
+        "target": "DIV",
+        "className": "google-auto-placed"
+      },
+      {
+        "atMs": 458,
+        "readyState": "complete",
+        "type": "google_auto_placed_inserted",
+        "target": "DIV",
+        "className": "google-auto-placed"
+      },
+      {
+        "atMs": 458,
+        "readyState": "complete",
+        "type": "google_auto_placed_inserted",
+        "target": "BODY",
+        "className": "google-auto-placed"
+      },
+      {
+        "atMs": 458,
+        "readyState": "complete",
+        "type": "google_auto_placed_inserted",
+        "target": "BODY",
+        "className": "google-auto-placed"
+      },
+      {
+        "atMs": 458,
+        "readyState": "complete",
+        "type": "google_auto_placed_inserted",
+        "target": "DIV",
+        "className": "google-auto-placed"
+      },
+      {
+        "atMs": 458,
+        "readyState": "complete",
+        "type": "google_auto_placed_inserted",
+        "target": "DIV",
+        "className": "google-auto-placed"
+      },
+      {
+        "atMs": 458,
+        "readyState": "complete",
+        "type": "google_auto_placed_inserted",
+        "target": "DIV",
+        "className": "google-auto-placed"
+      },
+      {
+        "atMs": 458,
+        "readyState": "complete",
+        "type": "google_auto_placed_inserted",
+        "target": "BODY",
+        "className": "google-auto-placed"
+      },
+      {
+        "atMs": 458,
+        "readyState": "complete",
+        "type": "google_auto_placed_inserted",
+        "target": "BODY",
+        "className": "google-auto-placed"
+      }
+    ]
+  },
+  "samples": [
+    {
+      "path": "/tools/compound-interest",
+      "viewport": "320",
+      "status": "AD_REQUEST_SENT_NO_FILL_OR_FILLED",
+      "scriptCount": 1,
+      "loaderReady": true,
+      "slotCount": 2,
+      "slotPushedCount": 2,
+      "timeline": [
+        {
+          "atMs": 173,
+          "readyState": "loading",
+          "type": "probe_installed"
+        },
+        {
+          "atMs": 522,
+          "readyState": "interactive",
+          "type": "DOMContentLoaded"
+        },
+        {
+          "atMs": 596,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 596,
+          "readyState": "interactive",
+          "type": "adsense_script_marker_set",
+          "value": "post-hydration-singleton"
+        },
+        {
+          "atMs": 596,
+          "readyState": "interactive",
+          "type": "adsense_script_insert",
+          "method": "appendChild",
+          "parentTag": "HEAD",
+          "inHead": true,
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976",
+          "async": true,
+          "crossOrigin": "anonymous",
+          "marker": "post-hydration-singleton"
+        },
+        {
+          "atMs": 802,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 802,
+          "readyState": "interactive",
+          "type": "adsense_script_load",
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976"
+        },
+        {
+          "atMs": 1219,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1219,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1221,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1221,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1222,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1222,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1222,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1222,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1222,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1690,
+          "readyState": "complete",
+          "type": "window_load"
+        }
+      ]
+    },
+    {
+      "path": "/tools/compound-interest",
+      "viewport": "390",
+      "status": "AD_REQUEST_SENT_NO_FILL_OR_FILLED",
+      "scriptCount": 1,
+      "loaderReady": true,
+      "slotCount": 2,
+      "slotPushedCount": 2,
+      "timeline": [
+        {
+          "atMs": 172,
+          "readyState": "loading",
+          "type": "probe_installed"
+        },
+        {
+          "atMs": 552,
+          "readyState": "interactive",
+          "type": "DOMContentLoaded"
+        },
+        {
+          "atMs": 627,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 627,
+          "readyState": "interactive",
+          "type": "adsense_script_marker_set",
+          "value": "post-hydration-singleton"
+        },
+        {
+          "atMs": 627,
+          "readyState": "interactive",
+          "type": "adsense_script_insert",
+          "method": "appendChild",
+          "parentTag": "HEAD",
+          "inHead": true,
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976",
+          "async": true,
+          "crossOrigin": "anonymous",
+          "marker": "post-hydration-singleton"
+        },
+        {
+          "atMs": 853,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 853,
+          "readyState": "interactive",
+          "type": "adsense_script_load",
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976"
+        },
+        {
+          "atMs": 1253,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1253,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1255,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1256,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1256,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1256,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1256,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1256,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1256,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1558,
+          "readyState": "complete",
+          "type": "window_load"
+        }
+      ]
+    },
+    {
+      "path": "/tools/compound-interest",
+      "viewport": "1280",
+      "status": "AD_REQUEST_SENT_NO_FILL_OR_FILLED",
+      "scriptCount": 1,
+      "loaderReady": true,
+      "slotCount": 4,
+      "slotPushedCount": 4,
+      "timeline": [
+        {
+          "atMs": 282,
+          "readyState": "loading",
+          "type": "probe_installed"
+        },
+        {
+          "atMs": 467,
+          "readyState": "interactive",
+          "type": "DOMContentLoaded"
+        },
+        {
+          "atMs": 540,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 540,
+          "readyState": "interactive",
+          "type": "adsense_script_marker_set",
+          "value": "post-hydration-singleton"
+        },
+        {
+          "atMs": 540,
+          "readyState": "interactive",
+          "type": "adsense_script_insert",
+          "method": "appendChild",
+          "parentTag": "HEAD",
+          "inHead": true,
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976",
+          "async": true,
+          "crossOrigin": "anonymous",
+          "marker": "post-hydration-singleton"
+        },
+        {
+          "atMs": 746,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 747,
+          "readyState": "interactive",
+          "type": "adsense_script_load",
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976"
+        },
+        {
+          "atMs": 1534,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1534,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1535,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1536,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1536,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1536,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1536,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1536,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1536,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1573,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1574,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1574,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1575,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 2571,
+          "readyState": "complete",
+          "type": "window_load"
+        }
+      ]
+    },
+    {
+      "path": "/tools/cagr-calculator",
+      "viewport": "320",
+      "status": "AD_REQUEST_SENT_NO_FILL_OR_FILLED",
+      "scriptCount": 1,
+      "loaderReady": true,
+      "slotCount": 2,
+      "slotPushedCount": 2,
+      "timeline": [
+        {
+          "atMs": 182,
+          "readyState": "loading",
+          "type": "probe_installed"
+        },
+        {
+          "atMs": 592,
+          "readyState": "interactive",
+          "type": "DOMContentLoaded"
+        },
+        {
+          "atMs": 661,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 661,
+          "readyState": "interactive",
+          "type": "adsense_script_marker_set",
+          "value": "post-hydration-singleton"
+        },
+        {
+          "atMs": 661,
+          "readyState": "interactive",
+          "type": "adsense_script_insert",
+          "method": "appendChild",
+          "parentTag": "HEAD",
+          "inHead": true,
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976",
+          "async": true,
+          "crossOrigin": "anonymous",
+          "marker": "post-hydration-singleton"
+        },
+        {
+          "atMs": 860,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 860,
+          "readyState": "interactive",
+          "type": "adsense_script_load",
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976"
+        },
+        {
+          "atMs": 1249,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1249,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1251,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1252,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1252,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1252,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1252,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1252,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1252,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1725,
+          "readyState": "complete",
+          "type": "window_load"
+        }
+      ]
+    },
+    {
+      "path": "/tools/cagr-calculator",
+      "viewport": "390",
+      "status": "AD_REQUEST_SENT_NO_FILL_OR_FILLED",
+      "scriptCount": 1,
+      "loaderReady": true,
+      "slotCount": 2,
+      "slotPushedCount": 2,
+      "timeline": [
+        {
+          "atMs": 183,
+          "readyState": "loading",
+          "type": "probe_installed"
+        },
+        {
+          "atMs": 578,
+          "readyState": "interactive",
+          "type": "DOMContentLoaded"
+        },
+        {
+          "atMs": 647,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 647,
+          "readyState": "interactive",
+          "type": "adsense_script_marker_set",
+          "value": "post-hydration-singleton"
+        },
+        {
+          "atMs": 647,
+          "readyState": "interactive",
+          "type": "adsense_script_insert",
+          "method": "appendChild",
+          "parentTag": "HEAD",
+          "inHead": true,
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976",
+          "async": true,
+          "crossOrigin": "anonymous",
+          "marker": "post-hydration-singleton"
+        },
+        {
+          "atMs": 865,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 865,
+          "readyState": "interactive",
+          "type": "adsense_script_load",
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976"
+        },
+        {
+          "atMs": 1259,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1259,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1261,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1261,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1261,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1261,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1261,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1261,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1261,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1760,
+          "readyState": "complete",
+          "type": "window_load"
+        }
+      ]
+    },
+    {
+      "path": "/tools/cagr-calculator",
+      "viewport": "1280",
+      "status": "AD_REQUEST_SENT_NO_FILL_OR_FILLED",
+      "scriptCount": 1,
+      "loaderReady": true,
+      "slotCount": 3,
+      "slotPushedCount": 3,
+      "timeline": [
+        {
+          "atMs": 207,
+          "readyState": "loading",
+          "type": "probe_installed"
+        },
+        {
+          "atMs": 610,
+          "readyState": "interactive",
+          "type": "DOMContentLoaded"
+        },
+        {
+          "atMs": 683,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 683,
+          "readyState": "interactive",
+          "type": "adsense_script_marker_set",
+          "value": "post-hydration-singleton"
+        },
+        {
+          "atMs": 683,
+          "readyState": "interactive",
+          "type": "adsense_script_insert",
+          "method": "appendChild",
+          "parentTag": "HEAD",
+          "inHead": true,
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976",
+          "async": true,
+          "crossOrigin": "anonymous",
+          "marker": "post-hydration-singleton"
+        },
+        {
+          "atMs": 885,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 885,
+          "readyState": "interactive",
+          "type": "adsense_script_load",
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976"
+        },
+        {
+          "atMs": 1823,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1823,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1824,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1825,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1825,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1825,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1825,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1825,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1825,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1885,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1886,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 2737,
+          "readyState": "complete",
+          "type": "window_load"
+        }
+      ]
+    },
+    {
+      "path": "/tools/dsr-ltv-calculator",
+      "viewport": "320",
+      "status": "AD_REQUEST_SENT_NO_FILL_OR_FILLED",
+      "scriptCount": 1,
+      "loaderReady": true,
+      "slotCount": 10,
+      "slotPushedCount": 8,
+      "timeline": [
+        {
+          "atMs": 233,
+          "readyState": "loading",
+          "type": "probe_installed"
+        },
+        {
+          "atMs": 452,
+          "readyState": "interactive",
+          "type": "DOMContentLoaded"
+        },
+        {
+          "atMs": 524,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 525,
+          "readyState": "interactive",
+          "type": "adsense_script_marker_set",
+          "value": "post-hydration-singleton"
+        },
+        {
+          "atMs": 525,
+          "readyState": "interactive",
+          "type": "adsense_script_insert",
+          "method": "appendChild",
+          "parentTag": "HEAD",
+          "inHead": true,
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976",
+          "async": true,
+          "crossOrigin": "anonymous",
+          "marker": "post-hydration-singleton"
+        },
+        {
+          "atMs": 525,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 526,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 708,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 708,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": false
+        },
+        {
+          "atMs": 708,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": false
+        },
+        {
+          "atMs": 711,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 712,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 712,
+          "readyState": "interactive",
+          "type": "adsense_script_load",
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976"
+        },
+        {
+          "atMs": 1698,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1698,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1700,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1702,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1702,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1703,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1704,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1704,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1705,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1707,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1707,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1708,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1709,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1749,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1750,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1750,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1751,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 2634,
+          "readyState": "complete",
+          "type": "window_load"
+        }
+      ]
+    },
+    {
+      "path": "/tools/dsr-ltv-calculator",
+      "viewport": "390",
+      "status": "AD_REQUEST_SENT_NO_FILL_OR_FILLED",
+      "scriptCount": 1,
+      "loaderReady": true,
+      "slotCount": 8,
+      "slotPushedCount": 6,
+      "timeline": [
+        {
+          "atMs": 429,
+          "readyState": "loading",
+          "type": "probe_installed"
+        },
+        {
+          "atMs": 731,
+          "readyState": "interactive",
+          "type": "DOMContentLoaded"
+        },
+        {
+          "atMs": 808,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 808,
+          "readyState": "interactive",
+          "type": "adsense_script_marker_set",
+          "value": "post-hydration-singleton"
+        },
+        {
+          "atMs": 808,
+          "readyState": "interactive",
+          "type": "adsense_script_insert",
+          "method": "appendChild",
+          "parentTag": "HEAD",
+          "inHead": true,
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976",
+          "async": true,
+          "crossOrigin": "anonymous",
+          "marker": "post-hydration-singleton"
+        },
+        {
+          "atMs": 809,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 810,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1022,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1022,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": false
+        },
+        {
+          "atMs": 1022,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": false
+        },
+        {
+          "atMs": 1026,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1026,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1026,
+          "readyState": "interactive",
+          "type": "adsense_script_load",
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976"
+        },
+        {
+          "atMs": 1422,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1422,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1425,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1427,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1427,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1429,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1430,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1430,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1431,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1433,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1433,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1433,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1434,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1434,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1434,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1434,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1434,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1435,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1956,
+          "readyState": "complete",
+          "type": "window_load"
+        }
+      ]
+    },
+    {
+      "path": "/tools/dsr-ltv-calculator",
+      "viewport": "1280",
+      "status": "AD_REQUEST_SENT_NO_FILL_OR_FILLED",
+      "scriptCount": 1,
+      "loaderReady": true,
+      "slotCount": 7,
+      "slotPushedCount": 5,
+      "timeline": [
+        {
+          "atMs": 181,
+          "readyState": "loading",
+          "type": "probe_installed"
+        },
+        {
+          "atMs": 546,
+          "readyState": "interactive",
+          "type": "DOMContentLoaded"
+        },
+        {
+          "atMs": 578,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 578,
+          "readyState": "interactive",
+          "type": "adsense_script_marker_set",
+          "value": "post-hydration-singleton"
+        },
+        {
+          "atMs": 578,
+          "readyState": "interactive",
+          "type": "adsense_script_insert",
+          "method": "appendChild",
+          "parentTag": "HEAD",
+          "inHead": true,
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976",
+          "async": true,
+          "crossOrigin": "anonymous",
+          "marker": "post-hydration-singleton"
+        },
+        {
+          "atMs": 579,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 579,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 785,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 786,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": false
+        },
+        {
+          "atMs": 786,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": false
+        },
+        {
+          "atMs": 788,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 788,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 788,
+          "readyState": "interactive",
+          "type": "adsense_script_load",
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976"
+        },
+        {
+          "atMs": 1192,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1192,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1193,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1197,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1197,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1197,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1199,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1774,
+          "readyState": "complete",
+          "type": "window_load"
+        }
+      ]
+    },
+    {
+      "path": "/tools/home-buying-budget-calculator",
+      "viewport": "320",
+      "status": "AD_REQUEST_SENT_NO_FILL_OR_FILLED",
+      "scriptCount": 1,
+      "loaderReady": true,
+      "slotCount": 8,
+      "slotPushedCount": 6,
+      "timeline": [
+        {
+          "atMs": 190,
+          "readyState": "loading",
+          "type": "probe_installed"
+        },
+        {
+          "atMs": 548,
+          "readyState": "interactive",
+          "type": "DOMContentLoaded"
+        },
+        {
+          "atMs": 578,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 579,
+          "readyState": "interactive",
+          "type": "adsense_script_marker_set",
+          "value": "post-hydration-singleton"
+        },
+        {
+          "atMs": 579,
+          "readyState": "interactive",
+          "type": "adsense_script_insert",
+          "method": "appendChild",
+          "parentTag": "HEAD",
+          "inHead": true,
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976",
+          "async": true,
+          "crossOrigin": "anonymous",
+          "marker": "post-hydration-singleton"
+        },
+        {
+          "atMs": 580,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 580,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 788,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 788,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": false
+        },
+        {
+          "atMs": 788,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": false
+        },
+        {
+          "atMs": 791,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 791,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 792,
+          "readyState": "interactive",
+          "type": "adsense_script_load",
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976"
+        },
+        {
+          "atMs": 1183,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1183,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1186,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1189,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1189,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1190,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1191,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1191,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1192,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1194,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1194,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1194,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1195,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1696,
+          "readyState": "complete",
+          "type": "window_load"
+        }
+      ]
+    },
+    {
+      "path": "/tools/home-buying-budget-calculator",
+      "viewport": "390",
+      "status": "AD_REQUEST_SENT_NO_FILL_OR_FILLED",
+      "scriptCount": 1,
+      "loaderReady": true,
+      "slotCount": 10,
+      "slotPushedCount": 8,
+      "timeline": [
+        {
+          "atMs": 177,
+          "readyState": "loading",
+          "type": "probe_installed"
+        },
+        {
+          "atMs": 501,
+          "readyState": "interactive",
+          "type": "DOMContentLoaded"
+        },
+        {
+          "atMs": 532,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 532,
+          "readyState": "interactive",
+          "type": "adsense_script_marker_set",
+          "value": "post-hydration-singleton"
+        },
+        {
+          "atMs": 532,
+          "readyState": "interactive",
+          "type": "adsense_script_insert",
+          "method": "appendChild",
+          "parentTag": "HEAD",
+          "inHead": true,
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976",
+          "async": true,
+          "crossOrigin": "anonymous",
+          "marker": "post-hydration-singleton"
+        },
+        {
+          "atMs": 533,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 533,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 757,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 757,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": false
+        },
+        {
+          "atMs": 757,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": false
+        },
+        {
+          "atMs": 759,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 760,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 760,
+          "readyState": "interactive",
+          "type": "adsense_script_load",
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976"
+        },
+        {
+          "atMs": 1875,
+          "readyState": "complete",
+          "type": "window_load"
+        },
+        {
+          "atMs": 1893,
+          "readyState": "complete",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1893,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1896,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1897,
+          "readyState": "complete",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1897,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1899,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1900,
+          "readyState": "complete",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1900,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1901,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1902,
+          "readyState": "complete",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1902,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1903,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1904,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1945,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1946,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1946,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1947,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        }
+      ]
+    },
+    {
+      "path": "/tools/home-buying-budget-calculator",
+      "viewport": "1280",
+      "status": "AD_REQUEST_SENT_NO_FILL_OR_FILLED",
+      "scriptCount": 1,
+      "loaderReady": true,
+      "slotCount": 8,
+      "slotPushedCount": 6,
+      "timeline": [
+        {
+          "atMs": 191,
+          "readyState": "loading",
+          "type": "probe_installed"
+        },
+        {
+          "atMs": 548,
+          "readyState": "interactive",
+          "type": "DOMContentLoaded"
+        },
+        {
+          "atMs": 578,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 578,
+          "readyState": "interactive",
+          "type": "adsense_script_marker_set",
+          "value": "post-hydration-singleton"
+        },
+        {
+          "atMs": 578,
+          "readyState": "interactive",
+          "type": "adsense_script_insert",
+          "method": "appendChild",
+          "parentTag": "HEAD",
+          "inHead": true,
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976",
+          "async": true,
+          "crossOrigin": "anonymous",
+          "marker": "post-hydration-singleton"
+        },
+        {
+          "atMs": 579,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 580,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 791,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 791,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": false
+        },
+        {
+          "atMs": 791,
+          "readyState": "interactive",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": false
+        },
+        {
+          "atMs": 794,
+          "readyState": "interactive",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 794,
+          "readyState": "interactive",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 794,
+          "readyState": "interactive",
+          "type": "adsense_script_load",
+          "src": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1869932115288976"
+        },
+        {
+          "atMs": 1432,
+          "readyState": "complete",
+          "type": "window_load"
+        },
+        {
+          "atMs": 1450,
+          "readyState": "complete",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1450,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1451,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1453,
+          "readyState": "complete",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1453,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1453,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1454,
+          "readyState": "complete",
+          "type": "adsbygoogle_set",
+          "typeOfValue": "object",
+          "hasPush": true
+        },
+        {
+          "atMs": 1454,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1455,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "BODY",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "MAIN",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1456,
+          "readyState": "complete",
+          "type": "google_auto_placed_inserted",
+          "target": "DIV",
+          "className": "google-auto-placed"
+        },
+        {
+          "atMs": 1488,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_attempt",
+          "argsLength": 1,
+          "scriptReady": true
+        },
+        {
+          "atMs": 1489,
+          "readyState": "complete",
+          "type": "adsbygoogle_push_success",
+          "scriptReady": true
+        }
+      ]
+    }
+  ]
+}

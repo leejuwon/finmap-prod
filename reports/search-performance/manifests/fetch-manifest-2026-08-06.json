@@ -1,0 +1,74 @@
+{
+  "runDate": "2026-08-06",
+  "generatedAt": "2026-08-06T08:33:02.462Z",
+  "status": "READY",
+  "manifests": [
+    {
+      "platform": "gsc",
+      "runDate": "2026-08-06",
+      "requestedStartDate": null,
+      "requestedEndDate": null,
+      "effectiveStartDate": "2026-07-07",
+      "effectiveEndDate": "2026-08-03",
+      "searchType": "web",
+      "includePageQuery": true,
+      "platformTimezone": "America/Los_Angeles",
+      "lagDays": 3,
+      "credentialConfigured": false,
+      "propertiesConfigured": 0,
+      "status": "READY",
+      "files": [
+        "reports/search-performance/normalized/2026-08-06/gsc-daily.csv",
+        "reports/search-performance/normalized/2026-08-06/gsc-pages.csv",
+        "reports/search-performance/normalized/2026-08-06/gsc-queries.csv",
+        "reports/search-performance/normalized/2026-08-06/gsc-devices.csv",
+        "reports/search-performance/normalized/2026-08-06/gsc-countries.csv",
+        "reports/search-performance/normalized/2026-08-06/gsc-page-query.csv"
+      ],
+      "warnings": [],
+      "latestDateReturned": "2026-08-02"
+    },
+    {
+      "platform": "ga4",
+      "runDate": "2026-08-06",
+      "effectiveStartDate": "2026-07-08",
+      "effectiveEndDate": "2026-08-04",
+      "platformTimezone": "Asia/Seoul",
+      "lagDays": 2,
+      "credentialConfigured": false,
+      "propertyIdConfigured": false,
+      "status": "READY",
+      "metadataStatus": "SUPPORTED",
+      "files": [
+        "reports/search-performance/normalized/2026-08-06/ga4-channels.csv",
+        "reports/search-performance/normalized/2026-08-06/ga4-landings.csv",
+        "reports/search-performance/normalized/2026-08-06/ga4-events.csv",
+        "reports/search-performance/normalized/2026-08-06/ga4-event-pages.csv",
+        "reports/search-performance/normalized/2026-08-06/ga4-calculator-funnel.csv"
+      ],
+      "warnings": []
+    },
+    {
+      "platform": "bing",
+      "runDate": "2026-08-06",
+      "siteUrlConfigured": false,
+      "apiKeyConfigured": false,
+      "platformTimezone": "UTC",
+      "status": "READY",
+      "endpointStatus": {
+        "GetUserSites": "READY",
+        "GetRankAndTrafficStats": "READY",
+        "GetQueryStats": "READY",
+        "GetPageStats": "READY",
+        "GetCrawlStats": "READY"
+      },
+      "files": [
+        "reports/search-performance/normalized/2026-08-06/bing-daily.csv",
+        "reports/search-performance/normalized/2026-08-06/bing-pages.csv",
+        "reports/search-performance/normalized/2026-08-06/bing-queries.csv",
+        "reports/search-performance/normalized/2026-08-06/bing-crawl.csv"
+      ],
+      "warnings": []
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "runDate": "2026-08-06",
+  "generatedAt": "2026-08-06T08:33:02.486Z",
+  "window": {
+    "days": 7,
+    "compareDays": 7,
+    "trendDays": 28,
+    "effectiveEnd": "2026-08-02",
+    "currentStart": "2026-07-27",
+    "previousStart": "2026-07-20",
+    "previousEnd": "2026-07-26",
+    "trendStart": "2026-07-06"
+  },
+  "status": "READY",
+  "summaries": {
+    "gsc": {
+      "current": {
+        "clicks": 10,
+        "impressions": 260,
+        "ctr": 0.038461538461538464,
+        "position": 8.884615384615385
+      },
+      "previous": {
+        "clicks": 2,
+        "impressions": 75,
+        "ctr": 0.02666666666666667,
+        "position": 10.866666666666667
+      },
+      "impressions": {
+        "current": 260,
+        "previous": 75,
+        "changeStatus": "PCT_CHANGE",
+        "changePct": 246.66666666666669
+      },
+      "clicks": {
+        "current": 10,
+        "previous": 2,
+        "changeStatus": "PCT_CHANGE",
+        "changePct": 400
+      }
+    },
+    "ga4": {
+      "current": {
+        "sessions": 22,
+        "engagedSessions": 15,
+        "users": 20
+      },
+      "previous": {
+        "sessions": 0,
+        "engagedSessions": 0,
+        "users": 0
+      },
+      "sessions": {
+        "current": 22,
+        "previous": 0,
+        "changeStatus": "NEW_ACTIVITY",
+        "changePct": null
+      }
+    },
+    "bing": {
+      "current": {
+        "clicks": 1,
+        "impressions": 37,
+        "ctr": 0.02702702702702703,
+        "position": 13.367567567567567
+      },
+      "previous": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": null,
+        "position": null
+      },
+      "impressions": {
+        "current": 37,
+        "previous": 0,
+        "changeStatus": "LOW_SAMPLE",
+        "changePct": null
+      },
+      "clicks": {
+        "current": 1,
+        "previous": 0,
+        "changeStatus": "LOW_SAMPLE",
+        "changePct": null
+      }
+    }
+  },
+  "verdicts": [
+    {
+      "verdict": "BING_LOW_SAMPLE",
+      "confidence": "HIGH",
+      "reasons": [
+        "Bing impressions are below the configured low-sample threshold."
+      ],
+      "limitations": [
+        "Do not over-interpret Bing percentage changes."
+      ]
+    }
+  ],
+  "technicalHealth": {
+    "status": "NO_OBVIOUS_TECHNICAL_BLOCKER",
+    "checks": [
+      {
+        "name": "tracked-pages config exists",
+        "status": "PASS",
+        "details": ""
+      },
+      {
+        "name": "query-families config exists",
+        "status": "PASS",
+        "details": ""
+      },
+      {
+        "name": "robots.txt exists",
+        "status": "PASS",
+        "details": ""
+      },
+      {
+        "name": "sitemap-0.xml exists",
+        "status": "PASS",
+        "details": ""
+      },
+      {
+        "name": "tracked URL in sitemap: /tools/compound-interest",
+        "status": "PASS",
+        "details": "local sitemap text check"
+      },
+      {
+        "name": "tracked URL in sitemap: /tools/cagr-calculator",
+        "status": "PASS",
+        "details": "local sitemap text check"
+      },
+      {
+        "name": "tracked URL in sitemap: /tools/dca-calculator",
+        "status": "PASS",
+        "details": "local sitemap text check"
+      },
+      {
+        "name": "tracked URL in sitemap: /tools/goal-simulator",
+        "status": "PASS",
+        "details": "local sitemap text check"
+      },
+      {
+        "name": "tracked URL in sitemap: /tools/fire-calculator",
+        "status": "PASS",
+        "details": "local sitemap text check"
+      },
+      {
+        "name": "tracked URL in sitemap: /tools/dsr-ltv-calculator",
+        "status": "PASS",
+        "details": "local sitemap text check"
+      },
+      {
+        "name": "tracked URL in sitemap: /tools/home-buying-budget-calculator",
+        "status": "PASS",
+        "details": "local sitemap text check"
+      },
+      {
+        "name": "tracked URL in sitemap: /tools/mortgage-loan-calculator",
+        "status": "PASS",
+        "details": "local sitemap text check"
+      },
+      {
+        "name": "tracked URL in sitemap: /en/tools/mortgage-loan-calculator",
+        "status": "PASS",
+        "details": "local sitemap text check"
+      },
+      {
+        "name": "tracked URL in sitemap: /market/real-estate",
+        "status": "PASS",
+        "details": "local sitemap text check"
+      },
+      {
+        "name": "tracked URL in sitemap: /posts/personalFinance/dsr-40-income-loan-limit-table",
+        "status": "PASS",
+        "details": "local sitemap text check"
+      },
+      {
+        "name": "tracked URL in sitemap: /posts/personalFinance/what-is-cagr",
+        "status": "PASS",
+        "details": "local sitemap text check"
+      }
+    ],
+    "failures": [],
+    "note": "Local read-only checks only. HTTP 200/noindex/canonical checks can be run separately with existing verifiers."
+  },
+  "limitations": [
+    "GSC Search Analytics API can return top rows only and may hide low-volume/private queries.",
+    "GA4 reporting identity and thresholding can change user/session counts.",
+    "Bing API freshness and schema can differ from GSC.",
+    "Naver data is not API-collected in this phase and should be merged from weekly CSV later.",
+    "DebugView is not replaced by GA4 Data API reports."
+  ]
+}

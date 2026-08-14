@@ -1,0 +1,168 @@
+{
+  "project": "FinMap search growth P1-2D-1A duplicate-run integrity audit",
+  "generatedAtKst": "2026-08-06",
+  "overallVerdict": "PASS_WITH_MINIMAL_CONSOLIDATION",
+  "safeToConfigureCredentials": true,
+  "duplicateRunImpact": {
+    "status": "NO_BLOCKING_DUPLICATE_ARTIFACTS",
+    "impact": "The second run extended the P1-2D-1 foundation without creating competing collector directories, duplicate package script names, duplicate report roots, or runtime SEO/page changes.",
+    "minimalFixesApplied": [
+      "Consolidated search:discover:gsc so discovery uses GSC sites.list only and does not reuse full Search Analytics collection.",
+      "Adjusted retry error reporting to show the actual attempt count when a non-retryable error exits early.",
+      "Updated the foundation report metadata so second-run datasets and reliability behavior are reflected."
+    ],
+    "noNewCollectionFeaturesAddedInAudit": true
+  },
+  "worktreeIntegrity": {
+    "runtimeDiffPaths": [],
+    "runtimeScopeChecked": [
+      "pages",
+      "_components",
+      "content",
+      "public",
+      "next-sitemap.config.js"
+    ],
+    "duplicateTempFileScan": "PASS",
+    "rawDirectoryCreated": false,
+    "envSearchLocalExistsAfterAudit": false,
+    "unrelatedExistingUntrackedReportsNotModifiedOrRemoved": true
+  },
+  "packageAndNpmScripts": {
+    "packageJsonParse": "PASS",
+    "packageLockParse": "PASS",
+    "searchScriptEntries": 13,
+    "missingSearchScripts": [],
+    "dependenciesInstalled": {
+      "googleapis": "174.0.1",
+      "@google-analytics/data": "7.0.0"
+    },
+    "duplicateRunnerFiles": 0
+  },
+  "environmentLoading": {
+    "finalConfigCheckVerdict": "FOUNDATION_READY_MANUAL_SETUP_REQUIRED",
+    "finalRequiredCredentialsConfigured": false,
+    "temporaryFixtureEnvLoadCheck": "PASS",
+    "temporaryFixtureEnvRemoved": true,
+    "secretsRedactedInConfigOutput": true
+  },
+  "gitignoreSafety": {
+    ".env.search.local": "IGNORED",
+    ".env.search.example": "EXPLICITLY_UNIGNORED",
+    "credentials/test.json": "IGNORED",
+    "reports/search-performance/raw/test.json": "IGNORED"
+  },
+  "collectors": {
+    "gsc": {
+      "status": "PASS",
+      "scope": "read-only webmasters.readonly Search Analytics plus sites.list discovery",
+      "datasets": [
+        "daily",
+        "pages",
+        "queries",
+        "devices",
+        "countries",
+        "page_query"
+      ],
+      "discovery": "sites.list only; no Search Analytics fetch",
+      "partialHandling": "manifest warnings/errors isolated by dataset"
+    },
+    "ga4": {
+      "status": "PASS",
+      "scope": "read-only GA4 Data API reports and realtime probe",
+      "datasets": [
+        "channels",
+        "landings",
+        "events",
+        "event_pages",
+        "calculator_funnel",
+        "realtime_probe"
+      ],
+      "calculatorFunnel": "landing sessions, calculate events/users, CTA views/clicks, CTR, event-to-session ratio"
+    },
+    "bing": {
+      "status": "PASS",
+      "scope": "read-only Bing Webmaster endpoints",
+      "datasets": [
+        "daily",
+        "pages",
+        "queries",
+        "crawl"
+      ],
+      "writeEndpointsUsed": false
+    }
+  },
+  "fixtureArtifacts": {
+    "fixtureWeeklyStatus": "READY",
+    "normalizedCsvCount": 15,
+    "weeklyFileCount": 7,
+    "manifestFileCount": 5,
+    "selfTestAssertions": 23,
+    "secretFindings": []
+  },
+  "reportsConsistency": {
+    "foundationJson": "PASS",
+    "foundationMarkdown": "PASS",
+    "weeklyJson": "PASS",
+    "weeklyMarkdown": "PASS",
+    "foundationVerdict": "FOUNDATION_READY_MANUAL_SETUP_REQUIRED",
+    "weeklyVerdict": "READY",
+    "secondRunFeaturesReflected": true
+  },
+  "security": {
+    "secretScan": "PASS",
+    "bingApiKeyLogged": false,
+    "rawPayloadPathIgnored": true,
+    "privateReportPathIgnored": true,
+    "serviceAccountExamplePathIsPlaceholder": true
+  },
+  "npmAuditObservation": {
+    "command": "npm.cmd audit --json",
+    "fixApplied": false,
+    "total": 9,
+    "bySeverity": {
+      "low": 2,
+      "moderate": 0,
+      "high": 7,
+      "critical": 0
+    },
+    "directPackagesMentioned": [
+      "fast-xml-parser",
+      "next",
+      "postcss"
+    ],
+    "searchApiDependenciesMentionedAsVulnerable": false,
+    "notes": [
+      "No npm audit fix was run.",
+      "npm ls did not show googleapis or @google-analytics/data as vulnerability nodes.",
+      "Observed vulnerable paths include existing application/build dependencies such as next, fast-xml-parser, postcss, express/body-parser, eslint/brace-expansion, jspdf/dompurify, cheerio/undici, and sharp."
+    ]
+  },
+  "verification": [
+    { "command": "node --check scripts\\search-analytics\\run.js", "status": "PASS" },
+    { "command": "npm.cmd run search:config:check -- --date=2026-08-06", "status": "PASS" },
+    { "command": "npm.cmd run search:test", "status": "PASS" },
+    { "command": "npm.cmd run search:health -- --date=2026-08-06", "status": "PASS" },
+    { "command": "npm.cmd run search:weekly -- --fixture --date=2026-08-06", "status": "PASS" },
+    { "command": "npm.cmd run search:discover:gsc -- --fixture --date=2026-08-06", "status": "PASS" },
+    { "command": "npm.cmd ls googleapis @google-analytics/data", "status": "PASS" },
+    { "command": "npm.cmd audit --json", "status": "OBSERVED_9_VULNERABILITIES_NO_FIX_APPLIED" },
+    { "command": "git diff --check", "status": "PASS_WITH_CRLF_WARNINGS_ONLY" },
+    { "command": "git diff --name-only -- pages _components content public next-sitemap.config.js", "status": "PASS_EMPTY" }
+  ],
+  "filesChangedByThisAudit": [
+    "scripts/search-analytics/run.js",
+    "reports/search-growth-p1-2d-1-search-api-automation-foundation.json",
+    "reports/search-growth-p1-2d-1-search-api-automation-foundation.md",
+    "reports/search-performance/normalized/2026-08-06/*.csv",
+    "reports/search-performance/weekly/search-health-2026-08-06.json",
+    "reports/search-performance/weekly/search-weekly-2026-08-06.json",
+    "reports/search-performance/weekly/search-weekly-2026-08-06.md",
+    "reports/search-performance/weekly/search-weekly-*-2026-08-06.csv",
+    "reports/search-performance/manifests/fetch-manifest-2026-08-06*.json",
+    "reports/search-performance/manifests/gsc-discovery-2026-08-06.json",
+    "reports/search-growth-p1-2d-1a-duplicate-run-integrity-audit.json",
+    "reports/search-growth-p1-2d-1a-duplicate-run-integrity-audit.md"
+  ],
+  "noRuntimeChanges": true,
+  "recommendedNextStep": "Configure read-only credentials locally in .env.search.local, run search:discover:gsc, then run one controlled real weekly collection."
+}

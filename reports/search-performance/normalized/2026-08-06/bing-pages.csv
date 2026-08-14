@@ -1,0 +1,2 @@
+platform,property,dataset,date,page,query,country,device,sourceMedium,channel,clicks,impressions,ctr,position,sessions,engagedSessions,users,eventName,eventCount,dataFreshness,fetchedAt,sourceTimezone
+bing,https://example.com/,pages,,/tools/compound-interest,,,,,,1,22,0.045454545454545456,12.8,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.459Z,UTC

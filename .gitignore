@@ -9,7 +9,16 @@ yarn-error.log*
 .env.production
 .env.*
 .env*.local
+.env.search.local
+.env.search.*
+!.env.search.example
 
 data/private/
+secrets/
+credentials/
+*service-account*.json
+*oauth-token*.json
+reports/search-performance/raw/
+reports/search-performance/private/
 *.xlsx
 *.xls

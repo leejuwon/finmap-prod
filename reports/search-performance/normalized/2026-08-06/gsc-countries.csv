@@ -1,0 +1,3 @@
+platform,property,dataset,date,page,query,country,device,sourceMedium,channel,clicks,impressions,ctr,position,sessions,engagedSessions,users,eventName,eventCount,dataFreshness,fetchedAt,sourceTimezone
+gsc,sc-domain:example.com,countries,,,,kor,,,,10,500,0.02,9.8,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.442Z,America/Los_Angeles
+gsc,sc-domain:example.com,countries,,,,usa,,,,1,55,0.0181818182,12.2,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.442Z,America/Los_Angeles

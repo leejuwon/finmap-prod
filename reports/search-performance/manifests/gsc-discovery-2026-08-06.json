@@ -1,0 +1,18 @@
+{
+  "platform": "gsc",
+  "runDate": "2026-08-06",
+  "credentialConfigured": false,
+  "configuredProperties": [],
+  "availableSites": [
+    {
+      "siteUrl": "sc-domain:example.com",
+      "permissionLevel": "siteOwner"
+    }
+  ],
+  "propertyChecks": [],
+  "permissionCheck": "CHECKED",
+  "status": "READY",
+  "notes": [
+    "Discovery uses read-only sites.list only; no Search Analytics fetch or property mutation APIs are used."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "generatedAt": "2026-07-30T00:54:18.709Z",
+  "timezone": "Asia/Seoul",
+  "deployDate": "MANUAL_INPUT_REQUIRED",
+  "deployTime": "MANUAL_INPUT_REQUIRED",
+  "commitHash": "2a332112600e04a8b3ed23ba51910c9acc403bec",
+  "branch": "master",
+  "buildCommand": "MANUAL_INPUT_REQUIRED",
+  "expectedBuildCommand": "npm.cmd run build",
+  "pm2ProcessName": "MANUAL_INPUT_REQUIRED",
+  "restartResult": "MANUAL_INPUT_REQUIRED",
+  "productionBuildIds": [
+    "HPOU2C5yRTCjs8-zBCyPJ"
+  ],
+  "p0ToP1SearchExperimentDeployDate": "UNCHANGED_FROM_EXISTING_BASELINE",
+  "adsenseHydrationHotfixDeployDate": "MANUAL_INPUT_REQUIRED",
+  "observationPolicy": "28-day search observation does not restart from AdSense hydration hotfix date.",
+  "deployedCommitHash": "2a332112600e04a8b3ed23ba51910c9acc403bec",
+  "deployedBranch": "master",
+  "commitDate": "2026-07-30T09:44:38+09:00",
+  "commitSubject": "Update: fix(adsense): load bootstrap after React hydration",
+  "observationDates": {
+    "originalSearchExperimentDeployment": "UNCHANGED_FROM_EXISTING_BASELINE / MANUAL_INPUT_REQUIRED",
+    "adsenseHydrationHotfixDeployment": "MANUAL_INPUT_REQUIRED",
+    "technicalCheck72h": "MANUAL_INPUT_REQUIRED",
+    "channelCheck7d": "MANUAL_INPUT_REQUIRED",
+    "searchCheck28d": "MANUAL_INPUT_REQUIRED",
+    "searchCheck42d": "MANUAL_INPUT_REQUIRED",
+    "policy": "AdSense hydration hotfix date is tracked separately and does not restart the P0~P1 28-day search observation window."
+  }
+}

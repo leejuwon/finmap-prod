@@ -1,0 +1,39 @@
+FinMap GSC Index Recovery Priority - 2026-08-14
+
+Use these URLs for manual GSC URL Inspection after deploy/build verification.
+Expected exclusions, apt noindex pages, parameter URLs, redirects, and legacy 404s are excluded.
+
+P0
+- https://www.finmaphub.com/en/posts/economicInfo/inflation-rate-basics [post; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/investingInfo/tnx-basics [post; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/personalFinance/apt-dashboard-home-goal-roadmap [post; Discovered - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/personalFinance/personal-finance-3pillars [post; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/personalFinance/simple-vs-compound [post; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/personalFinance/what-is-cagr [post; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/posts/personalFinance/apt-dashboard-home-goal-roadmap [post; Discovered - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/market/real-estate [real-estate-hub; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/tools/compound-interest [tool; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/tools/goal-simulator [tool; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/tools/home-buying-budget-calculator [tool; Discovered - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/tools/home-buying-budget-calculator [tool; Discovered - currently not indexed; URL_INSPECTION_RECHECK]
+
+P1
+- https://www.finmaphub.com/en/posts/economicInfo/eu-russia-gas-phaseout-price-channel [post; Discovered - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/economicInfo/fx-basics [post; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/economicInfo/geopolitics-to-usd-liquidity-fx [post; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/economicInfo/gold-geopolitics-real-rates-dollar-uncertainty [post; Discovered - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/economicInfo/hormuz-risk-oil-insurance-freight-premium [post; Discovered - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/economicInfo/indicator-basics [post; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/economicInfo/interest-rate-basics [post; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/economicInfo/policy-rate-cut-market-rates [post; Discovered - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/economicInfo/war-theme-investing-price-chain-not-winners [post; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/investingInfo/bond-etf-duration-drives-returns [post; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/investingInfo/dca-consistency-7-fail-patterns [post; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/investingInfo/diagnose-investing-skill-with-cagr [post; Discovered - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/investingInfo/dxy-market-impact [post; Discovered - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/investingInfo/fx-hedge-vs-fx-exposure-korea-3-conditions [post; Discovered - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/investingInfo/indicator-marketinfo [post; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/investingInfo/korea-etf-deep-dive-tnx [post; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/investingInfo/rates-discount-mortgage-demand-apt-prices [post; Discovered - currently not indexed; URL_INSPECTION_RECHECK]
+- https://www.finmaphub.com/en/posts/investingInfo/real-estate-role-in-portfolio-risk-budget [post; Crawled - currently not indexed; URL_INSPECTION_RECHECK]
+

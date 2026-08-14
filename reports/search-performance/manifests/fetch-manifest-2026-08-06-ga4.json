@@ -1,0 +1,20 @@
+{
+  "platform": "ga4",
+  "runDate": "2026-08-06",
+  "effectiveStartDate": "2026-07-08",
+  "effectiveEndDate": "2026-08-04",
+  "platformTimezone": "Asia/Seoul",
+  "lagDays": 2,
+  "credentialConfigured": false,
+  "propertyIdConfigured": false,
+  "status": "READY",
+  "metadataStatus": "SUPPORTED",
+  "files": [
+    "reports/search-performance/normalized/2026-08-06/ga4-channels.csv",
+    "reports/search-performance/normalized/2026-08-06/ga4-landings.csv",
+    "reports/search-performance/normalized/2026-08-06/ga4-events.csv",
+    "reports/search-performance/normalized/2026-08-06/ga4-event-pages.csv",
+    "reports/search-performance/normalized/2026-08-06/ga4-calculator-funnel.csv"
+  ],
+  "warnings": []
+}

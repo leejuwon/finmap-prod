@@ -1,0 +1,10 @@
+platform,property,url,landingSessions,calculateEventCount,calculateUsers,ctaViewEventCount,ctaClickEventCount,ctaClickThroughRate,eventToSessionRatio,dataFreshness,fetchedAt,notes
+ga4,properties/123456789,/tools/compound-interest,10,4,3,3,1,0.3333333333333333,0.4,COMPLETE_RANGE,2026-08-06T08:33:02.456Z,EVENT_TO_SESSION_RATIO is not a user conversion rate; event and session denominators can differ.
+ga4,properties/123456789,/tools/cagr-calculator,7,0,0,0,1,,0,COMPLETE_RANGE,2026-08-06T08:33:02.456Z,EVENT_TO_SESSION_RATIO is not a user conversion rate; event and session denominators can differ.
+ga4,properties/123456789,/tools/dca-calculator,0,0,0,0,0,,,COMPLETE_RANGE,2026-08-06T08:33:02.456Z,EVENT_TO_SESSION_RATIO is not a user conversion rate; event and session denominators can differ.
+ga4,properties/123456789,/tools/goal-simulator,0,0,0,0,0,,,COMPLETE_RANGE,2026-08-06T08:33:02.456Z,EVENT_TO_SESSION_RATIO is not a user conversion rate; event and session denominators can differ.
+ga4,properties/123456789,/tools/fire-calculator,0,0,0,0,0,,,COMPLETE_RANGE,2026-08-06T08:33:02.456Z,EVENT_TO_SESSION_RATIO is not a user conversion rate; event and session denominators can differ.
+ga4,properties/123456789,/tools/dsr-ltv-calculator,0,0,0,0,0,,,COMPLETE_RANGE,2026-08-06T08:33:02.456Z,EVENT_TO_SESSION_RATIO is not a user conversion rate; event and session denominators can differ.
+ga4,properties/123456789,/tools/home-buying-budget-calculator,0,0,0,0,0,,,COMPLETE_RANGE,2026-08-06T08:33:02.456Z,EVENT_TO_SESSION_RATIO is not a user conversion rate; event and session denominators can differ.
+ga4,properties/123456789,/tools/mortgage-loan-calculator,0,0,0,0,0,,,COMPLETE_RANGE,2026-08-06T08:33:02.456Z,EVENT_TO_SESSION_RATIO is not a user conversion rate; event and session denominators can differ.
+ga4,properties/123456789,/en/tools/mortgage-loan-calculator,0,0,0,0,0,,,COMPLETE_RANGE,2026-08-06T08:33:02.456Z,EVENT_TO_SESSION_RATIO is not a user conversion rate; event and session denominators can differ.

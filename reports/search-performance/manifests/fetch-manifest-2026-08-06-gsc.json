@@ -1,0 +1,25 @@
+{
+  "platform": "gsc",
+  "runDate": "2026-08-06",
+  "requestedStartDate": null,
+  "requestedEndDate": null,
+  "effectiveStartDate": "2026-07-07",
+  "effectiveEndDate": "2026-08-03",
+  "searchType": "web",
+  "includePageQuery": true,
+  "platformTimezone": "America/Los_Angeles",
+  "lagDays": 3,
+  "credentialConfigured": false,
+  "propertiesConfigured": 0,
+  "status": "READY",
+  "files": [
+    "reports/search-performance/normalized/2026-08-06/gsc-daily.csv",
+    "reports/search-performance/normalized/2026-08-06/gsc-pages.csv",
+    "reports/search-performance/normalized/2026-08-06/gsc-queries.csv",
+    "reports/search-performance/normalized/2026-08-06/gsc-devices.csv",
+    "reports/search-performance/normalized/2026-08-06/gsc-countries.csv",
+    "reports/search-performance/normalized/2026-08-06/gsc-page-query.csv"
+  ],
+  "warnings": [],
+  "latestDateReturned": "2026-08-02"
+}

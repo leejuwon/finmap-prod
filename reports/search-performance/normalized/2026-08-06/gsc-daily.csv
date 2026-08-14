@@ -1,0 +1,11 @@
+platform,property,dataset,date,page,query,country,device,sourceMedium,channel,clicks,impressions,ctr,position,sessions,engagedSessions,users,eventName,eventCount,dataFreshness,fetchedAt,sourceTimezone
+gsc,sc-domain:example.com,daily,2026-07-24,,,,,,,0,20,0,12,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.440Z,America/Los_Angeles
+gsc,sc-domain:example.com,daily,2026-07-25,,,,,,,1,25,0.04,11,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.441Z,America/Los_Angeles
+gsc,sc-domain:example.com,daily,2026-07-26,,,,,,,1,30,0.0333333333,10,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.441Z,America/Los_Angeles
+gsc,sc-domain:example.com,daily,2026-07-27,,,,,,,2,40,0.05,9,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.441Z,America/Los_Angeles
+gsc,sc-domain:example.com,daily,2026-07-28,,,,,,,2,45,0.0444444444,8,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.441Z,America/Los_Angeles
+gsc,sc-domain:example.com,daily,2026-07-29,,,,,,,2,50,0.04,8,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.441Z,America/Los_Angeles
+gsc,sc-domain:example.com,daily,2026-07-30,,,,,,,2,60,0.0333333333,7,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.441Z,America/Los_Angeles
+gsc,sc-domain:example.com,daily,2026-07-31,,,,,,,1,30,0.0333333333,11,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.441Z,America/Los_Angeles
+gsc,sc-domain:example.com,daily,2026-08-01,,,,,,,1,25,0.04,12,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.441Z,America/Los_Angeles
+gsc,sc-domain:example.com,daily,2026-08-02,,,,,,,0,10,0,14,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.441Z,America/Los_Angeles

@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "generatedFrom": [
+    "content/posts frontmatter",
+    "pages/tools",
+    "reports/search-growth-p1-2d-0-freeze-map.json",
+    "reports/search-growth-p1-2d-0-naver-intent-map.csv"
+  ],
+  "families": [
+    {
+      "id": "brand",
+      "koTerms": ["핀맵", "핀맵허브"],
+      "enTerms": ["finmap", "fin map", "finmaphub"],
+      "regexTerms": ["\\bfin\\s?map\\b", "\\bfinmaphub\\b"],
+      "excludeTerms": [],
+      "representativeUrls": ["/"]
+    },
+    {
+      "id": "compound",
+      "koTerms": ["복리", "복리 계산기", "월복리", "연복리", "단리 복리"],
+      "enTerms": ["compound interest", "compound interest calculator", "monthly compound", "annual compound"],
+      "regexTerms": ["compound\\s+interest", "monthly\\s+compound", "복리"],
+      "excludeTerms": ["CAGR"],
+      "representativeUrls": ["/tools/compound-interest", "/posts/personalFinance/annual-vs-monthly-compound"]
+    },
+    {
+      "id": "cagr",
+      "koTerms": ["CAGR", "연평균 수익률", "연평균 성장률", "cagr 계산법"],
+      "enTerms": ["CAGR", "compound annual growth rate", "annualized return"],
+      "regexTerms": ["\\bcagr\\b", "compound\\s+annual\\s+growth\\s+rate", "연평균"],
+      "excludeTerms": [],
+      "representativeUrls": ["/tools/cagr-calculator", "/posts/personalFinance/what-is-cagr"]
+    },
+    {
+      "id": "dca",
+      "koTerms": ["DCA", "적립식 투자", "분할매수", "적립식 계산기"],
+      "enTerms": ["DCA", "dollar cost averaging", "installment investing"],
+      "regexTerms": ["\\bdca\\b", "dollar\\s+cost\\s+averaging", "적립식", "분할매수"],
+      "excludeTerms": [],
+      "representativeUrls": ["/tools/dca-calculator"]
+    },
+    {
+      "id": "goal",
+      "koTerms": ["목표 금액", "목표 자산", "월 투자금", "1억 모으기"],
+      "enTerms": ["goal simulator", "target portfolio", "monthly investment", "target amount"],
+      "regexTerms": ["target\\s+(portfolio|amount)", "monthly\\s+investment", "목표\\s*(금액|자산)"],
+      "excludeTerms": [],
+      "representativeUrls": ["/tools/goal-simulator"]
+    },
+    {
+      "id": "fire",
+      "koTerms": ["파이어족", "은퇴 계산기", "은퇴 자금", "FIRE"],
+      "enTerms": ["FIRE", "retirement calculator", "financial independence"],
+      "regexTerms": ["\\bfire\\b", "financial\\s+independence", "은퇴"],
+      "excludeTerms": [],
+      "representativeUrls": ["/tools/fire-calculator"]
+    },
+    {
+      "id": "dsr",
+      "koTerms": ["DSR", "DSR 계산기", "주담대 DSR", "대출 한도"],
+      "enTerms": ["DSR", "debt service ratio"],
+      "regexTerms": ["\\bdsr\\b", "debt\\s+service\\s+ratio"],
+      "excludeTerms": [],
+      "representativeUrls": ["/tools/dsr-ltv-calculator"]
+    },
+    {
+      "id": "ltv",
+      "koTerms": ["LTV", "LTV 계산기", "담보인정비율"],
+      "enTerms": ["LTV", "loan to value"],
+      "regexTerms": ["\\bltv\\b", "loan\\s+to\\s+value", "담보인정비율"],
+      "excludeTerms": [],
+      "representativeUrls": ["/tools/dsr-ltv-calculator"]
+    },
+    {
+      "id": "home_buying",
+      "koTerms": ["아파트 구매 계산기", "내 연봉으로 살 수 있는 아파트", "주택 구매 예산", "필요 현금"],
+      "enTerms": ["home buying budget", "apartment budget", "home affordability"],
+      "regexTerms": ["home\\s+(buying|affordability|budget)", "아파트\\s+구매", "필요\\s+현금"],
+      "excludeTerms": [],
+      "representativeUrls": ["/tools/home-buying-budget-calculator"]
+    },
+    {
+      "id": "mortgage",
+      "koTerms": ["주담대 원리금 계산기", "주택담보대출 계산기", "월상환액", "대출 이자 계산"],
+      "enTerms": ["mortgage payment", "mortgage calculator", "monthly payment"],
+      "regexTerms": ["mortgage\\s+(payment|calculator)", "월상환액", "주담대"],
+      "excludeTerms": [],
+      "representativeUrls": ["/tools/mortgage-loan-calculator", "/en/tools/mortgage-loan-calculator"]
+    },
+    {
+      "id": "repayment",
+      "koTerms": ["원리금균등", "원금균등", "체증식", "상환 방식"],
+      "enTerms": ["repayment method", "principal and interest", "amortization"],
+      "regexTerms": ["repayment\\s+method", "amortization", "원리금균등", "원금균등", "체증식"],
+      "excludeTerms": [],
+      "representativeUrls": ["/tools/mortgage-loan-calculator"]
+    },
+    {
+      "id": "real_estate",
+      "koTerms": ["아파트 실거래가", "부동산 대시보드", "서울 아파트", "경기 아파트"],
+      "enTerms": ["real estate", "apartment price", "Korea apartment"],
+      "regexTerms": ["real\\s+estate", "apartment\\s+price", "실거래가", "부동산"],
+      "excludeTerms": [],
+      "representativeUrls": ["/market/real-estate"]
+    },
+    {
+      "id": "exchange_rate",
+      "koTerms": ["원달러 환율", "달러 인덱스", "DXY", "환율"],
+      "enTerms": ["USD KRW", "DXY", "dollar index", "exchange rate"],
+      "regexTerms": ["\\bdxy\\b", "usd\\s*krw", "dollar\\s+index", "환율"],
+      "excludeTerms": [],
+      "representativeUrls": ["/posts/investingInfo/dxy-dollar-index-basics", "/posts/investingInfo/usd-krw-exchange-rate-basics"]
+    },
+    {
+      "id": "market_index",
+      "koTerms": ["KOSPI", "코스피", "S&P 500", "나스닥", "다우", "지수"],
+      "enTerms": ["KOSPI", "S&P 500", "Nasdaq", "Dow Jones", "market index"],
+      "regexTerms": ["\\bkospi\\b", "s&p\\s*500", "nasdaq", "dow\\s+jones", "코스피"],
+      "excludeTerms": [],
+      "representativeUrls": ["/market/indices"]
+    }
+  ]
+}

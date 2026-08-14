@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "siteUrl": "https://www.finmaphub.com",
+  "freezeSource": "reports/search-growth-p1-2d-0-freeze-map.json",
+  "pageGroups": ["home", "tools", "posts", "market", "real_estate", "ko", "en", "other"],
+  "pages": [
+    { "url": "/", "group": "home", "locale": "ko", "role": "site_home", "frozen": false },
+    { "url": "/tools/compound-interest", "group": "tools", "locale": "ko", "role": "freeze_calculator", "frozen": true },
+    { "url": "/tools/cagr-calculator", "group": "tools", "locale": "ko", "role": "freeze_calculator", "frozen": true },
+    { "url": "/tools/dca-calculator", "group": "tools", "locale": "ko", "role": "freeze_calculator", "frozen": true },
+    { "url": "/tools/goal-simulator", "group": "tools", "locale": "ko", "role": "freeze_calculator", "frozen": true },
+    { "url": "/tools/fire-calculator", "group": "tools", "locale": "ko", "role": "representative_calculator", "frozen": false },
+    { "url": "/tools/dsr-ltv-calculator", "group": "tools", "locale": "ko", "role": "freeze_calculator", "frozen": true },
+    { "url": "/tools/home-buying-budget-calculator", "group": "tools", "locale": "ko", "role": "freeze_calculator", "frozen": true },
+    { "url": "/tools/mortgage-loan-calculator", "group": "tools", "locale": "ko", "role": "freeze_calculator", "frozen": true },
+    { "url": "/en/tools/mortgage-loan-calculator", "group": "tools", "locale": "en", "role": "freeze_calculator", "frozen": true },
+    { "url": "/market/real-estate", "group": "real_estate", "locale": "ko", "role": "freeze_dashboard", "frozen": true },
+    { "url": "/posts/personalFinance/dsr-40-income-loan-limit-table", "group": "posts", "locale": "ko", "role": "freeze_post", "frozen": true },
+    { "url": "/posts/personalFinance/what-is-cagr", "group": "posts", "locale": "ko", "role": "freeze_post", "frozen": true }
+  ]
+}

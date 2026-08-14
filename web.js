@@ -110,6 +110,27 @@ const PORT = Number(process.env.PORT || 8002);
     if (path === '/en/en') { path = '/en'; changed = true; }
     else if (path.startsWith('/en/en/')) { path = path.replace(/^\/en\/en/, '/en'); changed = true; }
 
+    const explicitLegacyRedirects = new Map([
+      [
+        '/en/posts/personalFinance/how-much-monthly-invest-for-100m',
+        '/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio',
+      ],
+      [
+        '/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio',
+        '/posts/personalFinance/how-much-monthly-invest-for-100m',
+      ],
+      [
+        '/en/posts/personalFinance/is-dca-better-in-bear-market',
+        '/en/posts/personalFinance/is-dca-better-in-a-bear-market',
+      ],
+      [
+        '/posts/personalFinance/is-dca-better-in-a-bear-market',
+        '/posts/personalFinance/is-dca-better-in-bear-market',
+      ],
+    ]);
+    const explicitRedirect = explicitLegacyRedirects.get(path);
+    if (explicitRedirect) { path = explicitRedirect; changed = true; }
+
     let m = path.match(/^\/posts\/([^/]+)\/ko\/(.+)$/);
     if (m) { path = `/posts/${m[1]}/${m[2]}`; changed = true; }
     m = path.match(/^\/posts\/([^/]+)\/en\/(.+)$/);

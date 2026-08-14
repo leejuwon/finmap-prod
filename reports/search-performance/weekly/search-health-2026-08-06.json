@@ -1,0 +1,87 @@
+{
+  "status": "NO_OBVIOUS_TECHNICAL_BLOCKER",
+  "checks": [
+    {
+      "name": "tracked-pages config exists",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "query-families config exists",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "robots.txt exists",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "sitemap-0.xml exists",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "tracked URL in sitemap: /tools/compound-interest",
+      "status": "PASS",
+      "details": "local sitemap text check"
+    },
+    {
+      "name": "tracked URL in sitemap: /tools/cagr-calculator",
+      "status": "PASS",
+      "details": "local sitemap text check"
+    },
+    {
+      "name": "tracked URL in sitemap: /tools/dca-calculator",
+      "status": "PASS",
+      "details": "local sitemap text check"
+    },
+    {
+      "name": "tracked URL in sitemap: /tools/goal-simulator",
+      "status": "PASS",
+      "details": "local sitemap text check"
+    },
+    {
+      "name": "tracked URL in sitemap: /tools/fire-calculator",
+      "status": "PASS",
+      "details": "local sitemap text check"
+    },
+    {
+      "name": "tracked URL in sitemap: /tools/dsr-ltv-calculator",
+      "status": "PASS",
+      "details": "local sitemap text check"
+    },
+    {
+      "name": "tracked URL in sitemap: /tools/home-buying-budget-calculator",
+      "status": "PASS",
+      "details": "local sitemap text check"
+    },
+    {
+      "name": "tracked URL in sitemap: /tools/mortgage-loan-calculator",
+      "status": "PASS",
+      "details": "local sitemap text check"
+    },
+    {
+      "name": "tracked URL in sitemap: /en/tools/mortgage-loan-calculator",
+      "status": "PASS",
+      "details": "local sitemap text check"
+    },
+    {
+      "name": "tracked URL in sitemap: /market/real-estate",
+      "status": "PASS",
+      "details": "local sitemap text check"
+    },
+    {
+      "name": "tracked URL in sitemap: /posts/personalFinance/dsr-40-income-loan-limit-table",
+      "status": "PASS",
+      "details": "local sitemap text check"
+    },
+    {
+      "name": "tracked URL in sitemap: /posts/personalFinance/what-is-cagr",
+      "status": "PASS",
+      "details": "local sitemap text check"
+    }
+  ],
+  "failures": [],
+  "note": "Local read-only checks only. HTTP 200/noindex/canonical checks can be run separately with existing verifiers."
+}

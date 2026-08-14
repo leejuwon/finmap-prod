@@ -1,0 +1,4 @@
+platform,property,dataset,date,page,query,country,device,sourceMedium,channel,clicks,impressions,ctr,position,sessions,engagedSessions,users,eventName,eventCount,dataFreshness,fetchedAt,sourceTimezone
+gsc,sc-domain:example.com,queries,,,cagr,,,,,1,95,0.0105263158,10.8,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.441Z,America/Los_Angeles
+gsc,sc-domain:example.com,queries,,,compound interest calculator,,,,,5,130,0.0384615385,7.5,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.441Z,America/Los_Angeles
+bing,https://example.com/,queries,,,compound interest calculator,,,,,1,20,0.05,11.4,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.459Z,UTC

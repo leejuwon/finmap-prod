@@ -1,0 +1,2 @@
+platform,property,dataset,date,page,query,country,device,sourceMedium,channel,clicks,impressions,ctr,position,sessions,engagedSessions,users,eventName,eventCount,dataFreshness,fetchedAt,sourceTimezone
+bing,https://example.com/,crawl,2026-07-29,,,,,,,,,,,,,,crawl,30,COMPLETE_RANGE,2026-08-06T08:33:02.459Z,UTC

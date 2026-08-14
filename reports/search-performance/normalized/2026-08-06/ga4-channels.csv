@@ -1,0 +1,4 @@
+platform,property,dataset,date,page,query,country,device,sourceMedium,channel,clicks,impressions,ctr,position,sessions,engagedSessions,users,eventName,eventCount,dataFreshness,fetchedAt,sourceTimezone
+ga4,properties/123456789,channels,2026-07-27,,,,,google / organic,google / organic,,,,,12,9,11,,,COMPLETE_RANGE,2026-08-06T08:33:02.449Z,Asia/Seoul
+ga4,properties/123456789,channels,2026-07-28,,,,,naver / organic,naver / organic,,,,,7,5,6,,,COMPLETE_RANGE,2026-08-06T08:33:02.449Z,Asia/Seoul
+ga4,properties/123456789,channels,2026-08-02,,,,,(direct) / (none),direct,,,,,3,1,3,,,COMPLETE_RANGE,2026-08-06T08:33:02.449Z,Asia/Seoul

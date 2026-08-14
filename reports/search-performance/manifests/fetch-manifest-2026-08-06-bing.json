@@ -1,0 +1,22 @@
+{
+  "platform": "bing",
+  "runDate": "2026-08-06",
+  "siteUrlConfigured": false,
+  "apiKeyConfigured": false,
+  "platformTimezone": "UTC",
+  "status": "READY",
+  "endpointStatus": {
+    "GetUserSites": "READY",
+    "GetRankAndTrafficStats": "READY",
+    "GetQueryStats": "READY",
+    "GetPageStats": "READY",
+    "GetCrawlStats": "READY"
+  },
+  "files": [
+    "reports/search-performance/normalized/2026-08-06/bing-daily.csv",
+    "reports/search-performance/normalized/2026-08-06/bing-pages.csv",
+    "reports/search-performance/normalized/2026-08-06/bing-queries.csv",
+    "reports/search-performance/normalized/2026-08-06/bing-crawl.csv"
+  ],
+  "warnings": []
+}

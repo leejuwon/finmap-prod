@@ -1,0 +1,2 @@
+change_id,logged_at_kst,owner,channel,url,locale,query_family,change_type,field_changed,old_value_reference,new_value_reference,reason,baseline_source,baseline_clicks,baseline_impressions,baseline_ctr,baseline_position,ga4_landing_sessions,calculation_event_count,deploy_commit,deploy_date,observation_start_date,observation_end_date,rollback_condition,status,notes
+,,,,,,,,,,,,,,,,,,,,,,,,,

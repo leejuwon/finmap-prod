@@ -1,0 +1,2 @@
+platform,property,dataset,date,page,query,country,device,sourceMedium,channel,clicks,impressions,ctr,position,sessions,engagedSessions,users,eventName,eventCount,dataFreshness,fetchedAt,sourceTimezone
+bing,https://example.com/,queries,,,compound interest calculator,,,,,1,20,0.05,11.4,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.459Z,UTC

@@ -1,0 +1,7 @@
+platform,property,dataset,date,page,query,country,device,sourceMedium,channel,clicks,impressions,ctr,position,sessions,engagedSessions,users,eventName,eventCount,dataFreshness,fetchedAt,sourceTimezone
+gsc,sc-domain:example.com,pages,,/posts/personalFinance/what-is-cagr,,,,,,0,20,0,18.4,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.441Z,America/Los_Angeles
+gsc,sc-domain:example.com,pages,,/tools/cagr-calculator,,,,,,2,120,0.0166666667,11.2,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.441Z,America/Los_Angeles
+gsc,sc-domain:example.com,pages,,/tools/compound-interest,,,,,,6,180,0.0333333333,8.5,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.441Z,America/Los_Angeles
+ga4,properties/123456789,landings,,/tools/compound-interest,,,,google / organic,google / organic,,,,,10,8,9,,,COMPLETE_RANGE,2026-08-06T08:33:02.449Z,Asia/Seoul
+ga4,properties/123456789,landings,,/tools/cagr-calculator,,,,naver / organic,naver / organic,,,,,7,5,6,,,COMPLETE_RANGE,2026-08-06T08:33:02.449Z,Asia/Seoul
+bing,https://example.com/,pages,,/tools/compound-interest,,,,,,1,22,0.045454545454545456,12.8,,,,,,COMPLETE_RANGE,2026-08-06T08:33:02.459Z,UTC

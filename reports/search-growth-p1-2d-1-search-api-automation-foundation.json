@@ -1,0 +1,70 @@
+{
+  "generatedAt": "2026-08-06T08:36:38.150Z",
+  "runDate": "2026-08-06",
+  "verdict": "FOUNDATION_READY_MANUAL_SETUP_REQUIRED",
+  "operatingMix": {
+    "naver": "45%",
+    "google": "40%",
+    "bingMeasurementOperations": "15%"
+  },
+  "config": {
+    "queryFamilyCount": 14,
+    "trackedPageCount": 13,
+    "missingConfigs": []
+  },
+  "dependencyStatus": {
+    "googleapis": true,
+    "ga4Data": true,
+    "dotenv": true
+  },
+  "features": {
+    "gscDatasets": [
+      "daily",
+      "pages",
+      "queries",
+      "devices",
+      "countries",
+      "page_query"
+    ],
+    "ga4Datasets": [
+      "channels",
+      "landings",
+      "events",
+      "event_pages",
+      "calculator_funnel",
+      "realtime_probe"
+    ],
+    "bingDatasets": [
+      "daily",
+      "pages",
+      "queries",
+      "crawl"
+    ],
+    "gscDiscoveryMode": "sites.list only; no Search Analytics fetch during discovery",
+    "retryPolicy": "Transient 408/409/425/429/5xx and network errors retry with bounded exponential backoff.",
+    "partialHandling": "Dataset-level failures are isolated in manifests so available read-only data can still be analyzed.",
+    "fixtureValidation": "search:test covers 23 assertions for normalization, fixture outputs, secrets, and report generation."
+  },
+  "envStatus": {
+    "GOOGLE_APPLICATION_CREDENTIALS": false,
+    "GSC_PROPERTIES": false,
+    "GSC_SEARCH_TYPE": "web",
+    "GSC_DATA_LAG_DAYS": 3,
+    "GA4_PROPERTY_ID": false,
+    "GA4_DATA_LAG_DAYS": 2,
+    "GA4_TIMEZONE": "Asia/Seoul",
+    "BING_SITE_URL": false,
+    "BING_WEBMASTER_API_KEY": false
+  },
+  "security": {
+    "secretsPrinted": false,
+    "rawDirsIgnored": true,
+    "privateDirsIgnored": true,
+    "bingApiKeyLogged": false
+  },
+  "notes": [
+    "Collectors are read-only and do not call GSC property mutation, GA4 write APIs, or Bing submit/write endpoints.",
+    "Actual API raw data is only written under ignored reports/search-performance/raw/ after local credential setup.",
+    "Naver remains CSV-manual in this phase; config is ready for later normalized merge."
+  ]
+}

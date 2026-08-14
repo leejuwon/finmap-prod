@@ -96,6 +96,30 @@ module.exports = {
         statusCode: 301,
         locale: false,
       },
+      {
+        source: "/en/posts/personalFinance/how-much-monthly-invest-for-100m",
+        destination: "/en/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+        statusCode: 301,
+        locale: false,
+      },
+      {
+        source: "/posts/personalFinance/how-much-to-invest-monthly-for-target-portfolio",
+        destination: "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        statusCode: 301,
+        locale: false,
+      },
+      {
+        source: "/en/posts/personalFinance/is-dca-better-in-bear-market",
+        destination: "/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+        statusCode: 301,
+        locale: false,
+      },
+      {
+        source: "/posts/personalFinance/is-dca-better-in-a-bear-market",
+        destination: "/posts/personalFinance/is-dca-better-in-bear-market",
+        statusCode: 301,
+        locale: false,
+      },
 
       // 아래는 원칙상 이미 (B)로 커버되지만, 혹시 404로 계속 찍히면 "명시"로 박아두면 더 강력함
       {

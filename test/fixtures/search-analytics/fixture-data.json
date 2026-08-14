@@ -1,0 +1,81 @@
+{
+  "siteUrl": "https://example.com",
+  "property": "sc-domain:example.com",
+  "ga4Property": "properties/123456789",
+  "bingSiteUrl": "https://example.com/",
+  "gsc": {
+    "pagesPage1": [
+      { "keys": ["https://example.com/tools/compound-interest"], "clicks": 6, "impressions": 180, "ctr": 0.0333333333, "position": 8.5 },
+      { "keys": ["https://example.com/tools/cagr-calculator"], "clicks": 2, "impressions": 120, "ctr": 0.0166666667, "position": 11.2 }
+    ],
+    "pagesPage2": [
+      { "keys": ["https://example.com/posts/personalFinance/what-is-cagr"], "clicks": 0, "impressions": 20, "ctr": 0, "position": 18.4 }
+    ],
+    "queries": [
+      { "keys": ["compound interest calculator"], "clicks": 5, "impressions": 130, "ctr": 0.0384615385, "position": 7.5 },
+      { "keys": ["cagr"], "clicks": 1, "impressions": 95, "ctr": 0.0105263158, "position": 10.8 }
+    ],
+    "devices": [
+      { "keys": ["DESKTOP"], "clicks": 5, "impressions": 220, "ctr": 0.0227272727, "position": 9.1 },
+      { "keys": ["MOBILE"], "clicks": 6, "impressions": 335, "ctr": 0.0179104478, "position": 10.4 }
+    ],
+    "countries": [
+      { "keys": ["kor"], "clicks": 10, "impressions": 500, "ctr": 0.02, "position": 9.8 },
+      { "keys": ["usa"], "clicks": 1, "impressions": 55, "ctr": 0.0181818182, "position": 12.2 }
+    ],
+    "daily": [
+      { "keys": ["2026-07-24"], "clicks": 0, "impressions": 20, "ctr": 0, "position": 12 },
+      { "keys": ["2026-07-25"], "clicks": 1, "impressions": 25, "ctr": 0.04, "position": 11 },
+      { "keys": ["2026-07-26"], "clicks": 1, "impressions": 30, "ctr": 0.0333333333, "position": 10 },
+      { "keys": ["2026-07-27"], "clicks": 2, "impressions": 40, "ctr": 0.05, "position": 9 },
+      { "keys": ["2026-07-28"], "clicks": 2, "impressions": 45, "ctr": 0.0444444444, "position": 8 },
+      { "keys": ["2026-07-29"], "clicks": 2, "impressions": 50, "ctr": 0.04, "position": 8 },
+      { "keys": ["2026-07-30"], "clicks": 2, "impressions": 60, "ctr": 0.0333333333, "position": 7 },
+      { "keys": ["2026-07-31"], "clicks": 1, "impressions": 30, "ctr": 0.0333333333, "position": 11 },
+      { "keys": ["2026-08-01"], "clicks": 1, "impressions": 25, "ctr": 0.04, "position": 12 },
+      { "keys": ["2026-08-02"], "clicks": 0, "impressions": 10, "ctr": 0, "position": 14 }
+    ],
+    "emptyRows": []
+  },
+  "ga4": {
+    "metadata": {
+      "dimensions": ["date", "sessionSourceMedium", "sessionDefaultChannelGroup", "landingPagePlusQueryString", "eventName", "pagePathPlusQueryString"],
+      "metrics": ["sessions", "engagedSessions", "engagementRate", "activeUsers", "totalUsers", "averageSessionDuration", "eventCount"]
+    },
+    "channels": [
+      { "dimensionValues": [{ "value": "2026-07-27" }, { "value": "google / organic" }, { "value": "Organic Search" }], "metricValues": [{ "value": "12" }, { "value": "9" }, { "value": "0.75" }, { "value": "10" }, { "value": "11" }, { "value": "91" }] },
+      { "dimensionValues": [{ "value": "2026-07-28" }, { "value": "naver / organic" }, { "value": "Organic Search" }], "metricValues": [{ "value": "7" }, { "value": "5" }, { "value": "0.714285" }, { "value": "6" }, { "value": "6" }, { "value": "64" }] },
+      { "dimensionValues": [{ "value": "2026-08-02" }, { "value": "(direct) / (none)" }, { "value": "Direct" }], "metricValues": [{ "value": "3" }, { "value": "1" }, { "value": "0.333333" }, { "value": "2" }, { "value": "3" }, { "value": "22" }] }
+    ],
+    "landings": [
+      { "dimensionValues": [{ "value": "/tools/compound-interest" }, { "value": "google / organic" }], "metricValues": [{ "value": "10" }, { "value": "8" }, { "value": "0.8" }, { "value": "9" }] },
+      { "dimensionValues": [{ "value": "/tools/cagr-calculator" }, { "value": "naver / organic" }], "metricValues": [{ "value": "7" }, { "value": "5" }, { "value": "0.714285" }, { "value": "6" }] }
+    ],
+    "events": [
+      { "dimensionValues": [{ "value": "2026-07-28" }, { "value": "tool_calculate" }], "metricValues": [{ "value": "9" }, { "value": "6" }] },
+      { "dimensionValues": [{ "value": "2026-07-28" }, { "value": "tool_result_cta_view" }], "metricValues": [{ "value": "5" }, { "value": "4" }] },
+      { "dimensionValues": [{ "value": "2026-07-28" }, { "value": "tool_result_cta_click" }], "metricValues": [{ "value": "1" }, { "value": "1" }] }
+    ],
+    "eventPages": [
+      { "dimensionValues": [{ "value": "tool_calculate" }, { "value": "/tools/compound-interest" }], "metricValues": [{ "value": "4" }, { "value": "3" }] },
+      { "dimensionValues": [{ "value": "tool_result_cta_view" }, { "value": "/tools/compound-interest" }], "metricValues": [{ "value": "3" }, { "value": "3" }] },
+      { "dimensionValues": [{ "value": "tool_result_cta_click" }, { "value": "/tools/compound-interest" }], "metricValues": [{ "value": "1" }, { "value": "1" }] },
+      { "dimensionValues": [{ "value": "tool_result_cta_click" }, { "value": "/tools/cagr-calculator" }], "metricValues": [{ "value": "1" }, { "value": "1" }] }
+    ]
+  },
+  "bing": {
+    "daily": [
+      { "Date": "/Date(1785196800000+0000)/", "Impressions": 15, "Clicks": 0, "AvgImpressionPosition": 14.2, "AvgClickPosition": null },
+      { "Date": "/Date(1785283200000+0000)/", "Impressions": 22, "Clicks": 1, "AvgImpressionPosition": 12.8, "AvgClickPosition": 8.1 }
+    ],
+    "queries": [
+      { "Query": "compound interest calculator", "Impressions": 20, "Clicks": 1, "AvgImpressionPosition": 11.4, "AvgClickPosition": 8.1 }
+    ],
+    "pages": [
+      { "Page": "https://example.com/tools/compound-interest", "Impressions": 22, "Clicks": 1, "AvgImpressionPosition": 12.8, "AvgClickPosition": 8.1 }
+    ],
+    "crawl": [
+      { "Date": "/Date(1785283200000+0000)/", "CrawledPages": 30, "InIndex": 25, "CrawlErrors": 0, "BlockedByRobotsTxt": null, "Code2xx": 28, "Code301": 1, "Code302": 0, "Code4xx": 1, "Code5xx": 0, "ContainsMalware": false, "InLinks": 12 }
+    ]
+  }
+}
