@@ -15,6 +15,8 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429436/blog/perso
 lang: "ko"
 ---
 
+이 글은 FinMap에서 단리와 복리 차이를 처음 비교할 때, 단리 vs 복리 결과가 왜 시간이 갈수록 벌어지는지 숫자와 행동 규칙으로 정리한 글입니다.
+
 - 단리와 복리는 “이자 계산 방식”이 아니라 <strong>돈이 불어나는 경로(경로의 곡률)</strong> 차이입니다.  
 - 단리는 시간이 길수록 “덜 불리”가 아니라, <strong>길수록 기회비용이 더 커지는 구조</strong>입니다(특히 인플레이션이 있는 환경에서).  
 - 복리는 <strong>수익률 자체</strong>보다 <strong>재투자와 지속성</strong>에서 힘이 나오며, 적립식(매달 납입)에서는 차이가 더 크게 체감됩니다.  
@@ -296,38 +298,6 @@ lang: "ko"
 - [투자 복리 계산기로 기간별 미래가치 계산하기](/tools/compound-interest)
 - [연복리와 월복리 차이를 장기 투자 관점에서 보기](/posts/personalFinance/annual-vs-monthly-compound)
 - [CAGR 뜻과 단순 수익률의 차이 이해하기](/posts/personalFinance/what-is-cagr)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "단리 vs 복리: 월 30만원 예시로 보는 장기 자산 차이",
-  "description": "단리·복리 차이는 공식이 아니라 ‘돈이 불어나는 경로’에서 벌어집니다. 예금·적금·투자에서 복리의 작동 지점을 표로 정리하고, 계산기로 직접 확인합니다.",
-  "inLanguage": "ko-KR",
-  "datePublished": "2025-11-15",
-  "dateModified": "2026-07-08",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/personalFinance/simple-vs-compound"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429436/blog/personalFinance/simple-vs-compound-cover.png"
-  ],
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/favicon-48.png"
-    }
-  },
-  "keywords": ["단리","복리","복리효과","금융기초","사회초년생","예금","적금","CAGR","적립식","투자습관"]
-}
-</script>
 
 <script type="application/ld+json">
 {

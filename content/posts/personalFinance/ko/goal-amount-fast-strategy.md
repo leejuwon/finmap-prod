@@ -14,6 +14,8 @@ lang: "ko"
 tool: ["goal","comp"]
 ---
 
+이 글은 FinMap에서 목표금액 모으는 법을 복리 관점으로 정리하고, 복리로 목표금액을 앞당기려면 원금·월 납입액·기간 중 무엇을 조정할지 보는 글입니다.
+
 > **요약 (10문장 정리)**  
 > 1. 목표 금액 달성 속도는 원금·수익률·기간이라는 세 가지 변수가 결정됩니다.  
 > 2. 원금 증액은 즉각적인 효과가 있지만 지속성이 떨어질 수 있습니다.  
@@ -38,7 +40,7 @@ tool: ["goal","comp"]
 그러나 목표를 이루는 속도는 단순한 의지가 아니라 원금, 수익률, 기간이라는 세 가지 기본 변수의 조합에서 결정됩니다.  
 이 요소들이 어떤 역할을 하는지 이해하면 목표를 더욱 현실적으로 앞당길 수 있습니다.
 
-## 2. 목표 금액 달성의 핵심 구조
+## 2. 목표금액 복리 계산의 핵심 구조
 
 ### 원금의 역할
 
@@ -108,22 +110,3 @@ tool: ["goal","comp"]
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
 - [복리 계산기](/tools/compound-interest)로 저축·투자 기간별 미래가치 계산하기
 - [월 50만원 적립식 투자 10년 예시로 기준선 잡기](/posts/personalFinance/monthly-dca-10-year-result)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "목표 금액을 빠르게 모으는 법: 원금·수익률·기간의 균형",
-  "description": "목표 자산을 빠르게 만들기 위해서는 원금·수익률·기간의 균형이 핵심입니다. 제한된 소득 안에서 어떻게 목표 금액을 앞당길 수 있는지 실전 관점에서 정리했습니다.",
-  "datePublished": "2025-11-19",
-  "dateModified": "2026-07-08",
-  "author": {
-    "@type": "Person",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap"
-  }
-}
-</script>

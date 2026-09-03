@@ -14,6 +14,8 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429378/blog/perso
 lang: "ko"
 ---
 
+이 글은 FinMap에서 연복리 월복리 결과를 비교할 때, 월복리 연복리 차이가 계산 주기에서 어떻게 생기는지 먼저 잡아주는 기준 글입니다.
+
 > **요약 (10문장 정리)**  
 > 1. 연복리는 1년에 한 번 이자를 계산하고, 월복리는 매달 이자를 계산합니다.  
 > 2. 계산 빈도가 많아질수록 원금이 더 빨리 늘어납니다.  
@@ -29,7 +31,7 @@ lang: "ko"
 > 연복리와 월복리의 차이는 작아 보이지만, 장기 투자에서는 실제 목표 도달 기간을 분명하게 바꿉니다.  
 > 동일한 금액을 동일한 기간 동안 투자하더라도 **이자가 붙는 주기**만으로 결과가 달라지기 때문입니다.
 
-함께 보면 좋은 글: [단리 vs 복리 계산](/posts/personalFinance/simple-vs-compound), [목표 금액 빨리 모으는 법](/posts/personalFinance/goal-amount-fast-strategy), [1억 모으기 월 투자금 계산](/posts/personalFinance/how-much-per-month-for-100m).
+함께 보면 좋은 글: [단리 vs 복리 계산](/posts/personalFinance/simple-vs-compound), [월 50만원 적립식 투자 10년 예시](/posts/personalFinance/monthly-dca-10-year-result), [목표 금액 빨리 모으는 법](/posts/personalFinance/goal-amount-fast-strategy), [1억 모으기 월 투자금 계산](/posts/personalFinance/how-much-per-month-for-100m).
 
 ![복리 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429384/blog/personalFinance/compounding-period-diff-top_ko.png "연복리와 월복리 비교 이미지")
 
@@ -122,22 +124,3 @@ ETF 적립식·연금저축·IRP 등 대부분 월 단위로 운용되므로 월
 - [월복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
 - [단리와 복리 차이를 실제 숫자로 비교하기](/posts/personalFinance/simple-vs-compound)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "연복리 vs 월복리: 목표 도달 기간은 얼마나 달라질까?",
-  "description": "연복리와 월복리의 차이를 실제 계산 예시와 함께 설명하여 장기 투자에서 어떤 방식이 더 유리한지 정리했습니다.",
-  "datePublished": "2025-11-23",
-  "dateModified": "2026-07-08",
-  "author": {
-    "@type": "Person",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap"
-  }
-}
-</script>

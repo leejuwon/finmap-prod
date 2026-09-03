@@ -1678,6 +1678,21 @@ export default function CompoundPage() {
           </div>
 
           <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
+            {locale === "ko" ? (
+              <Link
+                href="/posts/personalFinance/compound-calculator-guide"
+                locale={locale}
+                className="block min-w-0 rounded-2xl border p-4 transition hover:shadow-sm"
+              >
+                <div className="mb-1 break-words text-xs text-slate-500">사용법</div>
+                <div className="break-words font-semibold leading-snug">
+                  복리 계산기 사용법 보기
+                </div>
+                <div className="mt-1 line-clamp-2 break-words text-sm text-slate-600">
+                  원금·월 적립금·수익률을 입력한 뒤 결과를 해석하는 순서를 확인합니다.
+                </div>
+              </Link>
+            ) : null}
             {relatedGuides.map((g) => (
               <Link
                 key={g.slug}

@@ -15,6 +15,8 @@ cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782179385/blog/insig
 lang: "ko"
 ---
 
+이 글은 FinMap에서 월 50만원 적립식 투자와 적립식 복리 계산을 함께 볼 때, 월 적립식 투자 10년 결과를 현실적인 기준선으로 잡기 위한 예시 글입니다.
+
 - 월 50만원을 10년 동안 넣으면 원금만으로도 총 6,000만원이 쌓입니다.
 - 수익률이 붙으면 결과는 달라지지만, 핵심은 “몇 %를 맞히느냐”보다 120개월을 유지할 수 있느냐입니다.
 - 이 글의 금액은 세금, 수수료, 환율, 투자상품 변동성을 제외한 단순 예시입니다.
@@ -195,27 +197,6 @@ DCA 계산기는 매월 납입하는 적립식 흐름을 확인할 때 좋고, �
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
 - [적립식 투자가 무너지는 7가지 패턴과 운영 규칙 점검하기](/posts/investingInfo/dca-consistency-7-fail-patterns)
 - [복리 계산기 사용법으로 월복리·적립식 결과 읽는 순서 보기](/posts/personalFinance/compound-calculator-guide)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "월 50만원 적립식 투자, 10년 후 얼마가 될까?",
-  "description": "월 50만원을 10년 동안 적립식으로 투자하면 원금 6천만원이 어떤 범위의 결과로 바뀔 수 있는지 단순 예시로 계산하고, DCA 계산기·복리 계산기·목표자산 시뮬레이터로 내 숫자를 확인하는 방법을 정리합니다.",
-  "datePublished": "2026-05-21",
-  "dateModified": "2026-07-08",
-  "author": { "@type": "Person", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782179385/blog/insight/monthly-dca-10-year-result/cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782179386/blog/insight/monthly-dca-10-year-result/img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782179387/blog/insight/monthly-dca-10-year-result/img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782179388/blog/insight/monthly-dca-10-year-result/img3.png"
-  ],
-  "articleSection": "재테크",
-  "keywords": ["월50만원투자", "적립식투자", "DCA", "복리", "10년투자", "월적립"]
-}
-</script>
 
 <script type="application/ld+json">
 {
