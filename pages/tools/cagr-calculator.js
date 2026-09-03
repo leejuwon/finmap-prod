@@ -113,23 +113,23 @@ export default function CagrCalculatorPage() {
   // 텍스트 리소스
   const t = useMemo(
     () => ({
-      // ✅ 타이틀/디스크립션에 “연평균 수익률/연복리/연평균 성장률” 키워드 포함
+      // ✅ head query는 title 앞에 두고, long-tail은 설명/본문에서 보존
       title:
         locale === "ko"
-          ? "CAGR 계산기 (연평균 수익률·연복리 수익률·연평균 성장률)"
+          ? "CAGR 계산기 - 연평균 수익률 바로 계산하기"
           : "CAGR Calculator: Annualized Return, Growth Rate & Future Value",
       desc:
         locale === "ko"
-          ? "초기 자산·최종 자산·기간으로 CAGR(연평균 복리 수익률)을 계산하고, 세금·수수료 반영 전후 차이를 비교해보세요. 주식/ETF/부동산/코인 수익률 분석에 활용할 수 있습니다."
+          ? "초기 자산, 최종 자산과 기간을 입력하면 CAGR과 연평균 수익률을 계산합니다. 투자·ETF·부동산 등 장기 성과를 같은 기준으로 비교해 보세요."
           : "Calculate compound annual growth rate from starting value, ending value, and years. Compare gross, net, and inflation-adjusted CAGR, then jump to DCA, goal, or compound calculators.",
 
       heroTitle:
         locale === "ko"
-          ? "CAGR(연평균 수익률)로\n내 투자 성과를 한 줄 숫자로"
+          ? "CAGR 계산기"
           : "CAGR Calculator for\nAnnualized Return",
       heroLead:
         locale === "ko"
-          ? "CAGR은 들쭉날쭉한 연 수익률을 “연속된 하나의 연 복리 수익률”로 바꿔 보여주는 지표입니다. 단순 평균이 아니라, 실제 자산이 불어난 속도를 반영합니다."
+          ? "CAGR은 일정 기간 동안 자산이 매년 같은 비율로 성장했다고 가정했을 때의 연평균 성장률입니다. 초기 자산, 최종 자산, 기간을 입력하면 CAGR과 연평균 수익률을 바로 계산할 수 있습니다."
           : "Turn a start value, end value, and time horizon into an annualized growth rate you can compare across stocks, ETFs, funds, businesses, or portfolios.",
       stat1Title: locale === "ko" ? "초기 → 최종" : "Initial → Final",
       stat1Value: locale === "ko" ? "한 줄 요약" : "One-line summary",
@@ -140,11 +140,11 @@ export default function CagrCalculatorPage() {
 
       introTitle:
         locale === "ko"
-          ? "CAGR 계산기는 이렇게 활용해 보세요"
+          ? "CAGR 계산 방법과 입력값"
           : "How to use this CAGR calculator",
       introLead:
         locale === "ko"
-          ? "“초기에 얼마를 넣어서, 지금 얼마가 되었는지”만 알아도, 그 사이의 연평균 복리 수익률(CAGR)을 추정할 수 있습니다."
+          ? "시작 금액과 종료 금액, 투자 기간만 알면 CAGR 계산기로 그 사이의 연평균 복리 수익률을 바로 환산할 수 있습니다."
           : "Use this CAGR calculator when you know the beginning value, ending value, and holding period, and need one annualized return number for comparison.",
       introBullet1:
         locale === "ko"
@@ -181,11 +181,11 @@ export default function CagrCalculatorPage() {
       // ✅ 키워드 섹션 타이틀
       explainTitle:
         locale === "ko"
-          ? "CAGR 계산 공식·해석 (연평균 수익률 vs 총 수익률)"
+          ? "CAGR 공식과 연평균 수익률 계산 예시"
           : "CAGR formula & interpretation",
       explainBody:
         locale === "ko"
-          ? "CAGR은 (최종/초기)^(1/기간) - 1 로 계산됩니다. 같은 ‘총 수익률’이라도 기간이 길수록 연평균 수익률은 낮아집니다. 반대로 CAGR이 1~2%만 달라도 복리 누적 효과로 장기 결과는 크게 벌어질 수 있습니다."
+          ? "CAGR 공식은 (최종 자산 / 초기 자산)^(1 / 기간) - 1 입니다. 예를 들어 1,000만 원이 5년 뒤 1,500만 원이 되었다면 총 수익률은 50%지만, CAGR은 약 8.45%입니다. 같은 총 수익률이라도 기간이 길수록 연평균 수익률은 낮아집니다."
           : "CAGR is (Final/Initial)^(1/Years) - 1. The same total return implies different CAGR depending on time, and small CAGR gaps compound into large long-term differences.",
 
       faqTitle:
@@ -301,6 +301,10 @@ export default function CagrCalculatorPage() {
             {
               q: "CAGR은 단순 평균 수익률과 무엇이 다른가요?",
               a: "단순 평균은 연수익률을 더해 연수로 나누지만, CAGR은 처음과 끝 자산 규모를 기준으로 “매년 동일한 수익률이 났다면 몇 %인가?”를 계산합니다. 마이너스 구간이 섞여 있을 때 특히 차이가 커집니다.",
+            },
+            {
+              q: "CAGR 계산법은 어떻게 되나요?",
+              a: "CAGR은 (최종 자산 / 초기 자산)^(1 / 기간) - 1로 계산합니다. 예를 들어 1,000만 원이 5년 뒤 1,500만 원이 되었다면 CAGR은 약 8.45%입니다.",
             },
             {
               q: "연평균 성장률(연평균 수익률) 계산에 CAGR을 써도 되나요?",

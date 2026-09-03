@@ -71,7 +71,7 @@ function CompoundSupportContent({ locale }) {
         <section className="card w-full">
           <h2 className="mb-2 text-lg font-semibold">복리 계산기 사용법</h2>
           <p className="text-sm leading-6 text-slate-600">
-            원금, 월 적립금, 연 수익률, 투자 기간을 입력하면 월복리 기준 미래가치를 계산합니다.
+            복리 계산 방법은 단순합니다. 원금, 월 적립금, 연 수익률, 투자 기간을 입력하면 월복리 기준 미래가치를 계산합니다.
             세금, 수수료, 물가상승률을 함께 넣으면 세후 금액과 현재가치까지 비교할 수 있어
             저축·적립식 투자 계획을 세울 때 숫자를 더 현실적으로 볼 수 있습니다.
           </p>
@@ -372,7 +372,7 @@ export default function CompoundPage() {
           : "Compound Interest Calculator: Future Value, Monthly Contributions & Taxes",
       desc:
         locale === "ko"
-          ? "원금, 월 적립금, 연 수익률, 투자 기간으로 월복리 기준 미래가치를 계산합니다. 세금, 수수료, 물가상승률을 반영한 세후 금액과 현재가치를 표와 차트로 확인하세요."
+          ? "복리 계산기로 원금, 월 적립금, 연 수익률, 투자 기간을 입력해 월복리 기준 미래가치를 계산합니다. 세금, 수수료, 물가상승률을 반영한 세후 금액과 현재가치를 표와 차트로 확인하세요."
           : "Calculate future value with principal, monthly contributions, annual return and years using monthly compounding. Review taxes, fees, inflation, charts and year-by-year tables.",
 
       fv: locale === "ko" ? "세후 총자산" : "Net Future Value",
@@ -955,12 +955,12 @@ export default function CompoundPage() {
         <section className="card w-full">
           <h2 className="text-base font-semibold mb-2">
             {locale === "ko"
-              ? "월복리 기준 복리 계산과 적립식 투자 결과 확인"
+              ? "복리 계산기: 월복리·연복리와 적립식 투자 결과 확인"
               : "Monthly-compounded growth with contributions"}
           </h2>
           <p className="text-sm text-slate-600">
             {locale === "ko"
-              ? "초기 투자금(원금)과 월 적립금(적립식), 연 수익률, 기간을 입력하면 월복리 기준으로 미래가치(FV)를 계산합니다. 세전·세후(세금·수수료) 결과를 비교하고, 연도별 표/차트로 자산 성장 경로를 확인할 수 있어요."
+              ? "원금, 월 적립금, 예상 수익률과 투자기간을 입력하면 복리로 자산이 얼마나 성장하는지 계산할 수 있습니다. 월복리 계산 결과를 중심으로 세전·세후 금액을 비교하고, 연복리 기준 비교 패널과 연도별 표/차트로 적립식 투자 경로를 확인하세요."
               : "Use this compound interest calculator to estimate how much an investment could grow over time with monthly contributions, taxes, fees, and inflation. Compare ideal vs net future value, then use charts and yearly tables to test savings growth and long-term investing scenarios."}
           </p>
 

@@ -43,12 +43,12 @@ export function JsonLd({ data }) {
 // ===================== 텍스트 리소스 =====================
 const TEXT = {
   ko: {
-    seoTitle: 'ETF·주식 자동 적립식 시뮬레이터 (DCA)',
+    seoTitle: 'DCA 계산기 - ETF·주식 적립식 투자 시뮬레이터',
     seoDesc:
-      '매월 일정 금액을 ETF·주식에 적립 투자했을 때 자산 성장 경로를 시뮬레이션합니다. 세율, 수수료율, 연간 적립금 증가율까지 반영해 보세요.',
-    title: 'ETF·주식 자동 적립식 시뮬레이터 (DCA)',
+      '매월 투자금과 예상 수익률을 입력하면 ETF·주식 적립식 투자의 장기 자산 성장을 계산합니다. 수수료와 적립금 증가 조건도 반영할 수 있습니다.',
+    title: 'DCA 계산기',
     descShort:
-      '초기 자산, 월 적립금, 연 수익률, 연간 적립금 증가율로 DCA(자동 적립식) 투자 결과를 시뮬레이션합니다. 세율·수수료율과 통화(KRW/USD)도 직접 설정할 수 있습니다.',
+      'DCA 계산기는 매월 일정 금액을 ETF나 주식에 적립식으로 투자했을 때 자산이 어떻게 성장하는지 시뮬레이션합니다. 정액 분할 투자, 세율·수수료율, 연간 적립금 증가율과 통화(KRW/USD)를 함께 설정할 수 있습니다.',
     fv: '마지막 해 세후 자산',
     contrib: '누적 투자금',
     gain: '세후 수익(누적)',
@@ -217,6 +217,10 @@ const DCA_RECENT_KEY = "fm_tool_recent_dca";
 function getFaqItems(locale) {
   if (locale === 'ko') {
     return [
+      {
+        q: 'DCA 계산기는 무엇을 계산하나요?',
+        a: 'DCA 계산기는 매월 또는 매주 일정 금액을 ETF·주식에 나누어 투자하는 적립식 투자 결과를 계산합니다. 월 투자금, 예상 수익률, 기간, 세금, 수수료, 적립금 증가율을 넣어 장기 자산 성장 경로를 확인할 수 있습니다.',
+      },
       {
         q: '월 투자금은 어떤 단위로 입력하나요?',
         a: '통화가 원화(KRW)일 때는 만원 단위로 입력합니다. 예를 들어 매월 30만원 투자면 30, 50만원이면 50으로 입력합니다. 통화를 USD로 변경한 경우에는 실제 달러 기준 금액을 그대로 입력하면 됩니다.',
@@ -782,6 +786,18 @@ export default function DCACalculatorPage() {
         </div>
 
         <ToolSharePanel toolId="dca" locale={routeLocale} />
+
+        {routeLocale === "ko" && (
+          <section className="card w-full min-w-0 max-w-full break-words">
+            <h2 className="mb-2 break-words text-base font-semibold leading-snug">
+              DCA란? 적립식 투자 계산기로 확인하는 것
+            </h2>
+            <p className="max-w-full break-words text-sm leading-relaxed text-slate-600">
+              DCA(Dollar-Cost Averaging)는 시장 가격을 맞히기보다 매월 일정 금액을 ETF나 주식에 나누어 투자하는 정액 분할 투자 방식입니다.
+              이 DCA 시뮬레이터는 월 투자금, 예상 수익률, 투자 기간, 세금과 수수료 조건을 넣어 매월 투자 시뮬레이션과 장기 자산 성장 경로를 계산합니다.
+            </p>
+          </section>
+        )}
 
         {/* 입력 폼 */}
         <div className="card w-full min-w-0 max-w-full">
