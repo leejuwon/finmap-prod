@@ -19,12 +19,12 @@ const BASIS_DATE = "2026-05-21";
 
 const TEXT = {
   ko: {
-    seoTitle: "LTV DSR 계산기 - 주택담보대출 한도와 아파트 구매 가능액 계산",
+    seoTitle: "LTV DSR 계산기 - 주택담보대출 한도와 대출 가능액 계산",
     seoDesc:
-      "연소득, 기존대출 월상환액, 주택담보대출 금리, 대출기간, 아파트 가격, 보유 현금을 입력해 LTV·DSR 기준 주담대 한도, 대출 가능액, 원리금 월상환액, 아파트 구매 가능액을 계산합니다.",
-    h1: "LTV DSR 계산기: 주담대 한도와 아파트 구매 가능액 계산",
+      "연소득, 기존대출 월상환액, 주택담보대출 금리, 대출기간, LTV, DSR을 입력해 주담대 한도, 대출 가능액, 신규 원리금 월상환 여력, 후보 주택의 대출 조건 통과 여부를 계산합니다.",
+    h1: "LTV DSR 계산기: 주택담보대출 한도와 대출 가능액 계산",
     lead:
-      "주담대 한도, 아파트 구매 가능액, 월상환액, 보유 현금을 한 화면에서 계산합니다. 연소득, 기존대출 월상환액, 금리, 대출기간, LTV, DSR, 후보 아파트 가격을 넣어 매수 가능 여부를 먼저 점검하세요.",
+      "연소득, 기존대출 월상환액, 금리, 대출기간, LTV, DSR을 넣어 주담대 대출 가능액과 한도 병목을 먼저 확인합니다. 후보 집값을 넣으면 DSR/LTV 조건 통과 여부를 점검하고, 보유 현금·부대비용까지 포함한 구매 예산은 아파트 구매 계산기로 이어서 확인하세요.",
     basis: "계산 기준일",
     note:
       "정책 자동 반영 없이 입력값 기준으로만 계산합니다. 실제 대출 심사 결과와 다를 수 있습니다.",
@@ -66,12 +66,12 @@ const TEXT = {
         a: "먼저 아파트 가격과 보유현금을 입력하고, LTV 기준 대출 가능액을 확인한 뒤, 금리와 대출기간을 넣어 월 원리금과 DSR 부담을 함께 봅니다.",
       },
       {
-        q: "아파트 구매 계산기로도 사용할 수 있나요?",
-        a: "대출 가능액, 보유현금, 월 상환 부담을 함께 확인할 수 있어 아파트 구매 예산을 가늠하는 데 활용할 수 있습니다. 다만 취득세, 중개보수, 이사비 등 부대비용은 별도로 고려해야 합니다.",
+        q: "보유 현금까지 반영한 구매 예산은 어디에서 확인하나요?",
+        a: "이 페이지는 LTV와 DSR 기준의 주담대 한도와 대출 가능액을 먼저 보는 도구입니다. 보유 현금, 최소 남길 현금, 부대비용을 중심으로 살 수 있는 집값을 보려면 아파트 구매 계산기를 함께 사용하세요.",
       },
       {
-        q: "안전 탐색 가격대는 무엇인가요?",
-        a: "계산된 구매 가능 가격 상한의 80~90% 구간입니다. 실제 심사 차이, 금리 변화, 부대비용, 협상 여지, 잔금 전 현금흐름을 고려하기 위한 보수적 탐색 범위입니다.",
+        q: "대출 한도 참고 가격대는 무엇인가요?",
+        a: "입력한 LTV, DSR, 금리, 기간 조건에서 나온 참고 가격 범위입니다. 실제 매수 예산은 심사 차이뿐 아니라 보유 현금, 부대비용, 잔금 전 현금흐름까지 함께 봐야 하므로 아파트 구매 계산기에서 한 번 더 점검하는 것이 좋습니다.",
       },
     ],
   },
@@ -212,7 +212,7 @@ export default function DsrLtvCalculatorPage() {
 
         <ToolSharePanel toolId="dsrLtv" locale={locale} />
 
-        <DsrLtvCalculator locale={locale} initialPresetKey={initialPresetKey} />
+        <DsrLtvCalculator locale={locale} initialPresetKey={initialPresetKey} variant="dsrLtv" />
 
         {locale === "ko" && (
           <section className="card min-w-0">
@@ -237,9 +237,9 @@ export default function DsrLtvCalculatorPage() {
                 </p>
               </div>
               <div className="rounded-xl border bg-slate-50 p-3">
-                <h3 className="text-sm font-semibold">3. 아파트 구매 가능 금액</h3>
+                <h3 className="text-sm font-semibold">3. 구매 예산 별도 점검</h3>
                 <p className="mt-1 text-sm leading-6 text-slate-600">
-                  보유현금과 부대비용까지 반영해 실제로 볼 수 있는 아파트 구매 가능 금액을 좁힙니다.
+                  보유현금과 부대비용까지 반영한 실제 구매 예산은 아파트 구매 계산기에서 이어서 확인합니다.
                 </p>
               </div>
             </div>

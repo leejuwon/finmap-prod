@@ -122,15 +122,15 @@ export const TOOL_BACKLINK_CONFIG = {
       en: "FinMap DSR/LTV Calculator",
     },
     shareDescription: {
-      ko: "보유자산, 소득, 금리, DSR, LTV로 대출 가능액과 아파트 구매 가능 가격대를 추정합니다.",
+      ko: "소득, 기존부채, 금리, DSR, LTV로 주택담보대출 한도와 대출 가능액을 추정합니다.",
       en: "Estimate loan capacity and apartment affordability from assets, income, rate, DSR, and LTV.",
     },
     anchors: {
-      ko: ["DSR/LTV 계산기", "주택담보대출 가능액 계산기", "아파트 구매 가능 금액 계산기", "대출 한도 계산기"],
+      ko: ["DSR/LTV 계산기", "LTV 계산기", "DSR 계산기", "주택담보대출 가능액 계산기", "대출 한도 계산기"],
       en: ["DSR/LTV calculator", "mortgage affordability calculator", "home loan capacity calculator"],
     },
     ctaDescription: {
-      ko: "소득·자산·금리 조건에서 감당 가능한 대출액과 주택 가격 범위를 점검합니다.",
+      ko: "소득·기존부채·금리 조건에서 LTV와 DSR 기준 대출 가능액을 점검합니다.",
       en: "Estimate a safer home price range from income, assets, rate, DSR, and LTV inputs.",
     },
   },
@@ -145,15 +145,15 @@ export const TOOL_BACKLINK_CONFIG = {
       en: "FinMap Home Buying Budget Calculator",
     },
     shareDescription: {
-      ko: "집값, 보유 현금, 연소득, 금리, 대출기간으로 아파트 구매 가능액과 월상환액, 필요 현금을 계산합니다.",
+      ko: "집값, 보유 현금, 부대비용, 최소 남길 현금으로 아파트 구매 예산과 필요 현금을 계산합니다.",
       en: "Estimate home affordability, monthly payments, and required cash from price, cash, income, rate, and loan term.",
     },
     anchors: {
-      ko: ["아파트 구매 계산기", "아파트 구매 가능액 계산기", "주담대 월상환액 계산기", "필요 현금 계산기"],
+      ko: ["아파트 구매 계산기", "아파트 구매 예산 계산기", "보유 현금 집값 계산기", "필요 현금 계산기"],
       en: ["home buying budget calculator", "home affordability calculator", "mortgage payment and cash calculator"],
     },
     ctaDescription: {
-      ko: "집값과 보유 현금까지 함께 넣어 아파트 구매 가능액, 부족 현금, 월상환액을 확인합니다.",
+      ko: "집값과 보유 현금을 함께 넣어 구매 예산, 필요 현금, 현금 부족/여유를 확인합니다.",
       en: "Check home affordability, cash shortfall, and monthly payment with price and cash assumptions.",
     },
   },

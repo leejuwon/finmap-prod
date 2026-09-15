@@ -78,7 +78,7 @@ LTV가 높아지면 현금 부담은 줄 수 있습니다. 하지만 월상환�
 
 ## 관련 글/계산기
 
-- [DSR/LTV 계산기로 생애최초 예산 점검하기](/tools/dsr-ltv-calculator)
+- [아파트 구매 계산기로 생애최초 필요 현금 점검하기](/tools/home-buying-budget-calculator)
 - [보유현금 1억·2억·3억이면 어느 가격대 아파트까지 가능할까?](/posts/personalFinance/cash-100m-200m-300m-apartment-budget)
 - [아파트 매수 전 대출 리스크 체크리스트](/posts/personalFinance/mortgage-risk-checklist-dsr-variable)
 - [서울·경기·인천 아파트 실거래 대시보드로 내 집 마련 목표 세우기](/posts/personalFinance/apt-dashboard-home-goal-roadmap)

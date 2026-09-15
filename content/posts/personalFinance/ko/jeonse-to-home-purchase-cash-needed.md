@@ -81,7 +81,7 @@ lang: "ko"
 
 ## 관련 글/계산기
 
-- [DSR/LTV 계산기로 갈아타기 후보 집값 판정하기](/tools/dsr-ltv-calculator)
+- [아파트 구매 계산기로 갈아타기 필요 현금 점검하기](/tools/home-buying-budget-calculator)
 - [전세·월세·매매, 무엇이 내게 더 안전한가](/posts/personalFinance/rent-jeonse-buy-cashflow-opportunity-cost)
 - [보유현금 1억·2억·3억이면 어느 가격대 아파트까지 가능할까?](/posts/personalFinance/cash-100m-200m-300m-apartment-budget)
 - [아파트 매수 전 대출 리스크 체크리스트](/posts/personalFinance/mortgage-risk-checklist-dsr-variable)

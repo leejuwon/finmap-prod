@@ -555,8 +555,53 @@ function DetailTile({ label, value, hint }) {
   );
 }
 
+function getVariantCopy(t, lang, variant) {
+  if (lang !== "ko") {
+    return {
+      inputLead:
+        "Amounts are entered in KRW 10k units. LTV/DSR are user-entered assumptions only.",
+      quickPresetTitle: "Quick search-intent presets",
+      quickPresetDesc: "Load income, home price, cash, DSR, and LTV assumptions in one tap.",
+      resultTitle: t.resultTitle,
+      resultLead: "Simplified estimate using equal principal-and-interest payments.",
+      relatedCta: null,
+    };
+  }
+
+  if (variant === "homeBuying") {
+    return {
+      inputLead:
+        "금액은 만원 단위로 입력합니다. 보유 현금, 최소 남길 현금, 부대비용률을 먼저 보고 LTV/DSR은 대출 제약 조건으로 참고합니다.",
+      quickPresetTitle: "아파트 구매 예산 예시",
+      quickPresetDesc:
+        "보유 현금과 후보 집값, 부대비용을 입력해 필요 현금과 구매 가능 가격을 확인합니다.",
+      resultTitle: "아파트 구매 예산 결과",
+      resultLead: "보유 현금과 부대비용을 반영한 구매 예산 중심의 단순 추정입니다.",
+      relatedCta: {
+        href: "/tools/dsr-ltv-calculator",
+        label: "LTV/DSR 기준 주담대 한도 확인",
+      },
+    };
+  }
+
+  return {
+    inputLead:
+      "금액은 만원 단위로 입력합니다. LTV/DSR은 정책 자동 반영 없이 직접 입력한 값만 사용합니다.",
+    quickPresetTitle: "LTV·DSR 계산 예시",
+    quickPresetDesc:
+      "연소득, 기존부채, 금리와 LTV·DSR 조건으로 주담대 대출 가능액을 확인합니다.",
+    resultTitle: "LTV·DSR 대출 한도 결과",
+    resultLead: "원리금균등 상환 기준으로 대출 가능액과 한도 병목을 추정합니다.",
+    relatedCta: {
+      href: "/tools/home-buying-budget-calculator",
+      label: "보유 현금과 부대비용까지 반영한 아파트 구매 예산 확인",
+    },
+  };
+}
+
 export default function DsrLtvCalculator({
   locale = "ko",
+  variant = "dsrLtv",
   initialPresetKey = "",
   calculateEventName = "dsr_ltv_calculate",
   calculateSourceTool = "dsr_ltv",
@@ -564,7 +609,9 @@ export default function DsrLtvCalculator({
   presetSourceTool = "dsrLtv",
 }) {
   const lang = locale === "en" ? "en" : "ko";
+  const intentVariant = variant === "homeBuying" ? "homeBuying" : "dsrLtv";
   const t = TEXT[lang];
+  const variantCopy = getVariantCopy(t, lang, intentVariant);
   const [form, setForm] = useState(DEFAULT_FORM);
   const [isExporting, setIsExporting] = useState(false);
   const exportLockRef = useRef(false);
@@ -687,7 +734,7 @@ export default function DsrLtvCalculator({
       : "/market/real-estate";
   const handleDashboardClick = (location) => {
     trackGaEvent("dsr_to_dashboard_click", {
-      source_tool: "dsr_ltv",
+      source_tool: intentVariant === "homeBuying" ? "homeBuying" : "dsr_ltv",
       locale: lang,
       location,
     });
@@ -732,9 +779,7 @@ export default function DsrLtvCalculator({
             {lang === "ko" ? "입력값" : "Inputs"}
           </h2>
           <p className="mt-1 break-words text-sm text-slate-600">
-            {lang === "ko"
-              ? "금액은 만원 단위로 입력합니다. LTV/DSR은 정책 자동 반영 없이 직접 입력한 값만 사용합니다."
-              : "Amounts are entered in KRW 10k units. LTV/DSR are user-entered assumptions only."}
+            {variantCopy.inputLead}
           </p>
         </div>
 
@@ -742,12 +787,10 @@ export default function DsrLtvCalculator({
           <div className="flex min-w-0 flex-col gap-2 md:flex-row md:items-center md:justify-between">
             <div>
               <h3 className="break-words text-sm font-semibold text-emerald-950">
-                {lang === "ko" ? "네이버 유입 빠른 프리셋" : "Quick search-intent presets"}
+                {variantCopy.quickPresetTitle}
               </h3>
               <p className="mt-1 break-words text-xs text-emerald-800">
-                {lang === "ko"
-                  ? "연봉, 집값, 보유 현금 조건을 한 번에 넣고 주담대 한도와 아파트 구매 가능액을 바로 확인합니다."
-                  : "Load income, home price, cash, DSR, and LTV assumptions in one tap."}
+                {variantCopy.quickPresetDesc}
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -805,11 +848,9 @@ export default function DsrLtvCalculator({
       <section id="dsr-ltv-result-target" className="card min-w-0" data-dsr-section="summary">
         <div className="mb-4 flex min-w-0 flex-col gap-2 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="break-words text-lg font-semibold">{t.resultTitle}</h2>
+            <h2 className="break-words text-lg font-semibold">{variantCopy.resultTitle}</h2>
             <p className="mt-1 break-words text-sm text-slate-600">
-              {lang === "ko"
-                ? "원리금균등 상환 기준의 단순 추정입니다."
-                : "Simplified estimate using equal principal-and-interest payments."}
+              {variantCopy.resultLead}
             </p>
           </div>
           <Link
@@ -832,19 +873,53 @@ export default function DsrLtvCalculator({
           </div>
         )}
 
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          <ResultCard label={t.finalAffordablePrice} value={formatKrw(result.finalAffordablePrice, lang)} tone="blue" />
-          <ResultCard label={t.dsrLoanCapacity} value={formatKrw(result.dsrLoanCapacity, lang)} />
-          <ResultCard label={t.newMonthlyCapacity} value={formatKrw(result.newMortgageMonthlyPaymentCapacity, lang)} />
-          <ResultCard label={t.finalMonthlyPayment} value={formatKrw(result.finalMonthlyPayment, lang)} />
-          <ResultCard label={t.safeRange} value={`${formatKrw(result.safeSearchPriceLow, lang)} ~ ${formatKrw(result.safeSearchPriceHigh, lang)}`} hint="80~90%" />
-          <ResultCard
-            label={t.bottleneck}
-            value={BOTTLENECK[lang][result.bottleneck] || result.bottleneck}
-            hint={getBottleneckDescription(result, t)}
-            tone={result.bottleneck === "DSR" ? "warning" : "neutral"}
-          />
-        </div>
+        {lang === "ko" && intentVariant === "dsrLtv" ? (
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <ResultCard label={t.dsrLoanCapacity} value={formatKrw(result.dsrLoanCapacity, lang)} tone="blue" />
+            <ResultCard label={t.candidateMaxLoanByLtv} value={formatKrw(result.candidateMaxLoanByLtv, lang)} />
+            <ResultCard label={t.newMonthlyCapacity} value={formatKrw(result.newMortgageMonthlyPaymentCapacity, lang)} />
+            <ResultCard label={t.candidateMonthlyPayment} value={formatKrw(result.candidateMonthlyPayment, lang)} />
+            <ResultCard
+              label="대출 한도 병목"
+              value={BOTTLENECK[lang][result.bottleneck] || result.bottleneck}
+              hint={getBottleneckDescription(result, t)}
+              tone={result.bottleneck === "DSR" ? "warning" : "neutral"}
+            />
+            <ResultCard
+              label="참고 구매 가능 가격"
+              value={formatKrw(result.finalAffordablePrice, lang)}
+              hint="보유 현금·부대비용 반영값"
+            />
+          </div>
+        ) : lang === "ko" && intentVariant === "homeBuying" ? (
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <ResultCard label="구매 가능 가격" value={formatKrw(result.finalAffordablePrice, lang)} tone="blue" />
+            <ResultCard label={t.candidateCashRequirement} value={formatKrw(result.candidateCashRequirement, lang)} />
+            <ResultCard label={t.cashOnHand} value={formatKrw(result.cashOnHand, lang)} />
+            <ResultCard label={t.candidateCashGap} value={formatSignedKrw(result.candidateCashGap, lang)} />
+            <ResultCard label="부대비용 반영 안전 가격대" value={`${formatKrw(result.safeSearchPriceLow, lang)} ~ ${formatKrw(result.safeSearchPriceHigh, lang)}`} hint="80~90%" />
+            <ResultCard
+              label="대출 제약 병목"
+              value={BOTTLENECK[lang][result.bottleneck] || result.bottleneck}
+              hint={getBottleneckDescription(result, t)}
+              tone={result.bottleneck === "DSR" ? "warning" : "neutral"}
+            />
+          </div>
+        ) : (
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <ResultCard label={t.finalAffordablePrice} value={formatKrw(result.finalAffordablePrice, lang)} tone="blue" />
+            <ResultCard label={t.dsrLoanCapacity} value={formatKrw(result.dsrLoanCapacity, lang)} />
+            <ResultCard label={t.newMonthlyCapacity} value={formatKrw(result.newMortgageMonthlyPaymentCapacity, lang)} />
+            <ResultCard label={t.finalMonthlyPayment} value={formatKrw(result.finalMonthlyPayment, lang)} />
+            <ResultCard label={t.safeRange} value={`${formatKrw(result.safeSearchPriceLow, lang)} ~ ${formatKrw(result.safeSearchPriceHigh, lang)}`} hint="80~90%" />
+            <ResultCard
+              label={t.bottleneck}
+              value={BOTTLENECK[lang][result.bottleneck] || result.bottleneck}
+              hint={getBottleneckDescription(result, t)}
+              tone={result.bottleneck === "DSR" ? "warning" : "neutral"}
+            />
+          </div>
+        )}
 
         <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4" data-dsr-section="why-amount">
           <h3 className="break-words text-base font-semibold">{t.interpretationTitle}</h3>
@@ -909,6 +984,15 @@ export default function DsrLtvCalculator({
 
         <div className="mt-5">
           <h3 className="break-words text-base font-semibold">{t.relatedTitle}</h3>
+          {variantCopy.relatedCta && (
+            <Link
+              href={variantCopy.relatedCta.href}
+              locale={lang}
+              className="btn-primary mt-3 inline-flex justify-center"
+            >
+              {variantCopy.relatedCta.label}
+            </Link>
+          )}
           <div className="mt-3 grid gap-2 md:grid-cols-2">
             {RELATED_LINKS.map((item) => (
               <Link
@@ -933,7 +1017,7 @@ export default function DsrLtvCalculator({
 
       <ToolResultCta
         locale={lang}
-        sourceTool="dsrLtv"
+        sourceTool={intentVariant === "homeBuying" ? "homeBuying" : "dsrLtv"}
         location="result_after"
         onDownloadPDF={handleDownloadPDF}
       />

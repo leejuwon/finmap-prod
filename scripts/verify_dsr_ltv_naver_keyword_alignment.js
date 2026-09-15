@@ -78,7 +78,11 @@ function main() {
     pass(resultCta.includes('tool_result_cta_view'), 'GA4 tool_result_cta_view string maintained'),
     pass(resultCta.includes('tool_result_cta_click'), 'GA4 tool_result_cta_click string maintained'),
     pass(backlinkKit.includes('related_calculator_click'), 'GA4 related_calculator_click string maintained'),
-    pass(pageAndComponents.includes('source_tool: "dsr_ltv"') && pageAndComponents.includes('sourceTool="dsrLtv"'), 'DSR/LTV source_tool values maintained'),
+    pass(
+      pageAndComponents.includes('source_tool: intentVariant === "homeBuying" ? "homeBuying" : "dsr_ltv"') &&
+        pageAndComponents.includes('sourceTool={intentVariant === "homeBuying" ? "homeBuying" : "dsrLtv"}'),
+      'DSR/LTV source_tool values variant-safe',
+    ),
   ];
 
   console.log('# DSR/LTV Naver Keyword Alignment Verification');

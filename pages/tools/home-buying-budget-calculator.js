@@ -15,17 +15,17 @@ export function JsonLd({ data }) {
 
 const TEXT = {
   ko: {
-    seoTitle: "아파트 구매 계산기 - 보유 현금·주담대 한도·DSR LTV 예산 계산",
+    seoTitle: "아파트 구매 계산기 - 보유 현금·부대비용 포함 구매 예산",
     seoDesc:
-      "집값, 보유 현금, 연소득, 기존 대출, 금리, 대출기간을 입력해 아파트 구매 가능 여부, 필요 현금, 주담대 한도, DSR, LTV, 월상환액을 계산합니다.",
+      "보유 현금, 최소 남길 현금, 부대비용률, 후보 집값을 입력해 필요 현금, 현금 부족/여유, 살 수 있는 아파트 가격대와 구매 예산을 계산합니다.",
     h1: "아파트 구매 계산기",
     lead:
-      "아파트 가격을 보기 전에 보유 현금, 부대비용, 주담대 한도, DSR, LTV를 한 번에 점검하세요. 이 계산기는 보유 현금 기준 구매 가능성을 먼저 보고, 월상환액은 주담대 원리금 계산기로 이어서 확인하도록 돕습니다.",
+      "아파트 가격을 보기 전에 보유 현금(자기자본), 최소 남길 현금, 부대비용, 필요 현금을 먼저 점검하세요. 이 계산기는 내 현금으로 살 수 있는 집값과 구매 예산을 확인하고, 대출 한도는 LTV/DSR 계산기로 이어서 점검하도록 돕습니다.",
     note:
       "정책 자동 반영 도구가 아니라 사용자가 입력한 LTV, DSR, 금리, 기간을 기준으로 한 사전 점검입니다.",
     relatedTitle: "계산 후 함께 볼 페이지",
     relatedLead:
-      "결과가 나오면 DSR/LTV 계산기에서 대출 가능 한도를 다시 조정하고, 주담대 원리금 계산기에서 월상환액과 총이자를 확인한 뒤 실제 가격대를 비교하세요.",
+      "결과가 나오면 LTV/DSR 계산기에서 대출 제약 조건을 다시 확인하고, 주담대 원리금 계산기에서 월상환액과 총이자를 확인한 뒤 실제 가격대를 비교하세요.",
     flowTitle: "계산 결과를 읽는 순서",
     flowLead:
       "아파트 구매 가능 여부는 한 가지 숫자로 끝나지 않습니다. 보유 현금, 대출 가능 한도, 월상환액, 실제 거래 가격을 나눠서 확인하세요.",
@@ -132,10 +132,12 @@ export default function HomeBuyingBudgetCalculatorPage() {
 
         <DsrLtvCalculator
           locale={locale}
+          variant="homeBuying"
           initialPresetKey="first_home_600m"
           calculateEventName="home_buying_calculate"
           calculateSourceTool="homeBuying"
           commonSourceTool="homeBuying"
+          presetSourceTool="homeBuying"
         />
 
         <section className="card min-w-0">
@@ -156,7 +158,7 @@ export default function HomeBuyingBudgetCalculatorPage() {
           </h2>
           <div className="mt-3 grid gap-3 md:grid-cols-3">
             {(locale === "ko"
-              ? ["집값", "보유 현금", "연소득", "기존 대출", "금리·대출기간", "DSR·LTV"]
+              ? ["집값", "자기자본·보유 현금", "부대비용", "최소 남길 현금", "연소득", "DSR·LTV"]
               : ["Home price", "Cash on hand", "Annual income", "Existing debt", "Rate & term", "DSR & LTV"]
             ).map((item) => (
               <div key={item} className="rounded-xl border bg-slate-50 p-3 text-sm font-semibold text-slate-800">
