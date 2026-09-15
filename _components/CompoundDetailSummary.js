@@ -115,7 +115,7 @@ export default function CompoundDetailSummary({
             <li>{isKo ? "월복리와 매월 말 납입을 가정합니다." : "Assumes monthly compounding and end-of-month contributions."}</li>
             <li>{isKo ? "일정한 수익률 가정의 시뮬레이션이며 실제 결과를 보장하지 않습니다." : "This fixed-return simulation does not guarantee actual results."}</li>
             <li>{isKo ? "세금, 수수료, 물가를 반영하면 체감 금액이 줄어들 수 있습니다." : "Taxes, fees, and inflation can reduce real-world value."}</li>
-            <li>{isKo ? "연복리 비교는 후속 검증 대상입니다." : "Annual-compounding comparison is reserved for a later verified update."}</li>
+            <li>{isKo ? "같은 조건의 보수적 연복리 비교값은 결과 화면에서 함께 확인할 수 있습니다." : "Annual-compounding comparison is reserved for a later verified update."}</li>
           </ul>
         </details>
       </div>
@@ -170,7 +170,7 @@ export default function CompoundDetailSummary({
           <li>{isKo ? "이 계산기는 월복리 기준이며, 월 납입은 매월 말 납입으로 가정합니다." : "This calculator uses monthly compounding and assumes end-of-month contributions."}</li>
           <li>{isKo ? "수익률이 일정하다는 가정의 시뮬레이션이며 실제 결과를 보장하지 않습니다." : "This is a fixed-return simulation and does not guarantee actual results."}</li>
           <li>{isKo ? "세금, 수수료, 물가를 반영하면 체감 금액이 줄어들 수 있습니다." : "Taxes, fees, and inflation can reduce the amount you experience in real terms."}</li>
-          <li>{isKo ? "연복리 비교는 후속 검증 대상입니다." : "Annual-compounding comparison is reserved for a later verified update."}</li>
+          <li>{isKo ? "같은 조건의 보수적 연복리 비교값은 결과 화면에서 함께 확인할 수 있습니다." : "Annual-compounding comparison is reserved for a later verified update."}</li>
         </ul>
       </section>
     </div>

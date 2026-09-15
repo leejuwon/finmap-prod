@@ -18,7 +18,7 @@ const dict = {
     currency: '통화',
     compounding: '계산 기준',
     compoundingFixed: '월복리 기준',
-    compoundingFixedHelp: '현재 검증된 복리 계산은 월복리 기준으로 고정되어 있습니다. 연복리 비교는 후속 검증 후 별도 기능으로 정리할 예정입니다.',
+    compoundingFixedHelp: '기본 계산은 월복리·월말 납입 기준입니다. 계산 후 결과 영역에서 같은 조건의 보수적 연복리 비교값을 함께 확인할 수 있습니다.',
     presetTitle: '검증 샘플',
     presetHelp: 'A~D는 검증 스크립트와 동일한 KRW 기준 샘플입니다. 클릭하면 통화가 KRW로 전환되고 금액은 만원 단위로 입력됩니다.',
     taxApply: '세금 반영',

@@ -183,7 +183,7 @@ function dedupeOptions(list) {
 const TEXT = {
   ko: {
     title: '서울·경기·인천 아파트 실거래 대시보드',
-    subtitle: '서울·경기·인천 국토부 실거래(아파트 매매) 기반 단지 Top 랭킹 — 조건 필터 → Top 기준으로 랭킹',
+    subtitle: '지역과 기간을 선택해 아파트 가격과 거래량을 탐색하고 비교하세요. 국토교통부 아파트 매매 실거래 자료를 사용합니다.',
     sido: '시도',
     sigungu: '시군구',
     timeframe: '집계',
@@ -259,11 +259,11 @@ const TEXT = {
     },
     tip: 'Tip: 경기도는 “수원시 전체 / 수원시 영통구”처럼 구가 있는 도시가 따로 뜹니다.',
     seoDesc:
-      '서울·경기·인천 아파트 실거래(국토부) 기반 Top 랭킹 대시보드. 지역/기간/평형/년식 필터로 단지별 거래량·중위·평균·평단가를 비교하세요.',
+      '서울·경기·인천 아파트 가격과 거래량을 탐색하는 대시보드. 국토교통부 실거래 자료를 지역·기간·평형·년식으로 좁혀 단지별 대표가격·평단가·거래량을 비교하세요.',
   },
   en: {
     title: 'Seoul, Gyeonggi & Incheon Apartment Transaction Dashboard (KRW)',
-    subtitle: 'Official RTMS-based apartment sale data for Seoul, Gyeonggi, and Incheon — ranked by your metric',
+    subtitle: 'Explore apartment sale prices and transaction counts by area and period using official Korean transaction data. Compare complexes across Seoul, Gyeonggi, and Incheon.',
     sido: 'Province/Metro',
     sigungu: 'City/District',
     timeframe: 'Timeframe',
@@ -1301,19 +1301,19 @@ export default function RealEstatePage() {
               </Link>
             ))}
             <span className="text-xs text-slate-500">
-              {lang === 'en' ? 'Landing pages for Google search (Top 100).' : '구글 검색 유입을 위한 고정 URL 랜딩(Top100).'}
+              {lang === 'en' ? 'Regional Top 100 rankings.' : '주요 지역 Top100 순위 바로가기'}
             </span>
           </div>
 
           {/* ✅ SEO용 내부링크 섹션: "키워드 문장 + 텍스트 링크(앵커)" */}
           <div className="mt-3 rounded-2xl border bg-white p-4">
             <div className="text-sm font-semibold text-slate-900">
-              {lang === 'en' ? 'Popular rankings (official transactions)' : '인기 검색: 아파트 순위(실거래)'}
+              {lang === 'en' ? 'Regional rankings (official transactions)' : '지역별 아파트 순위(실거래)'}
             </div>
             <div className="mt-2 text-sm text-slate-600 leading-6">
               {lang === 'en' ? (
                 <>
-                  Explore fixed-URL ranking pages:{" "}
+                  Compare apartment rankings by area:{" "}
                   <Link href={canonicalHref('/market/real-estate/gangnam-top100')} className="underline underline-offset-2">                     
                     Gangnam apartment ranking
                   </Link>
@@ -1361,7 +1361,7 @@ export default function RealEstatePage() {
                 </>
               ) : (
                 <>
-                  자주 검색되는 키워드별로 고정 URL 순위 페이지를 준비했어요:{" "}
+                  관심 지역의 아파트 순위를 확인해보세요:{" "}
                   <Link href={canonicalHref('/market/real-estate/gangnam-top100')} className="underline underline-offset-2">                 
                     강남 아파트 순위
                   </Link>
@@ -1407,15 +1407,15 @@ export default function RealEstatePage() {
                   </Link>
                   . 설명형 가이드는{" "}
                   <Link href={canonicalHref('/market/real-estate/seoul-apartment-top100')} className="underline underline-offset-2">
-                    서울 아파트 실거래가 Top100
+                    서울 아파트 실거래가 Top100 보는 법
                   </Link>
                   ,{" "}
                   <Link href={canonicalHref('/market/real-estate/gyeonggi-apartment-top100')} className="underline underline-offset-2">
-                    경기 아파트 실거래가 Top100
+                    경기 아파트 실거래가 Top100 보는 법
                   </Link>
                   ,{" "}
                   <Link href={canonicalHref('/market/real-estate/incheon-apartment-top100')} className="underline underline-offset-2">
-                    인천 아파트 실거래가 Top100
+                    인천 아파트 실거래가 Top100 보는 법
                   </Link>
                   에서 확인할 수 있습니다.
                 </>
@@ -1423,8 +1423,8 @@ export default function RealEstatePage() {
             </div>
             <div className="mt-2 text-xs text-slate-500">
               {lang === 'en'
-                ? 'Tip: These pages are designed to match search intent and load fast. Use filters for a deeper comparison.'
-                : 'Tip: 검색 의도에 맞춘 빠른 순위 페이지입니다. 더 깊은 비교는 위 필터로 조건을 좁혀보세요.'}
+                ? 'Compare regional rankings, then use the dashboard filters to focus on the size, age, and price range you need.'
+                : '지역별 순위를 살펴보고, 아래 필터에서 원하는 평형·년식·금액 구간으로 비교 범위를 좁혀보세요.'}
             </div>
           </div>
 

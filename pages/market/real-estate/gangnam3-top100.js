@@ -26,7 +26,7 @@ const TEXT = {
       "평형·년식이 섞이므로, 더 공정한 비교는 대시보드 필터로 조건을 고정해보세요.",
     ],
     bullets: [
-      "‘강남3구 아파트값 순위’ 검색 의도에 맞춘 고정 URL 랜딩페이지입니다.",
+      "강남·서초·송파 아파트의 가격 수준을 한 순위에서 비교할 수 있습니다.",
       "행정구역 기준 강남구(11680)·서초구(11650)·송파구(11710)를 합산합니다.",
       "순위는 ‘대표가격(중앙값, 총액)’ 내림차순입니다(극단값 영향↓).",
       "거래량(표본수)이 적은 단지는 값이 튈 수 있으니 거래량도 함께 보세요.",
@@ -80,7 +80,7 @@ const TEXT = {
       "Check latest deal and transaction count together to avoid small-sample noise.",
     ],
     bullets: [
-      "A fixed-URL landing page for the query “Gangnam 3 districts apartment price ranking.”",
+      "Compare apartment price levels across Gangnam, Seocho, and Songpa in one ranking.",
       "Scope: Gangnam-gu (11680), Seocho-gu (11650), Songpa-gu (11710).",
       "Ranking metric: median total sale price (more robust than average).",
       "Use transaction count to avoid small-sample noise.",

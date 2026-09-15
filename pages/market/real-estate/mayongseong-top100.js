@@ -49,7 +49,7 @@ const TEXT = {
     ctaDesc:
       "대시보드에서 평형/년식/금액구간/정렬을 더 세밀하게 조정할 수 있어요.",
     ctaBtn: "대시보드로 이동",
-    related: "관련 랜딩페이지",
+    related: "관련 지역 순위",
     faqTitle: "자주 묻는 질문",
     faqs: [
       {
@@ -85,7 +85,7 @@ const TEXT = {
     h1: "Mayongseong Apartment Prices Top 100",
     sub: "Official transactions · Ranked by median total sale price",
     introLines: [
-      "This fixed-URL page summarizes a Top 100 ranking for Mayongseong (Mapo, Yongsan, Seongsu/Seongdong) using official transactions.",
+      "This page summarizes a Top 100 ranking for Mayongseong (Mapo, Yongsan, Seongsu/Seongdong) using official transactions.",
       "Complexes are ranked by median total price, often more robust than averages under outliers.",
       "Use latest deal and transaction count together to interpret both recency and reliability.",
     ],

@@ -25,7 +25,7 @@ const TEXT = {
       "관심 단지는 상세에서 기간·평형 조건을 더 좁혀 비교해보세요.",
     ],
     bullets: [
-      "‘강남 아파트값 순위’ 검색 의도에 맞춘 고정 URL 랜딩페이지입니다.",
+      "강남구 아파트의 가격 수준을 대표가격과 거래량으로 비교할 수 있습니다.",
       "순위는 ‘대표가격(중앙값, 총액)’ 기준으로 정렬됩니다.",
       "거래량(표본수)이 작은 단지는 변동이 클 수 있어요.",
       "자세한 필터(평형/년식/금액구간/정렬)는 대시보드에서 확장 가능합니다.",
@@ -77,12 +77,12 @@ const TEXT = {
     h1: "Gangnam Apartment Prices Top 100",
     sub: "Gangnam-gu · Ranked by median total sale price",
     introLines: [
-      "This page is a fixed-URL Top 100 ranking for the query “Gangnam apartment ranking,” based on official transactions.",
+      "This page shows a Top 100 ranking for Gangnam-gu apartments based on official transactions.",
       "Complexes are ranked by median total price, which is typically more robust than averages in the presence of outliers.",
       "Use latest deal and transaction count together to gauge reliability and recency.",
     ],
     bullets: [
-      "A fixed-URL landing page for the query “Gangnam apartment price ranking.”",
+      "Compare Gangnam-gu apartment price levels alongside transaction counts.",
       "Ranking metric: median total sale price.",
       "Check transaction count to avoid small-sample noise.",
       "Use the dashboard for deeper filters (size/build year/price range).",

@@ -199,7 +199,7 @@ export default function RealEstateTop100Landing({
   const rangeOptions = useMemo(() => {
     const yy = String(year || String(period || "").slice(0, 4) || "");
     return [
-      { value: "pm", labelKo: "전월(기본)", labelEn: "Prev month (default)" },
+      { value: "pm", labelKo: "최신 데이터월(기본)", labelEn: "Latest data month (default)" },
       { value: "m3", labelKo: "최근 3개월", labelEn: "Last 3 months" },
       { value: "m6", labelKo: "최근 6개월", labelEn: "Last 6 months" },
       { value: "y1", labelKo: "최근 1년", labelEn: "Last 12 months" },
@@ -351,13 +351,13 @@ export default function RealEstateTop100Landing({
           {/* ✅ "업데이트 기준은 항상 전월" + 집계범위 */}
           <div className="mt-2 text-xs text-slate-600">
             * {lang === "en"
-              ? `Update anchor is always the latest available month (${ymLabel(period)}). (Data pipeline)`
-              : `업데이트 기준(앵커)은 항상 전월(${ymLabel(period)})입니다. (데이터 생성 스케줄 때문)`}
+              ? `Latest available transaction month: ${ymLabel(period)}. The aggregation range is shown below.`
+              : `현재 조회 가능한 실거래 데이터의 최신 기준월은 ${ymLabel(period)}입니다. 선택한 집계 범위는 아래와 같습니다.`}
           </div>
           <div className="mt-1 text-xs text-slate-600">
             {lang === "en"
-              ? `Aggregation range: ${ymLabel(fromYm)} ~ ${ymLabel(toYm)} (${rangeLabelEn || ""})`
-              : `집계 범위: ${ymLabel(fromYm)} ~ ${ymLabel(toYm)} (${rangeLabelKo || ""})`}
+              ? `Aggregation range: ${ymLabel(fromYm)} ~ ${ymLabel(toYm)} (${rangeKey === "pm" ? "Latest data month" : rangeLabelEn || ""})`
+              : `집계 범위: ${ymLabel(fromYm)} ~ ${ymLabel(toYm)} (${rangeKey === "pm" ? "최신 데이터월" : rangeLabelKo || ""})`}
           </div>
           <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
             {(t.bullets || []).map((s) => (

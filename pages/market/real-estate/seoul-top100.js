@@ -42,9 +42,9 @@ const TEXT = {
       tx: "거래량",
       build: "년식",
     },
-    ctaTitle: "마용성/강남 같은 키워드 페이지도 있어요",
+    ctaTitle: "관심 지역과 조건으로 비교 범위를 좁혀보세요",
     ctaDesc:
-      "특정 지역 검색어를 공략하는 고정 URL 랜딩페이지를 함께 운영하면 검색 유입이 더 쉬워집니다.",
+      "대시보드에서 지역·평형·년식·금액 구간을 선택해 비교할 수 있습니다. 마용성·강남 등 지역별 순위도 함께 확인해보세요.",
     ctaBtn: "대시보드로 이동",
     faqTitle: "자주 묻는 질문",
     faqs: [
@@ -82,7 +82,7 @@ const TEXT = {
       "Use latest deal and transaction count together to judge recency and reliability.",
     ],
     bullets: [
-      "A Seoul-wide benchmark page (fixed URL) for SEO and quick scanning.",
+      "A Seoul-wide benchmark for comparing apartment price levels.",
       "Ranked by median total sale price (descending).",
       "Total-price ranks can favor larger/newer complexes; use filters for fairness.",
       "Use the dashboard for size/build-year/price-range controls.",
@@ -99,8 +99,8 @@ const TEXT = {
       tx: "Tx count",
       build: "Build year",
     },
-    ctaTitle: "Try keyword-focused pages (Mayongseong / Gangnam)",
-    ctaDesc: "Fixed-URL pages tend to perform better for search intent matching.",
+    ctaTitle: "Narrow your comparison by area and price range",
+    ctaDesc: "Use the dashboard to compare apartments by area, size, build year, and price range. You can also explore local rankings for Mayongseong and Gangnam.",
     ctaBtn: "Open dashboard",
     faqTitle: "FAQ",
     faqs: [

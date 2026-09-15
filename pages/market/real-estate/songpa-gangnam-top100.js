@@ -20,13 +20,13 @@ const TEXT = {
     h1: "송파(잠실)+강남 아파트 집값 TOP 100",
     sub: "송파구(잠실 포함) + 강남구 합산 · 실거래 기반 · 대표가격(중앙값) 기준",    
     introLines: [
-      "이 페이지는 ‘잠실 아파트 순위’와 ‘강남 아파트 순위’ 검색 의도를 한 번에 커버하는 합본 Top100 랭킹입니다.",
+      "이 페이지는 송파(잠실 포함)와 강남구 아파트를 하나의 Top100 순위로 비교합니다.",
       "송파구(잠실 포함)와 강남구의 실거래를 합산해 대표가격(중앙값) 기준으로 정렬합니다.",
       "최근 거래/계약일과 거래량을 함께 보면 최신성·신뢰도를 같이 판단할 수 있어요.",
       "더 공정한 비교가 필요하면 평형·년식 조건을 고정해보세요.",
     ],
     bullets: [
-      "‘잠실 아파트’와 ‘강남 아파트’ 검색 의도를 한 페이지에서 커버하는 합본 랜딩페이지입니다.",
+      "송파구와 강남구를 같은 가격 기준으로 비교할 수 있습니다. 서초구는 포함하지 않습니다.",
       "행정구역 기준 송파구(11710) + 강남구(11680) 데이터를 합산합니다.",
       "순위는 ‘대표가격(중앙값, 총액)’ 내림차순입니다(극단값 영향↓).",
       "거래량(표본수)이 적은 단지는 값이 튈 수 있으니 거래량도 함께 확인하세요.",
@@ -75,12 +75,12 @@ const TEXT = {
     h1: "Songpa (Jamsil) + Gangnam Apartment Prices Top 100",
     sub: "Songpa-gu + Gangnam-gu · Ranked by median total sale price",
     introLines: [
-      "This combined Top 100 page matches search intent for both “Jamsil” and “Gangnam” apartment rankings.",
+      "This combined Top 100 page compares apartments in Songpa (including Jamsil) and Gangnam-gu in one ranking.",
       "It merges official transactions from Songpa-gu and Gangnam-gu and ranks complexes by median total price.",
       "Use latest deal and transaction count together to interpret recency and reliability.",
     ],
     bullets: [
-      "A combined landing page to match search intent for both “Jamsil” and “Gangnam” apartment rankings.",
+      "Compare Songpa-gu and Gangnam-gu using the same price metric. Seocho-gu is not included.",
       "Scope: Songpa-gu (11710) and Gangnam-gu (11680).",
       "Ranking metric: median total sale price (more robust than average).",
       "Use transaction count to avoid small-sample noise.",

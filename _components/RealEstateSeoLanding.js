@@ -66,7 +66,7 @@ export default function RealEstateSeoLanding({ page }) {
 
       <div className="mx-auto max-w-5xl">
         <section className="card">
-          <div className="text-sm font-semibold text-blue-700">부동산 실거래 랜딩</div>
+          <div className="text-sm font-semibold text-blue-700">아파트 실거래 데이터 해석 가이드</div>
           <h1 className="mt-2 text-2xl font-bold leading-tight text-slate-950 md:text-3xl">
             {page.h1}
           </h1>

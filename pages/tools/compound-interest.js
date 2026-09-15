@@ -88,8 +88,8 @@ function CompoundSupportContent({ locale }) {
               <h2 className="text-base font-semibold">월복리와 연복리 차이</h2>
               <p className="mt-2 text-sm leading-6 text-slate-600">
                 월복리는 수익이 매월 반영되고, 연복리는 1년에 한 번 반영된다고 가정합니다.
-                현재 FinMap 복리 계산기는 검증된 월복리 기준으로 계산하며, 연복리는 개념 비교용으로만
-                설명합니다. 연복리 직접 비교 기능은 후속 검증 후 별도 기능으로 정리할 예정입니다.
+                FinMap 복리 계산기는 월복리·월말 납입 기준으로 계산합니다.
+                계산 후 결과 영역의 월복리 vs 연복리 비교에서 같은 조건의 보수적 연복리 값을 함께 확인할 수 있습니다.
               </p>
             </section>
           </div>
@@ -372,7 +372,7 @@ export default function CompoundPage() {
           : "Compound Interest Calculator: Future Value, Monthly Contributions & Taxes",
       desc:
         locale === "ko"
-          ? "복리 계산기로 원금, 월 적립금, 연 수익률, 투자 기간을 입력해 월복리 기준 미래가치를 계산합니다. 세금, 수수료, 물가상승률을 반영한 세후 금액과 현재가치를 표와 차트로 확인하세요."
+          ? "복리 계산기로 원금, 월 적립금, 연 수익률, 투자 기간을 입력해 월복리 기준 미래가치와 같은 조건의 연복리 비교값을 확인합니다. 세금, 수수료, 물가상승률을 반영한 세후 금액과 현재가치를 표와 차트로 보세요."
           : "Calculate future value with principal, monthly contributions, annual return and years using monthly compounding. Review taxes, fees, inflation, charts and year-by-year tables.",
 
       fv: locale === "ko" ? "세후 총자산" : "Net Future Value",
@@ -420,7 +420,7 @@ export default function CompoundPage() {
         tagEn: "Compounding",
         titleKo: "복리 주기 차이 해설: 월복리와 연복리 결과가 달라지는 이유",
         titleEn: "Compounding frequency: why monthly and annual results differ",
-        descKo: "현재 계산기는 월복리 기준이며, 월복리와 연복리의 개념 차이는 별도 가이드에서 확인합니다.",
+        descKo: "계산기에서 월복리 결과와 같은 조건의 보수적 연복리 비교값을 확인하고, 개념 차이는 별도 가이드에서 이어서 봅니다.",
         descEn: "This calculator uses monthly compounding; compare monthly and annual concepts in the separate guide.",
       },
       {
@@ -492,11 +492,11 @@ export default function CompoundPage() {
             },
             {
               q: "이 계산기는 월복리 기준인가요?",
-              a: "네. 현재 검증된 계산은 월복리와 매월 말 납입 기준으로 고정되어 있습니다. 연복리 직접 비교는 제공하지 않습니다.",
+              a: "네. 기본 계산은 월복리와 매월 말 납입 기준입니다. 계산 후 결과 영역에서 같은 조건의 보수적 연복리 비교값도 함께 확인할 수 있습니다.",
             },
             {
               q: "월복리와 연복리는 무엇이 다른가요?",
-              a: "월복리는 수익을 매월 반영하고 연복리는 1년에 한 번 반영한다고 가정합니다. 이 계산기의 결과는 월복리 기준이며 연복리는 별도 가이드에서 개념만 비교합니다.",
+              a: "월복리는 수익을 매월 반영하고 연복리는 1년에 한 번 반영한다고 가정합니다. 이 계산기는 월복리 결과를 기본으로 보여주고, 결과 화면에서 같은 조건의 보수적 연복리 비교값을 제공합니다.",
             },
             {
               q: "적립식 복리 계산은 어떻게 하나요?",

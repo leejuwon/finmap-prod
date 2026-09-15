@@ -26,7 +26,7 @@ const TEXT = {
       "관심 단지는 상세에서 기간·평형 조건을 좁혀 비교해보세요.",
     ],
     bullets: [
-      "‘마곡 아파트 집값/순위’ 검색 의도에 맞춘 고정 URL 랜딩페이지입니다.",
+      "단지별 대표가격과 거래량을 함께 비교할 수 있습니다.",
       "행정구역은 강서구(11500)이며, 동 기준으로 ‘마곡동’만 포함합니다.",
       "순위는 ‘대표가격(중앙값, 총액)’ 내림차순입니다(극단값 영향↓).",
       "거래량(표본수)이 적은 단지는 값이 튈 수 있으니 거래량도 함께 확인하세요.",
@@ -75,12 +75,12 @@ const TEXT = {
     h1: "Magok Apartment Prices Top 100",
     sub: "Magok-dong, Gangseo-gu · Ranked by median total sale price",    
     introLines: [
-      "This page provides a fixed-URL Top 100 ranking for Magok based on official transactions.",
+      "This page provides a Top 100 ranking for Magok based on official transactions.",
       "It combines median price with latest deal and transaction count so you can judge level, recency, and liquidity together.",
       "Small samples can be noisy; use tx count as a reliability signal.",
     ],
     bullets: [
-      "A fixed-URL landing page for the query “Magok apartment price ranking.”",
+      "Compare apartment price levels alongside transaction counts.",
       "Scope: Magok-dong within Gangseo-gu (11500).",
       "Ranking metric: median total sale price (more robust than average).",
       "Use transaction count to avoid small-sample noise.",
@@ -202,8 +202,8 @@ export async function getServerSideProps(ctx) {
       fromYm: rangeInfo.fromYm,
       toYm: rangeInfo.toYm,
       band,
-      regionWhereSql: "s.lawd_cd  = ?",
-      regionParams: [REGION.lawd],
+      regionWhereSql: "s.lawd_cd = ? AND s.dong_name = ?",
+      regionParams: [REGION.lawd, REGION.dongName],
       limit: 100,
     });
   
