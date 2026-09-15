@@ -230,7 +230,7 @@ export default function FireCalculatorPage() {
         ? "은퇴자금 계산기 | 노후자금 계산기·은퇴 생활비·FIRE 계산기"
         : "FIRE Calculator: Early Retirement, Withdrawal Rate & Asset Longevity",
       desc: isKo
-        ? "은퇴자금 계산기와 노후자금 계산기로 월 은퇴 생활비, 필요 은퇴자금, 4% 룰, 국민연금·개인연금 반영 전후 FIRE 가능성을 비교하세요."
+        ? "현재 자산, 연 지출, 저축액, 출금률, 수익률·물가 가정으로 필요한 은퇴자금과 자산 지속기간을 계산하세요."
         : "Estimate whether your assets can support early retirement using annual spending, savings, retirement age, life expectancy, withdrawal rate, taxes, fees, inflation, and asset longevity scenarios.",
       chartTitle: isKo ? "은퇴 전·후 자산 곡선" : "Asset Curve (Before & After FIRE)",
     }),
@@ -296,7 +296,7 @@ export default function FireCalculatorPage() {
         tagEn: "retirement planning",
         titleKo: "은퇴자금 계산기 입력 전 확인할 3개 숫자: 연지출·은퇴기간·인출률",
         titleEn: "FIRE Is Just 3 Numbers: Annual Spending, Retirement Horizon, and Withdrawal Rate (Then Validate in 10 Minutes)",
-        descKo: "은퇴 준비는 전망이 아니라 숫자 3개(연지출·은퇴기간·인출률)로 결정된다. 한국 거주 직장인/자영업자 관점에서 주거비(전/월세·대출이자), 건강보험료, 자녀/부양, 국민연금·퇴직연금·IRP까지 반영해 FIRE 목표자산을 10분 안에 계산하는 프레임을 정리한다.",
+        descKo: "은퇴 준비는 전망이 아니라 숫자 3개(연지출·은퇴기간·인출률)로 결정된다. 한국 거주 직장인/자영업자 관점에서 주거비(전/월세·대출이자), 건강보험료, 자녀/부양, 국민연금·퇴직연금·IRP 같은 별도 현금흐름을 따로 점검하고 FIRE 목표자산을 10분 안에 계산하는 프레임을 정리한다.",
         descEn: "FIRE planning becomes simple when you lock in three numbers: annual spending, retirement horizon, and withdrawal rate. This guide gives a rules-based framework (not stock picks) and shows how to validate your target with the FinMap FIRE calculator using 401(k)/IRA/Social Security and inflation-adjusted spending—plus sequence-of-returns guardrails.",
       },
       {
@@ -305,7 +305,7 @@ export default function FireCalculatorPage() {
         tagEn: "cashflow planning",
         titleKo: "은퇴 직전·직후 5년이 FIRE를 결정한다: ‘순서 리스크’(초반 급락)와 인출 전략을 한국 사용자 기준으로 정리 + 툴로 스트레스 테스트",
         titleEn: "The First 5 Years of Retirement Decide FIRE: Sequence-of-Returns Risk, Withdrawal Rules, and a 10-Minute Stress Test",
-        descKo: "FIRE의 성패는 ‘연평균 수익률’이 아니라 은퇴 직전·직후 5년에 걸리는 순서 리스크(초반 급락)와 인출 규칙에 달려 있습니다. 대출 잔액·변동금리·부양비·건보료 변수를 한국 사용자 기준으로 점검하고, 국민연금·퇴직연금을 현금흐름 보완으로만 반영해 FIRE 계산기(/tools/fire-calculator)로 스트레스 테스트하는 실행 프레임을 제공합니다.",
+        descKo: "FIRE의 성패는 ‘연평균 수익률’이 아니라 은퇴 직전·직후 5년에 걸리는 순서 리스크(초반 급락)와 인출 규칙에 달려 있습니다. 대출 잔액·변동금리·부양비·건보료 변수를 한국 사용자 기준으로 점검하고, 국민연금·퇴직연금은 별도 현금흐름으로 확인한 뒤 FIRE 계산기(/tools/fire-calculator)로 스트레스 테스트하는 실행 프레임을 제공합니다.",
         descEn: "Why the first five years around retirement are the most fragile: sequence-of-returns risk, inflation-adjusted withdrawals, guardrails, and a practical stress-test workflow using the FinMap FIRE calculator.",
       },
       {
@@ -389,6 +389,57 @@ export default function FireCalculatorPage() {
 
         <ToolSharePanel toolId="fire" locale={lang} />
 
+        <FireForm lang={lang} onSubmit={handleSubmit} initial={formInitial} />
+
+        {result && (
+          <>
+            <div id="pdf-target" className="grid gap-6">
+              <FireSummary lang={lang} result={result} />
+              <AdInArticle slot="1924002516" />
+
+              <div className="card mb-6">
+                <h2 className="text-base md:text-lg font-semibold mb-2">{t.chartTitle}</h2>
+                <FireChart data={result.timeline} locale={locale} currency={currency} />
+              </div>
+
+              <AdResponsive slot="3101352817" />
+
+              <FireYearTable timeline={result.timeline} locale={locale} currency={currency} />
+
+              <AdInArticle slot="6085898367" />
+
+              <FireReport lang={lang} result={result} params={params} />
+            </div>
+            <div ref={(el) => (sectionEls.current.cta = el)} className="scroll-mt-24">
+              <ToolResultCta
+                locale={lang}
+                sourceTool="fire"
+                location="result_after"
+                onDownloadPDF={handleDownloadPDF}
+              />
+            </div>
+
+            <div className="tool-cta-section grid min-w-0 gap-4">
+              <ToolCta lang={lang} type="compound" sourceTool="fire" location="result_cta" />
+              <ToolCta lang={lang} type="goal" sourceTool="fire" location="result_cta" />
+              <ToolCta lang={lang} type="dca" sourceTool="fire" location="result_cta" />
+            </div>
+
+            {/* 하단 고정 CTA Bar */}
+            {!isExporting && (
+              <CTABar
+                locale={lang}
+                onDownloadPDF={handleDownloadPDF}
+                onShare={handleShare}
+                showDownload={false}
+                mode={"basic"}
+                alwaysVisible={true}
+                onNavigate={scrollTo}
+              />
+            )}
+          </>
+        )}
+
         <FireHero lang={lang} />
         <FireIntro lang={lang} />
         <AssumptionNotice lang={lang} />
@@ -470,56 +521,6 @@ export default function FireCalculatorPage() {
               </section>
             </div>
           </section>
-        )}
-        <FireForm lang={lang} onSubmit={handleSubmit} initial={formInitial} />
-
-        {result && (
-          <>            
-            <div id="pdf-target" className="grid gap-6">
-              <FireSummary lang={lang} result={result} />
-              <AdInArticle slot="1924002516" />
-
-              <div className="card mb-6">
-                <h2 className="text-base md:text-lg font-semibold mb-2">{t.chartTitle}</h2>
-                <FireChart data={result.timeline} locale={locale} currency={currency} />
-              </div>
-
-              <AdResponsive slot="3101352817" />
-
-              <FireYearTable timeline={result.timeline} locale={locale} currency={currency} />
-
-              <AdInArticle slot="6085898367" />
-
-              <FireReport lang={lang} result={result} params={params} />                         
-            </div>
-            <div ref={(el) => (sectionEls.current.cta = el)} className="scroll-mt-24">
-              <ToolResultCta
-                locale={lang}
-                sourceTool="fire"
-                location="result_after"
-                onDownloadPDF={handleDownloadPDF}
-              />
-            </div>
-
-            <div className="tool-cta-section grid min-w-0 gap-4">
-              <ToolCta lang={lang} type="compound" sourceTool="fire" location="result_cta" />
-              <ToolCta lang={lang} type="goal" sourceTool="fire" location="result_cta" />
-              <ToolCta lang={lang} type="dca" sourceTool="fire" location="result_cta" />
-            </div> 
-
-            {/* 하단 고정 CTA Bar */}
-            {!isExporting && (
-              <CTABar
-                locale={lang}
-                onDownloadPDF={handleDownloadPDF}
-                onShare={handleShare}
-                showDownload={false}
-                mode={"basic"}
-                alwaysVisible={true}
-                onNavigate={scrollTo}
-              />
-            )}
-          </>
         )}
         {/* ✅ 내부링크: 추천 가이드 글 5개 (SEO + 체류시간 + 내부탐색) */}
         <section className="card min-w-0 max-w-full">

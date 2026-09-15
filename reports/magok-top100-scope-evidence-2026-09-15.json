@@ -1607,7 +1607,583 @@
     "note": "Pre-fix Gangseo Top100 public props, capped at 100; not the complete monthly DB table."
   },
   "databaseValidation": {
-    "status": "EXTERNAL_DB_VALIDATION_GAP",
-    "reason": "Local read-only schema query failed with ECONNREFUSED; repository DDL, ingestion/aggregation source, and public apt_key values verified."
-  }
+    "status": "PASS",
+    "checkedAt": "2026-09-15T16:11:23.082Z",
+    "schemaColumns": [
+      {
+        "TABLE_NAME": "re_trade_apt",
+        "COLUMN_NAME": "lawd_cd",
+        "DATA_TYPE": "char",
+        "IS_NULLABLE": "NO"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt",
+        "COLUMN_NAME": "deal_ym",
+        "DATA_TYPE": "char",
+        "IS_NULLABLE": "NO"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt",
+        "COLUMN_NAME": "dong_name",
+        "DATA_TYPE": "varchar",
+        "IS_NULLABLE": "YES"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt",
+        "COLUMN_NAME": "apt_name",
+        "DATA_TYPE": "varchar",
+        "IS_NULLABLE": "NO"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_m",
+        "COLUMN_NAME": "deal_ym",
+        "DATA_TYPE": "char",
+        "IS_NULLABLE": "NO"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_m",
+        "COLUMN_NAME": "pyeong_band",
+        "DATA_TYPE": "char",
+        "IS_NULLABLE": "NO"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_m",
+        "COLUMN_NAME": "lawd_cd",
+        "DATA_TYPE": "char",
+        "IS_NULLABLE": "NO"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_m",
+        "COLUMN_NAME": "dong_name",
+        "DATA_TYPE": "varchar",
+        "IS_NULLABLE": "NO"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_m",
+        "COLUMN_NAME": "apt_name",
+        "DATA_TYPE": "varchar",
+        "IS_NULLABLE": "NO"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_m",
+        "COLUMN_NAME": "apt_key",
+        "DATA_TYPE": "varchar",
+        "IS_NULLABLE": "NO"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_m",
+        "COLUMN_NAME": "tx_count",
+        "DATA_TYPE": "int",
+        "IS_NULLABLE": "NO"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_m",
+        "COLUMN_NAME": "median_price",
+        "DATA_TYPE": "bigint",
+        "IS_NULLABLE": "YES"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_y",
+        "COLUMN_NAME": "deal_y",
+        "DATA_TYPE": "char",
+        "IS_NULLABLE": "NO"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_y",
+        "COLUMN_NAME": "pyeong_band",
+        "DATA_TYPE": "char",
+        "IS_NULLABLE": "NO"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_y",
+        "COLUMN_NAME": "lawd_cd",
+        "DATA_TYPE": "char",
+        "IS_NULLABLE": "NO"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_y",
+        "COLUMN_NAME": "dong_name",
+        "DATA_TYPE": "varchar",
+        "IS_NULLABLE": "NO"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_y",
+        "COLUMN_NAME": "apt_name",
+        "DATA_TYPE": "varchar",
+        "IS_NULLABLE": "NO"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_y",
+        "COLUMN_NAME": "apt_key",
+        "DATA_TYPE": "varchar",
+        "IS_NULLABLE": "NO"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_y",
+        "COLUMN_NAME": "tx_count",
+        "DATA_TYPE": "int",
+        "IS_NULLABLE": "NO"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_y",
+        "COLUMN_NAME": "median_price",
+        "DATA_TYPE": "bigint",
+        "IS_NULLABLE": "YES"
+      }
+    ],
+    "tables": [
+      {
+        "TABLE_NAME": "re_trade_apt"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_m"
+      },
+      {
+        "TABLE_NAME": "re_trade_apt_stats_y"
+      },
+      {
+        "TABLE_NAME": "re_trade_deal_ym"
+      }
+    ],
+    "latestYm": "202608",
+    "distinctGangseoDongs": [
+      {
+        "dong_name": "가양동",
+        "row_count": 2686,
+        "apt_count": 24,
+        "month_count": 248,
+        "latest_ym": "202608",
+        "tx_count": "12242"
+      },
+      {
+        "dong_name": "공항동",
+        "row_count": 270,
+        "apt_count": 9,
+        "month_count": 162,
+        "latest_ym": "202608",
+        "tx_count": "523"
+      },
+      {
+        "dong_name": "내발산동",
+        "row_count": 3883,
+        "apt_count": 91,
+        "month_count": 248,
+        "latest_ym": "202608",
+        "tx_count": "8646"
+      },
+      {
+        "dong_name": "등촌동",
+        "row_count": 5000,
+        "apt_count": 69,
+        "month_count": 247,
+        "latest_ym": "202608",
+        "tx_count": "13410"
+      },
+      {
+        "dong_name": "마곡동",
+        "row_count": 2602,
+        "apt_count": 37,
+        "month_count": 246,
+        "latest_ym": "202608",
+        "tx_count": "5513"
+      },
+      {
+        "dong_name": "방화동",
+        "row_count": 4938,
+        "apt_count": 64,
+        "month_count": 248,
+        "latest_ym": "202608",
+        "tx_count": "13756"
+      },
+      {
+        "dong_name": "염창동",
+        "row_count": 5846,
+        "apt_count": 72,
+        "month_count": 249,
+        "latest_ym": "202608",
+        "tx_count": "12238"
+      },
+      {
+        "dong_name": "화곡동",
+        "row_count": 8131,
+        "apt_count": 297,
+        "month_count": 249,
+        "latest_ym": "202608",
+        "tx_count": "17083"
+      }
+    ],
+    "magokExistence": {
+      "row_count": 2602,
+      "apt_count": 37,
+      "month_count": 246,
+      "latest_ym": "202608",
+      "tx_count": "5513"
+    },
+    "latestMonthMagok": {
+      "deal_ym": "202608",
+      "row_count": 11,
+      "apt_count": 11,
+      "tx_count": "15",
+      "distinct_dong_count": 1
+    },
+    "statsYMagok": {
+      "row_count": 505,
+      "apt_count": 37,
+      "latest_y": "2026",
+      "tx_count": "5535"
+    },
+    "rawTradeDongSample": [
+      {
+        "dong_name": "가양동",
+        "row_count": 12364,
+        "apt_count": 24,
+        "latest_ym": "202608"
+      },
+      {
+        "dong_name": "공항동",
+        "row_count": 528,
+        "apt_count": 9,
+        "latest_ym": "202608"
+      },
+      {
+        "dong_name": "내발산동",
+        "row_count": 8738,
+        "apt_count": 91,
+        "latest_ym": "202608"
+      },
+      {
+        "dong_name": "등촌동",
+        "row_count": 13566,
+        "apt_count": 69,
+        "latest_ym": "202608"
+      },
+      {
+        "dong_name": "마곡동",
+        "row_count": 5639,
+        "apt_count": 37,
+        "latest_ym": "202608"
+      },
+      {
+        "dong_name": "방화동",
+        "row_count": 13906,
+        "apt_count": 64,
+        "latest_ym": "202608"
+      },
+      {
+        "dong_name": "염창동",
+        "row_count": 12390,
+        "apt_count": 72,
+        "latest_ym": "202608"
+      },
+      {
+        "dong_name": "화곡동",
+        "row_count": 17281,
+        "apt_count": 297,
+        "latest_ym": "202608"
+      }
+    ],
+    "bandRegression": {
+      "selectedBand": "10",
+      "rows": 5
+    },
+    "pageVerification": {
+      "period": "202608",
+      "fromYm": "202608",
+      "toYm": "202608",
+      "rows": 11,
+      "distribution": {
+        "마곡동": 11
+      },
+      "nonMagokRows": 0,
+      "explicitNonMagokDongsAbsent": true,
+      "rowLimit": true,
+      "rangeBandMatrix": [
+        {
+          "label": "pm/all",
+          "rows": 11,
+          "distinctDongCount": 1,
+          "distribution": {
+            "마곡동": 11
+          },
+          "nonMagokRows": 0
+        },
+        {
+          "label": "m3/all",
+          "rows": 23,
+          "distinctDongCount": 1,
+          "distribution": {
+            "마곡동": 23
+          },
+          "nonMagokRows": 0
+        },
+        {
+          "label": "en/pm/all",
+          "rows": 11,
+          "distinctDongCount": 1,
+          "distribution": {
+            "마곡동": 11
+          },
+          "nonMagokRows": 0
+        },
+        {
+          "label": "pm/band=10",
+          "rows": 5,
+          "distinctDongCount": 1,
+          "distribution": {
+            "마곡동": 5
+          },
+          "nonMagokRows": 0
+        }
+      ]
+    },
+    "capturedTop100Query": {
+      "sql": "SELECT a.apt_key, a.sigungu_name, a.apt_name, a.tx_count, a.median_price, a.avg_price, a.max_price, a.sum_price, ld.latest_deal_date, ld.latest_deal_amount_man, ld.latest_area_m2, a.build_year FROM ( SELECT s.apt_key, MAX(s.sigungu_name) AS sigungu_name, MAX(s.apt_name) AS apt_name, SUM(s.tx_count) AS tx_count, /* 가중평균(근사): 월 대표값 * 월 거래량 */ CASE WHEN SUM(s.tx_count) > 0 THEN ROUND(SUM(CAST(s.median_price AS DECIMAL(20,0)) * CAST(s.tx_count AS DECIMAL(20,0))) / SUM(s.tx_count)) ELSE NULL END AS median_price, CASE WHEN SUM(s.tx_count) > 0 THEN ROUND(SUM(CAST(s.avg_price AS DECIMAL(20,0)) * CAST(s.tx_count AS DECIMAL(20,0))) / SUM(s.tx_count)) ELSE NULL END AS avg_price, MAX(s.max_price) AS max_price, SUM(CAST(s.sum_price AS DECIMAL(20,0))) AS sum_price, MAX(s.build_year) AS build_year FROM re_trade_apt_stats_m s WHERE s.deal_ym BETWEEN ? AND ? AND s.pyeong_band = ? AND (s.lawd_cd = ? AND s.dong_name = ?) AND s.median_price IS NOT NULL GROUP BY s.apt_key ) a /* ✅ 선택 기간 내에서 \"거래가 있었던\" 가장 최근 월(last_ym)의 최근거래 정보를 붙임 */ LEFT JOIN ( SELECT s2.apt_key, s2.latest_deal_date, s2.latest_deal_amount_man, s2.latest_area_m2 FROM re_trade_apt_stats_m s2 INNER JOIN ( SELECT s1.apt_key, MAX(s1.deal_ym) AS last_ym FROM re_trade_apt_stats_m s1 WHERE s1.deal_ym BETWEEN ? AND ? AND s1.pyeong_band = ? AND (s1.lawd_cd = ? AND s1.dong_name = ?) AND s1.tx_count > 0 GROUP BY s1.apt_key ) m ON m.apt_key = s2.apt_key AND m.last_ym = s2.deal_ym WHERE s2.pyeong_band = ? ) ld ON ld.apt_key = a.apt_key ORDER BY a.median_price DESC, a.tx_count DESC LIMIT ?",
+      "params": [
+        "202608",
+        "202608",
+        "all",
+        "11500",
+        "마곡동",
+        "202608",
+        "202608",
+        "all",
+        "11500",
+        "마곡동",
+        "all",
+        100
+      ]
+    },
+    "guards": {
+      "changedProtected": [],
+      "otherLandingChanged": [],
+      "protectedExperimentChanged": []
+    }
+  },
+  "verification": {
+    "checkedAt": "2026-09-15T16:11:21.669Z",
+    "result": "PASS_MAGOK_SCOPE_FIXED",
+    "mode": "Actual page getServerSideProps and shared query helper transpiled by Next SWC; real SQL executed on in-memory SQLite public/synthetic fixtures. Live MySQL not tested.",
+    "protectedFiles": 184,
+    "changedProtected": [],
+    "sourceDelta": "Only regionWhereSql and regionParams changed",
+    "publicSampleBefore": {
+      "마곡동": 11,
+      "화곡동": 9,
+      "염창동": 20,
+      "내발산동": 9,
+      "등촌동": 20,
+      "가양동": 8,
+      "방화동": 21,
+      "공항동": 2
+    },
+    "publicSampleAfter": {
+      "마곡동": 11
+    },
+    "afterRows": 11,
+    "returnedDongDistinct": 1,
+    "nonMagokRows": 0,
+    "sampleNote": "11 rows is the filtered public sample count, not a prediction of the complete post-deployment query result.",
+    "sql": "\n    SELECT\n      a.apt_key,\n      a.sigungu_name,\n      a.apt_name,\n      a.tx_count,\n      a.median_price,\n      a.avg_price,\n      a.max_price,\n      a.sum_price,\n      ld.latest_deal_date,\n      ld.latest_deal_amount_man,\n      ld.latest_area_m2,\n      a.build_year\n    FROM (\n      SELECT\n        s.apt_key,\n        MAX(s.sigungu_name) AS sigungu_name,\n        MAX(s.apt_name) AS apt_name,\n        SUM(s.tx_count) AS tx_count,\n\n        /* 가중평균(근사): 월 대표값 * 월 거래량 */\n        CASE\n          WHEN SUM(s.tx_count) > 0 THEN\n            ROUND(SUM(CAST(s.median_price AS DECIMAL(20,0)) * CAST(s.tx_count AS DECIMAL(20,0))) / SUM(s.tx_count))\n          ELSE NULL\n        END AS median_price,\n\n        CASE\n          WHEN SUM(s.tx_count) > 0 THEN\n            ROUND(SUM(CAST(s.avg_price AS DECIMAL(20,0)) * CAST(s.tx_count AS DECIMAL(20,0))) / SUM(s.tx_count))\n          ELSE NULL\n        END AS avg_price,\n\n        MAX(s.max_price) AS max_price,\n        SUM(CAST(s.sum_price AS DECIMAL(20,0))) AS sum_price,\n        MAX(s.build_year) AS build_year\n      FROM re_trade_apt_stats_m s\n      WHERE s.deal_ym BETWEEN ? AND ?\n        AND s.pyeong_band = ?\n        AND (s.lawd_cd = ? AND s.dong_name = ?)\n        AND s.median_price IS NOT NULL\n      GROUP BY s.apt_key\n    ) a\n    /* ✅ 선택 기간 내에서 \"거래가 있었던\" 가장 최근 월(last_ym)의 최근거래 정보를 붙임 */\n    LEFT JOIN (\n      SELECT\n        s2.apt_key,\n        s2.latest_deal_date,\n        s2.latest_deal_amount_man, \n         s2.latest_area_m2\n      FROM re_trade_apt_stats_m s2\n      INNER JOIN (\n        SELECT\n          s1.apt_key,\n          MAX(s1.deal_ym) AS last_ym\n        FROM re_trade_apt_stats_m s1\n        WHERE s1.deal_ym BETWEEN ? AND ?\n          AND s1.pyeong_band = ?\n          AND (s1.lawd_cd = ? AND s1.dong_name = ?)\n          AND s1.tx_count > 0\n        GROUP BY s1.apt_key\n      ) m\n        ON m.apt_key = s2.apt_key\n       AND m.last_ym = s2.deal_ym\n      WHERE s2.pyeong_band = ?\n    ) ld\n      ON ld.apt_key = a.apt_key\n    ORDER BY a.median_price DESC, a.tx_count DESC\n    LIMIT ?\n  ",
+    "params": [
+      "202608",
+      "202608",
+      "all",
+      "11500",
+      "마곡동",
+      "202608",
+      "202608",
+      "all",
+      "11500",
+      "마곡동",
+      "all",
+      100
+    ],
+    "matrix": [
+      {
+        "range": "pm",
+        "band": "all",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "pm",
+        "band": "10",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "pm",
+        "band": "20",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "pm",
+        "band": "30",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "pm",
+        "band": "40",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "pm",
+        "band": "50",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "m3",
+        "band": "all",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "m3",
+        "band": "10",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "m3",
+        "band": "20",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "m3",
+        "band": "30",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "m3",
+        "band": "40",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "m3",
+        "band": "50",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "m6",
+        "band": "all",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "m6",
+        "band": "10",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "m6",
+        "band": "20",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "m6",
+        "band": "30",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "m6",
+        "band": "40",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "m6",
+        "band": "50",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "y1",
+        "band": "all",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "y1",
+        "band": "10",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "y1",
+        "band": "20",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "y1",
+        "band": "30",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "y1",
+        "band": "40",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "y1",
+        "band": "50",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "ytd",
+        "band": "all",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "ytd",
+        "band": "10",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "ytd",
+        "band": "20",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "ytd",
+        "band": "30",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "ytd",
+        "band": "40",
+        "rows": 11,
+        "nonMagok": 0
+      },
+      {
+        "range": "ytd",
+        "band": "50",
+        "rows": 11,
+        "nonMagok": 0
+      }
+    ],
+    "englishScope": "PASS",
+    "multiMonthLatestJoin": "PASS",
+    "filterBeforeLimit": "PASS",
+    "emptyScope": "PASS"
+  },
+  "finalVerdict": "PASS_MAGOK_SCOPE_FIXED"
 }

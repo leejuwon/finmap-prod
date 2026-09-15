@@ -545,11 +545,11 @@ export default function GoalSimulatorPage() {
     () => ({
       title:
         locale === 'ko'
-          ? '목표자산 도달 계산기 | 매달 얼마 투자해야 할까?'
+          ? '목표자산·목표 금액 계산기 | 매달 얼마 투자해야 할까?'
           : 'Investment Goal Calculator: How Much to Invest Per Month',
       desc:
         locale === 'ko'
-          ? '현재 자산·월 적립금·수익률·기간·세금·수수료를 반영해 목표 자산까지의 성장 경로를 시뮬레이션합니다. 공유 및 PDF 저장 지원.'
+          ? '목표 금액까지 필요한 월 투자액, 기간, 수익률을 현재 자산·세금·수수료 가정과 함께 계산합니다.'
           : 'Calculate how much to invest per month to reach a target amount. Simulate current assets, contributions, expected return, years, taxes, fees, inflation, and PDF export.',
       chartTitle:
         locale === 'ko'
@@ -571,11 +571,11 @@ export default function GoalSimulatorPage() {
       // 🔹 상단 설명 섹션
       introTitle:
         locale === 'ko'
-          ? '목표 자산 시뮬레이터로 무엇을 할 수 있나요?'
+          ? '목표 금액까지 매달 얼마가 필요할까요?'
           : 'How much should I invest per month to reach a goal?',
       introLead:
         locale === 'ko'
-          ? '“언제까지 얼마를 모으고 싶은지” 목표를 세우고, 지금 자산·적립액·수익률을 기준으로 경로를 그려볼 수 있습니다.'
+          ? '목표자산과 기간을 정하면 지금 자산·월 투자액·수익률을 기준으로 필요한 금액과 도달 경로를 계산합니다.'
           : 'Use this investment goal calculator to set a target amount and deadline, then solve the monthly contribution, time horizon, or return needed to get there. It connects goal planning with DCA, compound interest, CAGR, and FIRE calculators.',
       introBullet1:
         locale === 'ko'
@@ -789,7 +789,7 @@ export default function GoalSimulatorPage() {
             },
             {
               q: '세금·수수료 옵션은 어떻게 적용되나요?',
-              a: '세금 적용을 켜면 기본값으로 이자소득세 15.4%를, 수수료 적용을 켜면 기본값으로 연 0.5% 수준의 보수/수수료를 사용합니다. 세율·수수료율 입력창에서 0%~원하는 값으로 직접 조정할 수 있습니다. 실제 금융상품의 세율·수수료와는 다를 수 있으니 참고용으로만 사용하세요.',
+              a: '세율 입력값은 투자 수익에 대한 단순 차감 가정으로, 연 수수료율 입력값은 매년 수익률에서 차감되는 비용 가정으로 사용합니다. 기본값은 세율 15.4%, 연 수수료율 0.5%이며, 0%부터 원하는 값으로 직접 조정할 수 있습니다. 실제 금융상품의 세율·수수료와는 다를 수 있으니 참고용으로만 사용하세요.',
             },
             {
               q: '목표 자산이 너무 크거나 기간이 너무 짧으면 어떻게 보나요?',

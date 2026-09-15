@@ -8,9 +8,36 @@ const { execFileSync } = require("node:child_process");
 const ROOT = path.resolve(__dirname, "..");
 const TARGET = "pages/market/real-estate/magok-top100.js";
 const EVIDENCE = path.join(ROOT, "reports/magok-top100-scope-evidence-2026-09-15.json");
+const REPORT = path.join(ROOT, "reports/magok-top100-data-scope-fix-2026-09-15.md");
 const PUBLIC_PROPS = path.join(ROOT, ".next/real-estate-p1-public-props.json");
 const PRIOR_AUDIT = path.join(ROOT, "reports/naver-real-estate-dashboard-p1-evidence-2026-09-15.json");
 const MAGOK = "마곡동";
+const LAWD = "11500";
+const NON_MAGOK_CHECK_DONGS = ["화곡동", "염창동", "내발산동", "등촌동", "가양동", "방화동", "공항동"];
+const OTHER_LANDING_FILES = [
+  "pages/market/real-estate/seoul-top100.js",
+  "pages/market/real-estate/gangnam-top100.js",
+  "pages/market/real-estate/gangnam3-top100.js",
+  "pages/market/real-estate/mayongseong-top100.js",
+  "pages/market/real-estate/songpa-top100.js",
+  "pages/market/real-estate/songpa-gangnam-top100.js",
+];
+const PROTECTED_EXPERIMENT_PATHS = [
+  "pages/tools/dsr-ltv-calculator.js",
+  "pages/tools/home-buying-budget-calculator.js",
+  "pages/tools/compound-calculator.js",
+  "pages/tools/dca-calculator.js",
+  "pages/tools/cagr-calculator.js",
+  "pages/tools/fire-calculator.js",
+  "pages/tools/goal-simulator.js",
+  "_components/DsrLtvCalculator.js",
+  "_components/MortgageLoanCalculator.js",
+  "_components/CompoundForm.js",
+  "_components/DcaForm.js",
+  "_components/CagrForm.js",
+  "_components/FireForm.js",
+  "_components/GoalForm.js",
+];
 const beforeCondition = 'regionWhereSql: "s.lawd_cd  = ?",';
 const afterCondition = 'regionWhereSql: "s.lawd_cd = ? AND s.dong_name = ?",';
 const beforeParams = "regionParams: [REGION.lawd],";
@@ -19,12 +46,69 @@ const read = (p) => fs.readFileSync(path.resolve(ROOT, p), "utf8");
 const hash = (p) => crypto.createHash("sha256").update(fs.readFileSync(path.resolve(ROOT, p))).digest("hex");
 const save = (data) => fs.writeFileSync(EVIDENCE, `${JSON.stringify(data, null, 2)}\n`);
 
+function compactSql(sql) {
+  return String(sql || "").replace(/\s+/g, " ").trim();
+}
+
+function assertReadOnlySql(sql) {
+  const normalized = compactSql(sql);
+  assert.match(normalized, /^(SELECT|SHOW)\b/i, "Only read-only SQL is allowed in this verification");
+  assert.doesNotMatch(normalized, /\b(INSERT|UPDATE|DELETE|DROP|TRUNCATE|ALTER|CREATE|REPLACE)\b/i, "Write-capable SQL is forbidden");
+}
+
+async function queryReadOnly(pool, sql, params = []) {
+  assertReadOnlySql(sql);
+  const [rows] = await pool.query(sql, params);
+  return JSON.parse(JSON.stringify(rows || []));
+}
+
+function loadEnvQuietly() {
+  try {
+    const dotenv = require("dotenv");
+    for (const file of [".env.local", ".env.production", ".env"]) {
+      const full = path.join(ROOT, file);
+      if (fs.existsSync(full)) dotenv.config({ path: full, override: false, quiet: true });
+    }
+  } catch {}
+}
+
 function distribution(rows) {
   return rows.reduce((counts, row) => {
     const dong = row.apt_key.split("|")[2];
     counts[dong] = (counts[dong] || 0) + 1;
     return counts;
   }, {});
+}
+
+function rowsDistribution(rows) {
+  return (rows || []).reduce((acc, row) => {
+    const dong = String(row.apt_key || "").split("|")[2] || row.dong_name || "";
+    if (!dong) return acc;
+    acc[dong] = (acc[dong] || 0) + 1;
+    return acc;
+  }, {});
+}
+
+function markdownTable(headers, rows) {
+  const safe = (v) => String(v == null ? "" : v).replace(/\|/g, "\\|");
+  return [
+    `| ${headers.map(safe).join(" | ")} |`,
+    `| ${headers.map(() => "---").join(" | ")} |`,
+    ...(rows || []).map((row) => `| ${row.map(safe).join(" | ")} |`),
+  ].join("\n");
+}
+
+function extractLine(source, pattern) {
+  return String(source || "").split(/\r?\n/).find((line) => line.includes(pattern))?.trim() || "";
+}
+
+function sourceGuardSummary(evidence) {
+  const changedProtected = Object.entries(evidence.baseline.protectedHashes)
+    .filter(([p, digest]) => hash(p) !== digest)
+    .map(([p]) => p);
+  const otherLandingChanged = OTHER_LANDING_FILES.filter((p) => evidence.baseline.protectedHashes[p] && hash(p) !== evidence.baseline.protectedHashes[p]);
+  const protectedExperimentChanged = PROTECTED_EXPERIMENT_PATHS.filter((p) => fs.existsSync(path.join(ROOT, p)) && evidence.baseline.protectedHashes[p] && hash(p) !== evidence.baseline.protectedHashes[p]);
+  return { changedProtected, otherLandingChanged, protectedExperimentChanged };
 }
 
 function capture() {
@@ -74,6 +158,372 @@ async function compile(source, imports = {}) {
   return module.exports;
 }
 
+async function compilePage(source, imports = {}) {
+  const defaultName = String(source).match(/export default function\s+([A-Za-z0-9_]+)/)?.[1] || "MagokTop100Page";
+  const cjsSource = String(source)
+    .replace(
+      /import RealEstateTop100Landing from "\.\.\/\.\.\/\.\.\/_components\/RealEstateTop100Landing";/,
+      'const RealEstateTop100Landing = require("../../../_components/RealEstateTop100Landing").default || require("../../../_components/RealEstateTop100Landing");'
+    )
+    .replace(
+      /import \{ jsonSafe \} from "\.\.\/\.\.\/\.\.\/lib\/jsonSafe";/,
+      'const { jsonSafe } = require("../../../lib/jsonSafe");'
+    )
+    .replace(
+      /import \{ calcRangeFromLatestYm, fetchTop100Rows \} from "\.\.\/\.\.\/\.\.\/lib\/reTop100Landing";/,
+      'const { calcRangeFromLatestYm, fetchTop100Rows } = require("../../../lib/reTop100Landing");'
+    )
+    .replace(/export default function\s+([A-Za-z0-9_]+)/, "function $1")
+    .replace(/export async function getServerSideProps/, "async function __verifyGetServerSideProps");
+  return compile(`${cjsSource}\nmodule.exports.default = ${defaultName};\nmodule.exports.getServerSideProps = __verifyGetServerSideProps;\n`, imports);
+}
+
+async function compileMagokPageWithPool(pool) {
+  const helper = await compile(read("lib/reTop100Landing.js"));
+  return compilePage(read(TARGET), {
+    "../../../lib/reTop100Landing": helper,
+    "../../../lib/jsonSafe": await compile(read("lib/jsonSafe.js")),
+    "../../../lib/db": { pool },
+    "../../../_components/RealEstateTop100Landing": { default: (props) => ({ props }) },
+  });
+}
+
+function assertMagokOnly(label, rows) {
+  const d = rowsDistribution(rows);
+  const nonMagok = Object.keys(d).filter((dong) => dong !== MAGOK);
+  assert.ok((rows || []).length > 0, `${label}: returned rows must be > 0`);
+  assert.deepEqual(nonMagok, [], `${label}: non-Magok rows returned`);
+  for (const dong of NON_MAGOK_CHECK_DONGS) assert.equal(d[dong] || 0, 0, `${label}: ${dong} must not be returned`);
+  return { label, rows: rows.length, distinctDongCount: Object.keys(d).length, distribution: d, nonMagokRows: 0 };
+}
+
+async function runPageGssp(page, query = {}, locale = "ko") {
+  const result = await page.getServerSideProps({
+    query: { nocache: "1", ...query },
+    locale,
+    res: { setHeader() {} },
+  });
+  return JSON.parse(JSON.stringify(result.props));
+}
+
+async function verifyLiveDb(evidence) {
+  loadEnvQuietly();
+  process.env.DB_BOOT_CHECK = "false";
+  const { pool } = require("../lib/db");
+  const capturedQueries = [];
+  const readPool = {
+    query: async (sql, params = []) => {
+      assertReadOnlySql(sql);
+      capturedQueries.push({ sql: compactSql(sql), params: JSON.parse(JSON.stringify(params || [])) });
+      return pool.query(sql, params);
+    },
+  };
+
+  try {
+    const db = {};
+    db.checkedAt = new Date().toISOString();
+    db.schemaColumns = await queryReadOnly(readPool, `
+      SELECT TABLE_NAME, COLUMN_NAME, DATA_TYPE, IS_NULLABLE
+      FROM INFORMATION_SCHEMA.COLUMNS
+      WHERE TABLE_SCHEMA = DATABASE()
+        AND TABLE_NAME IN ('re_trade_apt_stats_m', 're_trade_apt_stats_y', 're_trade_apt')
+        AND COLUMN_NAME IN ('deal_ym', 'deal_y', 'pyeong_band', 'lawd_cd', 'dong_name', 'apt_key', 'apt_name', 'tx_count', 'median_price')
+      ORDER BY TABLE_NAME, ORDINAL_POSITION
+    `);
+
+    db.tables = await queryReadOnly(readPool, `
+      SELECT TABLE_NAME
+      FROM INFORMATION_SCHEMA.TABLES
+      WHERE TABLE_SCHEMA = DATABASE()
+        AND TABLE_NAME IN ('re_trade_deal_ym', 're_trade_apt_stats_m', 're_trade_apt_stats_y', 're_trade_apt')
+      ORDER BY TABLE_NAME
+    `);
+    const tableSet = new Set(db.tables.map((r) => r.TABLE_NAME));
+    assert.ok(tableSet.has("re_trade_deal_ym"), "re_trade_deal_ym table is required");
+    assert.ok(tableSet.has("re_trade_apt_stats_m"), "re_trade_apt_stats_m table is required");
+
+    const latestRows = await queryReadOnly(readPool, `SELECT MAX(deal_ym) AS max_ym FROM re_trade_deal_ym`);
+    db.latestYm = String(latestRows?.[0]?.max_ym || "").trim();
+    assert.match(db.latestYm, /^\d{6}$/, "latestYm must be YYYYMM");
+
+    db.distinctGangseoDongs = await queryReadOnly(readPool, `
+      SELECT
+        dong_name,
+        COUNT(*) AS row_count,
+        COUNT(DISTINCT apt_key) AS apt_count,
+        COUNT(DISTINCT deal_ym) AS month_count,
+        MAX(deal_ym) AS latest_ym,
+        SUM(tx_count) AS tx_count
+      FROM re_trade_apt_stats_m
+      WHERE lawd_cd = ?
+        AND pyeong_band = 'all'
+      GROUP BY dong_name
+      ORDER BY dong_name
+    `, [LAWD]);
+
+    const gangseoDongNames = db.distinctGangseoDongs.map((r) => r.dong_name);
+    assert.ok(gangseoDongNames.includes(MAGOK), "Gangseo stats must include Magok-dong");
+    assert.ok(NON_MAGOK_CHECK_DONGS.some((dong) => gangseoDongNames.includes(dong)), "Gangseo stats should contain non-Magok dongs for scope contrast");
+
+    db.magokExistence = (await queryReadOnly(readPool, `
+      SELECT
+        COUNT(*) AS row_count,
+        COUNT(DISTINCT apt_key) AS apt_count,
+        COUNT(DISTINCT deal_ym) AS month_count,
+        MAX(deal_ym) AS latest_ym,
+        SUM(tx_count) AS tx_count
+      FROM re_trade_apt_stats_m
+      WHERE lawd_cd = ?
+        AND dong_name = ?
+        AND pyeong_band = 'all'
+    `, [LAWD, MAGOK]))[0];
+    assert.ok(Number(db.magokExistence.row_count) > 0, "Magok rows must exist in re_trade_apt_stats_m");
+
+    db.latestMonthMagok = (await queryReadOnly(readPool, `
+      SELECT
+        deal_ym,
+        COUNT(*) AS row_count,
+        COUNT(DISTINCT apt_key) AS apt_count,
+        SUM(tx_count) AS tx_count,
+        COUNT(DISTINCT dong_name) AS distinct_dong_count
+      FROM re_trade_apt_stats_m
+      WHERE lawd_cd = ?
+        AND dong_name = ?
+        AND pyeong_band = 'all'
+        AND deal_ym = ?
+      GROUP BY deal_ym
+    `, [LAWD, MAGOK, db.latestYm]))[0] || null;
+    assert.ok(db.latestMonthMagok && Number(db.latestMonthMagok.row_count) > 0, "Latest month Magok rows must exist");
+    assert.equal(Number(db.latestMonthMagok.distinct_dong_count), 1, "Latest month Magok rows must have exactly one dong_name");
+
+    if (tableSet.has("re_trade_apt_stats_y")) {
+      db.statsYMagok = (await queryReadOnly(readPool, `
+        SELECT
+          COUNT(*) AS row_count,
+          COUNT(DISTINCT apt_key) AS apt_count,
+          MAX(deal_y) AS latest_y,
+          SUM(tx_count) AS tx_count
+        FROM re_trade_apt_stats_y
+        WHERE lawd_cd = ?
+          AND dong_name = ?
+          AND pyeong_band = 'all'
+      `, [LAWD, MAGOK]))[0];
+    }
+
+    if (tableSet.has("re_trade_apt")) {
+      db.rawTradeDongSample = await queryReadOnly(readPool, `
+        SELECT
+          dong_name,
+          COUNT(*) AS row_count,
+          COUNT(DISTINCT apt_name) AS apt_count,
+          MAX(deal_ym) AS latest_ym
+        FROM re_trade_apt
+        WHERE lawd_cd = ?
+        GROUP BY dong_name
+        ORDER BY dong_name
+      `, [LAWD]);
+    }
+
+    const page = await compileMagokPageWithPool(readPool);
+    const pm = await runPageGssp(page, {}, "ko");
+    const m3 = await runPageGssp(page, { range: "m3" }, "ko");
+    const en = await runPageGssp(page, {}, "en");
+    const matrix = [assertMagokOnly("pm/all", pm.rows), assertMagokOnly("m3/all", m3.rows), assertMagokOnly("en/pm/all", en.rows)];
+
+    const bandCandidates = await queryReadOnly(readPool, `
+      SELECT
+        pyeong_band,
+        COUNT(*) AS row_count,
+        COUNT(DISTINCT apt_key) AS apt_count
+      FROM re_trade_apt_stats_m
+      WHERE lawd_cd = ?
+        AND dong_name = ?
+        AND deal_ym BETWEEN ? AND ?
+        AND pyeong_band <> 'all'
+      GROUP BY pyeong_band
+      HAVING row_count > 0
+      ORDER BY row_count DESC, pyeong_band
+      LIMIT 1
+    `, [LAWD, MAGOK, pm.fromYm, pm.toYm]);
+    if (bandCandidates[0]?.pyeong_band) {
+      const bandProps = await runPageGssp(page, { band: bandCandidates[0].pyeong_band }, "ko");
+      matrix.push(assertMagokOnly(`pm/band=${bandCandidates[0].pyeong_band}`, bandProps.rows));
+      db.bandRegression = { selectedBand: bandCandidates[0].pyeong_band, rows: bandProps.rows.length };
+    } else {
+      db.bandRegression = { selectedBand: null, skipped: "No non-all pyeong_band rows for latest Magok range" };
+    }
+
+    const latestTopRows = pm.rows || [];
+    db.pageVerification = {
+      period: pm.period,
+      fromYm: pm.fromYm,
+      toYm: pm.toYm,
+      rows: latestTopRows.length,
+      distribution: rowsDistribution(latestTopRows),
+      nonMagokRows: Object.entries(rowsDistribution(latestTopRows)).filter(([dong]) => dong !== MAGOK).reduce((sum, [, count]) => sum + count, 0),
+      explicitNonMagokDongsAbsent: NON_MAGOK_CHECK_DONGS.every((dong) => !(rowsDistribution(latestTopRows)[dong] > 0)),
+      rowLimit: latestTopRows.length <= 100,
+      rangeBandMatrix: matrix,
+    };
+    assert.equal(db.pageVerification.nonMagokRows, 0, "Page result must not include non-Magok rows");
+    assert.ok(db.pageVerification.rowLimit, "Page result must respect Top100 limit");
+
+    const topQuery = capturedQueries.find((q) => q.sql.includes("FROM re_trade_apt_stats_m s") && q.sql.includes("LIMIT ?"));
+    assert.ok(topQuery, "Expected to capture Top100 SQL");
+    assert.match(topQuery.sql, /s\.lawd_cd = \? AND s\.dong_name = \?/);
+    assert.match(topQuery.sql, /s1\.lawd_cd = \? AND s1\.dong_name = \?/);
+    assert.ok(!topQuery.sql.includes(MAGOK), "Dong value must be parameter-bound");
+    db.capturedTop100Query = { sql: topQuery.sql, params: topQuery.params };
+
+    const guards = sourceGuardSummary(evidence);
+    assert.deepEqual(guards.otherLandingChanged, [], "Other Top100 landing files changed");
+    assert.deepEqual(guards.protectedExperimentChanged, [], "Protected experiment/calculator files changed");
+    db.guards = guards;
+
+    evidence.databaseValidation = { status: "PASS", ...db };
+    evidence.finalVerdict = "PASS_MAGOK_SCOPE_FIXED";
+    save(evidence);
+    return evidence;
+  } catch (error) {
+    evidence.databaseValidation = {
+      status: "BLOCKED_DB_VALIDATION_REQUIRED",
+      checkedAt: new Date().toISOString(),
+      error: error.message,
+    };
+    evidence.finalVerdict = "BLOCKED_DB_VALIDATION_REQUIRED";
+    save(evidence);
+    throw error;
+  } finally {
+    await pool.end().catch(() => {});
+  }
+}
+
+function writeReport(evidence) {
+  const current = read(TARGET);
+  const original = evidence.baseline?.targetSource || "";
+  const db = evidence.databaseValidation || {};
+  const verification = evidence.verification || {};
+  const guards = db.guards || sourceGuardSummary(evidence);
+  const distinctRows = (db.distinctGangseoDongs || []).map((r) => [
+    r.dong_name,
+    r.row_count,
+    r.apt_count,
+    r.month_count,
+    r.latest_ym,
+    r.tx_count,
+  ]);
+  const matrixRows = (db.pageVerification?.rangeBandMatrix || []).map((r) => [
+    r.label,
+    r.rows,
+    r.distinctDongCount,
+    JSON.stringify(r.distribution),
+    r.nonMagokRows,
+  ]);
+  const finalVerdict = evidence.finalVerdict || (db.status === "PASS" ? "PASS_MAGOK_SCOPE_FIXED" : "BLOCKED_DB_VALIDATION_REQUIRED");
+  const report = `# Magok Top100 Data Scope Fix - 2026-09-15
+
+## 1. Final Verdict
+
+${finalVerdict}
+
+## 2. Previous Root Cause
+
+\`/market/real-estate/magok-top100\` used only \`s.lawd_cd = ?\`, so the Top100 query selected all Gangseo-gu rows. The intended page scope is Gangseo-gu Magok-dong.
+
+## 3. DB Schema Verification
+
+- Main source table: \`re_trade_apt_stats_m\`
+- Verified columns include \`lawd_cd\`, \`dong_name\`, \`apt_key\`, \`deal_ym\`, \`pyeong_band\`, \`tx_count\`, and \`median_price\`.
+- Live DB validation status: \`${db.status || "UNKNOWN"}\`
+
+## 4. Distinct Gangseo Dong Values
+
+${distinctRows.length ? markdownTable(["dong_name", "rows", "apt_count", "months", "latest_ym", "tx_count"], distinctRows) : "- Not available"}
+
+## 5. Magok Data Existence
+
+\`\`\`json
+${JSON.stringify(db.magokExistence || null, null, 2)}
+\`\`\`
+
+## 6. Before SQL
+
+\`\`\`js
+${extractLine(original, "regionWhereSql") || beforeCondition}
+${extractLine(original, "regionParams") || beforeParams}
+\`\`\`
+
+## 7. After SQL
+
+\`\`\`js
+${extractLine(current, "regionWhereSql")}
+${extractLine(current, "regionParams")}
+\`\`\`
+
+## 8. Parameter Binding
+
+- \`REGION.dongName = "마곡동"\`
+- Captured SQL uses placeholders for both \`s.lawd_cd\` and \`s.dong_name\`.
+- Captured params:
+
+\`\`\`json
+${JSON.stringify(db.capturedTop100Query?.params || verification.params || [], null, 2)}
+\`\`\`
+
+## 9. Latest Month Verification
+
+\`\`\`json
+${JSON.stringify({ latestYm: db.latestYm, latestMonthMagok: db.latestMonthMagok, page: db.pageVerification ? { period: db.pageVerification.period, fromYm: db.pageVerification.fromYm, toYm: db.pageVerification.toYm } : null }, null, 2)}
+\`\`\`
+
+## 10. Range / Area Verification
+
+${matrixRows.length ? markdownTable(["case", "rows", "distinct_dongs", "distribution", "non_magok"], matrixRows) : "- Not available"}
+
+## 11. Returned Dong Distribution
+
+\`\`\`json
+${JSON.stringify(db.pageVerification?.distribution || verification.publicSampleAfter || {}, null, 2)}
+\`\`\`
+
+## 12. Magok Row Count
+
+- Returned rows: ${db.pageVerification?.rows ?? verification.afterRows ?? "unknown"}
+- Non-Magok rows: ${db.pageVerification?.nonMagokRows ?? verification.nonMagokRows ?? "unknown"}
+- Top100 limit respected: ${db.pageVerification?.rowLimit === true ? "yes" : "unknown"}
+
+## 13. Other Landing Integrity
+
+- Other landing files changed: ${guards.otherLandingChanged?.length ? guards.otherLandingChanged.join(", ") : "none"}
+- Protected hashed files changed: ${guards.changedProtected?.length ? guards.changedProtected.join(", ") : "none"}
+
+## 14. Files Changed
+
+- \`pages/market/real-estate/magok-top100.js\`: scope condition changed from Gangseo-gu only to Gangseo-gu + Magok-dong.
+- \`scripts/verify_magok_top100_scope.js\`: added live DB validation and report generation.
+- \`reports/magok-top100-scope-evidence-2026-09-15.json\`: validation evidence.
+- \`reports/magok-top100-data-scope-fix-2026-09-15.md\`: this report.
+
+## 15. Protected Experiment Integrity
+
+- Protected calculator/search experiment files changed: ${guards.protectedExperimentChanged?.length ? guards.protectedExperimentChanged.join(", ") : "none"}
+
+## 16. Build / SSR Verification
+
+- Source/fixture verification: ${verification.result || "pending"}
+- Live DB SSR getServerSideProps verification: ${db.status === "PASS" ? "PASS" : "pending/blocked"}
+- \`npm.cmd run build\`: pending
+- \`node scripts/verify_naver_real_estate_dashboard_p1.js\`: pending
+- \`git diff --check\`: pending
+
+## 17. Remaining Risks
+
+- The Top100 page intentionally shows fewer than 100 rows if Magok-dong has fewer eligible rows for the selected range/band.
+- This fix does not alter other real-estate landing pages, calculators, canonical URLs, hreflang, sitemap, robots, or redirects.
+`;
+  fs.writeFileSync(REPORT, report);
+}
+
 async function verify() {
   const evidence = JSON.parse(read(EVIDENCE));
   const current = read(TARGET);
@@ -118,8 +568,8 @@ async function verify() {
       "../../../lib/db": { pool },
       "../../../_components/RealEstateTop100Landing": { default: () => null },
     };
-    const oldPage = await compile(original, imports);
-    const page = await compile(current, imports);
+    const oldPage = await compilePage(original, imports);
+    const page = await compilePage(current, imports);
     async function run(mod, query = {}, locale = "ko") {
       const result = await mod.getServerSideProps({ query: { nocache: "1", ...query }, locale, res: { setHeader() {} } });
       return JSON.parse(JSON.stringify(result.props));
@@ -188,7 +638,34 @@ async function verify() {
     };
     save(evidence);
     console.log(JSON.stringify({ result: evidence.verification.result, before: distribution(before.rows), after: distribution(after.rows), rangeBandCases: matrix.length, protectedFiles: evidence.verification.protectedFiles, changedProtected: changed, englishScope: "PASS", multiMonthLatestJoin: "PASS", filterBeforeLimit: "PASS", emptyScope: "PASS", database: evidence.databaseValidation.status }, null, 2));
+    return evidence;
   } finally { db.close(); }
 }
 
-Promise.resolve().then(() => process.argv.includes("--capture-baseline") ? capture() : verify()).catch((error) => { console.error(error.message); process.exitCode = 1; });
+async function main() {
+  if (process.argv.includes("--capture-baseline")) {
+    capture();
+    return;
+  }
+  let evidence = await verify();
+  if (!process.argv.includes("--fixture-only")) {
+    evidence = await verifyLiveDb(evidence);
+    writeReport(evidence);
+    console.log(JSON.stringify({
+      result: evidence.finalVerdict,
+      liveDb: evidence.databaseValidation.status,
+      latestYm: evidence.databaseValidation.latestYm,
+      returnedRows: evidence.databaseValidation.pageVerification?.rows,
+      returnedDongDistribution: evidence.databaseValidation.pageVerification?.distribution,
+      report: path.relative(ROOT, REPORT),
+    }, null, 2));
+  }
+}
+
+Promise.resolve().then(main).catch((error) => {
+  try {
+    if (fs.existsSync(EVIDENCE)) writeReport(JSON.parse(fs.readFileSync(EVIDENCE, "utf8")));
+  } catch {}
+  console.error(error.stack || error.message);
+  process.exitCode = 1;
+});
