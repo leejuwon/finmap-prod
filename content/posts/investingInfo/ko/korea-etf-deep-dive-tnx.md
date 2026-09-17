@@ -5,7 +5,7 @@ description: "한국 ETF가 글로벌 ETF 중에서도 금리·환율·유동성
 seoTitle: "한국 ETF가 TNX에 민감한 이유: 환율, 외국인 수급, 반도체 구조"
 seoDescription: "한국 ETF가 미국 금리와 달러, 원달러 환율, 외국인 수급에 크게 흔들리는 구조적 이유를 심화 분석합니다."
 datePublished: "2025-12-01"
-dateModified: "2025-12-01"
+dateModified: "2026-09-16"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["한국ETF", "EWY", "KOSPI", "TNX", "DXY", "KRW", "반도체ETF", "ETF매크로"]
@@ -214,6 +214,8 @@ lang: "ko"
 </div>
 
 함께 읽으면 좋은 글:
+한국 ETF를 해석할 때는 [TNX·환율·코스피 흐름](/market/indices)에서 미국 10년물 금리, USD/KRW, 코스피를 함께 보며 외국인 수급 부담이 커지는 조합인지 점검하세요.
+
 - [미국 10년물 금리(TNX)는 왜 ETF를 뒤흔드는가?](/posts/investingInfo/etf-impact-of-tnx)
 - [DXY(달러인덱스)란 무엇인가? 투자자가 꼭 알아야 할 의미 정리](/posts/investingInfo/dxy-dollar-index-basics)
 - [원달러 환율이 한국 경제와 코스피에 미치는 영향](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
@@ -241,17 +243,4 @@ KOSPI는 반도체 비중이 코어 구조이기 때문에 업황 변화가 ETF 
 - [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
 - [시장정보 지표를 투자 판단에 연결하는 방법 보기](/posts/investingInfo/indicator-marketinfo)
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "왜 한국 ETF는 TNX에 가장 민감한가",
-  "description": "한국 ETF가 TNX·환율·성장주 구조로 인해 글로벌 시장 중 가장 민감한 이유를 분석하는 심화편.",
-  "datePublished": "2025-12-01",
-  "dateModified": "2025-12-01",
-  "author": { "@type": "Person", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" }
-}
-</script>
 

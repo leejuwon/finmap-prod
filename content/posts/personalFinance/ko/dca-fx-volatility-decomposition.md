@@ -4,7 +4,7 @@ link: "/posts/personalFinance/dca-fx-volatility-decomposition"
 title: "해외자산 DCA에서 ‘수익률 변동’과 ‘환율 변동’을 분리해 읽는 법: 한국 사용자용 운영 규칙(불안·중단 방지)"
 description: "해외자산 DCA의 원화 수익률을 달러 기준 자산수익률과 USD/KRW 환율 효과로 분해하고, 환율 스트레스에도 중단을 줄이는 운영 규칙과 숫자 예시를 정리합니다."
 datePublished: "2026-01-26"
-dateModified: "2026-06-23"
+dateModified: "2026-09-16"
 category: "재테크"
 postCategory: "personalFinance"
 tags: ["해외자산", "DCA", "적립식", "환율", "USD/KRW", "원화수익률", "변동성", "불안관리", "투자규칙", "리밸런싱"]
@@ -322,52 +322,9 @@ DCA를 무너뜨리는 건 시장이 아니라 “불안한 달의 행동”입�
 ## 함께 보면 좋은 글/도구
 
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+- [적립식 투자 전체 가이드로 DCA 구조 먼저 정리하기](/posts/personalFinance/dca-guide)
 - [적립식 투자가 무너지는 7가지 패턴과 운영 규칙 점검하기](/posts/investingInfo/dca-consistency-7-fail-patterns)
 - [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "해외자산 DCA에서 ‘수익률 변동’과 ‘환율 변동’을 분리해 읽는 법: 한국 사용자용 운영 규칙(불안·중단 방지)",
-  "description": "해외자산 DCA의 원화 수익률을 달러 기준 자산수익률과 USD/KRW 환율 효과로 분해하고, 환율 스트레스에도 중단을 줄이는 운영 규칙과 숫자 예시를 정리합니다.",
-  "datePublished": "2026-01-26",
-  "dateModified": "2026-06-23",
-  "inLanguage": "ko",
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/personalFinance/dca-fx-volatility-decomposition"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269523/blog/insight/dca-fx-volatility-kr-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269524/blog/insight/dca-fx-volatility-kr-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269527/blog/insight/dca-fx-volatility-kr-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269528/blog/insight/dca-fx-volatility-kr-img3.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269529/blog/insight/dca-fx-volatility-kr-img4.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269531/blog/insight/dca-fx-volatility-kr-img5.png"
-  ],
-  "keywords": [
-    "해외자산",
-    "DCA",
-    "적립식",
-    "환율",
-    "USD/KRW",
-    "원화수익률",
-    "변동성",
-    "불안관리",
-    "투자규칙",
-    "리밸런싱"
-  ]
-}
-</script>
 
 <script type="application/ld+json">
 {

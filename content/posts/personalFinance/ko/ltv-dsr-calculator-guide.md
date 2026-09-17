@@ -4,7 +4,8 @@ link: "/posts/personalFinance/ltv-dsr-calculator-guide"
 title: "LTV DSR 계산기 사용법: 주담대 한도 계산 순서"
 description: "LTV DSR 계산기는 주담대 한도를 단순히 많이 나오는 금액으로 보는 도구가 아닙니다. 집값, 연소득, 기존 대출, 월상환액, 보유 현금을 순서대로 넣어 주택담보대출 가능 범위를 점검하는 법을 정리합니다."
 datePublished: "2026-07-15"
-dateModified: "2026-07-15"
+dateModified: "2026-09-16"
+hreflangEquivalent: false
 seoTitle: "LTV DSR 계산기 사용법: 주담대 한도 계산 순서"
 seoDescription: "LTV DSR 계산기로 주택담보대출 DSR 계산, 주담대 한도 계산, 아파트 담보대출 계산 순서를 확인하세요. DSR 40% 계산과 LTV, 보유 현금, 월상환액을 함께 보는 방법을 정리합니다."
 category: "재테크"
@@ -102,6 +103,8 @@ DSR은 소득 기준이고 LTV는 집값 기준입니다. 둘 중 하나라도 �
 - [LTV DSR 계산기 열기](/tools/dsr-ltv-calculator)
 - [아파트 구매 가능액 계산하기](/tools/home-buying-budget-calculator)
 - [DSR 40% 연봉별 대출 가능액 표](/posts/personalFinance/dsr-40-income-loan-limit-table)
+- [아파트 매수 전 대출 리스크 체크리스트로 금리·비상금까지 점검하기](/posts/personalFinance/mortgage-risk-checklist-dsr-variable)
+- [연봉 5000만원 DSR 40% 사례로 입력값 비교하기](/posts/personalFinance/salary-50m-dsr-40-loan-limit)
 - [서울 아파트 TOP100 가격대 보기](/market/real-estate/seoul-top100)
 - [주담대 금리 1%p 오르면 대출 한도는 얼마나 줄어들까](/posts/personalFinance/interest-rate-1p-loan-limit-impact)
 - [DSR은 통과했는데 왜 집을 못 살까](/posts/personalFinance/dsr-pass-ltv-cash-bottleneck)

@@ -170,21 +170,6 @@ lang: "ko"
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "세대수 많은 대단지 아파트가 더 안정적일까? 거래량·평단가·가격분포로 확인하는 법",
-  "description": "세대수 많은 대단지 아파트가 가격 안정성에 어떤 영향을 줄 수 있는지 거래량, 평단가, 가격분포 관점에서 정리합니다.",
-  "inLanguage": "ko",
-  "datePublished": "2026-06-03",
-  "dateModified": "2026-06-03",
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" },
-  "mainEntityOfPage": "https://www.finmaphub.com/posts/personalFinance/large-apartment-complex-households-price-stability"
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {

@@ -3,7 +3,7 @@ slug: "goal-amount-fast-strategy"
 title: "목표 금액을 빠르게 모으는 법: 원금·수익률·기간의 균형"
 description: "목표 자산을 빠르게 만들기 위해서는 원금·수익률·기간의 균형이 핵심입니다. 제한된 소득 안에서 어떻게 목표 금액을 앞당길 수 있는지 실전 관점에서 정리했습니다."
 datePublished: "2025-11-19"
-dateModified: "2026-07-08"
+dateModified: "2026-09-17"
 seoTitle: "목표 금액 빨리 모으는 법: 원금·수익률·기간 중 무엇을 바꿀까?"
 seoDescription: "목표 자산을 앞당기려면 월 납입액·기간·수익률 중 무엇을 조정해야 할까요? 목표 자산 시뮬레이터로 필요한 월 투자금을 확인해보세요."
 category: "재테크"
@@ -30,7 +30,7 @@ tool: ["goal","comp"]
 
 > 목표 자산을 빠르게 달성하기 위해서는 원금·수익률·기간의 조합을 현실적으로 설계해야 합니다. 각각의 변수는 장단점이 다르기 때문에 무리하지 않는 범위에서 균형 있게 조정하는 것이 중요합니다.
 
-함께 보면 좋은 글: [1억 모으기 월 투자금 계산](/posts/personalFinance/how-much-per-month-for-100m), [연복리 vs 월복리](/posts/personalFinance/annual-vs-monthly-compound), [단리 vs 복리 계산](/posts/personalFinance/simple-vs-compound).
+함께 보면 좋은 글: [1억원 목표 월 투자금 계산](/posts/personalFinance/how-much-monthly-invest-for-100m), [연복리 vs 월복리](/posts/personalFinance/annual-vs-monthly-compound), [단리 vs 복리 계산](/posts/personalFinance/simple-vs-compound).
 
 ![목표 금액을 빠르게 모으는 전략 인포그래픽](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429417/blog/personalFinance/goal-amount-how-top_ko.png)
 
@@ -109,4 +109,5 @@ tool: ["goal","comp"]
 
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
 - [복리 계산기](/tools/compound-interest)로 저축·투자 기간별 미래가치 계산하기
+- [재무 기초 3단계로 목표자산 계획의 기준 먼저 세우기](/posts/personalFinance/personal-finance-3pillars)
 - [월 50만원 적립식 투자 10년 예시로 기준선 잡기](/posts/personalFinance/monthly-dca-10-year-result)

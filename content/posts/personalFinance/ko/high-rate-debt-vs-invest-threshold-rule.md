@@ -299,40 +299,6 @@ lang: "ko"
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "고금리 시대: 빚부터 갚을까, 투자부터 할까? (이자율 ‘임계값’ 룰)",
-  "description": "고금리 구간에서는 ‘무조건 빚 먼저’도, ‘무조건 투자 먼저’도 정답이 아닙니다. 핵심은 내 부채 이자율을 ‘확정 수익률’로 환산하고, 투자 기대수익률은 ‘리스크·세금·중단 위험’까지 반영해 비교하는 것입니다. 이 글은 이자율 임계값 룰(3%·6%·9% 구간)로 월급의 우선순위를 규칙화해 불안을 줄이고 실행을 남깁니다.",
-  "inLanguage": "ko",
-  "datePublished": "2026-01-15",
-  "dateModified": "2026-07-08",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/personalFinance/high-rate-debt-vs-invest-threshold-rule"
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
-    }
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768468497/blog/tools/high-rate-debt-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768468499/blog/tools/high-rate-debt-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768468500/blog/tools/high-rate-debt-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768468501/blog/tools/high-rate-debt-img3.png"
-  ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {

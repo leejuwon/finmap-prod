@@ -351,41 +351,6 @@ lang: "ko"
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "실질금리(Real Rate)와 기대인플레이션(Breakeven): 자산가격의 ‘진짜 온도계’",
-  "description": "명목금리를 실질금리와 기대인플레이션(Breakeven)으로 분해하고, 실질금리 상승/하락과 BEI 상승/하락 4분면으로 주식·채권·달러·금의 반응을 읽는 법을 정리합니다.",
-  "inLanguage": "ko",
-  "datePublished": "2026-01-20",
-  "dateModified": "2026-06-23",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/economicInfo/real-rates-and-breakevens"
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
-    }
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782886276/blog/insight/real-rates-and-breakevens/rework-20260701/slot-001-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782886279/blog/insight/real-rates-and-breakevens/rework-20260701/slot-003-chart.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782886280/blog/insight/real-rates-and-breakevens/rework-20260701/slot-004-chart.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782886281/blog/insight/real-rates-and-breakevens/rework-20260701/slot-005-chart.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782886282/blog/insight/real-rates-and-breakevens/rework-20260701/slot-006-body.png"
-  ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {

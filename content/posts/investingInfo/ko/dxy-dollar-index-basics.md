@@ -3,7 +3,7 @@ slug: "dxy-dollar-index-basics"
 title: "DXY(달러인덱스)란 무엇인가? 투자자가 꼭 알아야 할 의미 정리"
 description: "달러인덱스(DXY)의 구성, 계산 방식, 시장 영향, 해석 방법을 초중급 투자자 관점에서 쉽게 정리합니다."
 datePublished: "2025-11-23"
-dateModified: "2025-11-23"
+dateModified: "2026-09-16"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["DXY", "달러인덱스", "거시경제", "환율", "미국달러"]
@@ -111,6 +111,8 @@ DXY가 상승하면 원·달러 환율이 오르는 경우가 많습니다.
 - **[목표자산 도달 시뮬레이터](/tools/goal-simulator)**  
 
 함께 읽으면 좋은 글:
+DXY를 원/달러와 함께 볼 때는 [달러와 환율 흐름](/market/indices)에서 달러인덱스와 USD/KRW 조합을 확인하면 ‘달러 강세’가 한국 시장에 번지는지 더 빨리 분리할 수 있습니다.
+
 - [DXY가 시장을 움직이는 방식: 미국 주식·원달러·코스피 영향](/posts/investingInfo/dxy-market-impact)
 - [원달러 환율이 한국 경제와 코스피에 미치는 영향](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
 - [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)
@@ -145,21 +147,3 @@ DXY가 상승하면 원·달러 환율이 오르는 경우가 많습니다.
 - [환율의 기초와 원달러 변동 요인 정리하기](/posts/economicInfo/fx-basics)
 - [원달러 환율이 한국 경제와 코스피에 미치는 영향 보기](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "DXY(달러인덱스)란 무엇인가? 투자자가 꼭 알아야 할 의미 정리",
-  "description": "달러인덱스의 구성, 계산 방식, 시장 영향, 해석 방법을 초중급 투자자 관점에서 쉽게 정리했습니다.",
-  "datePublished": "2025-11-23",
-  "author": {
-    "@type": "Person",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap"
-  }
-}
-</script>

@@ -35,31 +35,6 @@ tools: ["goal","compound","fire"]
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "물가 상승 시대의 가계 생존전략: 생활비/고정비 줄이기, 현금흐름 관리(가계부·예산·비상금)",
-  "description": "인플레이션 시대엔 ‘돈을 버는 것’만큼 ‘새는 돈을 막는 것’이 중요합니다. 고정비 구조조정, 생활비 최적화, 가계부/예산 시스템, 비상금 설계까지—가계가 무너지지 않는 실전 생존 전략을 한 번에 정리합니다.",
-  "datePublished": "2026-01-10",
-  "dateModified": "2026-01-10",
-  "inLanguage": "ko-KR",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/personalFinance/inflation-household-survival-strategy"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768205561/blog/tools/inflation-household-survival-strategy-cover.png"
-  ],
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": { "@type": "ImageObject", "url": "https://www.finmaphub.com/og-default.png" }
-  }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "inLanguage": "ko-KR",
   "mainEntity": [

@@ -34,31 +34,6 @@ lang: "ko"
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "“금리 인하”가 와도 안 오를 수 있다: 시장금리 vs 정책금리 분리해서 읽기",
-  "description": "기준금리를 내린다는데 왜 대출금리·예금금리는 체감이 없을까? 정책금리(기준금리)와 시장금리(국채·은행채·대출금리)를 분리해 읽는 법, 시장금리를 움직이는 4요소(기대·인플레·기간프리미엄·스프레드), 한국 투자·가계에 적용하는 실전 체크리스트까지 정리합니다.",
-  "datePublished": "2026-01-12",
-  "dateModified": "2026-02-24",
-  "inLanguage": "ko",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/economicInfo/policy-rate-cut-market-rates"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782905280/blog/insight/policy-rate-cut-market-rates/rework-20260701/slot-001-cover.png"
-  ],
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": { "@type": "ImageObject", "url": "https://www.finmaphub.com/og-default.png" }
-  }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "inLanguage": "ko-KR",
   "mainEntity": [

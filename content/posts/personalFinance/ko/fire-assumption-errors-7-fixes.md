@@ -366,39 +366,6 @@ FIRE 계산은 “맞히기 게임”이 아닙니다.
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "FIRE 계산이 틀리는 가장 흔한 이유 7가지: 수익률·인플레·세금·현금흐름 가정을 현실로 내리는 법 + 툴로 민감도 체크",
-  "description": "FIRE 목표가 계속 바뀌는 이유는 ‘계산기’가 아니라 ‘가정’이 흔들리기 때문입니다. 수익률·인플레·세금·연금·현금흐름·변동성·리스크비용까지 7가지 오류 패턴을 현실 값으로 교정하고, FIRE 계산기로 민감도(수익률/인플레/저축액)를 10분 안에 점검하는 방법을 정리합니다.",
-  "datePublished": "2026-02-03",
-  "dateModified": "2026-02-05",
-  "inLanguage": "ko",
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/personalFinance/fire-assumption-errors-7-fixes"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269562/blog/insight/fire-assumption-errors-kr-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269564/blog/insight/fire-assumption-errors-kr-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269566/blog/insight/fire-assumption-errors-kr-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269568/blog/insight/fire-assumption-errors-kr-img3.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269571/blog/insight/fire-assumption-errors-kr-img4.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269572/blog/insight/fire-assumption-errors-kr-img5.png"
-  ],
-  "keywords": ["FIRE", "은퇴설계", "인출률", "가정오류", "수익률", "인플레이션", "세금", "국민연금", "퇴직연금", "IRP", "현금흐름", "민감도분석"]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {

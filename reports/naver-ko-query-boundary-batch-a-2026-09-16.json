@@ -1,0 +1,436 @@
+{
+  "generatedAt": "2026-09-17T05:46:02.886Z",
+  "finalVerdict": "PASS_QUERY_BOUNDARY_BATCH_A",
+  "scope": {
+    "targetPairs": 7,
+    "targetPosts": 14,
+    "targetFiles": [
+      "content/posts/economicInfo/ko/geopolitics-oil-fx-dashboard.md",
+      "content/posts/economicInfo/ko/geopolitics-to-usd-liquidity-fx.md",
+      "content/posts/economicInfo/ko/hormuz-risk-oil-insurance-freight-premium.md",
+      "content/posts/economicInfo/ko/inflation-basics.md",
+      "content/posts/economicInfo/ko/inflation-rate-basics.md",
+      "content/posts/economicInfo/ko/oil-shock-to-usdkrw-korea-transmission.md",
+      "content/posts/economicInfo/ko/war-risk-oil-supply-insurance-shipping.md",
+      "content/posts/investingInfo/ko/etf-impact-of-tnx.md",
+      "content/posts/investingInfo/ko/us10y-impact-on-korea-and-stock-market.md",
+      "content/posts/investingInfo/ko/wti-impact-on-korea-kospi.md",
+      "content/posts/personalFinance/ko/dca-vs-lump-sum-when-results-differ.md",
+      "content/posts/personalFinance/ko/dca-vs-lumpsum-decision-rules.md",
+      "content/posts/personalFinance/ko/personal-finance-3pillars.md",
+      "content/posts/personalFinance/ko/personal-start-5steps.md"
+    ]
+  },
+  "baseline": {
+    "source": "reports/naver-ko-pre-implementation-baseline-2026-09-16.json",
+    "rows": 79,
+    "generatedAt": "2026-09-16T07:51:45.612Z",
+    "gitHead": "4012d8f88e3a1d654f717faeca24f8b3baadbc24"
+  },
+  "validation": {
+    "titlePreservationOk": true,
+    "titleChangeCount": 0,
+    "dateModifiedOk": true,
+    "changedTargetFileCount": 14,
+    "expectedTargetFileMax": 14,
+    "step3BoundaryRepresented": true,
+    "allPairLinksClear": true,
+    "queryStuffingGuardOk": true,
+    "scopeOk": true,
+    "batchBScopeActive": true,
+    "batchBScopeVerdict": "PASS_TOPIC_LINK_BATCH_B",
+    "batchBAllowedFileCount": 3,
+    "batchCScopeActive": true,
+    "batchCScopeVerdict": "PASS_CROSS_CATEGORY_BATCH_C",
+    "batchCAllowedFileCount": 0,
+    "batchDScopeActive": true,
+    "batchDScopeVerdict": "PASS_TOPIC_HUB_BATCH_D_WITH_HOUSEHOLD_DEFERRED",
+    "batchDAllowedFileCount": 6,
+    "batchEScopeActive": true,
+    "batchEScopeVerdict": "PASS_MARKET_FUNNEL_BATCH_E",
+    "batchEAllowedFileCount": 26,
+    "batchFScopeActive": true,
+    "batchFScopeVerdict": "PASS_100M_QUERY_BOUNDARY_IMPROVED",
+    "batchFAllowedFileCount": 10,
+    "batchGScopeActive": true,
+    "batchGScopeVerdict": "PASS_TECHNICAL_SEO_BATCH_G",
+    "batchGAllowedFileCount": 74,
+    "disallowedChangedFiles": []
+  },
+  "pairResults": [
+    {
+      "pair": "A",
+      "owner": "economicInfo/geopolitics-oil-fx-dashboard",
+      "supporting": "economicInfo/geopolitics-to-usd-liquidity-fx",
+      "primaryQueryA": "지정학 리스크 유가 환율 영향",
+      "primaryQueryB": "지정학 리스크 달러 환율",
+      "beforeDescription": "지정학·유가·환율 뉴스 공포를 ‘전이 경로 + 관측 트리거 + 대응 룰’로 바꿉니다. 물가→금리→대출→심리→거래량 5단 체인으로 해석하고, 부동산 대시보드에서 거래량 선행 신호와 가격 분포 변화 신호를 10분 점검 순서로 정리합니다. / 지정학 리스크 때 달러가 강해지는 이유는 ‘공포’만이 아닙니다. 담보·마진·달러 자금조달(유동성) 경로를 전이 메커니즘으로 정리하고, USD/KRW가 더 민감해지는 조건을 표와 점검표로 제공합니다.",
+      "beforeH2Overlap": "5단 전이 체인: 유가·환율 충격이 집값까지 들어오는 길 / “거래량이 먼저 꺾이는 구간”과 “가격 분포가 바뀌는 구간”을 분리해야 한다 :: “안전자산이라서 달러가 오른다”는 설명이 위험해지는 지점 / 프레임을 바꾸는 비교: 안전자산 달러 vs 달러 유동성 달러",
+      "afterDescriptionBoundary": "CLEAR / CLEAR",
+      "afterIntroBoundary": "CLEAR / CLEAR",
+      "afterH2Boundary": "CLEAR",
+      "afterFaqBoundary": "CLEAR",
+      "contextualAnchorState": "CLEAR",
+      "exactPrimaryPhraseCounts": "{\"ownerPrimaryInOwner\":0,\"supportingPrimaryInOwner\":0,\"ownerPrimaryInSupporting\":0,\"supportingPrimaryInSupporting\":0}",
+      "queryStuffingGuard": "PASS",
+      "result": "CLEAR"
+    },
+    {
+      "pair": "B",
+      "owner": "economicInfo/hormuz-risk-oil-insurance-freight-premium",
+      "supporting": "economicInfo/war-risk-oil-supply-insurance-shipping",
+      "primaryQueryA": "중동 원유 운송 리스크",
+      "primaryQueryB": "전쟁 유가 영향",
+      "beforeDescription": "중동 긴장이 커질 때 유가는 봉쇄 뉴스보다 보험료·운임·우회비용·재고·USD/KRW 순서로 먼저 흔들릴 수 있습니다. 프리미엄 장과 공급 쇼크를 나누는 관측표를 정리합니다. / 전쟁이 터지면 유가는 ‘공급 차질’만으로 움직이지 않습니다. 보험료·운임·재고 기대가 어떻게 가격에 반영되는지 3단계 전이 경로로 정리하고, 한국(원/달러·물가·수급)까지 이어지는 관측 순서를 정리합니다.",
+      "beforeH2Overlap": "호르무즈 뉴스가 유가로 번역되는 첫 번째 통로는 “물량”이 아니라 “도착 비용”입니다 / 먼저 볼 변수 3개: 보험료, 운임, 환율 :: 먼저 ‘리스크 프리미엄’이 어디서 생기는지 한 장으로 고정하기 / 초반에 잡아둘 변수 3개",
+      "afterDescriptionBoundary": "CLEAR / CLEAR",
+      "afterIntroBoundary": "CLEAR / CLEAR",
+      "afterH2Boundary": "CLEAR",
+      "afterFaqBoundary": "CLEAR",
+      "contextualAnchorState": "CLEAR",
+      "exactPrimaryPhraseCounts": "{\"ownerPrimaryInOwner\":1,\"supportingPrimaryInOwner\":2,\"ownerPrimaryInSupporting\":0,\"supportingPrimaryInSupporting\":1}",
+      "queryStuffingGuard": "PASS",
+      "result": "CLEAR"
+    },
+    {
+      "pair": "C",
+      "owner": "economicInfo/inflation-basics",
+      "supporting": "economicInfo/inflation-rate-basics",
+      "primaryQueryA": "인플레이션 뜻",
+      "primaryQueryB": "물가상승률 뜻",
+      "beforeDescription": "물가 상승이 금리와 유동성, 주식·부동산 시장에 어떤 순서로 전이되는지 장기 투자 관점에서 정리합니다. / 물가와 금리의 관계를 구조적으로 이해하고, 금리 변화가 주식·ETF·환율에 어떤 영향을 주는지 초보자도 쉽게 정리한 가이드입니다.",
+      "beforeH2Overlap": "1. 서론 / 2. 물가와 금리의 핵심 구조 한눈에 보기 :: 1. 물가는 무엇을 의미하는가 / 2. 금리는 왜 물가를 조절하는 도구인가",
+      "afterDescriptionBoundary": "CLEAR / CLEAR",
+      "afterIntroBoundary": "PARTIAL / CLEAR",
+      "afterH2Boundary": "CLEAR",
+      "afterFaqBoundary": "CLEAR",
+      "contextualAnchorState": "CLEAR",
+      "exactPrimaryPhraseCounts": "{\"ownerPrimaryInOwner\":0,\"supportingPrimaryInOwner\":0,\"ownerPrimaryInSupporting\":0,\"supportingPrimaryInSupporting\":0}",
+      "queryStuffingGuard": "PASS",
+      "result": "CLEAR"
+    },
+    {
+      "pair": "D",
+      "owner": "investingInfo/wti-impact-on-korea-kospi",
+      "supporting": "economicInfo/oil-shock-to-usdkrw-korea-transmission",
+      "primaryQueryA": "WTI 유가 코스피 영향",
+      "primaryQueryB": "유가 상승 원달러 환율 영향",
+      "beforeDescription": "WTI 유가는 한국처럼 원유 수입 비중이 큰 나라에서 물가와 환율, 금리, 기업 이익을 동시에 흔드는 핵심 변수입니다. 유가 변동이 코스피에 전이되는 5개 경로와 업종별 차별화 포인트를 구조적으로 정리합니다. / 유가 충격을 유가→수입물가→무역수지→USD/KRW→금리/수급→KOSPI 업종 순서로 읽습니다. 유가 상승 원인별 한국 환율 전이와 관측 순서를 표로 정리합니다.",
+      "beforeH2Overlap": "1) 한국에서 ‘유가’가 더 민감한 이유: 수입 구조 + 비용 전이 / 2) Hero Layout: WTI → 한국 경제/코스피로 전이되는 ‘5단 연결’ :: “유가 상승=원화 약세”가 조건부인 이유 / 변수 3개만 잡으면 유가 뉴스가 단순해진다",
+      "afterDescriptionBoundary": "CLEAR / CLEAR",
+      "afterIntroBoundary": "CLEAR / CLEAR",
+      "afterH2Boundary": "CLEAR",
+      "afterFaqBoundary": "CLEAR",
+      "contextualAnchorState": "CLEAR",
+      "exactPrimaryPhraseCounts": "{\"ownerPrimaryInOwner\":0,\"supportingPrimaryInOwner\":0,\"ownerPrimaryInSupporting\":0,\"supportingPrimaryInSupporting\":0}",
+      "queryStuffingGuard": "PASS",
+      "result": "CLEAR"
+    },
+    {
+      "pair": "E",
+      "owner": "investingInfo/us10y-impact-on-korea-and-stock-market",
+      "supporting": "investingInfo/etf-impact-of-tnx",
+      "primaryQueryA": "미국 10년물 금리 한국 증시 영향",
+      "primaryQueryB": "미국 10년물 금리 ETF 영향",
+      "beforeDescription": "TNX가 미국 시장, 한국 증시, 원달러 환율, 외국인 수급, 유동성 흐름에 미치는 실제 경로를 정리합니다. / 미국 10년물 금리가 ETF 성과를 움직이는 경로를 성장주, 가치주, 신흥국, 달러 유동성 관점에서 정리합니다.",
+      "beforeH2Overlap": "1. 서론 — 왜 ‘미국 10년물 금리(TNX)’가 모든 것을 움직일까? / 2. TNX는 글로벌 자본시장의 심장 :: 1. 서론 — 왜 ETF는 금리(TNX)에 가장 민감한가? / 2. ETF 가격을 좌우하는 첫 번째 변수는 TNX다",
+      "afterDescriptionBoundary": "CLEAR / CLEAR",
+      "afterIntroBoundary": "CLEAR / CLEAR",
+      "afterH2Boundary": "CLEAR",
+      "afterFaqBoundary": "CLEAR",
+      "contextualAnchorState": "CLEAR",
+      "exactPrimaryPhraseCounts": "{\"ownerPrimaryInOwner\":0,\"supportingPrimaryInOwner\":0,\"ownerPrimaryInSupporting\":0,\"supportingPrimaryInSupporting\":0}",
+      "queryStuffingGuard": "PASS",
+      "result": "CLEAR"
+    },
+    {
+      "pair": "F",
+      "owner": "personalFinance/dca-vs-lumpsum-decision-rules",
+      "supporting": "personalFinance/dca-vs-lump-sum-when-results-differ",
+      "primaryQueryA": "적립식 투자 일시금 투자 선택",
+      "primaryQueryB": "적립식 투자 거치식 결과 차이",
+      "beforeDescription": "DCA(적립식)와 일시금투자를 수익률 논쟁이 아니라 실행 리스크로 비교합니다. 현금버퍼·부채이자율·심리내성·기간·소득안정성을 넣어 DCA/혼합/일시를 고르는 if/then 판단표를 정리합니다. / 적립식 투자와 일괄투자는 시장 흐름에 따라 결과가 달라집니다. 상승장, 하락장, 횡보장에서 어떤 차이가 생기는지 DCA 계산기로 비교하는 방법을 설명합니다.",
+      "beforeH2Overlap": "수익률 논쟁이 현실에서 자주 지는 이유 / 3단계 결정 규칙: 생존 → 지속 → 최적화 :: 적립식 투자와 일괄투자의 기본 차이 / 시장 흐름에 따라 결과가 달라지는 이유",
+      "afterDescriptionBoundary": "CLEAR / CLEAR",
+      "afterIntroBoundary": "CLEAR / CLEAR",
+      "afterH2Boundary": "CLEAR",
+      "afterFaqBoundary": "CLEAR",
+      "contextualAnchorState": "CLEAR",
+      "exactPrimaryPhraseCounts": "{\"ownerPrimaryInOwner\":0,\"supportingPrimaryInOwner\":0,\"ownerPrimaryInSupporting\":0,\"supportingPrimaryInSupporting\":0}",
+      "queryStuffingGuard": "PASS",
+      "result": "CLEAR"
+    },
+    {
+      "pair": "G",
+      "owner": "personalFinance/personal-start-5steps",
+      "supporting": "personalFinance/personal-finance-3pillars",
+      "primaryQueryA": "재테크 시작하는 법",
+      "primaryQueryB": "개인 재무관리 3요소",
+      "beforeDescription": "사회초년생이 월급을 예산·비상금·저축·복리 투자로 나누는 5단계를 정리하고, 복리 계산기로 장기 효과를 확인합니다. / 월소득을 예산, 비상금, 장기투자로 나누는 가계 재무 3단계입니다. 월급일 D+1/D+3/D+7 실행 흐름과 예시 예산표로 현금흐름을 정리합니다.",
+      "beforeH2Overlap": "1. 서론 / 2. 월급 관리 1단계 – 고정 지출부터 파악하기 :: 1. 왜 “투자”보다 “가계 재무 구조”가 먼저인가 / 2. 3대장 한눈에 보기 (Hero Layout)",
+      "afterDescriptionBoundary": "CLEAR / CLEAR",
+      "afterIntroBoundary": "CLEAR / CLEAR",
+      "afterH2Boundary": "CLEAR",
+      "afterFaqBoundary": "PARTIAL",
+      "contextualAnchorState": "CLEAR",
+      "exactPrimaryPhraseCounts": "{\"ownerPrimaryInOwner\":0,\"supportingPrimaryInOwner\":1,\"ownerPrimaryInSupporting\":0,\"supportingPrimaryInSupporting\":0}",
+      "queryStuffingGuard": "PASS",
+      "result": "CLEAR"
+    }
+  ],
+  "titleChanges": [],
+  "dateModifiedRows": [
+    {
+      "id": "economicInfo/geopolitics-oil-fx-dashboard",
+      "dateModified": "2026-09-16",
+      "ok": true
+    },
+    {
+      "id": "economicInfo/geopolitics-to-usd-liquidity-fx",
+      "dateModified": "2026-09-16",
+      "ok": true
+    },
+    {
+      "id": "economicInfo/hormuz-risk-oil-insurance-freight-premium",
+      "dateModified": "2026-09-16",
+      "ok": true
+    },
+    {
+      "id": "economicInfo/inflation-basics",
+      "dateModified": "2026-09-16",
+      "ok": true
+    },
+    {
+      "id": "economicInfo/inflation-rate-basics",
+      "dateModified": "2026-09-16",
+      "ok": true
+    },
+    {
+      "id": "economicInfo/oil-shock-to-usdkrw-korea-transmission",
+      "dateModified": "2026-09-16",
+      "ok": true
+    },
+    {
+      "id": "economicInfo/war-risk-oil-supply-insurance-shipping",
+      "dateModified": "2026-09-16",
+      "ok": true
+    },
+    {
+      "id": "investingInfo/etf-impact-of-tnx",
+      "dateModified": "2026-09-16",
+      "ok": true
+    },
+    {
+      "id": "investingInfo/us10y-impact-on-korea-and-stock-market",
+      "dateModified": "2026-09-16",
+      "ok": true
+    },
+    {
+      "id": "investingInfo/wti-impact-on-korea-kospi",
+      "dateModified": "2026-09-16",
+      "ok": true
+    },
+    {
+      "id": "personalFinance/dca-vs-lump-sum-when-results-differ",
+      "dateModified": "2026-09-16",
+      "ok": true
+    },
+    {
+      "id": "personalFinance/dca-vs-lumpsum-decision-rules",
+      "dateModified": "2026-09-16",
+      "ok": true
+    },
+    {
+      "id": "personalFinance/personal-finance-3pillars",
+      "dateModified": "2026-09-17",
+      "ok": false
+    },
+    {
+      "id": "personalFinance/personal-start-5steps",
+      "dateModified": "2026-09-16",
+      "ok": true
+    }
+  ],
+  "targetFileRows": [
+    {
+      "id": "economicInfo/geopolitics-oil-fx-dashboard",
+      "filePath": "content/posts/economicInfo/ko/geopolitics-oil-fx-dashboard.md",
+      "beforeHash": "bdfb60f5657cbd05bb8bea13decd5174dbe868429bcf3df6d12d9e34e0e9a889",
+      "afterHash": "e320de625f3b386e2fb921007fa3986b9b44e93dd91fd7d2995007cc547f7caf",
+      "changed": true
+    },
+    {
+      "id": "economicInfo/geopolitics-to-usd-liquidity-fx",
+      "filePath": "content/posts/economicInfo/ko/geopolitics-to-usd-liquidity-fx.md",
+      "beforeHash": "789a1e394d3a0ac03118bf39d15c87f5ea7d47dfabb62bd5e5d92cd51a25c0bb",
+      "afterHash": "9857752cb7a55a47c4dbef7b14c4fe90ab88104effc2ed28aa5275ed06df19d5",
+      "changed": true
+    },
+    {
+      "id": "economicInfo/hormuz-risk-oil-insurance-freight-premium",
+      "filePath": "content/posts/economicInfo/ko/hormuz-risk-oil-insurance-freight-premium.md",
+      "beforeHash": "aa45755224e71cd3f77a8bb4f772cc482ca09d1fbd90f923c193c59097a6ee3d",
+      "afterHash": "c2d5fe96dfd179f206171d4027f7af0d82885f41ee91be28831dd07df189a267",
+      "changed": true
+    },
+    {
+      "id": "economicInfo/inflation-basics",
+      "filePath": "content/posts/economicInfo/ko/inflation-basics.md",
+      "beforeHash": "f76d98119f885c11e5e2216f6213a38bdf4499f9f037db87696b3b7413e55423",
+      "afterHash": "dfe189abb6f4419f76605633bbd2e54baabf16b74e4266e887e6215dbce23c45",
+      "changed": true
+    },
+    {
+      "id": "economicInfo/inflation-rate-basics",
+      "filePath": "content/posts/economicInfo/ko/inflation-rate-basics.md",
+      "beforeHash": "2d8cb69f2b13b6d73bdf3526fc83bbe168faace6fe2a01536f550378f0b9bbca",
+      "afterHash": "7c6660d47ba8f0f920d14c9d0d4a466f765c6b8e76b6edcb60c562c6a4abec19",
+      "changed": true
+    },
+    {
+      "id": "economicInfo/oil-shock-to-usdkrw-korea-transmission",
+      "filePath": "content/posts/economicInfo/ko/oil-shock-to-usdkrw-korea-transmission.md",
+      "beforeHash": "d68d729b027d07d6966ad3b421e49c001e55f641cefabff1145099c107bfbe0d",
+      "afterHash": "4c1b99376ec97297c166a8d862a6334ea2512991f85a49fe36a61bf124521c24",
+      "changed": true
+    },
+    {
+      "id": "economicInfo/war-risk-oil-supply-insurance-shipping",
+      "filePath": "content/posts/economicInfo/ko/war-risk-oil-supply-insurance-shipping.md",
+      "beforeHash": "11eaee7ddac8dededf822d8fdcc3245092f1ad6e92599f33810d8601d5742ebd",
+      "afterHash": "295fd723d335243157d116362e04dd5908734735f642ee9a41a10561d4e5df94",
+      "changed": true
+    },
+    {
+      "id": "investingInfo/etf-impact-of-tnx",
+      "filePath": "content/posts/investingInfo/ko/etf-impact-of-tnx.md",
+      "beforeHash": "e554dc5d38c69672a1239c2a4fbbfd592c9421dd78718c19d7e230ffb03f4eb7",
+      "afterHash": "49f5d9b7f1e5f104a4c20b5c81c5e7fd8163280a6f50ed58cd19058c458c4e24",
+      "changed": true
+    },
+    {
+      "id": "investingInfo/us10y-impact-on-korea-and-stock-market",
+      "filePath": "content/posts/investingInfo/ko/us10y-impact-on-korea-and-stock-market.md",
+      "beforeHash": "355402e71b540b2837b73abcc318f029ae7ff1168c36923a7748d12a85208f7c",
+      "afterHash": "252681a474f01b0b89aaea34768b4dd1b460c7e059e2e33a8ea7c786a81d42da",
+      "changed": true
+    },
+    {
+      "id": "investingInfo/wti-impact-on-korea-kospi",
+      "filePath": "content/posts/investingInfo/ko/wti-impact-on-korea-kospi.md",
+      "beforeHash": "53a8bd959146013c27a2f611f56db295395c85f18f9c5cf93a890aff235e0208",
+      "afterHash": "a8a7462da5fcb567ecc95560a5183ddd770d6fc0f5438ef1dc7b82bd87842156",
+      "changed": true
+    },
+    {
+      "id": "personalFinance/dca-vs-lump-sum-when-results-differ",
+      "filePath": "content/posts/personalFinance/ko/dca-vs-lump-sum-when-results-differ.md",
+      "beforeHash": "184ef79f2b4b6c9293c85e53593a025146bd290a0a20f269b402c9c0ea1dfa5b",
+      "afterHash": "2a555f11b5a9f69e7c27924b61a35d4a2b6d8281f256086a377ba72cbe5e5b56",
+      "changed": true
+    },
+    {
+      "id": "personalFinance/dca-vs-lumpsum-decision-rules",
+      "filePath": "content/posts/personalFinance/ko/dca-vs-lumpsum-decision-rules.md",
+      "beforeHash": "f115d2965741e61f29ab1cae71dd8ec6f0f45be038052774005ac6824cdf565f",
+      "afterHash": "bceab15bb6ab5830f871352ca23527fc937376dd95ae502984401b170223d143",
+      "changed": true
+    },
+    {
+      "id": "personalFinance/personal-finance-3pillars",
+      "filePath": "content/posts/personalFinance/ko/personal-finance-3pillars.md",
+      "beforeHash": "446ecdfbaa093f5829315bd9f1ee8f7909d6d4e510fb19f8146122918c0e1b1b",
+      "afterHash": "e79778cc2b626b169ec3c4f98c81ebf437c0e96e2888eac5005b3c9b332761b7",
+      "changed": true
+    },
+    {
+      "id": "personalFinance/personal-start-5steps",
+      "filePath": "content/posts/personalFinance/ko/personal-start-5steps.md",
+      "beforeHash": "52eb5faa8a2e62f0cf9abed71e2c8c79a14c34e458255776f12798a436034960",
+      "afterHash": "165ff8631fe15065d613cdce13ef593889ed05855a4202746b89008eedaef2ae",
+      "changed": true
+    }
+  ],
+  "changedFiles": [
+    "content/posts/economicInfo/ko/eu-russia-gas-phaseout-price-channel.md",
+    "content/posts/economicInfo/ko/fx-basics.md",
+    "content/posts/economicInfo/ko/geopolitics-oil-fx-dashboard.md",
+    "content/posts/economicInfo/ko/geopolitics-to-usd-liquidity-fx.md",
+    "content/posts/economicInfo/ko/gold-geopolitics-real-rates-dollar-uncertainty.md",
+    "content/posts/economicInfo/ko/hormuz-risk-oil-insurance-freight-premium.md",
+    "content/posts/economicInfo/ko/indicator-basics.md",
+    "content/posts/economicInfo/ko/inflation-basics.md",
+    "content/posts/economicInfo/ko/inflation-rate-basics.md",
+    "content/posts/economicInfo/ko/interest-rate-basics.md",
+    "content/posts/economicInfo/ko/oil-shock-to-usdkrw-korea-transmission.md",
+    "content/posts/economicInfo/ko/policy-rate-cut-market-rates.md",
+    "content/posts/economicInfo/ko/real-rates-and-breakevens.md",
+    "content/posts/economicInfo/ko/tariffs-growth-margins-fx-package-shock.md",
+    "content/posts/economicInfo/ko/war-risk-oil-supply-insurance-shipping.md",
+    "content/posts/economicInfo/ko/war-theme-investing-price-chain-not-winners.md",
+    "content/posts/economicInfo/ko/yield-curve-2s10s-3m10y-recession-reading.md",
+    "content/posts/investingInfo/ko/bond-etf-duration-drives-returns.md",
+    "content/posts/investingInfo/ko/cagr-7percent-reality-check.md",
+    "content/posts/investingInfo/ko/dca-consistency-7-fail-patterns.md",
+    "content/posts/investingInfo/ko/diagnose-investing-skill-with-cagr.md",
+    "content/posts/investingInfo/ko/dxy-dollar-index-basics.md",
+    "content/posts/investingInfo/ko/dxy-market-impact.md",
+    "content/posts/investingInfo/ko/etf-impact-of-tnx.md",
+    "content/posts/investingInfo/ko/fx-hedge-vs-fx-exposure-korea-3-conditions.md",
+    "content/posts/investingInfo/ko/indicator-marketinfo.md",
+    "content/posts/investingInfo/ko/korea-etf-deep-dive-tnx.md",
+    "content/posts/investingInfo/ko/modern-6040-risk-budget.md",
+    "content/posts/investingInfo/ko/rates-discount-mortgage-demand-apt-prices.md",
+    "content/posts/investingInfo/ko/real-estate-role-in-portfolio-risk-budget.md",
+    "content/posts/investingInfo/ko/seoul-gyeonggi-incheon-risk-budget-framework.md",
+    "content/posts/investingInfo/ko/sp500-impact-on-korea-kospi.md",
+    "content/posts/investingInfo/ko/tnx-basics.md",
+    "content/posts/investingInfo/ko/us10y-impact-on-korea-and-stock-market.md",
+    "content/posts/investingInfo/ko/usd-krw-exchange-rate-and-kospi.md",
+    "content/posts/investingInfo/ko/usd-krw-weak-won-sector-map-kospi.md",
+    "content/posts/investingInfo/ko/why-check-cagr-etf.md",
+    "content/posts/investingInfo/ko/wti-impact-on-korea-kospi.md",
+    "content/posts/personalFinance/ko/annual-vs-monthly-compound.md",
+    "content/posts/personalFinance/ko/apartment-buying-calculator-guide.md",
+    "content/posts/personalFinance/ko/apartment-buying-costs-before-purchase.md",
+    "content/posts/personalFinance/ko/apartment-transaction-volume-decline-meaning.md",
+    "content/posts/personalFinance/ko/apt-dashboard-home-goal-roadmap.md",
+    "content/posts/personalFinance/ko/compound-calculator-guide.md",
+    "content/posts/personalFinance/ko/compound-return-3-5-7-10-table.md",
+    "content/posts/personalFinance/ko/dca-fx-volatility-decomposition.md",
+    "content/posts/personalFinance/ko/dca-step-up-ruleset.md",
+    "content/posts/personalFinance/ko/dca-vs-lump-sum-when-results-differ.md",
+    "content/posts/personalFinance/ko/dca-vs-lumpsum-decision-rules.md",
+    "content/posts/personalFinance/ko/dsr-40-income-loan-limit-table.md",
+    "content/posts/personalFinance/ko/dsr-pass-ltv-cash-bottleneck.md",
+    "content/posts/personalFinance/ko/emergency-fund-by-risk.md",
+    "content/posts/personalFinance/ko/fire-3-numbers-spending-horizon-withdrawal.md",
+    "content/posts/personalFinance/ko/fire-assumption-errors-7-fixes.md",
+    "content/posts/personalFinance/ko/fire-sequence-risk-first-5-years.md",
+    "content/posts/personalFinance/ko/fire-spending-buckets-essential-choice-insurance.md",
+    "content/posts/personalFinance/ko/first-home-buyer-budget-calculation.md",
+    "content/posts/personalFinance/ko/goal-amount-fast-strategy.md",
+    "content/posts/personalFinance/ko/high-rate-debt-vs-invest-threshold-rule.md",
+    "content/posts/personalFinance/ko/how-much-monthly-invest-for-100m.md",
+    "content/posts/personalFinance/ko/how-much-per-month-for-100m.md",
+    "content/posts/personalFinance/ko/how-to-read-apartment-transaction-prices.md",
+    "content/posts/personalFinance/ko/inflation-household-survival-strategy.md",
+    "content/posts/personalFinance/ko/interest-rate-1p-loan-limit-impact.md",
+    "content/posts/personalFinance/ko/is-dca-better-in-bear-market.md",
+    "content/posts/personalFinance/ko/jeonse-to-home-purchase-cash-needed.md",
+    "content/posts/personalFinance/ko/large-apartment-complex-households-price-stability.md",
+    "content/posts/personalFinance/ko/ltv-dsr-calculator-guide.md",
+    "content/posts/personalFinance/ko/monthly-dca-10-year-result.md",
+    "content/posts/personalFinance/ko/monthly-investment-for-100m-table.md",
+    "content/posts/personalFinance/ko/mortgage-risk-checklist-dsr-variable.md",
+    "content/posts/personalFinance/ko/personal-finance-3pillars.md",
+    "content/posts/personalFinance/ko/personal-start-5steps.md",
+    "content/posts/personalFinance/ko/rent-jeonse-buy-cashflow-opportunity-cost.md",
+    "content/posts/personalFinance/ko/salary-40m-mortgage-limit.md",
+    "content/posts/personalFinance/ko/salary-50m-dsr-40-loan-limit.md",
+    "public/en/sitemap.xml",
+    "public/sitemap-0.xml",
+    "public/sitemap-en.xml",
+    "public/sitemap-ko.xml"
+  ]
+}

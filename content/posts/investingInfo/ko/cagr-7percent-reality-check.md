@@ -3,7 +3,7 @@ slug: "cagr-7percent-reality-check"
 title: "‘연 7% 복리’는 실제로 무엇을 의미할까? CAGR로 현실 체크하기"
 description: "연 7% 복리가 목표 자산에 어떤 의미인지 기간, 월 납입액, 손실 구간, 세금·수수료를 나눠 계산합니다. CAGR 7%를 가정값으로 쓸 때의 장점과 한계를 정리합니다."
 datePublished: "2025-11-29"
-dateModified: "2026-06-19"
+dateModified: "2026-09-17"
 seoTitle: "연 7% 복리 현실 체크: CAGR로 목표 자산 계산하는 법"
 seoDescription: "CAGR 7%가 현실적인지 기간, 납입액, 변동성, 세금·수수료 기준으로 비교하고 CAGR 계산기와 복리 계산기에 넣을 값을 정리합니다."
 category: "투자정보"
@@ -37,7 +37,7 @@ lang: "ko"
 | 물가 반영 | 명목 7%와 체감 7%는 다릅니다. |
 | 변동성/MDD | 큰 하락은 산술 평균보다 CAGR을 더 많이 깎습니다. |
 
-함께 보면 좋은 글: [CAGR 계산법](/posts/personalFinance/what-is-cagr), [1억 모으기 월 투자금 계산](/posts/personalFinance/how-much-per-month-for-100m), [적립식 투자는 지속성 게임](/posts/investingInfo/dca-consistency-7-fail-patterns). 숫자는 [CAGR 계산기](/tools/cagr-calculator)에서 시작금액·종료금액·기간을 넣어 환산하고, [목표 자산 시뮬레이터](/tools/goal-simulator)에서 목표금액·월 납입액·수익률을 바꿔 비교하면 됩니다.
+함께 보면 좋은 글: [CAGR 계산법](/posts/personalFinance/what-is-cagr), [1억원 목표 월 투자금 계산](/posts/personalFinance/how-much-monthly-invest-for-100m), [적립식 투자는 지속성 게임](/posts/investingInfo/dca-consistency-7-fail-patterns). 숫자는 [CAGR 계산기](/tools/cagr-calculator)에서 시작금액·종료금액·기간을 넣어 환산하고, [목표 자산 시뮬레이터](/tools/goal-simulator)에서 목표금액·월 납입액·수익률을 바꿔 비교하면 됩니다.
 
 ![상단 대표 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764428393/blog/investingInfo/cagr-7percent-reality-check-cover.png)
 
@@ -265,17 +265,4 @@ A: 큰 손실 구간에서 납입을 중단하지 않도록 현금흐름을 관�
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
 - [CAGR 뜻과 단순 수익률의 차이 이해하기](/posts/personalFinance/what-is-cagr)
 - [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "연 7% 복리 현실 체크: CAGR로 목표 자산 계산하는 법",
-  "description": "CAGR 7%가 현실적인지 기간, 납입액, 변동성, 세금·수수료 기준으로 비교하고 CAGR 계산기와 복리 계산기에 넣을 값을 정리합니다.",
-  "datePublished": "2025-11-29",
-  "dateModified": "2026-06-19",
-  "author": { "@type": "Person", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" }
-}
-</script>
 

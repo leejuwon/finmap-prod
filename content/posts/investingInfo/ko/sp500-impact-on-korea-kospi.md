@@ -3,7 +3,7 @@ slug: "sp500-impact-on-korea-kospi"
 title: "미국 증시(S&P500)가 한국 경제·코스피에 미치는 영향: 환율·금리·외국인 수급의 연결고리"
 description: "S&P500는 ‘미국 주가’ 그 이상입니다. 위험선호, 달러·환율, 미국 금리, 외국인 수급을 통해 한국 경제와 코스피로 이어지는 전이 경로와 다음 거래일 관측 순서를 정리합니다."
 datePublished: "2026-01-04"
-dateModified: "2026-06-19"
+dateModified: "2026-09-16"
 category: "투자정보"
 tags: ["S&P500","미국증시","코스피","한국경제","환율","금리","외국인수급","달러강세","리스크온","리스크오프"]
 tool: ["goal","comp","cagr","fire","dca"]
@@ -312,6 +312,8 @@ S&P500와 함께 자주 거론되는 변수가 미국 금리(특히 10년물)입
 - 같은 S&P500 조정이라도 **달러 강세와 금리 방향**에 따라 체감 충격이 크게 달라집니다.
 - S&P500만 보지 말고 **USD/KRW·DXY·TNX**까지 묶어보면 대응 속도가 빨라집니다.
 
+다음 거래일 관측 순서를 실제 지표와 맞춰볼 때는 [미국 지수와 코스피 흐름](/market/indices)에서 S&P500, 나스닥, 다우, 코스피를 함께 확인하면 단일 지수 착시를 줄일 수 있습니다.
+
 ---
 
 ## 15. CTA: 변동성 구간에서도 흔들리지 않는 ‘계획’을 먼저 만들기
@@ -369,37 +371,6 @@ S&P500와 함께 자주 거론되는 변수가 미국 금리(특히 10년물)입
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
 - [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "미국 증시(S&P500)가 한국 경제·코스피에 미치는 영향: 환율·금리·외국인 수급의 연결고리",
-  "description": "S&P500는 ‘미국 주가’ 그 이상입니다. 위험선호, 달러·환율, 미국 금리, 외국인 수급을 통해 한국 경제와 코스피로 이어지는 전이 경로와 다음 거래일 관측 순서를 정리합니다.",
-  "datePublished": "2026-01-04",
-  "dateModified": "2026-06-19",
-  "inLanguage": "ko",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/investingInfo/sp500-impact-on-korea-kospi"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1767584963/blog/tools/sp500-impact-on-korea-kospi-cover.png"
-  ],
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
-    }
-  }
-}
-</script>
 
 <script type="application/ld+json">
 {

@@ -5,6 +5,7 @@ title: "연봉 5000만원 DSR 40% 대출 가능액: 기존부채까지 넣어 �
 description: "연봉 5000만원 기준 DSR 40%에서 주담대 가능액이 얼마인지, 기존 월상환액이 있을 때 한도가 얼마나 줄어드는지 표로 정리합니다."
 datePublished: "2026-06-23"
 dateModified: "2026-06-24"
+hreflangEquivalent: false
 seoTitle: "연봉 5000만원 DSR 40% 대출 가능액 | 주담대 한도표"
 seoDescription: "연봉 5000만원 DSR 40% 기준 월 상환 가능액, 주담대 가능액, 기존부채별 한도 감소를 계산하고 DSR/LTV 계산기로 내 조건을 확인하세요."
 category: "재테크"

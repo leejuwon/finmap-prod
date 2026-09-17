@@ -360,37 +360,6 @@ lang: "ko"
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "수익률곡선(2y~10y, 3m~10y)은 왜 다르게 말하나: 침체 신호 해석법",
-  "description": "2~10년 금리차와 3개월~10년 금리차는 같은 ‘침체 신호’처럼 보이지만, 실제로는 서로 다른 질문에 답합니다. 이 글은 두 스프레드가 무엇을 반영하는지(정책 기대 vs 금융여건), 언제 엇갈리는지, 그리고 한국 투자·가계 의사결정에 어떻게 ‘해석 프레임 + 실행 규칙’으로 붙이는지 정리합니다.",
-  "inLanguage": "ko",
-  "datePublished": "2026-01-16",
-  "dateModified": "2026-06-19",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading"
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
-    }
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782897965/blog/insight/yield-curve-2s10s-3m10y-recession-reading/rework-20260701/slot-001-cover.png"
-  ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {

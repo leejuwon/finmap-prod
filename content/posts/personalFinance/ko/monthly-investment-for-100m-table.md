@@ -4,7 +4,7 @@ link: "/posts/personalFinance/monthly-investment-for-100m-table"
 title: "1억 만들려면 월 얼마씩 투자해야 할까? 기간·수익률별 월 투자금 표"
 description: "목표금액 1억원을 기준으로 5년·10년·15년·20년 동안 연 3%, 5%, 7%, 10% 수익률을 가정했을 때 필요한 월 투자금을 표로 정리했습니다."
 datePublished: "2026-06-01"
-dateModified: "2026-06-01"
+dateModified: "2026-09-17"
 seoTitle: "1억 만들기 월 투자금 표 | 5년 10년 15년 20년 수익률별 계산"
 seoDescription: "1억원을 만들려면 매월 얼마를 투자해야 할까요? 기간과 수익률별 필요 월 투자금을 Finmap 목표 자산 계산 로직으로 정리했습니다."
 category: "재테크"
@@ -90,7 +90,11 @@ lang: "ko"
 
 이 글의 표는 목표금액, 기간, 수익률을 바탕으로 필요한 월 납입액을 역산하는 방식입니다. 같은 조건을 직접 바꿔보려면 [목표 자산 계산기](/tools/goal-simulator)를 사용하세요. 복리 결과 자체를 보고 싶다면 [복리 계산기](/tools/compound-interest), 월 적립식 경로를 보고 싶다면 [적립식 투자 계산기](/tools/dca-calculator)가 적합합니다.
 
-관련 글로는 [1억 모으려면 월 얼마가 필요한지 보기](/posts/personalFinance/how-much-per-month-for-100m)와 [월 50만원 적립식 투자, 10년 뒤 얼마가 될까?](/posts/personalFinance/monthly-dca-10-year-result)를 함께 보면 좋습니다.
+관련 글로는 [세후 기준 1억원 목표 월 납입금 계산법](/posts/personalFinance/how-much-monthly-invest-for-100m), [월 납입 여력으로 5년·10년·15년 계획 고르기](/posts/personalFinance/how-much-per-month-for-100m), [월 50만원 적립식 투자, 10년 뒤 얼마가 될까?](/posts/personalFinance/monthly-dca-10-year-result)를 함께 보면 좋습니다.
+
+표로 월 투자금을 좁힌 뒤 투자 방식 선택이 남는다면 [DCA·일시금 선택 규칙](/posts/personalFinance/dca-vs-lumpsum-decision-rules)에서 실행 리스크를 먼저 걸러 보세요.
+
+월 투자금 표를 보기 전 전체 흐름이 필요하다면 [목표금액별 월 투자금 전에 보는 DCA 가이드](/posts/personalFinance/dca-guide)를 먼저 열어 납입액·기간·실패 패턴의 연결을 확인할 수 있습니다.
 
 ## 해석과 주의사항
 
@@ -125,21 +129,6 @@ Finmap 목표 자산 계산 로직의 월 단위 적립 흐름을 기준으로 �
 ### 1억원 목표에 적립식 투자가 항상 적합한가요?
 
 목표 기간과 위험 감내도에 따라 다릅니다. 단기 목표라면 현금성 자산이나 안정성을 더 중요하게 볼 수 있습니다.
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "1억 만들려면 월 얼마씩 투자해야 할까? 기간·수익률별 월 투자금 표",
-  "description": "목표금액 1억원을 기준으로 5년·10년·15년·20년 동안 연 3%, 5%, 7%, 10% 수익률을 가정했을 때 필요한 월 투자금을 표로 정리했습니다.",
-  "inLanguage": "ko",
-  "datePublished": "2026-06-01",
-  "dateModified": "2026-06-01",
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" },
-  "mainEntityOfPage": "https://www.finmaphub.com/posts/personalFinance/monthly-investment-for-100m-table"
-}
-</script>
 
 <script type="application/ld+json">
 {

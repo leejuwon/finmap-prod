@@ -4,7 +4,7 @@ link: "/posts/personalFinance/mortgage-risk-checklist-dsr-variable"
 title: "아파트 매수 전 대출 리스크 체크리스트: DSR, LTV, 금리, 비상금"
 description: "아파트 매수 전 DSR, LTV, 금리, 기존부채, 비상금, 관리비와 세금을 함께 점검하는 체크리스트입니다. DSR/LTV 계산기와 부동산 대시보드를 연결해 사전 점검 루틴을 만듭니다."
 datePublished: "2026-01-31"
-dateModified: "2026-06-02"
+dateModified: "2026-09-16"
 seoTitle: "아파트 매수 전 대출 리스크 체크리스트 | DSR LTV 금리 비상금"
 seoDescription: "주담대 한도와 실제 감당 가능액은 다릅니다. DSR/LTV 계산기와 부동산 실거래 대시보드로 후보 집값, 금리 상승, 비상금을 점검하세요."
 category: "재테크"
@@ -100,6 +100,7 @@ DSR은 소득 대비 상환액을 보는 중요한 기준이지만, 생활비와
 ## 같이 보면 좋은 글
 
 - [금리 1%p 오르면 내 주담대 한도는 얼마나 줄어들까?](/posts/personalFinance/interest-rate-1p-loan-limit-impact)
+- [LTV DSR 계산기 사용법으로 집값·소득·기존부채 입력 순서 확인하기](/posts/personalFinance/ltv-dsr-calculator-guide)
 - [서울·경기·인천 아파트 실거래 대시보드로 내 집 마련 목표 세우기](/posts/personalFinance/apt-dashboard-home-goal-roadmap)
 - [DSR은 통과했는데 왜 집을 못 살까?](/posts/personalFinance/dsr-pass-ltv-cash-bottleneck)
 
@@ -130,21 +131,6 @@ DSR은 생활비, 관리비, 세금, 이사비, 수리비를 대신 계산해주
 ### 부동산 대시보드는 계산 후 언제 보면 되나요?
 
 계산기에서 안전 탐색 가격대를 확인한 직후 보는 것이 좋습니다. 그 가격대가 실제로 어느 지역에서 거래되는지, 거래량이 충분한지를 확인할 수 있습니다.
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "아파트 매수 전 대출 리스크 체크리스트: DSR, LTV, 금리, 비상금",
-  "description": "아파트 매수 전 DSR, LTV, 금리, 기존부채, 비상금, 관리비와 세금을 함께 점검하는 체크리스트입니다.",
-  "inLanguage": "ko",
-  "datePublished": "2026-01-31",
-  "dateModified": "2026-06-02",
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" },
-  "mainEntityOfPage": "https://www.finmaphub.com/posts/personalFinance/mortgage-risk-checklist-dsr-variable"
-}
-</script>
 
 <script type="application/ld+json">
 {

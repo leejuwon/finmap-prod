@@ -307,38 +307,6 @@ CPI가 조용하다는 건 “충격이 없다”가 아니라 “어딘가가 �
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "관세는 ‘물가’만의 문제가 아니다: 성장·마진·환율을 동시에 흔드는 패키지 충격",
-  "description": "관세는 CPI만 건드리는 이슈가 아닙니다. 성장(교역량)·기업마진(전가)·환율(리스크/정책)로 번지는 전이 경로를 4변수 프레임으로 정리하고, 한국 적용표를 제공합니다.",
-  "inLanguage": "ko-KR",
-  "datePublished": "2026-02-05",
-  "dateModified": "2026-06-19",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/economicInfo/tariffs-growth-margins-fx-package-shock"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782801667/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-001-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782801669/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-003-body.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782801670/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-004-comparison.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782801671/blog/insight/tariffs-growth-margins-fx-package-shock/rework-20260630/slot-005-comparison.png"
-  ],
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "url": "https://www.finmaphub.com"
-  },
-  "keywords": ["관세","무역전쟁","교역","성장","기업마진","가격전가","환율","원달러","인플레이션","TNX","리스크오프"]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {

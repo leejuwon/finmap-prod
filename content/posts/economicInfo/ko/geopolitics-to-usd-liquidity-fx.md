@@ -2,9 +2,9 @@
 slug: "geopolitics-to-usd-liquidity-fx"
 link: "/posts/economicInfo/geopolitics-to-usd-liquidity-fx"
 title: "전쟁이 달러 강세로 번역되는 순간: ‘안전자산’이 아니라 ‘달러 유동성’으로 읽기"
-description: "지정학 리스크 때 달러가 강해지는 이유는 ‘공포’만이 아닙니다. 담보·마진·달러 자금조달(유동성) 경로를 전이 메커니즘으로 정리하고, USD/KRW가 더 민감해지는 조건을 표와 점검표로 제공합니다."
+description: "지정학 리스크가 달러 유동성·담보·마진·자금조달 경로를 통해 USD/KRW로 번역되는 과정을 좁게 정리합니다. 유가·금리·부동산까지 묶는 overview가 아니라 FX transmission specialist 문서입니다."
 datePublished: "2026-01-28"
-dateModified: "2026-06-19"
+dateModified: "2026-09-16"
 category: "경제정보"
 postCategory: "economicInfo"
 tags: ["달러","DXY","달러유동성","리스크오프","환율","원달러","헤지수요","외국인수급","금리","스프레드","지정학"]
@@ -19,6 +19,7 @@ lang: "ko"
 - DXY 상승이 항상 미국 펀더멘털(성장/금리) 때문은 아니며, **글로벌 달러 조달 비용**의 신호일 수도 있습니다.  
 - 같은 전쟁 뉴스라도 “유동성 우세” 국면이면 환율이 먼저 튀고, “펀더멘털 우세” 국면이면 금리·물가 경로가 더 오래 갑니다.  
 - 한국에서는 에너지·원자재 결제, FX 스왑/헤지, 외국인 수급이 겹치며 USD/KRW가 **국면 전환에 더 민감**해질 수 있습니다.  
+- 이 글의 범위는 <strong>달러 유동성·조달·환율 전이</strong>입니다. 지정학 충격이 유가·금리·부동산 대시보드까지 이어지는 전체 지도는 별도 overview 글로 넘깁니다.
 - 뉴스가 나왔을 때는 “이유를 맞히기”보다 **환율, 금리, 변동성, 수급 중 무엇이 먼저 흔들렸는지**를 보고 번역기를 고르는 편이 낫습니다.
 - 이 글은 전망을 하지 않습니다. 대신 “어떤 지표를 어떤 순서로 확인하고, 어떤 조건에서 해석을 바꾸는지” 규칙을 제공합니다.  
 - 결론적으로, 전쟁을 ‘안전자산’으로만 읽지 말고 **달러 유동성(담보·마진·조달)** 경로로 읽으면 흔들림이 줄어듭니다.
@@ -249,10 +250,13 @@ lang: "ko"
 
 이 글은 “전쟁 → 달러 유동성 → 환율” 번역기를 만들었습니다. 실전에서는 여기에 금리, 주식, 한국 수급 지도를 붙여야 합니다. 아래 글들은 DXY, USD/KRW, TNX, 정책금리를 각각 다른 축으로 나눠 읽을 때 이어서 볼 만합니다.
 
+글을 읽은 뒤 가격 순서를 맞춰볼 때는 [달러·금리·지수 흐름](/market/indices)에서 USD/KRW, DXY, 미국 10년물 금리, 주요 지수를 나란히 확인하면 유동성 경로와 펀더멘털 경로를 분리하기 쉽습니다.
+
 - [DXY 변화가 미국증시·환율·코스피에 미치는 영향](/posts/investingInfo/dxy-market-impact)  
 - [USD/KRW가 코스피 분위기를 바꾸는 메커니즘](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)  
 - [TNX(미 10년물)를 ‘할인율’로 읽는 기초](/posts/investingInfo/tnx-basics)  
 - [정책금리 vs 시장금리: 달러/금리 환경을 분리해서 보기](/posts/economicInfo/policy-rate-cut-market-rates)
+- [지정학·유가·환율 충격을 주거시장까지 연결하는 전체 전이 지도](/posts/economicInfo/geopolitics-oil-fx-dashboard)
 
 ## 자주 묻는 질문(FAQ)
 
@@ -285,42 +289,6 @@ lang: "ko"
 - [환율의 기초와 원달러 변동 요인 정리하기](/posts/economicInfo/fx-basics)
 - [원달러 환율이 한국 경제와 코스피에 미치는 영향 보기](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "전쟁이 달러 강세로 번역되는 순간: ‘안전자산’이 아니라 ‘달러 유동성’으로 읽기",
-  "description": "지정학 리스크 때 달러가 강해지는 이유는 ‘공포’만이 아닙니다. 담보·마진·달러 자금조달(유동성) 경로를 전이 메커니즘으로 정리하고, USD/KRW가 더 민감해지는 조건을 표와 점검표로 제공합니다.",
-  "datePublished": "2026-01-28",
-  "dateModified": "2026-06-19",
-  "inLanguage": "ko",
-  "articleSection": "경제정보",
-  "keywords": ["달러","DXY","달러유동성","리스크오프","환율","원달러","헤지수요","외국인수급","금리","스프레드","지정학"],
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/favicon-48.png"
-    }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/economicInfo/geopolitics-to-usd-liquidity-fx"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782866485/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260701/slot-001-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782866487/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260701/slot-003-body.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782866488/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260701/slot-004-body.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782866489/blog/insight/geopolitics-to-usd-liquidity-fx/rework-20260701/slot-005-comparison.png"
-  ]
-}
-</script>
 
 <script type="application/ld+json">
 {

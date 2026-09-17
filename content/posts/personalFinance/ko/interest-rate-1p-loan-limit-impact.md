@@ -134,21 +134,6 @@ DSR, LTV, 현금 조건 중 하나 이상이 부족하지만 최대 부족률이
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "금리 1%p 오르면 내 주담대 한도는 얼마나 줄어들까?",
-  "description": "연소득 6,000만원, DSR 40%, 30년 원리금균등 기준으로 금리 1%p 변화가 주담대 한도와 후보 집값 판정에 미치는 영향을 정리했습니다.",
-  "inLanguage": "ko",
-  "datePublished": "2026-06-01",
-  "dateModified": "2026-06-02",
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" },
-  "mainEntityOfPage": "https://www.finmaphub.com/posts/personalFinance/interest-rate-1p-loan-limit-impact"
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {

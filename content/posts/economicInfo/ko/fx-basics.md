@@ -3,7 +3,7 @@ slug: "fx-basics"
 title: "환율의 기초: 원/달러가 움직이는 진짜 이유"
 description: "원/달러 환율은 단순한 숫자가 아닙니다. 금리 차이, 자본 이동, 글로벌 위험 심리까지 환율을 움직이는 핵심 구조를 체계적으로 설명합니다."
 datePublished: "2025-11-13"
-dateModified: "2026-02-23"
+dateModified: "2026-09-16"
 category: "경제정보"
 postCategory: "economicInfo"
 tags: ["환율", "원달러", "금리", "자본이동", "외환시장", "거시경제"]
@@ -146,6 +146,8 @@ lang: "ko"
 - [원/달러 환율이 코스피·외국인 수급과 연결되는 구조](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
 - [환율 상승 수혜주와 피해주 정리](/posts/investingInfo/usd-krw-weak-won-sector-map-kospi)
 
+원/달러와 DXY를 글 밖에서 이어서 확인할 때는 [주요 시장 지표 흐름](/market/indices)에서 USD/KRW와 달러인덱스를 함께 보며 방향보다 조합을 먼저 점검하세요.
+
 ---
 
 ## 6. 환율과 자산시장의 연결 고리
@@ -192,10 +194,12 @@ lang: "ko"
 ## 8. 투자자가 꼭 기억해야 할 환율 체크리스트
 
 - 금리 차이는 확대되고 있는가?  
-- 글로벌 위험 심리는 상승 중인가?  
-- 외국인 자금 흐름은 어디로 향하는가?  
-- 환율 변화가 기업 실적에 어떤 영향을 주는가?  
+- 글로벌 위험 심리는 상승 중인가?
+- 외국인 자금 흐름은 어디로 향하는가?
+- 환율 변화가 기업 실적에 어떤 영향을 주는가?
 - 단기 뉴스가 아닌 구조 변화인가?
+
+이 체크리스트를 해외 ETF 운용 규칙으로 바꾸려면 [기간·현금흐름 통화·헤지 비용으로 환헤지 여부를 정하는 글](/posts/investingInfo/fx-hedge-vs-fx-exposure-korea-3-conditions)에서 실제 선택 기준을 이어서 보세요.
 
 ---
 
@@ -268,21 +272,3 @@ A. 외국인 비중이 높은 시장일수록 영향이 큽니다.
 - [DXY 달러인덱스로 글로벌 달러 강세 흐름 읽기](/posts/investingInfo/dxy-dollar-index-basics)
 - [원달러 환율이 한국 경제와 코스피에 미치는 영향 보기](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/economicInfo/fx-basics"
-  },
-  "headline": "환율의 기초: 원/달러가 움직이는 진짜 이유",
-  "description": "원/달러 환율을 움직이는 금리, 자본 이동, 글로벌 위험 심리를 구조적으로 설명합니다.",
-  "datePublished": "2025-11-13",
-  "dateModified": "2026-02-23",
-  "inLanguage": "ko",
-  "author": { "@type": "Person", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" }
-}
-</script>

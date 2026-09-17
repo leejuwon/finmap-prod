@@ -1,9 +1,9 @@
 ---
 slug: "wti-impact-on-korea-kospi"
 title: "WTI 유가가 한국 경제·코스피에 미치는 영향: 물가·환율·금리·기업이익으로 이어지는 5단 연결"
-description: "WTI 유가는 한국처럼 원유 수입 비중이 큰 나라에서 물가와 환율, 금리, 기업 이익을 동시에 흔드는 핵심 변수입니다. 유가 변동이 코스피에 전이되는 5개 경로와 업종별 차별화 포인트를 구조적으로 정리합니다."
+description: "WTI 유가가 한국 경제와 코스피에 전이되는 5개 경로를 물가·금리·환율·기업이익·업종별 차별화 관점에서 정리합니다. 원/달러 환율 전이 자체보다 증시·업종 반응을 중심으로 봅니다."
 datePublished: "2026-01-05"
-dateModified: "2026-02-24"
+dateModified: "2026-09-16"
 category: "투자정보"
 tags: ["WTI","유가","원유","코스피","한국경제","인플레이션","환율","금리","기업이익","업종별영향"]
 tool: ["goal","comp","cagr","fire","dca"]
@@ -22,6 +22,7 @@ lang: "ko"
 > - 유가 급등은 심리적으로 리스크오프를 강화해 변동성을 키우는 경우가 많습니다.  
 > - 코스피 해석은 유가만 보지 말고 물가·금리·환율과 함께 ‘패키지’로 봐야 정확해집니다.  
 > - 결론적으로 유가는 한국 시장에서 “물가 → 금리 → 환율 → 기업이익 → 수급”으로 전이되는 경로를 만들며, 조합에 따라 코스피 체감이 달라집니다.
+> - 이 글은 WTI가 코스피와 업종에 미치는 영향을 중심으로 봅니다. 유가가 원/달러 환율로 전이되는 경로 자체는 별도 경제정보 글에서 더 좁게 다룹니다.
 
 > **한 문단 요약**  
 > WTI 유가는 한국처럼 에너지 수입 의존도가 높은 나라에서 ‘경기’와 ‘금융’에 동시에 영향을 줍니다. 유가가 오르면 물가 압력이 커지고, 물가 압력은 금리(할인율) 부담으로 이어지며, 달러 결제 구조 때문에 환율까지 흔들릴 수 있습니다. 그 결과 기업 이익(마진·원가)과 외국인 수급이 함께 변해 코스피가 반응합니다. 이 글은 유가가 코스피에 전이되는 5개 경로를 표와 시나리오로 정리하고, 업종별로 무엇이 유리/불리한지까지 실전 체크리스트로 제공합니다.
@@ -31,37 +32,6 @@ lang: "ko"
 <!-- =========================
      JSON-LD (Article + FAQPage)
      ========================= -->
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "WTI 유가가 한국 경제·코스피에 미치는 영향: 물가·환율·금리·기업이익으로 이어지는 5단 연결",
-  "description": "WTI 유가는 한국처럼 원유 수입 비중이 큰 나라에서 물가와 환율, 금리, 기업 이익을 동시에 흔드는 핵심 변수입니다. 유가 변동이 코스피에 전이되는 5개 경로와 업종별 차별화 포인트를 구조적으로 정리합니다.",
-  "datePublished": "2026-01-05",
-  "dateModified": "2026-02-24",
-  "inLanguage": "ko-KR",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/investingInfo/wti-impact-on-korea-kospi"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1767608170/blog/tools/wti-impact-on-korea-kospi-cover.png"
-  ],
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/og-default.png"
-    }
-  }
-}
-</script>
 
 <script type="application/ld+json">
 {
@@ -348,6 +318,8 @@ lang: "ko"
 - “유가가 올랐다”보다 중요한 건 **왜 올랐는지(수요/공급)**, 그리고 **환율·금리와 어떤 조합인지**입니다.  
 - 유가를 단독으로 보지 말고 **물가/금리 + USD/KRW + DXY**를 함께 묶으면 코스피 해석이 훨씬 빨라집니다.
 
+유가와 코스피 체감이 엇갈릴 때는 [WTI와 주요 지수 흐름](/market/indices)에서 WTI, USD/KRW, 코스피를 함께 보며 공급 충격인지 위험선호 변화인지 분리하세요.
+
 ---
 
 ## 15) CTA: 변동성에도 흔들리지 않게 ‘규칙 기반’ 계획 먼저 만들기
@@ -400,4 +372,3 @@ WTI의 방향(그리고 급등/완만), USD/KRW 급등 여부, 물가·금리 �
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
 - [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
-

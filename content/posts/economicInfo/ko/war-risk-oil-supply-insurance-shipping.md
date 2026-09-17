@@ -2,9 +2,9 @@
 slug: "war-risk-oil-supply-insurance-shipping"
 link: "/posts/economicInfo/war-risk-oil-supply-insurance-shipping"
 title: "전쟁 뉴스가 유가를 움직이는 3단계: 공급·보험·운송이 만드는 ‘리스크 프리미엄’"
-description: "전쟁이 터지면 유가는 ‘공급 차질’만으로 움직이지 않습니다. 보험료·운임·재고 기대가 어떻게 가격에 반영되는지 3단계 전이 경로로 정리하고, 한국(원/달러·물가·수급)까지 이어지는 관측 순서를 정리합니다."
+description: "전쟁이라는 넓은 지정학 shock이 공급 차질, 보험료·운임, 재고 기대를 거쳐 유가 리스크 프리미엄으로 번지는 3단계 전이 경로를 정리합니다. 특정 해협 운송비보다 전쟁 유가 영향의 큰 구조에 초점을 둡니다."
 datePublished: "2026-01-26"
-dateModified: "2026-06-19"
+dateModified: "2026-09-16"
 category: "경제정보"
 postCategory: "economicInfo"
 tags: ["유가","WTI","지정학리스크","리스크프리미엄","공급충격","해운운임","보험료","인플레이션","수입물가","원달러","무역수지","리스크오프","에너지"]
@@ -16,6 +16,7 @@ lang: "ko"
 - 전쟁 뉴스가 유가를 올릴 때, 1차는 “실제 공급 차질”이고 2차는 “보험·운임이 붙는 비용 충격”이며 3차는 “재고/정책/심리 기대가 가격을 앞당기는 구간”입니다.
 - 같은 사건이라도 **어디가 막히는지(생산 vs 수송)에** 따라 WTI·브렌트 반응이 달라지고, 한국 체감은 USD/KRW를 타고 더 증폭되기도 합니다.
 - 시장이 가장 크게 흔들리는 구간은 “지금 공급이 줄었다”가 아니라 **‘줄지도 모른다’가 비용과 기대를 먼저 바꾸는 순간**입니다.
+- 범위는 <strong>전쟁이라는 넓은 지정학 shock이 유가에 붙이는 리스크 프리미엄</strong>입니다. 호르무즈 해협처럼 운송 경로 자체의 보험료·운임을 좁게 보는 글과 역할을 나눕니다.
 - 유가의 급등락을 해석할 때는 가격만 보지 말고 **스프레드(브렌트-두바이/WTI), 탱커 운임, 보험료, 재고 방향**을 같이 봐야 전이 경로가 보입니다.
 - 보험료(전쟁 위험 보험)와 운임(탱커/컨테이너)이 뛰면, 실제 원유가가 크게 안 변해도 **‘도착 가격(landing cost)’이** 올라 수입물가 압력을 만듭니다.
 - 한국에서는 유가 충격이 **수입물가 → 기대 인플레 → 원화 약세 압력/리스크오프 → 수급**으로 이어져 “주식은 왜 같이 흔들리나?”가 설명됩니다.
@@ -323,6 +324,7 @@ A는 느리지만 오래 갈 수 있고, B는 빠르고 스파이크가 잘 나�
 - [달러인덱스(DXY) 변화가 시장을 흔드는 이유](/posts/investingInfo/dxy-market-impact)
 - [TNX(미 10년물)가 전 세계 자산에 미치는 영향의 출발점](/posts/investingInfo/tnx-basics)
 - [USD/KRW가 코스피·외국인 수급과 연결되는 방식](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
+- [호르무즈 해협처럼 운송 경로 자체가 위험해질 때의 보험료·운임 구조](/posts/economicInfo/hormuz-risk-oil-insurance-freight-premium)
 
 ---
 
@@ -343,7 +345,7 @@ A는 느리지만 오래 갈 수 있고, B는 빠르고 스파이크가 잘 나�
 WTI만 봐도 분위기는 알 수 있지만, 전쟁 리스크를 해석하려면 “어디가 막혔는지”를 확인해야 합니다. 지역·항로·제품 수급에 따라 반응이 달라질 수 있고, 보험료·운임 급등은 WTI 차트에 늦게 반영될 때도 있습니다. 최소한 공급/비용/기대 분류는 해두는 게 좋습니다.
 
 ### 보험료와 운임이 유가에 어떤 영향을 주나요?
-보험료와 운임은 원유 가격에 “추가 비용”을 얹어, 실제 경제에 반영되는 도착 비용을 올립니다. 공급이 멀쩡해도 비용이 뛰면 수입단가가 올라 물가 압력이 커질 수 있습니다. 이런 구간은 단기 스파이크와 변동성이 잘 나오므로, 가격만 보고 판단하면 흔들리기 쉽습니다.
+보험료와 운임은 원유 가격에 “추가 비용”을 얹어, 실제 경제에 반영되는 도착 비용을 올립니다. 이 글은 전쟁 전반의 공급·기대·비용 전이를 설명하고, 호르무즈처럼 특정 운송 경로의 보험료·우회비용이 핵심일 때는 운송 리스크 글을 함께 보는 편이 정확합니다.
 
 ### 한국에서는 유가 충격이 왜 더 크게 느껴지나요?
 원유를 달러로 수입하기 때문입니다. 유가가 오르면 수입단가가 오르고, 여기에 USD/KRW 변동이 붙으면 체감이 커집니다. 특히 리스크오프 구간에서는 원화 약세가 같이 나타나면서 “유가×환율” 효과가 확대될 수 있습니다.
@@ -371,31 +373,6 @@ WTI만 봐도 분위기는 알 수 있지만, 전쟁 리스크를 해석하려�
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "전쟁 뉴스가 유가를 움직이는 3단계: 공급·보험·운송이 만드는 ‘리스크 프리미엄’",
-  "description": "전쟁이 터지면 유가는 ‘공급 차질’만으로 움직이지 않습니다. 보험료·운임·재고 기대가 어떻게 가격에 반영되는지 3단계 전이 경로로 정리하고, 한국(원/달러·물가·수급)까지 이어지는 관측 순서를 정리합니다.",
-  "datePublished": "2026-01-26",
-  "dateModified": "2026-06-19",
-  "inLanguage": "ko",
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/economicInfo/war-risk-oil-supply-insurance-shipping"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782879059/blog/insight/war-risk-oil-supply-insurance-shipping/rework-20260701/slot-001-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782879063/blog/insight/war-risk-oil-supply-insurance-shipping/rework-20260701/slot-003-body.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782879064/blog/insight/war-risk-oil-supply-insurance-shipping/rework-20260701/slot-004-comparison.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782879066/blog/insight/war-risk-oil-supply-insurance-shipping/rework-20260701/slot-005-chart.png"
-  ],
-  "keywords": ["유가","WTI","지정학리스크","리스크프리미엄","공급충격","해운운임","보험료","인플레이션","수입물가","원달러","무역수지","리스크오프","에너지"]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {
@@ -419,7 +396,7 @@ WTI만 봐도 분위기는 알 수 있지만, 전쟁 리스크를 해석하려�
       "name": "보험료와 운임이 유가에 어떤 영향을 주나요?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "보험료와 운임은 원유 자체 가격에 추가 비용을 얹어 도착 비용을 올립니다. 공급이 멀쩡해도 비용이 뛰면 수입단가와 물가 압력이 커질 수 있으며, 단기 스파이크와 변동성이 나타나기 쉽습니다."
+        "text": "보험료와 운임은 원유 가격에 추가 비용을 얹어 실제 경제에 반영되는 도착 비용을 올립니다. 이 글은 전쟁 전반의 공급·기대·비용 전이를 설명하고, 호르무즈처럼 특정 운송 경로의 보험료·우회비용이 핵심일 때는 운송 리스크 글을 함께 보는 편이 정확합니다."
       }
     },
     {

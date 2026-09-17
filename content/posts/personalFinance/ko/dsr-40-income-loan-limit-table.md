@@ -4,7 +4,7 @@ link: "/posts/personalFinance/dsr-40-income-loan-limit-table"
 title: "DSR 40% 연봉별 대출 가능액 표"
 description: "DSR 40%, 금리 연 4.0%, 30년 원리금균등 상환을 가정해 연봉별 대출 가능액과 월 상환 가능액을 표로 정리했습니다."
 datePublished: "2026-06-01"
-dateModified: "2026-07-22"
+dateModified: "2026-09-16"
 seoTitle: "DSR 40% 연봉별 대출 한도표 | 연봉별 주담대 한도·대출 가능액"
 seoDescription: "DSR 40%, 금리 4%, 30년 원리금균등 기준으로 연봉 3000만원, 5000만원, 1억원의 연봉별 대출 가능액과 월 상환 가능액을 표로 정리합니다. DSR/LTV 계산기로 내 조건의 주담대 한도도 확인해보세요."
 category: "재테크"
@@ -124,6 +124,8 @@ DSR은 소득 대비 상환 능력을 보는 축입니다. 하지만 실제 매�
 ## 같이 보면 좋은 글
 
 - [금리 1%p 오르면 내 주담대 한도는 얼마나 줄어들까?](/posts/personalFinance/interest-rate-1p-loan-limit-impact)
+- [연봉 4000만원 주담대 가능액을 별도 사례로 확인하기](/posts/personalFinance/salary-40m-mortgage-limit)
+- [연봉 5000만원 DSR 40% 한도 사례로 비교하기](/posts/personalFinance/salary-50m-dsr-40-loan-limit)
 - [아파트 매수 전 대출 리스크 체크리스트](/posts/personalFinance/mortgage-risk-checklist-dsr-variable)
 - [DSR은 통과했는데 왜 집을 못 살까?](/posts/personalFinance/dsr-pass-ltv-cash-bottleneck)
 

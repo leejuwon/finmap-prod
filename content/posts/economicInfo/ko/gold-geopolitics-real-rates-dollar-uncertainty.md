@@ -264,37 +264,6 @@ lang: "ko"
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "중동 리스크에서 금이 강한 이유: ‘전쟁’이 아니라 실질금리·달러·불확실성의 합",
-  "description": "금은 ‘공포’만으로 오르지 않습니다. 실질금리·달러·불확실성 3변수가 어떤 조합일 때 금이 강해지는지 표로 정리하고, 반례(금이 안 오르는 국면)까지 포함해 해석 프레임을 제공합니다.",
-  "inLanguage": "ko-KR",
-  "datePublished": "2026-02-05",
-  "dateModified": "2026-02-05",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/economicInfo/gold-geopolitics-real-rates-dollar-uncertainty"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782799684/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-001-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782799685/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-003-chart.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782799686/blog/insight/gold-geopolitics-real-rates-dollar-uncertainty/rework-20260630/slot-004-body.png"
-  ],
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "url": "https://www.finmaphub.com"
-  },
-  "keywords": ["금","골드","실질금리","달러","DXY","불확실성","헤지","지정학","인플레이션","금리","오해교정"]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {

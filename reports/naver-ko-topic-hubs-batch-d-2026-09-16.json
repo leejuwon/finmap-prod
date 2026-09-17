@@ -1,0 +1,878 @@
+{
+  "generatedAt": "2026-09-17T05:46:14.511Z",
+  "finalVerdict": "PASS_TOPIC_HUB_BATCH_D_WITH_HOUSEHOLD_DEFERRED",
+  "dcaHub": {
+    "decision": "DEDICATED_HUB_CREATED",
+    "url": "/posts/personalFinance/dca-guide",
+    "primaryRole": "broad_dca_overview_navigation_decision_framework",
+    "exists": true,
+    "checks": {
+      "exists": true,
+      "slug": true,
+      "link": true,
+      "url": "/posts/personalFinance/dca-guide",
+      "lang": true,
+      "datePublished": true,
+      "dateModified": true,
+      "hreflangEquivalentFalse": true,
+      "canonicalSafe": true,
+      "noEnglishFile": true,
+      "noManualArticleSchema": true,
+      "manualFaqSchemaCount": 0,
+      "h2Count": 10,
+      "expectedH2sPresent": 8,
+      "plainTextChars": 4606,
+      "nonLinkTextChars": 4455,
+      "hubToSpokePass": 9,
+      "spokeToHubPass": 9,
+      "auxExcludedFromPrimaryNav": true,
+      "duplicateHubTargets": 0,
+      "repeatedReverseAnchorCount": 0,
+      "cannibalizationConflicts": 0
+    },
+    "repeatedReverseAnchors": [],
+    "hubToSpoke": [
+      {
+        "source": "personalFinance/dca-guide",
+        "target": "personalFinance/dca-vs-lumpsum-decision-rules",
+        "role": "choice_decision_rules",
+        "ownedQuery": "적립식 투자 vs 일시금 선택",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "DCA와 일시금 선택 규칙",
+        "section": "DCA와 일시금 투자는 무엇이 다른가"
+      },
+      {
+        "source": "personalFinance/dca-guide",
+        "target": "personalFinance/dca-vs-lump-sum-when-results-differ",
+        "role": "result_path_difference",
+        "ownedQuery": "적립식 투자 거치식 결과 차이",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "적립식과 일괄투자의 시장 경로 비교",
+        "section": "DCA와 일시금 투자는 무엇이 다른가"
+      },
+      {
+        "source": "personalFinance/dca-guide",
+        "target": "personalFinance/is-dca-better-in-bear-market",
+        "role": "bear_market_scenario",
+        "ownedQuery": "하락장 적립식 투자",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "하락장 DCA 시나리오",
+        "section": "하락장에도 계속해야 할까"
+      },
+      {
+        "source": "personalFinance/dca-guide",
+        "target": "personalFinance/dca-step-up-ruleset",
+        "role": "contribution_step_up_rules",
+        "ownedQuery": "적립식 투자 증액 전략",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "DCA 증액·감액 운영 규칙",
+        "section": "월 투자금은 어떻게 정할까"
+      },
+      {
+        "source": "personalFinance/dca-guide",
+        "target": "personalFinance/dca-fx-volatility-decomposition",
+        "role": "fx_volatility_decomposition",
+        "ownedQuery": "적립식 투자 환율 변동성 영향",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "해외자산 DCA의 환율 변동성 분해",
+        "section": "해외자산 DCA에서 환율은 어떻게 볼까"
+      },
+      {
+        "source": "personalFinance/dca-guide",
+        "target": "personalFinance/monthly-dca-10-year-result",
+        "role": "long_run_monthly_example",
+        "ownedQuery": "월 적립식 투자 10년 결과",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "월 50만원 10년 적립식 예시",
+        "section": "장기 적립식 결과는 어떻게 달라질까"
+      },
+      {
+        "source": "personalFinance/dca-guide",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "role": "goal_amount_monthly_input",
+        "ownedQuery": "1억원 만들기 월 투자금",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "1억원 목표에 필요한 월 납입금 계산",
+        "section": "월 투자금은 어떻게 정할까"
+      },
+      {
+        "source": "personalFinance/dca-guide",
+        "target": "personalFinance/monthly-investment-for-100m-table",
+        "role": "goal_amount_table",
+        "ownedQuery": "목표금액별 월 투자금 표",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "기간·수익률별 월 투자금 표",
+        "section": "월 투자금은 어떻게 정할까"
+      },
+      {
+        "source": "personalFinance/dca-guide",
+        "target": "investingInfo/dca-consistency-7-fail-patterns",
+        "role": "execution_failure_patterns",
+        "ownedQuery": "적립식 투자 실패 패턴",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "DCA 실패 패턴 7가지",
+        "section": "DCA를 실패하게 만드는 실행 패턴"
+      }
+    ],
+    "spokeToHub": [
+      {
+        "source": "personalFinance/dca-vs-lumpsum-decision-rules",
+        "target": "personalFinance/dca-guide",
+        "role": "choice_decision_rules",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "DCA 기본 구조와 실행 순서를 먼저 훑는 전체 가이드",
+        "section": "더 깊게 읽고 싶다면(연결해서 보면 선택이 더 쉬워집니다)"
+      },
+      {
+        "source": "personalFinance/dca-vs-lump-sum-when-results-differ",
+        "target": "personalFinance/dca-guide",
+        "role": "result_path_difference",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "DCA 기본 구조와 결과 비교 전 읽는 순서",
+        "section": "계산기에서 비교할 때 볼 항목"
+      },
+      {
+        "source": "personalFinance/is-dca-better-in-bear-market",
+        "target": "personalFinance/dca-guide",
+        "role": "bear_market_scenario",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "적립식 투자 방법을 처음부터 정리한 가이드",
+        "section": "계산기에서 직접 비교하는 방법"
+      },
+      {
+        "source": "personalFinance/dca-step-up-ruleset",
+        "target": "personalFinance/dca-guide",
+        "role": "contribution_step_up_rules",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "DCA 실행 순서와 월 투자금 기준을 먼저 잡기",
+        "section": "함께 보면 좋은 글/도구"
+      },
+      {
+        "source": "personalFinance/dca-fx-volatility-decomposition",
+        "target": "personalFinance/dca-guide",
+        "role": "fx_volatility_decomposition",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "적립식 투자 전체 가이드로 DCA 구조 먼저 정리하기",
+        "section": "함께 보면 좋은 글/도구"
+      },
+      {
+        "source": "personalFinance/monthly-dca-10-year-result",
+        "target": "personalFinance/dca-guide",
+        "role": "long_run_monthly_example",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "DCA 기본 구조와 장기 결과를 읽는 순서",
+        "section": "함께 보면 좋은 글/도구"
+      },
+      {
+        "source": "personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/dca-guide",
+        "role": "goal_amount_monthly_input",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "1억원 목표 전에 DCA 구조를 정리한 가이드",
+        "section": "DCA 계산기에서 입력할 순서"
+      },
+      {
+        "source": "personalFinance/monthly-investment-for-100m-table",
+        "target": "personalFinance/dca-guide",
+        "role": "goal_amount_table",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "목표금액별 월 투자금 전에 보는 DCA 가이드",
+        "section": "이 글에서 사용한 계산기"
+      },
+      {
+        "source": "investingInfo/dca-consistency-7-fail-patterns",
+        "target": "personalFinance/dca-guide",
+        "role": "execution_failure_patterns",
+        "count": 1,
+        "status": "PASS",
+        "anchor": "DCA 기본 구조와 실행 순서를 정리한 가이드",
+        "section": "함께 보면 좋은 글/도구"
+      }
+    ],
+    "cannibalization": [
+      {
+        "hub": "personalFinance/dca-guide",
+        "spoke": "personalFinance/dca-vs-lumpsum-decision-rules",
+        "ownedQuery": "적립식 투자 vs 일시금 선택",
+        "hubPhraseCount": 0,
+        "hubTitleHit": false,
+        "conflict": 0,
+        "status": "CLEAR"
+      },
+      {
+        "hub": "personalFinance/dca-guide",
+        "spoke": "personalFinance/dca-vs-lump-sum-when-results-differ",
+        "ownedQuery": "적립식 투자 거치식 결과 차이",
+        "hubPhraseCount": 0,
+        "hubTitleHit": false,
+        "conflict": 0,
+        "status": "CLEAR"
+      },
+      {
+        "hub": "personalFinance/dca-guide",
+        "spoke": "personalFinance/is-dca-better-in-bear-market",
+        "ownedQuery": "하락장 적립식 투자",
+        "hubPhraseCount": 0,
+        "hubTitleHit": false,
+        "conflict": 0,
+        "status": "CLEAR"
+      },
+      {
+        "hub": "personalFinance/dca-guide",
+        "spoke": "personalFinance/dca-step-up-ruleset",
+        "ownedQuery": "적립식 투자 증액 전략",
+        "hubPhraseCount": 0,
+        "hubTitleHit": false,
+        "conflict": 0,
+        "status": "CLEAR"
+      },
+      {
+        "hub": "personalFinance/dca-guide",
+        "spoke": "personalFinance/dca-fx-volatility-decomposition",
+        "ownedQuery": "적립식 투자 환율 변동성 영향",
+        "hubPhraseCount": 0,
+        "hubTitleHit": false,
+        "conflict": 0,
+        "status": "CLEAR"
+      },
+      {
+        "hub": "personalFinance/dca-guide",
+        "spoke": "personalFinance/monthly-dca-10-year-result",
+        "ownedQuery": "월 적립식 투자 10년 결과",
+        "hubPhraseCount": 0,
+        "hubTitleHit": false,
+        "conflict": 0,
+        "status": "CLEAR"
+      },
+      {
+        "hub": "personalFinance/dca-guide",
+        "spoke": "personalFinance/how-much-monthly-invest-for-100m",
+        "ownedQuery": "1억원 만들기 월 투자금",
+        "hubPhraseCount": 0,
+        "hubTitleHit": false,
+        "conflict": 0,
+        "status": "CLEAR"
+      },
+      {
+        "hub": "personalFinance/dca-guide",
+        "spoke": "personalFinance/monthly-investment-for-100m-table",
+        "ownedQuery": "목표금액별 월 투자금 표",
+        "hubPhraseCount": 0,
+        "hubTitleHit": false,
+        "conflict": 0,
+        "status": "CLEAR"
+      },
+      {
+        "hub": "personalFinance/dca-guide",
+        "spoke": "investingInfo/dca-consistency-7-fail-patterns",
+        "ownedQuery": "적립식 투자 실패 패턴",
+        "hubPhraseCount": 0,
+        "hubTitleHit": false,
+        "conflict": 0,
+        "status": "CLEAR"
+      }
+    ]
+  },
+  "household": {
+    "decision": "HOUSEHOLD_HUB_DEFERRED",
+    "dedicatedHubPath": "content/posts/personalFinance/ko/personal-finance-guide.md",
+    "reasons": [
+      "The broad household-finance query is close to personalFinance/personal-finance-3pillars.",
+      "Step 6A already separated personal-start-5steps from personal-finance-3pillars.",
+      "A new personal-finance-guide hub could blur the beginner-sequence vs framework boundary."
+    ],
+    "existingCore": "personalFinance/personal-finance-3pillars",
+    "starterBoundaryGuard": {
+      "coreToStarterLinks": 2,
+      "status": "CLEAR"
+    },
+    "coreReinforcement": {
+      "status": "PASS",
+      "links": [
+        {
+          "source": "personalFinance/personal-finance-3pillars",
+          "target": "personalFinance/personal-start-5steps",
+          "count": 2,
+          "status": "PASS"
+        },
+        {
+          "source": "personalFinance/personal-finance-3pillars",
+          "target": "personalFinance/emergency-fund-by-risk",
+          "count": 1,
+          "status": "PASS"
+        },
+        {
+          "source": "personalFinance/personal-finance-3pillars",
+          "target": "personalFinance/goal-amount-fast-strategy",
+          "count": 1,
+          "status": "PASS"
+        },
+        {
+          "source": "personalFinance/personal-finance-3pillars",
+          "target": "personalFinance/high-rate-debt-vs-invest-threshold-rule",
+          "count": 1,
+          "status": "PASS"
+        },
+        {
+          "source": "personalFinance/personal-finance-3pillars",
+          "target": "personalFinance/inflation-household-survival-strategy",
+          "count": 1,
+          "status": "PASS"
+        }
+      ]
+    }
+  },
+  "coreGroups": [
+    {
+      "key": "DSR_LTV",
+      "mode": "group_core",
+      "cores": [
+        "personalFinance/dsr-40-income-loan-limit-table",
+        "personalFinance/ltv-dsr-calculator-guide"
+      ],
+      "spokes": [
+        "personalFinance/interest-rate-1p-loan-limit-impact",
+        "personalFinance/salary-40m-mortgage-limit",
+        "personalFinance/salary-50m-dsr-40-loan-limit",
+        "personalFinance/mortgage-risk-checklist-dsr-variable",
+        "personalFinance/dsr-pass-ltv-cash-bottleneck"
+      ],
+      "status": "ALREADY_SATISFIED_OR_REINFORCED",
+      "rows": [
+        {
+          "target": "personalFinance/interest-rate-1p-loan-limit-impact",
+          "totalCoreLinks": 2,
+          "status": "PASS",
+          "sources": [
+            {
+              "source": "personalFinance/dsr-40-income-loan-limit-table",
+              "target": "personalFinance/interest-rate-1p-loan-limit-impact",
+              "count": 1,
+              "anchor": "금리 1%p 오르면 내 주담대 한도는 얼마나 줄어들까?",
+              "section": "같이 보면 좋은 글"
+            },
+            {
+              "source": "personalFinance/ltv-dsr-calculator-guide",
+              "target": "personalFinance/interest-rate-1p-loan-limit-impact",
+              "count": 1,
+              "anchor": "주담대 금리 1%p 오르면 대출 한도는 얼마나 줄어들까",
+              "section": "관련 글과 계산기"
+            }
+          ]
+        },
+        {
+          "target": "personalFinance/salary-40m-mortgage-limit",
+          "totalCoreLinks": 1,
+          "status": "PASS",
+          "sources": [
+            {
+              "source": "personalFinance/dsr-40-income-loan-limit-table",
+              "target": "personalFinance/salary-40m-mortgage-limit",
+              "count": 1,
+              "anchor": "연봉 4000만원 주담대 가능액을 별도 사례로 확인하기",
+              "section": "같이 보면 좋은 글"
+            },
+            {
+              "source": "personalFinance/ltv-dsr-calculator-guide",
+              "target": "personalFinance/salary-40m-mortgage-limit",
+              "count": 0,
+              "anchor": "",
+              "section": ""
+            }
+          ]
+        },
+        {
+          "target": "personalFinance/salary-50m-dsr-40-loan-limit",
+          "totalCoreLinks": 2,
+          "status": "PASS",
+          "sources": [
+            {
+              "source": "personalFinance/dsr-40-income-loan-limit-table",
+              "target": "personalFinance/salary-50m-dsr-40-loan-limit",
+              "count": 1,
+              "anchor": "연봉 5000만원 DSR 40% 한도 사례로 비교하기",
+              "section": "같이 보면 좋은 글"
+            },
+            {
+              "source": "personalFinance/ltv-dsr-calculator-guide",
+              "target": "personalFinance/salary-50m-dsr-40-loan-limit",
+              "count": 1,
+              "anchor": "연봉 5000만원 DSR 40% 사례로 입력값 비교하기",
+              "section": "관련 글과 계산기"
+            }
+          ]
+        },
+        {
+          "target": "personalFinance/mortgage-risk-checklist-dsr-variable",
+          "totalCoreLinks": 2,
+          "status": "PASS",
+          "sources": [
+            {
+              "source": "personalFinance/dsr-40-income-loan-limit-table",
+              "target": "personalFinance/mortgage-risk-checklist-dsr-variable",
+              "count": 1,
+              "anchor": "아파트 매수 전 대출 리스크 체크리스트",
+              "section": "같이 보면 좋은 글"
+            },
+            {
+              "source": "personalFinance/ltv-dsr-calculator-guide",
+              "target": "personalFinance/mortgage-risk-checklist-dsr-variable",
+              "count": 1,
+              "anchor": "아파트 매수 전 대출 리스크 체크리스트로 금리·비상금까지 점검하기",
+              "section": "관련 글과 계산기"
+            }
+          ]
+        },
+        {
+          "target": "personalFinance/dsr-pass-ltv-cash-bottleneck",
+          "totalCoreLinks": 2,
+          "status": "PASS",
+          "sources": [
+            {
+              "source": "personalFinance/dsr-40-income-loan-limit-table",
+              "target": "personalFinance/dsr-pass-ltv-cash-bottleneck",
+              "count": 1,
+              "anchor": "DSR은 통과했는데 왜 집을 못 살까?",
+              "section": "같이 보면 좋은 글"
+            },
+            {
+              "source": "personalFinance/ltv-dsr-calculator-guide",
+              "target": "personalFinance/dsr-pass-ltv-cash-bottleneck",
+              "count": 1,
+              "anchor": "DSR은 통과했는데 왜 집을 못 살까",
+              "section": "관련 글과 계산기"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "REAL_ESTATE_BUDGET",
+      "mode": "single_core",
+      "cores": [
+        "personalFinance/apartment-buying-calculator-guide"
+      ],
+      "spokes": [
+        "personalFinance/apartment-buying-costs-before-purchase",
+        "personalFinance/cash-100m-200m-300m-apartment-budget",
+        "personalFinance/first-home-buyer-budget-calculation",
+        "personalFinance/jeonse-to-home-purchase-cash-needed",
+        "personalFinance/rent-jeonse-buy-cashflow-opportunity-cost"
+      ],
+      "status": "ALREADY_SATISFIED_OR_REINFORCED",
+      "rows": [
+        {
+          "target": "personalFinance/apartment-buying-costs-before-purchase",
+          "totalCoreLinks": 1,
+          "status": "PASS",
+          "sources": [
+            {
+              "source": "personalFinance/apartment-buying-calculator-guide",
+              "target": "personalFinance/apartment-buying-costs-before-purchase",
+              "count": 1,
+              "anchor": "아파트 매수 전 계산해야 할 비용 5가지",
+              "section": "관련 글과 계산기"
+            }
+          ]
+        },
+        {
+          "target": "personalFinance/cash-100m-200m-300m-apartment-budget",
+          "totalCoreLinks": 1,
+          "status": "PASS",
+          "sources": [
+            {
+              "source": "personalFinance/apartment-buying-calculator-guide",
+              "target": "personalFinance/cash-100m-200m-300m-apartment-budget",
+              "count": 1,
+              "anchor": "보유현금 1억 2억 3억이면 어떤 가격대가 가능할까",
+              "section": "관련 글과 계산기"
+            }
+          ]
+        },
+        {
+          "target": "personalFinance/first-home-buyer-budget-calculation",
+          "totalCoreLinks": 1,
+          "status": "PASS",
+          "sources": [
+            {
+              "source": "personalFinance/apartment-buying-calculator-guide",
+              "target": "personalFinance/first-home-buyer-budget-calculation",
+              "count": 1,
+              "anchor": "생애최초 주택 구입 예산은 어떤 순서로 계산할까",
+              "section": "관련 글과 계산기"
+            }
+          ]
+        },
+        {
+          "target": "personalFinance/jeonse-to-home-purchase-cash-needed",
+          "totalCoreLinks": 1,
+          "status": "PASS",
+          "sources": [
+            {
+              "source": "personalFinance/apartment-buying-calculator-guide",
+              "target": "personalFinance/jeonse-to-home-purchase-cash-needed",
+              "count": 1,
+              "anchor": "전세에서 매매로 갈아탈 때 필요한 현금과 보증금 타이밍 보기",
+              "section": "관련 글과 계산기"
+            }
+          ]
+        },
+        {
+          "target": "personalFinance/rent-jeonse-buy-cashflow-opportunity-cost",
+          "totalCoreLinks": 1,
+          "status": "PASS",
+          "sources": [
+            {
+              "source": "personalFinance/apartment-buying-calculator-guide",
+              "target": "personalFinance/rent-jeonse-buy-cashflow-opportunity-cost",
+              "count": 1,
+              "anchor": "전세·월세·매매 선택을 현금흐름과 기회비용으로 비교하기",
+              "section": "관련 글과 계산기"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "REAL_ESTATE_DATA",
+      "mode": "single_core",
+      "cores": [
+        "personalFinance/apt-dashboard-home-goal-roadmap"
+      ],
+      "spokes": [
+        "investingInfo/rates-discount-mortgage-demand-apt-prices",
+        "investingInfo/seoul-gyeonggi-incheon-risk-budget-framework",
+        "personalFinance/apartment-transaction-volume-decline-meaning",
+        "personalFinance/how-to-read-apartment-transaction-prices",
+        "personalFinance/large-apartment-complex-households-price-stability"
+      ],
+      "status": "ALREADY_SATISFIED_OR_REINFORCED",
+      "rows": [
+        {
+          "target": "investingInfo/rates-discount-mortgage-demand-apt-prices",
+          "totalCoreLinks": 1,
+          "status": "PASS",
+          "sources": [
+            {
+              "source": "personalFinance/apt-dashboard-home-goal-roadmap",
+              "target": "investingInfo/rates-discount-mortgage-demand-apt-prices",
+              "count": 1,
+              "anchor": "금리와 할인율이 아파트 수요·거래량을 흔드는 3채널 읽기",
+              "section": "이어서 읽으면 목표 설정이 더 빨라지는 글들"
+            }
+          ]
+        },
+        {
+          "target": "investingInfo/seoul-gyeonggi-incheon-risk-budget-framework",
+          "totalCoreLinks": 1,
+          "status": "PASS",
+          "sources": [
+            {
+              "source": "personalFinance/apt-dashboard-home-goal-roadmap",
+              "target": "investingInfo/seoul-gyeonggi-incheon-risk-budget-framework",
+              "count": 1,
+              "anchor": "서울·경기·인천을 지역 선택이 아니라 리스크 예산으로 나누는 법",
+              "section": "이어서 읽으면 목표 설정이 더 빨라지는 글들"
+            }
+          ]
+        },
+        {
+          "target": "personalFinance/apartment-transaction-volume-decline-meaning",
+          "totalCoreLinks": 1,
+          "status": "PASS",
+          "sources": [
+            {
+              "source": "personalFinance/apt-dashboard-home-goal-roadmap",
+              "target": "personalFinance/apartment-transaction-volume-decline-meaning",
+              "count": 1,
+              "anchor": "거래량 감소가 가격 신호인지 시간 리스크인지 구분하기",
+              "section": "이어서 읽으면 목표 설정이 더 빨라지는 글들"
+            }
+          ]
+        },
+        {
+          "target": "personalFinance/how-to-read-apartment-transaction-prices",
+          "totalCoreLinks": 1,
+          "status": "PASS",
+          "sources": [
+            {
+              "source": "personalFinance/apt-dashboard-home-goal-roadmap",
+              "target": "personalFinance/how-to-read-apartment-transaction-prices",
+              "count": 1,
+              "anchor": "아파트 실거래가를 중앙값·평단가·분포로 읽는 기본법",
+              "section": "이어서 읽으면 목표 설정이 더 빨라지는 글들"
+            }
+          ]
+        },
+        {
+          "target": "personalFinance/large-apartment-complex-households-price-stability",
+          "totalCoreLinks": 1,
+          "status": "PASS",
+          "sources": [
+            {
+              "source": "personalFinance/apt-dashboard-home-goal-roadmap",
+              "target": "personalFinance/large-apartment-complex-households-price-stability",
+              "count": 1,
+              "anchor": "대단지 세대수와 가격 안정성을 함께 보는 기준",
+              "section": "이어서 읽으면 목표 설정이 더 빨라지는 글들"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modifiedPosts": [
+    {
+      "id": "investingInfo/usd-krw-weak-won-sector-map-kospi",
+      "filePath": "content/posts/investingInfo/ko/usd-krw-weak-won-sector-map-kospi.md",
+      "changeType": "MODIFIED_EXISTING",
+      "dateModified": "2026-09-16",
+      "dateModifiedOk": true
+    },
+    {
+      "id": "personalFinance/dca-guide",
+      "filePath": "content/posts/personalFinance/ko/dca-guide.md",
+      "changeType": "NEW_POST",
+      "dateModified": "2026-09-16",
+      "dateModifiedOk": true
+    }
+  ],
+  "newPosts": [
+    {
+      "id": "personalFinance/dca-guide",
+      "filePath": "content/posts/personalFinance/ko/dca-guide.md",
+      "changeType": "NEW_POST",
+      "dateModified": "2026-09-16",
+      "dateModifiedOk": true
+    }
+  ],
+  "modifiedExistingPosts": [
+    {
+      "id": "investingInfo/usd-krw-weak-won-sector-map-kospi",
+      "filePath": "content/posts/investingInfo/ko/usd-krw-weak-won-sector-map-kospi.md",
+      "changeType": "MODIFIED_EXISTING",
+      "dateModified": "2026-09-16",
+      "dateModifiedOk": true
+    }
+  ],
+  "hreflangCanonicalCheck": {
+    "hreflangEquivalentFalse": true,
+    "noEnglishDcaFile": true,
+    "noEnglishSitemapDcaUrl": true,
+    "canonicalSafe": true,
+    "noManualArticleSchema": true
+  },
+  "sitemapRssCheck": {
+    "dcaHubInKoSitemap": true,
+    "dcaHubInEnSitemap": false,
+    "dcaHubHasFalseEnAlternate": false,
+    "dcaHubSelfKoAlternate": true,
+    "sitemapOldUrlDropCount": 0,
+    "sitemapExpectedNewKoUrlOnly": true,
+    "sitemapUnexpectedEnDcaUrlCount": 0,
+    "rssRouteExists": true,
+    "rssLatest50IncludesDcaHub": true,
+    "rssDcaHubRank": 38
+  },
+  "sitemapUrlSetComparison": [
+    {
+      "filePath": "public/sitemap-ko.xml",
+      "previousCount": 111,
+      "currentCount": 112,
+      "drops": [],
+      "additions": [
+        "https://www.finmaphub.com/posts/personalFinance/dca-guide"
+      ]
+    },
+    {
+      "filePath": "public/sitemap-0.xml",
+      "previousCount": 211,
+      "currentCount": 212,
+      "drops": [],
+      "additions": [
+        "https://www.finmaphub.com/posts/personalFinance/dca-guide"
+      ]
+    },
+    {
+      "filePath": "public/sitemap-en.xml",
+      "previousCount": 100,
+      "currentCount": 100,
+      "drops": [],
+      "additions": []
+    },
+    {
+      "filePath": "public/en/sitemap.xml",
+      "previousCount": 100,
+      "currentCount": 100,
+      "drops": [],
+      "additions": []
+    }
+  ],
+  "sitemapEntry": "<loc>https://www.finmaphub.com/posts/personalFinance/dca-guide</loc><lastmod>2026-09-16T00:00:00.000Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority><xhtml:link rel=\"alternate\" hreflang=\"ko\" href=\"https://www.finmaphub.com/posts/personalFinance/dca-guide\"/></url>",
+  "regressions": {
+    "step6A": {
+      "ok": true,
+      "finalVerdict": "PASS_QUERY_BOUNDARY_BATCH_A",
+      "clearCount": 7,
+      "total": 7,
+      "validation": {
+        "titlePreservationOk": true,
+        "titleChangeCount": 0,
+        "dateModifiedOk": true,
+        "changedTargetFileCount": 14,
+        "expectedTargetFileMax": 14,
+        "step3BoundaryRepresented": true,
+        "allPairLinksClear": true,
+        "queryStuffingGuardOk": true,
+        "scopeOk": true,
+        "batchBScopeActive": true,
+        "batchBScopeVerdict": "PASS_TOPIC_LINK_BATCH_B",
+        "batchBAllowedFileCount": 3,
+        "batchCScopeActive": true,
+        "batchCScopeVerdict": "PASS_CROSS_CATEGORY_BATCH_C",
+        "batchCAllowedFileCount": 0,
+        "batchDScopeActive": true,
+        "batchDScopeVerdict": "PASS_TOPIC_HUB_BATCH_D_WITH_HOUSEHOLD_DEFERRED",
+        "batchDAllowedFileCount": 6,
+        "batchEScopeActive": true,
+        "batchEScopeVerdict": "PASS_MARKET_FUNNEL_BATCH_E",
+        "batchEAllowedFileCount": 26,
+        "batchFScopeActive": true,
+        "batchFScopeVerdict": "PASS_100M_QUERY_BOUNDARY_IMPROVED",
+        "batchFAllowedFileCount": 10,
+        "batchGScopeActive": true,
+        "batchGScopeVerdict": "PASS_TECHNICAL_SEO_BATCH_G",
+        "batchGAllowedFileCount": 74,
+        "disallowedChangedFiles": []
+      }
+    },
+    "step6B": {
+      "ok": true,
+      "finalVerdict": "PASS_TOPIC_LINK_BATCH_B",
+      "validation": {
+        "brokenInternalPostLinks": 0,
+        "invalidCategorySlugLinks": 0,
+        "selfLinks": 0,
+        "duplicateNewContextualLinks": 0,
+        "titleChanges": 0,
+        "descriptionChanges": 0,
+        "faqChanges": 0,
+        "h1Changes": 0,
+        "h2Changes": 0,
+        "tagChanges": 0,
+        "canonicalHreflangChanges": 0,
+        "dateModifiedOk": true,
+        "exactAnchorStuffing": 0,
+        "step6ABoundaryClear": true,
+        "batchFScopeActive": true,
+        "batchFScopeVerdict": "PASS_100M_QUERY_BOUNDARY_IMPROVED",
+        "batchFAllowedFileCount": 10,
+        "batchGScopeActive": true,
+        "batchGScopeVerdict": "PASS_TECHNICAL_SEO_BATCH_G",
+        "batchGAllowedFileCount": 69
+      }
+    },
+    "step6C": {
+      "ok": true,
+      "finalVerdict": "PASS_CROSS_CATEGORY_BATCH_C",
+      "validation": {
+        "brokenInternalPostLinks": 0,
+        "selfLinks": 0,
+        "duplicateNewContextualLinks": 0,
+        "titleChanges": 0,
+        "descriptionChanges": 0,
+        "h1Changes": 0,
+        "h2Changes": 0,
+        "h3Changes": 0,
+        "faqChanges": 0,
+        "tagChanges": 0,
+        "canonicalHreflangChanges": 0,
+        "schemaStructuralChanges": 0,
+        "marketLinkAdditions": 0,
+        "toolLinkAdditions": 0,
+        "relatedBlockAppliedLinks": 0,
+        "exactAnchorStuffing": 0,
+        "dateModifiedOk": true,
+        "step6ABoundaryClear": true,
+        "step6BRegressionOk": true,
+        "reviewLimitRows": 0,
+        "batchDScopeActive": true,
+        "batchDScopeVerdict": "PASS_TOPIC_HUB_BATCH_D_WITH_HOUSEHOLD_DEFERRED",
+        "batchDAllowedFileCount": 10,
+        "batchEScopeActive": true,
+        "batchEScopeVerdict": "PASS_MARKET_FUNNEL_BATCH_E",
+        "batchEAllowedFileCount": 21,
+        "batchFScopeActive": true,
+        "batchFScopeVerdict": "PASS_100M_QUERY_BOUNDARY_IMPROVED",
+        "batchFAllowedFileCount": 10,
+        "batchGScopeActive": true,
+        "batchGScopeVerdict": "PASS_TECHNICAL_SEO_BATCH_G",
+        "batchGAllowedFileCount": 69
+      }
+    }
+  },
+  "validation": {
+    "preeditKoPostCount": 79,
+    "currentKoPostCount": 80,
+    "newPostCount": 1,
+    "expectedNewDcaHubOnly": true,
+    "brokenInternalPostLinks": 0,
+    "selfLinks": 0,
+    "duplicateTargetLinksInScope": 0,
+    "titleChanges": 0,
+    "descriptionChanges": 0,
+    "h1Changes": 0,
+    "h2Changes": 0,
+    "h3Changes": 0,
+    "faqChanges": 0,
+    "tagChanges": 0,
+    "canonicalHreflangChanges": 0,
+    "schemaStructuralChanges": 0,
+    "dateModifiedOk": true,
+    "dcaHubCreated": true,
+    "dcaCannibalizationConflicts": 0,
+    "dcaHubToSpokeCoverage": 9,
+    "dcaSpokeToHubCoverage": 9,
+    "householdDeferred": true,
+    "householdCoreReinforced": true,
+    "coreGroupsReinforced": true,
+    "hreflangCanonicalOk": true,
+    "sitemapRssOk": true,
+    "step6ARegressionOk": true,
+    "step6BRegressionOk": true,
+    "step6CRegressionOk": true,
+    "batchFScopeActive": true,
+    "batchFScopeVerdict": "PASS_100M_QUERY_BOUNDARY_IMPROVED",
+    "batchFAllowedFileCount": 10,
+    "batchGScopeActive": true,
+    "batchGScopeVerdict": "PASS_TECHNICAL_SEO_BATCH_G",
+    "batchGAllowedFileCount": 69
+  },
+  "structureDiffs": [],
+  "duplicateTargets": [],
+  "brokenLinks": [],
+  "selfLinks": [],
+  "filesGenerated": {
+    "md": "reports/naver-ko-topic-hubs-batch-d-2026-09-16.md",
+    "json": "reports/naver-ko-topic-hubs-batch-d-2026-09-16.json",
+    "linkMapCsv": "reports/naver-ko-topic-hub-link-map-2026-09-16.csv",
+    "preedit": "reports/naver-ko-topic-hubs-batch-d-preedit-2026-09-16.json"
+  }
+}

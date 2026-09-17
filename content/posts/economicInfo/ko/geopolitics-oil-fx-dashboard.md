@@ -2,9 +2,9 @@
 slug: "geopolitics-oil-fx-dashboard"
 link: "/posts/economicInfo/geopolitics-oil-fx-dashboard"
 title: "지정학·유가·환율 충격이 서울·경기·인천 집값에 전이되는 5단 체인: 물가→금리→대출→심리→거래량"
-description: "지정학·유가·환율 뉴스 공포를 ‘전이 경로 + 관측 트리거 + 대응 룰’로 바꿉니다. 물가→금리→대출→심리→거래량 5단 체인으로 해석하고, 부동산 대시보드에서 거래량 선행 신호와 가격 분포 변화 신호를 10분 점검 순서로 정리합니다."
+description: "지정학·유가·환율 뉴스 공포를 물가→금리→대출→심리→거래량 5단 체인으로 해석하는 multi-asset overview입니다. 달러 유동성 자체보다 부동산 대시보드에서 거래량·가격 분포 신호를 점검하는 순서를 정리합니다."
 datePublished: "2026-04-14"
-dateModified: "2026-06-19"
+dateModified: "2026-09-16"
 category: "경제정보"
 postCategory: "economicInfo"
 tags: ["지정학","유가","환율","원달러","물가","금리","대출금리","주택시장","거래량","가격분포","서울","경기","인천","전이경로","대시보드"]
@@ -20,6 +20,7 @@ lang: "ko"
 - 같은 충격이라도 <strong>금리 상승(실질 부담)</strong>이 동반되는지, <strong>환율 상승(원가/심리)</strong>이 동반되는지에 따라 체인의 속도와 강도가 달라집니다.  
 - 대출 규제/금리 환경이 빡빡해질수록, 가격보다 먼저 <strong>대출 승인·상담·전세/월세 전환</strong> 같은 “현장 체감”이 움직입니다.  
 - <strong><a href="/market/real-estate">서울·경기·인천 아파트 실거래 대시보드</a></strong>로 <strong>거래량 선행 신호</strong>와 <strong>가격 분포 변화 신호</strong>를 구분해 보면, 공포가 ‘관측 가능한 신호’로 바뀝니다.  
+- 범위는 <strong>지정학 리스크가 유가·환율·금리·대출·거래량으로 이어지는 전체 지도</strong>입니다. 달러 조달·마진콜 같은 FX 세부 메커니즘은 별도 글에서 더 좁게 다룹니다.
 - 이 글은 예측/추천을 하지 않고, 전이 경로를 표로 고정한 뒤 “어떤 신호가 뜨면 무엇을 재점검할지”라는 <strong>대응 룰</strong>을 남깁니다.  
 - 결론에는 10분 점검 순서로, 뉴스가 나올 때마다 반복 가능한 최소 행동을 제공합니다.
 
@@ -247,41 +248,7 @@ lang: "ko"
 - [DSR LTV 계산기로 대출 한도와 주택 가격 범위 점검하기](/tools/dsr-ltv-calculator)
 - [인천 아파트 실거래가 Top100으로 수도권 가격대 확인하기](/market/real-estate/incheon-apartment-top100)
 - [서울·경기·인천 아파트 실거래 대시보드에서 가격 분포 확인하기](/market/real-estate)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "지정학·유가·환율 충격이 서울·경기·인천 집값에 전이되는 5단 체인: 물가→금리→대출→심리→거래량",
-  "description": "지정학·유가·환율 뉴스 공포를 ‘전이 경로 + 관측 트리거 + 대응 룰’로 바꿉니다. 물가→금리→대출→심리→거래량 5단 체인으로 해석하고, /market/real-estate 대시보드에서 거래량 선행 신호와 가격 분포 변화 신호를 10분 점검 순서로 정리합니다.",
-  "inLanguage": "ko-KR",
-  "datePublished": "2026-04-14",
-  "dateModified": "2026-06-19",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/economicInfo/geopolitics-oil-fx-dashboard"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782452144/blog/insight/geopolitics-oil-fx-dashboard/rework-20260626/slot-001-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782452146/blog/insight/geopolitics-oil-fx-dashboard/rework-20260626/slot-003-chart.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782452147/blog/insight/geopolitics-oil-fx-dashboard/rework-20260626/slot-004-chart.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782452148/blog/insight/geopolitics-oil-fx-dashboard/rework-20260626/slot-005-chart.png"
-  ],
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
-    }
-  },
-  "keywords": ["지정학","유가","환율","원달러","물가","금리","대출금리","주택시장","거래량","가격분포","서울","경기","인천","전이경로","대시보드"]
-}
-</script>
+- [전쟁 뉴스가 달러 유동성·마진·조달 경로로 환율에 번역되는 과정 보기](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
 
 <script type="application/ld+json">
 {

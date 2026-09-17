@@ -4,7 +4,8 @@ link: "/posts/personalFinance/how-much-monthly-invest-for-100m"
 title: "1억원 만들려면 매달 얼마를 투자해야 할까?"
 description: "1억원을 만들기 위해 매달 얼마를 투자해야 하는지 기간, 수익률, 세금, 수수료 조건별로 계산하는 방법을 설명합니다."
 datePublished: "2026-05-28"
-dateModified: "2026-06-19"
+dateModified: "2026-09-17"
+hreflangEquivalent: false
 seoTitle: "1억원 만들려면 매달 얼마를 투자해야 할까? 목표금액별 적립식 투자 계산"
 seoDescription: "1억원을 만들기 위해 매달 얼마를 투자해야 하는지 기간, 수익률, 세금, 수수료 조건별로 계산하는 방법을 설명합니다. DCA 계산기로 목표 달성에 필요한 월 납입금을 직접 확인해보세요."
 category: "재테크"
@@ -69,6 +70,8 @@ lang: "ko"
 
 무수익 단순 계산은 1억원을 기간의 총 개월 수로 나눈 값입니다. 반면 연 7% 예시는 월별 수익률이 누적되고, 세후 기준으로 비교하는 DCA 시뮬레이션 관점입니다.
 
+기간·수익률별 월 투자금을 표 형태로 먼저 비교하고 싶다면 [1억원 목표 월 투자금 비교표](/posts/personalFinance/monthly-investment-for-100m-table)에서 5년·10년·15년·20년 조건을 한눈에 확인한 뒤, 이 글에서 세후 기준 계산 순서를 이어가면 됩니다.
+
 ## 수익률별로 필요한 월 납입금은 얼마나 달라질까?
 
 같은 10년 목표라도 수익률 가정에 따라 필요한 월 납입금은 달라집니다. 다만 높은 수익률을 입력했다고 해서 그 결과가 그대로 실현된다는 뜻은 아닙니다. 수익률은 계획을 비교하기 위한 가정값으로 보는 것이 좋습니다.
@@ -109,7 +112,9 @@ lang: "ko"
 4. 목표 달성 분석에서 현재 조건의 세후 자산, 부족액, 목표 달성률을 읽습니다.
 5. 필요한 월 납입금이 현재 계획보다 높다면 기간을 10년→15년→20년으로 늘려보고, 그다음 월 납입금과 수익률 가정을 하나씩 바꿉니다.
 
-복리 효과만 따로 분리하고 싶다면 [복리 계산기](/tools/compound-interest)에 원금, 월 납입금, 기간을 넣어 미래가치를 봅니다. 목표 금액 중심으로 역산하고 싶다면 [목표자산 시뮬레이터](/tools/goal-simulator)에서 목표액과 기간을 먼저 고정합니다. 월 50만원 기준의 10년 예시는 [월 50만원 적립식 투자, 10년 후 얼마가 될까?](/posts/personalFinance/monthly-dca-10-year-result)에서 이어서 비교할 수 있습니다.
+복리 효과만 따로 분리하고 싶다면 [복리 계산기](/tools/compound-interest)에 원금, 월 납입금, 기간을 넣어 미래가치를 봅니다. 목표 금액 중심으로 역산하고 싶다면 [목표자산 시뮬레이터](/tools/goal-simulator)에서 목표액과 기간을 먼저 고정합니다. 월 50만원 기준의 10년 예시는 [월 50만원 적립식 투자, 10년 후 얼마가 될까?](/posts/personalFinance/monthly-dca-10-year-result)에서 이어서 비교할 수 있습니다. 월 납입액을 정했지만 적립식과 일시금 중 어떤 방식이 맞는지 흔들린다면 [DCA·일시금 선택 규칙](/posts/personalFinance/dca-vs-lumpsum-decision-rules)에서 실행 리스크 기준을 먼저 확인하세요.
+
+1억원 목표 계산 전에 납입 방식의 큰 틀을 먼저 보고 싶다면 [1억원 목표 전에 DCA 구조를 정리한 가이드](/posts/personalFinance/dca-guide)에서 월 투자금·하락장·실행 규칙의 순서를 잡을 수 있습니다.
 
 ![DCA 목표 분석 결과를 해석하는 방법](https://res.cloudinary.com/dwonflmnn/image/upload/v1784650542/blog/insight/how-much-monthly-invest-for-100m/rework-20260722/slot-005-flow.png)
 
@@ -134,27 +139,6 @@ Finmap DCA 계산기의 목표 금액 분석은 최종 세후 자산 기준으�
 ### 목표 금액에 못 미치면 무엇을 조정해야 하나요?
 
 월 납입금, 투자 기간, 목표 금액, 수익률 가정을 차례로 바꿉니다. 먼저 기간을 늘렸을 때 월 부담이 얼마나 내려가는지 보고, 그다음 월 납입금 상향이 생활비를 흔들지 않는지 확인하는 순서가 현실적입니다.
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "1억원 만들려면 매달 얼마를 투자해야 할까?",
-  "description": "1억원을 만들기 위해 매달 얼마를 투자해야 하는지 기간, 수익률, 세금, 수수료 조건별로 계산하는 방법을 설명합니다.",
-  "datePublished": "2026-05-28",
-  "dateModified": "2026-06-19",
-  "author": {
-    "@type": "Organization",
-    "name": "Finmap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Finmap"
-  },
-  "inLanguage": "ko",
-  "mainEntityOfPage": "https://www.finmaphub.com/posts/personalFinance/how-much-monthly-invest-for-100m"
-}
-</script>
 
 <script type="application/ld+json">
 {

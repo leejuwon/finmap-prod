@@ -4,7 +4,7 @@ link: "/posts/personalFinance/compound-calculator-guide"
 title: "복리 계산기 사용법: 월복리·연복리·적립식 결과 보는 법"
 description: "복리 계산기로 원금, 월 적립금, 수익률, 기간을 입력해 월복리·연복리·적립식 투자 결과를 비교하는 방법을 정리합니다. 세금, 수수료, 물가상승률과 추가 납입 시나리오를 해석하는 순서도 함께 확인하세요."
 datePublished: "2026-07-08"
-dateModified: "2026-07-08"
+dateModified: "2026-09-17"
 seoTitle: "복리 계산기 사용법: 월복리·연복리·적립식 결과 보는 법"
 seoDescription: "복리 계산기로 원금, 월 적립금, 수익률, 기간을 입력해 월복리·연복리·적립식 투자 결과를 비교하는 방법을 정리합니다. 세금, 수수료, 물가상승률과 추가 납입 시나리오를 해석하는 순서도 함께 확인하세요."
 category: "재테크"
@@ -129,7 +129,8 @@ hreflangEquivalent: false
 - [단리와 복리 차이를 월 30만원 예시로 비교하기](/posts/personalFinance/simple-vs-compound)
 - [연복리와 월복리 차이를 계산 주기별로 보기](/posts/personalFinance/annual-vs-monthly-compound)
 - [월 50만원 적립식 투자 10년 결과 예시 보기](/posts/personalFinance/monthly-dca-10-year-result)
-- [1억 모으기 월 납입액과 기간 계산하기](/posts/personalFinance/how-much-per-month-for-100m)
+- [3%·5%·7%·10% 복리 결과표로 기간별 차이 보기](/posts/personalFinance/compound-return-3-5-7-10-table)
+- [1억원 목표 월 납입액과 기간 계산하기](/posts/personalFinance/how-much-monthly-invest-for-100m)
 - [목표금액을 복리로 앞당기는 변수 정리하기](/posts/personalFinance/goal-amount-fast-strategy)
 
 ## 자주 묻는 질문

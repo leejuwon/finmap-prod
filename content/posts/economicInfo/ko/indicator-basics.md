@@ -284,25 +284,6 @@ A. 고용은 소비와 물가를 통해 금리 정책에 직접 영향을 줍니
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
 - [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "경제지표 읽는 법: GDP·실업률·PMI를 실제로 쓰는 방법",
-  "description": "GDP, 실업률, PMI는 왜 매번 시장을 흔드는가? 초심자도 실제 투자에 활용할 수 있도록 핵심 구조와 해석 순서를 정리했습니다.",
-  "datePublished": "2025-11-13",
-  "dateModified": "2025-12-29",
-  "author": {
-    "@type": "Person",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap"
-  }
-}
-</script>
-
 <!-- =========================
      JSON-LD: FAQPage (필수)
 ========================= -->

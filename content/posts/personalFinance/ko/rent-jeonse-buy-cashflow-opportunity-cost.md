@@ -272,37 +272,6 @@ lang: "ko"
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "전세·월세·매매, 무엇이 ‘더 싸다’가 아니라 무엇이 ‘내게 더 안전하다’인가: 현금흐름·기회비용·리스크 3표로 끝내기",
-  "description": "전세·월세·매매는 ‘최저비용’ 경쟁이 아니라 ‘내 계획이 깨지지 않는 안정성’ 경쟁입니다. 대시보드 가격대를 입력값으로 고정한 뒤, 월 현금흐름·기회비용·리스크 트리거 3표로 내게 더 안전한 선택을 규칙으로 정리합니다.",
-  "datePublished": "2026-02-03",
-  "dateModified": "2026-02-03",
-  "inLanguage": "ko",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/personalFinance/rent-jeonse-buy-cashflow-opportunity-cost"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770083347/blog/insight/rent-jeonse-buy-cashflow-cover.png"
-  ],
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/og-default.png"
-    }
-  }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "inLanguage": "ko",
   "mainEntity": [

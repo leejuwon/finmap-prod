@@ -1,9 +1,9 @@
 ---
 slug: "personal-finance-3pillars"
 title: "가계 재무 3대장: 예산·비상금·장기투자를 먼저 세팅하라"
-description: "월소득을 예산, 비상금, 장기투자로 나누는 가계 재무 3단계입니다. 월급일 D+1/D+3/D+7 실행 흐름과 예시 예산표로 현금흐름을 정리합니다."
+description: "개인 재무관리의 기본 framework를 예산, 비상금, 장기투자 3요소로 정리합니다. 재테크 시작 순서보다 가계 재무 구조와 현금흐름 원칙을 잡는 글입니다."
 datePublished: "2025-11-13"
-dateModified: "2026-07-08"
+dateModified: "2026-09-17"
 category: "재테크"
 postCategory: "personalFinance"
 tags: ["가계재무","예산","비상금","장기투자","현금흐름","재테크기초","체크리스트"]
@@ -13,6 +13,8 @@ lang: "ko"
 ---
 
 월급이 320만 원 들어오는데 매달 남는 돈이 20만 원인지 80만 원인지 모른다면, 투자 상품을 고르는 것보다 통장 흐름부터 정리해야 합니다. 가계 재무의 출발점은 <strong>예산으로 새는 돈을 막고, 비상금으로 강제 매도를 줄이고, 장기투자로 남는 현금을 자동 배치하는 것</strong>입니다.
+
+이 글은 <strong>개인 재무관리의 3요소 framework</strong>를 잡는 글입니다. 사회초년생이 처음 무엇부터 실행할지 순서가 필요하다면 5단계 시작 가이드로 넘기는 편이 더 맞습니다.
 
 예를 들어 월 실수령 320만 원 가구라면 아래처럼 시작할 수 있습니다. 정답표가 아니라, 내 숫자를 넣기 위한 초안입니다.
 
@@ -320,9 +322,11 @@ lang: "ko"
 
 - [사회초년생을 위한 월급 관리 5단계 가이드](/posts/personalFinance/personal-start-5steps)  
 - [단리 vs 복리 — 초보 투자자가 반드시 알아야 할 최고의 금융 공식](/posts/personalFinance/simple-vs-compound)  
-- [1억 모으려면 월 얼마가 필요한지 보기](/posts/personalFinance/how-much-per-month-for-100m)
+- [1억원 목표에 필요한 월 투자금 계산하기](/posts/personalFinance/how-much-monthly-invest-for-100m)
 - [연복리 vs 월복리: 목표 도달 기간은 얼마나 달라질까?](/posts/personalFinance/annual-vs-monthly-compound)  
 - [목표 금액을 빠르게 모으는 법: 원금·수익률·기간의 균형](/posts/personalFinance/goal-amount-fast-strategy)  
+- [고금리 부채 상환과 투자의 우선순위 기준](/posts/personalFinance/high-rate-debt-vs-invest-threshold-rule)
+- [체감 물가가 올라갈 때 가계 현금흐름을 지키는 법](/posts/personalFinance/inflation-household-survival-strategy)
 - [CAGR이란 무엇인가? 단순 수익률과의 차이 이해하기](/posts/personalFinance/what-is-cagr)
 
 ---
@@ -356,20 +360,7 @@ lang: "ko"
 - [투자 복리 계산기로 장기투자 미래가치 확인하기](/tools/compound-interest)
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
 - [비상금 규모를 직장·가족·대출 리스크로 계산하기](/posts/personalFinance/emergency-fund-by-risk)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "가계 재무 3대장: 예산·비상금·장기투자를 먼저 세팅하라",
-  "description": "월소득을 예산, 비상금, 장기투자로 나누는 가계 재무 3단계입니다. 월급일 D+1/D+3/D+7 실행 흐름과 예시 예산표로 현금흐름을 정리합니다.",
-  "datePublished": "2025-11-13",
-  "dateModified": "2026-07-08",
-  "author": { "@type": "Person", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" },
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.finmaphub.com/posts/personalFinance/personal-finance-3pillars" }
-}
-</script>
+- [사회초년생 월급 관리를 처음 실행하는 5단계 순서 보기](/posts/personalFinance/personal-start-5steps)
 
 <script type="application/ld+json">
 {

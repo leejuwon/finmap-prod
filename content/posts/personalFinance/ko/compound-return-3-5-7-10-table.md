@@ -126,21 +126,6 @@ Finmap 복리 계산 로직의 월 복리 흐름을 기준으로 계산했습니
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "연 3%·5%·7%·10% 복리 차이, 10년·20년·30년 뒤 얼마일까?",
-  "description": "초기 1,000만원 일시 투자와 월 30만원 적립을 기준으로 연 3%, 5%, 7%, 10% 복리 결과를 10년·20년·30년 표로 비교합니다.",
-  "inLanguage": "ko",
-  "datePublished": "2026-06-01",
-  "dateModified": "2026-06-01",
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" },
-  "mainEntityOfPage": "https://www.finmaphub.com/posts/personalFinance/compound-return-3-5-7-10-table"
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {

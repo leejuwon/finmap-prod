@@ -1,11 +1,11 @@
 ---
 slug: "personal-start-5steps"
 title: "사회초년생을 위한 월급 관리 5단계 가이드"
-description: "사회초년생이 가장 고민하는 월급 관리. 어디서부터 시작해야 할지 막막하다면 이 글에서 소개하는 월급 관리 5단계 가이드로 재테크의 기초를 다져보세요."
+description: "사회초년생이 월급 관리를 처음 시작할 때 실행할 5단계 순서를 정리합니다. 개인 재무관리 framework 전체보다 고정지출, 생활비, 비상금, 저축, 복리 투자로 이어지는 beginner sequence에 집중합니다."
 datePublished: "2025-11-17"
-dateModified: "2026-07-08"
+dateModified: "2026-09-16"
 seoTitle: "사회초년생 월급 관리 5단계: 예산·비상금·복리 투자 시작법"
-seoDescription: "사회초년생이 월급을 예산·비상금·저축·복리 투자로 나누는 5단계를 정리하고, 복리 계산기로 장기 효과를 확인합니다."
+seoDescription: "사회초년생이 월급 관리를 처음 시작할 때 실행할 5단계 순서를 정리합니다. 개인 재무관리 framework 전체보다 고정지출, 생활비, 비상금, 저축, 복리 투자로 이어지는 beginner sequence에 집중합니다."
 category: "재테크"
 postCategory: "personalFinance"
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1764429439/blog/personalFinance/step5_thum.png"
@@ -27,6 +27,8 @@ lang: "ko"
 > 10. 월급 관리는 작게 시작해도 꾸준함이 핵심입니다.
 
 > 이제 막 사회생활을 시작한 사람들에게 가장 어려운 과제는 바로 ‘월급 관리’입니다. 첫 월급의 설렘도 잠시, 어디에 얼마나 써야 할지, 매달 어떻게 남겨야 할지 막막해지기 쉽죠. 이 글에서는 **사회초년생이 반드시 알아야 할 월급 관리 5단계**를 체계적으로 정리해 드립니다.
+
+> 이 글의 범위는 <strong>처음 시작하는 실행 순서</strong>입니다. 예산·비상금·장기투자라는 개인 재무관리 3요소 framework는 [가계 재무 3대장](/posts/personalFinance/personal-finance-3pillars)에서 더 넓게 정리합니다.
 
 함께 보면 좋은 글: [가계 재무 3대장](/posts/personalFinance/personal-finance-3pillars), [비상금은 리스크로 정한다](/posts/personalFinance/emergency-fund-by-risk), [단리 vs 복리 계산](/posts/personalFinance/simple-vs-compound). 월 저축 목표는 [목표 자산 시뮬레이터](/tools/goal-simulator)로 역산해볼 수 있습니다.
 
@@ -198,22 +200,3 @@ A2. 가능합니다. 다만 비상금이 먼저 확보되어 있어야 흔들림
 - [비상금 규모를 직장·가족·대출 리스크로 계산하기](/posts/personalFinance/emergency-fund-by-risk)
 - [복리 계산기 사용법으로 월복리·적립식 결과 읽는 순서 보기](/posts/personalFinance/compound-calculator-guide)
 - [고금리 부채 상환과 투자의 우선순위 기준 세우기](/posts/personalFinance/high-rate-debt-vs-invest-threshold-rule)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "사회초년생을 위한 월급 관리 5단계 가이드",
-  "description": "사회초년생이 가장 고민하는 월급 관리. 어디서부터 시작해야 할지 막막하다면 이 글에서 소개하는 월급 관리 5단계 가이드로 재테크의 기초를 다져보세요.",
-  "datePublished": "2025-11-17",
-  "dateModified": "2026-07-08",
-  "author": {
-    "@type": "Person",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap"
-  }
-}
-</script>

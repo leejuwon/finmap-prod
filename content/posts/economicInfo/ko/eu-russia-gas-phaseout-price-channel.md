@@ -284,40 +284,6 @@ EU의 러시아 가스 축소는 하나의 사건처럼 보이지만, 시장은 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "EU의 러시아 가스 축소가 에너지 가격을 흔드는 방식: 계약·저장·대체의 3요소",
-  "description": "EU의 러시아 가스 축소를 가스 가격, 전력 가격, 산업 원가, 유로존 물가·금리, 한국 수입원가·환율·업종 영향 순서로 읽는 가격 채널 가이드입니다.",
-  "inLanguage": "ko",
-  "datePublished": "2026-01-27",
-  "dateModified": "2026-06-23",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/economicInfo/eu-russia-gas-phaseout-price-channel"
-  },
-  "url": "https://www.finmaphub.com/posts/economicInfo/eu-russia-gas-phaseout-price-channel",
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782878263/blog/insight/eu-russia-gas-phaseout-price-channel/rework-20260701/slot-001-cover.png"
-  ],
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
-    }
-  },
-  "articleSection": "경제정보",
-  "keywords": "유럽가스, 천연가스, 에너지, 저장률, 장기계약, LNG, 대체조달, 인플레이션, 제조업, 유럽경기, 지정학"
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "inLanguage": "ko",
   "mainEntity": [

@@ -2,9 +2,9 @@
 slug: "oil-shock-to-usdkrw-korea-transmission"
 link: "/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission"
 title: "유가 급등이 원/달러에 미치는 영향: 한국식 전파 경로(무역수지·물가·수급)로 읽기"
-description: "유가 충격을 유가→수입물가→무역수지→USD/KRW→금리/수급→KOSPI 업종 순서로 읽습니다. 유가 상승 원인별 한국 환율 전이와 관측 순서를 표로 정리합니다."
+description: "유가 충격을 수입물가·무역수지·달러 수요·USD/KRW로 이어지는 한국 환율 전이 경로로 읽습니다. WTI가 코스피 업종에 미치는 영향은 별도 글로 넘기고, 여기서는 원/달러 관측 순서에 집중합니다."
 datePublished: "2026-01-29"
-dateModified: "2026-06-23"
+dateModified: "2026-09-16"
 category: "경제정보"
 postCategory: "economicInfo"
 tags: ["원달러","USD/KRW","유가","무역수지","수입물가","인플레이션","외국인수급","리스크오프","환율전이","시나리오"]
@@ -18,6 +18,7 @@ lang: "ko"
 - <strong>원화 약세</strong>는 “결과”일 때도 있고 “원인(리스크오프)</strong>일 때도 있어 먼저 <strong>주도 경로</strong>를 판별해야 합니다.  
 - 유가가 오르는데 원/달러가 안 오르는 국면도 흔하며, 그때는 보통 <strong>수출·환율·금리 기대</strong> 중 하나가 상쇄 역할을 합니다.  
 - 한국에서 체감 충격은 종종 <strong>유가×원/달러</strong>로 나타나서, 달러가 강한 날의 유가 상승은 더 크게 느껴질 수 있습니다.  
+- 이 글의 범위는 <strong>유가 → 수입물가/무역수지 → USD/KRW</strong> 전이입니다. WTI가 코스피 업종·기업 마진에 미치는 영향은 별도 투자 글에서 다룹니다.
 - “유가 상승→물가 상승→금리 상승→원화 약세”는 자주 쓰이는 문장이지만, 현실은 <strong>시간차</strong>와 <strong>정책 반응</strong> 때문에 훨씬 조건부입니다.  
 - 가장 실용적인 접근은 <strong>3시나리오</strong>와 <strong>Flip 조건</strong>을 정하고, 확인 데이터가 모일 때만 행동을 바꾸는 것입니다.  
 - 환율 대응은 방향 예측보다 <strong>노출(수입원가·달러부채·해외자산)</strong>을 정리하고, 그 노출을 기준으로 규칙을 세울 때 실수가 줄어듭니다.  
@@ -225,9 +226,10 @@ lang: "ko"
 - Relief는 하루 반짝이 아니라 <strong>동시 확인</strong>(유가·달러·수급·변동성)이 필요합니다.  
 - 규칙은 단순할수록 좋습니다. “Flip 조건이 나오면 바꾸고, 아니면 유지한다” 정도로 충분합니다.
 
-## 한국 환율 전이 관측 순서: 유가에서 KOSPI 업종까지
+## 한국 환율 전이 관측 순서: 유가에서 USD/KRW까지
 
 이 글은 전쟁 뉴스의 운임·보험료보다 한국의 수입물가, USD/KRW, 외국인 수급 전이에 초점을 둡니다.
+코스피 업종 반응은 마지막 확인 항목으로만 두고, 대표 query는 원/달러 환율 전이에 둡니다.
 
 | 단계 | 먼저 볼 데이터 | 환율 전이 | 업종 힌트 |
 | --- | --- | --- | --- |
@@ -254,10 +256,13 @@ lang: "ko"
 
 아래 4개는 오늘 글의 3경로를 더 넓은 맥락(코스피·인플레·달러 강세·리스크온오프)로 연결해 줍니다.
 
+유가 뉴스가 환율로 번지는지 확인할 때는 [WTI와 원/달러 흐름](/market/indices)에서 WTI와 USD/KRW를 같이 보며 공급 충격인지 달러 결제 부담인지 먼저 구분하세요.
+
 - [USD/KRW가 코스피와 외국인 수급으로 연결되는 이유](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)  
 - [인플레이션·금리의 기본 구조(수입물가 포함)](/posts/economicInfo/inflation-rate-basics)  
 - [DXY가 시장을 흔들 때 한국 환율이 민감해지는 이유](/posts/investingInfo/dxy-market-impact)  
 - [S&P500 리스크온/오프 → 한국 전이 구조](/posts/investingInfo/sp500-impact-on-korea-kospi)  
+- [WTI 유가가 코스피와 업종에 전이되는 5단 연결](/posts/investingInfo/wti-impact-on-korea-kospi)
 
 ## 추가로 확인하면 좋은 공식 데이터(참고용)
 
@@ -298,43 +303,6 @@ lang: "ko"
 - [DXY 달러인덱스로 글로벌 달러 강세 흐름 읽기](/posts/investingInfo/dxy-dollar-index-basics)
 - [원달러 환율이 한국 경제와 코스피에 미치는 영향 보기](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "유가 급등이 원/달러에 미치는 영향: 한국식 전파 경로(무역수지·물가·수급)로 읽기",
-  "description": "유가 충격을 유가→수입물가→무역수지→USD/KRW→금리/수급→KOSPI 업종 순서로 읽습니다. 유가 상승 원인별 한국 환율 전이와 관측 순서를 표로 정리합니다.",
-  "datePublished": "2026-01-29",
-  "dateModified": "2026-06-23",
-  "inLanguage": "ko",
-  "articleSection": "경제정보",
-  "keywords": ["원달러","USD/KRW","유가","무역수지","수입물가","인플레이션","외국인수급","리스크오프","환율전이","시나리오"],
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "url": "https://www.finmaphub.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/favicon-48.png"
-    }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782832235/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260701/slot-001-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782832238/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260701/slot-003-flow.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782832240/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260701/slot-004-chart.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782832241/blog/insight/oil-shock-to-usdkrw-korea-transmission/rework-20260701/slot-005-comparison.png"
-  ]
-}
-</script>
 
 <script type="application/ld+json">
 {

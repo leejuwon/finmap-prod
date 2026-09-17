@@ -5,6 +5,7 @@ title: "연봉 4000만원 주담대 가능액 계산: DSR 40% 기준으로 어�
 description: "연봉 4000만원 기준 DSR 40%, 금리 4%, 30년 원리금균등 상환을 가정해 주담대 가능액과 후보 아파트 가격대를 계산합니다."
 datePublished: "2026-06-23"
 dateModified: "2026-06-24"
+hreflangEquivalent: false
 seoTitle: "연봉 4000만원 주담대 가능액 계산 | DSR 40% LTV 예산표"
 seoDescription: "연봉 4000만원이면 DSR 40% 기준 주담대 가능액이 얼마인지, 월 상환액·LTV·보유현금·부대비용까지 함께 계산하는 방법을 정리합니다."
 category: "재테크"

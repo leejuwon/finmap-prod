@@ -4,7 +4,7 @@ link: "/posts/personalFinance/monthly-dca-10-year-result"
 title: "월 50만원 적립식 투자, 10년 후 얼마가 될까?"
 description: "월 50만원을 10년 동안 적립식으로 투자하면 원금 6천만원이 어떤 범위의 결과로 바뀔 수 있는지 단순 예시로 계산하고, DCA 계산기·복리 계산기·목표자산 시뮬레이터로 내 숫자를 확인하는 방법을 정리합니다."
 datePublished: "2026-05-21"
-dateModified: "2026-07-08"
+dateModified: "2026-09-17"
 seoTitle: "월 50만원 적립식 투자 10년 후 예상 금액: DCA 계산 예시"
 seoDescription: "월 50만원을 10년간 적립식 투자하면 얼마가 되는지 원금, 수익률, 기간별 단순 예시로 확인하고 DCA 계산기로 내 조건을 직접 계산해보세요."
 category: "재테크"
@@ -154,7 +154,7 @@ lang: "ko"
 
 ## 이어서 읽으면 계획이 더 단단해지는 글
 
-- [1억 모으려면 월 얼마가 필요한지 보기](/posts/personalFinance/how-much-per-month-for-100m): 목표 금액을 먼저 정하고 월 납입액을 역산하고 싶을 때
+- [1억원 목표 월 투자금 계산법 보기](/posts/personalFinance/how-much-monthly-invest-for-100m): 목표 금액을 먼저 정하고 월 납입액을 역산하고 싶을 때
 - [목표 금액을 빠르게 모으는 법](/posts/personalFinance/goal-amount-fast-strategy): 원금·수익률·기간 중 무엇을 조정할지 판단할 때
 - [연복리 vs 월복리](/posts/personalFinance/annual-vs-monthly-compound): 같은 수익률이라도 계산 방식이 왜 달라지는지 볼 때
 - [단리와 복리 차이](/posts/personalFinance/simple-vs-compound): 복리 구조를 처음부터 정리하고 싶을 때
@@ -195,6 +195,7 @@ DCA 계산기는 매월 납입하는 적립식 흐름을 확인할 때 좋고, �
 ## 함께 보면 좋은 글/도구
 
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+- [DCA 기본 구조와 장기 결과를 읽는 순서](/posts/personalFinance/dca-guide)
 - [적립식 투자가 무너지는 7가지 패턴과 운영 규칙 점검하기](/posts/investingInfo/dca-consistency-7-fail-patterns)
 - [복리 계산기 사용법으로 월복리·적립식 결과 읽는 순서 보기](/posts/personalFinance/compound-calculator-guide)
 

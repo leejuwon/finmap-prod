@@ -3,7 +3,7 @@ slug: "dca-consistency-7-fail-patterns"
 title: "적립식(DCA)은 ‘수익률’이 아니라 ‘지속성’ 게임: 실패하는 DCA 패턴 7가지"
 description: "DCA는 타이밍이 아니라 ‘지속성’이 성패를 가릅니다. 많은 투자자가 반복해서 무너지는 7가지 패턴과, 규칙을 다시 설계하는 실전 체크리스트를 정리했습니다."
 datePublished: "2026-01-08"
-dateModified: "2026-01-08"
+dateModified: "2026-09-16"
 category: "투자정보"
 tags: ["DCA","적립식투자","장기투자","변동성","리밸런싱","CAGR","MDD","투자습관","심리","규칙투자"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1767861108/blog/tools/dca-consistency-cover.png"
@@ -31,34 +31,6 @@ tools: ["dca","cagr","goal"]
 <!-- =========================
      JSON-LD (Article + FAQPage)
      ========================= -->
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "적립식(DCA)은 ‘수익률’이 아니라 ‘지속성’ 게임: 실패하는 DCA 패턴 7가지",
-  "description": "DCA는 타이밍이 아니라 ‘지속성’이 성패를 가릅니다. 많은 투자자가 반복해서 무너지는 7가지 패턴과, 규칙을 다시 설계하는 실전 체크리스트를 정리했습니다.",
-  "datePublished": "2026-01-08",
-  "dateModified": "2026-01-08",
-  "inLanguage": "ko-KR",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/investingInfo/dca-consistency-7-fail-patterns"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1767861108/blog/tools/dca-consistency-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1767861109/blog/tools/dca-consistency-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1767861110/blog/tools/dca-consistency-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1767861112/blog/tools/dca-consistency-img3.png"
-  ],
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": { "@type": "ImageObject", "url": "https://www.finmaphub.com/og-default.png" }
-  }
-}
-</script>
 
 <script type="application/ld+json">
 {
@@ -353,6 +325,7 @@ DCA의 목표는 ‘최고 수익률’이 아니라, **실수 확률을 낮춘 
 - [‘연 7% 복리’는 실제로 무엇을 의미할까? CAGR로 현실 체크하기](/posts/investingInfo/cagr-7percent-reality-check)  
 - [CAGR로 투자 실력 진단하기: MDD·변동성·샤프비율과 함께 보는 현실적인 평가법](/posts/investingInfo/diagnose-investing-skill-with-cagr)  
 - [ETF·펀드 선택 시 CAGR을 반드시 확인해야 하는 이유](/posts/investingInfo/why-check-cagr-etf)  
+- [DCA와 일시금 중 무엇을 고를지 먼저 정하는 실행 리스크 기준표](/posts/personalFinance/dca-vs-lumpsum-decision-rules)
 - [물가와 금리의 기본 이해: 왜 금리가 오르면 시장이 흔들릴까?](/posts/economicInfo/inflation-rate-basics)  
 - [환율의 기초: 원/달러가 움직이는 진짜 이유](/posts/economicInfo/fx-basics)  
 - [코스피에 가장 큰 영향을 끼치는 글로벌 시장 환경 총정리](/posts/investingInfo/indicator-marketinfo)  
@@ -362,6 +335,6 @@ DCA의 목표는 ‘최고 수익률’이 아니라, **실수 확률을 낮춘 
 ## 함께 보면 좋은 글/도구
 
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+- [DCA 기본 구조와 실행 순서를 정리한 가이드](/posts/personalFinance/dca-guide)
 - [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
-

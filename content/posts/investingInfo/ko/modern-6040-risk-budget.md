@@ -4,7 +4,7 @@ link: "/posts/investingInfo/modern-6040-risk-budget"
 title: "요즘형 60/40: 주식·채권·현금·금(또는 원자재)로 ‘리스크 예산’ 짜기"
 description: "수익률 예측 대신 ‘리스크 예산’으로 포트폴리오를 운영하면 불안이 줄고, 흔들릴 때도 실행 규칙이 남습니다. 주식·채권·현금·금(또는 원자재)의 역할을 분리해 현대형 60/40을 설계하고, 리밸런싱·중단 조건·실패 패턴까지 운영체계로 정리합니다."
 datePublished: "2026-01-14"
-dateModified: "2026-06-19"
+dateModified: "2026-09-16"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["리스크예산", "포트폴리오", "60/40", "자산배분", "리밸런싱", "드로다운", "채권", "금", "현금", "투자규칙"]
@@ -296,6 +296,8 @@ lang: "ko"
 즉, “금(또는 원자재)”는 똑같은 칸이 아닙니다.
 내가 원하는 게 “보험”인지, “인플레 민감도”인지부터 결정하세요.
 
+금의 보험 성격을 더 좁혀 보려면 [실질금리·달러·불확실성으로 금을 보는 글](/posts/economicInfo/gold-geopolitics-real-rates-dollar-uncertainty)에서 매크로 변수를 함께 확인하세요.
+
 (원자재/인플레 체인을 더 깊게 보고 싶다면 아래 글이 퍼즐을 맞춰줍니다.)
 
 - 🔗 [WTI 유가가 한국 경제·코스피에 미치는 영향: 물가·환율·금리·기업이익으로 이어지는 5단 연결](/posts/investingInfo/wti-impact-on-korea-kospi)
@@ -362,6 +364,7 @@ lang: "ko"
 - 🔗 [ETF·펀드 선택 시 CAGR을 반드시 확인해야 하는 이유](/posts/investingInfo/why-check-cagr-etf)
 - 🔗 [‘연 7% 복리’는 실제로 무엇을 의미할까? CAGR로 현실 체크하기](/posts/investingInfo/cagr-7percent-reality-check)
 - 🔗 [적립식(DCA)은 ‘수익률’이 아니라 ‘지속성’ 게임: 실패하는 DCA 패턴 7가지](/posts/investingInfo/dca-consistency-7-fail-patterns)
+- 🔗 [부동산을 포트폴리오 리스크 예산에서 어떤 역할로 둘지 정리하기](/posts/investingInfo/real-estate-role-in-portfolio-risk-budget)
 - 🔗 [미국 10년물 금리(TNX)는 왜 ETF를 뒤흔드는가?](/posts/investingInfo/etf-impact-of-tnx)
 
 ---
@@ -407,37 +410,6 @@ lang: "ko"
 - [경제지표를 볼 때 먼저 확인할 핵심 구조 정리하기](/posts/economicInfo/indicator-basics)
 - [시장정보 지표를 투자 판단에 연결하는 방법 보기](/posts/investingInfo/indicator-marketinfo)
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "요즘형 60/40: 주식·채권·현금·금(또는 원자재)로 ‘리스크 예산’ 짜기",
-  "description": "수익률 예측 대신 ‘리스크 예산’으로 포트폴리오를 운영하면 불안이 줄고, 흔들릴 때도 실행 규칙이 남습니다. 주식·채권·현금·금(또는 원자재)의 역할을 분리해 현대형 60/40을 설계하고, 리밸런싱·중단 조건·실패 패턴까지 운영체계로 정리합니다.",
-  "inLanguage": "ko",
-  "datePublished": "2026-01-14",
-  "dateModified": "2026-06-19",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/investingInfo/modern-6040-risk-budget"
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
-    }
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768439162/blog/tools/modern-6040-risk-budget-cover.png"
-  ]
-}
-</script>
 
 <script type="application/ld+json">
 {

@@ -4,7 +4,7 @@ link: "/posts/investingInfo/bond-etf-duration-drives-returns"
 title: "채권 ETF와 듀레이션: 금리 1%p 변화가 수익률을 얼마나 흔드는가"
 description: "채권 ETF는 금리 방향만 맞히는 상품이 아닙니다. 듀레이션 3년·7년·10년 ETF가 금리 1%p 변화에 어떻게 다르게 반응하는지 계산하고, TNX를 기준으로 채권 ETF 역할과 리밸런싱 규칙을 정리합니다."
 datePublished: "2026-01-18"
-dateModified: "2026-06-19"
+dateModified: "2026-09-16"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["채권ETF", "듀레이션", "TNX", "미국10년물", "금리민감도", "컨벡서티", "롤다운", "기간프리미엄", "총수익", "리밸런싱", "현금흐름", "단기채", "장기채", "TIPS"]
@@ -78,6 +78,8 @@ TNX(미국 10년물 금리)는 채권 그 자체이기도 하지만, 시장에�
 
 즉 TNX가 움직일 때, 채권 ETF는 “금리”뿐 아니라 **기대·리스크·달러·유동성**의 영향을 동시에 받습니다.
 그래서 채권 ETF를 TNX와 연결해 읽는 게 실전에서 훨씬 유리합니다.
+
+채권 ETF 듀레이션을 점검할 때는 [TNX 흐름 확인](/market/indices)으로 미국 10년물 금리 방향과 주요 지수 분위기를 같이 본 뒤, ETF 자체는 보유 상품 화면에서 따로 확인하는 편이 안전합니다.
 
 (미국 10년물 자체를 더 기초부터 정리해 두었어요.)
 - 🔗 [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)
@@ -347,37 +349,6 @@ TNX를 볼 때 많은 사람이 “오르냐 내리냐”만 보지만,
 - [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
 - [시장정보 지표를 투자 판단에 연결하는 방법 보기](/posts/investingInfo/indicator-marketinfo)
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "채권 ETF와 듀레이션: 금리 1%p 변화가 수익률을 얼마나 흔드는가",
-  "description": "채권 ETF는 금리 방향만 맞히는 상품이 아닙니다. 듀레이션 3년·7년·10년 ETF가 금리 1%p 변화에 어떻게 다르게 반응하는지 계산하고, TNX를 기준으로 채권 ETF 역할과 리밸런싱 규칙을 정리합니다.",
-  "inLanguage": "ko",
-  "datePublished": "2026-01-18",
-  "dateModified": "2026-06-19",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/investingInfo/bond-etf-duration-drives-returns"
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
-    }
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782812793/blog/insight/bond-etf-duration-drives-returns/rework-20260630/slot-001-cover.png"
-  ]
-}
-</script>
 
 <script type="application/ld+json">
 {

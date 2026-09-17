@@ -3,7 +3,7 @@ slug: "dxy-market-impact"
 title: "DXY가 변화하면 시장은 어떻게 움직일까? 미국 증시·환율·코스피까지"
 description: "DXY 상승과 하락이 미국 증시, 원/달러 환율, KOSPI, 글로벌 유동성에 어떤 영향을 주는지 초중급 투자자도 이해하기 쉽게 정리했습니다."
 datePublished: "2025-11-24"
-dateModified: "2026-02-23"
+dateModified: "2026-09-16"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["DXY", "달러인덱스", "미국금리", "환율", "유동성"]
@@ -200,6 +200,8 @@ TNX(미 10년물) 프레임이 약하면 DXY를 잘못 해석하는 경우가 �
 - [관세는 패키지 충격이다](/posts/economicInfo/tariffs-growth-margins-fx-package-shock)
 - [유가 충격 → 원/달러 → 한국](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
 
+DXY 해석을 가격 흐름과 맞춰볼 때는 [달러·환율·주요 지수 흐름](/market/indices)에서 DXY, USD/KRW, S&P500, 나스닥, 코스피를 함께 확인해 시장 반응의 방향을 점검하세요.
+
 ## FAQ
 
 **Q1. DXY가 오르면 항상 시장이 하락하나요?**  
@@ -218,31 +220,3 @@ TNX(미 10년물) 프레임이 약하면 DXY를 잘못 해석하는 경우가 �
 - [DXY 달러인덱스로 글로벌 달러 강세 흐름 읽기](/posts/investingInfo/dxy-dollar-index-basics)
 - [원달러 환율이 한국 경제와 코스피에 미치는 영향 보기](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "DXY가 변화하면 시장은 어떻게 움직일까?",
-  "description": "DXY 상승과 하락이 미국 증시, 환율, 코스피, 글로벌 유동성에 어떤 영향을 주는지 초중급 투자자도 이해하기 쉽게 설명합니다.",
-  "datePublished": "2025-11-24",
-  "dateModified": "2026-02-23",
-  "inLanguage": "ko",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/investingInfo/dxy-market-impact"
-  },
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
-    }
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1764428430/blog/investingInfo/dxy-market-impact-thum.png"
-  ]
-}
-</script>

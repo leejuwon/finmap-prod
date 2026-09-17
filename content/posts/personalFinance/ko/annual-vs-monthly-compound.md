@@ -3,7 +3,7 @@ slug: "annual-vs-monthly-compound"
 title: "연복리 vs 월복리: 목표 도달 기간은 얼마나 달라질까?"
 description: "연복리와 월복리의 차이를 실제 수치와 예시로 설명하고, 목표 금액 도달 속도에 어떤 영향을 미치는지 쉽게 이해할 수 있도록 정리했습니다."
 datePublished: "2025-11-23"
-dateModified: "2026-07-08"
+dateModified: "2026-09-17"
 seoTitle: "연복리 vs 월복리: 목표 달성 기간이 얼마나 달라질까?"
 seoDescription: "연복리와 월복리 차이를 목표 금액·월 적립 예시로 비교하고, 복리 계산기와 목표 자산 시뮬레이터로 결과를 확인합니다."
 category: "재테크"
@@ -31,7 +31,7 @@ lang: "ko"
 > 연복리와 월복리의 차이는 작아 보이지만, 장기 투자에서는 실제 목표 도달 기간을 분명하게 바꿉니다.  
 > 동일한 금액을 동일한 기간 동안 투자하더라도 **이자가 붙는 주기**만으로 결과가 달라지기 때문입니다.
 
-함께 보면 좋은 글: [단리 vs 복리 계산](/posts/personalFinance/simple-vs-compound), [월 50만원 적립식 투자 10년 예시](/posts/personalFinance/monthly-dca-10-year-result), [목표 금액 빨리 모으는 법](/posts/personalFinance/goal-amount-fast-strategy), [1억 모으기 월 투자금 계산](/posts/personalFinance/how-much-per-month-for-100m).
+함께 보면 좋은 글: [단리 vs 복리 계산](/posts/personalFinance/simple-vs-compound), [월 50만원 적립식 투자 10년 예시](/posts/personalFinance/monthly-dca-10-year-result), [목표 금액 빨리 모으는 법](/posts/personalFinance/goal-amount-fast-strategy), [1억원 목표 월 투자금 계산](/posts/personalFinance/how-much-monthly-invest-for-100m).
 
 ![복리 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764429384/blog/personalFinance/compounding-period-diff-top_ko.png "연복리와 월복리 비교 이미지")
 

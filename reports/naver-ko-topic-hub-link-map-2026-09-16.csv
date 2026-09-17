@@ -1,0 +1,43 @@
+scope,source,target,anchor,section,status
+DCA_HUB_TO_SPOKE,personalFinance/dca-guide,personalFinance/dca-vs-lumpsum-decision-rules,DCA와 일시금 선택 규칙,DCA와 일시금 투자는 무엇이 다른가,PASS
+DCA_HUB_TO_SPOKE,personalFinance/dca-guide,personalFinance/dca-vs-lump-sum-when-results-differ,적립식과 일괄투자의 시장 경로 비교,DCA와 일시금 투자는 무엇이 다른가,PASS
+DCA_HUB_TO_SPOKE,personalFinance/dca-guide,personalFinance/is-dca-better-in-bear-market,하락장 DCA 시나리오,하락장에도 계속해야 할까,PASS
+DCA_HUB_TO_SPOKE,personalFinance/dca-guide,personalFinance/dca-step-up-ruleset,DCA 증액·감액 운영 규칙,월 투자금은 어떻게 정할까,PASS
+DCA_HUB_TO_SPOKE,personalFinance/dca-guide,personalFinance/dca-fx-volatility-decomposition,해외자산 DCA의 환율 변동성 분해,해외자산 DCA에서 환율은 어떻게 볼까,PASS
+DCA_HUB_TO_SPOKE,personalFinance/dca-guide,personalFinance/monthly-dca-10-year-result,월 50만원 10년 적립식 예시,장기 적립식 결과는 어떻게 달라질까,PASS
+DCA_HUB_TO_SPOKE,personalFinance/dca-guide,personalFinance/how-much-monthly-invest-for-100m,1억원 목표에 필요한 월 납입금 계산,월 투자금은 어떻게 정할까,PASS
+DCA_HUB_TO_SPOKE,personalFinance/dca-guide,personalFinance/monthly-investment-for-100m-table,기간·수익률별 월 투자금 표,월 투자금은 어떻게 정할까,PASS
+DCA_HUB_TO_SPOKE,personalFinance/dca-guide,investingInfo/dca-consistency-7-fail-patterns,DCA 실패 패턴 7가지,DCA를 실패하게 만드는 실행 패턴,PASS
+DCA_SPOKE_TO_HUB,personalFinance/dca-vs-lumpsum-decision-rules,personalFinance/dca-guide,DCA 기본 구조와 실행 순서를 먼저 훑는 전체 가이드,더 깊게 읽고 싶다면(연결해서 보면 선택이 더 쉬워집니다),PASS
+DCA_SPOKE_TO_HUB,personalFinance/dca-vs-lump-sum-when-results-differ,personalFinance/dca-guide,DCA 기본 구조와 결과 비교 전 읽는 순서,계산기에서 비교할 때 볼 항목,PASS
+DCA_SPOKE_TO_HUB,personalFinance/is-dca-better-in-bear-market,personalFinance/dca-guide,적립식 투자 방법을 처음부터 정리한 가이드,계산기에서 직접 비교하는 방법,PASS
+DCA_SPOKE_TO_HUB,personalFinance/dca-step-up-ruleset,personalFinance/dca-guide,DCA 실행 순서와 월 투자금 기준을 먼저 잡기,함께 보면 좋은 글/도구,PASS
+DCA_SPOKE_TO_HUB,personalFinance/dca-fx-volatility-decomposition,personalFinance/dca-guide,적립식 투자 전체 가이드로 DCA 구조 먼저 정리하기,함께 보면 좋은 글/도구,PASS
+DCA_SPOKE_TO_HUB,personalFinance/monthly-dca-10-year-result,personalFinance/dca-guide,DCA 기본 구조와 장기 결과를 읽는 순서,함께 보면 좋은 글/도구,PASS
+DCA_SPOKE_TO_HUB,personalFinance/how-much-monthly-invest-for-100m,personalFinance/dca-guide,1억원 목표 전에 DCA 구조를 정리한 가이드,DCA 계산기에서 입력할 순서,PASS
+DCA_SPOKE_TO_HUB,personalFinance/monthly-investment-for-100m-table,personalFinance/dca-guide,목표금액별 월 투자금 전에 보는 DCA 가이드,이 글에서 사용한 계산기,PASS
+DCA_SPOKE_TO_HUB,investingInfo/dca-consistency-7-fail-patterns,personalFinance/dca-guide,DCA 기본 구조와 실행 순서를 정리한 가이드,함께 보면 좋은 글/도구,PASS
+HOUSEHOLD_EXISTING_CORE,personalFinance/personal-finance-3pillars,personalFinance/personal-start-5steps,,,PASS
+HOUSEHOLD_EXISTING_CORE,personalFinance/personal-finance-3pillars,personalFinance/emergency-fund-by-risk,,,PASS
+HOUSEHOLD_EXISTING_CORE,personalFinance/personal-finance-3pillars,personalFinance/goal-amount-fast-strategy,,,PASS
+HOUSEHOLD_EXISTING_CORE,personalFinance/personal-finance-3pillars,personalFinance/high-rate-debt-vs-invest-threshold-rule,,,PASS
+HOUSEHOLD_EXISTING_CORE,personalFinance/personal-finance-3pillars,personalFinance/inflation-household-survival-strategy,,,PASS
+DSR_LTV,personalFinance/dsr-40-income-loan-limit-table,personalFinance/interest-rate-1p-loan-limit-impact,금리 1%p 오르면 내 주담대 한도는 얼마나 줄어들까?,같이 보면 좋은 글,PASS
+DSR_LTV,personalFinance/ltv-dsr-calculator-guide,personalFinance/interest-rate-1p-loan-limit-impact,주담대 금리 1%p 오르면 대출 한도는 얼마나 줄어들까,관련 글과 계산기,PASS
+DSR_LTV,personalFinance/dsr-40-income-loan-limit-table,personalFinance/salary-40m-mortgage-limit,연봉 4000만원 주담대 가능액을 별도 사례로 확인하기,같이 보면 좋은 글,PASS
+DSR_LTV,personalFinance/dsr-40-income-loan-limit-table,personalFinance/salary-50m-dsr-40-loan-limit,연봉 5000만원 DSR 40% 한도 사례로 비교하기,같이 보면 좋은 글,PASS
+DSR_LTV,personalFinance/ltv-dsr-calculator-guide,personalFinance/salary-50m-dsr-40-loan-limit,연봉 5000만원 DSR 40% 사례로 입력값 비교하기,관련 글과 계산기,PASS
+DSR_LTV,personalFinance/dsr-40-income-loan-limit-table,personalFinance/mortgage-risk-checklist-dsr-variable,아파트 매수 전 대출 리스크 체크리스트,같이 보면 좋은 글,PASS
+DSR_LTV,personalFinance/ltv-dsr-calculator-guide,personalFinance/mortgage-risk-checklist-dsr-variable,아파트 매수 전 대출 리스크 체크리스트로 금리·비상금까지 점검하기,관련 글과 계산기,PASS
+DSR_LTV,personalFinance/dsr-40-income-loan-limit-table,personalFinance/dsr-pass-ltv-cash-bottleneck,DSR은 통과했는데 왜 집을 못 살까?,같이 보면 좋은 글,PASS
+DSR_LTV,personalFinance/ltv-dsr-calculator-guide,personalFinance/dsr-pass-ltv-cash-bottleneck,DSR은 통과했는데 왜 집을 못 살까,관련 글과 계산기,PASS
+REAL_ESTATE_BUDGET,personalFinance/apartment-buying-calculator-guide,personalFinance/apartment-buying-costs-before-purchase,아파트 매수 전 계산해야 할 비용 5가지,관련 글과 계산기,PASS
+REAL_ESTATE_BUDGET,personalFinance/apartment-buying-calculator-guide,personalFinance/cash-100m-200m-300m-apartment-budget,보유현금 1억 2억 3억이면 어떤 가격대가 가능할까,관련 글과 계산기,PASS
+REAL_ESTATE_BUDGET,personalFinance/apartment-buying-calculator-guide,personalFinance/first-home-buyer-budget-calculation,생애최초 주택 구입 예산은 어떤 순서로 계산할까,관련 글과 계산기,PASS
+REAL_ESTATE_BUDGET,personalFinance/apartment-buying-calculator-guide,personalFinance/jeonse-to-home-purchase-cash-needed,전세에서 매매로 갈아탈 때 필요한 현금과 보증금 타이밍 보기,관련 글과 계산기,PASS
+REAL_ESTATE_BUDGET,personalFinance/apartment-buying-calculator-guide,personalFinance/rent-jeonse-buy-cashflow-opportunity-cost,전세·월세·매매 선택을 현금흐름과 기회비용으로 비교하기,관련 글과 계산기,PASS
+REAL_ESTATE_DATA,personalFinance/apt-dashboard-home-goal-roadmap,investingInfo/rates-discount-mortgage-demand-apt-prices,금리와 할인율이 아파트 수요·거래량을 흔드는 3채널 읽기,이어서 읽으면 목표 설정이 더 빨라지는 글들,PASS
+REAL_ESTATE_DATA,personalFinance/apt-dashboard-home-goal-roadmap,investingInfo/seoul-gyeonggi-incheon-risk-budget-framework,서울·경기·인천을 지역 선택이 아니라 리스크 예산으로 나누는 법,이어서 읽으면 목표 설정이 더 빨라지는 글들,PASS
+REAL_ESTATE_DATA,personalFinance/apt-dashboard-home-goal-roadmap,personalFinance/apartment-transaction-volume-decline-meaning,거래량 감소가 가격 신호인지 시간 리스크인지 구분하기,이어서 읽으면 목표 설정이 더 빨라지는 글들,PASS
+REAL_ESTATE_DATA,personalFinance/apt-dashboard-home-goal-roadmap,personalFinance/how-to-read-apartment-transaction-prices,아파트 실거래가를 중앙값·평단가·분포로 읽는 기본법,이어서 읽으면 목표 설정이 더 빨라지는 글들,PASS
+REAL_ESTATE_DATA,personalFinance/apt-dashboard-home-goal-roadmap,personalFinance/large-apartment-complex-households-price-stability,대단지 세대수와 가격 안정성을 함께 보는 기준,이어서 읽으면 목표 설정이 더 빨라지는 글들,PASS

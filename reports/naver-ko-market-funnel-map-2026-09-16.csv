@@ -1,0 +1,22 @@
+id,family,intendedDecision,decision,targetRoute,beforeMarketRouteCount,afterMarketRouteCount,newMarketLinks,anchors,indicators,rationale
+economicInfo/eu-russia-gas-phaseout-price-channel,OIL_ENERGY,SKIP_DATA_NOT_AVAILABLE,SKIP_DATA_NOT_AVAILABLE,/market/indices,0,0,0,,,"Dashboard provides WTI, not European gas/storage/LNG replacement data."
+economicInfo/fx-basics,FX,APPLY,APPLY,/market/indices,0,1,1,주요 시장 지표 흐름,USD/KRW | DXY,
+economicInfo/geopolitics-to-usd-liquidity-fx,FX,APPLY,APPLY,/market/indices,0,1,1,달러·금리·지수 흐름,USD/KRW | DXY | US10Y/TNX,
+economicInfo/hormuz-risk-oil-insurance-freight-premium,OIL_ENERGY,SKIP_NOT_NATURAL,SKIP_NOT_NATURAL,/market/indices,0,0,0,,,"Article focuses on shipping, insurance, and Hormuz risk premiums beyond current dashboard scope."
+economicInfo/interest-rate-basics,INTEREST_RATES,APPLY,APPLY,/market/indices,0,1,1,미국 10년물 금리 흐름,US10Y/TNX,
+economicInfo/oil-shock-to-usdkrw-korea-transmission,OIL_ENERGY,APPLY,APPLY,/market/indices,0,1,1,WTI와 원/달러 흐름,WTI | USD/KRW,
+economicInfo/policy-rate-cut-market-rates,INTEREST_RATES,SKIP_NOT_NATURAL,SKIP_NOT_NATURAL,/market/indices,0,0,0,,,Policy-rate transmission is broader than the available dashboard indicator set.
+economicInfo/real-rates-and-breakevens,INTEREST_RATES,SKIP_DATA_NOT_AVAILABLE,SKIP_DATA_NOT_AVAILABLE,/market/indices,0,0,0,,,Dashboard does not provide real rates or breakeven inflation series.
+economicInfo/yield-curve-2s10s-3m10y-recession-reading,INTEREST_RATES,SKIP_DATA_NOT_AVAILABLE,SKIP_DATA_NOT_AVAILABLE,/market/indices,0,0,0,,,Dashboard does not provide 2Y/10Y or 3M/10Y yield-curve spreads.
+investingInfo/bond-etf-duration-drives-returns,ETF,APPLY,APPLY,/market/indices,0,1,1,TNX 흐름 확인,US10Y/TNX,
+investingInfo/dxy-dollar-index-basics,DXY,APPLY,APPLY,/market/indices,0,1,1,달러와 환율 흐름,DXY | USD/KRW,
+investingInfo/dxy-market-impact,DXY,APPLY,APPLY,/market/indices,0,1,1,달러·환율·주요 지수 흐름,DXY | USD/KRW | S&P 500 | Nasdaq | KOSPI,
+investingInfo/etf-impact-of-tnx,ETF,APPLY,APPLY,/market/indices,0,1,1,TNX와 주요 지수 흐름,US10Y/TNX | KOSPI | S&P 500,
+investingInfo/fx-hedge-vs-fx-exposure-korea-3-conditions,FX,SKIP_NOT_NATURAL,SKIP_NOT_NATURAL,/market/indices,0,0,0,,,"Article is a hedge decision guide, not a market-indicator lookup flow."
+investingInfo/korea-etf-deep-dive-tnx,ETF,APPLY,APPLY,/market/indices,0,1,1,TNX·환율·코스피 흐름,US10Y/TNX | USD/KRW | KOSPI,
+investingInfo/sp500-impact-on-korea-kospi,KOSPI_GLOBAL_LINK,APPLY,APPLY,/market/indices,0,1,1,미국 지수와 코스피 흐름,S&P 500 | Nasdaq | Dow Jones | KOSPI,
+investingInfo/tnx-basics,TNX,APPLY,APPLY,/market/indices,0,1,1,미국 10년물 금리와 지수 흐름,US10Y/TNX,
+investingInfo/us10y-impact-on-korea-and-stock-market,TNX,APPLY,APPLY,/market/indices,0,1,1,TNX·환율·주요 지수 흐름,US10Y/TNX | KOSPI | S&P 500,
+investingInfo/usd-krw-exchange-rate-and-kospi,KOSPI_GLOBAL_LINK,APPLY,APPLY,/market/indices,0,1,1,원/달러·달러인덱스·코스피 흐름,USD/KRW | DXY | KOSPI,
+investingInfo/usd-krw-weak-won-sector-map-kospi,KOSPI_GLOBAL_LINK,APPLY,APPLY,/market/indices,0,1,1,원/달러와 코스피 흐름,USD/KRW | KOSPI,
+investingInfo/wti-impact-on-korea-kospi,OIL_ENERGY,APPLY,APPLY,/market/indices,0,1,1,WTI와 주요 지수 흐름,WTI | KOSPI,

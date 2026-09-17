@@ -1,0 +1,13 @@
+source,anchor,beforeTarget,afterTarget,currentTargetPresent,intentRole,before,after
+investingInfo/cagr-7percent-reality-check,기대수익률을 1억원 목표 월 투자금으로 옮겨 계산하기,personalFinance/how-much-per-month-for-100m,personalFinance/how-much-monthly-invest-for-100m,YES,OWNER_GENERIC_100M,SUPPORTING_GENERIC,OWNER_GENERIC
+personalFinance/annual-vs-monthly-compound,1억원 만들기 월 투자금,personalFinance/how-much-per-month-for-100m,personalFinance/how-much-monthly-invest-for-100m,YES,OWNER_GENERIC_100M,SUPPORTING_GENERIC,OWNER_GENERIC
+personalFinance/apt-dashboard-home-goal-roadmap,1억원 만들기 월 투자금 계산,personalFinance/how-much-per-month-for-100m,personalFinance/how-much-monthly-invest-for-100m,YES,OWNER_GENERIC_100M,SUPPORTING_GENERIC,OWNER_GENERIC
+personalFinance/compound-calculator-guide,1억원을 목표로 매달 얼마를 넣어야 하는지,personalFinance/how-much-per-month-for-100m,personalFinance/how-much-monthly-invest-for-100m,YES,OWNER_GENERIC_100M,SUPPORTING_GENERIC,OWNER_GENERIC
+personalFinance/goal-amount-fast-strategy,1억원을 만들기 위한 월 투자금 계산,personalFinance/how-much-per-month-for-100m,personalFinance/how-much-monthly-invest-for-100m,YES,OWNER_GENERIC_100M,SUPPORTING_GENERIC,OWNER_GENERIC
+personalFinance/monthly-dca-10-year-result,1억원을 만들기 위한 월 투자금 계산,personalFinance/how-much-per-month-for-100m,personalFinance/how-much-monthly-invest-for-100m,YES,OWNER_GENERIC_100M,SUPPORTING_GENERIC,OWNER_GENERIC
+personalFinance/personal-finance-3pillars,1억원을 만들기 위해 매달 얼마를 넣어야 하는지,personalFinance/how-much-per-month-for-100m,personalFinance/how-much-monthly-invest-for-100m,YES,OWNER_GENERIC_100M,SUPPORTING_GENERIC,OWNER_GENERIC
+personalFinance/monthly-investment-for-100m-table,1억원 만들기 월 투자금 계산,personalFinance/how-much-per-month-for-100m,personalFinance/how-much-monthly-invest-for-100m,YES,OWNER_GENERIC_100M,SUPPORTING_GENERIC,OWNER_GENERIC
+personalFinance/monthly-investment-for-100m-table,월 납입 여력으로 5년·10년·15년 계획 고르기,,personalFinance/how-much-per-month-for-100m,YES,SUPPORTING_NARROW_PLAN,NOT_GENERIC_OWNER,SUPPORTING_NARROW
+personalFinance/dca-guide,기간·수익률별 월 투자금 표,,personalFinance/monthly-investment-for-100m-table,YES,TABLE_PARENT_COMPARISON,TABLE_LINK,TABLE_PARENT_COMPARISON
+personalFinance/how-much-monthly-invest-for-100m,1억원 목표 월 투자금 비교표,,personalFinance/monthly-investment-for-100m-table,YES,TABLE_PARENT_COMPARISON,TABLE_LINK,TABLE_PARENT_COMPARISON
+personalFinance/how-much-per-month-for-100m,1억 만들기 월 투자금 표,,personalFinance/monthly-investment-for-100m-table,YES,TABLE_PARENT_COMPARISON,TABLE_LINK,TABLE_PARENT_COMPARISON

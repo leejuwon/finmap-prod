@@ -1,0 +1,681 @@
+{
+  "generatedAt": "2026-09-17T05:46:14.382Z",
+  "dateStamp": "2026-09-16",
+  "finalVerdict": "PASS_MARKET_FUNNEL_BATCH_E",
+  "marketRoute": "/market/indices",
+  "marketDashboardPreflight": {
+    "routeExists": true,
+    "dashboardPage": "pages/market/indices.js",
+    "apiRoute": "pages/api/stock-index/dashboard.js",
+    "sourceTable": "STOCK_INVEST_INFO",
+    "reverseFunnelDecision": "EXISTING_SURFACE_AVAILABLE_ALREADY_PRESENT"
+  },
+  "confirmedIndicators": {
+    "WTI": true,
+    "USD/KRW": true,
+    "DXY": true,
+    "US10Y/TNX": true,
+    "S&P 500": true,
+    "Dow Jones": true,
+    "Nasdaq": true,
+    "KOSPI": true
+  },
+  "candidateResults": [
+    {
+      "id": "economicInfo/eu-russia-gas-phaseout-price-channel",
+      "family": "OIL_ENERGY",
+      "intendedDecision": "SKIP_DATA_NOT_AVAILABLE",
+      "rationale": "Dashboard provides WTI, not European gas/storage/LNG replacement data.",
+      "filePath": "content/posts/economicInfo/ko/eu-russia-gas-phaseout-price-channel.md",
+      "decision": "SKIP_DATA_NOT_AVAILABLE",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 0,
+      "newMarketLinks": [],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-06-23",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "economicInfo/fx-basics",
+      "family": "FX",
+      "intendedDecision": "APPLY",
+      "indicators": [
+        "USD/KRW",
+        "DXY"
+      ],
+      "filePath": "content/posts/economicInfo/ko/fx-basics.md",
+      "decision": "APPLY",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 1,
+      "newMarketLinks": [
+        {
+          "anchor": "주요 시장 지표 흐름",
+          "href": "/market/indices",
+          "index": 4162,
+          "raw": "[주요 시장 지표 흐름](/market/indices)",
+          "line": "원/달러와 DXY를 글 밖에서 이어서 확인할 때는 [주요 시장 지표 흐름](/market/indices)에서 USD/KRW와 달러인덱스를 함께 보며 방향보다 조합을 먼저 점검하세요."
+        }
+      ],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-09-16",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "economicInfo/geopolitics-to-usd-liquidity-fx",
+      "family": "FX",
+      "intendedDecision": "APPLY",
+      "indicators": [
+        "USD/KRW",
+        "DXY",
+        "US10Y/TNX"
+      ],
+      "filePath": "content/posts/economicInfo/ko/geopolitics-to-usd-liquidity-fx.md",
+      "decision": "APPLY",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 1,
+      "newMarketLinks": [
+        {
+          "anchor": "달러·금리·지수 흐름",
+          "href": "/market/indices",
+          "index": 11807,
+          "raw": "[달러·금리·지수 흐름](/market/indices)",
+          "line": "글을 읽은 뒤 가격 순서를 맞춰볼 때는 [달러·금리·지수 흐름](/market/indices)에서 USD/KRW, DXY, 미국 10년물 금리, 주요 지수를 나란히 확인하면 유동성 경로와 펀더멘털 경로를 분리하기 쉽습니다."
+        }
+      ],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-09-16",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "economicInfo/hormuz-risk-oil-insurance-freight-premium",
+      "family": "OIL_ENERGY",
+      "intendedDecision": "SKIP_NOT_NATURAL",
+      "rationale": "Article focuses on shipping, insurance, and Hormuz risk premiums beyond current dashboard scope.",
+      "filePath": "content/posts/economicInfo/ko/hormuz-risk-oil-insurance-freight-premium.md",
+      "decision": "SKIP_NOT_NATURAL",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 0,
+      "newMarketLinks": [],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-09-16",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "economicInfo/interest-rate-basics",
+      "family": "INTEREST_RATES",
+      "intendedDecision": "APPLY",
+      "indicators": [
+        "US10Y/TNX"
+      ],
+      "filePath": "content/posts/economicInfo/ko/interest-rate-basics.md",
+      "decision": "APPLY",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 1,
+      "newMarketLinks": [
+        {
+          "anchor": "미국 10년물 금리 흐름",
+          "href": "/market/indices",
+          "index": 10658,
+          "raw": "[미국 10년물 금리 흐름](/market/indices)",
+          "line": "시장금리 감각을 숫자로 이어볼 때는 [미국 10년물 금리 흐름](/market/indices)에서 TNX와 주요 지수 움직임을 함께 확인하면 정책금리와 시장금리의 차이를 더 쉽게 분리할 수 있습니다."
+        }
+      ],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-09-16",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "economicInfo/oil-shock-to-usdkrw-korea-transmission",
+      "family": "OIL_ENERGY",
+      "intendedDecision": "APPLY",
+      "indicators": [
+        "WTI",
+        "USD/KRW"
+      ],
+      "filePath": "content/posts/economicInfo/ko/oil-shock-to-usdkrw-korea-transmission.md",
+      "decision": "APPLY",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 1,
+      "newMarketLinks": [
+        {
+          "anchor": "WTI와 원/달러 흐름",
+          "href": "/market/indices",
+          "index": 12191,
+          "raw": "[WTI와 원/달러 흐름](/market/indices)",
+          "line": "유가 뉴스가 환율로 번지는지 확인할 때는 [WTI와 원/달러 흐름](/market/indices)에서 WTI와 USD/KRW를 같이 보며 공급 충격인지 달러 결제 부담인지 먼저 구분하세요."
+        }
+      ],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-09-16",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "economicInfo/policy-rate-cut-market-rates",
+      "family": "INTEREST_RATES",
+      "intendedDecision": "SKIP_NOT_NATURAL",
+      "rationale": "Policy-rate transmission is broader than the available dashboard indicator set.",
+      "filePath": "content/posts/economicInfo/ko/policy-rate-cut-market-rates.md",
+      "decision": "SKIP_NOT_NATURAL",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 0,
+      "newMarketLinks": [],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-02-24",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "economicInfo/real-rates-and-breakevens",
+      "family": "INTEREST_RATES",
+      "intendedDecision": "SKIP_DATA_NOT_AVAILABLE",
+      "rationale": "Dashboard does not provide real rates or breakeven inflation series.",
+      "filePath": "content/posts/economicInfo/ko/real-rates-and-breakevens.md",
+      "decision": "SKIP_DATA_NOT_AVAILABLE",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 0,
+      "newMarketLinks": [],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-06-23",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "economicInfo/yield-curve-2s10s-3m10y-recession-reading",
+      "family": "INTEREST_RATES",
+      "intendedDecision": "SKIP_DATA_NOT_AVAILABLE",
+      "rationale": "Dashboard does not provide 2Y/10Y or 3M/10Y yield-curve spreads.",
+      "filePath": "content/posts/economicInfo/ko/yield-curve-2s10s-3m10y-recession-reading.md",
+      "decision": "SKIP_DATA_NOT_AVAILABLE",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 0,
+      "newMarketLinks": [],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-06-19",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "investingInfo/bond-etf-duration-drives-returns",
+      "family": "ETF",
+      "intendedDecision": "APPLY",
+      "indicators": [
+        "US10Y/TNX"
+      ],
+      "filePath": "content/posts/investingInfo/ko/bond-etf-duration-drives-returns.md",
+      "decision": "APPLY",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 1,
+      "newMarketLinks": [
+        {
+          "anchor": "TNX 흐름 확인",
+          "href": "/market/indices",
+          "index": 2906,
+          "raw": "[TNX 흐름 확인](/market/indices)",
+          "line": "채권 ETF 듀레이션을 점검할 때는 [TNX 흐름 확인](/market/indices)으로 미국 10년물 금리 방향과 주요 지수 분위기를 같이 본 뒤, ETF 자체는 보유 상품 화면에서 따로 확인하는 편이 안전합니다."
+        }
+      ],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-09-16",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "investingInfo/dxy-dollar-index-basics",
+      "family": "DXY",
+      "intendedDecision": "APPLY",
+      "indicators": [
+        "DXY",
+        "USD/KRW"
+      ],
+      "filePath": "content/posts/investingInfo/ko/dxy-dollar-index-basics.md",
+      "decision": "APPLY",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 1,
+      "newMarketLinks": [
+        {
+          "anchor": "달러와 환율 흐름",
+          "href": "/market/indices",
+          "index": 2743,
+          "raw": "[달러와 환율 흐름](/market/indices)",
+          "line": "DXY를 원/달러와 함께 볼 때는 [달러와 환율 흐름](/market/indices)에서 달러인덱스와 USD/KRW 조합을 확인하면 ‘달러 강세’가 한국 시장에 번지는지 더 빨리 분리할 수 있습니다."
+        }
+      ],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-09-16",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "investingInfo/dxy-market-impact",
+      "family": "DXY",
+      "intendedDecision": "APPLY",
+      "indicators": [
+        "DXY",
+        "USD/KRW",
+        "S&P 500",
+        "Nasdaq",
+        "KOSPI"
+      ],
+      "filePath": "content/posts/investingInfo/ko/dxy-market-impact.md",
+      "decision": "APPLY",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 1,
+      "newMarketLinks": [
+        {
+          "anchor": "달러·환율·주요 지수 흐름",
+          "href": "/market/indices",
+          "index": 5991,
+          "raw": "[달러·환율·주요 지수 흐름](/market/indices)",
+          "line": "DXY 해석을 가격 흐름과 맞춰볼 때는 [달러·환율·주요 지수 흐름](/market/indices)에서 DXY, USD/KRW, S&P500, 나스닥, 코스피를 함께 확인해 시장 반응의 방향을 점검하세요."
+        }
+      ],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-09-16",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "investingInfo/etf-impact-of-tnx",
+      "family": "ETF",
+      "intendedDecision": "APPLY",
+      "indicators": [
+        "US10Y/TNX",
+        "KOSPI",
+        "S&P 500"
+      ],
+      "filePath": "content/posts/investingInfo/ko/etf-impact-of-tnx.md",
+      "decision": "APPLY",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 1,
+      "newMarketLinks": [
+        {
+          "anchor": "TNX와 주요 지수 흐름",
+          "href": "/market/indices",
+          "index": 6006,
+          "raw": "[TNX와 주요 지수 흐름](/market/indices)",
+          "line": "ETF 금리 민감도를 읽을 때는 [TNX와 주요 지수 흐름](/market/indices)에서 미국 10년물 금리와 코스피·미국 지수를 함께 보며 할인율 압력이 넓어지는지 확인하세요."
+        }
+      ],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-09-16",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "investingInfo/fx-hedge-vs-fx-exposure-korea-3-conditions",
+      "family": "FX",
+      "intendedDecision": "SKIP_NOT_NATURAL",
+      "rationale": "Article is a hedge decision guide, not a market-indicator lookup flow.",
+      "filePath": "content/posts/investingInfo/ko/fx-hedge-vs-fx-exposure-korea-3-conditions.md",
+      "decision": "SKIP_NOT_NATURAL",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 0,
+      "newMarketLinks": [],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-01-19",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "investingInfo/korea-etf-deep-dive-tnx",
+      "family": "ETF",
+      "intendedDecision": "APPLY",
+      "indicators": [
+        "US10Y/TNX",
+        "USD/KRW",
+        "KOSPI"
+      ],
+      "filePath": "content/posts/investingInfo/ko/korea-etf-deep-dive-tnx.md",
+      "decision": "APPLY",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 1,
+      "newMarketLinks": [
+        {
+          "anchor": "TNX·환율·코스피 흐름",
+          "href": "/market/indices",
+          "index": 6023,
+          "raw": "[TNX·환율·코스피 흐름](/market/indices)",
+          "line": "한국 ETF를 해석할 때는 [TNX·환율·코스피 흐름](/market/indices)에서 미국 10년물 금리, USD/KRW, 코스피를 함께 보며 외국인 수급 부담이 커지는 조합인지 점검하세요."
+        }
+      ],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-09-16",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "investingInfo/sp500-impact-on-korea-kospi",
+      "family": "KOSPI_GLOBAL_LINK",
+      "intendedDecision": "APPLY",
+      "indicators": [
+        "S&P 500",
+        "Nasdaq",
+        "Dow Jones",
+        "KOSPI"
+      ],
+      "filePath": "content/posts/investingInfo/ko/sp500-impact-on-korea-kospi.md",
+      "decision": "APPLY",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 1,
+      "newMarketLinks": [
+        {
+          "anchor": "미국 지수와 코스피 흐름",
+          "href": "/market/indices",
+          "index": 12183,
+          "raw": "[미국 지수와 코스피 흐름](/market/indices)",
+          "line": "다음 거래일 관측 순서를 실제 지표와 맞춰볼 때는 [미국 지수와 코스피 흐름](/market/indices)에서 S&P500, 나스닥, 다우, 코스피를 함께 확인하면 단일 지수 착시를 줄일 수 있습니다."
+        }
+      ],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-09-16",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "investingInfo/tnx-basics",
+      "family": "TNX",
+      "intendedDecision": "APPLY",
+      "indicators": [
+        "US10Y/TNX"
+      ],
+      "filePath": "content/posts/investingInfo/ko/tnx-basics.md",
+      "decision": "APPLY",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 1,
+      "newMarketLinks": [
+        {
+          "anchor": "미국 10년물 금리와 지수 흐름",
+          "href": "/market/indices",
+          "index": 9468,
+          "raw": "[미국 10년물 금리와 지수 흐름](/market/indices)",
+          "line": "TNX가 포트폴리오에 미치는 압력을 볼 때는 [미국 10년물 금리와 지수 흐름](/market/indices)에서 TNX와 주요 주가지수를 함께 확인해 금리 충격이 시장 전반으로 번지는지 점검하세요."
+        }
+      ],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-09-16",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "investingInfo/us10y-impact-on-korea-and-stock-market",
+      "family": "TNX",
+      "intendedDecision": "APPLY",
+      "indicators": [
+        "US10Y/TNX",
+        "KOSPI",
+        "S&P 500"
+      ],
+      "filePath": "content/posts/investingInfo/ko/us10y-impact-on-korea-and-stock-market.md",
+      "decision": "APPLY",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 1,
+      "newMarketLinks": [
+        {
+          "anchor": "TNX·환율·주요 지수 흐름",
+          "href": "/market/indices",
+          "index": 6047,
+          "raw": "[TNX·환율·주요 지수 흐름](/market/indices)",
+          "line": "글의 전이 경로를 가격으로 확인할 때는 [TNX·환율·주요 지수 흐름](/market/indices)에서 미국 10년물 금리, USD/KRW, 코스피와 미국 지수를 함께 보며 충격의 폭을 점검하세요."
+        }
+      ],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-09-16",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "investingInfo/usd-krw-exchange-rate-and-kospi",
+      "family": "KOSPI_GLOBAL_LINK",
+      "intendedDecision": "APPLY",
+      "indicators": [
+        "USD/KRW",
+        "DXY",
+        "KOSPI"
+      ],
+      "filePath": "content/posts/investingInfo/ko/usd-krw-exchange-rate-and-kospi.md",
+      "decision": "APPLY",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 1,
+      "newMarketLinks": [
+        {
+          "anchor": "원/달러·달러인덱스·코스피 흐름",
+          "href": "/market/indices",
+          "index": 6483,
+          "raw": "[원/달러·달러인덱스·코스피 흐름](/market/indices)",
+          "line": "환율 숫자를 코스피와 함께 읽을 때는 [원/달러·달러인덱스·코스피 흐름](/market/indices)에서 USD/KRW, DXY, 코스피를 같이 확인하면 환율 상승의 성격을 더 잘 구분할 수 있습니다."
+        }
+      ],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-09-16",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    },
+    {
+      "id": "investingInfo/usd-krw-weak-won-sector-map-kospi",
+      "family": "KOSPI_GLOBAL_LINK",
+      "intendedDecision": "APPLY",
+      "indicators": [
+        "USD/KRW",
+        "KOSPI"
+      ],
+      "filePath": "content/posts/investingInfo/ko/usd-krw-weak-won-sector-map-kospi.md",
+      "decision": "APPLY",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 1,
+      "newMarketLinks": [
+        {
+          "anchor": "원/달러와 코스피 흐름",
+          "href": "/market/indices",
+          "index": 5991,
+          "raw": "[원/달러와 코스피 흐름](/market/indices)",
+          "line": "업종별 수혜/피해를 판단하기 전에는 [원/달러와 코스피 흐름](/market/indices)에서 USD/KRW와 코스피 방향을 먼저 확인해 환율 자체와 시장 체감을 분리해 보세요."
+        }
+      ],
+      "structureDiffs": [],
+      "dateModified": "2026-09-16",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": false
+    },
+    {
+      "id": "investingInfo/wti-impact-on-korea-kospi",
+      "family": "OIL_ENERGY",
+      "intendedDecision": "APPLY",
+      "indicators": [
+        "WTI",
+        "KOSPI"
+      ],
+      "filePath": "content/posts/investingInfo/ko/wti-impact-on-korea-kospi.md",
+      "decision": "APPLY",
+      "beforeMarketRouteCount": 0,
+      "afterMarketRouteCount": 1,
+      "newMarketLinks": [
+        {
+          "anchor": "WTI와 주요 지수 흐름",
+          "href": "/market/indices",
+          "index": 11450,
+          "raw": "[WTI와 주요 지수 흐름](/market/indices)",
+          "line": "유가와 코스피 체감이 엇갈릴 때는 [WTI와 주요 지수 흐름](/market/indices)에서 WTI, USD/KRW, 코스피를 함께 보며 공급 충격인지 위험선호 변화인지 분리하세요."
+        }
+      ],
+      "structureDiffs": [
+        "jsonLdSignature"
+      ],
+      "dateModified": "2026-09-16",
+      "hashChanged": true,
+      "batchGTechnicalOnlyChange": true
+    }
+  ],
+  "coverage": {
+    "beforeMarketRouteLinks": 0,
+    "afterMarketRouteLinks": 15,
+    "newMarketRouteLinks": 15,
+    "byDecision": {
+      "SKIP_DATA_NOT_AVAILABLE": 3,
+      "APPLY": 15,
+      "SKIP_NOT_NATURAL": 3
+    },
+    "byFamily": {
+      "DXY": {
+        "apply": 2,
+        "skipped": 0,
+        "already": 0,
+        "review": 0
+      },
+      "ETF": {
+        "apply": 3,
+        "skipped": 0,
+        "already": 0,
+        "review": 0
+      },
+      "FX": {
+        "apply": 2,
+        "skipped": 1,
+        "already": 0,
+        "review": 0
+      },
+      "INTEREST_RATES": {
+        "apply": 1,
+        "skipped": 3,
+        "already": 0,
+        "review": 0
+      },
+      "KOSPI_GLOBAL_LINK": {
+        "apply": 3,
+        "skipped": 0,
+        "already": 0,
+        "review": 0
+      },
+      "OIL_ENERGY": {
+        "apply": 2,
+        "skipped": 2,
+        "already": 0,
+        "review": 0
+      },
+      "TNX": {
+        "apply": 2,
+        "skipped": 0,
+        "already": 0,
+        "review": 0
+      }
+    }
+  },
+  "validation": {
+    "candidateCount": 21,
+    "intendedApplyCount": 15,
+    "appliedCount": 15,
+    "reviewRequired": 0,
+    "targetRouteExists": 1,
+    "routeTargetsOk": 1,
+    "brokenMarketLink": 0,
+    "duplicateMarketLink": 0,
+    "perPostOverAdditions": 0,
+    "unsupportedIndicatorClaims": 0,
+    "realtimeClaimMisuse": 0,
+    "dateModifiedIssues": 0,
+    "structureIssues": 0,
+    "missingConfirmedIndicators": 0,
+    "previousBatchPass": 1,
+    "sitemapUnexpectedStep6EUrlAdditions": 0,
+    "sitemapUrlDrops": 0,
+    "fakeEnglishDcaHubPresent": 0,
+    "batchGScopeActive": 1,
+    "batchGScopeVerdict": "PASS_TECHNICAL_SEO_BATCH_G",
+    "batchGAllowedFileCount": 69,
+    "batchGTechnicalOnlyChangedCandidates": 20
+  },
+  "issues": {
+    "reviewRequired": [],
+    "duplicateMarketLinks": [],
+    "overAdditions": [],
+    "unexpectedMarketRoutes": [],
+    "unsupportedIndicatorClaims": [],
+    "realtimeClaimMisuse": [],
+    "dateModifiedIssues": [],
+    "structureIssues": [],
+    "indicatorsMissing": []
+  },
+  "sitemap": {
+    "perFile": [
+      {
+        "file": "public/sitemap-0.xml",
+        "additions": [
+          "https://www.finmaphub.com/posts/personalFinance/dca-guide"
+        ],
+        "drops": [],
+        "unexpectedAdditions": []
+      },
+      {
+        "file": "public/server-sitemap.xml",
+        "additions": [],
+        "drops": [],
+        "unexpectedAdditions": []
+      }
+    ],
+    "dcaHubIncluded": true,
+    "fakeEnglishDcaHubPresent": false,
+    "unexpectedStep6EUrlAdditions": [],
+    "drops": []
+  },
+  "previousBatchStatus": {
+    "batchA": {
+      "finalVerdict": "PASS_QUERY_BOUNDARY_BATCH_A",
+      "pass": true
+    },
+    "batchB": {
+      "finalVerdict": "PASS_TOPIC_LINK_BATCH_B",
+      "pass": true
+    },
+    "batchC": {
+      "finalVerdict": "PASS_CROSS_CATEGORY_BATCH_C",
+      "pass": true
+    },
+    "batchD": {
+      "finalVerdict": "PASS_TOPIC_HUB_BATCH_D_WITH_HOUSEHOLD_DEFERRED",
+      "pass": true
+    }
+  }
+}

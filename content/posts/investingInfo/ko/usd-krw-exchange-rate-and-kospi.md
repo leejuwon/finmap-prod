@@ -3,7 +3,7 @@ slug: "usd-krw-exchange-rate-and-kospi"
 title: "원달러 환율이 한국 경제와 코스피에 미치는 영향: 외국인 수급·수출·물가·금리로 읽는 법"
 description: "원달러 환율(USD/KRW)은 한국 주식시장(코스피)의 ‘기류’를 바꾸는 핵심 변수입니다. 환율 상승/하락이 의미하는 것과 외국인 수급, 수출기업 실적, 물가·금리, 위험선호(달러 강세)까지 한 번에 정리합니다."
 datePublished: "2025-12-28"
-dateModified: "2026-05-18"
+dateModified: "2026-09-16"
 seoTitle: "원달러 환율과 코스피 관계: 외국인 수급·수출주·물가 체크법"
 seoDescription: "원달러 환율 상승·하락이 코스피, 외국인 수급, 수출주와 물가에 미치는 영향을 표와 체크리스트로 정리합니다. DXY·TNX·유가까지 함께 보며 환율 국면을 해석합니다."
 category: "투자정보"
@@ -172,6 +172,8 @@ USD/KRW 하나로 판단하지 말고, 최소 **DXY / 10Y 금리(TNX) / 유가**
 ---
 
 ### 관련 글(함께 읽으면 좋은 글)
+환율 숫자를 코스피와 함께 읽을 때는 [원/달러·달러인덱스·코스피 흐름](/market/indices)에서 USD/KRW, DXY, 코스피를 같이 확인하면 환율 상승의 성격을 더 잘 구분할 수 있습니다.
+
 - [KOSPI를 움직이는 글로벌 지표 한 장 정리](/posts/investingInfo/indicator-marketinfo)  
 - [DXY란? 달러 인덱스 초보자 설명](/posts/investingInfo/dxy-dollar-index-basics)  
 - [DXY가 시장·환율·코스피에 미치는 영향](/posts/investingInfo/dxy-market-impact)  
@@ -239,31 +241,3 @@ A. 원달러 환율은 한국 내부 요인도 반영하지만, DXY는 “달러
 - [DXY 달러인덱스로 글로벌 달러 강세 흐름 읽기](/posts/investingInfo/dxy-dollar-index-basics)
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
 - [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "원달러 환율과 코스피 관계: 외국인 수급·수출주·물가 체크법",
-  "description": "원달러 환율 상승·하락이 코스피, 외국인 수급, 수출주와 물가에 미치는 영향을 표와 체크리스트로 정리합니다. DXY·TNX·유가까지 함께 보며 환율 국면을 해석합니다.",
-  "datePublished": "2025-12-28",
-  "dateModified": "2026-05-18",
-  "inLanguage": "ko",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/investingInfo/usd-krw-exchange-rate-and-kospi"
-  },
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
-    }
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782825864/blog/insight/usd-krw-exchange-rate-and-kospi/rework-20260630/slot-001-cover.png"
-  ]
-}
-</script>

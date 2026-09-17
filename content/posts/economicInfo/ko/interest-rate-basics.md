@@ -5,7 +5,7 @@ description: "기준금리→시장금리→예·적금/대출 금리로 이어�
 seoTitle: "금리 구조 한 번에 이해: 기준금리, 시장금리, 예금·대출·채권"
 seoDescription: "기준금리와 시장금리, 예금·대출·채권 금리가 어떻게 연결되는지 구조적으로 정리하고 복리·CAGR 계산으로 이어지는 핵심 개념을 확인합니다."
 datePublished: "2025-11-13"
-dateModified: "2026-06-19"
+dateModified: "2026-09-16"
 category: "경제정보"
 postCategory: "economicInfo"
 tags: ["금리", "기준금리", "시장금리", "예금금리", "대출금리", "채권", "듀레이션", "수익률곡선", "인플레이션", "유동성"]
@@ -366,6 +366,8 @@ FinMap에서는 다음 흐름이 자연스럽습니다.
 기준금리→시장금리→예·대출·채권으로 이어지는 경로를 잡으면, 뉴스가 갑자기 쉬워집니다.
 예측보다 중요한 건 “내 포트폴리오가 금리 변화에 얼마나 민감한지”를 통제하는 것입니다.
 
+시장금리 감각을 숫자로 이어볼 때는 [미국 10년물 금리 흐름](/market/indices)에서 TNX와 주요 지수 움직임을 함께 확인하면 정책금리와 시장금리의 차이를 더 쉽게 분리할 수 있습니다.
+
 ---
 
 <div class="tool-cta">
@@ -420,20 +422,6 @@ FinMap에서는 다음 흐름이 자연스럽습니다.
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
 - [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
 - [DSR LTV 계산기로 대출 한도와 주택 가격 범위 점검하기](/tools/dsr-ltv-calculator)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "금리의 구조와 기준금리: 예·적금, 대출, 채권 금리까지 한 번에 이해",
-  "description": "기준금리→시장금리→예·적금/대출 금리로 이어지는 전달 경로를 구조적으로 정리합니다. 채권 가격과 금리의 역관계, 만기·기간(듀레이션) 감도까지 한 번에 연결해 이해할 수 있도록 실전 관점으로 설명합니다.",
-  "datePublished": "2025-11-13",
-  "dateModified": "2026-06-19",
-  "author": { "@type": "Person", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" },
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.finmaphub.com/posts/economicInfo/interest-rate-basics" }
-}
-</script>
 
 <script type="application/ld+json">
 {

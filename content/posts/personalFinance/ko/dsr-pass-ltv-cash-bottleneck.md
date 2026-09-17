@@ -4,7 +4,7 @@ link: "/posts/personalFinance/dsr-pass-ltv-cash-bottleneck"
 title: "DSR은 통과했는데 왜 집을 못 살까? LTV·현금·부대비용 병목 이해하기"
 description: "DSR은 통과해도 LTV, 보유현금, 부대비용 때문에 후보 집값이 불가 또는 주의로 나올 수 있습니다. DSR/LTV 계산기 샘플 A~D로 병목을 설명합니다."
 datePublished: "2026-06-02"
-dateModified: "2026-06-02"
+dateModified: "2026-09-16"
 seoTitle: "DSR 통과 후 LTV 현금 부대비용 병목 이해하기 | 아파트 구매 가능 금액"
 seoDescription: "DSR 병목과 LTV/현금 병목의 차이를 설명하고, DSR/LTV 계산기 후보 집값 가능·주의·불가 판정을 샘플 A~D로 정리합니다."
 category: "재테크"
@@ -110,6 +110,7 @@ DSR만 통과했다고 해서 LTV와 현금 조건이 자동으로 통과되는 
 
 - [DSR 40% 연봉별 주담대 한도표](/posts/personalFinance/dsr-40-income-loan-limit-table)
 - [보유현금 1억·2억·3억이면 어느 가격대 아파트까지 가능할까?](/posts/personalFinance/cash-100m-200m-300m-apartment-budget)
+- [LTV DSR 계산기 사용 순서로 입력값을 다시 점검하기](/posts/personalFinance/ltv-dsr-calculator-guide)
 - [아파트 매수 전 대출 리스크 체크리스트](/posts/personalFinance/mortgage-risk-checklist-dsr-variable)
 
 ## 결론: “DSR 통과”보다 “세 조건 동시 통과”가 중요하다
@@ -139,21 +140,6 @@ DSR 병목, 현금/LTV 병목, 매수 가능형을 비교할 수 있도록 만�
 ### 대시보드는 어떤 단계에서 보면 좋나요?
 
 계산기에서 안전 탐색 가격대를 확인한 뒤 바로 보는 것이 좋습니다. 실제 거래가 그 가격대에 충분히 있는지 확인해야 합니다.
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "DSR은 통과했는데 왜 집을 못 살까? LTV·현금·부대비용 병목 이해하기",
-  "description": "DSR은 통과해도 LTV, 보유현금, 부대비용 때문에 후보 집값이 불가 또는 주의로 나올 수 있습니다.",
-  "inLanguage": "ko",
-  "datePublished": "2026-06-02",
-  "dateModified": "2026-06-02",
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" },
-  "mainEntityOfPage": "https://www.finmaphub.com/posts/personalFinance/dsr-pass-ltv-cash-bottleneck"
-}
-</script>
 
 <script type="application/ld+json">
 {

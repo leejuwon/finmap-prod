@@ -1,9 +1,9 @@
 ---
 slug: "inflation-rate-basics"
 title: "물가와 금리의 기본 이해: 왜 금리가 오르면 시장이 흔들릴까?"
-description: "물가와 금리의 관계를 구조적으로 이해하고, 금리 변화가 주식·ETF·환율에 어떤 영향을 주는지 초보자도 쉽게 정리한 가이드입니다."
+description: "물가상승률과 CPI가 무엇을 측정하는지, 숫자를 어떻게 해석해야 하는지 정리합니다. 인플레이션 현상 전체보다 지표·측정·시장 반응을 읽는 방법에 초점을 둡니다."
 datePublished: "2025-11-12"
-dateModified: "2026-02-24"
+dateModified: "2026-09-16"
 category: "경제정보"
 postCategory: "economicInfo"
 tags: ["물가","금리","인플레이션","기준금리","통화정책","경제기초"]
@@ -27,11 +27,16 @@ lang: "ko"
 > 물가와 금리는 경제의 온도계이자 브레이크입니다.  
 > 이 글에서는 물가와 금리가 어떻게 연결되고, 그 변화가 금융시장에 어떤 영향을 주는지를 구조적으로 정리합니다.
 
+> 이 글의 범위는 <strong>물가상승률·CPI라는 지표를 읽는 방법</strong>입니다. 인플레이션의 원인과 경제 현상 자체를 먼저 잡고 싶다면 [인플레이션 기본 구조](/posts/economicInfo/inflation-basics)를 함께 보면 경계가 더 분명해집니다.
+
 ![물가와 금리 개념](https://res.cloudinary.com/dwonflmnn/image/upload/v1782907880/blog/insight/inflation-rate-basics/rework-20260701/slot-002-cover.png "물가와 금리의 기본 구조")
 
 ---
 
-## 1. 물가는 무엇을 의미하는가
+## 1. CPI와 물가상승률은 인플레이션을 어떻게 측정하나
+
+인플레이션이 “가격이 넓게 오르는 현상”이라면, 물가상승률은 그 현상을 일정한 장바구니와 기준 시점으로 재는 숫자입니다.
+이 글은 그 숫자가 높거나 낮을 때 시장이 무엇을 기대하는지, 그리고 CPI·근원물가·금리 반응을 어떤 순서로 읽는지에 초점을 둡니다.
 
 물가는 단순히 “물건 값이 올랐다”는 의미를 넘어,  
 **돈의 구매력이 얼마나 빠르게 감소하고 있는지**를 보여주는 지표입니다.
@@ -228,6 +233,7 @@ lang: "ko"
 - [실질금리(Real Rate)와 기대인플레이션(Breakeven): 자산가격의 ‘진짜 온도계’](/posts/economicInfo/real-rates-and-breakevens)
 - [수익률곡선(2-10, 3m-10y)은 왜 다르게 말하나: 침체 신호 해석법](/posts/economicInfo/yield-curve-2s10s-3m10y-recession-reading)
 - [전쟁이 달러 강세로 번역되는 순간: ‘안전자산’이 아니라 ‘달러 유동성’으로 읽기](/posts/economicInfo/geopolitics-to-usd-liquidity-fx)
+- [인플레이션 현상과 금리 전이 구조를 먼저 잡는 기본 가이드](/posts/economicInfo/inflation-basics)
 - [관세는 ‘물가’만의 문제가 아니다: 성장·마진·환율을 동시에 흔드는 패키지 충격](/posts/economicInfo/tariffs-growth-margins-fx-package-shock)
 - [유가 급등이 원/달러에 미치는 영향: 한국식 전파 경로(무역수지·물가·수급)로 읽기](/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission)
 
@@ -251,16 +257,3 @@ lang: "ko"
 - [시장정보 지표를 투자 판단에 연결하는 방법 보기](/posts/investingInfo/indicator-marketinfo)
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "물가와 금리의 기본 이해",
-  "description": "물가와 금리의 관계를 구조적으로 이해하고 금융시장에 미치는 영향을 정리한 기초 가이드",
-  "datePublished": "2025-11-12",
-  "dateModified": "2026-02-24",
-  "author": { "@type": "Person", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" }
-}
-</script>

@@ -149,21 +149,6 @@ lang: "ko"
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "아파트 거래량 감소는 집값 하락 신호일까? 실거래 데이터로 보는 4가지 해석",
-  "description": "아파트 거래량 감소를 가격 하락 확정 신호가 아니라 유동성, 관망, 표본수, 지역별 차이로 해석하는 방법을 정리합니다.",
-  "inLanguage": "ko",
-  "datePublished": "2026-06-03",
-  "dateModified": "2026-06-03",
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" },
-  "mainEntityOfPage": "https://www.finmaphub.com/posts/personalFinance/apartment-transaction-volume-decline-meaning"
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {

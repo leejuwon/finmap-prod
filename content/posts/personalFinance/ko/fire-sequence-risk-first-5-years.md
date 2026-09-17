@@ -288,57 +288,6 @@ FIRE 계산기에서 <strong>연지출</strong>을 10% 올린 버전(건보료/�
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "은퇴 직전·직후 5년이 FIRE를 결정한다: ‘순서 리스크’(초반 급락)와 인출 전략을 정리 + 툴로 스트레스 테스트",
-  "description": "FIRE의 성패는 ‘연평균 수익률’이 아니라 은퇴 직전·직후 5년에 걸리는 순서 리스크(초반 급락)와 인출 규칙에 달려 있습니다. 대출 잔액·변동금리·부양비·건보료 변수를 점검하고, 국민연금·퇴직연금을 현금흐름 보완으로만 반영해 FIRE 계산기(/tools/fire-calculator)로 스트레스 테스트하는 실행 프레임을 제공합니다.",
-  "inLanguage": "ko",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/personalFinance/fire-sequence-risk-first-5-years"
-  },
-  "url": "https://www.finmaphub.com/posts/personalFinance/fire-sequence-risk-first-5-years",
-  "datePublished": "2026-02-04",
-  "dateModified": "2026-06-23",
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/favicon-48.png"
-    }
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770131152/blog/insight/fire-sequence-risk-kr_cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770131153/blog/insight/fire-sequence-risk-kr_img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770131155/blog/insight/fire-sequence-risk-kr_img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770131157/blog/insight/fire-sequence-risk-kr_img3.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770131159/blog/insight/fire-sequence-risk-kr_img4.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770131162/blog/insight/fire-sequence-risk-kr_img5.png"
-  ],
-  "keywords": [
-    "FIRE",
-    "순서 리스크",
-    "은퇴 5년",
-    "초반 급락",
-    "인출 전략",
-    "대출",
-    "변동금리",
-    "부양비",
-    "건강보험료",
-    "국민연금",
-    "퇴직연금",
-    "스트레스 테스트"
-  ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "inLanguage": "ko",
   "mainEntity": [

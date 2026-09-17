@@ -4,7 +4,7 @@ link: "/posts/personalFinance/fire-3-numbers-spending-horizon-withdrawal"
 title: "은퇴자산 목표는 ‘3개 숫자’로 결정된다: 연지출·은퇴기간·인출률(4%룰 오해까지) + FIRE 툴로 10분 계산"
 description: "은퇴 준비는 전망이 아니라 숫자 3개(연지출·은퇴기간·인출률)로 결정된다. 직장인/자영업자 관점에서 주거비(전/월세·대출이자), 건강보험료, 자녀/부양, 국민연금·퇴직연금·IRP까지 반영해 FIRE 목표자산을 10분 안에 계산하는 프레임을 정리한다."
 datePublished: "2026-02-03"
-dateModified: "2026-06-24"
+dateModified: "2026-09-16"
 category: "재테크"
 postCategory: "personalFinance"
 tags: ["은퇴자산", "FIRE", "연지출", "은퇴기간", "인출률", "4%룰", "국민연금", "퇴직연금", "IRP", "건강보험료", "전세", "월세", "대출이자", "인플레이션", "KRW"]
@@ -255,6 +255,8 @@ FIRE 목표가 현실적으로 느껴지려면, 연금은 “나중에 받는 �
 - <a href="/posts/personalFinance/emergency-fund-by-risk">비상금을 ‘개월 수’가 아니라 ‘리스크’로 정하는 기준표</a>  
 - <a href="/posts/personalFinance/high-rate-debt-vs-invest-threshold-rule">고금리 시대에 ‘빚 vs 투자’ 우선순위를 임계값 룰로 정하는 법</a>  
 - <a href="/posts/personalFinance/inflation-household-survival-strategy">인플레이션 시대, 생활비/고정비를 줄여 연지출을 안정화하는 전략</a>  
+- <a href="/posts/personalFinance/fire-assumption-errors-7-fixes">FIRE 계산에서 자주 틀리는 가정 7가지를 점검하는 법</a>
+- <a href="/posts/personalFinance/fire-spending-buckets-essential-choice-insurance">은퇴 지출을 필수·선택·보험 버킷으로 나누는 방법</a>
 - <a href="/posts/investingInfo/cagr-7percent-reality-check">‘연 7% 복리’ 착시를 줄이고 기대수익을 현실 체크하는 방법</a>  
 
 ## 자주 묻는 질문(FAQ)
@@ -288,43 +290,6 @@ FIRE 목표가 현실적으로 느껴지려면, 연금은 “나중에 받는 �
 - [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
 - [은퇴 초반 5년 수익률 순서 리스크를 먼저 확인하기](/posts/personalFinance/fire-sequence-risk-first-5-years)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "은퇴자산 목표는 ‘3개 숫자’로 결정된다: 연지출·은퇴기간·인출률(4%룰 오해까지) + FIRE 툴로 10분 계산",
-  "description": "은퇴 준비는 전망이 아니라 숫자 3개(연지출·은퇴기간·인출률)로 결정된다. 직장인/자영업자 관점에서 주거비(전/월세·대출이자), 건강보험료, 자녀/부양, 국민연금·퇴직연금·IRP까지 반영해 FIRE 목표자산을 10분 안에 계산하는 프레임을 정리한다.",
-  "inLanguage": "ko",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/personalFinance/fire-3-numbers-spending-horizon-withdrawal"
-  },
-  "url": "https://www.finmaphub.com/posts/personalFinance/fire-3-numbers-spending-horizon-withdrawal",
-  "datePublished": "2026-02-03",
-  "dateModified": "2026-06-24",
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/favicon-48.png"
-    }
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770122120/blog/insight/fire-3-numbers-kr-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770122121/blog/insight/fire-3-numbers-kr-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770122122/blog/insight/fire-3-numbers-kr-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770122123/blog/insight/fire-3-numbers-kr-img3.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770122799/blog/insight/fire-3-numbers-kr-img4.png"
-  ],
-  "keywords": ["은퇴자산", "FIRE", "연지출", "은퇴기간", "인출률", "4%룰", "국민연금", "퇴직연금", "IRP", "KRW", "인플레이션"]
-}
-</script>
 
 <script type="application/ld+json">
 {

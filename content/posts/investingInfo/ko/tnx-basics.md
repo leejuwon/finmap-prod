@@ -3,7 +3,7 @@ slug: "tnx-basics"
 title: "TNX(미국 10년물 국채금리) 완전 이해: 주식·환율·채권을 움직이는 ‘기준 금리’"
 description: "미국 10년물 국채금리(TNX)는 ‘시장 전체의 할인율’로 작동합니다. 왜 성장주가 민감하고, 달러·원화·유동성이 함께 움직이는지—초중급 투자자도 구조로 이해할 수 있게 정리합니다."
 datePublished: "2025-11-23"
-dateModified: "2026-02-23"
+dateModified: "2026-09-16"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["TNX","미국10년물","국채금리","금리","채권","성장주","달러","원달러","유동성","밸류에이션"]
@@ -284,6 +284,8 @@ TNX 상승이 신용스프레드 확대, 달러 강세, 변동성 상승과 동�
 - 중요한 건 “금리의 수준”보다 “금리 변화의 성격과 속도”이며, 한국은 환율·수급으로 증폭될 수 있습니다.  
 - TNX를 뉴스가 아니라 구조로 읽으면, 시장 변동성 속에서도 판단이 훨씬 안정됩니다.
 
+TNX가 포트폴리오에 미치는 압력을 볼 때는 [미국 10년물 금리와 지수 흐름](/market/indices)에서 TNX와 주요 주가지수를 함께 확인해 금리 충격이 시장 전반으로 번지는지 점검하세요.
+
 ---
 
 <div class="tool-cta">
@@ -338,29 +340,6 @@ TNX 상승이 신용스프레드 확대, 달러 강세, 변동성 상승과 동�
 - [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
 - [시장정보 지표를 투자 판단에 연결하는 방법 보기](/posts/investingInfo/indicator-marketinfo)
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "TNX(미국 10년물 국채금리) 완전 이해: 주식·환율·채권을 움직이는 ‘기준 금리’",
-  "description": "미국 10년물 국채금리(TNX)는 ‘시장 전체의 할인율’로 작동합니다. 왜 성장주가 민감하고, 달러·원화·유동성이 함께 움직이는지—초중급 투자자도 구조로 이해할 수 있게 정리합니다.",
-  "datePublished": "2025-11-23",
-  "dateModified": "2026-02-23",
-  "inLanguage": "ko",
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
-    }
-  },
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.finmaphub.com/posts/investingInfo/tnx-basics" },
-  "image": ["https://res.cloudinary.com/dwonflmnn/image/upload/v1764428464/blog/investingInfo/economics-tnx-cover.png"]
-}
-</script>
 
 <script type="application/ld+json">
 {

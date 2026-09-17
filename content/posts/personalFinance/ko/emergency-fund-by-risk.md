@@ -32,31 +32,6 @@ lang: "ko"
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "비상금은 ‘몇 개월’이 아니라 ‘리스크’로 정한다: 직장·가족·대출 기준표로 끝내기",
-  "description": "비상금 3개월/6개월 같은 정답은 없습니다. 직장 안정성, 가족(부양/이중소득), 대출 구조(변동금리/DSR), 건강·보험·주거 리스크를 점수화해 ‘나에게 맞는 비상금 개월 수’를 정하는 실전 기준표를 제공합니다.",
-  "datePublished": "2026-01-14",
-  "dateModified": "2026-01-14",
-  "inLanguage": "ko-KR",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/personalFinance/emergency-fund-by-risk"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768379054/blog/tools/emergency-fund-by-risk-cover.png"
-  ],
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": { "@type": "ImageObject", "url": "https://www.finmaphub.com/og-default.png" }
-  }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "inLanguage": "ko-KR",
   "mainEntity": [

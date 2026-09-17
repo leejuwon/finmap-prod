@@ -2,9 +2,9 @@
 slug: "dca-vs-lumpsum-decision-rules"
 link: "/posts/personalFinance/dca-vs-lumpsum-decision-rules"
 title: "DCA vs 일시금투자: 기대수익이 아니라 ‘후회·중단·변동성(실행 리스크)’로 결정하는 3단계 규칙"
-description: "DCA(적립식)와 일시금투자를 수익률 논쟁이 아니라 실행 리스크로 비교합니다. 현금버퍼·부채이자율·심리내성·기간·소득안정성을 넣어 DCA/혼합/일시를 고르는 if/then 판단표를 정리합니다."
+description: "DCA(적립식)와 일시금투자를 수익률 결과표가 아니라 실행 리스크와 선택 기준으로 비교합니다. 현금버퍼·부채이자율·심리내성·기간·소득안정성을 넣어 DCA/혼합/일시를 고르는 if/then 판단표를 정리합니다."
 datePublished: "2026-03-09"
-dateModified: "2026-06-23"
+dateModified: "2026-09-16"
 category: "재테크"
 postCategory: "personalFinance"
 tags: ["DCA","적립식","일시금투자","분할매수","목돈투자","변동성","후회","중단","실행리스크","비상금","부채이자율","환율변동성"]
@@ -17,6 +17,7 @@ lang: "ko"
 - 수익률이 조금 더 높아도 계획이 깨지면(중단/해지/재진입 반복) 실제 결과는 더 나빠질 수 있습니다.  
 - 일시금투자가 유리할 때도 있지만, 그 전제는 <strong>버틸 수 있는 현금버퍼</strong>와 <strong>심리내성</strong>이 같이 있는 경우가 많습니다.  
 - DCA가 “수익률을 올려준다”는 오해도 위험합니다. DCA의 강점은 보통 수익률이 아니라 <strong>실행 확률을 올리는 것</strong>입니다.  
+- 이 글의 범위는 <strong>무엇을 선택할지</strong>입니다. “왜 계산 결과가 달라졌는지”를 상승장·하락장·횡보장 경로로 비교하는 글은 따로 분리합니다.
 - 한국 사용자는 <strong>원화 생활비·비상금·대출이자율</strong> 변수가 커서, ‘투자 방식’보다 ‘계획이 깨지는 조건’을 먼저 정의해야 합니다.  
 - 해외자산을 섞으면 환율은 <strong>추가 변동성</strong>으로만 취급해야 하며, 예측이 아니라 ‘규칙’으로 다루는 편이 안전합니다.  
 - 이 글은 DCA/일시/혼합 중 정답을 말하지 않고, <strong>실패 확률을 낮추는 3단계 규칙</strong>을 제공합니다.  
@@ -253,8 +254,14 @@ DCA vs 일시금투자는 “누가 더 똑똑한가”의 문제가 아닙니�
 
 ## 더 깊게 읽고 싶다면(연결해서 보면 선택이 더 쉬워집니다)
 
+- <a href="/posts/personalFinance/dca-guide">DCA 기본 구조와 실행 순서를 먼저 훑는 전체 가이드</a>
 - <a href="/posts/personalFinance/annual-vs-monthly-compound">연복리 vs 월복리 차이가 ‘분할·적립’ 의사결정에 주는 영향 정리</a>  
+- <a href="/posts/investingInfo/dca-consistency-7-fail-patterns">DCA가 중간에 실패하는 운영 패턴 7가지</a>
+- <a href="/posts/personalFinance/dca-vs-lump-sum-when-results-differ">적립식과 일괄투자 결과가 달라지는 시장 경로 비교</a>
+- <a href="/posts/personalFinance/how-much-monthly-invest-for-100m">1억원 목표에 필요한 월 납입금을 기간·수익률별로 계산하는 글</a>
+- <a href="/posts/personalFinance/is-dca-better-in-bear-market">하락장 DCA 시나리오를 목표 달성률과 MDD로 비교하는 글</a>
 - <a href="/posts/personalFinance/monthly-dca-10-year-result">월 50만원 적립식 투자 10년 예시로 DCA 기준선 만들기</a>
+- <a href="/posts/personalFinance/dca-fx-volatility-decomposition">해외자산 DCA에서 환율 변동성을 따로 분해해 보는 글</a>
 - <a href="/posts/personalFinance/what-is-cagr">수익률 논쟁을 끝내는 CAGR 개념(단순수익률과 차이) 빠르게 잡기</a>  
 - <a href="/posts/investingInfo/cagr-7percent-reality-check">‘연 7%’ 기대수익 착시를 CAGR로 현실 체크하는 방법</a>  
 
@@ -267,7 +274,7 @@ DCA vs 일시금투자는 “누가 더 똑똑한가”의 문제가 아닙니�
 투자 직후 급락이 오거나, 급락 이후에도 반등을 놓칠 때 후회가 커집니다. 특히 현금버퍼가 얇거나 손실 내성이 낮으면 후회가 행동(매도/재진입 지연)으로 이어질 가능성이 높습니다. 그래서 혼합(분할)이 후회 리스크를 줄이는 선택이 되곤 합니다.
 
 ### 3) DCA가 수익률을 올려준다고 보면 안 되나요?
-대체로 DCA의 강점은 수익률이 아니라 실행 확률을 올리는 데 있습니다. 시장이 우상향하는 구간에서는 “빨리 들어간 돈”이 더 오래 굴러가므로 일시가 기대수익 측면에서 유리해 보일 수 있습니다. 다만 그 전제는 계획을 끝까지 지키는 것입니다.
+대체로 DCA의 강점은 수익률이 아니라 실행 확률을 올리는 데 있습니다. 시장이 우상향하는 구간에서는 “빨리 들어간 돈”이 더 오래 굴러가므로 일시가 기대수익 측면에서 유리해 보일 수 있습니다. 이 글은 선택 기준을 다루고, 결과 차이의 원인은 별도 비교 글에서 시장 경로별로 보는 편이 안전합니다.
 
 ### 4) 혼합 전략은 어떻게 정하면 ‘타이밍 게임’이 되지 않나요?
 기간과 날짜를 고정하는 것이 핵심입니다. 예를 들어 6개월 분할이면 6개월 동안 매월 같은 날짜에 같은 금액을 넣고, 뉴스/차트로 수정하지 않는 룰을 만듭니다. 수정이 필요하면 분기 1회만 하도록 제한하면 감정 개입이 줄어듭니다.
@@ -289,40 +296,6 @@ DCA뿐 아니라 혼합(분할)과 “사실상 일시” 가정을 비교하는
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
 - [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
 - [월 50만원 적립식 투자 10년 예시로 기준선 잡기](/posts/personalFinance/monthly-dca-10-year-result)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "DCA vs 일시금투자: 기대수익이 아니라 ‘후회·중단·변동성(실행 리스크)’로 결정하는 3단계 규칙",
-  "description": "DCA(적립식)와 일시금투자를 수익률 논쟁이 아니라 실행 리스크로 비교합니다. 현금버퍼·부채이자율·심리내성·기간·소득안정성을 넣어 DCA/혼합/일시를 고르는 if/then 판단표를 정리합니다.",
-  "inLanguage": "ko",
-  "datePublished": "2026-03-09",
-  "dateModified": "2026-06-23",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/personalFinance/dca-vs-lumpsum-decision-rules"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1773068096/blog/insight/dca-lamp-ko-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1773068097/blog/insight/dca-lamp-ko-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1773068098/blog/insight/dca-lamp-ko-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1773068099/blog/insight/dca-lamp-ko-img3.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1773068100/blog/insight/dca-lamp-ko-img4.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1773068101/blog/insight/dca-lamp-ko-img5.png"
-  ],
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "url": "https://www.finmaphub.com"
-  },
-  "keywords": ["DCA","적립식","일시금투자","분할매수","목돈투자","변동성","후회","중단","실행리스크","비상금","부채이자율","환율변동성"]
-}
-</script>
 
 <script type="application/ld+json">
 {
@@ -350,7 +323,7 @@ DCA뿐 아니라 혼합(분할)과 “사실상 일시” 가정을 비교하는
       "name": "DCA가 수익률을 올려준다고 보면 안 되나요?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "대체로 DCA의 강점은 수익률이 아니라 실행 확률을 올리는 데 있습니다. 우상향 구간에서는 일시가 기대수익 측면에서 유리해 보일 수 있지만, 그 전제는 계획을 끝까지 지키는 것입니다."
+        "text": "대체로 DCA의 강점은 수익률이 아니라 실행 확률을 올리는 데 있습니다. 시장이 우상향하는 구간에서는 빨리 들어간 돈이 더 오래 굴러가므로 일시가 기대수익 측면에서 유리해 보일 수 있습니다. 이 글은 선택 기준을 다루고, 결과 차이의 원인은 별도 비교 글에서 시장 경로별로 보는 편이 안전합니다."
       }
     },
     {

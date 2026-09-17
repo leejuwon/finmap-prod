@@ -4,7 +4,8 @@ link: "/posts/personalFinance/apartment-buying-calculator-guide"
 title: "아파트 구매 계산기: 집값·현금·대출·월상환액 한 번에 보는 법"
 description: "아파트 구매 계산기는 집값만 보는 도구가 아닙니다. 보유 현금, 대출 가능액, 필요 현금, 월상환액을 함께 계산해 내 조건에서 무리 없는 매수 범위를 점검하는 순서를 정리합니다."
 datePublished: "2026-07-15"
-dateModified: "2026-07-15"
+dateModified: "2026-09-16"
+hreflangEquivalent: false
 seoTitle: "아파트 구매 계산기: 집값·현금·대출·월상환액 한 번에 보는 법"
 seoDescription: "아파트 구매 계산기로 집값, 보유 현금, 주담대 한도, 월상환액, 필요 현금을 함께 확인하세요. 내 연봉으로 살 수 있는 아파트를 볼 때 DSR, LTV, 부대비용을 함께 점검하는 순서를 정리합니다."
 category: "재테크"
@@ -94,6 +95,9 @@ DSR은 소득 대비 원리금 상환 부담을 보는 기준입니다. 하지�
 - [마곡 아파트 TOP100 가격대 보기](/market/real-estate/magok-top100)
 - [아파트 매수 전 계산해야 할 비용 5가지](/posts/personalFinance/apartment-buying-costs-before-purchase)
 - [보유현금 1억 2억 3억이면 어떤 가격대가 가능할까](/posts/personalFinance/cash-100m-200m-300m-apartment-budget)
+- [생애최초 주택 구입 예산은 어떤 순서로 계산할까](/posts/personalFinance/first-home-buyer-budget-calculation)
+- [전세에서 매매로 갈아탈 때 필요한 현금과 보증금 타이밍 보기](/posts/personalFinance/jeonse-to-home-purchase-cash-needed)
+- [전세·월세·매매 선택을 현금흐름과 기회비용으로 비교하기](/posts/personalFinance/rent-jeonse-buy-cashflow-opportunity-cost)
 
 ## FAQ
 

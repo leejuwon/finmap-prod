@@ -5,7 +5,7 @@ slug: "apt-dashboard-home-goal-roadmap"
 category: "재테크"
 postCategory: "personalFinance"
 datePublished: "2026-01-29"
-dateModified: "2026-06-19"
+dateModified: "2026-09-17"
 tags: ["내집마련","실거래가","아파트","서울","경기도","인천","대시보드","목표설정","예산","대출","LTV","DSR","현금흐름","갈아타기","무주택","거래량","가격분포","의사결정"]
 tool: ["dsrLtv","goal"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1769749563/blog/insight/apt-dashboard-home-goal-roadmap-cover.png"
@@ -222,8 +222,13 @@ Flip이 없으면, 매번 뉴스가 Flip을 대신하고, 결국 계획은 감�
 
 아래 글들은 ‘대시보드에서 본 숫자’를 ‘내 돈 계획’으로 바꾸는 데 바로 연결됩니다.
 
+- <a href="/posts/investingInfo/rates-discount-mortgage-demand-apt-prices">금리와 할인율이 아파트 수요·거래량을 흔드는 3채널 읽기</a>
+- <a href="/posts/investingInfo/seoul-gyeonggi-incheon-risk-budget-framework">서울·경기·인천을 지역 선택이 아니라 리스크 예산으로 나누는 법</a>
+- <a href="/posts/personalFinance/apartment-transaction-volume-decline-meaning">거래량 감소가 가격 신호인지 시간 리스크인지 구분하기</a>
+- <a href="/posts/personalFinance/how-to-read-apartment-transaction-prices">아파트 실거래가를 중앙값·평단가·분포로 읽는 기본법</a>
+- <a href="/posts/personalFinance/large-apartment-complex-households-price-stability">대단지 세대수와 가격 안정성을 함께 보는 기준</a>
 - <a href="/posts/personalFinance/goal-amount-fast-strategy">목표 금액을 더 빨리 모으는 3변수(원금·수익률·기간)로 계획 다시 짜기</a>
-- <a href="/posts/personalFinance/how-much-per-month-for-100m">목표 금액을 월 투자금으로 역산해서 현실 체크하기</a>
+- <a href="/posts/personalFinance/how-much-monthly-invest-for-100m">1억원 목표를 월 투자금으로 역산해서 현실 체크하기</a>
 - <a href="/posts/personalFinance/high-rate-debt-vs-invest-threshold-rule">고금리 시대에 대출 상환 vs 투자 우선순위를 룰로 결정하기</a>
 
 ## FAQ: 내 집 마련 목표를 숫자로 만드는 질문들
@@ -259,33 +264,6 @@ Flip이 없으면, 매번 뉴스가 Flip을 대신하고, 결국 계획은 감�
 - [DSR LTV 계산기로 대출 한도와 주택 가격 범위 점검하기](/tools/dsr-ltv-calculator)
 - [서울·경기·인천 아파트 실거래 대시보드에서 가격 분포 확인하기](/market/real-estate)
 - [서울 아파트 실거래가 Top100 가이드로 대표가격과 평단가 읽기](/market/real-estate/seoul-apartment-top100)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "서울·경기·인천 아파트 실거래 대시보드로 ‘내 집 마련 목표’를 숫자로 바꾸는 3단계 로드맵",
-  "description": "가격 예측 대신 ‘내 기준(예산·대출·기간)’으로 의사결정 규칙을 만드는 방법을 정리합니다. 실거래 대시보드에서 가격분포·추세·거래량을 읽고, 목표 가격대→자금조달→실행 루틴으로 연결하는 3단계 로드맵과 30분 점검 순서를 정리합니다.",
-  "datePublished": "2026-01-29",
-  "dateModified": "2026-06-19",
-  "inLanguage": "ko",
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/personalFinance/apt-dashboard-home-goal-roadmap"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1769749563/blog/insight/apt-dashboard-home-goal-roadmap-cover.png"
-  ]
-}
-</script>
 
 <script type="application/ld+json">
 {

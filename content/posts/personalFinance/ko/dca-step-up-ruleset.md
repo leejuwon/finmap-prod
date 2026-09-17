@@ -6,7 +6,7 @@ link: "/posts/personalFinance/dca-step-up-ruleset"
 category: "재테크"
 postCategory: "personalFinance"
 datePublished: "2026-01-27"
-dateModified: "2026-02-04"
+dateModified: "2026-09-16"
 tags:
   ["DCA", "적립식",  "월 납입액", "스텝업", "중단/재개", "현금흐름", "비상금"]
 tool: ["dca"]
@@ -342,41 +342,8 @@ lang: "ko"
 
 - [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
+- [DCA 실행 순서와 월 투자금 기준을 먼저 잡기](/posts/personalFinance/dca-guide)
 - [DCA와 일시금 투자를 실행 리스크 기준으로 비교하기](/posts/personalFinance/dca-vs-lumpsum-decision-rules)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "DCA의 핵심은 ‘월 납입액 설계’다: 증액(스텝업)·감액·일시중단 조건을 운영규칙으로 만드는 법",
-  "description": "적립식(DCA)은 타이밍이 아니라 ‘지속성’이 성패를 가릅니다. 월 납입액을 스텝업(증액)·감액·일시중단·재개 규칙으로 바꾸고, DCA 시뮬레이터로 민감도(수익률·인플레·중단기간)를 스트레스 테스트하는 한국 사용자용 운영 가이드.",
-  "inLanguage": "ko-KR",
-  "datePublished": "2026-01-27",
-  "dateModified": "2026-02-04",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/personalFinance/dca-step-up-ruleset"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269542/blog/insight/dca-step-up-ruleset-kr-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269543/blog/insight/dca-step-up-ruleset-kr-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269545/blog/insight/dca-step-up-ruleset-kr-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269546/blog/insight/dca-step-up-ruleset-kr-img3.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269548/blog/insight/dca-step-up-ruleset-kr-img4.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269549/blog/insight/dca-step-up-ruleset-kr-img5.png"
-  ],
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "url": "https://www.finmaphub.com"
-  },
-  "keywords": ["DCA", "적립식", "월 납입액", "스텝업", "중단/재개", "현금흐름", "비상금"]
-}
-</script>
 
 <script type="application/ld+json">
 {

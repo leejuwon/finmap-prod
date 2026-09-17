@@ -4,7 +4,8 @@ link: "/posts/personalFinance/jeonse-to-home-purchase-cash-needed"
 title: "전세에서 매매로 갈아탈 때 필요한 현금 계산: 보증금 타이밍까지 보기"
 description: "전세에서 매매로 갈아탈 때 필요한 현금을 자기자본, 부대비용, 비상금, 전세보증금 반환 시점으로 나눠 계산합니다."
 datePublished: "2026-06-23"
-dateModified: "2026-06-23"
+dateModified: "2026-09-16"
+hreflangEquivalent: false
 seoTitle: "전세에서 매매 갈아타기 필요한 현금 | DSR LTV 계산"
 seoDescription: "전세보증금을 매매 자금으로 쓸 때 필요한 현금과 잔금 타이밍 리스크를 계산합니다. DSR/LTV 계산기로 후보 집값과 대출 가능액을 점검하세요."
 category: "재테크"
@@ -82,6 +83,7 @@ lang: "ko"
 ## 관련 글/계산기
 
 - [아파트 구매 계산기로 갈아타기 필요 현금 점검하기](/tools/home-buying-budget-calculator)
+- [아파트 구매 계산 순서로 집값·현금·대출을 함께 보기](/posts/personalFinance/apartment-buying-calculator-guide)
 - [전세·월세·매매, 무엇이 내게 더 안전한가](/posts/personalFinance/rent-jeonse-buy-cashflow-opportunity-cost)
 - [보유현금 1억·2억·3억이면 어느 가격대 아파트까지 가능할까?](/posts/personalFinance/cash-100m-200m-300m-apartment-budget)
 - [아파트 매수 전 대출 리스크 체크리스트](/posts/personalFinance/mortgage-risk-checklist-dsr-variable)

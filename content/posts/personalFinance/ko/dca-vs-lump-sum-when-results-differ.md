@@ -2,11 +2,11 @@
 slug: "dca-vs-lump-sum-when-results-differ"
 link: "/posts/personalFinance/dca-vs-lump-sum-when-results-differ"
 title: "적립식 투자와 일괄투자, 언제 결과가 달라질까?"
-description: "적립식 투자와 일괄투자는 시장 흐름에 따라 결과가 달라집니다. 상승장, 하락장, 횡보장에서 어떤 차이가 생기는지 DCA 계산기로 비교하는 방법을 설명합니다."
+description: "적립식 투자와 일괄투자의 결과가 왜 달라지는지 상승장, 하락장, 횡보장 경로와 계산기 비교 항목으로 설명합니다. 어떤 방식을 선택할지는 별도 의사결정 글로 넘기고, 여기서는 결과 차이에 집중합니다."
 datePublished: "2026-05-28"
-dateModified: "2026-05-28"
+dateModified: "2026-09-16"
 seoTitle: "적립식 투자와 일괄투자, 언제 결과가 달라질까? DCA 비교 계산법"
-seoDescription: "적립식 투자와 일괄투자는 시장 흐름에 따라 결과가 달라집니다. 상승장, 하락장, 횡보장에서 어떤 차이가 생기는지 DCA 계산기로 비교하는 방법을 설명합니다."
+seoDescription: "적립식 투자와 일괄투자의 결과가 왜 달라지는지 상승장, 하락장, 횡보장 경로와 계산기 비교 항목으로 설명합니다. 어떤 방식을 선택할지는 별도 의사결정 글로 넘기고, 여기서는 결과 차이에 집중합니다."
 category: "재테크"
 postCategory: "personalFinance"
 tags: ["적립식 투자", "일괄투자", "DCA", "투자 시뮬레이션", "평균 매수단가", "세후 자산"]
@@ -22,6 +22,7 @@ lang: "ko"
 - Finmap DCA 계산기의 일괄투자 비교는 “DCA 총 예정 납입원금”을 첫 달에 넣었다는 가정입니다.
 - 비교 결과는 세후 자산 기준으로 봐야 합니다.
 - 결과가 더 높게 나온 방식이 모든 상황의 답이라는 뜻은 아닙니다.
+- 이 글의 범위는 <strong>왜 결과가 달라지는가</strong>입니다. 내 현금버퍼·심리내성·소득 안정성을 넣어 방식을 고르는 의사결정은 별도 선택 기준 글에서 다룹니다.
 - 이 글의 숫자는 시뮬레이션 예시이며 실제 시장 흐름을 예측하지 않습니다.
 
 <div class="hero-grid">
@@ -61,7 +62,7 @@ Finmap의 [DCA 계산기](/tools/dca-calculator)는 적립식 결과와 함께 �
 
 ![총 예정 납입원금 기준 일괄투자 비교](https://res.cloudinary.com/dwonflmnn/image/upload/v1783584893/blog/insight/dca-vs-lump-sum-when-results-differ/rework-20260709/slot-003-comparison.png)
 
-## 시장 흐름에 따라 결과가 달라지는 이유
+## 결과가 달라지는 이유: 선택 기준이 아니라 가격 경로 문제
 
 계산 결과의 차이는 단순히 수익률 숫자 하나로 정해지지 않습니다. 가격이 어떤 순서로 움직였는지가 중요합니다.
 
@@ -106,13 +107,15 @@ Finmap의 [DCA 계산기](/tools/dca-calculator)는 적립식 결과와 함께 �
 
 더 넓은 의사결정 기준은 [적립식 투자와 일괄투자 선택 기준](/posts/personalFinance/dca-vs-lumpsum-decision-rules) 글에서 볼 수 있습니다. 월 납입금 예시가 필요하다면 [월 50만원 적립식 투자, 10년 후 얼마가 될까?](/posts/personalFinance/monthly-dca-10-year-result)도 함께 참고할 수 있습니다. 같은 수익률 가정을 복리 관점으로 단순 확인하려면 [복리 계산기](/tools/compound-interest)를 연결해서 볼 수 있습니다.
 
+전체 DCA 흐름을 먼저 잡고 싶다면 [DCA 기본 구조와 결과 비교 전 읽는 순서](/posts/personalFinance/dca-guide)를 본 뒤, 이 글에서 시장 경로별 결과 차이만 따로 확인해도 좋습니다.
+
 ![DCA 계산기에서 비교해야 할 핵심 결과](https://res.cloudinary.com/dwonflmnn/image/upload/v1783584894/blog/insight/dca-vs-lump-sum-when-results-differ/rework-20260709/slot-005-comparison.png)
 
 ## FAQ
 
 ### 적립식 투자가 일괄투자보다 항상 좋은가요?
 
-아닙니다. 시장 경로, 투자 기간, 수수료, 세금, 심리적 부담에 따라 결과와 적합성이 달라질 수 있습니다.
+아닙니다. 시장 경로, 투자 기간, 수수료, 세금에 따라 결과가 달라질 수 있습니다. 다만 이 글은 결과 차이의 원인을 설명하는 글이고, 실제로 어떤 방식을 선택할지는 현금버퍼·중단 리스크를 함께 보는 선택 기준 글에서 판단하는 편이 안전합니다.
 
 ### 일괄투자 비교에 쓰는 원금은 무엇인가요?
 
@@ -133,27 +136,6 @@ Finmap DCA 계산기에서는 매월 나누어 투자할 총 예정 납입원금
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "적립식 투자와 일괄투자, 언제 결과가 달라질까?",
-  "description": "적립식 투자와 일괄투자는 시장 흐름에 따라 결과가 달라집니다. 상승장, 하락장, 횡보장에서 어떤 차이가 생기는지 DCA 계산기로 비교하는 방법을 설명합니다.",
-  "datePublished": "2026-05-28",
-  "dateModified": "2026-05-28",
-  "author": {
-    "@type": "Organization",
-    "name": "Finmap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Finmap"
-  },
-  "inLanguage": "ko",
-  "mainEntityOfPage": "https://www.finmaphub.com/posts/personalFinance/dca-vs-lump-sum-when-results-differ"
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {
@@ -161,7 +143,7 @@ Finmap DCA 계산기에서는 매월 나누어 투자할 총 예정 납입원금
       "name": "적립식 투자가 일괄투자보다 항상 좋은가요?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "아닙니다. 시장 경로, 투자 기간, 수수료, 세금, 심리적 부담에 따라 결과와 적합성이 달라질 수 있습니다."
+        "text": "아닙니다. 시장 경로, 투자 기간, 수수료, 세금에 따라 결과가 달라질 수 있습니다. 다만 이 글은 결과 차이의 원인을 설명하는 글이고, 실제로 어떤 방식을 선택할지는 현금버퍼·중단 리스크를 함께 보는 선택 기준 글에서 판단하는 편이 안전합니다."
       }
     },
     {

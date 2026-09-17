@@ -278,37 +278,6 @@ lang: "ko"
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "가계 자산배분에서 부동산은 ‘비중’이 아니라 ‘역할’이다: 현대형 60/40(리스크 예산)로 다시 설계하기",
-  "description": "부동산·주식·채권·현금(그리고 금)을 ‘얼마나 담느냐’가 아니라 ‘무슨 역할을 맡기느냐’로 재설계합니다. 서울·경기·인천 실거래 대시보드로 내 부동산 리스크(지역 집중·가격대·거래량 민감도)를 먼저 점검하고, 리밸런싱·중단 조건까지 운영 규칙으로 완성합니다.",
-  "datePublished": "2026-02-03",
-  "dateModified": "2026-02-03",
-  "inLanguage": "ko",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/investingInfo/real-estate-role-in-portfolio-risk-budget"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "keywords": ["리스크예산","자산배분","현대형60/40","부동산역할","서울경기인천","거래량","유동성","할인율","금리민감도","리밸런싱","중단조건","가계포트폴리오"],
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782454539/blog/insight/real-estate-role-in-portfolio-risk-budget/rework-20260626/slot-001-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782454541/blog/insight/real-estate-role-in-portfolio-risk-budget/rework-20260626/slot-003-flow.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782454541/blog/insight/real-estate-role-in-portfolio-risk-budget/rework-20260626/slot-004-flow.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782454542/blog/insight/real-estate-role-in-portfolio-risk-budget/rework-20260626/slot-005-comparison.png"
-  ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {

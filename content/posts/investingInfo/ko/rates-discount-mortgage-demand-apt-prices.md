@@ -6,7 +6,7 @@ link: "/posts/investingInfo/rates-discount-mortgage-demand-apt-prices"
 category: "투자정보"
 postCategory: "investingInfo"
 datePublished: "2026-01-30"
-dateModified: "2026-06-23"
+dateModified: "2026-09-16"
 tags: ["금리","할인율","대출금리","주택담보대출","DSR","거래량","금융여건","심리","서울아파트","경기아파트","인천아파트","실거래","대시보드"]
 tool: ["goal","cagr"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782800835/blog/insight/rates-discount-mortgage-demand-apt-prices/rework-20260630/slot-001-cover.png"
@@ -257,38 +257,9 @@ lang: "ko"
 ## 함께 보면 좋은 글/도구
 
 - [서울·경기·인천 아파트 실거래 대시보드에서 가격 분포 확인하기](/market/real-estate)
+- [대시보드 숫자를 내 집 마련 목표로 바꾸는 3단계 로드맵](/posts/personalFinance/apt-dashboard-home-goal-roadmap)
 - [경기 아파트 실거래가 Top100에서 지역별 가격 흐름 비교하기](/market/real-estate/gyeonggi-apartment-top100)
 - [DSR LTV 계산기로 대출 한도와 주택 가격 범위 점검하기](/tools/dsr-ltv-calculator)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "금리(할인율)는 어떻게 서울·경기·인천 아파트 가격을 흔드는가: 대출금리·수요·심리 3채널로 분해하기",
-  "description": "금리와 아파트 가격을 대출금리, 월 상환액, 거래량, 구매력, 금융여건 트리거로 나눠 읽는 글입니다. 서울·경기·인천 실거래 대시보드와 DSR/LTV 계산 연결까지 정리합니다.",
-  "datePublished": "2026-01-30",
-  "dateModified": "2026-06-23",
-  "inLanguage": "ko",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/investingInfo/rates-discount-mortgage-demand-apt-prices"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782800835/blog/insight/rates-discount-mortgage-demand-apt-prices/rework-20260630/slot-001-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782800837/blog/insight/rates-discount-mortgage-demand-apt-prices/rework-20260630/slot-003-chart.png"
-  ],
-  "articleSection": "투자정보",
-  "keywords": ["금리","할인율","대출금리","주택담보대출","DSR","거래량","금융여건","서울아파트","경기아파트","인천아파트","실거래","대시보드"]
-}
-</script>
 
 <script type="application/ld+json">
 {

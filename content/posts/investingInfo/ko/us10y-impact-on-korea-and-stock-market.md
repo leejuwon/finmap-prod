@@ -1,11 +1,11 @@
 ---
 slug: "us10y-impact-on-korea-and-stock-market"
 title: "미국 10년물 국채금리(TNX)가 미국·한국 시장에 미치는 실제 영향"
-description: "미국 10년물 국채금리(TNX)가 미국 경제뿐 아니라 한국 주식시장, 환율, 유동성 흐름에 어떤 영향을 주는지 FinMap 고급 템플릿으로 깊이 있게 정리했습니다."
+description: "미국 10년물 국채금리(TNX)가 한국 증시, 원/달러 환율, 외국인 수급, 유동성 흐름에 전이되는 경로를 정리합니다. ETF 세부 반응보다 한국 시장 전체 transmission에 초점을 둡니다."
 seoTitle: "미국 10년물 국채금리 TNX가 한국 주식시장과 환율에 미치는 영향"
-seoDescription: "TNX가 미국 시장, 한국 증시, 원달러 환율, 외국인 수급, 유동성 흐름에 미치는 실제 경로를 정리합니다."
+seoDescription: "미국 10년물 국채금리(TNX)가 한국 증시, 원/달러 환율, 외국인 수급, 유동성 흐름에 전이되는 경로를 정리합니다. ETF 세부 반응보다 한국 시장 전체 transmission에 초점을 둡니다."
 datePublished: "2025-12-01"
-dateModified: "2025-12-01"
+dateModified: "2026-09-16"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["TNX", "미국10년물", "금리영향", "유동성", "한국증시", "환율", "매크로"]
@@ -28,6 +28,8 @@ lang: "ko"
 
 > **한 문단 요약**  
 미국 10년물 금리(TNX)는 글로벌 금융시장의 기준이 되는 장기금리로, 미국 시장뿐 아니라 한국의 환율·외국인 자금 흐름·증시 유동성에 직접적인 영향을 미칩니다. TNX가 오르면 위험자산 회피, 원화 약세, 성장주 조정이 발생하고, TNX가 떨어지면 유동성이 회복되며 증시 반등 가능성이 커집니다.  
+
+> 이 글의 범위는 한국 증시·환율·수급으로 이어지는 market transmission입니다. ETF별 성장/가치/신흥국 반응은 [TNX와 ETF 수익률 글](/posts/investingInfo/etf-impact-of-tnx)에서 더 좁게 봅니다.
 
 ---
 
@@ -236,6 +238,8 @@ TNX가 올라 달러 강세가 되면
 </div>
 
 함께 읽으면 좋은 글:
+글의 전이 경로를 가격으로 확인할 때는 [TNX·환율·주요 지수 흐름](/market/indices)에서 미국 10년물 금리, USD/KRW, 코스피와 미국 지수를 함께 보며 충격의 폭을 점검하세요.
+
 - [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)
 - [미국 10년물 금리(TNX)는 왜 ETF를 뒤흔드는가?](/posts/investingInfo/etf-impact-of-tnx)
 - [DXY(달러인덱스)란 무엇인가? 투자자가 꼭 알아야 할 의미 정리](/posts/investingInfo/dxy-dollar-index-basics)
@@ -266,16 +270,3 @@ A. FinMap의 글로벌지표 페이지 또는 Investing.com, TradingView를 활�
 - [기준금리와 시장금리가 예금·대출·채권에 이어지는 구조 이해하기](/posts/economicInfo/interest-rate-basics)
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
 - [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "미국 10년물 국채금리(TNX)가 미국·한국 시장에 미치는 실제 영향",
-  "description": "미국 10년물 국채금리(TNX)가 미국 경제뿐 아니라 한국 주식시장, 환율, 유동성 흐름에 어떤 영향을 주는지 FinMap 고급 템플릿으로 깊이 있게 정리했습니다.",
-  "datePublished": "2025-12-01",
-  "dateModified": "2025-12-01",
-  "author": { "@type": "Person", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" }
-}
-</script>

@@ -4,7 +4,7 @@ link: "/posts/personalFinance/is-dca-better-in-bear-market"
 title: "하락장에서 적립식 투자가 유리하다는 말은 진짜일까?"
 description: "적립식 투자가 하락장에서 평균 매수단가를 낮출 수 있는 이유와 한계를 설명합니다. 초반 하락, 중간 하락, 마지막 해 하락 시나리오로 DCA 결과를 비교해보세요."
 datePublished: "2026-05-28"
-dateModified: "2026-06-19"
+dateModified: "2026-09-16"
 seoTitle: "하락장에서 적립식 투자가 유리하다는 말은 진짜일까? DCA 시나리오로 보기"
 seoDescription: "적립식 투자가 하락장에서 평균 매수단가를 낮출 수 있는 이유와 한계를 설명합니다. 초반 하락, 중간 하락, 마지막 해 하락 시나리오로 DCA 결과를 비교해보세요."
 category: "재테크"
@@ -111,7 +111,9 @@ MDD는 Maximum Drawdown의 약자로, 고점 대비 저점까지의 최대 하�
 4. 하락장 시나리오 섹션에서 기본 모델, 초반 하락, 중간 하락, 마지막 해 하락을 비교합니다.
 5. 최종 세후 자산, 기본 모델 대비 차이, MDD를 함께 봅니다.
 
-적립식과 일괄투자의 차이도 함께 보고 싶다면 [적립식 투자와 일괄투자, 언제 결과가 달라질까?](/posts/personalFinance/dca-vs-lump-sum-when-results-differ)에서 같은 하락 경로를 비교합니다. 월 50만원 사례는 [월 50만원 적립식 투자, 10년 후 얼마가 될까?](/posts/personalFinance/monthly-dca-10-year-result)에서 납입액 기준으로 이어 보고, 목표 금액 중심의 단순 역산은 [목표자산 시뮬레이터](/tools/goal-simulator)에 목표액과 기간을 먼저 넣어 비교합니다.
+적립식과 일괄투자의 차이도 함께 보고 싶다면 [적립식 투자와 일괄투자, 언제 결과가 달라질까?](/posts/personalFinance/dca-vs-lump-sum-when-results-differ)에서 같은 하락 경로를 비교합니다. 월 50만원 사례는 [월 50만원 적립식 투자, 10년 후 얼마가 될까?](/posts/personalFinance/monthly-dca-10-year-result)에서 납입액 기준으로 이어 보고, 목표 금액 중심의 단순 역산은 [목표자산 시뮬레이터](/tools/goal-simulator)에 목표액과 기간을 먼저 넣어 비교합니다. 하락장 결과를 본 뒤 실제 투자 방식을 고르려면 [DCA·일시금 선택 규칙](/posts/personalFinance/dca-vs-lumpsum-decision-rules)에서 현금버퍼와 심리내성을 함께 점검하세요.
+
+하락장만 떼어 보기 전에 납입액·기간·실행 규칙의 큰 흐름을 정리하려면 [적립식 투자 방법을 처음부터 정리한 가이드](/posts/personalFinance/dca-guide)를 먼저 참고하세요.
 
 ![하락장 시나리오 결과를 읽는 방법](https://res.cloudinary.com/dwonflmnn/image/upload/v1784649541/blog/insight/is-dca-better-in-bear-market/rework-20260722/slot-005-comparison.png)
 
@@ -136,27 +138,6 @@ MDD는 고점 대비 저점까지의 최대 하락률입니다. DCA에서는 최
 ### 목표 금액과 함께 보면 무엇이 좋은가요?
 
 최종 세후 자산, 목표 달성률, 부족액입니다. 같은 월 납입금이라도 하락 시점에 따라 부족액이 얼마나 벌어지는지 보면 계획의 취약한 구간이 보입니다.
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "하락장에서 적립식 투자가 유리하다는 말은 진짜일까?",
-  "description": "적립식 투자가 하락장에서 평균 매수단가를 낮출 수 있는 이유와 한계를 설명합니다.",
-  "datePublished": "2026-05-28",
-  "dateModified": "2026-06-19",
-  "author": {
-    "@type": "Organization",
-    "name": "Finmap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Finmap"
-  },
-  "inLanguage": "ko",
-  "mainEntityOfPage": "https://www.finmaphub.com/posts/personalFinance/is-dca-better-in-bear-market"
-}
-</script>
 
 <script type="application/ld+json">
 {

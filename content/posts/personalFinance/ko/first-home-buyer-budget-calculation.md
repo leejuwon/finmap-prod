@@ -4,7 +4,8 @@ link: "/posts/personalFinance/first-home-buyer-budget-calculation"
 title: "생애최초 주택 구입 예산 계산: 집값보다 먼저 볼 6개 숫자"
 description: "생애최초 주택 구입을 준비할 때 집값, 보유현금, DSR, LTV, 부대비용, 비상금을 어떤 순서로 계산해야 하는지 정리합니다."
 datePublished: "2026-06-23"
-dateModified: "2026-06-23"
+dateModified: "2026-09-16"
+hreflangEquivalent: false
 seoTitle: "생애최초 주택 구입 예산 계산 | DSR LTV 현금흐름 체크"
 seoDescription: "생애최초 주택 구입 예산을 집값부터 정하지 말고 보유현금, DSR, LTV, 부대비용, 비상금 순서로 계산하세요. DSR/LTV 계산기 활용법을 안내합니다."
 category: "재테크"
@@ -79,6 +80,7 @@ LTV가 높아지면 현금 부담은 줄 수 있습니다. 하지만 월상환�
 ## 관련 글/계산기
 
 - [아파트 구매 계산기로 생애최초 필요 현금 점검하기](/tools/home-buying-budget-calculator)
+- [아파트 구매 계산 순서로 집값·현금·대출을 함께 보기](/posts/personalFinance/apartment-buying-calculator-guide)
 - [보유현금 1억·2억·3억이면 어느 가격대 아파트까지 가능할까?](/posts/personalFinance/cash-100m-200m-300m-apartment-budget)
 - [아파트 매수 전 대출 리스크 체크리스트](/posts/personalFinance/mortgage-risk-checklist-dsr-variable)
 - [서울·경기·인천 아파트 실거래 대시보드로 내 집 마련 목표 세우기](/posts/personalFinance/apt-dashboard-home-goal-roadmap)

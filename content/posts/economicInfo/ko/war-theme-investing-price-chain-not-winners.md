@@ -359,38 +359,6 @@ Flip 조건을 미리 정해두면, ‘오를 때는 이유를 붙이고 내릴 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "전쟁 테마의 함정: ‘수혜주’가 아니라 ‘가격 사슬(원가·운임·환율)’로 읽어야 한다",
-  "description": "전쟁 이슈에서 특정 수혜주를 찾기보다 사건→가격 체인→비용→마진→수급 순서로 읽는 관측 규칙을 정리합니다. 뉴스 유형별 먼저 볼 가격과 Flip 조건을 표로 확인합니다.",
-  "datePublished": "2026-01-28",
-  "dateModified": "2026-06-23",
-  "inLanguage": "ko",
-  "articleSection": "경제정보",
-  "keywords": ["전쟁테마","방산","원자재","해운","운임","환율","마진","수요","리스크프리미엄","오해교정","시나리오"],
-  "image": ["https://res.cloudinary.com/dwonflmnn/image/upload/v1782871497/blog/insight/war-theme-investing-price-chain-not-winners/rework-20260701/slot-001-cover.png"],
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/economicInfo/war-theme-investing-price-chain-not-winners"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "url": "https://www.finmaphub.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/favicon-48.png"
-    }
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {

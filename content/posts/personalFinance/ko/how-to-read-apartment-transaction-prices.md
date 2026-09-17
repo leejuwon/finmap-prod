@@ -160,21 +160,6 @@ lang: "ko"
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "아파트 실거래가 보는 법: 평균가·중앙값·평단가·거래량을 함께 읽어야 하는 이유",
-  "description": "아파트 실거래가를 볼 때 평균가, 중앙값, 평단가, 거래량을 어떻게 함께 해석해야 하는지 정리합니다.",
-  "inLanguage": "ko",
-  "datePublished": "2026-06-03",
-  "dateModified": "2026-06-03",
-  "author": { "@type": "Organization", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" },
-  "mainEntityOfPage": "https://www.finmaphub.com/posts/personalFinance/how-to-read-apartment-transaction-prices"
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {

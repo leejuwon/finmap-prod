@@ -5,7 +5,7 @@ slug: "seoul-gyeonggi-incheon-risk-budget-framework"
 category: "투자정보"
 postCategory: "investingInfo"
 datePublished: "2026-02-02"
-dateModified: "2026-06-19"
+dateModified: "2026-09-16"
 tags: ["서울","경기","인천","부동산투자","리스크예산","변동성","유동성","회복탄력","거래량","하방방어","자산배분"]
 tool: ["dsrLtv"]
 cover: "https://res.cloudinary.com/dwonflmnn/image/upload/v1782455401/blog/insight/seoul-gyeonggi-incheon-risk-budget-framework/rework-20260626/slot-001-cover.png"
@@ -301,42 +301,8 @@ Relief 구간에서도 “가격 급등”보다 <strong>거래량 회복이 먼
 
 - [DSR LTV 계산기로 대출 한도와 주택 가격 범위 점검하기](/tools/dsr-ltv-calculator)
 - [서울·경기·인천 아파트 실거래 대시보드에서 가격 분포 확인하기](/market/real-estate)
+- [대시보드 숫자를 내 집 마련 목표로 바꾸는 3단계 로드맵](/posts/personalFinance/apt-dashboard-home-goal-roadmap)
 - [서울 아파트 실거래가 Top100 가이드로 대표가격과 평단가 읽기](/market/real-estate/seoul-apartment-top100)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "서울·경기·인천을 ‘지역 선택’이 아니라 ‘리스크 예산’으로 읽는 법: 변동성·유동성·회복탄력 3축",
-  "description": "서울·경기·인천을 ‘선호’가 아니라 ‘리스크 예산(변동성·유동성·회복탄력)’으로 분해해 읽는 프레임을 제공합니다. 대시보드의 거래량·회복 신호·하방 방어 지표로 ‘버티는 구간/깨지는 구간’ 트리거를 정의하고, 내 자산배분 규칙으로 연결하세요.",
-  "datePublished": "2026-02-02",
-  "dateModified": "2026-06-19",
-  "inLanguage": "ko",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/investingInfo/seoul-gyeonggi-incheon-risk-budget-framework"
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/favicon-32.png"
-    }
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782455401/blog/insight/seoul-gyeonggi-incheon-risk-budget-framework/rework-20260626/slot-001-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782455403/blog/insight/seoul-gyeonggi-incheon-risk-budget-framework/rework-20260626/slot-003-chart.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782455404/blog/insight/seoul-gyeonggi-incheon-risk-budget-framework/rework-20260626/slot-004-body.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782455405/blog/insight/seoul-gyeonggi-incheon-risk-budget-framework/rework-20260626/slot-005-chart.png"
-  ],
-  "keywords": ["서울","경기","인천","부동산투자","리스크예산","변동성","유동성","회복탄력","거래량","하방방어","자산배분"]
-}
-</script>
 
 <script type="application/ld+json">
 {

@@ -2,9 +2,9 @@
 slug: "hormuz-risk-oil-insurance-freight-premium"
 link: "/posts/economicInfo/hormuz-risk-oil-insurance-freight-premium"
 title: "중동 원유 수송 리스크 한 장으로 끝내기: 유가는 ‘봉쇄’보다 ‘보험료·운임 프리미엄’에 먼저 반응한다"
-description: "중동 긴장이 커질 때 유가는 봉쇄 뉴스보다 보험료·운임·우회비용·재고·USD/KRW 순서로 먼저 흔들릴 수 있습니다. 프리미엄 장과 공급 쇼크를 나누는 관측표를 정리합니다."
+description: "호르무즈 해협 같은 중동 원유 운송 리스크를 보험료·운임·우회비용·재고·USD/KRW 순서로 읽습니다. 전쟁 일반론보다 transport/chokepoint premium이 가격에 붙는 구조를 정리합니다."
 datePublished: "2026-01-29"
-dateModified: "2026-06-23"
+dateModified: "2026-09-16"
 category: "경제정보"
 postCategory: "economicInfo"
 tags: ["호르무즈해협","중동리스크","유가","보험료","운임","리스크프리미엄","공급충격","WTI","인플레이션","원달러","시나리오"]
@@ -16,6 +16,8 @@ lang: "ko"
 호르무즈 뉴스가 뜬 날에는 “봉쇄됐나?”보다 먼저 도착 비용을 봅니다. 선박 보험료가 붙고, 탱커 운임이 오르고, 우회 항로가 길어지면 실제 물량이 줄지 않아도 유가에는 프리미엄이 얹힐 수 있습니다.
 
 이 글의 기준은 단순합니다. <strong>보험료·운임·우회비용만 움직이면 프리미엄 장</strong>, 여기에 <strong>재고·스프레드·수출 물량 차질</strong>까지 붙으면 공급 쇼크 가능성을 높여 봅니다. 한국 투자자는 마지막에 USD/KRW를 함께 확인해야 원화 기준 체감 충격을 놓치지 않습니다.
+
+범위는 <strong>호르무즈처럼 운송 경로 자체가 위험해질 때 붙는 비용 프리미엄</strong>입니다. 전쟁이라는 넓은 지정학 shock이 공급·보험·운송·기대로 유가에 번지는 구조는 별도 글에서 다룹니다.
 
 | 먼저 볼 순서 | 확인할 데이터 | 해석 방향 |
 |---|---|---|
@@ -234,6 +236,8 @@ lang: "ko"
 - [USD/KRW가 코스피·외국인 수급을 흔드는 경로](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)  
 - [DXY 변화가 위험자산에 주는 압력](/posts/investingInfo/dxy-market-impact)  
 - [TNX(미 10년물)를 ‘기준 할인율’로 이해](/posts/investingInfo/tnx-basics)  
+- [전쟁 일반이 유가·공급·보험·운송 프리미엄으로 번지는 3단계 구조](/posts/economicInfo/war-risk-oil-supply-insurance-shipping)
+- [러시아 가스 단계적 축소가 에너지 가격 채널에 남기는 압력](/posts/economicInfo/eu-russia-gas-phaseout-price-channel)
 
 ---
 
@@ -243,7 +247,7 @@ lang: "ko"
 항상 그렇지 않습니다. 유가가 먼저 반응하는 경우가 많지만, 그 원인이 “공급 쇼크”인지 “보험료·운임 프리미엄”인지에 따라 지속성이 달라집니다. 운임·보험료가 따라오지 않는 급등은 과열일 수 있어 확인 데이터를 먼저 봐야 합니다.
 
 ### ‘완전 봉쇄’가 아니라도 유가가 오를 수 있는 이유는 뭔가요
-공급이 유지되어도 도착 비용이 오르면 가격에 프리미엄이 붙을 수 있습니다. 보험료·운임·우회 비용은 물량 감소 없이도 상승할 수 있기 때문에, 시장이 이를 먼저 가격에 반영하는 경우가 많습니다.
+공급이 유지되어도 도착 비용이 오르면 가격에 프리미엄이 붙을 수 있습니다. 이 글에서는 특히 호르무즈 같은 운송 경로의 보험료·운임·우회 비용을 봅니다. 전쟁 전체가 공급 기대와 리스크 프리미엄을 바꾸는 큰 그림은 전쟁 유가 영향 글에서 따로 보는 편이 안전합니다.
 
 ### 공급 쇼크인지 프리미엄인지 가장 빠르게 구분하는 방법은 뭔가요
 운임/리드타임, 보험료 관련 신호, 재고/스프레드 같은 “물량 단서”가 동반되는지 보세요. 프리미엄은 비용이 먼저, 쇼크는 물량 단서가 함께 움직이는 경우가 많습니다. Flip 조건을 하나 정해두면 판단이 더 빨라집니다.
@@ -272,43 +276,6 @@ lang: "ko"
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "호르무즈 리스크 한 장으로 끝내기: 유가는 ‘봉쇄’보다 ‘보험료·운임 프리미엄’에 먼저 반응한다",
-  "description": "중동 긴장이 커질 때 유가는 봉쇄 뉴스보다 보험료·운임·우회비용·재고·USD/KRW 순서로 먼저 흔들릴 수 있습니다. 프리미엄 장과 공급 쇼크를 나누는 관측표를 정리합니다.",
-  "datePublished": "2026-01-29",
-  "dateModified": "2026-06-23",
-  "inLanguage": "ko",
-  "articleSection": "경제정보",
-  "keywords": ["호르무즈해협","중동리스크","유가","보험료","운임","리스크프리미엄","공급충격","WTI","인플레이션","원달러","시나리오"],
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782831674/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260630/slot-001-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782831676/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260630/slot-003-body.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782831677/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260630/slot-004-body.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1782831678/blog/insight/hormuz-risk-oil-insurance-freight-premium/rework-20260630/slot-005-chart.png"
-  ],
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/economicInfo/hormuz-risk-oil-insurance-freight-premium"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "url": "https://www.finmaphub.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/favicon-48.png"
-    }
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "inLanguage": "ko",
   "mainEntity": [
@@ -325,7 +292,7 @@ lang: "ko"
       "name": "‘완전 봉쇄’가 아니라도 유가가 오를 수 있는 이유는 뭔가요",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "공급이 유지되어도 도착 비용이 오르면 가격에 프리미엄이 붙을 수 있습니다. 보험료·운임·우회 비용은 물량 감소 없이도 상승할 수 있기 때문에, 시장이 이를 먼저 가격에 반영하는 경우가 많습니다."
+        "text": "공급이 유지되어도 도착 비용이 오르면 가격에 프리미엄이 붙을 수 있습니다. 이 글에서는 특히 호르무즈 같은 운송 경로의 보험료·운임·우회 비용을 봅니다. 전쟁 전체가 공급 기대와 리스크 프리미엄을 바꾸는 큰 그림은 전쟁 유가 영향 글에서 따로 보는 편이 안전합니다."
       }
     },
     {

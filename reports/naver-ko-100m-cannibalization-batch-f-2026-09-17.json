@@ -1,0 +1,689 @@
+{
+  "generatedAt": "2026-09-17T05:46:14.413Z",
+  "finalVerdict": "PASS_100M_QUERY_BOUNDARY_IMPROVED",
+  "contentOverlapAssessment": "MIXED_OVERLAP",
+  "ownerDecision": {
+    "owner": "personalFinance/how-much-monthly-invest-for-100m",
+    "query": "1억원 만들기 월 투자금",
+    "ownerClear": true,
+    "genericInboundCount": 11
+  },
+  "parentTableDecision": {
+    "parent": "personalFinance/monthly-investment-for-100m-table",
+    "role": "COMPARISON_TABLE_PARENT",
+    "ownerToParentLink": true,
+    "parentToOwnerLink": true,
+    "parentToSupportingNarrowLink": true
+  },
+  "supportingPageDecision": "BOUNDARY_CAN_BE_CREATED_WITH_MINOR_EDIT",
+  "supportingPageDecisionDetail": {
+    "supporting": "personalFinance/how-much-per-month-for-100m",
+    "role": "QUICK_PLANNER_BY_MONTHLY_CAPACITY_AND_5_10_15_YEAR_PLAN",
+    "narrowInboundOnly": true,
+    "titleReviewItem": "TITLE_CHANGE_RECOMMENDED_NOT_EXECUTED",
+    "mergeReview": "WATCH_AFTER_EXTERNAL_BASELINE"
+  },
+  "dcaHubOwnership": {
+    "linksOwner": true,
+    "linksParent": true,
+    "linksSupporting": false
+  },
+  "structuralCannibalization": {
+    "before": "TRUE_CANNIBALIZATION",
+    "after": "QUERY_BOUNDARY_WEAK",
+    "officialStep3Rerun": {
+      "source": "reports/naver-ko-post-cannibalization-2026-09-16.json",
+      "generatedAt": "2026-09-17T00:17:45.186Z",
+      "classification": "TRUE_CANNIBALIZATION",
+      "recommendation": "MERGE_REVIEW_REQUIRED",
+      "note": "Step 3 uses repository structural-risk classification and keeps this pair as merge-review risk without external baseline."
+    },
+    "step3RerunRequired": true
+  },
+  "inboundLinkOwnership": {
+    "before": {
+      "genericSupportingLinks": 8,
+      "source": "Step 6F pre-edit inventory"
+    },
+    "after": {
+      "ownerGenericLinks": 11,
+      "genericSupportingLinks": 0,
+      "supportingNarrowLinks": 1
+    },
+    "rows": [
+      {
+        "source": "investingInfo/cagr-7percent-reality-check",
+        "anchor": "기대수익률을 1억원 목표 월 투자금으로 옮겨 계산하기",
+        "beforeTarget": "personalFinance/how-much-per-month-for-100m",
+        "afterTarget": "personalFinance/how-much-monthly-invest-for-100m",
+        "currentTargetPresent": "YES",
+        "intentRole": "OWNER_GENERIC_100M",
+        "before": "SUPPORTING_GENERIC",
+        "after": "OWNER_GENERIC"
+      },
+      {
+        "source": "personalFinance/annual-vs-monthly-compound",
+        "anchor": "1억원 만들기 월 투자금",
+        "beforeTarget": "personalFinance/how-much-per-month-for-100m",
+        "afterTarget": "personalFinance/how-much-monthly-invest-for-100m",
+        "currentTargetPresent": "YES",
+        "intentRole": "OWNER_GENERIC_100M",
+        "before": "SUPPORTING_GENERIC",
+        "after": "OWNER_GENERIC"
+      },
+      {
+        "source": "personalFinance/apt-dashboard-home-goal-roadmap",
+        "anchor": "1억원 만들기 월 투자금 계산",
+        "beforeTarget": "personalFinance/how-much-per-month-for-100m",
+        "afterTarget": "personalFinance/how-much-monthly-invest-for-100m",
+        "currentTargetPresent": "YES",
+        "intentRole": "OWNER_GENERIC_100M",
+        "before": "SUPPORTING_GENERIC",
+        "after": "OWNER_GENERIC"
+      },
+      {
+        "source": "personalFinance/compound-calculator-guide",
+        "anchor": "1억원을 목표로 매달 얼마를 넣어야 하는지",
+        "beforeTarget": "personalFinance/how-much-per-month-for-100m",
+        "afterTarget": "personalFinance/how-much-monthly-invest-for-100m",
+        "currentTargetPresent": "YES",
+        "intentRole": "OWNER_GENERIC_100M",
+        "before": "SUPPORTING_GENERIC",
+        "after": "OWNER_GENERIC"
+      },
+      {
+        "source": "personalFinance/goal-amount-fast-strategy",
+        "anchor": "1억원을 만들기 위한 월 투자금 계산",
+        "beforeTarget": "personalFinance/how-much-per-month-for-100m",
+        "afterTarget": "personalFinance/how-much-monthly-invest-for-100m",
+        "currentTargetPresent": "YES",
+        "intentRole": "OWNER_GENERIC_100M",
+        "before": "SUPPORTING_GENERIC",
+        "after": "OWNER_GENERIC"
+      },
+      {
+        "source": "personalFinance/monthly-dca-10-year-result",
+        "anchor": "1억원을 만들기 위한 월 투자금 계산",
+        "beforeTarget": "personalFinance/how-much-per-month-for-100m",
+        "afterTarget": "personalFinance/how-much-monthly-invest-for-100m",
+        "currentTargetPresent": "YES",
+        "intentRole": "OWNER_GENERIC_100M",
+        "before": "SUPPORTING_GENERIC",
+        "after": "OWNER_GENERIC"
+      },
+      {
+        "source": "personalFinance/personal-finance-3pillars",
+        "anchor": "1억원을 만들기 위해 매달 얼마를 넣어야 하는지",
+        "beforeTarget": "personalFinance/how-much-per-month-for-100m",
+        "afterTarget": "personalFinance/how-much-monthly-invest-for-100m",
+        "currentTargetPresent": "YES",
+        "intentRole": "OWNER_GENERIC_100M",
+        "before": "SUPPORTING_GENERIC",
+        "after": "OWNER_GENERIC"
+      },
+      {
+        "source": "personalFinance/monthly-investment-for-100m-table",
+        "anchor": "1억원 만들기 월 투자금 계산",
+        "beforeTarget": "personalFinance/how-much-per-month-for-100m",
+        "afterTarget": "personalFinance/how-much-monthly-invest-for-100m",
+        "currentTargetPresent": "YES",
+        "intentRole": "OWNER_GENERIC_100M",
+        "before": "SUPPORTING_GENERIC",
+        "after": "OWNER_GENERIC"
+      },
+      {
+        "source": "personalFinance/monthly-investment-for-100m-table",
+        "anchor": "월 납입 여력으로 5년·10년·15년 계획 고르기",
+        "beforeTarget": "",
+        "afterTarget": "personalFinance/how-much-per-month-for-100m",
+        "currentTargetPresent": "YES",
+        "intentRole": "SUPPORTING_NARROW_PLAN",
+        "before": "NOT_GENERIC_OWNER",
+        "after": "SUPPORTING_NARROW"
+      },
+      {
+        "source": "personalFinance/dca-guide",
+        "anchor": "기간·수익률별 월 투자금 표",
+        "beforeTarget": "",
+        "afterTarget": "personalFinance/monthly-investment-for-100m-table",
+        "currentTargetPresent": "YES",
+        "intentRole": "TABLE_PARENT_COMPARISON",
+        "before": "TABLE_LINK",
+        "after": "TABLE_PARENT_COMPARISON"
+      },
+      {
+        "source": "personalFinance/how-much-monthly-invest-for-100m",
+        "anchor": "1억원 목표 월 투자금 비교표",
+        "beforeTarget": "",
+        "afterTarget": "personalFinance/monthly-investment-for-100m-table",
+        "currentTargetPresent": "YES",
+        "intentRole": "TABLE_PARENT_COMPARISON",
+        "before": "TABLE_LINK",
+        "after": "TABLE_PARENT_COMPARISON"
+      },
+      {
+        "source": "personalFinance/how-much-per-month-for-100m",
+        "anchor": "1억 만들기 월 투자금 표",
+        "beforeTarget": "",
+        "afterTarget": "personalFinance/monthly-investment-for-100m-table",
+        "currentTargetPresent": "YES",
+        "intentRole": "TABLE_PARENT_COMPARISON",
+        "before": "TABLE_LINK",
+        "after": "TABLE_PARENT_COMPARISON"
+      }
+    ]
+  },
+  "titlePreservation": {
+    "rows": [
+      {
+        "id": "personalFinance/how-much-monthly-invest-for-100m",
+        "expected": "1억원 만들려면 매달 얼마를 투자해야 할까? 목표금액별 적립식 투자 계산",
+        "actual": "1억원 만들려면 매달 얼마를 투자해야 할까? 목표금액별 적립식 투자 계산",
+        "ok": true
+      },
+      {
+        "id": "personalFinance/how-much-per-month-for-100m",
+        "expected": "1억 모으려면 월 얼마? 5년·10년·15년 필요 투자금",
+        "actual": "1억 모으려면 월 얼마? 5년·10년·15년 필요 투자금",
+        "ok": true
+      },
+      {
+        "id": "personalFinance/monthly-investment-for-100m-table",
+        "expected": "1억 만들기 월 투자금 표 | 5년 10년 15년 20년 수익률별 계산",
+        "actual": "1억 만들기 월 투자금 표 | 5년 10년 15년 20년 수익률별 계산",
+        "ok": true
+      },
+      {
+        "id": "personalFinance/dca-guide",
+        "expected": "적립식 투자(DCA) 가이드: 일시금 비교부터 월 투자금·하락장·실행 규칙까지",
+        "actual": "적립식 투자(DCA) 가이드: 일시금 비교부터 월 투자금·하락장·실행 규칙까지",
+        "ok": true
+      }
+    ],
+    "titleChanges": 0,
+    "titleChangeRecommendedNotExecuted": true
+  },
+  "mergePreflight": {
+    "externalBaselineRequired": true,
+    "mergeOrRedirectApplied": false,
+    "canonicalUnificationApplied": false,
+    "noindexApplied": false,
+    "recommendation": "No merge or redirect in Batch F. Recheck after Naver/Search Console baseline if owner/supporting continue to compete."
+  },
+  "contentSignals": {
+    "owner": {
+      "title": "1억원 만들려면 매달 얼마를 투자해야 할까? 목표금액별 적립식 투자 계산",
+      "description": "1억원을 만들기 위해 매달 얼마를 투자해야 하는지 기간, 수익률, 세금, 수수료 조건별로 계산하는 방법을 설명합니다. DCA 계산기로 목표 달성에 필요한 월 납입금을 직접 확인해보세요.",
+      "ownsDirectCalculation": true,
+      "filePath": "content/posts/personalFinance/ko/how-much-monthly-invest-for-100m.md"
+    },
+    "supporting": {
+      "title": "1억 모으려면 월 얼마? 5년·10년·15년 필요 투자금",
+      "description": "1억 모으기 계획에서 월 납입 여력, 현재 자산, 목표 기간을 빠르게 맞춰보는 방법입니다. 세후 DCA 역산은 별도 계산 글로 분리해 확인하세요.",
+      "hasQuickPlannerBoundary": true,
+      "separatesTaxDcaOwner": true,
+      "filePath": "content/posts/personalFinance/ko/how-much-per-month-for-100m.md"
+    },
+    "parent": {
+      "title": "1억 만들기 월 투자금 표 | 5년 10년 15년 20년 수익률별 계산",
+      "description": "1억원을 만들려면 매월 얼마를 투자해야 할까요? 기간과 수익률별 필요 월 투자금을 Finmap 목표 자산 계산 로직으로 정리했습니다.",
+      "isComparisonTableParent": true,
+      "filePath": "content/posts/personalFinance/ko/monthly-investment-for-100m-table.md"
+    }
+  },
+  "validation": {
+    "ownerClear": true,
+    "parentTableClear": true,
+    "supportingBoundaryClear": true,
+    "dcaHubOwnershipClear": true,
+    "genericSupportingInboundViolations": 0,
+    "brokenInternalLinks": 0,
+    "duplicateTargetLinks": 0,
+    "titleChanges": 0,
+    "redirectChanges": 0,
+    "canonicalChanges": 0,
+    "noindexChanges": 0,
+    "dateModifiedIssues": 0,
+    "articleJsonLdDateIssues": 0,
+    "pass": true
+  },
+  "details": {
+    "linkRows": [
+      {
+        "source": "personalFinance/annual-vs-monthly-compound",
+        "sourceFile": "content/posts/personalFinance/ko/annual-vs-monthly-compound.md",
+        "line": 34,
+        "anchor": "1억원 목표 월 투자금 계산",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/apt-dashboard-home-goal-roadmap",
+        "sourceFile": "content/posts/personalFinance/ko/apt-dashboard-home-goal-roadmap.md",
+        "line": 231,
+        "anchor": "1억원 목표를 월 투자금으로 역산해서 현실 체크하기",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/compound-calculator-guide",
+        "sourceFile": "content/posts/personalFinance/ko/compound-calculator-guide.md",
+        "line": 133,
+        "anchor": "1억원 목표 월 납입액과 기간 계산하기",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/dca-fx-volatility-decomposition",
+        "sourceFile": "content/posts/personalFinance/ko/dca-fx-volatility-decomposition.md",
+        "line": 325,
+        "anchor": "적립식 투자 전체 가이드로 DCA 구조 먼저 정리하기",
+        "href": "/posts/personalFinance/dca-guide",
+        "target": "personalFinance/dca-guide",
+        "targetRole": "DCA_HUB",
+        "intentRole": "DCA_HUB"
+      },
+      {
+        "source": "personalFinance/dca-guide",
+        "sourceFile": "content/posts/personalFinance/ko/dca-guide.md",
+        "line": 46,
+        "anchor": "1억원 목표에 필요한 월 납입금 계산",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/dca-guide",
+        "sourceFile": "content/posts/personalFinance/ko/dca-guide.md",
+        "line": 46,
+        "anchor": "기간·수익률별 월 투자금 표",
+        "href": "/posts/personalFinance/monthly-investment-for-100m-table",
+        "target": "personalFinance/monthly-investment-for-100m-table",
+        "targetRole": "TABLE_PARENT",
+        "intentRole": "TABLE_PARENT_COMPARISON"
+      },
+      {
+        "source": "personalFinance/dca-step-up-ruleset",
+        "sourceFile": "content/posts/personalFinance/ko/dca-step-up-ruleset.md",
+        "line": 345,
+        "anchor": "DCA 실행 순서와 월 투자금 기준을 먼저 잡기",
+        "href": "/posts/personalFinance/dca-guide",
+        "target": "personalFinance/dca-guide",
+        "targetRole": "DCA_HUB",
+        "intentRole": "DCA_HUB"
+      },
+      {
+        "source": "personalFinance/dca-vs-lump-sum-when-results-differ",
+        "sourceFile": "content/posts/personalFinance/ko/dca-vs-lump-sum-when-results-differ.md",
+        "line": 110,
+        "anchor": "DCA 기본 구조와 결과 비교 전 읽는 순서",
+        "href": "/posts/personalFinance/dca-guide",
+        "target": "personalFinance/dca-guide",
+        "targetRole": "DCA_HUB",
+        "intentRole": "DCA_HUB"
+      },
+      {
+        "source": "personalFinance/dca-vs-lumpsum-decision-rules",
+        "sourceFile": "content/posts/personalFinance/ko/dca-vs-lumpsum-decision-rules.md",
+        "line": 257,
+        "anchor": "DCA 기본 구조와 실행 순서를 먼저 훑는 전체 가이드",
+        "href": "/posts/personalFinance/dca-guide",
+        "target": "personalFinance/dca-guide",
+        "targetRole": "DCA_HUB",
+        "intentRole": "DCA_HUB"
+      },
+      {
+        "source": "personalFinance/dca-vs-lumpsum-decision-rules",
+        "sourceFile": "content/posts/personalFinance/ko/dca-vs-lumpsum-decision-rules.md",
+        "line": 261,
+        "anchor": "1억원 목표에 필요한 월 납입금을 기간·수익률별로 계산하는 글",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/goal-amount-fast-strategy",
+        "sourceFile": "content/posts/personalFinance/ko/goal-amount-fast-strategy.md",
+        "line": 33,
+        "anchor": "1억원 목표 월 투자금 계산",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/how-much-monthly-invest-for-100m",
+        "sourceFile": "content/posts/personalFinance/ko/how-much-monthly-invest-for-100m.md",
+        "line": 73,
+        "anchor": "1억원 목표 월 투자금 비교표",
+        "href": "/posts/personalFinance/monthly-investment-for-100m-table",
+        "target": "personalFinance/monthly-investment-for-100m-table",
+        "targetRole": "TABLE_PARENT",
+        "intentRole": "TABLE_PARENT_COMPARISON"
+      },
+      {
+        "source": "personalFinance/how-much-monthly-invest-for-100m",
+        "sourceFile": "content/posts/personalFinance/ko/how-much-monthly-invest-for-100m.md",
+        "line": 117,
+        "anchor": "1억원 목표 전에 DCA 구조를 정리한 가이드",
+        "href": "/posts/personalFinance/dca-guide",
+        "target": "personalFinance/dca-guide",
+        "targetRole": "DCA_HUB",
+        "intentRole": "DCA_HUB"
+      },
+      {
+        "source": "personalFinance/how-much-per-month-for-100m",
+        "sourceFile": "content/posts/personalFinance/ko/how-much-per-month-for-100m.md",
+        "line": 34,
+        "anchor": "1억 만들기 월 투자금 표",
+        "href": "/posts/personalFinance/monthly-investment-for-100m-table",
+        "target": "personalFinance/monthly-investment-for-100m-table",
+        "targetRole": "TABLE_PARENT",
+        "intentRole": "TABLE_PARENT_COMPARISON"
+      },
+      {
+        "source": "personalFinance/how-much-per-month-for-100m",
+        "sourceFile": "content/posts/personalFinance/ko/how-much-per-month-for-100m.md",
+        "line": 34,
+        "anchor": "1억 모으기 월 투자금 계산법",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/is-dca-better-in-bear-market",
+        "sourceFile": "content/posts/personalFinance/ko/is-dca-better-in-bear-market.md",
+        "line": 116,
+        "anchor": "적립식 투자 방법을 처음부터 정리한 가이드",
+        "href": "/posts/personalFinance/dca-guide",
+        "target": "personalFinance/dca-guide",
+        "targetRole": "DCA_HUB",
+        "intentRole": "DCA_HUB"
+      },
+      {
+        "source": "personalFinance/monthly-dca-10-year-result",
+        "sourceFile": "content/posts/personalFinance/ko/monthly-dca-10-year-result.md",
+        "line": 157,
+        "anchor": "1억원 목표 월 투자금 계산법 보기",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/monthly-dca-10-year-result",
+        "sourceFile": "content/posts/personalFinance/ko/monthly-dca-10-year-result.md",
+        "line": 198,
+        "anchor": "DCA 기본 구조와 장기 결과를 읽는 순서",
+        "href": "/posts/personalFinance/dca-guide",
+        "target": "personalFinance/dca-guide",
+        "targetRole": "DCA_HUB",
+        "intentRole": "DCA_HUB"
+      },
+      {
+        "source": "personalFinance/monthly-investment-for-100m-table",
+        "sourceFile": "content/posts/personalFinance/ko/monthly-investment-for-100m-table.md",
+        "line": 93,
+        "anchor": "세후 기준 1억원 목표 월 납입금 계산법",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/monthly-investment-for-100m-table",
+        "sourceFile": "content/posts/personalFinance/ko/monthly-investment-for-100m-table.md",
+        "line": 93,
+        "anchor": "월 납입 여력으로 5년·10년·15년 계획 고르기",
+        "href": "/posts/personalFinance/how-much-per-month-for-100m",
+        "target": "personalFinance/how-much-per-month-for-100m",
+        "targetRole": "SUPPORTING",
+        "intentRole": "SUPPORTING_NARROW_PLAN"
+      },
+      {
+        "source": "personalFinance/monthly-investment-for-100m-table",
+        "sourceFile": "content/posts/personalFinance/ko/monthly-investment-for-100m-table.md",
+        "line": 97,
+        "anchor": "목표금액별 월 투자금 전에 보는 DCA 가이드",
+        "href": "/posts/personalFinance/dca-guide",
+        "target": "personalFinance/dca-guide",
+        "targetRole": "DCA_HUB",
+        "intentRole": "DCA_HUB"
+      },
+      {
+        "source": "personalFinance/personal-finance-3pillars",
+        "sourceFile": "content/posts/personalFinance/ko/personal-finance-3pillars.md",
+        "line": 325,
+        "anchor": "1억원 목표에 필요한 월 투자금 계산하기",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "investingInfo/cagr-7percent-reality-check",
+        "sourceFile": "content/posts/investingInfo/ko/cagr-7percent-reality-check.md",
+        "line": 40,
+        "anchor": "1억원 목표 월 투자금 계산",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "investingInfo/dca-consistency-7-fail-patterns",
+        "sourceFile": "content/posts/investingInfo/ko/dca-consistency-7-fail-patterns.md",
+        "line": 338,
+        "anchor": "DCA 기본 구조와 실행 순서를 정리한 가이드",
+        "href": "/posts/personalFinance/dca-guide",
+        "target": "personalFinance/dca-guide",
+        "targetRole": "DCA_HUB",
+        "intentRole": "DCA_HUB"
+      }
+    ],
+    "genericSupportingRows": [],
+    "supportingNarrowRows": [
+      {
+        "source": "personalFinance/monthly-investment-for-100m-table",
+        "sourceFile": "content/posts/personalFinance/ko/monthly-investment-for-100m-table.md",
+        "line": 93,
+        "anchor": "월 납입 여력으로 5년·10년·15년 계획 고르기",
+        "href": "/posts/personalFinance/how-much-per-month-for-100m",
+        "target": "personalFinance/how-much-per-month-for-100m",
+        "targetRole": "SUPPORTING",
+        "intentRole": "SUPPORTING_NARROW_PLAN"
+      }
+    ],
+    "ownerGenericRows": [
+      {
+        "source": "personalFinance/annual-vs-monthly-compound",
+        "sourceFile": "content/posts/personalFinance/ko/annual-vs-monthly-compound.md",
+        "line": 34,
+        "anchor": "1억원 목표 월 투자금 계산",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/apt-dashboard-home-goal-roadmap",
+        "sourceFile": "content/posts/personalFinance/ko/apt-dashboard-home-goal-roadmap.md",
+        "line": 231,
+        "anchor": "1억원 목표를 월 투자금으로 역산해서 현실 체크하기",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/compound-calculator-guide",
+        "sourceFile": "content/posts/personalFinance/ko/compound-calculator-guide.md",
+        "line": 133,
+        "anchor": "1억원 목표 월 납입액과 기간 계산하기",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/dca-guide",
+        "sourceFile": "content/posts/personalFinance/ko/dca-guide.md",
+        "line": 46,
+        "anchor": "1억원 목표에 필요한 월 납입금 계산",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/dca-vs-lumpsum-decision-rules",
+        "sourceFile": "content/posts/personalFinance/ko/dca-vs-lumpsum-decision-rules.md",
+        "line": 261,
+        "anchor": "1억원 목표에 필요한 월 납입금을 기간·수익률별로 계산하는 글",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/goal-amount-fast-strategy",
+        "sourceFile": "content/posts/personalFinance/ko/goal-amount-fast-strategy.md",
+        "line": 33,
+        "anchor": "1억원 목표 월 투자금 계산",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/how-much-per-month-for-100m",
+        "sourceFile": "content/posts/personalFinance/ko/how-much-per-month-for-100m.md",
+        "line": 34,
+        "anchor": "1억 모으기 월 투자금 계산법",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/monthly-dca-10-year-result",
+        "sourceFile": "content/posts/personalFinance/ko/monthly-dca-10-year-result.md",
+        "line": 157,
+        "anchor": "1억원 목표 월 투자금 계산법 보기",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/monthly-investment-for-100m-table",
+        "sourceFile": "content/posts/personalFinance/ko/monthly-investment-for-100m-table.md",
+        "line": 93,
+        "anchor": "세후 기준 1억원 목표 월 납입금 계산법",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "personalFinance/personal-finance-3pillars",
+        "sourceFile": "content/posts/personalFinance/ko/personal-finance-3pillars.md",
+        "line": 325,
+        "anchor": "1억원 목표에 필요한 월 투자금 계산하기",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      },
+      {
+        "source": "investingInfo/cagr-7percent-reality-check",
+        "sourceFile": "content/posts/investingInfo/ko/cagr-7percent-reality-check.md",
+        "line": 40,
+        "anchor": "1억원 목표 월 투자금 계산",
+        "href": "/posts/personalFinance/how-much-monthly-invest-for-100m",
+        "target": "personalFinance/how-much-monthly-invest-for-100m",
+        "targetRole": "OWNER",
+        "intentRole": "OWNER_GENERIC_100M"
+      }
+    ],
+    "brokenLinks": [],
+    "duplicateLinks": [],
+    "dateModifiedRows": [
+      {
+        "id": "personalFinance/how-much-monthly-invest-for-100m",
+        "filePath": "content/posts/personalFinance/ko/how-much-monthly-invest-for-100m.md",
+        "dateModified": "2026-09-17",
+        "ok": true
+      },
+      {
+        "id": "personalFinance/how-much-per-month-for-100m",
+        "filePath": "content/posts/personalFinance/ko/how-much-per-month-for-100m.md",
+        "dateModified": "2026-09-17",
+        "ok": true
+      },
+      {
+        "id": "personalFinance/monthly-investment-for-100m-table",
+        "filePath": "content/posts/personalFinance/ko/monthly-investment-for-100m-table.md",
+        "dateModified": "2026-09-17",
+        "ok": true
+      },
+      {
+        "id": "investingInfo/cagr-7percent-reality-check",
+        "filePath": "content/posts/investingInfo/ko/cagr-7percent-reality-check.md",
+        "dateModified": "2026-09-17",
+        "ok": true
+      },
+      {
+        "id": "personalFinance/annual-vs-monthly-compound",
+        "filePath": "content/posts/personalFinance/ko/annual-vs-monthly-compound.md",
+        "dateModified": "2026-09-17",
+        "ok": true
+      },
+      {
+        "id": "personalFinance/apt-dashboard-home-goal-roadmap",
+        "filePath": "content/posts/personalFinance/ko/apt-dashboard-home-goal-roadmap.md",
+        "dateModified": "2026-09-17",
+        "ok": true
+      },
+      {
+        "id": "personalFinance/compound-calculator-guide",
+        "filePath": "content/posts/personalFinance/ko/compound-calculator-guide.md",
+        "dateModified": "2026-09-17",
+        "ok": true
+      },
+      {
+        "id": "personalFinance/goal-amount-fast-strategy",
+        "filePath": "content/posts/personalFinance/ko/goal-amount-fast-strategy.md",
+        "dateModified": "2026-09-17",
+        "ok": true
+      },
+      {
+        "id": "personalFinance/monthly-dca-10-year-result",
+        "filePath": "content/posts/personalFinance/ko/monthly-dca-10-year-result.md",
+        "dateModified": "2026-09-17",
+        "ok": true
+      },
+      {
+        "id": "personalFinance/personal-finance-3pillars",
+        "filePath": "content/posts/personalFinance/ko/personal-finance-3pillars.md",
+        "dateModified": "2026-09-17",
+        "ok": true
+      }
+    ],
+    "articleDateIssues": []
+  },
+  "outputs": {
+    "json": "reports/naver-ko-100m-cannibalization-batch-f-2026-09-17.json",
+    "md": "reports/naver-ko-100m-cannibalization-batch-f-2026-09-17.md",
+    "csv": "reports/naver-ko-100m-query-ownership-links-2026-09-17.csv"
+  }
+}

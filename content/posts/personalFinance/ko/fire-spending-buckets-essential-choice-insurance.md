@@ -352,37 +352,6 @@ lang: "ko"
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "은퇴 지출은 ‘필수·선택·보험(리스크 비용)’으로 나눠야 흔들리지 않는다: 생활비 설계 + FIRE 시뮬레이터로 안전마진 잡기",
-  "description": "은퇴 지출을 ‘필수·선택·보험(리스크 비용)’ 3버킷으로 나누면, 체감 물가와 돌발비용까지 반영한 ‘안전마진’이 생깁니다. 생활비 설계 규칙과 실패 신호를 표로 정리하고, FIRE 계산기로 10분 스트레스 테스트까지 연결합니다.",
-  "datePublished": "2026-02-04",
-  "dateModified": "2026-02-05",
-  "inLanguage": "ko",
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/personalFinance/fire-spending-buckets-essential-choice-insurance"
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269586/blog/insight/fire-spending-buckets-essential-kr-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269588/blog/insight/fire-spending-buckets-essential-kr-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269590/blog/insight/fire-spending-buckets-essential-kr-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1770269591/blog/insight/fire-spending-buckets-essential-kr-img3.png"
-  ],
-  "keywords": ["은퇴지출", "생활비설계", "FIRE", "체감물가", "안전마진", "리스크비용", "건강보험료", "실손보험", "부양비", "주거비"]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {

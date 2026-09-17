@@ -4,7 +4,8 @@ link: "/posts/personalFinance/apartment-buying-costs-before-purchase"
 title: "아파트 매수 전 계산해야 할 비용 5가지: 대출 한도보다 먼저 볼 현금표"
 description: "아파트 매수 전 자기자본, 취득 관련 세금, 중개보수, 대출·등기 비용, 이사·수리비를 계산하는 방법을 정리합니다."
 datePublished: "2026-06-23"
-dateModified: "2026-06-23"
+dateModified: "2026-09-16"
+hreflangEquivalent: false
 seoTitle: "아파트 매수 전 계산해야 할 비용 5가지 | DSR LTV 현금표"
 seoDescription: "아파트 매수 전 대출 한도만 보지 말고 자기자본, 세금, 중개보수, 등기·대출 비용, 이사·수리비를 함께 계산하세요. DSR/LTV 계산기 활용법을 정리합니다."
 category: "재테크"
@@ -86,6 +87,7 @@ lang: "ko"
 ## 관련 글/계산기
 
 - [아파트 구매 계산기로 부대비용률까지 넣어 보기](/tools/home-buying-budget-calculator)
+- [아파트 구매 계산 순서로 집값·현금·대출을 함께 보기](/posts/personalFinance/apartment-buying-calculator-guide)
 - [아파트 매수 전 대출 리스크 체크리스트](/posts/personalFinance/mortgage-risk-checklist-dsr-variable)
 - [DSR은 통과했는데 왜 집을 못 살까?](/posts/personalFinance/dsr-pass-ltv-cash-bottleneck)
 - [보유현금 1억·2억·3억이면 어느 가격대 아파트까지 가능할까?](/posts/personalFinance/cash-100m-200m-300m-apartment-budget)

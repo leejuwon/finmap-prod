@@ -326,40 +326,6 @@ KOSPI가 어떤 힘에 의해 움직이는 모드인지를 뜻합니다. 예를 
 - [원달러 환율이 한국 경제와 코스피에 미치는 영향 보기](/posts/investingInfo/usd-krw-exchange-rate-and-kospi)
 - [적립식 투자 계산기로 월 납입액과 수익률 민감도 확인하기](/tools/dca-calculator)
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "환헤지 vs 환노출: 국내 개인 투자자에게 ‘정답’이 달라지는 3가지 조건",
-  "description": "환헤지(hedged)와 환노출(unhedged)은 ‘취향’이 아니라 조건 문제입니다. 투자 기간·현금흐름 통화·헤지 비용(금리차/포워드포인트)·레짐(달러 강세/약세)까지 포함해 국내 개인 투자자에게 정답이 달라지는 3가지 조건을 규칙으로 정리합니다. TNX(미국 10년물 금리)와 USD/KRW의 연결고리까지 함께 설명합니다.",
-  "inLanguage": "ko",
-  "datePublished": "2026-01-19",
-  "dateModified": "2026-01-19",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.finmaphub.com/posts/investingInfo/fx-hedge-vs-fx-exposure-korea-3-conditions"
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "FinMap"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinMap",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.finmaphub.com/brand/finmaphub_logo.png"
-    }
-  },
-  "image": [
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768789695/blog/insight/fx-hedge-kr-cover.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768789696/blog/insight/fx-hedge-kr-img1.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768789698/blog/insight/fx-hedge-kr-img2.png",
-    "https://res.cloudinary.com/dwonflmnn/image/upload/v1768790439/blog/insight/fx-hedge-kr-img3.png"
-  ]
-}
-</script>
-
 <!-- FAQPage JSON-LD -->
 <script type="application/ld+json">
 {

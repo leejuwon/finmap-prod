@@ -1,11 +1,11 @@
 ---
 slug: "etf-impact-of-tnx"
 title: "미국 10년물 금리(TNX)는 왜 ETF를 뒤흔드는가? 성장·가치·신흥국 ETF까지 모두 설명하는 금리 로직"
-description: "ETF는 금리·달러·유동성의 영향을 강하게 받는다. TNX(미국 10년물 금리)가 어떻게 Growth, Value, Sector, Theme ETF의 수익률을 좌우하는지 FinMap 고급 매크로 구조로 쉽게 설명한다."
+description: "TNX(미국 10년물 금리)가 Growth, Value, Sector, Theme ETF 수익률을 흔드는 구조를 정리합니다. 한국 증시 전체 전이보다 ETF asset-class 반응과 금리 민감도에 초점을 둡니다."
 seoTitle: "TNX가 ETF 수익률을 흔드는 이유: 성장주·가치주·신흥국 ETF"
-seoDescription: "미국 10년물 금리가 ETF 성과를 움직이는 경로를 성장주, 가치주, 신흥국, 달러 유동성 관점에서 정리합니다."
+seoDescription: "TNX(미국 10년물 금리)가 Growth, Value, Sector, Theme ETF 수익률을 흔드는 구조를 정리합니다. 한국 증시 전체 전이보다 ETF asset-class 반응과 금리 민감도에 초점을 둡니다."
 datePublished: "2025-12-01"
-dateModified: "2025-12-01"
+dateModified: "2026-09-16"
 category: "투자정보"
 postCategory: "investingInfo"
 tags: ["ETF", "TNX", "미국10년물", "금리영향", "성장주ETF", "가치주ETF", "신흥국ETF"]
@@ -28,6 +28,8 @@ lang: "ko"
 
 > **한 문단 요약**  
 ETF는 여러 종목을 묶어 구성되기 때문에 금리·달러·유동성의 변화에 구조적으로 민감하다. 특히 미국 10년물 금리(TNX)는 성장 ETF의 밸류에이션을 압박하고, 가치 ETF의 수익 구조를 변화시키며, 신흥국 ETF에는 환율 리스크를 크게 만든다. ETF 성과를 이해하려면 개별 종목 분석보다 *금리 → 달러 → 유동성*이라는 매크로 흐름을 먼저 읽어야 한다.
+
+> 이 글의 범위는 ETF 가격 반응과 금리 민감도입니다. TNX가 한국 증시·원/달러·외국인 수급 전체에 번지는 구조는 [미국 10년물 금리와 한국 시장 전이](/posts/investingInfo/us10y-impact-on-korea-and-stock-market)에서 따로 봅니다.
 
 ![대표 이미지](https://res.cloudinary.com/dwonflmnn/image/upload/v1764561430/blog/investingInfo/etf-impact-of-tnx-thum.png)
 
@@ -210,9 +212,12 @@ ETF를 종목 묶음이라고만 생각하고 금리를 무시하면 실수하�
 </div>
 
 함께 읽으면 좋은 글:
+ETF 금리 민감도를 읽을 때는 [TNX와 주요 지수 흐름](/market/indices)에서 미국 10년물 금리와 코스피·미국 지수를 함께 보며 할인율 압력이 넓어지는지 확인하세요.
+
 - [TNX 미국 10년물 국채금리: 초보 투자자가 꼭 알아야 할 금리의 기준](/posts/investingInfo/tnx-basics)
 - [DXY(달러인덱스)란 무엇인가? 투자자가 꼭 알아야 할 의미 정리](/posts/investingInfo/dxy-dollar-index-basics)
 - [왜 한국 ETF는 TNX에 가장 민감한가: 구조·환율·유동성 심화 분석](/posts/investingInfo/korea-etf-deep-dive-tnx)
+- [TNX가 한국 증시·환율·외국인 수급으로 전이되는 큰 구조](/posts/investingInfo/us10y-impact-on-korea-and-stock-market)
 
 ---
 
@@ -237,16 +242,3 @@ A. 금리 하락기에는 오히려 가장 높은 수익을 주는 ETF군입니�
 - [복리 계산기로 저축·투자 기간별 미래가치 계산하기](/tools/compound-interest)
 - [시장정보 지표를 투자 판단에 연결하는 방법 보기](/posts/investingInfo/indicator-marketinfo)
 - [CAGR 계산기로 투자 성과를 연평균 수익률로 환산하기](/tools/cagr-calculator)
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "미국 10년물 금리(TNX)는 왜 ETF를 뒤흔드는가?",
-  "description": "ETF는 금리·달러·유동성의 영향을 강하게 받는다. TNX가 어떻게 Growth·Value·신흥국 ETF의 수익률을 좌우하는지 매크로 구조로 설명한다.",
-  "datePublished": "2025-12-01",
-  "dateModified": "2025-12-01",
-  "author": { "@type": "Person", "name": "FinMap" },
-  "publisher": { "@type": "Organization", "name": "FinMap" }
-}
-</script>
