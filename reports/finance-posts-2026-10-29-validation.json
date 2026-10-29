@@ -1,0 +1,602 @@
+{
+  "date": "2026-10-29",
+  "status": "PASS",
+  "content": [
+    {
+      "lang": "ko",
+      "slug": "four-account-salary-automation",
+      "url": "/posts/personalFinance/four-account-salary-automation",
+      "visibleCharacters": 9554,
+      "summaryCount": 9,
+      "tables": 3,
+      "faq": 8,
+      "internalLinks": [
+        "/posts/personalFinance/personal-finance-3pillars",
+        "/posts/personalFinance/emergency-fund-by-risk",
+        "/posts/personalFinance/personal-start-5steps",
+        "/posts/personalFinance/how-much-per-month-for-100m",
+        "/posts/personalFinance/dca-step-up-ruleset"
+      ],
+      "images": [
+        {
+          "src": "/images/posts/four-account-salary-automation/cover.png",
+          "width": 1200,
+          "height": 630,
+          "bytes": 883878
+        },
+        {
+          "src": "/images/posts/four-account-salary-automation/img1.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1344123
+        },
+        {
+          "src": "/images/posts/four-account-salary-automation/img2.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1239899
+        },
+        {
+          "src": "/images/posts/four-account-salary-automation/img3.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1288530
+        }
+      ]
+    },
+    {
+      "lang": "ko",
+      "slug": "compound-vs-dca-calculator-guide",
+      "url": "/posts/personalFinance/compound-vs-dca-calculator-guide",
+      "visibleCharacters": 9738,
+      "summaryCount": 9,
+      "tables": 4,
+      "faq": 8,
+      "internalLinks": [
+        "/posts/personalFinance/simple-vs-compound",
+        "/tools/compound-interest",
+        "/tools/dca-calculator",
+        "/posts/personalFinance/annual-vs-monthly-compound",
+        "/posts/personalFinance/how-much-per-month-for-100m",
+        "/posts/personalFinance/dca-step-up-ruleset"
+      ],
+      "images": [
+        {
+          "src": "/images/posts/compound-vs-dca-calculator-guide/cover.png",
+          "width": 1200,
+          "height": 630,
+          "bytes": 1205017
+        },
+        {
+          "src": "/images/posts/compound-vs-dca-calculator-guide/img1.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1482667
+        },
+        {
+          "src": "/images/posts/compound-vs-dca-calculator-guide/img2.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1131926
+        },
+        {
+          "src": "/images/posts/compound-vs-dca-calculator-guide/img3.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1434284
+        }
+      ]
+    },
+    {
+      "lang": "ko",
+      "slug": "home-price-by-monthly-mortgage-payment",
+      "url": "/posts/personalFinance/home-price-by-monthly-mortgage-payment",
+      "visibleCharacters": 10905,
+      "summaryCount": 9,
+      "tables": 4,
+      "faq": 8,
+      "internalLinks": [
+        "/posts/personalFinance/emergency-fund-by-risk",
+        "/market/real-estate",
+        "/posts/personalFinance/mortgage-risk-checklist-dsr-variable",
+        "/posts/personalFinance/apt-dashboard-home-goal-roadmap",
+        "/posts/personalFinance/rent-jeonse-buy-cashflow-opportunity-cost"
+      ],
+      "images": [
+        {
+          "src": "/images/posts/home-price-by-monthly-mortgage-payment/cover.png",
+          "width": 1200,
+          "height": 630,
+          "bytes": 926458
+        },
+        {
+          "src": "/images/posts/home-price-by-monthly-mortgage-payment/img1.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1466739
+        },
+        {
+          "src": "/images/posts/home-price-by-monthly-mortgage-payment/img2.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1408681
+        },
+        {
+          "src": "/images/posts/home-price-by-monthly-mortgage-payment/img3.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1511902
+        }
+      ]
+    },
+    {
+      "lang": "en",
+      "slug": "four-account-salary-automation",
+      "url": "/en/posts/personalFinance/four-account-salary-automation",
+      "visibleCharacters": 14449,
+      "summaryCount": 9,
+      "tables": 3,
+      "faq": 8,
+      "internalLinks": [
+        "/en/posts/personalFinance/personal-finance-3pillars",
+        "/en/posts/personalFinance/emergency-fund-by-risk",
+        "/en/posts/personalFinance/personal-start-5steps",
+        "/en/posts/personalFinance/how-much-per-month-for-100m",
+        "/en/posts/personalFinance/dca-step-up-ruleset"
+      ],
+      "images": [
+        {
+          "src": "/images/posts/four-account-salary-automation/cover.png",
+          "width": 1200,
+          "height": 630,
+          "bytes": 883878
+        },
+        {
+          "src": "/images/posts/four-account-salary-automation/img1.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1344123
+        },
+        {
+          "src": "/images/posts/four-account-salary-automation/img2.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1239899
+        },
+        {
+          "src": "/images/posts/four-account-salary-automation/img3.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1288530
+        }
+      ]
+    },
+    {
+      "lang": "en",
+      "slug": "compound-vs-dca-calculator-guide",
+      "url": "/en/posts/personalFinance/compound-vs-dca-calculator-guide",
+      "visibleCharacters": 16124,
+      "summaryCount": 9,
+      "tables": 4,
+      "faq": 8,
+      "internalLinks": [
+        "/en/posts/personalFinance/simple-vs-compound",
+        "/en/tools/compound-interest",
+        "/en/tools/dca-calculator",
+        "/en/posts/personalFinance/annual-vs-monthly-compound",
+        "/en/posts/personalFinance/how-much-per-month-for-100m",
+        "/en/posts/personalFinance/dca-step-up-ruleset"
+      ],
+      "images": [
+        {
+          "src": "/images/posts/compound-vs-dca-calculator-guide/cover.png",
+          "width": 1200,
+          "height": 630,
+          "bytes": 1205017
+        },
+        {
+          "src": "/images/posts/compound-vs-dca-calculator-guide/img1.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1482667
+        },
+        {
+          "src": "/images/posts/compound-vs-dca-calculator-guide/img2.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1131926
+        },
+        {
+          "src": "/images/posts/compound-vs-dca-calculator-guide/img3.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1434284
+        }
+      ]
+    }
+  ],
+  "numbers": {
+    "investmentCases": [
+      {
+        "monthly": 300000,
+        "years": 5,
+        "end": 20401824.85225292,
+        "begin": 20486832.455803975
+      },
+      {
+        "monthly": 300000,
+        "years": 10,
+        "end": 46584683.83370034,
+        "begin": 46778786.68300742
+      },
+      {
+        "monthly": 300000,
+        "years": 20,
+        "end": 123310100.55470373,
+        "begin": 123823892.64034833
+      },
+      {
+        "monthly": 500000,
+        "years": 5,
+        "end": 34003041.42042153,
+        "begin": 34144720.75967329
+      },
+      {
+        "monthly": 500000,
+        "years": 10,
+        "end": 77641139.72283392,
+        "begin": 77964644.47167906
+      },
+      {
+        "monthly": 500000,
+        "years": 20,
+        "end": 205516834.25783947,
+        "begin": 206373154.40058047
+      },
+      {
+        "monthly": 1000000,
+        "years": 5,
+        "end": 68006082.84084307,
+        "begin": 68289441.51934658
+      },
+      {
+        "monthly": 1000000,
+        "years": 10,
+        "end": 155282279.44566783,
+        "begin": 155929288.94335812
+      },
+      {
+        "monthly": 1000000,
+        "years": 20,
+        "end": 411033668.51567894,
+        "begin": 412746308.80116093
+      },
+      {
+        "monthly": 300,
+        "years": 5,
+        "end": 20401.824852252925,
+        "begin": 20486.832455803975
+      },
+      {
+        "monthly": 300,
+        "years": 10,
+        "end": 46584.68383370033,
+        "begin": 46778.78668300741
+      },
+      {
+        "monthly": 300,
+        "years": 20,
+        "end": 123310.10055470359,
+        "begin": 123823.89264034817
+      },
+      {
+        "monthly": 500,
+        "years": 5,
+        "end": 34003.04142042154,
+        "begin": 34144.72075967329
+      },
+      {
+        "monthly": 500,
+        "years": 10,
+        "end": 77641.13972283389,
+        "begin": 77964.64447167903
+      },
+      {
+        "monthly": 500,
+        "years": 20,
+        "end": 205516.83425783948,
+        "begin": 206373.15440058048
+      },
+      {
+        "monthly": 1000,
+        "years": 5,
+        "end": 68006.08284084308,
+        "begin": 68289.44151934658
+      },
+      {
+        "monthly": 1000,
+        "years": 10,
+        "end": 155282.27944566778,
+        "begin": 155929.28894335806
+      },
+      {
+        "monthly": 1000,
+        "years": 20,
+        "end": 411033.66851567896,
+        "begin": 412746.30880116095
+      }
+    ],
+    "taxExamples": [
+      {
+        "scale": 1,
+        "compound": 87993544.05192949,
+        "dca": 87324321.3913963
+      },
+      {
+        "scale": 0.001,
+        "compound": 87993.5440519295,
+        "dca": 87324.32139139627
+      }
+    ],
+    "mortgageCases": 8,
+    "inverseMortgageCases": 3,
+    "salaryAllocations": 6
+  },
+  "browser": [
+    {
+      "path": "/posts/personalFinance/four-account-salary-automation",
+      "status": 200,
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/four-account-salary-automation",
+      "alternates": [
+        {
+          "lang": "ko",
+          "href": "https://www.finmaphub.com/posts/personalFinance/four-account-salary-automation"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.finmaphub.com/en/posts/personalFinance/four-account-salary-automation"
+        }
+      ],
+      "robots": "",
+      "summaryText": "13분 읽기연결 도구 포함월급 250만·350만·500만원의 가상 배분표와 카드 결제일을 고려한 자동이체 순서로 4통장 관리법을 설계합니다. 생활비, 비정기 지출, 비상금을 구분하고 첫 한 달 동안 통장 쪼개기를 정착시키는 실행 가이드입니다.목표 자산",
+      "h1": 1,
+      "hero": 1,
+      "figures": 3,
+      "images": [
+        {
+          "src": "http://127.0.0.1:8003/_next/image?url=%2Fimages%2Fposts%2Ffour-account-salary-automation%2Fcover.png&w=1080&q=75",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/four-account-salary-automation/img1.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/four-account-salary-automation/img2.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/four-account-salary-automation/img3.png",
+          "loaded": true
+        }
+      ],
+      "schemaTypes": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "toolPaths": [
+        "/tools/goal-simulator",
+        "/tools/compound-interest"
+      ],
+      "languageSwitch": "ko -> en passed"
+    },
+    {
+      "path": "/posts/personalFinance/compound-vs-dca-calculator-guide",
+      "status": 200,
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/compound-vs-dca-calculator-guide",
+      "alternates": [
+        {
+          "lang": "ko",
+          "href": "https://www.finmaphub.com/posts/personalFinance/compound-vs-dca-calculator-guide"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.finmaphub.com/en/posts/personalFinance/compound-vs-dca-calculator-guide"
+        }
+      ],
+      "robots": "",
+      "summaryText": "13분 읽기연결 도구 포함복리 계산기와 적립식 투자 계산기를 실제 FinMap 기능으로 비교합니다. 월 30만·50만·100만원, 5년·10년·20년 예시와 납입 시점·세금 처리 차이를 통해 내 상황에 맞는 도구와 입력 순서를 정합니다.복리 계산기DCA 시뮬레이터",
+      "h1": 1,
+      "hero": 1,
+      "figures": 3,
+      "images": [
+        {
+          "src": "http://127.0.0.1:8003/_next/image?url=%2Fimages%2Fposts%2Fcompound-vs-dca-calculator-guide%2Fcover.png&w=1200&q=75",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/compound-vs-dca-calculator-guide/img1.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/compound-vs-dca-calculator-guide/img2.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/compound-vs-dca-calculator-guide/img3.png",
+          "loaded": true
+        }
+      ],
+      "schemaTypes": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "toolPaths": [
+        "/tools/compound-interest",
+        "/tools/dca-calculator",
+        "/tools/compound-interest",
+        "/tools/dca-calculator",
+        "/tools/goal-simulator"
+      ],
+      "languageSwitch": "ko -> en passed"
+    },
+    {
+      "path": "/posts/personalFinance/home-price-by-monthly-mortgage-payment",
+      "status": 200,
+      "canonical": "https://www.finmaphub.com/posts/personalFinance/home-price-by-monthly-mortgage-payment",
+      "alternates": [
+        {
+          "lang": "ko",
+          "href": "https://www.finmaphub.com/posts/personalFinance/home-price-by-monthly-mortgage-payment"
+        }
+      ],
+      "robots": "",
+      "summaryText": "14분 읽기연결 도구 포함연소득 4천만·6천만·8천만원 가상 가구의 실수령액과 생활비에서 주택담보대출 월 상환 가능액을 구합니다. 원리금균등상환 역산, 금리 상승 점검, 초기 비용과 비상금 구분으로 아파트 매수 예산을 좁히는 방법입니다.주담대 원리금 계산기아파트 구매 계산기DSR/LTV 계산기",
+      "h1": 1,
+      "hero": 1,
+      "figures": 3,
+      "images": [
+        {
+          "src": "http://127.0.0.1:8003/_next/image?url=%2Fimages%2Fposts%2Fhome-price-by-monthly-mortgage-payment%2Fcover.png&w=1200&q=75",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/home-price-by-monthly-mortgage-payment/img1.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/home-price-by-monthly-mortgage-payment/img2.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/home-price-by-monthly-mortgage-payment/img3.png",
+          "loaded": true
+        }
+      ],
+      "schemaTypes": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "toolPaths": [
+        "/tools/mortgage-loan-calculator",
+        "/tools/dsr-ltv-calculator",
+        "/tools/home-buying-budget-calculator"
+      ],
+      "languageSwitch": "blocked with existing missing-translation message"
+    },
+    {
+      "path": "/en/posts/personalFinance/four-account-salary-automation",
+      "status": 200,
+      "canonical": "https://www.finmaphub.com/en/posts/personalFinance/four-account-salary-automation",
+      "alternates": [
+        {
+          "lang": "ko",
+          "href": "https://www.finmaphub.com/posts/personalFinance/four-account-salary-automation"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.finmaphub.com/en/posts/personalFinance/four-account-salary-automation"
+        }
+      ],
+      "robots": "",
+      "summaryText": "13 min readIncludes related toolsBuild a four-account paycheck system using take-home pay, bill reserves, weekly spending limits, and separate savings goals. Includes $3,000, $4,500, and $6,500 monthly examples, credit-card timing, couples, and a first-month setup plan.Goal simulator",
+      "h1": 1,
+      "hero": 1,
+      "figures": 3,
+      "images": [
+        {
+          "src": "http://127.0.0.1:8003/_next/image?url=%2Fimages%2Fposts%2Ffour-account-salary-automation%2Fcover.png&w=1200&q=75",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/four-account-salary-automation/img1.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/four-account-salary-automation/img2.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/four-account-salary-automation/img3.png",
+          "loaded": true
+        }
+      ],
+      "schemaTypes": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "toolPaths": [
+        "/en/tools/goal-simulator",
+        "/en/tools/compound-interest"
+      ],
+      "languageSwitch": "en -> ko passed"
+    },
+    {
+      "path": "/en/posts/personalFinance/compound-vs-dca-calculator-guide",
+      "status": 200,
+      "canonical": "https://www.finmaphub.com/en/posts/personalFinance/compound-vs-dca-calculator-guide",
+      "alternates": [
+        {
+          "lang": "ko",
+          "href": "https://www.finmaphub.com/posts/personalFinance/compound-vs-dca-calculator-guide"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.finmaphub.com/en/posts/personalFinance/compound-vs-dca-calculator-guide"
+        }
+      ],
+      "robots": "",
+      "summaryText": "13 min readIncludes related toolsCompare FinMap's compound interest and dollar-cost averaging calculators by actual features, contribution timing, taxes, and fees. Use $300, $500, and $1,000 monthly examples over 5, 10, and 20 years to choose a useful planning workflow.Compound calculatorDCA simulator",
+      "h1": 1,
+      "hero": 1,
+      "figures": 3,
+      "images": [
+        {
+          "src": "http://127.0.0.1:8003/_next/image?url=%2Fimages%2Fposts%2Fcompound-vs-dca-calculator-guide%2Fcover.png&w=1200&q=75",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/compound-vs-dca-calculator-guide/img1.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/compound-vs-dca-calculator-guide/img2.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/compound-vs-dca-calculator-guide/img3.png",
+          "loaded": true
+        }
+      ],
+      "schemaTypes": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "toolPaths": [
+        "/en/tools/compound-interest",
+        "/en/tools/dca-calculator",
+        "/en/tools/compound-interest",
+        "/en/tools/dca-calculator",
+        "/en/tools/goal-simulator"
+      ],
+      "languageSwitch": "en -> ko passed"
+    },
+    {
+      "path": "/en/posts/personalFinance/home-price-by-monthly-mortgage-payment",
+      "status": 404
+    },
+    {
+      "path": "/posts/personalFinance/is-dca-better-in-bear-market",
+      "existingMappedTranslation": "PASS"
+    },
+    {
+      "path": "/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+      "existingMappedTranslation": "PASS"
+    }
+  ]
+}

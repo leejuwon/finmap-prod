@@ -93,6 +93,8 @@ const TOOL_LABELS = {
   fire: { ko: 'FIRE 계산기', en: 'FIRE calculator' },
   dsrLtv: { ko: 'DSR/LTV 계산기', en: 'DSR/LTV Calculator' },
   'dsr-ltv': { ko: 'DSR/LTV 계산기', en: 'DSR/LTV Calculator' },
+  mortgageLoan: { ko: '주담대 원리금 계산기', en: 'Mortgage Payment Calculator' },
+  homeBuying: { ko: '아파트 구매 계산기', en: 'Home Buying Budget Calculator' },
 };
 
 function getToolLabel(tool, lang) {
@@ -589,7 +591,9 @@ export default function PostPage({ post, lang, otherLangAvailable, categorySlug,
         url={`${prefix}/posts/${categorySlug}/${post.slug}`}
         image={post.cover ? cloudinaryThumb(post.cover, { w: 1200, h: 630 }) : undefined}
         locale={lang} // ✅ canonical/hreflang을 컨텐츠 언어에 맞춤
-        alternateLanguages={post.hreflangEquivalent !== false}
+        alternateLanguages={post.hreflangEquivalent !== false && Boolean(
+          otherLangAvailable || post.hreflangAlternates?.[lang === 'ko' ? 'en' : 'ko']
+        )}
         hreflangAlternates={post.hreflangAlternates}
       />
       <JsonLd data={jsonld} />

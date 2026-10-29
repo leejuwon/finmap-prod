@@ -766,3 +766,42 @@ url: /en/posts/personalFinance/large-apartment-complex-households-price-stabilit
 title: "Monthly Contribution Table for a $100,000 Target and KRW 100M Goal"
 description: "$100,000 and KRW 100M monthly contribution tables by timeline and return assumption, with a Korea example and calculator links."
 url: /en/posts/personalFinance/monthly-investment-for-100m-table
+
+
+# 2026-10-29 신규 재테크 포스트
+
+## KO
+
+### four-account-salary-automation
+title: "통장 쪼개기, 아직도 감으로 하나요: 월급일 하루 만에 끝내는 4통장 자동화 설계"
+description: "월급 250만·350만·500만원의 가상 배분표와 카드 결제일을 고려한 자동이체 순서로 4통장 관리법을 설계합니다. 생활비, 비정기 지출, 비상금을 구분하고 첫 한 달 동안 통장 쪼개기를 정착시키는 실행 가이드입니다."
+url: /posts/personalFinance/four-account-salary-automation
+
+### compound-vs-dca-calculator-guide
+title: "복리 vs 적립식, 어떤 계산기를 먼저 써야 할까: 상황별 도구 선택 가이드"
+description: "복리 계산기와 적립식 투자 계산기를 실제 FinMap 기능으로 비교합니다. 월 30만·50만·100만원, 5년·10년·20년 예시와 납입 시점·세금 처리 차이를 통해 내 상황에 맞는 도구와 입력 순서를 정합니다."
+url: /posts/personalFinance/compound-vs-dca-calculator-guide
+
+### home-price-by-monthly-mortgage-payment
+title: "내 소득이면 아파트를 얼마까지 봐야 할까: 집값이 아니라 월 상환 가능액부터 정하는 법"
+description: "연소득 4천만·6천만·8천만원 가상 가구의 실수령액과 생활비에서 주택담보대출 월 상환 가능액을 구합니다. 원리금균등상환 역산, 금리 상승 점검, 초기 비용과 비상금 구분으로 아파트 매수 예산을 좁히는 방법입니다."
+url: /posts/personalFinance/home-price-by-monthly-mortgage-payment
+
+## EN
+
+### four-account-salary-automation
+title: "Automate Your Paycheck with Four Account Roles: Bills, Spending, and Saving Without Guesswork"
+description: "Build a four-account paycheck system using take-home pay, bill reserves, weekly spending limits, and separate savings goals. Includes $3,000, $4,500, and $6,500 monthly examples, credit-card timing, couples, and a first-month setup plan."
+url: /en/posts/personalFinance/four-account-salary-automation
+
+### compound-vs-dca-calculator-guide
+title: "Compound Interest vs DCA Calculator: Choose the Right Tool for Your Investment Question"
+description: "Compare FinMap's compound interest and dollar-cost averaging calculators by actual features, contribution timing, taxes, and fees. Use $300, $500, and $1,000 monthly examples over 5, 10, and 20 years to choose a useful planning workflow."
+url: /en/posts/personalFinance/compound-vs-dca-calculator-guide
+
+# 기존 발행 글 목록 누락 보완
+
+## dca-guide (KO)
+title: "적립식 투자(DCA) 가이드: 일시금 비교부터 월 투자금·하락장·실행 규칙까지"
+description: "적립식 투자(DCA)를 처음 정리하는 사람을 위해 기본 구조, 일시금 비교, 월 투자금 설정, 하락장 대응, 환율·증액·실패 패턴을 읽는 순서를 안내합니다."
+url: /posts/personalFinance/dca-guide

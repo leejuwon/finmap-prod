@@ -1,0 +1,126 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-10-29",
+  "assets": [
+    {
+      "slug": "four-account-salary-automation",
+      "file": "cover.png",
+      "prompt": "Use case: infographic-diagram. Asset: FinMap personal finance editorial cover, wide landscape 1200x630 composition. Warm cream background, sage green main accent, muted coral secondary accent, deep slate linework, rounded cards, soft subtle shadows, exceptionally clean premium financial magazine illustration. One payroll coin stream branches into exactly four purpose buckets with simple icons: an inbox bank account, recurring bills calendar, everyday debit wallet, savings sprout. Clear directional flow, generous spacing, polished information design, readable on a phone. No words, no letters, no numbers, no logos, no watermark, no article title. Concept is salary automation, not investment performance. Keep everything comfortably inside frame, opaque background.",
+      "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-02fa5d9b-7d5c-4226-ba29-657b926cb149.png",
+      "destination": "public/images/posts/four-account-salary-automation/cover.png",
+      "width": 1200,
+      "height": 630,
+      "status": "generated-and-saved"
+    },
+    {
+      "slug": "four-account-salary-automation",
+      "file": "img1.png",
+      "prompt": "Use case: infographic-diagram. FinMap personal finance premium editorial illustration. Warm cream/off-white background, sage green main accent, muted coral secondary accent, slate linework, rounded cards, subtle shadows. Clean, restrained, polished information design, mobile-readable simple layout. No text, no letters, no numbers, no logos, no watermark. All figures conceptual, no quantitative chart claims. Opaque background. Wide 16:9. Left-to-right money flow: one payroll inbox bank icon feeds a sorting hub, hub distributes into three icons for recurring bills, daily wallet, savings sprout. The source inbox is itself the fourth account role. Clear noncrossing arrows. Focus on ordering and allocation, avoid decorative charts.",
+      "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-a2ed2779-0f0e-4c91-bac4-0a6eeafd0109.png",
+      "destination": "public/images/posts/four-account-salary-automation/img1.png",
+      "width": 1600,
+      "height": 900,
+      "status": "generated-and-saved"
+    },
+    {
+      "slug": "compound-vs-dca-calculator-guide",
+      "file": "cover.png",
+      "prompt": "Use case: infographic-diagram. FinMap personal finance premium editorial illustration. Warm cream/off-white background, sage green main accent, muted coral secondary accent, slate linework, rounded cards, subtle shadows. Clean, restrained, polished information design, mobile-readable simple layout. No text, no letters, no numbers, no logos, no watermark. All figures conceptual, no quantitative chart claims. Opaque background. Wide cover 1200x630 composition. Two equally sized adjacent paths across time: left an initial coin stack and smooth growing investment ribbon; right recurring equal coin deposits along a growing ribbon. Both paths end with a small plant, no visual assertion that either strategy wins. Premium financial magazine conceptual cover.",
+      "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-e3d3ac89-0613-4d82-9efe-9f5c18e1d206.png",
+      "destination": "public/images/posts/compound-vs-dca-calculator-guide/cover.png",
+      "width": 1200,
+      "height": 630,
+      "status": "generated-and-saved"
+    },
+    {
+      "slug": "compound-vs-dca-calculator-guide",
+      "file": "img1.png",
+      "prompt": "Use case: infographic-diagram. FinMap personal finance premium editorial illustration. Warm cream/off-white background, sage green main accent, muted coral secondary accent, slate linework, rounded cards, subtle shadows. Clean, restrained, polished information design, mobile-readable simple layout. No text, no letters, no numbers, no logos, no watermark. All figures conceptual, no quantitative chart claims. Opaque background. Wide 16:9. Two simple calculator input cards side-by-side with icon-only rows. Common inputs on both: initial capital stack, recurring contribution coins, time calendar, return dial. Left additional purchasing power basket. Right additional repeat-calendar and stepped deposit bars. No fake screenshot, no numeric keys or pseudo-text.",
+      "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-16376708-7856-474f-a4f9-e64be4cef931.png",
+      "destination": "public/images/posts/compound-vs-dca-calculator-guide/img1.png",
+      "width": 1600,
+      "height": 900,
+      "status": "generated-and-saved"
+    },
+    {
+      "slug": "four-account-salary-automation",
+      "file": "img2.png",
+      "prompt": "Use case: infographic-diagram. FinMap personal finance premium editorial illustration. Warm cream/off-white background, sage green main accent, muted coral secondary accent, slate linework, rounded cards, subtle shadows. Clean, restrained, polished information design, mobile-readable simple layout. No text, no letters, no numbers, no logos, no watermark. All figures conceptual, no quantitative chart claims. Opaque background. Wide 16:9. A five-stage chronological timeline of clean calendar tiles with icons: salary arrives, check balance with shield, fund bills, send weekly wallet allowance, reserve card payment. Arrows connect successive tiles. Distinguish card charge reserve from new wallet money. No real dates or numbers, no tiny caption.",
+      "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-eacb6348-185e-4ea1-9c6d-2de533e52fc5.png",
+      "destination": "public/images/posts/four-account-salary-automation/img2.png",
+      "width": 1600,
+      "height": 900,
+      "status": "generated-and-saved"
+    },
+    {
+      "slug": "compound-vs-dca-calculator-guide",
+      "file": "img2.png",
+      "prompt": "Use case: infographic-diagram. FinMap personal finance premium editorial illustration. Warm cream/off-white background, sage green main accent, muted coral secondary accent, slate linework, rounded cards, subtle shadows. Clean, restrained, polished information design, mobile-readable simple layout. No text, no letters, no numbers, no logos, no watermark. All figures conceptual, no quantitative chart claims. Opaque background. Wide 16:9. Two horizontal cash flow lanes with identical five time markers. Top lane one large coin stack at the beginning and no later inflows. Bottom lane smaller equal coin stacks at each successive marker. Clear initial-versus-recurring funding difference, no return lines, no claim of superiority.",
+      "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-c6a6aefb-596f-4b15-8d46-bd378b01a07e.png",
+      "destination": "public/images/posts/compound-vs-dca-calculator-guide/img2.png",
+      "width": 1600,
+      "height": 900,
+      "status": "generated-and-saved"
+    },
+    {
+      "slug": "four-account-salary-automation",
+      "file": "img3.png",
+      "prompt": "Use case: infographic-diagram. FinMap personal finance premium editorial illustration. Warm cream/off-white background, sage green main accent, muted coral secondary accent, slate linework, rounded cards, subtle shadows. Clean, restrained, polished information design, mobile-readable simple layout. No text, no letters, no numbers, no logos, no watermark. All figures conceptual, no quantitative chart claims. Opaque background. Wide 16:9 split comparison. Left a single person icon with one source flowing to bills, personal wallet and savings. Right two adult person icons with two income streams joining shared household bills and shared savings while each person retains a separate small personal wallet. Both arrangements equally valid; no winner badge.",
+      "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-ce8ccbee-edc7-48b8-8190-f6b5ab16ccef.png",
+      "destination": "public/images/posts/four-account-salary-automation/img3.png",
+      "width": 1600,
+      "height": 900,
+      "status": "generated-and-saved"
+    },
+    {
+      "slug": "compound-vs-dca-calculator-guide",
+      "file": "img3.png",
+      "prompt": "Use case: infographic-diagram. FinMap personal finance premium editorial illustration. Warm cream/off-white background, sage green main accent, muted coral secondary accent, slate linework, rounded cards, subtle shadows. Clean, restrained, polished information design, mobile-readable simple layout. No text, no letters, no numbers, no logos, no watermark. All figures conceptual, no quantitative chart claims. Opaque background. Wide 16:9. Clear two-branch decision tree: a central magnifying glass over a financial plan, left branch a purchasing-power shopping basket with a coin and calculator, right branch recurring calendar plus coin increments and calculator. Shared clock below represents same time horizon. Use only icons and unambiguous arrows; no yes/no words.",
+      "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-2112363b-d7cf-42e0-b42a-4b0b9f6ac407.png",
+      "destination": "public/images/posts/compound-vs-dca-calculator-guide/img3.png",
+      "width": 1600,
+      "height": 900,
+      "status": "generated-and-saved"
+    },
+    {
+      "slug": "home-price-by-monthly-mortgage-payment",
+      "file": "cover.png",
+      "prompt": "Use case: infographic-diagram. FinMap personal finance premium editorial illustration. Warm cream/off-white background, sage green main accent, muted coral secondary accent, slate linework, rounded cards, subtle shadows. Clean, restrained, polished information design, mobile-readable simple layout. No text, no letters, no numbers, no logos, no watermark. All figures conceptual, no quantitative chart claims. Opaque background. Wide cover 1200x630 composition. Household income coins pass through an essential-expense wallet and protected emergency jar, then a modest payment dial leads to an apartment building. A clear protective boundary around emergency cash. Emphasize household cash flow before home purchase budget; no approval stamp.",
+      "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-f548db4e-f8e9-4306-9af2-6e9904136d07.png",
+      "destination": "public/images/posts/home-price-by-monthly-mortgage-payment/cover.png",
+      "width": 1200,
+      "height": 630,
+      "status": "generated-and-saved"
+    },
+    {
+      "slug": "home-price-by-monthly-mortgage-payment",
+      "file": "img1.png",
+      "prompt": "Use case: infographic-diagram. FinMap personal finance premium editorial illustration. Warm cream/off-white background, sage green main accent, muted coral secondary accent, slate linework, rounded cards, subtle shadows. Clean, restrained, polished information design, mobile-readable simple layout. No text, no letters, no numbers, no logos, no watermark. All figures conceptual, no quantitative chart claims. Opaque background. Wide 16:9 four-stage horizontal flow: annual salary document, net-pay wallet after deductions, household monthly payment allowance gauge, apartment purchase budget folder. Small expense and emergency icons beside third stage make deductions visible. Four generous rounded panels, clear arrows.",
+      "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-154e29be-5a50-402b-89b7-21c0cb3652ad.png",
+      "destination": "public/images/posts/home-price-by-monthly-mortgage-payment/img1.png",
+      "width": 1600,
+      "height": 900,
+      "status": "generated-and-saved"
+    },
+    {
+      "slug": "home-price-by-monthly-mortgage-payment",
+      "file": "img2.png",
+      "prompt": "Use case: infographic-diagram. FinMap personal finance premium editorial illustration. Warm cream/off-white background, sage green main accent, muted coral secondary accent, slate linework, rounded cards, subtle shadows. Clean, restrained, polished information design, mobile-readable simple layout. No text, no letters, no numbers, no logos, no watermark. All figures conceptual, no quantitative chart claims. Opaque background. Wide 16:9 two conceptual side-by-side comparisons without numeric axes. Left same loan and same term, two payment bars: sage lower-interest short bar versus coral higher-interest taller bar. Right same loan and same rate, shorter-term taller monthly-payment bar versus longer-term shorter monthly-payment bar, with a longer trail of small interest coins for longer term. Clear icon cues using interest dial and clock, no exact numbers.",
+      "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-829fa36e-7475-46ec-9109-004bfa35e126.png",
+      "destination": "public/images/posts/home-price-by-monthly-mortgage-payment/img2.png",
+      "width": 1600,
+      "height": 900,
+      "status": "generated-and-saved"
+    },
+    {
+      "slug": "home-price-by-monthly-mortgage-payment",
+      "file": "img3.png",
+      "prompt": "Use case: infographic-diagram. FinMap personal finance premium editorial illustration. Warm cream/off-white background, sage green main accent, muted coral secondary accent, slate linework, rounded cards, subtle shadows. Clean, restrained, polished information design, mobile-readable simple layout. No text, no letters, no numbers, no logos, no watermark. All figures conceptual, no quantitative chart claims. Opaque background. Wide 16:9. Compare two transparent nested budget boundaries: outer coral dashed bank assessment envelope around a large apartment icon; inside smaller solid sage household affordability envelope with apartment, food basket, emergency jar and family icons. Household budget reserves cash for living and emergencies. No approved stamp, no numerical LTV or DSR.",
+      "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-33287b6e-4627-414f-a7c8-de5c90d02669.png",
+      "destination": "public/images/posts/home-price-by-monthly-mortgage-payment/img3.png",
+      "width": 1600,
+      "height": 900,
+      "status": "generated-and-saved"
+    }
+  ]
+}
