@@ -1,0 +1,14 @@
+{
+  "checkedFiles": 162,
+  "checkedPublishedFiles": 145,
+  "broken": [],
+  "suspicious": [],
+  "selfUrlMissing": [],
+  "summary": {
+    "filesTotal": 162,
+    "filesPublishedChecked": 145,
+    "brokenCount": 0,
+    "suspiciousCount": 0,
+    "selfUrlMissingCount": 0
+  }
+}

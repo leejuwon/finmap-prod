@@ -525,6 +525,7 @@ function fallbackToolsForPost(post) {
 }
 
 export function getPostRelatedToolIds(post, explicitTools = [], limit = 3) {
+  if (post?.disableRelatedTools === true) return [];
   const normalizedExplicit = uniqueToolIds(explicitTools);
   const inferred = inferPostToolIds(post);
   const priority = inferred.includes("mortgageLoan")

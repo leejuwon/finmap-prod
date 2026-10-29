@@ -1,0 +1,811 @@
+{
+  "date": "2026-10-29",
+  "status": "PASS",
+  "posts": [
+    {
+      "lang": "ko",
+      "slug": "inflation-down-prices-still-high",
+      "url": "/posts/economicInfo/inflation-down-prices-still-high",
+      "title": "물가 상승률은 낮아졌는데 장바구니는 왜 비쌀까? 소비자물가와 체감물가의 차이",
+      "visibleCharacters": 9445,
+      "summaryCount": 9,
+      "tables": 3,
+      "faq": 8,
+      "internalLinks": [
+        "/posts/economicInfo/inflation-basics",
+        "/posts/economicInfo/inflation-rate-basics",
+        "/posts/economicInfo/usdkrw-100won-rise-household-cost",
+        "/posts/personalFinance/personal-finance-3pillars"
+      ],
+      "images": [
+        {
+          "src": "/images/posts/inflation-down-prices-still-high/cover.png",
+          "width": 1200,
+          "height": 630,
+          "bytes": 764361
+        },
+        {
+          "src": "/images/posts/inflation-down-prices-still-high/img1.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1047200
+        },
+        {
+          "src": "/images/posts/inflation-down-prices-still-high/img2.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1014055
+        },
+        {
+          "src": "/images/posts/inflation-down-prices-still-high/img3.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1167848
+        }
+      ]
+    },
+    {
+      "lang": "ko",
+      "slug": "usdkrw-100won-rise-household-cost",
+      "url": "/posts/economicInfo/usdkrw-100won-rise-household-cost",
+      "title": "원달러 환율이 100원 오르면 내 생활비는 얼마나 달라질까? 해외여행·직구·수입물가의 연결고리",
+      "visibleCharacters": 9935,
+      "summaryCount": 9,
+      "tables": 3,
+      "faq": 8,
+      "internalLinks": [
+        "/posts/economicInfo/fx-basics",
+        "/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission",
+        "/posts/economicInfo/inflation-down-prices-still-high",
+        "/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
+        "/market/indices"
+      ],
+      "images": [
+        {
+          "src": "/images/posts/usdkrw-100won-rise-household-cost/cover.png",
+          "width": 1200,
+          "height": 630,
+          "bytes": 629696
+        },
+        {
+          "src": "/images/posts/usdkrw-100won-rise-household-cost/img1.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1214798
+        },
+        {
+          "src": "/images/posts/usdkrw-100won-rise-household-cost/img2.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1296492
+        },
+        {
+          "src": "/images/posts/usdkrw-100won-rise-household-cost/img3.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1410591
+        }
+      ]
+    },
+    {
+      "lang": "ko",
+      "slug": "low-unemployment-hard-to-find-job",
+      "url": "/posts/economicInfo/low-unemployment-hard-to-find-job",
+      "title": "실업률은 낮다는데 취업은 왜 어려울까? 고용률·경제활동참가율·청년 고용의 차이",
+      "visibleCharacters": 10648,
+      "summaryCount": 9,
+      "tables": 4,
+      "faq": 8,
+      "internalLinks": [
+        "/posts/economicInfo/indicator-basics",
+        "/posts/economicInfo/inflation-down-prices-still-high",
+        "/posts/economicInfo/interest-rate-basics",
+        "/posts/personalFinance/personal-finance-3pillars"
+      ],
+      "images": [
+        {
+          "src": "/images/posts/low-unemployment-hard-to-find-job/cover.png",
+          "width": 1200,
+          "height": 630,
+          "bytes": 724726
+        },
+        {
+          "src": "/images/posts/low-unemployment-hard-to-find-job/img1.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 970620
+        },
+        {
+          "src": "/images/posts/low-unemployment-hard-to-find-job/img2.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1142110
+        },
+        {
+          "src": "/images/posts/low-unemployment-hard-to-find-job/img3.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1083689
+        }
+      ]
+    },
+    {
+      "lang": "en",
+      "slug": "inflation-down-prices-still-high",
+      "url": "/en/posts/economicInfo/inflation-down-prices-still-high",
+      "title": "Why Do Prices Still Feel High When Inflation Slows? CPI vs Everyday Living Costs",
+      "visibleCharacters": 14965,
+      "summaryCount": 9,
+      "tables": 3,
+      "faq": 8,
+      "internalLinks": [
+        "/en/posts/economicInfo/inflation-basics",
+        "/en/posts/economicInfo/inflation-rate-basics",
+        "/en/posts/economicInfo/usdkrw-100won-rise-household-cost",
+        "/en/posts/economicInfo/low-unemployment-hard-to-find-job"
+      ],
+      "images": [
+        {
+          "src": "/images/posts/inflation-down-prices-still-high/cover.png",
+          "width": 1200,
+          "height": 630,
+          "bytes": 764361
+        },
+        {
+          "src": "/images/posts/inflation-down-prices-still-high/img1.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1047200
+        },
+        {
+          "src": "/images/posts/inflation-down-prices-still-high/img2.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1014055
+        },
+        {
+          "src": "/images/posts/inflation-down-prices-still-high/img3.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1167848
+        }
+      ]
+    },
+    {
+      "lang": "en",
+      "slug": "usdkrw-100won-rise-household-cost",
+      "url": "/en/posts/economicInfo/usdkrw-100won-rise-household-cost",
+      "title": "What Happens When USD/KRW Rises by 100 Won? Travel, Imported Goods, and Household Costs",
+      "visibleCharacters": 14965,
+      "summaryCount": 9,
+      "tables": 3,
+      "faq": 8,
+      "internalLinks": [
+        "/en/posts/economicInfo/fx-basics",
+        "/en/posts/economicInfo/oil-shock-to-usdkrw-korea-transmission",
+        "/en/posts/economicInfo/inflation-down-prices-still-high",
+        "/en/posts/investingInfo/usd-krw-exchange-rate-and-kospi",
+        "/en/market/indices"
+      ],
+      "images": [
+        {
+          "src": "/images/posts/usdkrw-100won-rise-household-cost/cover.png",
+          "width": 1200,
+          "height": 630,
+          "bytes": 629696
+        },
+        {
+          "src": "/images/posts/usdkrw-100won-rise-household-cost/img1.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1214798
+        },
+        {
+          "src": "/images/posts/usdkrw-100won-rise-household-cost/img2.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1296492
+        },
+        {
+          "src": "/images/posts/usdkrw-100won-rise-household-cost/img3.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1410591
+        }
+      ]
+    },
+    {
+      "lang": "en",
+      "slug": "low-unemployment-hard-to-find-job",
+      "url": "/en/posts/economicInfo/low-unemployment-hard-to-find-job",
+      "title": "Why Is Finding a Job Hard When Unemployment Is Low? Three Labor Market Indicators Explained",
+      "visibleCharacters": 14997,
+      "summaryCount": 9,
+      "tables": 3,
+      "faq": 8,
+      "internalLinks": [
+        "/en/posts/economicInfo/indicator-basics",
+        "/en/posts/economicInfo/inflation-down-prices-still-high",
+        "/en/posts/economicInfo/interest-rate-basics",
+        "/en/posts/personalFinance/personal-finance-3pillars"
+      ],
+      "images": [
+        {
+          "src": "/images/posts/low-unemployment-hard-to-find-job/cover.png",
+          "width": 1200,
+          "height": 630,
+          "bytes": 724726
+        },
+        {
+          "src": "/images/posts/low-unemployment-hard-to-find-job/img1.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 970620
+        },
+        {
+          "src": "/images/posts/low-unemployment-hard-to-find-job/img2.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1142110
+        },
+        {
+          "src": "/images/posts/low-unemployment-hard-to-find-job/img3.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1083689
+        }
+      ]
+    }
+  ],
+  "externalUrls": [
+    "https://mods.go.kr/menu.es?mid=b70101010000",
+    "https://mods.go.kr/board.es?act=view&bid=213&list_no=447322&mid=a10301040200",
+    "https://mods.go.kr/menu.es?mid=b70102030000",
+    "https://www.visa.co.uk/support/consumer/travel-support/exchange-rate-calculator.html",
+    "https://www.bok.or.kr/portal/bbs/B0000501/view.do?nttId=11065605&menuNo=201264",
+    "https://ecos.bok.or.kr/",
+    "https://mods.go.kr/board.es?act=view&bid=210&list_no=447479&mid=a10301030200",
+    "https://www.bls.gov/cps/definitions.htm",
+    "https://www.bls.gov/cps/cps_htgm.htm",
+    "https://www.bls.gov/cpi/questions-and-answers.htm",
+    "https://www.bls.gov/news.release/archives/cpi_10142026.htm",
+    "https://www.bls.gov/news.release/archives/empsit_10022026.htm"
+  ],
+  "numbers": [
+    {
+      "label": "price index after 5% and 2%",
+      "actual": 107.10000000000001,
+      "expected": 107.1
+    },
+    {
+      "label": "deflation from 105",
+      "actual": 102.89999999999999,
+      "expected": 102.9
+    },
+    {
+      "label": "basket A",
+      "actual": 2.8999999999999995,
+      "expected": 2.9
+    },
+    {
+      "label": "basket B",
+      "actual": 2.0999999999999996,
+      "expected": 2.1
+    },
+    {
+      "label": "real income 3/2",
+      "actual": 0.9803921568627416,
+      "expected": 0.98
+    },
+    {
+      "label": "real income 3/5",
+      "actual": -1.904761904761909,
+      "expected": -1.9
+    },
+    {
+      "label": "real income 1/-1",
+      "actual": 2.020202020202011,
+      "expected": 2.02
+    },
+    {
+      "label": "FX delta for USD100",
+      "actual": 10000,
+      "expected": 10000
+    },
+    {
+      "label": "FX delta for USD2000",
+      "actual": 200000,
+      "expected": 200000
+    },
+    {
+      "label": "FX delta for USD10000",
+      "actual": 1000000,
+      "expected": 1000000
+    },
+    {
+      "label": "1300→1400 percent",
+      "actual": 7.6923076923076925,
+      "expected": 7.69
+    },
+    {
+      "label": "fee example",
+      "actual": 141680,
+      "expected": 141680
+    },
+    {
+      "label": "fee example at1410",
+      "actual": 142692,
+      "expected": 142692
+    },
+    {
+      "label": "remaining travel exposure",
+      "actual": 80000,
+      "expected": 80000
+    },
+    {
+      "label": "oil and FX rise",
+      "actual": 18.461538461538463,
+      "expected": 18.46
+    },
+    {
+      "label": "oil offset",
+      "actual": -3.076923076923077,
+      "expected": -3.08
+    },
+    {
+      "label": "labor population total",
+      "actual": 1000,
+      "expected": 1000
+    },
+    {
+      "label": "same unemployment, different employment",
+      "actual": 5,
+      "expected": 5
+    },
+    {
+      "label": "labor population total",
+      "actual": 1000,
+      "expected": 1000
+    },
+    {
+      "label": "same unemployment, different employment",
+      "actual": 5,
+      "expected": 5
+    },
+    {
+      "label": "employment hiring scenario",
+      "actual": 59,
+      "expected": 59
+    },
+    {
+      "label": "unemployment hiring scenario",
+      "actual": 1.6666666666666667,
+      "expected": 1.67
+    },
+    {
+      "label": "unemployment exit scenario",
+      "actual": 1.7241379310344827,
+      "expected": 1.72
+    },
+    {
+      "label": "participation exit scenario",
+      "actual": 57.99999999999999,
+      "expected": 58
+    },
+    {
+      "label": "youth employment falls, aggregate flat",
+      "actual": 570,
+      "expected": 570
+    },
+    {
+      "label": "youth employment ratio",
+      "actual": 45,
+      "expected": 45
+    }
+  ],
+  "preservation": {
+    "protectedFiles": 159,
+    "sitemapBefore": 217,
+    "sitemapAfter": 223,
+    "added": [
+      "https://www.finmaphub.com/en/posts/economicInfo/inflation-down-prices-still-high",
+      "https://www.finmaphub.com/en/posts/economicInfo/low-unemployment-hard-to-find-job",
+      "https://www.finmaphub.com/en/posts/economicInfo/usdkrw-100won-rise-household-cost",
+      "https://www.finmaphub.com/posts/economicInfo/inflation-down-prices-still-high",
+      "https://www.finmaphub.com/posts/economicInfo/low-unemployment-hard-to-find-job",
+      "https://www.finmaphub.com/posts/economicInfo/usdkrw-100won-rise-household-cost"
+    ]
+  },
+  "browser": [
+    {
+      "path": "/posts/economicInfo/inflation-down-prices-still-high",
+      "status": 200,
+      "canonical": "https://www.finmaphub.com/posts/economicInfo/inflation-down-prices-still-high",
+      "alternates": [
+        {
+          "lang": "ko",
+          "href": "https://www.finmaphub.com/posts/economicInfo/inflation-down-prices-still-high"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.finmaphub.com/en/posts/economicInfo/inflation-down-prices-still-high"
+        }
+      ],
+      "robots": "",
+      "h1": 1,
+      "hero": 1,
+      "figures": 3,
+      "images": [
+        {
+          "src": "http://127.0.0.1:8003/_next/image?url=%2Fimages%2Fposts%2Finflation-down-prices-still-high%2Fcover.png&w=1080&q=75",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/inflation-down-prices-still-high/img1.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/inflation-down-prices-still-high/img2.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/inflation-down-prices-still-high/img3.png",
+          "loaded": true
+        }
+      ],
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "tools": [],
+      "languageSwitch": "PASS",
+      "viewports": [
+        {
+          "width": 390,
+          "overflow": false,
+          "screenshot": "reports/economics-ko-inflation-down-prices-still-high-390.png"
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "screenshot": "reports/economics-ko-inflation-down-prices-still-high-1440.png"
+        }
+      ]
+    },
+    {
+      "path": "/posts/economicInfo/usdkrw-100won-rise-household-cost",
+      "status": 200,
+      "canonical": "https://www.finmaphub.com/posts/economicInfo/usdkrw-100won-rise-household-cost",
+      "alternates": [
+        {
+          "lang": "ko",
+          "href": "https://www.finmaphub.com/posts/economicInfo/usdkrw-100won-rise-household-cost"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.finmaphub.com/en/posts/economicInfo/usdkrw-100won-rise-household-cost"
+        }
+      ],
+      "robots": "",
+      "h1": 1,
+      "hero": 1,
+      "figures": 3,
+      "images": [
+        {
+          "src": "http://127.0.0.1:8003/_next/image?url=%2Fimages%2Fposts%2Fusdkrw-100won-rise-household-cost%2Fcover.png&w=1200&q=75",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/usdkrw-100won-rise-household-cost/img1.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/usdkrw-100won-rise-household-cost/img2.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/usdkrw-100won-rise-household-cost/img3.png",
+          "loaded": true
+        }
+      ],
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "tools": [],
+      "languageSwitch": "PASS",
+      "viewports": [
+        {
+          "width": 390,
+          "overflow": false,
+          "screenshot": "reports/economics-ko-usdkrw-100won-rise-household-cost-390.png"
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "screenshot": "reports/economics-ko-usdkrw-100won-rise-household-cost-1440.png"
+        }
+      ]
+    },
+    {
+      "path": "/posts/economicInfo/low-unemployment-hard-to-find-job",
+      "status": 200,
+      "canonical": "https://www.finmaphub.com/posts/economicInfo/low-unemployment-hard-to-find-job",
+      "alternates": [
+        {
+          "lang": "ko",
+          "href": "https://www.finmaphub.com/posts/economicInfo/low-unemployment-hard-to-find-job"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.finmaphub.com/en/posts/economicInfo/low-unemployment-hard-to-find-job"
+        }
+      ],
+      "robots": "",
+      "h1": 1,
+      "hero": 1,
+      "figures": 3,
+      "images": [
+        {
+          "src": "http://127.0.0.1:8003/_next/image?url=%2Fimages%2Fposts%2Flow-unemployment-hard-to-find-job%2Fcover.png&w=1200&q=75",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/low-unemployment-hard-to-find-job/img1.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/low-unemployment-hard-to-find-job/img2.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/low-unemployment-hard-to-find-job/img3.png",
+          "loaded": true
+        }
+      ],
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "tools": [],
+      "languageSwitch": "PASS",
+      "viewports": [
+        {
+          "width": 390,
+          "overflow": false,
+          "screenshot": "reports/economics-ko-low-unemployment-hard-to-find-job-390.png"
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "screenshot": "reports/economics-ko-low-unemployment-hard-to-find-job-1440.png"
+        }
+      ]
+    },
+    {
+      "path": "/en/posts/economicInfo/inflation-down-prices-still-high",
+      "status": 200,
+      "canonical": "https://www.finmaphub.com/en/posts/economicInfo/inflation-down-prices-still-high",
+      "alternates": [
+        {
+          "lang": "ko",
+          "href": "https://www.finmaphub.com/posts/economicInfo/inflation-down-prices-still-high"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.finmaphub.com/en/posts/economicInfo/inflation-down-prices-still-high"
+        }
+      ],
+      "robots": "",
+      "h1": 1,
+      "hero": 1,
+      "figures": 3,
+      "images": [
+        {
+          "src": "http://127.0.0.1:8003/_next/image?url=%2Fimages%2Fposts%2Finflation-down-prices-still-high%2Fcover.png&w=1200&q=75",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/inflation-down-prices-still-high/img1.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/inflation-down-prices-still-high/img2.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/inflation-down-prices-still-high/img3.png",
+          "loaded": true
+        }
+      ],
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "tools": [],
+      "languageSwitch": "PASS",
+      "viewports": [
+        {
+          "width": 390,
+          "overflow": false,
+          "screenshot": "reports/economics-en-inflation-down-prices-still-high-390.png"
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "screenshot": "reports/economics-en-inflation-down-prices-still-high-1440.png"
+        }
+      ]
+    },
+    {
+      "path": "/en/posts/economicInfo/usdkrw-100won-rise-household-cost",
+      "status": 200,
+      "canonical": "https://www.finmaphub.com/en/posts/economicInfo/usdkrw-100won-rise-household-cost",
+      "alternates": [
+        {
+          "lang": "ko",
+          "href": "https://www.finmaphub.com/posts/economicInfo/usdkrw-100won-rise-household-cost"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.finmaphub.com/en/posts/economicInfo/usdkrw-100won-rise-household-cost"
+        }
+      ],
+      "robots": "",
+      "h1": 1,
+      "hero": 1,
+      "figures": 3,
+      "images": [
+        {
+          "src": "http://127.0.0.1:8003/_next/image?url=%2Fimages%2Fposts%2Fusdkrw-100won-rise-household-cost%2Fcover.png&w=1200&q=75",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/usdkrw-100won-rise-household-cost/img1.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/usdkrw-100won-rise-household-cost/img2.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/usdkrw-100won-rise-household-cost/img3.png",
+          "loaded": true
+        }
+      ],
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "tools": [],
+      "languageSwitch": "PASS",
+      "viewports": [
+        {
+          "width": 390,
+          "overflow": false,
+          "screenshot": "reports/economics-en-usdkrw-100won-rise-household-cost-390.png"
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "screenshot": "reports/economics-en-usdkrw-100won-rise-household-cost-1440.png"
+        }
+      ]
+    },
+    {
+      "path": "/en/posts/economicInfo/low-unemployment-hard-to-find-job",
+      "status": 200,
+      "canonical": "https://www.finmaphub.com/en/posts/economicInfo/low-unemployment-hard-to-find-job",
+      "alternates": [
+        {
+          "lang": "ko",
+          "href": "https://www.finmaphub.com/posts/economicInfo/low-unemployment-hard-to-find-job"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.finmaphub.com/en/posts/economicInfo/low-unemployment-hard-to-find-job"
+        }
+      ],
+      "robots": "",
+      "h1": 1,
+      "hero": 1,
+      "figures": 3,
+      "images": [
+        {
+          "src": "http://127.0.0.1:8003/_next/image?url=%2Fimages%2Fposts%2Flow-unemployment-hard-to-find-job%2Fcover.png&w=1200&q=75",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/low-unemployment-hard-to-find-job/img1.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/low-unemployment-hard-to-find-job/img2.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/low-unemployment-hard-to-find-job/img3.png",
+          "loaded": true
+        }
+      ],
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "tools": [],
+      "languageSwitch": "PASS",
+      "viewports": [
+        {
+          "width": 390,
+          "overflow": false,
+          "screenshot": "reports/economics-en-low-unemployment-hard-to-find-job-390.png"
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "screenshot": "reports/economics-en-low-unemployment-hard-to-find-job-1440.png"
+        }
+      ]
+    },
+    {
+      "path": "/posts/personalFinance/four-account-salary-automation",
+      "regression": "PASS: prior finance CTA and translation behavior"
+    },
+    {
+      "path": "/posts/personalFinance/compound-vs-dca-calculator-guide",
+      "regression": "PASS: prior finance CTA and translation behavior"
+    },
+    {
+      "path": "/posts/personalFinance/home-price-by-monthly-mortgage-payment",
+      "regression": "PASS: prior finance CTA and translation behavior"
+    },
+    {
+      "path": "/en/posts/personalFinance/four-account-salary-automation",
+      "regression": "PASS: prior finance CTA and translation behavior"
+    },
+    {
+      "path": "/en/posts/personalFinance/compound-vs-dca-calculator-guide",
+      "regression": "PASS: prior finance CTA and translation behavior"
+    },
+    {
+      "path": "/en/posts/personalFinance/home-price-by-monthly-mortgage-payment",
+      "regression": "PASS: remains 404"
+    },
+    {
+      "path": "/posts/economicInfo/inflation-basics",
+      "regression": "PASS: existing economics canonical and inferred CTA"
+    },
+    {
+      "path": "/posts/economicInfo/fx-basics",
+      "regression": "PASS: existing economics canonical and inferred CTA"
+    },
+    {
+      "path": "/posts/economicInfo/indicator-basics",
+      "regression": "PASS: existing economics canonical and inferred CTA"
+    },
+    {
+      "path": "/en/posts/economicInfo/inflation-basics",
+      "regression": "PASS: existing economics canonical and inferred CTA"
+    },
+    {
+      "path": "/en/posts/economicInfo/fx-basics",
+      "regression": "PASS: existing economics canonical and inferred CTA"
+    },
+    {
+      "path": "/en/posts/economicInfo/indicator-basics",
+      "regression": "PASS: existing economics canonical and inferred CTA"
+    },
+    {
+      "internalDestinationsHttp200": 23,
+      "runtimeErrors": [],
+      "apiRequests": "mocked; no DB writes",
+      "externalRequests": "blocked"
+    }
+  ]
+}

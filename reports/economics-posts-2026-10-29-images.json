@@ -1,0 +1,128 @@
+[
+  {
+    "slug": "inflation-down-prices-still-high",
+    "file": "cover.png",
+    "prompt": "Use case: infographic-diagram. FinMap Macro & Economy educational editorial graphic. Bright white and pale gray background only, navy and blue accents only, flat crisp infographic, no neon, no gradients, generous space, large simple iconography and rounded cards, premium textbook quality, no logos or watermarks. Landscape composition, all content well inside frame. Cover 1200x630 composition. One side an official index report with a small declining inflation-rate indicator, the other side a grocery basket with an elevated price tag and coins. Clearly contrast slower rate with still-high cost level. No words, no numbers, no quantitative axes.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-a215a614-b670-4ff6-b837-562d13714fe2.png",
+    "destination": "public/images/posts/inflation-down-prices-still-high/cover.png",
+    "width": 1200,
+    "height": 630,
+    "review": "PASS: visual review and numerical checks; aspect ratio preserved"
+  },
+  {
+    "slug": "inflation-down-prices-still-high",
+    "file": "img3.png",
+    "prompt": "Use case: infographic-diagram. FinMap Macro & Economy educational editorial graphic. Bright white and pale gray background only, navy and blue accents only, flat crisp infographic, no neon, no gradients, generous space, large simple iconography and rounded cards, premium textbook quality, no logos or watermarks. Landscape composition, all content well inside frame. 16:9. Three clear connected visual ideas: broad price index report, frequently purchased grocery subset, then wage coins compared with shopping basket. Wage coins and basket price both enter a purchasing-power balance icon, showing the relation rather than guaranteed improvement. Icon-only, no text.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-d498ec0b-8e55-45ff-af02-4a4b2d8cdfee.png",
+    "destination": "public/images/posts/inflation-down-prices-still-high/img3.png",
+    "width": 1600,
+    "height": 900,
+    "review": "PASS: visual review and numerical checks; aspect ratio preserved"
+  },
+  {
+    "slug": "inflation-down-prices-still-high",
+    "file": "img1.png",
+    "prompt": "Use case: infographic-diagram. FinMap Macro & Economy educational editorial graphic. Bright white and pale gray background only, navy and blue accents only, flat crisp infographic, no neon, no gradients, generous space, large simple iconography and rounded cards, premium textbook quality, no logos or watermarks. Landscape composition, all content well inside frame. 16:9. Two separate side-by-side charts with different vertical units, never overlay them. LEFT title 'PRICE LEVEL', y axis 'INDEX', x labels 'Year 0', 'Year 1', 'Year 2'; exactly three connected points at 100,105,107.1. Price line rises steeply then more slowly. RIGHT title 'INFLATION', y axis '% YoY', x labels 'Year 1','Year 2'; exactly two connected points 5%,2%, descending. Use large accurate labels. Footer only 'ILLUSTRATION'. No extra points, no claim of actual statistics.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-94d715df-7bd7-44c8-8b4c-f168e778be09.png",
+    "destination": "public/images/posts/inflation-down-prices-still-high/img1.png",
+    "width": 1600,
+    "height": 900,
+    "review": "PASS: visual review and numerical checks; aspect ratio preserved"
+  },
+  {
+    "slug": "usdkrw-100won-rise-household-cost",
+    "file": "cover.png",
+    "prompt": "Use case: infographic-diagram. FinMap Macro & Economy educational editorial graphic. Bright white and pale gray background only, navy and blue accents only, flat crisp infographic, no neon, no gradients, generous space, large simple iconography and rounded cards, premium textbook quality, no logos or watermarks. Landscape composition, all content well inside frame. Cover 1200x630 composition. A currency exchange gateway leads by arrows to an airplane travel case, an overseas parcel, and a container shipment; final small store price tag follows shipment through a clock. KRW household cost transmission. No words, numbers, flags, or actual market quote.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-ab39f0ad-0738-4f26-a8e4-8583ce5509da.png",
+    "destination": "public/images/posts/usdkrw-100won-rise-household-cost/cover.png",
+    "width": 1200,
+    "height": 630,
+    "review": "PASS: visual review and numerical checks; aspect ratio preserved"
+  },
+  {
+    "slug": "usdkrw-100won-rise-household-cost",
+    "file": "img1.png",
+    "prompt": "Use case: infographic-diagram. FinMap Macro & Economy educational editorial graphic. Bright white and pale gray background only, navy and blue accents only, flat crisp infographic, no neon, no gradients, generous space, large simple iconography and rounded cards, premium textbook quality, no logos or watermarks. Landscape composition, all content well inside frame. 16:9. Accurate simple exchange arithmetic infographic with two column headings '1300 KRW/USD' and '1400 KRW/USD'. Exactly three rows: '$100' -> '130000 KRW' and '140000 KRW'; '$2000' -> '2600000 KRW' and '2800000 KRW'; '$10000' -> '13000000 KRW' and '14000000 KRW'. Short footer 'ILLUSTRATION · NO FEES'. Large readable numerals, no extra figures or growth claims. Straight comparison, no coin heights implying unequal ratios.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-741fce9c-797c-4f68-b632-56d8fa9a446a.png",
+    "destination": "public/images/posts/usdkrw-100won-rise-household-cost/img1.png",
+    "width": 1600,
+    "height": 900,
+    "review": "PASS: visual review and numerical checks; aspect ratio preserved"
+  },
+  {
+    "slug": "inflation-down-prices-still-high",
+    "file": "img2.png",
+    "prompt": "Use case: infographic-diagram. FinMap Macro & Economy educational editorial graphic. Bright white and pale gray background only, navy and blue accents only, flat crisp infographic, no neon, no gradients, generous space, large simple iconography and rounded cards, premium textbook quality, no logos or watermarks. Landscape composition, all content well inside frame. 16:9. Two household silhouettes with different spending basket compositions, one food-heavy with groceries, one transport-and-housing-heavy with bus and home icons. Distinct blue proportional category blocks but no numeric values. A common price-signal source fans into the two baskets, yielding different household experiences. Icon-only, no text, no actual data claim.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-b80120bd-adf8-4895-895b-39255cd432db.png",
+    "destination": "public/images/posts/inflation-down-prices-still-high/img2.png",
+    "width": 1600,
+    "height": 900,
+    "review": "PASS: visual review and numerical checks; aspect ratio preserved"
+  },
+  {
+    "slug": "low-unemployment-hard-to-find-job",
+    "file": "cover.png",
+    "prompt": "Use case: infographic-diagram. FinMap Macro & Economy educational editorial graphic. Bright white and pale gray background only, navy and blue accents only, flat crisp infographic, no neon, no gradients, generous space, large simple iconography and rounded cards, premium textbook quality, no logos or watermarks. Landscape composition, all content well inside frame. Cover 1200x630 composition. Left a headline dashboard unemployment gauge looks low, right a person with CV faces several job-search doors. Between them a population diagram with employed, actively searching, and outside-labor-force groups. Calm, neutral textbook style, no text, no quantitative gauge ticks, no sadness caricature.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-fbb8660f-f1fb-4295-9d2d-719e988591e6.png",
+    "destination": "public/images/posts/low-unemployment-hard-to-find-job/cover.png",
+    "width": 1200,
+    "height": 630,
+    "review": "PASS: visual review and numerical checks; aspect ratio preserved"
+  },
+  {
+    "slug": "usdkrw-100won-rise-household-cost",
+    "file": "img2.png",
+    "prompt": "Use case: infographic-diagram. FinMap Macro & Economy educational editorial graphic. Bright white and pale gray background only, navy and blue accents only, flat crisp infographic, no neon, no gradients, generous space, large simple iconography and rounded cards, premium textbook quality, no logos or watermarks. Landscape composition, all content well inside frame. 16:9. Left-to-right four-stage causal chain: currency exchange icon, imported container with price tag, factory cost ledger, retail shopping tag. A hedge shield, inventory warehouse, and contract document enter as moderating side branches. Small clocks between stages show lags. No text or numerical figures.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-65eeb650-265d-44ba-8fe2-de7329423ca2.png",
+    "originalSource": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-576b0ec4-c1f4-4bb0-b5f3-b0f5490880e3.png",
+    "editPrompt": "Change only the first currency exchange tile: replace the euro symbol with the Korean won symbol ₩, retaining the dollar symbol. This graphic explains USD/KRW, never EUR/USD. Preserve the other stages, clocks, shield, inventory, contract, arrows, spacing and blue/white palette exactly.",
+    "destination": "public/images/posts/usdkrw-100won-rise-household-cost/img2.png",
+    "width": 1600,
+    "height": 900,
+    "review": "PASS: visual review and numerical checks; aspect ratio preserved"
+  },
+  {
+    "slug": "low-unemployment-hard-to-find-job",
+    "file": "img1.png",
+    "prompt": "Use case: infographic-diagram. FinMap Macro & Economy educational editorial graphic. Bright white and pale gray background only, navy and blue accents only, flat crisp infographic, no neon, no gradients, generous space, large simple iconography and rounded cards, premium textbook quality, no logos or watermarks. Landscape composition, all content well inside frame. 16:9 precise population tree. Top card 'ELIGIBLE 1000'. Branch to left card 'LABOR FORCE 600' and right card 'OUTSIDE 400'. The left card ONLY branches to two children 'EMPLOYED 570' and 'UNEMPLOYED 30'. Numerals exact. Small short footer 'ILLUSTRATION'. No other branches, no totals suggesting unemployed/outside overlap. High legibility.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-63b1395a-510f-4b81-90bd-961df0973643.png",
+    "destination": "public/images/posts/low-unemployment-hard-to-find-job/img1.png",
+    "width": 1600,
+    "height": 900,
+    "review": "PASS: visual review and numerical checks; aspect ratio preserved"
+  },
+  {
+    "slug": "low-unemployment-hard-to-find-job",
+    "file": "img2.png",
+    "prompt": "Use case: infographic-diagram. FinMap Macro & Economy educational editorial graphic. Bright white and pale gray background only, navy and blue accents only, flat crisp infographic, no neon, no gradients, generous space, large simple iconography and rounded cards, premium textbook quality, no logos or watermarks. Landscape composition, all content well inside frame. 16:9, two clear equal-width case cards. Both headline '5% UNEMPLOYMENT'. LEFT case 'A': 'POPULATION 1000', 'EMPLOYED 570', 'UNEMPLOYED 30', 'OUTSIDE 400'. RIGHT case 'B': 'POPULATION 1000', 'EMPLOYED 380', 'UNEMPLOYED 20', 'OUTSIDE 600'. Below each three-part horizontal population bar: left 57% employment,3% unemployment,40% outside; right38%,2%,60%. Do not label 3% or2% as unemployment rates: these are population shares. Prefer no labels on bars. Footer 'ILLUSTRATION'. Exact numerals only.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-e7e5e476-f5b6-41b8-b83f-c3ca5436d8f8.png",
+    "originalSource": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-41aaf8e5-aff5-4eaa-9795-bd33be402e11.png",
+    "editPrompt": "Remove the two horizontal proportion bars at the bottom of the A and B cards, including all 57%,3%,40%,38%,2%,60% labels inside bars. Leave clean white space there and retain the ILLUSTRATION footer. Preserve the remaining exact numbers and text: both 5% UNEMPLOYMENT, case A population1000 employed570 unemployed30 outside400, case B population1000 employed380 unemployed20 outside600. No proportional graphic, bar chart or extra numbers. Keep card layout, blue palette and typography.",
+    "destination": "public/images/posts/low-unemployment-hard-to-find-job/img2.png",
+    "width": 1600,
+    "height": 900,
+    "review": "PASS: visual review and numerical checks; aspect ratio preserved"
+  },
+  {
+    "slug": "low-unemployment-hard-to-find-job",
+    "file": "img3.png",
+    "prompt": "Use case: infographic-diagram. FinMap Macro & Economy educational editorial graphic. Bright white and pale gray background only, navy and blue accents only, flat crisp infographic, no neon, no gradients, generous space, large simple iconography and rounded cards, premium textbook quality, no logos or watermarks. Landscape composition, all content well inside frame. 16:9 three-step decision flow using icons only. First magnifying glass on an unemployment fraction, second broad population employment grid, third entry/exit labor-force arrows. Then branch to youth graduation cap, hourly clock and wage coins to inspect age mix and job quality. No words, numbers, stock arrows, or predictive claims.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-305b1e53-8270-4eae-b1c4-dd28687b36d4.png",
+    "destination": "public/images/posts/low-unemployment-hard-to-find-job/img3.png",
+    "width": 1600,
+    "height": 900,
+    "review": "PASS: visual review and numerical checks; aspect ratio preserved"
+  },
+  {
+    "slug": "usdkrw-100won-rise-household-cost",
+    "file": "img3.png",
+    "prompt": "Use case: infographic-diagram. FinMap Macro & Economy educational editorial graphic. Bright white and pale gray background only, navy and blue accents only, flat crisp infographic, no neon, no gradients, generous space, large simple iconography and rounded cards, premium textbook quality, no logos or watermarks. Landscape composition, all content well inside frame. 16:9. Two lanes compare timing. Top airplane and online parcel connect immediately to a currency payment wallet via a short arrow and small clock. Bottom imported raw material flows through warehouse, factory, contract and store via a longer multi-stage route with several clocks. No text or numbers. Emphasize fast direct conversion versus delayed retail pass-through without guaranteed full pass-through.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-a0449541-bcc9-4425-8f3f-4da8e5c430ae.png",
+    "originalSource": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-577aa204-0b24-441e-885d-27adf3b5481c.png",
+    "editPrompt": "Recolor only the brown/tan parcel and brown warehouse boxes into muted blue and pale blue. This is a FinMap Macro & Economy graphic with white/gray background and blue/navy accents only. Preserve all icons, sequence, layout, timing clocks and lack of text.",
+    "destination": "public/images/posts/usdkrw-100won-rise-household-cost/img3.png",
+    "width": 1600,
+    "height": 900,
+    "review": "PASS: visual review and numerical checks; aspect ratio preserved"
+  }
+]

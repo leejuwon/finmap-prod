@@ -1,0 +1,121 @@
+{
+  "checked": "2026-10-29",
+  "method": "공식 웹 원문 직접 열람. 검색 요약만으로 값 채택하지 않음.",
+  "statistics": [
+    {
+      "statistic": "한국 CPI",
+      "values": "전월비 +0.3%, 전년동월비 +2.9%",
+      "period": "2026-09",
+      "released": "2026-10-02",
+      "url": "https://mods.go.kr/board.es?act=view&bid=213&list_no=447322&mid=a10301040200",
+      "verification": "발표 HTML 본문 직접 확인",
+      "adjustment": "원문 전월비·전년동월비; 계절조정으로 표시하지 않음",
+      "revision": "발표문 잠정 표기 없음; 정정·개편 가능"
+    },
+    {
+      "statistic": "한국 생활물가지수",
+      "values": "전월비 +0.7%, 전년동월비 +2.5%",
+      "period": "2026-09",
+      "released": "2026-10-02",
+      "url": "https://mods.go.kr/board.es?act=view&bid=213&list_no=447322&mid=a10301040200",
+      "verification": "발표 HTML 본문 직접 확인",
+      "adjustment": "원문 비교 기준",
+      "revision": "잠정 표기 없음"
+    },
+    {
+      "statistic": "한국 신선식품지수",
+      "values": "전월비 +2.7%, 전년동월비 -3.3%",
+      "period": "2026-09",
+      "released": "2026-10-02",
+      "url": "https://mods.go.kr/board.es?act=view&bid=213&list_no=447322&mid=a10301040200",
+      "verification": "발표 HTML 본문 직접 확인",
+      "adjustment": "원문 비교 기준",
+      "revision": "잠정 표기 없음"
+    },
+    {
+      "statistic": "미국 CPI-U",
+      "values": "전월비 +0.6% SA, 12개월 +3.7% NSA",
+      "period": "2026-09",
+      "released": "2026-10-14",
+      "url": "https://www.bls.gov/news.release/archives/cpi_10142026.htm",
+      "verification": "BLS 날짜 고정 아카이브 본문 직접 확인",
+      "adjustment": "MoM 계절조정, YoY 비계절조정",
+      "revision": "SA 계열 소급 수정 가능; 일반 NSA CPI-U는 통상 공표 후 확정, 정정 가능"
+    },
+    {
+      "statistic": "한국 고용",
+      "values": "전체 실업률 2.0% NSA; 15~64세 고용률 70.6%; SA 실업률 2.6%, 전월 -0.1%p",
+      "period": "2026-09",
+      "released": "2026-10-16",
+      "url": "https://mods.go.kr/board.es?act=view&bid=210&list_no=447479&mid=a10301030200",
+      "verification": "발표 HTML·첨부 PDF 통계표 직접 확인",
+      "adjustment": "전체 원계열과 계절조정 분리",
+      "revision": "표본조사 추정치; 계절조정 소급 보정 가능"
+    },
+    {
+      "statistic": "한국 청년 실업률",
+      "values": "15~29세 5.4%, 15~34세 4.2%; 15~29세 전년 +0.6%p",
+      "period": "2026-09",
+      "released": "2026-10-16",
+      "url": "https://mods.go.kr/boardDownload.es?bid=210&list_no=447479&seq=1",
+      "verification": "첨부 PDF 표9의 2026년 9월 행 및 15~29세·15~34세 열 직접 확인",
+      "adjustment": "원계열; 연령별 분모 구분",
+      "revision": "표본조사 추정치; 보정 가능"
+    },
+    {
+      "statistic": "미국 CPS",
+      "values": "실업률 4.2%, 참가율 61.8%, 고용인구비율 59.2%",
+      "period": "2026-09",
+      "released": "2026-10-02",
+      "url": "https://www.bls.gov/news.release/archives/empsit_10022026.htm",
+      "verification": "BLS 아카이브 본문·표A 직접 확인",
+      "adjustment": "모두 SA; 민간 비시설 16세 이상",
+      "revision": "가구조사 추정치; 계절요인·인구통제 등 수정 가능"
+    },
+    {
+      "statistic": "한국 수출입물가·무역지수 발표",
+      "values": "실제 지수 값 미인용",
+      "period": "2026-09",
+      "released": "2026-10-16",
+      "url": "https://www.bok.or.kr/portal/bbs/B0000501/view.do?nttId=11065605&menuNo=201264",
+      "verification": "공식 발표 제목·날짜·잠정 표시 확인; 첨부 PDF 접근 실패",
+      "adjustment": "본문은 ECOS에서 통화 기준·기준연도·계열 확인하도록 안내",
+      "revision": "잠정; 첨부 수치는 검증하지 못해 사용하지 않음"
+    }
+  ],
+  "definitions": [
+    {
+      "url": "https://mods.go.kr/menu.es?mid=b70101010000",
+      "verification": "공식 페이지 직접 열람"
+    },
+    {
+      "url": "https://mods.go.kr/menu.es?mid=b70101040000",
+      "verification": "공식 페이지 직접 열람"
+    },
+    {
+      "url": "https://mods.go.kr/menu.es?mid=b70102030000",
+      "verification": "공식 페이지 직접 열람"
+    },
+    {
+      "url": "https://www.bls.gov/cpi/questions-and-answers.htm",
+      "verification": "공식 페이지 직접 열람"
+    },
+    {
+      "url": "https://www.bls.gov/cps/definitions.htm",
+      "verification": "공식 페이지 직접 열람"
+    },
+    {
+      "url": "https://www.bls.gov/cps/cps_htgm.htm",
+      "verification": "공식 페이지 직접 열람"
+    },
+    {
+      "url": "https://ecos.bok.or.kr/",
+      "verification": "페이지 접근 확인, 클라이언트 앱 본문 미파싱; 실제 계열값 미인용"
+    },
+    {
+      "url": "https://www.visa.co.uk/support/consumer/travel-support/exchange-rate-calculator.html",
+      "verification": "공식 페이지 직접 열람"
+    }
+  ],
+  "hypothetical": "환율 1300→1400, 달러 지출, 수수료1.2%, 유가80/88/72, 물가지수100→105→107.1, 임금, 가구 가중치, 인구1000 계산은 모두 교육용 가상 예시"
+}

@@ -805,3 +805,35 @@ url: /en/posts/personalFinance/compound-vs-dca-calculator-guide
 title: "적립식 투자(DCA) 가이드: 일시금 비교부터 월 투자금·하락장·실행 규칙까지"
 description: "적립식 투자(DCA)를 처음 정리하는 사람을 위해 기본 구조, 일시금 비교, 월 투자금 설정, 하락장 대응, 환율·증액·실패 패턴을 읽는 순서를 안내합니다."
 url: /posts/personalFinance/dca-guide
+
+# 2026-10-29 신규 경제정보 포스트
+
+### inflation-down-prices-still-high (KO)
+title: "물가 상승률은 낮아졌는데 장바구니는 왜 비쌀까? 소비자물가와 체감물가의 차이"
+description: "소비자물가지수와 체감물가가 다른 이유를 가격 수준·상승률·가구별 소비구조로 나눕니다. 생활물가·신선식품·임금과 실제 발표 사례를 함께 읽고, 물가상승률 하락이 내 구매력 개선인지 판단하는 방법을 정리합니다."
+url: /posts/economicInfo/inflation-down-prices-still-high
+
+### usdkrw-100won-rise-household-cost (KO)
+title: "원달러 환율이 100원 오르면 내 생활비는 얼마나 달라질까? 해외여행·직구·수입물가의 연결고리"
+description: "원달러 환율 1,300원에서 1,400원으로의 가상 변화를 여행·직구 비용으로 계산합니다. 카드 적용 환율과 수수료, 수입물가의 원화·계약통화 기준, 국내 가격 전가 시차를 구분해 환율 뉴스가 내 생활비에 미치는 영향을 읽습니다."
+url: /posts/economicInfo/usdkrw-100won-rise-household-cost
+
+### low-unemployment-hard-to-find-job (KO)
+title: "실업률은 낮다는데 취업은 왜 어려울까? 고용률·경제활동참가율·청년 고용의 차이"
+description: "실업률과 고용률의 분모 차이, 경제활동참가율과 청년 연령 구분으로 고용 뉴스를 읽습니다. 한국 공식 발표와 가상 인구 계산을 분리하고, 구직 중단·연령별 변화·임금과 근로시간까지 확인하는 방법을 설명합니다."
+url: /posts/economicInfo/low-unemployment-hard-to-find-job
+
+### inflation-down-prices-still-high (EN)
+title: "Why Do Prices Still Feel High When Inflation Slows? CPI vs Everyday Living Costs"
+description: "Separate inflation from price levels, compare US CPI with your household basket, and calculate real purchasing power. Includes an official BLS release example, grocery and housing differences, three scenarios, and a practical way to read inflation news."
+url: /en/posts/economicInfo/inflation-down-prices-still-high
+
+### usdkrw-100won-rise-household-cost (EN)
+title: "What Happens When USD/KRW Rises by 100 Won? Travel, Imported Goods, and Household Costs"
+description: "Calculate how a hypothetical USD/KRW move from 1,300 to 1,400 changes travel, online purchases, and import costs. Separate direct currency conversion from delayed retail pass-through, card fees, inventory, hedging, and oil-price effects."
+url: /en/posts/economicInfo/usdkrw-100won-rise-household-cost
+
+### low-unemployment-hard-to-find-job (EN)
+title: "Why Is Finding a Job Hard When Unemployment Is Low? Three Labor Market Indicators Explained"
+description: "Read US unemployment, labor-force participation, and the employment-population ratio together. Learn how job-search exits, age differences, hours, pay, and hiring demand can make a low headline unemployment rate feel inconsistent with a difficult job search."
+url: /en/posts/economicInfo/low-unemployment-hard-to-find-job
