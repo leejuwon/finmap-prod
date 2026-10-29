@@ -1,0 +1,215 @@
+{
+  "checkedDate": "2026-10-29",
+  "method": "공식 원문 직접 열람. KRX 4건은 웹 도구403 후 PowerShell HTTP200 원문 저장·본문 추출. 게시일 미표시는 임의 생성하지 않음.",
+  "limitations": [
+    "개별상품·개인별 최종 세금은 검증 대상이 아닌 교육용 가정 계산이다.",
+    "KRX·과거 교육자료의 주변 낡은 세율을 현재 제도로 재사용하지 않았다.",
+    "IRP 세부 편입은 개별 상품·금융기관 최신 분류 확인이 필요하다."
+  ],
+  "sources": [
+    {
+      "institution": "KRX",
+      "title": "ETF NAV·괴리율",
+      "url": "https://www.krx.co.kr/contents/OPN/01/01030203/OPN01030203T1.jsp",
+      "publishedOrEffective": null,
+      "scope": "NAV·iNAV·시장가격 관계. 게시일 미표시; 상장폐지 등 주변 규정은 인용하지 않음.",
+      "evidence": "reports/investing-krx-nav-source-2026-10-29.html",
+      "verified": true
+    },
+    {
+      "institution": "KRX",
+      "title": "ETF 추적오차",
+      "url": "https://open.krx.co.kr/contents/OPN/01/01030203/OPN01030203T2.jsp",
+      "publishedOrEffective": null,
+      "scope": "원문은 수익률 차이를 추적오차율로 명명. 본문 TD·TE 통계 구분과 공시 산식 확인을 명시.",
+      "evidence": "reports/investing-krx-tracking-source-2026-10-29.html",
+      "verified": true
+    },
+    {
+      "institution": "KRX",
+      "title": "ETF 가격지표",
+      "url": "https://www.krx.co.kr/contents/OPN/01/01030204/OPN01030204T7.jsp",
+      "publishedOrEffective": null,
+      "scope": "순자산·비용·좌수와 NAV 관계, 기초자산 배당 미수금 반영. ETF 분배락 설명은 별도 회계 등식으로 제시.",
+      "evidence": "reports/investing-krx-price-source-2026-10-29.html",
+      "verified": true
+    },
+    {
+      "institution": "KRX",
+      "title": "ETF 세금제도",
+      "url": "https://regulation.krx.co.kr/contents/RGL/03/03060105/RGL03060105.jsp",
+      "publishedOrEffective": null,
+      "scope": "국내상장 기타 ETF의 보유기간 과세 구조 확인. 오래된 주변 거래세율은 인용하지 않고 현행 법령·국세청과 대조.",
+      "evidence": "reports/investing-krx-tax-source-2026-10-29.html",
+      "verified": true
+    },
+    {
+      "institution": "금융투자협회",
+      "title": "금융투자회사 영업 및 업무에 관한 규정 시행세칙 제4-66조",
+      "url": "https://law.kofia.or.kr/service/law/detailArticlePrint.do?contentSeq=152235&historySeq=1154&seq=262",
+      "publishedOrEffective": "2016년 연혁 자료",
+      "scope": "보수·기타비용·매매중개수수료 구분 원칙만 사용. 현재 개별 ETF 비용은 최신 설명서에서 확인.",
+      "verified": true
+    },
+    {
+      "institution": "SEC Investor.gov",
+      "title": "Mutual Fund and ETF Fees and Expenses Investor Bulletin",
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/mutual-fund-and-etf-fees-and-expenses-investor-bulletin",
+      "publishedOrEffective": "2025-07-23",
+      "scope": "펀드 내부 운용비용과 별도 거래·계좌 비용 구분.",
+      "verified": true
+    },
+    {
+      "institution": "SEC Investor.gov",
+      "title": "Exchange-Traded Funds (ETFs) Investor Bulletin",
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-24",
+      "publishedOrEffective": null,
+      "scope": "NAV·프리미엄·디스카운트·호가 스프레드.",
+      "verified": true
+    },
+    {
+      "institution": "Vanguard",
+      "title": "What affects index tracking?",
+      "url": "https://www.vanguard.co.uk/content/uk-aem/gb/en/professional/vanguard-365/investment-knowledge/etf-knowledge/what-affects-index-tracking",
+      "publishedOrEffective": "2026-01-04",
+      "scope": "TD=펀드 총수익률−지수 총수익률, TE는 상대수익률 변동성. 제공자별 정의 차이.",
+      "verified": true
+    },
+    {
+      "institution": "IRS",
+      "title": "Topic no.404 Dividends",
+      "url": "https://www.irs.gov/taxtopics/tc404",
+      "publishedOrEffective": null,
+      "scope": "미국 비배당 분배금은 조정 취득가액을 낮추며 0 초과 지급은 양도차익 처리 가능.",
+      "verified": true
+    },
+    {
+      "institution": "IRS",
+      "title": "Publication 550",
+      "url": "https://www.irs.gov/publications/p550",
+      "publishedOrEffective": "2025 과세연도판",
+      "scope": "Form1099-DIV box3, 비배당 분배금·취득가액·재투자 과세. 2026판으로 표현하지 않음.",
+      "verified": true
+    },
+    {
+      "institution": "Nova Scotia Securities Commission",
+      "title": "What are covered call ETFs?",
+      "url": "https://nssc.novascotia.ca/before-you-invest/what-are-covered-call-etfs",
+      "publishedOrEffective": null,
+      "scope": "상승 참여 제한과 하락 위험이 남는 구조. 캐나다 교육자료를 미국 세율 근거로 사용하지 않음.",
+      "verified": true
+    },
+    {
+      "institution": "국세청",
+      "title": "주식 양도소득세 세액계산 흐름",
+      "url": "https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?cntntsId=8800&mi=12274",
+      "publishedOrEffective": null,
+      "scope": "국외주식 과세 거주 요건, 관련 과세 주식 손익통산과 합산 연250만원 기본공제.",
+      "verified": true
+    },
+    {
+      "institution": "국세청",
+      "title": "양도소득세 세율",
+      "url": "https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?cntntsId=7711&mi=2312",
+      "publishedOrEffective": null,
+      "scope": "통상 외국법인 주식 국세20%; 지방세 포함22%와 구분.",
+      "verified": true
+    },
+    {
+      "institution": "법제처",
+      "title": "조세특례제한법 제91조의18",
+      "url": "https://www.law.go.kr/법령/조세특례제한법/제91조의18",
+      "publishedOrEffective": "시행2026-09-18 / 법률21467호2026-03-17 타법개정",
+      "scope": "ISA 통상 비과세200/400만원, 초과 국세9%, 계약3년, 연2000만원 이월·총1억원, 외국집합투자증권 배제. 미시행 확대안 제외.",
+      "verified": true
+    },
+    {
+      "institution": "법제처",
+      "title": "소득세법 제57조의2",
+      "url": "https://www.law.go.kr/법령/소득세법/제57조의2",
+      "publishedOrEffective": "일반 시행2026-01-01 / 관련 연금 공제 부분2026-07-01 / 법률21221호2025-12-23 일부개정",
+      "scope": "간접투자 외국법인세액 공제와 연금 소득 범위.",
+      "verified": true
+    },
+    {
+      "institution": "법제처",
+      "title": "소득세법 제129조",
+      "url": "https://www.law.go.kr/법령/소득세법/제129조",
+      "publishedOrEffective": "일반 시행2026-01-01 / 제8~11항2026-07-01 / 법률21221호2025-12-23 일부개정",
+      "scope": "통상 배당 국세14%, 연금계좌 인출 공제 제8~10항 신설2025-12-23. 공제한도·초과세액 처리.",
+      "verified": true
+    },
+    {
+      "institution": "법제처",
+      "title": "소득세법 시행령 제117조의2",
+      "url": "https://www.law.go.kr/법령/소득세법시행령/제117조의2",
+      "publishedOrEffective": "시행2026-10-01 / 대통령령36737호2026-09-30 일부개정",
+      "scope": "2026-02-27 개정된 소득 종류별 외국세액 조정계수와 원천징수 계산. 본문은 계수 단일값을 임의 적용하지 않음.",
+      "verified": true
+    },
+    {
+      "institution": "법제처",
+      "title": "소득세법 시행령 제26조의2",
+      "url": "https://www.law.go.kr/법령/소득세법시행령/제26조의2",
+      "publishedOrEffective": "시행2026-10-01 / 대통령령36737호2026-09-30 일부개정",
+      "scope": "집합투자기구 결산·분배 및 재투자 예외. 해외자산 TR형이 영구 무분배라고 가정하지 않음.",
+      "verified": true
+    },
+    {
+      "institution": "법제처",
+      "title": "지방세법 제103조의13",
+      "url": "https://www.law.go.kr/법령/지방세법/제103조의13",
+      "publishedOrEffective": "시행2026-01-01 / 법률21308호2025-12-31 일부개정",
+      "scope": "소득세 원천징수액의10% 지방소득세 특별징수; 배당14→15.4, ISA9→9.9.",
+      "verified": true
+    },
+    {
+      "institution": "대한민국 정책브리핑·정부",
+      "title": "해외펀드 투자소득 외국납부세액공제 안내",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148964618",
+      "publishedOrEffective": "2026-05-20",
+      "scope": "2025-01-01 이후 소득 및 2026-07-01 이후 연금계좌 인출 적용 안내. 일반·ISA·연금 및 종합과세 차이. 개정 법령과 함께 확인.",
+      "verified": true
+    },
+    {
+      "institution": "금융위원회",
+      "title": "2025년 연금저축 적립·운용현황 및 유의사항",
+      "url": "https://www.fsc.go.kr/po010105/87144",
+      "publishedOrEffective": "2026년 공표 자료",
+      "scope": "연금 외 인출시 공제 원금·운용수익16.5% 일반 구조와 부득이한 사유 예외, 계좌이체와 해지 구분.",
+      "verified": true
+    },
+    {
+      "institution": "금융감독원 / KDI 공식 정책자료",
+      "title": "개인형IRP 가입부터 연금수령까지",
+      "url": "https://eiec.kdi.re.kr/policy/materialView.do?num=233201",
+      "publishedOrEffective": "2022-12-12",
+      "scope": "IRP 위험자산70% 일반 한도 및 중도인출 제약. 현재 제공기관2026자료로 교차 확인.",
+      "verified": true
+    },
+    {
+      "institution": "KB증권",
+      "title": "IRP ETF 선택 기준과 안전자산 분류",
+      "url": "https://blog.kbsec.com/irp/irp-etf-선택-기준-안전자산/",
+      "publishedOrEffective": "2026-09-29 / 준법감시2026-2523(2026-09-23~2027-09-22)",
+      "scope": "편입 위험자산70% 일반 구조와 상품별 분류·예외. 나머지30%가 원금보장이라는 해석 금지. 개별 금융기관 안내로 표기.",
+      "verified": true
+    },
+    {
+      "institution": "IRS",
+      "title": "United States–Korea Income Tax Convention",
+      "url": "https://www.irs.gov/pub/irs-trty/korea.pdf",
+      "publishedOrEffective": "조약 원문",
+      "scope": "제12조 통상 포트폴리오 배당15% 상한. 모든 ETF 지급액이나 모든 납세자의 무조건 세율로 사용하지 않음.",
+      "verified": true
+    },
+    {
+      "institution": "전국투자자교육협의회",
+      "title": "국내외 ETF 세금 비교 교육자료",
+      "url": "https://www.kcie.or.kr/guide/236/239/web_view?content_idx=1973&series_idx=",
+      "publishedOrEffective": "2024-05-30",
+      "scope": "국내상장 해외 ETF 보유기간과세와 해외상장22% 구조 교차 확인. 과거 TR 등의 주변 설명은 현행 시행령으로 대조; 본문 직접 링크 생략.",
+      "verified": true
+    }
+  ]
+}

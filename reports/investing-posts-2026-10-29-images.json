@@ -1,0 +1,134 @@
+[
+  {
+    "slug": "etf-real-cost-tracking-error-premium",
+    "file": "img1.png",
+    "prompt": "Use case: infographic-diagram. FinMap Investing premium financial magazine asset. Deep navy/charcoal background, subtle gradient and fine grain, restrained lime accent only, white text on solid rounded cards, soft glass edges, clean grid, mobile-readable large icons, generous margins. No Korean, no long title, no tiny footer, no logo or watermark. Never imply guaranteed profit. 16:9. Three separate peer cards labeled 'FUND COSTS', 'TRACKING', 'EXECUTION'. Fund document, two comparison lines, bid/ask order book icons. Do not add the cards together with plus signs; tracking already reflects fund expenses. One horizontal comparison layout, no numerical values.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-ac12d05f-b4a5-4c9d-bc4d-3bfd62095fc2.png",
+    "originalSource": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-7a780535-949a-4338-9ca6-7e8d5c6b3258.png",
+    "editPrompt": "Correct the execution card only: remove the bottom Buy/Sell bar entirely, because investors sell at BID and buy at ASK. Keep BID and ASK top labels, recolor all red/pink accents to neutral silver gray so only lime is the color accent. Retain FUND COSTS and TRACKING cards. Do not add numbers.",
+    "destination": "public/images/posts/etf-real-cost-tracking-error-premium/img1.png",
+    "width": 1600,
+    "height": 900,
+    "review": "Visual and numerical review; aspect ratio preserved"
+  },
+  {
+    "slug": "etf-real-cost-tracking-error-premium",
+    "file": "cover.png",
+    "prompt": "Use case: infographic-diagram. FinMap Investing premium financial magazine asset. Deep navy/charcoal background, subtle gradient and fine grain, restrained lime accent only, white text on solid rounded cards, soft glass edges, clean grid, mobile-readable large icons, generous margins. No Korean, no long title, no tiny footer, no logo or watermark. Never imply guaranteed profit. Wide 1200x630 cover composition. Small top-left pill 'Investing'. Short title 'Beyond ETF Fees'. A visible fee tag on a fund card, with separate execution spread and tracking comparison layers behind it. Icon-led, no numbers, no tall profit arrows.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-2117eabe-43d9-4288-bbb9-94bd4f9fc2e0.png",
+    "destination": "public/images/posts/etf-real-cost-tracking-error-premium/cover.png",
+    "width": 1200,
+    "height": 630,
+    "review": "Visual and numerical review; aspect ratio preserved"
+  },
+  {
+    "slug": "etf-real-cost-tracking-error-premium",
+    "file": "img2.png",
+    "prompt": "Use case: infographic-diagram. FinMap Investing premium financial magazine asset. Deep navy/charcoal background, subtle gradient and fine grain, restrained lime accent only, white text on solid rounded cards, soft glass edges, clean grid, mobile-readable large icons, generous margins. No Korean, no long title, no tiny footer, no logo or watermark. Never imply guaranteed profit. 16:9. One exact horizontal number line with three equally spaced ticks: 99,100,101. Central solid card 'NAV 100'. Left card 'PRICE 99' and '-1% DISCOUNT'; right card 'PRICE 101' and '+1% PREMIUM'. Correct number positions and labels. This is an illustrative unitless NAV example. No extra points, labels or curved axes.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-70f545e2-d2fa-4d88-a089-646c67492b9c.png",
+    "originalSource": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-24da0647-c551-460b-a248-711b3f30bd44.png",
+    "editPrompt": "Remove the three decorative coin stacks only and leave clean space. Preserve exact values and horizontal equal-spacing number line: price99 discount-1%, NAV100, price101 premium+1%. Coin stack sizes must not misrepresent a1% price difference. Keep all cards, labels and lime/navy palette.",
+    "destination": "public/images/posts/etf-real-cost-tracking-error-premium/img2.png",
+    "width": 1600,
+    "height": 900,
+    "review": "Visual and numerical review; aspect ratio preserved"
+  },
+  {
+    "slug": "etf-real-cost-tracking-error-premium",
+    "file": "img3.png",
+    "prompt": "Use case: infographic-diagram. FinMap Investing premium financial magazine asset. Deep navy/charcoal background, subtle gradient and fine grain, restrained lime accent only, white text on solid rounded cards, soft glass edges, clean grid, mobile-readable large icons, generous margins. No Korean, no long title, no tiny footer, no logo or watermark. Never imply guaranteed profit. 16:9. ETF A and ETF B comparison enters a decision sequence: 'EXPOSURE' then 'TRACKING' then 'TRADE' then a magnifying-glass review icon. Small fee tag, spread brackets, currency shield and clock icons integrated. No implied winning fund and no numerical values.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-f4ac0c3e-9776-446c-9e68-fc27ddd0efd6.png",
+    "destination": "public/images/posts/etf-real-cost-tracking-error-premium/img3.png",
+    "width": 1600,
+    "height": 900,
+    "review": "Visual and numerical review; aspect ratio preserved"
+  },
+  {
+    "slug": "monthly-dividend-etf-total-return-trap",
+    "file": "cover.png",
+    "prompt": "Use case: infographic-diagram. FinMap Investing premium financial magazine asset. Deep navy/charcoal background, subtle gradient and fine grain, restrained lime accent only, white text on solid rounded cards, soft glass edges, clean grid, mobile-readable large icons, generous margins. No Korean, no long title, no tiny footer, no logo or watermark. Never imply guaranteed profit. Wide1200x630 cover. Top-left pill 'Investing', short title 'Cash Is Not Return'. An ETF portfolio block transfers a coin to a cash account while the remaining block shrinks proportionally. A balance frame encompasses both, showing conservation rather than free extra wealth. No numeric labels, no rising wealth arrows.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-9aed5508-5b90-41b9-9dcf-3a25ac221edd.png",
+    "destination": "public/images/posts/monthly-dividend-etf-total-return-trap/cover.png",
+    "width": 1200,
+    "height": 630,
+    "review": "Visual and numerical review; aspect ratio preserved"
+  },
+  {
+    "slug": "monthly-dividend-etf-total-return-trap",
+    "file": "img2.png",
+    "prompt": "Use case: infographic-diagram. FinMap Investing premium financial magazine asset. Deep navy/charcoal background, subtle gradient and fine grain, restrained lime accent only, white text on solid rounded cards, soft glass edges, clean grid, mobile-readable large icons, generous margins. No Korean, no long title, no tiny footer, no logo or watermark. Never imply guaranteed profit. 16:9 two equally weighted hypothetical outcome cards, no proportion bars. Both 'START 100' and 'CASH 12'. Left: 'END 100' 'RETURN +12%'. Right: 'END 85' 'RETURN -3%'. Cash means total distributions over period, return=(end+cash-start)/start. No fee/tax claims. Exact numbers, no invented axes.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-495640dc-a799-4013-99fd-643b2c31b376.png",
+    "originalSource": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-5fc29520-c11b-497e-bca9-f803a1aedd62.png",
+    "editPrompt": "Recolor only: all red/pink accents and the -3% label become white/silver gray, all gold coins become silver gray. Lime remains the only colored accent. Keep the exact numbers and values START100 CASH12 END100 RETURN+12%, START100 CASH12 END85 RETURN-3%. Do not change any arithmetic.",
+    "destination": "public/images/posts/monthly-dividend-etf-total-return-trap/img2.png",
+    "width": 1600,
+    "height": 900,
+    "review": "Visual and numerical review; aspect ratio preserved"
+  },
+  {
+    "slug": "monthly-dividend-etf-total-return-trap",
+    "file": "img1.png",
+    "prompt": "Use case: infographic-diagram. FinMap Investing premium financial magazine asset. Deep navy/charcoal background, subtle gradient and fine grain, restrained lime accent only, white text on solid rounded cards, soft glass edges, clean grid, mobile-readable large icons, generous margins. No Korean, no long title, no tiny footer, no logo or watermark. Never imply guaranteed profit. 16:9 precise two-state theoretical ex-distribution illustration. Left card 'BEFORE' 'ETF 100' 'CASH 0' 'TOTAL 100'. Arrow to right card 'AFTER' 'ETF 99' 'CASH 1' 'TOTAL 100'. Same total before and after. Large exact numerals, no additional profits, no market-price forecast. Card-based balance not a chart.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-e92c04a0-2586-45b4-b2a9-7f915dafe810.png",
+    "destination": "public/images/posts/monthly-dividend-etf-total-return-trap/img1.png",
+    "width": 1600,
+    "height": 900,
+    "review": "Visual and numerical review; aspect ratio preserved"
+  },
+  {
+    "slug": "monthly-dividend-etf-total-return-trap",
+    "file": "img3.png",
+    "prompt": "Use case: infographic-diagram. FinMap Investing premium financial magazine asset. Deep navy/charcoal background, subtle gradient and fine grain, restrained lime accent only, white text on solid rounded cards, soft glass edges, clean grid, mobile-readable large icons, generous margins. No Korean, no long title, no tiny footer, no logo or watermark. Never imply guaranteed profit. 16:9 two paths from a common ETF distribution source. Upper path 'SPEND' leads cash to household basket while remaining fund remains visible. Lower path 'REINVEST' leads cash through a small fee/tax gate back into additional ETF units. Label 'MORE UNITS', never guaranteed higher wealth. No numerical forecast or upward growth line.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-8cdfceee-db66-48b9-80cf-24d986f1f3ce.png",
+    "destination": "public/images/posts/monthly-dividend-etf-total-return-trap/img3.png",
+    "width": 1600,
+    "height": 900,
+    "review": "Visual and numerical review; aspect ratio preserved"
+  },
+  {
+    "slug": "korea-listed-vs-us-listed-etf-tax-cost",
+    "file": "cover.png",
+    "prompt": "Use case: infographic-diagram. FinMap Investing premium financial magazine asset. Deep navy/charcoal background, subtle gradient and fine grain, restrained lime accent only, white text on solid rounded cards, soft glass edges, clean grid, mobile-readable large icons, generous margins. No Korean, no long title, no tiny footer, no logo or watermark. Never imply guaranteed profit. Wide1200x630 cover. Top-left pill 'Investing', short title 'Two ETF Routes'. Two routes from a Korean household investor: won wallet to local exchange, and won-to-dollar exchange gateway to US exchange. Both end in visually identical US equity basket icons. Tax document and account lock beside both. No flags or numeric tax rates.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-26b50fca-1431-475a-8ab3-bed6ad977a98.png",
+    "originalSource": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-dc4052c0-c151-4ec4-bd39-15b7b4b90476.png",
+    "editPrompt": "Simplify the existing diagram: retain title Two ETF Routes, Investing pill, two routes and household person. Replace each final branded stock basket with identical generic unbranded stock certificate cards, no company logos. Remove all small parenthetical labels and dense text; labels only KRW, KR EXCHANGE, USD, US EXCHANGE, TAX, ACCOUNT, US STOCKS. Remove tiny sublabels. Keep navy background and lime-only accents.",
+    "destination": "public/images/posts/korea-listed-vs-us-listed-etf-tax-cost/cover.png",
+    "width": 1200,
+    "height": 630,
+    "review": "Visual and numerical review; aspect ratio preserved"
+  },
+  {
+    "slug": "korea-listed-vs-us-listed-etf-tax-cost",
+    "file": "img1.png",
+    "prompt": "Use case: infographic-diagram. FinMap Investing premium financial magazine asset. Deep navy/charcoal background, subtle gradient and fine grain, restrained lime accent only, white text on solid rounded cards, soft glass edges, clean grid, mobile-readable large icons, generous margins. No Korean, no long title, no tiny footer, no logo or watermark. Never imply guaranteed profit. 16:9 two route diagram. First 'KRW' wallet → 'KR ACCOUNT' → 'KR ETF' → US assets basket. Second 'KRW' → 'USD' exchange → 'US ETF' → same US assets basket. Local trading currency does not erase currency exposure. Only exact short labels, no claim that KR route has no FX risk.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-d5301435-51fb-4117-b2a1-33de997fdc38.png",
+    "originalSource": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-2bb5ff2c-2b7b-4184-9d71-b417a2d01a61.png",
+    "editPrompt": "Change only the final US ASSETS BASKET tile: replace gold bars, bond paper, real estate building and all company logos with a simple basket of generic unbranded US stock certificate cards. Both routes represent the same US stock index exposure, not a mixed gold/bond/real-estate portfolio. Keep all route nodes and exact short labels, NAVY and lime palette; recolor gold coins silver gray.",
+    "destination": "public/images/posts/korea-listed-vs-us-listed-etf-tax-cost/img1.png",
+    "width": 1600,
+    "height": 900,
+    "review": "Visual and numerical review; aspect ratio preserved"
+  },
+  {
+    "slug": "korea-listed-vs-us-listed-etf-tax-cost",
+    "file": "img2.png",
+    "prompt": "Use case: infographic-diagram. FinMap Investing premium financial magazine asset. Deep navy/charcoal background, subtle gradient and fine grain, restrained lime accent only, white text on solid rounded cards, soft glass edges, clean grid, mobile-readable large icons, generous margins. No Korean, no long title, no tiny footer, no logo or watermark. Never imply guaranteed profit. 16:9 four account-role cards labeled 'GENERAL', 'ISA', 'PENSION', 'IRP'. General has local ETF and US ETF icons; ISA has local-listed ETF and calendar lock; pension has local-listed ETF and withdrawal lock; IRP has local-listed ETF, allocation gauge without numeric ticks and withdrawal lock. No numeric rates, limits, dates or guaranteed tax benefits. Concept comparison only.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-13c3813a-cab1-4a5f-a2d0-2591d64dd155.png",
+    "destination": "public/images/posts/korea-listed-vs-us-listed-etf-tax-cost/img2.png",
+    "width": 1600,
+    "height": 900,
+    "review": "Visual and numerical review; aspect ratio preserved"
+  },
+  {
+    "slug": "korea-listed-vs-us-listed-etf-tax-cost",
+    "file": "img3.png",
+    "prompt": "Use case: infographic-diagram. FinMap Investing premium financial magazine asset. Deep navy/charcoal background, subtle gradient and fine grain, restrained lime accent only, white text on solid rounded cards, soft glass edges, clean grid, mobile-readable large icons, generous margins. No Korean, no long title, no tiny footer, no logo or watermark. Never imply guaranteed profit. 16:9 decision flow: 'CASH NEED' → 'ACCOUNT' → 'EXPOSURE' → 'TOTAL COST' → review magnifier. Timing clock, account lock, currency arrows, cost/tax document icons. A return loop signals revisit when circumstances change. No prescribed winning route, no tax rates or numerical thresholds.",
+    "source": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-b7221b09-80a3-46c9-8d40-518affe64fa3.png",
+    "originalSource": "C:\\Users\\ljw20\\.codex\\generated_images\\01a18788-ac3e-79b0-a08d-d2581dfb9318\\exec-cb4f878f-bb1f-49a4-b90b-800dc9826cc3.png",
+    "editPrompt": "Remove all question sentences and the entire bottom text REVISIT WHEN CIRCUMSTANCES CHANGE. Keep only large headings CASH NEED, ACCOUNT, EXPOSURE, TOTAL COST, REVIEW, their icons, arrows and return loop. No replacement text. Preserve navy and lime style and spacing.",
+    "destination": "public/images/posts/korea-listed-vs-us-listed-etf-tax-cost/img3.png",
+    "width": 1600,
+    "height": 900,
+    "review": "Visual and numerical review; aspect ratio preserved"
+  }
+]

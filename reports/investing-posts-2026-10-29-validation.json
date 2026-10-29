@@ -1,0 +1,1304 @@
+{
+  "date": "2026-10-29",
+  "status": "PASS",
+  "posts": [
+    {
+      "lang": "ko",
+      "slug": "etf-real-cost-tracking-error-premium",
+      "url": "/posts/investingInfo/etf-real-cost-tracking-error-premium",
+      "title": "ETF 총보수만 보고 선택하면 안 되는 이유: 실질비용·추적오차·괴리율 비교법",
+      "visibleCharacters": 9969,
+      "summaryCount": 9,
+      "tables": 4,
+      "faq": 8,
+      "internalLinks": [
+        "/posts/investingInfo/why-check-cagr-etf",
+        "/tools/cagr-calculator",
+        "/posts/investingInfo/monthly-dividend-etf-total-return-trap",
+        "/posts/investingInfo/fx-hedge-vs-fx-exposure-korea-3-conditions",
+        "/posts/investingInfo/modern-6040-risk-budget"
+      ],
+      "images": [
+        {
+          "src": "/images/posts/etf-real-cost-tracking-error-premium/cover.png",
+          "width": 1200,
+          "height": 630,
+          "bytes": 1350734
+        },
+        {
+          "src": "/images/posts/etf-real-cost-tracking-error-premium/img1.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1798092
+        },
+        {
+          "src": "/images/posts/etf-real-cost-tracking-error-premium/img2.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1746045
+        },
+        {
+          "src": "/images/posts/etf-real-cost-tracking-error-premium/img3.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1785452
+        }
+      ]
+    },
+    {
+      "lang": "ko",
+      "slug": "monthly-dividend-etf-total-return-trap",
+      "url": "/posts/investingInfo/monthly-dividend-etf-total-return-trap",
+      "title": "월배당 ETF, 매달 돈이 들어오면 이익일까? 분배금·배당락·총수익률의 함정",
+      "visibleCharacters": 10339,
+      "summaryCount": 9,
+      "tables": 4,
+      "faq": 8,
+      "internalLinks": [
+        "/posts/investingInfo/etf-real-cost-tracking-error-premium",
+        "/posts/personalFinance/fire-sequence-risk-first-5-years",
+        "/posts/personalFinance/fire-3-numbers-spending-horizon-withdrawal",
+        "/posts/personalFinance/what-is-cagr",
+        "/posts/investingInfo/modern-6040-risk-budget"
+      ],
+      "images": [
+        {
+          "src": "/images/posts/monthly-dividend-etf-total-return-trap/cover.png",
+          "width": 1200,
+          "height": 630,
+          "bytes": 1123318
+        },
+        {
+          "src": "/images/posts/monthly-dividend-etf-total-return-trap/img1.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1810984
+        },
+        {
+          "src": "/images/posts/monthly-dividend-etf-total-return-trap/img2.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1773881
+        },
+        {
+          "src": "/images/posts/monthly-dividend-etf-total-return-trap/img3.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 2392539
+        }
+      ]
+    },
+    {
+      "lang": "ko",
+      "slug": "korea-listed-vs-us-listed-etf-tax-cost",
+      "url": "/posts/investingInfo/korea-listed-vs-us-listed-etf-tax-cost",
+      "title": "국내 상장 미국 ETF vs 미국 ETF 직접투자: 세금·환전·수수료·계좌별 비교",
+      "visibleCharacters": 12048,
+      "summaryCount": 9,
+      "tables": 4,
+      "faq": 8,
+      "internalLinks": [
+        "/posts/investingInfo/fx-hedge-vs-fx-exposure-korea-3-conditions",
+        "/posts/investingInfo/etf-real-cost-tracking-error-premium",
+        "/posts/personalFinance/dca-fx-volatility-decomposition",
+        "/posts/investingInfo/monthly-dividend-etf-total-return-trap",
+        "/posts/investingInfo/modern-6040-risk-budget"
+      ],
+      "images": [
+        {
+          "src": "/images/posts/korea-listed-vs-us-listed-etf-tax-cost/cover.png",
+          "width": 1200,
+          "height": 630,
+          "bytes": 1219121
+        },
+        {
+          "src": "/images/posts/korea-listed-vs-us-listed-etf-tax-cost/img1.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 2000312
+        },
+        {
+          "src": "/images/posts/korea-listed-vs-us-listed-etf-tax-cost/img2.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 2167423
+        },
+        {
+          "src": "/images/posts/korea-listed-vs-us-listed-etf-tax-cost/img3.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1761777
+        }
+      ]
+    },
+    {
+      "lang": "en",
+      "slug": "etf-real-cost-tracking-error-premium",
+      "url": "/en/posts/investingInfo/etf-real-cost-tracking-error-premium",
+      "title": "ETF Fees Are Not the Whole Cost: Tracking Error, Premiums, Discounts, and Real Trading Expenses",
+      "visibleCharacters": 17809,
+      "summaryCount": 9,
+      "tables": 4,
+      "faq": 8,
+      "internalLinks": [
+        "/en/posts/investingInfo/why-check-cagr-etf",
+        "/en/tools/cagr-calculator",
+        "/en/posts/investingInfo/monthly-dividend-etf-total-return-trap",
+        "/en/posts/investingInfo/fx-hedge-vs-fx-exposure-korea-3-conditions",
+        "/en/posts/investingInfo/modern-6040-risk-budget"
+      ],
+      "images": [
+        {
+          "src": "/images/posts/etf-real-cost-tracking-error-premium/cover.png",
+          "width": 1200,
+          "height": 630,
+          "bytes": 1350734
+        },
+        {
+          "src": "/images/posts/etf-real-cost-tracking-error-premium/img1.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1798092
+        },
+        {
+          "src": "/images/posts/etf-real-cost-tracking-error-premium/img2.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1746045
+        },
+        {
+          "src": "/images/posts/etf-real-cost-tracking-error-premium/img3.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1785452
+        }
+      ]
+    },
+    {
+      "lang": "en",
+      "slug": "monthly-dividend-etf-total-return-trap",
+      "url": "/en/posts/investingInfo/monthly-dividend-etf-total-return-trap",
+      "title": "Monthly Dividend ETFs: Why Cash Distributions Are Not the Same as Investment Returns",
+      "visibleCharacters": 19168,
+      "summaryCount": 9,
+      "tables": 4,
+      "faq": 8,
+      "internalLinks": [
+        "/en/posts/investingInfo/etf-real-cost-tracking-error-premium",
+        "/en/posts/personalFinance/fire-sequence-risk-first-5-years",
+        "/en/posts/personalFinance/fire-3-numbers-spending-horizon-withdrawal",
+        "/en/posts/personalFinance/what-is-cagr",
+        "/en/posts/investingInfo/modern-6040-risk-budget"
+      ],
+      "images": [
+        {
+          "src": "/images/posts/monthly-dividend-etf-total-return-trap/cover.png",
+          "width": 1200,
+          "height": 630,
+          "bytes": 1123318
+        },
+        {
+          "src": "/images/posts/monthly-dividend-etf-total-return-trap/img1.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1810984
+        },
+        {
+          "src": "/images/posts/monthly-dividend-etf-total-return-trap/img2.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 1773881
+        },
+        {
+          "src": "/images/posts/monthly-dividend-etf-total-return-trap/img3.png",
+          "width": 1600,
+          "height": 900,
+          "bytes": 2392539
+        }
+      ]
+    }
+  ],
+  "externalUrls": [
+    "https://law.kofia.or.kr/service/law/detailArticlePrint.do?contentSeq=152235&historySeq=1154&seq=262",
+    "https://open.krx.co.kr/contents/OPN/01/01030203/OPN01030203T2.jsp",
+    "https://www.vanguard.co.uk/content/uk-aem/gb/en/professional/vanguard-365/investment-knowledge/etf-knowledge/what-affects-index-tracking",
+    "https://www.krx.co.kr/contents/OPN/01/01030203/OPN01030203T1.jsp",
+    "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/mutual-fund-and-etf-fees-and-expenses-investor-bulletin",
+    "https://www.krx.co.kr/contents/OPN/01/01030204/OPN01030204T7.jsp",
+    "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%86%8C%EB%93%9D%EC%84%B8%EB%B2%95%EC%8B%9C%ED%96%89%EB%A0%B9/%EC%A0%9C26%EC%A1%B0%EC%9D%982",
+    "https://www.irs.gov/taxtopics/tc404",
+    "https://www.korea.kr/news/policyNewsView.do?newsId=148964618",
+    "https://nssc.novascotia.ca/before-you-invest/what-are-covered-call-etfs",
+    "https://regulation.krx.co.kr/contents/RGL/03/03060105/RGL03060105.jsp",
+    "https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?cntntsId=8800&mi=12274",
+    "https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?cntntsId=7711&mi=2312",
+    "https://www.irs.gov/pub/irs-trty/korea.pdf",
+    "https://eiec.kdi.re.kr/policy/materialView.do?num=233201",
+    "https://blog.kbsec.com/irp/irp-etf-%EC%84%A0%ED%83%9D-%EA%B8%B0%EC%A4%80-%EC%95%88%EC%A0%84%EC%9E%90%EC%82%B0/",
+    "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%A1%B0%EC%84%B8%ED%8A%B9%EB%A1%80%EC%A0%9C%ED%95%9C%EB%B2%95/%EC%A0%9C91%EC%A1%B0%EC%9D%9818",
+    "https://www.fsc.go.kr/po010105/87144",
+    "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%86%8C%EB%93%9D%EC%84%B8%EB%B2%95/%EC%A0%9C57%EC%A1%B0%EC%9D%982",
+    "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%86%8C%EB%93%9D%EC%84%B8%EB%B2%95%EC%8B%9C%ED%96%89%EB%A0%B9/%EC%A0%9C117%EC%A1%B0%EC%9D%982",
+    "https://law.go.kr/LSW/lsRvsDocListP.do?chrClsCd=010102&lsId=001565",
+    "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-24",
+    "https://www.irs.gov/publications/p550"
+  ],
+  "numbers": [
+    {
+      "label": "NAV100 price101 premium %",
+      "actual": 1.0000000000000009,
+      "expected": 1,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "NAV100 price99 discount %",
+      "actual": -1.0000000000000009,
+      "expected": -1,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "101 to100 purchase loss %",
+      "actual": -0.990099009900991,
+      "expected": -0.9900990099,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "Fund A operating components",
+      "actual": 0.07,
+      "expected": 0.07,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "Fund B operating components",
+      "actual": 0.09,
+      "expected": 0.09,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "KO headline-only annual saving",
+      "actual": 5000,
+      "expected": 5000,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "EN total operating annual saving",
+      "actual": 1.9999999999999998,
+      "expected": 2,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "KO headline-only simple payback years",
+      "actual": 6,
+      "expected": 6,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "EN total operating simple payback years",
+      "actual": 15,
+      "expected": 15,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "EN 100-share spread loss 100.03",
+      "actual": 6.000000000000227,
+      "expected": 6,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "KO 100-share spread loss 100.03",
+      "actual": 600,
+      "expected": 600,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "EN 100-share spread loss 100.2",
+      "actual": 40.00000000000057,
+      "expected": 40,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "KO 100-share spread loss 100.2",
+      "actual": 4000,
+      "expected": 4000,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "EN 100-share spread loss 100.05",
+      "actual": 9.999999999999432,
+      "expected": 10,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "KO 100-share spread loss 100.05",
+      "actual": 1000,
+      "expected": 1000,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "Stressed spread vs outlay %",
+      "actual": 0.39920159680638717,
+      "expected": 0.3992015968,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "Ex-distribution value conservation",
+      "actual": 100,
+      "expected": 100,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "TR with12cash end100",
+      "actual": 12,
+      "expected": 12,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "TR with12cash end85",
+      "actual": -3,
+      "expected": -3,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "TR with12cash end110",
+      "actual": 22,
+      "expected": 22,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "ko 1y withdrawFund: loop vs closed form",
+      "actual": 30000000,
+      "expected": 30000000,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "ko 1y withdrawCash: loop vs closed form",
+      "actual": 3045600,
+      "expected": 3045600,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "ko 1y reinvestFund: loop vs closed form",
+      "actual": 33188043.981125373,
+      "expected": 33188043.981125392,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "ko 1y tax: loop vs closed form",
+      "actual": 580910.4294522747,
+      "expected": 580910.4294522775,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "ko 1y fees: loop vs closed form",
+      "actual": 3191.235216341717,
+      "expected": 3191.235216341732,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "ko 3y withdrawFund: loop vs closed form",
+      "actual": 30000000,
+      "expected": 30000000,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "ko 3y withdrawCash: loop vs closed form",
+      "actual": 9136800,
+      "expected": 9136800,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "ko 3y reinvestFund: loop vs closed form",
+      "actual": 40616496.69890889,
+      "expected": 40616496.698908955,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "ko 3y tax: loop vs closed form",
+      "actual": 1934488.2608754977,
+      "expected": 1934488.2608755075,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "ko 3y fees: loop vs closed form",
+      "actual": 10627.12382273163,
+      "expected": 10627.123822731684,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "ko 5y withdrawFund: loop vs closed form",
+      "actual": 30000000,
+      "expected": 30000000,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "ko 5y withdrawCash: loop vs closed form",
+      "actual": 15228000,
+      "expected": 15228000,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "ko 5y reinvestFund: loop vs closed form",
+      "actual": 49707653.907855794,
+      "expected": 49707653.90785593,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "ko 5y tax: loop vs closed form",
+      "actual": 3591036.310317167,
+      "expected": 3591036.310317187,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "ko 5y fees: loop vs closed form",
+      "actual": 19727.38128914496,
+      "expected": 19727.38128914507,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "en 1y withdrawFund: loop vs closed form",
+      "actual": 30000,
+      "expected": 30000,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "en 1y withdrawCash: loop vs closed form",
+      "actual": 2880,
+      "expected": 2880,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "en 1y reinvestFund: loop vs closed form",
+      "actual": 33007.01712387202,
+      "expected": 33007.01712387202,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "en 1y tax: loop vs closed form",
+      "actual": 752.5067877557609,
+      "expected": 752.5067877557613,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "en 1y fees: loop vs closed form",
+      "actual": 3.0100271510230434,
+      "expected": 3.0100271510230447,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "en 3y withdrawFund: loop vs closed form",
+      "actual": 30000,
+      "expected": 30000,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "en 3y withdrawCash: loop vs closed form",
+      "actual": 8640,
+      "expected": 8640,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "en 3y reinvestFund: loop vs closed form",
+      "actual": 39955.47757644236,
+      "expected": 39955.47757644236,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "en 3y tax: loop vs closed form",
+      "actual": 2491.360754865457,
+      "expected": 2491.3607548654554,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "en 3y fees: loop vs closed form",
+      "actual": 9.96544301946183,
+      "expected": 9.965443019461823,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "en 5y withdrawFund: loop vs closed form",
+      "actual": 30000,
+      "expected": 30000,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "en 5y withdrawCash: loop vs closed form",
+      "actual": 14400,
+      "expected": 14400,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "en 5y reinvestFund: loop vs closed form",
+      "actual": 48366.69070610982,
+      "expected": 48366.690706109825,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "en 5y tax: loop vs closed form",
+      "actual": 4596.268945472928,
+      "expected": 4596.268945472928,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "en 5y fees: loop vs closed form",
+      "actual": 18.38507578189171,
+      "expected": 18.38507578189171,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "Local flows 10000000/1",
+      "actual": 10767624.2946,
+      "expected": 10767624.2946,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "US flows 10000000/1",
+      "actual": 10756867.4487189,
+      "expected": 10756867.448718898,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "Local illustrative tax 10000000",
+      "actual": 118214.14136840009,
+      "expected": 118214.14136840009,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "US illustrative tax 10000000",
+      "actual": 0,
+      "expected": 0,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "Local flows 10000000/5",
+      "actual": 14532391.219479626,
+      "expected": 14532391.219479617,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "US flows 10000000/5",
+      "actual": 14576148.759605458,
+      "expected": 14576148.759605447,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "Local flows 100000000/1",
+      "actual": 107676242.94600002,
+      "expected": 107676242.946,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "US flows 100000000/1",
+      "actual": 107568674.487189,
+      "expected": 107568674.48718898,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "Local illustrative tax 100000000",
+      "actual": 1182141.4136840038,
+      "expected": 1182141.413683999,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "US illustrative tax 100000000",
+      "actual": 1115108.387181579,
+      "expected": 1115108.3871815756,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "Local flows 100000000/5",
+      "actual": 145323912.19479626,
+      "expected": 145323912.19479614,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "US flows 100000000/5",
+      "actual": 145761487.59605458,
+      "expected": 145761487.59605452,
+      "tolerance": 0.00001
+    },
+    {
+      "label": "10m domestic illustrative net",
+      "actual": 10649410.1532316,
+      "expected": 10649410.1532316,
+      "tolerance": 0.001
+    },
+    {
+      "label": "100m routes net difference",
+      "actual": 40535.43230859935,
+      "expected": 40535.432,
+      "tolerance": 0.01
+    },
+    {
+      "label": "Monthly300k domestic purchase cost",
+      "actual": 150,
+      "expected": 150,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "Monthly300k US FX and purchase cost",
+      "actual": 449.85,
+      "expected": 449.85,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "FX ratio 1",
+      "actual": 8.000000000000007,
+      "expected": 8,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "FX ratio 0.9",
+      "actual": -2.7999999999999914,
+      "expected": -2.8,
+      "tolerance": 1e-7
+    },
+    {
+      "label": "FX ratio 1.1",
+      "actual": 18.80000000000002,
+      "expected": 18.8,
+      "tolerance": 1e-7
+    }
+  ],
+  "preservation": {
+    "protectedFiles": 169,
+    "sitemapBefore": 223,
+    "sitemapAfter": 228,
+    "added": [
+      "https://www.finmaphub.com/en/posts/investingInfo/etf-real-cost-tracking-error-premium",
+      "https://www.finmaphub.com/en/posts/investingInfo/monthly-dividend-etf-total-return-trap",
+      "https://www.finmaphub.com/posts/investingInfo/etf-real-cost-tracking-error-premium",
+      "https://www.finmaphub.com/posts/investingInfo/korea-listed-vs-us-listed-etf-tax-cost",
+      "https://www.finmaphub.com/posts/investingInfo/monthly-dividend-etf-total-return-trap"
+    ]
+  },
+  "browser": [
+    {
+      "path": "/posts/investingInfo/etf-real-cost-tracking-error-premium",
+      "status": 200,
+      "canonical": "https://www.finmaphub.com/posts/investingInfo/etf-real-cost-tracking-error-premium",
+      "alternates": [
+        {
+          "lang": "ko",
+          "href": "https://www.finmaphub.com/posts/investingInfo/etf-real-cost-tracking-error-premium"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.finmaphub.com/en/posts/investingInfo/etf-real-cost-tracking-error-premium"
+        }
+      ],
+      "robots": "",
+      "h1": 1,
+      "hero": 1,
+      "figures": 3,
+      "images": [
+        {
+          "src": "http://127.0.0.1:8003/_next/image?url=%2Fimages%2Fposts%2Fetf-real-cost-tracking-error-premium%2Fcover.png&w=1080&q=75",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/etf-real-cost-tracking-error-premium/img1.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/etf-real-cost-tracking-error-premium/img2.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/etf-real-cost-tracking-error-premium/img3.png",
+          "loaded": true
+        }
+      ],
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "tools": [
+        "/tools/cagr-calculator"
+      ],
+      "languageSwitch": "PASS",
+      "viewports": [
+        {
+          "width": 390,
+          "overflow": false,
+          "screenshot": "reports/investing-ko-etf-real-cost-tracking-error-premium-390.png",
+          "tables": [
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            },
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            },
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            },
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            }
+          ],
+          "imageRatios": [
+            1.7777777777777777,
+            1.7777777777777777,
+            1.7777777777777777
+          ]
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "screenshot": "reports/investing-ko-etf-real-cost-tracking-error-premium-1440.png",
+          "tables": [
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            },
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            },
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            },
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            }
+          ],
+          "imageRatios": [
+            1.7777777777777777,
+            1.7777777777777777,
+            1.7777777777777777
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/posts/investingInfo/monthly-dividend-etf-total-return-trap",
+      "status": 200,
+      "canonical": "https://www.finmaphub.com/posts/investingInfo/monthly-dividend-etf-total-return-trap",
+      "alternates": [
+        {
+          "lang": "ko",
+          "href": "https://www.finmaphub.com/posts/investingInfo/monthly-dividend-etf-total-return-trap"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.finmaphub.com/en/posts/investingInfo/monthly-dividend-etf-total-return-trap"
+        }
+      ],
+      "robots": "",
+      "h1": 1,
+      "hero": 1,
+      "figures": 3,
+      "images": [
+        {
+          "src": "http://127.0.0.1:8003/_next/image?url=%2Fimages%2Fposts%2Fmonthly-dividend-etf-total-return-trap%2Fcover.png&w=1200&q=75",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/monthly-dividend-etf-total-return-trap/img1.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/monthly-dividend-etf-total-return-trap/img2.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/monthly-dividend-etf-total-return-trap/img3.png",
+          "loaded": true
+        }
+      ],
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "tools": [],
+      "languageSwitch": "PASS",
+      "viewports": [
+        {
+          "width": 390,
+          "overflow": false,
+          "screenshot": "reports/investing-ko-monthly-dividend-etf-total-return-trap-390.png",
+          "tables": [
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            },
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            },
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            },
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            }
+          ],
+          "imageRatios": [
+            1.7777777777777777,
+            1.7777777777777777,
+            1.7777777777777777
+          ]
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "screenshot": "reports/investing-ko-monthly-dividend-etf-total-return-trap-1440.png",
+          "tables": [
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            },
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            },
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            },
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            }
+          ],
+          "imageRatios": [
+            1.7777777777777777,
+            1.7777777777777777,
+            1.7777777777777777
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/posts/investingInfo/korea-listed-vs-us-listed-etf-tax-cost",
+      "status": 200,
+      "canonical": "https://www.finmaphub.com/posts/investingInfo/korea-listed-vs-us-listed-etf-tax-cost",
+      "alternates": [
+        {
+          "lang": "ko",
+          "href": "https://www.finmaphub.com/posts/investingInfo/korea-listed-vs-us-listed-etf-tax-cost"
+        }
+      ],
+      "robots": "",
+      "h1": 1,
+      "hero": 1,
+      "figures": 3,
+      "images": [
+        {
+          "src": "http://127.0.0.1:8003/_next/image?url=%2Fimages%2Fposts%2Fkorea-listed-vs-us-listed-etf-tax-cost%2Fcover.png&w=1200&q=75",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/korea-listed-vs-us-listed-etf-tax-cost/img1.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/korea-listed-vs-us-listed-etf-tax-cost/img2.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/korea-listed-vs-us-listed-etf-tax-cost/img3.png",
+          "loaded": true
+        }
+      ],
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "tools": [],
+      "languageSwitch": "PASS",
+      "viewports": [
+        {
+          "width": 390,
+          "overflow": false,
+          "screenshot": "reports/investing-ko-korea-listed-vs-us-listed-etf-tax-cost-390.png",
+          "tables": [
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            },
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            },
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            },
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            }
+          ],
+          "imageRatios": [
+            1.7777777777777777,
+            1.7777777777777777,
+            1.7777777777777777
+          ]
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "screenshot": "reports/investing-ko-korea-listed-vs-us-listed-etf-tax-cost-1440.png",
+          "tables": [
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            },
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            },
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            },
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            }
+          ],
+          "imageRatios": [
+            1.7777777777777777,
+            1.7777777777777777,
+            1.7777777777777777
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/en/posts/investingInfo/etf-real-cost-tracking-error-premium",
+      "status": 200,
+      "canonical": "https://www.finmaphub.com/en/posts/investingInfo/etf-real-cost-tracking-error-premium",
+      "alternates": [
+        {
+          "lang": "ko",
+          "href": "https://www.finmaphub.com/posts/investingInfo/etf-real-cost-tracking-error-premium"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.finmaphub.com/en/posts/investingInfo/etf-real-cost-tracking-error-premium"
+        }
+      ],
+      "robots": "",
+      "h1": 1,
+      "hero": 1,
+      "figures": 3,
+      "images": [
+        {
+          "src": "http://127.0.0.1:8003/_next/image?url=%2Fimages%2Fposts%2Fetf-real-cost-tracking-error-premium%2Fcover.png&w=1200&q=75",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/etf-real-cost-tracking-error-premium/img1.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/etf-real-cost-tracking-error-premium/img2.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/etf-real-cost-tracking-error-premium/img3.png",
+          "loaded": true
+        }
+      ],
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "tools": [
+        "/en/tools/cagr-calculator"
+      ],
+      "languageSwitch": "PASS",
+      "viewports": [
+        {
+          "width": 390,
+          "overflow": false,
+          "screenshot": "reports/investing-en-etf-real-cost-tracking-error-premium-390.png",
+          "tables": [
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            },
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            },
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            },
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            }
+          ],
+          "imageRatios": [
+            1.7777777777777777,
+            1.7777777777777777,
+            1.7777777777777777
+          ]
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "screenshot": "reports/investing-en-etf-real-cost-tracking-error-premium-1440.png",
+          "tables": [
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            },
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            },
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            },
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            }
+          ],
+          "imageRatios": [
+            1.7777777777777777,
+            1.7777777777777777,
+            1.7777777777777777
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/en/posts/investingInfo/monthly-dividend-etf-total-return-trap",
+      "status": 200,
+      "canonical": "https://www.finmaphub.com/en/posts/investingInfo/monthly-dividend-etf-total-return-trap",
+      "alternates": [
+        {
+          "lang": "ko",
+          "href": "https://www.finmaphub.com/posts/investingInfo/monthly-dividend-etf-total-return-trap"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.finmaphub.com/en/posts/investingInfo/monthly-dividend-etf-total-return-trap"
+        }
+      ],
+      "robots": "",
+      "h1": 1,
+      "hero": 1,
+      "figures": 3,
+      "images": [
+        {
+          "src": "http://127.0.0.1:8003/_next/image?url=%2Fimages%2Fposts%2Fmonthly-dividend-etf-total-return-trap%2Fcover.png&w=1200&q=75",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/monthly-dividend-etf-total-return-trap/img1.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/monthly-dividend-etf-total-return-trap/img2.png",
+          "loaded": true
+        },
+        {
+          "src": "http://127.0.0.1:8003/images/posts/monthly-dividend-etf-total-return-trap/img3.png",
+          "loaded": true
+        }
+      ],
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "tools": [],
+      "languageSwitch": "PASS",
+      "viewports": [
+        {
+          "width": 390,
+          "overflow": false,
+          "screenshot": "reports/investing-en-monthly-dividend-etf-total-return-trap-390.png",
+          "tables": [
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            },
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            },
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            },
+            {
+              "overflowing": true,
+              "reachable": true,
+              "overflowX": "auto"
+            }
+          ],
+          "imageRatios": [
+            1.7777777777777777,
+            1.7777777777777777,
+            1.7777777777777777
+          ]
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "screenshot": "reports/investing-en-monthly-dividend-etf-total-return-trap-1440.png",
+          "tables": [
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            },
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            },
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            },
+            {
+              "overflowing": false,
+              "reachable": true,
+              "overflowX": "visible"
+            }
+          ],
+          "imageRatios": [
+            1.7777777777777777,
+            1.7777777777777777,
+            1.7777777777777777
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/posts/personalFinance/four-account-salary-automation",
+      "regression": "PASS: prior finance CTA and translation behavior"
+    },
+    {
+      "path": "/posts/personalFinance/compound-vs-dca-calculator-guide",
+      "regression": "PASS: prior finance CTA and translation behavior"
+    },
+    {
+      "path": "/posts/personalFinance/home-price-by-monthly-mortgage-payment",
+      "regression": "PASS: prior finance CTA and translation behavior"
+    },
+    {
+      "path": "/en/posts/personalFinance/four-account-salary-automation",
+      "regression": "PASS: prior finance CTA and translation behavior"
+    },
+    {
+      "path": "/en/posts/personalFinance/compound-vs-dca-calculator-guide",
+      "regression": "PASS: prior finance CTA and translation behavior"
+    },
+    {
+      "path": "/en/posts/personalFinance/home-price-by-monthly-mortgage-payment",
+      "regression": "PASS: remains 404"
+    },
+    {
+      "path": "/posts/investingInfo/why-check-cagr-etf",
+      "regression": "PASS: existing investing inferred CTA"
+    },
+    {
+      "path": "/posts/investingInfo/fx-hedge-vs-fx-exposure-korea-3-conditions",
+      "regression": "PASS: existing investing inferred CTA"
+    },
+    {
+      "path": "/posts/economicInfo/inflation-down-prices-still-high",
+      "regression": "PASS: prior economics tool suppression"
+    },
+    {
+      "path": "/posts/economicInfo/usdkrw-100won-rise-household-cost",
+      "regression": "PASS: prior economics tool suppression"
+    },
+    {
+      "path": "/posts/economicInfo/low-unemployment-hard-to-find-job",
+      "regression": "PASS: prior economics tool suppression"
+    },
+    {
+      "path": "/posts/personalFinance/is-dca-better-in-bear-market",
+      "regression": "PASS: different-slug language mapping"
+    },
+    {
+      "path": "/en/posts/investingInfo/why-check-cagr-etf",
+      "regression": "PASS: existing investing inferred CTA"
+    },
+    {
+      "path": "/en/posts/investingInfo/fx-hedge-vs-fx-exposure-korea-3-conditions",
+      "regression": "PASS: existing investing inferred CTA"
+    },
+    {
+      "path": "/en/posts/economicInfo/inflation-down-prices-still-high",
+      "regression": "PASS: prior economics tool suppression"
+    },
+    {
+      "path": "/en/posts/economicInfo/usdkrw-100won-rise-household-cost",
+      "regression": "PASS: prior economics tool suppression"
+    },
+    {
+      "path": "/en/posts/economicInfo/low-unemployment-hard-to-find-job",
+      "regression": "PASS: prior economics tool suppression"
+    },
+    {
+      "path": "/en/posts/personalFinance/is-dca-better-in-a-bear-market",
+      "regression": "PASS: different-slug language mapping"
+    },
+    {
+      "internalDestinationsHttp200": 19,
+      "runtimeErrors": [],
+      "apiRequests": "mocked; no DB writes",
+      "externalRequests": "blocked"
+    }
+  ]
+}

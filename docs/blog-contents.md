@@ -837,3 +837,30 @@ url: /en/posts/economicInfo/usdkrw-100won-rise-household-cost
 title: "Why Is Finding a Job Hard When Unemployment Is Low? Three Labor Market Indicators Explained"
 description: "Read US unemployment, labor-force participation, and the employment-population ratio together. Learn how job-search exits, age differences, hours, pay, and hiring demand can make a low headline unemployment rate feel inconsistent with a difficult job search."
 url: /en/posts/economicInfo/low-unemployment-hard-to-find-job
+
+# 2026-10-29 신규 투자정보 포스트
+
+### etf-real-cost-tracking-error-premium (KO)
+title: "ETF 총보수만 보고 선택하면 안 되는 이유: 실질비용·추적오차·괴리율 비교법"
+description: "ETF 총보수·기타비용·추적차이·추적오차·괴리율을 구분해 매수 전 비용을 비교합니다. 가상 ETF A/B와 거래 시점별 계산으로 중복 차감을 피하고, 보유 기간과 호가 조건에 맞는 주문·보유·재검토 규칙을 만듭니다."
+url: /posts/investingInfo/etf-real-cost-tracking-error-premium
+
+### monthly-dividend-etf-total-return-trap (KO)
+title: "월배당 ETF, 매달 돈이 들어오면 이익일까? 분배금·배당락·총수익률의 함정"
+description: "월배당 ETF의 분배금과 실제 투자 성과를 NAV·배당락·총수익률로 구분합니다. 3,000만원의 소비·재투자 가상 계산, 세금·수수료, 미국 Return of Capital과 커버드콜 위험을 확인하고 7가지 운영 규칙을 세웁니다."
+url: /posts/investingInfo/monthly-dividend-etf-total-return-trap
+
+### korea-listed-vs-us-listed-etf-tax-cost (KO)
+title: "국내 상장 미국 ETF vs 미국 ETF 직접투자: 세금·환전·수수료·계좌별 비교"
+description: "국내 상장 미국 ETF와 미국 상장 ETF 직접투자를 계좌·세금·환율·비용으로 비교합니다. 2026년 시행 법령과 외국납부세액 변경을 확인하고, 1,000만원·1억원 가상 사례로 일반계좌·ISA·연금저축·IRP 선택 조건을 정리합니다."
+url: /posts/investingInfo/korea-listed-vs-us-listed-etf-tax-cost
+
+### etf-real-cost-tracking-error-premium (EN)
+title: "ETF Fees Are Not the Whole Cost: Tracking Error, Premiums, Discounts, and Real Trading Expenses"
+description: "Compare ETF expense ratios, tracking difference, premiums, discounts, and bid-ask spreads without double-counting costs. Use hypothetical fund and trading examples to set purchase, holding, and review rules around your time horizon and risk budget."
+url: /en/posts/investingInfo/etf-real-cost-tracking-error-premium
+
+### monthly-dividend-etf-total-return-trap (EN)
+title: "Monthly Dividend ETFs: Why Cash Distributions Are Not the Same as Investment Returns"
+description: "Separate ETF cash distributions from total return, ex-distribution adjustments, and remaining wealth. Compare spending and reinvestment with hypothetical $30,000 examples, taxes, costs, return of capital, covered-call risks, and seven practical review rules."
+url: /en/posts/investingInfo/monthly-dividend-etf-total-return-trap

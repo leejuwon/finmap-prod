@@ -1,8 +1,8 @@
 # Sitemap Clean Audit
 
-- Checked at: 2026-10-29T13:48:39.935Z
+- Checked at: 2026-10-29T15:01:49.335Z
 - Sitemap files: `public\sitemap-0.xml`, `public\sitemap.xml`
-- Total loc entries: 224
+- Total loc entries: 229
 - Forbidden URL violations: 0
 - Missing required canonical URLs: 0
 - x-default references: 2
